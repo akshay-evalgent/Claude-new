@@ -1,0 +1,17 @@
+{
+  "name": "mamaearth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fontsource/caveat": "^5.3.0",
+    "@fontsource/nunito": "^5.3.0",
+    "three": "^0.170.0"
+  }
+}

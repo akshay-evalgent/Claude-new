@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080, initial-scale=1">
+<title>Mamaearth Onion Hair Oil 15s</title>
+<style>
+  @font-face { font-family: "Nunito"; font-weight: 400; src: url("node_modules/@fontsource/nunito/files/nunito-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Nunito"; font-weight: 700; src: url("node_modules/@fontsource/nunito/files/nunito-latin-700-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Nunito"; font-weight: 800; src: url("node_modules/@fontsource/nunito/files/nunito-latin-800-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Nunito"; font-weight: 900; src: url("node_modules/@fontsource/nunito/files/nunito-latin-900-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Caveat"; font-weight: 700; src: url("node_modules/@fontsource/caveat/files/caveat-latin-700-normal.woff2") format("woff2"); }
+  html, body { margin: 0; background: #FAF6EF; }
+  #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #FAF6EF; }
+  #stage canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+  #bg { z-index: 0; } #gl { z-index: 1; } #ui { z-index: 2; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="gl" width="1080" height="1920"></canvas>
+  <canvas id="ui" width="1080" height="1920"></canvas>
+</div>
+<script type="importmap">{ "imports": { "three": "./node_modules/three/build/three.module.js" } }</script>
+<script type="module">
+import * as THREE from 'three';
+
+// ---------- constants ----------
+const W = 1080, H = 1920, FPS = 24, DUR = 15.0;
+const CREAM = '#FAF6EF', GREEN = '#1F7A4D', PLUM = '#7B4B94', PLUM_DEEP = '#5E3474', INK = '#3B2A20', CREAM_TYPE = '#FBF4E8';
+const BEAT = 0.6; // 100 BPM grid
+
+// ---------- small helpers ----------
+const clamp01 = x => Math.max(0, Math.min(1, x));
+const lerp = (a, b, u) => a + (b - a) * u;
+const smooth = u => { u = clamp01(u); return u * u * (3 - 2 * u); };
+const easeOutCubic = u => { u = clamp01(u); return 1 - Math.pow(1 - u, 3); };
+const easeInOutCubic = u => { u = clamp01(u); return u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2; };
+const easeInQuad = u => { u = clamp01(u); return u * u; };
+const easeOutBack = u => { u = clamp01(u); const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(u - 1, 3) + c1 * Math.pow(u - 1, 2); };
+const seg = (t, a, b) => clamp01((t - a) / (b - a));
+function mulberry32(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function hexToRgb(h) { const n = parseInt(h.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
+function mixColor(a, b, u) { const A = hexToRgb(a), B = hexToRgb(b); return `rgb(${Math.round(lerp(A[0], B[0], u))},${Math.round(lerp(A[1], B[1], u))},${Math.round(lerp(A[2], B[2], u))})`; }
+
+// ---------- timeline (all on the 0.6 s beat grid) ----------
+const T = {
+  dropEnd: 1.8,        // onion hits
+  burstEnd: 2.4,       // droplets burst, then swirl
+  swirlEnd: 4.2,
+  bottleIn0: 4.0, bottleIn1: 4.8,
+  heroEnd: 8.4,
+  calloutEnd: 10.8,
+  settleEnd: 13.2,
+  end: 15.0,
+};
+
+// ---------- Three.js scene ----------
+const glCanvas = document.getElementById('gl');
+const renderer = new THREE.WebGLRenderer({ canvas: glCanvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.setSize(W, H, false);
+renderer.setClearColor(0x000000, 0);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(35, W / H, 0.1, 100);
+
+scene.add(new THREE.HemisphereLight(0xfff6e8, 0xcdbfae, 1.1));
+const key = new THREE.DirectionalLight(0xfff1dc, 2.2); key.position.set(3.5, 6, 5); scene.add(key);
+const fill = new THREE.DirectionalLight(0xe8f0ff, 0.7); fill.position.set(-5, 2, 4); scene.add(fill);
+const rim = new THREE.DirectionalLight(0xffffff, 1.2); rim.position.set(-2, 4, -6); scene.add(rim);
+
+// Bottle group
+const bottle = new THREE.Group();
+scene.add(bottle);
+
+function latheFrom(pts, segs = 96) {
+  return new THREE.LatheGeometry(pts.map(p => new THREE.Vector2(p[0], p[1])), segs);
+}
+const bodyProfile = [[0, -1.6], [0.55, -1.6], [0.70, -1.56], [0.76, -1.46], [0.78, -1.2], [0.78, 0.55], [0.76, 0.85], [0.68, 1.05], [0.54, 1.18], [0.42, 1.25], [0.36, 1.3], [0.36, 1.62], [0, 1.62]];
+const bodyGeo = latheFrom(bodyProfile);
+bodyGeo.computeVertexNormals();
+const bodyMat = new THREE.MeshPhysicalMaterial({ color: 0xF6EEE2, roughness: 0.42, metalness: 0.0, clearcoat: 0.35, clearcoatRoughness: 0.5, transparent: true, opacity: 1 });
+const body = new THREE.Mesh(bodyGeo, bodyMat); bottle.add(body);
+
+const capProfile = [[0, 1.3], [0.40, 1.3], [0.43, 1.34], [0.43, 1.82], [0.40, 1.9], [0.30, 1.95], [0, 1.95]];
+const capGeo = latheFrom(capProfile); capGeo.computeVertexNormals();
+const capMat = new THREE.MeshPhysicalMaterial({ color: 0x7B4B94, roughness: 0.55, metalness: 0.0, clearcoat: 0.2, transparent: true, opacity: 1 });
+const cap = new THREE.Mesh(capGeo, capMat); bottle.add(cap);
+
+// Label texture (drawn in 2D, wrapped on a cylinder band)
+function makeLabelTexture() {
+  const c = document.createElement('canvas'); c.width = 2048; c.height = 1024;
+  const g = c.getContext('2d');
+  g.fillStyle = PLUM; g.fillRect(0, 0, c.width, c.height);
+  // front panel (center of the texture)
+  const px = 1024, pw = 760, ph = 760, py = 512;
+  g.fillStyle = CREAM_TYPE;
+  roundRect(g, px - pw / 2, py - ph / 2, pw, ph, 60); g.fill();
+  g.textAlign = 'center'; g.textBaseline = 'middle';
+  g.fillStyle = GREEN; g.font = '900 96px Nunito'; g.fillText('mamaearth', px, py - 250);
+  // small onion drawing
+  g.strokeStyle = PLUM; g.lineWidth = 9; g.lineCap = 'round'; g.lineJoin = 'round';
+  drawOnionPath(g, px, py - 40, 120, 1, 0, 0);
+  g.fillStyle = PLUM; g.font = '800 92px Nunito'; g.fillText('Onion', px, py + 160);
+  g.font = '700 64px Nunito'; g.fillText('Hair Oil', px, py + 245);
+  g.fillStyle = '#8a7a6a'; g.font = '700 34px Nunito'; g.fillText('150 ml', px, py + 320);
+  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8;
+  return tex;
+}
+function roundRect(g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+
+const labelGeo = new THREE.CylinderGeometry(0.792, 0.792, 1.65, 96, 1, true);
+const labelMat = new THREE.MeshPhysicalMaterial({ map: null, roughness: 0.6, metalness: 0, clearcoat: 0.15, transparent: true, opacity: 1 });
+const label = new THREE.Mesh(labelGeo, labelMat); label.position.y = -0.3; label.rotation.y = Math.PI; bottle.add(label);
+
+// contact shadow
+function makeShadowTexture() {
+  const c = document.createElement('canvas'); c.width = 512; c.height = 512; const g = c.getContext('2d');
+  const gr = g.createRadialGradient(256, 256, 20, 256, 256, 256); gr.addColorStop(0, 'rgba(60,40,30,0.55)'); gr.addColorStop(0.5, 'rgba(60,40,30,0.18)'); gr.addColorStop(1, 'rgba(60,40,30,0)');
+  g.fillStyle = gr; g.fillRect(0, 0, 512, 512); const t = new THREE.CanvasTexture(c); return t;
+}
+const shadowMat = new THREE.MeshBasicMaterial({ map: makeShadowTexture(), transparent: true, opacity: 1, depthWrite: false });
+const shadow = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 1.3), shadowMat); shadow.rotation.x = -Math.PI / 2; shadow.position.y = -1.6; bottle.add(shadow);
+
+// Onion (the ingredient that drops in)
+function makeOnionTexture() {
+  const c = document.createElement('canvas'); c.width = 1024; c.height = 512; const g = c.getContext('2d');
+  g.fillStyle = '#B98AC9'; g.fillRect(0, 0, c.width, c.height);
+  for (let i = 0; i < 28; i++) { const x = i * (1024 / 28); g.fillStyle = i % 2 ? '#8E5AA6' : '#C9A0D6'; g.fillRect(x, 0, 1024 / 28 * 0.5, 512); }
+  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace; return tex;
+}
+const onionProfile = [[0, -0.55], [0.28, -0.52], [0.50, -0.32], [0.58, 0.0], [0.50, 0.36], [0.30, 0.58], [0.14, 0.78], [0.07, 0.98], [0, 1.05]];
+const onionGeo = latheFrom(onionProfile, 64); onionGeo.computeVertexNormals();
+const onionMat = new THREE.MeshPhysicalMaterial({ map: makeOnionTexture(), roughness: 0.5, clearcoat: 0.4, clearcoatRoughness: 0.4 });
+const onion = new THREE.Mesh(onionGeo, onionMat);
+const sprout = new THREE.Mesh(new THREE.ConeGeometry(0.05, 0.45, 12), new THREE.MeshStandardMaterial({ color: 0x4F9A5E, roughness: 0.7 }));
+sprout.position.y = 1.2; onion.add(sprout);
+onion.scale.setScalar(0.85);
+scene.add(onion);
+
+// Droplet particles
+const N = 640;
+const partGeo = new THREE.SphereGeometry(1, 10, 8);
+const partMat = new THREE.MeshPhysicalMaterial({ roughness: 0.25, clearcoat: 0.8, clearcoatRoughness: 0.2, vertexColors: false });
+const parts = new THREE.InstancedMesh(partGeo, partMat, N);
+parts.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+scene.add(parts);
+const P = []; // per-particle static params
+{
+  const rnd = mulberry32(1234);
+  const pos = bodyGeo.attributes.position; const nv = pos.count;
+  const col = new THREE.Color();
+  for (let i = 0; i < N; i++) {
+    // burst direction, biased upward
+    const th = rnd() * Math.PI * 2, ph = Math.acos(lerp(-0.25, 1, rnd()));
+    const dir = new THREE.Vector3(Math.sin(ph) * Math.cos(th), Math.cos(ph), Math.sin(ph) * Math.sin(th));
+    const speed = lerp(0.7, 2.3, rnd());
+    // target on the bottle surface (sample a vertex, push slightly out)
+    let vi = Math.floor(rnd() * nv); let tgt = new THREE.Vector3(pos.getX(vi), pos.getY(vi), pos.getZ(vi));
+    if (tgt.y > 1.3) tgt.y = lerp(-1.5, 1.2, rnd());
+    const rT = Math.hypot(tgt.x, tgt.z) + 0.03; const aT = Math.atan2(tgt.z, tgt.x);
+    const size = lerp(0.016, 0.046, Math.pow(rnd(), 1.5));
+    const c = rnd(); if (c < 0.55) col.set(PLUM); else if (c < 0.8) col.set('#B98AC9'); else col.set('#F3E7F6');
+    P.push({ dir, speed, rT, aT, yT: tgt.y, size, turns: lerp(1.5, 2.5, rnd()), phase: rnd() * Math.PI * 2, color: col.clone() });
+    parts.setColorAt(i, col);
+  }
+  parts.instanceColor.needsUpdate = true;
+}
+const _m = new THREE.Matrix4(), _p = new THREE.Vector3(), _q = new THREE.Quaternion(), _s = new THREE.Vector3();
+const IMPACT = new THREE.Vector3(0, -0.75, 0);
+
+function setParticles(t) {
+  if (t < T.dropEnd || t > T.bottleIn1 + 0.05) { parts.visible = false; return; }
+  parts.visible = true;
+  for (let i = 0; i < N; i++) {
+    const p = P[i]; let x, y, z, s = p.size;
+    if (t < T.burstEnd) {
+      const u = seg(t, T.dropEnd, T.burstEnd); const e = 1 - Math.pow(1 - u, 2);
+      x = IMPACT.x + p.dir.x * p.speed * e * 0.9; z = IMPACT.z + p.dir.z * p.speed * e * 0.9;
+      y = IMPACT.y + p.dir.y * p.speed * e * 0.9 - 2.2 * u * u;
+      s = p.size * (0.3 + 0.7 * easeOutCubic(u * 3));
+    } else {
+      const u0 = seg(t, T.burstEnd, T.swirlEnd); const u = smooth(u0);
+      // burst end position (same formula at u=1)
+      const bx = IMPACT.x + p.dir.x * p.speed * 0.9, bz = IMPACT.z + p.dir.z * p.speed * 0.9, by = IMPACT.y + p.dir.y * p.speed * 0.9 - 2.2;
+      const r0 = Math.hypot(bx, bz), a0 = Math.atan2(bz, bx);
+      let da = p.aT - a0; da = Math.atan2(Math.sin(da), Math.cos(da));
+      const a = a0 + u * (da + Math.PI * 2 * p.turns);
+      const r = lerp(r0, p.rT, u) + Math.sin(Math.PI * u) * 0.35;
+      x = Math.cos(a) * r; z = Math.sin(a) * r; y = lerp(by, p.yT, u) + Math.sin(Math.PI * u) * 0.5 * Math.sin(p.phase);
+      const shrink = 1 - seg(t, T.swirlEnd, T.bottleIn1);
+      s = p.size * (1 + 0.15 * Math.sin(p.phase + t * 9)) * shrink;
+    }
+    _p.set(x, y, z); _s.setScalar(Math.max(s, 0.0001)); _m.compose(_p, _q, _s); parts.setMatrixAt(i, _m);
+  }
+  parts.instanceMatrix.needsUpdate = true;
+}
+
+// ---------- 2D layers ----------
+const bg = document.getElementById('bg').getContext('2d');
+const ui = document.getElementById('ui').getContext('2d');
+
+// paper grain, generated once
+const grain = document.createElement('canvas'); grain.width = W; grain.height = H;
+{
+  const g = grain.getContext('2d'); const img = g.createImageData(W, H); const rnd = mulberry32(99);
+  for (let i = 0; i < img.data.length; i += 4) { const v = 110 + Math.floor(rnd() * 90); img.data[i] = v; img.data[i + 1] = v; img.data[i + 2] = v; img.data[i + 3] = 255; }
+  g.putImageData(img, 0, 0);
+}
+
+// --- botanical ink paths (polylines generated from parametric curves) ---
+function sampleQuad(p0, c, p1, n) { const out = []; for (let i = 0; i <= n; i++) { const u = i / n; out.push([(1 - u) * (1 - u) * p0[0] + 2 * (1 - u) * u * c[0] + u * u * p1[0], (1 - u) * (1 - u) * p0[1] + 2 * (1 - u) * u * c[1] + u * u * p1[1]]); } return out; }
+function leafPolys(base, tip, bulge) {
+  // two curves tip<->base, plus a midrib
+  const mx = (base[0] + tip[0]) / 2, my = (base[1] + tip[1]) / 2; const dx = tip[0] - base[0], dy = tip[1] - base[1]; const L = Math.hypot(dx, dy); const nx = -dy / L, ny = dx / L;
+  const c1 = [mx + nx * bulge, my + ny * bulge], c2 = [mx - nx * bulge, my - ny * bulge];
+  return [sampleQuad(base, c1, tip, 18), sampleQuad(tip, c2, base, 18), sampleQuad(base, [mx, my], [lerp(base[0], tip[0], 0.8), lerp(base[1], tip[1], 0.8)], 10)];
+}
+function sprig(start, end, ctrl, leaves, leafLen, side = 1) {
+  const polys = []; const stem = sampleQuad(start, ctrl, end, 40); polys.push(stem);
+  for (let i = 0; i < leaves; i++) {
+    const u = (i + 1) / (leaves + 1); const k = Math.round(u * 40); const p = stem[k]; const pn = stem[Math.min(40, k + 1)];
+    const tx = pn[0] - p[0], ty = pn[1] - p[1]; const L = Math.hypot(tx, ty) || 1; const ang = Math.atan2(ty, tx) + (i % 2 ? 1 : -1) * 0.95 * side;
+    const len = leafLen * (0.75 + 0.25 * Math.sin(u * Math.PI));
+    const tip = [p[0] + Math.cos(ang) * len, p[1] + Math.sin(ang) * len];
+    polys.push(...leafPolys(p, tip, len * 0.22));
+  }
+  return polys;
+}
+function onionPolys(cx, cy, s) {
+  const polys = [];
+  // bulb: two mirrored curves from the top neck down around to the root
+  polys.push(sampleQuad([cx - 0.12 * s, cy - 0.55 * s], [cx - 0.95 * s, cy - 0.2 * s], [cx - 0.15 * s, cy + 0.62 * s], 30));
+  polys.push(sampleQuad([cx + 0.12 * s, cy - 0.55 * s], [cx + 0.95 * s, cy - 0.2 * s], [cx + 0.15 * s, cy + 0.62 * s], 30));
+  polys.push(sampleQuad([cx - 0.15 * s, cy + 0.62 * s], [cx, cy + 0.7 * s], [cx + 0.15 * s, cy + 0.62 * s], 10));
+  // inner layer lines
+  polys.push(sampleQuad([cx - 0.06 * s, cy - 0.5 * s], [cx - 0.55 * s, cy - 0.1 * s], [cx - 0.08 * s, cy + 0.55 * s], 24));
+  polys.push(sampleQuad([cx + 0.06 * s, cy - 0.5 * s], [cx + 0.55 * s, cy - 0.1 * s], [cx + 0.08 * s, cy + 0.55 * s], 24));
+  // sprout
+  polys.push(sampleQuad([cx - 0.1 * s, cy - 0.55 * s], [cx - 0.25 * s, cy - 0.95 * s], [cx - 0.05 * s, cy - 1.15 * s], 14));
+  polys.push(sampleQuad([cx + 0.1 * s, cy - 0.55 * s], [cx + 0.3 * s, cy - 0.9 * s], [cx + 0.15 * s, cy - 1.2 * s], 14));
+  // roots
+  for (let i = -1; i <= 1; i++) polys.push(sampleQuad([cx + i * 0.07 * s, cy + 0.68 * s], [cx + i * 0.12 * s, cy + 0.82 * s], [cx + i * 0.2 * s, cy + 0.95 * s], 8));
+  return polys;
+}
+function drawOnionPath(g, cx, cy, s, prog, seed, wob) { strokePolys(g, onionPolys(cx, cy, s), prog, seed, wob); }
+
+// the botanical set, each item: polys + [start,end] of the global draw progress + alpha weight
+const BOTANICALS = [
+  { polys: sprig([70, 1800], [300, 1120], [60, 1420], 6, 120, 1), range: [0.0, 0.5] },
+  { polys: sprig([1020, 330], [820, 950], [1070, 700], 5, 105, -1), range: [0.1, 0.55], calloutDim: true },
+  { polys: onionPolys(900, 1640, 150), range: [0.35, 0.8] },
+  { polys: sprig([140, 240], [380, 470], [330, 220], 4, 80, 1), range: [0.5, 0.85] },
+  { polys: sprig([980, 1800], [720, 1620], [900, 1560], 3, 80, -1), range: [0.7, 1.0] },
+];
+
+function strokePolys(g, polys, prog, seed, wob) {
+  // prog 0..1 across all polys in order; wobble is a per-point jitter that changes with seed (ink boil)
+  const total = polys.reduce((a, p) => a + p.length, 0); let budget = prog * total;
+  for (let k = 0; k < polys.length; k++) {
+    const poly = polys[k]; if (budget <= 1) break; const n = Math.min(poly.length, Math.floor(budget)); budget -= poly.length;
+    const rnd = mulberry32(seed * 7919 + k * 131 + 1);
+    g.beginPath();
+    for (let i = 0; i < n; i++) { const jx = (rnd() - 0.5) * wob, jy = (rnd() - 0.5) * wob; const p = poly[i]; if (i === 0) g.moveTo(p[0] + jx, p[1] + jy); else g.lineTo(p[0] + jx, p[1] + jy); }
+    g.stroke();
+  }
+}
+
+function botanicalProgress(t) {
+  if (t < T.burstEnd) return 0.15 * easeOutCubic(seg(t, 0, T.burstEnd));
+  if (t < T.bottleIn1) return lerp(0.15, 0.55, easeOutCubic(seg(t, T.burstEnd, T.bottleIn1)));
+  if (t < T.calloutEnd) return 0.55;
+  return lerp(0.55, 1.0, easeInOutCubic(seg(t, T.calloutEnd, T.calloutEnd + 1.8)));
+}
+
+// ---------- type ----------
+function layoutWords(g, text, size, weight, maxWidth, family = 'Nunito') {
+  g.font = `${weight} ${size}px ${family}`;
+  const words = text.split(' '); const lines = [[]]; let cur = '';
+  for (const w of words) { const test = cur ? cur + ' ' + w : w; if (g.measureText(test).width > maxWidth && cur) { lines.push([w]); cur = w; } else { lines[lines.length - 1].push(w); cur = test; } }
+  return lines;
+}
+// words arrive one by one, 80 ms apart, with a small spring; whole block exits upward with a fade
+function drawClaim(g, text, cx, cy, size, color, tIn, tOut, t, opts = {}) {
+  if (t < tIn || t > tOut + 0.35) return;
+  const weight = opts.weight || 900, family = opts.family || 'Nunito', maxW = opts.maxWidth || 940, lh = size * (opts.lineHeight || 1.08);
+  const lines = layoutWords(g, text, size, weight, maxW, family);
+  const totalH = lines.length * lh; let y = cy - totalH / 2 + lh * 0.78;
+  const exit = seg(t, tOut, tOut + 0.3);
+  g.save(); g.textBaseline = 'alphabetic'; g.font = `${weight} ${size}px ${family}`;
+  let wi = 0;
+  for (const line of lines) {
+    const widths = line.map(w => g.measureText(w).width); const space = g.measureText(' ').width; const lineW = widths.reduce((a, b) => a + b, 0) + space * (line.length - 1);
+    let x = cx - lineW / 2;
+    for (let i = 0; i < line.length; i++) {
+      const u = seg(t, tIn + wi * 0.08, tIn + wi * 0.08 + 0.42); const sc = lerp(1.18, 1, easeOutBack(u)); const a = Math.min(1, u / 0.3) * (1 - exit);
+      g.save(); g.globalAlpha = a; g.fillStyle = color; g.translate(x + widths[i] / 2, y - size * 0.35 - exit * 60); g.scale(sc, sc); g.translate(-(x + widths[i] / 2), -(y - size * 0.35));
+      g.fillText(line[i], x, y); g.restore();
+      x += widths[i] + space; wi++;
+    }
+    y += lh;
+  }
+  g.restore();
+}
+
+// ---------- camera + bottle staging ----------
+const camState = { pos: new THREE.Vector3(), look: new THREE.Vector3() };
+function stage(t) {
+  // camera
+  let dist, az, elev, lookY;
+  if (t < T.dropEnd) { dist = 5.6; az = 0.12; elev = -0.02; lookY = -0.55; }
+  else if (t < T.bottleIn1) { const u = easeInOutCubic(seg(t, T.dropEnd, T.bottleIn1)); dist = lerp(5.6, 8.2, u); az = lerp(0.12, -0.17, u); elev = lerp(-0.02, 0.04, u); lookY = lerp(-0.55, 0, u); }
+  else if (t < T.heroEnd) { const u = easeInOutCubic(seg(t, T.bottleIn1, T.heroEnd)); dist = lerp(8.2, 7.9, u); az = lerp(-0.17, 0.17, u); elev = 0.04 + 0.03 * Math.sin(u * Math.PI); lookY = 0; }
+  else if (t < T.calloutEnd) { const u = easeInOutCubic(seg(t, T.heroEnd, T.heroEnd + 0.7)); dist = lerp(7.9, 8.2, u); az = lerp(0.17, 0.05, u); elev = 0.04; lookY = 0; }
+  else if (t < T.settleEnd) { const u = easeInOutCubic(seg(t, T.calloutEnd, T.calloutEnd + 0.8)); dist = 8.2; az = lerp(0.05, -0.02, u) - 0.02 * (t - T.calloutEnd); elev = 0.04; lookY = 0; }
+  else { const u = easeInOutCubic(seg(t, T.settleEnd, T.settleEnd + 0.8)); dist = lerp(8.2, 8.0, u) - 0.03 * (t - T.settleEnd); az = -0.02 - 0.02 * (T.settleEnd - T.calloutEnd) + 0.012 * (t - T.settleEnd); elev = 0.04; lookY = 0; }
+  camera.position.set(Math.sin(az) * dist, elev * dist + lookY, Math.cos(az) * dist);
+  camera.lookAt(0, lookY, 0); camera.updateMatrixWorld();
+
+  // bottle placement (x, y, scale, spin)
+  let bx = 0, by = -0.6, bs = 0.85, spin = 0;
+  if (t < T.heroEnd) { bx = 0; by = -0.6; bs = 0.85; spin = 0.0; }
+  else if (t < T.calloutEnd) { const u = easeInOutCubic(seg(t, T.heroEnd, T.heroEnd + 0.7)); bx = lerp(0, -0.72, u); by = lerp(-0.6, -0.55, u); bs = lerp(0.85, 0.70, u); spin = lerp(0, -0.35, u); }
+  else if (t < T.settleEnd) { const u = easeInOutCubic(seg(t, T.calloutEnd, T.calloutEnd + 0.8)); bx = lerp(-0.72, 0, u); by = lerp(-0.55, -0.6, u); bs = lerp(0.70, 0.9, u); spin = lerp(-0.35, 0.08, u) + 0.04 * (t - T.calloutEnd); }
+  else { const u = easeInOutCubic(seg(t, T.settleEnd, T.settleEnd + 0.8)); bx = 0; by = lerp(-0.6, -1.28, u); bs = lerp(0.9, 0.46, u); spin = 0.08 + 0.04 * (T.settleEnd - T.calloutEnd) + 0.05 * (t - T.settleEnd); }
+  bottle.position.set(bx, by, 0); bottle.scale.setScalar(bs); bottle.rotation.y = spin;
+
+  // bottle opacity (fades in while the droplets become the bottle)
+  const op = smooth(seg(t, T.bottleIn0, T.bottleIn1));
+  bodyMat.opacity = op; capMat.opacity = op; labelMat.opacity = op; shadowMat.opacity = op;
+  bottle.visible = op > 0.001;
+
+  // onion drop (0 -> impact), tumbling; vanishes at impact
+  if (t < T.dropEnd) {
+    onion.visible = true; const u = seg(t, 0, T.dropEnd); const e = easeInQuad(u);
+    const ee = 0.35 * u + 0.65 * u * u; onion.position.set(IMPACT.x + 0.25 * (1 - u), lerp(2.0, IMPACT.y, ee), IMPACT.z);
+    onion.rotation.z = lerp(-0.6, 0.35, u); onion.rotation.x = lerp(0.3, -0.2, u); onion.rotation.y = u * 1.4;
+    const sq = 1 - 0.0; onion.scale.set(0.85 * sq, 0.85 * sq, 0.85 * sq);
+  } else { onion.visible = false; }
+
+  setParticles(t);
+}
+
+function project(v3) { const v = v3.clone().project(camera); return [(v.x * 0.5 + 0.5) * W, (-v.y * 0.5 + 0.5) * H]; }
+
+// ---------- frame ----------
+function renderFrame(t) {
+  t = Math.max(0, Math.min(DUR, t));
+  const frame = Math.round(t * FPS); const boilSeed = Math.floor(frame / 3);
+  stage(t);
+
+  // ----- background layer -----
+  bg.setTransform(1, 0, 0, 1, 0, 0); bg.globalAlpha = 1; bg.globalCompositeOperation = 'source-over';
+  bg.fillStyle = CREAM; bg.fillRect(0, 0, W, H);
+
+  // plum fill circle (grows behind the bottle in the settle beat, then becomes the badge)
+  const bottleCenter = project(new THREE.Vector3(bottle.position.x, bottle.position.y + 0.15 * bottle.scale.x, 0));
+  let circleR = 0, circleC = bottleCenter;
+  if (t >= T.calloutEnd && t < T.settleEnd) { circleR = 1380 * easeInOutCubic(seg(t, T.calloutEnd, T.calloutEnd + 1.0)); }
+  else if (t >= T.settleEnd) { const u = easeInOutCubic(seg(t, T.settleEnd, T.settleEnd + 0.8)); circleR = lerp(1380, 330, u) * (1 + 0.012 * Math.sin((t - T.settleEnd) * 1.7)); }
+
+  // botanicals (ink), dimmed for sprig B during callouts, overall fade after settle
+  const prog = botanicalProgress(t);
+  const botAlphaGlobal = t > T.settleEnd ? lerp(0.6, 0.38, seg(t, T.settleEnd, T.settleEnd + 0.8)) : 0.6;
+  const drawBotanicals = (g, color) => {
+    g.lineWidth = 3.2; g.lineCap = 'round'; g.lineJoin = 'round'; g.strokeStyle = color;
+    for (const b of BOTANICALS) {
+      const [a0, a1] = b.range; const p = clamp01((prog - a0) / (a1 - a0)); if (p <= 0) continue;
+      let alpha = botAlphaGlobal; if (b.calloutDim && t > T.heroEnd && t < T.calloutEnd + 0.4) alpha *= lerp(1, 0.25, smooth(seg(t, T.heroEnd, T.heroEnd + 0.5)) * (1 - smooth(seg(t, T.calloutEnd, T.calloutEnd + 0.4))));
+      g.globalAlpha = alpha; strokePolys(g, b.polys, p, boilSeed, 2.2);
+    }
+    g.globalAlpha = 1;
+  };
+  drawBotanicals(bg, INK);
+  if (circleR > 0) {
+    bg.fillStyle = PLUM; bg.beginPath(); bg.arc(circleC[0], circleC[1], circleR, 0, Math.PI * 2); bg.fill();
+    bg.save(); bg.beginPath(); bg.arc(circleC[0], circleC[1], circleR, 0, Math.PI * 2); bg.clip(); drawBotanicals(bg, CREAM_TYPE); bg.restore();
+  }
+
+  // ----- 3D layer -----
+  renderer.render(scene, camera);
+
+  // ----- UI layer -----
+  ui.setTransform(1, 0, 0, 1, 0, 0); ui.globalCompositeOperation = 'source-over'; ui.globalAlpha = 1; ui.clearRect(0, 0, W, H);
+  ui.textAlign = 'left';
+
+  // "Nature. Bottled." (beat 2)
+  drawClaim(ui, 'Nature. Bottled.', 540, 300, 156, PLUM, T.burstEnd, T.bottleIn1 - 0.15, t);
+  // claim 1 (hero orbit)
+  drawClaim(ui, 'The goodness of onion.', 540, 300, 150, PLUM, T.bottleIn1, T.heroEnd - 0.3, t);
+  // claim 2 (callouts)
+  drawClaim(ui, 'Toxin-free, always.', 540, 300, 150, PLUM, T.heroEnd, T.calloutEnd - 0.3, t);
+  // claim 3 (settle, cream on plum)
+  drawClaim(ui, 'For stronger, happier hair.', 540, 320, 150, CREAM_TYPE, T.calloutEnd, T.settleEnd - 0.25, t);
+
+  // callouts: three ink icons with one-word labels, on the beat
+  if (t >= T.heroEnd && t < T.calloutEnd + 0.3) {
+    const items = [
+      { label: 'Onion', y: 860, draw: (g, p) => drawOnionPath(g, 680, 860, 62, p, boilSeed, 1.6) },
+      { label: 'Almond', y: 1120, draw: (g, p) => strokePolys(g, leafPolys([630, 1160], [730, 1080], 26).concat([sampleQuad([650, 1150], [680, 1118], [712, 1092], 10)]), p, boilSeed, 1.6) },
+      { label: 'Bhringraj', y: 1380, draw: (g, p) => strokePolys(g, sprig([625, 1430], [735, 1330], [650, 1350], 3, 48, 1), p, boilSeed, 1.6) },
+    ];
+    items.forEach((it, i) => {
+      const tIn = T.heroEnd + i * BEAT; const u = seg(t, tIn, tIn + 0.55); if (u <= 0) return;
+      const exit = seg(t, T.calloutEnd - 0.3, T.calloutEnd);
+      ui.save(); ui.globalAlpha = (1 - exit); ui.strokeStyle = PLUM_DEEP; ui.lineWidth = 4; ui.lineCap = 'round'; ui.lineJoin = 'round';
+      it.draw(ui, easeOutCubic(u));
+      const su = seg(t, tIn + 0.15, tIn + 0.55); ui.globalAlpha = su * (1 - exit); ui.fillStyle = PLUM_DEEP; ui.font = '800 58px Nunito'; ui.textBaseline = 'middle'; ui.textAlign = 'left';
+      ui.fillText(it.label, 765 + (1 - easeOutCubic(su)) * 30, it.y + 8);
+      ui.restore();
+    });
+  }
+
+  // logo beat: wordmark + tagline above the badge, bottle sits in the badge
+  if (t >= T.settleEnd) {
+    const u = seg(t, T.settleEnd + 0.25, T.settleEnd + 0.9); const e = easeOutBack(u);
+    ui.save(); ui.globalAlpha = Math.min(1, u / 0.35); ui.textAlign = 'center'; ui.textBaseline = 'alphabetic';
+    ui.fillStyle = GREEN; ui.font = '900 170px Nunito'; ui.translate(540, 760 + (1 - e) * 40); ui.fillText('mamaearth', 0, 0); ui.restore();
+    const u2 = seg(t, T.settleEnd + 0.55, T.settleEnd + 1.15);
+    ui.save(); ui.globalAlpha = u2; ui.textAlign = 'center'; ui.fillStyle = PLUM; ui.font = '700 104px Caveat'; ui.fillText('Goodness Inside', 540 + (1 - easeOutCubic(u2)) * 20, 900); ui.restore();
+    const u3 = seg(t, T.settleEnd + 1.0, T.settleEnd + 1.5);
+    ui.save(); ui.globalAlpha = u3 * 0.9; ui.textAlign = 'center'; ui.fillStyle = '#6b5d50'; ui.font = '700 44px Nunito'; ui.fillText('Shop the Onion range', 540, 1860); ui.restore();
+  }
+
+  // paper grain on top of everything
+  ui.globalAlpha = 0.055; ui.drawImage(grain, 0, 0); ui.globalAlpha = 1;
+}
+
+// ---------- boot ----------
+let ready = false;
+async function boot() {
+  await Promise.all([
+    document.fonts.load('900 100px Nunito'), document.fonts.load('800 100px Nunito'), document.fonts.load('700 100px Nunito'), document.fonts.load('400 100px Nunito'), document.fonts.load('700 100px Caveat'),
+  ]);
+  labelMat.map = makeLabelTexture(); labelMat.needsUpdate = true;
+  renderFrame(0); // warm up shaders
+  ready = true;
+  window.__ready = true;
+  if (location.search.includes('play')) {
+    const t0 = performance.now();
+    const loop = () => { const t = ((performance.now() - t0) / 1000) % DUR; renderFrame(t); requestAnimationFrame(loop); };
+    loop();
+  } else if (location.search.includes('t=')) {
+    renderFrame(parseFloat(new URLSearchParams(location.search).get('t')));
+  }
+}
+window.renderFrame = renderFrame;
+window.FILM = { FPS, DUR, W, H, T };
+boot();
+</script>
+</body>
+</html>
