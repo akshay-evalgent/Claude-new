@@ -106,3 +106,60 @@ established visual language. Use TWO when text needs its own treatment (type ove
 6. Output: primary look, secondary look, treatment, format, the recipe line(s) to paste, and the closest Skillry entry to reference.
 
 Give me a topic and I will return that selection.
+
+## 6. Worked example: Mamaearth product ad
+
+Brand read: Indian D2C skincare and babycare, "goodness of nature", toxin-free,
+ingredient-led (onion, turmeric, vitamin C, ubtan), young parents and 20s-30s women,
+cream/white packaging with green and one ingredient colour per range. Mostly Reels
+and YouTube Shorts, watched muted.
+
+Selector checks:
+1. Tone: natural, gentle, trustworthy. Rules out Generative neon, Retro, Pixel, Product UI (software look).
+2. Footage: none assumed. Code-drawn hero render of the bottle instead of live action.
+3. Duration: 15 s. One primary look plus a text look.
+4. Pitch, not story: one claim carried through (ingredient goes in, goodness comes out). No look change.
+5. Platform: 9:16 vertical, big burned-in claims, hero bottle always in the safe zone.
+
+Pick:
+- Primary: Cinematic 3D, soft version (daylight studio, matte PBR bottle, shallow DOF, no chrome).
+- Secondary: Kinetic typography for the claims, in the brand's rounded sans, cream on green.
+- Accent motif: Hand-drawn botanical line art (leaf, onion, turmeric root) drawn on behind the bottle. Keep it to outlines so it does not fight the 3D.
+- Treatment: cream background, one range colour (e.g. onion range = soft purple, vitamin C = warm orange), faint paper grain, no film grain.
+- Format: Motion graphics, 15 s, 1080x1920, HyperFrames + GSAP (or Remotion), no voiceover, sound design only.
+
+Beat sheet (15 s):
+| Time | Picture | Type |
+|---|---|---|
+| 0.0-2.0 | Ingredient falls into frame in slow 3D (onion slice / turmeric root), splash of liquid | none |
+| 2.0-4.5 | Liquid swirls into the bottle silhouette; botanical line art draws on behind | "Nature. Bottled." |
+| 4.5-8.0 | Hero bottle orbit, 20 degrees, DOF rack from label to cap | Claim 1 arrives on the beat (use the brand's own certified wording) |
+| 8.0-11.0 | Cutaway: 3 ingredient callouts pop in as hand-drawn icons with one-word labels | Claim 2 |
+| 11.0-13.5 | Bottle settles centre, botanicals complete, range colour fills the background | Claim 3 |
+| 13.5-15.0 | Logo and tagline, bottle shrinks to sit under the wordmark, picture keeps a slow drift (no frozen hold over 1.4 s) | Logo + CTA |
+
+Prompt to run (fill the braces):
+```
+Create a 15s vertical (1080x1920) motion-graphics ad for {PRODUCT NAME} by Mamaearth.
+HyperFrames + GSAP, no voiceover, no footage, sound design only, cut on the beat.
+Structure: ingredient drops in (0-2s) -> liquid forms the bottle (2-4.5s) -> hero
+orbit (4.5-8s) -> three ingredient callouts (8-11s) -> settle (11-13.5s) -> logo (13.5-15s).
+Claims, verbatim, one per beat: {CLAIM 1}, {CLAIM 2}, {CLAIM 3}. Do not invent claims.
+Style: cinematic 3D, soft. Daylight studio lighting, matte PBR bottle with the real
+label, shallow depth of field, slow orbit, cream background, no chrome, no fog.
+Style: kinetic typography. Rounded sans in {BRAND FONT or a close match}, cream type
+on {RANGE COLOUR}, words arrive on the beat, one claim on screen at a time, type
+x-height at least 4% of frame height.
+Style: hand-drawn accent. Thin ink botanical outlines (leaf, {INGREDIENT 1},
+{INGREDIENT 2}) draw themselves on behind the bottle, outlines only, no fill.
+Palette: cream #FAF6EF, Mamaearth green, {RANGE COLOUR}, dark brown for ink. Nothing else.
+End: logo + "{TAGLINE}", bottle small under the wordmark, keep a slow drift, no freeze.
+Export 24 fps, -14 LUFS, -1 dBTP.
+```
+
+Alternate pick for the babycare range: Flat cartoon primary (soft rounded shapes,
+pastel), Hand-drawn secondary, same beat sheet, bottle drawn flat instead of 3D.
+Warmer and cheaper to render, less premium.
+
+What not to use here: Product UI promo (reads as software), Generative neon (clashes
+with "natural"), Photoreal (no footage), Collage (too editorial for a product pitch).
