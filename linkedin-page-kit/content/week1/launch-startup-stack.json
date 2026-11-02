@@ -1,0 +1,207 @@
+{
+  "_note": "Star counts from the GitHub API on 2026-11-02. No prices claimed. Re-run data fetch before re-posting.",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "Open source \u00b7 for startups",
+      "big": "16",
+      "big_caption": "open-source tools, 16 jobs a startup pays for",
+      "title": "The startup stack, if you refuse to sign a per-seat contract in year one.",
+      "subtitle": "Star counts checked today. No prices quoted because yours depend on seats and hosting. What each one replaces, and where it bites.",
+      "after": "943k",
+      "after_caption": "GitHub stars between them"
+    },
+    {
+      "type": "list",
+      "kicker": "Sell and talk to customers",
+      "title": "Pipeline, inbox, bookings",
+      "items": [
+        {
+          "name": "Twenty",
+          "price": "60k stars",
+          "replaces": "the job of HubSpot / Pipedrive"
+        },
+        {
+          "name": "Chatwoot",
+          "price": "38k stars",
+          "replaces": "the job of Intercom / Zendesk"
+        },
+        {
+          "name": "Cal.com",
+          "price": "49k stars",
+          "replaces": "the job of Calendly"
+        }
+      ],
+      "note": "The catch: Twenty is young and moves fast. Pin a version. Chatwoot's WhatsApp setup is the slow part."
+    },
+    {
+      "type": "list",
+      "kicker": "Know what's happening",
+      "title": "Analytics and feedback",
+      "items": [
+        {
+          "name": "PostHog",
+          "price": "40k stars",
+          "replaces": "the job of Mixpanel / Amplitude"
+        },
+        {
+          "name": "Plausible",
+          "price": "29k stars",
+          "replaces": "the job of Google Analytics"
+        },
+        {
+          "name": "Formbricks",
+          "price": "13k stars",
+          "replaces": "the job of Typeform / Hotjar surveys"
+        }
+      ],
+      "note": "The catch: PostHog self-hosted wants a real server. Their cloud free tier is generous enough that most teams should just use it."
+    },
+    {
+      "type": "list",
+      "kicker": "Run the back office",
+      "title": "Paperwork and money",
+      "items": [
+        {
+          "name": "Documenso",
+          "price": "15k stars",
+          "replaces": "the job of DocuSign"
+        },
+        {
+          "name": "Invoice Ninja",
+          "price": "10k stars",
+          "replaces": "the job of FreshBooks"
+        },
+        {
+          "name": "listmonk",
+          "price": "24k stars",
+          "replaces": "the job of Mailchimp"
+        }
+      ],
+      "note": "The catch: e-signatures in regulated industries have compliance rules. Read Documenso's page before anything legal moves."
+    },
+    {
+      "type": "list",
+      "kicker": "Build and automate",
+      "title": "The plumbing",
+      "items": [
+        {
+          "name": "n8n",
+          "price": "209k stars",
+          "replaces": "the job of Zapier / Make"
+        },
+        {
+          "name": "Supabase",
+          "price": "114k stars",
+          "replaces": "the job of Firebase"
+        },
+        {
+          "name": "NocoDB",
+          "price": "65k stars",
+          "replaces": "the job of Airtable"
+        }
+      ],
+      "note": "The catch: someone owns updates. n8n's free self-hosted tier is the best deal here; Supabase's cloud free tier is where most teams should start."
+    },
+    {
+      "type": "list",
+      "kicker": "Think and make",
+      "title": "Docs, AI, design, bots",
+      "items": [
+        {
+          "name": "Outline",
+          "price": "41k stars",
+          "replaces": "the job of Notion / Confluence"
+        },
+        {
+          "name": "Open WebUI",
+          "price": "157k stars",
+          "replaces": "the job of ChatGPT Team"
+        },
+        {
+          "name": "Penpot",
+          "price": "61k stars",
+          "replaces": "the job of Figma"
+        },
+        {
+          "name": "Typebot",
+          "price": "10k stars",
+          "replaces": "the job of Landbot / Tidio"
+        }
+      ],
+      "note": "The catch: Penpot is a Figma alternative for product work, not a Canva one for social posts. Different job."
+    },
+    {
+      "type": "checklist",
+      "kicker": "Where open source bites",
+      "title": "Before you pick any of these, be honest about three things",
+      "a": "Hosted SaaS",
+      "b": "Self-hosted OSS",
+      "rows": [
+        [
+          "Someone else fixes it at 2am",
+          true,
+          false
+        ],
+        [
+          "Per-seat bill grows with hiring",
+          true,
+          false
+        ],
+        [
+          "Your data on your server",
+          false,
+          true
+        ],
+        [
+          "Setup in an afternoon",
+          true,
+          false
+        ],
+        [
+          "Free tier that stays free",
+          false,
+          true
+        ],
+        [
+          "Vendor can change pricing on you",
+          true,
+          false
+        ]
+      ],
+      "note": "Our rule: self-host the boring, stable stuff. Pay for the thing that pages you at night."
+    },
+    {
+      "type": "steps",
+      "kicker": "If you're starting from zero",
+      "title": "Pick one job, not sixteen",
+      "steps": [
+        {
+          "text": "Write down the three tools you'd pay for first. Usually a CRM, a support inbox and automation."
+        },
+        {
+          "text": "Try the open-source one for exactly one of them. One small server is enough.",
+          "cmd": "docker compose up -d"
+        },
+        {
+          "text": "Run it alongside the paid tool for two weeks. If nobody notices, cancel. If they do, you learned what you're paying for."
+        },
+        {
+          "text": "Only then pick the next job."
+        }
+      ],
+      "time": "Most teams that try all sixteen at once end up back on the paid stack in a month."
+    },
+    {
+      "type": "quote",
+      "kicker": "Our bias, stated",
+      "text": "Open source is not free. It trades a monthly bill for a weekend and a little responsibility. For most things under 20 people, that's a good trade."
+    },
+    {
+      "type": "cta",
+      "title": "One tool, automation or honest comparison for startups, every weekday.",
+      "body": "Repos and the star counts we checked are in the first comment. Tell us the job we missed.",
+      "button": "Follow Lean Stack"
+    }
+  ]
+}

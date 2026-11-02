@@ -1,0 +1,214 @@
+{
+  "_note": "Automation recipes. Instructional, no experience claims. Tools named are examples; swap for what the reader already has.",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "Automations \u00b7 for startups",
+      "big": "5",
+      "big_caption": "automations we'd have running by month three",
+      "title": "Not the fancy ones. The five that stop small things falling through the cracks.",
+      "subtitle": "Each one is six nodes or fewer in n8n, Make or Zapier. Build time is an afternoon each if you've done one before, a weekend if you haven't."
+    },
+    {
+      "type": "flow",
+      "kicker": "1 \u00b7 Lead intake",
+      "title": "Every form fill becomes a CRM record and a Slack ping, with the company looked up",
+      "nodes": [
+        {
+          "label": "New form submission",
+          "tool": "Tally / Formbricks",
+          "kind": "trigger"
+        },
+        {
+          "label": "Look up company domain",
+          "tool": "Clearbit free / Apollo"
+        },
+        {
+          "label": "Create contact + deal",
+          "tool": "Twenty / HubSpot"
+        },
+        {
+          "label": "Post to #leads with a one-line summary",
+          "tool": "Slack"
+        },
+        {
+          "label": "Reply within an hour, every time",
+          "tool": "",
+          "kind": "result"
+        }
+      ],
+      "note": "The win isn't speed. It's that nobody has to remember to check the form inbox."
+    },
+    {
+      "type": "flow",
+      "kicker": "2 \u00b7 Support triage",
+      "title": "Tickets get sorted before a human reads them",
+      "nodes": [
+        {
+          "label": "New conversation",
+          "tool": "Chatwoot / Intercom",
+          "kind": "trigger"
+        },
+        {
+          "label": "Classify: bug, billing, how-to, sales",
+          "tool": "any LLM, one prompt"
+        },
+        {
+          "label": "Draft a reply from your help docs",
+          "tool": "LLM + docs"
+        },
+        {
+          "label": "Send draft to a human for one-click approve",
+          "tool": "Slack"
+        },
+        {
+          "label": "Reply goes out, labelled, in under 10 min",
+          "tool": "",
+          "kind": "result"
+        }
+      ],
+      "note": "Keep the human approve step for at least a month. Then look at what they never edit."
+    },
+    {
+      "type": "flow",
+      "kicker": "3 \u00b7 Invoice chasing",
+      "title": "Unpaid invoices chase themselves, politely",
+      "nodes": [
+        {
+          "label": "Invoice 3 days overdue",
+          "tool": "Invoice Ninja / Stripe",
+          "kind": "trigger"
+        },
+        {
+          "label": "Check it's still unpaid",
+          "tool": "same"
+        },
+        {
+          "label": "Send reminder 1, friendly",
+          "tool": "email"
+        },
+        {
+          "label": "Day 10: reminder 2, plus founder cc'd",
+          "tool": "email"
+        },
+        {
+          "label": "Day 20: Slack the founder to call",
+          "tool": "Slack",
+          "kind": "result"
+        }
+      ],
+      "note": "Most late payments are forgotten, not refused. The first reminder clears half of them."
+    },
+    {
+      "type": "flow",
+      "kicker": "4 \u00b7 Weekly numbers",
+      "title": "Monday 8am, the numbers arrive before anyone asks",
+      "nodes": [
+        {
+          "label": "Every Monday 08:00",
+          "tool": "schedule",
+          "kind": "trigger"
+        },
+        {
+          "label": "Pull signups, revenue, churn, tickets",
+          "tool": "PostHog / Stripe / Chatwoot"
+        },
+        {
+          "label": "Compare to last week",
+          "tool": "a few lines of code"
+        },
+        {
+          "label": "Write the three-line summary",
+          "tool": "LLM"
+        },
+        {
+          "label": "Post to #general",
+          "tool": "Slack",
+          "kind": "result"
+        }
+      ],
+      "note": "If the summary ever says 'everything is fine', fix the prompt. Something is never fine."
+    },
+    {
+      "type": "flow",
+      "kicker": "5 \u00b7 Content repurposing",
+      "title": "One long thing becomes five short things",
+      "nodes": [
+        {
+          "label": "New blog post or call recording",
+          "tool": "RSS / Drive",
+          "kind": "trigger"
+        },
+        {
+          "label": "Transcribe if audio",
+          "tool": "Whisper"
+        },
+        {
+          "label": "Draft 5 posts in your voice, with a 'do not post' flag",
+          "tool": "LLM + style guide"
+        },
+        {
+          "label": "Human edits in a Notion board",
+          "tool": "Notion / Outline"
+        },
+        {
+          "label": "Scheduled by a person, not a bot",
+          "tool": "",
+          "kind": "result"
+        }
+      ],
+      "note": "The bot drafts. A person decides. The posts that skip the person are the ones readers flag as slop."
+    },
+    {
+      "type": "checklist",
+      "kicker": "Which tool for the plumbing",
+      "title": "n8n vs Make vs Zapier, for a startup",
+      "a": "Zapier / Make",
+      "b": "n8n",
+      "rows": [
+        [
+          "Running in 10 minutes",
+          true,
+          false
+        ],
+        [
+          "Free tier that covers five automations",
+          false,
+          true
+        ],
+        [
+          "Self-host, own the data",
+          false,
+          true
+        ],
+        [
+          "Bill grows with runs",
+          true,
+          false
+        ],
+        [
+          "Someone else keeps it up",
+          true,
+          false
+        ],
+        [
+          "AI agent nodes built in",
+          true,
+          true
+        ]
+      ],
+      "note": "If nobody on the team has run Docker, start on Make. Move to n8n when the bill makes you wince."
+    },
+    {
+      "type": "quote",
+      "kicker": "The rule we keep coming back to",
+      "text": "Automate the thing you've done by hand twenty times. Not the thing you imagine doing."
+    },
+    {
+      "type": "cta",
+      "title": "Which of the five would you build first?",
+      "body": "Tell us in the comments. The most-requested one gets a full node-by-node build next week.",
+      "button": "Follow Lean Stack"
+    }
+  ]
+}

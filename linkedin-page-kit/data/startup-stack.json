@@ -1,0 +1,150 @@
+{
+  "checked": "2026-11-02",
+  "tools": [
+    {
+      "job": "Automation",
+      "repo": "n8n-io/n8n",
+      "name": "n8n",
+      "usual": "Zapier / Make",
+      "stars": 209323,
+      "license": "NOASSERTION",
+      "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations."
+    },
+    {
+      "job": "CRM",
+      "repo": "twentyhq/twenty",
+      "name": "Twenty",
+      "usual": "HubSpot / Pipedrive",
+      "stars": 60279,
+      "license": "NOASSERTION",
+      "description": "The open alternative to Salesforce, designed for AI."
+    },
+    {
+      "job": "Support inbox",
+      "repo": "chatwoot/chatwoot",
+      "name": "Chatwoot",
+      "usual": "Intercom / Zendesk",
+      "stars": 38729,
+      "license": "NOASSERTION",
+      "description": "Open-source live-chat, email support, omni-channel desk. An alternative to Intercom, Zendesk, Salesforce Service Cloud etc. \ud83d\udd25\ud83d\udcac"
+    },
+    {
+      "job": "Scheduling",
+      "repo": "calcom/cal.diy",
+      "name": "Cal.com",
+      "usual": "Calendly",
+      "stars": 49635,
+      "license": "MIT",
+      "description": "Scheduling infrastructure for absolutely everyone.",
+      "note": "Repo found under calcom/cal.diy on the search API; confirm it is the main Cal.com repository before posting."
+    },
+    {
+      "job": "Surveys & forms",
+      "repo": "formbricks/formbricks",
+      "name": "Formbricks",
+      "usual": "Typeform / Hotjar surveys",
+      "stars": 13211,
+      "license": "NOASSERTION",
+      "description": "Open Source Qualtrics Alternative"
+    },
+    {
+      "job": "E-signatures",
+      "repo": "documenso/documenso",
+      "name": "Documenso",
+      "usual": "DocuSign",
+      "stars": 15628,
+      "license": "AGPL-3.0",
+      "description": "The Open Source DocuSign Alternative."
+    },
+    {
+      "job": "Product analytics",
+      "repo": "PostHog/posthog",
+      "name": "PostHog",
+      "usual": "Mixpanel / Amplitude",
+      "stars": 40593,
+      "license": "NOASSERTION",
+      "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools \u2013 AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more \u2013 capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP."
+    },
+    {
+      "job": "Web analytics",
+      "repo": "plausible/analytics",
+      "name": "Plausible",
+      "usual": "Google Analytics",
+      "stars": 29746,
+      "license": "AGPL-3.0",
+      "description": "Open source, privacy-first web analytics. Lightweight, cookie-free Google Analytics alternative. Self-hosted or cloud."
+    },
+    {
+      "job": "Database & auth",
+      "repo": "supabase/supabase",
+      "name": "Supabase",
+      "usual": "Firebase",
+      "stars": 114425,
+      "license": "Apache-2.0",
+      "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications."
+    },
+    {
+      "job": "Team AI chat",
+      "repo": "open-webui/open-webui",
+      "name": "Open WebUI",
+      "usual": "ChatGPT Team",
+      "stars": 157507,
+      "license": "NOASSERTION",
+      "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)"
+    },
+    {
+      "job": "Internal tools",
+      "repo": "nocodb/nocodb",
+      "name": "NocoDB",
+      "usual": "Airtable",
+      "stars": 65402,
+      "license": "NOASSERTION",
+      "description": "\ud83d\udd25 \ud83d\udd25 \ud83d\udd25 A Free & Self-hostable Airtable Alternative"
+    },
+    {
+      "job": "Docs & wiki",
+      "repo": "outline/outline",
+      "name": "Outline",
+      "usual": "Notion / Confluence",
+      "stars": 41139,
+      "license": "NOASSERTION",
+      "description": "The fastest knowledge base for growing teams. Beautiful, realtime collaborative, feature packed, and markdown compatible."
+    },
+    {
+      "job": "Email campaigns",
+      "repo": "knadh/listmonk",
+      "name": "listmonk",
+      "usual": "Mailchimp",
+      "stars": 24117,
+      "license": "AGPL-3.0",
+      "description": "High performance, self-hosted, newsletter and mailing list manager with a modern dashboard. Single binary app."
+    },
+    {
+      "job": "Chatbots",
+      "repo": "baptisteArno/typebot.io",
+      "name": "Typebot",
+      "usual": "Landbot / Tidio",
+      "stars": 10600,
+      "license": "NOASSERTION",
+      "description": "\ud83d\udcac Typebot is a powerful chatbot builder that you can self-host."
+    },
+    {
+      "job": "Design",
+      "repo": "penpot/penpot",
+      "name": "Penpot",
+      "usual": "Figma",
+      "stars": 61976,
+      "license": "MPL-2.0",
+      "description": "Penpot: The open-source design platform for Product teams that need scalable collaboration."
+    },
+    {
+      "job": "Invoicing",
+      "repo": "invoiceninja/invoiceninja",
+      "name": "Invoice Ninja",
+      "usual": "FreshBooks",
+      "stars": 10452,
+      "license": "NOASSERTION",
+      "description": "A source-available invoice, quote, project and time-tracking app built with Laravel"
+    }
+  ]
+}
