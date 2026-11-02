@@ -1,37 +1,28 @@
-# The Swap List, Issue 1
+# Lean Stack Weekly, Issue 1
 
-**Subject:** We rebuilt a $2,310 agency stack for $47. Two swaps were a pain.
+**Subject:** 16 open-source tools for the jobs a startup pays 16 vendors for
 
-Hello. This is The Swap List from Lean Stack. Once a week: a handful of software swaps we actually made, what each one saved, what it cost us in time, and what we'd skip. Four minutes.
+Hello. This is Lean Stack Weekly. Once a week: a few tools, automations and honest comparisons for people running small companies, with the star counts we checked and the catches we know about. Four minutes. When we've run a swap ourselves, we'll say so and show the numbers. Until then, we won't pretend.
 
-## 1. HubSpot Starter to Twenty
-HubSpot Starter for 5 seats: about $90 a month. Twenty is an open-source CRM and it looks like Notion had a child with a pipeline board.
-The CSV import worked first time. Email sync took [40 minutes], mostly [Gmail's permission screen].
-Saves about $1,080 a year. We've only run it with 5 seats. If you've pushed it past 20, write back.
+## The stack, by job
+Star counts from the GitHub API on [date]. Prices deliberately absent, because yours depend on seats and hosting and we'd rather you check than trust us.
 
-## 2. Intercom Essential to Chatwoot
-Intercom was $390 a month for us. Chatwoot is free if you host it.
-The WhatsApp connection took [two evenings] and one support-forum thread. Website chat, email and Instagram were fine in an afternoon.
-You lose product tours. If you use them, this swap is not for you. Saves about $4,680 a year otherwise.
+**Sell and talk to customers.** Twenty for CRM (60k stars, does the job of HubSpot or Pipedrive). Chatwoot for the support inbox (38k, Intercom or Zendesk). Cal.com for bookings (Calendly).
+**Know what's happening.** PostHog for product analytics (40k). Plausible for web analytics (29k, and it's the one your privacy lawyer will like). Formbricks for surveys (13k).
+**Back office.** Documenso for signatures (15k). Invoice Ninja for invoicing (10k). listmonk for email campaigns (24k).
+**Plumbing.** n8n for automation (209k). Supabase for database and auth (114k). NocoDB when you need Airtable (65k).
+**Think and make.** Outline for docs (41k). Open WebUI for a team AI chat (157k). Penpot for design (61k). Typebot for chatbots (10k).
 
-## 3. Typeform Plus to Tally Pro
-$59 to $29. The free tier would have done. We paid for [the custom domain].
-Lost the video questions. Kept logic, payments, uploads. Nobody filling in a form has mentioned the difference.
+## The catch, stated once
+Open source is not free. It trades a monthly bill for a weekend and a little responsibility. Someone on your team owns updates and the 2am problem. Our rule: self-host the boring, stable stuff. Pay for the thing that pages you at night.
 
-## 4. ChatGPT Team to Open WebUI plus API credits
-$150 a month for 5 seats, down to $[11.80] last month. Usage-based, so one heavy PDF week can double it.
-We don't miss the admin console at five people. At fifty we might.
+## One automation to build this week
+Lead intake. Form submission in, company looked up, contact and deal created, one-line Slack summary out. Six nodes in n8n or Make, one afternoon. The win is not speed. It's that nobody has to remember to check the form inbox.
 
-## 5. AWS on-demand to a $6 Hetzner box
-$1,621 to $6. This was most of the bill and nobody had looked at it since [2024]. The box runs the CRM, the inbox and the AI chat.
-The catch: if it dies on a Saturday, it's our Saturday. One volume filled up in [month] and the inbox went quiet for [three hours].
-
-## The number
-$2,310 to $47 a month, give or take, depending on your plans and your PDF habits.
+## We'd like to know
+Which job above would you never trust to open source? Reply and tell us why. The most common answer becomes next week's comparison.
 
 ## Next week
-Which bill we take apart is being decided by the poll on the page. Current leader: [X].
+The automation you voted for on the page, built node by node. And the second GitHub list we check before buying anything.
 
-Hit reply with the tool you resent paying for most. We'll find the cheaper one or tell you there isn't one.
-
-Prices are vendor list prices on [date]. Check before you cancel anything.
+If you pay for a tool you barely open, that's the poll on the page this week. Anonymous. We're collecting bills to take apart later, with permission.

@@ -16,7 +16,7 @@
 6. Add one co-admin you trust (Content admin is enough). They can send follow invites if you want that lever at all.
 7. Create the Tally form "Send us your software bill" (tool list, seats, monthly cost, must-keep feature, optional email). Put the link in Featured once there is a post to feature.
 8. Post the launch carousel and pin it. Post the first comment with links within one minute. Start commenting as the page.
-9. At 150 followers: Admin tools → Create newsletter. Name "The Swap List". Logo `newsletter-logo-300.png`, cover `newsletter-cover-1920x1080.png`. Publish issue 1 from `newsletter-issue-01.md` with `edition-01-cover-1920x1080.png`. Launch fires the one-time subscribe invite to all followers; best done at 300 to 500 followers.
+9. At 150 followers: Admin tools → Create newsletter. Name "Lean Stack Weekly". Logo `newsletter-logo-300.png`, cover `newsletter-cover-1920x1080.png`. Publish issue 1 from `newsletter-issue-01.md` with `edition-01-cover-1920x1080.png`. Launch fires the one-time subscribe invite to all followers; best done at 300 to 500 followers.
 10. Featured: pin the latest newsletter, the best carousel, and the teardown request form.
 11. Analytics check every Sunday (see the playbook). Export follower demographics at day 30 for the media kit.
 

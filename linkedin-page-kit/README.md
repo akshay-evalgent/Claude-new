@@ -4,6 +4,8 @@ Everything needed to launch a LinkedIn **page** (no personal-profile posting) ab
 
 **Decision made: Lean Stack, with "The Teardown" as a weekly editorial series (serif, red strike) inside it.**
 
+**Current plan: warm up on startups, automations and tools first (`content/ROADMAP-WARMUP-TO-TEARDOWN.md`), then introduce the Teardown.** Week one is in `content/week1/WEEK-1-WARMUP-PLAN.md`. The Teardown week is parked in `content/later/` until two real swaps exist.
+
 Start here, in order:
 0. `content/VOICE-GUIDE.md`: how the page sounds like people. Five required ingredients, the banned-pattern list, the "could a competitor have posted this" test. Everything else in the kit was rewritten to it.
 1. `content/SETUP-CHECKLIST.md`: create the page without your profile being visible, upload assets, newsletter setup.

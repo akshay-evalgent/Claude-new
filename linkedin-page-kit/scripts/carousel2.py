@@ -196,7 +196,9 @@ class Deck:
                 fp = T["mono"](26, "Bold"); d.text((W - M - tl(d, it["price"], fp), y + 8), it["price"], font=fp, fill=T["accent"])
             y += 48
             if it.get("replaces"):
-                y = block(d, (M, y), "replaces " + it["replaces"], T["body"](24), T["muted"], W - 2 * M) + 18
+                y = block(d, (M, y), ("" if it.get("raw") else "replaces ") + it["replaces"], T["body"](24), T["muted"], W - 2 * M) + 18
+        if s.get("note"):
+            block(d, (M, H - 250), s["note"], T["body"](26), T["muted"], W - 2 * M, 1.25)
         return img
 
     def shot(self, s, n):
@@ -220,6 +222,36 @@ class Deck:
             block(d, (M, box[3] + 28), s["caption"], T["body"](28), T["ink"], W - 2 * M, 1.25)
         if s.get("date"):
             d.text((M, H - 170), "captured " + s["date"], font=T["mono"](20), fill=T["muted"])
+        return img
+
+    def flow(self, s, n):
+        """An automation as a vertical chain of nodes. nodes: [{"label":..., "tool":..., "kind":"trigger|step|result"}]"""
+        T = self.T; img, d = self.frame(n, s.get("kicker", "Automation"))
+        y = block(d, (M, 200), s["title"], T["display"](48), T["ink"], W - 2 * M, 1.1) + 24
+        nodes = s["nodes"]; nh = 92; gap = 34
+        for i, nd in enumerate(nodes):
+            kind = nd.get("kind", "step")
+            fill = T["accent"] if kind == "trigger" else (T["ink"] if kind == "result" else T["bg2"])
+            fg = T["bg"] if kind in ("trigger", "result") else T["ink"]
+            t = nd.get("tool", ""); f = T["mono"](20); tw = tl(d, t, f) + 40 if t else 0
+            fl = T["body"](30, "SemiBold"); avail = W - 2 * M - 56 - tw
+            lines = wrap(d, nd["label"], fl, avail)
+            if len(lines) > 1:
+                fl = T["body"](26, "SemiBold"); lines = wrap(d, nd["label"], fl, avail)
+            h = nh if len(lines) == 1 else nh + 30 * (len(lines) - 1)
+            d.rounded_rectangle((M, y, W - M, y + h), radius=16, fill=fill, outline=T["rule"] if kind == "step" else fill, width=2)
+            ly = y + (18 if len(lines) == 1 else 14)
+            for ln in lines:
+                d.text((M + 28, ly), ln, font=fl, fill=fg); ly += int(fl.size * 1.2)
+            if t:
+                d.text((W - M - 28 - tl(d, t, f), y + h // 2 - 12), t, font=f, fill=fg if kind != "step" else T["muted"])
+            y += h
+            if i < len(nodes) - 1:
+                d.line((W // 2, y + 6, W // 2, y + gap - 10), fill=T["rule"], width=3)
+                d.polygon([(W // 2 - 9, y + gap - 14), (W // 2 + 9, y + gap - 14), (W // 2, y + gap - 2)], fill=T["muted"])
+                y += gap
+        if s.get("note"):
+            block(d, (M, min(y + 40, H - 240)), s["note"], T["body"](26), T["muted"], W - 2 * M, 1.25)
         return img
 
     def cta(self, s, n):

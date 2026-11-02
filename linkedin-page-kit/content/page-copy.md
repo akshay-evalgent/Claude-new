@@ -41,7 +41,7 @@ Technology, Information and Media (or: Software Development)
 "Learn more" → newsletter URL on LinkedIn (switch to "Sign up" → email list once the Gumroad/Notion page exists).
 
 ## Featured section (pin 3)
-1. Latest edition of The Swap List
+1. Latest edition of Lean Stack Weekly
 2. The latest Teardown carousel
 3. "Send us your software bill" Tally form (the input loop)
 
@@ -51,8 +51,8 @@ Technology, Information and Media (or: Software Development)
 - Newsletter: `newsletter-logo-300.png`, `newsletter-cover-1920x1080.png`; edition covers from `make_leanstack_pack.py cover()`.
 
 ## Newsletter
-Name: **The Swap List**  
-Description: Five swaps a week: the expensive tool, the free or cheap alternative, the saving, and what you give up. Setup steps included. Read in 4 minutes.  
+Name: **Lean Stack Weekly**  
+Description: Five tools, automations or honest comparisons for startups a week, with the star counts and the catches. Four minutes. Swaps and teardowns join once we have run them.  
 Cadence: weekly, Saturday 9:00 IST. It is a notification, not a feed post, so weekend timing does not hurt it.
 
 ## Hashtags (3 max per post, rotate)

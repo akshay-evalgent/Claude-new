@@ -101,7 +101,7 @@ def question_card(kicker, question, options, out, serif=False):
     y += 40
     for i,o in enumerate(options):
         d.text((96,y), f"{chr(65+i)}", font=T["mono"](30,"Bold"), fill=th["accent"]); block(d,(150,y),o,T["body"](34),T["ink"],830,1.2); y += 70
-    d.text((96,1130), "Tell us in the comments. Best answer gets the teardown.", font=T["body"](26), fill=T["muted"])
+    d.text((96,1130), "Tell us in the comments. We read all of them.", font=T["body"](26), fill=T["muted"])
     im.save(out)
 
 swap_card("Typeform Plus", "$59", "Tally Pro", "$29", "Save $360 / yr",
