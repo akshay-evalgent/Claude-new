@@ -1,12 +1,16 @@
-# Zero Cost AI: LinkedIn page launch kit
+# LinkedIn page launch kit: free and low-cost AI and software for business
 
-Everything needed to launch a LinkedIn **page** (no personal-profile posting) about running a business on AI at zero or near-zero cost: free tools, open-source repos, and automation workflows that get real jobs done.
+Everything needed to launch a LinkedIn **page** (no personal-profile posting) about getting business work done with AI, automation and software that is free when possible and far cheaper than the market leader when not. Repos, free tiers, self-hosting and under-priced tools are all in scope.
+
+**Start here:** `content/BRAND-OPTIONS.md` has six name and visual directions with logos, banners and carousel themes already rendered. Pick one, then everything below applies.
 
 ```
 linkedin-page-kit/
 ├── README.md                  this playbook: positioning, roadmap, growth and monetization
 ├── assets/
-│   ├── logo-400.png           page logo (upload as-is; LinkedIn min 268x268)
+│   ├── options/               6 directions: <key>-logo-400.png, <key>-banner-1128x191.png, name-options-sheet.png, carousel-themes-sheet.png
+│   ├── carousels/v2-<key>/    11-slide comparison carousel rendered in every theme (PDF, PNGs, contact-sheet.png)
+│   ├── logo-400.png           original Zero Cost AI draft (superseded by options/)           page logo (upload as-is; LinkedIn min 268x268)
 │   ├── logo-300.png
 │   ├── banner-1128x191.png    page cover image (LinkedIn recommended size)
 │   ├── newsletter-header-1200x630.png
@@ -14,7 +18,10 @@ linkedin-page-kit/
 ├── scripts/
 │   ├── brand.py               colors, fonts, logo mark, drawing helpers
 │   ├── make_brand_assets.py   regenerates logo, banner, header
-│   ├── make_carousel.py       JSON spec -> PDF carousel + PNG slides, on-brand, in seconds
+│   ├── themes.py              the six brand themes (colours, fonts, names, taglines)
+│   ├── make_brand_options.py  renders all six logos, banners and the comparison sheet
+│   ├── carousel2.py           themeable carousel engine: cover, versus, bars, checklist, stat, steps, list, quote, cta
+│   ├── make_carousel.py       v1 generator (simple list carousel), kept for quick posts
 │   └── fetch_repos.py         pulls candidate open-source repos from the GitHub API by topic and stars
 ├── content/
 │   ├── page-copy.md           name, tagline, about, specialties, featured, newsletter name, voice rules
@@ -24,13 +31,19 @@ linkedin-page-kit/
 └── data/candidates.json       74 real repos (5k+ stars, active) to mine for "repo of the day"
 ```
 
-Regenerate everything: `python3 scripts/make_brand_assets.py && python3 scripts/make_carousel.py content/carousel-sample.json --out assets/carousels/sample`
+Regenerate everything:
+```
+python3 scripts/make_brand_options.py
+for t in lean underpriced swapped zero frugal tenx; do python3 scripts/carousel2.py content/carousel-v2-sample.json --theme $t; done
+```
 
 ---
 
 ## 1. Positioning, and why it is built to spread
 
-**Promise:** Run your business on AI without the bill. One free tool, repo or workflow every day.
+**Promise:** Get the job done for a fraction of the price. One swap a day: the expensive tool, the free or cheap alternative, the exact saving, and what you give up.
+
+**Scope:** open-source repos, free tiers, self-hosted stacks, and paid tools that cost 5 to 10x less than the incumbent (Tally vs Typeform, Hetzner vs AWS, Zoho vs HubSpot). "Cheaper and good enough" is a bigger market than "free", and it keeps the page honest when free is not good enough.
 
 **Audience:** founders, ops and marketing leads, agency owners, solo consultants, and the finance person who approves software spend. Not developers. Developers already know these repos; business people do not, and they are the ones paying $500 to $3,000 a month.
 
@@ -44,13 +57,15 @@ Regenerate everything: `python3 scripts/make_brand_assets.py && python3 scripts/
 | Saves and reshares weigh more than likes | Multiple 2026 algorithm summaries | Each post is a reference asset: "save this, send to whoever approves the budget" |
 | Featured tools and builders reshare content that flatters them | GenAI.Works, The AI Report, Hassid patterns | Tag the repo maintainers and tool pages in every post; they have audiences the page does not |
 | "Comment X" bait lost about 47% reach after 27 July 2026 | MagicPost comment-bait study | Lead magnets are delivered via newsletter subscription or first-comment link, never comment-gating |
-| Money-saved framing is the most shared business content format | Observed across top business pages | Every item is REPLACES / SAVES / YOU PAY $0 |
+| Money-saved framing is the most shared business content format | Observed across top business pages | Every item is THEY PAY / SWAP TO / SAVE, with YOU KEEP and YOU GIVE UP for credibility |
 
 **The emotional engine:** every post makes the reader feel they have been overpaying, then hands them the fix. That is anger plus relief, which is the most reshared combination in business content.
 
 ---
 
 ## 2. Visual identity
+
+Six directions are defined in `scripts/themes.py` and described in `content/BRAND-OPTIONS.md`. The table below is the original dark draft; each theme swaps these tokens.
 
 | Token | Value | Use |
 |---|---|---|
@@ -126,7 +141,7 @@ Watch: saves per post (target 2% of impressions), follower conversion of newslet
 
 1. `python3 scripts/fetch_repos.py --topics <topic> --min-stars 5000` once a week to refresh candidates.
 2. Pick the item. Open the repo and the paid tool's pricing page. Write the spec JSON (copy `content/carousel-sample.json`).
-3. `python3 scripts/make_carousel.py content/<post>.json --out assets/carousels/<post>`.
+3. `python3 scripts/carousel2.py content/<post>.json --theme <key> --out assets/carousels/<post>`. Mix slide types: open with `cover`, one `versus` per swap, then `bars` or `checklist`, a `stat`, `steps`, `list` recap, `cta`.
 4. Upload `carousel.pdf` as a document post. First line is the number. Repo link in the first comment. Tag the maintainer and tool page.
 5. Log impressions, saves and follows at 24 hours in a sheet. Double down on the format that wins saves.
 

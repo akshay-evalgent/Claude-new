@@ -1,6 +1,8 @@
 # First 30 posts (days 1 to 15, two a day)
 
-Format key: C = document carousel (10 to 15 slides), I = single image, P = poll, T = text with image.
+Scope note: picks are free when possible and far cheaper when not. Mix at least one paid-but-cheap swap (Tally, Zoho, Hetzner, Brevo, Lemon Squeezy style) into every carousel so the page is not "free tools only".
+
+Format key: C = document carousel (10 to 15 slides, built with scripts/carousel2.py: cover, versus per swap, bars or checklist, stat, steps, list, cta), I = single image, P = poll, T = text with image.
 Every carousel: cover slide with the number, one slide per item with REPLACES / SAVES / START IN 1 LINE, CTA slide. Repo links in first comment. Prices verified the same day.
 
 | # | Day | Slot | Fmt | Hook (first line) | Slide outline / body |
