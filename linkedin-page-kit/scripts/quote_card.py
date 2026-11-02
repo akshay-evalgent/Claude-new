@@ -94,6 +94,12 @@ def quote_card(s, out):
         im = Image.open(p).convert("RGB"); k = max(2 * r / im.width, 2 * r / im.height)
         im = im.resize((int(im.width * k) + 1, int(im.height * k) + 1)); ox, oy = (im.width - 2 * r) // 2, (im.height - 2 * r) // 2
         inset = im.crop((ox, oy, ox + 2 * r, oy + 2 * r))
+    elif s.get("inset_text"):
+        inset = Image.new("RGB", (2 * r, 2 * r), T["accent"]); idd = ImageDraw.Draw(inset)
+        big = T["display"](88, "ExtraBold"); t = s["inset_text"]
+        idd.text(((2 * r - tl(idd, t, big)) / 2, r - 62), t, font=big, fill=WHITE)
+        if s.get("inset_sub"):
+            fs = T["body"](22, "SemiBold"); idd.text(((2 * r - tl(idd, s["inset_sub"], fs)) / 2, r + 40), s["inset_sub"], font=fs, fill=WHITE)
     else:
         idd = ImageDraw.Draw(inset); f = T["body"](20, "Medium")
         for j, ln in enumerate((s.get("inset_label") or "inset:\nperson quoted").split("\n")):
