@@ -37,22 +37,24 @@ def strike(d, x, y, w, color, width=5):
     d.line((x - 4, y + 3, x + w + 4, y - 3), fill=color, width=width)
 
 class Deck:
-    def __init__(self, T, key, total):
-        self.T, self.key, self.total = T, key, total
+    def __init__(self, T, key, total, single=False):
+        self.T, self.key, self.total, self.single = T, key, total, single
 
     def frame(self, n, kicker=None):
         T = self.T
         img = Image.new("RGB", (W, H), T["bg"]); d = ImageDraw.Draw(img)
         # header: tiny name left, counter right, one hairline
         d.text((M, 72), T["name"].upper(), font=T["body"](20, "SemiBold"), fill=T["muted"])
-        c = f"{n}/{self.total}"; d.text((W - M - tl(d, c, T["body"](20, "Medium")), 72), c, font=T["body"](20, "Medium"), fill=T["muted"])
+        if not self.single:
+            c = f"{n}/{self.total}"; d.text((W - M - tl(d, c, T["body"](20, "Medium")), 72), c, font=T["body"](20, "Medium"), fill=T["muted"])
         d.line((M, 112, W - M, 112), fill=T["rule"], width=1)
         if kicker:
             d.text((M, 150), kicker.upper(), font=T["body"](20, "SemiBold"), fill=T["accent"])
         # footer
         d.line((M, H - 118, W - M, H - 118), fill=T["rule"], width=1)
         d.text((M, H - 96), T["tagline"], font=T["body"](20), fill=T["muted"])
-        sw = "swipe  →"; d.text((W - M - tl(d, sw, T["body"](20, "SemiBold")), H - 96), sw, font=T["body"](20, "SemiBold"), fill=T["accent"])
+        if not self.single:
+            sw = "swipe  →"; d.text((W - M - tl(d, sw, T["body"](20, "SemiBold")), H - 96), sw, font=T["body"](20, "SemiBold"), fill=T["accent"])
         return img, d
 
     # ---------- slide types ----------
@@ -243,8 +245,17 @@ def render(spec, theme_key, out):
     sheet.save(f"{out}/contact-sheet.png")
     return len(pages)
 
+def render_single(slide, theme_key, out_png):
+    """One slide as a standalone 1080x1350 image post."""
+    T = THEMES[theme_key]; deck = Deck(T, theme_key, 1, single=True)
+    img = getattr(deck, slide["type"])(slide, 1)
+    os.makedirs(os.path.dirname(out_png) or ".", exist_ok=True); img.save(out_png); return out_png
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("spec"); ap.add_argument("--theme", default="lean"); ap.add_argument("--out", default=None)
+    ap.add_argument("--single", action="store_true", help="spec is one slide object; render a single PNG to --out")
     a = ap.parse_args(); spec = json.load(open(a.spec))
+    if a.single:
+        print(render_single(spec, a.theme, a.out or "single.png")); raise SystemExit
     out = a.out or f"assets/carousels/v2-{a.theme}"
     n = render(spec, a.theme, out); print(f"{n} slides -> {out}")
