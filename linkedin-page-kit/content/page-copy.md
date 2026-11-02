@@ -41,14 +41,19 @@ Technology, Information and Media (or: Software Development)
 "Learn more" → newsletter URL on LinkedIn (switch to "Sign up" → email list once the Gumroad/Notion page exists).
 
 ## Featured section (pin 3)
-1. Latest newsletter edition
-2. The highest-saving carousel of the month
-3. "Zero Cost Starter Stack" one-page PDF (lead magnet, delivered via newsletter link)
+1. Latest edition of The Swap List
+2. The latest Teardown carousel
+3. "Send us your software bill" Tally form (the input loop)
+
+## Assets to upload
+- Logo: `assets/leanstack/logo-400.png`
+- Banner: `assets/leanstack/banner-A-1128x191.png` (or `banner-A-4200x700.png` if LinkedIn asks for the wide format). Variant B shows a mini swap on the right.
+- Newsletter: `newsletter-logo-300.png`, `newsletter-cover-1920x1080.png`; edition covers from `make_leanstack_pack.py cover()`.
 
 ## Newsletter
 Name: **The Swap List**  
 Description: Five swaps a week: the expensive tool, the free or cheap alternative, the saving, and what you give up. Setup steps included. Read in 4 minutes.  
-Cadence: weekly, Tuesday 9:00 IST (lands morning in India and Europe; US sees it on waking).
+Cadence: weekly, Saturday 9:00 IST. It is a notification, not a feed post, so weekend timing does not hurt it.
 
 ## Hashtags (3 max per post, rotate)
 #OpenSource #AIAutomation #SmallBusiness #Bootstrapping #n8n #SelfHosted #AItools

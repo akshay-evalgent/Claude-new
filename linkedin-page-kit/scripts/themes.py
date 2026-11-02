@@ -24,6 +24,12 @@ THEMES = {
     bg=(246,245,240), bg2=(255,255,255), ink=(17,17,17), muted=(120,120,115), accent=(43,76,255), strike=(200,60,50), rule=(214,212,204),
     display=lambda s,w="SemiBold": _inter(w,s,True), body=lambda s,w="Regular": _inter(w,s), mono=lambda s,w="Medium": _mono(w,s), sym=_sym,
     style="minimal-light"),
+  "lean_teardown": dict(
+    name="Lean Stack", handle="leanstack", tagline="The Teardown. One overpriced bill, taken apart.",
+    promise="Weekly editorial teardown of a real software bill, rebuilt for a fraction.",
+    bg=(246,245,240), bg2=(255,255,255), ink=(17,17,17), muted=(120,120,115), accent=(200,48,40), strike=(200,48,40), rule=(214,212,204),
+    display=lambda s,w="Bold": _serif(w,s), body=lambda s,w="Regular": _inter(w,s), mono=lambda s,w="Medium": _mono(w,s), sym=_sym,
+    style="editorial-light"),
   "underpriced": dict(
     name="Underpriced", handle="underpriced", tagline="10x cheaper. Same job done.",
     promise="Editorial teardowns of overpriced software and the cheaper tool that replaces it.",

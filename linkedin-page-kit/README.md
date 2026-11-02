@@ -2,12 +2,23 @@
 
 Everything needed to launch a LinkedIn **page** (no personal-profile posting) about getting business work done with AI, automation and software that is free when possible and far cheaper than the market leader when not. Repos, free tiers, self-hosting and under-priced tools are all in scope.
 
-**Start here:** `content/BRAND-OPTIONS.md` has six name and visual directions with logos, banners and carousel themes already rendered. Pick one, then everything below applies.
+**Decision made: Lean Stack, with "The Teardown" as a weekly editorial series (serif, red strike) inside it.**
+
+Start here, in order:
+1. `content/SETUP-CHECKLIST.md`: create the page without your profile being visible, upload assets, newsletter setup.
+2. `content/page-copy.md`: name, tagline, About, specialties, newsletter name (The Swap List), button, Featured.
+3. `content/ENGAGEMENT-PLAYBOOK.md`: how to post so people comment, argue, and tell us what to cover next. Weekly rhythm, timing, comment engine, input loops.
+4. `content/post-copy-first-10.md`: paste-ready text and first comments for the first ten posts.
+5. `assets/leanstack/`: the final pack (logos, both banner sizes in two variants, newsletter and edition covers, swap/question/debate post cards).
+6. `assets/carousels/v2-lean/` and `v2-lean_teardown/`: the launch carousel and the Teardown No. 1 carousel as PDFs.
+
+`content/BRAND-OPTIONS.md` keeps the other five directions in case you ever want to relaunch or spin out a sister page.
 
 ```
 linkedin-page-kit/
 ├── README.md                  this playbook: positioning, roadmap, growth and monetization
 ├── assets/
+│   ├── leanstack/             FINAL PACK: logo-400/300, banner-A/B at 1128x191 and 4200x700, newsletter-logo-300, newsletter-cover-1920x1080, edition-01-cover, teardown-01-cover, card-swap/question/debate samples
 │   ├── options/               6 directions: <key>-logo-400.png, <key>-banner-1128x191.png, name-options-sheet.png, carousel-themes-sheet.png
 │   ├── carousels/v2-<key>/    11-slide comparison carousel rendered in every theme (PDF, PNGs, contact-sheet.png)
 │   ├── logo-400.png           original Zero Cost AI draft (superseded by options/)           page logo (upload as-is; LinkedIn min 268x268)
@@ -20,7 +31,8 @@ linkedin-page-kit/
 │   ├── make_brand_assets.py   regenerates logo, banner, header
 │   ├── themes.py              the six brand themes (colours, fonts, names, taglines)
 │   ├── make_brand_options.py  renders all six logos, banners and the comparison sheet
-│   ├── carousel2.py           themeable carousel engine: cover, versus, bars, checklist, stat, steps, list, quote, cta
+│   ├── make_leanstack_pack.py renders the final Lean Stack pack and the post cards (swap_card, question_card)
+│   ├── carousel2.py           themeable carousel engine (themes: lean, lean_teardown, ...): cover, versus, bars, checklist, stat, steps, list, quote, cta
 │   ├── make_carousel.py       v1 generator (simple list carousel), kept for quick posts
 │   └── fetch_repos.py         pulls candidate open-source repos from the GitHub API by topic and stars
 ├── content/
@@ -91,7 +103,7 @@ Dark background reads as "tech" and makes the green $0 pop in a bright feed. The
 - Set up a free Gumroad or Notion page for the "Zero Cost Starter Stack" PDF and the n8n template JSONs.
 
 ### Days 1 to 15: the follower sprint
-- **Cadence:** two posts a day, 8:30 to 9:00 IST and 6:30 to 7:00 IST (the second lands in the US morning). Mostly carousels, one poll every third day, one text post a day with an image.
+- **Cadence:** two posts a day, 8:30 to 9:00 IST and 8:30 to 9:30 pm IST (US East Coast late morning, the window most 2026 studies rank first for company pages). Weekly rhythm by weekday is in the engagement playbook. Mostly carousels, one poll every third day, one text post a day with an image.
 - **Outbound as the page:** 15 to 20 comments a day under big AI and business creators, within 15 minutes of their posts, each adding a specific free alternative. This is the only outbound reach a page has.
 - **Tagging:** tag the repo's maintainer and the tool's page on every slide deck. Message maintainers via GitHub issues or their public email that they were featured.
 - **Newsletter:** launch on day 7 at 300 to 500 followers. Launch fires a one-time subscribe invite to all followers; every later follower is invited automatically and subscribers auto-follow the page.

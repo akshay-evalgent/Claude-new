@@ -1,5 +1,7 @@
 # First 30 posts (days 1 to 15, two a day)
 
+Timing: AM slot 8:30 to 9:00 IST, PM slot 8:30 to 9:30 pm IST. Weekday rhythm (swap, teardown, poll, debate, reader swap) is in ENGAGEMENT-PLAYBOOK.md.
+
 Scope note: picks are free when possible and far cheaper when not. Mix at least one paid-but-cheap swap (Tally, Zoho, Hetzner, Brevo, Lemon Squeezy style) into every carousel so the page is not "free tools only".
 
 Format key: C = document carousel (10 to 15 slides, built with scripts/carousel2.py: cover, versus per swap, bars or checklist, stat, steps, list, cta), I = single image, P = poll, T = text with image.
