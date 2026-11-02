@@ -1,0 +1,59 @@
+{
+  "title": "5 free tools that replace $1,140/mo of business software",
+  "subtitle": "All open source. Self-host for free or use the free tier. Set up in an afternoon.",
+  "total_saved": "$1,140/mo",
+  "cta": "Follow Zero Cost AI for one free tool a day.",
+  "items": [
+    {
+      "name": "n8n",
+      "replaces": "Zapier Pro + Make",
+      "saves": "$49/mo",
+      "stars": "209k",
+      "license": "Fair-code",
+      "what": "Visual workflow automation with 400+ integrations and native AI agent nodes. Connect your CRM, inbox, Sheets and LLMs without code.",
+      "how": "docker run -it -p 5678:5678 n8nio/n8n",
+      "url": "github.com/n8n-io/n8n"
+    },
+    {
+      "name": "Twenty",
+      "replaces": "HubSpot Starter CRM",
+      "saves": "$90/mo",
+      "stars": "60k",
+      "license": "AGPL-3.0",
+      "what": "A modern open-source CRM. Pipelines, contacts, notes, tasks, email sync. Looks like Notion, works like Salesforce.",
+      "how": "git clone github.com/twentyhq/twenty && make up",
+      "url": "github.com/twentyhq/twenty"
+    },
+    {
+      "name": "Chatwoot",
+      "replaces": "Intercom Essential",
+      "saves": "$390/mo",
+      "stars": "38k",
+      "license": "MIT",
+      "what": "Omnichannel customer support inbox: website chat, WhatsApp, Instagram, email. Add an AI agent that answers from your docs.",
+      "how": "docker compose up -d  # from chatwoot/chatwoot",
+      "url": "github.com/chatwoot/chatwoot"
+    },
+    {
+      "name": "Cal.com",
+      "replaces": "Calendly Teams",
+      "saves": "$96/mo",
+      "stars": "45k",
+      "license": "AGPL-3.0",
+      "what": "Scheduling infrastructure. Booking pages, round-robin, payments, reminders. Self-host and brand it as your own.",
+      "how": "npx create-cal-app  # or docker compose",
+      "url": "github.com/calcom/cal.com"
+    },
+    {
+      "name": "Open WebUI + Ollama",
+      "replaces": "ChatGPT Team for 5 seats",
+      "saves": "$515/mo",
+      "stars": "157k",
+      "license": "BSD-3",
+      "what": "A private ChatGPT for your whole team running on your own machine. Upload documents, chat with them, no per-seat fees.",
+      "how": "ollama run llama3 && docker run ghcr.io/open-webui/open-webui",
+      "url": "github.com/open-webui/open-webui"
+    }
+  ],
+  "_note": "Star counts refreshed 2026-11-02 from GitHub API. Prices are illustrative list prices; verify on vendor pricing pages before posting."
+}
