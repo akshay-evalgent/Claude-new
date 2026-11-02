@@ -40,20 +40,22 @@ Every carousel: cover slide with the number, one slide per item with REPLACES / 
 | 29 | 15 | AM | C | The complete $0 AI Stack for a 5-person company (save this) | 15 slides. The flagship. Boost this one with paid. |
 | 30 | 15 | PM | T | 15 days, [N] followers, [M] subscribers. Here is what we learned. | Transparent growth post. Ask what to cover next. |
 
-## Hook bank (reuse and rotate)
-- "[N] free tools that replace $[X]/mo of [category]"
-- "[Paid tool]: $[X]/mo. [Repo]: $0. Same job."
-- "Your first AI employee costs $0."
-- "[Industry]'s software bill, rebuilt at $0"
-- "Stop paying per seat."
-- "[N] open-source repos with [X]k stars nobody in business uses"
-- "We tested [N] free [category] tools. [M] are worth it."
-- "'Free' has a price. Here it is."
-- "The $0 AI Stack for a [role or business type]"
-- "[Tool] raised prices. Here is the exit plan."
+## Hook bank (first lines that sound like a person wrote them)
+Formulas are the tell, so these are examples, not templates. Every one has a non-round number, a named tool, and something only we would say.
+
+- "We added up what a 5-person agency pays for software. $2,310 a month. Then we rebuilt it for $47."
+- "Intercom was $390 a month for us. Chatwoot is free. The WhatsApp bit took two evenings."
+- "Nobody had opened the AWS billing page since 2024. It was 70% of the software bill."
+- "Typeform looks nicer than Tally. We checked whether anyone filling in the form cared. They didn't."
+- "A $6 server isn't free. Correct. Here's the actual bill, including the Saturday it died."
+- "We ran HubSpot and Twenty side by side for two weeks. One thing broke, and it wasn't the one we expected."
+- "Per-seat pricing punishes hiring. That's the whole post, but here's the maths."
+- "Someone sent us their bill. $4,100 a month, 9 people. Three lines we'd cut tonight, one we'd keep."
+- "ChatGPT Team was $150 for five of us. Last month the replacement cost $11.80. One PDF week cost $31."
+- "We tried to replace Canva with Penpot for a week. We're back on Canva. Here's why that's still a win."
 
 ## Rules that protect reach
 - No "comment X and I'll send it". Say "subscribe to the newsletter for the template" or "link in first comment".
 - One lead-magnet post every 3 to 4 weeks, not weekly.
-- Number in the first line, under 40 characters where possible, no question hooks.
+- Number in the first line, no question hooks, and no formula a reader could have seen yesterday on another page. See VOICE-GUIDE.md for the banned list.
 - Stay strictly on topic. The page's topic fingerprint is "free AI and open-source for business". Nothing else, ever.

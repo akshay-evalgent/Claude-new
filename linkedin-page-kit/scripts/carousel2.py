@@ -197,6 +197,29 @@ class Deck:
                 y = block(d, (M, y), "replaces " + it["replaces"], T["body"](24), T["muted"], W - 2 * M) + 18
         return img
 
+    def shot(self, s, n):
+        """A real screenshot (pricing page, invoice, setup screen) with a caption. Strongest 'a person did this' signal."""
+        T = self.T; img, d = self.frame(n, s.get("kicker", "Screenshot"))
+        y = block(d, (M, 200), s.get("title", ""), T["display"](44), T["ink"], W - 2 * M, 1.1) + 24
+        box = (M, y, W - M, y + 640)
+        d.rounded_rectangle(box, radius=18, fill=T["bg2"], outline=T["rule"], width=2)
+        path = s.get("image")
+        if path and os.path.exists(path):
+            im = Image.open(path).convert("RGB")
+            bw, bh = box[2] - box[0] - 24, box[3] - box[1] - 24
+            im.thumbnail((bw, bh))
+            img.paste(im, (box[0] + 12 + (bw - im.width) // 2, box[1] + 12 + (bh - im.height) // 2))
+        else:
+            ph = s.get("placeholder", "drop the real screenshot here\n(pricing page, invoice, setup screen)")
+            fy = (box[1] + box[3]) // 2 - 40
+            for ln in ph.split("\n"):
+                d.text(((W - tl(d, ln, T["body"](28))) / 2, fy), ln, font=T["body"](28), fill=T["muted"]); fy += 40
+        if s.get("caption"):
+            block(d, (M, box[3] + 28), s["caption"], T["body"](28), T["ink"], W - 2 * M, 1.25)
+        if s.get("date"):
+            d.text((M, H - 170), "captured " + s["date"], font=T["mono"](20), fill=T["muted"])
+        return img
+
     def cta(self, s, n):
         T = self.T; img, d = self.frame(n)
         block(d, (M, 300), s.get("title", "Follow for one swap a day."), T["display"](72), T["ink"], W - 2 * M, 1.08)

@@ -55,12 +55,19 @@ Other input mechanisms:
 4. Text-only debate post with the debate card image. Highest comment ratio.
 5. Short native video (45 to 90 seconds screen recording of a setup) once a week when possible. Favoured in ranking, but production cost is higher.
 
-## 7. Do not
+## 7. The AI-slop problem, and why it is our advantage
+- LinkedIn added a "Seems like AI slop" report option on 30 July 2026. Flagged posts lose reach like a "not interested" signal. LinkedIn's stated line: AI help is fine, the post must carry your voice and perspective.
+- Pangram's sample puts about 41% of long LinkedIn posts in mid-2026 as fully AI-generated. Fortune reports accounts using generic LLM output seeing about 40% fewer views. Originality.ai's 3,368-post sample had human posts about 45% ahead on engagement, with the gap widest where readers check credibility.
+- Our category is the most-checked on the platform: founders know what they pay. One invented number ends the page. One real screenshot, one real failure, one "we're not sure" builds a reader for life.
+- Every post goes through VOICE-GUIDE.md before publishing: five ingredients present, banned patterns absent, brackets filled with what actually happened.
+
+## 8. Do not
 - No comment-keyword gating. No "DM me", since the page cannot DM anyway.
 - No engagement pods, no bought followers, no reposting the same carousel twice in a week.
+- No invented experiences. If we did not run it, we say we have not and ask who has.
 - No unverified prices. Every number has a pricing-page screenshot in the working folder with the date.
 - No claims about tools we have not run. The audience will test it and say so.
 - No drifting into general AI news. The topic fingerprint is the asset.
 
-## 8. Weekly review (15 minutes, Sunday)
+## 9. Weekly review (15 minutes, Sunday)
 Log for every post: impressions, saves, comments, reshares, follows attributed. Keep three numbers on a wall: saves per 1,000 impressions (target 20), comments per post (target 15 by day 30), new followers per week. Double the format that wins saves, cut the format that wins only likes.

@@ -5,12 +5,13 @@ Everything needed to launch a LinkedIn **page** (no personal-profile posting) ab
 **Decision made: Lean Stack, with "The Teardown" as a weekly editorial series (serif, red strike) inside it.**
 
 Start here, in order:
+0. `content/VOICE-GUIDE.md`: how the page sounds like people. Five required ingredients, the banned-pattern list, the "could a competitor have posted this" test. Everything else in the kit was rewritten to it.
 1. `content/SETUP-CHECKLIST.md`: create the page without your profile being visible, upload assets, newsletter setup.
 2. `content/page-copy.md`: name, tagline, About, specialties, newsletter name (The Swap List), button, Featured.
 3. `content/ENGAGEMENT-PLAYBOOK.md`: how to post so people comment, argue, and tell us what to cover next. Weekly rhythm, timing, comment engine, input loops.
 4. `content/post-copy-first-10.md`: paste-ready text and first comments for the first ten posts.
 5. `assets/leanstack/`: the final pack (logos, both banner sizes in two variants, newsletter and edition covers, swap/question/debate post cards).
-6. `assets/carousels/v2-lean/` and `v2-lean_teardown/`: the launch carousel and the Teardown No. 1 carousel as PDFs.
+6. `assets/carousels/v3-lean/` and `v3-lean_teardown/`: the human-voice launch and Teardown No. 1 carousels (from `content/carousel-v3-sample.json`). v2 folders are the earlier, more templated copy, kept for comparison.
 
 `content/BRAND-OPTIONS.md` keeps the other five directions in case you ever want to relaunch or spin out a sister page.
 
@@ -32,7 +33,7 @@ linkedin-page-kit/
 │   ├── themes.py              the six brand themes (colours, fonts, names, taglines)
 │   ├── make_brand_options.py  renders all six logos, banners and the comparison sheet
 │   ├── make_leanstack_pack.py renders the final Lean Stack pack and the post cards (swap_card, question_card)
-│   ├── carousel2.py           themeable carousel engine (themes: lean, lean_teardown, ...): cover, versus, bars, checklist, stat, steps, list, quote, cta
+│   ├── carousel2.py           themeable carousel engine (themes: lean, lean_teardown, ...): cover, shot (real screenshot), versus, bars, checklist, stat, steps, list, quote, cta
 │   ├── make_carousel.py       v1 generator (simple list carousel), kept for quick posts
 │   └── fetch_repos.py         pulls candidate open-source repos from the GitHub API by topic and stars
 ├── content/

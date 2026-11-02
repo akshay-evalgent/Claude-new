@@ -1,42 +1,37 @@
-# The $0 AI Stack, Issue 1
+# The Swap List, Issue 1
 
-**Subject:** 5 free tools that replace $1,140/mo of business software
+**Subject:** We rebuilt a $2,310 agency stack for $47. Two swaps were a pain.
 
-Hi, this is The $0 AI Stack from Zero Cost AI. Every week: five free tools, repos or workflows that replace paid business software, with setup steps a non-engineer can follow. Four minutes.
+Hello. This is The Swap List from Lean Stack. Once a week: a handful of software swaps we actually made, what each one saved, what it cost us in time, and what we'd skip. Four minutes.
 
-## 1. n8n replaces Zapier Pro and Make
-Visual workflow automation, 400+ integrations, native AI agent nodes. Self-host with one Docker command or use the free cloud trial.  
-Saves: about $49/mo at Zapier Pro pricing (check current price).  
-Start: `docker run -it -p 5678:5678 n8nio/n8n`  
-Gotcha: self-hosted means you own uptime. A $6 VPS is enough for most small teams.
+## 1. HubSpot Starter to Twenty
+HubSpot Starter for 5 seats: about $90 a month. Twenty is an open-source CRM and it looks like Notion had a child with a pipeline board.
+The CSV import worked first time. Email sync took [40 minutes], mostly [Gmail's permission screen].
+Saves about $1,080 a year. We've only run it with 5 seats. If you've pushed it past 20, write back.
 
-## 2. Twenty replaces HubSpot Starter
-Open-source CRM with pipelines, contacts, tasks and email sync. Import from HubSpot CSV in minutes.  
-Saves: about $90/mo for a 5-seat Starter plan.  
-Start: clone the repo and run `make up`, or use their hosted free tier.
+## 2. Intercom Essential to Chatwoot
+Intercom was $390 a month for us. Chatwoot is free if you host it.
+The WhatsApp connection took [two evenings] and one support-forum thread. Website chat, email and Instagram were fine in an afternoon.
+You lose product tours. If you use them, this swap is not for you. Saves about $4,680 a year otherwise.
 
-## 3. Chatwoot replaces Intercom Essential
-Shared inbox for website chat, WhatsApp, Instagram and email. Add an AI agent trained on your help docs.  
-Saves: about $390/mo.  
-Start: `docker compose up -d` from the chatwoot repo.
+## 3. Typeform Plus to Tally Pro
+$59 to $29. The free tier would have done. We paid for [the custom domain].
+Lost the video questions. Kept logic, payments, uploads. Nobody filling in a form has mentioned the difference.
 
-## 4. Cal.com replaces Calendly Teams
-Booking pages, round-robin, reminders, payments. Brand it as your own.  
-Saves: about $96/mo for 4 seats.  
-Start: hosted free plan, or self-host via Docker.
+## 4. ChatGPT Team to Open WebUI plus API credits
+$150 a month for 5 seats, down to $[11.80] last month. Usage-based, so one heavy PDF week can double it.
+We don't miss the admin console at five people. At fifty we might.
 
-## 5. Open WebUI + Ollama replaces ChatGPT Team
-A private ChatGPT for the whole team on one machine. Upload documents and chat with them. No per-seat fee.  
-Saves: about $515/mo for 5 seats (check current price).  
-Start: `ollama run llama3` then run the Open WebUI container.  
-Gotcha: needs a machine with 16 GB RAM for good 8B models.
+## 5. AWS on-demand to a $6 Hetzner box
+$1,621 to $6. This was most of the bill and nobody had looked at it since [2024]. The box runs the CRM, the inbox and the AI chat.
+The catch: if it dies on a Saturday, it's our Saturday. One volume filled up in [month] and the inbox went quiet for [three hours].
 
 ## The number
-Total replaced this issue: about $1,140/mo. Real cost: one $6 VPS and an afternoon.
+$2,310 to $47 a month, give or take, depending on your plans and your PDF habits.
 
 ## Next week
-The complete $0 stack for a 5-person company, plus the three things free tools still cannot replace.
+Which bill we take apart is being decided by the poll on the page. Current leader: [X].
 
-Forward this to whoever approves your software budget. Reply with the paid tool you most want killed and we will find the free version.
+Hit reply with the tool you resent paying for most. We'll find the cheaper one or tell you there isn't one.
 
-(Prices are vendor list prices at time of writing. Verify before you cancel anything.)
+Prices are vendor list prices on [date]. Check before you cancel anything.
