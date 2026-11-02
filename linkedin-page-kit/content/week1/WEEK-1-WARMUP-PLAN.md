@@ -4,6 +4,15 @@ Theme for the week: startups, automations, and the tools that do the jobs they p
 
 Times are IST. Each post: text below, first comment pinned within a minute, 90-minute routine from `content/ENGAGEMENT-PLAYBOOK.md`. Assets are in `assets/week1/`. Page assets: `assets/leanstack/logo-400.png`, `assets/leanstack/banner-A-1128x191.png`.
 
+## The quote-card desk runs alongside this plan
+From Monday, add two Startupro-style quote cards a day (1:30 pm and a second morning or evening slot) on top of the posts below. Format, sources and the 45-minute routine are in `content/NEWSDESK-PLAYBOOK.md`. Five cards are ready in `assets/quotecards/` with captions in `content/quotecards/CAPTIONS.md`:
+- Mon 1:30 pm: kamath-we-use-ai
+- Tue 1:30 pm: bengaluru-hiring-slop
+- Wed 1:30 pm: benioff-per-seat
+- Thu 1:30 pm: nikhil-ai-bubble
+- Fri 1:30 pm: linkedin-slop-button
+Drop real photos into the three slots before posting (press kit, newsroom or Commons only) and re-render with `python3 scripts/quote_card.py content/quotecards/<slug>.json assets/quotecards/<slug>.png`.
+
 ## Sunday 2 Nov, before posting (2 hours)
 1. Run `content/SETUP-CHECKLIST.md` steps 1 to 7. Do not add the page to your Experience. Do not send follow invites yourself.
 2. Make the Tally form "Tell us what you pay for and barely use" (tool, plan, seats, what you'd miss, optional email). Put it in the page website field until the newsletter exists.

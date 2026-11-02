@@ -6,8 +6,10 @@
 - Business model: startupro.in describes itself as a "startup growth partner" offering PR, hiring, growth and investor connections. The page is the top of a paid-PR funnel: founders pay to be featured, and the news content is what earns the audience that makes a feature worth paying for.
 - Comparable pages: Indian Startup News (about 116k followers) posts founder quotes with a short backstory and a hashtag block. Startup News India sells "premium publication", press releases and video features openly.
 
-## The format, inferred from the snippets and the genre
-Treat this as a strong hypothesis until you send 3 to 5 screenshots.
+## Confirmed from screenshots (post with 1,494 reactions, 66 comments, 45 reposts)
+Collage image: main subject photo left, scene photo right, circular inset of the person quoted overlapping the band, round logo badge top-left, dark bottom band with a long quote headline in heavy white type and yellow key phrases, social handles bottom-right. Caption: three neutral third-person paragraphs, the person tagged, no question, then a hashtag column of seven ending with the page tag. The exact template is `scripts/quote_card.py`; the full operating routine is `content/NEWSDESK-PLAYBOOK.md`.
+
+## The format, as first inferred from the snippets and the genre (kept for reference)
 1. **One image per post, almost always.** A branded template: a photo of the person or logo on top, a bold headline in the lower band, the page mark. Faces of recognisable people (founders, CEOs, editors, investors) do most of the stopping.
 2. **Caption is a news brief, not a thought piece.** First line restates the headline with the number. Then 4 to 8 very short paragraphs: who, what, the number, one line of backstory, one line of "why this matters". Then either a soft question ("What do you think?") or nothing. Then a block of 5 to 10 hashtags.
 3. **Topics rotate across four buckets:** funding and IPO news, people moves and layoffs, founder stories and quotes (inspiration), and policy or big-business news with a startup angle.
