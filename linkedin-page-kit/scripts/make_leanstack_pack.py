@@ -35,21 +35,21 @@ def banner(variant, W, H):
     im = Image.new("RGB", (W,H), T["bg"]); d = ImageDraw.Draw(im)
     x0 = int(330*k)
     if variant == "A":
-        d.text((x0, int(40*k)), T["name"], font=T["display"](int(58*k)), fill=T["ink"])
-        d.text((x0 + tl(d,T["name"],T["display"](int(58*k))) + int(26*k), int(72*k)), "AI news · tool swaps · thought experiments", font=T["body"](int(24*k)), fill=T["muted"])
-        d.line((x0, int(150*k), W-int(60*k), int(150*k)), fill=T["rule"], width=max(2,int(2*k)))
-        d.text((x0, int(158*k)), T["promise"], font=T["body"](int(17*k),"Medium"), fill=T["muted"])
+        d.text((x0, int(30*k)), T["name"], font=T["display"](int(56*k)), fill=T["ink"])
+        d.text((x0, int(98*k)), "AI news  ·  tool swaps  ·  thought experiments", font=T["body"](int(24*k),"Medium"), fill=T["muted"])
+        d.line((x0, int(146*k), W-int(60*k), int(146*k)), fill=T["rule"], width=max(2,int(2*k)))
+        d.text((x0, int(156*k)), "What happened in AI today. The cheaper tool that does the job. One question to sit with.", font=T["body"](int(17*k),"Medium"), fill=T["muted"])
         r=int(20*k); d.ellipse((W-int(90*k), int(30*k), W-int(90*k)+2*r, int(30*k)+2*r), fill=T["accent"])
     else:
-        d.text((x0, int(34*k)), T["name"], font=T["display"](int(54*k)), fill=T["ink"])
-        d.text((x0, int(100*k)), T["tagline"] if len(T["tagline"])<48 else "AI news · tool swaps · thought experiments", font=T["body"](int(24*k)), fill=T["muted"])
+        d.text((x0, int(30*k)), T["name"], font=T["display"](int(54*k)), fill=T["ink"])
+        d.text((x0, int(96*k)), "AI news  ·  tool swaps  ·  thought experiments", font=T["body"](int(22*k),"Medium"), fill=T["muted"])
         # right: a mini swap
-        fx = T["display"](int(34*k)); rx = W-int(400*k)
-        d.text((rx, int(44*k)), "$2,310", font=fx, fill=T["muted"]); d.line((rx-int(4*k), int(66*k), rx+tl(d,"$2,310",fx)+int(4*k), int(60*k)), fill=T["strike"], width=max(3,int(5*k)))
-        d.text((rx, int(96*k)), "$47 / month", font=fx, fill=T["accent"])
-        d.text((rx, int(146*k)), "THE SWAP: ONE PAID TOOL, ONE FREE WAY", font=T["body"](int(14*k),"SemiBold"), fill=T["muted"])
-        d.line((x0, int(150*k), rx-int(40*k), int(150*k)), fill=T["rule"], width=max(2,int(2*k)))
-        d.text((x0, int(158*k)), "What happened in AI today. The cheaper tool that does the job. One question to sit with.", font=T["body"](int(17*k),"Medium"), fill=T["muted"])
+        fx = T["display"](int(32*k)); rx = W-int(330*k)
+        d.text((rx, int(36*k)), "$390 / mo", font=fx, fill=T["muted"]); d.line((rx-int(4*k), int(58*k), rx+tl(d,"$390 / mo",fx)+int(4*k), int(52*k)), fill=T["strike"], width=max(3,int(5*k)))
+        d.text((rx, int(84*k)), "$0 / mo", font=fx, fill=T["accent"])
+        d.text((rx, int(130*k)), "THE SWAP · ONE PAID TOOL, ONE FREE WAY", font=T["body"](int(13*k),"SemiBold"), fill=T["muted"])
+        d.line((x0, int(146*k), rx-int(40*k), int(146*k)), fill=T["rule"], width=max(2,int(2*k)))
+        d.text((x0, int(156*k)), "What happened in AI today. The cheaper tool that does the job. One question to sit with.", font=T["body"](int(16*k),"Medium"), fill=T["muted"])
     return im
 for v in "AB":
     banner(v,1128,191).save(f"{OUT}/banner-{v}-1128x191.png")
