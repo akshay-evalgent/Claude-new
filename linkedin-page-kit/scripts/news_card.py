@@ -10,9 +10,9 @@ spec: {"headline": "...", "sub": "...", "image": "path or null", "source": "Sour
 import os, sys, json
 sys.path.insert(0, os.path.dirname(__file__))
 from PIL import Image, ImageDraw, ImageFilter
-from themes import THEMES
+from themes import THEMES, ACTIVE
 from make_brand_options import mark
-T = THEMES["lean"]
+T = THEMES[ACTIVE]
 
 def tl(d,t,f): return d.textlength(t, font=f)
 def wrap(d,text,f,mw):
@@ -74,8 +74,8 @@ def news_card(spec, out):
             d.text((M,y), ln, font=fs, fill=T["muted"]); y+=int(fs.size*1.3)
     # footer: mark + name + source
     d.line((M,H-130,W-M,H-130), fill=T["rule"], width=1)
-    mark(d,"lean",T, M+28, H-74, 52)
-    d.text((M+70,H-92), "Lean Stack", font=T["body"](26,"SemiBold"), fill=T["ink"])
+    mark(d,ACTIVE,T, M+28, H-74, 52)
+    d.text((M+70,H-92), T["name"], font=T["body"](26,"SemiBold"), fill=T["ink"])
     if spec.get("source"):
         fsrc=T["body"](20); s=spec["source"]
         d.text((W-M-tl(d,s,fsrc), H-86), s, font=fsrc, fill=T["muted"])

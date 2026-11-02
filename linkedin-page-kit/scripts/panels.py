@@ -2,8 +2,8 @@
 import os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from PIL import Image, ImageDraw
-from themes import THEMES
-T = THEMES["lean"]
+from themes import THEMES, ACTIVE
+T = THEMES[ACTIVE]
 def tl(d,t,f): return d.textlength(t, font=f)
 
 def bars_panel(rows, title, out, size=(1000, 1300), bg=(20, 24, 40)):

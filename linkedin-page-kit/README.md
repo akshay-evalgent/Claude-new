@@ -1,6 +1,8 @@
-# LinkedIn page launch kit: free and low-cost AI and software for business
+# Founder Signal: LinkedIn page launch kit
 
-Everything needed to launch a LinkedIn **page** (no personal-profile posting) about getting business work done with AI, automation and software that is free when possible and far cheaper than the market leader when not. Repos, free tiers, self-hosting and under-priced tools are all in scope.
+A LinkedIn **page** (no personal-profile posting) with three pillars: Startupro-style news cards on AI and startups, paid-vs-free tool swaps as image plus human text, and thought experiments about the future of AI for founders. Concept: `content/PAGE-CONCEPT.md`. Week one, all fourteen posts: `content/week1/WEEK-1-PLAN-V3.md`. Images you supply: `assets/photos/IMAGE-REQUESTS.md`.
+
+The brand is set in one place, `ACTIVE` in `scripts/themes.py`; every generator reads it. Earlier names (Lean Stack, Zero Cost AI) remain as themes for reference.
 
 **Decision made: Lean Stack, with "The Teardown" as a weekly editorial series (serif, red strike) inside it.**
 

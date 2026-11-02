@@ -9,7 +9,7 @@ Design rules: one accent colour, lots of air, thin rules, big numbers, no decora
 import argparse, json, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from PIL import Image, ImageDraw
-from themes import THEMES
+from themes import THEMES, ACTIVE
 
 W, H = 1080, 1350
 M = 96
@@ -284,7 +284,7 @@ def render_single(slide, theme_key, out_png):
     os.makedirs(os.path.dirname(out_png) or ".", exist_ok=True); img.save(out_png); return out_png
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("spec"); ap.add_argument("--theme", default="lean"); ap.add_argument("--out", default=None)
+    ap = argparse.ArgumentParser(); ap.add_argument("spec"); ap.add_argument("--theme", default=ACTIVE); ap.add_argument("--out", default=None)
     ap.add_argument("--single", action="store_true", help="spec is one slide object; render a single PNG to --out")
     a = ap.parse_args(); spec = json.load(open(a.spec))
     if a.single:

@@ -17,7 +17,21 @@ def _serif(w, s):
 def _sym(s):
     return ImageFont.truetype(SYM, s)
 
+ACTIVE = "signal"   # the brand every script renders with; change here to re-skin everything
+
 THEMES = {
+  "signal": dict(
+    name="Founder Signal", handle="foundersignal", tagline="AI news, tool swaps and thought experiments for people building companies.",
+    promise="What happened in AI today, the cheaper tool that does the job, and the question every founder should sit with this week.",
+    bg=(246,245,240), bg2=(255,255,255), ink=(17,17,17), muted=(120,120,115), accent=(43,76,255), strike=(200,60,50), rule=(214,212,204),
+    display=lambda s,w="SemiBold": _inter(w,s,True), body=lambda s,w="Regular": _inter(w,s), mono=lambda s,w="Medium": _mono(w,s), sym=_sym,
+    style="minimal-light"),
+  "signal_teardown": dict(
+    name="Founder Signal", handle="foundersignal", tagline="The Swap. One paid tool, one free way to do the job.",
+    promise="Weekly editorial comparison of a paid tool and the free or open-source way to do the same job.",
+    bg=(246,245,240), bg2=(255,255,255), ink=(17,17,17), muted=(120,120,115), accent=(200,48,40), strike=(200,48,40), rule=(214,212,204),
+    display=lambda s,w="Bold": _serif(w,s), body=lambda s,w="Regular": _inter(w,s), mono=lambda s,w="Medium": _mono(w,s), sym=_sym,
+    style="editorial-light"),
   "lean": dict(
     name="Lean Stack", handle="leanstack", tagline="Do more with less software.",
     promise="Free and low-cost tools that do the job of the expensive ones.",

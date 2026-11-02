@@ -16,9 +16,9 @@ Usage: python3 scripts/quote_card.py spec.json out.png
 import os, sys, json, re
 sys.path.insert(0, os.path.dirname(__file__))
 from PIL import Image, ImageDraw, ImageFilter
-from themes import THEMES
+from themes import THEMES, ACTIVE
 from make_brand_options import mark
-T = THEMES["lean"]
+T = THEMES[ACTIVE]
 YELLOW = (255, 217, 59); WHITE = (250, 250, 250); BAND = (14, 14, 18)
 
 def tl(d, t, f): return d.textlength(t, font=f)
@@ -109,7 +109,7 @@ def quote_card(s, out):
     img.paste(ring, (cx - r - 8, cy - r - 8), rm); img.paste(inset, (cx - r, cy - r), m)
     d = ImageDraw.Draw(img)
     # logo badge top-left
-    d.ellipse((28, 28, 128, 128), fill=WHITE); mark(d, "lean", T, 78, 78, 70)
+    d.ellipse((28, 28, 128, 128), fill=WHITE); mark(d, ACTIVE, T, 78, 78, 70)
     # headline
     M = 56; top = cy + r + 26
     toks = tokens(s["headline"])
@@ -121,7 +121,7 @@ def quote_card(s, out):
             d.text((x, y), word, font=f, fill=YELLOW if hi else WHITE); x += tl(d, word + " ", f)
         y += lh
     # handles bottom right
-    fh = T["body"](24, "SemiBold"); handle = s.get("handle", "leanstack")
+    fh = T["body"](24, "SemiBold"); handle = s.get("handle", T["handle"])
     txt = "in  ·  X  ·  ig    " + handle
     d.text((W - M - tl(d, txt, fh), H - 54), txt, font=fh, fill=WHITE)
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True); img.save(out); return out

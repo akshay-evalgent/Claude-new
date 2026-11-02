@@ -2,10 +2,10 @@
 import os, sys, json
 sys.path.insert(0, os.path.dirname(__file__))
 from PIL import Image, ImageDraw
-from themes import THEMES
+from themes import THEMES, ACTIVE
 from make_leanstack_pack import card_frame, block, tl, question_card
 from carousel2 import render_single
-T = THEMES["lean"]; O = os.path.join(os.path.dirname(__file__), "..", "assets", "week1"); os.makedirs(O, exist_ok=True)
+T = THEMES[ACTIVE]; O = os.path.join(os.path.dirname(__file__), "..", "assets", "week1"); os.makedirs(O, exist_ok=True)
 stack = {t["name"]: t for t in json.load(open(os.path.join(os.path.dirname(__file__), "..", "data", "startup-stack.json")))["tools"]}
 
 def pick_card(name, job, good_for, not_for, start, out):
@@ -47,14 +47,14 @@ render_single({"type":"flow","kicker":"Build this first","title":"Lead intake, s
   "nodes":[{"label":"New form submission","tool":"Tally / Formbricks","kind":"trigger"},{"label":"Look up the company domain","tool":"Clearbit free / Apollo"},
            {"label":"Create contact and deal","tool":"Twenty / HubSpot"},{"label":"Post a one-line summary to #leads","tool":"Slack"},
            {"label":"Reply within the hour, every time","tool":"","kind":"result"}],
-  "note":"The point isn't speed. It's that nobody has to remember to check the form inbox."}, "lean", f"{O}/thu-am-flow-lead-intake.png")
+  "note":"The point isn't speed. It's that nobody has to remember to check the form inbox."}, ACTIVE, f"{O}/thu-am-flow-lead-intake.png")
 
 render_single({"type":"list","kicker":"Our opinion","title":"Three things we'd never automate at a startup. Just pay or do it by hand.",
   "items":[{"name":"Payroll and tax filings","price":"pay","raw":1,"replaces":"The fine is bigger than the saving. Every time."},
            {"name":"The first reply to an angry customer","price":"by hand","raw":1,"replaces":"A human noticing the tone is the whole product at 10 people."},
            {"name":"Anything you've done fewer than 20 times","price":"wait","raw":1,"replaces":"You don't know the edge cases yet, so the bot won't either."}]},
-  "lean", f"{O}/fri-am-list-never-automate.png")
+  ACTIVE, f"{O}/fri-am-list-never-automate.png")
 
 render_single({"type":"stat","kicker":"Checked today on GitHub","value":"%dk" % (sum(t["stars"] or 0 for t in stack.values())//1000),"label":"stars across 16 open-source tools that cover the jobs a startup usually pays sixteen vendors for.",
-  "source":"GitHub API, 2 Nov 2026. List in the launch carousel."}, "lean", f"{O}/thu-pm-stat-stars.png")
+  "source":"GitHub API, 2 Nov 2026. List in the launch carousel."}, ACTIVE, f"{O}/thu-pm-stat-stars.png")
 print("cards ok")

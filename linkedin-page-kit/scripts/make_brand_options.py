@@ -12,7 +12,12 @@ def tl(d, t, f): return d.textlength(t, font=f)
 def mark(d, key, T, cx, cy, s):
     """Logo mark per direction. s = overall size."""
     a, ink, bg2 = T["accent"], T["ink"], T["bg2"]
-    if key == "lean":      # three stacked bars, shrinking: a lean stack
+    if key in ("signal", "signal_teardown"):   # three ascending bars: a signal
+        d.rounded_rectangle((cx-s/2, cy-s/2, cx+s/2, cy+s/2), radius=s*0.18, fill=bg2, outline=T["rule"], width=max(2,int(s*0.012)))
+        bw = s*0.14; gap = s*0.07; x = cx - (3*bw + 2*gap)/2
+        for i,(h,c) in enumerate([(0.22,ink),(0.38,ink),(0.56,a)]):
+            d.rounded_rectangle((x, cy+s*0.28-s*h, x+bw, cy+s*0.28), radius=bw*0.35, fill=c); x += bw+gap
+    elif key == "lean":      # three stacked bars, shrinking: a lean stack
         d.rounded_rectangle((cx-s/2, cy-s/2, cx+s/2, cy+s/2), radius=s*0.18, fill=bg2, outline=T["rule"], width=max(2,int(s*0.012)))
         for i,(w,c) in enumerate([(0.56,ink),(0.40,ink),(0.24,a)]):
             y = cy - s*0.22 + i*s*0.22
@@ -60,7 +65,7 @@ def banner(key, T):
     img = Image.new("RGB", (W,H), T["bg"]); d = ImageDraw.Draw(img)
     st = T["style"]
     # left 300px stays quiet (page logo overlaps there on desktop)
-    if st == "minimal-light" or st == "warm-minimal":
+    if st in ("minimal-light", "warm-minimal", "editorial-light"):
         d.line((330, 150, W-60, 150), fill=T["rule"], width=2)
         f = T["display"](58); d.text((330, 40), T["name"], font=f, fill=T["ink"])
         f2 = T["body"](24); d.text((330+tl(d,T["name"],f)+26, 72), T["tagline"], font=f2, fill=T["muted"])
