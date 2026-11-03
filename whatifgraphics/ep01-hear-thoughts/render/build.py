@@ -176,7 +176,7 @@ def cmd_assemble():
     env = np.convolve(env, np.ones(k) / k, mode='same')
     duck = 1 - 0.55 * np.clip(env / (env.max() + 1e-9) * 8, 0, 1)
     duck = np.convolve(duck, np.ones(int(0.25 * SR)) / int(0.25 * SR), mode='same')
-    mix = voice * 0.95 + mus * 0.9 * duck + sfx * 0.8
+    mix = voice * 0.95 + mus * 0.4 * duck + sfx * 0.6
     # fade out tail
     f = int(1.5 * SR); mix[-f:] *= np.linspace(1, 0, f)
     peak = np.abs(mix).max(); mix = mix / peak * 0.92
