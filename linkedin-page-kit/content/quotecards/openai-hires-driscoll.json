@@ -1,7 +1,7 @@
 {
   "headline": "OpenAI hires [Dan Driscoll], the former [US Army Secretary] who quit after clashes with [Pete Hegseth], to lead a new [national security] push. Coverage calls it OpenAI's most aggressive move yet on [Pentagon contracts].",
-  "main_photo": "assets/posts/2026-11-03/p-openai.png",
-  "side_photo": "assets/posts/2026-11-03/p-army-tile.png",
-  "inset_label": "inset:\nDan Driscoll\n(official portrait)",
-  "handle": "thefoundersignal"
+  "main_photo": "assets/photos/dan-driscoll.jpg",
+  "side_photo": "assets/posts/2026-11-03/p-openai.png",
+  "handle": "thefoundersignal",
+  "inset_photo": "assets/photos/dan-driscoll-face.jpg"
 }
