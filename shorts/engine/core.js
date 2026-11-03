@@ -353,7 +353,7 @@
     });
     im.src = src;
     IMG.set(src, e); LRU.push(src);
-    if (LRU.length > 260) { const old = LRU.shift(); const oe = IMG.get(old); if (oe && oe.img) oe.img.src = ''; IMG.delete(old); }
+    if (LRU.length > 260) { const old = LRU.shift(); const oe = IMG.get(old); if (oe && oe.img) { oe.img.onerror = null; oe.img.src = ''; } IMG.delete(old); }
     return e;
   }
   S.img = function (src) {
