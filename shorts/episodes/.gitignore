@@ -1,0 +1,5 @@
+# source footage is fetched, not committed (python3 -m beatcut.fetch <episode>)
+clips/
+# intermediate audio and preview stills
+**/out/*.wav
+**/out/still_*.jpg

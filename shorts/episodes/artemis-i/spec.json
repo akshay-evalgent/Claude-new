@@ -1,0 +1,78 @@
+{
+  "title": "Artemis I: to the Moon in 25 seconds",
+  "fps": 30,
+  "size": [1080, 1920],
+  "music": {
+    "bpm": 125,
+    "track": null,
+    "start_bar": 0,
+    "_note": "bpm: tempo of the sound you will add in the Shorts editor (or of the placeholder). track: path to a licensed audio file to analyze and cut to instead; start_bar picks where in that song the edit begins."
+  },
+  "sections": [
+    {"name": "intro", "bars": 2},
+    {"name": "build", "bars": 1},
+    {"name": "drop", "bars": 8},
+    {"name": "break", "bars": 1},
+    {"name": "rise", "bars": 1}
+  ],
+  "style": {"size": 104, "accent": "#FFC93C", "y": 0.27, "margin": 110},
+  "shots": [
+    {"clip": "liftoff", "in": 5.0, "beats": 4, "enter": "punch",
+     "focus": [0.47, 0.42], "focus_to": [0.47, 0.36], "zoom": [1.0, 1.12],
+     "text": ["TO THE MOON", "IN *25 SECONDS*"], "size": 118, "stagger": 0.05},
+
+    {"clip": "tower", "in": 2.0, "beats": 4, "enter": "cut",
+     "focus": [0.47, 0.42], "zoom": [1.05, 1.15],
+     "kicker": "ARTEMIS I  ·  NOV 16, 2022",
+     "text": ["*{n} MILLION* LBS", "OF THRUST"], "count": {"from": 0, "to": 8.8, "fmt": "{:.1f}", "beats": [0, 2]}},
+
+    {"clip": "climb", "in": 4.0, "beats": 4, "enter": "whip", "speed": [1.5, 4.0], "zoom": [1.0, 1.3],
+     "focus_keys": [[4.0, 0.68, 0.5], [4.4, 0.72, 0.5], [4.8, 0.76, 0.5], [5.2, 0.78, 0.5], [5.6, 0.8, 0.5],
+                    [6.0, 0.815, 0.5], [6.4, 0.8, 0.5], [6.8, 0.725, 0.5], [7.2, 0.64, 0.5], [7.6, 0.58, 0.5],
+                    [8.0, 0.53, 0.5], [8.4, 0.485, 0.5], [8.8, 0.467, 0.5], [9.3, 0.467, 0.5]],
+     "text": ["THEN THE", "BOOSTERS..."]},
+
+    {"clip": "booster", "in": 0.6, "beats": 4, "enter": "flash", "speed": 1.6,
+     "focus": [0.42, 0.45], "focus_to": [0.36, 0.5], "zoom": [1.0, 1.1],
+     "text": ["*...LET GO*"], "size": 150},
+
+    {"clip": "nextstop", "in": 4.5, "beats": 4, "enter": "whip",
+     "focus": [0.58, 0.5], "focus_to": [0.55, 0.5], "zoom": [1.0, 1.12],
+     "text": ["NEXT STOP:", "*THE MOON*"]},
+
+    {"clip": "moon", "in": 2.0, "beats": 4, "enter": "zoom",
+     "focus": [0.62, 0.55], "focus_to": [0.56, 0.6], "zoom": [1.0, 1.1],
+     "kicker": "NOV 21  ·  CLOSEST APPROACH",
+     "text": ["*81 MILES*", "ABOVE THE MOON"]},
+
+    {"clip": "moon", "in": 68.0, "beats": 4, "enter": "cut", "speed": 8.0,
+     "focus": [0.65, 0.68], "zoom": [1.3, 1.45],
+     "text": ["THEN EARTH SETS", "*BEHIND IT*"]},
+
+    {"clip": "earthfar", "in": 10.0, "beats": 4, "enter": "whip",
+     "focus": [0.66, 0.5], "focus_to": [0.72, 0.36], "zoom": [1.0, 1.2], "y": 0.44,
+     "text": ["*{n}*", "MILES FROM HOME"], "count": {"from": 0, "to": 268563, "fmt": "{:,.0f}", "beats": [0, 2.5]}, "size": 112},
+
+    {"clip": "moonreturn", "in": 6.0, "beats": 4, "enter": "zoom",
+     "focus": [0.36, 0.55], "focus_to": [0.4, 0.5], "zoom": [1.0, 1.1],
+     "text": ["ONE MORE FLYBY,", "*THEN HOME*"]},
+
+    {"clip": "splash", "in": 10.0, "beats": 4, "enter": "whip", "speed": 3.0,
+     "focus": [0.47, 0.32], "zoom": [1.0, 1.08], "y": 0.6,
+     "kicker": "HEAT SHIELD  ·  5,000°F",
+     "text": ["BACK IN AT", "*25,000 MPH*"]},
+
+    {"clip": "splash", "in": 84.0, "beats": 4, "enter": "cut", "speed": 2.0,
+     "focus": [0.47, 0.45], "zoom": [1.0, 1.12], "y": 0.62,
+     "text": ["*SPLASHDOWN*", "DEC 11, 2022"]},
+
+    {"clip": "oriontop", "in": 2.6, "beats": 4, "enter": "punch",
+     "focus": [0.47, 0.35], "zoom": [1.0, 1.06], "y": 0.66,
+     "kicker": "25 DAYS IN SPACE",
+     "text": ["NO CREW.", "*JUST A TEST.*"]},
+
+    {"clip": "pad", "in": 8.9, "beats": 4, "enter": "cut",
+     "focus": [0.45, 0.5], "focus_to": [0.45, 0.47], "zoom": [1.0, 1.55],
+     "text": ["THE NEXT ONE", "*CARRIED 4 HUMANS*"]}
+  ]
+}
