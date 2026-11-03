@@ -49,6 +49,8 @@ for people). Coded animation carries the ideas (the swarm, god mode, a thousand 
 
 ## YouTube packaging
 
+The final upload kit (with the voice-over, thumbnails and captions) is in `UPLOAD.md`. The notes below were the first draft.
+
 **Title** (pick one)
 1. He hoped for 1,000 stars. His next repo got 83,686.
 2. A college senior built an AI that rehearses the future

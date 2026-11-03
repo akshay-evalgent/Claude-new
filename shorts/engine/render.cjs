@@ -22,7 +22,7 @@ const fps = parseFloat(opt('fps', '60'));
 const workers = parseInt(opt('workers', '3'), 10);
 const outDir = path.join(epDir, 'out');
 fs.mkdirSync(outDir, { recursive: true });
-const html = 'file://' + path.join(epDir, 'index.html') + (opt('query') ? '?' + opt('query') : '');
+const html = 'file://' + path.join(epDir, opt('page', 'index.html')) + (opt('query') ? '?' + opt('query') : '');
 const LAUNCH = { args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--disable-gpu-vsync', '--allow-file-access-from-files'] };
 
 async function openPage(browser) {

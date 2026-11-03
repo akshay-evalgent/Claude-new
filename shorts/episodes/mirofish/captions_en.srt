@@ -1,0 +1,104 @@
+1
+00:00:00,100 --> 00:00:02,956
+A college senior hoped for a thousand GitHub stars.
+
+2
+00:00:03,080 --> 00:00:04,943
+His next one got 83,000.
+
+3
+00:00:05,180 --> 00:00:06,400
+And a billionaire's backing.
+
+4
+00:00:06,420 --> 00:00:07,103
+For this.
+
+5
+00:00:07,150 --> 00:00:08,362
+He built MiroFish.
+
+6
+00:00:09,050 --> 00:00:11,495
+It simulates thousands of people, to predict the future.
+
+7
+00:00:11,550 --> 00:00:13,067
+Step one. Feed it anything.
+
+8
+00:00:13,100 --> 00:00:15,012
+It maps every person and connection.
+
+9
+00:00:15,100 --> 00:00:16,898
+Then turns each one into an AI agent.
+
+10
+00:00:17,050 --> 00:00:19,080
+Thousands of them, arguing, changing minds.
+
+11
+00:00:19,100 --> 00:00:21,099
+Basically, the internet. In a box.
+
+12
+00:00:21,120 --> 00:00:23,030
+Two fake social networks, at once.
+
+13
+00:00:23,050 --> 00:00:24,885
+Then you play god, and drop in a what-if.
+
+14
+00:00:25,100 --> 00:00:26,861
+It writes you a prediction report.
+
+15
+00:00:27,050 --> 00:00:28,795
+And you can interview the agents.
+
+16
+00:00:29,020 --> 00:00:30,400
+Then: a centuries-old novel.
+
+17
+00:00:30,420 --> 00:00:33,056
+The author never finished it. So the characters did.
+
+18
+00:00:33,080 --> 00:00:33,640
+The catch?
+
+19
+00:00:33,660 --> 00:00:35,030
+Their homepage: five bucks a run.
+
+20
+00:00:35,050 --> 00:00:36,099
+README: go easy.
+
+21
+00:00:36,180 --> 00:00:37,250
+Futures from five bucks.
+
+22
+00:00:37,270 --> 00:00:38,600
+It can't see the future.
+
+23
+00:00:38,620 --> 00:00:40,384
+It rehearses a thousand of them.
+
+24
+00:00:41,100 --> 00:00:42,763
+So we asked a swarm about this video.
+
+25
+00:00:44,500 --> 00:00:46,000
+73% say you'll follow.
+
+26
+00:00:46,020 --> 00:00:47,053
+Prove them wrong.
+

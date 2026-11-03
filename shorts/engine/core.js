@@ -4,7 +4,7 @@
  * handles fonts, the 2D canvas, the WebGL post pass and frame export.
  */
 (function () {
-  const W = 1080, H = 1920;
+  const [W, H] = window.SHORT_SIZE || [1080, 1920]; // set SHORT_SIZE before loading for other formats
 
   // ---------- math ----------
   const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));

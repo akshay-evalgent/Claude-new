@@ -45,7 +45,17 @@ python3 score.py                                                # → out/audio_
 ffmpeg -i out/audio_raw.wav -af loudnorm=I=-14:TP=-1:LRA=11 -ar 48000 out/audio.wav
 node ../../engine/render.cjs . --stills 3.2,21.5               # QA stills → out/stills/
 node ../../engine/render.cjs . --fps 60 --workers 3 --out mirofish_short.mp4
+# voice-over (optional): Kokoro TTS in its own venv, then duck the score under it
+ttsenv/bin/python vo.py <kokoro_model_dir>                      # → out/vo.wav, captions_en.srt
+python3 mix_vo.py                                               # → out/audio_vo_raw.wav (then loudnorm, remux)
+node ../../engine/render.cjs . --page thumbnail.html --query mode=v --stills 0   # thumbnails (mode=h for 16:9)
 ```
+
+`UPLOAD.md` in an episode holds the YouTube kit: title, description, tags, settings,
+pinned comment, captions and thumbnails. `vo.py` fits each narration line into its beat
+by re-synthesising faster when needed (capped at 1.34x so it doesn't sound rushed); the
+lines were checked by transcribing the final mix with Whisper, so a word masked by a
+sound effect shows up as a mis-hearing.
 
 The output is upload-ready: H.264 High, 1080x1920, 60 fps, capped at 14 Mbps (about
 80 MB for 46 s; film grain is what costs the bits), AAC 256k at -14 LUFS.
