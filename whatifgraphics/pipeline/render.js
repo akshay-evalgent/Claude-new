@@ -1,20 +1,24 @@
 // Renders every frame of every shot to JPEG using headless Chromium.
-// usage: node render.js --build ../build [--workers 4] [--fps 24] [--thumb] [--shot N] [--preview]
+// usage: node render.js --episode <dir> [--workers 4] [--fps 24] [--thumb] [--shot N] [--preview] [--late]
 const { chromium } = require('playwright');
 const fs = require('fs'), path = require('path');
 
 const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf('--' + k); return i >= 0 ? args[i + 1] : d; };
 const has = k => args.includes('--' + k);
-const BUILD = path.resolve(opt('build', path.join(__dirname, '..', 'build')));
+const EP = path.resolve(opt('episode', '.'));
+const SHOTS = path.join(EP, 'shots.js');
+const META = require(SHOTS).meta || {};
+const BUILD = path.join(EP, 'build');
 const WORKERS = parseInt(opt('workers', '4'));
-const FPS = parseInt(opt('fps', '24'));
+const FPS = parseInt(opt('fps', META.fps || 24));
+const W = META.width || 1920, H = META.height || 1080;
 const FRAMES = path.join(BUILD, 'frames');
 fs.mkdirSync(FRAMES, { recursive: true });
-const pageUrl = 'file://' + path.join(__dirname, 'scene.html');
+const pageUrl = 'file://' + path.join(__dirname, 'scene.html') + '?shots=' + encodeURIComponent('file://' + SHOTS);
 
 async function newPage(browser, timings) {
-  const ctx = await browser.newContext({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
+  const ctx = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
   const page = await ctx.newPage();
   page.on('pageerror', e => console.error('PAGE ERROR', e.message));
   await page.goto(pageUrl);
@@ -36,20 +40,18 @@ async function newPage(browser, timings) {
   }
   const timings = JSON.parse(fs.readFileSync(path.join(BUILD, 'timings.json')));
   if (has('preview')) {
-    // one PNG per shot at mid-time, for a quick visual check
     const { page, cdp } = await newPage(browser, timings);
     const prevDir = path.join(BUILD, 'preview'); fs.mkdirSync(prevDir, { recursive: true });
-    const only = opt('shot', null);
+    const only = opt('shot', null); const at = opt('at', null);
     for (let i = 0; i < timings.shots.length; i++) {
       if (only != null && parseInt(only) !== i) continue;
-      const tt = has('late') ? timings.shots[i].dur - 0.3 : Math.min(timings.shots[i].dur * 0.6, 6);
+      const tt = at != null ? parseFloat(at) : has('late') ? timings.shots[i].dur - 0.3 : Math.min(timings.shots[i].dur * 0.6, 6);
       await page.evaluate(([i, t]) => window.renderFrame(i, t), [i, tt]);
       const { data } = await cdp.send('Page.captureScreenshot', { format: 'jpeg', quality: 85 });
       fs.writeFileSync(path.join(prevDir, `shot${String(i).padStart(3, '0')}.jpg`), Buffer.from(data, 'base64'));
     }
     console.log('previews written'); await browser.close(); return;
   }
-  // full render: distribute shots across workers by frame count
   const jobs = timings.shots.map((s, i) => ({ i, frames: Math.round(s.dur * FPS) }));
   const only = opt('shot', null);
   const sel = only != null ? jobs.filter(j => j.i === parseInt(only)) : jobs;

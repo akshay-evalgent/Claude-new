@@ -4,21 +4,25 @@
 @font-face{font-family:'Fredoka';src:url('fonts/Fredoka.ttf');font-weight:300 700}
 @font-face{font-family:'Nunito';src:url('fonts/Nunito.ttf');font-weight:200 1000}
 @font-face{font-family:'Bangers';src:url('fonts/Bangers.ttf')}
-html,body{margin:0;background:#000;width:1920px;height:1080px;overflow:hidden}
-#stage{width:1920px;height:1080px}
+html,body{margin:0;background:#000;overflow:hidden}
 #stage svg{display:block}
 </style></head>
 <body><div id="stage"></div>
 <script>var module={exports:{}};</script>
-<script src="shots.js"></script>
-<script>window.SHOTS=module.exports.shots;window.THUMB=module.exports.thumb;window.META=module.exports.meta;</script>
+<script>
+(function(){ var q=new URLSearchParams(location.search); var p=q.get('shots'); if(p){ document.write('<script src="'+p+'"><\/script>'); } })();
+</script>
+<script>window.SHOTS=module.exports.shots;window.THUMB=module.exports.thumb;window.META=module.exports.meta||{};</script>
 <script src="lib.js"></script>
 <script>
 window.TIMINGS=null;
+var W=(window.META.width||1920), H=(window.META.height||1080);
+window.WIG.setSize(W,H,window.META.captionY);
+document.getElementById('stage').style.width=W+'px'; document.getElementById('stage').style.height=H+'px';
 window.setTimings=function(t){window.TIMINGS=t;};
 window.renderFrame=function(i,t){
-  var shot=window.SHOTS[i]; var dur=(window.TIMINGS&&window.TIMINGS.shots[i])?window.TIMINGS.shots[i].dur:8;
-  document.getElementById('stage').innerHTML=window.WIG.renderShot(shot,t,dur);
+  var shot=window.SHOTS[i]; var tm=(window.TIMINGS&&window.TIMINGS.shots[i])||{}; var dur=tm.dur||8;
+  document.getElementById('stage').innerHTML=window.WIG.renderShot(shot,t,dur,{words:tm.words||[]});
   return true;
 };
 window.renderThumb=function(){ document.getElementById('stage').innerHTML=window.WIG.renderThumb(window.THUMB); return true; };

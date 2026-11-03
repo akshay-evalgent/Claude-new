@@ -9,39 +9,40 @@ analysed in `../channel-analysis-jeremy-bearimy.md` (second-person what-if story
 | Path | What |
 |---|---|
 | `script.md` | The full narration script, act by act, with the visual for each shot. Generated from `render/shots.js`. |
-| `render/shots.js` | Source of truth: every shot's narration + scene spec (background, characters, poses, bubbles, cards, camera). |
-| `render/lib.js` | The SVG animation library: mascot + 20 side characters, 11 expressions, 15 poses, 23 backgrounds, props, thought/speech bubbles, text cards, camera moves. |
-| `render/scene.html` | Headless render harness (loads fonts, exposes `renderFrame(shot, t)`). |
-| `render/render.js` | Playwright/Chromium frame renderer (parallel workers, JPEG frames, thumbnail, preview mode). |
-| `render/build.py` | Narration (edge-tts), timings, generated music bed + SFX, ducking, ffmpeg encode, SRT. |
+| `shots.js` | Source of truth: every shot's narration + scene spec (background, characters, poses, bubbles, cards, camera). |
+| `../pipeline/lib.js` | The SVG animation library: mascot + 20 side characters, 11 expressions, 15 poses, 23 backgrounds, props, thought/speech bubbles, text cards, camera moves. |
+| `../pipeline/scene.html` | Headless render harness (loads fonts, exposes `renderFrame(shot, t)`). |
+| `../pipeline/render.js` | Playwright/Chromium frame renderer (parallel workers, JPEG frames, thumbnail, preview mode). |
+| `../pipeline/build.py` | Narration (edge-tts), timings, generated music bed + SFX, ducking, ffmpeg encode, SRT. |
 | `build/thumbnail.png` | 1920×1080 thumbnail. |
 | `output/` | Final MP4 + SRT (not committed, see below). |
 
 ## Rebuild from scratch
 
+All episodes share the renderer in `../pipeline/`. From the `whatifgraphics/` folder:
+
 ```bash
-cd render
-python3 -m venv venv && venv/bin/pip install edge-tts numpy
-venv/bin/python build.py script      # -> ../script.md
-venv/bin/python build.py audio       # -> build/voice/*.mp3, build/timings.json
-node render.js --build ../build --workers 4 --fps 24   # -> build/frames/*.jpg  (~5 min on 4 cores)
-node render.js --build ../build --thumb                # -> build/thumbnail.png
-venv/bin/python build.py assemble    # -> output/whatifgraphics-ep01-hear-thoughts.mp4 + .srt
+python3 -m venv venv && venv/bin/pip install edge-tts numpy          # once
+venv/bin/python pipeline/build.py script   --episode ep01-hear-thoughts   # -> script.md
+venv/bin/python pipeline/build.py audio    --episode ep01-hear-thoughts   # -> build/voice, build/timings.json
+node pipeline/render.js --episode ep01-hear-thoughts --workers 4          # -> build/frames (~5 min on 4 cores)
+node pipeline/render.js --episode ep01-hear-thoughts --thumb              # -> build/thumbnail.png
+venv/bin/python pipeline/build.py assemble --episode ep01-hear-thoughts   # -> output/*.mp4 + .srt
 ```
 
 Quick visual check of every shot without a full render:
 
 ```bash
-node render.js --build ../build --preview        # one JPEG per shot in build/preview/
-node render.js --build ../build --preview --shot 12 --late
+node pipeline/render.js --episode ep01-hear-thoughts --preview            # one JPEG per shot in build/preview/
+node pipeline/render.js --episode ep01-hear-thoughts --preview --shot 12 --late
 ```
 
-Requirements: Node 18+ with `playwright` (Chromium), Python 3.10+, ffmpeg. Fonts are vendored in `render/fonts/`
-(Fredoka, Nunito, Bangers — all OFL).
+Requirements: Node 18+ with `playwright` (Chromium), Python 3.10+, ffmpeg. Fonts are vendored in `../pipeline/fonts/`
+(Fredoka, Nunito, Bangers, all OFL).
 
 ## Making the next episode
 
-1. Copy this folder, rewrite `render/shots.js`: keep the five-act beat template
+1. Copy this folder, rewrite `shots.js`: keep the five-act beat template
    (gift → rules & small wins → escalation & fame → the cost → the choice).
 2. Aim for 80–90 shots and ~1,500 words; the pipeline sets each shot's length from the narration.
 3. Add any new background or prop to `lib.js` (`BG` and `PROPS` maps), new side characters to `NPC`.
