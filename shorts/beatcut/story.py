@@ -308,8 +308,92 @@ class HeartBurst:
             blend(frame, spr, sx * W, sy * H, 1.0)
 
 
+class Circle:
+    """Hand-drawn red ring that draws itself around a detail, then breathes."""
+
+    def __init__(self, cfg, W, H):
+        self.cfg, self.W, self.H = cfg, W, H
+        r = np.random.default_rng(cfg.get("seed", 3))
+        self.c = np.array(cfg["at"], float) * [W, H]
+        rx = cfg.get("r", 0.12) * W
+        ry = rx * cfg.get("aspect", 0.85)
+        n = 96
+        ang = np.linspace(0, 2 * np.pi * 1.1, n) + cfg.get("start", -2.2)   # overshoots, like a pen loop
+        wob = 1 + 0.045 * np.sin(ang * 3 + r.uniform(0, 6)) + np.linspace(0, 0.07, n)
+        self.pts = np.stack([np.cos(ang) * rx * wob, np.sin(ang) * ry * wob], 1)
+        self.th = max(5, int(cfg.get("width", 0.011) * W))
+        self.color = tuple(int(v) for v in cfg.get("bgr", (40, 40, 255)))
+
+    def draw(self, frame, t):
+        c = self.cfg
+        if not (c["t0"] <= t < c["t1"]):
+            return
+        d = t - c["t0"]
+        g = ease_out(d / c.get("draw", 0.22))
+        n = max(2, int(g * len(self.pts)))
+        k = 1 + (0.035 * math.sin((d - c.get("draw", 0.22)) * 11) if g >= 1 else 0)
+        pts = self.pts[:n] * k + self.c
+        lay = np.zeros_like(frame)
+        cv2.polylines(lay, [np.round(pts * 4).astype(np.int32)], False, self.color, self.th, cv2.LINE_AA, shift=2)
+        glow = cv2.GaussianBlur(lay, (0, 0), self.th * 1.3)
+        out = frame.astype(np.float32) + glow.astype(np.float32) * 0.9
+        m = cv2.GaussianBlur((lay.max(2) > 0).astype(np.float32), (0, 0), 0.8)[:, :, None]
+        out = out * (1 - m) + lay.astype(np.float32) * m
+        frame[:] = np.clip(out, 0, 255).astype(np.uint8)
+
+
+class Stamp:
+    """Verdict stamp that slams in on the drop: REAL (green), AI (red), UNVERIFIED (yellow)."""
+
+    COLORS = {"REAL": (60, 255, 95), "AI": (255, 40, 48), "UNVERIFIED": (255, 226, 30)}   # RGB
+    over = True
+
+    def __init__(self, cfg, W, H):
+        self.cfg, self.W, self.H = cfg, W, H
+        text = cfg["text"]
+        rgb = tuple(cfg.get("rgb", self.COLORS.get(text, (255, 255, 255))))
+        size = int(cfg.get("size", 0.21 if len(text) <= 4 else 0.105) * W)
+        font = ImageFont.truetype(FONT, size)
+        tw = font.getlength(text)
+        asc, desc = font.getmetrics()
+        pad = int(size * 0.32)
+        bw, bh = int(tw + 2 * pad), int(asc * 0.78 + 2 * pad)
+        m = int(size * 0.4)
+        img = Image.new("RGBA", (bw + 2 * m, bh + 2 * m), (0, 0, 0, 0))
+        d = ImageDraw.Draw(img)
+        d.rounded_rectangle([m, m, m + bw, m + bh], radius=int(size * 0.14), outline=rgb + (255,),
+                            width=max(6, int(size * 0.085)))
+        d.text((m + pad, m + pad - asc * 0.2), text, font=font, fill=rgb + (255,))
+        img = img.rotate(cfg.get("rot", 8), resample=Image.BICUBIC, expand=True)
+        a = np.array(img).astype(np.float32)
+        r = np.random.default_rng(1)
+        ink = cv2.GaussianBlur(r.random(a.shape[:2]).astype(np.float32), (0, 0), 2.5)
+        ink = np.clip((ink - 0.5) * 6 + 0.75, 0.25, 1.0)                    # worn ink, like a rubber stamp
+        a[:, :, 3] *= ink * (r.random(a.shape[:2]) > 0.04)
+        bgra = a[:, :, [2, 1, 0, 3]].clip(0, 255).astype(np.uint8)
+        self.spr = bgra
+        self.glow = cv2.GaussianBlur(bgra, (0, 0), size * 0.12)
+
+    def draw(self, frame, t):
+        c = self.cfg
+        d = t - c["t"]
+        if d < 0 or t >= c.get("t1", 1e9):
+            return
+        k = d / 0.13
+        scale = lerp(2.3, 1.0, ease_out(k)) if k < 1 else 1 + 0.04 * math.exp(-(d - 0.13) / 0.08)
+        alpha = min(1.0, k * 2.5)
+        x, y = c.get("at", [0.5, 0.42])
+        spr = cv2.resize(self.spr, None, fx=scale, fy=scale, interpolation=cv2.INTER_LINEAR)
+        glow = cv2.resize(self.glow, None, fx=scale, fy=scale, interpolation=cv2.INTER_LINEAR)
+        blend(frame, glow, x * self.W, y * self.H, 0.8 * alpha, add=True)
+        blend(frame, spr, x * self.W, y * self.H, alpha)
+
+
+Sparkles.over = True
+
+
 def build_overlays(cfgs, W, H):
-    kinds = {"arrow": Arrow, "sparkles": Sparkles, "heart": HeartBurst}
+    kinds = {"arrow": Arrow, "sparkles": Sparkles, "heart": HeartBurst, "circle": Circle, "stamp": Stamp}
     return [kinds[c["type"]](c, W, H) for c in cfgs]
 
 
@@ -347,7 +431,21 @@ class Transitions:
                 z *= 1 + 0.07 * (1 - ease_out((t - c["t"]) / 0.3))
             if c["type"] == "glitch" and c["t"] <= t < c["t"] + 0.35:
                 z *= 1 + 0.18 * (1 - ease_out((t - c["t"]) / 0.35))
+            if c["type"] == "freeze" and c["t"] <= t < c["t"] + 0.15:
+                z *= 1 + 0.06 * (1 - ease_out((t - c["t"]) / 0.15))
+            if c["type"] == "impact" and c["t"] <= t < c["t"] + 0.3:
+                z *= 1 + 0.1 * (1 - ease_out((t - c["t"]) / 0.3))
         return z
+
+    def shake(self, t):
+        """Camera shake from impacts: (dx, dy) in pixels."""
+        dx = dy = 0.0
+        for c in self.cfgs:
+            if c["type"] == "impact" and c["t"] <= t < c["t"] + 0.8:
+                a = c.get("shake", 30) * math.exp(-(t - c["t"]) / 0.18)
+                dx += a * math.sin(t * 97)
+                dy += a * math.cos(t * 83)
+        return dx, dy
 
     def apply(self, img, t, frame_idx):
         W, H = self.W, self.H
@@ -392,6 +490,11 @@ class Transitions:
                         cv2.rectangle(band, (bx + 20, y0), (bx + 80, y0 + 34), 0.8, -1)
                     band = cv2.GaussianBlur(band, (0, 0), 3)
                     x = x + band[:, :, None] * 0.7
+            elif kind in ("freeze", "impact") and side == "post":
+                x = x + (1 - x) * (w ** 2) * (0.55 if kind == "freeze" else 0.85)
+            elif kind == "dip":
+                # the held breath before a verdict: the picture sinks almost to black, then snaps back
+                x = x * (1 - 0.88 * smoothstep(w))
             elif kind == "glitch" and side == "post":
                 k = 1 - w   # 0 -> 1 across the glitch
                 yy = np.linspace(-1, 1, H, dtype=np.float32)[:, None, None]
@@ -428,14 +531,75 @@ def zoom_at(keys, tau):
     return keys[-1][1]
 
 
+def load_stereo(path, sr=44100):
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-f", "f32le", "-ac", "2", "-ar", str(sr), "-"],
+                         capture_output=True, check=True).stdout
+    return np.frombuffer(raw, np.float32).reshape(-1, 2).copy()
+
+
+def auto_cues(spec):
+    """Sound design implied by the edit: shutter on freezes, impact on the verdict, whoosh on flashes,
+    pop when a circle lands."""
+    cues = []
+    for c in spec.get("transitions", []):
+        kind = {"freeze": "shutter", "impact": "impact", "white": "whoosh", "leak": "whoosh", "tvoff": "whoosh"}.get(c["type"])
+        if kind:
+            cues.append((c["t"], kind))
+    for o in spec.get("overlays", []):
+        if o["type"] == "circle":
+            cues.append((o["t0"] + o.get("draw", 0.22) * 0.8, "pop"))
+    return cues
+
+
+def build_audio(spec, ep, out):
+    """Returns (soundtrack for edit.mp4, soundtrack for edit_no_music.mp4 or None, duration)."""
+    from . import music as mus
+    m = spec.get("music", {})
+    path = ep / m["file"] if m.get("file") else None
+    if (path is None or not path.exists()) and m.get("synth"):
+        y, sr = mus.compose(m["synth"]["bpm"], m["synth"]["sections"])
+        path = path or ep / "clips" / "music.wav"
+        path.parent.mkdir(exist_ok=True)
+        mus.write_wav(path, mus.normalize(y), sr)
+    dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                                         "-of", "csv=p=0", str(path)]))
+    cues = [tuple(c) for c in spec.get("sfx", [])] + (auto_cues(spec) if spec.get("auto_sfx") else [])
+    voice = spec.get("voice", [])
+    if not cues and not voice:
+        return path, None, dur                       # use the soundtrack untouched
+    sr = mus.SR
+    n = int(round(dur * sr))
+    track = load_stereo(path, sr)[:n]
+    track = np.pad(track, ((0, n - len(track)), (0, 0)))
+    sfx = mus.sound_design(dur, cues=cues)[0][:n]
+    sfx = np.pad(sfx, ((0, n - len(sfx)), (0, 0)))
+    vo = np.zeros((n, 2), np.float32)
+    duck = np.ones(n, np.float32)
+    for v in voice:
+        clip = load_stereo(ep / v["file"], sr) * v.get("gain", 1.0)
+        i = int(v["t"] * sr)
+        k = min(len(clip), n - i)
+        vo[i:i + k] += clip[:k]
+        ramp = int(0.08 * sr)
+        lo, hi = max(0, i - ramp), min(n, i + k + ramp)
+        duck[lo:hi] = np.minimum(duck[lo:hi], 0.32)
+    duck = np.convolve(duck, np.ones(int(0.06 * sr)) / int(0.06 * sr), mode="same")
+    mix = mus.normalize(track * duck[:, None] + sfx * spec.get("sfx_gain", 0.8) + vo)
+    bed = sfx * spec.get("sfx_gain", 0.8) + vo
+    mix_p, bed_p = out / "mix.wav", out / "no_music.wav"
+    mus.write_wav(mix_p, mix, sr)
+    mus.write_wav(bed_p, mus.normalize(bed, target_lufs=-16) if np.abs(bed).max() > 1e-4 else bed, sr)
+    return mix_p, bed_p, dur
+
+
 def render(ep_dir, stills=False, only=None):
     ep = Path(ep_dir)
     spec = json.loads((ep / "story.json").read_text())
     W, H = spec.get("size", [1080, 1350])
     fps = spec.get("fps", 30)
-    music = ep / spec["music"]["file"]
-    dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration",
-                                         "-of", "csv=p=0", str(music)]))
+    out = ep / "out"
+    out.mkdir(exist_ok=True)
+    music, nomusic, dur = build_audio(spec, ep, out)
     nframes = int(round(dur * fps))
     shots = spec["shots"]
     look = Look(W, H)
@@ -445,8 +609,6 @@ def render(ep_dir, stills=False, only=None):
     flick = spec.get("flicker", [])
     rng = np.random.default_rng(4)
     ph = rng.uniform(0, 2 * np.pi, 6)
-    out = ep / "out"
-    out.mkdir(exist_ok=True)
 
     if stills:
         todo = [int(((s["t0"] + s["t1"]) / 2) * fps) for s in shots]
@@ -487,6 +649,8 @@ def render(ep_dir, stills=False, only=None):
         dx = hh * (math.sin(2 * math.pi * 1.7 * t + ph[0]) + 0.6 * math.sin(2 * math.pi * 4.3 * t + ph[1]))
         dy = hh * (math.sin(2 * math.pi * 1.3 * t + ph[2]) + 0.6 * math.sin(2 * math.pi * 3.7 * t + ph[3]))
         rot = hh * 0.06 * math.sin(2 * math.pi * 1.1 * t + ph[4])
+        sx, sy = trans.shake(t)
+        dx, dy = dx + sx, dy + sy
         s = max(W / sw, H / shh) * z
         hw, hh2 = W / (2 * s), H / (2 * s)
         cx = min(max(cx, hw), sw - hw) if sw > 2 * hw else sw / 2
@@ -504,12 +668,12 @@ def render(ep_dir, stills=False, only=None):
                          grain=g.get("grain", 2.0))
         # graphics sit on the picture, so the flashes and leaks wash over them too
         for ov in ovs:
-            if not isinstance(ov, Sparkles):
+            if not getattr(ov, "over", False):
                 ov.draw(img, t)
         for c in caps:
             c.draw(img, t)
         for ov in ovs:
-            if isinstance(ov, Sparkles):
+            if getattr(ov, "over", False):
                 ov.draw(img, t)
         img = trans.apply(img, t, f)
         fi, fo = spec.get("fade_in", [0, 0.1]), spec.get("fade_out")
@@ -529,7 +693,12 @@ def render(ep_dir, stills=False, only=None):
     if not stills:
         enc.stdin.close()
         enc.wait()
-        print(f"wrote {out / 'edit.mp4'} ({dur:.2f}s, {nframes} frames)")
+        # same picture with only sound design and voice, for adding a trending sound in the Shorts editor
+        cmd = ["ffmpeg", "-v", "error", "-y", "-i", str(out / "edit.mp4")]
+        cmd += (["-i", str(nomusic), "-map", "0:v", "-map", "1:a", "-c:a", "aac", "-b:a", "192k", "-shortest"]
+                if nomusic else ["-an"])
+        subprocess.run(cmd + ["-c:v", "copy", "-movflags", "+faststart", str(out / "edit_no_music.mp4")], check=True)
+        print(f"wrote {out / 'edit.mp4'} and {out / 'edit_no_music.mp4'} ({dur:.2f}s, {nframes} frames)")
 
 
 if __name__ == "__main__":

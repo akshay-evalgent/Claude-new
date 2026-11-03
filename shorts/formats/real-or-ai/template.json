@@ -1,0 +1,74 @@
+{
+ "_how": "REAL OR AI? series template. Times are in BARS (4 beats). Fill every CLIP/in/focus/caption/circle/verdict for the episode, then: python3 -m beatcut.template build episodes/<name> [--bpm N | --track song.m4a]. See formats/real-or-ai/FORMAT.md.",
+ "series": "REAL OR AI?",
+ "title": "REAL OR AI? <subject>",
+ "bpm": 128,
+ "size": [1080, 1350],
+ "fps": 30,
+ "crf": 18,
+ "auto_sfx": true,
+ "music_sections": [
+  {"name": "intro", "bars": 3},
+  {"name": "verse", "bars": 6},
+  {"name": "build", "bars": 1},
+  {"name": "drop", "bars": 2},
+  {"name": "break", "bars": 1}
+ ],
+ "drop_bar": 10,
+ "fade_in": [0, 0.03],
+
+ "shots": [
+  {"t0": 0, "t1": 0.75, "clip": "CLIP", "in": 0.0, "speed": 1.0, "focus": [0.5, 0.5],
+   "zoom_keys": [[0, 1.0], [1, 1.14, "in"]], "_slot": "1 HOOK: the clip's most striking frame, moving"},
+  {"t0": 0.75, "t1": 3, "clip": "CLIP", "in": 0.0, "speed": 1.0, "focus": [0.5, 0.5],
+   "zoom_keys": [[0, 1.0], [1, 1.06]], "_slot": "2 THE CLIP: let it play, the bit everyone shares"},
+  {"t0": 3, "t1": 5, "clip": "CLIP", "in": 0.0, "speed": 0.0, "focus": [0.5, 0.5],
+   "zoom_keys": [[0, 1.0], [0.12, 1.6, "out"], [1, 1.66]], "_slot": "3 CLUE 1: freeze, zoom onto the detail (set focus on it)"},
+  {"t0": 5, "t1": 7, "clip": "CLIP", "in": 0.0, "speed": 0.0, "focus": [0.5, 0.5],
+   "zoom_keys": [[0, 1.0], [0.12, 1.6, "out"], [1, 1.66]], "_slot": "4 CLUE 2: freeze, zoom onto the second detail"},
+  {"t0": 7, "t1": 9, "clip": "CLIP", "in": 0.0, "speed": 0.0, "focus": [0.5, 0.5],
+   "zoom_keys": [[0, 1.0], [1, 1.08]], "_slot": "5 CLUE 3: the source (original upload, date, account, fact-check)"},
+  {"t0": 9, "t1": 10, "clip": "CLIP", "in": 0.0, "speed": 0.5, "focus": [0.5, 0.5], "grade": {"exposure": 0.72},
+   "zoom_keys": [[0, 1.0], [1, 1.2, "in"]], "_slot": "6 TENSION: slow motion, darker; music builds"},
+  {"t0": 10, "t1": 12, "clip": "CLIP", "in": 0.0, "speed": 1.0, "focus": [0.5, 0.5], "handheld": 4,
+   "zoom_keys": [[0, 1.08], [1, 1.0]], "_slot": "7 VERDICT on the drop: the clip again, the stamp slams in"},
+  {"t0": 12, "t1": 12.5, "clip": "CLIP", "in": 0.0, "speed": 1.0, "focus": [0.5, 0.5], "grade": {"exposure": 0.6},
+   "_slot": "8 CREDIT: where it came from"},
+  {"t0": 12.5, "t1": 13, "clip": "CLIP", "in": 0.0, "speed": 1.0, "focus": [0.5, 0.5],
+   "zoom_keys": [[0, 1.0], [1, 1.12, "in"]], "_slot": "9 LOOP: same frame as the hook so the replay is seamless"}
+ ],
+
+ "transitions": [
+  {"t": 0.75, "type": "white", "a": 0.06, "b": 0.12},
+  {"t": 3, "type": "freeze", "b": 0.12},
+  {"t": 5, "type": "freeze", "b": 0.12},
+  {"t": 7, "type": "freeze", "b": 0.12},
+  {"t": 9, "type": "leak", "a": 0.15, "b": 0.2},
+  {"t": 10, "type": "dip", "a": 0.22, "b": 0.03},
+  {"t": 10, "type": "impact", "b": 0.18, "shake": 30},
+  {"t": 12, "type": "white", "a": 0.05, "b": 0.1},
+  {"t": 12.5, "type": "cut"}
+ ],
+
+ "captions": [
+  {"t0": 0, "t1": 0.75, "cps": 0, "size": 0.11, "y": 0.62, "lines": ["“^xREAL ^xOR ^xAI?”"]},
+  {"t0": 0.85, "t1": 3.0, "cps": 16, "lines": ["WHAT EVERYONE", "^ySAYS IT SHOWS"]},
+  {"t0": 3.05, "t1": 5.0, "cps": 18, "lines": ["^cCLUE 1:", "THE ^yDETAIL ^wTHAT ^rGIVES IT AWAY"]},
+  {"t0": 5.05, "t1": 7.0, "cps": 18, "lines": ["^cCLUE 2:", "THE ^ySECOND ^wDETAIL"]},
+  {"t0": 7.05, "t1": 9.0, "cps": 18, "lines": ["^cCLUE 3:", "WHERE IT ^yFIRST ^wAPPEARED"]},
+  {"t0": 9.05, "t1": 10.0, "cps": 12, "lines": ["SO...", "^yREAL ^wOR ^rAI?"]},
+  {"t0": 10.12, "t1": 12.0, "cps": 20, "y": 0.68, "lines": ["^gONE LINE: WHY"]},
+  {"t0": 12.0, "t1": 12.5, "cps": 0, "lines": ["SOURCE:", "^c@ORIGINAL ^cUPLOADER"]},
+  {"t0": 12.5, "t1": 13.0, "cps": 0, "lines": ["SEND ME", "^yTHE NEXT ONE"]}
+ ],
+
+ "overlays": [
+  {"type": "circle", "t0": 3.12, "t1": 5.0, "at": [0.5, 0.4], "r": 0.14, "_note": "around clue 1 (frame coordinates)"},
+  {"type": "circle", "t0": 5.12, "t1": 7.0, "at": [0.5, 0.4], "r": 0.14},
+  {"type": "circle", "t0": 7.12, "t1": 9.0, "at": [0.5, 0.4], "r": 0.16},
+  {"type": "stamp", "t": 10.0, "t1": 12.0, "text": "REAL", "at": [0.5, 0.42], "_note": "REAL / AI / UNVERIFIED"}
+ ],
+
+ "voice": [],
+ "flicker": [[10, 12]]
+}

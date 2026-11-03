@@ -205,7 +205,7 @@ def compose(bpm, sections):
         prog = (k + 1) / nb   # progress through the section
 
         # pad: whole bar chord, filter opens with energy
-        cutoff = {"intro": 700 + 1500 * prog, "build": 2200 + 2500 * prog, "drop": 5200,
+        cutoff = {"intro": 700 + 1500 * prog, "verse": 2000, "build": 2200 + 2500 * prog, "drop": 5200,
                   "break": 1400, "rise": 1200 + 2500 * prog}[name]
         pad = supersaw([m - 12 for m in ch] + [ch[0]], 4 * spb + 0.05)
         pad = np.stack([filt(pad[:, c], "lowpass", cutoff) for c in range(2)], 1)
@@ -214,13 +214,13 @@ def compose(bpm, sections):
         _place(music, pad, t0, 0.55 if name != "drop" else 0.45)
 
         # arp: 16ths over the chord tones
-        arp_gain = {"intro": 0.5, "build": 0.8, "drop": 1.0, "break": 0.7, "rise": 0.8}[name]
+        arp_gain = {"intro": 0.5, "verse": 0.65, "build": 0.8, "drop": 1.0, "break": 0.7, "rise": 0.8}[name]
         tones = ch + [ch[0] + 12, ch[1] + 12]
         for s16 in range(16):
             m = tones[[0, 2, 1, 3, 2, 4, 3, 2][s16 % 8]]
             p = pluck(m)
-            if name in ("intro", "break"):
-                p = filt(p, "lowpass", 1200 if name == "intro" else 1800)
+            if name in ("intro", "break", "verse"):
+                p = filt(p, "lowpass", {"intro": 1200, "break": 1800, "verse": 2400}[name])
             _place(music, p, t0 + s16 * spb / 4, arp_gain, pan=0.35 if s16 % 2 else -0.35)
 
         # drums
@@ -229,6 +229,15 @@ def compose(bpm, sections):
             for e in range(8):
                 if e % 2:
                     _place(drums, H, t0 + e * spb / 2, 0.5 + 0.5 * prog)
+        elif name == "verse":
+            # a steady, lighter groove under the explanation: kick on 1 and 3, clap on 2 and 4
+            for q in range(4):
+                if q in (0, 2):
+                    _place(drums, K, t0 + q * spb, 0.75); kicks.append(t0 + q * spb)
+                else:
+                    _place(drums, C, t0 + q * spb, 0.55)
+                _place(drums, H, t0 + (q + 0.5) * spb, 0.45, pan=0.2)
+            _place(bass, bass808(root, 1.8 * spb), t0, 0.7)
         elif name in ("build", "rise"):
             for q in range(3):
                 _place(drums, K, t0 + q * spb, 0.6 + 0.12 * q); kicks.append(t0 + q * spb)
@@ -344,7 +353,14 @@ def tape_stop(x, start, dur, sr=SR):
     return out
 
 
-CUES = {"heartbeat": (heartbeat, 0.9), "crack": (crack, 0.8), "shatter": (shatter, 0.9),
+def pop():
+    """Soft marker pop for a circle or arrow landing on a detail."""
+    t = _t(0.12)
+    f = 900 + 700 * np.exp(-t / 0.02)
+    return np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t / 0.035) * 0.5
+
+
+CUES = {"pop": (pop, 0.7), "heartbeat": (heartbeat, 0.9), "crack": (crack, 0.8), "shatter": (shatter, 0.9),
         "shutter": (shutter, 0.8), "impact": (lambda: impact(1.4), 0.7), "whoosh": (lambda: whoosh(0.42), 0.8)}
 
 

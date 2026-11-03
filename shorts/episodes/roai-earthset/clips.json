@@ -1,0 +1,7 @@
+{
+  "_note": "NASA footage (public domain; no endorsement implied). Fetch with: python3 -m beatcut.fetch episodes/roai-earthset",
+  "clips": {
+    "earthset": {"nasa_id": "ART-SAW2_2022_325_1230B_SHARED_art001m1203251230B", "variant": "large", "start": 0.0, "dur": 90.0,
+                 "what": "Flight Day 6 (Nov 21 2022): Earth sets behind the Moon, seen from Orion"}
+  }
+}

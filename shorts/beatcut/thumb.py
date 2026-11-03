@@ -44,6 +44,8 @@ def main(ep_dir):
     spec = json.loads((ep / "story.json").read_text())
     th = spec["thumbnail"]
     W, H = 1080, 1920
+    if th.get("layout") == "single":
+        return single(ep, th, W, H)
     half = H // 2
     out = np.zeros((H, W, 3), np.uint8)
     for key, y0 in (("top", 0), ("bottom", half)):
@@ -61,6 +63,27 @@ def main(ep_dir):
     spr = emoji_sprite(HeartBurst.SEQ, int(0.26 * W))
     blend(out, cv2.GaussianBlur(spr, (0, 0), 14), hx * W, hy * H, 0.6, add=True)
     blend(out, spr, hx * W, hy * H)
+    (ep / "out").mkdir(exist_ok=True)
+    cv2.imwrite(str(ep / "out" / "thumbnail.jpg"), out, [cv2.IMWRITE_JPEG_QUALITY, 92])
+    print(f"wrote {ep / 'out' / 'thumbnail.jpg'}")
+
+
+def single(ep, th, W, H):
+    """One full-height frame, the series hook in big letters, a red circle on the giveaway detail."""
+    from .story import Circle
+    p = th["frame"]
+    fr = grab(ep / "clips" / f"{p['clip']}.mp4", p["t"])
+    out = panel(fr, W, H, p.get("focus", [0.5, 0.5]), p.get("zoom", 1.0))
+    out = Look(W, H).apply(out, 0, contrast=1.1, sat=1.25, grain=1.5)
+    y = th.get("y", 0.72)
+    yy = np.arange(H, dtype=np.float32)[:, None, None]
+    band = np.exp(-((yy - y * H) / 260) ** 2) * 0.6
+    out = (out.astype(np.float32) * (1 - band)).astype(np.uint8)
+    if th.get("circle"):
+        c = dict(th["circle"], t0=0, t1=1, draw=1e-3, width=0.016)
+        Circle(c, W, H).draw(out, 0.5)
+    cap = NeonCaption({"t0": 0, "t1": 1, "cps": 0, "lines": th["lines"], "size": th.get("size", 0.13)}, W, H)
+    blend(out, cap.layer(len(cap.chars)), W / 2, y * H)
     (ep / "out").mkdir(exist_ok=True)
     cv2.imwrite(str(ep / "out" / "thumbnail.jpg"), out, [cv2.IMWRITE_JPEG_QUALITY, 92])
     print(f"wrote {ep / 'out' / 'thumbnail.jpg'}")

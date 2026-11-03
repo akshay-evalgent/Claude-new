@@ -55,7 +55,7 @@ occasional series, if you want zero rights risk.
 - **Voice:** you say the verdict and the strongest clue in one sentence.
 - **Rules:** show your evidence. Cite a fact-check when one exists. Say UNVERIFIED when you can't prove it. Never call a real person a faker without proof.
 - **Footage:** short excerpts used for analysis, credited. Under 60 s.
-- **Needs building:** a red-circle overlay, a verdict stamp, and a freeze with zoom (an extension of the existing arrow and zoom keys).
+- **Built:** `formats/real-or-ai/` (FORMAT.md, template.json timed in bars, EVIDENCE.md, POST.md), skill `/real-or-ai`, example `episodes/roai-earthset/`.
 
 ### Series 3: WHAT HAPPENED NEXT (1 per week)
 - **What:** a famous viral moment, then where those people are now. Example: "Little Messi, 10 years later".

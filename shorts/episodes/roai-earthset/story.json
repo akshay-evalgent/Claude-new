@@ -1,0 +1,491 @@
+{
+ "series": "REAL OR AI?",
+ "title": "REAL OR AI? Earth setting behind the Moon",
+ "size": [
+  1080,
+  1350
+ ],
+ "fps": 30,
+ "crf": 18,
+ "auto_sfx": true,
+ "fade_in": [
+  0,
+  0.03
+ ],
+ "shots": [
+  {
+   "t0": 0.0,
+   "t1": 1.406,
+   "clip": "earthset",
+   "in": 2.0,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.55
+   ],
+   "zoom_keys": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     1.406,
+     1.14,
+     "in"
+    ]
+   ],
+   "_slot": "1 HOOK: the clip's most striking frame, moving"
+  },
+  {
+   "t0": 1.406,
+   "t1": 5.625,
+   "clip": "earthset",
+   "in": 60.0,
+   "speed": 6.0,
+   "focus": [
+    0.62,
+    0.68
+   ],
+   "zoom_keys": [
+    [
+     0.0,
+     1.25
+    ],
+    [
+     4.219,
+     1.35
+    ]
+   ],
+   "_slot": "2 THE CLIP: let it play, the bit everyone shares"
+  },
+  {
+   "t0": 5.625,
+   "t1": 9.375,
+   "clip": "earthset",
+   "in": 10.0,
+   "speed": 0.0,
+   "focus": [
+    0.17,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.45,
+     1.6,
+     "out"
+    ],
+    [
+     3.75,
+     1.66
+    ]
+   ],
+   "_slot": "3 CLUE 1: freeze, zoom onto the detail (set focus on it)"
+  },
+  {
+   "t0": 9.375,
+   "t1": 13.125,
+   "clip": "earthset",
+   "in": 10.0,
+   "speed": 0.0,
+   "focus": [
+    0.565,
+    0.78
+   ],
+   "zoom_keys": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.45,
+     1.6,
+     "out"
+    ],
+    [
+     3.75,
+     1.66
+    ]
+   ],
+   "_slot": "4 CLUE 2: freeze, zoom onto the second detail"
+  },
+  {
+   "t0": 13.125,
+   "t1": 16.875,
+   "clip": "earthset",
+   "in": 40.0,
+   "speed": 0.0,
+   "focus": [
+    0.7,
+    0.4
+   ],
+   "zoom_keys": [
+    [
+     0.0,
+     1.1
+    ],
+    [
+     3.75,
+     1.16
+    ]
+   ],
+   "_slot": "5 CLUE 3: the source (original upload, date, account, fact-check)",
+   "grade": {
+    "exposure": 0.32
+   }
+  },
+  {
+   "t0": 16.875,
+   "t1": 18.75,
+   "clip": "earthset",
+   "in": 70.0,
+   "speed": 3.0,
+   "focus": [
+    0.62,
+    0.68
+   ],
+   "grade": {
+    "exposure": 0.72
+   },
+   "zoom_keys": [
+    [
+     0.0,
+     1.2
+    ],
+    [
+     1.875,
+     1.38,
+     "in"
+    ]
+   ],
+   "_slot": "6 TENSION: slow motion, darker; music builds"
+  },
+  {
+   "t0": 18.75,
+   "t1": 22.5,
+   "clip": "earthset",
+   "in": 76.0,
+   "speed": 5.0,
+   "focus": [
+    0.63,
+    0.7
+   ],
+   "handheld": 4,
+   "zoom_keys": [
+    [
+     0.0,
+     1.4
+    ],
+    [
+     3.75,
+     1.3
+    ]
+   ],
+   "_slot": "7 VERDICT on the drop: the clip again, the stamp slams in"
+  },
+  {
+   "t0": 22.5,
+   "t1": 23.438,
+   "clip": "earthset",
+   "in": 30.0,
+   "speed": 1.0,
+   "focus": [
+    0.6,
+    0.5
+   ],
+   "grade": {
+    "exposure": 0.6
+   },
+   "_slot": "8 CREDIT: where it came from"
+  },
+  {
+   "t0": 23.438,
+   "t1": 24.375,
+   "clip": "earthset",
+   "in": 1.4,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.55
+   ],
+   "zoom_keys": [
+    [
+     0.0,
+     1.0
+    ],
+    [
+     0.937,
+     1.12,
+     "in"
+    ]
+   ],
+   "_slot": "9 LOOP: same frame as the hook so the replay is seamless"
+  }
+ ],
+ "transitions": [
+  {
+   "t": 1.406,
+   "type": "white",
+   "a": 0.06,
+   "b": 0.12
+  },
+  {
+   "t": 5.625,
+   "type": "freeze",
+   "b": 0.12
+  },
+  {
+   "t": 9.375,
+   "type": "freeze",
+   "b": 0.12
+  },
+  {
+   "t": 13.125,
+   "type": "freeze",
+   "b": 0.12
+  },
+  {
+   "t": 16.875,
+   "type": "leak",
+   "a": 0.15,
+   "b": 0.2
+  },
+  {
+   "t": 18.75,
+   "type": "dip",
+   "a": 0.22,
+   "b": 0.03
+  },
+  {
+   "t": 18.75,
+   "type": "impact",
+   "b": 0.18,
+   "shake": 30
+  },
+  {
+   "t": 22.5,
+   "type": "white",
+   "a": 0.05,
+   "b": 0.1
+  },
+  {
+   "t": 23.438,
+   "type": "cut"
+  }
+ ],
+ "captions": [
+  {
+   "t0": 0.0,
+   "t1": 1.406,
+   "cps": 0,
+   "size": 0.11,
+   "y": 0.62,
+   "lines": [
+    "“^xREAL ^xOR ^xAI?”"
+   ]
+  },
+  {
+   "t0": 1.594,
+   "t1": 5.625,
+   "cps": 16,
+   "lines": [
+    "“^yEARTHSET”",
+    "^wLOOKS ^rFAKE, ^wRIGHT?"
+   ]
+  },
+  {
+   "t0": 5.719,
+   "t1": 9.375,
+   "cps": 18,
+   "lines": [
+    "^cCLUE 1:",
+    "FILMED FROM",
+    "^yORION ^wITSELF"
+   ]
+  },
+  {
+   "t0": 9.469,
+   "t1": 13.125,
+   "cps": 18,
+   "lines": [
+    "^cCLUE 2:",
+    "DATE ^yNOV 21, 2022",
+    "^wTHE ^yMOON ^wFLYBY"
+   ],
+   "y": 0.27
+  },
+  {
+   "t0": 13.219,
+   "t1": 16.875,
+   "cps": 18,
+   "lines": [
+    "^cCLUE 3:",
+    "IT'S IN ^yNASA'S",
+    "^yVIDEO ^wLIBRARY"
+   ],
+   "y": 0.64
+  },
+  {
+   "t0": 13.406,
+   "t1": 16.875,
+   "cps": 0,
+   "size": 0.045,
+   "y": 0.42,
+   "lines": [
+    "ART-SAW2 · 2022 · DAY 325",
+    "“^yFLIGHT ^yDAY ^y6: ^wORION ^wCAPTURES ^wEARTHSET”"
+   ]
+  },
+  {
+   "t0": 16.969,
+   "t1": 18.75,
+   "cps": 12,
+   "lines": [
+    "SO...",
+    "^yREAL ^wOR ^rAI?"
+   ]
+  },
+  {
+   "t0": 18.975,
+   "t1": 22.5,
+   "cps": 20,
+   "y": 0.68,
+   "lines": [
+    "^gNASA ^gFOOTAGE. ^wNOT AI."
+   ]
+  },
+  {
+   "t0": 22.5,
+   "t1": 23.438,
+   "cps": 0,
+   "lines": [
+    "SOURCE:",
+    "^cNASA · ARTEMIS I"
+   ]
+  },
+  {
+   "t0": 23.438,
+   "t1": 24.375,
+   "cps": 0,
+   "lines": [
+    "SEND ME",
+    "^yTHE NEXT ONE"
+   ]
+  }
+ ],
+ "overlays": [
+  {
+   "type": "circle",
+   "t0": 6.188,
+   "t1": 9.375,
+   "at": [
+    0.5,
+    0.5
+   ],
+   "r": 0.24,
+   "_note": "around clue 1 (frame coordinates)",
+   "aspect": 1.25
+  },
+  {
+   "type": "circle",
+   "t0": 9.938,
+   "t1": 13.125,
+   "at": [
+    0.5,
+    0.627
+   ],
+   "r": 0.085
+  },
+  {
+   "type": "circle",
+   "t0": 13.5,
+   "t1": 16.875,
+   "at": [
+    0.5,
+    0.425
+   ],
+   "r": 0.43,
+   "aspect": 0.32
+  },
+  {
+   "type": "stamp",
+   "t": 18.75,
+   "t1": 22.5,
+   "text": "REAL",
+   "at": [
+    0.5,
+    0.25
+   ],
+   "_note": "REAL / AI / UNVERIFIED"
+  }
+ ],
+ "voice": [],
+ "flicker": [
+  [
+   18.75,
+   22.5
+  ]
+ ],
+ "thumbnail": {
+  "layout": "single",
+  "frame": {
+   "clip": "earthset",
+   "t": 10.0,
+   "focus": [
+    0.565,
+    0.72
+   ],
+   "zoom": 1.25
+  },
+  "lines": [
+   "“^xREAL ^xOR ^xAI?”"
+  ],
+  "y": 0.28,
+  "size": 0.13,
+  "circle": {
+   "at": [
+    0.5,
+    0.725
+   ],
+   "r": 0.11
+  }
+ },
+ "music": {
+  "file": "clips/music.wav",
+  "synth": {
+   "bpm": 128.0,
+   "sections": [
+    {
+     "name": "intro",
+     "bars": 3
+    },
+    {
+     "name": "verse",
+     "bars": 6
+    },
+    {
+     "name": "build",
+     "bars": 1
+    },
+    {
+     "name": "drop",
+     "bars": 2
+    },
+    {
+     "name": "break",
+     "bars": 1
+    }
+   ]
+  }
+ },
+ "sfx": [],
+ "_built": {
+  "bpm": 128.0,
+  "track": null,
+  "drop_bar": 10,
+  "drop_at_s": 18.75
+ }
+}
