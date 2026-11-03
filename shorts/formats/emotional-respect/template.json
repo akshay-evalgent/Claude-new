@@ -1,0 +1,619 @@
+{
+ "title": "TEMPLATE: emotional respect short on the kyzbJFn98EE soundtrack",
+ "_timing": "Transition times measured from the reference edit; keep them, they sit on the song.",
+ "_audio": {
+  "bpm": 97.44,
+  "drop": 13.0,
+  "stops": [
+   [
+    5.5,
+    5.75
+   ],
+   [
+    5.95,
+    6.45
+   ],
+   [
+    11.2,
+    12.2
+   ],
+   [
+    17.35,
+    18.75
+   ]
+  ]
+ },
+ "size": [
+  1080,
+  1350
+ ],
+ "fps": 30,
+ "crf": 18,
+ "music": {
+  "file": "clips/music.m4a"
+ },
+ "fade_in": [
+  0.0,
+  0.1
+ ],
+ "fade_out": [
+  26.927,
+  27.127
+ ],
+ "shots": [
+  {
+   "t0": 0.0,
+   "t1": 0.734,
+   "clip": "CLIP",
+   "in": 0.0,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.0
+    ],
+    [
+     0.734,
+     1.2,
+     "in"
+    ]
+   ],
+   "_what": "describe the shot"
+  },
+  {
+   "t0": 0.734,
+   "t1": 2.336,
+   "clip": "CLIP",
+   "in": 0.0,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.0
+    ],
+    [
+     1.602,
+     1.06
+    ]
+   ],
+   "_what": "describe the shot"
+  },
+  {
+   "t0": 2.336,
+   "t1": 4.571,
+   "clip": "CLIP",
+   "in": 0.0,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.0
+    ],
+    [
+     2.235,
+     1.06
+    ]
+   ],
+   "_what": "describe the shot"
+  },
+  {
+   "t0": 4.571,
+   "t1": 6.607,
+   "clip": "CLIP",
+   "in": 0.0,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.0
+    ],
+    [
+     2.036,
+     1.06
+    ]
+   ],
+   "_what": "describe the shot"
+  },
+  {
+   "t0": 6.607,
+   "t1": 10.244,
+   "clip": "CLIP",
+   "in": 0.0,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.0
+    ],
+    [
+     3.637,
+     1.06
+    ]
+   ],
+   "_what": "describe the shot"
+  },
+  {
+   "t0": 10.244,
+   "t1": 12.346,
+   "clip": "CLIP",
+   "in": 0.0,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.0
+    ],
+    [
+     2.102,
+     1.06
+    ]
+   ],
+   "_what": "describe the shot"
+  },
+  {
+   "t0": 12.346,
+   "t1": 13.68,
+   "clip": "CLIP",
+   "in": 0.0,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.0
+    ],
+    [
+     1.334,
+     1.06
+    ]
+   ],
+   "_what": "describe the shot"
+  },
+  {
+   "t0": 13.68,
+   "t1": 14.848,
+   "clip": "CLIP",
+   "in": 0.0,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.0
+    ],
+    [
+     1.168,
+     1.06
+    ]
+   ],
+   "_what": "describe the shot",
+   "handheld": 5
+  },
+  {
+   "t0": 14.848,
+   "t1": 19.887,
+   "clip": "CLIP",
+   "in": 0.0,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.0
+    ],
+    [
+     5.039,
+     1.06
+    ]
+   ],
+   "_what": "describe the shot",
+   "handheld": 5
+  },
+  {
+   "t0": 19.887,
+   "t1": 21.989,
+   "clip": "CLIP",
+   "in": 0.0,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.0
+    ],
+    [
+     2.102,
+     1.06
+    ]
+   ],
+   "_what": "describe the shot",
+   "handheld": 5
+  },
+  {
+   "t0": 21.989,
+   "t1": 24.658,
+   "clip": "CLIP",
+   "in": 0.0,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.0
+    ],
+    [
+     2.669,
+     1.06
+    ]
+   ],
+   "_what": "describe the shot",
+   "handheld": 5
+  },
+  {
+   "t0": 24.658,
+   "t1": 25.325,
+   "clip": "CLIP",
+   "in": 0.0,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.0
+    ],
+    [
+     0.667,
+     1.2,
+     "in"
+    ]
+   ],
+   "_what": "describe the shot",
+   "handheld": 5
+  },
+  {
+   "t0": 25.325,
+   "t1": 27.16,
+   "clip": "CLIP",
+   "in": 0.0,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.0
+    ],
+    [
+     1.835,
+     1.06
+    ]
+   ],
+   "_what": "describe the shot",
+   "handheld": 5
+  }
+ ],
+ "transitions": [
+  {
+   "t": 0.734,
+   "type": "white",
+   "a": 0.067,
+   "b": 0.08
+  },
+  {
+   "t": 2.336,
+   "type": "tvoff",
+   "a": 0.234,
+   "b": 0.167
+  },
+  {
+   "t": 4.571,
+   "type": "leak",
+   "a": 0.234,
+   "b": 0.234
+  },
+  {
+   "t": 6.607,
+   "type": "leak",
+   "a": 0.067,
+   "b": 0.2
+  },
+  {
+   "t": 10.244,
+   "type": "leak",
+   "a": 0.234,
+   "b": 0.2
+  },
+  {
+   "t": 12.346,
+   "type": "cut"
+  },
+  {
+   "t": 13.68,
+   "type": "cut"
+  },
+  {
+   "t": 14.848,
+   "type": "leak",
+   "a": 0.234,
+   "b": 0.2
+  },
+  {
+   "t": 19.887,
+   "type": "leak",
+   "a": 0.234,
+   "b": 0.2
+  },
+  {
+   "t": 21.989,
+   "type": "leak",
+   "a": 0.267,
+   "b": 0.2
+  },
+  {
+   "t": 24.658,
+   "type": "cut"
+  },
+  {
+   "t": 25.325,
+   "type": "glitch",
+   "b": 0.133
+  }
+ ],
+ "captions": [
+  {
+   "t0": 0.91,
+   "t1": 2.36,
+   "cps": 0,
+   "lines": [
+    "“^xKEY ^yWORDS”"
+   ],
+   "y": 0.72
+  },
+  {
+   "t0": 2.6,
+   "t1": 4.59,
+   "cps": 15,
+   "lines": [
+    "LINE ONE",
+    "^yLINE ^rTWO"
+   ]
+  },
+  {
+   "t0": 4.9,
+   "t1": 6.63,
+   "cps": 15,
+   "lines": [
+    "LINE ONE",
+    "^yLINE ^rTWO"
+   ]
+  },
+  {
+   "t0": 6.91,
+   "t1": 10.26,
+   "cps": 15,
+   "lines": [
+    "LINE ONE",
+    "^yLINE ^rTWO"
+   ]
+  },
+  {
+   "t0": 10.54,
+   "t1": 12.37,
+   "cps": 15,
+   "lines": [
+    "LINE ONE",
+    "^yLINE ^rTWO"
+   ]
+  },
+  {
+   "t0": 12.45,
+   "t1": 13.7,
+   "cps": 15,
+   "lines": [
+    "LINE ONE",
+    "^yLINE ^rTWO"
+   ]
+  },
+  {
+   "t0": 13.78,
+   "t1": 14.87,
+   "cps": 15,
+   "lines": [
+    "LINE ONE",
+    "^yLINE ^rTWO"
+   ]
+  },
+  {
+   "t0": 15.15,
+   "t1": 19.91,
+   "cps": 15,
+   "lines": [
+    "LINE ONE",
+    "^yLINE ^rTWO"
+   ]
+  },
+  {
+   "t0": 20.19,
+   "t1": 22.01,
+   "cps": 15,
+   "lines": [
+    "LINE ONE",
+    "^yLINE ^rTWO"
+   ]
+  },
+  {
+   "t0": 22.29,
+   "t1": 24.68,
+   "cps": 15,
+   "lines": [
+    "LINE ONE",
+    "^yLINE ^rTWO"
+   ]
+  },
+  {
+   "t0": 24.76,
+   "t1": 25.34,
+   "cps": 15,
+   "lines": [
+    "LINE ONE",
+    "^yLINE ^rTWO"
+   ]
+  },
+  {
+   "t0": 25.42,
+   "t1": 27.18,
+   "cps": 0,
+   "lines": [
+    "“^xRESPECT”"
+   ],
+   "y": 0.63,
+   "size": 0.095
+  }
+ ],
+ "overlays": [
+  {
+   "type": "arrow",
+   "t0": 0.78,
+   "t1": 2.34,
+   "tail": [
+    0.8,
+    0.68
+   ],
+   "tip": [
+    0.61,
+    0.53
+   ],
+   "bend": 0.4,
+   "_note": "point at the detail that matters"
+  },
+  {
+   "type": "heart",
+   "t": 25.385,
+   "big": 0.45,
+   "big_at": [
+    0.5,
+    0.45
+   ],
+   "small_at": [
+    0.5,
+    0.535
+   ],
+   "beats": [
+    25.867
+   ]
+  },
+  {
+   "type": "sparkles",
+   "t0": 25.32,
+   "t1": 27.26,
+   "n": 50
+  }
+ ],
+ "flicker": [
+  [
+   0.13,
+   0.5
+  ],
+  [
+   1.03,
+   2.0
+  ],
+  [
+   2.57,
+   4.3
+  ],
+  [
+   5.04,
+   6.51
+  ],
+  [
+   7.04,
+   9.98
+  ],
+  [
+   10.54,
+   12.35
+  ],
+  [
+   12.55,
+   13.51
+  ],
+  [
+   13.71,
+   14.01
+  ],
+  [
+   14.25,
+   14.51
+  ],
+  [
+   15.18,
+   15.82
+  ],
+  [
+   16.05,
+   16.48
+  ],
+  [
+   16.75,
+   19.49
+  ],
+  [
+   20.19,
+   21.49
+  ],
+  [
+   22.52,
+   24.49
+  ],
+  [
+   24.76,
+   25.33
+  ]
+ ],
+ "_source": "python3 -m beatcut.mirror analyze reference_short.mp4 <episode> (reference: https://www.youtube.com/shorts/kyzbJFn98EE). Copy this file to episodes/<name>/story.json, put the soundtrack at clips/music.m4a, fill shots and captions."
+}

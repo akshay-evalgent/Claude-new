@@ -1,0 +1,22 @@
+reference /tmp/claude-0/-home-user-Claude-new/38d6d883-19ec-507f-8775-aac3da9d63a5/scratchpad/ref/reference_short.mp4
+duration 27.16 s at 29.970 fps
+tempo ~97.44 bpm, drop at 13.0 s, stops [[5.5, 5.75], [5.95, 6.45], [11.2, 12.2], [17.35, 18.75]]
+
+transitions:
+    0.734  white   in 0.07s out 0.08s
+    2.336  tvoff   in 0.23s out 0.17s
+    4.571  leak    in 0.23s out 0.23s
+    6.607  leak    in 0.07s out 0.20s
+   10.244  leak    in 0.23s out 0.20s
+   12.346  cut   
+   13.680  cut   
+   14.848  leak    in 0.23s out 0.20s
+   19.887  leak    in 0.23s out 0.20s
+   21.989  leak    in 0.27s out 0.20s
+   24.658  cut   
+   25.325  glitch  in 0.00s out 0.13s
+
+fade in [0.0, 0.1], fade out [26.927, 27.127]
+flicker [[0.13, 0.5], [1.03, 2.0], [2.57, 4.3], [5.04, 6.51], [7.04, 9.98], [10.54, 12.35], [12.55, 13.51], [13.71, 14.01], [14.25, 14.51], [15.18, 15.82], [16.05, 16.48], [16.75, 19.49], [20.19, 21.49], [22.52, 24.49], [24.76, 25.33]]
+
+13 shot slots: 0.73, 1.60, 2.23, 2.04, 3.64, 2.10, 1.33, 1.17, 5.04, 2.10, 2.67, 0.67, 1.84

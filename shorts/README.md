@@ -120,7 +120,12 @@ Writing the captions: 2 to 6 words, one fact, a number wherever there is one, an
 `beatcut/story.py` renders an edit timed in seconds instead of beats, for when the music comes from a reference
 edit: copy the reference's transition times (they already sit on the song's hits) and put your own shots, typed
 neon captions, light leaks, TV-off and glitch transitions, an arrow, sparkles and a heart-burst ending into the
-same slots. Example: `episodes/messi-respect/` (see its `NOTES.md`).
+same slots. Example: `episodes/messi-respect/` (see its `NOTES.md` and `POST.md`).
+
+The emotional "respect" format is saved in `formats/emotional-respect/` (`FORMAT.md`, `template.json`,
+`reference_timeline.txt`) and as the project skill `/emotional-short` (`.claude/skills/emotional-short/SKILL.md`).
+`beatcut/mirror.py` measures any reference edit and writes a skeleton in its slots; `beatcut/thumb.py` makes the
+1080x1920 thumbnail.
 
 ## Files
 

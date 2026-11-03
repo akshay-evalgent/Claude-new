@@ -577,5 +577,34 @@
    25.83,
    26.57
   ]
- ]
+ ],
+ "thumbnail": {
+  "top": {
+   "clip": "messi",
+   "t": 1.6,
+   "focus": [
+    0.69,
+    0.38
+   ],
+   "zoom": 1.7
+  },
+  "bottom": {
+   "clip": "messi",
+   "t": 1.6,
+   "focus": [
+    0.31,
+    0.33
+   ],
+   "zoom": 1.9
+  },
+  "lines": [
+   "HIS SHIRT WAS A",
+   "“^yPLASTIC ^yBAG”"
+  ],
+  "size": 0.105,
+  "heart_at": [
+   0.83,
+   0.67
+  ]
+ }
 }
