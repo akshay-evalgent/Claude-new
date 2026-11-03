@@ -222,6 +222,7 @@
     ctx.restore();
   }
 
+
   // ---------- post-processing (WebGL2) ----------
   const VS = `#version 300 es
   in vec2 p; out vec2 uv;
@@ -338,6 +339,79 @@
     kinetic, caption, typewriter, roundRect, layoutText,
   };
 
+  // ---------- media: images, frame-sequence clips, Ken Burns, perspective ----------
+  const IMG = new Map(); const LRU = [];
+  S._missing = [];
+  function loadImg(src) {
+    let e = IMG.get(src);
+    if (e) return e;
+    e = { ready: false, img: null };
+    const im = new Image();
+    e.p = new Promise(res => {
+      im.onload = () => { (im.decode ? im.decode() : Promise.resolve()).catch(() => {}).then(() => { e.img = im; e.ready = true; res(); }); };
+      im.onerror = () => { console.error('missing media: ' + src); e.ready = true; e.err = true; res(); };
+    });
+    im.src = src;
+    IMG.set(src, e); LRU.push(src);
+    if (LRU.length > 260) { const old = LRU.shift(); const oe = IMG.get(old); if (oe && oe.img) oe.img.src = ''; IMG.delete(old); }
+    return e;
+  }
+  S.img = function (src) {
+    const e = loadImg(src);
+    if (!e.ready) { S._missing.push(e.p); return null; }
+    return e.img;
+  };
+  S.prefetch = src => { loadImg(src); };
+  // frame-sequence clip described in window.MEDIA[name] = {dir, n, fps, w, h, ext}
+  S.clip = function (name, t, o = {}) {
+    const m = (window.MEDIA || {})[name];
+    if (!m) { console.error('unknown clip ' + name); return null; }
+    let i = Math.floor((o.from || 0) * m.fps + t * m.fps * (o.speed || 1));
+    if (o.loop) i = ((i % m.n) + m.n) % m.n; else i = Math.max(0, Math.min(m.n - 1, i));
+    const src = k => `${m.dir}/f_${String(k).padStart(4, '0')}.${m.ext || 'jpg'}`;
+    for (let k = 1; k <= 4; k++) { const j = i + k; if (j < m.n) S.prefetch(src(j)); }
+    return S.img(src(i));
+  };
+  S.media = name => (window.MEDIA || {})[name];
+  // draw img to cover rect, with zoom about a focus point (fx, fy in 0..1 of the source)
+  S.cover = function (ctx, img, x, y, w, h, o = {}) {
+    if (!img) return;
+    const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+    const z = o.zoom || 1, fx = o.fx ?? .5, fy = o.fy ?? .5;
+    const s = Math.max(w / iw, h / ih) * z;
+    const sw = w / s, sh = h / s;
+    let sx = fx * iw - sw / 2, sy = fy * ih - sh / 2;
+    sx = Math.max(0, Math.min(iw - sw, sx)); sy = Math.max(0, Math.min(ih - sh, sy));
+    ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+  };
+  // draw a source rect of img into an arbitrary quad [tl,tr,br,bl] (strip-based perspective)
+  S.warp = function (ctx, img, sx, sy, sw, sh, q, strips = 40) {
+    if (!img) return;
+    const L2 = (a, b, u) => [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u];
+    const ssw = sw / strips;
+    for (let i = 0; i < strips; i++) {
+      const u0 = i / strips, u1 = (i + 1) / strips;
+      const t0 = L2(q[0], q[1], u0), t1 = L2(q[0], q[1], u1), b0 = L2(q[3], q[2], u0), b1 = L2(q[3], q[2], u1);
+      ctx.save();
+      ctx.beginPath(); ctx.moveTo(t0[0] - .6, t0[1]); ctx.lineTo(t1[0] + .6, t1[1]); ctx.lineTo(b1[0] + .6, b1[1]); ctx.lineTo(b0[0] - .6, b0[1]); ctx.closePath(); ctx.clip();
+      ctx.transform((t1[0] - t0[0]) / ssw, (t1[1] - t0[1]) / ssw, (b0[0] - t0[0]) / sh, (b0[1] - t0[1]) / sh, t0[0], t0[1]);
+      ctx.drawImage(img, sx + u0 * sw, sy, ssw + .8, sh, 0, 0, ssw + .8, sh);
+      ctx.restore();
+    }
+  };
+  // quad for a w*h card centred at (cx,cy) rotated about Y by ry (radians) and X by rx, simple pinhole
+  S.cardQuad = function (cx, cy, w, h, ry = 0, rx = 0, persp = 1800, rz = 0) {
+    const pts = [[-w / 2, -h / 2], [w / 2, -h / 2], [w / 2, h / 2], [-w / 2, h / 2]].map(([x, y]) => {
+      let X = x * Math.cos(ry), Z = -x * Math.sin(ry), Y = y;
+      const Y2 = Y * Math.cos(rx) - Z * Math.sin(rx), Z2 = Y * Math.sin(rx) + Z * Math.cos(rx);
+      const k = persp / (persp + Z2);
+      let px = X * k, py = Y2 * k;
+      const c = Math.cos(rz), s = Math.sin(rz);
+      return [cx + px * c - py * s, cy + px * s + py * c];
+    });
+    return pts;
+  };
+
   S.boot = async function (EP) {
     await loadFonts();
     const out = document.getElementById('out');
@@ -347,20 +421,28 @@
     if (EP.init) await EP.init(S);
     const post = makePost(out, src);
     S.duration = EP.duration;
-    S.renderAt = function (t) {
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; ctx.filter = 'none';
-      ctx.clearRect(0, 0, W, H);
-      const fx = {};
-      EP.draw(ctx, t, fx);
+    // Rendering is two-phase when media is involved: draw, and if any image was
+    // requested that is not decoded yet, wait for it and draw again.
+    S.renderAt = async function (t) {
+      let fx = {};
+      for (let pass = 0; pass < 5; pass++) {
+        S._missing = [];
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; ctx.filter = 'none';
+        ctx.clearRect(0, 0, W, H);
+        fx = {};
+        EP.draw(ctx, t, fx);
+        if (!S._missing.length) break;
+        await Promise.all(S._missing);
+      }
       post(fx, t);
     };
-    S.frameJPEG = function (t, q = 0.93) { S.renderAt(t); return out.toDataURL('image/jpeg', q); };
-    S.framePNG = function (t) { S.renderAt(t); return out.toDataURL('image/png'); };
+    S.frameJPEG = async function (t, q = 0.93) { await S.renderAt(t); return out.toDataURL('image/jpeg', q); };
+    S.framePNG = async function (t) { await S.renderAt(t); return out.toDataURL('image/png'); };
     window.READY = true;
     // live preview when opened in a normal browser: ?t=12.5 or scrub with play
     const qs = new URLSearchParams(location.search);
     if (qs.has('t')) S.renderAt(parseFloat(qs.get('t')));
-    else if (qs.has('play')) { const st = performance.now(); const loop = () => { S.renderAt(((performance.now() - st) / 1000) % EP.duration); requestAnimationFrame(loop); }; loop(); }
+    else if (qs.has('play')) { const st = performance.now(); const loop = async () => { await S.renderAt(((performance.now() - st) / 1000) % EP.duration); requestAnimationFrame(loop); }; loop(); }
   };
 })();

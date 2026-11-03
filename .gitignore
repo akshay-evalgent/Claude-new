@@ -1,3 +1,5 @@
 film/input/
 __pycache__/
 shorts/**/out/
+shorts/**/media_src/
+shorts/**/media/
