@@ -63,7 +63,7 @@ occasional series, if you want zero rights risk.
   → today (recent footage or photo, with permission) → payoff → heart.
 - **Voice:** two or three spoken lines carrying the new facts. This is the most original series on the channel.
 - **Research:** at least two news sources for every claim; keep them in the episode's `POST.md`.
-- **Template:** the emotional format with a longer middle. Mostly built already.
+- **Built:** `formats/what-happened-next/` (FORMAT.md, template.json timed in bars, EVIDENCE.md, POST.md), skill `/what-happened-next`, example `episodes/whn-little-messi/`.
 
 ### Series 4: THE WEEK IN REAL ONES (weekly long-form, 8–12 min)
 - **What:** the week's best Shorts expanded, with more context, your narration and chapters.

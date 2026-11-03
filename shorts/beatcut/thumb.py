@@ -51,7 +51,10 @@ def main(ep_dir):
     for key, y0 in (("top", 0), ("bottom", half)):
         p = th[key]
         fr = grab(ep / "clips" / f"{p['clip']}.mp4", p["t"])
-        out[y0:y0 + half] = panel(fr, W, half, p.get("focus", [0.5, 0.5]), p.get("zoom", 1.0))
+        img = panel(fr, W, half, p.get("focus", [0.5, 0.5]), p.get("zoom", 1.0))
+        if p.get("bw"):
+            img = cv2.cvtColor(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), cv2.COLOR_GRAY2BGR)
+        out[y0:y0 + half] = img
     out = Look(W, H).apply(out, 0, contrast=1.1, sat=1.25, grain=1.5)
     # dark band on the seam so the words read
     yy = np.arange(H, dtype=np.float32)[:, None, None]

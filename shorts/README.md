@@ -129,7 +129,7 @@ The emotional "respect" format is saved in `formats/emotional-respect/` (`FORMAT
 
 Series templates timed in bars live in `formats/<series>/template.json`; `beatcut/template.py` scaffolds an episode
 (`new`) and converts it to seconds at any BPM or locked to a song's drop (`build`). First series: **REAL OR AI?**
-(`formats/real-or-ai/`, skill `/real-or-ai`, example `episodes/roai-earthset/`).
+(`formats/real-or-ai/`, skill `/real-or-ai`, example `episodes/roai-earthset/`); **WHAT HAPPENED NEXT** (`formats/what-happened-next/`, skill `/what-happened-next`, example `episodes/whn-little-messi/`).
 
 ## Files
 
