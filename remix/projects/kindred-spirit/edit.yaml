@@ -1,0 +1,171 @@
+# KINDRED SPIRIT — a crossover cut from three Blender open movies.
+#
+# Sintel is a dragon hunter. Tears of Steel has a giant robot tearing up
+# Amsterdam. Here the robot is the dragon she was sent to slay, and the
+# dragon turns out to be Celia: a woman who was left behind. The hunter
+# can't strike; the gatekeeper tells her she has only failed to see; the
+# man who left says sorry. Proog (Elephants Dream) opens the film as a tour
+# guide who insists everything is safe.
+#
+# Line refs (line: N) are from work/bank.txt. Times are source seconds or m:ss.s.
+title: Kindred Spirit
+work: ../../work
+
+output:
+  size: [1280, 720]
+  fps: 24
+  picture: 2.39            # one cinemascope frame for all three films
+  fit: crop
+  look: {saturation: 0.92, contrast: 1.04}
+  loudness: -16
+
+sources:
+  ed: {path: ../../sources/elephants_dream.mp4, grade: {saturation: 0.85, contrast: 1.06}}
+
+captions:
+  burn: true
+  fix: {Tom: Thom, Prug: Proog, "Prüg": Proog}
+
+defaults:
+  pad: [0.15, 0.3]
+  xfade: 0.05
+  dialogue_lufs: -20
+
+timeline:
+  # ---------------------------------------------------------------- cold open
+  - src: tos                     # misty ruined Amsterdam, Proog narrating as a tour guide
+    in: 1:09.95
+    voice: {src: ed, line: 1, at: 0.3, gain: -2}
+    audio: -14                   # keep a little of the city's wind under him
+    tail: 0.4
+    note: Proog's tour of a ruined city
+  - src: tos                     # the robot — "Nothing to worry about."
+    in: 3:42.45
+    out: 3:45.05
+    note: robot in the street
+  - card: "KINDRED SPIRIT"
+    dur: 2.6
+    split: -0.6                  # let "...worry about" ring into the title
+
+  # ---------------------------------------------------------------- the hunter
+  - src: sintel
+    line: 1                      # This blade has a dark past.
+    pre: 0.4
+  - src: sintel
+    line: 8                      # So, what brings you to the land of the gatekeepers?
+    in: 2:07.1
+  - src: sintel                  # Sintel looking over a city at sunset
+    in: 5:39.35
+    voice: {src: sintel, line: 9, at: 0.2}   # I'm searching for someone.
+    tail: 0.5
+    note: her voice over the city she is searching
+  - src: sintel
+    line: 10                     # Someone very dear?
+    post: 0.2
+  - src: sintel
+    line: 11                     # A kindred spirit?
+    post: 0.5
+  - src: sintel                  # "A dragon." (whisper mistimed this one; cut by ear-print)
+    in: 2:22.75
+    out: 2:24.35
+    caption: "A dragon."
+  - src: tos                     # the dragon
+    in: 7:44.85
+    out: 7:47.6
+    gain: 2
+    note: the robot in the church
+  - src: sintel                  # A dangerous quest for a lone hunter. (over her resolve; the original is black here)
+    in: 5:42.4
+    voice: {src: sintel, line: 13, at: 0.3}
+    audio: -12
+    tail: 0.3
+  - src: sintel
+    line: 14                     # I've been alone for as long as I can remember
+    post: 0.6
+
+  # ---------------------------------------------------------------- the dragon
+  - src: tos                     # the robot speaks with Celia's voice
+    line: 50                     # You're a jerk, Thom!
+    in: 4:59.05
+    split: 0.25
+  - src: sintel                  # Sintel sees it
+    in: 5:15.0
+    out: 5:15.6
+    hold: 0.35
+  - src: tos                     # the robot's face becomes Celia's
+    in: 5:08.25
+    out: 5:10.55
+    audio: -6
+  - src: tos                     # You broke my heart. / I know. / You forgot me on earth. / I know. / I should just crush you.
+    in: 6:23.15
+    out: 6:32.45
+    note: Celia and Thom, the real fight
+  - src: sintel                  # the hunter raises her blade
+    in: 10:06.35
+    out: 10:08.95
+  - src: tos                     # Celia, close
+    in: 6:52.0
+    out: 6:53.6
+    audio: -8
+  - src: sintel                  # ...and can't
+    in: 10:11.95
+    out: 10:13.75
+    flip: true                   # her eyeline back toward Celia
+
+  # ---------------------------------------------------------------- seeing
+  - src: sintel                  # I have failed. (whisper stretched this line; cut by the waveform)
+    in: 7:25.0
+    out: 7:27.0
+    caption: "I have failed."
+  - src: sintel
+    line: 28                     # You've only failed to see.
+    post: 0.5
+  - src: tos
+    line: 44                     # Be tender to her.
+  - src: tos
+    line: 45                     # Be honest.
+    post: 0.4
+  - src: tos
+    line: 47                     # Remind her what love is.
+    post: 0.4
+  - src: tos
+    line: 77                     # I'm sorry.
+    pre: 0.8
+    post: 0.5
+  - src: tos                     # Celia hears it; his hand on her face
+    in: 6:53.6
+    out: 6:55.85
+    audio: -6
+  - src: tos                     # The world's changed, Celia.
+    in: 8:37.95
+    out: 8:41.0
+    caption: "The world's changed, Celia."
+  - src: tos
+    line: 86                     # Maybe we can too.
+    post: 0.6
+  - src: sintel
+    line: 29                     # These are Dragonlands, Sintel.
+    in: 7:36.9
+  - src: sintel
+    line: 30                     # You are closer than you know.
+    post: 0.8
+  - src: sintel                  # she walks on
+    in: 11:57.0
+    out: 12:04.5
+    fade_out: 2.5
+
+  # ---------------------------------------------------------------- end
+  - card: "KINDRED SPIRIT\n~cut from Sintel, Tears of Steel and Elephants Dream\n~(c) Blender Foundation | durian.blender.org | mango.blender.org | orange.blender.org | CC BY"
+    dur: 4.5
+  - src: tos                     # stinger
+    line: 88                     # You know,
+    in: 9:18.3
+  - src: tos
+    line: 89                     # there's a lesson to be learned from this.
+  - src: tos
+    line: 90                     # Could have gone worse.
+    post: 0.7
+    fade_out: 0.5
+
+overlays:
+  - {src: sintel, in: 12:04.5, out: 12:09.5, at_clip: 32, fade_in: 0.3, fade_out: 1.5}   # score carries over the end card

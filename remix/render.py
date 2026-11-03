@@ -182,7 +182,7 @@ def resolve(edl, S):
         if "card" in e:
             dur = float(e.get("dur", 2.0))
             clips.append({"kind": "card", "i": i, "e": e, "text": e["card"], "n": max(1, round(dur * fps)),
-                          "split": 0.0})
+                          "split": float(e.get("split", 0.0))})
             continue
         src = e.get("src")
         if not src and isinstance(e.get("line"), str) and ":" in e["line"]:
@@ -217,6 +217,11 @@ def resolve(edl, S):
             cout = cin + voice["at"] + (voice["cout"] - voice["cin"]) + float(e.get("tail", 0.0))
         else:
             sys.exit(f"{where}: needs out: or dur: (or line:/say:/voice:)")
+        if sc:  # explicit in/out widen the sound too, not just the picture
+            if "in" in e:
+                sc["lim_in"] = min(sc["lim_in"], cin)
+            if "out" in e or "dur" in e:
+                sc["lim_out"] = max(sc["lim_out"], cout)
         meta = S.meta(src)
         cout = min(cout, meta["duration"] - 1.0 / fps)
         if cout <= cin:
@@ -434,6 +439,48 @@ def audio_segments(edl, S, clips, total):
     return [s for s in segs if s["s1"] - s["s0"] > 0.02]
 
 
+def segment_loudness(S, s):
+    """Integrated loudness (LUFS) of one piece of source sound, or None when too short/quiet."""
+    L = s["s1"] - s["s0"]
+    if L < 0.5:
+        return None
+    r = run(["ffmpeg", "-hide_banner", "-nostats", "-ss", f"{s['s0']:.3f}", "-t", f"{L:.3f}",
+             "-i", S.wav_path(s["src"]), "-af", "ebur128=framelog=quiet", "-f", "null", "-"])
+    m = re.findall(r"I:\s+(-?[0-9.]+) LUFS", r.stderr)
+    v = float(m[-1]) if m else None
+    return v if v is not None and v > -60 else None
+
+
+def level_match(edl, S, segs):
+    """Bring every spoken piece to the same loudness; sources are mastered differently.
+
+    Speech segments are measured and gained to defaults.dialogue_lufs (clamped).
+    Segments without speech (reactions, ambience) take their source's median
+    speech gain, so a quiet room tone is not pumped up to dialogue level.
+    """
+    d = edl.get("defaults") or {}
+    if d.get("level_match", True) is False:
+        return
+    target = float(d.get("dialogue_lufs", -20))
+    lim = float(d.get("level_match_max", 18))
+    per_src = {}
+    for s in segs:
+        speech = (s["track"] == "voice") or (s["clip"] is not None and s["clip"]["sc"] is not None)
+        if not speech:
+            continue
+        lv = segment_loudness(S, s)
+        if lv is None:
+            continue
+        g = max(-lim, min(lim, target - lv))
+        s["auto"] = g
+        per_src.setdefault(s["src"], []).append(g)
+    med = {k: sorted(v)[len(v) // 2] for k, v in per_src.items()}
+    for s in segs:
+        if "auto" not in s:
+            s["auto"] = med.get(s["src"], 0.0)
+        s["gain"] += s["auto"]
+
+
 def mix_audio(edl, S, segs, total, workdir, draft):
     inputs, fc, labels = [], [], {"sync": [], "voice": []}
     for k, s in enumerate(segs):
@@ -514,23 +561,42 @@ def caption_events(edl, S, clips, segs):
         ws = [w for w in S.words(s["src"]) if lo <= (w["s"] + w["e"]) / 2 <= hi]
         if isinstance(flag, str):
             if ws:
-                groups.append([{"w": flag, "t0": ws[0]["s"] + origin, "t1": ws[-1]["e"] + origin}])
+                t0, t1 = ws[0]["s"] + origin, ws[-1]["e"] + origin
+            else:  # the transcript has nothing here: show it over the sound window
+                t0, t1 = s["at"] + 0.15, s["at"] + (s["s1"] - s["s0"]) - 0.3
+            groups.append([{"w": flag, "t0": t0, "t1": t1}])
             continue
         groups.append([{"w": w["w"], "t0": w["s"] + origin, "t1": w["e"] + origin} for w in ws])
+    # phrases break at pauses and sentence ends; a phrase too long for one line is
+    # cut into balanced pieces ("I've been alone for as long" / "as I can remember")
     events = []
     for g in groups:
-        cur = []
+        phrases, cur = [], []
         for w in g:
-            txt = " ".join(x["w"] for x in cur + [w])
-            if cur and (w["t0"] - cur[-1]["t1"] > 0.6 or len(txt) > maxc):
-                events.append(cur)
+            if cur and w["t0"] - cur[-1]["t1"] > 0.6:
+                phrases.append(cur)
                 cur = []
             cur.append(w)
             if re.search(r"[.?!…]$", w["w"]) and len(" ".join(x["w"] for x in cur)) > 12:
-                events.append(cur)
+                phrases.append(cur)
                 cur = []
         if cur:
-            events.append(cur)
+            phrases.append(cur)
+        for ph in phrases:
+            total = len(" ".join(x["w"] for x in ph))
+            k = max(1, math.ceil(total / maxc))
+            if k == 1 or len(ph) == 1:
+                events.append(ph)
+                continue
+            target, piece, acc, made = total / k, [], 0, 0
+            for j, w in enumerate(ph):
+                piece.append(w)
+                acc += len(w["w"]) + 1
+                if j < len(ph) - 1 and made < k - 1 and acc >= target - len(w["w"]) / 2:
+                    events.append(piece)
+                    piece, acc, made = [], 0, made + 1
+            if piece:
+                events.append(piece)
     out = []
     for ev in events:
         text = " ".join(w["w"] for w in ev)
@@ -641,6 +707,32 @@ def review_sheet(video, clips, events, path):
     shutil.rmtree(tmp)
 
 
+def dead_air(mix_wav, clips, floor_db=-50.0, min_len=0.4):
+    """Stretches of near silence in the final mix (a dropped sound edit, a muted shot)."""
+    import numpy as np
+
+    w = Wav(mix_wav)
+    x = w.read(0, w.n / w.sr)
+    w.close()
+    hop = int(0.05 * w.sr)
+    n = len(x) // hop
+    if n == 0:
+        return []
+    rms = np.sqrt(np.mean(x[: n * hop].reshape(n, hop) ** 2, axis=1) + 1e-12)
+    db = 20 * np.log10(rms)
+    quiet, out, start = db < floor_db, [], None
+    for i, q in enumerate(list(quiet) + [False]):
+        if q and start is None:
+            start = i
+        elif not q and start is not None:
+            if (i - start) * 0.05 >= min_len:
+                a, b = start * 0.05, i * 0.05
+                where = [c["i"] + 1 for c in clips if c["B"] < b and c["B"] + c["D"] > a]
+                out.append((a, b, where))
+            start = None
+    return out
+
+
 def verify(mix_wav, events, model_name, hotwords=None):
     """Transcribe the finished sound and compare with the caption track."""
     import wave
@@ -720,6 +812,7 @@ def main():
     run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", listing, "-c", "copy", video])
 
     segs = audio_segments(edl, S, clips, total)
+    level_match(edl, S, segs)
     mix = mix_audio(edl, S, segs, total, tmpdir, args.draft)
     events = caption_events(edl, S, clips, segs)
     ass = os.path.join(tmpdir, "captions.ass")
@@ -733,6 +826,10 @@ def main():
          "-crf", crf, "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-t", f"{total:.3f}",
          "-movflags", "+faststart", out])
     review_sheet(out, clips, events, stem + "-review.jpg")
+    for a, b, where in dead_air(mix, clips):
+        kinds = {clips[w - 1]["kind"] for w in where}
+        if kinds != {"card"}:
+            print(f"  dead air {tc(a, 2)}–{tc(b, 2)} ({b - a:.1f}s) in clip(s) {where}")
     print(f"wrote {out}\n      {stem}.srt\n      {stem}-review.jpg\n      {stem}-edl.txt")
     if args.verify:
         names = ", ".join(sorted(set((edl.get("captions") or {}).get("fix", {}).values()))) or None

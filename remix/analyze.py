@@ -244,10 +244,46 @@ def write_bank(work):
         f.write("\n".join(out) + "\n")
 
 
+def draw(name, path, d, shots, lines):
+    """Stills and contact sheets from an analysis (always fresh: old stills are removed)."""
+    import shutil
+
+    sd = os.path.join(d, "stills")
+    shutil.rmtree(sd, ignore_errors=True)
+    os.makedirs(sd)
+    for old in os.listdir(d):
+        if re.fullmatch(r"(shots|lines)-\d+\.jpg", old):
+            os.remove(os.path.join(d, old))
+    jobs = []
+    for sh in shots:
+        sh["still"] = f"stills/S{sh['id']:03d}.jpg"
+        jobs.append((sh["s"] + sh["dur"] / 2, os.path.join(d, sh["still"])))
+    for ln in lines:
+        ln["still"] = f"stills/L{ln['id']:03d}.jpg"
+        jobs.append(((ln["s"] + ln["e"]) / 2, os.path.join(d, ln["still"])))
+    with ThreadPoolExecutor(4) as ex:
+        list(ex.map(lambda j: grab(path, j[0], j[1]), jobs))
+    by_id = {ln["id"]: ln for ln in lines}
+    cells = []
+    for sh in shots:
+        said = " / ".join(by_id[i]["text"] for i in sh["lines"]) or "— no dialogue —"
+        cells.append((os.path.join(d, sh["still"]), f"S{sh['id']:03d}  {tc(sh['s'])}  {sh['dur']:.1f}s", said))
+    sheet(cells, os.path.join(d, "shots"), f"{name} — shots")
+    cells = [(os.path.join(d, ln["still"]), f"L{ln['id']:03d}  {tc(ln['s'])}–{tc(ln['e'])}", ln["text"])
+             for ln in lines]
+    sheet(cells, os.path.join(d, "lines"), f"{name} — dialogue")
+
+
 def analyse(name, path, work, args):
     d = os.path.join(work, name)
-    os.makedirs(os.path.join(d, "stills"), exist_ok=True)
+    os.makedirs(d, exist_ok=True)
     jp = os.path.join(d, "analysis.json")
+    if args.redraw and os.path.exists(jp):
+        with open(jp) as f:
+            a = json.load(f)
+        draw(name, a["meta"]["path"], d, a["shots"], a["lines"])
+        print(f"[{name}] redrew stills and sheets")
+        return
     if os.path.exists(jp) and not args.force:
         print(f"[{name}] already analysed (use --force to redo)")
         return
@@ -271,28 +307,9 @@ def analyse(name, path, work, args):
     attach_shots(lines, shots)
     print(f"[{name}] {len(shots)} shots")
 
-    jobs = []
-    for sh in shots:
-        sh["still"] = f"stills/S{sh['id']:03d}.jpg"
-        jobs.append((sh["s"] + sh["dur"] / 2, os.path.join(d, sh["still"])))
-    for ln in lines:
-        ln["still"] = f"stills/L{ln['id']:03d}.jpg"
-        jobs.append(((ln["s"] + ln["e"]) / 2, os.path.join(d, ln["still"])))
-    with ThreadPoolExecutor(4) as ex:
-        list(ex.map(lambda j: grab(path, j[0], j[1]), jobs))
-
+    draw(name, path, d, shots, lines)
     with open(jp, "w") as f:
         json.dump({"name": name, "meta": meta, "language": lang, "shots": shots, "lines": lines}, f, indent=1)
-
-    by_id = {ln["id"]: ln for ln in lines}
-    cells = []
-    for sh in shots:
-        said = " / ".join(by_id[i]["text"] for i in sh["lines"]) or "— no dialogue —"
-        cells.append((os.path.join(d, sh["still"]), f"S{sh['id']:03d}  {tc(sh['s'])}  {sh['dur']:.1f}s", said))
-    sheet(cells, os.path.join(d, "shots"), f"{name} — shots")
-    cells = [(os.path.join(d, ln["still"]), f"L{ln['id']:03d}  {tc(ln['s'])}–{tc(ln['e'])}", ln["text"])
-             for ln in lines]
-    sheet(cells, os.path.join(d, "lines"), f"{name} — dialogue")
     print(f"[{name}] done in {time.time() - t0:.0f}s -> {d}")
 
 
@@ -309,7 +326,8 @@ def main():
                          "under music. Try 0.3 for long videos that are mostly silence")
     ap.add_argument("--names", default=None,
                     help="character names / unusual words to help the transcript, e.g. 'Sintel, Scales, Thom'")
-    ap.add_argument("--force", action="store_true")
+    ap.add_argument("--force", action="store_true", help="re-analyse sources that already have results")
+    ap.add_argument("--redraw", action="store_true", help="only rebuild stills and contact sheets")
     args = ap.parse_args()
     if args.model.endswith(".en") and not args.language:
         args.language = "en"

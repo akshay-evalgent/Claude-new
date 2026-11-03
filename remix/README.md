@@ -9,6 +9,11 @@ sync.
 
 This is the crossover / fan-edit format: same footage, a different story.
 
+**Demo:** [`projects/kindred-spirit/`](projects/kindred-spirit/STORY.md) is a 1:50
+crossover cut from three Blender open movies (*Sintel*, *Tears of Steel* and
+*Elephants Dream*, all CC BY): a dragon hunter discovers the "dragon"
+wrecking Amsterdam is a woman who was left behind.
+
 ```
 sources/*.mp4 ──► analyze.py ──► work/bank.txt + contact sheets ──► (write the story)
                                                                          │
@@ -50,6 +55,9 @@ Then either write `edit.yaml` yourself with `bank.txt` open, or ask Claude:
 
 `--names` helps the transcript spell names right. Sources can be any length,
 aspect ratio, frame rate or resolution: everything is conformed to the output format.
+`--redraw` rebuilds the stills and contact sheets without re-transcribing.
+Whisper sometimes stretches a word across a pause; when a cut sounds wrong,
+cut that clip by explicit `in`/`out` times and give it a `caption:` string.
 
 ## Finding material
 
@@ -81,6 +89,8 @@ captions:
 defaults:
   pad: [0.12, 0.25]               # seconds kept before the first word / after the last
   xfade: 0.04                     # tiny sound crossfade at every audio edit (no clicks)
+  dialogue_lufs: -20              # every spoken line is levelled to this, up to ±18 dB
+                                  # (level_match_max; level_match: false to disable)
 timeline:
   - card: "THE GATEKEEPER"        # a title card on black; "~smaller line" for a subtitle line
     dur: 2.5
