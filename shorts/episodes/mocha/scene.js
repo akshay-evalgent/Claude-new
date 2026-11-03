@@ -953,7 +953,7 @@
     // loop bridge: back to the opening shot
     if (whip > 0) { ctx.save(); ctx.translate(W * 1.1 * (1 - whip), 0); sIntro(ctx, t, fx); ctx.restore(); }
     if (whip < 1) {
-      cap(ctx, t, "Dave's fine, by the way.", 41.3, 42.5, { y: 400 });
+      cap(ctx, t, "Dave's fine, | by the way.", 41.3, 42.5, { y: 400 });
       cap(ctx, t, 'He makes *mochas* now.', 42.6, 43.25, { y: 400 });
       cap(ctx, t, 'Follow before you | get *replaced* too.', 44.0, 44.95, { y: 330, size: 74 });
     }

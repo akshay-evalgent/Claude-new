@@ -51,7 +51,8 @@ async function renderSlice(w, f0, f1, file) {
   const browser = await chromium.launch(LAUNCH);
   const page = await openPage(browser);
   const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'image2pipe', '-c:v', 'mjpeg', '-framerate', String(fps), '-i', '-',
-    '-c:v', 'libx264', '-preset', opt('preset', 'medium'), '-crf', opt('crf', '15'), '-pix_fmt', 'yuv420p',
+    '-c:v', 'libx264', '-preset', opt('preset', 'slow'), '-crf', opt('crf', '20'), '-maxrate', opt('maxrate', '14M'), '-bufsize', '28M',
+    '-profile:v', 'high', '-pix_fmt', 'yuv420p',
     '-threads', '2', '-r', String(fps), file], { stdio: ['pipe', 'inherit', 'inherit'] });
   const t0 = Date.now();
   for (let f = f0; f < f1; f++) {

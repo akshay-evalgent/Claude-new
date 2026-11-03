@@ -31,9 +31,11 @@ cd shorts/episodes/mocha
 python3 score.py                                    # → out/audio_raw.wav
 ffmpeg -i out/audio_raw.wav -af loudnorm=I=-14:TP=-1:LRA=11 -ar 48000 out/audio.wav
 node ../../engine/render.cjs . --stills 3.2,21.5    # QA stills → out/stills/
-node ../../engine/render.cjs . --fps 60 --workers 3 --out mocha_short.mp4
+node ../../engine/render.cjs . --fps 60 --workers 3 --out mocha_short.mp4   # → out/mocha_short.mp4
 ```
 
+The output is upload-ready: H.264 High, 1080x1920, 60 fps, capped at 14 Mbps (about
+80 MB for 46 s; film grain is what costs the bits), AAC 256k at -14 LUFS.
 `--from/--to` render a slice, `--fps 30` gives a quick preview, and opening
 `index.html?play` in a browser plays the episode live (`?t=12.5` shows one frame).
 
