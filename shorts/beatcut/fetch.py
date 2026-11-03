@@ -1,4 +1,5 @@
-"""Fetch an episode's source clips from the NASA Image and Video Library.
+"""Fetch an episode's source clips: NASA Image and Video Library ("nasa_id") or a NOAA Fisheries
+video page ("noaa_page"). Both are US government works (public domain; credit lines may apply).
 
     python3 -m beatcut.fetch episodes/artemis-i
 
@@ -27,6 +28,21 @@ def asset_url(nasa_id, variant):
     raise SystemExit(f"no ~{variant}.mp4 for {nasa_id}")
 
 
+def noaa_url(page):
+    """Full-quality MP4 for a NOAA Fisheries video page (videos.fisheries.noaa.gov/detail/video/...).
+    The page itself links its download file ("high.mp4"); nothing is bypassed."""
+    import html as _html
+    import re
+    req = urllib.request.Request(page, headers={"User-Agent": "Mozilla/5.0 beatcut"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        text = r.read().decode("utf-8", "ignore")
+    urls = [_html.unescape(u) for u in re.findall(r'https://fastly-signed[^"\' ]+?\.mp4[^"\' ]*', text)]
+    if not urls:
+        raise SystemExit(f"no video file found on {page}")
+    urls.sort(key=lambda u: ("high" not in u, u))
+    return urls[0]
+
+
 def main(episode, only=None):
     ep = Path(episode)
     clips = json.loads((ep / "clips.json").read_text())["clips"]
@@ -39,8 +55,12 @@ def main(episode, only=None):
         if dst.exists():
             print(f"have {dst}")
             continue
-        url = asset_url(c["nasa_id"], c["variant"])
-        print(f"fetch {name}: {c['start']}+{c['dur']}s of {c['nasa_id']} ~{c['variant']}")
+        if c.get("noaa_page"):
+            url = noaa_url(c["noaa_page"])
+            print(f"fetch {name}: {c['start']}+{c['dur']}s of {c['noaa_page']}")
+        else:
+            url = asset_url(c["nasa_id"], c["variant"])
+            print(f"fetch {name}: {c['start']}+{c['dur']}s of {c['nasa_id']} ~{c['variant']}")
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(c["start"]), "-i", url, "-t", str(c["dur"]),
                         "-an", "-c:v", "libx264", "-crf", "14", "-preset", "veryfast", "-pix_fmt", "yuv420p",
                         str(dst)], check=True)
