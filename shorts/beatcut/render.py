@@ -11,6 +11,8 @@ song's tempo. The beat grid drives:
                     rumble through the build, a big hit when the drop lands
   - transitions     punch / whip / zoom / flash, sound-designed with whooshes
   - captions        words pop in on 8th notes, the block bounces on the beat
+  - overlays        e.g. a heart that beats, cracks and breaks on chosen beats
+  - freeze stops    "enter": "freeze" holds the frame with a flash and a shutter click
 
 Outputs (in <episode>/out/):
   short.mp4            picture + original placeholder track + sound design
@@ -28,6 +30,7 @@ import numpy as np
 
 from . import beatmap as bmap
 from . import music
+from . import overlays as ovl
 from .text import Caption, hex_bgr
 
 ENERGY = {"intro": 0.45, "build": 0.6, "drop": 1.0, "break": 0.3, "rise": 0.55}
@@ -239,6 +242,8 @@ def render(ep_dir, stills=False, bpm_override=None, only=None):
                         accent, kicker=sh.get("kicker"), count=sh.get("count"))
         captions.append(c)
 
+    ovs = ovl.build(spec.get("overlays"), bm["beats"], W, H)
+
     if stills:
         frames_to_do = [int(((sh["t0"] + sh["t1"]) / 2 + spb * 0.5) * fps) for sh in shots]
         if only is not None:
@@ -264,7 +269,7 @@ def render(ep_dir, stills=False, bpm_override=None, only=None):
         name, E, prog = energy_at(t, bm, bar_sec, spb)
 
         # --- source time (supports a linear speed ramp)
-        sp = sh.get("speed", 1.0)
+        sp = sh.get("speed", 0.0 if sh.get("enter") == "freeze" else 1.0)
         s0, s1 = (sp, sp) if not isinstance(sp, list) else sp
         src_t = sh["in"] + s0 * tau + (s1 - s0) * tau * tau / (2 * D)
         key = si
@@ -339,6 +344,10 @@ def render(ep_dir, stills=False, bpm_override=None, only=None):
             a = ease_out(tau / 0.22)
             tz *= lerp(1.6, 1.0, a)
             radial = 0.10 * (1 - a)
+        elif enter == "freeze":
+            # held frame: a camera-flash pop and a small push-in that snaps
+            flash += 0.65 * math.exp(-tau / 0.07)
+            tz *= 1 + 0.08 * ease_out(tau / 0.12)
         # exits prepare the next shot's entrance
         left = sh["t1"] - t
         nenter = nxt.get("enter", "cut")
@@ -375,6 +384,9 @@ def render(ep_dir, stills=False, bpm_override=None, only=None):
         img = look.apply(img, f, exposure=g.get("exposure", 1.0) * (1 + 0.6 * pulse), contrast=g.get("contrast", 1.08),
                          sat=g.get("sat", 1.12), grain=g.get("grain", style.get("grain", 2.5)), chroma=chroma, flash=min(0.9, flash))
 
+        for ov in ovs:
+            ov.draw(img, t)
+
         # --- caption, riding a share of the camera motion
         cap = captions[si]
         if cap is not None:
@@ -405,10 +417,13 @@ def render(ep_dir, stills=False, bpm_override=None, only=None):
     # ---------------------------------------------------------- audio
     cuts = [sh["t0"] for sh in shots]
     whoosh_at = [sh["t0"] for sh in shots if sh.get("enter") in ("whip", "zoom")]
-    whooshes, sr = music.sound_design(dur, whooshes=whoosh_at)
+    cues = [c for ov in ovs for c in ov.cues()]
+    cues += [(sh["t0"], "shutter") for sh in shots if sh.get("enter") == "freeze"]
+    whooshes, sr = music.sound_design(dur, whooshes=whoosh_at, cues=cues)
     # app-sound version: whooshes plus hits on the hook and the drop, kept quiet
     # so the trending sound added in the Shorts editor sits on top
-    sfx_only = music.normalize(music.sound_design(dur, whooshes=whoosh_at, impacts=[0.0] + drop_times)[0],
+    sfx_only = music.normalize(music.sound_design(dur, whooshes=whoosh_at, impacts=[0.0] + drop_times,
+                                                  cues=cues)[0],
                                target_lufs=-20)
     if mspec.get("track"):
         tmp = out_dir / "track_window.wav"

@@ -282,11 +282,81 @@ def compose(bpm, sections):
     return mix[: int(round(total * SR))].astype(np.float32), SR
 
 
-def sound_design(duration, whooshes=(), impacts=(), risers=()):
+def heartbeat():
+    """Lub-dub: two low, soft thumps."""
+    t = _t(0.5)
+    out = np.zeros_like(t)
+    for d, g in ((0.0, 1.0), (0.15, 0.7)):
+        tt = np.clip(t - d, 0, None)
+        f = 48 + 40 * np.exp(-tt / 0.02)
+        th = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt / 0.07) * (t >= d)
+        out += th * g
+    return np.tanh(2.0 * out) * 0.8
+
+
+def crack():
+    """Sharp glass crack: a bright transient with a few fast pings."""
+    t = _t(0.35)
+    x = filt(noise(0.35), "highpass", 2500) * np.exp(-t / 0.012) * 0.45
+    for f in rng.uniform(2500, 6500, 4):
+        x += np.sin(2 * np.pi * f * t) * np.exp(-t / 0.05) * 0.12
+    return x
+
+
+def shatter(sec=1.6):
+    """Glass breaking: a crash of noise plus dozens of short tinkling pings that scatter."""
+    t = _t(sec)
+    x = filt(noise(sec), "bandpass", [1500, 9000]) * np.exp(-t / 0.08) * 0.7
+    for _ in range(46):
+        st = abs(rng.normal(0, 0.18))
+        f = rng.uniform(2200, 9500)
+        tt = np.clip(t - st, 0, None)
+        x += np.sin(2 * np.pi * f * tt) * np.exp(-tt / rng.uniform(0.03, 0.12)) * (t >= st) * rng.uniform(0.04, 0.12)
+    boom = np.sin(2 * np.pi * np.cumsum(40 + 30 * np.exp(-t / 0.1)) / SR) * np.exp(-t / 0.4) * 0.6
+    return np.tanh(x + boom)
+
+
+def shutter():
+    """Camera shutter for freeze frames: two quick mechanical clicks."""
+    t = _t(0.18)
+    x = np.zeros_like(t)
+    for d in (0.0, 0.06):
+        tt = np.clip(t - d, 0, None)
+        x += filt(noise(0.18), "bandpass", [1500, 7000]) * np.exp(-tt / 0.006) * (t >= d)
+    return x * 0.9
+
+
+def tape_stop(x, start, dur, sr=SR):
+    """Slow the audio to a halt from `start` over `dur` seconds (turntable stop), then silence."""
+    i0, n = int(start * sr), int(dur * sr)
+    seg = x[i0:i0 + 4 * n]
+    rate = np.linspace(1.0, 0.0, n) ** 1.5          # playback speed falls to zero
+    pos = np.cumsum(rate)
+    pos = np.clip(pos, 0, len(seg) - 1)
+    out = x.copy()
+    for c in range(x.shape[1] if x.ndim == 2 else 1):
+        src = seg[:, c] if x.ndim == 2 else seg
+        y = np.interp(pos, np.arange(len(src)), src)
+        if x.ndim == 2:
+            out[i0:i0 + n, c] = y
+        else:
+            out[i0:i0 + n] = y
+    return out
+
+
+CUES = {"heartbeat": (heartbeat, 0.9), "crack": (crack, 0.8), "shatter": (shatter, 0.9),
+        "shutter": (shutter, 0.8), "impact": (lambda: impact(1.4), 0.7), "whoosh": (lambda: whoosh(0.42), 0.8)}
+
+
+def sound_design(duration, whooshes=(), impacts=(), risers=(), cues=()):
     """Transition sound that sits under whatever track is used.
-    whooshes: cut times (centered on the cut); impacts: hit times; risers: (start, end)."""
+    whooshes: cut times (centered on the cut); impacts: hit times; risers: (start, end);
+    cues: (time, kind) for heartbeat / crack / shatter / shutter / impact / whoosh."""
     n = int(duration * SR) + 1
     buf = np.zeros((n, 2))
+    for t, kind in cues:
+        fn, g = CUES[kind]
+        _place(buf, fn(), t - (0.3 if kind == "whoosh" else 0.0), g)
     for t in whooshes:
         w = whoosh(0.42)
         _place(buf, w, t - 0.3, 0.8, pan=0.0)
