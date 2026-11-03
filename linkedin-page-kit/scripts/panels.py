@@ -25,3 +25,16 @@ def tile_panel(big, sub, out, size=(800,1300), bg=(140, 36, 36)):
     for ln in sub.split("\n"):
         d.text(((W-tl(d,ln,fs))/2, y), ln, font=fs, fill=(255,230,230)); y += 56
     im.save(out); return out
+
+def logo_panel(logo_png, caption, out, size=(1000,1300), bg=(16,18,28), logo_w=560, sub=None):
+    """A logo (RGBA, white) centred on a dark panel with a caption under it."""
+    W,H = size; im = Image.new("RGB",(W,H),bg); d = ImageDraw.Draw(im)
+    for i in range(H):  # subtle vertical gradient
+        k=i/H; d.line((0,i,W,i), fill=tuple(int(c*(1+0.35*k)) for c in bg))
+    lg = Image.open(logo_png).convert("RGBA"); bb = lg.getbbox(); lg = lg.crop(bb)
+    r = logo_w/lg.width; lg = lg.resize((int(lg.width*r), int(lg.height*r)))
+    im.paste(lg, ((W-lg.width)//2, int(H*0.40)-lg.height//2), lg)
+    f = T["display"](44,"SemiBold"); d.text(((W-tl(d,caption,f))/2, int(H*0.40)+lg.height//2+60), caption, font=f, fill=(245,245,250))
+    if sub:
+        fs = T["body"](30); d.text(((W-tl(d,sub,fs))/2, int(H*0.40)+lg.height//2+120), sub, font=fs, fill=(170,180,200))
+    im.save(out); return out
