@@ -1,4 +1,5 @@
-// Captures the MiroFish live demo with a virtual clock: smooth sequences regardless of render speed.
+// Captures the MiroFish live demo (landing, console, graph build, env setup) with a virtual clock,
+// so sequences come out smooth regardless of render speed.
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
 (async () => {
   const [, , out, initPath] = process.argv;
@@ -26,12 +27,7 @@ const { chromium } = require('playwright'); const fs = require('fs'); const path
   await p.click('text=Try Now');
   await seq('graph', 24000);
   await p.click('button:has-text("Go to Env Setup")'); await seq('env', 12000);
-  await p.click('button:has-text("Start Dual-Platform Simulation")'); await seq('sim', 16000);
-  await p.click('button:has-text("GENERATE REPORT")'); await seq('report', 12000);
-  await p.click('button:has-text("Go to Interaction")'); await pump(2500); await shot('interaction.jpg');
-  await p.click('button:has-text("Chat with any agent")').catch(() => {}); await pump(1500); await shot('interaction_agents.jpg');
-  // graph-only view with labels for a hero still
-  await p.click('button:has-text("Graph")').catch(() => {}); await pump(3000); await shot('graph_full.jpg');
+  // steps 3-5 (simulation, report, interaction) are captured by capture_steps.cjs via deep links
   console.log('DONE');
   await b.close();
 })().catch(e => { console.error('FAILED', e); process.exit(1); });
