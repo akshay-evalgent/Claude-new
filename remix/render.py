@@ -561,12 +561,15 @@ def caption_events(edl, S, clips, segs):
         ws = [w for w in S.words(s["src"]) if lo <= (w["s"] + w["e"]) / 2 <= hi]
         if isinstance(flag, str):
             if ws:
-                t0, t1 = ws[0]["s"] + origin, ws[-1]["e"] + origin
+                t0 = max(s["at"], ws[0]["s"] + origin)
+                t1 = min(s["at"] + (s["s1"] - s["s0"]), ws[-1]["e"] + origin)
             else:  # the transcript has nothing here: show it over the sound window
                 t0, t1 = s["at"] + 0.15, s["at"] + (s["s1"] - s["s0"]) - 0.3
             groups.append([{"w": flag, "t0": t0, "t1": t1}])
             continue
-        groups.append([{"w": w["w"], "t0": w["s"] + origin, "t1": w["e"] + origin} for w in ws])
+        a_lo, a_hi = s["at"], s["at"] + (s["s1"] - s["s0"])  # never show words outside the clip's sound
+        groups.append([{"w": w["w"], "t0": max(a_lo, w["s"] + origin), "t1": min(a_hi, w["e"] + origin)}
+                       for w in ws])
     # phrases break at pauses and sentence ends; a phrase too long for one line is
     # cut into balanced pieces ("I've been alone for as long" / "as I can remember")
     events = []

@@ -24,7 +24,7 @@ sources:
 
 captions:
   burn: true
-  fix: {Tom: Thom, Prug: Proog, "Prüg": Proog}
+  fix: {Tom: Thom, Prug: Proog, "Prüg": Proog, "head -snarlers": "head-snarlers", "at the right": "At the right"}
 
 defaults:
   pad: [0.15, 0.3]
@@ -35,7 +35,7 @@ timeline:
   # ---------------------------------------------------------------- cold open
   - src: tos                     # misty ruined Amsterdam, Proog narrating as a tour guide
     in: 1:09.95
-    voice: {src: ed, line: 1, at: 0.3, gain: -2}
+    voice: {src: ed, in: 0:18.0, out: 0:24.85, at: 0.3}   # "...at the right we can see the head-snarlers. Everything is safe, perfectly safe."
     audio: -14                   # keep a little of the city's wind under him
     tail: 0.4
     note: Proog's tour of a ruined city

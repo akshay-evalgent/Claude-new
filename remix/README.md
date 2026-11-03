@@ -9,7 +9,7 @@ sync.
 
 This is the crossover / fan-edit format: same footage, a different story.
 
-**Demo:** [`projects/kindred-spirit/`](projects/kindred-spirit/STORY.md) is a 1:50
+**Demo:** [`projects/kindred-spirit/`](projects/kindred-spirit/STORY.md) is a 1:43
 crossover cut from three Blender open movies (*Sintel*, *Tears of Steel* and
 *Elephants Dream*, all CC BY): a dragon hunter discovers the "dragon"
 wrecking Amsterdam is a woman who was left behind.

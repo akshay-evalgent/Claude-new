@@ -11,7 +11,7 @@ was loved and then forgotten, and the hunter (who has "been alone for as long
 as she can remember") recognises herself in it. The gatekeeper's line
 "You've only failed to see" becomes the turn of the story.
 
-Running time about 1:50, 16:9 with every source letterboxed to 2.39:1.
+Running time 1:43, 16:9 with every source letterboxed to 2.39:1.
 
 ## Beats
 
