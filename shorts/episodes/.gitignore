@@ -3,3 +3,4 @@ clips/
 # intermediate audio and preview stills
 **/out/*.wav
 **/out/still_*.jpg
+messi-respect/out/

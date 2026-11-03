@@ -115,6 +115,13 @@ that starts 4 frames early by design); `short.mp4` at -14.1 LUFS and -1.7 dBTP.
 Writing the captions: 2 to 6 words, one fact, a number wherever there is one, and the word that matters in
 `*accent*`. Check every figure against a primary source (see `episodes/artemis-i/POST.md`).
 
+## Story edits on a reference's soundtrack
+
+`beatcut/story.py` renders an edit timed in seconds instead of beats, for when the music comes from a reference
+edit: copy the reference's transition times (they already sit on the song's hits) and put your own shots, typed
+neon captions, light leaks, TV-off and glitch transitions, an arrow, sparkles and a heart-burst ending into the
+same slots. Example: `episodes/messi-respect/` (see its `NOTES.md`).
+
 ## Files
 
 ```

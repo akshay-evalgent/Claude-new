@@ -1,0 +1,541 @@
+"""Story edits cut to an existing soundtrack, timed in seconds.
+
+Use this when the music comes from a reference edit: copy that edit's
+transition times (they already sit on the song's hits) and drop your own
+shots, captions and effects into the same slots.
+
+    python3 -m beatcut.story episodes/messi-respect            # full render
+    python3 -m beatcut.story episodes/messi-respect --stills   # one frame per shot
+
+Spec (episode/story.json):
+  size, fps, music.file
+  shots:       [{clip, in, t0, t1, speed, focus, focus_to, zoom_keys, handheld}]
+  transitions: [{t, type: white|leak|tvoff|cut|glitch, a, b}]   a/b = seconds before/after t
+  captions:    [{t0, t1, lines, y, size, cps}]   cps 0 = all at once, else typed per letter
+               word colours: ^w white ^y yellow ^r red ^c cyan ^m magenta ^g green ^x multicolour letters
+  overlays:    arrow {t0, t1, tail, tip, bend}, sparkles {t0, t1, n}, heart {t, ...}
+  flicker:     [[t0, t1], ...]   alternate-frame exposure flicker
+  fade_in, fade_out: [t0, t1]
+"""
+import argparse
+import json
+import math
+import subprocess
+from functools import lru_cache
+from pathlib import Path
+
+import cv2
+import numpy as np
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
+
+from .render import ClipReader, Look, affine, smoothstep, ease_out, ease_in, lerp
+
+HERE = Path(__file__).resolve().parent.parent
+FONT = str(HERE / "fonts" / "Poppins-ExtraBold.ttf")
+EMOJI = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+
+NEON = {"w": (255, 255, 255), "y": (255, 226, 30), "r": (255, 40, 48), "c": (45, 240, 255),
+        "m": (255, 60, 215), "g": (60, 255, 95)}  # RGB
+MULTI = ["c", "y", "w", "r", "y", "c", "w"]
+
+
+# ---------------------------------------------------------------- frames
+
+class BlendReader(ClipReader):
+    """ClipReader that cross-fades neighbouring source frames, so slow motion
+    from a low frame-rate source moves smoothly instead of stepping."""
+
+    def get(self, t):
+        p = (t - self.start) * self.fps
+        k = int(math.floor(p + 1e-6))
+        while self.k < k + 1:
+            prev = self.frame
+            if not self._read():
+                break
+            self.prev = prev
+        if getattr(self, "prev", None) is None or self.k == 0:
+            return self.frame
+        a = min(max(p - (self.k - 1), 0.0), 1.0)
+        return cv2.addWeighted(self.prev, 1 - a, self.frame, a, 0)
+
+
+# ---------------------------------------------------------------- captions
+
+QUOTES = "\u201c\u201d\"'"
+
+
+def parse_words(line):
+    """'\u201c^yHIS' -> ('\u201cHIS', 'y'): a colour code may follow an opening quote."""
+    out = []
+    for w in line.split():
+        col = "w"
+        lead = w[0] if w and w[0] in QUOTES else ""
+        body = w[len(lead):]
+        if body.startswith("^") and len(body) > 1:
+            col, body = body[1], body[2:]
+        out.append((lead + body, col))
+    return out
+
+
+def lighten(rgb, k=0.38):
+    return tuple(int(c + (255 - c) * k) for c in rgb)
+
+
+class NeonCaption:
+    """Typewriter caption: letters appear one by one; each word glows in its colour."""
+
+    def __init__(self, cfg, W, H):
+        self.cfg = cfg
+        self.t0, self.t1 = cfg["t0"], cfg["t1"]
+        self.cps = cfg.get("cps", 15)
+        size = int(cfg.get("size", 0.08) * W)
+        rows = [parse_words(l) for l in cfg["lines"]]
+        while True:  # shrink until the longest line fits 86 % of the width
+            self.font = ImageFont.truetype(FONT, size)
+            space = self.font.getlength(" ")
+            longest = max(sum(self.font.getlength(w) for w, _ in ws) + space * (len(ws) - 1) for ws in rows)
+            if longest <= 0.86 * W or size < 24:
+                break
+            size = int(size * 0.95)
+        self.size = size
+        # chars: (char, rgb, x, row) in reveal order
+        self.chars = []
+        lh = size * 1.12
+        widths = []
+        for words in rows:
+            widths.append(sum(self.font.getlength(w) for w, _ in words) + space * (len(words) - 1))
+        self.box_w = int(max(widths) + size * 1.6)
+        self.box_h = int(len(rows) * lh + size * 1.2)
+        for r, words in enumerate(rows):
+            x = (self.box_w - widths[r]) / 2
+            for wi, (w, col) in enumerate(words):
+                for ci, ch in enumerate(w):
+                    c = NEON[MULTI[(ci + wi) % len(MULTI)]] if col == "x" else NEON[col]
+                    self.chars.append((ch, c, x + self.font.getlength(w[:ci]), r))
+                x += self.font.getlength(w) + space
+            self.chars.append((" ", NEON["w"], 0, r))  # a beat between lines
+        self.lh = lh
+        self.cx = W / 2
+        self.cy = cfg.get("y", 0.6) * H
+
+    def visible(self, t):
+        if self.cps <= 0:
+            return len(self.chars)
+        return int((t - self.t0) * self.cps) + 1
+
+    @lru_cache(maxsize=64)
+    def layer(self, n):
+        """BGRA layer with the first n characters, neon glow and soft shadow."""
+        W, H = self.box_w, self.box_h
+        core = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        d = ImageDraw.Draw(core)
+        top = self.size * 0.45
+        for ch, c, x, r in self.chars[:n]:
+            if ch == " ":
+                continue
+            d.text((x + self.size * 0.8, top + r * self.lh), ch, font=self.font, fill=lighten(c) + (255,))
+        alpha = core.split()[3]
+        glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        # colour glow: the coloured letters blurred wide and narrow
+        col = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        dc = ImageDraw.Draw(col)
+        for ch, c, x, r in self.chars[:n]:
+            if ch != " ":
+                dc.text((x + self.size * 0.8, top + r * self.lh), ch, font=self.font, fill=c + (255,))
+        wide = col.filter(ImageFilter.GaussianBlur(self.size * 0.22))
+        tight = col.filter(ImageFilter.GaussianBlur(self.size * 0.07))
+        shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        shadow.putalpha(alpha.filter(ImageFilter.GaussianBlur(self.size * 0.06)).point(lambda v: int(v * 0.75)))
+        out = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        for lay in (shadow, wide, wide, tight, core):
+            out = Image.alpha_composite(out, lay)
+        a = np.array(out)
+        return a[:, :, [2, 1, 0, 3]].copy()
+
+    def draw(self, frame, t, alpha=1.0):
+        if not (self.t0 <= t < self.t1):
+            return
+        n = min(len(self.chars), self.visible(t))
+        if n <= 0:
+            return
+        fade = min(1.0, (self.t1 - t) / self.cfg.get("fade", 0.12)) * alpha
+        blend(frame, self.layer(n), self.cx, self.cy, fade)
+
+
+def blend(frame, bgra, cx, cy, alpha=1.0, add=False):
+    h, w = bgra.shape[:2]
+    x0, y0 = int(round(cx - w / 2)), int(round(cy - h / 2))
+    H, W = frame.shape[:2]
+    sx, sy = max(0, -x0), max(0, -y0)
+    x0c, y0c, x1c, y1c = max(0, x0), max(0, y0), min(W, x0 + w), min(H, y0 + h)
+    if x1c <= x0c or y1c <= y0c or alpha <= 0.01:
+        return
+    s = bgra[sy:sy + y1c - y0c, sx:sx + x1c - x0c].astype(np.float32)
+    a = s[:, :, 3:4] / 255.0 * alpha
+    roi = frame[y0c:y1c, x0c:x1c].astype(np.float32)
+    if add:
+        roi = roi + s[:, :, :3] * a
+    else:
+        roi = roi * (1 - a) + s[:, :, :3] * a
+    frame[y0c:y1c, x0c:x1c] = np.clip(roi, 0, 255).astype(np.uint8)
+
+
+# ---------------------------------------------------------------- overlays
+
+class Arrow:
+    """Hand-drawn style red arrow that draws itself on, pointing at something."""
+
+    def __init__(self, cfg, W, H):
+        self.cfg, self.W, self.H = cfg, W, H
+        p0 = np.array(cfg["tail"], float) * [W, H]
+        p3 = np.array(cfg["tip"], float) * [W, H]
+        mid = (p0 + p3) / 2
+        nrm = np.array([-(p3 - p0)[1], (p3 - p0)[0]])
+        nrm /= np.linalg.norm(nrm) + 1e-9
+        bend = cfg.get("bend", 0.35) * np.linalg.norm(p3 - p0)
+        p1 = p0 + (mid - p0) * 0.6 + nrm * bend
+        p2 = p3 + (mid - p3) * 0.6 + nrm * bend * 0.6
+        s = np.linspace(0, 1, 60)[:, None]
+        self.curve = (1 - s) ** 3 * p0 + 3 * (1 - s) ** 2 * s * p1 + 3 * (1 - s) * s ** 2 * p2 + s ** 3 * p3
+        self.th = max(4, int(cfg.get("width", 0.014) * W))
+
+    def draw(self, frame, t):
+        c = self.cfg
+        if not (c["t0"] <= t < c["t1"]):
+            return
+        g = ease_out((t - c["t0"]) / c.get("draw", 0.14))
+        n = max(2, int(g * len(self.curve)))
+        pts = self.curve[:n]
+        lay = np.zeros_like(frame)
+        red = (40, 40, 255)
+        cv2.polylines(lay, [np.round(pts * 4).astype(np.int32)], False, red, self.th, cv2.LINE_AA, shift=2)
+        if g > 0.85:
+            tip, back = self.curve[-1], self.curve[-6]
+            d = (tip - back) / (np.linalg.norm(tip - back) + 1e-9)
+            nrm = np.array([-d[1], d[0]])
+            L = self.th * 3.0
+            tri = np.array([tip + d * self.th * 0.6, tip - d * L + nrm * L * 0.7, tip - d * L - nrm * L * 0.7])
+            cv2.fillPoly(lay, [np.round(tri * 4).astype(np.int32)], red, cv2.LINE_AA, shift=2)
+        glow = cv2.GaussianBlur(lay, (0, 0), self.th * 1.2)
+        core = cv2.addWeighted(lay, 1.0, np.full_like(lay, 255) * (lay > 0), 0.25, 0)
+        out = frame.astype(np.float32) + glow.astype(np.float32) * 0.9
+        m = cv2.GaussianBlur((lay.max(2) > 0).astype(np.float32), (0, 0), 0.8)[:, :, None]
+        out = out * (1 - m) + core.astype(np.float32) * m
+        frame[:] = np.clip(out, 0, 255).astype(np.uint8)
+
+
+class Sparkles:
+    """Drifting, twinkling white specks (the 'dust' over the ending)."""
+
+    def __init__(self, cfg, W, H, seed=9):
+        r = np.random.default_rng(seed)
+        n = cfg.get("n", 46)
+        self.cfg, self.W, self.H = cfg, W, H
+        self.p = r.uniform([0, 0], [W, H], (n, 2))
+        self.v = r.normal([0, -40], [25, 25], (n, 2))
+        self.size = r.uniform(1.5, 4.5, n)
+        self.ph = r.uniform(0, 2 * np.pi, n)
+        self.f = r.uniform(2, 6, n)
+
+    def draw(self, frame, t):
+        c = self.cfg
+        if not (c["t0"] <= t < c["t1"]):
+            return
+        d = t - c["t0"]
+        lay = np.zeros(frame.shape[:2], np.float32)
+        for (x, y), (vx, vy), s, ph, f in zip(self.p, self.v, self.size, self.ph, self.f):
+            a = 0.5 + 0.5 * math.sin(ph + f * d * 2 * math.pi)
+            px, py = (x + vx * d) % self.W, (y + vy * d) % self.H
+            cv2.circle(lay, (int(px), int(py)), int(s), float(a), -1, cv2.LINE_AA)
+        lay = cv2.GaussianBlur(lay, (0, 0), 1.6) * 1.6 + cv2.GaussianBlur(lay, (0, 0), 5) * 0.8
+        out = frame.astype(np.float32) + (lay[:, :, None] * 255 * c.get("strength", 0.9))
+        frame[:] = np.clip(out, 0, 255).astype(np.uint8)
+
+
+@lru_cache(maxsize=4)
+def emoji_sprite(seq, px):
+    f = ImageFont.truetype(EMOJI, 109)
+    im = Image.new("RGBA", (220, 220), (0, 0, 0, 0))
+    ImageDraw.Draw(im).text((30, 30), seq, font=f, embedded_color=True)
+    im = im.crop(im.getbbox())
+    w, h = im.size
+    im = im.resize((px, int(px * h / w)), Image.LANCZOS)
+    a = np.array(im)
+    return a[:, :, [2, 1, 0, 3]].copy()
+
+
+class HeartBurst:
+    """Big mending heart bursts in on the hit, wobbles, flashes out into a ghost,
+    and settles as a small heart above the closing word, pulsing on the beat."""
+
+    SEQ = "❤️‍\U0001FA79"
+
+    def __init__(self, cfg, W, H):
+        self.cfg, self.W, self.H = cfg, W, H
+
+    def draw(self, frame, t):
+        c = self.cfg
+        t0 = c["t"]
+        if t < t0:
+            return
+        W, H = self.W, self.H
+        big = int(c.get("big", 0.44) * W)
+        small = int(c.get("small", 0.085) * W)
+        hold = c.get("hold", 0.30)
+        bx, by = c.get("big_at", [0.5, 0.46])
+        sx, sy = c.get("small_at", [0.5, 0.555])
+        d = t - t0
+        if d < hold + 0.12:
+            pop = lerp(0.45, 1.0, ease_out(d / 0.22)) * (1 + 0.03 * math.sin(d * 40))
+            if d < hold:
+                spr = emoji_sprite(self.SEQ, max(8, int(big * pop)))
+                glow = cv2.GaussianBlur(spr, (0, 0), big * 0.06)
+                blend(frame, glow, bx * W, by * H, 0.6, add=True)
+                blend(frame, spr, bx * W + 6 * math.sin(d * 55), by * H, 1.0)
+            else:
+                # flash out: scale up and fade like a double exposure
+                k = (d - hold) / 0.12
+                spr = emoji_sprite(self.SEQ, int(big * (1 + 0.8 * ease_out(k))))
+                blend(frame, spr, bx * W, by * H, 0.85 * (1 - k))
+        if d >= hold + 0.04:
+            beats = c.get("beats", [])
+            pulse = 0.0
+            for b in beats:
+                if t >= b:
+                    pulse = 0.16 * math.exp(-(t - b) / 0.09)
+            k = ease_out((d - hold - 0.04) / 0.1)
+            spr = emoji_sprite(self.SEQ, max(8, int(small * (0.6 + 0.4 * k) * (1 + pulse))))
+            blend(frame, spr, sx * W, sy * H, 1.0)
+
+
+def build_overlays(cfgs, W, H):
+    kinds = {"arrow": Arrow, "sparkles": Sparkles, "heart": HeartBurst}
+    return [kinds[c["type"]](c, W, H) for c in cfgs]
+
+
+# ---------------------------------------------------------------- transitions
+
+def leak_texture(W, H, cx, cy, spread):
+    yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
+    r = np.sqrt(((xx - cx) / W) ** 2 + ((yy - cy) / H) ** 2)
+    core = np.clip(1 - r / spread, 0, 1) ** 1.5
+    teal = np.array([205, 232, 70], np.float32) / 255.0   # BGR teal-cyan
+    tex = teal[None, None, :] * (1 - core[:, :, None]) + core[:, :, None]
+    return tex
+
+
+class Transitions:
+    def __init__(self, cfgs, W, H):
+        self.cfgs = sorted(cfgs, key=lambda c: c["t"])
+        self.W, self.H = W, H
+        self.leak_cache = {}
+
+    def weight(self, c, t):
+        """0 -> 1 rising over [t-a, t], 1 -> 0 over [t, t+b]."""
+        a, b = c.get("a", 0.1), c.get("b", 0.15)
+        if c["t"] - a <= t < c["t"]:
+            return (t - (c["t"] - a)) / max(a, 1e-6), "pre"
+        if c["t"] <= t < c["t"] + b:
+            return 1 - (t - c["t"]) / max(b, 1e-6), "post"
+        return 0.0, None
+
+    def zoom(self, t):
+        """Incoming shots settle from a slight push after a flash."""
+        z = 1.0
+        for c in self.cfgs:
+            if c["type"] in ("white", "leak") and c["t"] <= t < c["t"] + 0.3:
+                z *= 1 + 0.07 * (1 - ease_out((t - c["t"]) / 0.3))
+            if c["type"] == "glitch" and c["t"] <= t < c["t"] + 0.35:
+                z *= 1 + 0.18 * (1 - ease_out((t - c["t"]) / 0.35))
+        return z
+
+    def apply(self, img, t, frame_idx):
+        W, H = self.W, self.H
+        x = img.astype(np.float32) / 255.0
+        for c in self.cfgs:
+            w, side = self.weight(c, t)
+            if side is None:
+                continue
+            kind = c["type"]
+            if kind == "white":
+                w = smoothstep(w)
+                x = x + (1 - x) * w * 0.97
+            elif kind == "leak":
+                w = smoothstep(w) * 0.96
+                # the glow sweeps in from the lower left and blooms to almost white
+                prog = w if side == "pre" else 1.0
+                key = (round(prog, 2), side)
+                if key not in self.leak_cache:
+                    cx = W * lerp(-0.1, 0.45, prog)
+                    cy = H * lerp(1.05, 0.5, prog)
+                    self.leak_cache[key] = leak_texture(W, H, cx, cy, lerp(0.5, 1.3, prog))
+                tex = self.leak_cache[key]
+                x = 1 - (1 - x) * (1 - tex * w)
+            elif kind == "tvoff":
+                if side == "pre":
+                    x = x * (1 - 0.9 * smoothstep(w))
+                    lines = [0.33, 0.63]
+                else:
+                    x = x * (1 - 0.85 * w)
+                    lines = [0.55] if w > 0.85 else [0.27, 0.72]
+                lay = np.zeros((H, W), np.float32)
+                for ly in lines:
+                    y = int(ly * H)
+                    cv2.line(lay, (0, y), (W, y), 1.0, 3)
+                lay = lay + cv2.GaussianBlur(lay, (0, 0), 7) * 1.5
+                x = x + lay[:, :, None] * (0.9 * w)
+                if side == "post" and 0.3 < w < 0.62:
+                    # sprocket band flicker as the picture comes back
+                    band = np.zeros((H, W), np.float32)
+                    y0 = int(0.26 * H)
+                    for bx in range(0, W, 120):
+                        cv2.rectangle(band, (bx + 20, y0), (bx + 80, y0 + 34), 0.8, -1)
+                    band = cv2.GaussianBlur(band, (0, 0), 3)
+                    x = x + band[:, :, None] * 0.7
+            elif kind == "glitch" and side == "post":
+                k = 1 - w   # 0 -> 1 across the glitch
+                yy = np.linspace(-1, 1, H, dtype=np.float32)[:, None, None]
+                vmask = np.clip(1.2 - np.abs(yy) * 1.1, 0, 1) ** 1.5
+                bars = np.repeat(x[H // 2:H // 2 + 1], H, axis=0)          # one row stretched to full height
+                bars = cv2.blur(bars, (5, 1))
+                vblur = cv2.blur(x, (3, int(30 + 150 * (1 - k))))
+                if k < 0.34:
+                    x = bars * vmask * 0.85
+                elif k < 0.67:
+                    x = 0.5 * bars * vmask + 0.5 * vblur * 0.8
+                else:
+                    x = vblur
+                    sh = 12
+                    x[:, :, 2] = np.roll(x[:, :, 2], sh, axis=1)
+                    x[:, :, 0] = np.roll(x[:, :, 0], -sh, axis=1)
+        return np.clip(x * 255, 0, 255).astype(np.uint8)
+
+
+# ---------------------------------------------------------------- render
+
+def zoom_at(keys, tau):
+    """Smooth piecewise zoom from [[shot_time, zoom], ...]."""
+    if not keys:
+        return 1.0
+    if tau <= keys[0][0]:
+        return keys[0][1]
+    for ka, kb in zip(keys, keys[1:]):
+        if ka[0] <= tau <= kb[0]:
+            ease = kb[2] if len(kb) > 2 else "inout"   # how we arrive at kb
+            x = (tau - ka[0]) / max(kb[0] - ka[0], 1e-6)
+            x = {"in": ease_in(x), "out": ease_out(x), "linear": x}.get(ease, smoothstep(x))
+            return lerp(ka[1], kb[1], x)
+    return keys[-1][1]
+
+
+def render(ep_dir, stills=False, only=None):
+    ep = Path(ep_dir)
+    spec = json.loads((ep / "story.json").read_text())
+    W, H = spec.get("size", [1080, 1350])
+    fps = spec.get("fps", 30)
+    music = ep / spec["music"]["file"]
+    dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                                         "-of", "csv=p=0", str(music)]))
+    nframes = int(round(dur * fps))
+    shots = spec["shots"]
+    look = Look(W, H)
+    trans = Transitions(spec.get("transitions", []), W, H)
+    caps = [NeonCaption(c, W, H) for c in spec.get("captions", [])]
+    ovs = build_overlays(spec.get("overlays", []), W, H)
+    flick = spec.get("flicker", [])
+    rng = np.random.default_rng(4)
+    ph = rng.uniform(0, 2 * np.pi, 6)
+    out = ep / "out"
+    out.mkdir(exist_ok=True)
+
+    if stills:
+        todo = [int(((s["t0"] + s["t1"]) / 2) * fps) for s in shots]
+        if only:
+            todo = [todo[i] for i in only]
+    else:
+        todo = range(nframes)
+        enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "bgr24", "-s", f"{W}x{H}",
+                                "-r", str(fps), "-i", "-", "-i", str(music), "-map", "0:v", "-map", "1:a",
+                                "-c:v", "libx264", "-preset", "slow", "-crf", str(spec.get("crf", 18)),
+                                "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-shortest",
+                                "-movflags", "+faststart", str(out / "edit.mp4")], stdin=subprocess.PIPE)
+    readers = {}
+    for f in todo:
+        t = f / fps
+        si = max([i for i, s in enumerate(shots) if s["t0"] <= t + 1e-9] or [0])
+        sh = shots[si]
+        tau = t - sh["t0"]
+        D = sh["t1"] - sh["t0"]
+        src_t = sh["in"] + sh.get("speed", 1.0) * tau
+        if stills:
+            rd = ClipReader(ep / "clips" / f"{sh['clip']}.mp4", src_t)
+            frame = rd.get(src_t)
+            rd.close()
+        else:
+            if si not in readers:
+                for k in list(readers):
+                    readers.pop(k).close()
+                readers[si] = BlendReader(ep / "clips" / f"{sh['clip']}.mp4", sh["in"])
+            frame = readers[si].get(src_t)
+        sw, shh = frame.shape[1], frame.shape[0]
+        fx0, fy0 = sh.get("focus", [0.5, 0.5])
+        fx1, fy1 = sh.get("focus_to", [fx0, fy0])
+        e = smoothstep(tau / D)
+        cx, cy = lerp(fx0, fx1, e) * sw, lerp(fy0, fy1, e) * shh
+        z = zoom_at(sh.get("zoom_keys"), tau) * trans.zoom(t) * 1.04
+        hh = sh.get("handheld", 0.0)
+        dx = hh * (math.sin(2 * math.pi * 1.7 * t + ph[0]) + 0.6 * math.sin(2 * math.pi * 4.3 * t + ph[1]))
+        dy = hh * (math.sin(2 * math.pi * 1.3 * t + ph[2]) + 0.6 * math.sin(2 * math.pi * 3.7 * t + ph[3]))
+        rot = hh * 0.06 * math.sin(2 * math.pi * 1.1 * t + ph[4])
+        s = max(W / sw, H / shh) * z
+        hw, hh2 = W / (2 * s), H / (2 * s)
+        cx = min(max(cx, hw), sw - hw) if sw > 2 * hw else sw / 2
+        cy = min(max(cy, hh2), shh - hh2) if shh > 2 * hh2 else shh / 2
+        M = affine(cx, cy, s, rot, W / 2 + dx, H / 2 + dy)
+        img = cv2.warpAffine(frame, M, (W, H), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REFLECT101)
+        if s > 2.5:
+            # big upscale (low-res preview): a touch of sharpening keeps edges readable
+            img = cv2.addWeighted(img, 1.5, cv2.GaussianBlur(img, (0, 0), 2.2), -0.5, 0)
+        g = sh.get("grade", {})
+        expo = g.get("exposure", 1.0)
+        if any(a <= t < b for a, b in flick):
+            expo *= 1.035 if f % 2 else 0.965
+        img = look.apply(img, f, exposure=expo, contrast=g.get("contrast", 1.06), sat=g.get("sat", 1.18),
+                         grain=g.get("grain", 2.0))
+        # graphics sit on the picture, so the flashes and leaks wash over them too
+        for ov in ovs:
+            if not isinstance(ov, Sparkles):
+                ov.draw(img, t)
+        for c in caps:
+            c.draw(img, t)
+        for ov in ovs:
+            if isinstance(ov, Sparkles):
+                ov.draw(img, t)
+        img = trans.apply(img, t, f)
+        fi, fo = spec.get("fade_in", [0, 0.1]), spec.get("fade_out")
+        k = 1.0
+        if t < fi[1]:
+            k *= max(0.0, (t - fi[0]) / max(fi[1] - fi[0], 1e-6))
+        if fo and t > fo[0]:
+            k *= max(0.0, 1 - (t - fo[0]) / (fo[1] - fo[0]))
+        if k < 1:
+            img = (img.astype(np.float32) * k).astype(np.uint8)
+        if stills:
+            cv2.imwrite(str(out / f"still_{si + 1:02d}.jpg"), img, [cv2.IMWRITE_JPEG_QUALITY, 88])
+        else:
+            enc.stdin.write(img.tobytes())
+    for r in readers.values():
+        r.close()
+    if not stills:
+        enc.stdin.close()
+        enc.wait()
+        print(f"wrote {out / 'edit.mp4'} ({dur:.2f}s, {nframes} frames)")
+
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("episode")
+    ap.add_argument("--stills", action="store_true")
+    ap.add_argument("--shots")
+    a = ap.parse_args()
+    render(a.episode, a.stills, [int(i) - 1 for i in a.shots.split(",")] if a.shots else None)
