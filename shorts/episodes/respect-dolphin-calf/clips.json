@@ -1,0 +1,7 @@
+{
+  "_note": "NOAA Fisheries video (US government work, public domain; no endorsement implied). python3 -m beatcut.fetch episodes/respect-dolphin-calf",
+  "clips": {
+    "dolphin": {"noaa_page": "https://videos.fisheries.noaa.gov/detail/video/6013191155001/dolphin-calf-disentangled-and-released-in-florida",
+                "start": 0.0, "dur": 53.1, "what": "March 2019, Florida: bottlenose dolphin mother and calf captured, calf disentangled, both released"}
+  }
+}

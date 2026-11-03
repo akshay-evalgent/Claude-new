@@ -61,9 +61,16 @@ def main(episode, only=None):
         else:
             url = asset_url(c["nasa_id"], c["variant"])
             print(f"fetch {name}: {c['start']}+{c['dur']}s of {c['nasa_id']} ~{c['variant']}")
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(c["start"]), "-i", url, "-t", str(c["dur"]),
+        src = url
+        if c.get("noaa_page"):
+            # download the whole file first: the CDN cuts long seeking streams short
+            src = str(out / f"{name}.source.mp4")
+            subprocess.run(["curl", "-sS", "-L", "--retry", "4", "-o", src, url], check=True)
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(c["start"]), "-i", src, "-t", str(c["dur"]),
                         "-an", "-c:v", "libx264", "-crf", "14", "-preset", "veryfast", "-pix_fmt", "yuv420p",
                         str(dst)], check=True)
+        if src != url:
+            Path(src).unlink()
 
 
 if __name__ == "__main__":
