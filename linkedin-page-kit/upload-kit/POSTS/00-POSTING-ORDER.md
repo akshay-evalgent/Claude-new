@@ -21,3 +21,8 @@
 | 17 | Sat 7 Nov · 8:30 pm IST | Thought experiment + week recap | POST-17-thought-2028-startup |
 | 18 | Mon 9 Nov · 11:00 am IST | The Swap (paid vs free) | POST-18-swap-mailchimp-listmonk |
 | 19 | Mon 9 Nov · 8:30 pm IST | Tools | POST-19-tool-n8n |
+| 20 | Wed 4 Nov · 4:30 pm IST (reach) | Signal (news) | POST-20-altman-ram-terrible |
+| 21 | Wed 4 Nov · 8:30 pm IST (debate) | Signal (news) | POST-21-proton-loser-thinking |
+| 22 | Thu 5 Nov · 4:30 pm IST (reach) | Signal (news) | POST-22-canva-22-percent |
+| 23 | Fri 6 Nov · 4:30 pm IST (reach) | Signal (news) | POST-23-mayer-ai-daughter |
+| 24 | Sat 7 Nov · 1:30 pm IST (depth) | Signal (news) | POST-24-kamath-degrees-matter-less |

@@ -351,6 +351,102 @@ If you've used it, what's the first workflow you built? If you haven't, what's s
 
 #n8n #Automation #FounderSignal""",
       first_comment="""github.com/n8n-io/n8n. Their cloud version exists if you'd rather not host."""),
+ # ---------- Added after day-one learnings: famous name + conflict + face, with a debate question ----------
+ dict(slug="altman-ram-terrible", when="Wed 4 Nov · 4:30 pm IST (reach)", pillar="Signal (news)", kind="image",
+      images=["assets/posts/2026-11-04/signal-altman-ram-terrible.png", "assets/posts/2026-11-04/signal-altman-ram-terrible-square.png"],
+      tags="@OpenAI",
+      caption="""OpenAI chief executive Sam Altman has drawn widespread criticism after saying it is "quite terrible" that memory chips sit idle in personal computers while AI data centres face a shortage.
+
+Speaking on Stripe co-founder John Collison's Cheeky Pint podcast on 29 October, Altman estimated that the RAM in a home PC is used about 5% of the time and argued the chips would be better used in cloud servers running at full capacity. He cited no data for the figure. Yahoo Finance reports OpenAI could absorb as much as 40% of global memory supply.
+
+Elon Musk responded with a meme captioned "The people deserve to have their RAM too", which drew about 4.6 million views, and critics including Charles Hoskinson and Minecraft creator Notch pointed out that OpenAI is one of the largest buyers of the memory Altman says is scarce. Defenders noted that consumer RAM and the high-bandwidth memory used in AI servers are not interchangeable.
+
+The question for anyone building a product: if the companies buying the chips also get to say who deserves them, do you want your stack on their servers or on your own? Genuinely asking.
+
+#SamAltman
+#ElonMusk
+#OpenAI
+#ArtificialIntelligence
+#Tech
+#Startups
+#FounderSignal""",
+      first_comment="""Sources: Tom's Hardware, TechRadar, Yahoo Finance, Cybernews, 2 to 3 Nov 2026. Photo of Elon Musk: Wikimedia Commons, CC BY-SA. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+ dict(slug="proton-loser-thinking", when="Wed 4 Nov · 8:30 pm IST (debate)", pillar="Signal (news)", kind="image",
+      images=["assets/posts/2026-11-04/signal-proton-loser-thinking.png", "assets/posts/2026-11-04/signal-proton-loser-thinking-square.png"],
+      tags="@Proton",
+      caption="""Proton chief executive Andy Yen has cancelled planned "AI re-interviews" of staff after internal messages about his push for AI adoption were published by 404 Media.
+
+An email on 26 October told selected employees they would be re-interviewed between 4 and 11 November about how they were adapting to AI, and staff feared their answers would decide whether they kept their jobs. The leaked messages showed Yen urging engineers to "stop lovingly handcrafting all our code and use AI more" and describing security objections as "loser thinking".
+
+At an all-hands meeting on 30 October, Yen said the re-interviews would not take place and that nobody would lose their job because of them, while adding that he would still push AI adoption. Employees say the measure has been folded into regular performance reviews. Some subscribers have cancelled, and a community petition calling for Yen to step down had 2,020 votes at the time of reporting.
+
+For founders the question is not whether to push AI, it is how. Mandate it and measure it, or model it and let the team catch up? Which have you seen actually work?
+
+#Proton
+#AndyYen
+#ArtificialIntelligence
+#Leadership
+#Privacy
+#Startups
+#FounderSignal""",
+      first_comment="""Sources: 404 Media (original reporting), TechRadar, Goosed.ie, 30 Oct to 3 Nov 2026. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+ dict(slug="canva-22-percent", when="Thu 5 Nov · 4:30 pm IST (reach)", pillar="Signal (news)", kind="image",
+      images=["assets/posts/2026-11-04/signal-canva-22-percent.png", "assets/posts/2026-11-04/signal-canva-22-percent-square.png"],
+      tags="@Canva",
+      caption="""Canva has told staff that 1,271 roles, about 22% of its workforce, will be made redundant, relocated or changed as part of a restructure around its shift to AI, according to an internal letter from chief executive Melanie Perkins reported by Capital Brief.
+
+Perkins called it a hard moment in the company's history and said growth had slowed for the first time in a decade. The Product, Growth and Platform teams are being merged, overlapping responsibilities consolidated, and Sydney made the main base for more product roles. Canva had earlier cut its 2026 revenue growth forecast from 30% to 20% and slowed the rollout of some AI features to improve their economics.
+
+The figures come from a single outlet's report of the letter; Canva has not published a statement with the numbers. In March 2025 the company laid off a large part of its technical writing team shortly after asking staff to use more generative AI.
+
+A design tool built on templates is restructuring because AI makes templates cheap. If your product's moat is "we make it easy", what is the moat after the easy part is free?
+
+#Canva
+#Layoffs
+#ArtificialIntelligence
+#Startups
+#SaaS
+#Design
+#FounderSignal""",
+      first_comment="""Sources: Capital Brief (the letter), Startup Daily (revenue forecast), Information Age (2025 cuts), 3 Nov 2026. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+ dict(slug="mayer-ai-daughter", when="Fri 6 Nov · 4:30 pm IST (reach)", pillar="Signal (news)", kind="image",
+      images=["assets/posts/2026-11-04/signal-mayer-ai-daughter.png", "assets/posts/2026-11-04/signal-mayer-ai-daughter-square.png"],
+      tags="@Marissa Mayer",
+      caption="""Former Yahoo chief executive Marissa Mayer has faced criticism after a New York Times profile described her using Dazzle, the AI assistant built by her own startup, to write three bullet points about her daughter for a school birthday assignment.
+
+Reaction online ranged from "this is so bleak" to defences of a working parent using a tool, and TechCrunch placed the episode alongside other recent remarks by technology executives seen as out of touch with how most people experience AI. The same profile quoted Mayer suggesting her AI could coordinate with her husband's AI, and saying she had not thought through whether a future planned by AI seemed depressing.
+
+Mayer responded on X that the assignment felt limiting rather than overwhelming, that the tool surfaced details from her photo library she found useful, and that she combined its output with her own observations. In an NPR interview on 2 November she said Dazzle's aim is to give people time back.
+
+Where is your line? Which parts of your own life would you let an assistant draft, and which would feel like outsourcing the point?
+
+#MarissaMayer
+#ArtificialIntelligence
+#Parenting
+#Tech
+#Startups
+#Founders
+#FounderSignal""",
+      first_comment="""Sources: The New York Times profile, TheWrap, The Next Web, NPR (2 Nov 2026), TechCrunch (1 Nov 2026). Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+ dict(slug="kamath-degrees-matter-less", when="Sat 7 Nov · 1:30 pm IST (depth)", pillar="Signal (news)", kind="image",
+      images=["assets/posts/2026-11-04/signal-kamath-degrees-matter-less.png", "assets/posts/2026-11-04/signal-kamath-degrees-matter-less-square.png"],
+      tags="@Nikhil Kamath  @Zerodha",
+      caption="""Zerodha co-founder Nikhil Kamath has told young people to build applications on top of AI platforms rather than try to build the underlying technology, speaking at the NDTV World Summit 2026 in late October.
+
+He said AI and the internet have made learning easier and that degrees matter less than they did, encouraging 17-year-olds to focus on creating things people can use rather than on the models themselves. He also argued that Indian companies still have room to build AI inference businesses on open-source models, despite having far less capital than American and Chinese labs.
+
+The remarks follow his "WTF is AI?" podcast episode on 26 October, in which he questioned whether roughly $700 billion of committed AI spending this year is justified by about $100 billion of enterprise AI revenue.
+
+Two Indian voices in one week: Sarvam's Vivek Raghavan says build the stack or become a digital colony; Kamath says skip the stack and build on top of it. Which one would you tell a 17-year-old in Bengaluru today?
+
+#NikhilKamath
+#Zerodha
+#IndiaAI
+#Startups
+#Education
+#ArtificialIntelligence
+#FounderSignal""",
+      first_comment="""Sources: NewsBytes and Business Today (NDTV World Summit coverage, late Oct 2026), WTF is AI podcast (26 Oct). Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
 ]
 
 def main():

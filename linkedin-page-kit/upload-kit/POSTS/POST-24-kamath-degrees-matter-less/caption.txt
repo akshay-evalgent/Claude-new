@@ -1,0 +1,17 @@
+TAG IN THE POST (type @ and pick): @Nikhil Kamath  @Zerodha
+
+Zerodha co-founder Nikhil Kamath has told young people to build applications on top of AI platforms rather than try to build the underlying technology, speaking at the NDTV World Summit 2026 in late October.
+
+He said AI and the internet have made learning easier and that degrees matter less than they did, encouraging 17-year-olds to focus on creating things people can use rather than on the models themselves. He also argued that Indian companies still have room to build AI inference businesses on open-source models, despite having far less capital than American and Chinese labs.
+
+The remarks follow his "WTF is AI?" podcast episode on 26 October, in which he questioned whether roughly $700 billion of committed AI spending this year is justified by about $100 billion of enterprise AI revenue.
+
+Two Indian voices in one week: Sarvam's Vivek Raghavan says build the stack or become a digital colony; Kamath says skip the stack and build on top of it. Which one would you tell a 17-year-old in Bengaluru today?
+
+#NikhilKamath
+#Zerodha
+#IndiaAI
+#Startups
+#Education
+#ArtificialIntelligence
+#FounderSignal

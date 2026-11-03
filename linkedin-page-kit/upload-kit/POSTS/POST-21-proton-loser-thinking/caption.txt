@@ -1,0 +1,17 @@
+TAG IN THE POST (type @ and pick): @Proton
+
+Proton chief executive Andy Yen has cancelled planned "AI re-interviews" of staff after internal messages about his push for AI adoption were published by 404 Media.
+
+An email on 26 October told selected employees they would be re-interviewed between 4 and 11 November about how they were adapting to AI, and staff feared their answers would decide whether they kept their jobs. The leaked messages showed Yen urging engineers to "stop lovingly handcrafting all our code and use AI more" and describing security objections as "loser thinking".
+
+At an all-hands meeting on 30 October, Yen said the re-interviews would not take place and that nobody would lose their job because of them, while adding that he would still push AI adoption. Employees say the measure has been folded into regular performance reviews. Some subscribers have cancelled, and a community petition calling for Yen to step down had 2,020 votes at the time of reporting.
+
+For founders the question is not whether to push AI, it is how. Mandate it and measure it, or model it and let the team catch up? Which have you seen actually work?
+
+#Proton
+#AndyYen
+#ArtificialIntelligence
+#Leadership
+#Privacy
+#Startups
+#FounderSignal

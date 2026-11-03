@@ -1,0 +1,17 @@
+TAG IN THE POST (type @ and pick): @OpenAI
+
+OpenAI chief executive Sam Altman has drawn widespread criticism after saying it is "quite terrible" that memory chips sit idle in personal computers while AI data centres face a shortage.
+
+Speaking on Stripe co-founder John Collison's Cheeky Pint podcast on 29 October, Altman estimated that the RAM in a home PC is used about 5% of the time and argued the chips would be better used in cloud servers running at full capacity. He cited no data for the figure. Yahoo Finance reports OpenAI could absorb as much as 40% of global memory supply.
+
+Elon Musk responded with a meme captioned "The people deserve to have their RAM too", which drew about 4.6 million views, and critics including Charles Hoskinson and Minecraft creator Notch pointed out that OpenAI is one of the largest buyers of the memory Altman says is scarce. Defenders noted that consumer RAM and the high-bandwidth memory used in AI servers are not interchangeable.
+
+The question for anyone building a product: if the companies buying the chips also get to say who deserves them, do you want your stack on their servers or on your own? Genuinely asking.
+
+#SamAltman
+#ElonMusk
+#OpenAI
+#ArtificialIntelligence
+#Tech
+#Startups
+#FounderSignal
