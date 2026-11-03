@@ -2,7 +2,7 @@
 
 ## Name
 **Founder Signal**  
-Handle to try: `linkedin.com/company/foundersignal` (fallbacks: `founder-signal`, `thefoundersignal`).
+Handle: `linkedin.com/company/thefoundersignal`.
 
 Why: the page does three things (news, swaps, thought experiments) and the only word that covers all three is "signal". "Founder" names the reader. It does not promise "free" or "cheap", so paid-but-better picks and AI news both fit.
 

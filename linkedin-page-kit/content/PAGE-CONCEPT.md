@@ -33,4 +33,4 @@ Fourteen posts a week. Signal cards take 15 minutes each once the images arrive,
 You supply the photos; I supply the exact request (subject, source link or search, size, credit) in `assets/photos/IMAGE-REQUESTS.md` for every post. Stock images are allowed for scene slots (offices, servers, cities); people and logos come from press kits, newsrooms or the person's own public posts, credited. Where no image can be cleared, the card uses a data panel built from the story.
 
 ## Name
-Founder Signal. Handle `foundersignal` (fallbacks `founder-signal`, `thefoundersignal`). Newsletter: Founder Signal Weekly. The visual system from Lean Stack stays (light, one accent, hairlines); the mark is now three ascending bars. All of it is a one-line change in `scripts/themes.py` if the name has to move again.
+Founder Signal. Handle `thefoundersignal`. Newsletter: Founder Signal Weekly. The visual system from Lean Stack stays (light, one accent, hairlines); the mark is now three ascending bars. All of it is a one-line change in `scripts/themes.py` if the name has to move again.
