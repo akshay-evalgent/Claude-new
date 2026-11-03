@@ -1,0 +1,6 @@
+# source videos, analysis and renders are large and rebuildable
+sources/
+work/
+projects/*/out/.cache/
+projects/*/out/*.mp4
+!projects/*/out/*-final.mp4
