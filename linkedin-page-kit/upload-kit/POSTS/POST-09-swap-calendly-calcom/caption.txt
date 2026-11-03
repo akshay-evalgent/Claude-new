@@ -1,0 +1,13 @@
+TAG IN THE POST (type @ and pick): @Cal.com
+
+Calendly Teams is about $96 a month for four seats. Cal.com is the open-source version and it's free if you host it.
+
+Booking pages, round-robin, reminders, payments, your brand on the page instead of theirs. The core job is identical.
+
+What you give up: Calendly's polish, which is real, and a support line. What you take on: a small server, or Cal.com's own hosted tier if you'd rather pay a bit and skip the server.
+
+One thing we noticed reading the docs rather than from running it: the repo now shows up on GitHub as calcom/cal.diy, about 49,000 stars. If you've migrated recently, tell us whether that changed anything.
+
+Would you put your booking page on your own domain for the saving, or is the Calendly link itself a trust signal to your customers?
+
+#OpenSource #Scheduling #FounderSignal

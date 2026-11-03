@@ -1,0 +1,15 @@
+TAG IN THE POST (type @ and pick): @Goldman Sachs  @Anthropic
+
+Goldman Sachs has restricted advanced AI coding tools, including Anthropic's Claude Code and GitHub's AI tooling, to its roughly 12,000 engineers, withdrawing them from most bankers and traders, according to internal guidance reported by Bloomberg on 2 November.
+
+A spokesperson cited "a variety of factors including productivity and risk management" and said the experimentation phase was over. Traders had used the tools for tasks such as monitoring trading flows and modelling positions, and the rollback is reported to have caused frustration inside the firm.
+
+The move follows public enthusiasm from the bank's leadership earlier in the year, when chief information officer Marco Argenti praised "vibe coding" by non-technical staff, and an August warning from a Goldman partner that heavy reliance on the tools could erode bankers' reasoning skills. Goldman continues to roll out its own GS AI Assistant to about 46,000 employees.
+
+#GoldmanSachs
+#ClaudeCode
+#ArtificialIntelligence
+#VibeCoding
+#Banking
+#Startups
+#FounderSignal

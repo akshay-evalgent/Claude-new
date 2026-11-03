@@ -1,0 +1,15 @@
+TAG IN THE POST (type @ and pick): @Chatwoot
+
+Intercom Essential starts at $390 a month for a small team. Chatwoot does the same job and costs nothing to run.
+
+Both give you one inbox for website chat, email, Instagram and WhatsApp. Both let you point an AI at your help docs and have it answer the easy tickets.
+
+Where they differ, honestly. Intercom has product tours and a support line that picks up. Chatwoot has neither, and the WhatsApp connection is the one step people complain about; budget an evening and a forum thread for it.
+
+The thing nobody mentions: Intercom's AI agent bills $0.99 per resolution on top. The better it works, the bigger the invoice. Chatwoot's AI layer costs whatever your model provider charges, which for a small inbox is pocket change.
+
+We haven't run Chatwoot past a two-person support team. If you have, tell us where it creaked.
+
+Is someone else's uptime worth $4,680 a year to you, or is that a salary line you'd rather spend elsewhere?
+
+#OpenSource #CustomerSupport #FounderSignal

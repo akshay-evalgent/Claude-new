@@ -1,0 +1,1 @@
+Templates for all five exist in the n8n and Make libraries; search the names. We'll link the exact ones for the winner next week.

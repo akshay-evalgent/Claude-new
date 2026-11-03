@@ -1,0 +1,1 @@
+Pricing, checked [today's date]: mixpanel.com/pricing, posthog.com/pricing. Repo: github.com/PostHog/posthog.

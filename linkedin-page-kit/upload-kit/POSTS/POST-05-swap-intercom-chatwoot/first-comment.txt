@@ -1,0 +1,1 @@
+Pricing pages, checked [today's date]: Intercom intercom.com/pricing, Chatwoot chatwoot.com/pricing. Repo: github.com/chatwoot/chatwoot (38k stars). Their hosted plan exists if you'd rather not run a server.

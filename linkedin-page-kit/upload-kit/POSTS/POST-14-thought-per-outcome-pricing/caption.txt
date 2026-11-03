@@ -1,0 +1,13 @@
+Benioff says per-seat pricing is dead. Intercom already charges per resolution. So run the experiment: tomorrow morning every tool you pay for moves to per-outcome billing.
+
+Your CRM bills per closed deal. Your support tool bills per ticket resolved. Your email tool bills per reply. Your analytics bills per insight, however they define that.
+
+Which three do you keep?
+
+Our guess at the honest answer: the ones that touch revenue stay, because the outcome is easy to price and you'd pay it gladly. The ones that save time go first, because "time saved" is exactly the outcome nobody can invoice.
+
+And the sting: per-outcome pricing means the vendor earns more when the tool works better, which sounds fair until you notice it also means the tool has every reason to count generously.
+
+Which three would survive on your stack, and which one would you rebuild on open source the same weekend?
+
+#SaaS #Pricing #FounderSignal

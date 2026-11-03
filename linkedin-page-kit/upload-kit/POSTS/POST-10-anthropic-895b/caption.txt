@@ -1,0 +1,15 @@
+TAG IN THE POST (type @ and pick): @Anthropic
+
+Anthropic has filed an amended registration statement with the US Securities and Exchange Commission, updating the prospectus for its proposed listing on the Nasdaq under the ticker ANT.
+
+The filing, dated 2 November, reports revenue of about $17 billion for the three months to 30 September, up from $11.6 billion in the previous quarter, and discloses purchase commitments and lease agreements totalling about $895.4 billion, substantially all of it tied to compute and infrastructure. The largest counterparties named in coverage of the filing are Broadcom, Google, SpaceX's AI unit and Amazon.
+
+The company also returned to an operating loss in the quarter, which Fortune attributed to a sharp rise in infrastructure spending, including about $5 billion of short-term compute bought at higher prices than its long-term agreements. Goldman Sachs and Morgan Stanley are leading the offering; no price range or listing date has been disclosed.
+
+#Anthropic
+#IPO
+#ArtificialIntelligence
+#Nasdaq
+#Startups
+#VentureCapital
+#FounderSignal

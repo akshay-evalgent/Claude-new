@@ -1,0 +1,13 @@
+TAG IN THE POST (type @ and pick): @Documenso
+
+DocuSign Standard is about $45 a seat a month. Documenso is the open-source e-signature tool, free to host, with a paid hosted tier if you want someone else to run it.
+
+Templates, audit trail, API, the signing flow your customers already know. 15,000 stars on GitHub this week.
+
+The catch we'd put in bold: compliance. If you sign in a regulated industry, or across borders, read Documenso's compliance page and your lawyer's face before moving anything that matters. DocuSign has spent twenty years on certifications and that is a real part of what you pay for.
+
+For NDAs, offer letters and vendor contracts at a small company, the swap is straightforward.
+
+What's the last document you signed where the tool actually mattered?
+
+#OpenSource #Esignature #FounderSignal

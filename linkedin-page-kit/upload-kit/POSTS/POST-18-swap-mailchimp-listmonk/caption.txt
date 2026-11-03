@@ -1,0 +1,13 @@
+Mailchimp's Standard plan starts around $20 a month and climbs with your list. listmonk is the open-source newsletter and campaign tool; your only cost is the per-send fee of whatever email provider you plug in.
+
+Campaigns, lists, templates, analytics. 24,000 stars. One binary, one database.
+
+What you give up: the drag-and-drop editor and Mailchimp's hand-holding on deliverability, which matters more than people admit. You bring your own SMTP (Amazon SES, Postmark, whoever) and you own your sender reputation.
+
+Where this swap wins outright: lists above about 10,000, where Mailchimp's price curve gets steep and listmonk's doesn't move.
+
+We've read the docs and the issues; we haven't run a 50,000-person send on it. If you have, how did deliverability hold?
+
+Is a nicer editor worth the per-subscriber tax to you, or is that the first thing you'd cut?
+
+#OpenSource #EmailMarketing #FounderSignal

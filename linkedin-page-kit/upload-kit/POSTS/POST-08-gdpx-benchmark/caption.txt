@@ -1,0 +1,16 @@
+TAG IN THE POST (type @ and pick): @SemiAnalysis  @Anthropic
+
+SemiAnalysis has released GDPx, a new benchmark that tests frontier AI models on 206 real professional tasks across 11 industries, including chip design, cybersecurity, quant trading, biology, finance and law.
+
+The best-performing model, Anthropic's Claude Opus 5.5, scored 12.0% overall, ahead of Google's Gemini 4 Carbon at 10.9% and OpenAI's GPT-6 Astra at 9.6%. All 13 models tested scored zero on the finance and legal tasks.
+
+The firm, whose authors include Dylan Patel, said the tasks were built with 14 specialist data partners and that safety classifiers lowered the scores of Opus 5.5 and GPT-6 Astra in cybersecurity, biology and alignment work, where the models sometimes declined to proceed.
+
+#ArtificialIntelligence
+#GDPx
+#SemiAnalysis
+#Claude
+#AIAgents
+#Benchmarks
+#Startups
+#FounderSignal

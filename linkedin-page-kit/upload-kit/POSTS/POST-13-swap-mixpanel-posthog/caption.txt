@@ -1,0 +1,15 @@
+TAG IN THE POST (type @ and pick): @PostHog
+
+Mixpanel's Growth plan runs about $140 a month at modest event volumes. PostHog does product analytics, session replay and feature flags in one tool, and its cloud free tier covers most early-stage products.
+
+This is the swap where we'd tell you not to self-host. PostHog on your own server wants real hardware. Their cloud is where most teams should start, and it stays free until you have a lot of users, which is a good problem.
+
+What you give up: Mixpanel's report polish and some of the templated dashboards marketers like.
+
+What you get that Mixpanel doesn't bundle: replays and flags without a second vendor.
+
+40,000 stars on GitHub, checked this week. We haven't run it at scale; if you have, what broke?
+
+If analytics, replays and flags came from one tool for free, what would you do with the two vendor contracts you just cancelled?
+
+#OpenSource #ProductAnalytics #FounderSignal

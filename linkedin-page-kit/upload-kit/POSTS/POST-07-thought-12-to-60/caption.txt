@@ -1,0 +1,15 @@
+Two numbers this week: the best AI model scored 12% on real expert work, and Anthropic disclosed $895 billion of compute commitments. Hold both in your head.
+
+The 12% is from SemiAnalysis's new GDPx benchmark. Finance and legal tasks: zero, for all thirteen models tested.
+
+Here's the thought experiment. Not "will it improve", it will. The question is what your company looks like on the day it scores 60%.
+
+Option one: same headcount, each person quietly doing five jobs. That is what happened with spreadsheets and with email. Nobody got fired; everyone's job got wider.
+
+Option two: half the headcount, twice the output. That is what the pitch decks promise and what the 12% says is not close yet.
+
+Option three, the one we find most likely and least discussed: bigger teams, because when expert work gets cheap you do far more of it. The accountants didn't disappear when the calculator arrived. There are more of them.
+
+We're not sure. We'd like to be argued with. Which of the three are you building for?
+
+#ArtificialIntelligence #Founders #FounderSignal

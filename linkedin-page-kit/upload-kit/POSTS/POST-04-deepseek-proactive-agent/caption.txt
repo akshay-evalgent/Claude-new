@@ -1,0 +1,15 @@
+TAG IN THE POST (type @ and pick): @DeepSeek (if the page exists)
+
+DeepSeek's Harness team has open-sourced dsh-superagent, a research prototype of a coding agent that monitors a repository and opens pull requests without waiting for a developer's instruction.
+
+The agent receives development requests through GitHub, and optionally Feishu, runs them in parallel isolated sessions and returns results as pull requests. Its default "observe" mode records the requests it would have accepted without executing them, and DeepSeek describes the design as event-driven repository work rather than an unrestricted autonomous loop.
+
+The company calls the release reference code rather than a product and warns that it is not production-ready. Coverage notes it runs with full operating-system user access and should be isolated before use. The code is published under an MIT licence.
+
+#DeepSeek
+#OpenSource
+#AIAgents
+#Developers
+#Coding
+#Startups
+#FounderSignal

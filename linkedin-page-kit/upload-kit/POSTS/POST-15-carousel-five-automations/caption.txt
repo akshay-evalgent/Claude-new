@@ -1,0 +1,17 @@
+TAG IN THE POST (type @ and pick): @n8n  @Make
+
+Five automations we'd have running by month three at any startup. Not the clever ones. The ones that stop small things falling through the cracks.
+
+1. Lead intake. Form in, company looked up, contact created, one line in Slack. Six nodes.
+2. Support triage. Tickets sorted into bug, billing, how-to, sales before a human reads them. Draft reply from your docs. Human clicks approve.
+3. Invoice chasing. Day 3 friendly reminder, day 10 founder cc'd, day 20 Slack the founder to call. Most late payments are forgotten, not refused.
+4. Weekly numbers. Monday 8am, signups, revenue, churn, tickets, compared to last week, three lines in #general.
+5. Content repurposing. One long thing becomes five drafts in a Notion board. A person schedules them.
+
+Each is six nodes or fewer. An afternoon each if you've built one before, a weekend if you haven't.
+
+The last slide compares n8n, Make and Zapier for this, honestly. Short version: if nobody has run Docker, start on Make.
+
+Which one would you build first? Most-requested gets the full build next week.
+
+#Automation #n8n #FounderSignal

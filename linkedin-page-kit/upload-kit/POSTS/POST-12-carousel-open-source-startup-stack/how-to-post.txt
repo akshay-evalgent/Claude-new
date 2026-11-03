@@ -1,0 +1,8 @@
+POST 12 · Fri 6 Nov · 8:30 am IST · Tools (carousel)
+
+HOW TO POST (carousel / document post)
+1. Open linkedin.com/company/thefoundersignal/admin and click "Start a post" as the page.
+2. Click the "+" (more) icon, then "Add a document". Upload carousel.pdf. Give it the title shown in caption.txt's first line.
+3. Paste caption.txt into the text box.
+4. Click Post. Then comment with first-comment.txt and pin it.
+5. Reply to every comment for 90 minutes.

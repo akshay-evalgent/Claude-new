@@ -1,0 +1,1 @@
+The repos, with star counts checked 2 Nov 2026: Twenty 60k · Chatwoot 38k · Cal.com 49k · PostHog 40k · Plausible 29k · Formbricks 13k · Documenso 15k · Invoice Ninja 10k · listmonk 24k · n8n 209k · Supabase 114k · NocoDB 65k · Outline 41k · Open WebUI 157k · Penpot 61k · Typebot 10k. All at github.com/<owner>/<repo>. Which job did we miss?

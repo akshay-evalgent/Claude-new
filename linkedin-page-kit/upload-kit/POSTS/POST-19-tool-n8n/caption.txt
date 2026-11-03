@@ -1,0 +1,15 @@
+TAG IN THE POST (type @ and pick): @n8n
+
+n8n. 209,000 stars, which makes it one of the most-starred pieces of software on GitHub, and most founders we talk to have never opened it.
+
+It does the job of Zapier or Make. Boxes and arrows, 400-odd integrations, and AI agent nodes built in so a workflow can read an email and decide what to do with it.
+
+Good for: a team where one person has run Docker once. The free self-hosted version covers a startup's first five automations with room to spare.
+
+Not for: a team where nobody wants to own an update. That's not a criticism. Use Make, pay the bill, and come back when the bill makes you wince.
+
+The honest catch: self-hosting means it's your server that goes quiet on a Saturday. For automations that move money, keep a human in the loop for the first month.
+
+If you've used it, what's the first workflow you built? If you haven't, what's stopping you?
+
+#n8n #Automation #FounderSignal

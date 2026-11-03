@@ -1,0 +1,17 @@
+TAG IN THE POST (type @ and pick): @n8n  @Twenty  @Chatwoot  @PostHog  @Supabase
+
+16 open-source tools for the 16 jobs a startup usually pays 16 vendors for.
+
+We checked the star counts on GitHub this week. 942,000 between them.
+
+We did not put prices on the slides. Yours depend on seats and hosting, and a page that quotes a price it didn't screenshot today is guessing.
+
+What's in there: a CRM that looks like Notion and imports a HubSpot CSV. A support inbox that does WhatsApp. Analytics your privacy lawyer will like. E-signatures, invoicing, email campaigns. Automation, database, docs, a team AI chat, design, chatbots.
+
+What's also in there: a slide on where open source bites. Someone on your team owns the updates and the 2am problem.
+
+Our rule, for what it's worth: self-host the boring, stable stuff. Pay for the thing that pages you at night.
+
+Which of the 16 jobs would you never trust to open source? Genuinely asking. The most common answer becomes next week's comparison.
+
+#OpenSource #Startups #FounderSignal

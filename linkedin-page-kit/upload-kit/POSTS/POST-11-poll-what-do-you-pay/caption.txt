@@ -1,0 +1,11 @@
+POLL QUESTION: Roughly what does your business pay for software each month?
+OPTION 1: Under $100
+OPTION 2: $100 to $500
+OPTION 3: $500 to $2,000
+OPTION 4: More than $2,000
+DURATION: 3 days
+
+TEXT ABOVE THE POLL (paste in the main box):
+We're picking which bills to take apart first and we'd rather use real numbers than guess. The bracket that wins gets a full teardown next week. If one line item on your bill bothers you, name it below. Anonymous is fine.
+
+#SaaS #Startups #FounderSignal

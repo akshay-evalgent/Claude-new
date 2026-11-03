@@ -1,0 +1,8 @@
+POST 11 · Thu 5 Nov · 8:30 pm IST · Input (poll)
+
+HOW TO POST (poll)
+1. Open linkedin.com/company/thefoundersignal/admin, click "Start a post" as the page.
+2. Click the "+" icon, then "Create a poll".
+3. Question and options are in caption.txt. Set duration to 3 days.
+4. Paste the context text (above the poll) into the main text box. Click Post.
+5. Comment with first-comment.txt and pin it.

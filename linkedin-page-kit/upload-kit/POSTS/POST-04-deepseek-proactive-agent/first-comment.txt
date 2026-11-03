@@ -1,0 +1,1 @@
+Sources: TechNode, Dataconomy, 2 Nov 2026. Repo: github.com/deepseek-ai (search dsh-superagent). If you try it, run it in a container. Tell us what it opened a PR for without being asked.
