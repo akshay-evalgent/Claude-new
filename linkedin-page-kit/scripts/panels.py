@@ -38,3 +38,18 @@ def logo_panel(logo_png, caption, out, size=(1000,1300), bg=(16,18,28), logo_w=5
     if sub:
         fs = T["body"](30); d.text(((W-tl(d,sub,fs))/2, int(H*0.40)+lg.height//2+120), sub, font=fs, fill=(170,180,200))
     im.save(out); return out
+
+def text_panel(name, caption, out, size=(1000,1300), bg=(16,18,28), serif=False, sub=None):
+    """Typographic wordmark panel for brands whose logo we cannot source."""
+    W,H = size; im = Image.new("RGB",(W,H),bg); d = ImageDraw.Draw(im)
+    for i in range(H):
+        k=i/H; d.line((0,i,W,i), fill=tuple(int(c*(1+0.35*k)) for c in bg))
+    from themes import THEMES
+    f = THEMES["signal_teardown"]["display"](150,"Bold") if serif else T["display"](150,"ExtraBold")
+    lines = name.split("\n"); y = int(H*0.40) - (len(lines)*160)//2
+    for ln in lines:
+        d.text(((W-tl(d,ln,f))/2, y), ln, font=f, fill=(245,245,250)); y += 160
+    fc = T["display"](40,"SemiBold"); d.text(((W-tl(d,caption,fc))/2, y+30), caption, font=fc, fill=(190,198,215))
+    if sub:
+        fs = T["body"](30); d.text(((W-tl(d,sub,fs))/2, y+90), sub, font=fs, fill=(150,160,180))
+    im.save(out); return out
