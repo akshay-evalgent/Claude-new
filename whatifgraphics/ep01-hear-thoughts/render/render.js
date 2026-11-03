@@ -58,7 +58,8 @@ async function newPage(browser, timings) {
   const total = sel.reduce((a, j) => a + j.frames, 0);
   let done = 0; const t0 = Date.now();
   await Promise.all(buckets.map(async (b, wi) => {
-    const { page, cdp } = await newPage(browser, timings);
+    const wb = wi === 0 ? browser : await chromium.launch();
+    const { page, cdp } = await newPage(wb, timings);
     for (const j of b.jobs.sort((a, c) => a.i - c.i)) {
       for (let f = 0; f < j.frames; f++) {
         const fp = path.join(FRAMES, `s${String(j.i).padStart(3, '0')}_${String(f).padStart(5, '0')}.jpg`);
@@ -71,6 +72,7 @@ async function newPage(browser, timings) {
         if (done % 500 === 0) console.log(`${done}/${total} frames, ${((Date.now() - t0) / 1000).toFixed(0)}s`);
       }
     }
+    if (wb !== browser) await wb.close();
   }));
   console.log(`rendered ${done} frames in ${((Date.now() - t0) / 1000).toFixed(0)}s`);
   await browser.close();
