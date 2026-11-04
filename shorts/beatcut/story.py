@@ -162,6 +162,180 @@ class NeonCaption:
         blend(frame, self.layer(n), self.cx, self.cy, fade)
 
 
+CLEAN = {"w": (255, 255, 255), "y": (255, 214, 10), "r": (255, 48, 48), "c": (60, 220, 255),
+         "g": (80, 255, 110), "m": (255, 80, 220), "x": (255, 255, 255)}   # RGB, no neon lightening
+FONT_LINE = str(HERE / "fonts" / "Poppins-ExtraBold.ttf")
+FONT_PUNCH = str(HERE / "fonts" / "Poppins-BlackItalic.ttf")
+
+
+def _flare(px):
+    """Lens-flare sparkle (BGRA): bright core, soft halo, horizontal streak."""
+    yy, xx = np.mgrid[-px:px + 1, -px:px + 1].astype(np.float32) / px
+    r2 = xx ** 2 + yy ** 2
+    core = np.exp(-r2 / 0.004) + 0.45 * np.exp(-r2 / 0.06)
+    streak = np.exp(-(yy / 0.025) ** 2) * np.exp(-np.abs(xx) / 0.45) * 0.8
+    v = np.clip(core + streak, 0, 1)
+    bgr = np.stack([v * 255, v * 240, v * 225], -1)            # slightly cool white
+    return np.dstack([bgr, v * 255]).astype(np.uint8)
+
+
+class LineCaption:
+    """Clean one-line caption typed fast: white words with coloured key words, a soft shadow,
+    each letter pops in, and a sparkle rides the cursor while it types."""
+
+    def __init__(self, cfg, W, H):
+        self.cfg = cfg
+        self.t0, self.t1 = cfg["t0"], cfg["t1"]
+        self.cps = cfg.get("cps", 55)
+        words = parse_words(" ".join(cfg["lines"]))
+        size = int(cfg.get("size", 0.036) * W)
+        while True:
+            font = ImageFont.truetype(FONT_LINE, size)
+            sp = font.getlength(" ")
+            width = sum(font.getlength(w) for w, _ in words) + sp * (len(words) - 1)
+            if width <= cfg.get("max_w", 0.9) * W or size < 16:
+                break
+            size = int(size * 0.95)
+        self.font, self.size = font, size
+        self.pad = pad = int(size * 0.5)
+        self.box_w, self.box_h = int(width + 2 * pad), int(size * 1.9)
+        self.chars, x = [], pad
+        for w, col in words:
+            for ci, ch in enumerate(w):
+                self.chars.append((ch, CLEAN.get(col, CLEAN["w"]), x + font.getlength(w[:ci])))
+            x += font.getlength(w) + sp
+        asc, _ = font.getmetrics()
+        self.ty = (self.box_h - asc) / 2 + asc * 0.12
+        self.text_h = asc * 0.72
+        self.cx, self.cy = W / 2, cfg.get("y", 0.2) * H
+        self.flare = _flare(int(0.05 * W))
+
+    def _draw(self, d, ch, rgb, x):
+        st = max(1, self.size // 16)
+        d.text((x, self.ty), ch, font=self.font, fill=rgb + (255,), stroke_width=st, stroke_fill=(10, 10, 14, 255))
+
+    def _finish(self, img):
+        a = img.split()[3]
+        sh = Image.new("RGBA", img.size, (0, 0, 0, 0))
+        sh.putalpha(a.filter(ImageFilter.GaussianBlur(self.size * 0.08)).point(lambda v: int(v * 0.7)))
+        sh = sh.transform(sh.size, Image.AFFINE, (1, 0, 0, 0, 1, -int(self.size * 0.06)))
+        out = Image.alpha_composite(sh, img)
+        return np.array(out)[:, :, [2, 1, 0, 3]].copy()
+
+    @lru_cache(maxsize=96)
+    def layer(self, n):
+        img = Image.new("RGBA", (self.box_w, self.box_h), (0, 0, 0, 0))
+        d = ImageDraw.Draw(img)
+        for ch, rgb, x in self.chars[:n]:
+            if ch != " ":
+                self._draw(d, ch, rgb, x)
+        return self._finish(img)
+
+    @lru_cache(maxsize=256)
+    def char_sprite(self, i):
+        ch, rgb, x = self.chars[i]
+        cw = int(self.font.getlength(ch)) + 1
+        img = Image.new("RGBA", (cw + 2 * self.pad, self.box_h), (0, 0, 0, 0))
+        self._draw(ImageDraw.Draw(img), ch, rgb, self.pad)
+        return self._finish(img), x + cw / 2
+
+    def draw(self, frame, t, alpha=1.0):
+        if not (self.t0 <= t < self.t1):
+            return
+        fade = min(1.0, (self.t1 - t) / self.cfg.get("fade", 0.06)) * alpha
+        N = len(self.chars)
+        n = N if self.cps <= 0 else min(N, int((t - self.t0) * self.cps) + 1)
+        pop = self.cfg.get("pop", 0.1)
+        settled = n if self.cps <= 0 else max(0, min(n, int((t - self.t0 - pop) * self.cps) + 1))
+        x0 = self.cx - self.box_w / 2
+        if settled > 0:
+            blend(frame, self.layer(settled), self.cx, self.cy, fade)
+        for i in range(settled, n):
+            age = t - (self.t0 + i / self.cps)
+            k = 1 + 0.7 * (1 - ease_out(age / pop))
+            spr, ccx = self.char_sprite(i)
+            spr = cv2.resize(spr, None, fx=k, fy=k, interpolation=cv2.INTER_LINEAR)
+            blend(frame, spr, x0 + ccx, self.cy, fade * min(1.0, 0.3 + age / 0.03))
+        if self.cfg.get("sparkle") and self.cps > 0 and n > 0:
+            done = self.t0 + N / self.cps
+            if t < done + 0.15:
+                ch, _, x = self.chars[n - 1]
+                cur = x0 + x + self.font.getlength(ch)
+                k = 1.0 if t < done else max(0.0, 1 - (t - done) / 0.15)
+                flick = 0.75 + 0.25 * math.sin(t * 90)
+                blend(frame, self.flare, cur, self.cy - self.text_h * 0.15, k * flick, add=True)
+
+
+class PunchCaption:
+    """Punchline: big red heavy italic, revealed through red vertical streaks, then a red glow that pulses and fades."""
+
+    def __init__(self, cfg, W, H):
+        self.cfg = cfg
+        self.t0, self.t1 = cfg["t0"], cfg["t1"]
+        text = " ".join(cfg["lines"]).replace("^r", "").replace("^w", "")
+        rgb = tuple(cfg.get("rgb", (255, 36, 36)))
+        size = int(cfg.get("size", 0.058) * W)
+        while True:
+            font = ImageFont.truetype(FONT_PUNCH, size)
+            width = font.getlength(text)
+            if width <= cfg.get("max_w", 0.9) * W or size < 20:
+                break
+            size = int(size * 0.95)
+        pad = int(size * 0.8)
+        asc, _ = font.getmetrics()
+        bw, bh = int(width + 2 * pad), int(size * 2.4)
+        img = Image.new("RGBA", (bw, bh), (0, 0, 0, 0))
+        ImageDraw.Draw(img).text((pad, (bh - asc) / 2 + asc * 0.1), text, font=font, fill=rgb + (255,),
+                                 stroke_width=max(1, size // 22), stroke_fill=(70, 0, 0, 255))
+        a = np.array(img)[:, :, [2, 1, 0, 3]].copy()
+        self.core = a
+        self.glow = cv2.GaussianBlur(a, (0, 0), size * 0.28)
+        self.size, self.box_w, self.box_h, self.pad, self.width = size, bw, bh, pad, width
+        self.text_h = asc * 0.72
+        self.rgb = rgb
+        self.cx, self.cy = W / 2, cfg.get("y", 0.2) * H
+
+    def draw(self, frame, t, alpha=1.0):
+        if not (self.t0 <= t < self.t1):
+            return
+        d = t - self.t0
+        rev = self.cfg.get("reveal", 0.15)
+        if d < rev:
+            r = np.random.default_rng(int(d * 120))
+            lay = np.zeros((self.box_h, self.box_w, 4), np.uint8)
+            col = (self.rgb[2], self.rgb[1], self.rgb[0], 255)
+            for _ in range(28):
+                x = int(self.pad + r.uniform(0, self.width))
+                h = int(self.box_h * r.uniform(0.35, 0.8))
+                y = int((self.box_h - h) / 2 + r.uniform(-0.1, 0.1) * self.box_h)
+                cv2.line(lay, (x, y), (x, y + h), col, int(r.integers(1, 4)), cv2.LINE_AA)
+            lay = cv2.GaussianBlur(lay, (0, 0), 1.2)
+            blend(frame, lay, self.cx, self.cy, 0.9 * alpha, add=True)
+            blend(frame, self.core, self.cx, self.cy, alpha * 0.35 * d / rev)
+            return
+        pulse = 0.0
+        for b in self.cfg.get("beats", []):
+            if t >= b:
+                pulse = math.exp(-(t - b) / 0.16)
+        glow = max(0.0, 1 - (d - rev) / self.cfg.get("glow_for", 2.2)) * (0.55 + 0.45 * pulse)
+        if glow > 0.02:
+            blend(frame, self.glow, self.cx, self.cy, glow * alpha, add=True)
+        blend(frame, self.core, self.cx, self.cy, alpha)
+
+
+def make_caption(cfg, W, H):
+    return {"line": LineCaption, "punch": PunchCaption}.get(cfg.get("style"), NeonCaption)(cfg, W, H)
+
+
+def grade(img, exposure=1.0, contrast=1.05, sat=1.1):
+    """Light colour grade without vignette or grain (for the windowed layout)."""
+    x = img.astype(np.float32) * (exposure / 255.0)
+    luma = x @ np.array([0.114, 0.587, 0.299], np.float32)
+    x = luma[:, :, None] + (x - luma[:, :, None]) * sat
+    x = (x - 0.5) * contrast + 0.5
+    return np.clip(x * 255.0, 0, 255).astype(np.uint8)
+
+
 def blend(frame, bgra, cx, cy, alpha=1.0, add=False):
     h, w = bgra.shape[:2]
     x0, y0 = int(round(cx - w / 2)), int(round(cy - h / 2))
@@ -448,7 +622,7 @@ class Transitions:
         return dx, dy
 
     def apply(self, img, t, frame_idx):
-        W, H = self.W, self.H
+        H, W = img.shape[:2]
         x = img.astype(np.float32) / 255.0
         for c in self.cfgs:
             w, side = self.weight(c, t)
@@ -462,7 +636,7 @@ class Transitions:
                 w = smoothstep(w) * 0.96
                 # the glow sweeps in from the lower left and blooms to almost white
                 prog = w if side == "pre" else 1.0
-                key = (round(prog, 2), side)
+                key = (round(prog, 2), side, W, H)
                 if key not in self.leak_cache:
                     cx = W * lerp(-0.1, 0.45, prog)
                     cy = H * lerp(1.05, 0.5, prog)
@@ -566,7 +740,11 @@ def build_audio(spec, ep, out):
     cues = [tuple(c) for c in spec.get("sfx", [])] + (auto_cues(spec) if spec.get("auto_sfx") else [])
     voice = spec.get("voice", [])
     if not cues and not voice:
-        return path, None, dur                       # use the soundtrack untouched
+        # the soundtrack as is, only peak-limited: loud reference edits often decode above 0 dBFS and clip
+        lim = out / "music_limited.wav"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(path), "-af",
+                        "alimiter=limit=0.84:attack=2:release=60:level=0", "-ar", "48000", str(lim)], check=True)
+        return lim, None, dur
     sr = mus.SR
     n = int(round(dur * sr))
     track = load_stereo(path, sr)[:n]
@@ -604,7 +782,14 @@ def render(ep_dir, stills=False, only=None):
     shots = spec["shots"]
     look = Look(W, H)
     trans = Transitions(spec.get("transitions", []), W, H)
-    caps = [NeonCaption(c, W, H) for c in spec.get("captions", [])]
+    caps = [make_caption(c, W, H) for c in spec.get("captions", [])]
+    lay = spec.get("layout") or {}
+    window = lay.get("type") == "window"
+    if window:
+        bx0, by0, bx1, by1 = lay["box"]
+        win_w, win_h = (bx1 - bx0) * W, (by1 - by0) * H
+        win_cx, win_cy = (bx0 + bx1) / 2 * W, (by0 + by1) / 2 * H
+        bg = np.array(lay.get("bg", [0, 0, 0]), np.uint8)
     ovs = build_overlays(spec.get("overlays", []), W, H)
     flick = spec.get("flicker", [])
     rng = np.random.default_rng(4)
@@ -644,6 +829,11 @@ def render(ep_dir, stills=False, only=None):
         fx1, fy1 = sh.get("focus_to", [fx0, fy0])
         e = smoothstep(tau / D)
         cx, cy = lerp(fx0, fx1, e) * sw, lerp(fy0, fy1, e) * shh
+        if sh.get("focus_keys"):
+            # [[shot_time, x, y, ease?], ...]: hold, then pan to read a line of on-screen text
+            fk = sh["focus_keys"]
+            cx = zoom_at([[k[0], k[1]] + k[3:] for k in fk], tau) * sw
+            cy = zoom_at([[k[0], k[2]] + k[3:] for k in fk], tau) * shh
         z = zoom_at(sh.get("zoom_keys"), tau) * trans.zoom(t) * 1.04
         hh = sh.get("handheld", 0.0)
         dx = hh * (math.sin(2 * math.pi * 1.7 * t + ph[0]) + 0.6 * math.sin(2 * math.pi * 4.3 * t + ph[1]))
@@ -651,21 +841,55 @@ def render(ep_dir, stills=False, only=None):
         rot = hh * 0.06 * math.sin(2 * math.pi * 1.1 * t + ph[4])
         sx, sy = trans.shake(t)
         dx, dy = dx + sx, dy + sy
-        s = max(W / sw, H / shh) * z
-        hw, hh2 = W / (2 * s), H / (2 * s)
+        if window:
+            sc = zoom_at(lay.get("scale_keys"), t)
+            OW, OH = int(round(win_w * sc / 2)) * 2, int(round(win_h * sc / 2)) * 2
+        else:
+            OW, OH = W, H
+        s = max(OW / sw, OH / shh) * z
+        hw, hh2 = OW / (2 * s), OH / (2 * s)
         cx = min(max(cx, hw), sw - hw) if sw > 2 * hw else sw / 2
         cy = min(max(cy, hh2), shh - hh2) if shh > 2 * hh2 else shh / 2
-        M = affine(cx, cy, s, rot, W / 2 + dx, H / 2 + dy)
-        img = cv2.warpAffine(frame, M, (W, H), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REFLECT101)
+        M = affine(cx, cy, s, rot, OW / 2 + dx, OH / 2 + dy)
+        img = cv2.warpAffine(frame, M, (OW, OH), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REFLECT101)
         if s > 2.5:
             # big upscale (low-res preview): a touch of sharpening keeps edges readable
             img = cv2.addWeighted(img, 1.5, cv2.GaussianBlur(img, (0, 0), 2.2), -0.5, 0)
+        if sh.get("fit"):
+            # on-screen text (a letter, a phone): show the whole region [x0, y0, x1, y1] (fractions of the source)
+            # over a blurred, dimmed fill of the same shot instead of cropping words off
+            rx0, ry0, rx1, ry1 = sh["fit"]
+            rw, rh = (rx1 - rx0) * sw, (ry1 - ry0) * shh
+            sf = min(OW / rw, OH / rh) * zoom_at(sh.get("fit_zoom"), tau)
+            fill = cv2.resize(img, (max(1, OW // 10), max(1, OH // 10)), interpolation=cv2.INTER_AREA)
+            fill = cv2.resize(cv2.GaussianBlur(fill, (0, 0), 2.5), (OW, OH), interpolation=cv2.INTER_LINEAR)
+            ox, oy = OW / 2 + dx, OH / 2 + dy
+            fg = cv2.warpAffine(frame, affine((rx0 + rx1) / 2 * sw, (ry0 + ry1) / 2 * shh, sf, 0, ox, oy), (OW, OH),
+                                flags=cv2.INTER_AREA if sf < 1 else cv2.INTER_CUBIC, borderMode=cv2.BORDER_REFLECT101)
+            img = (fill.astype(np.float32) * sh.get("fill_dim", 0.42)).astype(np.uint8)
+            ax0, ax1 = int(max(0, ox - rw * sf / 2)), int(min(OW, ox + rw * sf / 2))
+            ay0, ay1 = int(max(0, oy - rh * sf / 2)), int(min(OH, oy + rh * sf / 2))
+            img[ay0:ay1, ax0:ax1] = fg[ay0:ay1, ax0:ax1]
         g = sh.get("grade", {})
         expo = g.get("exposure", 1.0)
         if any(a <= t < b for a, b in flick):
             expo *= 1.035 if f % 2 else 0.965
-        img = look.apply(img, f, exposure=expo, contrast=g.get("contrast", 1.06), sat=g.get("sat", 1.18),
-                         grain=g.get("grain", 2.0))
+        if window:
+            img = grade(img, expo, g.get("contrast", 1.05), g.get("sat", 1.1))
+            img = trans.apply(img, t, f)                 # transitions stay inside the window
+            canvas = np.empty((H, W, 3), np.uint8)
+            canvas[:] = bg
+            x0, y0 = int(round(win_cx - OW / 2)), int(round(win_cy - OH / 2))
+            sx0, sy0 = max(0, -x0), max(0, -y0)
+            cx0, cy0, cx1, cy1 = max(0, x0), max(0, y0), min(W, x0 + OW), min(H, y0 + OH)
+            canvas[cy0:cy1, cx0:cx1] = img[sy0:sy0 + cy1 - cy0, sx0:sx0 + cx1 - cx0]
+            img = canvas
+            for c in caps:
+                if c.cfg.get("anchor") == "above_window":
+                    c.cy = max(0, y0) - c.cfg.get("gap", 0.015) * H - getattr(c, "text_h", 0) / 2
+        else:
+            img = look.apply(img, f, exposure=expo, contrast=g.get("contrast", 1.06), sat=g.get("sat", 1.18),
+                             grain=g.get("grain", 2.0))
         # graphics sit on the picture, so the flashes and leaks wash over them too
         for ov in ovs:
             if not getattr(ov, "over", False):
@@ -675,7 +899,8 @@ def render(ep_dir, stills=False, only=None):
         for ov in ovs:
             if getattr(ov, "over", False):
                 ov.draw(img, t)
-        img = trans.apply(img, t, f)
+        if not window:
+            img = trans.apply(img, t, f)
         fi, fo = spec.get("fade_in", [0, 0.1]), spec.get("fade_out")
         k = 1.0
         if t < fi[1]:

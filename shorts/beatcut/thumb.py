@@ -5,6 +5,8 @@
     "thumbnail": {"top":    {"clip": "messi", "t": 1.6, "focus": [0.72, 0.45], "zoom": 1.1},
                   "bottom": {"clip": "messi", "t": 1.6, "focus": [0.31, 0.40], "zoom": 1.15},
                   "lines": ["HIS SHIRT WAS A", "“^yPLASTIC ^yBAG”"], "heart_at": [0.82, 0.62]}
+
+    Punchline look (no heart): "punch": [["KARMA CAME TO", [255, 255, 255]], ["THE WEDDING!", [255, 36, 36]]], "heart": false
 """
 import json
 import subprocess
@@ -15,7 +17,7 @@ import cv2
 import numpy as np
 
 from .render import Look
-from .story import NeonCaption, blend, emoji_sprite, HeartBurst
+from .story import NeonCaption, PunchCaption, blend, emoji_sprite, HeartBurst
 
 
 def grab(path, t):
@@ -60,12 +62,23 @@ def main(ep_dir):
     yy = np.arange(H, dtype=np.float32)[:, None, None]
     band = np.exp(-((yy - half) / 230) ** 2) * 0.72
     out = (out.astype(np.float32) * (1 - band)).astype(np.uint8)
-    cap = NeonCaption({"t0": 0, "t1": 1, "cps": 0, "lines": th["lines"], "size": th.get("size", 0.11)}, W, H)
-    blend(out, cap.layer(len(cap.chars)), W / 2, half)
-    hx, hy = th.get("heart_at", [0.82, 0.62])
-    spr = emoji_sprite(HeartBurst.SEQ, int(0.26 * W))
-    blend(out, cv2.GaussianBlur(spr, (0, 0), 14), hx * W, hy * H, 0.6, add=True)
-    blend(out, spr, hx * W, hy * H)
+    if th.get("punch"):
+        # heavy italic lines with a soft glow, like the punchline caption
+        n = len(th["punch"])
+        for i, (text, rgb) in enumerate(th["punch"]):
+            pc = PunchCaption({"t0": 0, "t1": 1, "lines": [text], "rgb": rgb, "size": th.get("size", 0.11),
+                               "max_w": 0.94}, W, H)
+            y = half + (i - (n - 1) / 2) * pc.size * 1.18
+            blend(out, pc.glow, W / 2, y, 0.7, add=True)
+            blend(out, pc.core, W / 2, y)
+    else:
+        cap = NeonCaption({"t0": 0, "t1": 1, "cps": 0, "lines": th["lines"], "size": th.get("size", 0.11)}, W, H)
+        blend(out, cap.layer(len(cap.chars)), W / 2, half)
+    if th.get("heart", True):
+        hx, hy = th.get("heart_at", [0.82, 0.62])
+        spr = emoji_sprite(HeartBurst.SEQ, int(0.26 * W))
+        blend(out, cv2.GaussianBlur(spr, (0, 0), 14), hx * W, hy * H, 0.6, add=True)
+        blend(out, spr, hx * W, hy * H)
     (ep / "out").mkdir(exist_ok=True)
     cv2.imwrite(str(ep / "out" / "thumbnail.jpg"), out, [cv2.IMWRITE_JPEG_QUALITY, 92])
     print(f"wrote {ep / 'out' / 'thumbnail.jpg'}")
