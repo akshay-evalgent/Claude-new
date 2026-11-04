@@ -1,0 +1,46 @@
+{
+  "title": "First Light",
+  "note": "Dawn-to-night mood film. Each shot is native 2176x3840, 81 frames at 30 fps (2.7 s). Prompts follow the authors' 4K-World-Vision style: light, shot type, camera move, subject, texture. Landscapes and cities suit the 1.3B model; it is weak on faces, hands and readable text.",
+  "shots": [
+    {
+      "id": "s01_ridge_dawn",
+      "seed": 101,
+      "prompt": "Pre-dawn aerial establishing shot gliding slowly forward over a jagged mountain ridge above a sea of clouds, the first sliver of sun breaking the horizon, cold blue shadows giving way to thin bands of amber light across fresh snow, wisps of cloud spilling over a high saddle, crisp detail, cinematic anamorphic look."
+    },
+    {
+      "id": "s02_forest_rays",
+      "seed": 102,
+      "prompt": "Slow dolly shot through an ancient misty pine forest at sunrise, volumetric god rays cutting between tall trunks, floating dust and pollen catching the light, moss-covered roots and ferns in the foreground, shallow depth of field, cool green shadows with warm golden highlights, quiet still atmosphere, fine 35mm film grain."
+    },
+    {
+      "id": "s03_glacier_river",
+      "seed": 103,
+      "prompt": "Low-altitude drone shot following a turquoise glacial river as it braids around grey gravel bars through a wide valley, wildflower meadows along the banks, thin waterfalls on steep green cliffs in the distance, morning light raking across the terrain, steady forward motion, ultra-detailed landscape cinematography."
+    },
+    {
+      "id": "s04_basalt_storm",
+      "seed": 104,
+      "prompt": "Wide shot slowly pushing in on a basalt sea stack off a black volcanic coast as storm waves crash and explode into white spray, heavy slate-grey clouds with a single break of sunlight on the water, seabirds circling, sea mist hanging over the shore, dramatic moody colour grade, sharp detail in the spray."
+    },
+    {
+      "id": "s05_dune_crests",
+      "seed": 105,
+      "prompt": "Golden hour aerial tracking shot banking slowly across towering sand dunes, sharp wind-carved ridgelines casting long shadows, fine sand streaming off the crests in the wind, a single line of footprints crossing a slope, warm orange and deep umber palette, epic scale, cinematic wide framing."
+    },
+    {
+      "id": "s06_city_blue_hour",
+      "seed": 106,
+      "prompt": "Blue hour aerial shot rising over a dense coastal city as windows and streetlights flicker on, rivers of car headlights flowing along a curved elevated highway, glass towers reflecting the last violet light in the sky, light haze over the harbour, camera ascending and tilting down, rich teal and orange tones, sharp architectural detail."
+    },
+    {
+      "id": "s07_rain_alley",
+      "seed": 107,
+      "prompt": "Night tracking shot moving forward at walking pace along a narrow rain-soaked alley lit by glowing lanterns and coloured shop lights, puddles reflecting magenta and cyan light, steam rising from street vents, raindrops streaking through beams of light, shallow depth of field, moody cinematic noir atmosphere, no people."
+    },
+    {
+      "id": "s08_aurora_lake",
+      "seed": 108,
+      "prompt": "Wide night shot panning slowly right as green and violet aurora ripples over a frozen lake ringed by snow-covered mountains, stars sharp in a deep blue sky, the aurora mirrored in patches of clear black ice, a small wooden cabin with one warm lit window on the shore, serene closing shot."
+    }
+  ]
+}
