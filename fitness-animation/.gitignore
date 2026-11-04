@@ -1,0 +1,5 @@
+node_modules/
+renders/*.video.mp4
+renders/*-sfx.wav
+renders/stills/
+assets/plates/*.grid.png

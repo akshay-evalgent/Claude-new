@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Episode Player</title>
+<link rel="stylesheet" href="theme.css">
+<style>
+  #bar { position: fixed; left: 0; right: 0; bottom: 0; height: 64px; background: #111; border-top: 1px solid #222;
+    display: flex; align-items: center; gap: 14px; padding: 0 16px; font: 500 14px "Poppins", sans-serif; color: #ccc; z-index: 10; }
+  #bar button { background: #222; color: #eee; border: 1px solid #333; border-radius: 6px; padding: 6px 12px; font: inherit; cursor: pointer; }
+  #bar button:hover { background: #2c2c2c; }
+  #scrub { flex: 1; position: relative; height: 34px; cursor: pointer; }
+  #track { position: absolute; left: 0; right: 0; top: 15px; height: 4px; background: #333; border-radius: 2px; }
+  #fill { position: absolute; left: 0; top: 15px; height: 4px; background: #ff8a1f; border-radius: 2px; }
+  .mark { position: absolute; top: 9px; width: 2px; height: 16px; background: #666; }
+  .mark span { position: absolute; top: -2px; left: 5px; font-size: 10px; color: #777; white-space: nowrap; }
+  #time { font-variant-numeric: tabular-nums; min-width: 120px; text-align: right; }
+  .render #bar { display: none; }
+  #pickinfo { position: fixed; z-index: 11; pointer-events: none; font: 600 13px "Poppins", sans-serif; color: #000; background: #ffc23d; padding: 3px 8px; border-radius: 4px; display: none; }
+  body.picking #stage { cursor: crosshair; }
+  #help { color: #666; font-size: 12px; }
+  @media (max-width: 700px) { #help { display: none; } }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<div id="bar">
+  <button id="play">Play</button>
+  <div id="scrub"><div id="track"></div><div id="fill"></div></div>
+  <span id="time">0.00 / 0.00</span>
+  <button id="cc" title="Show the voice-over script as captions">VO</button>
+  <button id="pick" title="Click the stage to copy [x, y] stage coordinates">Pick</button>
+  <span id="help">space play · ←/→ frame · shift ←/→ 1 s · C captions · P pick x,y</span>
+</div>
+<script src="engine.js"></script>
+<script src="../assets/plates/plates.js"></script>
+<script>
+(async function () {
+  const q = new URLSearchParams(location.search);
+  const ep = q.get('ep') || 'grip-strength';
+  const render = q.has('render');
+  if (render) document.body.classList.add('render');
+  await new Promise((res, rej) => { const s = document.createElement('script'); s.src = `../episodes/${ep}.js`; s.onload = res; s.onerror = () => rej(new Error('episode not found: ' + ep)); document.head.appendChild(s); });
+  const stage = document.getElementById('stage');
+  const M = await Motion.mount(stage);
+  document.title = M.title;
+  window.__motion = M;           // used by tools/render.mjs
+  if (render) { window.__ready = true; return; }
+
+  // ---- interactive preview
+  const fit = () => {
+    const s = Math.min(innerWidth / 1920, (innerHeight - 64) / 1080);
+    stage.style.transform = `translate(${(innerWidth - 1920 * s) / 2}px,${(innerHeight - 64 - 1080 * s) / 2}px) scale(${s})`;
+  };
+  addEventListener('resize', fit); fit();
+  const scrub = document.getElementById('scrub'), fill = document.getElementById('fill'), time = document.getElementById('time'), playBtn = document.getElementById('play');
+  for (const v of M.vo) {
+    const m = document.createElement('div'); m.className = 'mark'; m.style.left = (v.start / M.duration * 100) + '%';
+    if (v.name) { const sp = document.createElement('span'); sp.textContent = v.name; m.appendChild(sp); }
+    scrub.appendChild(m);
+  }
+  let t = +(q.get('t') || 0), playing = false, last = 0, cc = false;
+  const show = () => { M.seek(t); fill.style.width = (t / M.duration * 100) + '%'; time.textContent = `${t.toFixed(2)} / ${M.duration.toFixed(2)}`; };
+  const loop = now => { if (!playing) return; t += (now - last) / 1000; last = now; if (t >= M.duration) { t = M.duration; playing = false; playBtn.textContent = 'Play'; } show(); requestAnimationFrame(loop); };
+  const toggle = () => { playing = !playing; playBtn.textContent = playing ? 'Pause' : 'Play'; if (playing) { if (t >= M.duration) t = 0; last = performance.now(); requestAnimationFrame(loop); } };
+  playBtn.onclick = toggle;
+  document.getElementById('cc').onclick = () => { cc = !cc; M.showCaptions(cc); };
+  const seekTo = e => { const r = scrub.getBoundingClientRect(); t = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)) * M.duration; show(); };
+  scrub.addEventListener('pointerdown', e => { seekTo(e); const mv = ev => seekTo(ev); addEventListener('pointermove', mv); addEventListener('pointerup', () => removeEventListener('pointermove', mv), { once: true }); });
+  // pick mode: click the stage, get [x, y] in stage pixels (what every component uses)
+  const info = document.createElement('div'); info.id = 'pickinfo'; document.body.appendChild(info);
+  const togglePick = () => { document.body.classList.toggle('picking'); info.style.display = 'none'; };
+  document.getElementById('pick').onclick = togglePick;
+  stage.addEventListener('click', e => {
+    if (!document.body.classList.contains('picking')) return;
+    const r = stage.getBoundingClientRect(), k = r.width / 1920;
+    const x = Math.round((e.clientX - r.left) / k), y = Math.round((e.clientY - r.top) / k);
+    const txt = `[${x}, ${y}]`;
+    navigator.clipboard && navigator.clipboard.writeText(txt).catch(() => {});
+    console.log('pick', txt, 't =', t.toFixed(2));
+    Object.assign(info.style, { display: 'block', left: (e.clientX + 12) + 'px', top: (e.clientY + 12) + 'px' });
+    info.textContent = `${txt} copied`;
+  });
+  addEventListener('keydown', e => {
+    if (e.code === 'KeyP') togglePick();
+    if (e.code === 'Space') { e.preventDefault(); toggle(); }
+    if (e.code === 'ArrowRight' || e.code === 'ArrowLeft') { t = Math.min(M.duration, Math.max(0, t + (e.code === 'ArrowRight' ? 1 : -1) * (e.shiftKey ? 1 : 1 / M.fps))); show(); }
+    if (e.code === 'KeyC') { cc = !cc; M.showCaptions(cc); }
+  });
+  show();
+})().catch(e => { document.body.innerHTML = `<pre style="color:#f66;padding:20px">${e.stack || e}</pre>`; window.__error = String(e); });
+</script>
+</body>
+</html>

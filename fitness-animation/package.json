@@ -1,0 +1,15 @@
+{
+  "name": "fitness-animation",
+  "private": true,
+  "type": "module",
+  "description": "Deterministic HTML animation engine for anatomy-style fitness explainer videos",
+  "scripts": {
+    "preview": "http-server . -p 8080 -c-1 -o /engine/player.html",
+    "render": "node tools/render.mjs",
+    "stills": "node tools/render.mjs grip-strength --stills 3.4,6.6,14.8,24,35.5,50.6"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "playwright": "^1.50.0"
+  }
+}
