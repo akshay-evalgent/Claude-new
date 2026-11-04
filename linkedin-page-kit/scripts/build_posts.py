@@ -447,6 +447,64 @@ Two Indian voices in one week: Sarvam's Vivek Raghavan says build the stack or b
 #ArtificialIntelligence
 #FounderSignal""",
       first_comment="""Sources: NewsBytes and Business Today (NDTV World Summit coverage, late Oct 2026), WTF is AI podcast (26 Oct). Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+ # ---------- 3 viral candidates built on day-one/two data: big cluster + fight + personal question ----------
+ dict(slug="ohio-bans-data-centres", when="Wed 4 Nov · 6:30 pm IST (8 am New York)", pillar="Signal (news)", kind="image",
+      images=["assets/posts/2026-11-05/signal-ohio-bans-data-centres.png", "assets/posts/2026-11-05/signal-ohio-bans-data-centres-square.png"],
+      tags="@Amazon Web Services (AWS)",
+      caption="""Voters in at least three Ohio cities approved bans on large data centres on 3 November, in local elections held alongside the US midterms, according to unofficial results from county boards of elections.
+
+In Trenton, where an Amazon Web Services data centre is already under construction on 141 acres, the ban passed with about 80% of the vote after more than a year of local controversy; it is not expected to affect the AWS project. In Urbana the charter amendment passed with 77% and voters also recalled Mayor Bill Bean. In Piqua the ban passed with 67% and voters recalled three city commissioners.
+
+Ballotpedia counted more than 40 data-centre measures on local ballots in 10 states this year, most of them aimed at limiting development, and national polls have found around two-thirds of Americans oppose new data centres near them. The results came in the same week Anthropic disclosed about $895 billion of compute commitments.
+
+If an AI company asked to build a data centre in your town tomorrow, how would you vote, and what would it take to change your mind?
+
+#DataCenters
+#ArtificialIntelligence
+#Midterms2026
+#Ohio
+#AWS
+#Startups
+#FounderSignal""",
+      first_comment="""Sources: Journal-News (Trenton), Springfield News-Sun and Peak of Ohio (Urbana), WOSU and WYSO (Piqua), Ballotpedia, 3 to 4 Nov 2026. All results are unofficial until certified. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+ dict(slug="musk-guppy-death", when="Thu 5 Nov · 4:30 pm IST (reach)", pillar="Signal (news)", kind="image",
+      images=["assets/posts/2026-11-05/signal-musk-guppy-death.png", "assets/posts/2026-11-05/signal-musk-guppy-death-square.png"],
+      tags="@Oracle",
+      caption="""Elon Musk has predicted that most of the more than 200 "neocloud" companies renting out AI computing power will fail or be absorbed, writing on X that they face "guppy-level death and consolidation" because debt markets have largely shut off lending to companies without substantial revenue outside AI data centres. "Some will make it through, but not many," he wrote.
+
+The warning came as Musk said SpaceX had "closed" $40 billion of borrowing to pay for GPUs, and followed a Gartner forecast that more than 80% of neocloud providers will stop operating independently by 2030.
+
+On 2 November Oracle filed to raise $20 billion through roughly equal sales of stock and bonds to fund its AI data-centre expansion. Its shares fell about 4.5% after the filing and are down around a third this year. Oracle reported about $125 billion of borrowings as of 31 August.
+
+Which AI tool or provider in your own stack would you bet won't be around in 2028?
+
+#ElonMusk
+#Oracle
+#ArtificialIntelligence
+#CloudComputing
+#AIBubble
+#Startups
+#FounderSignal""",
+      first_comment="""Sources: Reuters, Quartz and Invezz on Musk's post (late Oct 2026); Digitimes, The Globe and Mail and Anadolu Agency on Oracle's filing (2 to 3 Nov). Photo of Elon Musk: Wikimedia Commons, CC BY-SA. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+ dict(slug="anthropic-self-building-ai", when="Thu 5 Nov · 8:30 pm IST (debate)", pillar="Signal (news)", kind="image",
+      images=["assets/posts/2026-11-05/signal-anthropic-self-building-ai.png", "assets/posts/2026-11-05/signal-anthropic-self-building-ai-square.png"],
+      tags="@Anthropic",
+      caption="""Anthropic has told prospective investors that it may be close to building an AI model capable of recursive self-improvement, a system able to meaningfully speed up the development of better AI, according to its amended IPO filing as reported by TechCrunch and Gizmodo on 2 November.
+
+The risk-factors section says the capability could arrive "imminently" and that the company's internal measures suggest it may soon reach its definition of "significantly accelerated progress caused by AI". Anthropic says no model has crossed that threshold yet, that humans will stay in the research process for the foreseeable future, and that it is considering changes to its Responsible Scaling Policy to keep humans in control. The filing warns that "employing AI to develop better AI might also present significant safety concerns".
+
+TechCrunch noted that IPO filings are part disclosure and part sales pitch. In September, an Anthropic researcher resigned over concerns about self-improving AI.
+
+Honest question: when an AI company writes this into its IPO filing, do you read it as a warning or a sales pitch?
+
+#Anthropic
+#ArtificialIntelligence
+#AISafety
+#Claude
+#IPO
+#Startups
+#FounderSignal""",
+      first_comment="""Sources: TechCrunch, Gizmodo and Techzine (2 to 3 Nov 2026), on Anthropic's amended S-1 filed 2 Nov. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
 ]
 
 def main():

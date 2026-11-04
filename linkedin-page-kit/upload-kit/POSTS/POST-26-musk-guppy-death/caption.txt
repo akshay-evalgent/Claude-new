@@ -1,0 +1,17 @@
+TAG IN THE POST (type @ and pick): @Oracle
+
+Elon Musk has predicted that most of the more than 200 "neocloud" companies renting out AI computing power will fail or be absorbed, writing on X that they face "guppy-level death and consolidation" because debt markets have largely shut off lending to companies without substantial revenue outside AI data centres. "Some will make it through, but not many," he wrote.
+
+The warning came as Musk said SpaceX had "closed" $40 billion of borrowing to pay for GPUs, and followed a Gartner forecast that more than 80% of neocloud providers will stop operating independently by 2030.
+
+On 2 November Oracle filed to raise $20 billion through roughly equal sales of stock and bonds to fund its AI data-centre expansion. Its shares fell about 4.5% after the filing and are down around a third this year. Oracle reported about $125 billion of borrowings as of 31 August.
+
+Which AI tool or provider in your own stack would you bet won't be around in 2028?
+
+#ElonMusk
+#Oracle
+#ArtificialIntelligence
+#CloudComputing
+#AIBubble
+#Startups
+#FounderSignal

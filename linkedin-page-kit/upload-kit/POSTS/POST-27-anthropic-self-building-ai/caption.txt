@@ -1,0 +1,17 @@
+TAG IN THE POST (type @ and pick): @Anthropic
+
+Anthropic has told prospective investors that it may be close to building an AI model capable of recursive self-improvement, a system able to meaningfully speed up the development of better AI, according to its amended IPO filing as reported by TechCrunch and Gizmodo on 2 November.
+
+The risk-factors section says the capability could arrive "imminently" and that the company's internal measures suggest it may soon reach its definition of "significantly accelerated progress caused by AI". Anthropic says no model has crossed that threshold yet, that humans will stay in the research process for the foreseeable future, and that it is considering changes to its Responsible Scaling Policy to keep humans in control. The filing warns that "employing AI to develop better AI might also present significant safety concerns".
+
+TechCrunch noted that IPO filings are part disclosure and part sales pitch. In September, an Anthropic researcher resigned over concerns about self-improving AI.
+
+Honest question: when an AI company writes this into its IPO filing, do you read it as a warning or a sales pitch?
+
+#Anthropic
+#ArtificialIntelligence
+#AISafety
+#Claude
+#IPO
+#Startups
+#FounderSignal

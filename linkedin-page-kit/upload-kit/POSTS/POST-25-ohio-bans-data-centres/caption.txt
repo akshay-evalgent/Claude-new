@@ -1,0 +1,17 @@
+TAG IN THE POST (type @ and pick): @Amazon Web Services (AWS)
+
+Voters in at least three Ohio cities approved bans on large data centres on 3 November, in local elections held alongside the US midterms, according to unofficial results from county boards of elections.
+
+In Trenton, where an Amazon Web Services data centre is already under construction on 141 acres, the ban passed with about 80% of the vote after more than a year of local controversy; it is not expected to affect the AWS project. In Urbana the charter amendment passed with 77% and voters also recalled Mayor Bill Bean. In Piqua the ban passed with 67% and voters recalled three city commissioners.
+
+Ballotpedia counted more than 40 data-centre measures on local ballots in 10 states this year, most of them aimed at limiting development, and national polls have found around two-thirds of Americans oppose new data centres near them. The results came in the same week Anthropic disclosed about $895 billion of compute commitments.
+
+If an AI company asked to build a data centre in your town tomorrow, how would you vote, and what would it take to change your mind?
+
+#DataCenters
+#ArtificialIntelligence
+#Midterms2026
+#Ohio
+#AWS
+#Startups
+#FounderSignal

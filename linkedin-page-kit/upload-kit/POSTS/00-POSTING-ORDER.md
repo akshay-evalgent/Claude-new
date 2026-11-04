@@ -26,3 +26,6 @@
 | 22 | Thu 5 Nov · 4:30 pm IST (reach) | Signal (news) | POST-22-canva-22-percent |
 | 23 | Fri 6 Nov · 4:30 pm IST (reach) | Signal (news) | POST-23-mayer-ai-daughter |
 | 24 | Sat 7 Nov · 1:30 pm IST (depth) | Signal (news) | POST-24-kamath-degrees-matter-less |
+| 25 | Wed 4 Nov · 6:30 pm IST (8 am New York) | Signal (news) | POST-25-ohio-bans-data-centres |
+| 26 | Thu 5 Nov · 4:30 pm IST (reach) | Signal (news) | POST-26-musk-guppy-death |
+| 27 | Thu 5 Nov · 8:30 pm IST (debate) | Signal (news) | POST-27-anthropic-self-building-ai |
