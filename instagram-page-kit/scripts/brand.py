@@ -20,6 +20,11 @@ MUTED = (150, 150, 158)
 YELLOW = (255, 201, 60)     # the margin line and highlight
 GREEN = (52, 211, 120)
 RED = (255, 92, 92)
+PALE_YELLOW = (245, 250, 90)  # the highlight colour measured from @wealth's movie-metaphor reel
+
+# Movie-metaphor layout, measured from @wealth reel DfLHlFtptGu (scaled 720x1280 -> 1080x1920)
+META_TEXT_BOTTOM = 560      # hook text block ends here
+META_CLIP = (0, 600, 1080, 1320)  # full-width 3:2 clip window
 
 W, H = 1080, 1920           # reel canvas
 SAFE_TOP = 220              # Instagram header
@@ -50,11 +55,15 @@ def wrap_words(draw, words, fnt, max_w):
 
 
 def tokenize(text, highlight=None):
-    """Split text into words, flagging the words that belong to the highlight phrase."""
+    """Split text into words, flagging the words that belong to the highlight phrase(s).
+
+    highlight can be one phrase or a list of phrases.
+    """
     words = text.split()
     flags = [False] * len(words)
-    if highlight:
-        hw = highlight.split()
+    phrases = [highlight] if isinstance(highlight, str) else (highlight or [])
+    for phrase in phrases:
+        hw = phrase.split()
         n = len(hw)
         for i in range(len(words) - n + 1):
             if [w.strip() for w in words[i:i + n]] == hw:

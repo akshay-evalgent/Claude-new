@@ -4,6 +4,11 @@ Usage:
   python3 scripts/headline.py "Costco loses money on this hot dog. On purpose." \
       --highlight "On purpose." --out costco.png [--style white|dark] [--source "Source: Costco 10-K"] [--preview]
 
+  Movie-metaphor layout (the one @wealth uses: black frame, centred Title Case hook, clip in the middle):
+  python3 scripts/headline.py "The Perfect Example Of What Saving Vs Investing Looks Like:" \
+      --highlight "Saving" --highlight "Investing" --style metaphor --out saving.png --preview
+  This PNG is opaque black with a transparent window. Put your clip underneath, scaled to full width.
+
 Drop the PNG on the top layer in Edits or CapCut and put your clip underneath.
 The clear area below the box is the video window. Keep the clip between
 y=VIDEO_TOP and y=VIDEO_BOTTOM (printed when you run this).
@@ -16,6 +21,7 @@ from PIL import Image, ImageDraw
 
 sys.path.insert(0, os.path.dirname(__file__))
 from brand import (W, H, SAFE_BOTTOM, PAPER, TEXT, YELLOW, INK, INK2, WHITE, MUTED,
+                   PALE_YELLOW, META_TEXT_BOTTOM, META_CLIP,
                    tokenize, fit_font, draw_rich_lines, handle_tag, font)
 
 MARGIN_X = 54
@@ -23,7 +29,24 @@ BOX_TOP = 300
 PAD = 40
 
 
+def render_metaphor(text, highlight=None, handle=False):
+    """Black frame, centred hook text above a full-width clip window."""
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 255))
+    d = ImageDraw.Draw(img)
+    d.rectangle(META_CLIP, fill=(0, 0, 0, 0))
+    tokens = tokenize(text, highlight)
+    fnt, lines = fit_font(d, tokens, W - 2 * 90, 3, start=62, minimum=46, weight="Bold")
+    line_h = int(fnt.size * 1.22)
+    top = META_TEXT_BOTTOM - line_h * len(lines)
+    draw_rich_lines(d, lines, fnt, 90, top, WHITE, PALE_YELLOW, line_gap=1.22, align="center", box_w=W - 180)
+    if handle:
+        handle_tag(img, 90, META_CLIP[3] + 40, size=30, color=MUTED)
+    return img, META_CLIP[1]
+
+
 def render_headline(text, highlight=None, style="white", source=None, max_lines=3):
+    if style == "metaphor":
+        return render_metaphor(text, highlight)
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     box_w = W - 2 * MARGIN_X
@@ -56,11 +79,11 @@ def render_headline(text, highlight=None, style="white", source=None, max_lines=
     return img, bottom
 
 
-def preview(overlay, video_top):
+def preview(overlay, video_top, video_bottom=None):
     """Composite on a dark frame with a striped placeholder where the clip goes."""
     bg = Image.new("RGBA", (W, H), INK + (255,))
     d = ImageDraw.Draw(bg)
-    vb = H - SAFE_BOTTOM - 40
+    vb = video_bottom or H - SAFE_BOTTOM - 40
     d.rectangle((0, video_top, W, vb), fill=INK2 + (255,))
     for x in range(-H, W, 36):
         d.line((x, video_top, x + (vb - video_top), vb), fill=(38, 38, 44, 255), width=10)
@@ -75,19 +98,26 @@ def preview(overlay, video_top):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("text")
-    ap.add_argument("--highlight")
-    ap.add_argument("--style", default="white", choices=["white", "dark"])
+    ap.add_argument("--highlight", action="append", help="phrase to highlight; repeat for more than one")
+    ap.add_argument("--style", default="white", choices=["white", "dark", "metaphor"])
     ap.add_argument("--source")
+    ap.add_argument("--handle", action="store_true", help="metaphor style: add your handle under the clip")
     ap.add_argument("--out", default="headline.png")
     ap.add_argument("--preview", action="store_true", help="also write <out>-preview.png on a mock frame")
     a = ap.parse_args()
-    img, bottom = render_headline(a.text, a.highlight, a.style, a.source)
+    if a.style == "metaphor":
+        img, video_top = render_metaphor(a.text, a.highlight, a.handle)
+        video_bottom = META_CLIP[3]
+    else:
+        img, bottom = render_headline(a.text, a.highlight, a.style, a.source)
+        video_top, video_bottom = bottom + 30, H - SAFE_BOTTOM - 40
     img.save(a.out)
-    video_top = bottom + 30
-    print(f"wrote {a.out}  VIDEO_TOP={video_top}  VIDEO_BOTTOM={H - SAFE_BOTTOM - 40}")
+    print(f"wrote {a.out}  VIDEO_TOP={video_top}  VIDEO_BOTTOM={video_bottom}")
     if a.preview:
         p = os.path.splitext(a.out)[0] + "-preview.png"
-        preview(img, video_top).convert("RGB").save(p)
+        under = preview(Image.new("RGBA", (W, H), (0, 0, 0, 0)), video_top, video_bottom)
+        under.alpha_composite(img)
+        under.convert("RGB").save(p)
         print(f"wrote {p}")
 
 

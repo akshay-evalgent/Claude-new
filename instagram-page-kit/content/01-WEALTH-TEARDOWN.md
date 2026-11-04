@@ -2,9 +2,12 @@
 
 ## What I could see and what I couldn't
 
-Instagram blocks automated viewing, so I could not play @wealth's reels or read their view counts directly. The numbers below come from third-party trackers (HypeAuditor, faceless.my) and cached snapshots of the profile. Treat every number as an estimate.
+Instagram blocks automated viewing of the profile and reels tab. Two kinds of data went into this file:
 
-The format breakdown comes from the account's own description, the content categories trackers assign to it, and the formats that business-news pages at this size all use. If you want a frame-by-frame breakdown of their current top reels, send me screenshots of the reels tab (sorted by views if you can) or 10 reel links with their view counts, and I'll add a section to this file.
+- **Real data from one reel** (`reference/01-DfLHlFtptGu.md`), read from Instagram's public embed page: 17.6M views, exact layout measured from its cover frame, caption structure. That reel is a **movie-scene metaphor about money mindset**, not a news story. Its format is in `07-MOVIE-METAPHOR-REELS.md`.
+- **Estimates for everything else**, from third-party trackers (HypeAuditor, faceless.my) and cached profile snapshots.
+
+The sections on news and breakdown formats below are still my read of the genre, not @wealth's confirmed mix. Each extra reel link you send gets the same real-data treatment and moves this file from estimate to measurement.
 
 ## The account in numbers
 
@@ -12,8 +15,9 @@ The format breakdown comes from the account's own description, the content categ
 |---|---|
 | Handle | @wealth |
 | Bio | "The leading source for all things business, tech, & news." |
-| Followers | about 15M (HypeAuditor shows 14.9M on one page and 18.1M on another) |
-| Posts | about 12,300 |
+| Followers | **19,325,254** (Instagram embed data, 4 November 2026). Trackers lag behind: HypeAuditor showed 14.9M and 18.1M. |
+| Posts | **12,690** (same source) |
+| Top reel seen so far | 17.6M views, 962K likes, 1,377 comments, 41.6 s: a *Johnny English Reborn* scene with the hook "The Perfect Example Of What Working Hard Vs Working Smart Looks Like:" |
 | Engagement rate | about 3.65% (HypeAuditor estimate) |
 | Average likes | about 42,500 per post (HypeAuditor estimate) |
 | Categories trackers assign | Entrepreneurship, Startups, Career, Sales & Marketing |
@@ -51,14 +55,19 @@ This is the mix you see on business-news pages in @wealth's tier, matched to the
 
 | Pillar | What a post looks like | Format | Share for you |
 |---|---|---|---|
-| Business news | A company move, deal, price change, layoff, earnings surprise | Headline reel | 30% |
-| Tech and AI | A new product or tool doing something surprising, shown on screen | Headline reel, screen recording | 15% |
-| How companies make money | Costco's hot dog, McDonald's real estate, Rolex's foundation | 30 to 60 second voiceover breakdown | 25% |
+| **Money mindset metaphors (confirmed on @wealth)** | A short scene that shows an idea: hard vs smart work, compounding, leverage | Movie Metaphor (`07-MOVIE-METAPHOR-REELS.md`) | 25% |
+| Business news | A company move, deal, price change, layoff, earnings surprise | Headline reel | 20% |
+| Tech and AI | A new product or tool doing something surprising, shown on screen | Headline reel, screen recording | 10% |
+| How companies make money | Costco's hot dog, McDonald's real estate, Rolex's foundation | 30 to 60 second voiceover breakdown | 20% |
 | Founder and billionaire takes | A quote or interview moment with a reaction | Quote card plus commentary | 10% |
-| Money numbers | Compound interest, salary math, price-over-time charts | Animated data reel, carousel | 15% |
+| Money numbers | Compound interest, salary math, price-over-time charts | Animated data reel, carousel | 10% |
 | Money rules | One sentence that people screenshot | Short text reel or static | 5% |
 
-## Anatomy of the headline reel (their signature format)
+## Confirmed: the Movie Metaphor (from a real 17.6M-view reel)
+
+Black frame, a centred Title Case hook in white with the two contrasting phrases in pale yellow, a full-width film clip in the middle third, and black below. No headline box, no handle, no subtitles. The film's own audio. 41.6 seconds. The caption is a mini-essay: blunt claim, relatable pattern, two famous examples, a two-line closer, film credit, 5 hashtags. Full measurements: `reference/01-DfLHlFtptGu.md`. Rebuilt for a new account (without the copyright risk): `07-MOVIE-METAPHOR-REELS.md`.
+
+## Anatomy of the headline reel (genre format, not yet confirmed on @wealth)
 
 ```
  ┌───────────────────────────┐

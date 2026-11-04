@@ -1,6 +1,6 @@
 # The seven formats
 
-> **DRAFT.** Built from the genre and third-party data, not from watching @wealth's reels (Instagram blocked access). It gets rebuilt once real reels are in `reference/`.
+> **Partly confirmed.** One real @wealth reel has been measured (17.6M views). Its format, the **Movie Metaphor**, has its own file: `07-MOVIE-METAPHOR-REELS.md`. Start there. The seven formats below are still based on the genre and get checked as more real reels are added to `reference/`.
 
 Seven formats, all built from @wealth's mix and all original enough to stay in Instagram's recommendations. Picture of each: `assets/format-sheet.png`.
 
