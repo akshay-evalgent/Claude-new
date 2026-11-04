@@ -3,3 +3,4 @@ elon-musk.jpg / -face.jpg: supplied by page owner 3 Nov 2026; appears to be the 
 dan-driscoll.jpg / -face.jpg: official US Army portrait (public domain), supplied by page owner 3 Nov 2026; badge watermark cropped
 melanie-perkins.jpg / -face.jpg: supplied by page owner 3 Nov 2026; appears to be a Canva press photo; credit "Photo: Canva"
 nikhil-kamath.jpg / -face.jpg: supplied by page owner 3 Nov 2026; still from the WTF podcast; credit "Photo: WTF is / Nikhil Kamath"; source is small (312px), upscaled
+dario-amodei.jpg: supplied by page owner 4 Nov 2026 as Dario Amodei; credit "Photo: Anthropic" once source is confirmed

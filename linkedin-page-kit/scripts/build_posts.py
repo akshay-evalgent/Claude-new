@@ -504,7 +504,7 @@ Honest question: when an AI company writes this into its IPO filing, do you read
 #IPO
 #Startups
 #FounderSignal""",
-      first_comment="""Sources: TechCrunch, Gizmodo and Techzine (2 to 3 Nov 2026), on Anthropic's amended S-1 filed 2 Nov. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+      first_comment="""Sources: TechCrunch, Gizmodo and Techzine (2 to 3 Nov 2026), on Anthropic's amended S-1 filed 2 Nov. Photo of Dario Amodei: Anthropic. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
 ]
 
 def main():
