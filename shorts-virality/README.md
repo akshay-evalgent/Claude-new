@@ -2,6 +2,8 @@
 
 A working model of how a Short goes from its first few hundred views to millions in a day, with the equations, a simulator (`model.py`) and a way to fit it to your own channel.
 
+**Applying this to a real video:** the [`shorts-playbook` skill](../.claude/skills/shorts-playbook/SKILL.md) (audit, recut, verify, log), with lessons from real edits in [`editing-lessons.md`](../.claude/skills/shorts-playbook/references/editing-lessons.md). Log posted Shorts in [`results.csv`](results.csv).
+
 **Edited footage vs. animation:** see [`FORMATS.md`](FORMATS.md). **How to raise E, and the smallest change that reaches millions:** see [`LEVERS.md`](LEVERS.md).
 
 ## What is known and what is modelled

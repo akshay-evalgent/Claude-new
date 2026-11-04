@@ -1,0 +1,77 @@
+{
+  "source": "film/input/draft.mp4",
+  "output": "film/saroo/out/saroo-v2.mp4",
+  "join_frames": 2,
+  "loop_seconds": 0.5,
+  "crf": 18,
+  "segments": [
+    [
+      1.367,
+      12.1,
+      "A little boy fell asleep on a train in India and woke up nearly 1,500 kilometres from home. Twenty-five years later, he found his way back using Google Earth."
+    ],
+    [
+      16.7,
+      20.233,
+      "One day his older brother Guddu took him on a train to Burhanpur."
+    ],
+    [
+      22.067,
+      36.0,
+      "Saroo fell asleep on the platform. When he woke up, Guddu was gone. He climbed onto an empty train to look for him, and the train began to move. It didn't stop until Kolkata. He couldn't read and didn't know the name of his town."
+    ],
+    [
+      44.2,
+      54.967,
+      "A couple from Tasmania adopted him and he flew to the other side of the world. Years later, he opened Google Earth, drew a circle around Kolkata and followed the railway lines."
+    ],
+    [
+      58.467,
+      67.1,
+      "He spotted a station called Burhanpur. He followed the tracks north, and there it was: Khandwa. A fountain he remembered, right by the tracks."
+    ],
+    [
+      68.767,
+      74.233,
+      "He flew home. Locals led him to his mother, Kamla. But Guddu had been killed by a train."
+    ],
+    [
+      76.267,
+      78.2,
+      "Saroo's story became the film Lion."
+    ],
+    [
+      79.867,
+      82.6,
+      "All because he never forgot what home looked like. [end title]"
+    ]
+  ],
+  "hook": {
+    "seconds": 2.6,
+    "fade": 0.3,
+    "top": 150,
+    "card": "#060a18",
+    "border": "#ffd53f",
+    "lines": [
+      {
+        "text": "THE TRUE STORY BEHIND LION",
+        "size": 38,
+        "weight": "Bold",
+        "color": "#ebeef5",
+        "spacing": 7
+      },
+      {
+        "text": "HE FOUND HIS WAY HOME",
+        "size": 84,
+        "weight": "ExtraBold",
+        "color": "#ffffff"
+      },
+      {
+        "text": "ON GOOGLE EARTH",
+        "size": 104,
+        "weight": "Black",
+        "color": "#ffd53f"
+      }
+    ]
+  }
+}

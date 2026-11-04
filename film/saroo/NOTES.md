@@ -1,7 +1,8 @@
 # Saroo / "found his way home on Google Earth": v2 edit
 
 Source: `film/input/draft.mp4` (83.9 s, 1080x1920, 30 fps, from the Google Drive link; not in git).
-Output: `film/saroo/out/saroo-v2.mp4` (57.67 s; not in git). Rebuild with `python3 film/saroo/edit.py`.
+Output: `film/saroo/out/saroo-v2.mp4` (57.27 s; not in git).
+Rebuild with `python3 .claude/skills/shorts-playbook/scripts/recut.py film/saroo/recut.json`. The cut list, hook text and loop are all in `recut.json`.
 
 The changes follow the priority order in `shorts-virality/LEVERS.md`.
 
@@ -9,7 +10,7 @@ The changes follow the priority order in `shorts-virality/LEVERS.md`.
 
 | # | lever | change |
 |---|---|---|
-| 1 | stop subtracting | **83.9 s → 57.7 s.** Shorts over 1 minute that carry a Content ID claim are blocked. Being under 60 s takes that risk off the table whatever the music turns out to be. |
+| 1 | stop subtracting | **83.9 s → 57.3 s.** Shorts over 1 minute that carry a Content ID claim are blocked. Being under 60 s takes that risk off the table whatever the music turns out to be. |
 | 2 | retention | 26 s of narration removed, all cut in measured gaps between words. The 0.9 s frozen frame at 41.9 s (orphanage) went with its line. The 1.5 s silent end hold is gone. |
 | 3 | hook | Frame 0 is now a title card: *THE TRUE STORY BEHIND LION / HE FOUND HIS WAY HOME / ON GOOGLE EARTH*. It is set in the video's own title style (Montserrat, white plus #FFD53F yellow) and fades at 2.6 s to reveal "1986". The first spoken words are "A little boy fell asleep on a train", no longer "In 1986". |
 | 4 | loops | The last 0.5 s dissolves into the first frame. The final frame matches frame 0 (mean difference 0.8/255), so a replay runs on with no jump. The end title "He never forgot the way home" now turns into "He found his way home". |
@@ -28,7 +29,7 @@ The captions were left alone. They are already full-width, high-contrast, word-h
 | 58.47-67.10 | 38.70-47.33 | He spotted a station called Burhanpur. He followed the tracks north, and there it was: Khandwa. A fountain he remembered, right by the tracks. |
 | 68.77-74.23 | 47.27-52.73 | He flew home. Locals led him to his mother, Kamla. But Guddu had been killed by a train. |
 | 76.27-78.20 | 52.67-54.60 | Saroo's story became the film Lion. |
-| 79.87-83.00 | 54.53-57.67 | All because he never forgot what home looked like. *(end title, then loop)* |
+| 79.87-82.60 | 54.53-57.27 | All because he never forgot what home looked like. *(end title, then loop)* |
 
 **Removed:**
 - "In 1986" (the "1986" title stays on screen)
@@ -48,17 +49,18 @@ The captions were left alone. They are already full-width, high-contrast, word-h
 
 | check | result |
 |---|---|
-| length | 57.67 s (1,730 frames, 30 fps) |
-| loudness | -14.2 LUFS integrated, -1.3 dBFS peak (source -14.4 / -1.1) |
+| length | 57.27 s (1,718 frames, 30 fps) |
+| loudness | -14.3 LUFS integrated, -1.4 dBFS peak (source -14.4 / -1.1) |
 | frozen picture ≥ 0.6 s | none (source: 0.9 s at 41.9 s, plus the end hold) |
 | audio joins | all 7 crossfades sit fully inside gaps between words (7.7-14.7 dB in the voice band, against 25-40 dB for speech) |
 | loop | last frame vs first frame: 0.8/255 mean difference |
+| silent tail | 0.84 s after the last word (0.34 s hold + 0.5 s dissolve) |
 
 Joins are 2-frame dissolves on picture and matching 2-frame crossfades on audio, so sync is exact. Every segment starts 1-2 frames before its first word, so the fade-in finishes before the word begins.
 
 ## Still open
 
 - **Dev Patel photo:** it now shows for about 0.7 s during "the film Lion" (it was about 2.5 s). It is the one image in the video whose licence isn't visible; the Hobart photo carries a CC BY-SA credit.
-- **Music:** I can't tell whether it's licensed. At 57.7 s a claim would no longer block the Short, but it would still send the revenue to the rights holder.
+- **Music:** I can't tell whether it's licensed. At 57.3 s a claim would no longer block the Short, but it would still send the revenue to the rights holder.
 
 `look/before-after.jpg` shows the opening and the last frame, before and after.
