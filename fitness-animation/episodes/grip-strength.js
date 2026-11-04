@@ -22,7 +22,7 @@ Motion.episode({
   scenes: [
     // ------------------------------------------------------------ 1. hook
     Motion.scene({
-      name: 'hook', chapter: 'Why grip?', dur: 7.0, fadeIn: 0.15,
+      name: 'hook', chapter: 'Why grip?', dur: 7.4, fadeIn: 0.15,
       cam: { push: 1.2, cx: 900, cy: 520 },   // story shot: slow push toward the subject
       vo: "Doctors have a strength test that predicts how long you'll live. It's not your bench. It's your grip.",
       build(s) {
