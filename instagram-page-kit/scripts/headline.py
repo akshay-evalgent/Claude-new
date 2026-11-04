@@ -22,14 +22,28 @@ from PIL import Image, ImageDraw
 sys.path.insert(0, os.path.dirname(__file__))
 from brand import (W, H, SAFE_BOTTOM, PAPER, TEXT, YELLOW, INK, INK2, WHITE, MUTED,
                    PALE_YELLOW, META_TEXT_BOTTOM, META_CLIP,
-                   tokenize, fit_font, draw_rich_lines, handle_tag, font)
+                   tokenize, fit_font, draw_rich_lines, handle_tag, font, wrap_words)
 
 MARGIN_X = 54
 BOX_TOP = 300
 PAD = 40
 
 
-def render_metaphor(text, highlight=None, handle=False, clip_height=None):
+EMOJI_FONT = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+EMOJI_MARK = "\u2063EMOJI"  # placeholder token, swapped for the emoji image when drawing
+
+
+def emoji_image(chars, height):
+    """Render colour emoji with Noto Color Emoji (bitmap font, only works at size 109) and scale."""
+    from PIL import ImageFont
+    f = ImageFont.truetype(EMOJI_FONT, 109)
+    tmp = Image.new("RGBA", (150 * len(chars), 160), (0, 0, 0, 0))
+    ImageDraw.Draw(tmp).text((0, 0), chars, font=f, embedded_color=True)
+    tmp = tmp.crop(tmp.getbbox())
+    return tmp.resize((int(tmp.width * height / tmp.height), height), Image.LANCZOS)
+
+
+def render_metaphor(text, highlight=None, handle=False, clip_height=None, emoji=None):
     """Black frame, centred hook text above a full-width clip window starting at y=600."""
     clip = (META_CLIP[0], META_CLIP[1], META_CLIP[2], META_CLIP[1] + (clip_height or META_CLIP[3] - META_CLIP[1]))
     img = Image.new("RGBA", (W, H), (0, 0, 0, 255))
@@ -37,9 +51,39 @@ def render_metaphor(text, highlight=None, handle=False, clip_height=None):
     d.rectangle(clip, fill=(0, 0, 0, 0))
     tokens = tokenize(text, highlight)
     fnt, lines = fit_font(d, tokens, W - 2 * 90, 3, start=62, minimum=46, weight="Bold")
+    if emoji:
+        # glue a placeholder (about one em per emoji) to the last word so the emoji never sits alone,
+        # and shrink the font until the hook keeps the same number of lines it had without the emoji
+        target = len(lines)
+        last_w, last_hl = tokens[-1]
+        glued = tokens[:-1] + [(last_w + " " + "W" * len(emoji), last_hl)]
+        size = fnt.size
+        while True:
+            f = font("Bold", size)
+            wrapped = wrap_words(d, glued, f, W - 2 * 90)
+            if len(wrapped) <= target or size <= 40:
+                fnt, lines = f, wrapped
+                break
+            size -= 2
+        lines[-1] = lines[-1][:-1] + [(last_w, last_hl)]
     line_h = int(fnt.size * 1.22)
     top = META_TEXT_BOTTOM - line_h * len(lines)
-    draw_rich_lines(d, lines, fnt, 90, top, WHITE, PALE_YELLOW, line_gap=1.22, align="center", box_w=W - 180)
+    if emoji:
+        em = emoji_image(emoji, int(fnt.size * 0.95))
+        space = d.textlength(" ", font=fnt)
+        y = top
+        for i, line in enumerate(lines):
+            words_w = d.textlength(" ".join(w for w, _ in line), font=fnt)
+            extra = (space + em.width) if i == len(lines) - 1 else 0
+            x = 90 + (W - 180 - words_w - extra) / 2
+            for word, hl in line:
+                d.text((x, y), word, font=fnt, fill=PALE_YELLOW if hl else WHITE)
+                x += d.textlength(word, font=fnt) + space
+            if extra:
+                img.alpha_composite(em, (int(x), int(y + fnt.size * 0.12)))
+            y += line_h
+    else:
+        draw_rich_lines(d, lines, fnt, 90, top, WHITE, PALE_YELLOW, line_gap=1.22, align="center", box_w=W - 180)
     if handle:
         handle_tag(img, 90, clip[3] + 40, size=30, color=MUTED)
     return img, clip[1], clip[3]
@@ -105,11 +149,12 @@ def main():
     ap.add_argument("--source")
     ap.add_argument("--handle", action="store_true", help="metaphor style: add your handle under the clip")
     ap.add_argument("--clip-height", type=int, help="metaphor style: clip window height in px (720 = 3:2, 920 = squarer)")
+    ap.add_argument("--emoji", help="metaphor style: emoji to put after the hook, e.g. 🌱")
     ap.add_argument("--out", default="headline.png")
     ap.add_argument("--preview", action="store_true", help="also write <out>-preview.png on a mock frame")
     a = ap.parse_args()
     if a.style == "metaphor":
-        img, video_top, video_bottom = render_metaphor(a.text, a.highlight, a.handle, a.clip_height)
+        img, video_top, video_bottom = render_metaphor(a.text, a.highlight, a.handle, a.clip_height, a.emoji)
     else:
         img, bottom = render_headline(a.text, a.highlight, a.style, a.source)
         video_top, video_bottom = bottom + 30, H - SAFE_BOTTOM - 40
