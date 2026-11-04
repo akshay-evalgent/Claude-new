@@ -11,9 +11,14 @@
 | `content/05-GROWTH-PLAYBOOK.md` | How Instagram picks who sees reels (2026), metrics, daily routine, 90-day plan, making money | Ready |
 | `content/06-ORIGINALITY-AND-SOURCING.md` | What footage you can use without being cut from recommendations | Ready |
 | `content/07-LESSON-CLIP-REELS.md` | @wealth's confirmed format: exact layout, the 3 hook types, caption template, 16 ready reels with footage you're allowed to use | Confirmed from real data |
+| `content/08-GOOGLE-FLOW-WORKFLOW.md` | Making original clips in Google Flow: settings, prompt formula, how to upload them for editing | Ready |
+| `test-01/` | First test reel, rendered and ready to post | Ready |
+| `test-02/PROMPTS.md` | Flow prompts for the next test (2-shot metaphor) and a 4-shot story | Waiting for clips |
+| `clips/` | Upload folder for Flow clips | Empty |
 | `reference/` | Measurements of real @wealth reels, plus `PATTERNS.md` (what they all share) | 3 reels |
 | `assets/` | Logo, headline overlays, covers, highlights, start-here carousel, format sheet, grid preview | DRAFT visuals |
 | `scripts/headline.py` | Makes the headline PNG for any reel. `--style metaphor` gives @wealth's layout. | Works |
+| `scripts/make_lesson_reel.py` | Turns one or more clips into a finished reel in the @wealth layout | Works |
 | `scripts/make_pack.py` | Rebuilds every asset (change the name in `scripts/brand.py` first) | Works |
 
 Rebuild assets:
