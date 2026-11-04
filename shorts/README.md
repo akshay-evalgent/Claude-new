@@ -124,7 +124,7 @@ same slots. Example: `episodes/messi-respect/` (see its `NOTES.md` and `POST.md`
 
 The emotional "respect" format is saved in `formats/emotional-respect/` (`FORMAT.md`, `template.json`,
 `reference_timeline.txt`) and as the project skill `/emotional-short` (`.claude/skills/emotional-short/SKILL.md`).
-A second reference format, **THIS IS WHY** (square picture window that scales on the music, typed one-line captions with a cursor sparkle, red italic punchline), is in `formats/this-is-why/FORMAT.md`, example `episodes/karma-wedding/`.
+A second reference format, **THIS IS WHY** (square picture window that scales on the music, typed one-line captions with a cursor sparkle, red italic punchline), is in `formats/this-is-why/FORMAT.md` and the project skill `/this-is-why`, example `episodes/karma-wedding/`; `beatcut/mirror.py window` measures a reference's window and its `scale_keys`.
 `beatcut/mirror.py` measures any reference edit and writes a skeleton in its slots; `beatcut/thumb.py` makes the
 1080x1920 thumbnail.
 

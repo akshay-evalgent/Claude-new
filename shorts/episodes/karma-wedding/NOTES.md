@@ -17,7 +17,7 @@ end, did you?" / "It is now." / "Enjoy the wedding!"). Police arrive and take th
 |---|---|---|---|
 | 0.00-2.00 | 2.0 | the aisle | THIS IS WHY **KARMA** NEVER MISSES A **WEDDING!** (typed) |
 | 2.00-4.02 | 8.0 | vows, hands held | |
-| 4.02-6.08 | 40.0 | groom and bride pose for the photographer; window punches to 1.3x | BUT THE GROOM WAS **HIDING** SOMETHING |
+| 4.02-6.08 | 40.0 | groom and bride pose for the photographer; window punches to 1.27x | BUT THE GROOM WAS **HIDING** SOMETHING |
 | 6.08-7.75 | 104.0 | letter: "ALEXANDER MONROE'S BACHELOR PARTY" (fit, whole lines) | **CASSIE** LEFT A **LETTER,** JUST IN CASE |
 | 7.75-9.42 | 101.85 | letter: "IN THE EVENT OF MY DISAPPEARANCE ... TO THE POLICE" (fit) | |
 | 9.42-11.10 | 112.0 | scheduled message pops in (fit) | THEN HER **SCHEDULED TEXTS** WENT OUT |
@@ -32,5 +32,7 @@ keeps the logo out).
 
 ## QA
 - 1080x1920, 30 fps, 23.6 s. Soundtrack peak-limited to -0.6 dBFS (the reference decodes at +1.6 dBFS), -11.2 LUFS.
+- Window motion measured on the render with `mirror window`: 1.27 at 4.97 s, 1.0 at 6.37 s, swell at 12.85 s, the
+  same keys as the reference.
 - Checked frames: typing and cursor sparkle (0.2-0.9 s), window punch (4.1-6.5 s), glitch (12.6-13.5 s),
   punchline reveal and glow (17.6-19 s), last frame (23.5 s).

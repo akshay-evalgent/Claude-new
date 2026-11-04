@@ -3,10 +3,11 @@
 Measured from the reference Short `JRzZ-iorXh0` (23.6 s, 142 BPM). Example: `episodes/karma-wedding/`.
 
 ## The look
-- **Frame:** 9:16 black canvas with a square picture window, full width, y 0.219-0.779
-  (`"layout": {"type": "window", "box": [0, 0.219, 1, 0.779]}`).
-- **Motion:** the camera is still. The **window itself** scales on the music (`scale_keys`): a 1.3x punch on the first
-  big hit, a slow 1.03 breathe, then a quick 1.22 swell into the glitch.
+- **Frame:** 9:16 black canvas with a square picture window, full width, y 0.216-0.784
+  (`"layout": {"type": "window", "box": [0, 0.216, 1, 0.784]}`).
+- **Motion:** the camera is still. The **window itself** scales on the music (`scale_keys`): a 1.27x punch on the first
+  big hit that relaxes over 1.4 s, then a quick 1.3x swell into the glitch. Otherwise it holds at 1.0.
+  Measure any reference with `python3 -m beatcut.mirror window reference.mp4`.
 - **Captions:** one line just above the window (`"anchor": "above_window"`), white Poppins ExtraBold with yellow or
   red key words, typed at ~55 characters a second. Each letter pops in, and a lens-flare sparkle rides the cursor
   (`"style": "line"`, `"sparkle": true`). The caption moves with the window's top edge.
@@ -18,10 +19,10 @@ Measured from the reference Short `JRzZ-iorXh0` (23.6 s, 142 BPM). Example: `epi
 | t | Music | Window | Caption slot |
 |---|---|---|---|
 | 0.00 | intro | 1.0 | **hook:** THIS IS WHY ... ! |
-| 4.02 | first hit | 1.0 -> 1.3 (4.27-5.07, ease out) -> 1.03 by 6.4 | **turn:** BUT ... |
-| 6.08 | | 1.03 | **clue 1** |
-| 9.42 | | 1.0 -> 1.03 | **clue 2** |
-| 12.75 | swell | 1.22 at 12.8, back to 1.0 at 13.07; glitch | (clue 2 holds to 13.05) |
+| 4.02 | first hit | 1.0 -> 1.27 (4.28-4.97) -> 1.25 at 5.15 -> 1.0 at 6.38 | **turn:** BUT ... |
+| 6.08 | | 1.0 | **clue 1** |
+| 9.42 | | 1.0 | **clue 2** |
+| 12.75 | swell | 1.0 at 12.62 -> 1.3 at 12.85 -> 0.98 at 12.97 -> 1.0; glitch | (clue 2 holds to 13.05) |
 | 13.07 | build | 1.0 | **payoff set-up** |
 | ~16.9 | short stop | | |
 | 17.72 | drop | 1.0 | **punchline** (red italic) to the end |
@@ -36,7 +37,9 @@ Measured from the reference Short `JRzZ-iorXh0` (23.6 s, 142 BPM). Example: `epi
 
 ## Build
 1. `python3 -m beatcut.mirror analyze <reference.mp4> episodes/<name>` (writes `clips/music.m4a`).
-2. Copy `episodes/karma-wedding/story.json` and swap in your shots and captions; keep `layout`, `transitions` and the
+2. `python3 -m beatcut.mirror window reference.mp4` for the window box and `scale_keys` (check the frames at any dip:
+   dark picture content at both edges can read as a shrink).
+3. Copy `episodes/karma-wedding/story.json` and swap in your shots and captions; keep `layout`, `transitions` and the
    caption times if you use the same sound.
-3. `python3 -m beatcut.story episodes/<name> --stills`, fix the framing, then render and `python3 -m beatcut.thumb episodes/<name>`.
-4. Post `out/edit_no_music.mp4` with "Use this sound" on the reference, started at 0:00.
+4. `python3 -m beatcut.story episodes/<name> --stills`, fix the framing, then render and `python3 -m beatcut.thumb episodes/<name>`.
+5. Post `out/edit_no_music.mp4` with "Use this sound" on the reference, started at 0:00.

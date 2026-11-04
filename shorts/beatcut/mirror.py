@@ -4,6 +4,7 @@ soundtrack, and write a skeleton story.json in the same slots.
     python3 -m beatcut.mirror analyze reference.mp4 episodes/<new>     # skeleton + timeline report
     python3 -m beatcut.mirror sheet video.mp4 out.jpg [--start S --end E --step 0.5]
     python3 -m beatcut.mirror compare reference.mp4 our_edit.mp4 out.mp4
+    python3 -m beatcut.mirror window reference.mp4        # picture-window box + scale_keys (THIS IS WHY format)
 
 What analyze detects, per frame (108x135 thumbnails):
   white / leak  brightness peaks (> 200); a leak is cyan-tinted. Ramp in/out = a/b.
@@ -285,6 +286,62 @@ def compare(ref, ours, out):
     print(f"wrote {out}")
 
 
+def window(path, thr=6, fill=0.5, bridge=2):
+    """Measure a picture window on a black canvas: its box at rest and how it scales over time.
+    The canvas is pure black, so a row is picture when > `fill` of it is brighter than `thr` AND both of its outer
+    edges are lit (a caption's glow never reaches the sides). Dark picture content (a car's window frame, night sky)
+    can hide one edge, so the scale is the larger of the top-edge and bottom-edge estimates."""
+    W, H = 180, 320
+    fr = _frames(path, W, H)
+    fps = _fps(path)
+    k = max(2, int(0.03 * W))
+    spans = []
+    for f in fr.mean(-1):
+        lit = f > thr
+        rows = (lit.mean(1) > fill) & (lit[:, :k].mean(1) > 0.5) & (lit[:, -k:].mean(1) > 0.5)
+        idx = np.nonzero(rows)[0]
+        if len(idx) < H * 0.1:
+            spans.append(None)
+            continue
+        runs, a0, prev = [], idx[0], idx[0]
+        for i in idx[1:]:
+            if i - prev > bridge:
+                runs.append((a0, prev)); a0 = i
+            prev = i
+        runs.append((a0, prev))
+        y0, y1 = max(runs, key=lambda r: r[1] - r[0])
+        spans.append((y0, y1 + 1))
+    mode = lambda v: float(np.bincount(np.array(v, int)).argmax())
+    top0 = mode([sp[0] for sp in spans if sp])
+    bot0 = mode([sp[1] for sp in spans if sp])
+    c = (top0 + bot0) / 2
+    sc = np.array([max((c - sp[0]) / (c - top0), (sp[1] - c) / (bot0 - c)) if sp else np.nan for sp in spans])
+    good = ~np.isnan(sc)
+    sc = np.interp(np.arange(len(sc)), np.nonzero(good)[0], sc[good])
+    sc = np.array([np.median(sc[max(0, i - 1):i + 2]) for i in range(len(sc))])   # drop single-frame misreads
+    # keys: the fewest points that keep the curve within `tol` (Ramer-Douglas-Peucker), joined linearly
+    tol = 0.012
+    ts = np.arange(len(sc)) / fps
+
+    def rdp(i, j):
+        if j - i < 2:
+            return [i, j]
+        line = sc[i] + (sc[j] - sc[i]) * (ts[i:j + 1] - ts[i]) / (ts[j] - ts[i])
+        k = int(np.argmax(np.abs(sc[i:j + 1] - line)))
+        if abs(sc[i + k] - line[k]) <= tol:
+            return [i, j]
+        return rdp(i, i + k)[:-1] + rdp(i + k, j)
+
+    out = [[round(float(ts[i]), 2), round(float(sc[i]), 2), "linear"] for i in rdp(0, len(sc) - 1)]
+    out[0] = out[0][:2]
+    box = [0.0, round(top0 / H, 3), 1.0, round(bot0 / H, 3)]
+    print(f"window box at rest (fractions of the frame): {box}")
+    print("scale_keys:", json.dumps(out))
+    step = max(1, int(round(fps / 10)))
+    print("scale every 0.1 s:\n  " + " ".join(f"{i / fps:.1f}:{sc[i]:.2f}" for i in range(0, len(sc), step)))
+    return box, out
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -292,10 +349,13 @@ if __name__ == "__main__":
     s = sub.add_parser("sheet"); s.add_argument("video"); s.add_argument("out")
     s.add_argument("--start", type=float, default=0.0); s.add_argument("--end", type=float); s.add_argument("--step", type=float, default=0.5)
     c = sub.add_parser("compare"); c.add_argument("reference"); c.add_argument("ours"); c.add_argument("out")
+    w = sub.add_parser("window"); w.add_argument("video")
     args = ap.parse_args()
     if args.cmd == "analyze":
         analyze(args.reference, args.episode)
     elif args.cmd == "sheet":
         sheet(args.video, args.out, args.start, args.end, args.step)
+    elif args.cmd == "window":
+        window(args.video)
     else:
         compare(args.reference, args.ours, args.out)
