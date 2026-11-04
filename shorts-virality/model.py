@@ -17,6 +17,7 @@ Usage:
   python3 model.py fit history.csv --early views_2h --late views_24h --now 900
   python3 model.py formats                   # edited footage vs animation
   python3 model.py compare shorts.csv        # columns: format, views_24h[, hours]
+  python3 model.py levers --typical-views 800  # smallest change to reach millions
 """
 from __future__ import annotations
 
@@ -541,6 +542,128 @@ def compare(path: str, threshold: float) -> None:
 
 
 # --------------------------------------------------------------------------
+# Levers: the smallest change that reaches millions
+# --------------------------------------------------------------------------
+
+# weight = ln E gained per log-unit of improvement in the metric (from Platform.weights;
+# retention lifts APV and watch time together at a fixed length, so 0.5 + 0.2).
+# sd = how much the metric naturally varies across one creator's Shorts (sd of its log).
+# Moving a metric by one sd is treated as one unit of effort. The sds are guesses;
+# pass --csv to measure yours.
+LEVERS = [
+    # key, label, weight, sd, baseline, ceiling
+    ("viewed", "Hook: viewed rate", 1.0, 0.10, POOL.viewed, 0.95),
+    ("apv", "Retention: APV at same length", 0.7, 0.20, None, None),
+    ("engagement", "Engagement rate", 0.3, 0.40, POOL.engage, None),
+]
+
+
+def _bisect(f, lo: float, hi: float, iters: int = 18) -> float:
+    for _ in range(iters):
+        mid = (lo + hi) / 2
+        if f(mid):
+            hi = mid
+        else:
+            lo = mid
+    return (lo + hi) / 2
+
+
+def target_edge(d: float = 0.03, prob: float = 0.5, threshold: float = 1e6,
+                p: Platform = Platform()) -> float:
+    """Smallest ln E with at least `prob` chance of `threshold` views in 24 h."""
+    return _bisect(lambda le: p_hit(le, 0.0, d, threshold=threshold, n=1200, p=p) >= prob, -0.1, 0.6)
+
+
+def edge_from_views(median_views: float, d: float = 0.03, p: Platform = Platform()) -> float:
+    """The ln E whose median 24 h views match `median_views` (inverts the model)."""
+    q = replace(p, fit_decay=d)
+    vpi = per_impression(POOL)["views"]
+
+    def median_at(le):
+        rng = np.random.default_rng(29)
+        return np.median([cascade(le, vpi, q, rng)[-1] for _ in range(600)])
+    return _bisect(lambda le: median_at(le) >= median_views, -0.4, 0.6)
+
+
+def _sds_from_csv(path: str) -> dict:
+    cols = {"viewed": [], "apv": [], "engagement": []}
+    with open(path, newline="") as f:
+        for row in csv.DictReader(f):
+            for k in cols:
+                try:
+                    v = float(row[k])
+                except (KeyError, ValueError):
+                    continue
+                if v > 0:  # percent or fraction: the sd of a log ignores the units
+                    cols[k].append(math.log(v))
+    out = {}
+    for k, xs in cols.items():
+        if len(xs) >= 8:
+            out[k] = float(np.std(xs, ddof=1))
+    return out
+
+
+def levers(typical_views: float | None, d: float, csv_path: str | None) -> None:
+    p = Platform()
+    sds = {k: sd for k, _, _, sd, _, _ in LEVERS}
+    if csv_path:
+        measured = _sds_from_csv(csv_path)
+        sds.update(measured)
+        print("Measured spread from your Shorts: "
+              + ", ".join(f"{k} sd {v:.2f}" for k, v in measured.items()) + "\n")
+
+    print("1. Edge needed (ln E vs the median competing Short) for a 50% chance in 24 h")
+    print(f"{'breadth d':>10}{'100k':>8}{'1M':>8}")
+    targets = {}
+    for dd in sorted({0.025, 0.03, 0.045, d}):
+        t100k, t1m = target_edge(dd, threshold=1e5), target_edge(dd)
+        targets[dd] = t1m
+        print(f"{dd:>10.3f}{t100k:>8.3f}{t1m:>8.3f}")
+
+    now = edge_from_views(typical_views, d) if typical_views else 0.0
+    gap = targets[d] - now
+    where = (f"a typical Short of yours ({fmt(typical_views)} views in 24 h) sits at ln E {now:+.3f}"
+             if typical_views else "starting from a median Short (ln E 0)")
+    print(f"\n2. Gap to a 50% chance of 1M at d = {d}: {where}, so the gap is {gap:.3f}")
+
+    apv0 = per_impression(POOL)["apv"]
+    base = {"viewed": POOL.viewed, "apv": apv0, "engagement": POOL.engage}
+    print("\n3. One lever alone")
+    print(f"{'lever':<32}{'ln E per +1 sd':>15}{'sd needed':>11}{'metric goes':>22}{'effort':>8}")
+    for key, label, w, _, _, ceiling in LEVERS:
+        sd = sds[key]
+        x = gap / w
+        new = base[key] * math.exp(x)
+        move = f"{base[key]:.1%} -> {new:.1%}"
+        if ceiling and new > ceiling:
+            move = f"{base[key]:.1%} -> {new:.0%} (no)"
+        print(f"{label:<32}{w * sd:>15.3f}{x / sd:>11.1f}{move:>22}{(x / sd) ** 2:>8.1f}")
+
+    total = sum((w * sds[k]) ** 2 for k, _, w, _, _, _ in LEVERS)
+    print("\n4. Smallest combined change (minimises the sum of squared sd-moves)")
+    print(f"{'lever':<32}{'share of gap':>13}{'sd move':>9}{'metric goes':>22}")
+    effort = 0.0
+    for key, label, w, _, _, _ in LEVERS:
+        sd = sds[key]
+        x = gap * w * sd * sd / total
+        effort += (x / sd) ** 2
+        print(f"{label:<32}{w * x / gap:>13.0%}{x / sd:>9.2f}"
+              f"{base[key]:>10.1%} -> {base[key] * math.exp(x):.1%}")
+    best_single = min((gap / w / sds[k]) ** 2 for k, _, w, _, _, _ in LEVERS)
+    print(f"Effort {effort:.2f} vs {best_single:.2f} for the best single lever "
+          f"({effort / best_single:.0%}); the combined move is {math.sqrt(effort):.2f} sd in total.")
+
+    print("\n5. Things that are not E, priced in ln E at the target")
+    t = targets[d]
+    t_wide = target_edge(max(d - 0.005, 0.005))
+    t_seed = target_edge(d, p=replace(p, seed=2 * p.seed))
+    print(f"  Remove a 0.05 originality penalty      worth {0.05:+.3f}")
+    print(f"  Broaden appeal, d {d} -> {d - 0.005:.3f}       worth {t - t_wide:+.3f}")
+    print(f"  Double the first batch (300 -> 600)    worth {t - t_seed:+.3f}")
+    print(f"  (for scale: +1 point of viewed rate    worth {math.log((POOL.viewed + 0.01) / POOL.viewed):+.3f})")
+
+
+# --------------------------------------------------------------------------
 # Your own data: early views -> 24h views
 # --------------------------------------------------------------------------
 
@@ -589,6 +712,10 @@ def main() -> None:
     c = sub.add_parser("compare", help="per-format hit rates from your own history CSV")
     c.add_argument("csv")
     c.add_argument("--threshold", type=float, default=1e6)
+    lv = sub.add_parser("levers", help="smallest change that reaches millions")
+    lv.add_argument("--typical-views", type=float, help="your typical Short's 24 h views")
+    lv.add_argument("--d", type=float, default=0.03, help="breadth (edge lost per ring)")
+    lv.add_argument("--csv", help="your Shorts: columns viewed, apv, engagement")
     f = sub.add_parser("fit", help="fit early -> 24h views from your own history CSV")
     f.add_argument("csv")
     f.add_argument("--early", default="views_2h")
@@ -613,6 +740,8 @@ def main() -> None:
         formats(make_charts=not args.no_charts)
     elif args.cmd == "compare":
         compare(args.csv, args.threshold)
+    elif args.cmd == "levers":
+        levers(args.typical_views, args.d, args.csv)
     else:
         fit(args.csv, args.early, args.late, args.now)
 

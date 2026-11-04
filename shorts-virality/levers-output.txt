@@ -1,0 +1,52 @@
+1. Edge needed (ln E vs the median competing Short) for a 50% chance in 24 h
+ breadth d    100k      1M
+     0.025   0.166   0.217
+     0.030   0.183   0.236
+     0.045   0.227   0.288
+
+2. Gap to a 50% chance of 1M at d = 0.03: starting from a median Short (ln E 0), so the gap is 0.236
+
+3. One lever alone
+lever                            ln E per +1 sd  sd needed           metric goes  effort
+Hook: viewed rate                         0.100        2.4        70.0% -> 88.6%     5.5
+Retention: APV at same length             0.140        1.7        70.5% -> 98.6%     2.8
+Engagement rate                           0.120        2.0          3.0% -> 6.6%     3.9
+
+4. Smallest combined change (minimises the sum of squared sd-moves)
+lever                            share of gap  sd move           metric goes
+Hook: viewed rate                         23%     0.54     70.0% -> 73.8%
+Retention: APV at same length             45%     0.75     70.5% -> 81.8%
+Engagement rate                           33%     0.64      3.0% -> 3.9%
+Effort 1.26 vs 2.83 for the best single lever (45%); the combined move is 1.12 sd in total.
+
+5. Things that are not E, priced in ln E at the target
+  Remove a 0.05 originality penalty      worth +0.050
+  Broaden appeal, d 0.03 -> 0.025       worth +0.019
+  Double the first batch (300 -> 600)    worth +0.015
+  (for scale: +1 point of viewed rate    worth +0.014)
+1. Edge needed (ln E vs the median competing Short) for a 50% chance in 24 h
+ breadth d    100k      1M
+     0.025   0.166   0.217
+     0.030   0.183   0.236
+     0.045   0.227   0.288
+
+2. Gap to a 50% chance of 1M at d = 0.03: a typical Short of yours (800 views in 24 h) sits at ln E -0.054, so the gap is 0.289
+
+3. One lever alone
+lever                            ln E per +1 sd  sd needed           metric goes  effort
+Hook: viewed rate                         0.100        2.9        70.0% -> 93.5%     8.4
+Retention: APV at same length             0.140        2.1       70.5% -> 106.5%     4.3
+Engagement rate                           0.120        2.4          3.0% -> 7.9%     5.8
+
+4. Smallest combined change (minimises the sum of squared sd-moves)
+lever                            share of gap  sd move           metric goes
+Hook: viewed rate                         23%     0.66     70.0% -> 74.8%
+Retention: APV at same length             45%     0.92     70.5% -> 84.7%
+Engagement rate                           33%     0.79      3.0% -> 4.1%
+Effort 1.90 vs 4.26 for the best single lever (45%); the combined move is 1.38 sd in total.
+
+5. Things that are not E, priced in ln E at the target
+  Remove a 0.05 originality penalty      worth +0.050
+  Broaden appeal, d 0.03 -> 0.025       worth +0.019
+  Double the first batch (300 -> 600)    worth +0.015
+  (for scale: +1 point of viewed rate    worth +0.014)
