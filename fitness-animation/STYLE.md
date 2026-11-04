@@ -1,9 +1,8 @@
 # The look: what the reference does, and the rules this kit follows
 
-Reference: "How Training Tendons Makes You Stronger Than Big Guys" (The Rep Theory, 8 min 3 s, 1080p60).
-YouTube blocked a full download from the build machine, so this teardown is from four full-resolution
-frames (the thumbnail and YouTube's 25 / 50 / 75 % frames) plus the chapter list. Where motion is
-described below it is the rule this kit uses, not a measurement of their timeline.
+Reference: "How Training Tendons Makes You Stronger Than Big Guys" (The Rep Theory, 8:02, 1080p60).
+The numbers below are measured from the full video (every frame, every word); the complete breakdown is
+in `ANALYSIS.md`.
 
 ## 1. The five things that make the style
 
@@ -12,7 +11,7 @@ described below it is the rule this kit uses, not a measurement of their timelin
 | 1 | **Pure black canvas** | Every frame is on #000. No gradients, no rooms, no floor. | `theme.bg = #000`. Grain blends in overlay mode, so black stays black. |
 | 2 | **Detailed grey figure, cut out** | Pencil/ink manga-style anatomy drawings: heavy cross-hatching, visible muscle striation, grey only. One figure per beat, two for a comparison. | `s.plate()`: any cut-out figure. The demo uses Paul Richer's 1890 engravings (public domain). For your own channel, generate a mascot with `prompts/IMAGE-PROMPTS.md`. |
 | 3 | **Selective colour with meaning** | Exactly one colour on the character (orange shorts = the mascot) and red on the muscle or tendon being talked about. Nothing else is coloured. | `highlight: [{ region }]` turns a muscle region red with a sweep in the direction the force travels, then a slow pulse. |
-| 4 | **Three type voices** | (a) hand marker in white with a red marker arrow for the hook; (b) rounded geometric sans, lower case, stacked lines coloured by role; (c) extra-bold caps for card titles with small letter-spaced kickers. | (a) `s.hand()` + `s.arrow()` (Kalam Bold); (b) `s.lines()` (Poppins SemiBold); (c) `s.card()`, `s.headline()` (Poppins ExtraBold). |
+| 4 | **Three type voices** | (a) hand marker in white with a red marker arrow for the hook; (b) rounded geometric sans, lower case, stacked lines coloured by role; (c) extra-bold caps for card titles with small letter-spaced kickers. | (a) `s.hand()` + `s.arrow()` (Kalam Bold); (b) `s.lines()` (Montserrat SemiBold); (c) `s.card()`, `s.headline()` (Montserrat ExtraBold). In the video itself arrows are straight force arrows; the hand marker is a thumbnail and hook device. |
 | 5 | **Clean data cards** | Dark panels with a thin coloured border, a ring timer that counts, an ascending bar scale for effort, one caption line. | `s.card({ visual: { type: 'ring' | 'bars' | 'meter' } })`, `s.counter()`. |
 
 Plus a small amber **BE SAFE** badge bottom left whenever an exercise is shown (`s.badge()`).
@@ -36,17 +35,18 @@ Pick your own `accent` and mascot colour. Orange shorts on a white-haired figure
 brand; copying it makes the channel read as a clone, and their audience will say so in the comments.
 Electric blue, volt yellow-green or magenta all sit well against the red highlight.
 
-## 3. Motion rules (what makes it feel "detailed and clean")
+## 3. Motion rules (measured on the reference)
 
-1. **One new idea at a time.** Something enters only when the voice says it. If two things enter at once, one of them is late.
-2. **Ease out, never linear.** Entrances use cubic/quart ease-out over 0.4-0.6 s. Staggers of 80-120 ms between siblings. Exits are faster than entrances (0.3-0.4 s).
-3. **Figures ink in.** A soft wipe from the top while contrast develops from a washed pencil ghost to full ink (about 1.1 s), with a 3.5 % scale settle.
-4. **Nothing is ever frozen.** Each scene has a slow camera push (2-4 % over the scene). Highlights breathe once they're on. Timers tick.
-5. **Highlights travel the way force travels.** Elbow to fingertips for grip, heel to calf for an Achilles beat. The sweep is the explanation.
-6. **Arrows are drawn, not placed.** A marker stroke with a slight wobble draws in about 0.4 s, then the head flicks on. Arrows point at the exact structure, not near it.
-7. **Dip to black between beats** (0.25-0.3 s each way). No slides, spins or zooms between scenes.
-8. **Short end holds.** The last frame holds 1-1.5 s, then fades.
-9. **Sound follows picture.** Every entrance has a quiet cue (whoosh for figures, marker scratch for arrows, tick for lines, pop for cards, a low hit for chapter cards). `tools/sfx.mjs` builds this bed automatically from the timeline.
+1. **The picture changes slowly, the screen never stops changing.** One illustration holds 5-15 s (8.5 s on average). On top of it something new appears every 1.5-2 s: about two elements per sentence.
+2. **Land on the word, never after it.** 87 % of sentences get a visual within about a second of their first word, typically 0.15 s after it. Text can lead the voice by up to a second, never trail it.
+3. **Text pops, it doesn't fly.** A line fades in over 4-5 frames (80 ms in the kit), in place, no slide, no blur. Lines stack downward and all clear together when the idea changes.
+4. **Images crossfade in 0.55 s.** That is the default transition between scenes and when a figure appears.
+5. **Dips to black are rare.** Only at real section breaks, usually right before an ask: ~0.27 s out, 0.25-0.5 s of black, ~0.27 s in (`transition: 'dip'`). Five in eight minutes.
+6. **Two camera modes.** Story and metaphor shots push in at 1.2-1.8 % per second toward the subject (`cam: { push: 1.5 }`). Instruction shots are locked still so the text reads (the default).
+7. **Do it with me.** When the viewer is meant to hold a position, a real-time ring timer starts, then shrinks to a corner and keeps counting through the explanation (`s.timer({ move: [...] })`).
+8. **Highlights travel the way force travels.** A red glow on the working muscle, swept in the direction the force goes. Wrong-way options are shown by dimming the character grey.
+9. **Persistent chrome.** A series tag top left that changes per chapter (`s.tag()`), and the amber BE SAFE badge whenever an exercise is on screen.
+10. **Sound sits under the voice.** The reference is voice over a constant quiet bed at about −14 LUFS. `tools/sfx.mjs` adds soft cues; keep them well under the VO in `tools/mix.sh`.
 
 ## 4. Layout grid (1920 × 1080)
 

@@ -1,21 +1,20 @@
-/* Fonts are bundled (SIL Open Font License, see fonts/*-OFL.txt). */
-@font-face { font-family: "Poppins"; font-weight: 500; src: url("fonts/Poppins-Medium.ttf") format("truetype"); }
-@font-face { font-family: "Poppins"; font-weight: 600; src: url("fonts/Poppins-SemiBold.ttf") format("truetype"); }
-@font-face { font-family: "Poppins"; font-weight: 700; src: url("fonts/Poppins-Bold.ttf") format("truetype"); }
-@font-face { font-family: "Poppins"; font-weight: 800; src: url("fonts/Poppins-ExtraBold.ttf") format("truetype"); }
+/* Fonts are bundled (SIL Open Font License, see fonts/*-OFL.txt). Montserrat matches the reference video. */
+@font-face { font-family: "Montserrat"; font-weight: 100 900; src: url("fonts/Montserrat-Variable.ttf") format("truetype"); }
 @font-face { font-family: "Kalam"; font-weight: 700; src: url("fonts/Kalam-Bold.ttf") format("truetype"); }
 
 html, body { margin: 0; height: 100%; background: #050505; color: #eee; overflow: hidden; }
-body { font-family: "Poppins", system-ui, sans-serif; }
+body { font-family: "Montserrat", system-ui, sans-serif; }
 
 /* The stage is always 1920x1080; the player scales it to fit the window. */
 #stage {
   position: absolute; left: 0; top: 0; width: 1920px; height: 1080px;
   overflow: hidden; background: var(--bg); transform-origin: 0 0;
-  font-family: "Poppins", system-ui, sans-serif; color: var(--ink);
+  font-family: "Montserrat", system-ui, sans-serif; color: var(--ink);
   -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision;
 }
 .scene, .world { position: absolute; inset: 0; transform-origin: 50% 50%; }
+/* scenes add up on the black stage, so overlapping scenes make a true crossfade */
+.scene { mix-blend-mode: plus-lighter; }
 .abs { position: absolute; left: 0; top: 0; will-change: transform, opacity; }
 .svgfull { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; pointer-events: none; }
 
@@ -38,4 +37,8 @@ body { font-family: "Poppins", system-ui, sans-serif; }
 #vignette { position: absolute; inset: 0; pointer-events: none;
   background: radial-gradient(120% 95% at 50% 48%, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%); }
 #caption { position: absolute; left: 50%; bottom: 46px; transform: translateX(-50%); max-width: 1500px; text-align: center;
-  font: 500 30px/1.35 "Poppins", sans-serif; color: #fff; background: rgba(0,0,0,.62); padding: 8px 18px; border-radius: 8px; display: none; }
+  font: 500 30px/1.35 "Montserrat", sans-serif; color: #fff; background: rgba(0,0,0,.62); padding: 8px 18px; border-radius: 8px; display: none; }
+
+.tag { display: flex; align-items: center; gap: 12px; padding: 9px 18px 9px 0; background: rgba(22,22,24,.92); border-radius: 4px;
+  font-weight: 800; font-size: 26px; letter-spacing: .02em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+.tag::before { content: ""; width: 6px; align-self: stretch; background: var(--hl); border-radius: 2px; }

@@ -7,18 +7,19 @@ bars, a safety badge, chapter cards, and a synced sound-design bed.
 
 Everything is a pure function of time, so the browser preview and the rendered MP4 match frame for frame.
 
-**Demo:** `renders/grip-strength.mp4`. A 55-second, 1920×1080, 30 fps episode ("Your grip is a lifespan
+**Demo:** `renders/grip-strength.mp4`. A 54-second, 1920×1080, 30 fps episode ("Your grip is a lifespan
 test") that uses every component. Its voice-over script, `.srt` and YouTube chapter list sit next to it.
 
 ```
 fitness-animation/
-├── STYLE.md                 the look: teardown of the reference, colour roles, motion rules, layout grid, episode structure
+├── ANALYSIS.md              measured teardown of the reference video: rhythm, script, images, animation timings, sound, flow
+├── STYLE.md                 the rules this kit follows: colour roles, measured motion rules, layout grid, episode structure
 ├── prompts/IMAGE-PROMPTS.md how to generate your own mascot figures in this style (consistent character, pure black)
 ├── engine/
 │   ├── engine.js            the runtime + components (plate, arrow, stroke, hand, lines, pin, card, headline, text, counter, chapter, badge)
 │   ├── theme.css            fonts, base styles
 │   ├── player.html          preview player: scrub, frame-step, VO captions, coordinate picker
-│   └── fonts/               Poppins + Kalam (SIL Open Font License)
+│   └── fonts/               Montserrat + Kalam (SIL Open Font License)
 ├── episodes/
 │   ├── grip-strength.js     the demo episode (read this first: it's the documentation by example)
 │   └── _template.js         a blank episode to copy
@@ -98,9 +99,15 @@ second, default 2.8).
 | `s.counter()` | Number that counts up | `to, from, x, y, size, suffix, prefix, decimals, sep, dur` |
 | `s.chapter()` | Chapter card: outlined number, title, drawn underline | `num, title, sub, y, at` |
 | `s.badge()` | Amber "BE SAFE" badge, bottom left | `title, text, at, x, y` |
+| `s.tag()` | Series tag, top left, red bar (changes per chapter) | `text, at, x, y, size` |
+| `s.timer()` | Real-time ring timer; `move` shrinks it to a corner while it keeps counting | `x, y, size, from, to, at, label, move: [{at, x, y, size, label}]` |
 
-Scene options: `name`, `dur`, `vo`, `chapter` (adds a YouTube chapter), `fadeIn`, `fadeOut`,
-`cam: { s0, s1, x0, x1, y0, y1 }` (camera push/pan over the scene), `overlap`.
+Scene options: `name`, `dur`, `vo`, `chapter` (adds a YouTube chapter), `transition` (`'crossfade'`
+default, 0.55 s; `'dip'` for a section break; `'cut'`), `cam` (locked by default; `{ push: 1.5, cx, cy }`
+for a story shot, or `{ s0, s1, x0, x1, y0, y1 }`), and `fadeIn`, `fadeOut`, `overlap`, `hold` to override.
+
+Text, lines and counters pop in over 80 ms like the reference; pass `enter: 'rise'` for a slide-and-blur
+entrance. Figures fade in over 0.55 s; pass `style: 'ink'` for the ink-wipe reveal.
 
 Colours are theme tokens: `ink`, `muted`, `hl` (muscle red), `accent`, `good`, `warn`. Override per
 episode with `Motion.episode({ theme: { accent: '#2F8CFF' }, ... })`.
@@ -117,6 +124,6 @@ talk about.
 
 - Figures: Paul Richer, *Anatomie artistique* (Paris, 1890), vol. 2, plates via Wikimedia Commons
   (public domain). Exact files are listed in `assets/plates/plates.js`.
-- Fonts: Poppins (Indian Type Foundry / Jonny Pinhorn) and Kalam (Indian Type Foundry), SIL Open Font License.
+- Fonts: Montserrat (Julieta Ulanovsky and contributors) and Kalam (Indian Type Foundry), SIL Open Font License.
 - Demo statistics: Leong DP et al., *Prognostic value of grip strength: findings from the Prospective
   Urban Rural Epidemiology (PURE) study*, The Lancet 2015;386:266-273.

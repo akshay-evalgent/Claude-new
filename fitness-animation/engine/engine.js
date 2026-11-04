@@ -12,6 +12,11 @@
   'use strict';
 
   const W = 1920, H = 1080, NS = 'http://www.w3.org/2000/svg';
+  // Timings measured on the reference video (see ANALYSIS.md)
+  const POP = 0.08;        // text line / number appears: 4-5 frames
+  const XFADE = 0.55;      // image-to-image crossfade
+  const DIP = 0.27;        // fade to / from black at a section break
+  const DIP_HOLD = 0.3;    // black hold at a section break
 
   // ------------------------------------------------------------------ math
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -112,14 +117,15 @@
     constructor(o) {
       this.o = o;
       this.dur = o.dur;
-      this.fadeIn = o.fadeIn != null ? o.fadeIn : 0.28;
-      this.fadeOut = o.fadeOut != null ? o.fadeOut : 0.28;
+      // resolved in mount() from the transition into and out of this scene
+      this.fadeIn = 0; this.fadeOut = 0; this.overlapIn = 0; this.gapIn = 0;
       this.items = [];
     }
     mount(stage, start) {
       this.start = start;
       this.root = el('div', 'scene', stage);
       this.world = el('div', 'world', this.root);
+      this.hud = el('div', 'world', this.root);   // screen chrome (tag, badge): not moved by the camera
       this.svg = svg('svg', { class: 'svgfull', viewBox: `0 0 ${W} ${H}` });
       this.defs = svg('defs', null, this.svg);
       this.o.build(this);
@@ -135,10 +141,15 @@
       const fi = prog(t, 0, this.fadeIn, 'linear'), fo = 1 - prog(t, this.dur - this.fadeOut, this.fadeOut, 'linear');
       this.root.style.opacity = Math.min(fi, fo);
       // camera: slow continuous push so the frame never fully freezes
+      // camera. Measured on the reference: instruction shots are locked (default),
+      // story shots push in 1.2-1.8 % per second toward the subject: cam: { push: 1.5, cx, cy }
       const cam = this.o.cam || {};
-      const k = prog(t, 0, this.dur, cam.ease || 'inOutSine');
-      const s = lerp(cam.s0 != null ? cam.s0 : 1, cam.s1 != null ? cam.s1 : 1.035, k);
+      const s0 = cam.s0 != null ? cam.s0 : 1;
+      const s1 = cam.push != null ? s0 * Math.pow(1 + cam.push / 100, this.dur) : (cam.s1 != null ? cam.s1 : 1);
+      const k = prog(t, 0, this.dur, cam.ease || (cam.push != null ? 'linear' : 'inOutSine'));
+      const s = lerp(s0, s1, k);
       const x = lerp(cam.x0 || 0, cam.x1 || 0, k), y = lerp(cam.y0 || 0, cam.y1 || 0, k);
+      if (cam.cx != null || cam.cy != null) this.world.style.transformOrigin = `${cam.cx != null ? cam.cx : W / 2}px ${cam.cy != null ? cam.cy : H / 2}px`;
       this.world.style.transform = `translate(${x}px,${y}px) scale(${s})`;
       for (const it of this.items) it.update(t);
     }
@@ -168,6 +179,10 @@
     chapter(o) { return this.add(new Chapter(this, o)); }
     /** Safety badge (bottom-left by default). */
     badge(o) { return this.add(new Badge(this, o)); }
+    /** Series tag, top-left pill with a red bar ("TENDON TRAINING · AT HOME"). */
+    tag(o) { return this.add(new Tag(this, o)); }
+    /** Running ring timer in real seconds; `move` keyframes can shrink it to a corner while it keeps counting. */
+    timer(o) { return this.add(new Timer(this, o)); }
   }
 
   // ================================================================== Plate
@@ -238,21 +253,28 @@
       return { x, y, h, dim };
     }
     update(t) {
-      const o = this.o, at = o.at || 0, inDur = o.inDur || 1.1;
+      // style 'fade' (default): a 0.55 s fade, as the reference brings images in.
+      // style 'ink': soft top-down wipe while contrast develops, with a small scale settle.
+      const o = this.o, at = o.at || 0, ink = o.style === 'ink', inDur = o.inDur || (ink ? 1.1 : 0.55);
       const L = life(t, o, inDur, 0.5);
       const st = this.state(t);
-      // wipe edge travels from -f to 1+f
-      const f = 0.16, e = lerp(-f, 1 + f, prog(t, at, inDur, 'inOutSine'));
-      this.w0.setAttribute('offset', clamp(e - f)); this.w1.setAttribute('offset', clamp(e + f));
-      const dv = prog(t, at + inDur * 0.25, inDur, 'outCubic');
-      const slope = lerp(0.28, 1, dv) * st.dim, icpt = lerp(0.62, 0, dv) * st.dim;
+      let fadeIn = 1, settle = 1, slope = st.dim, icpt = 0;
+      if (ink) {
+        const f = 0.16, e = lerp(-f, 1 + f, prog(t, at, inDur, 'inOutSine'));
+        this.w0.setAttribute('offset', clamp(e - f)); this.w1.setAttribute('offset', clamp(e + f));
+        const dv = prog(t, at + inDur * 0.25, inDur, 'outCubic');
+        slope = lerp(0.28, 1, dv) * st.dim; icpt = lerp(0.62, 0, dv) * st.dim;
+        settle = lerp(1.035, 1, prog(t, at, inDur * 1.4, 'outCubic'));
+      } else {
+        this.w0.setAttribute('offset', 1); this.w1.setAttribute('offset', 1);
+        fadeIn = at > 0.001 ? prog(t, at, inDur, 'linear') : 1;
+      }
       for (const fn of this.dev) { fn.setAttribute('slope', slope.toFixed(4)); fn.setAttribute('intercept', icpt.toFixed(4)); }
-      const settle = lerp(1.035, 1, prog(t, at, inDur * 1.4, 'outCubic'));
-      const push = 1 + (o.push != null ? o.push : 0.025) * clamp((t - at) / Math.max(1, (o.pushDur || 8)));
+      const push = 1 + (o.push || 0) * clamp((t - at) / Math.max(1, (o.pushDur || 8)));
       const sc = settle * push * (st.h / this.h) * lerp(1, 0.985, L.b);
       const bw = this.h * this.p.w / this.p.h;
       this.box.style.transform = `translate(${st.x - bw / 2}px,${st.y - this.h / 2}px) scale(${sc})`;
-      this.box.style.opacity = (1 - L.b).toFixed(4);
+      this.box.style.opacity = (fadeIn * (1 - L.b)).toFixed(4);
       this.box.style.display = t < at - 0.01 ? 'none' : 'block';
       for (const { hl, im, s0, s1 } of this.hls) {
         const hp = prog(t, hl.at || 0, hl.dur || 1.2, 'inOutCubic');
@@ -346,13 +368,13 @@
       });
     }
     update(t) {
-      const o = this.o;
+      const o = this.o, rise = o.enter === 'rise';
       for (const r of this.rows) {
-        const k = prog(t, r.at, 0.5, 'outCubic');
-        const L = o.out != null ? prog(t, o.out, 0.4, 'inOutCubic') : 0;
+        const k = prog(t, r.at, o.inDur || (rise ? 0.5 : POP), rise ? 'outCubic' : 'linear');
+        const L = o.out != null ? prog(t, o.out, o.outDur || (rise ? 0.4 : 0.2), 'inOutCubic') : 0;
         r.e.style.opacity = (k * (1 - L)).toFixed(4);
-        r.e.style.filter = k < 1 ? `blur(${(1 - k) * 6}px)` : 'none';
-        r.e.style.transform = `translate(${o.x}px,${r.y + (1 - k) * 18 - L * 8}px) translate(${anchorXform(o.align || 'center')},-50%)`;
+        r.e.style.filter = rise && k < 1 ? `blur(${(1 - k) * 6}px)` : 'none';
+        r.e.style.transform = `translate(${o.x}px,${r.y + (rise ? (1 - k) * 18 - L * 8 : 0)}px) translate(${anchorXform(o.align || 'center')},-50%)`;
       }
     }
   }
@@ -365,12 +387,13 @@
       if (o.sound !== false) s.cue(o.at || 0, o.sound || 'tick', 0.45);
     }
     update(t) {
-      const o = this.o, at = o.at || 0, L = life(t, o, 0.5, 0.35);
-      const k = prog(t, at, 0.5, 'outCubic');
+      const o = this.o, at = o.at || 0, rise = o.enter === 'rise', d = o.inDur || (rise ? 0.5 : POP);
+      const L = life(t, Object.assign({ inDur: d, ease: rise ? 'outCubic' : 'linear' }, o), d, rise ? 0.35 : 0.2);
+      const k = prog(t, at, d, rise ? 'outCubic' : 'linear');
       const sc = o.pop ? lerp(0.86, 1, prog(t, at, 0.55, 'outBack')) : 1;
       this.e.style.opacity = (L.v).toFixed(4);
-      this.e.style.filter = k < 1 ? `blur(${(1 - k) * 5}px)` : 'none';
-      this.e.style.transform = `translate(${o.x}px,${o.y + (1 - k) * (o.rise != null ? o.rise : 16)}px) translate(${anchorXform(o.align)},-50%) scale(${sc})`;
+      this.e.style.filter = rise && k < 1 ? `blur(${(1 - k) * 5}px)` : 'none';
+      this.e.style.transform = `translate(${o.x}px,${o.y + (rise ? (1 - k) * (o.rise != null ? o.rise : 16) : 0)}px) translate(${anchorXform(o.align)},-50%) scale(${sc})`;
     }
   }
 
@@ -389,9 +412,9 @@
       this.e.style.transform = `translate(${o.x}px,${o.y}px) translate(${anchorXform(o.align)},-50%)`;
       this.e.style.opacity = (1 - L.b).toFixed(4);
       this.words.forEach((w, i) => {
-        const k = prog(t, at + i * 0.09, 0.5, 'outCubic');
+        const k = prog(t, at + i * 0.06, o.enter === 'rise' ? 0.5 : 0.12, 'outCubic');
         w.style.opacity = k.toFixed(4);
-        w.style.transform = `translateY(${(1 - k) * 22}px)`;
+        w.style.transform = o.enter === 'rise' ? `translateY(${(1 - k) * 22}px)` : 'none';
       });
     }
   }
@@ -409,11 +432,11 @@
       s.cue(o.at || 0, 'roll', 0.6);
     }
     update(t) {
-      const o = this.o, at = o.at || 0, L = life(t, o, 0.4, 0.35);
+      const o = this.o, at = o.at || 0, L = life(t, Object.assign({ ease: 'linear' }, o), POP, 0.25);
       const k = prog(t, at, o.dur || 1.4, 'outQuart');
       this.e.textContent = fmtNum(lerp(o.from || 0, o.to, k), o);
       this.e.style.opacity = L.v.toFixed(4);
-      this.e.style.transform = `translate(${o.x}px,${o.y + (1 - prog(t, at, 0.5, 'outCubic')) * 16}px) translate(${anchorXform(o.align)},-50%)`;
+      this.e.style.transform = `translate(${o.x}px,${o.y}px) translate(${anchorXform(o.align)},-50%)`;
     }
   }
 
@@ -596,7 +619,7 @@
   class Badge {
     constructor(s, o) {
       this.o = o;
-      this.e = el('div', 'abs badge', s.world);
+      this.e = el('div', 'abs badge', s.hud);
       this.e.innerHTML = `<svg width="36" height="32" viewBox="0 0 30 27"><path d="M15 2 L28 25 H2 Z" fill="${theme.warn}" stroke="${theme.warn}" stroke-width="2.5" stroke-linejoin="round"/><rect x="13.6" y="9" width="2.8" height="9" rx="1.2" fill="#111"/><circle cx="15" cy="21.2" r="1.7" fill="#111"/></svg><div><b></b><span></span></div>`;
       this.e.querySelector('b').textContent = o.title || 'BE SAFE';
       this.e.querySelector('span').textContent = o.text || '';
@@ -608,6 +631,53 @@
       this.e.style.opacity = (t < at ? 0 : clamp(k * 2) * (1 - L.b)).toFixed(4);
       this.e.style.transform = `translate(${o.x != null ? o.x : 40}px,${o.y != null ? o.y : 1080 - 40}px) translate(0,-100%) scale(${lerp(0.9, 1, k)})`;
       this.e.style.transformOrigin = '0 100%';
+    }
+  }
+
+  // ================================================================== Tag, Timer
+  class Tag {
+    constructor(s, o) {
+      this.o = o;
+      this.e = el('div', 'abs tag', s.hud, o.size ? { fontSize: o.size + 'px' } : null);
+      this.e.textContent = o.text;
+    }
+    update(t) {
+      const o = this.o, L = life(t, Object.assign({ ease: 'linear' }, o), 0.2, 0.2);
+      this.e.style.opacity = (t < (o.at || 0) ? 0 : L.v).toFixed(4);
+      this.e.style.transform = `translate(${o.x != null ? o.x : 48}px,${o.y != null ? o.y : 44}px)`;
+    }
+  }
+
+  class Timer {
+    constructor(s, o) {
+      this.o = o;
+      const size = this.base = o.size || 220, r = size / 2 - 12, c = col(o.color || 'good');
+      this.box = el('div', 'abs', s.world, { width: size + 'px', height: size + 'px', transformOrigin: '50% 50%' });
+      const sv = svg('svg', { width: size, height: size, viewBox: `0 0 ${size} ${size}` }, this.box);
+      svg('circle', { cx: size / 2, cy: size / 2, r, fill: 'none', stroke: theme.line, 'stroke-width': 13 }, sv);
+      this.arc = svg('circle', { cx: size / 2, cy: size / 2, r, fill: 'none', stroke: c, 'stroke-width': 13, 'stroke-linecap': 'round', pathLength: 1, 'stroke-dasharray': '1 1', 'stroke-dashoffset': 1, transform: `rotate(-90 ${size / 2} ${size / 2})` }, sv);
+      this.num = el('div', 'tnum', this.box, { position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: (size * 0.3) + 'px', color: theme.ink });
+      this.lab = el('div', 'line', this.box, { position: 'absolute', left: '50%', top: (size + 14) + 'px', transform: 'translateX(-50%)', fontSize: (o.labelSize || 26) + 'px', fontWeight: 600, color: theme.ink, opacity: 0.85 });
+      const span = (o.to || 30) - (o.from || 0), end = o.out != null ? Math.min(o.out, (o.at || 0) + span) : (o.at || 0) + span;
+      for (let k = 1; (o.at || 0) + k <= end + 1e-6; k++) s.cue((o.at || 0) + k, 'tick', 0.22);
+    }
+    update(t) {
+      const o = this.o, at = o.at || 0, from = o.from || 0, to = o.to || 30;
+      const v = from + clamp(t - at, 0, to - from);
+      let x = o.x, y = o.y, size = this.base, label = o.label || '';
+      for (const m of o.move || []) {
+        const q = prog(t, m.at, m.dur || 0.5, 'inOutCubic');
+        if (m.x != null) x = lerp(x, m.x, q);
+        if (m.y != null) y = lerp(y, m.y, q);
+        if (m.size != null) size = lerp(size, m.size, q);
+        if (m.label != null && t >= m.at) label = m.label;
+      }
+      const L = life(t, Object.assign({ ease: 'linear' }, o), 0.15, 0.25);
+      this.box.style.opacity = (t < at ? 0 : L.v).toFixed(4);
+      this.box.style.transform = `translate(${x - this.base / 2}px,${y - this.base / 2}px) scale(${size / this.base})`;
+      this.arc.setAttribute('stroke-dashoffset', (1 - (v - from) / (to - from)).toFixed(4));
+      this.num.textContent = Math.floor(v + 1e-6) + (o.unit != null ? o.unit : 's');
+      this.lab.textContent = label;
     }
   }
 
@@ -634,14 +704,25 @@
     // preload images and fonts so the very first rendered frame is complete
     const srcs = [...new Set(Object.values(plates).map(p => p.src))];
     await Promise.all(srcs.map(src => new Promise(res => { const i = new Image(); i.onload = () => (i.decode ? i.decode().then(res, res) : res()); i.onerror = () => { console.warn('missing', src); res(); }; i.src = src; })));
-    await Promise.all(['500', '600', '700', '800'].map(w => document.fonts.load(`${w} 40px Poppins`))).catch(() => {});
+    await Promise.all(['500', '600', '700', '800'].map(w => document.fonts.load(`${w} 40px Montserrat`))).catch(() => {});
     await document.fonts.load('700 40px Kalam').catch(() => {});
     await document.fonts.ready;
 
+    // transitions: crossfade (default, 0.55 s), 'dip' (fade to black, hold, fade up), or 'cut'
+    EP.scenes.forEach((sc, i) => {
+      const o = sc.o, prev = EP.scenes[i - 1];
+      const mode = i === 0 ? 'first' : (o.transition || 'crossfade');
+      if (mode === 'first') sc.fadeIn = o.fadeIn != null ? o.fadeIn : 0.3;
+      else if (mode === 'crossfade') { sc.fadeIn = o.fadeIn != null ? o.fadeIn : XFADE; sc.overlapIn = o.overlap != null ? o.overlap : sc.fadeIn; prev.fadeOut = prev.o.fadeOut != null ? prev.o.fadeOut : sc.overlapIn; }
+      else if (mode === 'dip') { sc.fadeIn = o.fadeIn != null ? o.fadeIn : DIP; sc.gapIn = o.hold != null ? o.hold : DIP_HOLD; prev.fadeOut = prev.o.fadeOut != null ? prev.o.fadeOut : DIP; }
+      else { sc.fadeIn = 0; prev.fadeOut = 0; }
+    });
+    const lastSc = EP.scenes[EP.scenes.length - 1];
+    lastSc.fadeOut = lastSc.o.fadeOut != null ? lastSc.o.fadeOut : 0.6;
     let tcur = 0;
     cues.length = 0;
     for (const sc of EP.scenes) {
-      tcur -= sc.o.overlap || 0;
+      tcur += sc.gapIn - sc.overlapIn;
       sc.mount(stage, tcur);
       tcur += sc.dur;
     }
@@ -658,14 +739,14 @@
       for (const sc of EP.scenes) sc.update(T);
       const f = Math.floor(T * fps), r = rng(f * 7919 + 13);
       grain.style.transform = `translate(${Math.floor(r() * 64) - 64}px,${Math.floor(r() * 64) - 64}px)`;
-      const sc = EP.scenes.find(s => T >= s.start && T < s.start + s.dur);
+      const sc = EP.scenes.filter(s => T >= s.start && T < s.start + s.dur).pop();
       cap.textContent = sc && sc.o.vo ? sc.o.vo : '';
     }
     seek(0);
     return {
       duration: EP.duration, fps, seek, cues: cues.slice(),
       title: EP.def.title || 'episode',
-      vo: EP.scenes.map(s => ({ start: s.start, end: s.start + s.dur, text: s.o.vo || '', name: s.o.name || '' })),
+      vo: EP.scenes.map((s, i) => ({ start: s.start, end: Math.min(s.start + s.dur, EP.scenes[i + 1] ? EP.scenes[i + 1].start : Infinity), text: s.o.vo || '', name: s.o.name || '' })),
       chapters: EP.scenes.filter(s => s.o.chapter).map(s => ({ t: s.start, title: s.o.chapter })),
       showCaptions(on) { cap.style.display = on ? 'block' : 'none'; },
     };
