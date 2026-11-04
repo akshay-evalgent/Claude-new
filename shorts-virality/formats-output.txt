@@ -1,0 +1,58 @@
+A. Chance one Short reaches 1M views in 24 h, by edge and breadth (no spread)
+  ln E   d=0.025    d=0.03   d=0.045  >=100k, d=0.03
+ 0.000      0.0%      0.0%      0.0%            0.0%
+ 0.025      0.0%      0.0%      0.0%            0.2%
+ 0.050      0.1%      0.0%      0.0%            0.8%
+ 0.075      0.5%      0.2%      0.0%            2.1%
+ 0.100      1.9%      0.6%      0.0%            5.4%
+ 0.125      4.8%      2.1%      0.1%           13.7%
+ 0.150     11.6%      5.3%      0.6%           26.4%
+ 0.175     22.0%     13.4%      1.4%           43.9%
+ 0.200     37.3%     25.2%      4.5%           63.4%
+ 0.225     54.9%     41.9%     11.3%           78.9%
+ 0.250     72.1%     59.3%     22.6%           89.9%
+ 0.275     84.7%     75.6%     39.9%           95.9%
+ 0.300     94.0%     88.0%     59.2%           98.6%
+ 0.325     97.8%     95.5%     75.6%           99.7%
+ 0.350     99.1%     98.4%     89.0%           99.9%
+ 0.375     99.7%     99.4%     95.3%          100.0%
+ 0.400    100.0%     99.8%     98.7%          100.0%
+
+B. Break-even: how much more edge per Short a format needs to make up for
+   making r times fewer Shorts (d = 0.03, equal spread)
+ other format ln E   P(1M)       r=3       r=5      r=10
+              0.10    0.6%    +0.022    +0.033    +0.052
+              0.15    5.3%    +0.033    +0.053    +0.092
+              0.20   25.2%    +0.075     never     never
+              0.25   59.3%     never     never     never
+
+C. Spread: same average edge, more hit-or-miss Shorts (d = 0.03)
+ mean ln E    sd=0.0   sd=0.05    sd=0.1   sd=0.15
+      0.10      0.6%      3.3%     11.6%     19.5%
+      0.15      5.3%     12.6%     22.3%     30.2%
+      0.20     25.2%     32.7%     39.0%     41.4%
+      0.30     88.0%     81.4%     71.1%     66.1%
+
+D. Saturation: footage people have already seen erodes the edge faster
+ mean ln E   d=0.025    d=0.03    d=0.04    d=0.05    d=0.06
+      0.15     11.6%      5.3%      1.0%      0.1%      0.0%
+      0.20     37.3%     25.2%      8.9%      1.7%      0.3%
+      0.25     72.1%     59.3%     33.4%     14.5%      4.5%
+
+E. Originality penalty (ln E lost), mean ln E 0.20, d = 0.03
+  penalty 0.0    P(1M)  25.2%   median 24 h  192.4k
+  penalty 0.025  P(1M)  13.4%   median 24 h   75.7k
+  penalty 0.05   P(1M)   5.3%   median 24 h   33.8k
+  penalty 0.1    P(1M)   0.6%   median 24 h    7.2k
+
+F. Worked example: 1M-view hits per Short and per 100 production hours
+   (assumptions, not data). 'Early' shifts every format's edge down by 0.08:
+   a channel still finding its feet. 'Hitting' uses the edges as listed.
+format                                ln E    sd      d   pen     h  P early  P hitting  /100h early  /100h hitting
+Edited: sourced clips, real edit      0.12  0.10  0.040  0.00   1.5     2.2%       8.8%         1.49           5.84
+Edited: aggregator-style reposts      0.12  0.10  0.050  0.05   1.0     0.4%       1.9%         0.37           1.90
+Edited: own footage                   0.12  0.10  0.030  0.00   4.0     4.4%      15.8%         1.11           3.95
+Animated: hand-made                   0.18  0.06  0.025  0.00  12.0     7.2%      34.9%         0.60           2.91
+Animated: AI-assisted                 0.15  0.07  0.030  0.00   3.0     2.7%      17.5%         0.90           5.83
+
+Chart written to charts/hit-chance-by-edge.png

@@ -2,6 +2,8 @@
 
 A working model of how a Short goes from its first few hundred views to millions in a day, with the equations, a simulator (`model.py`) and a way to fit it to your own channel.
 
+**Edited footage vs. animation:** see [`FORMATS.md`](FORMATS.md).
+
 ## What is known and what is modelled
 
 **Known (public):**
@@ -209,6 +211,8 @@ For the **Map From Memory** short in `film/`: trimming the 1.67 s end hold (36.6
 python3 model.py demo                           # every table above + the three charts
 python3 model.py one --viewed 0.78 --length 22  # one Short: percentiles at 1, 3, 6, 12, 24 h
 python3 model.py fit history.csv --early views_2h --late views_24h --now 900
+python3 model.py formats                        # edited footage vs animation (FORMATS.md)
+python3 model.py compare shorts.csv             # per-format hit rates from your history
 ```
 
 `fit` takes a CSV of your past Shorts (one row each, any column names) and fits `ln(V₂₄) = a + b·ln(V_early)` on your own data. It prints the band 80% of your Shorts land in, and, with `--now`, the forecast for the Short you just posted. Use your own history, because seed size and audience differ by channel.

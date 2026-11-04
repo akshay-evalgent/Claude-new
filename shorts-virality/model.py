@@ -15,6 +15,8 @@ Usage:
   python3 model.py demo                      # experiments, tables, charts
   python3 model.py one --viewed 0.8 --length 25
   python3 model.py fit history.csv --early views_2h --late views_24h --now 900
+  python3 model.py formats                   # edited footage vs animation
+  python3 model.py compare shorts.csv        # columns: format, views_24h[, hours]
 """
 from __future__ import annotations
 
@@ -119,6 +121,12 @@ def simulate(s: Short, p: Platform, rng: np.random.Generator, hours: int = 24,
     vpi = per_impression(s)["views"]
     r_share = s.viewed * s.share * p.views_per_share  # direct share reproduction number
     vpi *= 1 / (1 - r_share)
+    return cascade(le0, vpi, p, rng, hours, trace)
+
+
+def cascade(le0: float, vpi: float, p: Platform, rng: np.random.Generator,
+            hours: int = 24, trace: bool = False):
+    """Test-measure-expand loop for a Short with log-edge le0 and views per impression vpi."""
     hourly = np.zeros(hours)
     t, k, n = 0.0, 0, float(p.seed)
     ring = 0.0
@@ -376,6 +384,163 @@ def charts(runs: dict, sweep: list, p: Platform) -> None:
 
 
 # --------------------------------------------------------------------------
+# Formats: edited footage vs animation
+# --------------------------------------------------------------------------
+
+def p_hit(mean_le: float, spread: float, d: float, penalty: float = 0.0,
+          threshold: float = 1e6, n: int = 3000, seed: int = 13,
+          p: Platform = Platform()) -> float:
+    """Chance one Short of a format reaches `threshold` views in 24 h.
+
+    The format's Shorts have log-edges ~ Normal(mean_le, spread); `d` is how fast
+    the edge erodes as the audience widens; `penalty` is log-edge lost to
+    originality down-ranking.
+    """
+    rng = np.random.default_rng(seed)
+    q = replace(p, fit_decay=d)
+    vpi = per_impression(POOL)["views"]
+    les = rng.normal(mean_le - penalty, spread, n) if spread > 0 else np.full(n, mean_le - penalty)
+    return float(np.mean([cascade(le, vpi, q, rng)[-1] >= threshold for le in les]))
+
+
+@dataclass(frozen=True)
+class Format:
+    name: str
+    mean_le: float   # typical log-edge of a Short in this format, vs your pool
+    spread: float    # sd of log-edge across your Shorts in this format
+    d: float         # breadth: edge lost per wider audience ring
+    hours: float     # production hours per Short
+    penalty: float = 0.0  # log-edge lost to originality down-ranking
+
+
+# One worked example. Every number here is an assumption to replace with yours.
+EXAMPLE_FORMATS = [
+    Format("Edited: sourced clips, real edit", 0.12, 0.10, 0.040, 1.5),
+    Format("Edited: aggregator-style reposts", 0.12, 0.10, 0.050, 1.0, penalty=0.05),
+    Format("Edited: own footage", 0.12, 0.10, 0.030, 4.0),
+    Format("Animated: hand-made", 0.18, 0.06, 0.025, 12.0),
+    Format("Animated: AI-assisted", 0.15, 0.07, 0.030, 3.0),
+]
+
+
+def formats(make_charts: bool = True) -> None:
+    p = Platform()
+    grid = np.round(np.arange(0.0, 0.401, 0.025), 3)
+    ds = (0.025, 0.030, 0.045)
+
+    print("A. Chance one Short reaches 1M views in 24 h, by edge and breadth (no spread)")
+    print(f"{'ln E':>6}" + "".join(f"{'d=' + str(d):>10}" for d in ds) + f"{'>=100k, d=0.03':>16}")
+    curve = {d: [] for d in ds}
+    for le in grid:
+        row = [p_hit(float(le), 0.0, d) for d in ds]
+        for d, v in zip(ds, row):
+            curve[d].append(v)
+        print(f"{le:>6.3f}" + "".join(f"{v:>10.1%}" for v in row)
+              + f"{p_hit(float(le), 0.0, 0.03, threshold=1e5):>16.1%}")
+
+    print("\nB. Break-even: how much more edge per Short a format needs to make up for")
+    print("   making r times fewer Shorts (d = 0.03, equal spread)")
+    base = curve[0.030]
+    fine = np.arange(0.0, 0.4001, 0.0025)
+    interp = np.interp(fine, grid, base)
+    print(f"{'other format ln E':>18}{'P(1M)':>8}" + "".join(f"{'r=' + str(r):>10}" for r in (3, 5, 10)))
+    for le_e in (0.10, 0.15, 0.20, 0.25):
+        pe = float(np.interp(le_e, grid, base))
+        cells = []
+        for r in (3, 5, 10):
+            target = r * pe
+            ok = np.where(interp >= target)[0]
+            cells.append(f"+{fine[ok[0]] - le_e:.3f}" if len(ok) and target <= 1 else "never")
+        print(f"{le_e:>18.2f}{pe:>8.1%}" + "".join(f"{c:>10}" for c in cells))
+
+    print("\nC. Spread: same average edge, more hit-or-miss Shorts (d = 0.03)")
+    print(f"{'mean ln E':>10}" + "".join(f"{'sd=' + str(s):>10}" for s in (0.0, 0.05, 0.10, 0.15)))
+    for mu in (0.10, 0.15, 0.20, 0.30):
+        print(f"{mu:>10.2f}" + "".join(f"{p_hit(mu, s, 0.03):>10.1%}" for s in (0.0, 0.05, 0.10, 0.15)))
+
+    print("\nD. Saturation: footage people have already seen erodes the edge faster")
+    print(f"{'mean ln E':>10}" + "".join(f"{'d=' + str(d):>10}" for d in (0.025, 0.03, 0.04, 0.05, 0.06)))
+    for mu in (0.15, 0.20, 0.25):
+        print(f"{mu:>10.2f}" + "".join(f"{p_hit(mu, 0.0, d):>10.1%}" for d in (0.025, 0.03, 0.04, 0.05, 0.06)))
+
+    print("\nE. Originality penalty (ln E lost), mean ln E 0.20, d = 0.03")
+    rng = np.random.default_rng(17)
+    vpi = per_impression(POOL)["views"]
+    for pen in (0.0, 0.025, 0.05, 0.10):
+        med = np.median([cascade(0.20 - pen, vpi, p, rng)[-1] for _ in range(2000)])
+        print(f"  penalty {pen:<6} P(1M) {p_hit(0.20, 0.0, 0.03, pen):>6.1%}   median 24 h {fmt(med):>7}")
+
+    print("\nF. Worked example: 1M-view hits per Short and per 100 production hours")
+    print("   (assumptions, not data). 'Early' shifts every format's edge down by 0.08:")
+    print("   a channel still finding its feet. 'Hitting' uses the edges as listed.")
+    print(f"{'format':<36}{'ln E':>6}{'sd':>6}{'d':>7}{'pen':>6}{'h':>6}"
+          f"{'P early':>9}{'P hitting':>11}{'/100h early':>13}{'/100h hitting':>15}")
+    for f in EXAMPLE_FORMATS:
+        lo = p_hit(f.mean_le - 0.08, f.spread, f.d, f.penalty)
+        hi = p_hit(f.mean_le, f.spread, f.d, f.penalty)
+        per = 100 / f.hours
+        print(f"{f.name:<36}{f.mean_le:>6.2f}{f.spread:>6.2f}{f.d:>7.3f}{f.penalty:>6.2f}{f.hours:>6.1f}"
+              f"{lo:>9.1%}{hi:>11.1%}{per * lo:>13.2f}{per * hi:>15.2f}")
+
+    if make_charts:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        plt.rcParams.update({"font.family": "DejaVu Sans", "figure.facecolor": SURFACE})
+        fig, ax = plt.subplots(figsize=(8, 4.8), dpi=200)
+        _style(ax, plt)
+        labels = {0.025: "Broad appeal (d = 0.025)", 0.030: "Typical (d = 0.03)",
+                  0.045: "Footage already circulating (d = 0.045)"}
+        for d, c in zip(ds, SERIES):
+            ys = np.array(curve[d]) * 100
+            ax.plot(grid, ys, color=c, linewidth=2, marker="o", markersize=4, label=labels[d])
+        ax.set_xlabel("Edge per Short, ln E (0.10 = about 10% better than the median Short)", color=INK2)
+        ax.set_ylabel("Chance of 1M views in 24 h (%)", color=INK2)
+        ax.set_ylim(0, 102)
+        ax.set_title("A little more edge buys a lot more chance, until it doesn't",
+                     color=INK, loc="left", fontsize=13, pad=12)
+        ax.legend(frameon=False, labelcolor=INK, loc="upper left")
+        fig.tight_layout()
+        fig.savefig(os.path.join(HERE, "charts", "hit-chance-by-edge.png"))
+        plt.close(fig)
+        print("\nChart written to charts/hit-chance-by-edge.png")
+
+
+def compare(path: str, threshold: float) -> None:
+    """Per-format hit rates from your own history: format, views_24h[, hours]."""
+    from statistics import NormalDist
+    rows = {}
+    with open(path, newline="") as f:
+        for row in csv.DictReader(f):
+            try:
+                v = float(row["views_24h"])
+            except (KeyError, ValueError):
+                continue
+            if v <= 0:
+                continue
+            h = row.get("hours")
+            rows.setdefault(row.get("format", "?").strip(), []).append(
+                (v, float(h) if h not in (None, "") else None))
+    if not rows:
+        sys.exit("Need a CSV with columns format, views_24h and optionally hours.")
+    print(f"Threshold {fmt(threshold)} views in 24 h. 'tail est.' fits a log-normal to each format;")
+    print("the model says the real tail is heavier, so read it as a floor.\n")
+    print(f"{'format':<22}{'n':>4}{'median':>9}{'log sd':>8}{'hit rate':>10}{'tail est.':>11}"
+          f"{'h/Short':>9}{'hits/100h':>11}")
+    for name, items in sorted(rows.items()):
+        logs = np.log([v for v, _ in items])
+        hours = [h for _, h in items if h is not None]
+        sd = logs.std(ddof=1) if len(logs) > 1 else float("nan")
+        observed = float(np.mean([v >= threshold for v, _ in items]))
+        tail = 1 - NormalDist(logs.mean(), sd).cdf(math.log(threshold)) if sd > 0 else float("nan")
+        h = float(np.mean(hours)) if hours else float("nan")
+        best = max(observed, tail) if not math.isnan(tail) else observed
+        per100 = 100 / h * best if hours else float("nan")
+        print(f"{name:<22}{len(items):>4}{fmt(math.exp(np.median(logs))):>9}{sd:>8.2f}"
+              f"{observed:>10.1%}{tail:>11.2%}{h:>9.1f}{per100:>11.2f}")
+
+
+# --------------------------------------------------------------------------
 # Your own data: early views -> 24h views
 # --------------------------------------------------------------------------
 
@@ -419,6 +584,11 @@ def main() -> None:
     o.add_argument("--engage", type=float, default=0.03)
     o.add_argument("--post-hour", type=float, default=18)
     o.add_argument("--runs", type=int, default=2000)
+    fm = sub.add_parser("formats", help="edited footage vs animation: the format experiments")
+    fm.add_argument("--no-charts", action="store_true")
+    c = sub.add_parser("compare", help="per-format hit rates from your own history CSV")
+    c.add_argument("csv")
+    c.add_argument("--threshold", type=float, default=1e6)
     f = sub.add_parser("fit", help="fit early -> 24h views from your own history CSV")
     f.add_argument("csv")
     f.add_argument("--early", default="views_2h")
@@ -439,6 +609,10 @@ def main() -> None:
         for h in (1, 3, 6, 12, 24):
             q = np.percentile(r[:, h - 1], [10, 50, 90])
             print(f"  {h:>2}h   P10 {fmt(q[0]):>7}   median {fmt(q[1]):>7}   P90 {fmt(q[2]):>7}")
+    elif args.cmd == "formats":
+        formats(make_charts=not args.no_charts)
+    elif args.cmd == "compare":
+        compare(args.csv, args.threshold)
     else:
         fit(args.csv, args.early, args.late, args.now)
 
