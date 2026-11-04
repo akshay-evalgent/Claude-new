@@ -1,25 +1,25 @@
-# The Movie Metaphor: @wealth's 17.6M-view format, rebuilt for a new account
+# The Lesson Clip: @wealth's format, rebuilt for a new account
 
-This format is confirmed from a real @wealth reel (`reference/01-DfLHlFtptGu.md`): 17.6M views, 962K likes, 41.6 seconds. A short scene shows a money or business idea, a one-line hook frames it, and a long caption turns it into a lesson.
+Confirmed on three real @wealth reels with 6.3M, 17.6M and 29.1M views (`reference/PATTERNS.md`). A short clip shows a moment, a hook above it names the lesson, music sets the mood, and a caption essay spells the lesson out. All three are about mindset and life lessons, not business news.
 
-## The layout (measured from the real reel)
+## The layout (measured from all three reels)
 
 | Part | Spec |
 |---|---|
 | Canvas | 1080 x 1920, black |
-| Hook | 3 lines, centred, Title Case, bold rounded sans, white. The two contrasting phrases in pale yellow (#F5FA5A). Ends with a colon. Bottom edge at y ≈ 560. |
-| Clip | Full width, 3:2 (1080 x 720), from y = 600 to y = 1320 |
-| Bottom | Black from y = 1320 down, where Instagram's caption overlay sits |
+| Hook | 1 to 3 lines, centred, Title Case, bold rounded sans, white. Key words in pale yellow (#F5FA5A). Emojis allowed (add them in your editor, the script doesn't draw emoji). Bottom edge about 40 px above the clip. |
+| Clip | Full width, **always starting at y = 600**. Height follows the source: 720 for 3:2, about 920 for a squarer clip. |
+| Bottom | Black below the clip, where Instagram's caption overlay sits |
 | Handle, watermark, subtitles | None on @wealth's version. A small handle under the clip is fine on yours. |
-| Length | 30 to 45 s. Long enough for the scene to pay off. |
-| Audio | The scene's own sound |
+| Length | 15 to 60 s. The 60 s emotional story did best (29.1M). |
+| Audio | A trending song, slowed versions for emotional clips (2 of 3 reels). The scene's own sound only when the scene needs it. |
 
 Make the frame in one command:
 ```
 python3 scripts/headline.py "The Perfect Example Of What Saving Vs Investing Looks Like:" \
     --highlight "Saving" --highlight "Investing" --style metaphor --handle --out saving.png
 ```
-In Edits or CapCut: put the clip on the bottom layer, scale it to full width, centre it on y = 960, and put the PNG on top. The PNG is black with a transparent window, so it crops the clip for you.
+For a squarer clip, add `--clip-height 920`. In Edits or CapCut: put the clip on the bottom layer, scale it to full width, line its top up with y = 600, and put the PNG on top. The PNG is black with a transparent window, so it crops the clip for you.
 
 ## The one big difference: footage
 
@@ -40,28 +40,33 @@ Keep everything else: the hook, the layout, the length, the caption. Just take t
 
 ## The hook formulas
 
-From the real reel, plus variants that keep its shape:
+Three types, one from each real reel:
 
-1. The Perfect Example Of What **[A]** Vs **[B]** Looks Like:
-2. What **[Idea]** Looks Like In Real Life:
-3. This Is What **[Idea]** Actually Looks Like:
-4. **[Most People]** Vs **[Rich People]** In One Scene:
-5. If **[Idea]** Was A Video:
+| Type | Formula | Real example | Best for |
+|---|---|---|---|
+| **Story title** | [2 to 4 Word Lesson] + 1 or 2 emojis | "Words Have Power" (29.1M) | Emotional clips with a beginning, middle and end |
+| **Metaphor** | The Perfect Example Of What [A] Vs [B] Looks Like: | Working Hard Vs Working Smart (17.6M) | A scene that shows a contrast |
+| **POV** | POV: You Learned How To [Skill] | Focus On The Solution, Not The Problem (6.3M) | Short loops of someone doing something cleverly |
 
-Rules: Title Case, two highlighted phrases when there's a contrast (one when there isn't), end with a colon, 8 to 14 words.
+More in the same shapes: "Patience Pays 🌱", "Kindness Is Free ❤️", "What [Idea] Looks Like In Real Life:", "POV: You Stopped Caring What People Think".
+
+Rules: Title Case, yellow on the words that carry the lesson, a colon at the end of metaphor hooks, 3 to 14 words.
 
 ## The caption formula
 
-From the real reel's structure (write your own words every time):
+The same structure appears on all three reels. Write your own words every time.
 
 ```
-1  A blunt claim.            One sentence that goes against the usual advice.
-2  The pattern.               Two or three sentences about what most people do.
-3  Two real examples.         Named people or companies, with one number each. Source in your notes.
-4  Two-line closer.           Short, rhythmic, screenshot-able.
-                              (blank line)
-5  Footage credit + tags.     "Footage: Pexels / creator name" and 5 hashtags, one about the clip type.
+1  Thesis + 2 emojis.        One sentence. "Problems are guaranteed. Staying stuck is optional." 🧠🔧
+2  The universal pain.        A list of 3 or 4 everyday examples people recognise.
+3  The reframe.               What's really going on.
+4  The advice.                What to do instead. Famous examples optional (with a source).
+5  Closing aphorism.          One or two lines people screenshot.
+6  Your fixed follow line.    The same every time, e.g. "Follow @yourhandle for one lesson every day. ⭐"
+7  Credit.                    "Footage: Pexels / creator name" (or the public-domain film title).
+8  Exactly 5 hashtags.        Your brand tag first, then #Mindset or #LifeLessons, then 2 topic tags.
 ```
+Put a blank Braille character (⠀) on the empty lines between paragraphs so Instagram keeps the spacing.
 
 ## 12 ready reels
 
@@ -127,6 +132,28 @@ Each has a hook, footage you're allowed to use, and a caption outline. Check any
 - **Footage:** animation of two dots in a maze. One runs every corridor, the other traces the path on paper first and finishes sooner.
 - **Caption:** an hour of planning saves a week of rework. Example: IKEA's flat-pack idea came from taking the legs off a table to fit it in a car.
 
+## Story and POV reels
+
+### S1. Patience Pays 🌱
+- **Hook (story title):** Patience Pays + 🌱
+- **Footage:** a 40 to 60 s timelapse of a garden or building going up (stock: "construction timelapse", "garden timelapse"), sad or hopeful slowed song.
+- **Caption:** results show up late. List of things that take years: skills, savings, trust, a body you're proud of. Closer about planting now.
+
+### S2. Kindness Is Free ❤️
+- **Hook (story title):** Kindness Is Free + ❤️
+- **Footage:** film it yourself or use stock: someone paying for a stranger's coffee, helping carry bags. A small story with an ending.
+- **Caption:** generosity compounds like interest. Closer about who people remember.
+
+### P1. POV: You Learned How To Say No
+- **Hook (POV):** POV: You Learned How To **Say No Without Explaining**
+- **Footage:** a 10 to 15 s loop of someone calmly closing a laptop and walking outside (stock), trending song.
+- **Caption:** time is the only thing you can't earn back. List of things people say yes to out of guilt.
+
+### P2. POV: You Started Investing At 25
+- **Hook (POV):** POV: You Started **Investing At 25**
+- **Footage:** someone relaxed on a balcony or travelling (stock), trending song.
+- **Caption:** $300 a month from 25 to 65 at 8% a year ends near $1.05M, starting at 35 near $447K. State the assumptions. Not financial advice.
+
 ## How many of these to post
 
-One real reel isn't enough to know @wealth's full mix. Until there are more examples in `reference/`, try the Movie Metaphor as **2 to 3 of your 7 weekly posts** next to the news and breakdown formats, and let your own numbers decide (`05-GROWTH-PLAYBOOK.md`).
+All three measured @wealth reels are lesson clips, so if you want @wealth's results, this is the core format: **4 to 5 of your 7 weekly posts**, mixing story, metaphor and POV hooks. Fill the other slots with breakdowns or data reels, which are fully original and give sponsors something to pay for. Then let your own numbers decide (`05-GROWTH-PLAYBOOK.md`).

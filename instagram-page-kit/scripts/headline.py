@@ -29,24 +29,26 @@ BOX_TOP = 300
 PAD = 40
 
 
-def render_metaphor(text, highlight=None, handle=False):
-    """Black frame, centred hook text above a full-width clip window."""
+def render_metaphor(text, highlight=None, handle=False, clip_height=None):
+    """Black frame, centred hook text above a full-width clip window starting at y=600."""
+    clip = (META_CLIP[0], META_CLIP[1], META_CLIP[2], META_CLIP[1] + (clip_height or META_CLIP[3] - META_CLIP[1]))
     img = Image.new("RGBA", (W, H), (0, 0, 0, 255))
     d = ImageDraw.Draw(img)
-    d.rectangle(META_CLIP, fill=(0, 0, 0, 0))
+    d.rectangle(clip, fill=(0, 0, 0, 0))
     tokens = tokenize(text, highlight)
     fnt, lines = fit_font(d, tokens, W - 2 * 90, 3, start=62, minimum=46, weight="Bold")
     line_h = int(fnt.size * 1.22)
     top = META_TEXT_BOTTOM - line_h * len(lines)
     draw_rich_lines(d, lines, fnt, 90, top, WHITE, PALE_YELLOW, line_gap=1.22, align="center", box_w=W - 180)
     if handle:
-        handle_tag(img, 90, META_CLIP[3] + 40, size=30, color=MUTED)
-    return img, META_CLIP[1]
+        handle_tag(img, 90, clip[3] + 40, size=30, color=MUTED)
+    return img, clip[1], clip[3]
 
 
 def render_headline(text, highlight=None, style="white", source=None, max_lines=3):
     if style == "metaphor":
-        return render_metaphor(text, highlight)
+        img, top, _ = render_metaphor(text, highlight)
+        return img, top
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     box_w = W - 2 * MARGIN_X
@@ -102,12 +104,12 @@ def main():
     ap.add_argument("--style", default="white", choices=["white", "dark", "metaphor"])
     ap.add_argument("--source")
     ap.add_argument("--handle", action="store_true", help="metaphor style: add your handle under the clip")
+    ap.add_argument("--clip-height", type=int, help="metaphor style: clip window height in px (720 = 3:2, 920 = squarer)")
     ap.add_argument("--out", default="headline.png")
     ap.add_argument("--preview", action="store_true", help="also write <out>-preview.png on a mock frame")
     a = ap.parse_args()
     if a.style == "metaphor":
-        img, video_top = render_metaphor(a.text, a.highlight, a.handle)
-        video_bottom = META_CLIP[3]
+        img, video_top, video_bottom = render_metaphor(a.text, a.highlight, a.handle, a.clip_height)
     else:
         img, bottom = render_headline(a.text, a.highlight, a.style, a.source)
         video_top, video_bottom = bottom + 30, H - SAFE_BOTTOM - 40

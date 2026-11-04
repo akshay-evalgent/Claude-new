@@ -1,6 +1,6 @@
 # Instagram page kit: a business-news page in the style of @wealth
 
-**Status: one real reel measured, the rest still a draft.** Instagram blocks the profile and reels tab, but a single reel's public embed page can be read. Reel 1 (`reference/01-DfLHlFtptGu.md`) had 17.6M views and turned out to be a **movie-scene metaphor about money mindset**. Its format is rebuilt in `content/07-MOVIE-METAPHOR-REELS.md`. Send more reel links (the top 10 by views) and each one gets the same treatment.
+**Status: three real reels measured.** Instagram blocks the profile and reels tab, but each reel's public embed page can be read. All three measured reels (6.3M, 17.6M and 29.1M views) are **mindset lesson clips**, not business news, and they all use the same template (`reference/PATTERNS.md`). That format is rebuilt with footage you can safely use in `content/07-LESSON-CLIP-REELS.md`. The business-news parts of the kit are the genre's usual formats, not @wealth's.
 
 | File | What it is | Status |
 |---|---|---|
@@ -10,8 +10,8 @@
 | `content/04-FIRST-30-REELS.md` | 27 evergreen scripts and 3 news templates | DRAFT. Facts need checking before posting. |
 | `content/05-GROWTH-PLAYBOOK.md` | How Instagram picks who sees reels (2026), metrics, daily routine, 90-day plan, making money | Ready |
 | `content/06-ORIGINALITY-AND-SOURCING.md` | What footage you can use without being cut from recommendations | Ready |
-| `content/07-MOVIE-METAPHOR-REELS.md` | @wealth's confirmed 17.6M-view format: exact layout, hook and caption formula, 12 ready reels with footage you're allowed to use | Confirmed from real data |
-| `reference/` | Measurements of real @wealth reels | 1 reel so far |
+| `content/07-LESSON-CLIP-REELS.md` | @wealth's confirmed format: exact layout, the 3 hook types, caption template, 16 ready reels with footage you're allowed to use | Confirmed from real data |
+| `reference/` | Measurements of real @wealth reels, plus `PATTERNS.md` (what they all share) | 3 reels |
 | `assets/` | Logo, headline overlays, covers, highlights, start-here carousel, format sheet, grid preview | DRAFT visuals |
 | `scripts/headline.py` | Makes the headline PNG for any reel. `--style metaphor` gives @wealth's layout. | Works |
 | `scripts/make_pack.py` | Rebuilds every asset (change the name in `scripts/brand.py` first) | Works |

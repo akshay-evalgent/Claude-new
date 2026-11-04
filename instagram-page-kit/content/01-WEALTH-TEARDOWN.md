@@ -4,10 +4,10 @@
 
 Instagram blocks automated viewing of the profile and reels tab. Two kinds of data went into this file:
 
-- **Real data from one reel** (`reference/01-DfLHlFtptGu.md`), read from Instagram's public embed page: 17.6M views, exact layout measured from its cover frame, caption structure. That reel is a **movie-scene metaphor about money mindset**, not a news story. Its format is in `07-MOVIE-METAPHOR-REELS.md`.
+- **Real data from three reels** (`reference/`), read from Instagram's public embed pages: 6.3M, 17.6M and 29.1M views, layouts measured from their cover frames, caption structure. **All three are life-lesson clips about mindset**, not news. The shared formula is in `reference/PATTERNS.md`, and the version you can safely make is in `07-LESSON-CLIP-REELS.md`.
 - **Estimates for everything else**, from third-party trackers (HypeAuditor, faceless.my) and cached profile snapshots.
 
-The sections on news and breakdown formats below are still my read of the genre, not @wealth's confirmed mix. Each extra reel link you send gets the same real-data treatment and moves this file from estimate to measurement.
+The sections on news and breakdown formats below are my read of the genre. None of the measured @wealth reels use them.
 
 ## The account in numbers
 
@@ -17,7 +17,7 @@ The sections on news and breakdown formats below are still my read of the genre,
 | Bio | "The leading source for all things business, tech, & news." |
 | Followers | **19,325,254** (Instagram embed data, 4 November 2026). Trackers lag behind: HypeAuditor showed 14.9M and 18.1M. |
 | Posts | **12,690** (same source) |
-| Top reel seen so far | 17.6M views, 962K likes, 1,377 comments, 41.6 s: a *Johnny English Reborn* scene with the hook "The Perfect Example Of What Working Hard Vs Working Smart Looks Like:" |
+| Reels measured | 3: "Words Have Power" (29.1M views), "Working Hard Vs Working Smart" (17.6M), "POV: You Learned How To Focus On The Solution" (6.3M). All mindset lessons. |
 | Engagement rate | about 3.65% (HypeAuditor estimate) |
 | Average likes | about 42,500 per post (HypeAuditor estimate) |
 | Categories trackers assign | Entrepreneurship, Startups, Career, Sales & Marketing |
@@ -55,7 +55,7 @@ This is the mix you see on business-news pages in @wealth's tier, matched to the
 
 | Pillar | What a post looks like | Format | Share for you |
 |---|---|---|---|
-| **Money mindset metaphors (confirmed on @wealth)** | A short scene that shows an idea: hard vs smart work, compounding, leverage | Movie Metaphor (`07-MOVIE-METAPHOR-REELS.md`) | 25% |
+| **Mindset lesson clips (confirmed: 3 of 3 measured reels)** | A short clip of a moment, with a hook that names the lesson: hard vs smart work, perspective, problem solving | Lesson Clip (`07-LESSON-CLIP-REELS.md`) | 25% to 60%, depending on the direction you choose |
 | Business news | A company move, deal, price change, layoff, earnings surprise | Headline reel | 20% |
 | Tech and AI | A new product or tool doing something surprising, shown on screen | Headline reel, screen recording | 10% |
 | How companies make money | Costco's hot dog, McDonald's real estate, Rolex's foundation | 30 to 60 second voiceover breakdown | 20% |
@@ -63,9 +63,16 @@ This is the mix you see on business-news pages in @wealth's tier, matched to the
 | Money numbers | Compound interest, salary math, price-over-time charts | Animated data reel, carousel | 10% |
 | Money rules | One sentence that people screenshot | Short text reel or static | 5% |
 
-## Confirmed: the Movie Metaphor (from a real 17.6M-view reel)
+## Confirmed: the Lesson Clip (measured on three reels, 6.3M to 29.1M views)
 
-Black frame, a centred Title Case hook in white with the two contrasting phrases in pale yellow, a full-width film clip in the middle third, and black below. No headline box, no handle, no subtitles. The film's own audio. 41.6 seconds. The caption is a mini-essay: blunt claim, relatable pattern, two famous examples, a two-line closer, film credit, 5 hashtags. Full measurements: `reference/01-DfLHlFtptGu.md`. Rebuilt for a new account (without the copyright risk): `07-MOVIE-METAPHOR-REELS.md`.
+- **Frame:** black. The hook is a centred Title Case line in white with key words in pale yellow, sitting directly above a full-width clip that always starts 31% down the frame. Black below. No headline box, no handle, no subtitles.
+- **Hook types:** a story title ("Words Have Power"), a metaphor ("The Perfect Example Of What A Vs B Looks Like:") or a POV ("POV: You Learned How To...").
+- **Clip:** found footage, such as a film scene, a staged moment or a viral home video.
+- **Audio:** usually a trending song, slowed for emotional clips.
+- **Length:** 14 to 60 s.
+- **Caption:** the same essay template every time, with a fixed follow line and exactly 5 hashtags.
+
+Full measurements: `reference/PATTERNS.md`. Rebuilt for a new account without the copyright risk: `07-LESSON-CLIP-REELS.md`.
 
 ## Anatomy of the headline reel (genre format, not yet confirmed on @wealth)
 
