@@ -61,9 +61,13 @@ One reel on a new account is a noisy test, and numbers swing a lot from reel to 
 
 ## How it was made
 
+**Footage:** "Lentil sprouting Haft-sin time lapse (short)" by Always Shooting, licensed CC BY 2.0, from Wikimedia Commons:
+https://commons.wikimedia.org/wiki/File:Lentil_sprouting_Haft-sin_time_lapse_(short).webm
+The licence allows commercial use and edits with credit. The credit line is in `caption.txt`. Keep it in.
+
+**Render:** the source's first 10 s (a different camera angle) is cut. Seconds 10.5 to 94.5 are cropped to 3:2, sped up 3.23x to 26 s, and the last frame is held for 1.5 s. Total 27.5 s, 1080 x 1920, 30 fps, silent audio track.
 ```
-python3 scripts/make_lesson_reel.py --clip <clip> --hook "Growth Is Slow, Then Sudden" \
-    --highlight "Slow, Then Sudden" --emoji "🌱" --start <s> --end <s> --length <s> --hold 1 \
+python3 scripts/make_lesson_reel.py --clip lentil.webm --hook "Growth Is Slow, Then Sudden" \
+    --highlight "Slow, Then Sudden" --emoji "🌱" --start 10.5 --end 94.5 --length 26 --hold 1.5 \
     --out test-01/test-01.mp4
 ```
-The exact values used are filled in below once the clip is rendered.
