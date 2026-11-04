@@ -2,3 +2,4 @@ film/input/
 __pycache__/
 film/saroo/out/
 film/saroo/.cache/
+film/*/out/
