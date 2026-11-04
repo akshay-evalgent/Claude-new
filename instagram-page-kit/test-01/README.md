@@ -35,7 +35,13 @@ One reel to test the @wealth format on your account before making anything else.
 
 ## What to measure
 
-Open the reel > **View insights** and fill this in:
+**In the first 12 hours,** write down the total views at about 1 h, 3 h, 6 h and 12 h after posting. Then run:
+```
+python3 scripts/viral_math.py track 1:<views> 3:<views> 6:<views> 12:<views>
+```
+It tells you how fast views are growing each hour and where the reel is heading. You can also just send me the numbers. The maths behind it is in `content/09-VIRAL-MATH.md`.
+
+**Then** open the reel > **View insights** and fill this in:
 
 | | 24 h | 48 h | 7 days |
 |---|---|---|---|
