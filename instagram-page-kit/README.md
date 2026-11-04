@@ -13,6 +13,8 @@
 | `content/07-LESSON-CLIP-REELS.md` | @wealth's confirmed format: exact layout, the 3 hook types, caption template, 16 ready reels with footage you're allowed to use | Confirmed from real data |
 | `content/08-GOOGLE-FLOW-WORKFLOW.md` | Making original clips in Google Flow: settings, prompt formula, how to upload them for editing | Ready |
 | `content/09-VIRAL-MATH.md` | The maths of going viral in 24 hours: the growth equation, why it's a threshold, the signals to beat, an hour-by-hour scoreboard | Ready |
+| `content/10-ANIMATION-RECIPE.md` | Recipe for animated reels: each design rule tied to skip rate, completion, shares, likes and follows, plus a 10-point pre-flight check and the volume maths | Ready |
+| `test-03/` | First animated reel made to the recipe: "1% Better Vs 1% Worse Every Day", Money Maths #1 | Ready to post |
 | `test-01/` | First test reel, rendered and ready to post | Ready |
 | `test-02/PROMPTS.md` | Flow prompts for the next test (2-shot metaphor) and a 4-shot story | Waiting for clips |
 | `clips/` | Upload folder for Flow clips | Empty |
@@ -20,6 +22,7 @@
 | `assets/` | Logo, headline overlays, covers, highlights, start-here carousel, format sheet, grid preview | DRAFT visuals |
 | `scripts/headline.py` | Makes the headline PNG for any reel. `--style metaphor` gives @wealth's layout. | Works |
 | `scripts/make_lesson_reel.py` | Turns one or more clips into a finished reel in the @wealth layout | Works |
+| `scripts/make_anim_reel.py` | Renders animated reels from code (one scene function per idea) in the @wealth layout | Works |
 | `scripts/viral_math.py` | Calculator: what a target needs, and where a live reel is heading from its checkpoint views | Works |
 | `scripts/make_pack.py` | Rebuilds every asset (change the name in `scripts/brand.py` first) | Works |
 

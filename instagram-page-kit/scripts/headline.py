@@ -49,9 +49,22 @@ def render_metaphor(text, highlight=None, handle=False, clip_height=None, emoji=
     img = Image.new("RGBA", (W, H), (0, 0, 0, 255))
     d = ImageDraw.Draw(img)
     d.rectangle(clip, fill=(0, 0, 0, 0))
-    tokens = tokenize(text, highlight)
-    fnt, lines = fit_font(d, tokens, W - 2 * 90, 3, start=62, minimum=46, weight="Bold")
-    if emoji:
+    if "|" in text:
+        # forced line breaks: "1% Better Vs 1% Worse | Every Day" keeps each part on its own line
+        lines = [tokenize(seg.strip(), highlight) for seg in text.split("|") if seg.strip()]
+        size = 62
+        while size > 40:
+            fnt = font("Bold", size)
+            widths = [d.textlength(" ".join(w for w, _ in ln), font=fnt) for ln in lines]
+            if emoji:
+                widths[-1] += d.textlength(" ", font=fnt) + size * len(emoji)
+            if max(widths) <= W - 180:
+                break
+            size -= 2
+    else:
+        tokens = tokenize(text, highlight)
+        fnt, lines = fit_font(d, tokens, W - 2 * 90, 3, start=62, minimum=46, weight="Bold")
+    if emoji and "|" not in text:
         # glue a placeholder (about one em per emoji) to the last word so the emoji never sits alone,
         # and shrink the font until the hook keeps the same number of lines it had without the emoji
         target = len(lines)
@@ -68,22 +81,19 @@ def render_metaphor(text, highlight=None, handle=False, clip_height=None, emoji=
         lines[-1] = lines[-1][:-1] + [(last_w, last_hl)]
     line_h = int(fnt.size * 1.22)
     top = META_TEXT_BOTTOM - line_h * len(lines)
-    if emoji:
-        em = emoji_image(emoji, int(fnt.size * 0.95))
-        space = d.textlength(" ", font=fnt)
-        y = top
-        for i, line in enumerate(lines):
-            words_w = d.textlength(" ".join(w for w, _ in line), font=fnt)
-            extra = (space + em.width) if i == len(lines) - 1 else 0
-            x = 90 + (W - 180 - words_w - extra) / 2
-            for word, hl in line:
-                d.text((x, y), word, font=fnt, fill=PALE_YELLOW if hl else WHITE)
-                x += d.textlength(word, font=fnt) + space
-            if extra:
-                img.alpha_composite(em, (int(x), int(y + fnt.size * 0.12)))
-            y += line_h
-    else:
-        draw_rich_lines(d, lines, fnt, 90, top, WHITE, PALE_YELLOW, line_gap=1.22, align="center", box_w=W - 180)
+    em = emoji_image(emoji, int(fnt.size * 0.95)) if emoji else None
+    space = d.textlength(" ", font=fnt)
+    y = top
+    for i, line in enumerate(lines):
+        words_w = d.textlength(" ".join(w for w, _ in line), font=fnt)
+        extra = (space + em.width) if (em is not None and i == len(lines) - 1) else 0
+        x = 90 + (W - 180 - words_w - extra) / 2
+        for word, hl in line:
+            d.text((x, y), word, font=fnt, fill=PALE_YELLOW if hl else WHITE)
+            x += d.textlength(word, font=fnt) + space
+        if extra:
+            img.alpha_composite(em, (int(x), int(y + fnt.size * 0.12)))
+        y += line_h
     if handle:
         handle_tag(img, 90, clip[3] + 40, size=30, color=MUTED)
     return img, clip[1], clip[3]
