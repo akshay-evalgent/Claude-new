@@ -1,0 +1,182 @@
+{
+ "title": "Night Walk",
+ "galaxy": "an enormous surreal spiral galaxy with glowing magenta and teal arms and a bright golden core",
+ "shots": [
+  {
+   "id": "s1_grass",
+   "source": "cpu",
+   "seed": 311,
+   "seconds": 3.25,
+   "prompt": "Empty landscape at night seen from eye level, a narrow dirt footpath leads straight ahead through tall dark wild grass toward distant mountains, above the horizon rises an enormous surreal spiral galaxy with glowing magenta and teal arms and a bright golden core, countless stars, deserted, nobody, wide angle 24mm, realistic night photography, highly detailed",
+   "walk": [
+    [
+     0,
+     1
+    ],
+    [
+     99,
+     1
+    ]
+   ],
+   "walk_zoom": 0.07,
+   "walk_par": 0.1,
+   "tilt": [
+    [
+     0,
+     -0.03
+    ],
+    [
+     3.25,
+     0.03
+    ]
+   ],
+   "swirl": 0.03
+  },
+  {
+   "id": "s2_crest",
+   "source": "cpu",
+   "seed": 312,
+   "seconds": 3.25,
+   "prompt": "Empty landscape at night seen from eye level near the top of a hill, dark grass and black rocks faintly lit by the sky, beyond the crest an enormous surreal spiral galaxy with glowing magenta and teal arms and a bright golden core rises and fills half the sky above distant mountain ranges, dense stars and nebula clouds, deserted, nobody, wide angle 24mm, realistic night photography, highly detailed",
+   "walk": [
+    [
+     0,
+     1
+    ],
+    [
+     99,
+     1
+    ]
+   ],
+   "walk_zoom": 0.06,
+   "walk_par": 0.08,
+   "swirl": 0.05
+  },
+  {
+   "id": "s3_lake",
+   "source": "cpu",
+   "seed": 203,
+   "seconds": 3.25,
+   "prompt": "Eye-level first-person view walking along the pebble shore of a perfectly still mountain lake at night, the mirror-like water reflects an enormous surreal spiral galaxy with glowing magenta and teal arms and a bright golden core that fills the sky above dark mountains and pine trees, no people, wide angle 24mm, realistic night photography, highly detailed",
+   "walk": [
+    [
+     0,
+     1
+    ],
+    [
+     99,
+     1
+    ]
+   ],
+   "walk_zoom": 0.05,
+   "walk_par": 0.07,
+   "pan": [
+    [
+     0,
+     -0.02
+    ],
+    [
+     3.25,
+     0.03
+    ]
+   ],
+   "swirl": 0.05,
+   "ltx_prompt": "first-person handheld camera walking slowly forward along the pebble shore, the camera bobs with each footstep, the galaxy shimmers and its reflection ripples faintly, no people, cinematic"
+  },
+  {
+   "id": "s4_overhead",
+   "source": "cpu",
+   "seed": 204,
+   "seconds": 3.25,
+   "sky_below": 0.16,
+   "prompt": "Looking straight up at the night sky from a meadow, an enormous surreal spiral galaxy with glowing magenta and teal arms and a bright golden core fills the entire sky overhead, dense stars and nebula clouds, the dark tips of tall grass silhouetted along the bottom edge, no people, wide angle 14mm, realistic astrophotography, highly detailed",
+   "walk": [
+    [
+     0,
+     0.35
+    ],
+    [
+     1.2,
+     0.15
+    ],
+    [
+     99,
+     0.1
+    ]
+   ],
+   "walk_zoom": 0.02,
+   "walk_par": 0.02,
+   "pan": [
+    [
+     0,
+     0
+    ],
+    [
+     3.25,
+     0.035
+    ]
+   ],
+   "swirl": 0.1,
+   "stars": [
+    {
+     "t": 0.9,
+     "dur": 0.55,
+     "from": [
+      430,
+      150
+     ],
+     "to": [
+      1080,
+      470
+     ],
+     "tail": 300,
+     "gain": 1.2
+    }
+   ]
+  },
+  {
+   "id": "s5_ridge",
+   "source": "cpu",
+   "seed": 205,
+   "seconds": 3.4,
+   "prompt": "Eye-level first-person view from a high mountain ridge at night, a lone twisted tree silhouetted at the edge, an enormous surreal spiral galaxy with glowing magenta and teal arms and a bright golden core arches over a valley of distant mountains, faint mist far below, no people, wide angle 24mm, realistic night photography, highly detailed",
+   "walk": [
+    [
+     0,
+     1
+    ],
+    [
+     1.6,
+     0.2
+    ],
+    [
+     2.2,
+     0
+    ],
+    [
+     99,
+     0
+    ]
+   ],
+   "walk_zoom": 0.05,
+   "walk_par": 0.07,
+   "swirl": 0.04,
+   "stars": [
+    {
+     "t": 2.1,
+     "dur": 0.45,
+     "from": [
+      1450,
+      120
+     ],
+     "to": [
+      1020,
+      330
+     ],
+     "tail": 220,
+     "gain": 0.9
+    }
+   ]
+  }
+ ]
+}
