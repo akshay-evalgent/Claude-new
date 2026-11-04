@@ -1,0 +1,54 @@
+Pool (median competitor): viewed 70%, APV 70%, views/impression 1.032
+
+1. Three Shorts, 2,000 random first days each
+Short                   ln E    R0      P10   median      P90      P99  P(>=100k)  P(>=1M)
+Median Short           0.000  1.00      732     1.4k     3.3k    13.2k       0.1%     0.0%
+Strong hook            0.134  2.23     4.0k    16.8k   202.5k     3.1M      16.2%     3.0%
+Strong hook + holds    0.240  4.22    74.8k     1.1M    24.4M    33.7M      87.3%    51.0%
+
+2. Viewed-rate sweep, everything else at the median
+ viewed   ln E  closed form  sim median   sim P90  peak hour
+   0.60 -0.154          910         480       658         0h
+   0.62 -0.121          911         553       815         0h
+   0.64 -0.090          912         650      1.0k         0h
+   0.66 -0.059          913         787      1.5k         0h
+   0.68 -0.029          913        1.0k      2.2k         0h
+   0.70  0.000          914        1.4k      3.8k         0h
+   0.72  0.028         2.0k        2.0k      6.3k         2h
+   0.74  0.056         2.5k        3.1k     13.1k         4h
+   0.76  0.082         3.6k        5.4k     29.6k         5h
+   0.78  0.108         5.9k        9.7k     79.5k         7h
+   0.80  0.134        10.9k       19.5k    290.9k         9h
+   0.82  0.158        22.5k       42.6k    805.4k        11h
+   0.84  0.182        51.1k      104.5k      2.8M        12h
+   0.86  0.206       127.5k      284.7k     12.4M        14h
+   0.88  0.229       346.6k      728.2k     23.2M        15h
+   0.90  0.251         1.0M        2.4M     28.3M        17h
+   0.92  0.273         3.2M        7.2M     31.9M        18h
+
+3. How much of 24h is known early? (log-log fit across 3,000 mixed Shorts)
+predictor                            R^2    80% band  slope
+first-batch score (rate metrics)    0.80    x/÷ 10.9       
+views at 1h                         0.21   x/÷ 118.5      -
+views at 2h                         0.80    x/÷ 10.8   6.25
+views at 3h                         0.85     x/÷ 8.1   3.48
+views at 6h                         0.92     x/÷ 4.5   1.59
+views at 12h                        0.99     x/÷ 1.9   1.15
+
+4. Posting time (Strong hook + holds, median 24h views)
+  posted 04:00   at 2h     239   at 24h    1.1M
+  posted 10:00   at 2h     181   at 24h    1.1M
+  posted 18:00   at 2h     925   at 24h    1.1M
+
+5. Length, same hook and per-second hazard (0.03/s), loop 10%
+ length  finish    APV  watch s   ln E
+    10s     74%    95%      9.5 -0.013
+    15s     64%    88%     13.1  0.014
+    20s     55%    81%     16.3  0.019
+    30s     41%    70%     21.1  0.000
+    45s     26%    58%     26.0 -0.058
+    60s     17%    48%     28.9 -0.127
+
+6. Direct share channel: R_share = viewed x share rate x views per share = 0.0084  ->  x1.008 views
+
+Charts written to charts/
