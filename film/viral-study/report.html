@@ -1,0 +1,999 @@
+<title>DISCIPLINE to LANTERN</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Courier+Prime:wght@400;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: one reading column on cool storyboard paper; the proposed film sits on a full-width night band lit by its own lantern. */
+:root {
+  --bg: #f3f4f7;
+  --surface: #ffffff;
+  --ink: #14171d;
+  --ink-2: #454b57;
+  --muted: #697080;
+  --rule: #d8dbe2;
+  --grid: #e7e9ee;
+  --amber: #b06a00;
+  --amber-ink: #8a5200;
+  --amber-wash: rgba(176, 106, 0, 0.10);
+  --blue: #3c6db3;
+  --gray-mark: #9aa0ab;
+  --red-ink: #a8322b;
+  --night: #0f131b;
+  --night-2: #171c27;
+  --night-ink: #e8ebf0;
+  --night-muted: #a0a8b8;
+  --night-rule: #2a3140;
+  --lamp: #f2a33a;
+  --phone: #7ea6e8;
+  --display: "Archivo", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --script: "Courier Prime", "Courier New", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c0f15; --surface: #141922; --ink: #e9ecf1; --ink-2: #bcc3cf; --muted: #8b93a3;
+    --rule: #262c38; --grid: #1f2531; --amber: #c47a14; --amber-ink: #f0a03a;
+    --amber-wash: rgba(240, 160, 58, 0.12); --blue: #4f86de; --gray-mark: #687082; --red-ink: #e0645c;
+    --night: #121722; --night-2: #1a2030; --night-rule: #2e3647;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c0f15; --surface: #141922; --ink: #e9ecf1; --ink-2: #bcc3cf; --muted: #8b93a3;
+  --rule: #262c38; --grid: #1f2531; --amber: #c47a14; --amber-ink: #f0a03a;
+  --amber-wash: rgba(240, 160, 58, 0.12); --blue: #4f86de; --gray-mark: #687082; --red-ink: #e0645c;
+  --night: #121722; --night-2: #1a2030; --night-rule: #2e3647;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 17px/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--amber-ink); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--amber-ink); outline-offset: 2px; border-radius: 3px;
+}
+.wrap {
+  max-width: 50rem; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.band { padding-block: 3.5rem; }
+.band + .band { border-top: 1px solid var(--rule); }
+p, li { max-width: 65ch; }
+p { margin: 0; }
+.stack { display: flex; flex-direction: column; gap: 1rem; }
+.stack-lg { display: flex; flex-direction: column; gap: 2rem; }
+
+.eyebrow {
+  font: 700 0.78rem/1.3 var(--script); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+}
+h1, h2 {
+  font-family: var(--display); font-stretch: 72%; font-weight: 850; text-transform: uppercase;
+  letter-spacing: 0.01em; line-height: 0.95; margin: 0; text-wrap: balance;
+}
+h2 { font-size: clamp(1.75rem, 4.6vw, 2.5rem); }
+h3 { font: 700 1.15rem/1.3 var(--body); margin: 0; text-wrap: balance; }
+.lede { font-size: 1.12rem; color: var(--ink-2); }
+.muted { color: var(--muted); }
+.small { font-size: 0.9rem; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* hero */
+.hero { padding-block: 3.2rem 2.4rem; }
+.hero h1 { font-size: clamp(2.6rem, 10vw, 5.4rem); display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.1em 0.3em; }
+.hero h1 .from { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 0.06em; text-decoration-color: var(--red-ink); }
+.hero h1 .to { font: 400 0.32em/1 var(--script); text-transform: lowercase; color: var(--muted); letter-spacing: 0; align-self: center; }
+.hero h1 .lit { position: relative; isolation: isolate; color: var(--ink); }
+.hero h1 .lit::before {
+  content: ""; position: absolute; z-index: -1; left: 50%; top: 55%; width: 140%; height: 220%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, var(--amber-wash), transparent 70%);
+  filter: saturate(1.4);
+  animation: flicker 5s ease-in-out infinite;
+}
+@keyframes flicker { 0%,100% { opacity: 1; } 42% { opacity: 0.82; } 48% { opacity: 0.95; } 70% { opacity: 0.88; } }
+@media (prefers-reduced-motion: reduce) { .hero h1 .lit::before { animation: none; } }
+.hero .lede { margin-top: 1.2rem; }
+
+.toc { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 1.6rem; padding: 0; list-style: none; font-size: 0.95rem; }
+.toc a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.toc a:hover { color: var(--amber-ink); border-color: var(--amber-ink); }
+
+/* short answer */
+.answer { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 1.4rem 1.4rem 1.5rem; }
+.answer ol { margin: 0.8rem 0 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.answer li::marker { font: 700 0.9rem var(--script); color: var(--amber-ink); }
+
+/* stat tiles */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.tile { background: var(--surface); padding: 0.9rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.tile .v { font: 800 1.9rem/1.1 var(--display); font-stretch: 85%; }
+.tile .l { font-size: 0.86rem; color: var(--muted); line-height: 1.35; }
+
+/* timeline of acts */
+.acts { display: flex; height: 2.4rem; border-radius: 4px; overflow: hidden; gap: 2px; background: var(--bg); }
+.act { display: flex; align-items: center; padding: 0 0.6rem; font: 700 0.8rem/1 var(--script); text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; overflow: hidden; min-width: 0; }
+.act.fall { background: var(--grid); color: var(--ink-2); }
+.act.climb { background: var(--amber-wash); color: var(--amber-ink); }
+.act.pay { background: var(--ink); color: var(--surface); }
+.acts-key { display: flex; justify-content: space-between; font: 400 0.78rem var(--script); color: var(--muted); margin-top: 0.35rem; }
+
+/* tables */
+.tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
+th, td { text-align: left; vertical-align: top; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--grid); }
+tr:last-child td { border-bottom: 0; }
+th { font: 700 0.74rem/1.3 var(--script); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); background: var(--surface); }
+td.tc { font: 700 0.88rem/1.5 var(--script); white-space: nowrap; color: var(--amber-ink); }
+td.why { color: var(--ink-2); }
+td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+.beats { min-width: 40rem; }
+.score { min-width: 38rem; }
+.score td.r strong { font-size: 1rem; }
+
+/* two-column lists */
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.6rem; }
+.cols > div { min-width: 0; }
+.list { margin: 0.6rem 0 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.45rem; }
+.list.plain { list-style: none; padding-left: 0; }
+.list.x li { position: relative; padding-left: 1.2rem; }
+.list.x li::before { content: "×"; position: absolute; left: 0; color: var(--red-ink); font-weight: 700; }
+
+/* formula */
+.formula { font: 400 0.98rem/1.7 var(--script); background: var(--surface); border: 1px solid var(--rule); border-left: 3px solid var(--amber); border-radius: 0 6px 6px 0; padding: 0.9rem 1.1rem; overflow-x: auto; }
+.formula b { color: var(--amber-ink); }
+
+/* charts */
+figure { margin: 0; }
+.chart { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 1rem 1rem 0.8rem; position: relative; }
+.chart-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.4rem 1rem; align-items: baseline; margin-bottom: 0.6rem; }
+.chart-title { font-weight: 700; font-size: 1rem; }
+.chart-sub { font-size: 0.85rem; color: var(--muted); }
+figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 0.6rem; }
+.legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-size: 0.85rem; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.k-amber { background: var(--amber); } .k-blue { background: var(--blue); } .k-gray { background: var(--gray-mark); }
+
+/* uploads dot plot */
+.uploads { display: grid; grid-template-columns: minmax(0, 13rem) minmax(0, 1fr) 4.2rem; column-gap: 0.75rem; align-items: center; font-size: 0.86rem; }
+.uploads .lab { color: var(--ink-2); line-height: 1.25; padding-block: 0.28rem; }
+.uploads .lab.hl { color: var(--ink); font-weight: 700; }
+.uploads .val { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+.uploads .val.hl { color: var(--ink); font-weight: 700; }
+.track { position: relative; height: 100%; min-height: 1.6rem; }
+.track::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--grid); }
+.track .med { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--rule); }
+.track .dot {
+  position: absolute; top: 50%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%;
+  background: var(--gray-mark); border: 0; padding: 0; cursor: default;
+  box-shadow: 0 0 0 2px var(--surface);
+}
+.track .dot::after { content: ""; position: absolute; inset: -8px; }
+.track .dot.hl { background: var(--amber); width: 12px; height: 12px; margin: -6px 0 0 -6px; }
+.uploads .axis { position: relative; height: 1.4rem; font: 400 0.75rem var(--script); color: var(--muted); border-top: 1px solid var(--rule); margin-top: 0.2rem; }
+.uploads .axis span { position: absolute; top: 0.25rem; transform: translateX(-50%); white-space: nowrap; }
+.uploads .axis span.med-l { color: var(--ink-2); }
+@media (max-width: 30rem) { .uploads .axis span.t10k { display: none; } }
+
+svg text { font-family: var(--body); }
+.svg-host { width: 100%; }
+.g-grid { stroke: var(--grid); stroke-width: 1; }
+.g-axis { stroke: var(--rule); stroke-width: 1; }
+.g-tick { fill: var(--muted); font-size: 11px; }
+.g-note { fill: var(--muted); font-size: 12px; }
+.g-ink { fill: var(--ink-2); font-size: 12px; }
+.g-strong { fill: var(--ink); font-size: 12px; font-weight: 700; }
+.g-line { fill: none; stroke: var(--amber); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.g-wash { fill: var(--amber-wash); stroke: none; }
+.g-rule { stroke: var(--ink-2); stroke-width: 1; }
+.g-pt { stroke: var(--surface); stroke-width: 2; }
+.g-pt.amber { fill: var(--amber); } .g-pt.blue { fill: var(--blue); } .g-pt.gray { fill: var(--gray-mark); }
+.g-hit { fill: transparent; cursor: default; }
+.g-hit:focus { outline: none; }
+.g-hit:focus-visible + .g-pt, .g-hit:hover + .g-pt { stroke: var(--ink); }
+.g-cross { stroke: var(--ink-2); stroke-width: 1; }
+.g-cross-dot { fill: var(--amber); stroke: var(--surface); stroke-width: 2; }
+
+.tip {
+  position: absolute; pointer-events: none; z-index: 5; background: var(--ink); color: var(--surface);
+  font-size: 0.82rem; line-height: 1.35; padding: 0.45rem 0.6rem; border-radius: 4px; max-width: 15rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}
+.tip strong { display: block; font-size: 0.95rem; }
+
+details { margin-top: 0.8rem; }
+summary { cursor: pointer; font-size: 0.9rem; color: var(--ink-2); }
+details[open] summary { margin-bottom: 0.6rem; }
+
+/* callouts */
+.callout { border-left: 3px solid var(--red-ink); padding: 0.2rem 0 0.2rem 1rem; }
+.callout .big { font: 800 2.6rem/1 var(--display); font-stretch: 80%; color: var(--ink); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.4rem; }
+.facts > div { min-width: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.facts h3 { font-size: 1.02rem; }
+
+.odds { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.odds div { background: var(--surface); padding: 0.7rem 0.6rem; display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
+.odds .n { font: 700 0.75rem var(--script); color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.odds .p { font: 800 1.5rem/1.1 var(--display); font-stretch: 85%; }
+@media (max-width: 30rem) {
+  .odds { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .uploads { grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr) 3.4rem; font-size: 0.8rem; }
+}
+
+/* the film: night band */
+.night { background: var(--night); color: var(--night-ink); position: relative; overflow: hidden; }
+.night::before {
+  content: ""; position: absolute; width: 46rem; height: 46rem; right: -14rem; top: -12rem; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(242, 163, 58, 0.22), rgba(242, 163, 58, 0.05) 55%, transparent 75%);
+}
+.night .wrap { position: relative; }
+.night .eyebrow, .night .muted { color: var(--night-muted); }
+.night h2 { color: var(--night-ink); }
+.night h2 .lamp { color: var(--lamp); }
+.night h3 { color: var(--night-ink); }
+.night a { color: var(--lamp); }
+.night .lede { color: var(--night-ink); }
+.night p, .night li { color: #cfd5e0; }
+.logline { font: 400 1.25rem/1.55 var(--body); color: var(--night-ink); border-left: 3px solid var(--lamp); padding-left: 1.1rem; max-width: 60ch; }
+.night .tbl-wrap { background: var(--night-2); border-color: var(--night-rule); }
+.night th { background: var(--night-2); color: var(--night-muted); }
+.night td { border-bottom-color: var(--night-rule); color: #d9dee8; }
+.night td.tc { color: var(--lamp); }
+.night td.why { color: var(--night-muted); }
+.night tr.actrow td { font: 700 0.78rem var(--script); text-transform: uppercase; letter-spacing: 0.08em; color: var(--night-muted); background: rgba(255,255,255,0.03); }
+.night .card { background: var(--night-2); border: 1px solid var(--night-rule); border-radius: 6px; padding: 1.1rem 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
+.night .card h3 { font-size: 1rem; }
+.night .card .tag { font: 700 0.72rem var(--script); letter-spacing: 0.08em; text-transform: uppercase; color: var(--lamp); }
+.lights { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; font-size: 0.92rem; }
+.lights span { display: inline-flex; align-items: center; gap: 0.5rem; color: #cfd5e0; }
+.lights i { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+.lights .w { background: var(--lamp); box-shadow: 0 0 12px var(--lamp); }
+.lights .c { background: var(--phone); box-shadow: 0 0 12px var(--phone); }
+.endcard { border: 1px solid var(--night-rule); border-radius: 6px; padding: 2rem 1rem; text-align: center; display: flex; flex-direction: column; gap: 0.5rem; align-items: center; background: #0a0d13; }
+.endcard .t { font: 850 2.4rem/1 var(--display); font-stretch: 72%; letter-spacing: 0.12em; color: #f1f3f7; }
+.endcard .l1 { color: #d9dee8; font-size: 1.05rem; }
+.endcard .l2 { color: var(--lamp); font-weight: 700; font-size: 1.05rem; }
+
+.steps { margin: 0; padding-left: 1.4rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.steps li::marker { font: 700 0.9rem var(--script); color: var(--amber-ink); }
+.builds { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; }
+.build { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 1.1rem 1.2rem; display: flex; flex-direction: column; gap: 0.45rem; min-width: 0; }
+.build .tag { font: 700 0.72rem var(--script); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.build .tag.done { color: var(--amber-ink); }
+.build p { font-size: 0.95rem; color: var(--ink-2); }
+code { font: 400 0.88em var(--script); background: var(--grid); padding: 0.05em 0.3em; border-radius: 3px; overflow-wrap: anywhere; }
+.night code { background: rgba(255,255,255,0.08); color: #e8ebf0; }
+footer { padding-block: 2rem 3rem; color: var(--muted); font-size: 0.88rem; }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Film study · data pulled 5 November 2026</div>
+    <h1 style="margin-top:0.8rem"><span class="from">Discipline</span><span class="to">to</span><span class="lit">Lantern</span></h1>
+    <p class="lede">Day One Films' <a href="https://www.youtube.com/watch?v=8atK0pF4oJY">DISCIPLINE</a> is a 2:38 wordless animated short. It reached 5.84 million views in 39 days, on a channel whose typical upload gets 86,000. This page takes it apart, puts numbers on why it spread, shows why the 38 copies of it went nowhere, and proposes the film we should make instead.</p>
+    <ul class="toc" aria-label="Sections">
+      <li><a href="#answer">Short answer</a></li>
+      <li><a href="#film">The film</a></li>
+      <li><a href="#why">Why it spread</a></li>
+      <li><a href="#math">The math</a></li>
+      <li><a href="#water">Open water</a></li>
+      <li><a href="#lantern">LANTERN</a></li>
+      <li><a href="#others">Other concepts</a></li>
+      <li><a href="#build">What we build</a></li>
+      <li><a href="#method">Method</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="band" id="answer" style="padding-top:0">
+  <div class="wrap">
+    <div class="answer">
+      <div class="eyebrow">The short answer</div>
+      <ol>
+        <li><strong>Why it worked.</strong> It took a fight almost everyone has every morning, drew the excuse as a red shadow you can see, put a day counter on screen, and ended on a line people repeat: "Day one, or one day."</li>
+        <li><strong>Copying it is the one move the data rules out.</strong> 38 other channels uploaded a film titled "DISCIPLINE | An Animated Short Film". Together they have 52,134 views, under 1% of the original. The median copy has 72.</li>
+        <li><strong>Spread is a threshold.</strong> Each view has to earn more than one further view (R&nbsp;&gt;&nbsp;1). Below that line a film stalls near its first audience. Above it, the film runs until it uses up everyone who cares about the theme. So the size of the theme's audience, and a reason to send the film to someone, matter more than polish.</li>
+        <li><strong>What we should make: LANTERN.</strong> A wordless 2:30 film about the parent who got up at 4:30 every day of your childhood. It keeps the proven skeleton and moves to a theme with a far bigger audience, far fewer copies, and a person to send it to.</li>
+        <li><strong>What we build.</strong> An animatic first, then the film plus three vertical cut-downs, made on a reusable animation kit so the second and third films cost much less. Hits are partly luck, so the kit matters as much as the film. The theme radar used for this study is already in the repo.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="film">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="eyebrow">Part one</div>
+      <h2>The film we studied</h2>
+      <p>A man fails to get out of bed for months while a red shadow whispers excuses, hits bottom at a mirror, resets to "DAY 1.", grinds, beats the shadow on a staircase and reaches a summit. No dialogue. A sung track ("You are the future. You are the fire. You are the light.") carries it. The description says every frame, sound and note was made from scratch.</p>
+    </div>
+
+    <div class="tiles" role="list">
+      <div class="tile" role="listitem"><span class="v">5.84M</span><span class="l">views in 39 days, about 150K a day</span></div>
+      <div class="tile" role="listitem"><span class="v">68×</span><span class="l">the channel's median upload (86K)</span></div>
+      <div class="tile" role="listitem"><span class="v">63%</span><span class="l">of all views the channel has ever had</span></div>
+      <div class="tile" role="listitem"><span class="v">1.77%</span><span class="l">like rate (103,236 likes)</span></div>
+      <div class="tile" role="listitem"><span class="v">49 : 1</span><span class="l">likes per comment (2,100 comments)</span></div>
+    </div>
+
+    <figure>
+      <div class="acts" aria-label="Act structure: fall 0:00 to 1:00, climb 1:00 to 2:04, payoff 2:04 to 2:38">
+        <div class="act fall" style="flex:60">Fall · 38%</div>
+        <div class="act climb" style="flex:64">Climb · 40%</div>
+        <div class="act pay" style="flex:34">Payoff · 22%</div>
+      </div>
+      <div class="acts-key num"><span>0:00</span><span>1:00</span><span>2:04</span><span>2:38</span></div>
+      <figcaption>Act split by the creator's own chapters: Every day started the same · The mirror · Rock bottom | Day 1 · The grind · The final fight | The summit · Day one, or one day.</figcaption>
+    </figure>
+
+    <div class="stack">
+      <h3>Beat by beat</h3>
+      <p class="small muted">Read from YouTube's storyboard frames (one every 2 seconds) and the caption track.</p>
+      <div class="tbl-wrap">
+        <table class="beats">
+          <thead><tr><th>Time</th><th>On screen</th><th>Why it works</th></tr></thead>
+          <tbody>
+            <tr><td class="tc">0:00</td><td>Two seconds of black, then "Every day started the same."</td><td class="why">The weakest moment in the film. The first frame is wasted.</td></tr>
+            <tr><td class="tc">0:04</td><td>Bed, moonlit window, red alarm. "just 5 more minutes" in red. Snooze.</td><td class="why">Instant recognition. Nearly every viewer has done this.</td></tr>
+            <tr><td class="tc">0:15</td><td>A red shadow sits beside him, whispering. A day counter climbs in the corner.</td><td class="why">The inner voice gets a body. Animation can draw what live action can't.</td></tr>
+            <tr><td class="tc">0:23</td><td>Desk, phone at 2 a.m., the fridge, the alarm again and again.</td><td class="why">Repetition builds rhythm and makes the wasted days add up.</td></tr>
+            <tr><td class="tc">0:41</td><td>The mirror shows the shadow. "you're lazy" cracks the glass. "you'll never change."</td><td class="why">The low point lands at 26%.</td></tr>
+            <tr><td class="tc">0:51</td><td>Spotlight. "He believed it." Then: "But lazy isn't who you are. It's what you repeat."</td><td class="why">The thesis in two lines, just before the turn.</td></tr>
+            <tr><td class="tc">1:01</td><td>5:00 on the clock. His hand slams it. "DAY 1."</td><td class="why">This is the thumbnail. The promise pays off at 44%, which holds viewers through the first half.</td></tr>
+            <tr><td class="tc">1:11</td><td>White flash. Running at night in a red headband.</td><td class="why">A hard visual turn: new color, new motion.</td></tr>
+            <tr><td class="tc">1:19</td><td>Push-ups fail ("told you."). At the punching bag he hits the words "quit.", "nobody cares", "it's not working".</td><td class="why">The enemy's words become objects he can punch.</td></tr>
+            <tr><td class="tc">1:38</td><td>The alarm again, now with a determined face. The same desk, now upright. A sunset run.</td><td class="why">Callbacks to act one show change without a word.</td></tr>
+            <tr><td class="tc">1:48</td><td>Stairs. "Motivation gets you started. Discipline keeps you going." A giant shadow: "you can't." Flash. He climbs on.</td><td class="why">The final fight, with the quotable line right before it.</td></tr>
+            <tr><td class="tc">2:04</td><td>Summit at sunset. "Nobody is coming to save you. So save yourself."</td><td class="why">Release.</td></tr>
+            <tr><td class="tc">2:16</td><td>Dawn. He sits up, stands, leaves. Empty bed.</td><td class="why">The ending rhymes with the opening.</td></tr>
+            <tr><td class="tc">2:24</td><td>DISCIPLINE. "Day one, or one day." Then, in red: "You decide."</td><td class="why">The screenshot line. It ends on a choice.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="why">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="eyebrow">Part two</div>
+      <h2>Why it spread</h2>
+      <p>Most of what made it work is genre mechanics, which anyone can use. A few things are its own identity, and those we leave alone.</p>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>Mechanics we can reuse</h3>
+        <ol class="list">
+          <li>A daily fight with near-total reach. Everyone has hit snooze.</li>
+          <li>The inner voice drawn as a character, its words as objects.</li>
+          <li>A blank, wordless everyman. Viewers project themselves, and there is no language barrier.</li>
+          <li>An on-screen counter that turns the story into a progress bar.</li>
+          <li>Repetition with variation. The alarm returns six times and means something different each time.</li>
+          <li>Three acts in 158 seconds: fall 38%, climb 40%, payoff 22%.</li>
+          <li>A new picture about every 2 seconds. Act breaks on black, turns on white flashes.</li>
+          <li>One accent color with one meaning.</li>
+          <li>A closing line built to be screenshotted.</li>
+          <li>An ending that rhymes with the opening.</li>
+          <li>Packaging: a one-word title in caps, "An Animated Short Film" as a craft signal, the most relatable frame as the thumbnail, chapters written as story beats.</li>
+        </ol>
+      </div>
+      <div class="stack">
+        <div>
+          <h3>Theirs, so we leave it</h3>
+          <ul class="list x plain">
+            <li>The white round-headed character and the red shadow design.</li>
+            <li>The 5:00 alarm, the headband, the staircase boss.</li>
+            <li>"Day one, or one day."</li>
+            <li>The word DISCIPLINE in the title.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Where it can be beaten</h3>
+          <ul class="list">
+            <li>The first two seconds are black.</li>
+            <li>The counter is a label in the corner, outside the world of the film.</li>
+            <li>He is alone. There is nobody in the film you would send it to, so sharing it only says "I'm disciplined".</li>
+            <li>It lives in the male-coded self-improvement niche, which is now flooded.</li>
+            <li>49 likes per comment: people nod and scroll. A film that invites a personal story can win the comments.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="math">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="eyebrow">Part three</div>
+      <h2>The math of going viral</h2>
+      <p>Treat every view as something that produces more views. On YouTube most of that comes from the recommendation system: the last people who were shown the film clicked, stayed and seemed satisfied, so it is shown to more people. Shares add the rest. Call the average number of new views each view produces <strong>R</strong>.</p>
+    </div>
+
+    <div class="formula" role="note">
+      <b>R</b> ≈ CTR × impressions earned per satisfied view + shares per view × views per share<br>
+      <b>R &lt; 1</b> &nbsp;total views ≈ seed ÷ (1 − R)<br>
+      <b>R &gt; 1</b> &nbsp;share of the audience pool reached, z, solves &nbsp;z = 1 − e<sup>−R·z</sup>
+    </div>
+
+    <figure class="chart" id="thr">
+      <div class="chart-head">
+        <span class="chart-title">Same film quality, very different outcomes</span>
+        <span class="chart-sub">Total views by R · seed 10K views · audience pool 20M · illustrative</span>
+      </div>
+      <div class="svg-host" id="thr-host"></div>
+      <figcaption>Hover or drag across the chart to read any R. Below 1 the film dies near its seed; above 1 it runs until the pool is used up.</figcaption>
+      <details>
+        <summary>Show the numbers</summary>
+        <div class="tbl-wrap"><table id="thr-table"><thead><tr><th>R</th><th class="r">Total views</th></tr></thead><tbody></tbody></table></div>
+      </details>
+    </figure>
+
+    <div class="facts">
+      <div>
+        <h3>The cliff</h3>
+        <p>Near R = 1 a small change in quality makes an enormous change in views. Moving R from 0.90 to 1.10 takes the same 10K seed from 98K views to 3.6M. That is how one channel, making every film the same way, gets results from 18K to 5.8M.</p>
+      </div>
+      <div>
+        <h3>The levers multiply</h3>
+        <p>R is a product: click-through × how long people stay × whether they share. Improve each of four levers by 20% and R rises 1.2<sup>4</sup> = 2.07×. One weak lever caps all the others, so a great film with a dull thumbnail stays sub-critical.</p>
+      </div>
+      <div>
+        <h3>The ceiling is the pool</h3>
+        <p>Once R &gt; 1 the film reaches a fixed share of everyone who cares about the theme: 58% of the pool at R = 1.5, 80% at R = 2. A theme with three times the audience beats any amount of polish.</p>
+      </div>
+      <div>
+        <h3>The slot is taken</h3>
+        <p>Recommendation is winner-take-most for each interest. The system already has its best "discipline" film to serve, so a copy brings nothing new and its R is near zero.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="big num">52,134</div>
+      <p>views shared by 38 copies titled "DISCIPLINE | An Animated Short Film", from 38 different channels. Under 1% of the original. Median 72. One copy passed 10,000 views.</p>
+    </div>
+
+    <figure class="chart" id="up">
+      <div class="chart-head">
+        <span class="chart-title">Day One Films, every upload</span>
+        <span class="chart-sub">Views, log scale · line marks the channel median (86K)</span>
+      </div>
+      <div class="uploads" id="up-grid"></div>
+      <figcaption>Same style, same team, same tools. Two of 18 films passed one million views. YouTube rounds the channel-list counts except for DISCIPLINE.</figcaption>
+    </figure>
+
+    <div class="stack">
+      <h3>Shots on goal</h3>
+      <p>Fitting a log-normal curve to those 18 uploads gives about a 7% chance that any one film passes a million views (the raw count is 2 of 18). The chance of at least one hit grows with the number of films made. A well-known experiment (Salganik, Dodds and Watts, 2006, the MusicLab study) found the same pattern: quality raises the odds, but which item wins is partly luck once people influence each other. Plan for a series, not a single film.</p>
+      <div class="odds" role="list" aria-label="Chance of at least one film with over 1M views">
+        <div role="listitem"><span class="n">1 film</span><span class="p">7%</span></div>
+        <div role="listitem"><span class="n">5 films</span><span class="p">30%</span></div>
+        <div role="listitem"><span class="n">10 films</span><span class="p">51%</span></div>
+        <div role="listitem"><span class="n">20 films</span><span class="p">76%</span></div>
+        <div role="listitem"><span class="n">30 films</span><span class="p">88%</span></div>
+      </div>
+    </div>
+
+    <div class="stack">
+      <h3>Which emotions travel</h3>
+      <p>Berger and Milkman (2012) tracked about 7,000 New York Times articles and the most-emailed list. Content that triggered high-arousal emotions (awe, anger, anxiety) was shared more. Sadness lowered sharing. A film that wants to be passed on should end on lift and an action, not on grief.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="water">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="eyebrow">Part four</div>
+      <h2>Where the open water is</h2>
+      <p>For 20 themes we pulled the top 40 YouTube results for "animated short film" plus the theme. Two numbers per theme: the views of the third-biggest result (proven demand that isn't one fluke) and the share of results under 1,000 views (how crowded the theme is with copies).</p>
+    </div>
+
+    <figure class="chart" id="sc">
+      <div class="chart-head">
+        <span class="chart-title">Demand against crowding, 20 themes</span>
+        <span class="chart-sub">Up: views of each theme's 3rd-biggest result (log) · Right: share of results under 1,000 views</span>
+        <div class="legend" aria-hidden="true">
+          <span><i class="k-amber"></i>Family and time</span>
+          <span><i class="k-blue"></i>Self-improvement niche</span>
+          <span><i class="k-gray"></i>Other universal themes</span>
+        </div>
+      </div>
+      <div class="svg-host" id="sc-host"></div>
+      <figcaption>Top left: big proven audiences, few copies. Bottom right: the copy swarm. Search results are ranked by relevance, so read this as a direction, not a census.</figcaption>
+      <details>
+        <summary>Show the table</summary>
+        <div class="tbl-wrap"><table id="sc-table"><thead><tr><th>Theme</th><th class="r">3rd-biggest result</th><th class="r">Under 1K views</th><th class="r">1M+ results</th></tr></thead><tbody></tbody></table></div>
+      </details>
+    </figure>
+
+    <div class="facts">
+      <div>
+        <h3>Fight films beat feeling films here</h3>
+        <p>On this channel, films about a daily fight with a nameable enemy did best: DISCIPLINE 5.84M, Lust Is Killing You 1.5M, DOPAMINE 570K. Films about an inner state did worst: Loneliness 63K, PERFECTIONISM 33K, The Comparison Trap 18K.</p>
+      </div>
+      <div>
+        <h3>Sequels decay fast</h3>
+        <p>Monk Mode Films' LUST VS LOVE got 2.40M. Part 2 got 318K (13%), Part 4 154K, Part 7 73K. Day One's "Lust Is Killing You." 1.5M was followed by "Lust Is Poison." at 51K. Repeating the promise earns a fraction.</p>
+      </div>
+      <div>
+        <h3>The hit audience didn't stay</h3>
+        <p>88,200 subscribers from about 9.25M channel views, roughly one per 105 views. The most recent uploads sit at 18K to 51K. A hit buys attention once; the next film still has to clear R&nbsp;=&nbsp;1 on its own.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="night band" id="lantern">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="eyebrow">Part five · the recommendation</div>
+      <h2><span class="lamp">Lantern</span> · an animated short film</h2>
+      <p class="logline">Every morning at 4:30 a father lights a lantern, scratches one mark on the wall by the door and walks into the dark so his son can sleep. Twenty years later the son, stuck in his own snooze loop in the city, comes home and sees the wall.</p>
+    </div>
+
+    <div class="cols">
+      <div class="stack">
+        <h3>Why this theme</h3>
+        <ul class="list">
+          <li><strong>Bigger pool.</strong> Nearly everyone had someone who got up first. It reaches parents as well as their kids, and both sexes.</li>
+          <li><strong>A person to send it to.</strong> You send it to your dad, your mum, the family group. A solo film has no recipient; this one does.</li>
+          <li><strong>The right emotion.</strong> Gratitude and elevation, ending on an action, not on loss.</li>
+          <li><strong>Open water.</strong> Parent and time themes run 15 to 17% copies, against 88% for discipline.</li>
+          <li><strong>Same skeleton.</strong> A daily fight, a counter, fall, climb, payoff, a quotable end. The self-improvement audience still gets its film, with a reason behind the grind.</li>
+        </ul>
+      </div>
+      <div class="stack">
+        <h3>The look</h3>
+        <p>A blue-black night world. The lantern's circle is the only place with warm color and detail, and faces are drawn only when they are lit. Silhouettes keep the acting simple and the style ours.</p>
+        <div class="lights" aria-label="Two lights">
+          <span><i class="w"></i>Lantern amber: duty, love</span>
+          <span><i class="c"></i>Phone blue: comfort, the son's trap</span>
+        </div>
+        <p>The counter lives in the world: tally marks on the wall by the door, next to pencil marks of the boy's height. Two counters on one wall, his days and the boy's growth.</p>
+      </div>
+    </div>
+
+    <div class="stack">
+      <h3>Beat sheet · 2:30</h3>
+      <div class="tbl-wrap">
+        <table class="beats">
+          <thead><tr><th>Time</th><th>Picture</th><th>Sound</th><th>Job</th></tr></thead>
+          <tbody>
+            <tr class="actrow"><td colspan="4">Cold open</td></tr>
+            <tr><td class="tc">0:00</td><td>No black. A match strikes. The flame lights a lantern and a tired face. A wind-up clock reads 4:30.</td><td>strike, hiss</td><td class="why">Light out of darkness in frame one.</td></tr>
+            <tr><td class="tc">0:04</td><td>By the door he scratches one tally mark. A small boy sleeps at the edge of the light. Door closes.</td><td>creak, latch</td><td class="why">The counter, inside the world.</td></tr>
+            <tr class="actrow"><td colspan="4">Act one · his mornings · 35%</td></tr>
+            <tr><td class="tc">0:07</td><td>Dark road. Only the lantern's circle exists. Rain.</td><td>rain, a hummed lullaby</td><td class="why">The world is visible only where the light goes.</td></tr>
+            <tr><td class="tc">0:14</td><td>Work, never named: sacks, a gate, a bicycle, hands.</td><td>breath, effort</td><td class="why">Every viewer fills in their own parent.</td></tr>
+            <tr><td class="tc">0:20</td><td>The ritual again, faster: strike, mark, door. Tallies spread. The boy's height marks climb beside them.</td><td>strike motif</td><td class="why">Repetition with variation.</td></tr>
+            <tr><td class="tc">0:28</td><td>Storm. Wind nearly kills the flame. He turns his back to it and shields the lantern with his whole body.</td><td>wind, then hush</td><td class="why">Plants the gesture paid off at 1:50.</td></tr>
+            <tr><td class="tc">0:34</td><td>School gate. Father outside in work clothes, waving. The boy, about twelve, looks away.</td><td>playground</td><td class="why">The sting everyone recognises.</td></tr>
+            <tr><td class="tc">0:40</td><td>4:30. The teenager asleep, a phone glowing blue on his face. Father pulls the blanket up, makes the mark, goes.</td><td>phone buzz</td><td class="why">The second light arrives: cold blue.</td></tr>
+            <tr><td class="tc">0:46</td><td>Dawn. The son leaves for the city with a bag. Father in the doorway with the lantern. The son doesn't look back.</td><td>lullaby, one note</td><td class="why">Separation ends act one.</td></tr>
+            <tr class="actrow"><td colspan="4">Act two · the son's mornings · 43%</td></tr>
+            <tr><td class="tc">0:53</td><td>City flat. Phone alarm 7:30, blue light. Snooze. Snooze. Snooze.</td><td>alarm ×3</td><td class="why">Comic rhythm. The viewer's own morning.</td></tr>
+            <tr><td class="tc">1:00</td><td>He draws a tally on his fridge in marker. Next shot it's wiped. Again. Wiped.</td><td>marker squeak</td><td class="why">His counter keeps resetting.</td></tr>
+            <tr><td class="tc">1:06</td><td>2 a.m. scrolling. The blue light thickens into a fog that fills the room.</td><td>low drone</td><td class="why">The enemy is comfort, drawn as cold light.</td></tr>
+            <tr><td class="tc">1:14</td><td>The phone lights up: "Dad". Declined. A week later, again. Declined.</td><td>buzz, buzz</td><td class="why">The gut punch. One word on screen.</td></tr>
+            <tr><td class="tc">1:20</td><td>The battery dies. Total black.</td><td>silence</td><td class="why">Rock bottom at 53%.</td></tr>
+            <tr><td class="tc">1:24</td><td>He walks into the old house at night. Father asleep in a chair. He turns: the whole wall, floor to ceiling, is tally marks. Pull back. 7,300.</td><td>choir enters</td><td class="why">The reveal. The counter we watched all film becomes the payoff.</td></tr>
+            <tr><td class="tc">1:34</td><td>The lantern on its hook. The father's cracked hands. The son strikes a match and lights it.</td><td>match strike</td><td class="why">The turn, on the sound from frame one.</td></tr>
+            <tr><td class="tc">1:38</td><td>4:30. The son is up before his father. He scratches a mark next to the father's last one.</td><td>strike, scratch</td><td class="why">His count continues the old one instead of restarting.</td></tr>
+            <tr><td class="tc">1:42</td><td>Montage in amber: working, training, building. His tallies grow: 1, 7, 30, 100. The blue fog pulls back wherever the lantern goes.</td><td>theme builds</td><td class="why">The genre's grind montage, with a reason.</td></tr>
+            <tr><td class="tc">1:50</td><td>Storm. The flame gutters. He turns his back to the wind and shields it with his whole body, the father's pose from 0:28.</td><td>wind, then hush</td><td class="why">The callback that makes people cry.</td></tr>
+            <tr class="actrow"><td colspan="4">Act three · dawn · 23%</td></tr>
+            <tr><td class="tc">1:56</td><td>Dawn. He reaches the old house carrying the lit lantern. His father is at the door. They sit on the step. Sunlight arrives and the son blows the lantern out.</td><td>full theme</td><td class="why">The son brings the light now.</td></tr>
+            <tr><td class="tc">2:08</td><td>Years later. 4:30. A small child asleep. The son, now a father, strikes a match, lights the lantern, makes one mark.</td><td>strike</td><td class="why">The ending repeats the opening, so it loops.</td></tr>
+            <tr><td class="tc">2:16</td><td>LANTERN. "He gave you 7,300 mornings." Then, in amber: "Give him one."</td><td>last note</td><td class="why">The screenshot line. It ends on an action.</td></tr>
+            <tr><td class="tc">2:30</td><td>Cut on the last note. Hold under 1.2 seconds.</td><td></td><td class="why">The repo's earlier film test failed on a 1.67 s end hold.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted">7,300 is twenty years of mornings. Acts split 35 / 43 / 23%, close to DISCIPLINE's 38 / 40 / 22.</p>
+    </div>
+
+    <div class="endcard" aria-label="End card mock">
+      <span class="t">LANTERN</span>
+      <span class="l1">He gave you 7,300 mornings.</span>
+      <span class="l2">Give him one.</span>
+    </div>
+
+    <div class="cols">
+      <div class="card">
+        <span class="tag">Titles to test</span>
+        <ol class="list">
+          <li><strong>7,300 Mornings | An Animated Short Film</strong> (lead: a concrete number makes people ask "of what?")</li>
+          <li>He Woke Up Before You. Every Day.</li>
+          <li>LANTERN | An Animated Short Film</li>
+        </ol>
+        <p class="small muted">Description, first line: "He got up at 4:30 every day of your childhood. You were asleep." Chapters: 4:30 a.m. · The city · The wall · His turn · Dawn · Lantern.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Thumbnails to test</span>
+        <ol class="list">
+          <li><strong>The wall.</strong> Father lit from below by the lantern, the wall behind him dense with tallies. Text: 7,300.</li>
+          <li><strong>Two lights.</strong> The son's face split between phone blue and lantern amber. Text: HIS TURN.</li>
+          <li><strong>4:30.</strong> The clock and a hand striking a match. Text: EVERY DAY.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <span class="tag">Sound</span>
+        <p>The match strike is the sound logo: first frame, the turn, last frame. A four-note lullaby the father hums in act one becomes the full theme in act three. Wordless choir, no dialogue. The only words on screen are "Dad", "7,300" and the two closing lines, so translation is a caption file.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Vertical cut-downs</span>
+        <p><strong>The wall</strong> (about 30 s): strike, tallies, the reveal, the end line. <strong>Two lights</strong> (about 20 s): blue against amber. <strong>The loop</strong> (about 45 s): 4:30 to 4:30, son becomes father. Each ends on its first frame so it replays cleanly.</p>
+      </div>
+    </div>
+
+    <div class="stack">
+      <h3>What to watch after it goes up</h3>
+      <ul class="list">
+        <li>Click-through against the channel's own average, for each thumbnail in YouTube's Test &amp; Compare.</li>
+        <li>Retention in the first 10 seconds, and whether the curve holds or rises at the 1:24 wall reveal.</li>
+        <li>The R read: if hourly views are still rising 24 to 48 hours after upload, R is above 1. If they are falling, the total will land near first-day views ÷ (1 − R).</li>
+        <li>Comments that mention a parent. That is the share trigger working.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="others">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="eyebrow">Part six</div>
+      <h2>Other concepts we scored</h2>
+      <p>Each concept is scored 1 to 5 on the levers from part three, then the scores are multiplied, because the funnel multiplies. These are judgment calls that rank bets. They don't predict views.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="score">
+        <thead><tr><th>Concept</th><th class="r">Audience pool</th><th class="r">Someone to send it to</th><th class="r">Arousal</th><th class="r">Drawable enemy</th><th class="r">Few copies</th><th class="r">Works without words</th><th class="r">Relative</th></tr></thead>
+        <tbody>
+          <tr><td><strong>LANTERN</strong><br><span class="small muted">The parent who got up first.</span></td><td class="r">5</td><td class="r">5</td><td class="r">4</td><td class="r">4</td><td class="r">4</td><td class="r">5</td><td class="r"><strong>6.7×</strong></td></tr>
+          <tr><td><strong>30,000 DAYS</strong><br><span class="small muted">A man keeps a jar with a marble for every day of an average life and keeps spending them on "tomorrow". Biggest-demand theme in the scan; the ending has to turn anxiety into action.</span></td><td class="r">5</td><td class="r">4</td><td class="r">4</td><td class="r">4</td><td class="r">4</td><td class="r">4</td><td class="r"><strong>4.3×</strong></td></tr>
+          <tr><td><strong>SCREEN</strong><br><span class="small muted">The phone that eats her evenings. The screen-time counter is the enemy's health bar. It ends on a black frame, so viewers see their own reflection. Strong device, crowded theme.</span></td><td class="r">5</td><td class="r">4</td><td class="r">3</td><td class="r">5</td><td class="r">2</td><td class="r">5</td><td class="r"><strong>2.5×</strong></td></tr>
+          <tr><td><strong>SPOTLIGHT</strong><br><span class="small muted">Red eyes surround a boy whenever he tries to speak, post or ship. When he finally does, the eyes were cardboard. Suits founders and creators; smaller pool.</span></td><td class="r">4</td><td class="r">3</td><td class="r">3</td><td class="r">5</td><td class="r">3</td><td class="r">4</td><td class="r"><strong>1.8×</strong></td></tr>
+          <tr><td><strong>Another DISCIPLINE</strong><br><span class="small muted">Baseline. The slot is taken.</span></td><td class="r">4</td><td class="r">3</td><td class="r">4</td><td class="r">5</td><td class="r">1</td><td class="r">5</td><td class="r"><strong>1.0×</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted">30,000 DAYS is the natural second film: a different promise from LANTERN, built from the same kit.</p>
+  </div>
+</section>
+
+<section class="band" id="build">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="eyebrow">Part seven</div>
+      <h2>What we can build</h2>
+    </div>
+    <div class="builds">
+      <div class="build">
+        <span class="tag">Build first</span>
+        <h3>The LANTERN film</h3>
+        <p>A 2:30 master in 16:9, three vertical cut-downs and three thumbnails. Animated as code in a Motion artifact you can scrub, comment on by timestamp and export to MP4. Silhouettes, light masks, weather and text suit code well. If the animatic shows a shot that needs real character acting, only that shot goes to a 2D animator.</p>
+      </div>
+      <div class="build">
+        <span class="tag">Build alongside</span>
+        <h3>A reusable film kit</h3>
+        <p>The lantern light mask, tally wall, walk cycles, weather, phone glow, title cards and both aspect ratios, all as parts. Film two and three reuse them. This is what makes 10 to 20 films affordable, and the odds say that is how many it takes.</p>
+      </div>
+      <div class="build">
+        <span class="tag done">Done, in the repo</span>
+        <h3>Theme radar</h3>
+        <p><code>film/viral-study/theme_radar.py</code> reruns the demand-against-crowding scan for any list of themes and scores a channel's uploads against its own median. Run it before choosing each next film.</p>
+      </div>
+      <div class="build">
+        <span class="tag">Small</span>
+        <h3>Pre-flight and launch read</h3>
+        <p>Checks before upload: no black first frame, a picture change at least every 2 seconds, end hold under 1.4 s, cuts on the beat. These reuse the gates from the repo's earlier film test. After upload, the 48-hour R read.</p>
+      </div>
+    </div>
+
+    <div class="stack">
+      <h3>Order of work</h3>
+      <ol class="steps">
+        <li><strong>Animatic.</strong> Rough boards on the beat sheet's timing with temp sound. We judge the story here, before animation costs anything.</li>
+        <li><strong>Style frames and thumbnails.</strong> Three frames that fix the look; the three thumbnail tests.</li>
+        <li><strong>Animation</strong> on the kit, act by act.</li>
+        <li><strong>Music.</strong> The lullaby motif and full theme, original or properly licensed.</li>
+        <li><strong>Cut-downs</strong> from the same scenes.</li>
+        <li><strong>Pre-flight and publish.</strong></li>
+        <li><strong>48-hour read,</strong> then pick film two with the radar.</li>
+      </ol>
+    </div>
+
+    <div class="stack">
+      <h3>Decisions for you</h3>
+      <ul class="list">
+        <li><strong>Father or mother first.</strong> I'd start with the father: the 4:30 labour image is the clearest. The mother film should be its own film, not "Part 2".</li>
+        <li><strong>Where it lives.</strong> A YouTube channel. It doesn't fit the Lean Stack LinkedIn page. A new channel is fine: DISCIPLINE is listed as its channel's oldest upload.</li>
+        <li><strong>Music route.</strong> Commission it, or use an AI music tool whose licence covers commercial use.</li>
+        <li><strong>Production route.</strong> All code, or code plus a 2D animator for the few acting shots.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="method">
+  <div class="wrap stack">
+    <div class="eyebrow">Method and limits</div>
+    <ul class="list small">
+      <li>Video metadata, chapters and the caption track came from YouTube via yt-dlp on 5 November 2026. The beat breakdown uses YouTube's storyboard frames (one every 2 seconds, 160×90). YouTube blocked the full video download, so there is no audio analysis or frame-exact cut timing.</li>
+      <li>Channel-list view counts are rounded by YouTube. Upload dates for the other 17 films were not available (rate limit), so there is no views-per-day comparison between them. "Oldest upload" is inferred from list order.</li>
+      <li>The theme scan is the top 40 results of one search per theme, ranked by relevance. Broad themes surface evergreen studio hits such as Pip and Hair Love; narrow themes surface recent copies. It shows direction, not a census.</li>
+      <li>The spread model's seed (10K) and pool (20M) are illustrative. Concept scores are judgment.</li>
+      <li>Retention curves, click-through and traffic sources are visible only to the channel owner, so they are not in this study.</li>
+      <li>Everything is reproducible from <code>film/viral-study/</code>: <code>viral_math.py</code> prints every number in part three, and <code>theme_radar.py summarize data/search</code> rebuilds part four.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Sources: Day One Films, <a href="https://www.youtube.com/watch?v=8atK0pF4oJY">DISCIPLINE | An Animated Short Film</a>. Berger &amp; Milkman, "What Makes Online Content Viral?", Journal of Marketing Research, 2012. Salganik, Dodds &amp; Watts, "Experimental Study of Inequality and Unpredictability in an Artificial Cultural Market", Science, 2006.</div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, parent) {
+    var n = document.createElementNS(NS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  function fmt(v) {
+    if (v >= 1e6) return (v / 1e6).toFixed(v >= 1e7 ? 1 : 2).replace(/\.0+$/, "") + "M";
+    if (v >= 1e3) return Math.round(v / 1e3) + "K";
+    return String(Math.round(v));
+  }
+  function full(v) { return Math.round(v).toLocaleString("en-US"); }
+
+  /* shared tooltip per chart */
+  function makeTip(host) {
+    var t = document.createElement("div");
+    t.className = "tip"; t.hidden = true;
+    host.appendChild(t);
+    return {
+      show: function (x, y, strong, rest) {
+        t.textContent = "";
+        var s = document.createElement("strong"); s.textContent = strong; t.appendChild(s);
+        if (rest) t.appendChild(document.createTextNode(rest));
+        t.hidden = false;
+        var hw = host.clientWidth, tw = t.offsetWidth, th = t.offsetHeight;
+        var left = Math.min(Math.max(8, x - tw / 2), hw - tw - 8);
+        var top = y - th - 12; if (top < 4) top = y + 14;
+        t.style.left = left + "px"; t.style.top = top + "px";
+      },
+      hide: function () { t.hidden = true; }
+    };
+  }
+
+  /* ---------- uploads dot plot ---------- */
+  var uploads = [
+    ["DISCIPLINE", 5843357], ["Lust Is Killing You.", 1500000], ["DOPAMINE", 570000],
+    ["Motivation Will Fail You.", 272000], ["Stop Overthinking", 168000], ["ROOTS", 138000],
+    ["READY", 106000], ["You're Not Lazy. You're Too Comfortable.", 104000], ["Your Winter Arc Starts Now.", 94000],
+    ["How One Old Book Fixed His Life", 86000], ["ONE LAST TIME", 65000], ["Loneliness", 63000],
+    ["Lust Is Poison.", 51000], ["The Words You Never Forgot.", 50000], ["Move In Silence.", 45000],
+    ["Gaming Is Killing You.", 42000], ["PERFECTIONISM", 33000], ["The Comparison Trap.", 18000]
+  ];
+  var MED = 86000;
+  var upGrid = document.getElementById("up-grid");
+  var upTip = makeTip(document.getElementById("up"));
+  function lx(v) { return (Math.log10(v) - 4) / 3 * 100; }
+  uploads.forEach(function (u, i) {
+    var hl = i === 0;
+    var lab = document.createElement("div"); lab.className = "lab" + (hl ? " hl" : ""); lab.textContent = u[0];
+    var tr = document.createElement("div"); tr.className = "track";
+    var med = document.createElement("span"); med.className = "med"; med.style.left = lx(MED) + "%"; tr.appendChild(med);
+    var d = document.createElement("button"); d.type = "button"; d.className = "dot" + (hl ? " hl" : "");
+    d.style.left = lx(u[1]) + "%";
+    var mult = (u[1] / MED);
+    var multTxt = mult >= 1 ? mult.toFixed(mult >= 10 ? 0 : 1) + "× the median" : (mult).toFixed(2) + "× the median";
+    d.setAttribute("aria-label", u[0] + ": " + full(u[1]) + " views, " + multTxt);
+    function on() {
+      var host = document.getElementById("up").getBoundingClientRect();
+      var r = d.getBoundingClientRect();
+      upTip.show(r.left - host.left + r.width / 2, r.top - host.top, full(u[1]) + " views", u[0] + " · " + multTxt);
+    }
+    d.addEventListener("pointerenter", on); d.addEventListener("focus", on);
+    d.addEventListener("pointerleave", upTip.hide); d.addEventListener("blur", upTip.hide);
+    tr.appendChild(d);
+    var val = document.createElement("div"); val.className = "val" + (hl ? " hl" : ""); val.textContent = fmt(u[1]);
+    upGrid.appendChild(lab); upGrid.appendChild(tr); upGrid.appendChild(val);
+  });
+  (function axis() {
+    var spacer = document.createElement("div");
+    var ax = document.createElement("div"); ax.className = "axis";
+    [[1e4, "10K"], [1e5, "100K"], [1e6, "1M"], [1e7, "10M"]].forEach(function (t) {
+      var s = document.createElement("span"); s.textContent = t[1]; s.style.left = lx(t[0]) + "%";
+      if (t[0] === 1e4) { s.style.transform = "none"; s.className = "t10k"; }
+      if (t[0] === 1e7) s.style.transform = "translateX(-100%)";
+      ax.appendChild(s);
+    });
+    upGrid.appendChild(spacer); upGrid.appendChild(ax); upGrid.appendChild(document.createElement("div"));
+  })();
+
+  /* ---------- threshold model ---------- */
+  var SEED = 10000, POOL = 20000000;
+  function reach(R) {
+    var eps = SEED / POOL, z = eps;
+    for (var i = 0; i < 6000; i++) {
+      var nz = 1 - (1 - eps) * Math.exp(-R * z);
+      if (Math.abs(nz - z) < 1e-13) { z = nz; break; }
+      z = nz;
+    }
+    return POOL * z;
+  }
+  var curve = [];
+  for (var r = 0.2; r <= 2.0001; r += 0.01) curve.push([Math.round(r * 100) / 100, reach(r)]);
+  (function table() {
+    var tb = document.querySelector("#thr-table tbody");
+    [0.3, 0.5, 0.8, 0.9, 0.95, 0.99, 1.1, 1.25, 1.5, 2.0].forEach(function (R) {
+      var tr = document.createElement("tr");
+      var a = document.createElement("td"); a.textContent = R.toFixed(2);
+      var b = document.createElement("td"); b.className = "r"; b.textContent = full(reach(R));
+      tr.appendChild(a); tr.appendChild(b); tb.appendChild(tr);
+    });
+  })();
+  var thrHost = document.getElementById("thr-host");
+  var thrTip = makeTip(document.getElementById("thr"));
+  function drawThr() {
+    thrHost.textContent = "";
+    var W = Math.max(280, thrHost.clientWidth), H = W < 480 ? 260 : 300;
+    var m = { l: 46, r: 14, t: 34, b: 36 };
+    var iw = W - m.l - m.r, ih = H - m.t - m.b;
+    var x = function (R) { return m.l + (R - 0.2) / 1.8 * iw; };
+    var y = function (v) { return m.t + ih - (Math.log10(v) - 4) / 3.5 * ih; };
+    var svg = el("svg", { width: W, height: H, viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": "Total views rise slowly with R until R equals 1, then jump by two orders of magnitude and level off at the audience pool." }, thrHost);
+    [1e4, 1e5, 1e6, 1e7].forEach(function (v) {
+      el("line", { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), class: "g-grid" }, svg);
+      var t = el("text", { x: m.l - 6, y: y(v) + 4, "text-anchor": "end", class: "g-tick" }, svg); t.textContent = fmt(v);
+    });
+    [0.5, 1.0, 1.5, 2.0].forEach(function (R) {
+      var t = el("text", { x: x(R), y: H - m.b + 16, "text-anchor": "middle", class: "g-tick" }, svg); t.textContent = R.toFixed(1);
+    });
+    var xl = el("text", { x: W - m.r, y: H - 4, "text-anchor": "end", class: "g-tick" }, svg); xl.textContent = "R, new views per view";
+    el("line", { x1: m.l, x2: W - m.r, y1: m.t + ih, y2: m.t + ih, class: "g-axis" }, svg);
+    /* pool line */
+    el("line", { x1: m.l, x2: W - m.r, y1: y(POOL), y2: y(POOL), class: "g-axis" }, svg);
+    var pl = el("text", { x: m.l + 4, y: y(POOL) - 6, class: "g-note" }, svg); pl.textContent = "audience pool, 20M";
+    /* tipping line */
+    el("line", { x1: x(1), x2: x(1), y1: m.t - 14, y2: m.t + ih, class: "g-rule" }, svg);
+    var tl = el("text", { x: x(1) + 6, y: m.t - 4, class: "g-strong" }, svg); tl.textContent = "R = 1";
+    var lt = el("text", { x: x(0.24), y: y(2e5), class: "g-note" }, svg); lt.textContent = "stalls near the seed";
+    var rt = el("text", { x: x(1.98), y: y(2e5), "text-anchor": "end", class: "g-note" }, svg); rt.textContent = "spreads until the pool runs out";
+    /* area + line */
+    var d = "", a = "M" + x(curve[0][0]) + "," + (m.t + ih);
+    curve.forEach(function (p, i) { var px = x(p[0]).toFixed(1), py = y(p[1]).toFixed(1); d += (i ? "L" : "M") + px + "," + py; a += "L" + px + "," + py; });
+    a += "L" + x(curve[curve.length - 1][0]) + "," + (m.t + ih) + "Z";
+    el("path", { d: a, class: "g-wash" }, svg);
+    el("path", { d: d, class: "g-line" }, svg);
+    /* annotations */
+    var notes = [[0.9, "end", -8, 18], [1.1, "start", 8, 14]];
+    notes.forEach(function (nn) {
+      var v = reach(nn[0]);
+      el("circle", { cx: x(nn[0]), cy: y(v), r: 4.5, class: "g-pt amber" }, svg);
+      var t = el("text", { x: x(nn[0]) + nn[2], y: y(v) + nn[3], "text-anchor": nn[1], class: "g-ink" }, svg);
+      t.textContent = "R " + nn[0].toFixed(2) + " → " + fmt(v);
+    });
+    /* crosshair */
+    var cross = el("line", { y1: m.t, y2: m.t + ih, class: "g-cross", visibility: "hidden" }, svg);
+    var cdot = el("circle", { r: 5, class: "g-cross-dot", visibility: "hidden" }, svg);
+    var hit = el("rect", { x: m.l, y: m.t, width: iw, height: ih, fill: "transparent", tabindex: "0", "aria-label": "Model chart. Use left and right arrow keys to move along R." }, svg);
+    var cur = 80;
+    function at(i) {
+      i = Math.max(0, Math.min(curve.length - 1, i)); cur = i;
+      var p = curve[i], cx = x(p[0]), cy = y(p[1]);
+      cross.setAttribute("x1", cx); cross.setAttribute("x2", cx); cross.setAttribute("visibility", "visible");
+      cdot.setAttribute("cx", cx); cdot.setAttribute("cy", cy); cdot.setAttribute("visibility", "visible");
+      thrTip.show(cx + 16, cy + 16 + 40, full(p[1]) + " views", "R = " + p[0].toFixed(2) + (p[0] < 1 ? " · sub-critical" : " · spreading"));
+    }
+    function off() { cross.setAttribute("visibility", "hidden"); cdot.setAttribute("visibility", "hidden"); thrTip.hide(); }
+    hit.addEventListener("pointermove", function (e) {
+      var b = svg.getBoundingClientRect(); var px = (e.clientX - b.left) * (W / b.width);
+      var R = 0.2 + (px - m.l) / iw * 1.8; at(Math.round((R - 0.2) * 100));
+    });
+    hit.addEventListener("pointerleave", off);
+    hit.addEventListener("focus", function () { at(cur); });
+    hit.addEventListener("blur", off);
+    hit.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { at(cur + 5); e.preventDefault(); }
+      if (e.key === "ArrowLeft") { at(cur - 5); e.preventDefault(); }
+    });
+  }
+
+  /* ---------- theme scatter ---------- */
+  var themes = [
+    ["time / life is short", 121083549, 0.15, 32, "amber", "time", "end", -9, 4],
+    ["parents and time", 49370466, 0.17, 24, "amber", "parents", "start", 9, 12],
+    ["mother's sacrifice", 39859963, 0.40, 13, "amber", "mother", "start", 9, 4],
+    ["father's sacrifice", 1057110, 0.70, 3, "amber", "father", "end", -9, 12],
+    ["money", 80288778, 0.15, 22, "gray", "", "", 0, 0],
+    ["failure", 67749959, 0.23, 22, "gray", "", "", 0, 0],
+    ["9-to-5 rat race", 37006484, 0.38, 10, "gray", "", "", 0, 0],
+    ["anxiety", 20539634, 0.25, 10, "blue", "", "", 0, 0],
+    ["what people think", 12557848, 0.60, 10, "blue", "", "", 0, 0],
+    ["burnout", 3539899, 0.62, 5, "blue", "", "", 0, 0],
+    ["loneliness", 10961874, 0.70, 9, "blue", "", "", 0, 0],
+    ["phone addiction", 1406274, 0.70, 5, "blue", "phone", "start", 9, -4],
+    ["gaming", 1406274, 0.72, 3, "blue", "", "", 0, 0],
+    ["self-doubt", 2550146, 0.79, 4, "blue", "", "", 0, 0],
+    ["procrastination", 4451745, 0.82, 4, "blue", "procrastination", "end", -9, -6],
+    ["comparison", 1406274, 0.82, 4, "blue", "", "", 0, 0],
+    ["lust", 484844, 0.82, 2, "blue", "", "", 0, 0],
+    ["discipline", 41309, 0.88, 1, "blue", "discipline", "end", -9, 4],
+    ["overthinking", 31648, 0.88, 0, "blue", "", "", 0, 0],
+    ["dopamine", 719, 0.95, 1, "blue", "dopamine", "end", -9, 4]
+  ];
+  (function table() {
+    var tb = document.querySelector("#sc-table tbody");
+    themes.slice().sort(function (a, b) { return a[2] - b[2] || b[1] - a[1]; }).forEach(function (t) {
+      var tr = document.createElement("tr");
+      [t[0], full(t[1]), Math.round(t[2] * 100) + "%", String(t[3])].forEach(function (c, i) {
+        var td = document.createElement("td"); td.textContent = c; if (i) td.className = "r"; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  })();
+  var scHost = document.getElementById("sc-host");
+  var scTip = makeTip(document.getElementById("sc"));
+  function drawSc() {
+    scHost.textContent = "";
+    var W = Math.max(280, scHost.clientWidth), H = W < 480 ? 320 : 360;
+    var m = { l: 46, r: 16, t: 16, b: 40 };
+    var iw = W - m.l - m.r, ih = H - m.t - m.b;
+    var x = function (s) { return m.l + s * iw; };
+    var y = function (v) { return m.t + ih - (Math.log10(v) - 2.5) / 6 * ih; };
+    var svg = el("svg", { width: W, height: H, viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": "Scatter of 20 themes. Family and time themes sit top left with tens of millions of views and few copies. Self-improvement themes like discipline and dopamine sit bottom right with low views and 80 to 95 percent copies." }, scHost);
+    [1e3, 1e4, 1e5, 1e6, 1e7, 1e8].forEach(function (v) {
+      el("line", { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), class: "g-grid" }, svg);
+      var t = el("text", { x: m.l - 6, y: y(v) + 4, "text-anchor": "end", class: "g-tick" }, svg); t.textContent = fmt(v);
+    });
+    [0, 0.25, 0.5, 0.75, 1].forEach(function (s) {
+      var t = el("text", { x: x(s), y: H - m.b + 16, "text-anchor": s === 0 ? "start" : s === 1 ? "end" : "middle", class: "g-tick" }, svg);
+      t.textContent = Math.round(s * 100) + "%";
+    });
+    el("line", { x1: m.l, x2: W - m.r, y1: m.t + ih, y2: m.t + ih, class: "g-axis" }, svg);
+    var xl = el("text", { x: W - m.r, y: H - 4, "text-anchor": "end", class: "g-tick" }, svg); xl.textContent = "share of results under 1,000 views";
+    var q2 = el("text", { x: x(0.98), y: y(1500), "text-anchor": "end", class: "g-note" }, svg); q2.textContent = "copy swarm";
+    themes.forEach(function (t) {
+      var cx = x(t[2]), cy = y(t[1]);
+      var g = el("g", {}, svg);
+      var h = el("circle", { cx: cx, cy: cy, r: 12, class: "g-hit", tabindex: "0", "aria-label": t[0] + ": third-biggest result " + full(t[1]) + " views, " + Math.round(t[2] * 100) + "% of results under 1,000 views" }, g);
+      el("circle", { cx: cx, cy: cy, r: 5.5, class: "g-pt " + t[4] }, g);
+      function on() { scTip.show(cx, cy + 6, t[0], full(t[1]) + " views · " + Math.round(t[2] * 100) + "% copies · " + t[3] + " results over 1M"); }
+      h.addEventListener("pointerenter", on); h.addEventListener("focus", on);
+      h.addEventListener("pointerleave", scTip.hide); h.addEventListener("blur", scTip.hide);
+      if (t[5] && !(W < 420 && (t[5] === "procrastination" || t[5] === "phone"))) {
+        var lab = el("text", { x: cx + t[7], y: cy + t[8], "text-anchor": t[6], class: t[4] === "amber" ? "g-strong" : "g-ink" }, svg);
+        lab.textContent = t[5];
+      }
+    });
+  }
+
+  function drawAll() { drawThr(); drawSc(); }
+  drawAll();
+  var last = 0;
+  if ("ResizeObserver" in window) {
+    var ro = new ResizeObserver(function () {
+      var w = thrHost.clientWidth; if (Math.abs(w - last) < 2) return; last = w; drawAll();
+    });
+    ro.observe(thrHost);
+  } else {
+    window.addEventListener("resize", drawAll);
+  }
+})();
+</script>
