@@ -54,6 +54,24 @@ def word_times(voice, lang):
     return [(w.word.strip(), w.start, w.end) for s in segs for w in s.words]
 
 
+def snap_to_speech(asr, regions, min_gap=0.35):
+    """Speech-to-text often stretches a word across a pause ("I'm" from 1.2 s to 4.8 s when it was
+    said at 3.1 s). Move such words onto the stretch of speech where they were actually said."""
+    out = []
+    for w, s, e in asr:
+        for (a0, a1), (b0, b1) in zip(regions[:-1], regions[1:]):
+            if b0 - a1 >= min_gap and s < b0 < e and a1 > s - 0.05:   # a pause starts inside the word
+                s, e = b0, min(e, b1)
+                break
+        for (a0, a1), (b0, b1) in zip([(-1, 0)] + regions[:-1], regions):
+            if a1 <= s < b0:                                          # the word starts in a pause
+                s = b0
+                e = max(e, s + 0.12)
+                break
+        out.append((w, s, e))
+    return out
+
+
 def align(script_words, asr):
     """Give each word of the script a start and end time, taken from the matching spoken word."""
     a, b = [norm(w) for w in script_words], [norm(w) for w, _, _ in asr]
@@ -81,8 +99,8 @@ def align(script_words, asr):
     return [dict(w=w, s=round(t[0], 3), e=round(t[1], 3)) for w, t in zip(script_words, times)]
 
 
-def pages_from(words, max_chars=19, max_lines=2):
-    """Group words into caption pages of up to two short lines, breaking at sentences and pauses."""
+def pages_from(words, max_chars=20, max_lines=2):
+    """Group words into caption pages of up to two short lines, breaking at sentences, commas and pauses."""
     pages, lines, line = [], [], []
 
     def close_page():
@@ -103,13 +121,17 @@ def pages_from(words, max_chars=19, max_lines=2):
                 close_page()
         line.append(i)
         nxt = words[i + 1] if i + 1 < len(words) else None
-        sentence_end = w['w'][-1:] in '.?!…' and len([k for l in lines for k in l] + line) >= 2
-        long_pause = nxt is not None and nxt['s'] - w['e'] > 0.6
-        if nxt is None or sentence_end or long_pause:
+        on_page = len([k for l in lines for k in l] + line)
+        sentence_end = w['w'][-1:] in '.?!…' and on_page >= 2
+        comma = w['w'][-1:] in ',;:' and on_page >= 3
+        long_pause = nxt is not None and nxt['s'] - w['e'] > 0.5
+        if nxt is None or sentence_end or comma or long_pause:
             close_page()
     for k, p in enumerate(pages):
         nxt_s = pages[k + 1]['s'] if k + 1 < len(pages) else 1e9
         p['until'] = round(min(nxt_s - 0.02, p['e'] + 0.9), 3)
+    if pages:
+        pages[0]['s'] = 0.0   # the first line is on screen from the first frame, as the hook
     return pages
 
 
@@ -169,7 +191,10 @@ def main():
     import librosa
     duration = round(librosa.get_duration(path=str(mixed if mixed.exists() else voice)), 3)
     print(f'{stem}: {duration:.1f} s, {len(script_words)} words')
-    words = align(script_words, word_times(voice, args.lang))
+    sys.path.insert(0, str(ROOT))
+    import librosa as _l, performance
+    regions = performance.speech_regions(_l.load(voice, sr=24000)[0], 24000)
+    words = align(script_words, snap_to_speech(word_times(voice, args.lang), regions))
     pages = pages_from(words)
     env = envelope(voice, duration)
     voice_end = min(duration, words[-1]['e'] + 0.3)

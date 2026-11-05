@@ -75,6 +75,40 @@ Tested and not used, because each made her sound less like herself: raising the 
 semitone (0.456), a longer 25 s reference (0.490), an EQ copying her tonal balance (0.47), and
 stronger loudness matching (0.479). Seed-VC's timbre-only mode lost the intonation (0.03).
 
+## Make the video
+
+```bash
+voices/run make_video.py voices/mother/first-salary
+```
+
+About 2 minutes for a 20-second Short. It writes into the episode folder:
+
+| File | What it is |
+|---|---|
+| `<char>_<episode>_short.mp4` | The Short: 1080×1920, 30 fps, with the mixed voice track |
+| `<char>_<episode>.srt` | Captions, to upload to YouTube as subtitles |
+| `<char>_<episode>_cover.png` | A cover frame |
+| `upload.txt` | Title, description with the AI disclosure, hashtags, playlist, pinned comment |
+
+What's on screen:
+- **0 s:** a phone-style "Maa sent you a voice note" banner and the first line of the script,
+  both visible on the very first frame (that frame is what stops the scroll)
+- **2 s:** the dedication from the script title ("for the dad who never says it")
+- **Throughout:** the character's animated scene (`theme.scene`: rain on Meera's window, steam
+  in Maa's kitchen, Papa's street lamp and passing headlights...), a voice-note bubble whose
+  waveform is drawn from the real voice, and word-by-word captions in the character's accent
+  colour, timed to when each word is actually said
+- **End:** captions fade and the bubble resets, so the replay loops cleanly
+
+Overlays stay in the top two-thirds and clear of YouTube's buttons on the right; each scene keeps
+its key objects in the band below the captions. The bottom is left dark for YouTube's title text.
+
+Options: `--dedication "..."` and `--text "..."` for episodes without a script, `--time "6:02 AM"`,
+`--bg photo.jpg` or `--bg clip.mp4` to put the overlays on your own footage instead of the drawn
+scene, and `--music track.mp3` for a quiet bed under the voice (use the YouTube Audio Library or
+music you own). The MP4 and cover aren't committed (they're large and can be rebuilt); the
+captions and upload text are.
+
 ## Create a character's voice
 
 ```bash
