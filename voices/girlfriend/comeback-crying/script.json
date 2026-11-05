@@ -1,0 +1,37 @@
+[
+ {
+  "text": "Hey... please don't hang up. Just give me one minute.",
+  "control": "voice shaking, nervous, crying softly",
+  "pause_after": 1.0
+ },
+ {
+  "text": "I know I don't deserve it. I know what I did.",
+  "control": "ashamed, slow, holding back tears",
+  "pause_after": 1.2
+ },
+ {
+  "text": "I hurt you... and I can't stop thinking about the look on your face that night.",
+  "control": "voice breaking, full of regret",
+  "pause_after": 1.4
+ },
+ {
+  "text": "I'm not asking you to forget it. I'm just asking for one more chance.",
+  "control": "pleading, tearful",
+  "pause_after": 1.2
+ },
+ {
+  "text": "I miss you. I miss us.",
+  "control": "whispering, heartbroken",
+  "pause_after": 1.5
+ },
+ {
+  "text": "Please... let me come back.",
+  "control": "voice cracking, sobbing quietly",
+  "pause_after": 1.6
+ },
+ {
+  "text": "I'm so sorry.",
+  "control": "barely a whisper, crying",
+  "pause_after": 0
+ }
+]

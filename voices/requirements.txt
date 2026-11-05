@@ -1,0 +1,8 @@
+gradio_client
+faster-whisper
+speechbrain
+torch
+librosa
+soundfile
+scipy
+numpy

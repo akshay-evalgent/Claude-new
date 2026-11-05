@@ -1,0 +1,8 @@
+{
+ "description": "Young woman in her early 20s, sweet soft gentle voice, speaking quietly and close to the microphone, natural and intimate",
+ "identity": "voice_normal.mp3",
+ "identity_text": "Hey. I was just thinking about you, and I wanted to hear your voice for a minute.",
+ "reference": "voice_crying.mp3",
+ "reference_text": "I keep picking up my phone to call you, and then I stop, because I don't know what I would even say.",
+ "reference_control": "sad, crying softly, quiet trembling voice, sniffling between words, same young woman"
+}
