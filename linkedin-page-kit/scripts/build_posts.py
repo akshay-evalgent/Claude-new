@@ -505,6 +505,64 @@ Honest question: when an AI company writes this into its IPO filing, do you read
 #Startups
 #FounderSignal""",
       first_comment="""Sources: TechCrunch, Gizmodo and Techzine (2 to 3 Nov 2026), on Anthropic's amended S-1 filed 2 Nov. Photo of Dario Amodei: Anthropic. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+ # ---------- Built from the virality maths: big interest pool x high viral-action rate (questions about the reader) ----------
+ dict(slug="goyal-altman-5pm", when="Thu 5 Nov · 9:00 pm IST (India evening)", pillar="Signal (news)", kind="image",
+      images=["assets/posts/2026-11-06/signal-goyal-altman-5pm.png", "assets/posts/2026-11-06/signal-goyal-altman-5pm-square.png"],
+      tags="@Piyush Goyal  @Sam Altman  @OpenAI",
+      caption="""Commerce Minister Piyush Goyal has faced criticism after telling Dutch investors at the India-Netherlands Business Forum in The Hague in late October that "nobody in India will tell you it's five o'clock, and certainly no Indian will ever remind you it's the weekend", presenting long working hours as an advantage of India's workforce.
+
+The Karnataka State IT/ITeS Employees Union and Congress MP Karti Chidambaram objected to the framing, and critics pointed to International Labour Organization data placing India among the world's most overworked countries; The Wire reported that about half of India's workforce already works more than 49 hours a week. Goyal later described work-life balance as a "foreign concept", while saying individuals can define their own balance.
+
+The debate lands as AI is sold as the thing that will give workers their time back. OpenAI chief executive Sam Altman said on a podcast this summer that he does not expect AI to bring a four-day week, because people are "secretly happy" staying busy.
+
+Has AI given you a single hour back this year, or has it just filled the hours you already had?
+
+#WorkLifeBalance
+#PiyushGoyal
+#SamAltman
+#ArtificialIntelligence
+#India
+#FutureOfWork
+#FounderSignal""",
+      first_comment="""Sources: Goyal's remarks at the India-Netherlands Business Forum (26 to 27 Oct 2026) as reported by The People's Board, Infomance and Bundle; The Wire (2 Nov 2026) on working hours; Moneywise and Yahoo Finance on Altman's podcast remarks (summer 2026). Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+ dict(slug="ai-like-training-new-hire", when="Fri 6 Nov · 1:30 pm IST (Europe + India)", pillar="Signal (news)", kind="image",
+      images=["assets/posts/2026-11-06/signal-ai-like-training-new-hire.png", "assets/posts/2026-11-06/signal-ai-like-training-new-hire-square.png"],
+      tags="@OpenAI  @Anthropic  @Google",
+      caption="""A survey of 2,052 US workers who use AI at least once a week has found that most of those who have trained a new employee believe getting good work out of AI takes about as much effort as training a person. The study, by Founder Reports, was published on 3 November.
+
+Not everyone agrees: about 40% of respondents who have trained someone said AI takes less effort than a new hire. Experts quoted in the coverage said most of the effort is front-loaded, in gathering scattered company knowledge into one place, and that oversight shrinks over time without disappearing.
+
+The checking falls unevenly. SHRM's 2026 research found that directors and above spend about six hours a week correcting AI output, twice the three hours reported by individual contributors.
+
+Be honest: is AI saving you time at work, or has it handed you a second job checking its work?
+
+#ArtificialIntelligence
+#FutureOfWork
+#ChatGPT
+#Productivity
+#Leadership
+#Startups
+#FounderSignal""",
+      first_comment="""Sources: Founder Reports survey of 2,052 US workers (October 2026, published 3 Nov via Stacker, ABC17 and AOL); SHRM 2026 research on time spent correcting AI output. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+ dict(slug="ai-election-ads-137m", when="Fri 6 Nov · 6:30 pm IST (8 am New York)", pillar="Signal (news)", kind="image",
+      images=["assets/posts/2026-11-06/signal-ai-election-ads-137m.png", "assets/posts/2026-11-06/signal-ai-election-ads-137m-square.png"],
+      tags="",
+      caption="""Political campaigns spent more than $137 million on 220 campaign videos made at least partly with AI ahead of this week's US midterm elections, according to the Wesleyan Media Project, which tracked ads through 11 October. In the 2024 cycle, spending on AI-generated ads was under $50,000.
+
+Only 27% of the ads told viewers they featured AI-generated content. Republican candidates and groups sponsored 81% of the ads and accounted for 88% of the spending, the researchers found, and CNN separately identified at least $38 million in ads that strongly appear to use AI imagery without disclosure.
+
+Only 30 US states require AI disclosure in political advertising, and there is no federal law specifically covering AI-made political ads. The researchers said the total is likely an undercount because AI use can be hard to detect.
+
+Should every AI-made ad, political or commercial, be required to say so? And if you run ads for your own company, does your answer change?
+
+#Elections2026
+#ArtificialIntelligence
+#Midterms
+#Advertising
+#Deepfakes
+#Marketing
+#FounderSignal""",
+      first_comment="""Sources: Wesleyan Media Project report (15 Oct 2026, data through 11 Oct), with coverage by Gizmodo and Truthout; CNN analysis of undisclosed AI imagery in ads. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
 ]
 
 def main():

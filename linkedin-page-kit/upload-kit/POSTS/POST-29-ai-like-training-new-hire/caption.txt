@@ -1,0 +1,17 @@
+TAG IN THE POST (type @ and pick): @OpenAI  @Anthropic  @Google
+
+A survey of 2,052 US workers who use AI at least once a week has found that most of those who have trained a new employee believe getting good work out of AI takes about as much effort as training a person. The study, by Founder Reports, was published on 3 November.
+
+Not everyone agrees: about 40% of respondents who have trained someone said AI takes less effort than a new hire. Experts quoted in the coverage said most of the effort is front-loaded, in gathering scattered company knowledge into one place, and that oversight shrinks over time without disappearing.
+
+The checking falls unevenly. SHRM's 2026 research found that directors and above spend about six hours a week correcting AI output, twice the three hours reported by individual contributors.
+
+Be honest: is AI saving you time at work, or has it handed you a second job checking its work?
+
+#ArtificialIntelligence
+#FutureOfWork
+#ChatGPT
+#Productivity
+#Leadership
+#Startups
+#FounderSignal

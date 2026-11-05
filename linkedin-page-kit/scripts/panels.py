@@ -19,7 +19,11 @@ def bars_panel(rows, title, out, size=(1000, 1300), bg=(20, 24, 40)):
 
 def tile_panel(big, sub, out, size=(800,1300), bg=(140, 36, 36)):
     W,H = size; im = Image.new("RGB",(W,H),bg); d = ImageDraw.Draw(im)
-    f = T["display"](220,"ExtraBold"); d.text(((W-tl(d,big,f))/2, H/2-220), big, font=f, fill=(255,255,255))
+    size = 220
+    f = T["display"](size,"ExtraBold")
+    while tl(d,big,f) > W-120 and size > 100:
+        size -= 10; f = T["display"](size,"ExtraBold")
+    d.text(((W-tl(d,big,f))/2, H/2-220+(220-size)//2), big, font=f, fill=(255,255,255))
     fs = T["display"](44,"SemiBold")
     y = H/2+40
     for ln in sub.split("\n"):
@@ -52,4 +56,23 @@ def text_panel(name, caption, out, size=(1000,1300), bg=(16,18,28), serif=False,
     fc = T["display"](40,"SemiBold"); d.text(((W-tl(d,caption,fc))/2, y+30), caption, font=fc, fill=(190,198,215))
     if sub:
         fs = T["body"](30); d.text(((W-tl(d,sub,fs))/2, y+90), sub, font=fs, fill=(150,160,180))
+    im.save(out); return out
+
+def multi_logo_panel(logos, caption, out, size=(1000,1300), bg=(16,18,28), sub=None, logo_h=150):
+    """Several white logos stacked vertically with a caption under them."""
+    W,H = size; im = Image.new("RGB",(W,H),bg); d = ImageDraw.Draw(im)
+    for i in range(H):
+        k=i/H; d.line((0,i,W,i), fill=tuple(int(c*(1+0.35*k)) for c in bg))
+    imgs=[]
+    for p in logos:
+        lg=Image.open(p).convert("RGBA"); lg=lg.crop(lg.getbbox()); r=logo_h/lg.height
+        lg=lg.resize((int(lg.width*r), logo_h)); 
+        if lg.width > W-200: r2=(W-200)/lg.width; lg=lg.resize((W-200,int(lg.height*r2)))
+        imgs.append(lg)
+    gap=70; total=sum(i.height for i in imgs)+gap*(len(imgs)-1); y=int(H*0.36)-total//2
+    for lg in imgs:
+        im.paste(lg, ((W-lg.width)//2, y), lg); y+=lg.height+gap
+    f=T["display"](44,"SemiBold"); d.text(((W-tl(d,caption,f))/2, y+20), caption, font=f, fill=(245,245,250))
+    if sub:
+        fs=T["body"](30); d.text(((W-tl(d,sub,fs))/2, y+80), sub, font=fs, fill=(170,180,200))
     im.save(out); return out
