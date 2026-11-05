@@ -73,4 +73,17 @@ python3 preflight.py out/final/*.mp4
 
 ## 5. Pre-flight
 
-Filled in from `out/final/preflight.json` after the final render.
+Measured on the final files (`out/final/preflight.json`). Every rule passes on all four.
+
+| File | Length | Frame one luma | Longest frozen picture | Longest black | End freeze | Loudness | True peak | Cuts on the beat |
+|---|---|---|---|---|---|---|---|---|
+| Master 1920×1080 | 2:30.0 | 66 | 1.1 s | 0.2 s | 0.0 s | −14.0 LUFS | −1.3 dBTP | 20 / 20 |
+| The Wall 1080×1920 | 0:24.5 | 97 | 0.4 s | 0.0 s | 0.0 s | −14.7 LUFS | −1.5 dBTP | 2 / 5 |
+| Two Lights 1080×1920 | 0:19.8 | 61 | 0.2 s | 0.3 s | 0.0 s | −13.8 LUFS | −1.5 dBTP | 0 / 6 |
+| The Loop 1080×1920 | 0:38.3 | 97 | 0.3 s | 0.0 s | 0.0 s | −14.2 LUFS | −1.5 dBTP | 3 / 8 |
+
+Rules: frame one lit (luma > 20) and moving within 1 s; no frozen picture over 2.0 s; no black over 0.3 s; end freeze under 1.4 s; −14 LUFS ±1; true peak at or under −1 dBTP. The Shorts are cut from the master at story points, not on its beat grid; their scores are written to their own cut points instead.
+
+The first full render failed three of these (a 4.9 s frozen end card, 1.5 s of near-black after the phone dies, and quiet stretches at the fog and phone shots). Those shots were reworked to keep moving and the master was rendered again.
+
+Not checked by machine: how it sounds. The score and effects were balanced by measured levels and a spectrogram, not by ear. Listen through once on headphones before posting.

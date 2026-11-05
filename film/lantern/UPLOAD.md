@@ -112,7 +112,9 @@ It tells you whether views are still growing period over period (R > 1) or fadin
 
 ## 4. Pre-flight results
 
-See section 5 of `film/lantern/README.md` or `out/final/preflight.json`.
+All four files pass every rule: frame one lit and moving, nothing frozen longer than 1.1 s, no black longer than 0.3 s, no frozen end, −14 LUFS, true peak under −1 dBTP. Full table in section 5 of `film/lantern/README.md`.
+
+Before posting, listen once on headphones. The sound was balanced by measurement, not by ear.
 
 ## 5. Credits and licences
 
