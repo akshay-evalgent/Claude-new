@@ -1,0 +1,22 @@
+{
+ "name": "Didi",
+ "playlist": "POV: Your Sister",
+ "talks_to": "her younger brother or sister (the viewer)",
+ "theme": {
+  "name": "Her room",
+  "setting": "Pastel bedroom, fairy lights, mirror selfies, mehndi, clothes everywhere",
+  "object": "The grey hoodie you stole",
+  "music": "Playful ukulele",
+  "palette": [
+   "#f2b8c6",
+   "#8fd3c1",
+   "#fbf3ee"
+  ]
+ },
+ "description": "Young Indian woman in her mid 20s, bright playful teasing voice, quick and expressive, confident big-sister energy",
+ "sample_text": "Okay, listen. Maa is asking where you were, and I covered for you again, so you owe me.",
+ "pitch_hz": [
+  180,
+  290
+ ]
+}

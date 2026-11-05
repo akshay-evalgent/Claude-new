@@ -1,0 +1,22 @@
+{
+ "name": "Maa",
+ "playlist": "POV: Your Mom",
+ "talks_to": "her son or daughter (the viewer)",
+ "theme": {
+  "name": "Kitchen at sunrise",
+  "setting": "First light, steam from the pressure cooker, steel tiffin, the radio on low",
+  "object": "Two cups of tea, one untouched",
+  "music": "Soft flute",
+  "palette": [
+   "#e2a72e",
+   "#b9c0c8",
+   "#3e5c3a"
+  ]
+ },
+ "description": "Indian woman in her late 40s, warm affectionate motherly voice, a little tired, speaking at a gentle pace with an Indian English accent",
+ "sample_text": "Beta, I just wanted to check if you reached safely. Call me when you get a minute, okay?",
+ "pitch_hz": [
+  160,
+  250
+ ]
+}

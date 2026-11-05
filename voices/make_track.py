@@ -29,7 +29,7 @@ def generate(text, control, ref, ref_text, out):
     for attempt in range(12):
         try:
             path = client.predict(text_input=text, control_instruction=control,
-                                  reference_wav_path_input=handle_file(str(ref)),
+                                  reference_wav_path_input=handle_file(str(ref)) if ref else None,
                                   use_prompt_text=bool(ref_text), prompt_text_input=ref_text,
                                   cfg_value_input=2.0, do_normalize=False, denoise=False,
                                   api_name='/generate')

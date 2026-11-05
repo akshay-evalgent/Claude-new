@@ -2,3 +2,4 @@ film/input/
 __pycache__/
 voices/**/takes/
 voices/**/_tmp*.wav
+voices/**/candidates/

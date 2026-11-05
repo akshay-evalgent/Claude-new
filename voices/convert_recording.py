@@ -3,7 +3,8 @@
 
     python voices/convert_recording.py my_take.aac voices/girlfriend --name sorry-call
 
-Uses Seed-VC through its free Hugging Face demo (Plachta/Seed-VC), in pitch-following mode:
+Uses Seed-VC in pitch-following mode, on this machine when it's set up (bash voices/setup.sh),
+otherwise through its free Hugging Face demo (Plachta/Seed-VC; daily GPU limit, uploads the take):
 the rise and fall of your voice (crying breaks, emphasis, pauses) is kept and moved to the
 character's pitch level. Only the voice itself changes. The target voice is the character's
 `identity` and `reference` clips from character.json, joined together.
@@ -20,7 +21,7 @@ conversion.json with the settings and checks: words still heard, how closely the
 follows your take, and whether it sounds like the character rather than you.
 Your original recording is not copied into the repo.
 """
-import argparse, json, shutil, subprocess, sys, tempfile, time
+import argparse, json, os, shutil, subprocess, sys, tempfile, time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -32,6 +33,23 @@ VC_SR = 44100
 
 def to_wav(src, out):
     subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(src), '-ac', '1', '-ar', str(VC_SR), str(out)], check=True)
+
+
+SEEDVC = Path(os.environ.get('VOICES_VENDOR', Path.home() / '.voices-vendor')) / 'seed-vc'
+
+
+def convert_local(src, ref, out, steps, semitones):
+    """Seed-VC on this machine (CPU). Same model and settings as the demo's pitch-following tab."""
+    with tempfile.TemporaryDirectory() as od:
+        subprocess.run([sys.executable, str(Path(__file__).with_name('seedvc_runner.py')),
+                        '--source', str(Path(src).resolve()), '--target', str(Path(ref).resolve()), '--output', od,
+                        '--diffusion-steps', str(steps), '--length-adjust', '1.0', '--inference-cfg-rate', '0.7',
+                        '--f0-condition', 'True', '--auto-f0-adjust', 'True', '--semi-tone-shift', str(int(round(semitones))),
+                        '--fp16', 'False'], check=True)
+        wavs = sorted(Path(od).glob('*.wav'))
+        if not wavs:
+            raise SystemExit('Seed-VC finished without writing audio')
+        shutil.copy(wavs[-1], out)
 
 
 def convert(src, ref, out, steps, semitones):
@@ -155,6 +173,8 @@ def main():
     ap.add_argument('--steps', type=int, default=50, help='quality steps (default 50; 30 is faster)')
     ap.add_argument('--semitones', type=float, default=0, help='extra pitch shift on top of the automatic one')
     ap.add_argument('--lang', default='en', help='language spoken, for the word check (en, hi, ...)')
+    ap.add_argument('--engine', choices=['auto', 'local', 'demo'], default='auto',
+                    help='local = this machine, demo = Hugging Face demo, auto = local if set up (default)')
     ap.add_argument('--no-check', action='store_true', help='skip the checks')
     ap.add_argument('--plain', action='store_true', help='skip the performance transfer and polish')
     args = ap.parse_args()
@@ -172,12 +192,13 @@ def main():
         subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', *inputs, '-filter_complex',
                         ''.join(f'[{i}:a]' for i in range(len(clips))) + f'concat=n={len(clips)}:v=0:a=1,aresample={VC_SR}',
                         str(ref)], check=True)
+        engine = args.engine if args.engine != 'auto' else ('local' if (SEEDVC / 'inference.py').exists() else 'demo')
         outs = [takes / f'take{t}.wav' for t in range(1, args.takes + 1)]
         for out in outs:
             if not out.exists():
                 print(f'converting {args.recording.name} into {args.character.name}: {out.name} ({args.steps} steps)', flush=True)
-                convert(src, ref, out, args.steps, args.semitones)
-        report = dict(settings=dict(model='Seed-VC v1 pitch-following (Plachta/Seed-VC demo)', steps=args.steps,
+                (convert_local if engine == 'local' else convert)(src, ref, out, args.steps, args.semitones)
+        report = dict(settings=dict(model=f'Seed-VC v1 pitch-following ({engine})', steps=args.steps,
                                     extra_semitones=args.semitones, reference_clips=clips))
         best = outs[0]
         if not args.no_check:

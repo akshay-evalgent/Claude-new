@@ -1,8 +1,17 @@
+# Installed by voices/setup.sh (CPU PyTorch is installed first, from the PyTorch index).
+# Demo access and checks
 gradio_client
 faster-whisper
 speechbrain
-torch
 librosa
 soundfile
 scipy
 numpy
+# Seed-VC (voice conversion) on this machine
+transformers
+huggingface_hub
+munch
+einops
+pyyaml
+matplotlib
+descript-audio-codec

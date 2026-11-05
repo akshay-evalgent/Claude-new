@@ -1,0 +1,22 @@
+{
+ "name": "Papa",
+ "playlist": "POV: Your Dad",
+ "talks_to": "his son or daughter (the viewer)",
+ "theme": {
+  "name": "Evening scooter",
+  "setting": "Blue hour, street lights, the old scooter, folded newspaper",
+  "object": "His wristwatch",
+  "music": "Slow, old-style instrumental",
+  "palette": [
+   "#3a4a63",
+   "#e58a3a",
+   "#b8a47e"
+  ]
+ },
+ "description": "Indian man in his late 50s, deep calm fatherly voice, speaking slowly with few words, gentle under a serious tone, Indian English accent",
+ "sample_text": "Your mother said I should call. So, I'm calling. Everything is fine here. Eat on time.",
+ "pitch_hz": [
+  75,
+  135
+ ]
+}

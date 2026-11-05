@@ -1,0 +1,338 @@
+[
+ {
+  "id": "girlfriend/one-fought-with-tonight",
+  "character": "girlfriend",
+  "title": "For the one you fought with tonight",
+  "unsaid": "Sorry",
+  "to": "to boyfriend",
+  "text": "Hey… are you still awake? [pause] I know you're angry. You're allowed to be. [breath] I said things I didn't mean because I was scared you'd leave first, and that's not fair to you. [pause] I didn't text because 'sorry' felt too small typed out. [softly] I'm sorry. Can we talk tomorrow? Not fix everything. Just talk. [pause] Don't sleep angry, okay?"
+ },
+ {
+  "id": "girlfriend/boyfriend-remembers-small-things",
+  "character": "girlfriend",
+  "title": "For the boyfriend who remembers the small things",
+  "unsaid": "Thank you",
+  "to": "to boyfriend",
+  "text": "You remembered. [laugh] I mentioned that chocolate once. Once! Three months ago, in a parking lot, while complaining about my boss. [pause] And today you just handed it to me like it was nothing. [softly] It's not nothing. Nobody listens to me like you do. [beat] Also, I finished it in two minutes, so buy me another one."
+ },
+ {
+  "id": "girlfriend/one-in-another-city",
+  "character": "girlfriend",
+  "title": "For the one in another city",
+  "unsaid": "I miss you",
+  "to": "to boyfriend",
+  "text": "It's eleven and I'm wearing your hoodie again. [laugh] Don't ask for it back. [pause] Today was fine. I just kept turning to tell you things… and you weren't there. [breath] Twelve more days. I made a countdown on my phone like a child. [softly] I miss you most in the boring moments. Call me before you sleep?"
+ },
+ {
+  "id": "girlfriend/boyfriend-says-hes-fine",
+  "character": "girlfriend",
+  "title": "For the boyfriend who says he's fine",
+  "unsaid": "I noticed",
+  "to": "to boyfriend",
+  "text": "You've said 'I'm fine' four times today. [pause] You're not fine. You get extra polite when something's wrong, did you know that? [softly] You don't have to explain it right now. Just don't go through it alone, okay? I'm not going anywhere. [beat] I've ordered your momos. Eat first. Then talk."
+ },
+ {
+  "id": "girlfriend/one-took-home-meet",
+  "character": "girlfriend",
+  "title": "For the one who took you home to meet his mom",
+  "unsaid": "This is so you",
+  "to": "to boyfriend",
+  "text": "Okay, tell me honestly. Did your mom like me? [pause] She said I was 'very confident'. Is that good? That sounds bad. [laugh] I practised my namaste in the mirror twenty times. [softly] I just want them to like me because… I want to be around for a long time. [beat] Okay, that came out too serious. Did she like me or not?"
+ },
+ {
+  "id": "girlfriend/one-finally-did-it",
+  "character": "girlfriend",
+  "title": "For the one who finally did it",
+  "unsaid": "Proud",
+  "to": "to boyfriend",
+  "text": "I saw your face when they called your name. [pause] You tried so hard to look cool. [laugh] You were not cool. You were shaking. [softly] Do you know how many nights you almost gave up on this? I do. I was there for every one of them. [breath] I'm so proud of you. Now come here and let me be annoying about it."
+ },
+ {
+  "id": "boyfriend/one-always-forgets-text",
+  "character": "boyfriend",
+  "title": "For the one who always forgets to text when she gets home",
+  "unsaid": "I noticed",
+  "to": "to girlfriend",
+  "text": "Text me when you reach. [pause] I know, I know, you're not a kid. [laugh] Just humour me. [softly] It's not that I don't trust you. The city's big, and you're the one person in it I can't afford to lose. [beat] One message. Even just 'reached'. Even just a dot. I'll be awake."
+ },
+ {
+  "id": "boyfriend/her-worst-day-at",
+  "character": "boyfriend",
+  "title": "For her worst day at work",
+  "unsaid": "You'll be fine",
+  "to": "to girlfriend",
+  "text": "Hey. Put the phone down for one second and breathe. [pause] They don't get to decide what you're worth. That meeting doesn't either. [softly] You're the person who remembers everyone's birthday and stays late to help people who'd never do the same for you. [breath] Come over. I'm making maggi. Badly. It's tradition."
+ },
+ {
+  "id": "boyfriend/fight-he-knows-he",
+  "character": "boyfriend",
+  "title": "For the fight he knows he lost",
+  "unsaid": "Sorry",
+  "to": "to girlfriend",
+  "text": "Okay. I've been trying to find a way to say this that doesn't sound like losing. [laugh softly] There isn't one. [pause] I was wrong. You were right, and I knew it halfway through the argument and kept going anyway. [breath] I'm sorry. Not 'sorry you feel that way'. Just sorry."
+ },
+ {
+  "id": "boyfriend/firstdate-anniversary",
+  "character": "boyfriend",
+  "title": "For your first-date anniversary",
+  "unsaid": "I love you",
+  "to": "to girlfriend",
+  "text": "One year ago you turned up forty minutes late and blamed traffic. [laugh] There was no traffic. I checked. [pause] And I remember thinking, this is going to be a problem… because I already liked you too much. [softly] Happy one year. You're still late. I still don't mind."
+ },
+ {
+  "id": "boyfriend/girl-thinks-shes-not",
+  "character": "boyfriend",
+  "title": "For the girl who thinks she's not enough",
+  "unsaid": "Proud",
+  "to": "to girlfriend",
+  "text": "You keep saying you're not that kind of person. Not smart enough, not pretty enough, not… whatever. [pause] I wish you could see yourself the way I do, just for a day. [softly] You'd stop apologising for taking up space. [breath] You're not too much. You're exactly enough. Now go and apply for that job."
+ },
+ {
+  "id": "boyfriend/call-neither-wants-end",
+  "character": "boyfriend",
+  "title": "For the call neither of you wants to end",
+  "unsaid": "I miss you",
+  "to": "to girlfriend",
+  "text": "No, don't hang up yet. [laugh] I know we've said bye five times. [pause] Just stay on the call. You don't have to talk. I just like hearing you on the other side. [softly] Okay. Bye. [beat] …You hang up first. No, you."
+ },
+ {
+  "id": "mother/child-says-yes-maa",
+  "character": "mother",
+  "title": "For the child who says \"yes Maa, I ate\"",
+  "unsaid": "This is so you",
+  "to": "to son or daughter",
+  "text": "Beta, did you eat? [pause] Don't say 'yes Maa' in that voice. What did you eat? [beat] Maggi is not food. [laugh] I'm sending dry fruits with your uncle on Sunday, don't argue. [softly] I know you're busy. It's just… the house is very quiet without you shouting for tea. Eat properly, okay? For me."
+ },
+ {
+  "id": "mother/first-month-after-moved",
+  "character": "mother",
+  "title": "For the first month after you moved out",
+  "unsaid": "I miss you",
+  "to": "to son or daughter",
+  "text": "I made two cups of tea this morning. [pause] Habit. [laugh softly] Your father drank both and pretended he wanted them. [breath] Your room still smells like you. I haven't let anyone move your things. [softly] I'm not sad, okay? I'm proud. I'm just still getting used to setting one less plate."
+ },
+ {
+  "id": "mother/child-hasnt-called-in",
+  "character": "mother",
+  "title": "For the child who hasn't called in three days",
+  "unsaid": "I noticed",
+  "to": "to son or daughter",
+  "text": "Three days. No call. [pause] I'm not angry. [beat] Okay, a little angry. [laugh] But mostly I just need to hear your voice and know you're okay. Two minutes. [softly] Tell me about your day, or tell me nothing. Just let me hear you complain about work."
+ },
+ {
+  "id": "mother/exam-that-went-wrong",
+  "character": "mother",
+  "title": "For the exam that went wrong",
+  "unsaid": "You'll be fine",
+  "to": "to son or daughter",
+  "text": "Listen to me. One exam does not get to decide who you are. [pause] You think I'm disappointed? I'm not. I'm upset that you're crying alone in a hostel room instead of calling me. [softly] I didn't raise a topper. I raised a good person. That's harder. [breath] Come home this weekend. I'll make rajma."
+ },
+ {
+  "id": "mother/wedding-morning",
+  "character": "mother",
+  "title": "For your wedding morning",
+  "unsaid": "Proud",
+  "to": "to daughter",
+  "text": "Sit still, let me fix your dupatta. [pause] When you were four you wore my saree and fell down the stairs. [laugh] I thought, she will never grow up. [breath] And look at you now. [voice cracks] Don't cry, your kajal will run. I'm not crying, you're crying. [softly] Go. Be happy. And call me every day, understood?"
+ },
+ {
+  "id": "mother/first-salary",
+  "character": "mother",
+  "title": "For your first salary",
+  "unsaid": "Thank you",
+  "to": "to son or daughter",
+  "text": "You sent me money? [pause] Why would you… [laugh] Silly child. I don't need it. [breath] I'm going to keep it. Not spend it. Just keep it. [softly] You won't understand yet. One day, when your child does this, you'll understand why I'm sitting in the kitchen crying over a bank message."
+ },
+ {
+  "id": "father/dad-never-says-it",
+  "character": "father",
+  "title": "For the dad who never says it",
+  "unsaid": "Proud",
+  "to": "to son or daughter",
+  "text": "Your mother said I should call. [pause] So. I'm calling. [long pause] I saw the photos from your office. [breath] I don't say these things much. I don't know how. [softly] But I'm proud of you, beta. Very proud. [beat] Okay. That's all. Eat on time. Here, talk to your mother."
+ },
+ {
+  "id": "father/one-he-taught-drive",
+  "character": "father",
+  "title": "For the one he taught to drive",
+  "unsaid": "This is so you",
+  "to": "to son or daughter",
+  "text": "Clutch. Slowly. Slowly! [laugh] You nearly hit the neighbour's goat in 2012, remember? [pause] I was shouting because I was scared, not angry. [softly] And now you drive me to my check-ups. You're a better driver than me. [beat] Don't tell your mother I said that."
+ },
+ {
+  "id": "father/day-lost-job",
+  "character": "father",
+  "title": "For the day you lost your job",
+  "unsaid": "You'll be fine",
+  "to": "to son",
+  "text": "I heard. [pause] No, don't explain. [breath] In 1998 I lost my job too. I didn't tell anyone for two weeks. I left the house at nine every day and sat in the park. [softly] Don't sit in the park. Come home. We'll work it out together. You're not a failure. You're my son. That doesn't change."
+ },
+ {
+  "id": "father/speech-he-practised-forty",
+  "character": "father",
+  "title": "For the speech he practised forty times",
+  "unsaid": "I love you",
+  "to": "to daughter",
+  "text": "I practised this speech forty times. [laugh] Your mother timed me. [pause] I was going to talk about the day you were born. [breath] But all I can think of is you at six, holding my finger at the fair because the crowd scared you. [voice cracks] You let go a long time ago. I'm the one still holding on. [softly] Go, beta. Be happy."
+ },
+ {
+  "id": "father/dad-learning-voice-notes",
+  "character": "father",
+  "title": "For the dad learning voice notes",
+  "unsaid": "This is so you",
+  "to": "to son or daughter",
+  "text": "Is it recording? [pause] Is this the button? Beta, how do you… okay. [clears throat] Hello. This is your father. [beat] Your mother is laughing at me. [softly] I just wanted to say… [pause] …it stopped, didn't it. Is this the button?"
+ },
+ {
+  "id": "father/parent-whos-getting-older",
+  "character": "father",
+  "title": "For the parent who's getting older",
+  "unsaid": "Thank you",
+  "to": "to son or daughter",
+  "text": "Can you show me the video call thing again? [pause] I know you showed me. I forgot. [laugh softly] It's funny. I taught you to tie your shoes, and now you're teaching me which button to press. [breath] Be patient with me, okay? Like I was with you. [beat] Okay. Which button?"
+ },
+ {
+  "id": "sister/sibling-she-covers-for",
+  "character": "sister",
+  "title": "For the sibling she covers for",
+  "unsaid": "This is so you",
+  "to": "to younger sibling",
+  "text": "Maa is asking where you were. I said library. [pause] Library! At midnight! [laugh] She believed it, by the way, so you owe me. Big time. [beat] Also, I know it's that girl. [softly] Just be careful with your heart, okay? You're dumb, but you're my dumb. Now buy me pani puri."
+ },
+ {
+  "id": "sister/night-before-her-wedding",
+  "character": "sister",
+  "title": "For the night before her wedding",
+  "unsaid": "I miss you",
+  "to": "to younger sibling",
+  "text": "Are you awake? [pause] I can't sleep. [laugh softly] From tomorrow this room is all yours. You finally get the big cupboard. [breath] Promise me you'll look after Maa. She pretends she's strong. [voice cracks] And promise you'll call me, even when you don't need money. [softly] Love you, idiot."
+ },
+ {
+  "id": "sister/one-steals-her-clothes",
+  "character": "sister",
+  "title": "For the one who steals her clothes",
+  "unsaid": "I love you",
+  "to": "to younger sibling",
+  "text": "Where is my hoodie? [pause] The grey one. Don't act innocent, I saw you wearing it on Instagram. [laugh] You stole my hoodie and then posted it. [softly] …Keep it. It looks better on you. [beat] I'm lying. Return it by Sunday."
+ },
+ {
+  "id": "sister/when-youre-far-away",
+  "character": "sister",
+  "title": "For Rakhi when you're far away",
+  "unsaid": "I miss you",
+  "to": "to brother",
+  "text": "I tied the rakhi on your photo this morning. [laugh] Don't laugh. Maa made me do the aarti too. [pause] It's the first year you're not here. [softly] You used to give me fifty rupees and act like you'd given me a kidney. [breath] I'd give anything for that fifty rupees today. Come home soon."
+ },
+ {
+  "id": "sister/day-someone-was-mean",
+  "character": "sister",
+  "title": "For the day someone was mean to you",
+  "unsaid": "You'll be fine",
+  "to": "to younger sibling",
+  "text": "Who said that to you? [pause] No, tell me the name. [breath] Listen. People who make you feel small are scared of how big you're going to get. [softly] You're kind, and funny, and far too good for that group. [beat] Also, I'm coming to your college on Monday. Just to look at them. Very calmly."
+ },
+ {
+  "id": "sister/sibling-sat-outside-door",
+  "character": "sister",
+  "title": "For the sibling who sat outside your door",
+  "unsaid": "Thank you",
+  "to": "to younger sibling",
+  "text": "I never said thank you for that night. [pause] When I failed my exam and Papa shouted, you sat outside my door for two hours. You didn't say anything. You just sat there. [softly] I heard you. I always knew you were there. [breath] So… thank you. Okay, that's enough emotions for one year. Bye."
+ },
+ {
+  "id": "brother/brother-cant-text",
+  "character": "brother",
+  "title": "For the brother who can't text",
+  "unsaid": "I noticed",
+  "to": "to younger sibling",
+  "text": "Ok. Ok. Hmm. Ok. [laugh] Sorry, I'm bad at texting, so here's a voice note. [pause] Maa told me you're having a hard time and you didn't tell me. [softly] I'm your brother. You're supposed to tell me first. [breath] I can't fix everything. But I can drive four hours. Just say the word."
+ },
+ {
+  "id": "brother/rooftop-cricket",
+  "character": "brother",
+  "title": "For rooftop cricket",
+  "unsaid": "I miss you",
+  "to": "to younger sibling",
+  "text": "Remember the rooftop? [laugh] You broke Sharma uncle's window and I took the blame. [pause] Best decision I ever made. [softly] I was up there today. Our stumps are still painted on the wall. [breath] Life got busy, didn't it? Come home this Diwali. One match. Loser buys samosas."
+ },
+ {
+  "id": "brother/tell-him-about-boy",
+  "character": "brother",
+  "title": "For when you tell him about the boy",
+  "unsaid": "This is so you",
+  "to": "to younger sister",
+  "text": "Who is this guy? [pause] No, I'm not angry, I'm asking normally. [laugh] Okay, a bit angry. [softly] Look. If he makes you laugh and treats you the way you deserve, I'll be the first to like him. [beat] If he doesn't, he deals with me. And Maa. Mostly Maa."
+ },
+ {
+  "id": "brother/little-one-grew-up",
+  "character": "brother",
+  "title": "For the little one who grew up",
+  "unsaid": "Proud",
+  "to": "to younger brother",
+  "text": "You beat me at arm wrestling today. [pause] First time in twenty years. [laugh] I let you win. [beat] I didn't let you win. [softly] When did you get so tall? I used to carry you on my shoulders at the mela. [breath] I'm proud of you, chhotu. Don't tell anyone I said that."
+ },
+ {
+  "id": "brother/graduation-he-missed",
+  "character": "brother",
+  "title": "For the graduation he missed",
+  "unsaid": "Sorry",
+  "to": "to younger sibling",
+  "text": "I missed your graduation. [pause] I said it was work, and it was, but I should have been there. [breath] I've watched the video ten times. You looked for me in the crowd. [softly] I saw that. I'm sorry. [beat] I'm taking you to dinner. Anywhere. Even that expensive place you keep showing me."
+ },
+ {
+  "id": "brother/day-learned-ride",
+  "character": "brother",
+  "title": "For the day you learned to ride",
+  "unsaid": "You'll be fine",
+  "to": "to younger sibling",
+  "text": "Balance first. Don't look at the wheel, look ahead. [laugh] You're looking at the wheel. [pause] I've got you, I'm holding the seat. [beat] …I let go ten metres ago. You're riding on your own. [softly] See? You never needed me to hold on. You just needed to think I was."
+ },
+ {
+  "id": "best-friend/friend-went-quiet",
+  "character": "best-friend",
+  "title": "For the friend who went quiet",
+  "unsaid": "I noticed",
+  "to": "to best friend",
+  "text": "Get up. I'm outside. [pause] Yes, outside your building. [laugh] You haven't replied on the group in nine days and you left me on 'seen'. That's not you. [softly] We don't have to talk about it. We can eat terrible street food and sit on the bike. Come down. I'm not leaving."
+ },
+ {
+  "id": "best-friend/2-am-maggi-days",
+  "character": "best-friend",
+  "title": "For the 2 a.m. maggi days",
+  "unsaid": "I miss you",
+  "to": "to best friend",
+  "text": "Remember when we had no money and split one plate of maggi at 2 a.m.? [laugh] We were so broke. [pause] Now we have money and no time. [softly] I miss us. The us that talked till sunrise about nothing. [breath] Saturday. No excuses. I'll bring the maggi."
+ },
+ {
+  "id": "best-friend/ex-texts-hey",
+  "character": "best-friend",
+  "title": "For when your ex texts \"hey\"",
+  "unsaid": "This is so you",
+  "to": "to best friend",
+  "text": "Wait, wait, wait. Your ex texted 'hey'? Just 'hey'? [laugh] After eight months? [pause] Give me your phone. [beat] No, I'm not replying. I'm deleting it. [softly] You cried for three months. I was there. You're not going back to that. [beat] We're getting ice cream. Now."
+ },
+ {
+  "id": "best-friend/friend-didnt-get-tired",
+  "character": "best-friend",
+  "title": "For the friend who didn't get tired of you",
+  "unsaid": "Thank you",
+  "to": "to best friend",
+  "text": "I never said thank you for last year. [pause] Everyone else got tired of me being sad. You didn't. You kept calling, even when I didn't pick up. [breath] You kept sending stupid memes. [softly] Those memes kept me going, you know. [beat] So… thanks, idiot. Now send me a meme, I'm emotional."
+ },
+ {
+  "id": "best-friend/best-friends-wedding-speech",
+  "character": "best-friend",
+  "title": "For your best friend's wedding speech",
+  "unsaid": "I love you",
+  "to": "to best friend",
+  "text": "I've known this person since we were ten. [laugh] I have photos that could end this marriage today. [pause] But I won't. Because… [breath] they were there when nobody else was. [softly] So if you're marrying my best friend, take care of them. They took care of me first."
+ },
+ {
+  "id": "best-friend/friend-moving-abroad",
+  "character": "best-friend",
+  "title": "For the friend moving abroad",
+  "unsaid": "Proud",
+  "to": "to best friend",
+  "text": "So you're really going. [pause] Canada. The actual other side of the world. [laugh softly] Who's going to tell me my outfit is bad now? [breath] I'm happy for you. Really. [softly] Just don't become one of those people who replies after three days. A different time zone is not an excuse. I'll check."
+ }
+]

@@ -1,0 +1,22 @@
+{
+ "name": "Arjun",
+ "playlist": "POV: Your Boyfriend",
+ "talks_to": "his girlfriend (the viewer)",
+ "theme": {
+  "name": "Golden-hour rides",
+  "setting": "Sunset highway, bike, roadside chai, his denim jacket around your shoulders",
+  "object": "His helmet on the seat",
+  "music": "Acoustic guitar",
+  "palette": [
+   "#f2a93b",
+   "#2f6f73",
+   "#c96f6f"
+  ]
+ },
+ "description": "Young man in his mid 20s, low warm voice, a little shy, speaking softly and close to the microphone, natural and intimate",
+ "sample_text": "Hey. I was just thinking about you, so I wanted to send a voice note before I sleep.",
+ "pitch_hz": [
+  85,
+  150
+ ]
+}

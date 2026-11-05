@@ -1,0 +1,22 @@
+{
+ "name": "Bhaiya",
+ "playlist": "POV: Your Brother",
+ "talks_to": "his younger sibling (the viewer)",
+ "theme": {
+  "name": "Rooftop at dusk",
+  "setting": "Water tank, stumps painted on the wall, kites, bike keys",
+  "object": "The taped-up cricket bat",
+  "music": "Lo-fi beat",
+  "palette": [
+   "#e9773b",
+   "#4b3b6b",
+   "#8b8f98"
+  ]
+ },
+ "description": "Indian man in his late 20s, slightly gruff but warm voice, casual and protective, speaking plainly",
+ "sample_text": "Hey. Sorry, I'm bad at texting, so here's a voice note. Call me when you're free.",
+ "pitch_hz": [
+  85,
+  150
+ ]
+}

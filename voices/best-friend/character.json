@@ -1,0 +1,25 @@
+{
+ "name": "Yaar",
+ "playlist": "POV: Your Best Friend",
+ "talks_to": "their best friend (the viewer)",
+ "theme": {
+  "name": "Chai stall at night",
+  "setting": "Roadside tapri, neon sign, a parked bike, the college canteen",
+  "object": "Two cutting chais clinking",
+  "music": "Upbeat lo-fi",
+  "palette": [
+   "#2ec4b6",
+   "#f4a261",
+   "#14213d"
+  ]
+ },
+ "description": [
+  "Young Indian man in his mid 20s, energetic funny casual voice, speaks fast like he is talking to his best friend",
+  "Young Indian woman in her mid 20s, energetic funny casual voice, speaks fast like she is talking to her best friend"
+ ],
+ "sample_text": "Bro, get up. I'm outside your building. You've been ignoring the group chat for nine days.",
+ "pitch_hz": [
+  85,
+  290
+ ]
+}

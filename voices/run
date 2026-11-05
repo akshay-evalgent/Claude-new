@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Run one of the scripts in voices/ inside the voice-tools environment:
+#
+#     voices/run convert_recording.py take.m4a voices/mother --name did-you-eat
+#
+# Only scripts that live directly in voices/ can be run this way.
+set -euo pipefail
+HERE="$(cd "$(dirname "$0")" && pwd)"
+VENV="${VOICES_VENV:-$HOME/.voices-venv}"
+
+[ $# -ge 1 ] || { echo "usage: voices/run <script>.py [args...]" >&2; exit 2; }
+script="$1"; shift
+case "$script" in
+  */*|.*) echo "voices/run only runs scripts that live directly in voices/" >&2; exit 2 ;;
+esac
+[ -f "$HERE/$script" ] || { echo "no such script: voices/$script" >&2; exit 2; }
+[ -x "$VENV/bin/python" ] || { echo "voice tools aren't set up in this session yet: run  bash voices/setup.sh" >&2; exit 2; }
+exec "$VENV/bin/python" "$HERE/$script" "$@"

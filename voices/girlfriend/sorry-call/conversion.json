@@ -1,6 +1,6 @@
 {
  "settings": {
-  "model": "Seed-VC v1 pitch-following (Plachta/Seed-VC demo)",
+  "model": "Seed-VC v1 pitch-following (demo)",
   "steps": 50,
   "extra_semitones": 0,
   "reference_clips": [
