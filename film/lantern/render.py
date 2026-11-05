@@ -30,7 +30,7 @@ shots.EVENTS['END'] = [(0.0, 'paper_slide'), (4.5, 'call_out'), (0.0, 'end_bed',
 
 EDLS = {
     'master': [(n, 0.0, shots.SHOTS[n][0]) for n in ORDER],
-    # The Wall: the hook, the years, the snooze, the declined call, the reveal, the line. Ends on the frame it began.
+    # The Wall: the hook, the years, the snooze, the declined call, the reveal, the line.
     'short_wall': [('S01', 0.0, 3.0), ('S05', 0.0, 4.125), ('S10', 0.0, 2.25), ('S13', 0.75, 2.25), ('S15', 4.0, 12.6), ('END', 0.0, 5.0)],
     # Two Lights: phone blue against lantern amber.
     'short_lights': [('S08', 1.2, 3.0), ('S12', 1.5, 4.5), ('S14', 1.0, 2.5), ('S15', 4.1, 7.6), ('S17', 0.0, 2.06), ('S18', 1.3, 4.2), ('END', 0.0, 5.0)],

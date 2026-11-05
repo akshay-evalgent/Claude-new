@@ -86,7 +86,7 @@ Description for each Short:
 The full film is LANTERN (2:30), linked above.
 #shorts #animation #dad
 ```
-The Wall and The Loop end on the frame they open with, so a replay reads as one continuous loop and counts as a rewatch.
+The Loop ends on the shot it opens with (4:30, the match), so a replay reads as one continuous loop and counts as a rewatch. The Wall and Two Lights end on the end card, so the last thing on screen is the line and the film's name.
 
 ## 3. How the math is used
 
