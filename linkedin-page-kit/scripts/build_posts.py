@@ -598,6 +598,55 @@ Have you ever paid for the hosted version of something you could have run yourse
 #Funding
 #FounderSignal""",
       first_comment="""Where this comes from: Supabase's announcement of the $150M round and the Turso deal (2 Oct), plus SiliconANGLE and FinSMEs on the round, and coverage of the June Series F. Star count is from GitHub this week. The code is at github.com/supabase/supabase if you want to run it yourself. We post a few of these every day: AI news, the cheaper tool that does the job, and one question for people building things. Follow if that's your kind of feed."""),
+ # ---------- For people hiring: free/open-source stack vs paid, plain voice ----------
+ dict(slug="free-hiring-stack", when="Fri 6 Nov · 1:30 pm IST (recruiters in India and Europe at work)", pillar="Tools for hiring (free vs paid)", kind="image",
+      images=["assets/posts/2026-11-05c/hiring-free-stack.png", "assets/posts/2026-11-05c/hiring-free-stack-square.png"],
+      tags="@Cal.com  @Documenso  @Formbricks  @Frappe (only if their pages show up)",
+      caption="""If you're hiring and don't want to pay for an ATS yet, this is the free stack I'd point you to.
+
+Everything here is open source. Most of them have a free hosted version, or you can run them yourself.
+
+Greenhouse, Lever, Workable → Frappe HR
+Job openings, applicants by source, interview rounds with feedback, offer letters. It's a full HR system, so give it an afternoon to set up.
+
+Calendly → Cal.com
+Candidates pick their own interview slot. No more "does Tuesday work?" back and forth.
+
+Zoom → Jitsi Meet
+Candidates join from a link in their browser. No account needed.
+
+Typeform → Formbricks
+Application forms and a few screening questions.
+
+DocuSign → Documenso
+Offer letters, signed online.
+
+Paid AI screening → Ollama + Open WebUI
+Runs an AI model on your own laptop, so CVs never leave your machine. Paste the job description and ask it to summarise each CV against it.
+
+One thing I'd be careful about. Use the AI to read faster, not to reject people. If the role is in New York City, automated screening tools need a yearly bias audit by law, and the EU AI Act lists AI screening of applicants as high-risk. Have a person make every no.
+
+None of this is as polished as the paid tools. But for your first 5 to 10 hires it covers most of what you'll actually use.
+
+What's in your hiring stack right now? Curious what people actually rely on.
+
+#Hiring
+#TalentAcquisition
+#Recruiting
+#HRTech
+#OpenSource
+#Startups
+#FounderSignal""",
+      first_comment="""Links if you want to try them (star counts checked today):
+Frappe HR: github.com/frappe/hrms
+Cal.com: github.com/calcom/cal.diy
+Jitsi Meet: github.com/jitsi/jitsi-meet
+Formbricks: github.com/formbricks/formbricks
+Documenso: github.com/documenso/documenso
+Ollama: github.com/ollama/ollama
+Open WebUI: github.com/open-webui/open-webui
+Running a staffing agency? OpenCATS is an older open-source ATS built for agencies: github.com/opencats/OpenCATS
+I post free tools like this most days. Follow the page if it's useful."""),
 ]
 
 def write_post(p, i, outdir):

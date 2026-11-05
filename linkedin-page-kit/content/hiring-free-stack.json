@@ -1,0 +1,45 @@
+{
+  "kicker": "Hiring on a $0 software budget",
+  "title": "The free hiring stack",
+  "subtitle": "All open source. Use the free hosted version or run it yourself.",
+  "rows": [
+    {
+      "paid": "Greenhouse \u00b7 Lever \u00b7 Workable",
+      "free": "Frappe HR",
+      "stars": "9k",
+      "note": "Openings, applicants by source, interview rounds, offer letters"
+    },
+    {
+      "paid": "Calendly",
+      "free": "Cal.com",
+      "stars": "49k",
+      "note": "Candidates pick their own interview slot"
+    },
+    {
+      "paid": "Zoom",
+      "free": "Jitsi Meet",
+      "stars": "30k",
+      "note": "Candidates join from a link in the browser, no account"
+    },
+    {
+      "paid": "Typeform",
+      "free": "Formbricks",
+      "stars": "13k",
+      "note": "Application forms and screening questions"
+    },
+    {
+      "paid": "DocuSign",
+      "free": "Documenso",
+      "stars": "15k",
+      "note": "Offer letters signed online"
+    },
+    {
+      "paid": "Paid AI screening tools",
+      "free": "Ollama + Open WebUI",
+      "stars": "186k",
+      "note": "AI on your own laptop, so CVs never leave your machine"
+    }
+  ],
+  "warning_title": "Use AI to read faster, not to reject.",
+  "warning": "A person should make every no. NYC and the EU have rules on AI screening."
+}

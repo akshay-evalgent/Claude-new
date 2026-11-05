@@ -1,0 +1,77 @@
+{
+  "checked": "2026-11-05",
+  "repos": {
+    "frappe/hrms": {
+      "stars": 9020,
+      "pushed": "2026-11-04",
+      "desc": "Open Source HR and Payroll Software",
+      "license": "GPL-3.0"
+    },
+    "opencats/OpenCATS": {
+      "stars": 778,
+      "pushed": "2026-11-05",
+      "desc": "Open-source applicant tracking system (ATS) and recruitment CRM for staffing agencies and hiring teams.",
+      "license": "NOASSERTION"
+    },
+    "srbhr/Resume-Matcher": {
+      "stars": 29151,
+      "pushed": "2026-11-02",
+      "desc": "The #1 AI Harness for Building Resumes, PDFs, Cover Letters & more, locally with 100+ LLMs support.",
+      "license": "Apache-2.0"
+    },
+    "xitanggg/open-resume": {
+      "stars": 8963,
+      "pushed": "2024-10-29",
+      "desc": "OpenResume is a powerful open-source resume builder and resume parser. https://open-resume.com/",
+      "license": "AGPL-3.0"
+    },
+    "jitsi/jitsi-meet": {
+      "stars": 30203,
+      "pushed": "2026-11-05",
+      "desc": "Jitsi Meet - Secure, Simple and Scalable Video Conferences that you use as a standalone app or embed in your w",
+      "license": "Apache-2.0"
+    },
+    "hcengineering/platform": {
+      "stars": 28054,
+      "pushed": "2026-11-05",
+      "desc": "Huly \u2014 All-in-One Project Management Platform (alternative to Linear, Jira, Slack, Notion, Motion)",
+      "license": "EPL-2.0"
+    },
+    "documenso/documenso": {
+      "stars": 15665,
+      "pushed": "2026-11-05",
+      "desc": "The Open Source DocuSign Alternative.",
+      "license": "AGPL-3.0"
+    },
+    "formbricks/formbricks": {
+      "stars": 13217,
+      "pushed": "2026-11-05",
+      "desc": "Open Source Qualtrics Alternative",
+      "license": "NOASSERTION"
+    },
+    "open-webui/open-webui": {
+      "stars": 157851,
+      "pushed": "2026-11-05",
+      "desc": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
+      "license": "NOASSERTION"
+    },
+    "ollama/ollama": {
+      "stars": 186016,
+      "pushed": "2026-11-05",
+      "desc": "Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
+      "license": "MIT"
+    },
+    "calcom/cal.diy": {
+      "stars": 49714,
+      "pushed": "2026-11-03",
+      "desc": "Scheduling infrastructure for absolutely everyone.",
+      "license": "MIT"
+    },
+    "odoo/odoo": {
+      "stars": 55570,
+      "pushed": "2026-11-05",
+      "desc": "Odoo. Open Source Apps To Grow Your Business.",
+      "license": "NOASSERTION"
+    }
+  }
+}

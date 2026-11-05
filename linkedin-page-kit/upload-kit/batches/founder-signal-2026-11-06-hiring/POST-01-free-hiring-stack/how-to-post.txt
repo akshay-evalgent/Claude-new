@@ -1,0 +1,10 @@
+POST 01 · Fri 6 Nov · 1:30 pm IST (recruiters in India and Europe at work) · Tools for hiring (free vs paid)
+
+HOW TO POST (image post)
+1. Open linkedin.com/company/thefoundersignal/admin (you must be logged in as the admin).
+2. Click "Start a post" in the admin view. Check the small avatar at the top of the box shows the page, not your name.
+3. Click the photo icon, upload image.png (portrait). If you prefer the square, use image-square.png.
+4. Paste caption.txt into the text box. Keep the line breaks. Where it says @Tag, type @ and pick the company page from the dropdown.
+5. Click Post.
+6. Immediately open the post, click "Comment", paste first-comment.txt, post it. Then click the three dots on your comment and choose "Pin".
+7. For the next 90 minutes: reply to every comment within 15 minutes, 15+ words, end with a question back.
