@@ -52,7 +52,9 @@ def text_match(expected, heard, lang):
             return [c for c in s if unicodedata.category(c)[0] in 'LM']
     if not tokens(expected):
         raise SystemExit(f'cannot check text in language {lang!r}: {expected}')
-    return difflib.SequenceMatcher(None, tokens(expected), tokens(heard)).ratio()
+    # autojunk=False: on long texts (a 45 s Hindi take is 500+ letters) difflib otherwise ignores the
+    # most common letters and the score collapses (0.3 for a take that kept nearly every word)
+    return difflib.SequenceMatcher(None, tokens(expected), tokens(heard), autojunk=False).ratio()
 
 
 def score(lines, takes, identity, lang):
