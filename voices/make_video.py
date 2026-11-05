@@ -34,6 +34,12 @@ PINNED = {  # first comment, written by the character, by the unsaid thing in th
     'I noticed': "Are you okay? Really? Tell me.", "You'll be fine": "What's the hard thing this week? Tell me.",
     'This is so you': 'Be honest. Is this you?', 'I love you': 'Say it back. I am waiting.',
 }
+PINNED_HI = {  # the same, in Hinglish, for Hindi episodes
+    'Sorry': 'Sach batao… phone uthaoge?', 'Thank you': 'Kisko yaad kiya? Batao.',
+    'Proud': 'Is hafte kis baat pe proud ho? Batao.', 'I miss you': 'Abhi kisko miss kar rahe ho?',
+    'I noticed': 'Sach mein theek ho? Batao.', "You'll be fine": 'Is hafte kya mushkil chal raha hai? Batao.',
+    'This is so you': 'Sach batao… yeh tum ho na?', 'I love you': 'Comment mein wapas bolo na.',
+}
 TAGS = {'girlfriend': '#girlfriend #relationship', 'boyfriend': '#boyfriend #relationship', 'mother': '#mom #maa',
         'father': '#dad #papa', 'sister': '#sister #siblings', 'brother': '#brother #siblings',
         'best-friend': '#bestfriend #friendship'}
@@ -72,7 +78,67 @@ def snap_to_speech(asr, regions, min_gap=0.35):
     return out
 
 
-def align(script_words, asr):
+def latin(word):
+    """A word in Hindi script, written in English letters (ITRANS), for comparing with Hinglish captions."""
+    if all(ord(c) < 0x900 or ord(c) > 0x97F for c in word):
+        return word
+    from indic_transliteration import sanscript
+    return sanscript.transliterate(word, sanscript.DEVANAGARI, sanscript.ITRANS)
+
+
+def sound_key(word):
+    """Spelling-tolerant keys for a romanised word: 'matlab', 'matalaba' and 'mutlab' come out close."""
+    w = re.sub(r'[^a-z]', '', latin(word).lower().replace('.n', 'n'))
+    for a, b in (('ph', 'f'), ('w', 'v'), ('z', 'j'), ('q', 'k'), ('x', 'ks'), ('ee', 'i'), ('oo', 'u'), ('aa', 'a')):
+        w = w.replace(a, b)
+    w = re.sub(r'([bcdgjkpst])h', r'\1', w)          # aspiration spelled either way: bhi/bi, thi/ti
+    w = re.sub(r'(.)\1+', r'\1', w)                  # doubled letters: gussa/gusa
+    loose = re.sub(r'(?<=[^aeiou])a$', '', w)         # the trailing inherent 'a' of transliteration
+    skeleton = re.sub(r'[aeiouy]', '', w) or w[:1]   # consonants only: matalaba -> mtlb
+    return loose, skeleton
+
+
+def fuzzy_align(script_words, asr, min_sim=0.5):
+    """Match caption words to spoken words in order, allowing near-misses in spelling
+    (Hinglish captions against Hindi speech-to-text, or misheard words)."""
+    A = [sound_key(w) for w in script_words]
+    B = [sound_key(w) for w, _, _ in asr]
+    sim = lambda a, b: 0.5 * difflib.SequenceMatcher(None, a[0], b[0]).ratio() + 0.5 * difflib.SequenceMatcher(None, a[1], b[1]).ratio()
+    n, m = len(A), len(B)
+    best = [[0.0] * (m + 1) for _ in range(n + 1)]
+    for i in range(n - 1, -1, -1):
+        for j in range(m - 1, -1, -1):
+            s = sim(A[i], B[j])
+            best[i][j] = max(best[i + 1][j], best[i][j + 1], best[i + 1][j + 1] + (s - min_sim if s >= min_sim else -1e9))
+    times, pairs, i, j = [None] * n, [], 0, 0
+    while i < n and j < m:
+        s = sim(A[i], B[j])
+        if s >= min_sim and abs(best[i][j] - (best[i + 1][j + 1] + s - min_sim)) < 1e-9:
+            times[i] = (asr[j][1], asr[j][2]); pairs.append((i, j)); i += 1; j += 1
+        elif best[i][j] == best[i + 1][j]:
+            i += 1
+        else:
+            j += 1
+    # caption words left unmatched between two matches borrow the timing of the spoken words
+    # left unmatched in the same place (e.g. "Hey" heard as "ए", "please" as "प्लीज")
+    anchors = [(-1, -1)] + pairs + [(n, m)]
+    for (i0, j0), (i1, j1) in zip(anchors[:-1], anchors[1:]):
+        gap_i, gap_j = list(range(i0 + 1, i1)), list(range(j0 + 1, j1))
+        for k, ii in enumerate(gap_i):
+            if gap_j:
+                jj = gap_j[min(len(gap_j) - 1, k * len(gap_j) // len(gap_i))]
+                times[ii] = (asr[jj][1], asr[jj][2])
+    return times
+
+
+def align(script_words, asr, fuzzy=False):
+    if fuzzy:
+        times = fuzzy_align(script_words, asr)
+        return fill_times(script_words, times)
+    return exact_align(script_words, asr)
+
+
+def exact_align(script_words, asr):
     """Give each word of the script a start and end time, taken from the matching spoken word."""
     a, b = [norm(w) for w in script_words], [norm(w) for w, _, _ in asr]
     times = [None] * len(a)
@@ -84,6 +150,10 @@ def align(script_words, asr):
             s, e, n = asr[j1][1], asr[j2 - 1][2], i2 - i1
             for k in range(n):
                 times[i1 + k] = (s + (e - s) * k / n, s + (e - s) * (k + 1) / n)
+    return fill_times(script_words, times)
+
+
+def fill_times(script_words, times):
     known = [i for i, x in enumerate(times) if x]
     if not known:
         raise SystemExit('could not match any word of the script to the audio')
@@ -107,6 +177,14 @@ def pages_from(words, max_chars=20, max_lines=2):
         nonlocal lines, line
         if line:
             lines.append(line)
+        if len(lines) == 2:  # rebalance, so no line is left holding one stray word
+            ids = lines[0] + lines[1]
+            txt = lambda part: ' '.join(words[k]['w'] for k in part)
+            options = [(abs(len(txt(ids[:k])) - len(txt(ids[k:]))), k) for k in range(1, len(ids))
+                       if max(len(txt(ids[:k])), len(txt(ids[k:]))) <= max_chars + 3]
+            if options:
+                k = min(options)[1]
+                lines = [ids[:k], ids[k:]]
         if lines:
             ids = [i for l in lines for i in l]
             pages.append(dict(lines=lines, s=words[ids[0]]['s'], e=words[ids[-1]]['e']))
@@ -199,7 +277,8 @@ def main():
     sys.path.insert(0, str(ROOT))
     import librosa as _l, performance
     regions = performance.speech_regions(_l.load(voice, sr=24000)[0], 24000)
-    words = align(script_words, snap_to_speech(word_times(voice, args.lang), regions))
+    latin_captions = all(ord(c) < 0x900 for c in ''.join(script_words))
+    words = align(script_words, snap_to_speech(word_times(voice, args.lang), regions), fuzzy=args.lang != 'en' and latin_captions)
     pages = pages_from(words)
     env = envelope(voice, duration)
     voice_end = min(duration, words[-1]['e'] + 0.3)
@@ -255,13 +334,17 @@ def main():
 
     unsaid = script['unsaid'] if script else 'Sorry'
     title = (dedication[:1].upper() + dedication[1:]) if dedication else f"{char.get('name')}'s voice note"
+    hindi = args.lang == 'hi'
+    line2 = (f"Ek chhota sa voice note, {char.get('name')} ki taraf se. Us insaan ke liye, jise tum keh nahi paaye." if hindi
+             else f"A tiny voice note from {char.get('name')}, for the person you can't say it to.")
+    pinned = (PINNED_HI if hindi else PINNED).get(unsaid, (PINNED_HI if hindi else PINNED)['Sorry'])
     upload = [
         f"TITLE\n{title} | {char.get('playlist', '')}",
-        f"DESCRIPTION\n{title}.\nA tiny voice note from {char.get('name')}, for the person you can't say it to.\n\n"
+        f"DESCRIPTION\n{title}.\n{line2}\n\n"
         f"Fictional character, made with AI: the voice comes from the creator's own acted performance"
-        f"{', the visuals are AI-generated' if args.ai_visuals else ''}.\n#pov {TAGS.get(char_dir.name, '')} #shorts",
+        f"{', the visuals are AI-generated' if args.ai_visuals else ''}.\n#pov {TAGS.get(char_dir.name, '')}{' #hindi #hinglish' if hindi else ''} #shorts",
         f"PLAYLIST\n{char.get('playlist', '')}",
-        f"PINNED COMMENT\n{char.get('name')}: {PINNED.get(unsaid, PINNED['Sorry'])}",
+        f"PINNED COMMENT\n{char.get('name')}: {pinned}",
         "WHEN UPLOADING\n- Altered or synthetic content: Yes\n- Audience: No, it's not made for kids\n- Subtitles: upload the .srt file",
     ]
     (ep / f'upload{tag}.txt').write_text('\n\n'.join(upload) + '\n')
