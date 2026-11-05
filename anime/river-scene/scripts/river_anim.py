@@ -3,7 +3,7 @@ wind in the girl's hair, blowing leaves, slow push-in. Streams raw RGB frames to
 import sys, os, math, argparse, numpy as np, cv2
 ap = argparse.ArgumentParser()
 ap.add_argument('--dir'); ap.add_argument('--seconds', type=float, default=10); ap.add_argument('--fps', type=int, default=30)
-ap.add_argument('--debug', default='')
+ap.add_argument('--debug', default=''); ap.add_argument('--leaves', type=int, default=22)
 a = ap.parse_args()
 R = a.dir; W, H = 1080, 1920
 bg = cv2.imread(os.path.join(R, 'bg.png'))[..., ::-1].astype(np.float32)
@@ -107,7 +107,7 @@ if a.debug:
 
 # ---------------- leaves / petals ----------------
 rng = np.random.default_rng(7)
-NL = 22
+NL = a.leaves
 L = [dict(x=rng.uniform(-200, W), y=rng.uniform(380, 1850), z=rng.uniform(0.4, 1.0), ph=rng.uniform(0, 6.28),
           rot=rng.uniform(0, 6.28), vr=rng.uniform(-3, 3), kind=rng.choice(['leaf', 'leaf', 'petal'])) for _ in range(NL)]
 
