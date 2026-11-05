@@ -39,6 +39,11 @@ Requirements: ffmpeg, numpy, opencv-python-headless, pillow, scipy; fonts in `sh
      `1080 / (zoom * 1.04)` of a 1080-row source.
    - Find the channel logo's position. Keep the crop off it with `focus`, or, in `fit` mode, a region that excludes it.
    - Cropping a logo out is fine. Don't inpaint or blur one away.
+   - Burned-in subtitles: find their rows and keep the window above them (zoom ~1.72 and focus y ~0.42 for subtitles at
+     rows ~780 of 1080), or use shots between lines. They are also the best translation of foreign dialogue: read
+     them for the captions (machine translation of the audio drifts).
+   - AV1 sources: OpenCV can't decode them; transcode to H.264 first
+     (`ffmpeg -i in.mp4 -an -c:v libx264 -crf 14 -preset veryfast -pix_fmt yuv420p clips/source.mp4`).
 5. **Fill `story.json`** (start from `episodes/karma-wedding/story.json`):
    - **Layout:** `"layout": {"type": "window", ...}` with the measured box and `scale_keys`.
    - **Shots** from the source (`clips/source.mp4`, a symlink is fine): `in`, `speed` (slow-mo is blended),
@@ -48,6 +53,8 @@ Requirements: ffmpeg, numpy, opencv-python-headless, pillow, scipy; fonts in `sh
    - **Punchline:** `"style": "punch"`, with `"beats"` set to the hits after the drop.
    - **Transitions:** one `glitch` where the music swells.
    - **Sound:** no `auto_sfx`, because the reference's soundtrack already carries its whooshes.
+   - **Mood:** if the user names a theme (lust, greed, karma), grade for it per shot (`"grade": {"tint", "sat", "gamma"}`)
+     and slow the glances down (0.7-0.8x). Keep it suggestive, never explicit, in the edit and the thumbnail.
 6. **Check and render.**
    - `python3 -m beatcut.story episodes/<name> --stills`, tiled into one sheet. Fix framing: no black bars or logo
      inside the window, captions above it, text readable.

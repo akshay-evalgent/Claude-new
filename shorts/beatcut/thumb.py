@@ -7,6 +7,7 @@
                   "lines": ["HIS SHIRT WAS A", "“^yPLASTIC ^yBAG”"], "heart_at": [0.82, 0.62]}
 
     Punchline look (no heart): "punch": [["KARMA CAME TO", [255, 255, 255]], ["THE WEDDING!", [255, 36, 36]]], "heart": false
+    Per-panel colour: "grade": {"tint": [1.12, 0.9, 1.0], "gamma": 1.4} (as in a shot's grade)
 """
 import json
 import subprocess
@@ -17,7 +18,7 @@ import cv2
 import numpy as np
 
 from .render import Look
-from .story import NeonCaption, PunchCaption, blend, emoji_sprite, HeartBurst
+from .story import NeonCaption, PunchCaption, blend, emoji_sprite, HeartBurst, grade
 
 
 def grab(path, t):
@@ -56,6 +57,9 @@ def main(ep_dir):
         img = panel(fr, W, half, p.get("focus", [0.5, 0.5]), p.get("zoom", 1.0))
         if p.get("bw"):
             img = cv2.cvtColor(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), cv2.COLOR_GRAY2BGR)
+        if p.get("grade"):
+            # same keys as a shot's "grade" in story.json: exposure, contrast, sat, gamma, tint
+            img = grade(img, **p["grade"])
         out[y0:y0 + half] = img
     out = Look(W, H).apply(out, 0, contrast=1.1, sat=1.25, grain=1.5)
     # dark band on the seam so the words read

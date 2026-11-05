@@ -1,0 +1,592 @@
+{
+ "title": "Lust: if only",
+ "size": [
+  1080,
+  1920
+ ],
+ "fps": 30,
+ "crf": 17,
+ "music": {
+  "file": "clips/music.m4a"
+ },
+ "fade_in": [
+  0.0,
+  0.01
+ ],
+ "layout": {
+  "type": "window",
+  "box": [
+   0,
+   0.216,
+   1,
+   0.784
+  ],
+  "bg": [
+   0,
+   0,
+   0
+  ],
+  "scale_keys": [
+   [
+    0,
+    1.0
+   ],
+   [
+    4.28,
+    1.0
+   ],
+   [
+    4.97,
+    1.27,
+    "linear"
+   ],
+   [
+    5.15,
+    1.25,
+    "linear"
+   ],
+   [
+    6.38,
+    1.0,
+    "linear"
+   ],
+   [
+    12.62,
+    1.0
+   ],
+   [
+    12.85,
+    1.3,
+    "in"
+   ],
+   [
+    12.97,
+    0.98,
+    "linear"
+   ],
+   [
+    13.15,
+    1.0
+   ]
+  ]
+ },
+ "transitions": [
+  {
+   "t": 12.75,
+   "type": "glitch",
+   "b": 0.12
+  }
+ ],
+ "shots": [
+  {
+   "t0": 0.0,
+   "t1": 2.0,
+   "clip": "source",
+   "in": 239.6,
+   "speed": 0.8,
+   "focus": [
+    0.4,
+    0.42
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.72
+    ],
+    [
+     2.0,
+     1.8
+    ]
+   ],
+   "note": "friend films himself singing",
+   "grade": {
+    "tint": [
+     1.12,
+     0.9,
+     1.0
+    ],
+    "sat": 1.15,
+    "contrast": 1.08
+   }
+  },
+  {
+   "t0": 2.0,
+   "t1": 4.02,
+   "clip": "source",
+   "in": 242.5,
+   "speed": 0.75,
+   "focus": [
+    0.45,
+    0.42
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.72
+    ],
+    [
+     2.02,
+     1.8
+    ]
+   ],
+   "note": "the wife fixes her hair, looks at him",
+   "grade": {
+    "tint": [
+     1.12,
+     0.9,
+     1.0
+    ],
+    "sat": 1.15,
+    "contrast": 1.08
+   }
+  },
+  {
+   "t0": 4.02,
+   "t1": 6.08,
+   "clip": "source",
+   "in": 79.0,
+   "speed": 1.0,
+   "focus": [
+    0.72,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.4
+    ],
+    [
+     2.06,
+     1.47
+    ]
+   ],
+   "note": "husband on the phone: 'very soon you'll be a grandmother'",
+   "grade": {
+    "tint": [
+     1.04,
+     0.98,
+     0.95
+    ]
+   }
+  },
+  {
+   "t0": 6.08,
+   "t1": 7.75,
+   "clip": "source",
+   "in": 102.7,
+   "speed": 1.0,
+   "focus": [
+    0.68,
+    0.42
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.72
+    ],
+    [
+     1.67,
+     1.8
+    ]
+   ],
+   "note": "husband toasts his friend: 'I want you to have it first'",
+   "grade": {
+    "tint": [
+     1.04,
+     0.98,
+     0.95
+    ]
+   }
+  },
+  {
+   "t0": 7.75,
+   "t1": 9.42,
+   "clip": "source",
+   "in": 121.0,
+   "speed": 1.0,
+   "focus": [
+    0.47,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.4
+    ],
+    [
+     1.67,
+     1.47
+    ]
+   ],
+   "note": "the friend stares (at the wife, off screen)",
+   "grade": {
+    "tint": [
+     1.04,
+     0.98,
+     0.95
+    ]
+   }
+  },
+  {
+   "t0": 9.42,
+   "t1": 11.1,
+   "clip": "source",
+   "in": 211.0,
+   "speed": 1.0,
+   "focus": [
+    0.3,
+    0.42
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.72
+    ],
+    [
+     1.68,
+     1.8
+    ]
+   ],
+   "note": "friend sings and films the wife, husband looks down",
+   "grade": {
+    "tint": [
+     1.12,
+     0.9,
+     1.0
+    ],
+    "sat": 1.15,
+    "contrast": 1.08
+   }
+  },
+  {
+   "t0": 11.1,
+   "t1": 12.75,
+   "clip": "source",
+   "in": 233.9,
+   "speed": 0.7,
+   "focus": [
+    0.42,
+    0.42
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.72
+    ],
+    [
+     1.65,
+     1.8
+    ]
+   ],
+   "note": "the wife looks up",
+   "grade": {
+    "tint": [
+     1.12,
+     0.9,
+     1.0
+    ],
+    "sat": 1.15,
+    "contrast": 1.08
+   }
+  },
+  {
+   "t0": 12.75,
+   "t1": 14.4,
+   "clip": "source",
+   "in": 287.7,
+   "speed": 1.0,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.4
+    ],
+    [
+     1.65,
+     1.47
+    ]
+   ],
+   "note": "night: the wife watches",
+   "grade": {
+    "tint": [
+     1.12,
+     0.9,
+     1.0
+    ],
+    "sat": 1.15,
+    "contrast": 1.08,
+    "gamma": 1.5,
+    "exposure": 1.12
+   }
+  },
+  {
+   "t0": 14.4,
+   "t1": 16.0,
+   "clip": "source",
+   "in": 285.4,
+   "speed": 1.0,
+   "focus": [
+    0.58,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.4
+    ],
+    [
+     1.6,
+     1.47
+    ]
+   ],
+   "note": "night: the friend undresses to his vest",
+   "grade": {
+    "tint": [
+     1.12,
+     0.9,
+     1.0
+    ],
+    "sat": 1.15,
+    "contrast": 1.08,
+    "gamma": 1.5,
+    "exposure": 1.12
+   }
+  },
+  {
+   "t0": 16.0,
+   "t1": 17.72,
+   "clip": "source",
+   "in": 293.0,
+   "speed": 1.0,
+   "focus": [
+    0.4,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.4
+    ],
+    [
+     1.72,
+     1.47
+    ]
+   ],
+   "note": "the husband lies awake",
+   "grade": {
+    "tint": [
+     0.86,
+     0.96,
+     1.14
+    ],
+    "sat": 0.55,
+    "contrast": 1.1,
+    "gamma": 1.4,
+    "exposure": 1.12
+   }
+  },
+  {
+   "t0": 17.72,
+   "t1": 21.3,
+   "clip": "source",
+   "in": 312.5,
+   "speed": 1.0,
+   "focus": [
+    0.32,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.4
+    ],
+    [
+     3.58,
+     1.56
+    ]
+   ],
+   "note": "husband's face, the confession",
+   "grade": {
+    "tint": [
+     0.86,
+     0.96,
+     1.14
+    ],
+    "sat": 0.55,
+    "contrast": 1.1,
+    "gamma": 1.3,
+    "exposure": 1.05
+   }
+  },
+  {
+   "t0": 21.3,
+   "t1": 23.6,
+   "clip": "source",
+   "in": 322.8,
+   "speed": 1.0,
+   "focus": [
+    0.52,
+    0.5
+   ],
+   "zoom_keys": [
+    [
+     0,
+     1.42
+    ],
+    [
+     2.3,
+     1.5
+    ]
+   ],
+   "note": "the precaution he didn't take",
+   "grade": {
+    "tint": [
+     0.86,
+     0.96,
+     1.14
+    ],
+    "sat": 0.55,
+    "contrast": 1.1,
+    "gamma": 1.3,
+    "exposure": 1.05
+   }
+  }
+ ],
+ "captions": [
+  {
+   "t0": 0.0,
+   "t1": 4.0,
+   "style": "line",
+   "anchor": "above_window",
+   "cps": 55,
+   "sparkle": true,
+   "lines": [
+    "THIS IS WHY ^rLUST ^wALWAYS COSTS YOU!"
+   ]
+  },
+  {
+   "t0": 4.02,
+   "t1": 6.0,
+   "style": "line",
+   "anchor": "above_window",
+   "cps": 55,
+   "sparkle": true,
+   "lines": [
+    "HE PROMISED HIS MOTHER A ^yGRANDCHILD"
+   ]
+  },
+  {
+   "t0": 6.08,
+   "t1": 9.4,
+   "style": "line",
+   "anchor": "above_window",
+   "cps": 55,
+   "sparkle": true,
+   "lines": [
+    "THEN HIS ^yBEST ^yFRIEND ^wCAME OVER"
+   ]
+  },
+  {
+   "t0": 9.42,
+   "t1": 13.05,
+   "style": "line",
+   "anchor": "above_window",
+   "cps": 55,
+   "sparkle": true,
+   "lines": [
+    "AND SANG ^rLOVE ^rSONGS ^wTO HIS WIFE"
+   ]
+  },
+  {
+   "t0": 13.07,
+   "t1": 17.6,
+   "style": "line",
+   "anchor": "above_window",
+   "cps": 55,
+   "sparkle": true,
+   "lines": [
+    "HE HAD A ^rFATAL ^rDISEASE ^wFROM ANOTHER WOMAN"
+   ]
+  },
+  {
+   "t0": 17.72,
+   "t1": 23.6,
+   "style": "punch",
+   "anchor": "above_window",
+   "lines": [
+    "“IF ONLY I'D TAKEN PRECAUTION”"
+   ],
+   "beats": [
+    17.72,
+    18.16,
+    18.59,
+    19.1,
+    19.6,
+    20.03
+   ]
+  }
+ ],
+ "thumbnail": {
+  "top": {
+   "clip": "source",
+   "t": 243.6,
+   "focus": [
+    0.45,
+    0.43
+   ],
+   "zoom": 1.75,
+   "grade": {
+    "tint": [
+     1.12,
+     0.9,
+     1.0
+    ],
+    "sat": 1.15,
+    "contrast": 1.08
+   }
+  },
+  "bottom": {
+   "clip": "source",
+   "t": 313.0,
+   "focus": [
+    0.32,
+    0.5
+   ],
+   "zoom": 1.45,
+   "grade": {
+    "tint": [
+     0.86,
+     0.96,
+     1.14
+    ],
+    "sat": 0.55,
+    "contrast": 1.1,
+    "gamma": 1.4,
+    "exposure": 1.1
+   }
+  },
+  "punch": [
+   [
+    "LUST COST HIM",
+    [
+     255,
+     255,
+     255
+    ]
+   ],
+   [
+    "EVERYTHING",
+    [
+     255,
+     36,
+     36
+    ]
+   ]
+  ],
+  "size": 0.13,
+  "heart": false
+ }
+}

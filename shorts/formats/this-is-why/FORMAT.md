@@ -34,6 +34,9 @@ Measured from the reference Short `JRzZ-iorXh0` (23.6 s, 142 BPM). Example: `epi
 - Text in the footage (letters, phones): use `"fit": [x0, y0, x1, y1]` so the whole line shows over a blurred fill,
   instead of cropping words off.
 - Scripted footage (movie clips): say so in the description, and credit the source.
+- **Mood grade** (`shots[].grade`), when the story has a theme: e.g. lust = `{"tint": [1.12, 0.9, 1.0], "sat": 1.15}`
+  on the temptation shots, then `{"tint": [0.86, 0.96, 1.14], "sat": 0.55}` once it turns; add `"gamma": 1.3-1.5` to
+  lift dark night footage. Example: `episodes/lust-nirodh/`.
 
 ## Build
 1. `python3 -m beatcut.mirror analyze <reference.mp4> episodes/<name>` (writes `clips/music.m4a`).

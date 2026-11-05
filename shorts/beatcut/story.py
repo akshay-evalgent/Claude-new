@@ -327,11 +327,16 @@ def make_caption(cfg, W, H):
     return {"line": LineCaption, "punch": PunchCaption}.get(cfg.get("style"), NeonCaption)(cfg, W, H)
 
 
-def grade(img, exposure=1.0, contrast=1.05, sat=1.1):
-    """Light colour grade without vignette or grain (for the windowed layout)."""
+def grade(img, exposure=1.0, contrast=1.05, sat=1.1, gamma=1.0, tint=None):
+    """Light colour grade without vignette or grain (for the windowed layout).
+    gamma > 1 lifts the shadows of dark footage; tint is an [r, g, b] multiplier (a mood: warm red, cold blue)."""
     x = img.astype(np.float32) * (exposure / 255.0)
+    if gamma != 1.0:
+        x = np.power(np.clip(x, 0, 1), 1.0 / gamma)
     luma = x @ np.array([0.114, 0.587, 0.299], np.float32)
     x = luma[:, :, None] + (x - luma[:, :, None]) * sat
+    if tint:
+        x = x * np.array(tint[::-1], np.float32)        # RGB in the spec, BGR here
     x = (x - 0.5) * contrast + 0.5
     return np.clip(x * 255.0, 0, 255).astype(np.uint8)
 
@@ -875,7 +880,7 @@ def render(ep_dir, stills=False, only=None):
         if any(a <= t < b for a, b in flick):
             expo *= 1.035 if f % 2 else 0.965
         if window:
-            img = grade(img, expo, g.get("contrast", 1.05), g.get("sat", 1.1))
+            img = grade(img, expo, g.get("contrast", 1.05), g.get("sat", 1.1), g.get("gamma", 1.0), g.get("tint"))
             img = trans.apply(img, t, f)                 # transitions stay inside the window
             canvas = np.empty((H, W, 3), np.uint8)
             canvas[:] = bg
