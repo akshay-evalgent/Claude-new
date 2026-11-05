@@ -11,7 +11,10 @@
    "#e2a72e",
    "#b9c0c8",
    "#3e5c3a"
-  ]
+  ],
+  "scene": "kitchen",
+  "accent": "#f5b52e",
+  "time_label": "6:02 AM"
  },
  "description": "Indian woman in her late 40s, warm affectionate motherly voice, a little tired, speaking at a gentle pace with an Indian English accent",
  "sample_text": "Beta, I just wanted to check if you reached safely. Call me when you get a minute, okay?",

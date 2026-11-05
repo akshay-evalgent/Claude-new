@@ -11,7 +11,10 @@
    "#3a4a63",
    "#e58a3a",
    "#b8a47e"
-  ]
+  ],
+  "scene": "scooter",
+  "accent": "#f29a4a",
+  "time_label": "9:40 PM"
  },
  "description": "Indian man in his late 50s, deep calm fatherly voice, speaking slowly with few words, gentle under a serious tone, Indian English accent",
  "sample_text": "Your mother said I should call. So, I'm calling. Everything is fine here. Eat on time.",

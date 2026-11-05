@@ -11,7 +11,10 @@
    "#e9773b",
    "#4b3b6b",
    "#8b8f98"
-  ]
+  ],
+  "scene": "rooftop",
+  "accent": "#ff8a3d",
+  "time_label": "7:15 PM"
  },
  "description": "Indian man in his late 20s, slightly gruff but warm voice, casual and protective, speaking plainly",
  "sample_text": "Hey. Sorry, I'm bad at texting, so here's a voice note. Call me when you're free.",

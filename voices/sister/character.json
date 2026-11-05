@@ -11,7 +11,10 @@
    "#f2b8c6",
    "#8fd3c1",
    "#fbf3ee"
-  ]
+  ],
+  "scene": "room",
+  "accent": "#ff8fb1",
+  "time_label": "12:31 AM"
  },
  "description": "Young Indian woman in her mid 20s, bright playful teasing voice, quick and expressive, confident big-sister energy",
  "sample_text": "Okay, listen. Maa is asking where you were, and I covered for you again, so you owe me.",
