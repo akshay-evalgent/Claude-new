@@ -370,7 +370,7 @@ The question for anyone building a product: if the companies buying the chips al
 #Tech
 #Startups
 #FounderSignal""",
-      first_comment="""Sources: Tom's Hardware, TechRadar, Yahoo Finance, Cybernews, 2 to 3 Nov 2026. Photo of Elon Musk: Wikimedia Commons, CC BY-SA. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+      first_comment="""Sources: Tom's Hardware, TechRadar, Yahoo Finance, Cybernews, 2 to 3 Nov 2026. Photo of Elon Musk: Wikimedia Commons, CC BY-SA. Photo of Sam Altman: [source of the photo]. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
  dict(slug="proton-loser-thinking", when="Wed 4 Nov · 8:30 pm IST (debate)", pillar="Signal (news)", kind="image",
       images=["assets/posts/2026-11-04/signal-proton-loser-thinking.png", "assets/posts/2026-11-04/signal-proton-loser-thinking-square.png"],
       tags="@Proton",
@@ -524,7 +524,7 @@ Has AI given you a single hour back this year, or has it just filled the hours y
 #India
 #FutureOfWork
 #FounderSignal""",
-      first_comment="""Sources: Goyal's remarks at the India-Netherlands Business Forum (26 to 27 Oct 2026) as reported by The People's Board, Infomance and Bundle; The Wire (2 Nov 2026) on working hours; Moneywise and Yahoo Finance on Altman's podcast remarks (summer 2026). Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+      first_comment="""Sources: Goyal's remarks at the India-Netherlands Business Forum (26 to 27 Oct 2026) as reported by The People's Board, Infomance and Bundle; The Wire (2 Nov 2026) on working hours; Moneywise and Yahoo Finance on Altman's podcast remarks (summer 2026). Photos: Piyush Goyal, [source of the photo]; Sam Altman, [source of the photo]. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
  dict(slug="ai-like-training-new-hire", when="Fri 6 Nov · 1:30 pm IST (Europe + India)", pillar="Signal (news)", kind="image",
       images=["assets/posts/2026-11-06/signal-ai-like-training-new-hire.png", "assets/posts/2026-11-06/signal-ai-like-training-new-hire-square.png"],
       tags="@OpenAI  @Anthropic  @Google",
