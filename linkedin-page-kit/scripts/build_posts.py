@@ -7,6 +7,12 @@ OUT = os.path.join(ROOT, "upload-kit", "POSTS")
 P3 = "assets/posts/2026-11-03/"
 
 HOW = {
+ "video": """HOW TO POST (video post)
+1. Open linkedin.com/company/thefoundersignal/admin and click "Start a post" as the page.
+2. Click the video icon (or "Media"), upload video.mp4. It has no sound on purpose: LinkedIn autoplays videos muted.
+3. If LinkedIn offers a thumbnail, pick the last frame (the full stack). Skip captions/subtitles, there is no audio.
+4. Paste caption.txt into the text box. Click Post.
+5. Comment with first-comment.txt and pin it. Reply to every comment for 90 minutes.""",
  "image": """HOW TO POST (image post)
 1. Open linkedin.com/company/thefoundersignal/admin (you must be logged in as the admin).
 2. Click "Start a post" in the admin view. Check the small avatar at the top of the box shows the page, not your name.
@@ -649,6 +655,14 @@ Running a staffing agency? OpenCATS is an older open-source ATS built for agenci
 I post free tools like this most days. Follow the page if it's useful."""),
 ]
 
+_hire = next(p for p in POSTS if p["slug"] == "free-hiring-stack")
+POSTS += [
+ dict(_hire, slug="free-hiring-stack-video", kind="video", pillar="Tools for hiring · animated video (recommended)",
+      images=["assets/posts/2026-11-05c/hiring-free-stack.mp4"]),
+ dict(_hire, slug="free-hiring-stack-carousel", kind="document", pillar="Tools for hiring · 10-slide carousel",
+      images=["assets/posts/2026-11-05c/carousel/carousel.pdf"], doc_title="The free hiring stack: 6 paid tools you can swap for free ones"),
+]
+
 def write_post(p, i, outdir):
     """Write one post folder: image(s) or PDF, caption.txt, first-comment.txt, how-to-post.txt."""
     d = os.path.join(outdir, f"POST-{i:02d}-{p['slug']}"); os.makedirs(d)
@@ -656,7 +670,7 @@ def write_post(p, i, outdir):
         s = os.path.join(ROOT, src)
         if not os.path.exists(s): print("MISSING", src); continue
         ext = os.path.splitext(src)[1]
-        name = "carousel.pdf" if ext == ".pdf" else ("image-square.png" if "square" in src else "image.png")
+        name = {".pdf": "carousel.pdf", ".mp4": "video.mp4"}.get(ext, "image-square.png" if "square" in src else "image.png")
         shutil.copy(s, os.path.join(d, name))
     with open(os.path.join(d, "caption.txt"), "w") as f:
         if p["tags"]: f.write(f"TAG IN THE POST (type @ and pick): {p['tags']}\n\n")
@@ -664,6 +678,7 @@ def write_post(p, i, outdir):
     with open(os.path.join(d, "first-comment.txt"), "w") as f: f.write(p["first_comment"] + "\n")
     with open(os.path.join(d, "how-to-post.txt"), "w") as f:
         f.write(f"POST {i:02d} · {p['when']} · {p['pillar']}\n\n{HOW[p['kind']]}\n")
+        if p.get("doc_title"): f.write(f"\nDocument title to type when uploading the PDF: {p['doc_title']}\n")
     return f"| {i:02d} | {p['when']} | {p['pillar']} | POST-{i:02d}-{p['slug']} |"
 
 def main():

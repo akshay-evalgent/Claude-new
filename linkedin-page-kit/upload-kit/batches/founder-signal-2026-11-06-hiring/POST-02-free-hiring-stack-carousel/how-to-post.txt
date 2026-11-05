@@ -1,0 +1,10 @@
+POST 02 · Fri 6 Nov · 1:30 pm IST (recruiters in India and Europe at work) · Tools for hiring · 10-slide carousel
+
+HOW TO POST (carousel / document post)
+1. Open linkedin.com/company/thefoundersignal/admin and click "Start a post" as the page.
+2. Click the "+" (more) icon, then "Add a document". Upload carousel.pdf. Give it the title shown in caption.txt's first line.
+3. Paste caption.txt into the text box.
+4. Click Post. Then comment with first-comment.txt and pin it.
+5. Reply to every comment for 90 minutes.
+
+Document title to type when uploading the PDF: The free hiring stack: 6 paid tools you can swap for free ones

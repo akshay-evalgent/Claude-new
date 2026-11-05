@@ -7,39 +7,107 @@
       "paid": "Greenhouse \u00b7 Lever \u00b7 Workable",
       "free": "Frappe HR",
       "stars": "9k",
-      "note": "Openings, applicants by source, interview rounds, offer letters"
+      "note": "Openings, applicants by source, interview rounds, offer letters",
+      "job": "Applicant tracking",
+      "paid_short": "Greenhouse",
+      "repo": "github.com/frappe/hrms",
+      "get": [
+        "Job openings and hiring plans",
+        "Applicants tagged by source: referral, website, campaign",
+        "Interview rounds with feedback from each interviewer",
+        "Offer letters, then one click to make them an employee"
+      ],
+      "catch": "It's a full HR and payroll system, so give it an afternoon to set up.",
+      "stars_n": 9020
     },
     {
       "paid": "Calendly",
       "free": "Cal.com",
       "stars": "49k",
-      "note": "Candidates pick their own interview slot"
+      "note": "Candidates pick their own interview slot",
+      "job": "Interview scheduling",
+      "paid_short": "Calendly",
+      "repo": "github.com/calcom/cal.diy",
+      "get": [
+        "A booking page connected to your calendar",
+        "Candidates pick their own slot",
+        "Reminders go out automatically"
+      ],
+      "catch": "Running it yourself needs a server. The hosted version is the quick start.",
+      "stars_n": 49714
     },
     {
       "paid": "Zoom",
       "free": "Jitsi Meet",
       "stars": "30k",
-      "note": "Candidates join from a link in the browser, no account"
+      "note": "Candidates join from a link in the browser, no account",
+      "job": "Video interviews",
+      "paid_short": "Zoom",
+      "repo": "github.com/jitsi/jitsi-meet",
+      "get": [
+        "Interviews from a link",
+        "Works in the browser",
+        "No account needed for the candidate"
+      ],
+      "catch": "On the public meet.jit.si service the host signs in. Self-host it for full control.",
+      "stars_n": 30203
     },
     {
       "paid": "Typeform",
       "free": "Formbricks",
       "stars": "13k",
-      "note": "Application forms and screening questions"
+      "note": "Application forms and screening questions",
+      "job": "Application forms",
+      "paid_short": "Typeform",
+      "repo": "github.com/formbricks/formbricks",
+      "get": [
+        "Application forms",
+        "A few screening questions",
+        "All responses in one place"
+      ],
+      "catch": "It's built as a survey tool. It gives you forms, not a full careers page.",
+      "stars_n": 13217
     },
     {
       "paid": "DocuSign",
       "free": "Documenso",
       "stars": "15k",
-      "note": "Offer letters signed online"
+      "note": "Offer letters signed online",
+      "job": "Offer letters",
+      "paid_short": "DocuSign",
+      "repo": "github.com/documenso/documenso",
+      "get": [
+        "Send offer letters for e-signature",
+        "Reusable templates",
+        "A signing record for every document"
+      ],
+      "catch": "Check your country's e-signature rules for employment contracts first.",
+      "stars_n": 15665
     },
     {
       "paid": "Paid AI screening tools",
       "free": "Ollama + Open WebUI",
       "stars": "186k",
-      "note": "AI on your own laptop, so CVs never leave your machine"
+      "note": "AI on your own laptop, so CVs never leave your machine",
+      "job": "Reading CVs with AI",
+      "paid_short": "AI screening tools",
+      "repo": "github.com/ollama/ollama  \u00b7  github.com/open-webui/open-webui",
+      "get": [
+        "An AI model running on your own laptop",
+        "Upload CVs and the job description, ask for a summary against the role",
+        "Candidate data never leaves your machine"
+      ],
+      "catch": "You need a recent laptop with plenty of memory. Smaller models run fine, big ones crawl.",
+      "stars_n": 186016
     }
   ],
   "warning_title": "Use AI to read faster, not to reject.",
-  "warning": "A person should make every no. NYC and the EU have rules on AI screening."
+  "warning": "A person should make every no. NYC and the EU have rules on AI screening.",
+  "cover_title": "6 paid hiring tools you can swap for free ones",
+  "cover_sub": "All open source. Use the free hosted version or run it yourself.",
+  "warning_lines": [
+    "If the role is in New York City, automated screening tools need a yearly independent bias audit by law.",
+    "The EU AI Act lists AI screening of job applicants as high-risk.",
+    "Have a person make every no."
+  ]
 }

@@ -1,0 +1,10 @@
+Links if you want to try them (star counts checked today):
+Frappe HR: github.com/frappe/hrms
+Cal.com: github.com/calcom/cal.diy
+Jitsi Meet: github.com/jitsi/jitsi-meet
+Formbricks: github.com/formbricks/formbricks
+Documenso: github.com/documenso/documenso
+Ollama: github.com/ollama/ollama
+Open WebUI: github.com/open-webui/open-webui
+Running a staffing agency? OpenCATS is an older open-source ATS built for agencies: github.com/opencats/OpenCATS
+I post free tools like this most days. Follow the page if it's useful.

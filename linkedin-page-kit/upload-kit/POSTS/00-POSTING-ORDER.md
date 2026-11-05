@@ -34,3 +34,5 @@
 | 30 | Fri 6 Nov · 6:30 pm IST (8 am New York) | Signal (news) | POST-30-ai-election-ads-137m |
 | 31 | Next post after the pause · 8:30 pm IST | Signal (funding + free tool) | POST-31-supabase-free-10b |
 | 32 | Fri 6 Nov · 1:30 pm IST (recruiters in India and Europe at work) | Tools for hiring (free vs paid) | POST-32-free-hiring-stack |
+| 33 | Fri 6 Nov · 1:30 pm IST (recruiters in India and Europe at work) | Tools for hiring · animated video (recommended) | POST-33-free-hiring-stack-video |
+| 34 | Fri 6 Nov · 1:30 pm IST (recruiters in India and Europe at work) | Tools for hiring · 10-slide carousel | POST-34-free-hiring-stack-carousel |

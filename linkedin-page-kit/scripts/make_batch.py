@@ -19,9 +19,9 @@ def main():
     rows = ["# Posts in this batch, in posting order\n", "| # | When (IST) | Pillar | Folder |", "|---|---|---|---|"]
     for i, s in enumerate(slugs, 1):
         rows.append(write_post(by_slug[s], i, out))
-    rows += ["", "Each folder has: image.png (portrait, use this), image-square.png (alternative),",
+    rows += ["", "Each folder has the media to upload (video.mp4, carousel.pdf, or image.png with image-square.png as an alternative),",
              "caption.txt (paste into the post), first-comment.txt (post right after, then pin it),",
-             "how-to-post.txt (the clicks). Never post a [bracket]: replace it or delete the line."]
+             "and how-to-post.txt (the clicks). Never post a [bracket]: replace it or delete the line."]
     with open(os.path.join(out, "00-READ-ME-FIRST.md"), "w") as f: f.write("\n".join(rows) + "\n")
     dist = os.path.join(ROOT, "dist", "batches"); os.makedirs(dist, exist_ok=True)
     z = shutil.make_archive(os.path.join(dist, folder), "zip", os.path.dirname(out), folder)
