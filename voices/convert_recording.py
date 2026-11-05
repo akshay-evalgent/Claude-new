@@ -210,6 +210,11 @@ def main():
             top = max(report['checks'], key=lambda r: (r['words_kept'], r['sounds_like_character']))
             best = takes / top['take']
         report['kept_take'] = best.name
+        if not args.no_check:  # word timings of your original take, for make_video.py's captions
+            import librosa as _l
+            asr, _ = models('small.en' if args.lang == 'en' else 'large-v3-turbo')
+            segs, _ = asr.transcribe(_l.load(src, sr=16000)[0], language=args.lang, word_timestamps=True, beam_size=5)
+            report['source_words'] = [[w.word.strip(), round(w.start, 3), round(w.end, 3)] for sg in segs for w in sg.words]
         print(f'  kept {best.name} (you said: {report["checks"][0]["you_said"]})' if not args.no_check else f'  kept {best.name}')
         src_audio, take_audio = librosa.load(src, sr=SR)[0], librosa.load(best, sr=SR)[0]
         if not args.plain and not args.no_check and len(outs) > 1:

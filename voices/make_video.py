@@ -246,6 +246,7 @@ def main():
     ap.add_argument('--loop-fade', type=float, default=0.5, help='seconds of crossfade where a --bg video loops (default 0.5; 0 for none)')
     ap.add_argument('--captions-y', type=int, default=900, help='top of the caption block in pixels (default 900; lower it onto a dark area of your footage, e.g. 1260)')
     ap.add_argument('--variant', help='save as <char>_<episode>_short_<variant>.mp4, e.g. flow, to compare versions')
+    ap.add_argument('--timing-from', type=Path, help='time captions from this recording (your original take: same timing, clearer words)')
     ap.add_argument('--lang', default='en')
     ap.add_argument('--cover-at', type=float, help='seconds into the Short for the cover frame')
     args = ap.parse_args()
@@ -276,9 +277,21 @@ def main():
     print(f'{stem}: {duration:.1f} s, {len(script_words)} words')
     sys.path.insert(0, str(ROOT))
     import librosa as _l, performance
-    regions = performance.speech_regions(_l.load(voice, sr=24000)[0], 24000)
-    latin_captions = all(ord(c) < 0x900 for c in ''.join(script_words))
-    words = align(script_words, snap_to_speech(word_times(voice, args.lang), regions), fuzzy=args.lang != 'en' and latin_captions)
+    # caption timing comes from your original take when we have it: the converted voice has the same
+    # timing, but a slurred word can pull the matcher onto the wrong word (seen 1-2 s off on Hindi)
+    conv_file = ep / 'conversion.json'
+    saved = json.loads(conv_file.read_text()).get('source_words') if conv_file.exists() else None
+    timing_audio = str(args.timing_from) if args.timing_from else voice
+    if args.timing_from or not saved:
+        spoken = word_times(timing_audio, args.lang)
+        print(f'caption timing from {Path(timing_audio).name}')
+    else:
+        spoken = [tuple(x) for x in saved]
+        timing_audio = None
+        print('caption timing from your original take (saved by convert_recording.py)')
+    regions = performance.speech_regions(_l.load(timing_audio or voice, sr=24000)[0], 24000)
+    latin_captions = not any('\u0900' <= c <= '\u097f' for c in ''.join(script_words))  # no Hindi letters (… and quotes don't count)
+    words = align(script_words, snap_to_speech(spoken, regions), fuzzy=args.lang != 'en' and latin_captions)
     pages = pages_from(words)
     env = envelope(voice, duration)
     voice_end = min(duration, words[-1]['e'] + 0.3)

@@ -1,0 +1,208 @@
+{
+ "settings": {
+  "model": "Seed-VC v1 pitch-following (local)",
+  "steps": 30,
+  "extra_semitones": 0,
+  "reference_clips": [
+   "voice_normal.mp3",
+   "voice_crying.mp3"
+  ]
+ },
+ "checks": [
+  {
+   "take": "take1.wav",
+   "you_said": "कि ये सोग है क्या पता है तुम गुस्षा हो होना भी चाहिए मैंने जो भी बोला ना वो मेरा मतलम नहीं था बस डर गई थी कि तुम कहीं पहले चले ना जाओ और ये तुम्हारे साथ पहर नहीं था कि टेक्स्ट नहीं किया क्योंकि सोरी टाइप करना बहुत चोटा लग रहा था आम सोरी कल बात करें क्या सब ठीक करने के लिए नहीं बस बात करने के लिए प्लीज गुस्षे मेंट सोना होके",
+   "she_said": "खे सोब है क्या बताया तुम गुसाओं होना भी चाहिया नैनो जो भी बोला न गुमेरा मत कर नहीं था मस डर गई थी कि तुम कहनी पहले चले ना जाओ और ये तुम्हारे सान थेर नहीं था टेक्स ने किया क्योंकि सोरी डाइक करना कोछ छोटा लग रहा था आम सोरी खन बात करें गयां सब थी करने के ने नंग बस बात करने के ले प्लीज मुस्तिनावत सोना ओक है",
+   "words_kept": 0.22,
+   "pitch_shape_match": 0.9,
+   "your_pitch_hz": 110,
+   "her_pitch_hz": 202,
+   "length_s": [
+    46.74,
+    46.73
+   ],
+   "sounds_like_character": 0.61,
+   "sounds_like_you": 0.13
+  },
+  {
+   "take": "take2.wav",
+   "you_said": "कि ये सोग है क्या पता है तुम गुस्षा हो होना भी चाहिए मैंने जो भी बोला ना वो मेरा मतलम नहीं था बस डर गई थी कि तुम कहीं पहले चले ना जाओ और ये तुम्हारे साथ पहर नहीं था कि टेक्स्ट नहीं किया क्योंकि सोरी टाइप करना बहुत चोटा लग रहा था आम सोरी कल बात करें क्या सब ठीक करने के लिए नहीं बस बात करने के लिए प्लीज गुस्षे मेंट सोना होके",
+   "she_said": "ठे, सोप है गया, बताया तुम गुसा आओ, होना भी चाहिए, नैनो जो भी बोला न, गुमिरमत्र नहीं था, बस डर गई थी कि तुम, कही पहले चले ना जाओ, और ये तुम हरे साल, थेर नहीं था, ठेक्स नहीं किया, क्योंकि सोरी ठाइट करना, कोई छोटा लग रहा था, I'm sorry, कर बात करें गया, सब थी करने कि नहीं, बस बात करने के लिए, प्लीज, बुसेनावेट सोना, ओके?",
+   "words_kept": 0.32,
+   "pitch_shape_match": 0.91,
+   "your_pitch_hz": 110,
+   "her_pitch_hz": 204,
+   "length_s": [
+    46.74,
+    46.73
+   ],
+   "sounds_like_character": 0.6,
+   "sounds_like_you": 0.15
+  },
+  {
+   "take": "take3.wav",
+   "you_said": "कि ये सोग है क्या पता है तुम गुस्षा हो होना भी चाहिए मैंने जो भी बोला ना वो मेरा मतलम नहीं था बस डर गई थी कि तुम कहीं पहले चले ना जाओ और ये तुम्हारे साथ पहर नहीं था कि टेक्स्ट नहीं किया क्योंकि सोरी टाइप करना बहुत चोटा लग रहा था आम सोरी कल बात करें क्या सब ठीक करने के लिए नहीं बस बात करने के लिए प्लीज गुस्षे मेंट सोना होके",
+   "she_said": "खे, सोब है क्या, पताया तुम गुसा आओ, होना भी जाए, नाईना जो भी बोला ना, गुमेरा मत्या नहीं था, बस डर गई थी कि तुम कहीं पहले चले ना जाओ, और यह तुम्हारे सान थेर नहीं था, टेक्स नहीं किया क्योंकि सारी डाइक करना कोछ चोटा लग रहा था, आम सारी, कल बात करें किया, सब थी करने कि नहीं बस बात करने किया, प्रीज, बुसना वच सुना, ओके?",
+   "words_kept": 0.28,
+   "pitch_shape_match": 0.92,
+   "your_pitch_hz": 110,
+   "her_pitch_hz": 204,
+   "length_s": [
+    46.74,
+    46.73
+   ],
+   "sounds_like_character": 0.59,
+   "sounds_like_you": 0.15
+  }
+ ],
+ "kept_take": "best phrase from each take",
+ "sounds_like_character_speech_only": {
+  "take1.wav": 0.53,
+  "take2.wav": 0.525,
+  "take3.wav": 0.525,
+  "best_phrases": 0.561
+ },
+ "phrases": [
+  {
+   "start_s": 0.43,
+   "end_s": 0.5,
+   "take": "take3.wav",
+   "like_character": 0.07
+  },
+  {
+   "start_s": 0.97,
+   "end_s": 1.43,
+   "take": "take1.wav",
+   "like_character": 0.13
+  },
+  {
+   "start_s": 2.35,
+   "end_s": 3.09,
+   "take": "take2.wav",
+   "like_character": 0.26
+  },
+  {
+   "start_s": 4.91,
+   "end_s": 6.1,
+   "take": "take2.wav",
+   "like_character": 0.43
+  },
+  {
+   "start_s": 6.57,
+   "end_s": 7.51,
+   "take": "take2.wav",
+   "like_character": 0.36
+  },
+  {
+   "start_s": 9.1,
+   "end_s": 10.26,
+   "take": "take2.wav",
+   "like_character": 0.39
+  },
+  {
+   "start_s": 11.21,
+   "end_s": 12.44,
+   "take": "take3.wav",
+   "like_character": 0.39
+  },
+  {
+   "start_s": 13.64,
+   "end_s": 15.16,
+   "take": "take3.wav",
+   "like_character": 0.45
+  },
+  {
+   "start_s": 16.94,
+   "end_s": 18.55,
+   "take": "take1.wav",
+   "like_character": 0.43
+  },
+  {
+   "start_s": 20.11,
+   "end_s": 21.24,
+   "take": "take1.wav",
+   "like_character": 0.3
+  },
+  {
+   "start_s": 21.84,
+   "end_s": 22.55,
+   "take": "take1.wav",
+   "like_character": 0.32
+  },
+  {
+   "start_s": 24.14,
+   "end_s": 25.08,
+   "take": "take3.wav",
+   "like_character": 0.34
+  },
+  {
+   "start_s": 25.36,
+   "end_s": 26.8,
+   "take": "take3.wav",
+   "like_character": 0.43
+  },
+  {
+   "start_s": 27.18,
+   "end_s": 28.31,
+   "take": "take1.wav",
+   "like_character": 0.34
+  },
+  {
+   "start_s": 30.25,
+   "end_s": 30.8,
+   "take": "take2.wav",
+   "like_character": 0.3
+  },
+  {
+   "start_s": 33.61,
+   "end_s": 34.64,
+   "take": "take1.wav",
+   "like_character": 0.44
+  },
+  {
+   "start_s": 36.49,
+   "end_s": 37.81,
+   "take": "take3.wav",
+   "like_character": 0.42
+  },
+  {
+   "start_s": 38.06,
+   "end_s": 39.44,
+   "take": "take1.wav",
+   "like_character": 0.48
+  },
+  {
+   "start_s": 41.48,
+   "end_s": 41.97,
+   "take": "take3.wav",
+   "like_character": 0.33
+  },
+  {
+   "start_s": 42.64,
+   "end_s": 43.76,
+   "take": "take2.wav",
+   "like_character": 0.45
+  },
+  {
+   "start_s": 44.36,
+   "end_s": 44.82,
+   "take": "take3.wav",
+   "like_character": 0.34
+  }
+ ],
+ "performance": {
+  "aligned_ms": -10,
+  "gain_to_match": 0.969,
+  "follows_your_loudness": {
+   "whole_take": [
+    0.92,
+    0.95
+   ],
+   "between_phrases": [
+    0.76,
+    0.86
+   ],
+   "note": "[before, after]"
+  }
+ }
+}
