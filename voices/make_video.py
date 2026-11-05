@@ -163,6 +163,8 @@ def main():
     ap.add_argument('--time', help='time shown on the voice note, e.g. "6:02 AM"')
     ap.add_argument('--bg', type=Path, help='your own photo or video to use instead of the drawn scene')
     ap.add_argument('--music', type=Path, help='optional music bed, mixed well under the voice')
+    ap.add_argument('--bg-audio', type=float, default=0.0, help='keep the --bg video\'s own sound (e.g. rain) at this level under the voice, e.g. 0.15')
+    ap.add_argument('--loop-fade', type=float, default=0.5, help='seconds of crossfade where a --bg video loops (default 0.5; 0 for none)')
     ap.add_argument('--lang', default='en')
     ap.add_argument('--cover-at', type=float, help='seconds into the Short for the cover frame')
     args = ap.parse_args()
@@ -214,12 +216,25 @@ def main():
         if args.bg:  # your footage underneath, cropped to 9:16, looped to length
             video = tmp / 'video.mp4'
             image = args.bg.suffix.lower() in ('.jpg', '.jpeg', '.png', '.webp')
-            bg_in = ['-loop', '1', '-i', str(args.bg)] if image else ['-stream_loop', '-1', '-i', str(args.bg)]
+            bg = args.bg
+            if not image and args.loop_fade > 0:  # make the clip's end flow into its start, so repeats don't jump
+                x = args.loop_fade
+                clip_len = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', str(bg)],
+                                                capture_output=True, text=True, check=True).stdout)
+                bg = tmp / 'bg_loop.mp4'
+                subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(args.bg), '-filter_complex',
+                                f'[0:v]split[a][b];[a]trim=start={x},setpts=PTS-STARTPTS[main];[b]trim=0:{x},setpts=PTS-STARTPTS[head];'
+                                f'[main][head]xfade=transition=fade:duration={x}:offset={clip_len - 2 * x:.3f}[v]',
+                                '-map', '[v]', '-an', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '16', str(bg)], check=True)
+            bg_in = ['-loop', '1', '-i', str(bg)] if image else ['-stream_loop', '-1', '-i', str(bg)]
             subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', *bg_in, '-i', str(layer), '-filter_complex',
                             '[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1[b];[b][1:v]overlay=0:0:format=auto[v]',
                             '-map', '[v]', '-t', str(duration), '-r', str(FPS), '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', str(video)], check=True)
         audio_in = ['-i', str(mixed if mixed.exists() else voice)]
-        if args.music:
+        if args.bg and args.bg_audio > 0 and not args.music:  # the clip's own ambience (rain, street) under the voice
+            fc = f'[2:a]volume={args.bg_audio}[m];[1:a][m]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.89[a]'
+            audio_args = [*audio_in, '-stream_loop', '-1', '-i', str(args.bg), '-filter_complex', fc, '-map', '0:v', '-map', '[a]']
+        elif args.music:
             fc = (f'[2:a]volume=0.12,afade=t=in:d=1.5,afade=t=out:st={max(0, duration - 2)}:d=2[m];'
                   '[1:a][m]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.89[a]')
             audio_args = [*audio_in, '-stream_loop', '-1', '-i', str(args.music), '-filter_complex', fc, '-map', '0:v', '-map', '[a]']

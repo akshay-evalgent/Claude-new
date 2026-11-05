@@ -317,7 +317,7 @@ function renderAt(t) {
   C.pageEls.forEach((el, i) => { el.hidden = i !== pi; });
   if (pi >= 0) C.pageEls[pi].querySelectorAll('.w').forEach(sp => { const w = C.words[+sp.dataset.i];
     sp.classList.toggle('on', t >= w.s); sp.classList.toggle('now', t >= w.s && t < w.e + 0.08); });
-  document.getElementById('capwrap').style.opacity = 1 - loopOut;
+  document.getElementById('capwrap').style.opacity = pi >= 0 ? 1 - loopOut : 0;  // no caption, no scrim
   return true;
 }
 window.setup = setup; window.renderAt = renderAt;
