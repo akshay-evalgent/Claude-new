@@ -54,12 +54,20 @@ What the converter does:
   which uploads your take and has a daily GPU limit.
 - It makes 3 takes and builds the result phrase by phrase from whichever take kept your words
   and sounds most like the character, falling back to the best single take if that scores higher.
+  A single take can drop a word (one local test lost the last two "please"s), which is why it
+  makes three.
+- On this machine (no graphics card) one take of a 20-second recording takes about 5 minutes at
+  the default 30 quality steps, so about 15 minutes per Short. 50 steps scored no better in
+  tests. The first run also downloads about 1 GB of model files.
 - `performance.py` then puts your performance back: the character's voice only where you speak,
   your real breaths and gulps between phrases (hiss-only moments turned down 12 dB), the
   character's loudness following yours within 4 dB, and a vocal polish at -14 LUFS.
 - Your original recording is never copied into the repo.
 
-Measured on the `girlfriend/sorry-call` test: every word kept, pitch movement followed at 0.98
+Local vs demo on the same recording (30 steps, one take): sounds like her 0.531 on this machine
+against 0.505 through the demo, same pitch shape (0.98) and length.
+
+Measured on the `girlfriend/sorry-call` test (demo): every word kept, pitch movement followed at 0.98
 (103 Hz to 202 Hz), same 18.8 s length, loudness following yours at 0.94, sounds like her 0.528
 on speech (her own clips score 0.47–0.74 against each other), no male-range pitch anywhere.
 

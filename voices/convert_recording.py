@@ -170,7 +170,7 @@ def main():
     ap.add_argument('character', type=Path, help='character folder, e.g. voices/girlfriend')
     ap.add_argument('--name', required=True, help='output folder name, e.g. sorry-call')
     ap.add_argument('--takes', type=int, default=3, help='conversions to make and choose from (default 3)')
-    ap.add_argument('--steps', type=int, default=50, help='quality steps (default 50; 30 is faster)')
+    ap.add_argument('--steps', type=int, default=30, help='quality steps (default 30; 50 scored no better in tests and is slower)')
     ap.add_argument('--semitones', type=float, default=0, help='extra pitch shift on top of the automatic one')
     ap.add_argument('--lang', default='en', help='language spoken, for the word check (en, hi, ...)')
     ap.add_argument('--engine', choices=['auto', 'local', 'demo'], default='auto',
