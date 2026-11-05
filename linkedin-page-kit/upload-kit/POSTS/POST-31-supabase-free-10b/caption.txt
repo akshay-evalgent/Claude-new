@@ -1,0 +1,24 @@
+TAG IN THE POST (type @ and pick): @Supabase  @Paul Copplestone
+
+You can download Supabase and run it yourself. Free. The whole thing is on GitHub, 114,000 stars at last count.
+
+Investors keep writing bigger cheques for it anyway.
+
+In June it raised $500 million, valuing it at more than $10 billion. Last month GIC led another $150 million, with Alphabet's CapitalG in the round, and Supabase announced it's buying Turso, another database startup.
+
+The money comes from people who don't want to run it themselves. Hosting, backups, scaling, and someone to call when it falls over at 2am. That's the business.
+
+The part that surprised us is who's creating the databases now. Supabase estimates roughly 70% of new ones on its platform are spun up by AI agents and AI coding tools, not by a developer clicking a button. It's adding about 4 million databases a month.
+
+"Agents are spinning up millions of databases," is how CEO Paul Copplestone put it.
+
+If the AI writing your code reaches for the free tool by default, that's a bigger moat than most sales teams.
+
+Have you ever paid for the hosted version of something you could have run yourself for free? What made you pay?
+
+#Supabase
+#OpenSource
+#Startups
+#AIAgents
+#Funding
+#FounderSignal

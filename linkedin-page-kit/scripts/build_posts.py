@@ -571,6 +571,33 @@ Should every AI-made ad, political or commercial, be required to say so? And if 
 #Marketing
 #FounderSignal""",
       first_comment="""Sources: Wesleyan Media Project report (15 Oct 2026, data through 11 Oct), with coverage by Gizmodo and Truthout; CNN analysis of undisclosed AI imagery in ads. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+ # ---------- Funding x free tool, human voice ----------
+ dict(slug="supabase-free-10b", when="Next post after the pause · 8:30 pm IST", pillar="Signal (funding + free tool)", kind="image",
+      images=["assets/posts/2026-11-05b/signal-supabase-free-10b.png", "assets/posts/2026-11-05b/signal-supabase-free-10b-square.png"],
+      tags="@Supabase  @Paul Copplestone",
+      caption="""You can download Supabase and run it yourself. Free. The whole thing is on GitHub, 114,000 stars at last count.
+
+Investors keep writing bigger cheques for it anyway.
+
+In June it raised $500 million, valuing it at more than $10 billion. Last month GIC led another $150 million, with Alphabet's CapitalG in the round, and Supabase announced it's buying Turso, another database startup.
+
+The money comes from people who don't want to run it themselves. Hosting, backups, scaling, and someone to call when it falls over at 2am. That's the business.
+
+The part that surprised us is who's creating the databases now. Supabase estimates roughly 70% of new ones on its platform are spun up by AI agents and AI coding tools, not by a developer clicking a button. It's adding about 4 million databases a month.
+
+"Agents are spinning up millions of databases," is how CEO Paul Copplestone put it.
+
+If the AI writing your code reaches for the free tool by default, that's a bigger moat than most sales teams.
+
+Have you ever paid for the hosted version of something you could have run yourself for free? What made you pay?
+
+#Supabase
+#OpenSource
+#Startups
+#AIAgents
+#Funding
+#FounderSignal""",
+      first_comment="""Where this comes from: Supabase's announcement of the $150M round and the Turso deal (2 Oct), plus SiliconANGLE and FinSMEs on the round, and coverage of the June Series F. Star count is from GitHub this week. The code is at github.com/supabase/supabase if you want to run it yourself. We post a few of these every day: AI news, the cheaper tool that does the job, and one question for people building things. Follow if that's your kind of feed."""),
 ]
 
 def write_post(p, i, outdir):

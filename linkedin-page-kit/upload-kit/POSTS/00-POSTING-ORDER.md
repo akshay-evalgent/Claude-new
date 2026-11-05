@@ -32,3 +32,4 @@
 | 28 | Thu 5 Nov · 9:00 pm IST (India evening) | Signal (news) | POST-28-goyal-altman-5pm |
 | 29 | Fri 6 Nov · 1:30 pm IST (Europe + India) | Signal (news) | POST-29-ai-like-training-new-hire |
 | 30 | Fri 6 Nov · 6:30 pm IST (8 am New York) | Signal (news) | POST-30-ai-election-ads-137m |
+| 31 | Next post after the pause · 8:30 pm IST | Signal (funding + free tool) | POST-31-supabase-free-10b |
