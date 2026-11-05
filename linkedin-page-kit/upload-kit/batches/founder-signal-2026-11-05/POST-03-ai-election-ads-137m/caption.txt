@@ -1,0 +1,15 @@
+Political campaigns spent more than $137 million on 220 campaign videos made at least partly with AI ahead of this week's US midterm elections, according to the Wesleyan Media Project, which tracked ads through 11 October. In the 2024 cycle, spending on AI-generated ads was under $50,000.
+
+Only 27% of the ads told viewers they featured AI-generated content. Republican candidates and groups sponsored 81% of the ads and accounted for 88% of the spending, the researchers found, and CNN separately identified at least $38 million in ads that strongly appear to use AI imagery without disclosure.
+
+Only 30 US states require AI disclosure in political advertising, and there is no federal law specifically covering AI-made political ads. The researchers said the total is likely an undercount because AI use can be hard to detect.
+
+Should every AI-made ad, political or commercial, be required to say so? And if you run ads for your own company, does your answer change?
+
+#Elections2026
+#ArtificialIntelligence
+#Midterms
+#Advertising
+#Deepfakes
+#Marketing
+#FounderSignal

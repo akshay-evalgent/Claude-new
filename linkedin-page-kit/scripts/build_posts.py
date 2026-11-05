@@ -370,7 +370,7 @@ The question for anyone building a product: if the companies buying the chips al
 #Tech
 #Startups
 #FounderSignal""",
-      first_comment="""Sources: Tom's Hardware, TechRadar, Yahoo Finance, Cybernews, 2 to 3 Nov 2026. Photo of Elon Musk: Wikimedia Commons, CC BY-SA. Photo of Sam Altman: [source of the photo]. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+      first_comment="""Sources: Tom's Hardware, TechRadar, Yahoo Finance, Cybernews, 2 to 3 Nov 2026. Photo of Elon Musk: Wikimedia Commons, CC BY-SA. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
  dict(slug="proton-loser-thinking", when="Wed 4 Nov · 8:30 pm IST (debate)", pillar="Signal (news)", kind="image",
       images=["assets/posts/2026-11-04/signal-proton-loser-thinking.png", "assets/posts/2026-11-04/signal-proton-loser-thinking-square.png"],
       tags="@Proton",
@@ -511,7 +511,7 @@ Honest question: when an AI company writes this into its IPO filing, do you read
       tags="@Piyush Goyal  @Sam Altman  @OpenAI",
       caption="""Commerce Minister Piyush Goyal has faced criticism after telling Dutch investors at the India-Netherlands Business Forum in The Hague in late October that "nobody in India will tell you it's five o'clock, and certainly no Indian will ever remind you it's the weekend", presenting long working hours as an advantage of India's workforce.
 
-The Karnataka State IT/ITeS Employees Union and Congress MP Karti Chidambaram objected to the framing, and critics pointed to International Labour Organization data placing India among the world's most overworked countries; The Wire reported that about half of India's workforce already works more than 49 hours a week. Goyal later described work-life balance as a "foreign concept", while saying individuals can define their own balance.
+The Karnataka State IT/ITeS Employees Union and Congress MP Karti Chidambaram objected to the framing, and critics pointed to International Labour Organization data placing India among the world's most overworked countries. The Wire reported that about half of India's workforce already works more than 49 hours a week. Goyal later described work-life balance as a "foreign concept", while saying individuals can define their own balance.
 
 The debate lands as AI is sold as the thing that will give workers their time back. OpenAI chief executive Sam Altman said on a podcast this summer that he does not expect AI to bring a four-day week, because people are "secretly happy" staying busy.
 
@@ -524,7 +524,7 @@ Has AI given you a single hour back this year, or has it just filled the hours y
 #India
 #FutureOfWork
 #FounderSignal""",
-      first_comment="""Sources: Goyal's remarks at the India-Netherlands Business Forum (26 to 27 Oct 2026) as reported by The People's Board, Infomance and Bundle; The Wire (2 Nov 2026) on working hours; Moneywise and Yahoo Finance on Altman's podcast remarks (summer 2026). Photos: Piyush Goyal, [source of the photo]; Sam Altman, [source of the photo]. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+      first_comment="""Sources: Goyal's remarks at the India-Netherlands Business Forum (26 to 27 Oct 2026) as reported by The People's Board, Infomance and Bundle; The Wire (2 Nov 2026) on working hours; Moneywise and Yahoo Finance on Altman's podcast remarks (summer 2026). Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
  dict(slug="ai-like-training-new-hire", when="Fri 6 Nov · 1:30 pm IST (Europe + India)", pillar="Signal (news)", kind="image",
       images=["assets/posts/2026-11-06/signal-ai-like-training-new-hire.png", "assets/posts/2026-11-06/signal-ai-like-training-new-hire-square.png"],
       tags="@OpenAI  @Anthropic  @Google",
@@ -565,25 +565,29 @@ Should every AI-made ad, political or commercial, be required to say so? And if 
       first_comment="""Sources: Wesleyan Media Project report (15 Oct 2026, data through 11 Oct), with coverage by Gizmodo and Truthout; CNN analysis of undisclosed AI imagery in ads. Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
 ]
 
+def write_post(p, i, outdir):
+    """Write one post folder: image(s) or PDF, caption.txt, first-comment.txt, how-to-post.txt."""
+    d = os.path.join(outdir, f"POST-{i:02d}-{p['slug']}"); os.makedirs(d)
+    for src in p["images"]:
+        s = os.path.join(ROOT, src)
+        if not os.path.exists(s): print("MISSING", src); continue
+        ext = os.path.splitext(src)[1]
+        name = "carousel.pdf" if ext == ".pdf" else ("image-square.png" if "square" in src else "image.png")
+        shutil.copy(s, os.path.join(d, name))
+    with open(os.path.join(d, "caption.txt"), "w") as f:
+        if p["tags"]: f.write(f"TAG IN THE POST (type @ and pick): {p['tags']}\n\n")
+        f.write(p["caption"] + "\n")
+    with open(os.path.join(d, "first-comment.txt"), "w") as f: f.write(p["first_comment"] + "\n")
+    with open(os.path.join(d, "how-to-post.txt"), "w") as f:
+        f.write(f"POST {i:02d} · {p['when']} · {p['pillar']}\n\n{HOW[p['kind']]}\n")
+    return f"| {i:02d} | {p['when']} | {p['pillar']} | POST-{i:02d}-{p['slug']} |"
+
 def main():
     if os.path.exists(OUT): shutil.rmtree(OUT)
     os.makedirs(OUT)
     index = ["# Posting order\n", "| # | When (IST) | Pillar | Folder |", "|---|---|---|---|"]
     for i, p in enumerate(POSTS, 1):
-        d = os.path.join(OUT, f"POST-{i:02d}-{p['slug']}"); os.makedirs(d)
-        for src in p["images"]:
-            s = os.path.join(ROOT, src)
-            if not os.path.exists(s): print("MISSING", src); continue
-            ext = os.path.splitext(src)[1]
-            name = "carousel.pdf" if ext == ".pdf" else ("image-square.png" if "square" in src else "image.png")
-            shutil.copy(s, os.path.join(d, name))
-        with open(os.path.join(d, "caption.txt"), "w") as f:
-            if p["tags"]: f.write(f"TAG IN THE POST (type @ and pick): {p['tags']}\n\n")
-            f.write(p["caption"] + "\n")
-        with open(os.path.join(d, "first-comment.txt"), "w") as f: f.write(p["first_comment"] + "\n")
-        with open(os.path.join(d, "how-to-post.txt"), "w") as f:
-            f.write(f"POST {i:02d} · {p['when']} · {p['pillar']}\n\n{HOW[p['kind']]}\n")
-        index.append(f"| {i:02d} | {p['when']} | {p['pillar']} | POST-{i:02d}-{p['slug']} |")
+        index.append(write_post(p, i, OUT))
     with open(os.path.join(OUT, "00-POSTING-ORDER.md"), "w") as f: f.write("\n".join(index) + "\n")
     print(f"{len(POSTS)} post folders -> {OUT}")
 
