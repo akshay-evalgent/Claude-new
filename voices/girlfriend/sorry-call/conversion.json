@@ -6,7 +6,8 @@
   "reference_clips": [
    "voice_normal.mp3",
    "voice_crying.mp3"
-  ]
+  ],
+  "takes_note": "take1 and take2: 50 steps; take3: an earlier 30-step run with the same reference"
  },
  "checks": [
   {
@@ -38,19 +39,102 @@
    ],
    "sounds_like_character": 0.39,
    "sounds_like_you": 0.12
+  },
+  {
+   "take": "take3.wav",
+   "you_said": "hey I'm really sorry for everything that happened between us but I never wanted that to happen can you please pick up my call please please please please please",
+   "she_said": "hey I'm really sorry for everything that happened between us but I never wanted that to happen can please pick up my call please please please please",
+   "words_kept": 0.96,
+   "pitch_shape_match": 0.98,
+   "your_pitch_hz": 103,
+   "her_pitch_hz": 204,
+   "length_s": [
+    18.84,
+    18.83
+   ],
+   "sounds_like_character": 0.41,
+   "sounds_like_you": 0.12
   }
  ],
- "kept_take": "take1.wav",
+ "kept_take": "best phrase from each take",
+ "sounds_like_character_speech_only": {
+  "take1.wav": 0.503,
+  "take2.wav": 0.486,
+  "take3.wav": 0.505,
+  "best_phrases": 0.526
+ },
+ "phrases": [
+  {
+   "start_s": 0.91,
+   "end_s": 1.46,
+   "take": "take2.wav",
+   "like_character": 0.16
+  },
+  {
+   "start_s": 3.08,
+   "end_s": 3.8,
+   "take": "take2.wav",
+   "like_character": 0.21
+  },
+  {
+   "start_s": 4.68,
+   "end_s": 6.48,
+   "take": "take3.wav",
+   "like_character": 0.44
+  },
+  {
+   "start_s": 6.7,
+   "end_s": 8.05,
+   "take": "take1.wav",
+   "like_character": 0.49
+  },
+  {
+   "start_s": 8.78,
+   "end_s": 10.13,
+   "take": "take1.wav",
+   "like_character": 0.3
+  },
+  {
+   "start_s": 10.73,
+   "end_s": 11.7,
+   "take": "take1.wav",
+   "like_character": 0.34
+  },
+  {
+   "start_s": 13.26,
+   "end_s": 14.64,
+   "take": "take3.wav",
+   "like_character": 0.37
+  },
+  {
+   "start_s": 15.28,
+   "end_s": 15.89,
+   "take": "take2.wav",
+   "like_character": 0.21
+  },
+  {
+   "start_s": 16.52,
+   "end_s": 17.14,
+   "take": "take2.wav",
+   "like_character": 0.28
+  },
+  {
+   "start_s": 17.29,
+   "end_s": 18.36,
+   "take": "take2.wav",
+   "like_character": 0.29
+  }
+ ],
  "performance": {
   "aligned_ms": 10,
-  "gain_to_match": 0.979,
+  "gain_to_match": 1.005,
   "follows_your_loudness": {
    "whole_take": [
-    0.76,
-    0.96
+    0.77,
+    0.94
    ],
    "between_phrases": [
-    0.41,
+    0.56,
     0.94
    ],
    "note": "[before, after]"

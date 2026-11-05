@@ -31,24 +31,33 @@ python voices/convert_recording.py my_take.aac voices/girlfriend --name sorry-ca
 
 - Any format works (WhatsApp voice notes too). Record close to the phone in a quiet room, one take.
 - It uses Seed-VC's free [Hugging Face demo](https://huggingface.co/spaces/Plachta/Seed-VC)
-  in pitch-following mode, so your recording is uploaded there. It makes 2 takes (`--takes`)
-  and keeps the one that keeps all your words and sounds most like her.
+  in pitch-following mode, so your recording is uploaded there. It makes 3 takes (`--takes`)
+  and, phrase by phrase, uses whichever take kept your words and sounds most like her. The
+  joins sit in the gaps between phrases. If that mix doesn't beat the best single take, it
+  keeps the best single take.
+- The free demo has a daily GPU limit for anonymous use. When it says "exceeded your ZeroGPU
+  runs limit", wait a few hours and run the same command again: finished takes are reused.
 - Then `performance.py` puts your performance back, because the converter smears breaths,
   gulps and the air between words and flattens your loudness swings:
   - her voice is used only where you speak, lined up with you
   - between phrases you hear your real breaths, gulps and sniffs, exactly where you made
     them, with hiss-only moments turned down 12 dB
-  - her loudness follows yours frame by frame, and the same quiet room air runs under her speech
+  - her loudness follows yours (gently, within 4 dB), with the same quiet room air at half
+    level under her speech
   - a vocal polish (less boxy, more presence and air, softer s sounds) with one fixed gain
     to -14 LUFS, so your breaths stay at your level
   - `--plain` skips all of this
 - The checks land in `<name>/conversion.json`. In the `sorry-call` test:
   - every word kept, pitch movement followed at 0.98, raised from 103 Hz to 202 Hz, same 18.8 s
-  - her loudness follows yours at 0.96 over the take (0.76 before) and 0.94 between phrases,
-    where the breaths and gulps are (0.41 before)
-  - none of the original male voice anywhere; sounds like her 0.32, like you 0.06
-  - the DNSMOS quality score is 3.00 (3.17 for the plain conversion): it counts breaths as
-    background noise and rewards dead silence, so bringing them back costs a little there
+  - her loudness follows yours at 0.94, over the take and between phrases where the breaths
+    and gulps are (0.77 and 0.56 for the converter alone)
+  - sounds like her 0.528 on speech (best single take 0.505); her own clips score 0.47-0.74
+    against each other on this measure. Sounds like you: 0.01. No male-range pitch anywhere.
+  - DNSMOS quality 3.11 (3.17 for the plain conversion, which has dead silence between
+    phrases; the score counts breaths as background noise)
+- Tested and not used, because each made her sound *less* like herself: raising the pitch a
+  semitone to her exact median (0.456), a longer 25 s reference (0.490), an EQ copying her
+  tonal balance (0.47), and stronger loudness matching (-8..+6 dB, 0.479).
 - Seed-VC's other mode (timbre only) was tested too. It sounds slightly more like her
   but makes up its own intonation (pitch-shape match 0.03), so the emotion is lost.
 - Your original recording is not copied into the repo.

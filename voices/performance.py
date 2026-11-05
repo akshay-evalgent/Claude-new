@@ -5,7 +5,7 @@ air between words come out smeared, missing or as dead silence, and the loudness
 the performance get flattened. transfer() fixes that:
 
   speech   -> the converted voice, lined up with the original and with the original's
-              loudness shape, frame by frame (-8..+6 dB)
+              loudness shape (-4..+4 dB, ~50 ms smoothing, so her consonants stay hers)
   between  -> the original recording itself (breaths, gulps, sniffs, room air), with
               hiss-only moments turned down 12 dB while breaths keep their full level,
               shaped toward a smaller vocal tract, at the same level relative to speech
@@ -91,17 +91,18 @@ def transfer(src, conv, sr, dehiss_db=-12.0):
     k = np.percentile(np.abs(conv[speech]), 99) / np.percentile(np.abs(src[speech]), 99)
     breath *= k
 
-    # 5. her loudness follows the original, frame by frame, wherever her voice is used
+    # 5. her loudness follows the original wherever her voice is used (gentle: stronger
+    #    settings made her sound less like herself in testing)
     ra, rb = rms(src), rms(conv)
     fmask = frame_mean(mask)[: len(ra)]
     Ra, Rb = np.percentile(ra[fmask > 0.5], 95), np.percentile(rb[fmask > 0.5], 95)
-    g = np.clip((ra / Ra + 1e-4) / (rb / Rb + 1e-4), 10 ** (-8 / 20), 10 ** (6 / 20))
-    g = 10 ** _smooth(np.log10(np.where(fmask > 0.01, g, 1.0)), 4)  # ~30 ms
+    g = np.clip((ra / Ra + 1e-4) / (rb / Rb + 1e-4), 10 ** (-4 / 20), 10 ** (4 / 20))
+    g = 10 ** _smooth(np.log10(np.where(fmask > 0.01, g, 1.0)), 9)  # ~50 ms
     shaped = conv * _to_samples(g, hop, n)
 
     # 6. the same de-hissed room tone continues under her speech
     rng = np.random.default_rng(3)
     tone = librosa.istft(noise * floor * np.exp(2j * np.pi * rng.random((noise.shape[0], X.shape[1]))),
                          hop_length=h, length=n) * k
-    out = mask * (shaped + tone) + (1 - mask) * breath
+    out = mask * (shaped + 0.5 * tone) + (1 - mask) * breath  # air under speech at half level
     return out.astype(np.float32), dict(aligned_ms=lag * 10, gain_to_match=round(float(k), 3))

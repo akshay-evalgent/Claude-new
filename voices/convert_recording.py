@@ -8,8 +8,10 @@ the rise and fall of your voice (crying breaks, emphasis, pauses) is kept and mo
 character's pitch level. Only the voice itself changes. The target voice is the character's
 `identity` and `reference` clips from character.json, joined together.
 
-It makes --takes conversions (kept in <name>/takes/, not committed; existing takes are reused),
-checks each one, and keeps the take that keeps your words and sounds most like the character.
+It makes --takes conversions (kept in <name>/takes/, not committed; existing takes are reused)
+and checks each one. Then, phrase by phrase, it uses whichever take kept your words and sounds
+most like the character (the joins sit in the gaps between phrases). If that mix doesn't beat
+the best single take, it keeps the best single take instead.
 Then it puts your performance back (performance.py): her voice only where you speak, your
 real breaths, gulps and room air between, her loudness following yours, and a vocal polish.
 --plain skips that and keeps the converter's output as it is.
@@ -61,6 +63,57 @@ def loudness_match(src, before, after, sr):
     return dict(whole_take=[r(a, b), r(a, c)], between_phrases=[r(a, b, gap), r(a, c, gap)], note='[before, after]')
 
 
+_MODELS = {}
+
+
+def models(whisper):
+    """Speech-to-text and speaker-match models, loaded once."""
+    if whisper not in _MODELS:
+        from faster_whisper import WhisperModel
+        from speechbrain.inference.speaker import EncoderClassifier
+        _MODELS[whisper] = (WhisperModel(whisper, device='cpu', compute_type='int8'),
+                            EncoderClassifier.from_hparams('speechbrain/spkrec-ecapa-voxceleb',
+                                                           savedir=str(Path.home() / '.cache/ecapa'),
+                                                           run_opts={'device': 'cpu'}))
+    return _MODELS[whisper]
+
+
+def best_phrases(src, takes, clips, lang, sr=SR):
+    """One take built from the best phrase of each take. Returns (audio, picks, scores)."""
+    import librosa, numpy as np, torch
+    asr, spk = models('large-v3-turbo')
+    r16 = lambda y: librosa.resample(np.asarray(y, dtype=np.float32), orig_sr=sr, target_sr=16000)
+    embed = lambda y: spk.encode_batch(torch.tensor(r16(y)).unsqueeze(0)).squeeze()
+    her = [embed(librosa.load(c, sr=sr)[0]) for c in clips]
+    like_her = lambda y: float(np.mean([float(torch.nn.functional.cosine_similarity(embed(y), h, dim=0)) for h in her]))
+    hear = lambda y: ' '.join(x.text.strip() for x in asr.transcribe(r16(y), beam_size=5, language=lang)[0])
+
+    def words_ok(said, heard):
+        try:
+            return text_match(said, heard, lang)
+        except SystemExit:  # nothing recognisable in your phrase (a sob, a breath)
+            return 1.0
+
+    audio = [librosa.load(t, sr=sr)[0] for t in takes]
+    n = min(len(src), *(len(a) for a in audio))
+    audio = [a[:n] for a in audio]
+    regions = performance.speech_regions(src[:n], sr)
+    cuts = [0] + [int((regions[i][1] + regions[i + 1][0]) / 2 * sr) for i in range(len(regions) - 1)] + [n]
+    out, picks, speech = np.zeros(n, np.float32), [], np.zeros(n, bool)
+    for i, (a, b) in enumerate(regions):
+        s, e = int(a * sr), int(b * sr)
+        speech[s:e] = True
+        said = hear(src[s:e])
+        scored = [(words_ok(said, hear(y[s:e])) >= 0.8, like_her(y[s:e])) for y in audio]
+        j = max(range(len(audio)), key=lambda k: scored[k])  # words kept first, then most like her
+        out[cuts[i]:cuts[i + 1]] = audio[j][cuts[i]:cuts[i + 1]]
+        picks.append(dict(start_s=round(a, 2), end_s=round(b, 2), take=Path(takes[j]).name,
+                          like_character=round(scored[j][1], 2)))
+    scores = {Path(t).name: round(like_her(y[speech]), 3) for t, y in zip(takes, audio)}
+    scores['best_phrases'] = round(like_her(out[speech]), 3)
+    return out, picks, scores
+
+
 def check(src, outs, identity, lang):
     import librosa, numpy as np, torch
     from faster_whisper import WhisperModel
@@ -98,7 +151,7 @@ def main():
     ap.add_argument('recording', type=Path, help='your recording (aac, m4a, mp3, wav, ogg...)')
     ap.add_argument('character', type=Path, help='character folder, e.g. voices/girlfriend')
     ap.add_argument('--name', required=True, help='output folder name, e.g. sorry-call')
-    ap.add_argument('--takes', type=int, default=2, help='conversions to make and choose from (default 2)')
+    ap.add_argument('--takes', type=int, default=3, help='conversions to make and choose from (default 3)')
     ap.add_argument('--steps', type=int, default=50, help='quality steps (default 50; 30 is faster)')
     ap.add_argument('--semitones', type=float, default=0, help='extra pitch shift on top of the automatic one')
     ap.add_argument('--lang', default='en', help='language spoken, for the word check (en, hi, ...)')
@@ -138,6 +191,14 @@ def main():
         report['kept_take'] = best.name
         print(f'  kept {best.name} (you said: {report["checks"][0]["you_said"]})' if not args.no_check else f'  kept {best.name}')
         src_audio, take_audio = librosa.load(src, sr=SR)[0], librosa.load(best, sr=SR)[0]
+        if not args.plain and not args.no_check and len(outs) > 1:
+            mixed, picks, scores = best_phrases(src_audio, outs, [args.character / c for c in clips], args.lang)
+            report['sounds_like_character_speech_only'] = scores
+            single = max(v for k, v in scores.items() if k != 'best_phrases')
+            if scores['best_phrases'] >= single:
+                take_audio, report['kept_take'] = mixed, 'best phrase from each take'
+                report['phrases'] = picks
+            print(f'  sounds like {args.character.name} (speech only): {scores} -> using {report["kept_take"]}')
         if args.plain:
             voice = take_audio
         else:
