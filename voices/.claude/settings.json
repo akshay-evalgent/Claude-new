@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(voices/run *)",
-      "Bash(bash voices/setup.sh)",
-      "Bash(bash voices/setup.sh *)"
-    ]
-  }
-}
