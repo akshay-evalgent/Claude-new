@@ -334,7 +334,7 @@ def school_fence(sc, z=0.16):
     sc.add(0.02, fg, '#3b4252', trans=0.0)
 
 
-def flat(sc, T, part='bed', morning=0.0, lamp=0.0, lamp_xy=None, fog=0.0, w=0.0):
+def flat(sc, T, part='bed', morning=0.0, lamp=0.0, lamp_xy=None, fog=0.0, w=0.0, lights_off=0.0):
     """The son's city flat. Cold ladder; a big window on the city."""
     add_sky(sc, 0.92, mixc('#070b1c', '#5d6f93', morning), mixc('#1a2546', '#a9b5c9', morning), stars=0)
     city = P()
@@ -342,6 +342,7 @@ def flat(sc, T, part='bed', morning=0.0, lamp=0.0, lamp_xy=None, fog=0.0, w=0.0)
     r = rng(31)
     x = -800
     k = 0
+    wl = []
     while x < 2900:
         bw = 90 + (k * 37) % 120
         bh = 260 + (k * 71) % 420
@@ -349,9 +350,12 @@ def flat(sc, T, part='bed', morning=0.0, lamp=0.0, lamp_xy=None, fog=0.0, w=0.0)
         for yy in range(int(860 - bh + 30), 840, 38):
             for xx in range(int(x + 14), int(x + bw - 20), 30):
                 if r.uniform() < 0.32:
-                    rect(wins, xx, yy, 12, 16)
+                    wl.append((r.uniform(), xx, yy))
         x += bw + 18
         k += 1
+    for (order, xx, yy) in wl:
+        if order >= lights_off:
+            rect(wins, xx, yy, 12, 16)
     cit = sc.add(0.80, city, mixc('#0e1530', '#5a6683', morning), trans=0.3)
     cit.emit(wins, '#ffd28a', a=0.75 * (1 - morning * 0.8), bloom=0.5, sigma=6)
     wall = P()

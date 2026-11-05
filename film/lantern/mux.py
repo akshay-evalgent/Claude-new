@@ -8,7 +8,7 @@ import subprocess
 import sys
 
 
-def loudnorm_args(wav, I=-14.0, TP=-1.0, LRA=11.0):
+def loudnorm_args(wav, I=-14.0, TP=-1.5, LRA=11.0):
     r = subprocess.run(['ffmpeg', '-hide_banner', '-nostats', '-i', wav, '-af',
                         f'loudnorm=I={I}:TP={TP}:LRA={LRA}:print_format=json', '-f', 'null', '-'],
                        capture_output=True, text=True)

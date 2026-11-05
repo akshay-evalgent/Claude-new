@@ -557,17 +557,23 @@ def s12(sc, t):
     rect(cz, 430, 640, 860, 120, 30); rect(cz, 430, 560, 90, 220, 30); rect(cz, 1200, 600, 90, 180, 30)
     capsule(cz, 470, 846, 470, 770, 14); capsule(cz, 1250, 846, 1250, 770, 14)
     sc.add(0.35, cz, '#0b1124', trans=0.15)
-    ps = pose(lean=-16, head=24, hf=84, kf=74, hb=80, kb=78, tf=(905, 650), tb=(895, 658))
+    ps = pose(lean=-16, head=24 + 3 * math.sin(T * 1.7), hf=84, kf=74, hb=80, kb=78, tf=(905, 650), tb=(895, 658))
     j = add_puppet(sc, 0.3, 'son', ps, 780, 846, 400, 1, extras=('hair',), hip=(760, 730))
     body, scr, m = phone_paths(908, 638, 34, 60, -22)
     pit = sc.add(0.29, body, '#05060c', trans=0.0)
     pit.emit(scr, '#c6dbff', a=0.95, bloom=1.0, sigma=24)
-    sc.light(900, 630, 0.29, 460, 1.0, '#7ea6e8', halo=0.35)
+    feed = P()
+    for k in range(5):
+        yy = ((k * 22 - T * 46) % 110) - 50
+        rect(feed, -12, yy, 24, 14, 2)
+    pit.emit(transformed(feed, m), '#ffffff', a=0.6, bloom=0.2)
+    flick = 0.85 + 0.15 * math.sin(T * 5.3) * math.sin(T * 2.1)
+    sc.light(900, 630, 0.29, 460, 1.0 * flick, '#7ea6e8', halo=0.35)
     if t > 0:
         for i in range(8):
             side = -1 if i % 2 == 0 else 1
             z = 0.55 - i * 0.065
-            prog = ramp(t, 0.2 + i * 0.45, 3.2 + i * 0.5)
+            prog = ramp(t, 0.0 + i * 0.4, 2.6 + i * 0.5)
             off = (1 - prog) * 1500
             x0 = (-1000 - off + i * 60) if side < 0 else (900 + off - i * 60)
             y0 = 120 + (i * 97) % 520 + 18 * math.sin(T * 0.4 + i)
@@ -593,7 +599,8 @@ def s13(sc, t):
     ring = (t < 1.8) or (3.0 <= t < 4.6)
     tt = t if not second else t - 3.0
     dec_t = 1.8 if not second else 1.6
-    body, scr, m = phone_paths(960, 560, 330, 640, -4)
+    sx_, sy_ = 7 * math.sin(T * 0.9), 5 * math.sin(T * 1.3 + 1)
+    body, scr, m = phone_paths(960 + sx_, 560 + sy_, 330, 640, -4 + 1.6 * math.sin(T * 0.7))
     pit = sc.add(0.15, body, '#06070c', trans=0.0)
     state = 'ring' if ring else ('missed' if t >= 5.0 else 'home')
     bg = {'ring': '#2f4f8f', 'home': '#162244', 'missed': '#1b2850'}[state]
@@ -618,17 +625,19 @@ def s13(sc, t):
         pit.emit(transformed(red, m), '#e0574a', a=1.0, bloom=0.4 + press)
         pit.emit(transformed(grn, m), '#46b36a', a=1.0, bloom=0.3)
     elif state == 'missed':
+        slide = -160 * (1 - ease_out(clamp((t - 5.0) / 0.45)))
+        mc = skia.Matrix.Concat(m, skia.Matrix.Translate(0, slide))
         card = P(); rect(card, -130, -230, 260, 120, 18)
-        pit.emit(transformed(card, m), '#2e4378', a=0.95, bloom=0.2)
-        pit.emit(transformed(phone_text('Missed calls', 26, 0, -182, 500), m), '#dbe6ff', a=1.0, bloom=0.0)
-        pit.emit(transformed(phone_text('Dad (2)', 40, 0, -136, 600), m), '#ffffff', a=1.0, bloom=0.0)
+        pit.emit(transformed(card, mc), '#2e4378', a=0.95, bloom=0.2 + 0.2 * math.sin(T * 3) ** 2)
+        pit.emit(transformed(phone_text('Missed calls', 26, 0, -182, 500), mc), '#dbe6ff', a=1.0, bloom=0.0)
+        pit.emit(transformed(phone_text('Dad (2)', 40, 0, -136, 600), mc), '#ffffff', a=1.0, bloom=0.0)
         pit.emit(transformed(phone_text('9:12', 92, 0, 40, 300), m), '#9fb6e8', a=0.8, bloom=0.0)
     else:
         pit.emit(transformed(phone_text('9:12', 92, 0, -60, 300), m), '#9fb6e8', a=0.8, bloom=0.0)
     # the hand and thumb
     hand = P()
-    capsule(hand, 1240, 1400, 1140, 900, 260, 200)
-    smooth_poly(hand, [(780, 760), (760, 960), (900, 1150), (1180, 1100), (1210, 880), (1150, 760)], 0.4)
+    capsule(hand, 1240, 1400, 1140 + sx_, 900 + sy_, 260, 200)
+    smooth_poly(hand, [(780 + sx_, 760 + sy_), (760 + sx_, 960 + sy_), (900 + sx_, 1150 + sy_), (1180 + sx_, 1100 + sy_), (1210 + sx_, 880 + sy_), (1150 + sx_, 760 + sy_)], 0.4)
     sc.add(0.12, hand, '#070912', trans=0.08)
     if ring:
         u = ramp(tt, dec_t - 0.6, dec_t - 0.08) * (1 - ramp(tt, dec_t + 0.1, dec_t + 0.5))
@@ -636,7 +645,7 @@ def s13(sc, t):
         u = 0.0
     red_screen = m.mapXY(-80, 200)
     tx, ty = lerp(1150, red_screen.x() + 10, u), lerp(900, red_screen.y() + 14, u)
-    th = P(); capsule(th, 1170, 980, tx, ty, 62, 50)
+    th = P(); capsule(th, 1170 + sx_, 980 + sy_, tx + sx_ * (1 - u), ty + sy_ * (1 - u), 62, 50)
     sc.add(0.11, th, '#080a14', trans=0.08)
     aim(sc, 960, 580, D=0.62, z=0.15)
     sc.vfocus = 960
@@ -645,11 +654,12 @@ def s13(sc, t):
 @shot('S14', 3.75, events=[(1.2, 'flicker'), (2.2, 'die')])
 def s14(sc, t):
     T = sc.T
-    flat(sc, T, morning=0.0)
+    flat(sc, T, morning=0.0, lights_off=0.05 + 0.9 * ramp(t, 2.45, 3.75))
     cz = P(); rect(cz, 430, 640, 860, 120, 30); rect(cz, 430, 560, 90, 220, 30)
     capsule(cz, 470, 846, 470, 770, 14); capsule(cz, 1250, 846, 1250, 770, 14)
     sc.add(0.35, cz, '#0a0f20', trans=0.1)
-    ps = pose(lean=-8, head=26, hf=60, kf=120, hb=55, kb=118, tf=(840, 760), tb=(835, 770))
+    br = math.sin(T * 1.6)
+    ps = pose(lean=-8 + 2 * br, head=26 + 3 * br, hf=60, kf=120, hb=55, kb=118, tf=(840, 760 + 4 * br), tb=(835, 770 + 4 * br))
     add_puppet(sc, 0.3, 'son', ps, 720, 846, 400, 1, extras=('hair',), hip=(700, 830))
     on = 1.0
     if 1.2 < t < 1.35 or 1.6 < t < 1.7:
@@ -664,9 +674,9 @@ def s14(sc, t):
         pit.emit(transformed(bat, m), '#e0574a', a=on, bloom=0.3)
         sc.light(845, 750, 0.29, 300, 0.6 * on, '#7ea6e8', halo=0.15)
     front_band(sc, w=0.0)
-    aim(sc, 820, 680, D=0.82)
+    aim(sc, 820, 640, D=0.9 - 0.08 * ramp(t, 0.0, 2.2) - 0.06 * ramp(t, 2.4, 3.75))
     sc.vfocus = 820
-    sc.fade = 0.0 if t < 2.2 else (1.0 if t < 2.47 else 0.82)
+    sc.fade = 0.0 if t < 2.2 else (1.0 if t < 2.47 else 0.45)
 
 
 # ------------------------------------------------------------------ the wall
@@ -971,12 +981,12 @@ def end_lines(t0):
 T_end = [0.0]
 
 
-@shot('S21', 15.75, events=[(2.2, 'lamp_click'), (6.0, 'paper_slide'), (10.5, 'call_out'), (0.0, 'end_bed', 15.75)])
+@shot('S21', 15.75, events=[(1.4, 'lamp_click'), (6.0, 'paper_slide'), (10.5, 'call_out'), (0.0, 'end_bed', 15.75)])
 def s21(sc, t):
     T = sc.T
     T_end[0] = t
-    pull = smooth(clamp((t - 1.5) / 4.5))
-    glow = ramp(t, 2.2, 3.2)
+    pull = smooth(clamp((t - 0.35) / 5.2))
+    glow = ramp(t, 1.4, 2.4)
     w = 0.12 + 0.5 * glow
     fl_ = flicker(T, 3.0, 1.4)
     room(sc, w=w * (0.94 + 0.06 * fl_), T=T, count=1, light=(1327, 520, 380), bed='small', clock=(4, 30), pal=TEAL,

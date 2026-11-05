@@ -5,3 +5,5 @@ out/*_mix.wav
 out/*.log
 __pycache__/
 test_frame.py
+out/final/*.mp4
+out/final/preflight.json
