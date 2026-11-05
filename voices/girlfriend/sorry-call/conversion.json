@@ -1,0 +1,45 @@
+{
+ "settings": {
+  "model": "Seed-VC v1 pitch-following (Plachta/Seed-VC demo)",
+  "steps": 50,
+  "extra_semitones": 0,
+  "reference_clips": [
+   "voice_normal.mp3",
+   "voice_crying.mp3"
+  ]
+ },
+ "checks": [
+  {
+   "take": "take1.wav",
+   "you_said": "hey I'm really sorry for everything that happened between us but I never wanted that to happen can you please pick up my call please please please please please",
+   "she_said": "Hey, I'm really sorry for everything that happened between us, but I never wanted that to happen. Can you please pick up my call? Please, please, please, please, please.",
+   "words_kept": 1.0,
+   "pitch_shape_match": 0.98,
+   "your_pitch_hz": 103,
+   "her_pitch_hz": 202,
+   "length_s": [
+    18.84,
+    18.83
+   ],
+   "sounds_like_character": 0.43,
+   "sounds_like_you": 0.12
+  },
+  {
+   "take": "take2.wav",
+   "you_said": "hey I'm really sorry for everything that happened between us but I never wanted that to happen can you please pick up my call please please please please please",
+   "she_said": "Hey, I'm really sorry for everything that happened between us, but I never wanted that to happen. Can please pick up my call? Please, please, please, please, please.",
+   "words_kept": 0.98,
+   "pitch_shape_match": 0.98,
+   "your_pitch_hz": 103,
+   "her_pitch_hz": 204,
+   "length_s": [
+    18.84,
+    18.83
+   ],
+   "sounds_like_character": 0.39,
+   "sounds_like_you": 0.12
+  }
+ ],
+ "kept_take": "take1.wav",
+ "pauses_quieted": []
+}

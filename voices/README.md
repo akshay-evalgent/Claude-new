@@ -15,7 +15,32 @@ AI voices for POV Reels ("your girlfriend", "your mother", "your father"…), ma
 | ↳ `girlfriend_comeback-crying_voice_only.mp3` | Voice alone, for mixing your own music in CapCut |
 | `girlfriend/voice_crying_hindi.mp3` | Her voice crying in Hindi, made from `voice_normal.mp3` |
 | `girlfriend/comeback-crying-hindi/` | The same scene in Hindi (`scene.json` switches language and reference clip) |
+| `girlfriend/sorry-call/` | A real acted recording converted into her voice (see below) |
 | `make_track.py` | Turns a scene's `script.json` into those two files |
+| `convert_recording.py` | Turns your own acted recording into a character's voice |
+
+## Use your own recording (best emotion)
+
+Text-to-speech emotion sounds flat next to real acting. For the most real result, act the
+lines yourself and convert the recording into her voice. Your crying, pauses, emphasis and
+timing stay. Only the voice changes, including moving a male voice up to her pitch.
+
+```bash
+python voices/convert_recording.py my_take.aac voices/girlfriend --name sorry-call
+```
+
+- Any format works (WhatsApp voice notes too). Record close to the phone in a quiet room, one take.
+- It uses Seed-VC's free [Hugging Face demo](https://huggingface.co/spaces/Plachta/Seed-VC)
+  in pitch-following mode, so your recording is uploaded there. It makes 2 takes (`--takes`),
+  keeps the one that keeps all your words and sounds most like her, and turns down any pause
+  that came out louder than yours.
+- The checks land in `<name>/conversion.json`. In the `sorry-call` test the kept take kept
+  every word, followed your pitch movement at 0.98, raised it from 103 Hz to 202 Hz, ran the
+  same 18.8 s with the pauses in place, and scored 0.43 for sounding like her and 0.12 for
+  sounding like you.
+- Seed-VC's other mode (timbre only) was tested too. It sounds slightly more like her
+  but makes up its own intonation (pitch-shape match 0.03), so the emotion is lost.
+- Your original recording is not copied into the repo.
 
 ## Make a new scene
 

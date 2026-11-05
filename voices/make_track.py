@@ -86,9 +86,7 @@ def score(lines, takes, identity, lang):
 
 
 def mix(lines, picks, out_stem):
-    import librosa, numpy as np, soundfile as sf
-    from scipy.signal import butter, fftconvolve, sosfilt
-    rng = np.random.default_rng(7)
+    import librosa, numpy as np
 
     def fade(y, n=int(0.015 * SR)):
         w = np.linspace(0, 1, n)
@@ -102,7 +100,16 @@ def mix(lines, picks, out_stem):
         pad = int(0.06 * SR)
         parts += [fade(y[max(0, a - pad):b + pad]), np.zeros(int(line.get('pause_after', 1.0) * SR))]
     parts.append(np.zeros(SR))
-    dry = sosfilt(butter(2, 70, 'hp', fs=SR, output='sos'), np.concatenate(parts))
+    finish(np.concatenate(parts), out_stem)
+
+
+def finish(dry, out_stem):
+    """Write <out_stem>_voice_only.mp3 and <out_stem>_mixed.mp3 (room echo + ambience), both
+    at -14 LUFS. `dry` is mono audio at SR. Timing is never changed."""
+    import numpy as np, soundfile as sf
+    from scipy.signal import butter, fftconvolve, sosfilt
+    rng = np.random.default_rng(7)
+    dry = sosfilt(butter(2, 70, 'hp', fs=SR, output='sos'), dry)
 
     def room_ir(rt60=0.38, predelay=0.012):  # small room: decaying noise, separate per ear
         t = np.arange(int(rt60 * SR)) / SR
