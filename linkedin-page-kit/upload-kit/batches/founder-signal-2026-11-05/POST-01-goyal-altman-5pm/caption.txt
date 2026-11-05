@@ -1,12 +1,20 @@
 TAG IN THE POST (type @ and pick): @Piyush Goyal  @Sam Altman  @OpenAI
 
-Commerce Minister Piyush Goyal has faced criticism after telling Dutch investors at the India-Netherlands Business Forum in The Hague in late October that "nobody in India will tell you it's five o'clock, and certainly no Indian will ever remind you it's the weekend", presenting long working hours as an advantage of India's workforce.
+"Nobody in India will tell you it's five o'clock."
 
-The Karnataka State IT/ITeS Employees Union and Congress MP Karti Chidambaram objected to the framing, and critics pointed to International Labour Organization data placing India among the world's most overworked countries. The Wire reported that about half of India's workforce already works more than 49 hours a week. Goyal later described work-life balance as a "foreign concept", while saying individuals can define their own balance.
+That's India's Commerce Minister, Piyush Goyal, pitching the country to Dutch investors in The Hague late last month. He followed it with: no Indian will ever remind you it's the weekend.
 
-The debate lands as AI is sold as the thing that will give workers their time back. OpenAI chief executive Sam Altman said on a podcast this summer that he does not expect AI to bring a four-day week, because people are "secretly happy" staying busy.
+It was meant as a selling point.
 
-Has AI given you a single hour back this year, or has it just filled the hours you already had?
+Not everyone heard it that way. The Karnataka IT employees' union pushed back, and so did Congress MP Karti Chidambaram. A few days later Goyal called work-life balance a "foreign concept", though he did add that people can decide their own balance.
+
+One number stuck with us. About half of India's workforce already puts in more than 49 hours a week, according to The Wire. We're not exactly short on long days.
+
+And this is where it becomes an AI story. We keep hearing that AI will give us our time back. Sam Altman isn't convinced. On a podcast this summer he said AI probably won't get us a four-day week, because people are "secretly happy" staying busy.
+
+Maybe he's right, and we just fill every hour we save.
+
+So, honest question. Has AI actually given you an hour back this year? Or did the work just grow to fill it?
 
 #WorkLifeBalance
 #PiyushGoyal

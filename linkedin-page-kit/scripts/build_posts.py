@@ -509,13 +509,21 @@ Honest question: when an AI company writes this into its IPO filing, do you read
  dict(slug="goyal-altman-5pm", when="Thu 5 Nov · 9:00 pm IST (India evening)", pillar="Signal (news)", kind="image",
       images=["assets/posts/2026-11-06/signal-goyal-altman-5pm.png", "assets/posts/2026-11-06/signal-goyal-altman-5pm-square.png"],
       tags="@Piyush Goyal  @Sam Altman  @OpenAI",
-      caption="""Commerce Minister Piyush Goyal has faced criticism after telling Dutch investors at the India-Netherlands Business Forum in The Hague in late October that "nobody in India will tell you it's five o'clock, and certainly no Indian will ever remind you it's the weekend", presenting long working hours as an advantage of India's workforce.
+      caption=""""Nobody in India will tell you it's five o'clock."
 
-The Karnataka State IT/ITeS Employees Union and Congress MP Karti Chidambaram objected to the framing, and critics pointed to International Labour Organization data placing India among the world's most overworked countries. The Wire reported that about half of India's workforce already works more than 49 hours a week. Goyal later described work-life balance as a "foreign concept", while saying individuals can define their own balance.
+That's India's Commerce Minister, Piyush Goyal, pitching the country to Dutch investors in The Hague late last month. He followed it with: no Indian will ever remind you it's the weekend.
 
-The debate lands as AI is sold as the thing that will give workers their time back. OpenAI chief executive Sam Altman said on a podcast this summer that he does not expect AI to bring a four-day week, because people are "secretly happy" staying busy.
+It was meant as a selling point.
 
-Has AI given you a single hour back this year, or has it just filled the hours you already had?
+Not everyone heard it that way. The Karnataka IT employees' union pushed back, and so did Congress MP Karti Chidambaram. A few days later Goyal called work-life balance a "foreign concept", though he did add that people can decide their own balance.
+
+One number stuck with us. About half of India's workforce already puts in more than 49 hours a week, according to The Wire. We're not exactly short on long days.
+
+And this is where it becomes an AI story. We keep hearing that AI will give us our time back. Sam Altman isn't convinced. On a podcast this summer he said AI probably won't get us a four-day week, because people are "secretly happy" staying busy.
+
+Maybe he's right, and we just fill every hour we save.
+
+So, honest question. Has AI actually given you an hour back this year? Or did the work just grow to fill it?
 
 #WorkLifeBalance
 #PiyushGoyal
@@ -524,7 +532,7 @@ Has AI given you a single hour back this year, or has it just filled the hours y
 #India
 #FutureOfWork
 #FounderSignal""",
-      first_comment="""Sources: Goyal's remarks at the India-Netherlands Business Forum (26 to 27 Oct 2026) as reported by The People's Board, Infomance and Bundle; The Wire (2 Nov 2026) on working hours; Moneywise and Yahoo Finance on Altman's podcast remarks (summer 2026). Founder Signal posts three of these a day: AI news, the cheaper tool that does the job, one question for founders. Follow for the next one."""),
+      first_comment="""Where this comes from: Goyal's remarks at the India-Netherlands Business Forum (26 to 27 Oct), reported by The People's Board, Infomance and Bundle. The Wire on working hours (2 Nov). Moneywise and Yahoo Finance on what Altman said. We post a few of these every day: AI news, the cheaper tool that does the job, and one question for people building things. Follow if that's your kind of feed."""),
  dict(slug="ai-like-training-new-hire", when="Fri 6 Nov · 1:30 pm IST (Europe + India)", pillar="Signal (news)", kind="image",
       images=["assets/posts/2026-11-06/signal-ai-like-training-new-hire.png", "assets/posts/2026-11-06/signal-ai-like-training-new-hire-square.png"],
       tags="@OpenAI  @Anthropic  @Google",
