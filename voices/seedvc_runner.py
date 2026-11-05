@@ -7,6 +7,8 @@ inference.py. Seed-VC's code is left untouched:
     through soundfile instead
   - on a machine without a GPU, its Whisper encoder loads in float32 rather than float16,
     which is faster and more accurate on a CPU
+  - its bundled BigVGAN vocoder gets the two loading arguments newer huggingface_hub no
+    longer passes
 """
 import os
 import runpy
@@ -35,6 +37,14 @@ def main():
 
     os.chdir(SEEDVC)  # its code expects to run from its own folder (configs/, checkpoints/)
     sys.path.insert(0, str(SEEDVC))
+
+    # huggingface_hub 1.x stopped passing these two arguments to _from_pretrained, which
+    # Seed-VC's bundled BigVGAN still requires; supply the old defaults
+    from modules.bigvgan import bigvgan
+    original_fp = bigvgan.BigVGAN._from_pretrained.__func__
+    bigvgan.BigVGAN._from_pretrained = classmethod(
+        lambda cls, *a, proxies=None, resume_download=False, **k:
+            original_fp(cls, *a, proxies=proxies, resume_download=resume_download, **k))
     sys.argv = ['inference.py', *sys.argv[1:]]
     runpy.run_path('inference.py', run_name='__main__')
 
