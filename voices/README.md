@@ -31,13 +31,24 @@ python voices/convert_recording.py my_take.aac voices/girlfriend --name sorry-ca
 
 - Any format works (WhatsApp voice notes too). Record close to the phone in a quiet room, one take.
 - It uses Seed-VC's free [Hugging Face demo](https://huggingface.co/spaces/Plachta/Seed-VC)
-  in pitch-following mode, so your recording is uploaded there. It makes 2 takes (`--takes`),
-  keeps the one that keeps all your words and sounds most like her, and turns down any pause
-  that came out louder than yours.
-- The checks land in `<name>/conversion.json`. In the `sorry-call` test the kept take kept
-  every word, followed your pitch movement at 0.98, raised it from 103 Hz to 202 Hz, ran the
-  same 18.8 s with the pauses in place, and scored 0.43 for sounding like her and 0.12 for
-  sounding like you.
+  in pitch-following mode, so your recording is uploaded there. It makes 2 takes (`--takes`)
+  and keeps the one that keeps all your words and sounds most like her.
+- Then `performance.py` puts your performance back, because the converter smears breaths,
+  gulps and the air between words and flattens your loudness swings:
+  - her voice is used only where you speak, lined up with you
+  - between phrases you hear your real breaths, gulps and sniffs, exactly where you made
+    them, with hiss-only moments turned down 12 dB
+  - her loudness follows yours frame by frame, and the same quiet room air runs under her speech
+  - a vocal polish (less boxy, more presence and air, softer s sounds) with one fixed gain
+    to -14 LUFS, so your breaths stay at your level
+  - `--plain` skips all of this
+- The checks land in `<name>/conversion.json`. In the `sorry-call` test:
+  - every word kept, pitch movement followed at 0.98, raised from 103 Hz to 202 Hz, same 18.8 s
+  - her loudness follows yours at 0.96 over the take (0.76 before) and 0.94 between phrases,
+    where the breaths and gulps are (0.41 before)
+  - none of the original male voice anywhere; sounds like her 0.32, like you 0.06
+  - the DNSMOS quality score is 3.00 (3.17 for the plain conversion): it counts breaths as
+    background noise and rewards dead silence, so bringing them back costs a little there
 - Seed-VC's other mode (timbre only) was tested too. It sounds slightly more like her
   but makes up its own intonation (pitch-shape match 0.03), so the emotion is lost.
 - Your original recording is not copied into the repo.

@@ -103,9 +103,16 @@ def mix(lines, picks, out_stem):
     finish(np.concatenate(parts), out_stem)
 
 
-def finish(dry, out_stem):
+POLISH = ('equalizer=f=300:t=q:w=1:g=-2,'      # less boxy
+          'equalizer=f=3500:t=q:w=0.9:g=2.5,'  # presence
+          'highshelf=f=10000:g=2,'             # air
+          'deesser=i=0.4,')                    # softer s sounds
+
+
+def finish(dry, out_stem, polish=False):
     """Write <out_stem>_voice_only.mp3 and <out_stem>_mixed.mp3 (room echo + ambience), both
-    at -14 LUFS. `dry` is mono audio at SR. Timing is never changed."""
+    at -14 LUFS. `dry` is mono audio at SR. Timing is never changed. polish=True adds a vocal
+    EQ (less boxy, more presence and air, de-essed) and a lighter room echo."""
     import numpy as np, soundfile as sf
     from scipy.signal import butter, fftconvolve, sosfilt
     rng = np.random.default_rng(7)
@@ -116,7 +123,7 @@ def finish(dry, out_stem):
         h = sosfilt(butter(1, 5000, 'lp', fs=SR, output='sos'), rng.standard_normal(len(t)) * np.exp(-6.9 * t / rt60))
         return np.concatenate([np.zeros(int(predelay * SR)), h / np.sqrt((h ** 2).sum())])
 
-    voice = np.stack([dry, dry], 1) + 0.16 * np.stack([fftconvolve(dry, room_ir())[:len(dry)] for _ in range(2)], 1)
+    voice = np.stack([dry, dry], 1) + (0.10 if polish else 0.16) * np.stack([fftconvolve(dry, room_ir())[:len(dry)] for _ in range(2)], 1)
     n = len(dry)  # faint night-room ambience about 30 dB under the voice
     spec = np.fft.rfft(rng.standard_normal((n, 2)), axis=0) / np.sqrt(np.maximum(np.fft.rfftfreq(n, 1 / SR), 20))[:, None]
     amb = sosfilt(butter(2, [60, 3500], 'bp', fs=SR, output='sos'), np.fft.irfft(spec, n, axis=0), axis=0)
@@ -125,15 +132,31 @@ def finish(dry, out_stem):
     amb *= np.sqrt((speech ** 2).mean()) * 10 ** (-30 / 20) / np.sqrt((amb ** 2).mean())
     env = np.ones(n); env[:SR] = np.linspace(0, 1, SR); env[-SR:] = np.linspace(1, 0, SR)
 
-    tmp = out_stem.parent / '_tmp.wav'
+    tmp, tmp2 = out_stem.parent / '_tmp.wav', out_stem.parent / '_tmp2.wav'
     for name, sig in (('voice_only', dry), ('mixed', voice + amb * env[:, None])):
         sf.write(tmp, sig / (np.abs(sig).max() + 1e-9) * 0.7, SR)
         out = f'{out_stem}_{name}.mp3'
-        subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(tmp), '-af',
-                        'acompressor=threshold=-22dB:ratio=2.5:attack=8:release=120,loudnorm=I=-14:TP=-1.5:LRA=11',
-                        '-ar', str(SR), '-b:a', '192k', out], check=True)
+        if polish:  # keep the performance's dynamics: EQ, one fixed gain to -14 LUFS, peak limiter only
+            subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(tmp), '-af', POLISH.rstrip(','),
+                            '-c:a', 'pcm_f32le', str(tmp2)], check=True)
+            gain = -14 - loudness(tmp2)
+            subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(tmp2), '-af',
+                            f'volume={gain:.2f}dB,alimiter=limit=0.84:attack=2:release=40:level=false',
+                            '-ar', str(SR), '-b:a', '192k', out], check=True)
+        else:
+            subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(tmp), '-af',
+                            'acompressor=threshold=-22dB:ratio=2.5:attack=8:release=120,loudnorm=I=-14:TP=-1.5:LRA=11',
+                            '-ar', str(SR), '-b:a', '192k', out], check=True)
         print('wrote', out)
     tmp.unlink()
+    tmp2.unlink(missing_ok=True)
+
+
+def loudness(path):
+    """Integrated loudness (LUFS) of an audio file."""
+    r = subprocess.run(['ffmpeg', '-hide_banner', '-nostats', '-i', str(path), '-af', 'ebur128', '-f', 'null', '-'],
+                       capture_output=True, text=True)
+    return float(re.findall(r'I:\s+(-?[\d.]+) LUFS', r.stderr)[-1])
 
 
 def main():

@@ -10,6 +10,9 @@ character's pitch level. Only the voice itself changes. The target voice is the 
 
 It makes --takes conversions (kept in <name>/takes/, not committed; existing takes are reused),
 checks each one, and keeps the take that keeps your words and sounds most like the character.
+Then it puts your performance back (performance.py): her voice only where you speak, your
+real breaths, gulps and room air between, her loudness following yours, and a vocal polish.
+--plain skips that and keeps the converter's output as it is.
 Writes voices/<character>/<name>/<character>_<name>_voice_only.mp3 and _mixed.mp3, plus
 conversion.json with the settings and checks: words still heard, how closely the pitch
 follows your take, and whether it sounds like the character rather than you.
@@ -20,6 +23,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from make_track import SR, finish, text_match  # noqa: E402
+import performance  # noqa: E402
 
 VC_SR = 44100
 
@@ -43,26 +47,18 @@ def convert(src, ref, out, steps, semitones):
     raise SystemExit('gave up: the Seed-VC demo did not answer')
 
 
-def match_pauses(src, out, sr):
-    """Where your recording pauses, make the converted voice as quiet as you were there.
-    The converter sometimes fills pauses with a hum or louder breaths. Speech is untouched."""
+def loudness_match(src, before, after, sr):
+    """How closely the loudness moves with yours (0-1): whole take and the gaps between phrases."""
     import librosa, numpy as np
-    n, hop, margin = min(len(src), len(out)), int(0.01 * sr), 6  # 10 ms frames, keep 60 ms around speech
-    level = lambda y: librosa.feature.rms(y=y[:n], frame_length=4 * hop, hop_length=hop)[0]
-    la, lb = level(src), level(out)
-    la, lb = la / np.percentile(la, 90), lb / np.percentile(lb, 90)  # relative to each one's speech level
-    speech = librosa.effects.split(src[:n], top_db=35, frame_length=4 * hop, hop_length=hop)
-    gain, fixed = np.ones(len(lb)), []
-    for (_, end), (start, _) in zip(speech[:-1], speech[1:]):
-        a, b = end // hop + margin, start // hop - margin
-        if b - a < 10:
-            continue
-        yours, hers = np.sqrt(np.mean(la[a:b] ** 2)), np.sqrt(np.mean(lb[a:b] ** 2))
-        if hers > 2 * yours:  # more than 6 dB louder than your pause
-            gain[a:b] = yours / hers
-            fixed.append([round(a * hop / sr, 2), round(b * hop / sr, 2), round(float(20 * np.log10(hers / yours)), 1)])
-    gain = np.convolve(gain, np.hanning(5) / np.hanning(5).sum(), mode='same')  # short ramps
-    return out * np.interp(np.arange(len(out)), np.arange(len(gain)) * hop, gain), fixed
+    n, hop = min(len(src), len(before), len(after)), sr // 100
+    level = lambda y: 20 * np.log10(librosa.feature.rms(y=y[:n], frame_length=2 * hop, hop_length=hop)[0] + 1e-6)
+    a, b, c = level(src), level(before), level(after)
+    regions = performance.speech_regions(src[:n], sr)
+    gap = np.zeros(len(a), bool)
+    for (_, s), (e, _) in zip(regions[:-1], regions[1:]):
+        gap[int(s * 100):int(e * 100)] = True
+    r = lambda x, y, m=slice(None): round(float(np.corrcoef(x[m], y[m])[0, 1]), 2)
+    return dict(whole_take=[r(a, b), r(a, c)], between_phrases=[r(a, b, gap), r(a, c, gap)], note='[before, after]')
 
 
 def check(src, outs, identity, lang):
@@ -107,6 +103,7 @@ def main():
     ap.add_argument('--semitones', type=float, default=0, help='extra pitch shift on top of the automatic one')
     ap.add_argument('--lang', default='en', help='language spoken, for the word check (en, hi, ...)')
     ap.add_argument('--no-check', action='store_true', help='skip the checks')
+    ap.add_argument('--plain', action='store_true', help='skip the performance transfer and polish')
     args = ap.parse_args()
     import librosa
     char = json.loads((args.character / 'character.json').read_text())
@@ -140,10 +137,15 @@ def main():
             best = takes / top['take']
         report['kept_take'] = best.name
         print(f'  kept {best.name} (you said: {report["checks"][0]["you_said"]})' if not args.no_check else f'  kept {best.name}')
-        voice, fixed = match_pauses(librosa.load(src, sr=SR)[0], librosa.load(best, sr=SR)[0], SR)
-        report['pauses_quieted'] = [dict(start_s=a, end_s=b, turned_down_db=d) for a, b, d in fixed]
-        print(f'  pauses turned down to match yours: {fixed or "none needed"}')
-        finish(voice, out_dir / f'{args.character.name}_{args.name}')
+        src_audio, take_audio = librosa.load(src, sr=SR)[0], librosa.load(best, sr=SR)[0]
+        if args.plain:
+            voice = take_audio
+        else:
+            voice, info = performance.transfer(src_audio, take_audio, SR)
+            info.update(follows_your_loudness=loudness_match(src_audio, take_audio, voice, SR))
+            report['performance'] = info
+            print(f'  performance: {info}')
+        finish(voice, out_dir / f'{args.character.name}_{args.name}', polish=not args.plain)
     (out_dir / 'conversion.json').write_text(json.dumps(report, indent=1, ensure_ascii=False))
 
 

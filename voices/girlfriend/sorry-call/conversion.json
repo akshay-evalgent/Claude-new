@@ -41,5 +41,19 @@
   }
  ],
  "kept_take": "take1.wav",
- "pauses_quieted": []
+ "performance": {
+  "aligned_ms": 10,
+  "gain_to_match": 0.979,
+  "follows_your_loudness": {
+   "whole_take": [
+    0.76,
+    0.96
+   ],
+   "between_phrases": [
+    0.41,
+    0.94
+   ],
+   "note": "[before, after]"
+  }
+ }
 }
