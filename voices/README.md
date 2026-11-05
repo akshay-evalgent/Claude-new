@@ -13,6 +13,8 @@ AI voices for POV Reels ("your girlfriend", "your mother", "your father"…), ma
 | `girlfriend/comeback-crying/` | Test scene: she wants to come back after cheating, crying. 32 s |
 | ↳ `girlfriend_comeback-crying_mixed.mp3` | Ready for a Reel: light room echo, faint night ambience, -14 LUFS |
 | ↳ `girlfriend_comeback-crying_voice_only.mp3` | Voice alone, for mixing your own music in CapCut |
+| `girlfriend/voice_crying_hindi.mp3` | Her voice crying in Hindi, made from `voice_normal.mp3` |
+| `girlfriend/comeback-crying-hindi/` | The same scene in Hindi (`scene.json` switches language and reference clip) |
 | `make_track.py` | Turns a scene's `script.json` into those two files |
 
 ## Make a new scene
@@ -37,6 +39,22 @@ AI voices for POV Reels ("your girlfriend", "your mother", "your father"…), ma
 For a happy or neutral scene, point `reference` in `character.json` at `voice_normal.mp3`
 (or a happy clip) instead of the crying one, and set `reference_text` to the words spoken in it. The emotion in the reference clip carries into
 every line, which keeps the voice and the mood steady.
+
+## Hindi and other languages
+
+Add a `scene.json` next to the scene's `script.json`. Anything in it overrides
+`character.json` for that scene:
+
+```json
+{"lang": "hi", "reference": "voice_crying_hindi.mp3", "reference_text": "<exact Hindi words in that clip>"}
+```
+
+Write the script in Devanagari. Keep `control` in English. Use a reference clip of her
+speaking the same language: in testing, Hindi lines copied from the English crying clip
+drifted away from her voice. To make one, upload `voice_normal.mp3` in the demo, write a
+Hindi sentence, and add the emotion in the control box, e.g. *"speaking Hindi, crying,
+voice trembling, same young woman"*. Hindi takes are checked with a larger multilingual
+speech-to-text model, so scoring takes a few minutes longer.
 
 ## Make a new character (mother, father…)
 

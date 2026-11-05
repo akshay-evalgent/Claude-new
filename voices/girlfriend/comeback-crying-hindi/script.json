@@ -1,0 +1,9 @@
+[
+ {"text": "सुनो... प्लीज़ फ़ोन मत काटना। बस एक मिनट दे दो।", "control": "voice shaking, nervous, crying softly", "pause_after": 1.0},
+ {"text": "मुझे पता है, मैं इसके लायक नहीं हूँ। मुझे पता है मैंने क्या किया।", "control": "ashamed, slow, holding back tears", "pause_after": 1.2},
+ {"text": "मैंने तुम्हें बहुत दुख दिया... और उस रात तुम्हारा वो चेहरा, मैं भूल ही नहीं पा रही।", "control": "voice breaking, full of regret", "pause_after": 1.4},
+ {"text": "मैं ये नहीं कह रही कि तुम सब भूल जाओ। बस... एक और मौका माँग रही हूँ।", "control": "pleading, tearful", "pause_after": 1.2},
+ {"text": "मुझे तुम्हारी बहुत याद आती है। हम दोनों की याद आती है।", "control": "whispering, heartbroken", "pause_after": 1.5},
+ {"text": "प्लीज़... मुझे वापस आने दो।", "control": "voice cracking, sobbing quietly", "pause_after": 1.6},
+ {"text": "मुझे माफ़ कर दो।", "control": "barely a whisper, crying", "pause_after": 0}
+]

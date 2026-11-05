@@ -4,17 +4,20 @@
     python voices/make_track.py voices/girlfriend/comeback-crying --takes 2
 
 Scene folder:      script.json  -> [{"text", "control", "pause_after"}, ...]
+Optional:          scene.json   -> overrides any character.json key for this scene,
+                                   e.g. {"lang": "hi", "reference": "voice_crying_hindi.mp3", ...}
 Character folder:  character.json (the scene's parent folder)
     {"reference": "voice_crying.mp3",      clip every line copies the voice from
      "reference_text": "...",              exact words spoken in that clip
-     "identity": "voice_normal.mp3"}       her everyday voice, used to score takes
+     "identity": "voice_normal.mp3",       her everyday voice, used to score takes
+     "lang": "en"}                         language of the script (en, hi, ...)
 
 Steps: generate N takes per line (takes that already exist are kept), check each take
 with speech-to-text and a speaker-match score against the identity voice, keep the best
 take per line, join them with pauses, add light room echo and faint ambience, and
 normalise to -14 LUFS (Instagram). Writes <scene>_mixed.mp3 and <scene>_voice_only.mp3.
 """
-import argparse, difflib, json, re, shutil, subprocess, time
+import argparse, difflib, json, re, shutil, subprocess, time, unicodedata
 from pathlib import Path
 
 SR = 48000
@@ -38,29 +41,43 @@ def generate(text, control, ref, ref_text, out):
     raise SystemExit(f'gave up on {out}')
 
 
-def score(lines, takes, identity):
+def text_match(expected, heard, lang):
+    """Share of the script that speech-to-text heard, 0-1."""
+    if lang == 'en':
+        def tokens(s):
+            return re.sub(r"[^a-z' ]", '', s.lower().replace('-', ' ')).split()
+    else:  # compare letters only, ignoring punctuation and small spelling variants (nukta, chandrabindu)
+        def tokens(s):
+            s = unicodedata.normalize('NFD', s.lower()).replace('\u093c', '').replace('\u0901', '\u0902')
+            return [c for c in s if unicodedata.category(c)[0] in 'LM']
+    if not tokens(expected):
+        raise SystemExit(f'cannot check text in language {lang!r}: {expected}')
+    return difflib.SequenceMatcher(None, tokens(expected), tokens(heard)).ratio()
+
+
+def score(lines, takes, identity, lang):
     import librosa, numpy as np, torch
     from faster_whisper import WhisperModel
     from speechbrain.inference.speaker import EncoderClassifier
-    asr = WhisperModel('small.en', device='cpu', compute_type='int8')
+    asr = WhisperModel('small.en' if lang == 'en' else 'large-v3-turbo', device='cpu', compute_type='int8')
+    min_match = 0.9 if lang == 'en' else 0.65  # Hindi speech-to-text spells loanwords either way
     spk = EncoderClassifier.from_hparams('speechbrain/spkrec-ecapa-voxceleb',
                                          savedir=str(Path.home() / '.cache/ecapa'), run_opts={'device': 'cpu'})
-    words = lambda s: re.sub(r"[^a-z' ]", '', s.lower().replace('-', ' ')).split()
     embed = lambda y: spk.encode_batch(torch.tensor(y).unsqueeze(0)).squeeze()
     ref = embed(librosa.load(identity, sr=16000)[0])
     picks, report = {}, {}
     for i, line in enumerate(lines, 1):
         for f in sorted(takes.glob(f'line{i}_t*.mp3')):
             y = librosa.load(f, sr=16000)[0]
-            heard = ' '.join(s.text.strip() for s in asr.transcribe(y, beam_size=5, language='en')[0])
-            acc = difflib.SequenceMatcher(None, words(line['text']), words(heard)).ratio()
+            heard = ' '.join(s.text.strip() for s in asr.transcribe(y, beam_size=5, language=lang)[0])
+            acc = text_match(line['text'], heard, lang)
             sim = float(torch.nn.functional.cosine_similarity(ref, embed(y), dim=0))
             f0 = librosa.pyin(y, fmin=70, fmax=600, sr=16000)[0]
             f0 = f0[~np.isnan(f0)]
             report[f.name] = dict(line=i, words=round(acc, 2), same_voice=round(sim, 2),
                                   pitch_hz=int(np.median(f0)) if len(f0) else 0, heard=heard)
             print(f'  {f.name:14s} words={acc:.2f} same_voice={sim:.2f} pitch={report[f.name]["pitch_hz"]}Hz | {heard}')
-            if acc >= 0.9 and (i not in picks or sim > report[picks[i].name]['same_voice']):
+            if acc >= min_match and (i not in picks or sim > report[picks[i].name]['same_voice']):
                 picks[i] = f
         if i not in picks:
             raise SystemExit(f'line {i}: no take had the right words; run again with more --takes')
@@ -119,6 +136,9 @@ def main():
     args = ap.parse_args()
     scene, char_dir = args.scene, args.scene.parent
     char = json.loads((char_dir / 'character.json').read_text())
+    if (scene / 'scene.json').exists():
+        char.update(json.loads((scene / 'scene.json').read_text()))
+    lang = char.get('lang', 'en')
     lines = json.loads((scene / 'script.json').read_text())
     takes = scene / 'takes'
     takes.mkdir(exist_ok=True)
@@ -128,7 +148,7 @@ def main():
             if not out.exists():
                 print(f'generating line {i} take {t}: {line["text"]}', flush=True)
                 generate(line['text'], line['control'], char_dir / char['reference'], char.get('reference_text', ''), out)
-    picks = score(lines, takes, char_dir / char['identity'])
+    picks = score(lines, takes, char_dir / char['identity'], lang)
     (takes / 'picks.json').write_text(json.dumps({i: p.name for i, p in picks.items()}, indent=1))
     mix(lines, picks, scene / f'{char_dir.name}_{scene.name}')
 
