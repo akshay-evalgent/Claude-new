@@ -1,0 +1,7 @@
+# intermediates: rebuilt by render.py / score.py
+out/*.parts/
+out/*_silent.mp4
+out/*_mix.wav
+out/*.log
+__pycache__/
+test_frame.py

@@ -1,0 +1,26 @@
+1
+00:01:13,500 --> 00:01:15,300
+Papa · appel entrant…
+
+2
+00:01:16,500 --> 00:01:18,100
+Papa · appel entrant…
+
+3
+00:01:18,500 --> 00:01:20,250
+Appels manqués · Papa (2)
+
+4
+00:01:32,600 --> 00:01:37,300
+7 300
+
+5
+00:02:20,250 --> 00:02:30,000
+LANTERNE (LANTERN)
+Il t’a donné 7 300 matins.
+
+6
+00:02:23,850 --> 00:02:30,000
+Donne-lui-en un.
+Appel en cours : Papa…
+
