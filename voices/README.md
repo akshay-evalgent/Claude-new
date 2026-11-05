@@ -109,6 +109,25 @@ scene, and `--music track.mp3` for a quiet bed under the voice (use the YouTube 
 music you own). The MP4 and cover aren't committed (they're large and can be rebuilt); the
 captions and upload text are.
 
+## Realistic footage (Google Flow)
+
+Generate one 8-second 9:16 clip in Google Flow with Veo 3.1. Use the same still image as the
+**first and last frame**, a locked-off camera, and only small continuous motion (rain,
+steam, breathing), so the clip loops. Then:
+
+```bash
+voices/run make_video.py voices/girlfriend/sorry-call --bg clip.mp4 --ai-visuals \
+    --bg-audio 1.0 --captions-y 1330 --variant flow
+```
+
+- The clip repeats under the whole voice track, with a 0.5 s crossfade where it loops (`--loop-fade`).
+- `--bg-audio` keeps the clip's own sound (Flow's rain was -35 LUFS, so 1.0 put it about 21 dB
+  under the voice). `--captions-y` moves captions onto a dark part of the shot, off the subject.
+- `--variant flow` saves `_short_flow.mp4`, `_cover_flow.png` and `upload_flow.txt` beside the drawn
+  version, so you can upload both and compare. `--ai-visuals` adds "the visuals are AI-generated"
+  to the description; YouTube also labels photorealistic AI on Shorts.
+- Leave Flow's visible watermark in place. Higher Flow plans export without it.
+
 ## Create a character's voice
 
 ```bash

@@ -164,7 +164,10 @@ def main():
     ap.add_argument('--bg', type=Path, help='your own photo or video to use instead of the drawn scene')
     ap.add_argument('--music', type=Path, help='optional music bed, mixed well under the voice')
     ap.add_argument('--bg-audio', type=float, default=0.0, help='keep the --bg video\'s own sound (e.g. rain) at this level under the voice, e.g. 0.15')
+    ap.add_argument('--ai-visuals', action='store_true', help='the --bg footage is AI-generated (e.g. Google Flow); says so in the description')
     ap.add_argument('--loop-fade', type=float, default=0.5, help='seconds of crossfade where a --bg video loops (default 0.5; 0 for none)')
+    ap.add_argument('--captions-y', type=int, default=900, help='top of the caption block in pixels (default 900; lower it onto a dark area of your footage, e.g. 1260)')
+    ap.add_argument('--variant', help='save as <char>_<episode>_short_<variant>.mp4, e.g. flow, to compare versions')
     ap.add_argument('--lang', default='en')
     ap.add_argument('--cover-at', type=float, help='seconds into the Short for the cover frame')
     args = ap.parse_args()
@@ -205,7 +208,8 @@ def main():
 
     cfg = dict(mode='overlay' if args.bg else 'scene', scene=theme.get('scene', 'citynights'), palette=theme.get('palette', ['#2b3150', '#8fa0d8', '#e7a23b']),
                accent=theme.get('accent', '#f2b544'), name=char.get('name', char_dir.name), time_label=args.time or theme.get('time_label', '11:48 PM'),
-               dedication=dedication, duration=duration, fps=FPS, words=words, pages=pages, env=env, bars=bars, voice_end=voice_end)
+               dedication=dedication, duration=duration, fps=FPS, words=words, pages=pages, env=env, bars=bars, voice_end=voice_end,
+               caption_top=args.captions_y)
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         (tmp / 'cfg.json').write_text(json.dumps(cfg))
@@ -240,11 +244,13 @@ def main():
             audio_args = [*audio_in, '-stream_loop', '-1', '-i', str(args.music), '-filter_complex', fc, '-map', '0:v', '-map', '[a]']
         else:
             audio_args = [*audio_in, '-map', '0:v', '-map', '1:a']
-        out = ep / f'{stem}_short.mp4'
+        tag = f'_{args.variant}' if args.variant else ''
+        out = ep / f'{stem}_short{tag}.mp4'
         subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(video), *audio_args, '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k',
                         '-t', str(duration), '-movflags', '+faststart', str(out)], check=True)
         cover_at = args.cover_at if args.cover_at is not None else max(p['s'] + 0.6 for p in pages if p['s'] < duration * 0.65)
-        subprocess.run(['node', str(VIDEO / 'render.cjs'), str(tmp / 'cfg.json'), str(ep / f'{stem}_cover.png'), '--frame', str(cover_at)], check=True)
+        subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', str(cover_at), '-i', str(out), '-frames:v', '1',  # from the finished Short,
+                        str(ep / f'{stem}_cover{tag}.png')], check=True)                                     # so footage and overlays match
     srt(words, pages, ep / f'{stem}.srt')
 
     unsaid = script['unsaid'] if script else 'Sorry'
@@ -252,13 +258,14 @@ def main():
     upload = [
         f"TITLE\n{title} | {char.get('playlist', '')}",
         f"DESCRIPTION\n{title}.\nA tiny voice note from {char.get('name')}, for the person you can't say it to.\n\n"
-        f"Fictional character. The voice is AI, made from the creator's own acted performance.\n#pov {TAGS.get(char_dir.name, '')} #shorts",
+        f"Fictional character, made with AI: the voice comes from the creator's own acted performance"
+        f"{', the visuals are AI-generated' if args.ai_visuals else ''}.\n#pov {TAGS.get(char_dir.name, '')} #shorts",
         f"PLAYLIST\n{char.get('playlist', '')}",
         f"PINNED COMMENT\n{char.get('name')}: {PINNED.get(unsaid, PINNED['Sorry'])}",
         "WHEN UPLOADING\n- Altered or synthetic content: Yes\n- Audience: No, it's not made for kids\n- Subtitles: upload the .srt file",
     ]
-    (ep / 'upload.txt').write_text('\n\n'.join(upload) + '\n')
-    print(f'wrote {out.name}, {stem}.srt, {stem}_cover.png, upload.txt')
+    (ep / f'upload{tag}.txt').write_text('\n\n'.join(upload) + '\n')
+    print(f'wrote {out.name}, {stem}.srt, {stem}_cover{tag}.png, upload{tag}.txt')
 
 
 if __name__ == '__main__':

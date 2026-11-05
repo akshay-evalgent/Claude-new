@@ -52,9 +52,9 @@ body:not(.scene-mode) #grain, body:not(.scene-mode) #vignette { display: none; }
   background: radial-gradient(ellipse at center, rgba(0,0,0,0.42), rgba(0,0,0,0) 70%); }
 #caption { position: relative; text-align: center; font-family: "Baloo", sans-serif; font-weight: 800; font-size: 78px;
   line-height: 1.16; color: #fff; text-shadow: 0 4px 18px rgba(0,0,0,0.6), 0 2px 2px rgba(0,0,0,0.5); }
-#caption .w { display: inline-block; opacity: 0.38; transition: none; }
+#caption .w { display: inline-block; opacity: 0.38; transition: none; margin: 0 0.05em; }
 #caption .w.on { opacity: 1; }
-#caption .w.now { opacity: 1; color: var(--accent); transform: scale(1.07); }
+#caption .w.now { opacity: 1; color: var(--accent); transform: scale(1.05); }
 </style></head>
 <body>
 <canvas id="scene" width="1080" height="1920"></canvas>
@@ -279,6 +279,7 @@ function setup(cfg) {
   document.documentElement.style.setProperty('--accent', cfg.accent);
   document.body.classList.toggle('scene-mode', cfg.mode === 'scene');
   document.getElementById('dedication').textContent = cfg.dedication || '';
+  document.getElementById('capwrap').style.top = (cfg.caption_top || 900) + 'px';
   document.getElementById('avatar').textContent = (cfg.name || '?').slice(0, 1).toUpperCase();
   document.getElementById('bname').textContent = cfg.name;
   document.getElementById('btime').textContent = cfg.time_label + ' · voice note';
@@ -315,8 +316,11 @@ function renderAt(t) {
   // captions
   let pi = -1; for (let i = 0; i < C.pages.length; i++) if (t >= C.pages[i].s - 0.06 && t < C.pages[i].until) pi = i;
   C.pageEls.forEach((el, i) => { el.hidden = i !== pi; });
-  if (pi >= 0) C.pageEls[pi].querySelectorAll('.w').forEach(sp => { const w = C.words[+sp.dataset.i];
-    sp.classList.toggle('on', t >= w.s); sp.classList.toggle('now', t >= w.s && t < w.e + 0.08); });
+  if (pi >= 0) {  // one highlighted word at a time: the latest one that has started
+    let now = -1; C.words.forEach((w, i) => { if (t >= w.s && t < w.e + 0.25) now = i; });
+    C.pageEls[pi].querySelectorAll('.w').forEach(sp => { const i = +sp.dataset.i, w = C.words[i];
+      sp.classList.toggle('on', t >= w.s); sp.classList.toggle('now', i === now); });
+  }
   document.getElementById('capwrap').style.opacity = pi >= 0 ? 1 - loopOut : 0;  // no caption, no scrim
   return true;
 }
