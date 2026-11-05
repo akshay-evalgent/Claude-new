@@ -1,0 +1,88 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Say It For Me: channel art. render.cjs opens this with ?a=profile|banner|watermark|watermark150 and screenshots it. -->
+<style>
+@font-face { font-family: "Baloo"; src: url("../voices/video/fonts/Baloo2.ttf"); font-weight: 400 800; }
+@font-face { font-family: "Kalam"; src: url("../voices/video/fonts/Kalam-Bold.ttf"); font-weight: 700; }
+:root { --night: #14112b; --night2: #2a2160; --amber: #f2b544; --amber2: #ffd27a; --cream: #fff4dc; --ink: #1a1533; }
+html, body { margin: 0; background: transparent; overflow: hidden; }
+.art { position: relative; overflow: hidden; display: none; }
+canvas.bg { position: absolute; inset: 0; }
+/* the mark: an amber voice-note bubble with a waveform, the same bubble the Shorts use */
+.mark { position: absolute; display: grid; place-items: center; background: linear-gradient(150deg, var(--amber2), var(--amber));
+  box-shadow: 0 30px 90px rgba(242, 181, 68, 0.35); }
+.mark .bars { display: flex; align-items: center; }
+.mark .bars i { display: block; background: var(--ink); }
+/* profile 800x800, shown as a circle */
+#profile { width: 800px; height: 800px; }
+#profile .mark { left: 160px; top: 205px; width: 480px; height: 360px; border-radius: 150px 150px 150px 44px; }
+#profile .bars { gap: 26px; height: 220px; } #profile .bars i { width: 34px; border-radius: 17px; }
+/* watermark: white mark, transparent background */
+#watermark, #watermark150 { background: transparent; }
+#watermark { width: 300px; height: 300px; } #watermark150 { width: 150px; height: 150px; }
+.wm { position: absolute; inset: 12%; display: grid; place-items: center; background: #ffffff; border-radius: 34% 34% 34% 10%; }
+.wm .bars { display: flex; align-items: center; height: 46%; } .wm .bars i { display: block; background: var(--ink); border-radius: 999px; }
+/* banner 2560x1440; everything that matters sits in the centre 1546x423 */
+#banner { width: 2560px; height: 1440px; }
+#safe { position: absolute; left: 507px; top: 508px; width: 1546px; height: 423px; display: flex; align-items: center; justify-content: center; gap: 56px; }
+#safe .mark { position: relative; flex: none; width: 260px; height: 196px; border-radius: 80px 80px 80px 24px; }
+#safe .bars { gap: 14px; height: 122px; } #safe .bars i { width: 19px; border-radius: 10px; }
+#safe .words { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+#safe h1 { margin: 0; font-family: "Baloo", sans-serif; font-weight: 800; font-size: 128px; line-height: 0.95; color: var(--cream); letter-spacing: -2px; }
+#safe .tag { white-space: nowrap; font-family: "Kalam", cursive; font-weight: 700; font-size: 46px; color: var(--amber); line-height: 1.1; }
+#safe .cast { display: flex; flex-wrap: nowrap; gap: 10px; margin-top: 14px; }
+#safe .cast span { white-space: nowrap; font-family: "Baloo", sans-serif; font-weight: 600; font-size: 26px; color: var(--cream); padding: 6px 18px 4px 14px;
+  border-radius: 999px; background: rgba(255, 255, 255, 0.08); border: 2px solid rgba(255, 255, 255, 0.14); display: inline-flex; align-items: center; gap: 10px; }
+#safe .cast span b { width: 16px; height: 16px; border-radius: 50%; display: inline-block; }
+#safe .daily { font-family: "Baloo", sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 6px; color: rgba(255, 244, 220, 0.6); margin-top: 12px; }
+</style></head>
+<body>
+<div class="art" id="profile"><canvas class="bg" width="800" height="800"></canvas>
+  <div class="mark"><div class="bars"></div></div></div>
+<div class="art" id="watermark"><div class="wm"><div class="bars"></div></div></div>
+<div class="art" id="watermark150"><div class="wm"><div class="bars"></div></div></div>
+<div class="art" id="banner"><canvas class="bg" width="2560" height="1440"></canvas>
+  <div id="safe">
+    <div class="mark"><div class="bars"></div></div>
+    <div class="words">
+      <h1>Say It For Me</h1>
+      <div class="tag">tiny voice notes for the people you can't say it to</div>
+      <div class="cast"></div>
+      <div class="daily">A NEW VOICE NOTE EVERY DAY</div>
+    </div>
+  </div></div>
+<script>
+function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function hexa(hex, a) { const n = parseInt(hex.slice(1), 16); return `rgba(${n >> 16 & 255},${n >> 8 & 255},${n & 255},${a})`; }
+function night(cv, seed, bokehN, rainN, lights) {
+  const c = cv.getContext('2d'), W = cv.width, H = cv.height, r = rng(seed);
+  const g = c.createRadialGradient(W * 0.5, H * 0.45, 0, W * 0.5, H * 0.45, Math.max(W, H) * 0.75);
+  g.addColorStop(0, '#2a2160'); g.addColorStop(0.55, '#1a1540'); g.addColorStop(1, '#0c0a1d'); c.fillStyle = g; c.fillRect(0, 0, W, H);
+  const cols = ['#f2b544', '#8fa0d8', '#e88aa8', '#ffffff', '#ff8a3d', '#2ee6d6'];
+  for (let i = 0; i < bokehN; i++) { const x = r() * W, y = r() * H, rad = (0.02 + r() * 0.06) * Math.min(W, H), col = cols[Math.floor(r() * cols.length)], a = 0.10 + r() * 0.22;
+    const gg = c.createRadialGradient(x, y, 0, x, y, rad); gg.addColorStop(0, hexa(col, a)); gg.addColorStop(1, hexa(col, 0)); c.fillStyle = gg; c.fillRect(x - rad, y - rad, rad * 2, rad * 2); }
+  c.lineCap = 'round';
+  for (let i = 0; i < rainN; i++) { const x = r() * W, y = r() * H, len = (0.02 + r() * 0.05) * H; c.strokeStyle = `rgba(200,210,255,${0.05 + r() * 0.10})`; c.lineWidth = 1 + r() * 2;
+    c.beginPath(); c.moveTo(x, y); c.lineTo(x - len * 0.12, y + len); c.stroke(); }
+  if (lights) { c.strokeStyle = 'rgba(10,10,20,0.7)'; c.lineWidth = 4; c.beginPath();
+    for (let i = 0; i <= 60; i++) { const u = i / 60, x = u * W, y = 120 + 140 * 4 * u * (1 - u); i ? c.lineTo(x, y) : c.moveTo(x, y); } c.stroke();
+    for (let i = 1; i < 40; i++) { const u = i / 40, x = u * W, y = 136 + 140 * 4 * u * (1 - u), b = 0.6 + 0.4 * r();
+      const gg = c.createRadialGradient(x, y, 0, x, y, 60); gg.addColorStop(0, hexa('#f2b544', 0.5 * b)); gg.addColorStop(1, hexa('#f2b544', 0)); c.fillStyle = gg; c.fillRect(x - 60, y - 60, 120, 120);
+      c.fillStyle = `rgba(255,246,220,${0.75 * b})`; c.beginPath(); c.arc(x, y, 8, 0, 7); c.fill(); } }
+  const v = c.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.35, W / 2, H / 2, Math.max(W, H) * 0.7); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.5)'); c.fillStyle = v; c.fillRect(0, 0, W, H);
+}
+function bars(el, heights, unit, width) { el.innerHTML = heights.map(h => `<i style="height:${h * unit}px${width ? `;width:${width}px` : ''}"></i>`).join(''); }
+const WAVE = [0.38, 0.72, 1.0, 0.62, 0.86, 0.5, 0.3];
+const a = new URLSearchParams(location.search).get('a') || 'profile';
+const el = document.getElementById(a); el.style.display = 'block';
+document.body.style.width = el.style.width;
+if (a === 'profile') { night(el.querySelector('canvas'), 7, 14, 40, false); bars(el.querySelector('.bars'), WAVE, 220); }
+if (a === 'banner') { night(el.querySelector('canvas'), 11, 90, 420, true); bars(el.querySelector('.bars'), WAVE, 140);
+  const cast = [['Mom', '#f5b52e'], ['Dad', '#7f95b8'], ['Girlfriend', '#8fa0d8'], ['Boyfriend', '#4fb3b0'], ['Sister', '#ff8fb1'], ['Brother', '#ff8a3d'], ['Best friend', '#2ee6d6']];
+  el.querySelector('.cast').innerHTML = cast.map(([n, c]) => `<span><b style="background:${c}"></b>${n}</span>`).join(''); }
+if (a.startsWith('watermark')) { const s = a === 'watermark' ? 300 : 150; el.querySelectorAll('.wm').forEach(w => { w.style.borderRadius = '34% 34% 34% 10%'; });
+  const wb = el.querySelector('.bars'); wb.style.gap = (s * 0.04) + 'px'; bars(wb, WAVE, s * 0.40, s * 0.05); }
+window.ready = document.fonts.ready.then(() => true);
+</script>
+</body></html>
