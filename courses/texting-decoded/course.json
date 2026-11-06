@@ -6,13 +6,21 @@
  "gates_done": [
   "topic",
   "plan",
-  "hooks"
+  "hooks",
+  "moodboard"
  ],
  "kit": {
-  "style": null,
-  "voice": null,
-  "accent": null,
-  "sticker": "Texting, decoded · n/7"
+  "style": "notebook",
+  "style_frame": "moodboard/style_2_notebook.png",
+  "voice": "voices/narrator",
+  "voice_name": "Theo",
+  "accent": "#d9432f",
+  "ink": "#2a2420",
+  "paper": "#f4ecd8",
+  "hand_font": "Kalam",
+  "sticker": "TEXTING, DECODED · n/7",
+  "chat_ui": "iMessage-style, light",
+  "channel": "Decoded in 7 (@decodedin7), to confirm"
  },
  "episodes": [
   {
@@ -20,49 +28,49 @@
    "title": "'ok' vs 'ok.'",
    "teaches": "Punctuation changes meaning, and the person's own pattern decides it: read their baseline before you read the message.",
    "hook": "1A",
-   "stage": "moodboard"
+   "stage": "script"
   },
   {
    "slug": "02-left-on-read",
    "title": "Left on read",
    "teaches": "'Read' is not an answer. Busy, thinking, or avoiding, and the one thing that separates them: their usual reply gap, not this one.",
    "hook": "2A",
-   "stage": "moodboard"
+   "stage": "script"
   },
   {
    "slug": "03-the-laugh-scale",
    "title": "haha vs lol vs 😂",
    "teaches": "How much they actually laughed. Length means real; 'lol' means 'received'; the emoji alone means they are being polite.",
    "hook": "3A",
-   "stage": "moodboard"
+   "stage": "script"
   },
   {
    "slug": "04-typing-then-nothing",
    "title": "typing… then nothing",
    "teaches": "A deleted message is the most honest thing they wrote today. Why people delete, and the one reply that lets them send it.",
    "hook": "4B",
-   "stage": "moodboard"
+   "stage": "script"
   },
   {
    "slug": "05-the-double-text",
    "title": "The double text",
    "teaches": "Two messages in a row is not needy; the gap between them is what people read. The two-text rule and when to stop.",
    "hook": "5B",
-   "stage": "moodboard"
+   "stage": "script"
   },
   {
    "slug": "06-voice-memo-vs-text",
    "title": "Voice memo vs text",
    "teaches": "People switch to voice when the feeling is too big for text. What a 2 AM paragraph means, and what a 6-second voice memo means.",
    "hook": "6B",
-   "stage": "moodboard"
+   "stage": "script"
   },
   {
    "slug": "07-we-need-to-talk",
    "title": "'We need to talk.'",
    "teaches": "The message that stops your heart, read with everything from 1 to 6: punctuation, timing, their pattern. And the one reply that works.",
    "hook": "7A",
-   "stage": "moodboard"
+   "stage": "script"
   }
  ]
 }

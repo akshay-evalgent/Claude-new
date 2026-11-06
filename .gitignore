@@ -5,4 +5,4 @@ voices/**/_tmp*.wav
 voices/**/candidates/
 voices/**/*_short*.mp4
 voices/**/*_cover*.png
-voices/narrator_*/candidates/
+voices/narrator/candidates/

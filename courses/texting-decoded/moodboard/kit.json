@@ -1,0 +1,13 @@
+{
+ "style": "notebook",
+ "style_frame": "moodboard/style_2_notebook.png",
+ "voice": "voices/narrator",
+ "voice_name": "Theo",
+ "accent": "#d9432f",
+ "ink": "#2a2420",
+ "paper": "#f4ecd8",
+ "hand_font": "Kalam",
+ "sticker": "TEXTING, DECODED \u00b7 n/7",
+ "chat_ui": "iMessage-style, light",
+ "channel": "Decoded in 7 (@decodedin7), to confirm"
+}
