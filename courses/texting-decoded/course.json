@@ -1,0 +1,16 @@
+{
+ "title": "Texting, decoded",
+ "promise": "By 7/7 you'll read any chat.",
+ "lang": "hi",
+ "gates_done": ["topic"],
+ "kit": {"style": null, "voice": null, "accent": null, "sticker": "Texting, decoded · n/7"},
+ "episodes": [
+  {"slug": "01-ok-full-stop", "title": "'ok' vs 'ok.'", "teaches": "Punctuation changes meaning, and the person's own pattern decides it: read their baseline before you read the message.", "hook": null, "stage": "plan"},
+  {"slug": "02-seen-no-reply", "title": "Seen. No reply.", "teaches": "'Seen' is not an answer. The three reasons (busy, thinking, avoiding) and the one thing that separates them: their usual reply gap, not this one.", "hook": null, "stage": "plan"},
+  {"slug": "03-the-laugh-scale", "title": "haha vs lol vs 😂", "teaches": "How much they actually laughed. Length means real; 'lol' means 'received'; the emoji alone means they are being polite.", "hook": null, "stage": "plan"},
+  {"slug": "04-typing-then-nothing", "title": "typing… then nothing", "teaches": "A deleted message is the most honest thing they wrote today. Why people delete, and the one reply that lets them send it.", "hook": null, "stage": "plan"},
+  {"slug": "05-the-double-text", "title": "The double text", "teaches": "Two messages in a row is not needy; the gap between them is what people read. The two-message rule and when to stop.", "hook": null, "stage": "plan"},
+  {"slug": "06-voice-note-vs-text", "title": "Voice note vs text", "teaches": "People switch to voice when the feeling is too big for text. What a 2 AM paragraph means, and what a 6-second voice note means.", "hook": null, "stage": "plan"},
+  {"slug": "07-we-need-to-talk", "title": "'We need to talk.'", "teaches": "The message that stops your heart, read with everything from 1 to 6: punctuation, timing, their pattern. And the one reply that works.", "hook": null, "stage": "plan"}
+ ]
+}
