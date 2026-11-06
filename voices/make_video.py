@@ -328,17 +328,17 @@ def main():
                             '-map', '[v]', '-t', str(duration), '-r', str(FPS), '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', str(video)], check=True)
         audio_in = ['-i', str(mixed if mixed.exists() else voice)]
         if args.bg and args.bg_audio > 0 and not args.music:  # the clip's own ambience (rain, street) under the voice
-            fc = f'[2:a]volume={args.bg_audio}[m];[1:a][m]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.89[a]'
+            fc = f'[2:a]volume={args.bg_audio}[m];[1:a][m]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.84:level=false[a]'
             audio_args = [*audio_in, '-stream_loop', '-1', '-i', str(args.bg), '-filter_complex', fc, '-map', '0:v', '-map', '[a]']
         elif args.music:
             fc = (f'[2:a]volume=0.12,afade=t=in:d=1.5,afade=t=out:st={max(0, duration - 2)}:d=2[m];'
-                  '[1:a][m]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.89[a]')
+                  '[1:a][m]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.84:level=false[a]')
             audio_args = [*audio_in, '-stream_loop', '-1', '-i', str(args.music), '-filter_complex', fc, '-map', '0:v', '-map', '[a]']
         else:
             audio_args = [*audio_in, '-map', '0:v', '-map', '1:a']
         tag = f'_{args.variant}' if args.variant else ''
         out = ep / f'{stem}_short{tag}.mp4'
-        subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(video), *audio_args, '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k',
+        subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(video), *audio_args, '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-aac_pns', '0',  # PNS fakes rain-like noise and overshoots by 3+ dB
                         '-t', str(duration), '-movflags', '+faststart', str(out)], check=True)
         cover_at = args.cover_at if args.cover_at is not None else max(p['s'] + 0.6 for p in pages if p['s'] < duration * 0.65)
         subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', str(cover_at), '-i', str(out), '-frames:v', '1',  # from the finished Short,

@@ -253,8 +253,8 @@ def main():
         if not args.plain and not args.no_check and len(outs) > 1:
             mixed, picks, scores = best_phrases(src_audio, outs, [args.character / c for c in clips], args.lang)
             report['sounds_like_character_speech_only'] = scores
-            single = max(v for k, v in scores.items() if k != 'best_phrases')
-            if scores['best_phrases'] >= single:
+            # against the take we'd otherwise keep (best words), not the most-like-her take, whose words may be garbled
+            if scores['best_phrases'] >= scores[best.name]:
                 take_audio, report['kept_take'] = mixed, 'best phrase from each take'
                 report['phrases'] = picks
             print(f'  sounds like {args.character.name} (speech only): {scores} -> using {report["kept_take"]}')

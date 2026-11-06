@@ -1,0 +1,503 @@
+{
+ "settings": {
+  "model": "Seed-VC v1 pitch-following (local)",
+  "steps": 30,
+  "extra_semitones": 0,
+  "reference_clips": [
+   "voice_normal.mp3",
+   "voice_crying.mp3"
+  ],
+  "trimmed_silence_s": {
+   "start": 1.07,
+   "end": 0.54
+  }
+ },
+ "checks": [
+  {
+   "take": "take1.wav",
+   "you_said": "Hey, are you still awake? I know you are angry. You are allowed to be. I said things I didn't mean because I was scared you'd leave first. And that wasn't fair to you. I didn't text because typing sorry quite too small. I'm really sorry. Can we talk tomorrow? Not to fix everything, just to talk. Please, please don't go to sleep angry, okay?",
+   "she_said": "Hey, are you still awake? I know you are angry. You are allowed to be. I said things I didn't mean because I was scared you'll leave first. And that wasn't fair to you. I didn't text because typing sorry got too small. I'm really sorry. Can we talk tomorrow? Not to fix everything, just to talk. Please don't go to sleep angry. Okay.",
+   "words_kept": 0.96,
+   "pitch_shape_match": 0.77,
+   "your_pitch_hz": 101,
+   "her_pitch_hz": 204,
+   "length_s": [
+    38.71,
+    38.7
+   ],
+   "sounds_like_character": 0.52,
+   "sounds_like_you": 0.09
+  },
+  {
+   "take": "take2.wav",
+   "you_said": "Hey, are you still awake? I know you are angry. You are allowed to be. I said things I didn't mean because I was scared you'd leave first. And that wasn't fair to you. I didn't text because typing sorry quite too small. I'm really sorry. Can we talk tomorrow? Not to fix everything, just to talk. Please, please don't go to sleep angry, okay?",
+   "she_said": "Hey, are you still awake? I know you are angry. You are allowed to be. I said things I didn't mean because I was scared your lead burst and that wasn't fair to you. I didn't text because typing sorry guy too smarty. I'm really sorry. Can we talk tomorrow? Not to fix everything, just to talk. Please, please won't go to sleep angling, okay?",
+   "words_kept": 0.89,
+   "pitch_shape_match": 0.69,
+   "your_pitch_hz": 101,
+   "her_pitch_hz": 202,
+   "length_s": [
+    38.71,
+    38.7
+   ],
+   "sounds_like_character": 0.55,
+   "sounds_like_you": 0.09
+  },
+  {
+   "take": "take3.wav",
+   "you_said": "Hey, are you still awake? I know you are angry. You are allowed to be. I said things I didn't mean because I was scared you'd leave first. And that wasn't fair to you. I didn't text because typing sorry quite too small. I'm really sorry. Can we talk tomorrow? Not to fix everything, just to talk. Please, please don't go to sleep angry, okay?",
+   "she_said": "Hey, are you still awake? I know you are angry. You are allowed to be. I said things I didn't mean because I was scared you'd leave first. And that wasn't fair to you. I didn't text because typing sorry guide too small. I'm really sorry. Can we talk tomorrow? Not to fix everything, just to talk. These days won't go to sleep, angering, okay?",
+   "words_kept": 0.92,
+   "pitch_shape_match": 0.77,
+   "your_pitch_hz": 101,
+   "her_pitch_hz": 202,
+   "length_s": [
+    38.71,
+    38.7
+   ],
+   "sounds_like_character": 0.51,
+   "sounds_like_you": 0.09
+  }
+ ],
+ "kept_take": "best phrase from each take",
+ "source_words": [
+  [
+   "Hey,",
+   0.0,
+   0.5
+  ],
+  [
+   "are",
+   1.46,
+   2.12
+  ],
+  [
+   "you",
+   2.12,
+   2.24
+  ],
+  [
+   "still",
+   2.24,
+   2.5
+  ],
+  [
+   "awake?",
+   2.5,
+   2.76
+  ],
+  [
+   "I",
+   4.02,
+   4.58
+  ],
+  [
+   "know",
+   4.58,
+   4.74
+  ],
+  [
+   "you",
+   4.74,
+   4.96
+  ],
+  [
+   "are",
+   4.96,
+   5.12
+  ],
+  [
+   "angry.",
+   5.12,
+   5.52
+  ],
+  [
+   "You",
+   6.4,
+   6.64
+  ],
+  [
+   "are",
+   6.64,
+   6.76
+  ],
+  [
+   "allowed",
+   6.76,
+   7.02
+  ],
+  [
+   "to",
+   7.02,
+   7.28
+  ],
+  [
+   "be.",
+   7.28,
+   7.48
+  ],
+  [
+   "I",
+   9.0,
+   9.28
+  ],
+  [
+   "said",
+   9.28,
+   9.54
+  ],
+  [
+   "things",
+   9.54,
+   10.06
+  ],
+  [
+   "I",
+   10.06,
+   10.42
+  ],
+  [
+   "didn't",
+   10.42,
+   10.74
+  ],
+  [
+   "mean",
+   10.74,
+   11.0
+  ],
+  [
+   "because",
+   11.0,
+   12.24
+  ],
+  [
+   "I",
+   12.24,
+   12.44
+  ],
+  [
+   "was",
+   12.44,
+   12.62
+  ],
+  [
+   "scared",
+   12.62,
+   13.0
+  ],
+  [
+   "you'd",
+   13.0,
+   13.44
+  ],
+  [
+   "leave",
+   13.44,
+   13.6
+  ],
+  [
+   "first.",
+   13.6,
+   14.14
+  ],
+  [
+   "And",
+   15.48,
+   15.76
+  ],
+  [
+   "that",
+   15.76,
+   16.02
+  ],
+  [
+   "wasn't",
+   16.02,
+   16.74
+  ],
+  [
+   "fair",
+   16.74,
+   17.02
+  ],
+  [
+   "to",
+   17.02,
+   17.22
+  ],
+  [
+   "you.",
+   17.22,
+   17.4
+  ],
+  [
+   "I",
+   18.58,
+   19.2
+  ],
+  [
+   "didn't",
+   19.2,
+   19.44
+  ],
+  [
+   "text",
+   19.44,
+   19.72
+  ],
+  [
+   "because",
+   19.72,
+   20.22
+  ],
+  [
+   "typing",
+   20.22,
+   21.32
+  ],
+  [
+   "sorry",
+   21.32,
+   21.68
+  ],
+  [
+   "quite",
+   21.68,
+   21.98
+  ],
+  [
+   "too",
+   21.98,
+   22.28
+  ],
+  [
+   "small.",
+   22.28,
+   22.66
+  ],
+  [
+   "I'm",
+   24.58,
+   25.3
+  ],
+  [
+   "really",
+   25.3,
+   25.66
+  ],
+  [
+   "sorry.",
+   25.66,
+   26.1
+  ],
+  [
+   "Can",
+   27.2,
+   27.92
+  ],
+  [
+   "we",
+   27.92,
+   28.08
+  ],
+  [
+   "talk",
+   28.08,
+   28.26
+  ],
+  [
+   "tomorrow?",
+   28.26,
+   28.62
+  ],
+  [
+   "Not",
+   30.0,
+   30.28
+  ],
+  [
+   "to",
+   30.28,
+   30.46
+  ],
+  [
+   "fix",
+   30.46,
+   30.7
+  ],
+  [
+   "everything,",
+   30.7,
+   31.2
+  ],
+  [
+   "just",
+   31.52,
+   31.58
+  ],
+  [
+   "to",
+   31.58,
+   31.78
+  ],
+  [
+   "talk.",
+   31.78,
+   32.16
+  ],
+  [
+   "Please,",
+   33.74,
+   33.78
+  ],
+  [
+   "please",
+   34.66,
+   34.78
+  ],
+  [
+   "don't",
+   34.78,
+   35.3
+  ],
+  [
+   "go",
+   35.3,
+   35.48
+  ],
+  [
+   "to",
+   35.48,
+   35.72
+  ],
+  [
+   "sleep",
+   35.72,
+   36.24
+  ],
+  [
+   "angry,",
+   36.24,
+   36.64
+  ],
+  [
+   "okay?",
+   37.04,
+   37.28
+  ]
+ ],
+ "sounds_like_character_speech_only": {
+  "take1.wav": 0.503,
+  "take2.wav": 0.536,
+  "take3.wav": 0.51,
+  "best_phrases": 0.53
+ },
+ "phrases": [
+  {
+   "start_s": 0.3,
+   "end_s": 0.66,
+   "take": "take2.wav",
+   "like_character": 0.11
+  },
+  {
+   "start_s": 1.96,
+   "end_s": 3.09,
+   "take": "take2.wav",
+   "like_character": 0.39
+  },
+  {
+   "start_s": 4.43,
+   "end_s": 5.62,
+   "take": "take2.wav",
+   "like_character": 0.46
+  },
+  {
+   "start_s": 6.51,
+   "end_s": 7.54,
+   "take": "take1.wav",
+   "like_character": 0.4
+  },
+  {
+   "start_s": 9.16,
+   "end_s": 11.25,
+   "take": "take2.wav",
+   "like_character": 0.39
+  },
+  {
+   "start_s": 11.95,
+   "end_s": 14.26,
+   "take": "take2.wav",
+   "like_character": 0.44
+  },
+  {
+   "start_s": 15.56,
+   "end_s": 16.12,
+   "take": "take2.wav",
+   "like_character": 0.25
+  },
+  {
+   "start_s": 16.33,
+   "end_s": 17.56,
+   "take": "take3.wav",
+   "like_character": 0.35
+  },
+  {
+   "start_s": 19.08,
+   "end_s": 20.47,
+   "take": "take2.wav",
+   "like_character": 0.48
+  },
+  {
+   "start_s": 21.0,
+   "end_s": 22.84,
+   "take": "take2.wav",
+   "like_character": 0.42
+  },
+  {
+   "start_s": 25.07,
+   "end_s": 26.36,
+   "take": "take2.wav",
+   "like_character": 0.43
+  },
+  {
+   "start_s": 27.82,
+   "end_s": 28.88,
+   "take": "take3.wav",
+   "like_character": 0.44
+  },
+  {
+   "start_s": 30.09,
+   "end_s": 32.15,
+   "take": "take1.wav",
+   "like_character": 0.39
+  },
+  {
+   "start_s": 33.58,
+   "end_s": 34.16,
+   "take": "take1.wav",
+   "like_character": 0.18
+  },
+  {
+   "start_s": 34.6,
+   "end_s": 37.49,
+   "take": "take2.wav",
+   "like_character": 0.42
+  }
+ ],
+ "performance": {
+  "aligned_ms": 0,
+  "gain_to_match": 1.32,
+  "follows_your_loudness": {
+   "whole_take": [
+    0.89,
+    0.93
+   ],
+   "between_phrases": [
+    0.47,
+    0.51
+   ],
+   "note": "[before, after]"
+  }
+ }
+}
