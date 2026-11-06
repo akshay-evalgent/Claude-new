@@ -12,3 +12,5 @@ courses/**/*.mp4
 courses/**/*_cover.png
 courses/**/_frames/
 courses/**/assets/*.mp4
+courses/motion/tests/
+courses/motion/music/*.mp3

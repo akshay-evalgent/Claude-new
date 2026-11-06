@@ -1,0 +1,38 @@
+<!doctype html>
+<!-- The stage: loads the kit and one scene (?scene=levels), then renders frames with real
+     motion blur: each frame is the average of several sub-frames across a 180° shutter. -->
+<html><head><meta charset="utf-8">
+<style>
+  @font-face { font-family: 'Inter'; src: url('fonts/Inter.ttf'); font-weight: 100 900; }
+  @font-face { font-family: 'Space Grotesk'; src: url('fonts/SpaceGrotesk.ttf'); font-weight: 300 700; }
+  @font-face { font-family: 'Instrument Serif'; src: url('fonts/InstrumentSerif-Italic.ttf'); font-style: italic; }
+  @font-face { font-family: 'Instrument Serif'; src: url('fonts/InstrumentSerif-Regular.ttf'); font-style: normal; }
+  html, body { margin: 0; background: #000; }
+  canvas { display: block; }
+</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="mg.js"></script>
+<script>
+  const scene = new URLSearchParams(location.search).get('scene');
+  document.write(`<script src="scenes/${scene}.js"><\/script>`);
+</script>
+<script>
+  const main = document.getElementById('c').getContext('2d');
+  const off = document.createElement('canvas'); off.width = 1080; off.height = 1920;
+  const oc = off.getContext('2d');
+  window.fontsReady = () => Promise.all(['800 100px Inter', '600 100px Inter', '400 100px Inter', '600 100px "Space Grotesk"',
+    'italic 400 100px "Instrument Serif"', '400 100px "Instrument Serif"'].map((f) => document.fonts.load(f)));
+  window.sceneInfo = () => ({ duration: SCENE.duration, cues: SCENE.cues || [] });
+  window.renderAt = (t, samples = 6, fps = 30) => {
+    const shutter = 0.5 / fps;
+    for (let k = 0; k < samples; k++) {
+      const tk = t + (samples > 1 ? (k / (samples - 1) - 0.5) * shutter : 0);
+      oc.setTransform(1, 0, 0, 1, 0, 0); oc.globalAlpha = 1; oc.clearRect(0, 0, 1080, 1920);
+      SCENE.draw(oc, Math.max(0, tk));
+      main.globalAlpha = 1 / (k + 1); main.drawImage(off, 0, 0);
+    }
+    main.globalAlpha = 1;
+    MG.finish(main, t);
+  };
+</script>
+</body></html>
