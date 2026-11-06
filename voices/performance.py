@@ -36,8 +36,11 @@ def speech_regions(y, sr):
     return [(d['start'] / 16000, d['end'] / 16000) for d in get_speech_timestamps(y16, opts)]
 
 
-def transfer(src, conv, sr, dehiss_db=-12.0):
-    """Return (audio, info). src = original recording, conv = converted take, both mono at sr."""
+def transfer(src, conv, sr, dehiss_db=-12.0, extra=None):
+    """Return (audio, info). src = original recording, conv = converted take, both mono at sr.
+    extra: the audio that was actually converted, when it is not src (e.g. an American voice
+    carrying your timing): its speech also counts as speech, so a word it places slightly
+    outside your own speech is kept rather than replaced by your silence."""
     import librosa
     from scipy.signal import butter, sosfilt
     n = min(len(src), len(conv))
@@ -64,6 +67,14 @@ def transfer(src, conv, sr, dehiss_db=-12.0):
     f0 = librosa.pyin(y16, fmin=60, fmax=500, sr=16000, frame_length=1024, hop_length=160)[0]
     voiced = np.convolve(~np.isnan(f0), np.ones(7), mode='same') > 0
     mask = np.maximum(mask, _to_samples(voiced, hop, n) > 0.5).astype(float)
+    only_extra = np.zeros(n)
+    if extra is not None:
+        extra = np.pad(np.asarray(extra, dtype=np.float64), (0, max(0, n - len(extra))))[:n]
+        em = np.zeros(n)
+        for a, b in speech_regions(extra, sr):
+            em[int(max(0, a - 0.03) * sr):int((b + 0.05) * sr)] = 1
+        only_extra = (em > 0) & (mask < 0.5)
+        mask = np.maximum(mask, em)
     mask = np.clip(_smooth(mask, int(0.03 * sr)), 0, 1)  # 15 ms crossfades
 
     # 3. turn down moments that are only room hiss; anything clearly above the hiss (a breath,
@@ -97,7 +108,8 @@ def transfer(src, conv, sr, dehiss_db=-12.0):
     fmask = frame_mean(mask)[: len(ra)]
     Ra, Rb = np.percentile(ra[fmask > 0.5], 95), np.percentile(rb[fmask > 0.5], 95)
     g = np.clip((ra / Ra + 1e-4) / (rb / Rb + 1e-4), 10 ** (-4 / 20), 10 ** (4 / 20))
-    g = 10 ** _smooth(np.log10(np.where(fmask > 0.01, g, 1.0)), 9)  # ~50 ms
+    oe = frame_mean(only_extra.astype(float))[: len(ra)] > 0.5  # you were silent there: no level to follow
+    g = 10 ** _smooth(np.log10(np.where((fmask > 0.01) & ~oe, g, 1.0)), 9)  # ~50 ms
     shaped = conv * _to_samples(g, hop, n)
 
     # 6. the same de-hissed room tone continues under her speech

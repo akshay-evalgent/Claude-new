@@ -16,3 +16,6 @@ pyyaml
 matplotlib
 descript-audio-codec
 indic-transliteration
+# American narration voice (Kokoro, runs on CPU) and prosody transfer (Praat)
+kokoro-onnx
+praat-parselmouth

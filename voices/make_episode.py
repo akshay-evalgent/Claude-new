@@ -5,6 +5,9 @@
     voices/run make_episode.py courses/.../01-ok-period --engine chatterbox
     voices/run make_episode.py courses/.../01-ok-period --voice-only          # just the narration
     voices/run make_episode.py courses/.../01-ok-period --sample 1,4,9 --engine dia   # hear a few beats
+    voices/run make_episode.py courses/.../01-ok-period --recording my_read.aac --accent us
+        # your performance, American accent: an American voice says the words with your timing and
+        # intonation (prosody.py), then it is converted to the narrator; your breaths fill the gaps
 
 Reads the episode's script.json (beats with voice phrases, scenes, drawings, footage), the course's
 course.json (the kit: style, narrator, sticker) and the narrator's character.json.
@@ -102,6 +105,8 @@ def phrase_lines(beats):
             ln = dict(k=len(lines) + 1, beat=i, say=ph['say'], pause=float(ph.get('pause', 0)), control=b.get('control', ''))
             if 'region' in ph:  # where this phrase sits in your own recording, seconds
                 ln['region'] = ph['region']
+            if 'tts' in ph:  # how a voice should say it, when the caption spelling would mislead it
+                ln['tts'] = ph['tts']
             lines.append(ln)
     return lines
 
@@ -154,14 +159,55 @@ def pick_takes(lines, takes_dir, identity, min_match=0.75):
 
 
 # ----------------------------------------------------------------------------- your own performance
-def recorded_takes(ep_dir, recording, lines, narrator_dir, narrator, steps=30):
+KOKORO = Path.home() / '.voices-vendor' / 'kokoro'
+
+
+def kokoro_text(say):
+    """What the American voice reads: 'ok' as 'okay', a lone k as the letter K."""
+    t = tts_text(say)
+    t = re.sub(r"\bok\b", 'okay', t, flags=re.I)
+    return re.sub(r"(?<![\w'])k(?![\w'])", 'K', t)
+
+
+def american_performance(src, lines, lead, out, voice='am_michael'):
+    """Your performance in an American voice: each phrase is said by an American text-to-speech
+    voice (Kokoro, on this machine), then re-timed to your words and given your intonation
+    (prosody.transplant), and placed exactly where you said it. Gaps stay silent here; your
+    breaths come back later from the original."""
+    import librosa, numpy as np, soundfile as sf
+    from kokoro_onnx import Kokoro
+    from faster_whisper import WhisperModel
+    from prosody import transplant
+    sr = 24000
+    y = librosa.load(src, sr=sr)[0]
+    track = np.zeros(len(y), dtype=np.float32)
+    tts = Kokoro(str(KOKORO / 'kokoro-v1.0.onnx'), str(KOKORO / 'voices-v1.0.bin'))
+    asr = WhisperModel('small.en', device='cpu', compute_type='int8')
+    def words(a):
+        segs, _ = asr.transcribe(librosa.resample(a, orig_sr=sr, target_sr=16000), beam_size=5, language='en', word_timestamps=True)
+        return [(w.word.strip(), w.start, w.end) for sg in segs for w in sg.words]
+    for ln in lines:
+        s, e = ln['region'][0] - lead, ln['region'][1] - lead
+        a, z = max(0, int((s - 0.03) * sr)), min(len(y), int((e + 0.05) * sr))
+        ref = y[a:z]
+        said, _ = tts.create(ln.get('tts', kokoro_text(ln['say'])), voice=voice, speed=0.95, lang='en-us')
+        said, _ = librosa.effects.trim(said, top_db=40)
+        moved = transplant(said, ref, sr, words(said), words(ref))
+        track[a:a + len(moved)] += moved[:len(track) - a]
+        print(f"  american {ln['k']:2d} {len(said) / sr:4.2f}s -> {len(moved) / sr:4.2f}s  {ln['say']}")
+    sf.write(out, track / (np.abs(track).max() + 1e-9) * 0.8, sr)
+
+
+def recorded_takes(ep_dir, recording, lines, narrator_dir, narrator, steps=30, accent=None):
     """You read the whole episode as one voice note; it is converted to the narrator's voice
     (Seed-VC, pitch-following: your timing, breaths and delivery stay), then cut into the script's
-    phrases by matching the words you said. Your own pauses replace the script's."""
+    phrases by matching the words you said. Your own pauses replace the script's.
+    accent='us': the words are first said by an American voice carrying your timing and
+    intonation (american_performance), and that is what gets converted, so the accent is US."""
     import librosa, numpy as np, soundfile as sf
     import convert_recording as cr, performance
     from faster_whisper import WhisperModel
-    takes_dir = ep_dir / 'takes' / 'recorded'
+    takes_dir = ep_dir / 'takes' / ('recorded_us' if accent == 'us' else 'recorded')
     takes_dir.mkdir(parents=True, exist_ok=True)
     src, conv = takes_dir / 'source.wav', takes_dir / 'converted.wav'
     if not src.exists():
@@ -174,10 +220,20 @@ def recorded_takes(ep_dir, recording, lines, narrator_dir, narrator, steps=30):
         print(f'  trimmed silence: {cut[0]} s from the start, {cut[1]} s from the end')
     lead = json.loads((takes_dir / 'trim.json').read_text())['start'] if (takes_dir / 'trim.json').exists() else 0.0
     if not conv.exists():
-        print(f'  converting your recording to {narrator["name"]} (Seed-VC on this machine, a few minutes)', flush=True)
-        cr.convert_local(src, narrator_dir / narrator['identity'], conv, steps, 0)
+        vc_in = src
+        if accent == 'us':
+            if not all('region' in ln for ln in lines):
+                raise SystemExit("--accent us needs each phrase's 'region' in the script")
+            us = takes_dir / 'american.wav'
+            if not us.exists():
+                american_performance(src, lines, lead, us)
+            vc_in = takes_dir / 'american_44k.wav'
+            cr.to_wav(us, vc_in)
+        print(f'  converting to {narrator["name"]} (Seed-VC on this machine, a few minutes)', flush=True)
+        cr.convert_local(vc_in, narrator_dir / narrator['identity'], conv, steps, 0)
     y_src, y_conv = librosa.load(src, sr=SR)[0], librosa.load(conv, sr=SR)[0]
-    voice, info = performance.transfer(y_src, y_conv, SR)
+    extra = librosa.load(takes_dir / 'american.wav', sr=SR)[0] if accent == 'us' else None
+    voice, info = performance.transfer(y_src, y_conv, SR, extra=extra)
     print(f'  performance: {info}')
     asr = WhisperModel('small.en', device='cpu', compute_type='int8')
     y16 = librosa.load(src, sr=16000)[0]
@@ -496,6 +552,7 @@ def main():
     ap.add_argument('--sample', help='beats to hear, e.g. 1,4,9: make their narration once, write takes/<engine>/sample_<engine>.mp3, stop')
     ap.add_argument('--rescore', action='store_true', help='score the takes again (default: reuse takes/<engine>/picks.json)')
     ap.add_argument('--recording', type=Path, help='your own read of the whole episode (one voice note); converted to the narrator, phrases cut by the words')
+    ap.add_argument('--accent', choices=['us'], help='with --recording: an American voice says the words with your timing and intonation, then it is converted to the narrator')
     ap.add_argument('--cover-at', type=float, help='seconds into the episode for the cover frame (default: the test)')
     args = ap.parse_args()
     ep_dir = args.episode.resolve()
@@ -520,9 +577,9 @@ def main():
         return
 
     if args.recording:
-        args.engine = 'recorded'
-        takes_dir = ep_dir / 'takes' / 'recorded'
-        picks = recorded_takes(ep_dir, args.recording, lines, narrator_dir, narrator)
+        args.engine = 'recorded_us' if args.accent == 'us' else 'recorded'
+        takes_dir = ep_dir / 'takes' / args.engine
+        picks = recorded_takes(ep_dir, args.recording, lines, narrator_dir, narrator, accent=args.accent)
     else:
         make_takes(lines, takes_dir, narrator_dir, narrator, args.takes, args.engine)
         picks_file = takes_dir / 'picks.json'

@@ -35,5 +35,10 @@ if [ "$(git -C "$VENDOR/seed-vc" rev-parse HEAD)" != "$SEEDVC_COMMIT" ]; then
   git -C "$VENDOR/seed-vc" checkout -q "$SEEDVC_COMMIT"
 fi
 
-"$VENV/bin/python" -c "import torch, librosa, faster_whisper, speechbrain, gradio_client; print('voice tools ready: torch', torch.__version__)"
+mkdir -p "$VENDOR/kokoro"  # American text-to-speech voice for --accent us (about 350 MB)
+for f in kokoro-v1.0.onnx voices-v1.0.bin; do
+  [ -s "$VENDOR/kokoro/$f" ] || { echo "Downloading Kokoro $f"; curl -sSL -o "$VENDOR/kokoro/$f" "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/$f"; }
+done
+
+"$VENV/bin/python" -c "import torch, librosa, faster_whisper, speechbrain, gradio_client, kokoro_onnx, parselmouth; print('voice tools ready: torch', torch.__version__)"
 echo "Seed-VC at $VENDOR/seed-vc ($(git -C "$VENDOR/seed-vc" rev-parse --short HEAD))"
