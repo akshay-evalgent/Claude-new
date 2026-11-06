@@ -16,7 +16,9 @@ const { spawn } = require('child_process');
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
   page.on('pageerror', (e) => { console.error('scene error:', e.message); process.exitCode = 1; });
-  await page.goto('file://' + path.join(__dirname, 'stage.html') + '?scene=' + scene);
+  const fi = rest.indexOf('--footage');
+  const footage = fi >= 0 ? path.resolve(rest[fi + 1]) : '';
+  await page.goto('file://' + path.join(__dirname, 'stage.html') + '?scene=' + scene + (footage ? '&footage=' + encodeURIComponent(footage) : ''));
   await page.evaluate(() => window.fontsReady());
   const info = await page.evaluate(() => window.sceneInfo());
   if (frame !== null) {

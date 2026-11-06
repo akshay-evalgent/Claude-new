@@ -4,6 +4,7 @@
 - Inter — The Inter Project Authors — fonts/OFL-inter.txt
 - Space Grotesk — The Space Grotesk Project Authors — fonts/OFL-spacegrotesk.txt
 - Instrument Serif — The Instrument Serif Project Authors — fonts/OFL-instrumentserif.txt
+- JetBrains Mono — The JetBrains Mono Project Authors — fonts/OFL-jetbrainsmono.txt
 Source: https://github.com/google/fonts (ofl/)
 
 ## Music (not committed: download it to music/ before rendering)

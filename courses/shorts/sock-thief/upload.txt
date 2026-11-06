@@ -1,0 +1,30 @@
+TITLE
+I typed one sentence. Claude built this game.
+
+DESCRIPTION
+The whole prompt: "Make a game where my corgi steals socks from sleeping dad and sneaks them back to his bed."
+
+Claude wrote the entire game from that one sentence: 375 lines, a single HTML file. The levels, the points, Dad's wake-up meter, the "freeze when he opens an eye" rule and the "Dad is a light sleeper" joke were all its own ideas.
+
+The trick: hero + goal + danger + finish line = a game.
+
+Try it with your pet and tell me what you got.
+
+How this was made: the gameplay is the real game, played by a scripted player and recorded frame by frame; nothing in the game was edited by hand. Music: Mixkit (free licence). Fonts: Inter, Instrument Serif, Space Grotesk, JetBrains Mono (open licence).
+#ai #claude #aitools #gamedev #shorts
+
+TAGS (paste as one line)
+claude, claude ai, how to use claude, ai game, make a game with ai, ai tools, one prompt, ai prompt ideas, vibe coding, ai for fun, browser game, corgi
+
+PINNED COMMENT (post from the channel within a minute of uploading, then pin it)
+The exact prompt:
+Make a game where my corgi steals socks from sleeping dad and sneaks them back to his bed.
+Swap in your pet and your house. What did you get?
+
+WHEN UPLOADING
+- Video: sock-thief_short.mp4 (vertical 1080x1920, 32 s, posts as a Short)
+- Thumbnail: sock-thief_cover.png (the opening frame); in the YouTube app you can pick the same moment
+- Altered or synthetic content: No. Nothing realistic is AI-made: the game is cartoon art, and the description already says AI built it
+- Audience: No, it's not made for kids
+- Language: English (all text is on screen; no subtitles needed)
+- Post between 6 and 9 PM US Eastern

@@ -108,6 +108,17 @@ def sound(name, rng):
         L = n(1.0); tt = t(1.0)
         x = _band(rng.standard_normal(L), 1200, 6000) * (0.5 + 0.5 * np.abs(np.sin(2 * np.pi * 3.5 * tt))) * _env(L, 0.05, 0.9, 1.5)
         return _pan(x * 0.18, (0.35, 0.65))
+    if name == 'hum':      # a sleepy "hm?": a soft low voice-like tone that bends down
+        tt = t(0.5); f = 150 - 40 * tt / tt[-1]
+        x = np.sin(2 * np.pi * np.cumsum(f) / SR) + 0.35 * np.sin(2 * np.pi * np.cumsum(2 * f) / SR)
+        x = _band(x, 80, 1200) * _env(len(tt), 0.05, 0.4, 3)
+        return _pan(x * 0.35)
+    if name == 'sting':    # an eye snapping open: two quick rising notes
+        out = []
+        for f0, d in ((330, 0.09), (494, 0.16)):
+            tt = t(d); out.append((np.sign(np.sin(2 * np.pi * f0 * tt)) * 0.4 + np.sin(2 * np.pi * f0 * tt)) * _env(len(tt), 0.003, d, 3))
+        x = _band(np.concatenate(out), 200, 4000)
+        return _pan(x * 0.22)
     raise SystemExit(f'unknown sound {name!r}')
 
 
@@ -141,11 +152,13 @@ def main():
     ap.add_argument('--music', type=Path, help='music bed (mp3/wav); without it, sound design only')
     ap.add_argument('--out', type=Path, help='output mp4 (default courses/motion/tests/<scene>.mp4)')
     ap.add_argument('--samples', type=int, default=6, help='motion-blur sub-frames per frame (default 6)')
+    ap.add_argument('--footage', type=Path, help='folder of footage frames (f00001.jpg ...) the scene uses')
     args = ap.parse_args()
     out = (args.out or ROOT / 'courses' / 'motion' / 'tests' / f'{args.scene}.mp4').resolve()
     out.parent.mkdir(parents=True, exist_ok=True)
     silent = out.with_name(out.stem + '_silent.mp4')
-    subprocess.run(['node', str(ROOT / 'courses' / 'motion' / 'render.cjs'), args.scene, str(silent), '--samples', str(args.samples)], check=True)
+    extra = ['--footage', str(args.footage.resolve())] if args.footage else []
+    subprocess.run(['node', str(ROOT / 'courses' / 'motion' / 'render.cjs'), args.scene, str(silent), '--samples', str(args.samples), *extra], check=True)
     info = json.loads(silent.with_suffix('.cues.json').read_text())
     dur = info['duration']
     n = int((dur + 1.5) * SR)

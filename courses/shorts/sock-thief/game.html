@@ -1,0 +1,375 @@
+<!doctype html>
+<!-- Sock Thief — made by Claude from one sentence:
+     "Make a game where my corgi steals socks from sleeping dad and sneaks them back to his bed." -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Sock Thief</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #1d1726; overflow: hidden; touch-action: none; }
+  body { display: flex; align-items: center; justify-content: center; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+  canvas { display: block; max-width: 100vw; max-height: 100vh; aspect-ratio: 3 / 4; border-radius: 18px; box-shadow: 0 20px 60px rgba(0,0,0,.45); }
+</style>
+</head>
+<body>
+<canvas id="game" width="720" height="960"></canvas>
+<script>
+(() => {
+  const cv = document.getElementById('game');
+  const ctx = cv.getContext('2d');
+  const W = 720, H = 960;
+
+  // ---------------------------------------------------------------- the room
+  const ROOM = { x: 40, y: 150, w: 640, h: 770 };
+  const DAD_BED = { x: 230, y: 175, w: 260, h: 300 };      // dad sleeps here (solid)
+  const NIGHTSTAND = { x: 510, y: 190, w: 90, h: 80 };      // solid
+  const DOG_BED = { x: 120, y: 820, r: 62 };                // where socks go home
+  const DAD_HEAD = { x: 360, y: 228 };
+  const SOLIDS = [DAD_BED, NIGHTSTAND];
+
+  const LEVELS = [
+    { name: 'Level 1', subtitle: 'Dad is fast asleep', socks: 4, sensitivity: 0.75, calm: 0.30 },
+    { name: 'Level 2', subtitle: 'Dad is a light sleeper', socks: 6, sensitivity: 1.15, calm: 0.24 },
+    { name: 'Level 3', subtitle: 'Dad had coffee at 9pm', socks: 8, sensitivity: 1.6, calm: 0.2 },
+  ];
+  const SOCK_COLORS = [['#e85d75', '#ffffff'], ['#4fb3bf', '#ffe08a'], ['#f2a541', '#6b4f9e'], ['#7bc96f', '#ffffff'], ['#9b8cff', '#ffd1dc'], ['#ff8a5b', '#2d3047']];
+
+  // ---------------------------------------------------------------- state
+  const state = {
+    phase: 'title',              // title, play, caught, levelup, won, over
+    phaseTime: 0,
+    level: 0, lives: 3, score: 0,
+    dog: { x: DOG_BED.x, y: DOG_BED.y - 10, dir: -Math.PI / 2, speed: 0, step: 0, carrying: null },
+    socks: [], home: [],
+    dad: { alert: 0, mood: 'asleep', snore: 0, peek: 0 },
+    keys: {}, sneakHeld: false, touch: null,
+    floaters: [],
+    events: [],                  // for anyone watching: what just happened
+  };
+  window.game = state;
+
+  function emit(type, extra = {}) { state.events.push({ type, t: performance.now(), ...extra }); }
+
+  function placeSocks(n) {
+    // spread around the room, some brave ones right next to dad's bed
+    const spots = [[540, 520], [150, 330], [600, 700], [420, 560], [320, 520], [150, 560], [560, 330], [430, 760], [250, 690], [610, 470]];
+    const rnd = mulberry(7 + state.level * 13);
+    const order = spots.map((s, i) => [s, rnd()]).sort((a, b) => a[1] - b[1]).map((x) => x[0]);
+    state.socks = order.slice(0, n).map(([x, y], i) => ({ x, y, rot: (rnd() - 0.5) * 1.6, color: SOCK_COLORS[i % SOCK_COLORS.length], taken: false, wiggle: rnd() * 6 }));
+    state.home = [];
+  }
+  function mulberry(a) { return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+
+  function startLevel(i) {
+    state.level = i; state.phase = 'levelup'; state.phaseTime = 0;
+    state.dog.x = DOG_BED.x + 30; state.dog.y = DOG_BED.y - 40; state.dog.carrying = null;
+    state.dad.alert = 0; state.dad.mood = 'asleep';
+    placeSocks(LEVELS[i].socks);
+    emit('level', { level: i + 1 });
+  }
+
+  // ---------------------------------------------------------------- input
+  const KEYMAP = { ArrowLeft: 'l', a: 'l', A: 'l', ArrowRight: 'r', d: 'r', D: 'r', ArrowUp: 'u', w: 'u', W: 'u', ArrowDown: 'd', s: 'd', S: 'd' };
+  addEventListener('keydown', (e) => {
+    if (KEYMAP[e.key]) { state.keys[KEYMAP[e.key]] = true; e.preventDefault(); }
+    if (e.key === 'Shift') state.sneakHeld = true;
+    if ((e.key === ' ' || e.key === 'Enter') && ['title', 'won', 'over'].includes(state.phase)) restart();
+    audioInit();
+  });
+  addEventListener('keyup', (e) => { if (KEYMAP[e.key]) state.keys[KEYMAP[e.key]] = false; if (e.key === 'Shift') state.sneakHeld = false; });
+  // touch: hold anywhere and the corgi walks toward your finger; two fingers = sneak
+  const toCanvas = (t) => { const r = cv.getBoundingClientRect(); return { x: (t.clientX - r.left) * W / r.width, y: (t.clientY - r.top) * H / r.height }; };
+  cv.addEventListener('pointerdown', (e) => { audioInit(); if (['title', 'won', 'over'].includes(state.phase)) { restart(); return; } state.touch = toCanvas(e); });
+  cv.addEventListener('pointermove', (e) => { if (state.touch) state.touch = toCanvas(e); });
+  addEventListener('pointerup', () => { state.touch = null; });
+
+  function restart() { state.lives = 3; state.score = 0; startLevel(0); }
+
+  // ---------------------------------------------------------------- sound (tiny, synthesised)
+  let ac = null;
+  function audioInit() { if (!ac) { try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} } }
+  function beep(f0, f1, dur, type = 'sine', vol = 0.15) {
+    if (!ac) return;
+    const o = ac.createOscillator(), g = ac.createGain(), t = ac.currentTime;
+    o.type = type; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(f1, t + dur);
+    g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+    o.connect(g).connect(ac.destination); o.start(t); o.stop(t + dur);
+  }
+
+  // ---------------------------------------------------------------- update
+  function collide(x, y, r) {
+    x = Math.max(ROOM.x + r, Math.min(ROOM.x + ROOM.w - r, x));
+    y = Math.max(ROOM.y + r, Math.min(ROOM.y + ROOM.h - r, y));
+    for (const s of SOLIDS) {
+      const cx = Math.max(s.x, Math.min(s.x + s.w, x)), cy = Math.max(s.y, Math.min(s.y + s.h, y));
+      const dx = x - cx, dy = y - cy, d = Math.hypot(dx, dy);
+      if (d < r) {
+        if (d > 0.001) { x = cx + dx / d * r; y = cy + dy / d * r; }
+        else { y = s.y + s.h + r; }
+      }
+    }
+    return [x, y];
+  }
+
+  function update(dt) {
+    state.phaseTime += dt;
+    const L = LEVELS[state.level];
+    const dad = state.dad, dog = state.dog;
+    for (const f of state.floaters) f.t += dt;
+    state.floaters = state.floaters.filter((f) => f.t < 1.4);
+
+    if (state.phase === 'levelup' && state.phaseTime > 1.6) { state.phase = 'play'; state.phaseTime = 0; }
+    if (state.phase === 'caught' && state.phaseTime > 1.5) {
+      if (state.lives <= 0) { state.phase = 'over'; state.phaseTime = 0; emit('over'); return; }
+      state.phase = 'play'; state.phaseTime = 0; dad.alert = 0.2; dad.mood = 'asleep';
+      dog.x = DOG_BED.x + 30; dog.y = DOG_BED.y - 40;
+    }
+    dad.snore += dt;
+    if (state.phase !== 'play') { dad.alert = Math.max(0, dad.alert - dt * 0.4); return; }
+
+    // movement
+    let mx = (state.keys.r ? 1 : 0) - (state.keys.l ? 1 : 0), my = (state.keys.d ? 1 : 0) - (state.keys.u ? 1 : 0);
+    let sneaking = state.sneakHeld;
+    if (state.touch) {
+      const dx = state.touch.x - dog.x, dy = state.touch.y - dog.y, d = Math.hypot(dx, dy);
+      if (d > 14) { mx = dx / d; my = dy / d; }
+      sneaking = sneaking || d < 120;   // a short drag = tiptoe
+    }
+    const len = Math.hypot(mx, my);
+    const target = len ? (sneaking ? 95 : 230) : 0;
+    dog.speed += (target - dog.speed) * Math.min(1, dt * 10);
+    if (len) {
+      mx /= len; my /= len;
+      const want = Math.atan2(my, mx);
+      let da = ((want - dog.dir + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
+      dog.dir += da * Math.min(1, dt * 14);
+      [dog.x, dog.y] = collide(dog.x + mx * dog.speed * dt, dog.y + my * dog.speed * dt, 26);
+      dog.step += dog.speed * dt * 0.06;
+    }
+
+    // noise wakes dad: louder when running, much louder close to the bed
+    const distDad = Math.hypot(dog.x - DAD_HEAD.x, dog.y - DAD_HEAD.y);
+    const near = Math.max(0, 1 - distDad / 420);
+    const noise = (dog.speed / 230) * (sneaking ? 0.18 : 1);
+    dad.alert += (noise * near * near * 1.6 * L.sensitivity - L.calm * (noise < 0.1 ? 1.4 : 0.35)) * dt;
+    dad.alert = Math.max(0, Math.min(1, dad.alert));
+    const mood = dad.alert > 0.92 ? 'awake' : dad.alert > 0.55 ? 'stirring' : 'asleep';
+    if (mood !== dad.mood) {
+      if (mood === 'stirring') { emit('stir'); beep(140, 110, 0.35, 'triangle', 0.12); }
+      if (mood === 'awake') { emit('peek'); beep(220, 330, 0.18, 'square', 0.08); }
+      dad.mood = mood;
+    }
+    // dad opens an eye: if you are moving, you are caught; freeze and he goes back to sleep
+    if (dad.mood === 'awake') {
+      dad.peek += dt;
+      if (dog.speed > 25 && dad.peek > 0.25) {
+        state.phase = 'caught'; state.phaseTime = 0; state.lives -= 1; dad.peek = 0;
+        if (dog.carrying) { dog.carrying.taken = false; dog.carrying = null; }
+        emit('caught', { lives: state.lives }); beep(400, 120, 0.6, 'sawtooth', 0.1);
+        return;
+      }
+      if (dad.peek > 1.2) { dad.alert = 0.5; dad.peek = 0; emit('froze'); state.floaters.push({ text: 'Phew… froze just in time', x: dog.x, y: dog.y - 60, t: 0, color: '#9be7c4' }); }
+    } else dad.peek = 0;
+
+    // grab a sock (one at a time)
+    if (!dog.carrying) {
+      for (const s of state.socks) {
+        if (!s.taken && Math.hypot(s.x - dog.x, s.y - dog.y) < 40) {
+          s.taken = true; dog.carrying = s; emit('grab'); beep(660, 990, 0.12, 'sine', 0.14);
+          state.floaters.push({ text: 'Got one!', x: s.x, y: s.y - 40, t: 0, color: '#ffe08a' });
+          break;
+        }
+      }
+    }
+    // drop it in the dog bed
+    if (dog.carrying && Math.hypot(dog.x - DOG_BED.x, dog.y - DOG_BED.y) < DOG_BED.r + 10) {
+      const pts = 100 + Math.round((1 - dad.alert) * 50);
+      state.score += pts; state.home.push(dog.carrying); dog.carrying = null;
+      emit('stash', { points: pts, home: state.home.length });
+      beep(523, 1046, 0.25, 'triangle', 0.14);
+      state.floaters.push({ text: `+${pts}`, x: DOG_BED.x + 40, y: DOG_BED.y - 70, t: 0, color: '#ffffff' });
+      if (state.home.length === state.socks.length) {
+        if (state.level + 1 < LEVELS.length) { state.score += 250; startLevel(state.level + 1); }
+        else { state.phase = 'won'; state.phaseTime = 0; emit('won'); }
+      }
+    }
+    dog.sneaking = sneaking && len > 0;
+  }
+
+  // ---------------------------------------------------------------- drawing
+  function rr(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+
+  function drawRoom(t) {
+    ctx.fillStyle = '#2b2236'; ctx.fillRect(0, 0, W, H);
+    // floor planks
+    rr(ROOM.x, ROOM.y, ROOM.w, ROOM.h, 26); ctx.save(); ctx.clip();
+    ctx.fillStyle = '#c99b6d'; ctx.fillRect(ROOM.x, ROOM.y, ROOM.w, ROOM.h);
+    for (let i = 0; i < 12; i++) {
+      const y = ROOM.y + i * 66;
+      ctx.fillStyle = i % 2 ? '#c4956a' : '#cfa274'; ctx.fillRect(ROOM.x, y, ROOM.w, 64);
+      ctx.fillStyle = 'rgba(80,50,25,.25)'; ctx.fillRect(ROOM.x, y + 64, ROOM.w, 2);
+      for (let k = 0; k < 3; k++) { const x = ROOM.x + ((i * 137 + k * 211) % ROOM.w); ctx.fillRect(x, y, 2, 64); }
+    }
+    // moonlight from the window
+    const g = ctx.createRadialGradient(600, 200, 20, 600, 200, 520);
+    g.addColorStop(0, 'rgba(170,190,255,.28)'); g.addColorStop(1, 'rgba(40,30,60,.0)');
+    ctx.fillStyle = g; ctx.fillRect(ROOM.x, ROOM.y, ROOM.w, ROOM.h);
+    ctx.fillStyle = 'rgba(30,20,50,.28)'; ctx.fillRect(ROOM.x, ROOM.y, ROOM.w, ROOM.h);
+    // rug
+    rr(250, 560, 260, 170, 80); ctx.fillStyle = '#6b4f9e'; ctx.fill();
+    rr(266, 576, 228, 138, 66); ctx.strokeStyle = '#ffd1dc'; ctx.lineWidth = 4; ctx.setLineDash([10, 10]); ctx.stroke(); ctx.setLineDash([]);
+    ctx.restore();
+    rr(ROOM.x, ROOM.y, ROOM.w, ROOM.h, 26); ctx.strokeStyle = '#4a3a5c'; ctx.lineWidth = 8; ctx.stroke();
+  }
+
+  function drawDadBed(t) {
+    const b = DAD_BED, dad = state.dad;
+    ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.35)'; ctx.shadowBlur = 24; ctx.shadowOffsetY = 10;
+    rr(b.x, b.y, b.w, b.h, 22); ctx.fillStyle = '#5b4636'; ctx.fill(); ctx.restore();
+    rr(b.x + 10, b.y + 10, b.w - 20, b.h - 20, 16); ctx.fillStyle = '#eae4f2'; ctx.fill();
+    // pillow + dad's head
+    rr(b.x + 60, b.y + 24, b.w - 120, 60, 24); ctx.fillStyle = '#ffffff'; ctx.fill();
+    const breathe = Math.sin(dad.snore * (dad.mood === 'asleep' ? 2.2 : 4)) * 3;
+    const hx = DAD_HEAD.x, hy = DAD_HEAD.y + breathe * 0.3;
+    ctx.fillStyle = '#e9b48a'; ctx.beginPath(); ctx.arc(hx, hy, 34, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#4b3324'; ctx.beginPath(); ctx.arc(hx, hy - 10, 32, Math.PI * 1.05, Math.PI * 1.95); ctx.fill();
+    // eyes: shut, one cracked open, or wide awake
+    ctx.strokeStyle = '#3a2a20'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+    if (dad.mood === 'awake') {
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(hx - 12, hy + 4, 7, 0, 7); ctx.arc(hx + 12, hy + 4, 7, 0, 7); ctx.fill();
+      ctx.fillStyle = '#222'; const lx = Math.cos(Math.atan2(state.dog.y - hy, state.dog.x - hx)) * 3, ly = Math.sin(Math.atan2(state.dog.y - hy, state.dog.x - hx)) * 3;
+      ctx.beginPath(); ctx.arc(hx - 12 + lx, hy + 4 + ly, 3.4, 0, 7); ctx.arc(hx + 12 + lx, hy + 4 + ly, 3.4, 0, 7); ctx.fill();
+    } else if (dad.mood === 'stirring') {
+      ctx.beginPath(); ctx.moveTo(hx - 18, hy + 4); ctx.lineTo(hx - 6, hy + 4); ctx.stroke();
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.ellipse(hx + 12, hy + 4, 7, 3, 0, 0, 7); ctx.fill();
+      ctx.fillStyle = '#222'; ctx.beginPath(); ctx.arc(hx + 12, hy + 4, 2.2, 0, 7); ctx.fill();
+    } else {
+      ctx.beginPath(); ctx.arc(hx - 12, hy + 2, 6, 0.2, Math.PI - 0.2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(hx + 12, hy + 2, 6, 0.2, Math.PI - 0.2); ctx.stroke();
+    }
+    ctx.beginPath(); ctx.arc(hx, hy + 18, dad.mood === 'asleep' ? 5 + Math.max(0, breathe) : 3, 0, Math.PI * 2); ctx.fillStyle = '#7a3e2e'; ctx.fill();
+    // blanket rising and falling
+    rr(b.x + 16, b.y + 92 - breathe, b.w - 32, b.h - 108 + breathe, 18); ctx.fillStyle = '#4fb3bf'; ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.lineWidth = 3;
+    for (let i = 0; i < 4; i++) { ctx.beginPath(); ctx.moveTo(b.x + 24, b.y + 140 + i * 60 - breathe); ctx.lineTo(b.x + b.w - 24, b.y + 140 + i * 60 - breathe); ctx.stroke(); }
+    // Zzz while asleep
+    if (dad.mood === 'asleep') {
+      for (let i = 0; i < 3; i++) {
+        const p = ((dad.snore * 0.6 + i / 3) % 1);
+        ctx.globalAlpha = Math.sin(p * Math.PI);
+        ctx.fillStyle = '#ffffff'; ctx.font = `700 ${20 + p * 18}px system-ui`;
+        ctx.fillText('z', hx + 40 + p * 50, hy - 20 - p * 80);
+      }
+      ctx.globalAlpha = 1;
+    }
+    if (dad.mood === 'stirring') { ctx.fillStyle = '#ffe08a'; ctx.font = '700 34px system-ui'; ctx.fillText('…hm?', hx + 44, hy - 30); }
+    if (dad.mood === 'awake') { ctx.fillStyle = '#ff6b6b'; ctx.font = '800 44px system-ui'; ctx.fillText('!', hx + 44, hy - 24); }
+    // nightstand + lamp
+    const n = NIGHTSTAND; rr(n.x, n.y, n.w, n.h, 10); ctx.fillStyle = '#6d5442'; ctx.fill();
+    ctx.fillStyle = '#ffe9a8'; ctx.beginPath(); ctx.arc(n.x + n.w / 2, n.y + n.h / 2, 18, 0, 7); ctx.fill();
+  }
+
+  function drawSock(s, x, y, rot, scale = 1) {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.scale(scale, scale);
+    ctx.fillStyle = s.color[0];
+    rr(-10, -26, 20, 36, 8); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(6, 10, 16, 10, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = s.color[1]; ctx.fillRect(-10, -18, 20, 5); ctx.fillRect(-10, -8, 20, 5);
+    rr(-11, -30, 22, 8, 3); ctx.fill();
+    ctx.restore();
+  }
+
+  function drawDogBed() {
+    const b = DOG_BED;
+    ctx.fillStyle = '#8f3f5c'; ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, 7); ctx.fill();
+    ctx.fillStyle = '#e07a9b'; ctx.beginPath(); ctx.arc(b.x, b.y, b.r - 14, 0, 7); ctx.fill();
+    state.home.forEach((s, i) => drawSock(s, b.x - 26 + (i % 4) * 17, b.y - 12 + Math.floor(i / 4) * 20, -0.6 + i * 0.4, 0.8));
+    ctx.fillStyle = 'rgba(255,255,255,.75)'; ctx.font = '700 18px system-ui'; ctx.textAlign = 'center';
+    ctx.fillText('HOME', b.x, b.y + b.r + 24); ctx.textAlign = 'left';
+  }
+
+  function drawDog(t) {
+    const d = state.dog;
+    ctx.save(); ctx.translate(d.x, d.y); ctx.rotate(d.dir + Math.PI / 2);
+    const legs = Math.sin(d.step * 6) * (d.speed > 5 ? 7 : 0);
+    ctx.fillStyle = '#2b2236';                               // legs
+    [[-14, -10, legs], [14, -10, -legs], [-14, 22, -legs], [14, 22, legs]].forEach(([x, y, o]) => { rr(x - 5, y + o - 6, 10, 14, 5); ctx.fill(); });
+    ctx.fillStyle = '#e8913a'; rr(-20, -24, 40, 62, 20); ctx.fill();   // body
+    ctx.fillStyle = '#fff3e3'; rr(-10, -20, 20, 26, 10); ctx.fill();  // white chest
+    ctx.fillStyle = '#e8913a'; ctx.beginPath(); ctx.arc(0, 40, 7, 0, 7); ctx.fill(); // tail nub
+    ctx.beginPath(); ctx.arc(0, -34, 19, 0, Math.PI * 2); ctx.fill();               // head
+    ctx.beginPath(); ctx.moveTo(-16, -40); ctx.lineTo(-22, -64); ctx.lineTo(-4, -48); ctx.fill();   // ears
+    ctx.beginPath(); ctx.moveTo(16, -40); ctx.lineTo(22, -64); ctx.lineTo(4, -48); ctx.fill();
+    ctx.fillStyle = '#ffd9b0'; ctx.beginPath(); ctx.moveTo(-14, -42); ctx.lineTo(-18, -58); ctx.lineTo(-7, -47); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(14, -42); ctx.lineTo(18, -58); ctx.lineTo(7, -47); ctx.fill();
+    ctx.fillStyle = '#fff3e3'; ctx.beginPath(); ctx.ellipse(0, -46, 8, 10, 0, 0, 7); ctx.fill();   // snout
+    ctx.fillStyle = '#1b1b1b'; ctx.beginPath(); ctx.arc(0, -54, 3.6, 0, 7); ctx.fill();          // nose
+    ctx.beginPath(); ctx.arc(-8, -38, 2.6, 0, 7); ctx.arc(8, -38, 2.6, 0, 7); ctx.fill();         // eyes
+    if (d.carrying) drawSock(d.carrying, 0, -62, Math.PI / 2 + Math.sin(t * 9) * 0.15, 0.9);
+    ctx.restore();
+    if (d.sneaking) {   // tiptoe marks
+      ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.font = '600 18px system-ui'; ctx.textAlign = 'center';
+      ctx.fillText('tiptoe…', d.x, d.y + 62); ctx.textAlign = 'left';
+    }
+  }
+
+  function drawHUD(t) {
+    const L = LEVELS[state.level], dad = state.dad;
+    ctx.fillStyle = '#ffffff'; ctx.font = '800 34px system-ui'; ctx.fillText('Sock Thief', 40, 62);
+    ctx.font = '600 18px system-ui'; ctx.fillStyle = 'rgba(255,255,255,.65)'; ctx.fillText(`${L.name} · ${L.subtitle}`, 40, 92);
+    // socks home
+    ctx.textAlign = 'right'; ctx.fillStyle = '#ffe08a'; ctx.font = '800 30px system-ui';
+    ctx.fillText(`🧦 ${state.home.length}/${state.socks.length}`, 680, 60);
+    ctx.fillStyle = '#ffffff'; ctx.font = '700 20px system-ui'; ctx.fillText(`${state.score} pts  ${'♥'.repeat(Math.max(0, state.lives))}`, 680, 92);
+    ctx.textAlign = 'left';
+    // dad's sleep meter
+    const x = 40, y = 112, w = 640, h = 16;
+    rr(x, y, w, h, 8); ctx.fillStyle = 'rgba(255,255,255,.12)'; ctx.fill();
+    const c = dad.alert > 0.92 ? '#ff6b6b' : dad.alert > 0.55 ? '#ffb347' : '#7bc96f';
+    if (dad.alert > 0.01) { rr(x, y, w * dad.alert, h, 8); ctx.fillStyle = c; ctx.fill(); }
+    ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.font = '700 15px system-ui';
+    ctx.fillText(dad.mood === 'awake' ? "DAD'S AWAKE — FREEZE!" : dad.mood === 'stirring' ? 'Dad is stirring… tiptoe' : 'Dad is asleep', x + 8, y + 13);
+  }
+
+  function drawFloaters() {
+    for (const f of state.floaters) {
+      ctx.globalAlpha = Math.max(0, 1 - f.t / 1.4); ctx.fillStyle = f.color; ctx.font = '800 26px system-ui'; ctx.textAlign = 'center';
+      ctx.fillText(f.text, f.x, f.y - f.t * 40); ctx.textAlign = 'left'; ctx.globalAlpha = 1;
+    }
+  }
+
+  function banner(title, sub, color = '#ffffff') {
+    ctx.fillStyle = 'rgba(20,14,30,.72)'; ctx.fillRect(0, 380, W, 200);
+    ctx.textAlign = 'center'; ctx.fillStyle = color; ctx.font = '900 64px system-ui'; ctx.fillText(title, W / 2, 470);
+    ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.font = '600 24px system-ui'; ctx.fillText(sub, W / 2, 520); ctx.textAlign = 'left';
+  }
+
+  function draw(t) {
+    drawRoom(t);
+    drawDogBed();
+    for (const s of state.socks) if (!s.taken) drawSock(s, s.x, s.y + Math.sin(t * 2 + s.wiggle) * 1.5, s.rot);
+    drawDadBed(t);
+    drawDog(t);
+    drawFloaters();
+    drawHUD(t);
+    if (state.phase === 'title') banner('Sock Thief', 'Arrows to move · hold Shift to tiptoe · freeze if Dad wakes', '#ffe08a');
+    if (state.phase === 'levelup') banner(LEVELS[state.level].name, LEVELS[state.level].subtitle, '#ffe08a');
+    if (state.phase === 'caught') banner('BUSTED!', state.lives > 0 ? 'Dad caught you. Back to bed.' : 'No lives left', '#ff6b6b');
+    if (state.phase === 'won') banner('Sock Legend!', `Every sock is home · ${state.score} pts · Space to play again`, '#9be7c4');
+    if (state.phase === 'over') banner('Game Over', 'Space to try again', '#ff6b6b');
+  }
+
+  // ---------------------------------------------------------------- loop
+  placeSocks(LEVELS[0].socks);
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    update(dt); draw(now / 1000);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
