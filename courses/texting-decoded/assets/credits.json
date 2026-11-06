@@ -1,0 +1,62 @@
+{
+ "hook": {
+  "file": "assets/mixkit-51395.mp4",
+  "title": "Girl using her cell phone in her bed waiting to sleep",
+  "source": "https://assets.mixkit.co/videos/51395/51395-1080.mp4",
+  "site": "Mixkit",
+  "license": "Mixkit Stock Video Free License (free for commercial use, no attribution required)",
+  "used_in": [
+   "01-ok-period"
+  ]
+ },
+ "happy": {
+  "file": "assets/mixkit-39782.mp4",
+  "title": "Happy girl lying down sending messages at night",
+  "source": "https://assets.mixkit.co/videos/39782/39782-1080.mp4",
+  "site": "Mixkit",
+  "license": "Mixkit Stock Video Free License (free for commercial use, no attribution required)",
+  "used_in": [
+   "01-ok-period"
+  ]
+ },
+ "busy": {
+  "file": "assets/mixkit-41638.mp4",
+  "title": "Programmer using his cell phone while working at his desk",
+  "source": "https://assets.mixkit.co/videos/41638/41638-1080.mp4",
+  "site": "Mixkit",
+  "license": "Mixkit Stock Video Free License (free for commercial use, no attribution required)",
+  "used_in": [
+   "01-ok-period"
+  ]
+ },
+ "forgot": {
+  "file": "assets/mixkit-4701.mp4",
+  "title": "Worried and sad man with his head down",
+  "source": "https://assets.mixkit.co/videos/4701/4701-1080.mp4",
+  "site": "Mixkit",
+  "license": "Mixkit Stock Video Free License (free for commercial use, no attribution required)",
+  "used_in": [
+   "01-ok-period"
+  ]
+ },
+ "dad": {
+  "file": "assets/mixkit-22504.mp4",
+  "title": "Senior man using his phone",
+  "source": "https://assets.mixkit.co/videos/22504/22504-1080.mp4",
+  "site": "Mixkit",
+  "license": "Mixkit Stock Video Free License (free for commercial use, no attribution required)",
+  "used_in": [
+   "01-ok-period"
+  ]
+ },
+ "boss": {
+  "file": "assets/mixkit-23073.mp4",
+  "title": "Man on a phone call at his desk",
+  "source": "https://assets.mixkit.co/videos/23073/23073-1080.mp4",
+  "site": "Mixkit",
+  "license": "Mixkit Stock Video Free License (free for commercial use, no attribution required)",
+  "used_in": [
+   "01-ok-period"
+  ]
+ }
+}

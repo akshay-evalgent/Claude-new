@@ -7,16 +7,23 @@
  "beats": [
   {
    "t": "0:00-0:01",
-   "screen": "Phone on the page lights up; 'ok.' arrives under 'can we push to 8? running late'",
+   "screen": "Real footage taped on the page: a woman reading her phone in bed, lit by the screen. Text: ok vs ok.",
    "voice": "",
    "control": "",
    "draw": "none",
    "text": "ok vs ok.",
    "sound": "buzz",
    "scene": {
-    "type": "thread",
-    "thread": "jess",
-    "arrive": true
+    "type": "clip",
+    "clip": "hook",
+    "offset": 2.0,
+    "frame": {
+     "x": 60,
+     "y": 620,
+     "w": 960,
+     "h": 540,
+     "rot": -0.02
+    }
    },
    "sfx": [
     {
@@ -163,6 +170,54 @@
      "at": {
       "word": "forgot"
      }
+    },
+    {
+     "type": "clip",
+     "clip": "happy",
+     "x": 740,
+     "y": 690,
+     "w": 300,
+     "h": 188,
+     "rot": -0.05,
+     "focus": [
+      0.6,
+      0.5
+     ],
+     "at": {
+      "word": "happy"
+     }
+    },
+    {
+     "type": "clip",
+     "clip": "busy",
+     "x": 740,
+     "y": 920,
+     "w": 300,
+     "h": 188,
+     "rot": 0.04,
+     "focus": [
+      0.5,
+      0.5
+     ],
+     "at": {
+      "word": "busy"
+     }
+    },
+    {
+     "type": "clip",
+     "clip": "forgot",
+     "x": 740,
+     "y": 1150,
+     "w": 300,
+     "h": 188,
+     "rot": -0.03,
+     "focus": [
+      0.6,
+      0.5
+     ],
+     "at": {
+      "word": "forgot"
+     }
     }
    ],
    "sfx": [
@@ -213,7 +268,8 @@
    "sound": "marker x3, pencil write",
    "scene": {
     "type": "thread",
-    "thread": "dad"
+    "thread": "dad",
+    "scale": 0.78
    },
    "draws": [
     {
@@ -242,6 +298,38 @@
      "text": "PATTERN FIRST",
      "at": {
       "word": "Pattern"
+     }
+    },
+    {
+     "type": "clip",
+     "clip": "dad",
+     "x": 20,
+     "y": 960,
+     "w": 300,
+     "h": 190,
+     "rot": -0.06,
+     "focus": [
+      0.4,
+      0.5
+     ],
+     "at": {
+      "word": "Dads"
+     }
+    },
+    {
+     "type": "clip",
+     "clip": "boss",
+     "x": 760,
+     "y": 1000,
+     "w": 300,
+     "h": 190,
+     "rot": 0.05,
+     "focus": [
+      0.55,
+      0.45
+     ],
+     "at": {
+      "word": "Bosses"
      }
     }
    ]
@@ -309,16 +397,24 @@
   },
   {
    "t": "0:38-0:40",
-   "screen": "Back to frame 1: the phone on the page, sticker 1/7",
+   "screen": "The same taped clip, played slowly so the last frame is frame 1 (the loop)",
    "voice": "Bonus: a lone 'k' is a door closing. On your face. 2/7: left on read.",
    "control": "lighter, a promise; 'on your face' said kindly; ends on a small upward note",
    "draw": "none",
    "text": "",
    "sound": "the same buzz as frame 0",
    "scene": {
-    "type": "thread",
-    "thread": "jess",
-    "arrive": true
+    "type": "clip",
+    "clip": "hook",
+    "offset": 0.0,
+    "end_offset": 2.0,
+    "frame": {
+     "x": 60,
+     "y": 620,
+     "w": 960,
+     "h": 540,
+     "rot": -0.02
+    }
    },
    "draws": [
     {
@@ -412,5 +508,49 @@
    ]
   }
  },
- "tone": "deadpan"
+ "tone": "deadpan",
+ "clips": {
+  "hook": {
+   "file": "assets/mixkit-51395.mp4",
+   "title": "Girl using her cell phone in her bed waiting to sleep",
+   "source": "https://assets.mixkit.co/videos/51395/51395-1080.mp4",
+   "site": "Mixkit",
+   "license": "Mixkit Stock Video Free License (free for commercial use, no attribution required)"
+  },
+  "happy": {
+   "file": "assets/mixkit-39782.mp4",
+   "title": "Happy girl lying down sending messages at night",
+   "source": "https://assets.mixkit.co/videos/39782/39782-1080.mp4",
+   "site": "Mixkit",
+   "license": "Mixkit Stock Video Free License (free for commercial use, no attribution required)"
+  },
+  "busy": {
+   "file": "assets/mixkit-41638.mp4",
+   "title": "Programmer using his cell phone while working at his desk",
+   "source": "https://assets.mixkit.co/videos/41638/41638-1080.mp4",
+   "site": "Mixkit",
+   "license": "Mixkit Stock Video Free License (free for commercial use, no attribution required)"
+  },
+  "forgot": {
+   "file": "assets/mixkit-4701.mp4",
+   "title": "Worried and sad man with his head down",
+   "source": "https://assets.mixkit.co/videos/4701/4701-1080.mp4",
+   "site": "Mixkit",
+   "license": "Mixkit Stock Video Free License (free for commercial use, no attribution required)"
+  },
+  "dad": {
+   "file": "assets/mixkit-22504.mp4",
+   "title": "Senior man using his phone",
+   "source": "https://assets.mixkit.co/videos/22504/22504-1080.mp4",
+   "site": "Mixkit",
+   "license": "Mixkit Stock Video Free License (free for commercial use, no attribution required)"
+  },
+  "boss": {
+   "file": "assets/mixkit-23073.mp4",
+   "title": "Man on a phone call at his desk",
+   "source": "https://assets.mixkit.co/videos/23073/23073-1080.mp4",
+   "site": "Mixkit",
+   "license": "Mixkit Stock Video Free License (free for commercial use, no attribution required)"
+  }
+ }
 }

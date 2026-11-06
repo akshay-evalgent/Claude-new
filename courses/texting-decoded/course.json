@@ -20,7 +20,7 @@
   "hand_font": "Kalam",
   "sticker": "TEXTING, DECODED · n/7",
   "chat_ui": "iMessage-style, light",
-  "channel": "Decoded in 7 (@decodedin7), to confirm"
+  "channel": "Seven Days To (@sevendaysto)"
  },
  "episodes": [
   {
@@ -28,7 +28,7 @@
    "title": "'ok' vs 'ok.'",
    "teaches": "Punctuation changes meaning, and the person's own pattern decides it: read their baseline before you read the message.",
    "hook": "1A",
-   "stage": "script"
+   "stage": "video"
   },
   {
    "slug": "02-left-on-read",

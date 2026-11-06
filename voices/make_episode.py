@@ -144,7 +144,7 @@ def build_timeline(beats, lines, picks):
             draws.append(d)
             sound = d.get('sound', {'circle': 'marker', 'arrow': 'marker', 'bracket': 'marker', 'label': 'pencil',
                                     'bigtext': 'pencil', 'text': 'pencil', 'reply': 'pop', 'strip': 'pencil',
-                                    'highlight': 'marker'}.get(d['type']))
+                                    'highlight': 'marker', 'clip': 'tap'}.get(d['type']))
             if sound:
                 sfx.append(dict(sound=sound, at=d['at']))
         for s in b.get('sfx', []):
@@ -163,6 +163,63 @@ def build_timeline(beats, lines, picks):
         tb['end'] = timeline[k + 1]['start'] if k + 1 < len(timeline) else round(cursor + 0.3, 3)
     duration = timeline[-1]['end']
     return timeline, words, draws, sorted(sfx, key=lambda s: s['at']), duration
+
+
+# ----------------------------------------------------------------------------- footage
+def scene_key(b):
+    sc = b.get('scene', {})
+    return '|'.join(str(sc.get(k, '')) for k in ('type', 'thread', 'a', 'b', 'question'))
+
+
+def chain_end(timeline, i):
+    """When the scene that beat i belongs to ends (consecutive beats with the same scene)."""
+    key = scene_key(timeline[i])
+    j = i
+    while j + 1 < len(timeline) and scene_key(timeline[j + 1]) == key:
+        j += 1
+    return timeline[j]['end']
+
+
+def extract_clips(ep_dir, course_dir, clips, timeline, draws):
+    """Real footage, taped onto the page. Each use of a clip becomes a folder of frames at FPS,
+    already cropped to the size it is shown at, so the renderer just picks frame floor((t-start)*fps).
+    A use can run slower than life (speed < 1) and holds its last frame if the beat outlasts it."""
+    uses, k = {}, 0
+    for i, tb in enumerate(timeline):
+        sc = tb['scene']
+        if sc.get('type') == 'clip':
+            k += 1; uid = f'u{k}'
+            sc['use'] = uid
+            dur = tb['end'] - tb['start']
+            speed = sc.get('speed', 1.0)
+            if 'end_offset' in sc:  # land on this frame of the clip exactly when the beat ends (the loop frame)
+                speed = max(0.05, (sc['end_offset'] - sc.get('offset', 0.0)) / dur)
+            uses[uid] = dict(clip=sc['clip'], offset=sc.get('offset', 0.0), speed=round(speed, 4), start=tb['start'],
+                             duration=dur, w=sc['frame']['w'], h=sc['frame']['h'], focus=sc.get('focus', [0.5, 0.5]))
+    for d in draws:
+        if d['type'] == 'clip':
+            k += 1; uid = f'u{k}'
+            d['use'] = uid
+            uses[uid] = dict(clip=d['clip'], offset=d.get('offset', 0.0), speed=d.get('speed', 1.0), start=d['at'],
+                             duration=chain_end(timeline, d['beat']) - d['at'], w=d['w'], h=d['h'], focus=d.get('focus', [0.5, 0.5]))
+    out = {}
+    for uid, u in uses.items():
+        src = course_dir / clips[u['clip']]['file']
+        folder = ep_dir / '_frames' / f"{uid}_{u['w']}x{u['h']}_{u['offset']}_{u['speed']}"  # a new size or cut gets fresh frames
+        folder.mkdir(parents=True, exist_ok=True)
+        want = int(u['duration'] * FPS) + 2
+        if len(list(folder.glob('*.jpg'))) < want - 2:
+            for f in folder.glob('*.jpg'):
+                f.unlink()
+            fx, fy = u['focus']
+            vf = (f"setpts=PTS/{u['speed']},scale={u['w']}:{u['h']}:force_original_aspect_ratio=increase,"
+                  f"crop={u['w']}:{u['h']}:(iw-{u['w']})*{fx}:(ih-{u['h']})*{fy}")
+            subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', str(u['offset']), '-t', f"{u['duration'] * u['speed'] + 0.1:.3f}",
+                            '-i', str(src), '-vf', vf, '-r', str(FPS), '-q:v', '3', str(folder / 'f%05d.jpg')], check=True)
+        count = len(list(folder.glob('*.jpg')))
+        out[uid] = dict(dir=str(folder.resolve()), count=count, w=u['w'], h=u['h'], start=u['start'], fps=FPS)
+        print(f'  footage {uid}: {u["clip"]} from {u["offset"]}s, {count} frames at {u["w"]}x{u["h"]}, speed {u["speed"]}')
+    return out
 
 
 # ----------------------------------------------------------------------------- sound
@@ -273,8 +330,10 @@ def main():
     pages = pages_from(words)
     print(f'{ep_dir.name}: {duration:.1f} s, {len(words)} words, {len(draws)} drawings, {len(sfx)} sounds')
     stem = ep_dir.name
+    clip_uses = extract_clips(ep_dir, course_dir, script.get('clips', {}), timeline, draws)
     cfg = dict(fps=FPS, duration=duration, kit=kit, sticker=kit['sticker'].replace('n/', f'{ep_index}/').replace('/7', f'/{len(course["episodes"])}'),
-               threads=script.get('threads', {}), beats=timeline, draws=draws, words=words, pages=pages, draw_seconds=DRAW_SECONDS)
+               threads=script.get('threads', {}), beats=timeline, draws=draws, words=words, pages=pages, draw_seconds=DRAW_SECONDS,
+               clips=clip_uses)
     cfg_path = ep_dir / 'config.json'
     cfg_path.write_text(json.dumps(cfg))
     silent = ep_dir / '_tmp_silent.mp4'

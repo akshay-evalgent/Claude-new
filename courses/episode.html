@@ -190,6 +190,44 @@ function handText(c, text, x, y, p, size = 44, align = 'left', rot = -0.05, colo
   c.fillText(text.slice(0, n), 0, 0); c.restore();
 }
 
+// ---------------------------------------------------------------- real footage, taped onto the page
+const frameCache = new Map();
+function loadImage(src) {
+  if (frameCache.has(src)) return Promise.resolve(frameCache.get(src));
+  return new Promise((res, rej) => {
+    const im = new Image();
+    im.onload = () => { frameCache.set(src, im); if (frameCache.size > 90) frameCache.delete(frameCache.keys().next().value); res(im); };
+    im.onerror = () => rej(new Error('cannot load ' + src));
+    im.src = src;
+  });
+}
+function frameSrc(use, t) {
+  const u = cfg.clips[use];
+  const i = Math.max(1, Math.min(u.count, Math.floor((t - u.start) * u.fps) + 1));
+  return 'file://' + u.dir + '/f' + String(i).padStart(5, '0') + '.jpg';
+}
+function tapedFrame(c, img, x, y, w, h, rot, p) {
+  if (p <= 0 || !img) return;
+  const q = ease(p);
+  c.save();
+  c.translate(x + w / 2, y + h / 2); c.rotate(rot); c.scale(0.92 + 0.08 * q, 0.92 + 0.08 * q); c.globalAlpha = q;
+  c.shadowColor = 'rgba(0,0,0,0.28)'; c.shadowBlur = 26; c.shadowOffsetY = 10;
+  c.fillStyle = '#fffdf7'; c.fillRect(-w / 2 - 14, -h / 2 - 14, w + 28, h + 28);
+  c.shadowColor = 'transparent'; c.shadowBlur = 0; c.shadowOffsetY = 0;
+  c.drawImage(img, -w / 2, -h / 2, w, h);
+  c.fillStyle = 'rgba(232,214,160,0.78)';
+  [[-w / 2 + 30, -h / 2 - 10, -0.55], [w / 2 - 30, -h / 2 - 10, 0.55]].forEach(([tx, ty, tr]) => { c.save(); c.translate(tx, ty); c.rotate(tr); c.fillRect(-48, -13, 96, 26); c.restore(); });
+  c.restore();
+}
+function drawClipScene(c, t, beat, img) {
+  const f = beat.scene.frame, u = t - beat.start;
+  const p = beat.start <= 0.001 ? 1 : clamp01((u + 0.05) / 0.3);
+  tapedFrame(c, img, f.x, f.y, f.w, f.h, f.rot || 0, p);
+}
+function drawClipDraws(c, t, draws, imgs) {
+  for (const d of draws) if (d.type === 'clip') tapedFrame(c, imgs[d.use], d.x, d.y, d.w, d.h, d.rot || 0, clamp01((t - d.at) / cfg.draw_seconds));
+}
+
 // ---------------------------------------------------------------- scenes
 function sceneKey(b) { const s = b.scene || {}; return [s.type, s.thread, s.a, s.b, s.question].join('|'); }
 
@@ -210,7 +248,8 @@ function drawThreadScene(c, t, beat, draws) {
   if (s.zoom) { z = 1 + 0.4 * ease(u / 0.45); fx = PHONE.x + PHONE.w / 2; fy = PHONE.y + last.y + last.h / 2; }
   c.save();
   if (z > 1) { c.translate(fx, fy); c.scale(z, z); c.translate(-fx, -fy); }
-  c.translate(PHONE.x, PHONE.y);
+  const ps = s.scale || 1;  // a smaller phone leaves the margins free for taped footage
+  c.translate(PHONE.x + PHONE.w / 2, PHONE.y + PHONE.h / 2); c.scale(ps, ps); c.translate(-PHONE.w / 2, -PHONE.h / 2);
   const keys = beat.keys || [];
   drawPhone(c, thread, rows, {
     lastBubble: (row) => {
@@ -254,7 +293,7 @@ function drawThreadScene(c, t, beat, draws) {
 function drawCutawayScene(c, t, beat, draws) {
   const s = beat.scene, u = t - beat.start;
   // a paper card over the phone area, sketched in
-  const card = { x: 150, y: 540, w: 780, h: 880 };
+  const card = { x: 120, y: 540, w: 600, h: 880 };  // the right margin is left free for taped footage
   const pIn = ease(u / 0.35);
   wobblyRect(c, card.x, card.y, card.w, card.h, 26, 40, 3, pIn); c.fillStyle = 'rgba(255,253,247,0.92)'; if (pIn >= 1) c.fill(); ink(c, 3.5); c.stroke();
   if (pIn < 1) return;
@@ -276,8 +315,8 @@ function drawCutawayScene(c, t, beat, draws) {
     const l = draws.find((x) => x.type === 'label' && x.index === k);
     if (l) {
       const lp = clamp01((t - l.at) / (cfg.draw_seconds * 1.6));
-      markerArrow(c, row.x + row.w + 14, row.y + row.h / 2, row.x + row.w + 70, row.y + row.h / 2 + 6, 60 + k, Math.min(1, lp * 2));
-      handText(c, l.text, row.x + row.w + 90, row.y + row.h / 2 + 4, lp, 46, 'left', -0.03);
+      markerArrow(c, row.x + 36, row.y + row.h + 4, row.x + 62, row.y + row.h + 40, 60 + k, Math.min(1, lp * 2));
+      handText(c, l.text, row.x + 84, row.y + row.h + 50, lp, 40, 'left', -0.03);
     }
   });
 }
@@ -378,8 +417,12 @@ window.setup = function (c) {
   paper = makePaper();
 };
 
-window.renderAt = function (t) {
+window.renderAt = async function (t) {
   const c = ctx;
+  const beat0 = cfg.beats.find((b) => t >= b.start && t < b.end) || cfg.beats[cfg.beats.length - 1];
+  const imgs = {};
+  if ((beat0.scene || {}).type === 'clip') imgs[beat0.scene.use] = await loadImage(frameSrc(beat0.scene.use, t));
+  for (const d of activeDraws(t, beat0)) if (d.type === 'clip') imgs[d.use] = await loadImage(frameSrc(d.use, t));
   boil = Math.floor(t * 2);
   c.setTransform(1, 0, 0, 1, 0, 0);
   c.clearRect(0, 0, W, H);
@@ -394,6 +437,8 @@ window.renderAt = function (t) {
   else if (type === 'cutaway') drawCutawayScene(c, t, beat, draws);
   else if (type === 'closeup') drawCloseupScene(c, t, beat);
   else if (type === 'test') drawTestScene(c, t, beat, draws);
+  else if (type === 'clip') drawClipScene(c, t, beat, imgs[beat.scene.use]);
+  drawClipDraws(c, t, draws, imgs);
   drawSticker(c, cfg.sticker);
   drawTopText(c, t, beat);
   drawCaptions(c, t);

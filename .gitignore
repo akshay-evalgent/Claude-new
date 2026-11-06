@@ -10,3 +10,5 @@ courses/**/takes/
 courses/**/_tmp*
 courses/**/*.mp4
 courses/**/*_cover.png
+courses/**/_frames/
+courses/**/assets/*.mp4
