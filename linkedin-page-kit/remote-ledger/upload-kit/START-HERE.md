@@ -44,7 +44,7 @@ Sunday evening: followers, impressions per post, comments per post, and the thre
 
 ## E · Every week after
 
-`06-docs/PLAYBOOK.md` is the routine, day by day, with the sources. The short version: send me screenshots or links of public asks from LinkedIn (I can't open LinkedIn from here), the Tally export of pitches, and any reader number you want printed. I return a folder per post.
+`06-docs/PLAYBOOK.md` is the routine, day by day, with the sources. `06-docs/LINKEDIN-CURATION-RECIPE.md` is the ten-minute daily LinkedIn search for posts to repost, with the checks and the credit rules; that part only you can do, from inside the app. The short version: send me screenshots or links of public asks from LinkedIn (I can't open LinkedIn from here), the Tally export of pitches, and any reader number you want printed. I return a folder per post.
 
 ## Folder map
 
@@ -53,5 +53,5 @@ Sunday evening: followers, impressions per post, comments per post, and the thre
 - `03-tracker/` the week's roles as CSV, Markdown and JSON
 - `04-templates/` the one-page contract
 - `05-sources/` screenshots behind every number on the cards, with an index
-- `06-docs/` the playbook and the page brief
+- `06-docs/` the playbook, the LinkedIn search recipe for reposts, and the page brief
 - `POSTS/` one folder per post, in posting order

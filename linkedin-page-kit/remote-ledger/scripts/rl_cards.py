@@ -140,7 +140,28 @@ def poll_card(spec, out, square=False):
     if not square: block(d,(M,y+30),spec["note"],T["body"](26),T["muted"],W-2*M,1.25)
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True); im.save(out); return out
 
-RENDER = dict(tracker=tracker_card, pay=pay_card, fee=fee_card, rules=rules_card, poll=poll_card)
+def repost_card(spec, out, square=False):
+    """Quote a found public post: the fact in large type, the author, where it was said. Link goes in the first comment."""
+    im,d,W,H,M = frame(square, spec.get("checked", spec.get("via","via LinkedIn")))
+    y=128
+    d.text((M,y), spec["kicker"].upper(), font=T["body"](22,"SemiBold"), fill=T["accent"]); y+=46
+    d.text((M-6,y-30), "\u201c", font=T["display"](150,"Bold"), fill=T["accent"])
+    y+=74
+    fq=T["display"](54 if not square else 44,"SemiBold")
+    while len(wrap(d,spec["quote"],fq,W-2*M))*int(fq.size*1.14) > (H-96-y-330 if not square else H-96-y-230) and fq.size>30:
+        fq=T["display"](fq.size-2,"SemiBold")
+    y=block(d,(M,y),spec["quote"],fq,T["ink"],W-2*M,1.14)+34
+    d.line((M,y,M+120,y), fill=T["accent"], width=4); y+=24
+    d.text((M,y), spec["author"], font=T["display"](34,"SemiBold"), fill=T["ink"]); y+=46
+    y=block(d,(M,y),spec["author_sub"],T["body"](24),T["muted"],W-2*M,1.2)+10
+    d.text((M,y), spec.get("via","via LinkedIn"), font=T["mono"](21), fill=T["muted"]); y+=40
+    if spec.get("take") and not square:
+        d.line((M,y+10,W-M,y+10), fill=T["rule"], width=1)
+        d.text((M,y+28), "OUR TAKE", font=T["body"](20,"SemiBold"), fill=T["accent"])
+        block(d,(M,y+58),spec["take"],T["body"](26,"Medium"),T["ink"],W-2*M,1.25)
+    os.makedirs(os.path.dirname(out) or ".", exist_ok=True); im.save(out); return out
+
+RENDER = dict(tracker=tracker_card, pay=pay_card, fee=fee_card, rules=rules_card, poll=poll_card, repost=repost_card)
 if __name__ == "__main__":
     spec=json.load(open(sys.argv[1])); fn=RENDER[spec["type"]]
     fn(spec, sys.argv[2]); fn(spec, sys.argv[2].replace(".png","-square.png"), square=True); print(sys.argv[2])

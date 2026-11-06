@@ -1,0 +1,10 @@
+{
+ "type": "repost",
+ "kicker": "KICKER: e.g. Said in public · first international client",
+ "quote": "QUOTE: the fact from the post, in their words, 25 to 45 words. Numbers kept exactly.",
+ "author": "AUTHOR: name as on their profile",
+ "author_sub": "AUTHOR_SUB: their headline as written, city if shown, and the date of the post.",
+ "via": "via LinkedIn · DATE · link in the first comment",
+ "take": "TAKE: two or three sentences. What the number means for someone in India. No praise, no adjectives.",
+ "checked": "Reposted with permission"
+}

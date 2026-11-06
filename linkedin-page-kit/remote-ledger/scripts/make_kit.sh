@@ -19,7 +19,8 @@ cp upload-kit/02-forms.md "$K/02-forms/"
 cp data/tracker-2026-11-09.csv data/tracker-2026-11-09.md data/tracker-2026-11-09.json "$K/03-tracker/"
 cp templates/contract-one-page.md "$K/04-templates/"
 cp assets/sources/*.png assets/sources/SOURCES.md "$K/05-sources/"
-cp content/PLAYBOOK.md ../content/curation-page/REMOTE-WORK-CURATION-BRIEF.md "$K/06-docs/"
+cp content/PLAYBOOK.md content/LINKEDIN-CURATION-RECIPE.md ../content/curation-page/REMOTE-WORK-CURATION-BRIEF.md "$K/06-docs/"
+mkdir -p "$K/06-docs/repost-format" && cp assets/posts/samples/repost-sample.png content/cards/repost-template.json "$K/06-docs/repost-format/"
 mkdir -p dist && rm -f dist/remote-ledger-upload-kit.zip
 ( cd "$T" && zip -qr "$OLDPWD/dist/remote-ledger-upload-kit.zip" remote-ledger-upload-kit )
 cp "$K/START-HERE.html" dist/START-HERE.html

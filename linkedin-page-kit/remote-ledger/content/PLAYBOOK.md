@@ -48,6 +48,9 @@ Add a company's board by its slug: Greenhouse is `boards-api.greenhouse.io/v1/bo
 4. Caption: both numbers in the first two lines, then "both are true", then the question to ask before applying, then "what did your real hourly come to".
 5. If a reader posts a payout screenshot, that is next Tuesday's card, credited, with their permission.
 
+## The LinkedIn search, every day (10 minutes)
+The repost layer lives in `LINKEDIN-CURATION-RECIPE.md`: the exact search strings per lane, the five validation checks, the two repost formats (repost with thoughts, or a quote card via `rl_cards.py` type `repost`), credit and permission rules, and the quota (two a week to start). Only a person in the LinkedIn app can do this part; nothing is automated.
+
 ## Wednesday routine: requests (30 minutes, from week 2)
 Sources, in order: the Tally request form; the month's Hacker News "Freelancer? Seeking freelancer?" thread (posts that start SEEKING FREELANCER); founders abroad posting on LinkedIn "looking for an n8n developer / fractional CFO / voice agent builder" (search those phrases, filter by past week, note the post URL); X posts of the same shape; Contra and Upwork postings with a stated budget.
 Anonymise: country, industry, company size, the need in three sentences, budget band, timeline, overlap hours. No company name, no person. Link the public post in the comment only if it is already public and the poster is a company, not a person.
