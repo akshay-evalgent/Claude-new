@@ -14,7 +14,7 @@ By 7/7 you'll read any text thread. One tiny lesson a day.
    6/7 Voice memo vs text
    7/7 'We need to talk.'
 
-Fictional chats. The narration is the creator's own performance, re-voiced with AI. Footage: Mixkit (free licence). Drawings and animation: made for this channel.
+Fictional chats. The narration is an AI voice. Footage: Mixkit (free licence). Drawings and animation: made for this channel.
 #texting #textingtips #psychology #communication #relationships #shorts
 
 TAGS (paste as is; YouTube splits at the commas)
@@ -27,9 +27,9 @@ PINNED COMMENT (post from the channel within a minute of upload, then pin it)
 A or B? Tell me which one you'd have guessed, and whether you're a period person.
 
 WHEN UPLOADING
-- Video: 01-ok-period.mp4 (vertical 1080x1920, 55 s, so it posts as a Short)
+- Video: 01-ok-period.mp4 (vertical 1080x1920, 0 s, so it posts as a Short)
 - Thumbnail: 01-ok-period_cover.png (the A or B frame); in the YouTube app you can pick the same moment from the video
-- Altered or synthetic content: Yes (the narrator's voice is AI-made)
+- Altered or synthetic content: Yes (the narration is an AI voice)
 - Audience: No, it's not made for kids
 - Video language: English; Subtitles: upload 01-ok-period.srt as English
 - Add to playlist: Seven Days To: read any text

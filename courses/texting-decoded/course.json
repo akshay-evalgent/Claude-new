@@ -21,7 +21,12 @@
   "sticker": "TEXTING, DECODED · n/7",
   "chat_ui": "iMessage-style, light",
   "channel": "Seven Days To (@sevendaysto)",
-  "narration": "the creator reads each episode (READ_ME_ALOUD.md), converted to Theo with Seed-VC; phrases cut by the recording's own pauses"
+  "narration": "Kokoro af_heart (American female, on this machine), phrase by phrase with scripted pauses",
+  "narration_engine": {
+   "engine": "kokoro",
+   "voice": "af_heart"
+  },
+  "narration_disclosure": "The narration is an AI voice."
  },
  "episodes": [
   {

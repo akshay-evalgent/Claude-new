@@ -54,40 +54,24 @@
    ],
    "phrases": [
     {
-     "say": "'ok.'",
-     "region": [
-      1.32,
-      1.75
-     ],
-     "tts": "Okay."
-    },
-    {
-     "say": "With the period.",
-     "region": [
-      2.28,
-      3.16
-     ]
+     "say": "'ok.' With the period.",
+     "pause": 0.7,
+     "tts": "Okay. With the period."
     },
     {
      "say": "Congratulations.",
-     "region": [
-      3.72,
-      4.69
-     ]
+     "pause": 0.5
     },
     {
      "say": "You're in trouble.",
-     "region": [
-      4.81,
-      5.81
-     ]
+     "pause": 0
     }
    ]
   },
   {
    "t": "0:03-0:08",
    "screen": "A sketched thumb types 'ok', stops, then adds the period; a timeline strip appears under the bubble: typed · paused · added .",
-   "voice": "Now. They typed 'ok'. Went back for the period. Nobody does that by accident.",
+   "voice": "They typed 'ok'. Paused. Went back for the period. Nobody does that by accident.",
    "control": "calm and deliberate, a clear beat after 'paused', the last sentence drier",
    "draw": "bracket under the strip, label 'the pause'",
    "text": "",
@@ -125,25 +109,21 @@
    ],
    "phrases": [
     {
-     "say": "Now. They typed 'ok'.",
-     "region": [
-      5.96,
-      8.24
-     ]
+     "say": "They typed 'ok'.",
+     "pause": 0.35,
+     "tts": "They typed okay."
+    },
+    {
+     "say": "Paused.",
+     "pause": 0.6
     },
     {
      "say": "Went back for the period.",
-     "region": [
-      8.97,
-      10.26
-     ]
+     "pause": 0.5
     },
     {
      "say": "Nobody does that by accident.",
-     "region": [
-      10.76,
-      12.31
-     ]
+     "pause": 0
     }
    ]
   },
@@ -183,18 +163,23 @@
    ],
    "phrases": [
     {
-     "say": "Same question. Three answers. One is a threat.",
-     "region": [
-      13.36,
-      16.28
-     ]
+     "say": "Same question.",
+     "pause": 0.3
+    },
+    {
+     "say": "Three answers.",
+     "pause": 0.5
+    },
+    {
+     "say": "One is a threat.",
+     "pause": 0
     }
    ]
   },
   {
    "t": "0:12-0:20",
    "screen": "Same cut-away; a handwritten label appears beside each reply as it is said",
-   "voice": "'okay': happy. 'ok': busy. 'ok.': you forgot something. Good luck with that now.",
+   "voice": "'okay': happy. 'ok': busy. 'ok.': you forgot something. Good luck.",
    "control": "slower on the last reply, 'good luck' flat and sympathetic",
    "draw": "labels: happy / busy / you forgot something",
    "text": "",
@@ -293,49 +278,23 @@
    ],
    "phrases": [
     {
-     "say": "'okay':",
-     "region": [
-      17.77,
-      18.42
-     ],
-     "tts": "Okay."
+     "say": "'okay': happy.",
+     "pause": 0.45,
+     "tts": "Okay. Happy."
     },
     {
-     "say": "happy.",
-     "region": [
-      19.47,
-      20.34
-     ]
+     "say": "'ok': busy.",
+     "pause": 0.45,
+     "tts": "Ok. Busy."
     },
     {
-     "say": "'ok':",
-     "region": [
-      21.26,
-      21.72
-     ],
-     "tts": "Okay."
+     "say": "'ok.': you forgot something.",
+     "pause": 0.7,
+     "tts": "Okay... you forgot something."
     },
     {
-     "say": "busy.",
-     "region": [
-      22.28,
-      22.84
-     ]
-    },
-    {
-     "say": "'ok.':",
-     "region": [
-      24.52,
-      24.92
-     ],
-     "tts": "Okay."
-    },
-    {
-     "say": "you forgot something. Good luck with that now.",
-     "region": [
-      25.48,
-      27.86
-     ]
+     "say": "Good luck.",
+     "pause": 0
     }
    ]
   },
@@ -369,11 +328,12 @@
    ],
    "phrases": [
     {
-     "say": "Except. One kind of person breaks this rule.",
-     "region": [
-      29.0,
-      31.51
-     ]
+     "say": "Except.",
+     "pause": 0.7
+    },
+    {
+     "say": "One kind of person breaks this rule.",
+     "pause": 0
     }
    ]
   },
@@ -454,26 +414,25 @@
    ],
    "phrases": [
     {
-     "say": "Dads. Bosses. People who sign their texts.",
-     "region": [
-      32.72,
-      35.83
-     ]
+     "say": "Dads.",
+     "pause": 0.4
+    },
+    {
+     "say": "Bosses.",
+     "pause": 0.4
+    },
+    {
+     "say": "People who sign their texts.",
+     "pause": 0.6
     },
     {
      "say": "Their 'ok.' is just 'ok'.",
-     "region": [
-      36.11,
-      37.78
-     ],
+     "pause": 0.5,
      "tts": "Their okay is just okay."
     },
     {
      "say": "Pattern first.",
-     "region": [
-      38.16,
-      38.93
-     ]
+     "pause": 0
     }
    ]
   },
@@ -503,47 +462,31 @@
    "phrases": [
     {
      "say": "Now you.",
-     "region": [
-      39.88,
-      40.5
-     ]
+     "pause": 0.4
     },
     {
      "say": "A…",
-     "region": [
-      41.16,
-      41.52
-     ],
-     "tts": "A."
+     "pause": 0.5,
+     "tts": "A..."
     },
     {
      "say": "or B?",
-     "region": [
-      42.28,
-      42.9
-     ],
-     "tts": "or B?"
+     "pause": 0.9
     },
     {
      "say": "Careful.",
-     "region": [
-      43.92,
-      44.34
-     ]
+     "pause": 0.5
     },
     {
      "say": "One of them is your dad.",
-     "region": [
-      44.81,
-      46.32
-     ]
+     "pause": 0
     }
    ]
   },
   {
    "t": "0:35-0:38",
    "screen": "Reveal: A circled; Jess's earlier bubbles highlighted to show no periods",
-   "voice": "First period she's ever used. Dad's just Dad.",
+   "voice": "A. First period she's ever used. Dad's just Dad.",
    "control": "quiet and certain, the last three words with a shrug",
    "draw": "circle A, label 'first period ever'",
    "text": "A or B?",
@@ -578,25 +521,23 @@
    ],
    "phrases": [
     {
+     "say": "A.",
+     "pause": 0.6
+    },
+    {
      "say": "First period she's ever used.",
-     "region": [
-      48.01,
-      49.94
-     ]
+     "pause": 0.5
     },
     {
      "say": "Dad's just Dad.",
-     "region": [
-      50.38,
-      51.41
-     ]
+     "pause": 0
     }
    ]
   },
   {
    "t": "0:38-0:40",
    "screen": "The same taped clip, played slowly so the last frame is frame 1 (the loop); 2/7 · Left on read writes on after the last word",
-   "voice": "A lone 'k' is a door closing. On your face.",
+   "voice": "Bonus. A lone 'k' is a door closing. On your face. Two of seven: left on read.",
    "control": "lighter, a promise; 'on your face' said kindly; ends on a small upward note",
    "draw": "none",
    "text": "",
@@ -619,7 +560,7 @@
      "type": "text",
      "text": "2/7 · Left on read",
      "at": {
-      "word": "closing"
+      "word": "Two"
      }
     }
    ],
@@ -631,22 +572,24 @@
    ],
    "phrases": [
     {
-     "say": "A lone 'k'",
-     "region": [
-      52.56,
-      53.52
-     ],
-     "tts": "A lone K"
+     "say": "Bonus.",
+     "pause": 0.4
     },
     {
-     "say": "is a door closing. On your face.",
-     "region": [
-      53.96,
-      56.34
-     ]
+     "say": "A lone 'k' is a door closing.",
+     "pause": 0.6,
+     "tts": "A lone K is a door closing."
+    },
+    {
+     "say": "On your face.",
+     "pause": 1.1
+    },
+    {
+     "say": "Two of seven: left on read.",
+     "pause": 0,
+     "tts": "Two of seven. Left on read."
     }
-   ],
-   "tail": 1.3
+   ]
   }
  ],
  "test": {
@@ -656,8 +599,8 @@
   "why": "It is the first period she has ever used; the change from her pattern is the message."
  },
  "bonus": "A lone 'k' is a door closing. On your face.",
- "bridge": "2/7 · Left on read (on screen only)",
- "words": 95,
+ "bridge": "Two of seven: left on read.",
+ "words": 100,
  "teaches_line": "the period. One character decides what 'ok' means, and the sender's own pattern decides the character.",
  "pinned": "A or B? Tell me which one you'd have guessed, and whether you're a period person.",
  "threads": {
@@ -768,9 +711,5 @@
    "site": "Mixkit",
    "license": "Mixkit Stock Video Free License (free for commercial use, no attribution required)"
   }
- },
- "recording": {
-  "file": "WhatsApp_Audio_2026-11-06_at_14.03.00.aac",
-  "note": "phrases and regions follow the recording; the Bonus tag and the spoken bridge were not recorded"
  }
 }

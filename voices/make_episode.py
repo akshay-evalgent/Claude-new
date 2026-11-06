@@ -35,7 +35,7 @@ ROOT = Path(__file__).resolve().parent.parent
 FPS = 30
 GAP = 0.25           # least silence between two lines
 DRAW_SECONDS = 0.35  # how long a drawing takes to appear
-ENGINES = ('voxcpm', 'chatterbox', 'dia')
+ENGINES = ('voxcpm', 'chatterbox', 'dia', 'kokoro')
 
 
 def norm(w):
@@ -86,8 +86,30 @@ def dia(text, ref, ref_text, out):
     to_mp3(path, out)
 
 
+_kokoro = None
+
+
+def kokoro(text, voice, out, speed=0.92):
+    """Kokoro on this machine: American voices (am_michael, am_puck, af_heart, ...), no quota."""
+    global _kokoro
+    import soundfile as sf
+    from kokoro_onnx import Kokoro
+    if _kokoro is None:
+        k = Path.home() / '.voices-vendor' / 'kokoro'
+        _kokoro = Kokoro(str(k / 'kokoro-v1.0.onnx'), str(k / 'voices-v1.0.bin'))
+    y, sr = _kokoro.create(text, voice=voice, speed=speed, lang='en-us')
+    to_mp3((sr, y), out)
+
+
+VOICE = {}  # --voice: a Kokoro voice id, or a reference clip for chatterbox / dia
+
+
 def synth(engine, text, control, ref, ref_text, out):
-    if engine == 'voxcpm':
+    if VOICE.get('ref'):
+        ref, ref_text = VOICE['ref'], VOICE.get('ref_text', ref_text)
+    if engine == 'kokoro':
+        kokoro(text, VOICE.get('id', 'am_michael'), out)
+    elif engine == 'voxcpm':
         generate(text, control, ref, ref_text, out)
     elif engine == 'chatterbox':
         chatterbox(text, ref, out)
@@ -533,7 +555,7 @@ def upload_text(course, ep_index, ep, script):
     title = f"{ep['title']} | Seven Days To read any text ({ep_index}/{n})"
     eps = '\n'.join(f"{'▶ ' if k == ep_index else '   '}{k}/{n} {e['title']}" for k, e in enumerate(course['episodes'], 1))
     desc = (f"Day {ep_index} of {n}: {script['teaches_line']}\n\n{course['promise']} One tiny lesson a day.\n\n{eps}\n\n"
-            "Fictional chats. The narration is the creator's own performance, re-voiced with AI. "
+            f"Fictional chats. {course['kit'].get('narration_disclosure', 'The narration is an AI voice.')} "
             "Footage: Mixkit (free licence). Drawings and animation: made for this channel.\n"
             "#texting #textingtips #psychology #communication #relationships #shorts")
     tags = ['texting', 'text messages', 'texting psychology', 'how to read texts', 'texting tips', 'communication skills',
@@ -545,7 +567,7 @@ def upload_text(course, ep_index, ep, script):
         'WHEN UPLOADING',
         f'- Video: {ep["slug"]}.mp4 (vertical 1080x1920, {"%.0f" % script.get("_duration", 0) or "about 55"} s, so it posts as a Short)',
         f'- Thumbnail: {ep["slug"]}_cover.png (the A or B frame); in the YouTube app you can pick the same moment from the video',
-        '- Altered or synthetic content: Yes (the narrator\'s voice is AI-made)',
+        '- Altered or synthetic content: Yes (the narration is an AI voice)',
         "- Audience: No, it's not made for kids",
         '- Video language: English; Subtitles: upload ' + f'{ep["slug"]}.srt as English',
         f'- Add to playlist: {playlist}',
@@ -558,6 +580,8 @@ def main():
     ap.add_argument('episode', type=Path, help='episode folder, e.g. courses/texting-decoded/episodes/01-ok-period')
     ap.add_argument('--engine', choices=ENGINES, default='voxcpm', help='narration engine (default voxcpm)')
     ap.add_argument('--takes', type=int, default=2, help='narration takes per phrase (default 2)')
+    ap.add_argument('--voice', help='kokoro: a voice id (am_michael, af_heart...); chatterbox/dia: a reference clip to copy the voice from')
+    ap.add_argument('--tag', help='keep these takes apart from other runs of the same engine, e.g. a voice name')
     ap.add_argument('--voice-only', action='store_true', help='make and score the narration, then stop')
     ap.add_argument('--sample', help='beats to hear, e.g. 1,4,9: make their narration once, write takes/<engine>/sample_<engine>.mp3, stop')
     ap.add_argument('--rescore', action='store_true', help='score the takes again (default: reuse takes/<engine>/picks.json)')
@@ -576,7 +600,12 @@ def main():
     ep = course['episodes'][ep_index - 1]
     beats = script['beats']
     lines = phrase_lines(beats)
-    takes_dir = ep_dir / 'takes' / args.engine
+    if args.voice:
+        if args.engine == 'kokoro':
+            VOICE['id'] = args.voice
+        else:
+            VOICE['ref'] = Path(args.voice).resolve()
+    takes_dir = ep_dir / 'takes' / (args.engine + (f'_{args.tag}' if args.tag else ''))
 
     if args.sample:
         wanted = {int(x) for x in args.sample.split(',')}
