@@ -87,5 +87,14 @@ Followers · impressions per post · comments per post · saves if visible · Ta
 ## Rules that do not bend
 Manual curation only; never scrape LinkedIn. Credit and link every public post used; take it down the same day if asked. Never list anything that charges the candidate. Label every number. Disclose referral links where they appear. Opt-in only for any list; anyone can leave the same day. Post as the page, never as a person.
 
-## What to send me each week
-Monday: nothing, the fetch script does it; tell me if a company should be added or removed. Tuesday: the platform you want next, or a reader's payout screenshot with their permission. Wednesday: screenshots or links of public asks from LinkedIn or X (I can't open LinkedIn from here). Thursday: the Tally export of pitches and which five passed. Any day: a comment you want a reply drafted for. I return the folder for each post: image, caption, first comment, how-to.
+## What to send me each week (the no-repost plan)
+Five of the seven formats run entirely from sources I can open: Monday's tracker (the fetch script plus the company boards), Tuesday's pay card (the platforms' own pages, screenshotted), Friday's not-a-desk-job card, Saturday's paperwork carousel, Sunday's poll. You do not need to find anything for those.
+
+What only you can give me:
+- **Sunday evening:** followers, impressions per post, comments per post, and the three Tally counts (pitches, requests, waitlist). Four numbers; they decide week two.
+- **Thursday (from week 2):** the Tally export of pitches, as a CSV from Tally's Submissions tab. I run the five checks on paper; you send the test messages; I build the card from the ones that pass.
+- **Wednesday (from week 2):** the Tally export of requests. Until there are five real ones in a week, Wednesday is a getting-paid card and needs nothing from you.
+- **Any day:** a comment thread you want a reply drafted for, pasted as text or a screenshot; a reader's number or payout screenshot you want printed (with their yes in the thread).
+- **Once, five minutes:** screenshots of two pages blocked from here if you want them on cards: paypal.com/in business fees and cambly.com's tutor page.
+
+LinkedIn searching for posts to repost is optional and lives in `LINKEDIN-CURATION-RECIPE.md`; the plan runs without it.
