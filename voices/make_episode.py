@@ -99,7 +99,10 @@ def phrase_lines(beats):
     for i, b in enumerate(beats):
         phrases = b.get('phrases') or ([dict(say=b['voice'], pause=0)] if b.get('voice') else [])
         for ph in phrases:
-            lines.append(dict(k=len(lines) + 1, beat=i, say=ph['say'], pause=float(ph.get('pause', 0)), control=b.get('control', '')))
+            ln = dict(k=len(lines) + 1, beat=i, say=ph['say'], pause=float(ph.get('pause', 0)), control=b.get('control', ''))
+            if 'region' in ph:  # where this phrase sits in your own recording, seconds
+                ln['region'] = ph['region']
+            lines.append(ln)
     return lines
 
 
@@ -162,9 +165,14 @@ def recorded_takes(ep_dir, recording, lines, narrator_dir, narrator, steps=30):
     takes_dir.mkdir(parents=True, exist_ok=True)
     src, conv = takes_dir / 'source.wav', takes_dir / 'converted.wav'
     if not src.exists():
-        cr.to_wav(recording, src)
+        raw = takes_dir / 'source_raw.wav'
+        cr.to_wav(recording, raw)
+        # room noise down (FFT denoiser, gentle) and rumble off, before the converter hears it
+        subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(raw), '-af', 'highpass=f=70,afftdn=nr=10:nf=-40:tn=1', str(src)], check=True)
         cut = cr.trim_silence(src)
+        (takes_dir / 'trim.json').write_text(json.dumps({'start': cut[0], 'end': cut[1]}))
         print(f'  trimmed silence: {cut[0]} s from the start, {cut[1]} s from the end')
+    lead = json.loads((takes_dir / 'trim.json').read_text())['start'] if (takes_dir / 'trim.json').exists() else 0.0
     if not conv.exists():
         print(f'  converting your recording to {narrator["name"]} (Seed-VC on this machine, a few minutes)', flush=True)
         cr.convert_local(src, narrator_dir / narrator['identity'], conv, steps, 0)
@@ -172,18 +180,35 @@ def recorded_takes(ep_dir, recording, lines, narrator_dir, narrator, steps=30):
     voice, info = performance.transfer(y_src, y_conv, SR)
     print(f'  performance: {info}')
     asr = WhisperModel('small.en', device='cpu', compute_type='int8')
-    segs, _ = asr.transcribe(librosa.load(src, sr=16000)[0], beam_size=5, language='en', word_timestamps=True)
-    heard = [(w.word.strip(), w.start, w.end) for sg in segs for w in sg.words]
-    print('  you said:', ' '.join(h[0] for h in heard))
-    script_words = [w for ln in lines for w in ln['say'].split()]
-    timed = align(script_words, heard)
+    y16 = librosa.load(src, sr=16000)[0]
+    if all('region' in ln for ln in lines):  # the script already names where each phrase sits in the recording
+        timed = None
+    else:
+        segs, _ = asr.transcribe(y16, beam_size=5, language='en', word_timestamps=True)
+        heard = [(w.word.strip(), w.start, w.end) for sg in segs for w in sg.words]
+        print('  you said:', ' '.join(h[0] for h in heard))
+        timed = align([w for ln in lines for w in ln['say'].split()], heard)
     picks, pos = {}, 0
     for idx, ln in enumerate(lines):
         n = len(ln['say'].split())
-        ws = timed[pos:pos + n]; pos += n
-        s, e = ws[0]['s'], ws[-1]['e']
-        nxt = timed[pos]['s'] if pos < len(timed) else e + 0.6
-        a, z = max(0.0, s - 0.08), min(len(voice) / SR, min(e + 0.15, (e + nxt) / 2))
+        if timed is None:  # regions were measured on the untrimmed recording
+            s, e = ln['region'][0] - lead, ln['region'][1] - lead
+            nxt = lines[idx + 1]['region'][0] - lead if idx + 1 < len(lines) else e + 0.6
+            prev_end = lines[idx - 1]['region'][1] - lead if idx else 0.0
+            a, z = max(prev_end + 0.02, s - 0.06), min(len(voice) / SR, min(e + 0.12, (e + nxt) / 2))
+            segs, _ = asr.transcribe(y16[int(a * 16000):int(z * 16000)], beam_size=5, language='en', word_timestamps=True)
+            heard = [(w.word.strip(), w.start, w.end) for sg in segs for w in sg.words]
+            try:
+                ws = [dict(w=w['w'], s=w['s'] + a, e=w['e'] + a) for w in align(ln['say'].split(), heard)] if heard else []
+            except SystemExit:
+                ws = []
+            if not ws:
+                ws = [dict(w=w, s=a + (z - a) * j / n, e=a + (z - a) * (j + 1) / n) for j, w in enumerate(ln['say'].split())]
+        else:
+            ws = timed[pos:pos + n]; pos += n
+            s, e = ws[0]['s'], ws[-1]['e']
+            nxt = timed[pos]['s'] if pos < len(timed) else e + 0.6
+            a, z = max(0.0, s - 0.08), min(len(voice) / SR, min(e + 0.15, (e + nxt) / 2))
         seg = voice[int(a * SR):int(z * SR)].copy()
         fade = int(0.01 * SR); seg[:fade] *= np.linspace(0, 1, fade); seg[-fade:] *= np.linspace(1, 0, fade)
         wav = takes_dir / f'line{ln["k"]}_t1.wav'
@@ -292,7 +317,7 @@ def build_timeline(beats, lines, picks):
             while t < cursor - 0.1:
                 sfx.append(dict(sound='clock', at=round(t, 3))); t += 0.5
     for k, tb in enumerate(timeline):
-        tb['end'] = timeline[k + 1]['start'] if k + 1 < len(timeline) else round(cursor + 0.3, 3)
+        tb['end'] = timeline[k + 1]['start'] if k + 1 < len(timeline) else round(cursor + beats[k].get('tail', 0.3), 3)  # 'tail': room for the end card
     duration = timeline[-1]['end']
     return timeline, words, draws, sorted(sfx, key=lambda s: s['at']), duration
 
@@ -451,7 +476,7 @@ def upload_text(course, ep_index, ep, script):
     title = f"{ep['title']} | Seven Days To read any text ({ep_index}/{n})"
     eps = '\n'.join(f"{'▶ ' if k == ep_index else '   '}{k}/{n} {e['title']}" for k, e in enumerate(course['episodes'], 1))
     desc = (f"Day {ep_index} of {n}: {script['teaches_line']}\n\n{course['promise']}\n\n{eps}\n\n"
-            "Fictional chats. Made with AI: the narration is a designed AI voice, the drawings are generated; the footage is licensed stock.\n"
+            "Fictional chats. Made with AI: the narration is the creator's own performance converted to a designed AI voice, the drawings are generated; the footage is licensed stock.\n"
             "#texting #textingtips #psychology #communication #relationships #shorts")
     tags = ['texting', 'text messages', 'texting psychology', 'how to read texts', 'left on read', 'communication skills',
             'relationships', 'dating advice', 'body language of texting', 'micro course', 'seven days to', series.lower()]

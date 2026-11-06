@@ -20,7 +20,8 @@
   "hand_font": "Kalam",
   "sticker": "TEXTING, DECODED · n/7",
   "chat_ui": "iMessage-style, light",
-  "channel": "Seven Days To (@sevendaysto)"
+  "channel": "Seven Days To (@sevendaysto)",
+  "narration": "the creator reads each episode (READ_ME_ALOUD.md), converted to Theo with Seed-VC; phrases cut by the recording's own pauses"
  },
  "episodes": [
   {
