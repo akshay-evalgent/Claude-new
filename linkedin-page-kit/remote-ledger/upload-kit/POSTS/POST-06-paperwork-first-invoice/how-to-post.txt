@@ -1,0 +1,11 @@
+POST 06 · Sat 14 Nov · 10:30 am IST · Paperwork
+
+HOW TO POST (carousel / document post)
+1. Open linkedin.com/company/remoteledger/admin, "Start a post" as the page.
+2. Click the "+" icon → "Add a document". Upload carousel.pdf. Title: the line given at the bottom of this file.
+3. Paste caption.txt. Click Post.
+4. Comment with first-comment.txt and pin it. Reply for 90 minutes.
+
+Document title to type when uploading the PDF: Your first international invoice, in six pieces of paper
+
+Before posting: replace every [bracket] in caption.txt and first-comment.txt. Never post a bracket.

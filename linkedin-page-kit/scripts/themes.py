@@ -20,6 +20,12 @@ def _sym(s):
 ACTIVE = "signal"   # the brand every script renders with; change here to re-skin everything
 
 THEMES = {
+  "ledger": dict(
+    name="Remote Ledger", handle="remoteledger", tagline="Remote work for clients abroad, checked for India.",
+    promise="Roles and requests open to India, the real rate behind the advertised one, and how to get paid without losing 6% of it.",
+    bg=(250,249,245), bg2=(255,255,255), ink=(18,22,30), muted=(112,114,112), accent=(16,133,84), strike=(200,60,50), rule=(212,208,198),
+    display=lambda s,w="SemiBold": _inter(w,s,True), body=lambda s,w="Regular": _inter(w,s), mono=lambda s,w="Medium": _mono(w,s), sym=_sym,
+    style="minimal-light"),
   "signal": dict(
     name="Founder Signal", handle="thefoundersignal", tagline="AI news, tool swaps and thought experiments for people building companies.",
     promise="What happened in AI today, the cheaper tool that does the job, and the question every founder should sit with this week.",

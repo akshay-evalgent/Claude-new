@@ -12,6 +12,14 @@ def tl(d, t, f): return d.textlength(t, font=f)
 def mark(d, key, T, cx, cy, s):
     """Logo mark per direction. s = overall size."""
     a, ink, bg2 = T["accent"], T["ink"], T["bg2"]
+    if key == "ledger":   # three ledger rows, the last one checked in green
+        d.rounded_rectangle((cx-s/2, cy-s/2, cx+s/2, cy+s/2), radius=s*0.18, fill=bg2, outline=T["rule"], width=max(2,int(s*0.012)))
+        lw = max(3, int(s*0.045)); x0, x1 = cx-s*0.30, cx+s*0.30
+        for i,(amt,c) in enumerate([(0.16,ink),(0.24,ink),(0.34,a)]):
+            y = cy - s*0.20 + i*s*0.20
+            d.line((x0, y, x1-s*amt-s*0.05, y), fill=T["rule"], width=lw)
+            d.rounded_rectangle((x1-s*amt, y-lw*0.9, x1, y+lw*0.9), radius=lw, fill=c)
+        return
     if key in ("signal", "signal_teardown"):   # three ascending bars: a signal
         d.rounded_rectangle((cx-s/2, cy-s/2, cx+s/2, cy+s/2), radius=s*0.18, fill=bg2, outline=T["rule"], width=max(2,int(s*0.012)))
         bw = s*0.14; gap = s*0.07; x = cx - (3*bw + 2*gap)/2

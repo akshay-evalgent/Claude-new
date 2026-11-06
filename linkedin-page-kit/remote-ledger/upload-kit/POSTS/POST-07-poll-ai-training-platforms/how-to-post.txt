@@ -1,0 +1,9 @@
+POST 07 · Sun 15 Nov · 11:00 am IST · Poll
+
+HOW TO POST (poll)
+1. Open linkedin.com/company/remoteledger/admin, "Start a post" as the page.
+2. Click the "+" icon → "Create a poll". Question and four options are at the top of caption.txt. Duration: 3 days.
+3. Paste the context text (below the options in caption.txt) into the main text box. Click Post.
+4. Comment with first-comment.txt, attach image.png to that comment (the card), and pin it.
+
+Before posting: replace every [bracket] in caption.txt and first-comment.txt. Never post a bracket.

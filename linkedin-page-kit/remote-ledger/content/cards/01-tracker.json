@@ -1,0 +1,68 @@
+{
+ "type": "tracker",
+ "kicker": "This week · open to India · checked",
+ "title": "10 remote roles, read past the label",
+ "subtitle": "We read each posting's own text, not the job board's 'remote' tag. Pay is shown only where the posting states it.",
+ "rows": [
+  {
+   "company": "Together AI",
+   "role": "Senior Software Engineer, Infra Agent Systems",
+   "where": "Remote, India",
+   "pay": ""
+  },
+  {
+   "company": "Turing",
+   "role": "Strategy and Operations Associate",
+   "where": "Remote, flexible hours",
+   "pay": ""
+  },
+  {
+   "company": "OpenAI",
+   "role": "Applied AI Engineer, Partner (AWS)",
+   "where": "Bangalore, remote",
+   "pay": ""
+  },
+  {
+   "company": "ElevenLabs",
+   "role": "B2B Marketing, India",
+   "where": "Remote, India",
+   "pay": ""
+  },
+  {
+   "company": "Askable",
+   "role": "Software Engineer, AI coding tasks",
+   "where": "Worldwide, contract",
+   "pay": "$1,000 per task"
+  },
+  {
+   "company": "Fluence International",
+   "role": "Full-Stack Developer, 6-month contract",
+   "where": "Worldwide",
+   "pay": "$3,500–5,000 / mo"
+  },
+  {
+   "company": "Evaboot",
+   "role": "Agentic Python Engineer",
+   "where": "Worldwide",
+   "pay": "$60–120K / yr"
+  },
+  {
+   "company": "Simple Analytics",
+   "role": "DevOps Engineer, 32-hour week",
+   "where": "Worldwide, any TZ",
+   "pay": "€5,000 / mo"
+  },
+  {
+   "company": "Search Atlas",
+   "role": "Product Engineer (technical PM)",
+   "where": "Anywhere, EST hours",
+   "pay": "$23–34 / hr"
+  },
+  {
+   "company": "Oscilar",
+   "role": "Staff Java Backend · Staff Web SDK Engineer",
+   "where": "India named",
+   "pay": ""
+  }
+ ]
+}

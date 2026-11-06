@@ -1,0 +1,193 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "Getting paid · the paperwork",
+   "title": "Your first international invoice, in six pieces of paper.",
+   "subtitle": "What an Indian freelancer or consultant needs before a client abroad can pay them without a mess later. Saved by people who learned it the expensive way."
+  },
+  {
+   "type": "list",
+   "kicker": "01 · the contract",
+   "title": "One page. Signed before you start.",
+   "items": [
+    {
+     "name": "Scope, in three lines",
+     "replaces": "What you deliver, by when, what is out of scope.",
+     "raw": true
+    },
+    {
+     "name": "Rate and currency",
+     "replaces": "Fixed fee or day rate. USD, EUR or GBP. Never 'to be discussed'.",
+     "raw": true
+    },
+    {
+     "name": "Payment within 15 days",
+     "replaces": "Half up front on anything over $2,000.",
+     "raw": true
+    },
+    {
+     "name": "IP transfers on payment",
+     "replaces": "Not on delivery. They own it when you are paid.",
+     "raw": true
+    },
+    {
+     "name": "30 days' notice, either side",
+     "replaces": "So nobody is trapped.",
+     "raw": true
+    }
+   ],
+   "note": "We give the template away free. Link in the first comment."
+  },
+  {
+   "type": "list",
+   "kicker": "02 · the invoice",
+   "title": "What goes on it that an Indian invoice usually misses.",
+   "items": [
+    {
+     "name": "Your name, PAN, address",
+     "replaces": "And GSTIN if you have one.",
+     "raw": true
+    },
+    {
+     "name": "Client's legal name and country",
+     "replaces": "Their registered address, not a first name and an email.",
+     "raw": true
+    },
+    {
+     "name": "Currency and amount in words",
+     "replaces": "'USD 2,000 (two thousand US dollars)'.",
+     "raw": true
+    },
+    {
+     "name": "The export line, if GST-registered",
+     "replaces": "'Supply meant for export under LUT without payment of IGST'.",
+     "raw": true
+    },
+    {
+     "name": "How to pay you",
+     "replaces": "Skydo or Wise or Payoneer details. Not a bare SWIFT code with no instructions.",
+     "raw": true
+    }
+   ]
+  },
+  {
+   "type": "list",
+   "kicker": "03 · the purpose code",
+   "title": "Every inward remittance needs one. Pick it, don't let the bank guess.",
+   "items": [
+    {
+     "name": "P0802",
+     "replaces": "Software consultancy and implementation",
+     "raw": true
+    },
+    {
+     "name": "P0807",
+     "replaces": "Other IT services: support, data processing, hosting",
+     "raw": true
+    },
+    {
+     "name": "P1006",
+     "replaces": "Business and management consultancy, PR",
+     "raw": true
+    },
+    {
+     "name": "P1007",
+     "replaces": "Advertising, trade fair, market research",
+     "raw": true
+    },
+    {
+     "name": "P1099",
+     "replaces": "Other services not covered above (design, writing, tutoring often land here)",
+     "raw": true
+    }
+   ],
+   "note": "The wrong code means a call from the bank and a delay. Skydo and Payoneer ask you for it up front; a plain bank wire may not."
+  },
+  {
+   "type": "list",
+   "kicker": "04 · FIRA",
+   "title": "The certificate that proves the money came from abroad.",
+   "items": [
+    {
+     "name": "Foreign Inward Remittance Advice",
+     "replaces": "One per payment. It shows the sender, the currency, the amount, the purpose code.",
+     "raw": true
+    },
+    {
+     "name": "Why you need it",
+     "replaces": "GST zero-rating on exports, and the day a tax notice asks where ₹18 lakh came from.",
+     "raw": true
+    },
+    {
+     "name": "Where it comes from",
+     "replaces": "Skydo: instant, included. Payoneer: free, digital. Banks: ask, and often pay for it.",
+     "raw": true
+    }
+   ],
+   "note": "Keep every FIRA in one folder with its invoice. Future you, at tax time, will be grateful."
+  },
+  {
+   "type": "list",
+   "kicker": "05 · GST and the LUT",
+   "title": "Export of services is zero-rated. Only if you file one form a year.",
+   "items": [
+    {
+     "name": "Register above ₹20 lakh",
+     "replaces": "Mandatory once turnover crosses it, even if 100% is export.",
+     "raw": true
+    },
+    {
+     "name": "File the LUT (form RFD-11)",
+     "replaces": "Every financial year, online, before you invoice. Then you charge no IGST.",
+     "raw": true
+    },
+    {
+     "name": "Still file GSTR-1 and GSTR-3B",
+     "replaces": "Zero-rated is not the same as exempt from filing.",
+     "raw": true
+    },
+    {
+     "name": "Get paid in foreign currency",
+     "replaces": "Receipt in INR without FIRC can cost you the export status.",
+     "raw": true
+    }
+   ],
+   "note": "Rules as we understand them in November 2026. Confirm with a CA before you rely on any of this."
+  },
+  {
+   "type": "list",
+   "kicker": "06 · income tax",
+   "title": "Section 44ADA: declare half, skip the books.",
+   "items": [
+    {
+     "name": "Presumptive scheme for professionals",
+     "replaces": "Declare 50% of gross receipts as profit. No audited books.",
+     "raw": true
+    },
+    {
+     "name": "Limit ₹50 lakh",
+     "replaces": "₹75 lakh if at least 95% of receipts are digital, which for this work they are.",
+     "raw": true
+    },
+    {
+     "name": "Advance tax",
+     "replaces": "One instalment by 15 March. Miss it and interest runs.",
+     "raw": true
+    },
+    {
+     "name": "Renumbered from 1 April 2026",
+     "replaces": "The Income-tax Act 2025 changes section numbers. Search 'presumptive taxation for professionals', not '44ADA'.",
+     "raw": true
+    }
+   ],
+   "note": "If your real expenses are far below 50%, this scheme is a gift. If they are above, keep books instead."
+  },
+  {
+   "type": "cta",
+   "title": "Six pieces of paper. One evening.",
+   "body": "Contract, invoice, purpose code, FIRA, LUT, 44ADA. Save this for the week your first client abroad says yes. The one-page contract template is free in the first comment.",
+   "button": "Follow Remote Ledger"
+  }
+ ]
+}

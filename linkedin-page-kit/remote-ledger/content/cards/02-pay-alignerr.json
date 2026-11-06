@@ -1,0 +1,20 @@
+{
+ "type": "pay",
+ "kicker": "What the page says · what the page lists",
+ "title": "Alignerr, same page, same day",
+ "subtitle": "The headline number on alignerr.com, and a listing we found on the same page under it. 6 November 2026.",
+ "panels": [
+  {
+   "label": "Headline, top of the page",
+   "big": "$80/hr",
+   "caption": "“Average pay.” Next to it: 1K+ hired weekly, $1M paid weekly."
+  },
+  {
+   "label": "A listing further down",
+   "big": "$15–20/hr",
+   "caption": "Healthcare AI call QA labeler, Spanish. 2,500 conversations, 20 minutes each. Fully remote."
+  }
+ ],
+ "note": "Other listings on the page show $40–120/hr and $45–65/hr. Averages hide the floor. Ask what the project pays, not what the platform pays.",
+ "source": "Source: alignerr.com homepage and the listings on it, screenshots taken 6 Nov 2026. We have no India-specific Alignerr rate; if you have one, post it and we print it."
+}

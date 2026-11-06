@@ -1,0 +1,21 @@
+POLL QUESTION: You applied to an AI training platform this year. Then what?
+OPTION 1: Got work. Paid what the page said.
+OPTION 2: Got work. Paid less than the page said.
+OPTION 3: Waitlisted or onboarded, then silence.
+OPTION 4: Never applied.
+DURATION: 3 days
+
+CONTEXT TEXT (paste into the main box):
+Outlier says 900,000 experts. Alignerr says 100,000. Mercor says 720,000 roles created. Someone we know applied to all three in one weekend and heard back from none of them.
+
+Tell us what actually happened to you. We'll print the split next Sunday, platform by platform, from the comments.
+
+If you did get paid, what was the real hourly after the unpaid onboarding and the waiting?
+
+#AITraining
+#Outlier
+#Alignerr
+#Mercor
+#RemoteWork
+#India
+#RemoteLedger

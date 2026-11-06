@@ -1,0 +1,11 @@
+POST 04 · Thu 12 Nov · 8:30 pm IST · Pitches
+
+HOW TO POST (image post)
+1. Open linkedin.com/company/remoteledger/admin (logged in as the admin). Click "Start a post". The small avatar at the top of the box must show the page, not your name.
+2. Click the photo icon, upload image.png (portrait). image-square.png is the square alternative.
+3. Paste caption.txt into the text box. Keep the line breaks. Where it says @Tag, type @ and pick the company page.
+4. Click Post.
+5. Open the post, click Comment, paste first-comment.txt, post it. Click the three dots on your comment → Pin.
+6. 90 minutes: reply to every comment within 15 minutes, 15+ words, end with a question back.
+
+Before posting: replace every [bracket] in caption.txt and first-comment.txt. Never post a bracket.

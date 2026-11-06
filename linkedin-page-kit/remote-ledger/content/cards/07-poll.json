@@ -1,0 +1,12 @@
+{
+ "type": "poll",
+ "kicker": "Sunday poll · tell us what actually happened",
+ "question": "You applied to an AI training platform this year. Then what?",
+ "options": [
+  "Got work. Paid what the page said.",
+  "Got work. Paid less than the page said.",
+  "Waitlisted or onboarded, then silence.",
+  "Never applied. Tell us why below."
+ ],
+ "note": "We'll print the split next Sunday with the platforms named in the comments. Screenshots of a real payout are welcome; blur what you want."
+}

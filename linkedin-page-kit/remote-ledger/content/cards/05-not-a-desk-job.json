@@ -1,0 +1,32 @@
+{
+ "type": "tracker",
+ "kicker": "Not a desk job · pays from home · checked",
+ "title": "Four ways in, with the number on the page",
+ "subtitle": "Flexible hours, no office, paid by clients or platforms abroad. The figure is what the platform or posting itself says, nothing added.",
+ "rows": [
+  {
+   "company": "Preply",
+   "role": "English tutoring, you set the rate, students in 180 countries",
+   "where": "Any hours",
+   "pay": "$15–25 / hr typical"
+  },
+  {
+   "company": "Askable",
+   "role": "Build AI coding tasks from a codebase you know, about 10 h/week",
+   "where": "Worldwide",
+   "pay": "$1,000 per task"
+  },
+  {
+   "company": "Alignerr",
+   "role": "Content reviewer: read, rate and fix AI output, no experience listed",
+   "where": "Remote",
+   "pay": "$40–120 / hr listed"
+  },
+  {
+   "company": "Lovable",
+   "role": "Product experience specialist, support for a global user base",
+   "where": "APAC hours, contractor",
+   "pay": ""
+  }
+ ]
+}
