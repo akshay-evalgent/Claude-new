@@ -1,0 +1,10 @@
+{
+ "episode": "01-example",
+ "hook_frame": "What frame 1 shows: the thing mid-action, 3 to 6 words of text, movement",
+ "beats": [
+  {"t": "0:00-0:01", "screen": "what is on screen (scene or mock-up)", "voice": "the spoken line", "control": "emotion instruction for the voice", "draw": "circle | arrow | bracket | label | freeze | none", "text": "on-screen words, 6 max", "sound": "buzz | tick | pop | marker | silence | none"}
+ ],
+ "test": {"a": "option A", "b": "option B", "answer": "a", "why": "one sentence"},
+ "bonus": "the last-2-seconds line",
+ "bridge": "n/N: next episode's hook"
+}

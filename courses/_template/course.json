@@ -1,0 +1,10 @@
+{
+ "title": "Course title as the viewer sees it",
+ "promise": "By n/n you'll be able to ...",
+ "lang": "hi",
+ "gates_done": [],
+ "kit": {"style": null, "voice": null, "accent": null, "sticker": "Series name · n/N"},
+ "episodes": [
+  {"slug": "01-example", "title": "Episode title", "teaches": "the one thing", "hook": null, "stage": "plan"}
+ ]
+}
