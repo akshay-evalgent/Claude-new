@@ -51,6 +51,20 @@
      "target": "period",
      "at": 0.25
     }
+   ],
+   "phrases": [
+    {
+     "say": "'ok.' With the period.",
+     "pause": 0.7
+    },
+    {
+     "say": "Congratulations.",
+     "pause": 0.5
+    },
+    {
+     "say": "You're in trouble.",
+     "pause": 0
+    }
    ]
   },
   {
@@ -91,6 +105,24 @@
       "word": "Nobody"
      }
     }
+   ],
+   "phrases": [
+    {
+     "say": "They typed 'ok'.",
+     "pause": 0.35
+    },
+    {
+     "say": "Paused.",
+     "pause": 0.6
+    },
+    {
+     "say": "Went back for the period.",
+     "pause": 0.5
+    },
+    {
+     "say": "Nobody does that by accident.",
+     "pause": 0
+    }
    ]
   },
   {
@@ -125,6 +157,20 @@
      "type": "reply",
      "index": 2,
      "at": 1.6
+    }
+   ],
+   "phrases": [
+    {
+     "say": "Same question.",
+     "pause": 0.3
+    },
+    {
+     "say": "Three answers.",
+     "pause": 0.5
+    },
+    {
+     "say": "One is a threat.",
+     "pause": 0
     }
    ]
   },
@@ -227,6 +273,24 @@
       "word": "forgot"
      }
     }
+   ],
+   "phrases": [
+    {
+     "say": "'okay': happy.",
+     "pause": 0.45
+    },
+    {
+     "say": "'ok': busy.",
+     "pause": 0.45
+    },
+    {
+     "say": "'ok.': you forgot something.",
+     "pause": 0.7
+    },
+    {
+     "say": "Good luck.",
+     "pause": 0
+    }
    ]
   },
   {
@@ -255,6 +319,16 @@
      "at": {
       "word": "This"
      }
+    }
+   ],
+   "phrases": [
+    {
+     "say": "Except.",
+     "pause": 0.7
+    },
+    {
+     "say": "One kind of person breaks this rule.",
+     "pause": 0
     }
    ]
   },
@@ -332,6 +406,28 @@
       "word": "Bosses"
      }
     }
+   ],
+   "phrases": [
+    {
+     "say": "Dads.",
+     "pause": 0.4
+    },
+    {
+     "say": "Bosses.",
+     "pause": 0.4
+    },
+    {
+     "say": "People who sign their texts.",
+     "pause": 0.6
+    },
+    {
+     "say": "Their 'ok.' is just 'ok'.",
+     "pause": 0.5
+    },
+    {
+     "say": "Pattern first.",
+     "pause": 0
+    }
    ]
   },
   {
@@ -355,6 +451,28 @@
      "at": {
       "word": "A…"
      }
+    }
+   ],
+   "phrases": [
+    {
+     "say": "Now you.",
+     "pause": 0.4
+    },
+    {
+     "say": "A…",
+     "pause": 0.5
+    },
+    {
+     "say": "or B?",
+     "pause": 0.9
+    },
+    {
+     "say": "Careful.",
+     "pause": 0.5
+    },
+    {
+     "say": "One of them is your dad.",
+     "pause": 0
     }
    ]
   },
@@ -393,12 +511,26 @@
       "word": "period"
      }
     }
+   ],
+   "phrases": [
+    {
+     "say": "A.",
+     "pause": 0.6
+    },
+    {
+     "say": "First period she's ever used.",
+     "pause": 0.5
+    },
+    {
+     "say": "Dad's just Dad.",
+     "pause": 0
+    }
    ]
   },
   {
    "t": "0:38-0:40",
    "screen": "The same taped clip, played slowly so the last frame is frame 1 (the loop)",
-   "voice": "Bonus: a lone 'k' is a door closing. On your face. 2/7: left on read.",
+   "voice": "Bonus. A lone 'k' is a door closing. On your face. Two of seven: left on read.",
    "control": "lighter, a promise; 'on your face' said kindly; ends on a small upward note",
    "draw": "none",
    "text": "",
@@ -421,7 +553,7 @@
      "type": "text",
      "text": "2/7 · Left on read",
      "at": {
-      "word": "closing"
+      "word": "Two"
      }
     }
    ],
@@ -429,6 +561,24 @@
     {
      "sound": "buzz",
      "at": 0
+    }
+   ],
+   "phrases": [
+    {
+     "say": "Bonus.",
+     "pause": 0.4
+    },
+    {
+     "say": "A lone 'k' is a door closing.",
+     "pause": 0.6
+    },
+    {
+     "say": "On your face.",
+     "pause": 1.0
+    },
+    {
+     "say": "Two of seven: left on read.",
+     "pause": 0
     }
    ]
   }
@@ -441,7 +591,7 @@
  },
  "bonus": "A lone 'k' is a door closing. On your face.",
  "bridge": "2/7: Left on read",
- "words": 98,
+ "words": 100,
  "teaches_line": "the period. One character decides what 'ok' means, and the sender's own pattern decides the character.",
  "pinned": "A or B? Tell me which one you'd have guessed, and whether you're a period person.",
  "threads": {
