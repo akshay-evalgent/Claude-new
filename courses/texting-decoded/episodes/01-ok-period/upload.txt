@@ -4,7 +4,7 @@ TITLE
 DESCRIPTION
 Day 1 of 7: the period. One character decides what 'ok' means, and the sender's own pattern decides the character.
 
-By 7/7 you'll read any text thread.
+By 7/7 you'll read any text thread. One tiny lesson a day.
 
 ▶ 1/7 'ok' vs 'ok.'
    2/7 Left on read
@@ -14,21 +14,23 @@ By 7/7 you'll read any text thread.
    6/7 Voice memo vs text
    7/7 'We need to talk.'
 
-Fictional chats. Made with AI: the narration is the creator's own performance converted to a designed AI voice, the drawings are generated; the footage is licensed stock.
+Fictional chats. The narration is the creator's own performance, re-voiced with AI. Footage: Mixkit (free licence). Drawings and animation: made for this channel.
 #texting #textingtips #psychology #communication #relationships #shorts
 
-TAGS
-texting, text messages, texting psychology, how to read texts, left on read, communication skills, relationships, dating advice, body language of texting, micro course, seven days to, texting, decoded
+TAGS (paste as is; YouTube splits at the commas)
+texting, text messages, texting psychology, how to read texts, texting tips, communication skills, relationships, dating advice, psychology facts, micro course, seven days to, texting decoded
 
 PLAYLIST
-Seven Days To read any text (Texting, decoded)
+Seven Days To: read any text
 
-PINNED COMMENT
+PINNED COMMENT (post from the channel within a minute of upload, then pin it)
 A or B? Tell me which one you'd have guessed, and whether you're a period person.
 
 WHEN UPLOADING
-- Altered or synthetic content: Yes
+- Video: 01-ok-period.mp4 (vertical 1080x1920, 55 s, so it posts as a Short)
+- Thumbnail: 01-ok-period_cover.png (the A or B frame); in the YouTube app you can pick the same moment from the video
+- Altered or synthetic content: Yes (the narrator's voice is AI-made)
 - Audience: No, it's not made for kids
-- Language: English; upload the .srt as subtitles
-- Post between 6 and 9 PM US Eastern
-- Thumbnail: the frame where A and B are on screen (01-ok-period_cover.png)
+- Video language: English; Subtitles: upload 01-ok-period.srt as English
+- Add to playlist: Seven Days To: read any text
+- Post between 6 and 9 PM US Eastern (4:30 to 7:30 AM India)

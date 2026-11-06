@@ -529,18 +529,28 @@ def write_sample(ep_dir, takes_dir, lines, picks, beats_wanted, engine):
 def upload_text(course, ep_index, ep, script):
     n = len(course['episodes'])
     series = course['title']
+    playlist = 'Seven Days To: read any text'
     title = f"{ep['title']} | Seven Days To read any text ({ep_index}/{n})"
     eps = '\n'.join(f"{'▶ ' if k == ep_index else '   '}{k}/{n} {e['title']}" for k, e in enumerate(course['episodes'], 1))
-    desc = (f"Day {ep_index} of {n}: {script['teaches_line']}\n\n{course['promise']}\n\n{eps}\n\n"
-            "Fictional chats. Made with AI: the narration is the creator's own performance converted to a designed AI voice, the drawings are generated; the footage is licensed stock.\n"
+    desc = (f"Day {ep_index} of {n}: {script['teaches_line']}\n\n{course['promise']} One tiny lesson a day.\n\n{eps}\n\n"
+            "Fictional chats. The narration is the creator's own performance, re-voiced with AI. "
+            "Footage: Mixkit (free licence). Drawings and animation: made for this channel.\n"
             "#texting #textingtips #psychology #communication #relationships #shorts")
-    tags = ['texting', 'text messages', 'texting psychology', 'how to read texts', 'left on read', 'communication skills',
-            'relationships', 'dating advice', 'body language of texting', 'micro course', 'seven days to', series.lower()]
+    tags = ['texting', 'text messages', 'texting psychology', 'how to read texts', 'texting tips', 'communication skills',
+            'relationships', 'dating advice', 'psychology facts', 'micro course', 'seven days to', series.lower().replace(',', '')]
+    tags = list(dict.fromkeys(tags))
     return '\n'.join([
-        'TITLE', title, '', 'DESCRIPTION', desc, '', 'TAGS', ', '.join(tags), '', 'PLAYLIST', f'Seven Days To read any text ({series})', '',
-        'PINNED COMMENT', script['pinned'], '', 'WHEN UPLOADING',
-        '- Altered or synthetic content: Yes', "- Audience: No, it's not made for kids", '- Language: English; upload the .srt as subtitles',
-        '- Post between 6 and 9 PM US Eastern', f'- Thumbnail: the frame where A and B are on screen ({ep["slug"]}_cover.png)', ''])
+        'TITLE', title, '', 'DESCRIPTION', desc, '', 'TAGS (paste as is; YouTube splits at the commas)', ', '.join(tags), '',
+        'PLAYLIST', playlist, '', 'PINNED COMMENT (post from the channel within a minute of upload, then pin it)', script['pinned'], '',
+        'WHEN UPLOADING',
+        f'- Video: {ep["slug"]}.mp4 (vertical 1080x1920, {"%.0f" % script.get("_duration", 0) or "about 55"} s, so it posts as a Short)',
+        f'- Thumbnail: {ep["slug"]}_cover.png (the A or B frame); in the YouTube app you can pick the same moment from the video',
+        '- Altered or synthetic content: Yes (the narrator\'s voice is AI-made)',
+        "- Audience: No, it's not made for kids",
+        '- Video language: English; Subtitles: upload ' + f'{ep["slug"]}.srt as English',
+        f'- Add to playlist: {playlist}',
+        '- Post between 6 and 9 PM US Eastern (4:30 to 7:30 AM India)',
+        ''])
 
 
 def main():
