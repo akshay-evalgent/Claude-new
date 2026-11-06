@@ -5,7 +5,7 @@ HOW TO POST (image post)
 2. Click the photo icon, upload image.png (portrait). image-square.png is the square alternative.
 3. Paste caption.txt into the text box. Keep the line breaks. Where it says @Tag, type @ and pick the company page.
 4. Click Post.
-5. Open the post, click Comment, paste first-comment.txt, post it. Click the three dots on your comment → Pin.
+5. Open the post, click Comment, paste first-comment.txt. If the folder has comment-image.png, click the photo icon inside the comment box and attach it. Post the comment, then click the three dots on it → Pin.
 6. 90 minutes: reply to every comment within 15 minutes, 15+ words, end with a question back.
 
 Before posting: replace every [bracket] in caption.txt and first-comment.txt. Never post a bracket.

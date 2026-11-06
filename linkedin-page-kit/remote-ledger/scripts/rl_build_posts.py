@@ -8,7 +8,7 @@ HOW = {
 2. Click the photo icon, upload image.png (portrait). image-square.png is the square alternative.
 3. Paste caption.txt into the text box. Keep the line breaks. Where it says @Tag, type @ and pick the company page.
 4. Click Post.
-5. Open the post, click Comment, paste first-comment.txt, post it. Click the three dots on your comment → Pin.
+5. Open the post, click Comment, paste first-comment.txt. If the folder has comment-image.png, click the photo icon inside the comment box and attach it. Post the comment, then click the three dots on it → Pin.
 6. 90 minutes: reply to every comment within 15 minutes, 15+ words, end with a question back.""",
  "document": f"""HOW TO POST (carousel / document post)
 1. Open {ADMIN}, "Start a post" as the page.
@@ -49,31 +49,30 @@ Which of these would you actually apply to, and what's stopping you?
 Where this week's came from: company careers pages on Greenhouse and Ashby (Together AI, Turing, OpenAI, ElevenLabs, Cognition, Labelbox, Lovable), Remotive (Askable, Fluence International) and the November "Who is hiring" thread on Hacker News (Evaboot, Simple Analytics, Search Atlas, Oscilar, Proofline, MixRank, Railway, Tether, Matcha.fm, DigitalTolk, SerpApi, StudyTurtle).
 
 Know one we missed that is open to India? Drop the link here and we'll check it for next Monday."""),
- dict(slug="pay-card-alignerr", when="Tue 10 Nov · 8:30 pm IST", pillar="Pay card", kind="image",
-  images=[f"{W}/02-pay-alignerr.png", f"{W}/02-pay-alignerr-square.png"], tags="",
+ dict(slug="pay-card-alignerr", when="Sat 7 Nov · 8:30 pm IST (24 h after the tracker)", pillar="Pay card", kind="image",
+  images=[f"{W}/02-pay-alignerr.png", f"{W}/02-pay-alignerr-square.png", f"{W}/02-pay-alignerr-comment-proof.png"], tags="@Alignerr  @Mercor",
   caption="""Alignerr's homepage says $80 an hour, average pay.
 
-Scroll down the same page and there's a listing at $15 to $20 an hour. Healthcare call transcripts in Spanish, 2,500 of them, twenty minutes each, fully remote.
+Scroll down the same page and the listings tell you more. Most show a range of $40 to $120 an hour. One, reviewing healthcare call transcripts in Central American Spanish, pays $15 to $20.
 
-Both numbers are true. One is the average across every expert on the platform, oncologists and PhDs included. The other is what one project pays one person.
+All three numbers are true. $80 is an average across everyone on the platform, PhDs and specialists included. $40 to $120 is the spread. $15 to $20 is what one project pays one person.
 
-We're not saying Alignerr is lying. We're saying the number that gets you to apply is not the number you'll be paid. Same thing on Mercor: the homepage says $90 an hour average contracted rate, and the latest roles on that same homepage list a $400 one-off and a $60 to $70 sales expert gig.
+Mercor works the same way. Its homepage says $90 an hour, "average contracted rate". Its jobs page lists a generalist role at $40 to $80.
 
-So the question to ask before you give an evening to their assessment isn't "what does the platform pay". It's "what does this project pay, and how many hours a week does it actually have".
+Nobody is hiding anything. The headline is a marketing number. The number that matters is what your project pays and how many hours a week it actually has, and you usually find that out only after the unpaid assessment.
 
-If one of these platforms has paid you, what did your real hourly come to, after the unpaid onboarding and the waiting?
+If one of these platforms has paid you, what did your real hourly come to once you counted the onboarding and the waiting?
 
 #AITraining
 #Alignerr
 #Mercor
-#Outlier
 #RemoteWork
 #Freelance
 #India
 #RemoteLedger""",
-  first_comment="""Both numbers are on alignerr.com today; screenshots taken 6 Nov 2026 are attached here. Mercor's are from mercor.com and work.mercor.com/explore, same day.
+  first_comment="""The screenshot is attached to this comment: the top of alignerr.com and the listings further down the same page, taken 6 Nov 2026. Mercor's figures are from mercor.com and work.mercor.com/explore, same day.
 
-We don't have Alignerr's or Mercor's India-specific rates. If you do, post the number and the project type and we'll print it next week with credit."""),
+We don't have India-specific rates for either platform. If you've been paid by one, post the number and the kind of project and we'll print it next week, with your name if you want it."""),
  dict(slug="fee-card-2000-invoice", when="Wed 11 Nov · 8:30 am IST", pillar="Getting paid", kind="image",
   images=[f"{W}/03-fee-2000.png", f"{W}/03-fee-2000-square.png"], tags="",
   caption="""A client in Austin pays your $2,000 invoice. How much reaches you depends on which link you sent them.
@@ -204,7 +203,7 @@ def write_post(p, i, outdir):
         s = os.path.join(ROOT, src)
         if not os.path.exists(s): print("MISSING", src); continue
         ext = os.path.splitext(src)[1]
-        name = {".pdf": "carousel.pdf", ".mp4": "video.mp4"}.get(ext, "image-square.png" if "square" in src else "image.png")
+        name = {".pdf": "carousel.pdf", ".mp4": "video.mp4"}.get(ext, "comment-image.png" if "comment" in src else ("image-square.png" if "square" in src else "image.png"))
         shutil.copy(s, os.path.join(d, name))
     with open(os.path.join(d, "caption.txt"), "w") as f:
         if p["tags"]: f.write(f"TAG IN THE POST (type @ and pick): {p['tags']}\n\n")
