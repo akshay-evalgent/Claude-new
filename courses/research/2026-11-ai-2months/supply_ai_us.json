@@ -1,0 +1,146 @@
+{
+ "how to use claude": {
+  "long_median": 227307.0,
+  "long_max": 2584106,
+  "shorts": 60,
+  "shorts_100k": 23,
+  "shorts_1m": 0,
+  "shorts_top": [
+   866000,
+   866000,
+   578000
+  ]
+ },
+ "claude code tutorial": {
+  "long_median": 337636.5,
+  "long_max": 2867203,
+  "shorts": 15,
+  "shorts_100k": 8,
+  "shorts_1m": 0,
+  "shorts_top": [
+   546000,
+   469000,
+   328000
+  ]
+ },
+ "claude skills": {
+  "long_median": 99880.5,
+  "long_max": 1927340,
+  "shorts": 50,
+  "shorts_100k": 7,
+  "shorts_1m": 1,
+  "shorts_top": [
+   1800000,
+   651000,
+   651000
+  ]
+ },
+ "claude cowork": {
+  "long_median": 236024.5,
+  "long_max": 1582229,
+  "shorts": 50,
+  "shorts_100k": 10,
+  "shorts_1m": 2,
+  "shorts_top": [
+   1000000,
+   1000000,
+   434000
+  ]
+ },
+ "claude blender": {
+  "long_median": 68655.0,
+  "long_max": 385143,
+  "shorts": 50,
+  "shorts_100k": 5,
+  "shorts_1m": 0,
+  "shorts_top": [
+   519000,
+   225000,
+   225000
+  ]
+ },
+ "claude motion graphics": {
+  "long_median": 98342.5,
+  "long_max": 1410429,
+  "shorts": 50,
+  "shorts_100k": 7,
+  "shorts_1m": 0,
+  "shorts_top": [
+   365000,
+   195000,
+   195000
+  ]
+ },
+ "claude dashboards": {
+  "long_median": 52481.0,
+  "long_max": 1410429,
+  "shorts": 50,
+  "shorts_100k": 0,
+  "shorts_1m": 0,
+  "shorts_top": [
+   64000,
+   64000,
+   64000
+  ]
+ },
+ "ai tools for small business": {
+  "long_median": 64137.0,
+  "long_max": 547212,
+  "shorts": 50,
+  "shorts_100k": 8,
+  "shorts_1m": 4,
+  "shorts_top": [
+   2400000,
+   2400000,
+   1900000
+  ]
+ },
+ "ai tools for youtube": {
+  "long_median": 131102.0,
+  "long_max": 493786,
+  "shorts": 50,
+  "shorts_100k": 30,
+  "shorts_1m": 23,
+  "shorts_top": [
+   9700000,
+   8000000,
+   6200000
+  ]
+ },
+ "free ai video tools": {
+  "long_median": 125507.5,
+  "long_max": 371342,
+  "shorts": 55,
+  "shorts_100k": 26,
+  "shorts_1m": 16,
+  "shorts_top": [
+   9700000,
+   9700000,
+   6200000
+  ]
+ },
+ "how to use chatgpt": {
+  "long_median": 325517.0,
+  "long_max": 5464664,
+  "shorts": 65,
+  "shorts_100k": 36,
+  "shorts_1m": 16,
+  "shorts_top": [
+   12000000,
+   12000000,
+   6700000
+  ]
+ },
+ "chatgpt tutorial": {
+  "long_median": 326167.5,
+  "long_max": 6036748,
+  "shorts": 15,
+  "shorts_100k": 9,
+  "shorts_1m": 2,
+  "shorts_top": [
+   2100000,
+   1800000,
+   980000
+  ]
+ }
+}
