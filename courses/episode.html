@@ -1,0 +1,402 @@
+<!doctype html>
+<!-- Episode renderer: every frame of a micro-course episode, drawn on a canvas as a pure function
+     of time. Notebook style: cream paper, an ink-sketched phone, red marker drawings that write on,
+     captions with one highlighted word. Driven by config.json from voices/make_episode.py;
+     recorded by courses/render.cjs.  window.setup(cfg); window.renderAt(t). -->
+<html><head><meta charset="utf-8">
+<style>
+  @font-face { font-family: 'Baloo'; src: url('../voices/video/fonts/Baloo2.ttf'); }
+  @font-face { font-family: 'Kalam'; src: url('../voices/video/fonts/Kalam-Bold.ttf'); font-weight: 700; }
+  @font-face { font-family: 'Kalam'; src: url('../voices/video/fonts/Kalam-Regular.ttf'); font-weight: 400; }
+  html, body { margin: 0; background: #000; }
+  canvas { display: block; }
+</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script>
+const W = 1080, H = 1920;
+const PHONE = { x: 230, y: 430, w: 620, h: 1080, r: 70 };
+let cfg, ctx, paper, S;
+
+const ease = (p) => (p < 0 ? 0 : p > 1 ? 1 : 1 - Math.pow(1 - p, 3));
+const clamp01 = (p) => Math.max(0, Math.min(1, p));
+function rng(seed) { let a = seed >>> 0; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+let boil = 0; // changes twice a second: hand-drawn lines wobble slightly, like an animation drawn on paper
+
+function roundRectPath(c, x, y, w, h, r) {
+  c.beginPath(); c.moveTo(x + r, y); c.lineTo(x + w - r, y); c.quadraticCurveTo(x + w, y, x + w, y + r);
+  c.lineTo(x + w, y + h - r); c.quadraticCurveTo(x + w, y + h, x + w - r, y + h); c.lineTo(x + r, y + h);
+  c.quadraticCurveTo(x, y + h, x, y + h - r); c.lineTo(x, y + r); c.quadraticCurveTo(x, y, x + r, y); c.closePath();
+}
+
+function wobblyRect(c, x, y, w, h, r, seed, amp, frac = 1) {
+  const rand = rng(seed * 7919 + boil);
+  const steps = 120, pts = [];
+  for (let i = 0; i <= steps; i++) {
+    const t = i / steps, p = 2 * (w + h);
+    let d = t * p, px, py;
+    if (d < w) { px = x + d; py = y; } else if (d < w + h) { px = x + w; py = y + (d - w); }
+    else if (d < 2 * w + h) { px = x + w - (d - w - h); py = y + h; } else { px = x; py = y + h - (d - 2 * w - h); }
+    const cx = Math.min(Math.max(px, x + r), x + w - r), cy = Math.min(Math.max(py, y + r), y + h - r);
+    const dx = px - cx, dy = py - cy, len = Math.hypot(dx, dy) || 1;
+    if (len > r) { px = cx + dx / len * r; py = cy + dy / len * r; }
+    pts.push([px + (rand() - 0.5) * amp, py + (rand() - 0.5) * amp]);
+  }
+  const n = Math.max(2, Math.round(pts.length * frac));
+  c.beginPath(); c.moveTo(pts[0][0], pts[0][1]);
+  for (const [px, py] of pts.slice(1, n)) c.lineTo(px, py);
+  if (frac >= 1) c.closePath();
+}
+
+function ink(c, width = 3) { c.strokeStyle = S.ink; c.lineWidth = width; c.lineJoin = 'round'; c.lineCap = 'round'; c.setLineDash([]); }
+function marker(c, width = 7) { c.strokeStyle = S.accent; c.lineWidth = width; c.lineJoin = 'round'; c.lineCap = 'round'; c.setLineDash([]); }
+
+function wrap(c, text, maxW) {
+  const words = text.split(' '), lines = []; let line = '';
+  for (const w of words) {
+    const test = line ? line + ' ' + w : w;
+    if (c.measureText(test).width > maxW && line) { lines.push(line); line = w; } else line = test;
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+// ---------------------------------------------------------------- paper
+function makePaper() {
+  const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+  const c = cv.getContext('2d');
+  const g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, S.paper); g.addColorStop(1, '#efe4cc');
+  c.fillStyle = g; c.fillRect(0, 0, W, H);
+  c.strokeStyle = 'rgba(90,120,170,0.18)'; c.lineWidth = 2;
+  for (let y = 120; y < H; y += 56) { c.beginPath(); c.moveTo(0, y); c.lineTo(W, y); c.stroke(); }
+  c.strokeStyle = 'rgba(217,67,47,0.25)'; c.beginPath(); c.moveTo(130, 0); c.lineTo(130, H); c.stroke();
+  const rand = rng(5);
+  c.globalAlpha = 0.06; c.fillStyle = '#3c2814';
+  for (let i = 0; i < 26000; i++) c.fillRect(rand() * W, rand() * H, 2, 2);
+  c.globalAlpha = 1;
+  return cv;
+}
+
+// ---------------------------------------------------------------- the phone and its thread
+// Layout of a thread inside a phone drawn at (0,0) with PHONE.w x PHONE.h. Rows stack up from the bottom.
+function layoutThread(c, thread, font = '400 34px Kalam') {
+  c.font = font;
+  const rows = [];
+  let y = PHONE.h - 130;
+  const msgs = thread.messages;
+  for (let i = msgs.length - 1; i >= 0; i--) {
+    const m = msgs[i];
+    if (m.time) { y -= 50; rows.unshift({ i, time: m.time, y: y + 25 }); y -= 10; continue; }
+    const lines = wrap(c, m.text, 430);
+    const w = Math.max(...lines.map((l) => c.measureText(l).width)) + 52, h = 30 + lines.length * 42;
+    y -= h;
+    rows.unshift({ i, who: m.who, lines, w, h, x: m.who === 'me' ? PHONE.w - 50 - w : 50, y, text: m.text });
+    y -= 22;
+  }
+  return rows;
+}
+
+function drawBubble(c, row, seed, opts = {}) {
+  const fill = row.who === 'me' ? '#cfe3ff' : '#e8e3d9';
+  const scale = opts.scale ?? 1;
+  c.save();
+  c.translate(row.x + row.w / 2, row.y + row.h / 2); c.scale(scale, scale); c.translate(-(row.x + row.w / 2), -(row.y + row.h / 2));
+  wobblyRect(c, row.x, row.y, row.w, row.h, 28, seed, 2.5);
+  c.fillStyle = fill; c.fill(); ink(c, 3); c.stroke();
+  c.fillStyle = S.ink; c.font = '400 34px Kalam'; c.textAlign = 'left'; c.textBaseline = 'middle';
+  const text = opts.text ?? null;
+  if (text !== null) {
+    c.fillText(text, row.x + 26, row.y + row.h / 2 + 2);
+    if (opts.cursor) { const cx = row.x + 26 + c.measureText(text).width + 4; c.fillRect(cx, row.y + row.h / 2 - 18, 3, 36); }
+  } else row.lines.forEach((l, k) => c.fillText(l, row.x + 26, row.y + 15 + 21 + k * 42));
+  c.restore();
+}
+
+function drawPhone(c, thread, rows, opts = {}) {
+  const { w, h, r } = PHONE;
+  wobblyRect(c, 0, 0, w, h, r, 1, 3); c.fillStyle = '#fbf7ee'; c.fill(); ink(c, 5); c.stroke();
+  wobblyRect(c, 22, 22, w - 44, h - 44, r - 20, 2, 2); c.fillStyle = '#fffdf7'; c.fill(); ink(c, 2.5); c.stroke();
+  c.font = '700 30px Kalam'; c.fillStyle = S.ink; c.textAlign = 'center'; c.textBaseline = 'middle';
+  c.fillText(thread.name, w / 2, 86);
+  c.font = '400 22px Kalam'; c.fillStyle = S.quiet; c.fillText('Active now', w / 2, 122);
+  c.strokeStyle = S.quiet; c.globalAlpha = 0.35; c.lineWidth = 1.5; c.setLineDash([]);
+  c.beginPath(); c.moveTo(40, 150); c.lineTo(w - 40, 150); c.stroke(); c.globalAlpha = 1;
+  roundRectPath(c, 50, h - 100, w - 100, 56, 28); c.strokeStyle = S.quiet; c.globalAlpha = 0.5; c.lineWidth = 2; c.stroke(); c.globalAlpha = 1;
+  c.font = '400 24px Kalam'; c.fillStyle = S.quiet; c.textAlign = 'left'; c.fillText('iMessage', 76, h - 72);
+  rows.forEach((row, k) => {
+    if (row.time) {
+      c.font = '400 22px Kalam'; c.fillStyle = S.quiet; c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.fillText(row.time, w / 2, row.y); return;
+    }
+    const last = k === rows.length - 1;
+    if (last && opts.lastBubble) opts.lastBubble(row); else drawBubble(c, row, 10 + row.i);
+  });
+}
+
+// where the period of the last bubble sits, in phone coordinates
+function periodPoint(c, row) {
+  c.font = '400 34px Kalam';
+  const text = row.lines[row.lines.length - 1];
+  const base = text.slice(0, -1);
+  return { x: row.x + 26 + c.measureText(base).width + c.measureText('.').width / 2, y: row.y + row.h / 2 + 8 };
+}
+
+// ---------------------------------------------------------------- drawings (marker, pencil)
+function markerEllipse(c, cx, cy, rx, ry, seed, p) {
+  const rand = rng(seed * 131 + boil);
+  const n = 64, pts = [];
+  for (let i = 0; i <= n; i++) {
+    const a = -0.6 + i / n * (Math.PI * 2 + 0.9), wob = 1 + (rand() - 0.5) * 0.12;
+    pts.push([cx + Math.cos(a) * rx * wob, cy + Math.sin(a) * ry * wob]);
+  }
+  const m = Math.max(2, Math.round(pts.length * ease(p)));
+  marker(c, 7); c.beginPath(); c.moveTo(pts[0][0], pts[0][1]);
+  for (const [x, y] of pts.slice(1, m)) c.lineTo(x, y);
+  c.stroke();
+}
+
+function markerArrow(c, x1, y1, x2, y2, seed, p) {
+  const q = ease(p);
+  marker(c, 6);
+  const cx = (x1 + x2) / 2 + 40, cy = (y1 + y2) / 2 + 20;
+  c.beginPath(); c.moveTo(x1, y1);
+  const n = 24, m = Math.max(1, Math.round(n * Math.min(1, q / 0.8)));
+  for (let i = 1; i <= m; i++) { const t = i / n, ox = (1 - t) ** 2 * x1 + 2 * (1 - t) * t * cx + t * t * x2, oy = (1 - t) ** 2 * y1 + 2 * (1 - t) * t * cy + t * t * y2; c.lineTo(ox, oy); }
+  c.stroke();
+  if (q > 0.8) {
+    const a = Math.atan2(y2 - cy, x2 - cx);
+    c.beginPath(); c.moveTo(x2, y2); c.lineTo(x2 - 26 * Math.cos(a - 0.5), y2 - 26 * Math.sin(a - 0.5));
+    c.moveTo(x2, y2); c.lineTo(x2 - 26 * Math.cos(a + 0.5), y2 - 26 * Math.sin(a + 0.5)); c.stroke();
+  }
+}
+
+function markerBracket(c, x1, x2, y, seed, p) {
+  const q = ease(p), len = (x2 - x1) * q;
+  marker(c, 6); c.beginPath(); c.moveTo(x1, y - 14); c.lineTo(x1, y); c.lineTo(x1 + len, y);
+  if (q >= 1) c.lineTo(x2, y - 14);
+  c.stroke();
+}
+
+function highlighter(c, x, y, w, h, p) {
+  c.save(); c.globalAlpha = 0.5; c.fillStyle = '#ffe14d';
+  c.beginPath(); c.moveTo(x - 8, y + 6); c.lineTo(x + w * ease(p) + 8, y); c.lineTo(x + w * ease(p) + 4, y + h); c.lineTo(x - 12, y + h + 4); c.closePath(); c.fill();
+  c.restore();
+}
+
+function handText(c, text, x, y, p, size = 44, align = 'left', rot = -0.05, color = null) {
+  const n = Math.round(text.length * ease(p));
+  if (n <= 0) return;
+  c.save(); c.translate(x, y); c.rotate(rot);
+  c.font = `700 ${size}px Kalam`; c.fillStyle = color || S.accent; c.textAlign = align; c.textBaseline = 'middle';
+  c.fillText(text.slice(0, n), 0, 0); c.restore();
+}
+
+// ---------------------------------------------------------------- scenes
+function sceneKey(b) { const s = b.scene || {}; return [s.type, s.thread, s.a, s.b, s.question].join('|'); }
+
+function activeDraws(t, beat) {
+  // drawings stay on screen while the scene continues over consecutive beats, and vanish when it changes
+  const key = sceneKey(beat);
+  let first = beat.index;
+  while (first > 0 && sceneKey(cfg.beats[first - 1]) === key) first--;
+  return cfg.draws.filter((d) => d.at <= t && d.beat >= first && d.beat <= beat.index);
+}
+
+function drawThreadScene(c, t, beat, draws) {
+  const s = beat.scene, thread = cfg.threads[s.thread], u = t - beat.start;
+  const rows = layoutThread(c, thread);
+  const last = rows[rows.length - 1];
+  // camera: punch in on the last bubble
+  let z = 1, fx = 0, fy = 0;
+  if (s.zoom) { z = 1 + 0.4 * ease(u / 0.45); fx = PHONE.x + PHONE.w / 2; fy = PHONE.y + last.y + last.h / 2; }
+  c.save();
+  if (z > 1) { c.translate(fx, fy); c.scale(z, z); c.translate(-fx, -fy); }
+  c.translate(PHONE.x, PHONE.y);
+  const keys = beat.keys || [];
+  drawPhone(c, thread, rows, {
+    lastBubble: (row) => {
+      if (s.arrive) { const p = ease((u + 0.1) / 0.3); if (p <= 0) return; drawBubble(c, row, 10 + row.i, { scale: 0.6 + 0.4 * p }); return; }
+      if (s.retype) {
+        let typed = '', cursor = true;
+        const n = keys.filter((k) => k <= t).length;
+        if (n <= s.retype.text.length) typed = s.retype.text.slice(0, n); else { typed = s.retype.text + s.retype.add; cursor = false; }
+        if (cursor && Math.floor(t * 2) % 2 === 0) cursor = false;
+        c.font = '400 34px Kalam';
+        const w = Math.max(96, c.measureText(typed).width + 60);
+        drawBubble(c, { ...row, w }, 10 + row.i, { text: typed, cursor });
+        return;
+      }
+      drawBubble(c, row, 10 + row.i);
+    },
+  });
+  // drawings in phone space
+  for (const d of draws) {
+    const p = clamp01((t - d.at) / cfg.draw_seconds);
+    if (d.type === 'circle' && d.target === 'period') { const pt = periodPoint(c, last); markerEllipse(c, pt.x, pt.y, 30, 28, 21, p); }
+    if (d.type === 'circle' && String(d.target).startsWith('msg:')) {
+      const row = rows.find((r) => r.i === +d.target.slice(4));
+      if (row) markerEllipse(c, row.x + row.w / 2, row.y + row.h / 2, row.w / 2 + 18, row.h / 2 + 14, 30 + row.i, p);
+    }
+    if (d.type === 'strip' && s.strip) {  // to the right of the retyped bubble: typed · paused · added .
+      const words = s.strip, y = last.y + last.h / 2 + 2, x = last.x + Math.max(96, last.w) + 30;
+      c.font = '700 28px Kalam'; c.textAlign = 'left'; c.textBaseline = 'middle';
+      const full = words.join('   ·   '), n = Math.round(full.length * ease(p));
+      c.fillStyle = S.accent; c.fillText(full.slice(0, n), x, y);
+      beat._strip = { x, y, w: c.measureText(full).width };
+    }
+    if (d.type === 'bracket' && d.target === 'strip' && beat._strip) {
+      const st = beat._strip; markerBracket(c, st.x, st.x + st.w, st.y + 34, 7, p);
+      handText(c, d.label, st.x + st.w / 2, st.y - 40, clamp01(p * 1.4 - 0.3), 32, 'center', -0.04);
+    }
+  }
+  c.restore();
+}
+
+function drawCutawayScene(c, t, beat, draws) {
+  const s = beat.scene, u = t - beat.start;
+  // a paper card over the phone area, sketched in
+  const card = { x: 150, y: 540, w: 780, h: 880 };
+  const pIn = ease(u / 0.35);
+  wobblyRect(c, card.x, card.y, card.w, card.h, 26, 40, 3, pIn); c.fillStyle = 'rgba(255,253,247,0.92)'; if (pIn >= 1) c.fill(); ink(c, 3.5); c.stroke();
+  if (pIn < 1) return;
+  // the question, as my bubble, top right
+  c.font = '400 36px Kalam';
+  const qw = c.measureText(s.question).width + 52;
+  const q = { who: 'me', lines: [s.question], w: qw, h: 76, x: card.x + card.w - 40 - qw, y: card.y + 40, i: 90 };
+  drawBubble(c, q, 90);
+  // replies draw on one by one; labels beside them
+  s.replies.forEach((r, k) => {
+    const d = draws.find((x) => x.type === 'reply' && x.index === k);
+    if (!d) return;
+    const p = clamp01((t - d.at) / cfg.draw_seconds);
+    c.font = '400 48px Kalam';
+    const w = c.measureText(r).width + 72, y = card.y + 200 + k * 230;
+    const row = { who: 'them', lines: [r], w, h: 100, x: card.x + 50, y, i: 91 + k };
+    wobblyRect(c, row.x, row.y, row.w, row.h, 34, 91 + k, 2.5, p); c.fillStyle = '#e8e3d9'; if (p >= 1) c.fill(); ink(c, 3); c.stroke();
+    if (p >= 1) { c.fillStyle = S.ink; c.font = '400 48px Kalam'; c.textAlign = 'left'; c.textBaseline = 'middle'; c.fillText(r, row.x + 36, row.y + row.h / 2 + 2); }
+    const l = draws.find((x) => x.type === 'label' && x.index === k);
+    if (l) {
+      const lp = clamp01((t - l.at) / (cfg.draw_seconds * 1.6));
+      markerArrow(c, row.x + row.w + 14, row.y + row.h / 2, row.x + row.w + 70, row.y + row.h / 2 + 6, 60 + k, Math.min(1, lp * 2));
+      handText(c, l.text, row.x + row.w + 90, row.y + row.h / 2 + 4, lp, 46, 'left', -0.03);
+    }
+  });
+}
+
+function drawCloseupScene(c, t, beat) {
+  const u = t - beat.start, z = 1 + 0.08 * (u / Math.max(0.1, beat.end - beat.start));
+  c.save(); c.translate(W / 2, 1000); c.scale(z, z);
+  c.font = '400 360px Kalam'; c.textAlign = 'center'; c.textBaseline = 'middle';
+  c.fillStyle = S.ink; const ok = c.measureText('ok').width, dot = c.measureText('.').width;
+  c.fillText('ok', -dot / 2, 0); c.fillStyle = S.accent; c.fillText('.', ok / 2, 0);
+  markerEllipse(c, ok / 2, 70, 70, 74, 55, ease((u - 0.2) / 0.5));
+  c.restore();
+}
+
+function drawTestScene(c, t, beat, draws) {
+  const s = beat.scene, u = t - beat.start, sc = 0.7;
+  const slots = [{ key: 'a', x: 66, label: 'A' }, { key: 'b', x: 580, label: 'B' }];
+  const pIn = ease(u / 0.35);
+  slots.forEach((slot, k) => {
+    const thread = cfg.threads[s[slot.key]];
+    const rows = layoutThread(c, thread);
+    c.save(); c.translate(slot.x, 600); c.scale(sc, sc);
+    c.globalAlpha = pIn;
+    drawPhone(c, thread, rows, {});
+    c.globalAlpha = 1;
+    const last = rows[rows.length - 1];
+    for (const d of draws) {
+      const p = clamp01((t - d.at) / cfg.draw_seconds);
+      if (d.type === 'circle' && d.target === slot.key) markerEllipse(c, last.x + last.w / 2, last.y + last.h / 2, last.w / 2 + 26, last.h / 2 + 18, 70 + k, p);
+      if (d.type === 'highlight' && d.target === slot.key + '-earlier') {
+        rows.filter((r) => r.who === 'them' && r !== last).forEach((r, j) => highlighter(c, r.x + 20, r.y + 18, r.w - 40, r.h - 36, clamp01(p * 1.5 - j * 0.3)));
+      }
+    }
+    c.restore();
+    handText(c, slot.label, slot.x + PHONE.w * sc / 2, 548, pIn, 92, 'center', 0, S.accent);
+    for (const d of draws) {
+      if (d.type === 'label' && d.target === slot.key) handText(c, d.text, slot.x + PHONE.w * sc / 2, 600 + PHONE.h * sc + 50, clamp01((t - d.at) / (cfg.draw_seconds * 1.6)), 40, 'center', -0.03);
+    }
+  });
+}
+
+// ---------------------------------------------------------------- furniture: sticker, top text, captions
+function drawSticker(c, text) {
+  c.font = '700 30px Baloo';
+  const w = c.measureText(text).width + 48, x = 60, y = 70, h = 60;
+  roundRectPath(c, x, y, w, h, 30); c.fillStyle = 'rgba(217,67,47,0.12)'; c.fill(); c.strokeStyle = S.accent; c.lineWidth = 3; c.setLineDash([]); c.stroke();
+  c.fillStyle = S.accent; c.textAlign = 'left'; c.textBaseline = 'middle'; c.fillText(text, x + 24, y + h / 2 + 2);
+}
+
+function topText(t, beat) {
+  // the beat's own text from its start; a 'text' or 'bigtext' drawing replaces it from its time
+  let text = beat.text || '', since = beat.start, big = false;
+  const prev = cfg.beats.filter((b) => b.start < beat.start && (b.text || '') === text);
+  if (text && prev.length) since = Math.min(since, ...prev.map((b) => b.start));
+  const ds = cfg.draws.filter((d) => (d.type === 'text' || d.type === 'bigtext') && d.at <= t && d.beat <= beat.index && cfg.beats[d.beat].start >= since - 0.001);
+  const d = ds.length ? ds[ds.length - 1] : null;
+  if (d && d.at >= since) { text = d.text; since = d.at; big = d.type === 'bigtext'; }
+  return { text, since, big };
+}
+
+function drawTopText(c, t, beat) {
+  const { text, since, big } = topText(t, beat);
+  if (!text) return;
+  const p = since <= 0.001 ? 1 : ease((t - since) / 0.45);
+  const size = big ? 128 : 112;
+  c.font = `700 ${size}px Kalam`; c.textAlign = 'center'; c.textBaseline = 'middle';
+  const w = c.measureText(text).width;
+  highlighter(c, W / 2 - w / 2, 262, w, 96, p);
+  const n = Math.round(text.length * p);
+  c.fillStyle = S.ink; c.textAlign = 'left';
+  c.fillText(text.slice(0, n), W / 2 - w / 2, 310);
+}
+
+function drawCaptions(c, t) {
+  const page = cfg.pages.find((p) => t >= p.s && t < p.until);
+  if (!page) return;
+  let now = -1;
+  cfg.words.forEach((w, i) => { if (w.s <= t && t < w.e + 0.25) now = i; });
+  if (now < 0) { for (let i = cfg.words.length - 1; i >= 0; i--) if (cfg.words[i].s <= t) { now = i; break; } }
+  c.font = '700 56px Kalam'; c.textBaseline = 'middle';
+  const lh = 70, y0 = 1650 - (page.lines.length - 1) * lh / 2;
+  page.lines.forEach((line, li) => {
+    const widths = line.map((i) => c.measureText(cfg.words[i].w).width), gap = 18;
+    let x = W / 2 - (widths.reduce((a, b) => a + b, 0) + gap * (line.length - 1)) / 2;
+    const y = y0 + li * lh;
+    line.forEach((i, k) => {
+      c.textAlign = 'left'; c.fillStyle = i === now ? S.accent : S.ink;
+      c.fillText(cfg.words[i].w, x, y); x += widths[k] + gap;
+    });
+  });
+}
+
+// ---------------------------------------------------------------- main
+window.setup = function (c) {
+  cfg = c;
+  S = { paper: cfg.kit.paper || '#f4ecd8', ink: cfg.kit.ink || '#2a2420', accent: cfg.kit.accent || '#d9432f', quiet: '#7a6f66' };
+  ctx = document.getElementById('c').getContext('2d');
+  paper = makePaper();
+};
+
+window.renderAt = function (t) {
+  const c = ctx;
+  boil = Math.floor(t * 2);
+  c.setTransform(1, 0, 0, 1, 0, 0);
+  c.clearRect(0, 0, W, H);
+  // camera: a slow 1.5% push and a tiny drift, so nothing is perfectly still
+  const z = 1.012 + 0.015 * t / cfg.duration, dx = 3 * Math.sin(t * 0.7), dy = 3 * Math.cos(t * 0.5);
+  c.translate(W / 2 + dx, H / 2 + dy); c.scale(z, z); c.translate(-W / 2, -H / 2);
+  c.drawImage(paper, 0, 0);
+  const beat = cfg.beats.find((b) => t >= b.start && t < b.end) || cfg.beats[cfg.beats.length - 1];
+  const draws = activeDraws(t, beat);
+  const type = (beat.scene || {}).type;
+  if (type === 'thread') drawThreadScene(c, t, beat, draws);
+  else if (type === 'cutaway') drawCutawayScene(c, t, beat, draws);
+  else if (type === 'closeup') drawCloseupScene(c, t, beat);
+  else if (type === 'test') drawTestScene(c, t, beat, draws);
+  drawSticker(c, cfg.sticker);
+  drawTopText(c, t, beat);
+  drawCaptions(c, t);
+};
+</script>
+</body></html>

@@ -12,7 +12,8 @@ const path = require('path');
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
   page.on('pageerror', (e) => { console.error('page error:', e.message); process.exitCode = 1; });
   await page.goto('file://' + path.join(__dirname, 'moodboard.html'));
-  await page.evaluate(() => document.fonts.ready);
+  // fonts load on first use, so ask for them before the first frame or it falls back to a serif
+  await page.evaluate(() => Promise.all(['700 40px Kalam', '400 40px Kalam', '700 40px Baloo'].map((f) => document.fonts.load(f))));
   const styles = await page.evaluate(() => window.STYLES.map((s) => s.key));
   for (let i = 1; i <= styles.length; i++) {
     await page.evaluate((n) => window.renderStyle(n), i);

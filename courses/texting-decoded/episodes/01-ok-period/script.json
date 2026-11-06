@@ -5,19 +5,412 @@
  "hook_frame": "Notebook page. The sketched phone lights up; a grey bubble 'ok.' lands in the thread with Jess. On-screen text: ok vs ok. The sticker TEXTING, DECODED · 1/7 is already in the corner. No voice until 0.7 s.",
  "duration_s": 40,
  "beats": [
-  {"t": "0:00-0:01", "screen": "Phone on the page lights up; 'ok.' arrives under 'can we push to 8? running late'", "voice": "", "control": "", "draw": "none", "text": "ok vs ok.", "sound": "buzz"},
-  {"t": "0:01-0:03", "screen": "Punch-in on the bubble", "voice": "'ok.' With the period. You know.", "control": "low, knowing, almost amused, unhurried", "draw": "circle around the period, red marker", "text": "", "sound": "marker"},
-  {"t": "0:03-0:08", "screen": "A sketched thumb types 'ok', stops, then adds the period; a timeline strip appears under the bubble: typed · paused · added .", "voice": "They typed 'ok'. Paused. Added the period. That pause is the message.", "control": "calm and deliberate, a clear beat after 'paused'", "draw": "bracket under the strip, label 'the pause'", "text": "", "sound": "pencil taps, then a pause"},
-  {"t": "0:08-0:12", "screen": "Cut-away beside the phone: the question 'dinner at 8?' and three replies drawn one by one: okay / ok / ok.", "voice": "Same question. Three answers.", "control": "matter-of-fact", "draw": "the three bubbles draw on", "text": "", "sound": "three soft pops"},
-  {"t": "0:12-0:20", "screen": "Same cut-away; a handwritten label appears beside each reply as it is said", "voice": "'okay': happy. 'ok': busy. 'ok.': you forgot something.", "control": "slower on the last one, a slight smile in the voice", "draw": "labels: happy / busy / you forgot something", "text": "", "sound": "marker x3, tick on the last"},
-  {"t": "0:20-0:24", "screen": "Extreme close-up of the period on the page", "voice": "Except. This rule breaks for one kind of person.", "control": "half a second of silence first, then quieter, like a secret", "draw": "none", "text": "EXCEPT…", "sound": "silence, then a single tick"},
-  {"t": "0:24-0:30", "screen": "A second sketched thread, 'Dad': every message ends with a period; three of them get circled", "voice": "Some people end every text with a period. Your dad. Your boss. Their 'ok.' is just 'ok'. Pattern first.", "control": "warm, a little fond on 'your dad'", "draw": "three circles, then the words PATTERN FIRST written large", "text": "PATTERN FIRST", "sound": "marker x3, pencil write"},
-  {"t": "0:30-0:35", "screen": "The test: two sketched phones side by side. A: Jess's thread, no periods anywhere, then 'ok.'. B: Dad's thread, periods everywhere, then 'ok.'", "voice": "Now you. Which one is mad at you? A… or B?", "control": "inviting, then hold; do not rush the hold", "draw": "A and B labels", "text": "A or B?", "sound": "clock tick through the 1.5-second hold"},
-  {"t": "0:35-0:38", "screen": "Reveal: A circled; Jess's earlier bubbles highlighted to show no periods", "voice": "A. First period she's ever used.", "control": "quiet and certain", "draw": "circle A, label 'first period ever'", "text": "", "sound": "tick"},
-  {"t": "0:38-0:40", "screen": "Back to frame 1: the phone on the page, sticker 1/7", "voice": "Bonus: a lone 'k' isn't anger. It's a door closing. 2/7: left on read.", "control": "lighter, a promise, ends on a small upward note", "draw": "none", "text": "2/7 · Left on read", "sound": "the same buzz as frame 0"}
+  {
+   "t": "0:00-0:01",
+   "screen": "Phone on the page lights up; 'ok.' arrives under 'can we push to 8? running late'",
+   "voice": "",
+   "control": "",
+   "draw": "none",
+   "text": "ok vs ok.",
+   "sound": "buzz",
+   "scene": {
+    "type": "thread",
+    "thread": "jess",
+    "arrive": true
+   },
+   "sfx": [
+    {
+     "sound": "buzz",
+     "at": 0
+    }
+   ]
+  },
+  {
+   "t": "0:01-0:03",
+   "screen": "Punch-in on the bubble",
+   "voice": "'ok.' With the period. Congratulations. You're in trouble.",
+   "control": "deadpan, dry, completely flat on 'congratulations'",
+   "draw": "circle around the period, red marker",
+   "text": "",
+   "sound": "marker",
+   "scene": {
+    "type": "thread",
+    "thread": "jess",
+    "zoom": 1
+   },
+   "draws": [
+    {
+     "type": "circle",
+     "target": "period",
+     "at": 0.25
+    }
+   ]
+  },
+  {
+   "t": "0:03-0:08",
+   "screen": "A sketched thumb types 'ok', stops, then adds the period; a timeline strip appears under the bubble: typed · paused · added .",
+   "voice": "They typed 'ok'. Paused. Went back for the period. Nobody does that by accident.",
+   "control": "calm and deliberate, a clear beat after 'paused', the last sentence drier",
+   "draw": "bracket under the strip, label 'the pause'",
+   "text": "",
+   "sound": "pencil taps, then a pause",
+   "scene": {
+    "type": "thread",
+    "thread": "jess",
+    "zoom": 1,
+    "retype": {
+     "text": "ok",
+     "pause": 1.3,
+     "add": "."
+    },
+    "strip": [
+     "typed",
+     "paused",
+     "added ."
+    ]
+   },
+   "draws": [
+    {
+     "type": "strip",
+     "at": {
+      "word": "Went"
+     }
+    },
+    {
+     "type": "bracket",
+     "target": "strip",
+     "label": "the pause",
+     "at": {
+      "word": "Nobody"
+     }
+    }
+   ]
+  },
+  {
+   "t": "0:08-0:12",
+   "screen": "Cut-away beside the phone: the question 'dinner at 8?' and three replies drawn one by one: okay / ok / ok.",
+   "voice": "Same question. Three answers. One is a threat.",
+   "control": "matter-of-fact, 'threat' said lightly, no drama",
+   "draw": "the three bubbles draw on",
+   "text": "",
+   "sound": "three soft pops",
+   "scene": {
+    "type": "cutaway",
+    "question": "dinner at 8?",
+    "replies": [
+     "okay",
+     "ok",
+     "ok."
+    ]
+   },
+   "draws": [
+    {
+     "type": "reply",
+     "index": 0,
+     "at": 0.2
+    },
+    {
+     "type": "reply",
+     "index": 1,
+     "at": 0.9
+    },
+    {
+     "type": "reply",
+     "index": 2,
+     "at": 1.6
+    }
+   ]
+  },
+  {
+   "t": "0:12-0:20",
+   "screen": "Same cut-away; a handwritten label appears beside each reply as it is said",
+   "voice": "'okay': happy. 'ok': busy. 'ok.': you forgot something. Good luck.",
+   "control": "slower on the last reply, 'good luck' flat and sympathetic",
+   "draw": "labels: happy / busy / you forgot something",
+   "text": "",
+   "sound": "marker x3, tick on the last",
+   "scene": {
+    "type": "cutaway",
+    "question": "dinner at 8?",
+    "replies": [
+     "okay",
+     "ok",
+     "ok."
+    ]
+   },
+   "hold_after": 0.7,
+   "draws": [
+    {
+     "type": "label",
+     "index": 0,
+     "text": "happy",
+     "at": {
+      "word": "happy"
+     }
+    },
+    {
+     "type": "label",
+     "index": 1,
+     "text": "busy",
+     "at": {
+      "word": "busy"
+     }
+    },
+    {
+     "type": "label",
+     "index": 2,
+     "text": "you forgot something",
+     "at": {
+      "word": "forgot"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "sound": "tick",
+     "at": {
+      "word": "forgot"
+     }
+    }
+   ]
+  },
+  {
+   "t": "0:20-0:24",
+   "screen": "Extreme close-up of the period on the page",
+   "voice": "Except. One kind of person breaks this rule.",
+   "control": "half a second of silence first, then quieter, like a secret",
+   "draw": "none",
+   "text": "",
+   "sound": "silence, then a single tick",
+   "scene": {
+    "type": "closeup"
+   },
+   "draws": [
+    {
+     "type": "bigtext",
+     "text": "EXCEPT…",
+     "at": {
+      "word": "Except"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "sound": "tick",
+     "at": {
+      "word": "This"
+     }
+    }
+   ]
+  },
+  {
+   "t": "0:24-0:30",
+   "screen": "A second sketched thread, 'Dad': every message ends with a period; three of them get circled",
+   "voice": "Dads. Bosses. People who sign their texts. Their 'ok.' is just 'ok'. Pattern first.",
+   "control": "warm, a little fond, a smile in the voice on 'sign their texts', firm on 'pattern first'",
+   "draw": "three circles, then the words PATTERN FIRST written large",
+   "text": "",
+   "sound": "marker x3, pencil write",
+   "scene": {
+    "type": "thread",
+    "thread": "dad"
+   },
+   "draws": [
+    {
+     "type": "circle",
+     "target": "msg:2",
+     "at": {
+      "word": "Dads"
+     }
+    },
+    {
+     "type": "circle",
+     "target": "msg:4",
+     "at": {
+      "word": "Bosses"
+     }
+    },
+    {
+     "type": "circle",
+     "target": "msg:7",
+     "at": {
+      "word": "just"
+     }
+    },
+    {
+     "type": "bigtext",
+     "text": "PATTERN FIRST",
+     "at": {
+      "word": "Pattern"
+     }
+    }
+   ]
+  },
+  {
+   "t": "0:30-0:35",
+   "screen": "The test: two sketched phones side by side. A: Jess's thread, no periods anywhere, then 'ok.'. B: Dad's thread, periods everywhere, then 'ok.'",
+   "voice": "Now you. A… or B? Careful. One of them is your dad.",
+   "control": "inviting, then straight-faced; a pause after 'B'; do not rush",
+   "draw": "A and B labels",
+   "text": "",
+   "sound": "clock tick through the 1.5-second hold",
+   "scene": {
+    "type": "test",
+    "a": "jess",
+    "b": "dad"
+   },
+   "hold_after": 1.6,
+   "draws": [
+    {
+     "type": "text",
+     "text": "A or B?",
+     "at": {
+      "word": "A…"
+     }
+    }
+   ]
+  },
+  {
+   "t": "0:35-0:38",
+   "screen": "Reveal: A circled; Jess's earlier bubbles highlighted to show no periods",
+   "voice": "A. First period she's ever used. Dad's just Dad.",
+   "control": "quiet and certain, the last three words with a shrug",
+   "draw": "circle A, label 'first period ever'",
+   "text": "A or B?",
+   "sound": "tick",
+   "scene": {
+    "type": "test",
+    "a": "jess",
+    "b": "dad",
+    "reveal": "a"
+   },
+   "draws": [
+    {
+     "type": "circle",
+     "target": "a",
+     "at": 0.1
+    },
+    {
+     "type": "highlight",
+     "target": "a-earlier",
+     "at": {
+      "word": "First"
+     }
+    },
+    {
+     "type": "label",
+     "target": "a",
+     "text": "first period ever",
+     "at": {
+      "word": "period"
+     }
+    }
+   ]
+  },
+  {
+   "t": "0:38-0:40",
+   "screen": "Back to frame 1: the phone on the page, sticker 1/7",
+   "voice": "Bonus: a lone 'k' is a door closing. On your face. 2/7: left on read.",
+   "control": "lighter, a promise; 'on your face' said kindly; ends on a small upward note",
+   "draw": "none",
+   "text": "",
+   "sound": "the same buzz as frame 0",
+   "scene": {
+    "type": "thread",
+    "thread": "jess",
+    "arrive": true
+   },
+   "draws": [
+    {
+     "type": "text",
+     "text": "2/7 · Left on read",
+     "at": {
+      "word": "closing"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "sound": "buzz",
+     "at": 0
+    }
+   ]
+  }
  ],
- "test": {"a": "'ok.' from Jess, who never uses periods", "b": "'ok.' from Dad, who always does", "answer": "a", "why": "It is the first period she has ever used; the change from her pattern is the message."},
- "bonus": "A lone 'k' isn't anger. It's a door closing.",
+ "test": {
+  "a": "'ok.' from Jess, who never uses periods",
+  "b": "'ok.' from Dad, who always does",
+  "answer": "a",
+  "why": "It is the first period she has ever used; the change from her pattern is the message."
+ },
+ "bonus": "A lone 'k' is a door closing. On your face.",
  "bridge": "2/7: Left on read",
- "words": 88
+ "words": 98,
+ "teaches_line": "the period. One character decides what 'ok' means, and the sender's own pattern decides the character.",
+ "pinned": "A or B? Tell me which one you'd have guessed, and whether you're a period person.",
+ "threads": {
+  "jess": {
+   "name": "Jess",
+   "messages": [
+    {
+     "time": "Today 6:40 PM"
+    },
+    {
+     "who": "me",
+     "text": "hey, dinner tonight?"
+    },
+    {
+     "who": "them",
+     "text": "yes!! 7 at the usual place"
+    },
+    {
+     "time": "Today 7:12 PM"
+    },
+    {
+     "who": "me",
+     "text": "can we push to 8? running late"
+    },
+    {
+     "who": "them",
+     "text": "ok."
+    }
+   ]
+  },
+  "dad": {
+   "name": "Dad",
+   "messages": [
+    {
+     "time": "Yesterday 9:05 AM"
+    },
+    {
+     "who": "me",
+     "text": "landed. will call tonight"
+    },
+    {
+     "who": "them",
+     "text": "Good. Drive safe."
+    },
+    {
+     "who": "me",
+     "text": "can you send the plumber's number?"
+    },
+    {
+     "who": "them",
+     "text": "Sent. Check your email."
+    },
+    {
+     "time": "Today 7:12 PM"
+    },
+    {
+     "who": "me",
+     "text": "dinner sunday?"
+    },
+    {
+     "who": "them",
+     "text": "ok."
+    }
+   ]
+  }
+ },
+ "tone": "deadpan"
 }

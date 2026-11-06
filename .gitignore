@@ -6,3 +6,7 @@ voices/**/candidates/
 voices/**/*_short*.mp4
 voices/**/*_cover*.png
 voices/narrator/candidates/
+courses/**/takes/
+courses/**/_tmp*
+courses/**/*.mp4
+courses/**/*_cover.png

@@ -72,5 +72,12 @@
    "hook": "7A",
    "stage": "script"
   }
+ ],
+ "tone": [
+  "Deadpan, never loud: the narrator never laughs at his own joke.",
+  "The joke is on the situation, never on the viewer, and never on the sender's gender.",
+  "One joke per beat at most; the test and the reveal are played straight.",
+  "Specific beats generic: 'people who sign their texts', not 'old people'.",
+  "Every joke still teaches: a line that is funny but not true gets cut."
  ]
 }
