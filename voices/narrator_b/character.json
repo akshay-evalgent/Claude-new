@@ -1,0 +1,10 @@
+{
+ "name": "Sam",
+ "role": "narrator candidate for Texting, decoded",
+ "description": "Man in his late 20s, American accent, calm low voice, dry and a little amused, speaks like he is telling you a secret, relaxed, close to the microphone",
+ "pitch_hz": [
+  85,
+  150
+ ],
+ "sample_text": "'ok.' With the period. You know. They typed 'ok', paused, and then added the period. That pause is the whole message."
+}

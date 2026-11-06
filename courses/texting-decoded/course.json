@@ -3,15 +3,66 @@
  "promise": "By 7/7 you'll read any text thread.",
  "lang": "en",
  "audience": "International English: US, UK, Canada, Australia first. iMessage-style chat UI, US evening posting.",
- "gates_done": ["topic", "plan"],
- "kit": {"style": null, "voice": null, "accent": null, "sticker": "Texting, decoded · n/7"},
+ "gates_done": [
+  "topic",
+  "plan",
+  "hooks"
+ ],
+ "kit": {
+  "style": null,
+  "voice": null,
+  "accent": null,
+  "sticker": "Texting, decoded · n/7"
+ },
  "episodes": [
-  {"slug": "01-ok-period", "title": "'ok' vs 'ok.'", "teaches": "Punctuation changes meaning, and the person's own pattern decides it: read their baseline before you read the message.", "hook": null, "stage": "hooks"},
-  {"slug": "02-left-on-read", "title": "Left on read", "teaches": "'Read' is not an answer. Busy, thinking, or avoiding, and the one thing that separates them: their usual reply gap, not this one.", "hook": null, "stage": "hooks"},
-  {"slug": "03-the-laugh-scale", "title": "haha vs lol vs 😂", "teaches": "How much they actually laughed. Length means real; 'lol' means 'received'; the emoji alone means they are being polite.", "hook": null, "stage": "hooks"},
-  {"slug": "04-typing-then-nothing", "title": "typing… then nothing", "teaches": "A deleted message is the most honest thing they wrote today. Why people delete, and the one reply that lets them send it.", "hook": null, "stage": "hooks"},
-  {"slug": "05-the-double-text", "title": "The double text", "teaches": "Two messages in a row is not needy; the gap between them is what people read. The two-text rule and when to stop.", "hook": null, "stage": "hooks"},
-  {"slug": "06-voice-memo-vs-text", "title": "Voice memo vs text", "teaches": "People switch to voice when the feeling is too big for text. What a 2 AM paragraph means, and what a 6-second voice memo means.", "hook": null, "stage": "hooks"},
-  {"slug": "07-we-need-to-talk", "title": "'We need to talk.'", "teaches": "The message that stops your heart, read with everything from 1 to 6: punctuation, timing, their pattern. And the one reply that works.", "hook": null, "stage": "hooks"}
+  {
+   "slug": "01-ok-period",
+   "title": "'ok' vs 'ok.'",
+   "teaches": "Punctuation changes meaning, and the person's own pattern decides it: read their baseline before you read the message.",
+   "hook": "1A",
+   "stage": "moodboard"
+  },
+  {
+   "slug": "02-left-on-read",
+   "title": "Left on read",
+   "teaches": "'Read' is not an answer. Busy, thinking, or avoiding, and the one thing that separates them: their usual reply gap, not this one.",
+   "hook": "2A",
+   "stage": "moodboard"
+  },
+  {
+   "slug": "03-the-laugh-scale",
+   "title": "haha vs lol vs 😂",
+   "teaches": "How much they actually laughed. Length means real; 'lol' means 'received'; the emoji alone means they are being polite.",
+   "hook": "3A",
+   "stage": "moodboard"
+  },
+  {
+   "slug": "04-typing-then-nothing",
+   "title": "typing… then nothing",
+   "teaches": "A deleted message is the most honest thing they wrote today. Why people delete, and the one reply that lets them send it.",
+   "hook": "4B",
+   "stage": "moodboard"
+  },
+  {
+   "slug": "05-the-double-text",
+   "title": "The double text",
+   "teaches": "Two messages in a row is not needy; the gap between them is what people read. The two-text rule and when to stop.",
+   "hook": "5B",
+   "stage": "moodboard"
+  },
+  {
+   "slug": "06-voice-memo-vs-text",
+   "title": "Voice memo vs text",
+   "teaches": "People switch to voice when the feeling is too big for text. What a 2 AM paragraph means, and what a 6-second voice memo means.",
+   "hook": "6B",
+   "stage": "moodboard"
+  },
+  {
+   "slug": "07-we-need-to-talk",
+   "title": "'We need to talk.'",
+   "teaches": "The message that stops your heart, read with everything from 1 to 6: punctuation, timing, their pattern. And the one reply that works.",
+   "hook": "7A",
+   "stage": "moodboard"
+  }
  ]
 }
