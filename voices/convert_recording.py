@@ -7,7 +7,9 @@ Uses Seed-VC in pitch-following mode, on this machine when it's set up (bash voi
 otherwise through its free Hugging Face demo (Plachta/Seed-VC; daily GPU limit, uploads the take):
 the rise and fall of your voice (crying breaks, emphasis, pauses) is kept and moved to the
 character's pitch level. Only the voice itself changes. The target voice is the character's
-`identity` and `reference` clips from character.json, joined together.
+`identity` and `reference` clips from character.json, joined together. The silence before your
+first sound and after your last word is trimmed first (--keep-silence to skip), so the Short
+doesn't open on dead air.
 
 It makes --takes conversions (kept in <name>/takes/, not committed; existing takes are reused)
 and checks each one. Then, phrase by phrase, it uses whichever take kept your words and sounds
@@ -33,6 +35,27 @@ VC_SR = 44100
 
 def to_wav(src, out):
     subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(src), '-ac', '1', '-ar', str(VC_SR), str(out)], check=True)
+
+
+def trim_silence(path, lead=0.25, tail=1.2):
+    """Cut the dead air before your first word and after your last, keeping `lead` and `tail`
+    seconds of room. Voice notes start with a second or two of it, and a Short that opens on
+    silence gets swiped away. Returns the seconds cut from the start and the end."""
+    import numpy as np, soundfile as sf
+    y, sr = sf.read(path, dtype='float32')
+    regions = performance.speech_regions(y, sr)
+    if not regions:
+        return 0.0, 0.0
+    a, b = max(0, int((regions[0][0] - lead) * sr)), min(len(y), int((regions[-1][1] + tail) * sr))
+    if a == 0 and b == len(y):
+        return 0.0, 0.0
+    cut_end = (len(y) - b) / sr
+    y = y[a:b].copy()
+    if a:  # no click where the cut lands in room noise
+        n = int(0.02 * sr)
+        y[:n] *= np.linspace(0, 1, n)
+    sf.write(path, y, sr)
+    return round(a / sr, 2), round(cut_end, 2)
 
 
 SEEDVC = Path(os.environ.get('VOICES_VENDOR', Path.home() / '.voices-vendor')) / 'seed-vc'
@@ -177,6 +200,7 @@ def main():
                     help='local = this machine, demo = Hugging Face demo, auto = local if set up (default)')
     ap.add_argument('--no-check', action='store_true', help='skip the checks')
     ap.add_argument('--plain', action='store_true', help='skip the performance transfer and polish')
+    ap.add_argument('--keep-silence', action='store_true', help="don't trim the silence before your first word and after your last")
     args = ap.parse_args()
     import librosa
     char = json.loads((args.character / 'character.json').read_text())
@@ -188,18 +212,27 @@ def main():
         tmp = Path(tmp)
         src, ref = tmp / 'source.wav', tmp / 'reference.wav'
         to_wav(args.recording, src)
+        trimmed = (0.0, 0.0) if args.keep_silence else trim_silence(src)
+        if any(trimmed):
+            print(f'  trimmed silence: {trimmed[0]} s from the start, {trimmed[1]} s from the end', flush=True)
         inputs = sum([['-i', str(args.character / c)] for c in clips], [])
         subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', *inputs, '-filter_complex',
                         ''.join(f'[{i}:a]' for i in range(len(clips))) + f'concat=n={len(clips)}:v=0:a=1,aresample={VC_SR}',
                         str(ref)], check=True)
         engine = args.engine if args.engine != 'auto' else ('local' if (SEEDVC / 'inference.py').exists() else 'demo')
         outs = [takes / f'take{t}.wav' for t in range(1, args.takes + 1)]
+        import soundfile as sf
+        src_len = sf.info(src).duration
         for out in outs:
+            if out.exists() and abs(sf.info(out).duration - src_len) > 0.1:
+                print(f'  {out.name} was made from a different cut of the recording; making it again', flush=True)
+                out.unlink()
             if not out.exists():
                 print(f'converting {args.recording.name} into {args.character.name}: {out.name} ({args.steps} steps)', flush=True)
                 (convert_local if engine == 'local' else convert)(src, ref, out, args.steps, args.semitones)
         report = dict(settings=dict(model=f'Seed-VC v1 pitch-following ({engine})', steps=args.steps,
-                                    extra_semitones=args.semitones, reference_clips=clips))
+                                    extra_semitones=args.semitones, reference_clips=clips,
+                                    trimmed_silence_s=dict(start=trimmed[0], end=trimmed[1])))
         best = outs[0]
         if not args.no_check:
             report['checks'] = check(src, outs, args.character / char['identity'], args.lang)
