@@ -267,3 +267,88 @@ Not found and should come from readers: VA, support and bookkeeping rates for In
 1. A page name. Options: **Remote Ledger** (my pick: says pay transparency and verification), Remote Rupee, Export Desk, Paid Abroad. Avoid anything with "earn dollars from home"; it reads like the scams the page exists to filter.
 2. Whether India-only or South Asia (Pakistan, Bangladesh, Sri Lanka have the same payment and eligibility problems; it triples the audience and the Skydo-type partners cover them too).
 3. A go on building the first three cards and the Notion tracker template once you choose the name.
+
+---
+
+## 10 · The two-sided layer: pitches from India, requests from abroad
+
+Added 6 Nov 2026 after the question "can it also be a page where people pitch to get international clients, and the clients curate it with me?"
+
+Yes, and it is the strongest version of the page, on one condition: **demand goes up first, supply second.** Every marketplace of this shape dies the same way: 300 Indian providers pitch, 3 clients show up, the providers leave. So the design below is built to make requests exist before pitches are asked for.
+
+### The two sides and what each sees
+
+| | Providers (India) | Clients (abroad) |
+|---|---|---|
+| How they enter | Tally form, free | Tally form, free, or we curate their public ask |
+| What we publish | Public: name or company, service, vertical, proof link, price from, time-zone overlap | Anonymised: country, industry, need, budget band, timeline, apply-by date |
+| What they get | Exposure and first look at filtered requests | A shortlist of 3 to 5 vetted providers in 48 hours, not 300 DMs |
+| What they pay | Nothing to pitch, nothing to apply. Optional "Featured" slot later | Nothing to post. Optional paid shortlist and trial-run management |
+
+Providers public, clients private. That asymmetry is the whole mechanism: providers want to be found, clients want to be filtered.
+
+### Pitch card (the format we publish on Thursdays)
+
+> **n8n and Twilio automations for dental clinics.** Built reminder and recall flows for 11 US clinics; no-show rate down 28% at one (case study in link). From $1,500 fixed, 2-week delivery, 4 h overlap with US Pacific. Company: ____ · Proof: Loom
+
+Fields on the form: service in 12 words · vertical · one proof link that opens (Loom, live demo, public case study) · price from, in USD · overlap hours · company or individual · LinkedIn URL for verification.
+
+### Request card (Wednesdays)
+
+> **US dental SaaS, 14 people.** Needs an n8n + Twilio appointment-reminder flow with a Google Sheets fallback. Budget $1,200–2,000, two weeks, 3 h overlap with Pacific. Apply by Friday through the form in the comment. We send the client five pitches, the client picks.
+
+Two sources for requests, in order:
+1. **Curated public asks.** Founders abroad post "looking for an n8n dev / fractional CFO / voice agent builder" on LinkedIn, X, Reddit and Upwork every day. We quote the ask, link it, credit them. This exists from day one without anyone submitting anything, which is why the demand side can go first.
+2. **Direct submissions.** Once clients have seen the page deliver, they submit through the form. The number of direct requests per week is the only metric that says the marketplace is alive. Ten a week means it is.
+
+### Clients as co-curators (the part of the idea that is new)
+
+A **client council**: 8 to 12 founders and operators abroad who already buy services from India. They give 20 minutes a month to review that week's pitches and say which they would call. In return they get the shortlist first and a credited interview card: "What I buy from India and what I pay" with their face, name and company. That card has every ingredient the Founder Signal numbers said carries reach (a face, a named person, a number, a mild provocation) and it does the trust work for the whole page. Their names on the page's About section are worth more than any badge we could invent.
+
+### Vetting, which is the brand
+
+A pitch is published only if: the LinkedIn account is older than a year with real work history · the proof link opens and shows the work · one service for one kind of client, not "we do everything" · a price is stated · they answer our test message within 24 hours. Expect to reject seven in ten. Say so publicly. The rejection rate is the reason a client reads the Thursday post.
+
+### Weekly rhythm, revised
+
+| Day | Post |
+|---|---|
+| Mon | Tracker: 10 India-eligible remote roles |
+| Tue | Pay card: advertised vs reported |
+| Wed | **Requests**: 5 anonymised asks, apply by Friday |
+| Thu | **Pitches**: 5 vetted providers, one card each or a carousel |
+| Fri | **Matched**: what got hired last week, client's one line, provider's one line. Social proof loop; starts the week there is one |
+| Sat | Paperwork: LUT, FIRA, Skydo vs PayPal, the contract |
+| Sun | Poll or client-council interview card |
+
+Never "comment your services below". A 400-comment pitch thread is unreadable, it is the kind of bait LinkedIn now scores down, and it throws away the curation that is the product. Form in the first comment; curated cards in the post.
+
+### Money on this layer
+
+| Side | Product | Price | Note |
+|---|---|---|---|
+| Client | Request | free | |
+| Client | Shortlist in 48 h: 3 vetted providers, intro calls booked | $149 | the first thing to sell |
+| Client | Trial run: two providers do a paid 1-week task, we manage it, client picks | $499–999 + provider fees passed through | month 3 onward |
+| Provider | Pitch, apply to requests | free, always | a fee to apply is the scam signal we exist to filter; never |
+| Provider | Featured pitch: top slot plus newsletter | ₹1,999/week | from month 2, marked "Featured" |
+| Provider | Verified directory listing | ₹999/month | optional, after the directory exists |
+| Both | Rail partners (Skydo, Wise, Payoneer) referral | per sign-up | disclosed |
+
+At 20 requests a week with one in five paying $149: ~$600 a week, about ₹2L a month, before featured slots. The directory and trial-run products come later and are bigger.
+
+No success fees on the page. They cannot be enforced without escrow, and chasing them poisons the provider side. If a match happens off the page, good; the page earns on volume and reputation, not lock-in.
+
+### First 30 days for this layer
+
+- Week 1–2: Wednesday requests from curated public asks only; Thursday pitches from the form. Target: five of each per week, first three matches, documented with both sides' permission.
+- Week 3–4: invite ten founders abroad who already buy from India to the client council. Post two interview cards. Open the direct request form publicly.
+- Day 45 check: direct requests per week. Ten or more, build the directory and sell the $149 shortlist. Under five, keep the Thursday pitch showcase and the tracker as a one-sided product, which still sells, and keep curating public asks until the demand side grows.
+
+### Where it dies, and the fix for each
+
+1. Supply flood, no demand: covered above; demand first, cap pitches at five a week, rotate.
+2. Low-quality pitches: vetting and a public rejection rate.
+3. LinkedIn scoring it as bait: forms, not comment threads; cards, not "drop your link".
+4. Legal: we never hold money, never charge to apply, never take a success fee without a signed agreement, and label paid placements. Keep the talent list opt-in and let anyone leave the same day.
+5. Your own rule: you pitch as a company, not a person, exactly like every other provider. If your own pitch gets no client in four weeks on your own page, that is the cleanest test of whether the matching works.
