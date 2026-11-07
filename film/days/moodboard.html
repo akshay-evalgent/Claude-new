@@ -2,7 +2,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+JP:wght@500;700&display=swap">
 <style>
 /* Layout: a light table at night. Frames are pinned full-bleed in one column; notes run in a narrow margin beside them on wide screens. */
 :root {
@@ -16,6 +16,7 @@
   --display: "Playfair Display", "Georgia", serif;
   --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "Menlo", monospace;
+  --jp: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -102,15 +103,26 @@ figure { margin: 0; }
 .decide li { counter-increment: d; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0.6rem; }
 .decide li::before { content: counter(d); font: 600 0.9rem/1.7 var(--mono); color: var(--night); background: var(--gold); border-radius: 50%; width: 1.7rem; height: 1.7rem; text-align: center; }
 footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.86rem; }
+.jp { font-family: var(--jp); font-weight: 700; }
+.hero h1 .jp { display: block; font-size: 0.32em; letter-spacing: 0.3em; color: var(--paper); margin-top: 0.4rem; font-weight: 500; }
+.ingredients { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem 1.4rem; margin: 0; padding: 0; list-style: none; }
+.ingredients li { min-width: 0; padding-left: 0.9rem; border-left: 2px solid var(--gold); font-size: 0.95rem; color: var(--muted); }
+.ingredients b { display: block; color: var(--paper); font-family: var(--display); font-weight: 600; font-size: 1.05rem; }
+.manga { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 2rem; align-items: start; }
+.manga img { background: #fff; border-radius: 2px; }
+.sfx { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.35rem 1rem; margin: 0; }
+.sfx dt { font-family: var(--jp); font-weight: 700; color: var(--gold); white-space: nowrap; }
+.sfx dd { margin: 0; color: var(--muted); font-size: 0.95rem; }
+@media (max-width: 52rem) { .manga { grid-template-columns: minmax(0, 1fr); } }
 </style>
 
 <header class="hero">
   <figure>
-    <img src="img/b_card.jpg" width="1600" height="900" alt="Look B: an anime-style young man in a mustard hoodie and red scarf, worried, in front of LATER boxes; a card reads DAYS LEFT 18,250; his jar glows with the same number.">
+    <img src="img/m_roof.jpg" width="1600" height="900" alt="3D anime render: the old neighbour in a hat and his wife dance on a rooftop at dusk under string lights and a river of stars.">
     <div class="title">
       <div class="wrap">
-        <div class="eyebrow">whatifgraphics · film two · mood board v3 · look B, an anime-style original</div>
-        <h1 style="margin-top:0.5rem"><span class="n">30,000</span> DAYS</h1>
+        <div class="eyebrow">whatifgraphics · film two · mood board v4 · 3D anime, manga storyboard</div>
+        <h1 style="margin-top:0.5rem"><span class="n">30,000</span> DAYS<span class="jp" lang="ja">三万日</span></h1>
         <p class="q">What if you could see how many days you have left?</p>
       </div>
     </div>
@@ -120,29 +132,53 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
 <section class="intro">
   <div class="wrap stack">
     <p class="lede">Everyone has a glass jar of about 30,000 glowing marbles, one for each day of an average life, and a phone that reminds them how many are left. He keeps tapping "Remind me later". Each night one marble rises out of the window and becomes a star: bright if he lived the day, dim if he put it off.</p>
-    <p class="lede">Version two follows the format of SkyeWei's <em>I'll Start Tomorrow…</em> (8.99M views, 8.1% likes): countdown cards, screens that tell the story, close-ups, a daydream at about 37%, a surreal panic, and a light ending. The look, characters and story stay ours: paper-cut lightbox, made in code.</p>
-    <p class="small muted">Every image on this page was rendered by the film's own engine.</p>
+    <p class="lede">Version four is a Japanese 3D anime look: toon-shaded 3D with ink outlines, painted anime faces, manga sound effects on screen, and a manga storyboard page. The beats of <em>I'll Start Tomorrow…</em> stay; the characters, designs and story are ours.</p>
+    <p class="small muted">Every image on this page is a real-time 3D render from the film's own scene files, not a paint-over. Any shot can be re-rendered from a new angle in about two seconds.</p>
   </div>
 </section>
 
-<section id="lookb">
+<section id="look">
   <div class="wrap stack-lg">
     <div class="stack">
-      <div class="eyebrow">Look B · the style, with our own character</div>
-      <h2>2D anime look: big eyes, clean line art, flat cel shading, faces lit by screens</h2>
-      <p class="muted">This is the style family of <em>I'll Start Tomorrow…</em>, drawn as an original character. We don't copy their protagonist, frames or designs: those are the creator's work, a copy invites a copyright claim, and the comments would call it a rip-off. He keeps our film's signatures: the red scarf his mother knits, the cowlick, freckles, and a mustard hoodie so he never reads as theirs.</p>
+      <div class="eyebrow">The look · <span class="jp" lang="ja">キャラクター設定</span></div>
+      <h2>Toon-shaded 3D that reads like a hand-drawn anime</h2>
     </div>
-    <figure class="sheet"><img src="img/b_faces.jpg" width="1600" height="900" alt="Expression sheet: the anime-style protagonist in a mustard hoodie and red scarf, neutral, tired, sad, wide-eyed, determined, happy, laughing and asleep."><figcaption>Eight expressions: brows, lids and pupils do the acting. Wide eyes get a sweat drop, sad gets a tear.</figcaption></figure>
-    <div class="grid2">
-      <figure class="sheet"><img src="img/b_two_lights.jpg" width="1600" height="900" alt="He looks down at his phone at night, lit blue from below; his jar glows gold beside a starry window."><figcaption>Two lights on one face: the phone's blue, the jar's gold.</figcaption></figure>
-      <figure class="sheet"><img src="img/b_eye.jpg" width="1600" height="900" alt="Extreme close-up of a brown anime eye; the glowing jar is reflected in the iris; a sweat drop."><figcaption>The eye close-up, with the jar in the iris.</figcaption></figure>
-      <figure class="sheet"><img src="img/b_card.jpg" width="1600" height="900" alt="DAYS LEFT 18,250 card above him, worried, in front of LATER boxes; his jar beside him."><figcaption>Countdown card, LATER boxes behind.</figcaption></figure>
-      <figure class="sheet"><img src="img/b_neighbour.jpg" width="1600" height="900" alt="He stares wide-eyed beside the laughing old neighbour in a hat under a river of stars; tags read 1,204 stars and 24,880 stars."><figcaption>The neighbour, in the same style. The score tags carry the turn.</figcaption></figure>
-    </div>
-    <p class="small muted">The story, the format beats and the timings below are unchanged. Look A (paper-cut) frames stay on this page for comparison.</p>
+    <ul class="ingredients">
+      <li><b>Cel shading</b>Two or three flat tones per material, never a smooth gradient. Shadows lean violet; lit sides lean warm.</li>
+      <li><b>Ink outlines</b>Every mesh has a dark line around it, so a 3D frame holds up as a manga panel.</li>
+      <li><b>Painted faces</b>Eyes, brows and mouths are drawn, not modelled: big irises, two highlights, a painted fringe shadow. The jar can appear in his pupil.</li>
+      <li><b>Clumped hair</b>Tapered locks with a jagged sheen band. The curl on top (the <span class="jp" lang="ja">アホ毛</span>) is his silhouette at any distance.</li>
+      <li><b>Only time glows</b>Bloom lands on the jar, the stars and the screens, and nothing else.</li>
+    </ul>
+    <figure class="sheet"><img src="img/sheet_turn.jpg" width="1600" height="900" alt="Turnaround sheet: the hero in a mustard hoodie and red scarf from the front, three-quarter, side and back, and the old neighbour in a hat and navy cardigan."><figcaption>Turnaround. He keeps the film's signatures: the red scarf his mother knits, the curl, freckles and a mustard hoodie. Designs are original, not SkyeWei's.</figcaption></figure>
+    <figure class="sheet"><img src="img/sheet_faces.jpg" width="1600" height="900" alt="Expression sheet of eight 3D anime busts: neutral, tired, sad, wide-eyed, determined, happy, laughing, asleep, labelled in Japanese and English."><figcaption>Eight expressions. No one speaks; the face tells you how a day went.</figcaption></figure>
+    <figure class="sheet"><img src="img/sheet_ages.jpg" width="1600" height="900" alt="Him at ages 7, 24, 45 and 80, each with the red scarf and the curl, labelled with days left: 27,443, 21,234, 13,564 and 780."><figcaption>Days left = 30,000 − 365.25 × age: 27,443 at 7, 21,234 at 24, 13,564 at 45, 780 at 80. The hook's 21,236 is two days before his 24th birthday.</figcaption></figure>
   </div>
 </section>
 
+<section id="manga">
+  <div class="wrap">
+    <div class="manga">
+      <figure class="sheet"><img src="img/manga_page.png" width="1600" height="2262" alt="A black-and-white manga storyboard page made from the 3D renders, with dot screentones: the 2:14 a.m. lock screen, him on his bed, an eye close-up, the red panic room with speed lines and the sound effect dododo, him in the doorway, the laughing neighbour dancing, and him asleep. Narration boxes in Japanese with English underneath."><figcaption>Storyboard page 1, made from the same 3D scenes with screentone halftones.</figcaption></figure>
+      <div class="stack">
+        <div class="eyebrow">Manga storyboard · <span class="jp" lang="ja">絵コンテ</span></div>
+        <h2>The same scenes, printed as a manga page</h2>
+        <p class="muted">Each panel is a 3D render turned into ink and dot screentone, with closer cameras for the small panels. Narration is in Japanese, with English under each box. It reads left to right for our audience.</p>
+        <p class="muted">The page also works as a community post or a pinned image on launch day.</p>
+        <h3>Sound you can read</h3>
+        <dl class="sfx">
+          <dt lang="ja">ブブッ</dt><dd>bubu: the phone buzzing at 2:14 a.m.</dd>
+          <dt lang="ja">チン</dt><dd>chin: the glass tink of a marble leaving the jar, the film's sound logo</dd>
+          <dt lang="ja">ドクン</dt><dd>dokun: a heartbeat on the eye close-up</dd>
+          <dt lang="ja">ドドドド</dt><dd>dododo: the panic run</dd>
+          <dt lang="ja">ガラガラ</dt><dd>garagara: the LATER boxes collapsing</dd>
+          <dt lang="ja">キラキラ</dt><dd>kirakira: the stars on the roof</dd>
+          <dt lang="ja">ジャーン</dt><dd>jaan: his first chord</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
 <section id="competition">
   <div class="wrap stack-lg">
     <div class="stack">
@@ -165,7 +201,7 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
         <h3>What we take</h3>
         <ul class="list">
           <li>A number big enough to stop a thumb: the jar's label, in the thumbnail and in every frame.</li>
-          <li>A face. SkyeWei shows faces win likes, so the puppets now have a backlit face sheet with eight expressions.</li>
+          <li>A face. SkyeWei shows faces win likes, so he has eight painted anime expressions.</li>
           <li>A habit everyone has: putting things off, drawn as one enemy, the LATER box.</li>
           <li>A light ending that asks for one action.</li>
         </ul>
@@ -175,7 +211,7 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
         <ul class="list">
           <li>The number lives inside a story, so it rises and falls with a life you care about.</li>
           <li>The payoff is a picture, a sky made of the days he spent, instead of a sum.</li>
-          <li>2:30, shorter than all four, so more people finish it.</li>
+          <li>2:45: as short as the shortest of the four, and 1:40 shorter than SkyeWei's, so more people finish it.</li>
           <li>No narration: it works in every language, with captions in seven.</li>
           <li>It ends on a choice for today, never on death.</li>
         </ul>
@@ -217,55 +253,56 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
   <div class="wrap stack-lg">
     <div class="stack">
       <div class="eyebrow">Style frames · 2:45</div>
-      <h2>The film in nine frames</h2>
-    </div>
-
-    <div class="frame">
-      <figure><img src="img/u1_lock.jpg" width="1600" height="900" alt="A hand holds a phone at 2:14 a.m.; a notification reads DAYS LEFT 21,236 with a Remind me later button; a glowing jar behind shows the same number."></figure>
-      <div class="note"><span class="tc">0:00 · THE HOOK</span><h3>A notification everyone recognises</h3><p>The premise in one frame: a lock screen, a number, and the button we all press. The jar behind it holds the same count in light.</p><span class="chip"><i style="background:#05060e"></i><i style="background:#1d2a58"></i><i style="background:#ffc566"></i></span></div>
+      <h2>The film in ten frames</h2>
     </div>
     <div class="frame">
-      <figure><img src="img/u2_card.jpg" width="1600" height="900" alt="DAYS LEFT 21,236 card above a young man on his bed with his phone; his jar on the shelf."></figure>
-      <div class="note"><span class="tc">0:06 · CARD ONE</span><h3>The countdown card</h3><p>Backlit paper with lit cut-out type. The cards return at 18,250 and 14,600; each jump is a beat viewers rewatch.</p><span class="chip"><i style="background:#070b1c"></i><i style="background:#1a2546"></i><i style="background:#c6dbff"></i></span></div>
+      <figure><img src="img/k1_hook.jpg" width="1600" height="900" alt="A hand holds a phone at 2:14 a.m.; the lock screen notification reads DAYS LEFT 21,236 with a Remind me later button; a glowing jar on a shelf behind is labelled 21,236."></figure>
+      <div class="note"><span class="tc">0:00 · THE HOOK</span><h3>A notification everyone recognises</h3><p>His hand, his lock screen at 2:14 a.m., and the button we all press. The jar on the shelf behind holds the same number in light. On screen: <span class="jp" lang="ja">ブブッ</span>.</p><span class="chip"><i style="background:#05081c"></i><i style="background:#26305a"></i><i style="background:#ffc566"></i></span></div>
     </div>
     <div class="frame">
-      <figure><img src="img/u3_screens.jpg" width="1600" height="900" alt="Three phones: a feed, a puzzle game at level 248, and Next episode in 5; small marbles fall beside each."></figure>
-      <div class="note"><span class="tc">0:12 · THE MONTAGE</span><h3>Every swipe costs a marble</h3><p>The habit everyone has, shown on screens people recognise. Each swipe sounds a small glass tink, the film's sound logo.</p><span class="chip"><i style="background:#121a40"></i><i style="background:#3a2a6a"></i><i style="background:#ffb3a0"></i></span></div>
+      <figure><img src="img/k2_card.jpg" width="1600" height="900" alt="DAYS LEFT 21,236 card over a dark bedroom; he sits on his bed lit blue by his phone; his jar glows on a shelf by the window."></figure>
+      <div class="note"><span class="tc">0:06 · CARD ONE</span><h3>The countdown card</h3><p>A big lit number over the room, in English with the Japanese underneath. The cards return at 18,250 and 14,600; each jump is a beat viewers rewatch.</p><span class="chip"><i style="background:#05081c"></i><i style="background:#4a5096"></i><i style="background:#ffd27a"></i></span></div>
     </div>
     <div class="frame">
-      <figure><img src="img/u4_feedwall.jpg" width="1600" height="900" alt="An endless wall of glowing phone screens, each showing a tiny scrolling figure; the young man stands among them."></figure>
-      <div class="note"><span class="tc">0:40 · SURREAL ONE</span><h3>The endless feed</h3><p>Paper phones stacked in depth, each with him inside. Six seconds at most.</p><span class="chip"><i style="background:#04050c"></i><i style="background:#2e4a9a"></i><i style="background:#0a0f22"></i></span></div>
+      <figure><img src="img/k3_swipes.jpg" width="1600" height="900" alt="Three hands hold three phones: a feed, a puzzle game at level 248, and Next episode in 5; glowing marbles fall beside each with the sound effect chin."></figure>
+      <div class="note"><span class="tc">0:12 · THE MONTAGE</span><h3>Every swipe costs a marble</h3><p>A feed, a puzzle game at level 248, and "Next episode in 5". Each swipe drops a glowing marble with a <span class="jp" lang="ja">チン</span>.</p><span class="chip"><i style="background:#090a1e"></i><i style="background:#6a6aa0"></i><i style="background:#ffbf4a"></i></span></div>
     </div>
     <div class="frame">
-      <figure><img src="img/u5_eye.jpg" width="1600" height="900" alt="Extreme close-up of a wide eye; the jar of marbles is reflected in the pupil; a bead of sweat."></figure>
-      <div class="note"><span class="tc">1:10 · THE EYE</span><h3>The jar in his pupil</h3><p>The format's close-up, in paper. Just after the daydream, the drop back into reality.</p><span class="chip"><i style="background:#2a0a08"></i><i style="background:#c98a62"></i><i style="background:#f3ead8"></i></span></div>
+      <figure><img src="img/k4_feed.jpg" width="1600" height="900" alt="He stands at the bottom of an endless tunnel of glowing phone screens, each showing a tiny figure in a mustard hoodie."></figure>
+      <div class="note"><span class="tc">0:40 · SURREAL ONE</span><h3>The endless feed</h3><p>A tunnel of phone screens, each with him inside, and him standing small in the middle. Six seconds at most.</p><span class="chip"><i style="background:#03040e"></i><i style="background:#2e4a9a"></i><i style="background:#ff7ac8"></i></span></div>
     </div>
     <div class="frame">
-      <figure><img src="img/u6_panic.jpg" width="1600" height="900" alt="Red room: DAYS LEFT 14,600; a giant jar pours marbles; LATER boxes fly as the young man runs."></figure>
-      <div class="note"><span class="tc">1:15 · SURREAL TWO</span><h3>The panic room</h3><p>Their skeleton and fire become our jar towering over him, marbles pouring out and the LATER boxes avalanching. It's comic and loud, and nobody dies.</p><span class="chip"><i style="background:#2a0606"></i><i style="background:#5a120a"></i><i style="background:#ff7a5c"></i></span></div>
+      <figure><img src="img/k5_eye.jpg" width="1600" height="900" alt="Extreme close-up of a brown anime eye; a small glowing jar is reflected in the iris; the sound effect dokun."></figure>
+      <div class="note"><span class="tc">1:10 · THE EYE</span><h3>The jar in his pupil</h3><p>The format's close-up: a painted anime eye with the jar reflected in the iris, and a heartbeat, <span class="jp" lang="ja">ドクン</span>.</p><span class="chip"><i style="background:#0a0a1a"></i><i style="background:#c07a2a"></i><i style="background:#ffd27a"></i></span></div>
     </div>
     <div class="frame">
-      <figure><img src="img/u7_scores.jpg" width="1600" height="900" alt="Rooftop: the old neighbour and his wife dance under a river of stars, tagged 24,880 stars, 3 days left; the young man in the doorway is tagged 1,204 stars, 18,250 left."></figure>
-      <div class="note"><span class="tc">1:30 · THE TURN</span><h3>The score that matters</h3><p>Two tags say everything: he has more days and far fewer stars. No dialogue needed.</p><span class="chip"><i style="background:#0b0820"></i><i style="background:#2c1f4a"></i><i style="background:#fff4d8"></i></span></div>
+      <figure><img src="img/k6_panic.jpg" width="1600" height="900" alt="Red room with manga speed lines: DAYS LEFT 14,600; a giant tipped jar pours glowing marbles; LATER boxes fly as he runs toward camera, wide-eyed."></figure>
+      <div class="note"><span class="tc">1:15 · SURREAL TWO</span><h3>The panic room</h3><p>Red light, speed lines and <span class="jp" lang="ja">ドドドド</span>. The jar tips, marbles pour, the LATER boxes avalanche. It's comic and loud, and nobody dies.</p><span class="chip"><i style="background:#2a0606"></i><i style="background:#5a120a"></i><i style="background:#ff7a5c"></i></span></div>
     </div>
     <div class="frame">
-      <figure><img src="img/u8_upload.jpg" width="1600" height="900" alt="At his desk he uploads first_song.mp3 at 92 percent; a guitar beside him; a bright star rises outside; a STARS bar climbs from 1,204 to 1,973."></figure>
-      <div class="note"><span class="tc">1:50 · THE COMEBACK</span><h3>A progress bar he wants to fill</h3><p>The format's progress UI turned around: now the bar counts days spent. Kept short.</p><span class="chip"><i style="background:#2a180c"></i><i style="background:#1d2a58"></i><i style="background:#ffc566"></i></span></div>
+      <figure><img src="img/k7_rooftop.jpg" width="1600" height="900" alt="Rooftop at dusk: the old neighbour and his wife dance under string lights and a river of stars, tagged 24,880 stars, 3 days left; he stands in the lit doorway, tagged 1,204 stars, 18,250 left."></figure>
+      <div class="note"><span class="tc">1:30 · THE TURN</span><h3>The score that matters</h3><p>He stops in the lit stairwell door. The neighbour and his wife dance under string lights and a river of stars. Two tags say everything.</p><span class="chip"><i style="background:#0b0820"></i><i style="background:#5a3a6a"></i><i style="background:#fff4d8"></i></span></div>
     </div>
     <div class="frame">
-      <figure><img src="img/u9_end.jpg" width="1600" height="900" alt="He sleeps; through the window a river of bright stars fills the sky; text: You get about 30,000 days. Today is one of them."></figure>
-      <div class="note"><span class="tc">2:25 · THE ENDING</span><h3>Asleep under his own sky</h3><p>A light ending, like theirs. A 2 s flash-forward (old him lifting a granddaughter to the window, below) gives the life-sized payoff before the line.</p><span class="chip"><i style="background:#03061a"></i><i style="background:#0e1838"></i><i style="background:#ffbf66"></i></span></div>
+      <figure><img src="img/k8_comeback.jpg" width="1600" height="900" alt="At dawn he sits at his desk behind a laptop, determined; an upload card reads first_song.mp3 92%; a bright star rises past the window; a STARS bar climbs from 1,204 to 1,973; the sound effect jaan."></figure>
+      <div class="note"><span class="tc">1:50 · THE COMEBACK</span><h3>A progress bar he wants to fill</h3><p>At his desk at dawn, first_song.mp3 uploading at 92%, a guitar at his side. Outside, a bright star rises. The STARS bar climbs from 1,204 to 1,973.</p><span class="chip"><i style="background:#140e34"></i><i style="background:#a85a6a"></i><i style="background:#ffc566"></i></span></div>
     </div>
-    <figure class="sheet"><img src="img/f6_sky.jpg" width="1600" height="900" alt="Flash-forward: the old man lifts his granddaughter toward a window full of stars."><figcaption>Flash-forward frame, 2:33.</figcaption></figure>
+    <div class="frame">
+      <figure><img src="img/k9_end.jpg" width="1600" height="900" alt="He sleeps sitting against his bed beside his guitar; the window behind him is filled by a river of bright stars; his jar glows on the sill; text: You get about 30,000 days. Today is one of them."></figure>
+      <div class="note"><span class="tc">2:25 · THE ENDING</span><h3>Asleep under his own sky</h3><p>He has fallen asleep against the bed with his guitar. The window is full of the days he spent. The line lands in English, with the Japanese above.</p><span class="chip"><i style="background:#03061a"></i><i style="background:#0e1838"></i><i style="background:#ffbf66"></i></span></div>
+    </div>
+    <div class="frame">
+      <figure><img src="img/k10_flash.jpg" width="1600" height="900" alt="Fifty years later: the old man in a mustard cardigan and red scarf lifts his granddaughter toward a window full of stars."></figure>
+      <div class="note"><span class="tc">2:33 · FLASH-FORWARD</span><h3>Fifty years later</h3><p>Two seconds: old him lifts his granddaughter toward a window full of stars. The scarf and the curl are still there.</p><span class="chip"><i style="background:#03061a"></i><i style="background:#3a2a5a"></i><i style="background:#ffd8a0"></i></span></div>
+    </div>
   </div>
 </section>
-
 <section id="palette">
   <div class="wrap stack-lg">
     <div class="stack">
       <div class="eyebrow">Palette</div>
       <h2>One ladder per chapter; the jar's gold never changes</h2>
-      <p class="muted">Each chapter is a value ladder from the back sheet to the front, per the lightbox grammar: back light and translucent, front dark. A new ladder means a new place in his life.</p>
+      <p class="muted">Each chapter has its own light: a background, a shadow tone, a key and a glow. A new ladder means a new place in his life.</p>
     </div>
     <div class="ladders">
       <div class="ladder"><div class="sw"><span style="background:#2a170c"></span><span style="background:#5a3a26"></span><span style="background:#94603a"></span><span style="background:#ffc566"></span></div><div class="cap"><b>Gold years</b><code>#2a170c #5a3a26 #94603a #ffc566</code></div></div>
@@ -274,7 +311,7 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
       <div class="ladder"><div class="sw"><span style="background:#0b0820"></span><span style="background:#2c1f4a"></span><span style="background:#7d8fb8"></span><span style="background:#fff4d8"></span></div><div class="cap"><b>The turn</b><code>#0b0820 #2c1f4a #7d8fb8 #fff4d8</code></div></div>
       <div class="ladder"><div class="sw"><span style="background:#3a2a5c"></span><span style="background:#8a5a6a"></span><span style="background:#f2a46a"></span><span style="background:#ffe2a8"></span></div><div class="cap"><b>Spend today</b><code>#3a2a5c #8a5a6a #f2a46a #ffe2a8</code></div></div>
       <div class="ladder"><div class="sw"><span style="background:#03061a"></span><span style="background:#0e1838"></span><span style="background:#4a3020"></span><span style="background:#ffbf66"></span></div><div class="cap"><b>His sky</b><code>#03061a #0e1838 #4a3020 #ffbf66</code></div></div>
-      <div class="ladder"><div class="sw"><span style="background:#120c0a"></span><span style="background:#a8452e"></span><span style="background:#e9bd92"></span><span style="background:#ffc566"></span></div><div class="cap"><b>Constants</b><code>ink #120c0a · scarf #a8452e · face #e9bd92 · jar #ffc566</code></div></div>
+      <div class="ladder"><div class="sw"><span style="background:#1a1220"></span><span style="background:#d2412e"></span><span style="background:#dba236"></span><span style="background:#ffc566"></span></div><div class="cap"><b>Constants</b><code>ink #1a1220 · scarf #d2412e · hoodie #dba236 · skin #f8d8c0 · jar #ffc566</code></div></div>
     </div>
   </div>
 </section>
@@ -290,27 +327,10 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
       <div><h3>Stars are days</h3><p>Spent days rise warm and bright with a chime. Wasted days hang as cold pinpricks. The sky is the scoreboard and the final payoff.</p></div>
       <div class="scarf"><h3>The scarf is love</h3><p>His mother knits it at 7. It is the one saturated colour on him at every age, so you always know where he is in a wide shot.</p></div>
       <div><h3>LATER is the enemy</h3><p>A cardboard box. Everything he postpones goes in one. They pile up until they block the window and the sky.</p></div>
-      <div><h3>Screens are paper too</h3><p>Phones, cards and progress bars are lit panels with cut-out type, so the format's UI language stays inside the lightbox look.</p></div>
-      <div><h3>Faces carry it</h3><p>A backlit face sheet with cut eyes, brows and mouth. No one speaks; the face tells you how a day went.</p></div>
+      <div><h3>Only time glows</h3><p>The jar, the stars and the screens are the only things that glow. Everything else is flat cel colour with an ink line.</p></div>
+      <div><h3>Faces carry it</h3><p>Painted anime eyes, brows and mouths on 3D heads. No one speaks; the face tells you how a day went.</p></div><div><h3>Japanese as texture</h3><p>Sound effects are Japanese, as in manga. Every card and line is in English first, with the Japanese under it, so nothing needs translating.</p></div>
       <div><h3>No one dies on screen</h3><p>The neighbour's jar reads 3 and he is dancing. Sadness lowers sharing; lift and one action raise it.</p></div>
     </div>
-  </div>
-</section>
-
-<section id="characters">
-  <div class="wrap stack-lg">
-    <div class="stack">
-      <div class="eyebrow">Character sheet</div>
-      <h2>Him, at every age</h2>
-      <p class="muted">Paper puppets: joints rotate, nothing bends. The cowlick and the scarf stay the same from 7 to 82; the coat, glasses and beard tell you the year.</p>
-    </div>
-    <figure class="sheet"><img src="img/lineup.jpg" width="1600" height="900" alt="Lineup of the protagonist at ages 7, 16, 26, 41, 63 and 82, each with the red scarf, labelled with days left."><figcaption>Days left at each age, from 30,000 minus 365.25 a year: 27,443 · 24,156 · 20,504 · 15,025 · 6,989 · 50.</figcaption></figure>
-    <figure class="sheet"><img src="img/faces.jpg" width="1600" height="900" alt="Eight expressions on the protagonist's backlit face sheet: neutral, tired, sad, wide, determined, happy, laugh, asleep."><figcaption>Eight faces. The brow and the eye carry most of it; the mouth is a single cut in profile.</figcaption></figure>
-    <div class="grid2">
-      <figure class="sheet"><img src="img/poses.jpg" width="1600" height="900" alt="Pose sheet: walking, scrolling on a couch, reaching for the jar, running, playing guitar, and the neighbour dancing."><figcaption>Key poses. The scarf follows wind and speed.</figcaption></figure>
-      <figure class="sheet"><img src="img/cast.jpg" width="1600" height="900" alt="Cast: mother knitting, mother later on the phone, the neighbour in a hat, his wife, the granddaughter, and a full jar."><figcaption>Mother, mother later, the neighbour, his wife, the granddaughter, the jar.</figcaption></figure>
-    </div>
-    <figure class="sheet"><img src="img/props.jpg" width="1600" height="900" alt="Props: jars at 30,000, 20,504, 6,989 and 3; LATER boxes; a guitar; a marble rising into a star."><figcaption>The jar at four points in a life, the LATER boxes, the guitar, and a marble rising into a star.</figcaption></figure>
   </div>
 </section>
 
@@ -321,7 +341,7 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
       <h2>The number in the thumbnail is the clock in the film</h2>
     </div>
     <div class="frame">
-      <figure><img src="img/f7_thumb.jpg" width="1600" height="900" alt="Thumbnail mock: HOW MANY DAYS LEFT? beside a glowing jar labelled 20,504 and a wide-eyed young man in a red scarf."></figure>
+      <figure><img src="img/thumb.jpg" width="1600" height="900" alt="Thumbnail mock: HOW MANY DAYS LEFT? above a glowing jar labelled 20,504, beside the wide-eyed 3D anime hero in a mustard hoodie and red scarf."></figure>
       <div class="note">
         <span class="tc">THUMBNAIL A</span>
         <h3>A face, a jar, a number</h3>
@@ -347,6 +367,7 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
           <li><span><strong>End line:</strong> "Today is one of them." or "Spend one today."</span></li>
           <li><span><strong>Lead title:</strong> the "What if" question (fits the channel name) or "30,000 DAYS".</span></li>
           <li><span><strong>Length:</strong> 2:45 as boarded (theirs is 4:25; ours drops their least-watched grind).</span></li>
+          <li><span><strong>Japanese on screen:</strong> sound effects only, or the bilingual cards as well.</span></li>
           <li><span><strong>Anything to change</strong> on the cast or the look.</span></li>
         </ol>
       </div>
@@ -355,5 +376,5 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
 </section>
 
 <footer>
-  <div class="wrap">Rendered by <code>film/days/moodboard.py</code> on the LANTERN engine. View counts from YouTube on 7 November 2026. Style grammar: Paper-cut Lightbox (Lemo-Opuscar, MIT); story, characters and art are original.</div>
+  <div class="wrap">Rendered in real time by <code>film/days3d</code> (three.js toon shading, ink-outline hulls, painted face textures, bloom) in headless Chromium; manga page by <code>film/days3d/manga.py</code>. View counts from YouTube on 7 November 2026. Story, characters and art are original.</div>
 </footer>

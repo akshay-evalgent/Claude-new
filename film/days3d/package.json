@@ -1,0 +1,6 @@
+{
+  "name": "days3d",
+  "private": true,
+  "description": "30,000 DAYS in a toon-shaded 3D anime look, rendered with three.js in headless Chromium",
+  "dependencies": { "three": "0.160.0" }
+}
