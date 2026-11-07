@@ -20,7 +20,8 @@ science-of-fitness/
 ├── assets/style-frames/        00-palette, 01-title-card, 02-nutrient-card, 03-do-dont, 04-zoom-ladder, 05-stat-ring, 06-motion-test-stat.mp4, contact-sheet
 ├── assets/anatomy/             anatomy kit: body/, muscle-highlights/, bone-highlights/, closeups/, micro/, hero/, anim/, previews/
 ├── board/                      asset board source, concept images and status
-├── episodes/ep01-skinny-to-bulky/  SCRIPT.md (scenes, visuals, sources, description) and VO.txt (narration only), written for an 18-year-old
+├── episodes/ep01-skinny-to-bulky/  SCRIPT.md and VO.txt (written for an 18-year-old), audio/ (voiceover, subtitles), video/ (first cut, thumbnail)
+├── scripts/video/              characters.py (stand-in art), ep01_video.py (renders the episode from the script timings)
 ├── scripts/style_frames.py     renders the frames above (needs Pillow and ffmpeg)
 ├── scripts/gen_board_images.py concept art through a free FLUX.1-schnell Space
 ├── scripts/anatomy/            prep_bp3d.py, manga_render.py, nerves.py, build_kit.py, micro.py, tendons.py, mito.py
