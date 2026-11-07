@@ -525,3 +525,63 @@ Object.assign(SHOTS, {
   m_door: variant('k7_rooftop', [-14, 10, 6], [-19.5, 10.5, -7], 40),
   m_end: variant('k9_end', [3, 8, 7], [-2, 7.6, -6], 44),
 });
+
+// ---------------- YouTube thumbnails (format: dark frame, one warm light, one face, one prop, one or two words) ----------------
+import { strum as _strum, holdGuitar as _hold, bedroom as _bedroom, dot as _dot } from './sets.js';
+function thumbLights(scene, o = {}) {
+  scene.add(new THREE.AmbientLight(o.amb ?? 0x2a2850, o.ambI ?? 1.2));
+  const key = new THREE.PointLight(o.key ?? 0xffb050, o.keyI ?? 40, 30, 1.5); key.position.set(...(o.keyPos || [4, 9, 4])); scene.add(key);
+  return key;
+}
+Object.assign(SHOTS, {
+  thumb_a({ scene, camera, W, H }) {     // DAYS LEFT.
+    scene.background = new THREE.Color('#06060c');
+    scene.add(new THREE.AmbientLight(0x2a2850, 1.25));
+    const c = makeChar(HERO, { expr: 'dread', face: { lookX: 0.75, lookY: -0.1, size: 2048 } }); scene.add(c.root);
+    c.pose({ turn: 0.22, lean: 0.06, headY: 0.18, headX: 0.04, headZ: -0.06 });
+    c.setRim(0xffb050, 0.75);
+    c.root.updateMatrixWorld(true);
+    const hp = c.chest.localToWorld(V(0.1, -0.7, 1.9));
+    c.ik('L', hp.clone().add(V(0.35, -0.1, 0)), V(0.8, -1, -0.5)); c.ik('R', hp.clone().add(V(-0.35, -0.1, 0)), V(-0.8, -1, -0.5));
+    const ph = P.phone(scene, null, { w: 0.9, h: 1.8, lightI: 0.9, lightD: 6, lightZ: 0.9, lightColor: 0x6fa0ff, res: 1 }); ph.position.copy(hp); ph.lookAt(c.head.getWorldPosition(V(0, 0, 0)));
+    const J = P.jar(scene, { r: 2.0, h: 5.2, n: 300, mr: 0.28, label: '21,236', sub: 'DAYS LEFT', labelSize: 104, lightI: 30, lightD: 22, glow: 1.0, coreK: 0.12 }); J.position.set(4.9, 4.2, -1.2); J.rotation.y = -0.35;
+    box(scene, [9, 4.2, 7], [5.2, 2.1, -1.6], '#2a1e1a');
+    cam(camera, [0.3, 10.0, 10.2], [1.7, 8.7, 0], 38);
+    return { bloom: { strength: 0.75, radius: 0.55, threshold: 0.82 }, overlay(g, W, H) { U.vignette(g, W, H, 0.65); U.thumbText(g, 'DAYS LEFT.', W / 2, H * 0.2, H * 0.17); } };
+  },
+  thumb_b({ scene, camera, W, H }) {     // LATER.
+    scene.background = new THREE.Color('#06060c');
+    scene.add(new THREE.AmbientLight(0x2a2850, 1.15));
+    const lamp = new THREE.PointLight(0xffa850, 55, 24, 1.5); lamp.position.set(3.5, 9, 6); scene.add(lamp);
+    box(scene, [80, 1, 80], [0, -0.5, 0], '#14121e');
+    P.reseed(77);
+    const spots = [[-6.5, 0, -3, 3.4], [-3, 0, -4.5, 3.2], [0.8, 0, -5, 3.4], [4.6, 0, -4.4, 3.2], [7.6, 0, -3, 3.0], [-5.2, 2.7, -3.6, 3.0], [-1.4, 2.6, -5, 3.1], [2.6, 2.7, -4.9, 3.2], [6.2, 2.5, -3.8, 2.9],
+      [-3.4, 5.2, -4.4, 2.9], [0.6, 5.4, -5.2, 3.0], [4.4, 5.2, -4.6, 2.8], [-1.4, 7.8, -5, 2.8], [2.6, 7.9, -5, 2.8], [-7.2, 0, 0.6, 2.8], [8.2, 0, 0.8, 2.6]];
+    spots.forEach(([x, y, z, s], i) => { const b = P.laterBox(scene, s, { text: ['LATER', 'GUITAR', 'CALL MOM', 'GYM', 'TRIP', 'BOOK', 'LATER', 'FRIENDS', 'LATER', 'DRAW', 'LATER', 'PIANO', 'LATER', 'RUN', 'LATER', 'SLEEP'][i] }); b.position.set(x, y + s * 0.4, z); b.rotation.y = (P.rnd() - 0.5) * 0.5; });
+    const c = makeChar(HERO, { expr: 'sad', face: { lookY: -0.4, size: 2048 } }); scene.add(c.root); c.root.position.set(0.4, 0, 1.0);
+    c.pose({ hipY: 1.3, lean: 0.3, headX: 0.08, headZ: 0.08, legL: [-2.0, 2.5, 0.12], legR: [-2.0, 2.5, -0.12] });
+    c.root.updateMatrixWorld(true);
+    const kn = c.legL.kn.getWorldPosition(V(0, 0, 0)).add(c.legR.kn.getWorldPosition(V(0, 0, 0))).multiplyScalar(0.5).add(V(0, -1.2, 0.6));
+    c.ik('L', kn.clone().add(V(0.25, 0, 0)), V(1, -0.6, -0.4)); c.ik('R', kn.clone().add(V(-0.25, 0, 0)), V(-1, -0.6, -0.4));
+    c.setRim(0xffb050, 0.6);
+    const ph = P.phone(scene, (g, w, h) => { g.fillStyle = '#1a2a50'; g.fillRect(0, 0, w, h); }, { w: 0.9, h: 1.8, lightI: 1.5, lightD: 5, lightZ: 0.6, res: 1 }); ph.position.set(2.6, 0.08, 3.2); ph.rotation.set(-Math.PI / 2, 0, 0.6);
+    cam(camera, [0.4, 6.4, 12], [0.4, 5.9, 0], 42);
+    return { bloom: { strength: 0.6, radius: 0.5, threshold: 0.85 }, overlay(g, W, H) { U.vignette(g, W, H, 0.6); U.thumbText(g, 'LATER.', W / 2, H * 0.2, H * 0.19); } };
+  },
+  thumb_c({ scene, camera, W, H }) {     // TODAY.
+    scene.background = new THREE.Color('#03061a');
+    P.sky(scene, { stops: [[0, '#02041a'], [0.6, '#0c1440'], [1, '#2a2050']], stars: 1800, r: 500 });
+    starRiver(scene, 3600, { y: 40, slope: 0.28, width: 24, len: 520, z: 220, size: 2.6, haze: 0.45 });
+    scene.add(new THREE.AmbientLight(0x3a3a78, 1.2));
+    const c = makeChar(HERO, { expr: 'awe', face: { lookX: 0.15, lookY: 0.2, size: 2048 } }); scene.add(c.root);
+    c.pose({ turn: 0.18, headX: -0.06, headY: 0.12 });
+    c.root.updateMatrixWorld(true);
+    const held = c.head.localToWorld(V(0.0, -1.25, 2.4));
+    c.ik('R', held.clone().add(V(-0.28, -0.4, -0.1)), V(-1, -0.8, -0.4)); c.ik('L', held.clone().add(V(0.28, -0.4, -0.1)), V(1, -0.8, -0.4));
+    const marble = new THREE.Mesh(new THREE.SphereGeometry(0.3, 20, 16), new THREE.MeshBasicMaterial({ color: new THREE.Color('#ffc566').multiplyScalar(1.35), toneMapped: false })); marble.position.copy(held); scene.add(marble);
+    const L = new THREE.PointLight(0xffb050, 7, 10, 1.5); L.position.copy(held).add(V(0, 0, 0.3)); scene.add(L);
+    c.setRim(0xbfd4ff, 0.6);
+    cam(camera, [0.6, 10.4, 10.5], [0.5, 9.8, 0], 40);
+    return { bloom: { strength: 0.85, radius: 0.6, threshold: 0.78 }, overlay(g, W, H) { U.vignette(g, W, H, 0.55); U.thumbText(g, 'TODAY.', W / 2, H * 0.2, H * 0.19); } };
+  },
+});

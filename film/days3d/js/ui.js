@@ -1,7 +1,8 @@
 // 2D overlay helpers: manga speed lines, Japanese SFX, UI cards, tags, vignettes.
 export async function loadFonts() {
   const faces = [new FontFace('Archivo', 'url(./fonts/Archivo-wdth-wght.ttf)', { weight: '100 900' }),
-    new FontFace('Playfair', 'url(./fonts/PlayfairDisplay-wght.ttf)', { weight: '400 900' })];
+    new FontFace('Playfair', 'url(./fonts/PlayfairDisplay-wght.ttf)', { weight: '400 900' }),
+    new FontFace('Fredoka', 'url(./fonts/Fredoka-Bold.ttf)', { weight: '700' })];
   for (const f of faces) { await f.load(); document.fonts.add(f); }
   await document.fonts.load('40px IPAGothic', '残り日数あとで');
 }
@@ -80,5 +81,15 @@ export function narr(g, x, y, lines, o = {}) {
   const size = o.size || 30, w = o.w || 420, h = lines.length * size * 1.4 + size * 0.9;
   g.save(); g.fillStyle = o.bg || '#fffdf6'; g.strokeStyle = '#120c0a'; g.lineWidth = 4; g.fillRect(x, y, w, h); g.strokeRect(x, y, w, h);
   lines.forEach((l, i) => text(g, l, x + size * 0.6, y + size * 1.25 + i * size * 1.4, { font: l.font || `${o.weight || 600} ${size}px ${o.family || 'Archivo'}`, color: '#120c0a' }));
+  g.restore();
+}
+
+// thumbnail caption in the channel-format we follow: heavy rounded white caps with a dark outline and a soft shadow
+export function thumbText(g, s, x, y, size, o = {}) {
+  g.save(); g.font = `700 ${size}px Fredoka`; g.textAlign = o.align || 'center'; g.textBaseline = 'alphabetic'; g.lineJoin = 'round';
+  if (o.letter) g.letterSpacing = o.letter + 'px';
+  g.shadowColor = 'rgba(0,0,0,0.85)'; g.shadowBlur = size * 0.22; g.shadowOffsetY = size * 0.04;
+  g.lineWidth = size * 0.16; g.strokeStyle = '#0b0a10'; g.strokeText(s, x, y);
+  g.shadowColor = 'transparent'; g.fillStyle = o.fill || '#ffffff'; g.fillText(s, x, y);
   g.restore();
 }

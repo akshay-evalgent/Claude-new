@@ -18,3 +18,14 @@ python3 manga.py                 # out/manga_page.png from the renders (needs k1
 
 Days left everywhere = 30,000 − 365.25 × age (21,236 at the hook is two days before his 24th birthday).
 Fonts: Archivo and Playfair Display (OFL, in `fonts/`); Japanese uses the system IPAGothic.
+
+## The film
+
+- `js/film.js`: the 21 shots of the 2:45 film (24 fps). Each shot is a function of time; characters move on twos (12 poses a second), cameras and light move every frame. `ctx.vertical` switches each shot to its 9:16 framing for the Short.
+- `js/sets.js`: animated sets (time-lapse sky, bedroom, rooftop with the stairwell door, dream stage), the POV hand, the guitar rig and the waltz.
+- `js/anim.js`: keyed tracks, easing, pose interpolation. `char.js` has two-bone arm IK (`c.ik('L' | 'R', worldPoint, pole)`).
+- `render.js`: frame-by-frame renderer (headless Chromium → JPEG → ffmpeg), one MP4 per shot, `shot:from-to` ranges, `--still shot@t`.
+- `score.py`: score and sound, synthesised on the picture's clock (uses the LANTERN instrument library). `score.py master|short`.
+- `captions.py`: SRT captions (English SDH + six languages; the Short's English).
+- `assemble.py`: concatenates shots, mixes to −14 LUFS, runs the pre-flight checks.
+- `UPLOAD.md`: the upload kit.

@@ -11,10 +11,15 @@ export const EXPR = {
   happy:      { open: 0.0, brow: [0.06, 0.06], mouth: ['smile', 0.06], blush: 0.6 },
   laugh:      { open: 0.0, brow: [0.1, 0.1], mouth: ['open', 0.12], blush: 0.7 },
   asleep:     { open: -1.0, brow: [0.0, 0.0], mouth: ['line', 0.01], blush: 0.25 },
+  dread:      { open: 1.18, tilt: 0.1, low: 0.0, pupil: 0.42, brow: [0.17, -0.03], mouth: ['o', 0.03], sweat: true, sweat2: true, bags: true, blood: true, blush: 0.0 },
+  shock:      { open: 1.25, tilt: 0.0, low: 0.0, pupil: 0.32, brow: [0.16, 0.16], mouth: ['o', 0.05], sweat: true, blush: 0.0 },
+  smile:      { open: 0.8, tilt: 0.04, low: 0.06, pupil: 1.05, brow: [0.05, 0.04], mouth: ['smile', 0.05], blush: 0.45 },
+  awe:        { open: 1.15, tilt: 0.02, low: 0.0, pupil: 1.15, brow: [0.1, 0.08], mouth: ['o', 0.03], blush: 0.35, sparkle: true },
 };
 
 export function faceTexture(look, expr = 'neutral', opts = {}) {
-  const E = EXPR[expr];
+  let E = EXPR[expr];
+  if (opts.blink) E = { ...E, open: -1.0 };
   const S = opts.size || 1024;
   return canvasTex(S, S, (g) => {
     const X = (u) => (u + 1) / 2 * S, Y = (v) => (1 - (v + 1) / 2) * S, L = (d) => d / 2 * S;
@@ -53,8 +58,9 @@ export function faceTexture(look, expr = 'neutral', opts = {}) {
         g.bezierCurveTo(X(ex - w * 0.7), Y(top + tilt * 0.7), X(ex + w * 0.4), Y(top - tilt * 0.5), X(ex + w), Y(ey + 0.02));
         g.bezierCurveTo(X(ex + w * 0.6), Y(ey - h * 0.55 + (E.low || 0)), X(ex - w * 0.5), Y(ey - h * 0.6 + (E.low || 0)), X(ex - w), Y(ey));
         g.closePath();
-        g.fillStyle = '#ffffff'; g.fill();
+        g.fillStyle = E.blood ? '#fff0ee' : '#ffffff'; g.fill();
         g.clip();
+        if (E.blood) { g.strokeStyle = 'rgba(220,60,60,0.7)'; g.lineWidth = L(0.006); for (const [a, b] of [[-0.9, -0.2], [-0.8, 0.3], [0.85, -0.25], [0.9, 0.25]]) { g.beginPath(); g.moveTo(X(ex + a * w), Y(ey + b * 0.1)); g.lineTo(X(ex + a * w * 0.6), Y(ey + b * 0.06 + 0.01)); g.lineTo(X(ex + a * w * 0.45), Y(ey + b * 0.09)); g.stroke(); } }
         const ir = 0.17, ix = ex + (opts.lookX || 0) * 0.06, iy = ey - 0.02 + (opts.lookY || 0) * 0.05;
         const gr = g.createLinearGradient(0, Y(iy + ir), 0, Y(iy - ir));
         gr.addColorStop(0.0, look.irisDark); gr.addColorStop(0.55, look.iris); gr.addColorStop(1.0, look.irisLight);
@@ -75,6 +81,7 @@ export function faceTexture(look, expr = 'neutral', opts = {}) {
         g.fillStyle = '#ffffff';
         g.beginPath(); g.ellipse(X(ix + ir * 0.38), Y(iy + ir * 0.42), L(ir * 0.3), L(ir * 0.23), 0, 0, 7); g.fill();
         g.beginPath(); g.arc(X(ix - ir * 0.42), Y(iy - ir * 0.38), L(ir * 0.11), 0, 7); g.fill();
+        if (E.sparkle) { g.fillStyle = 'rgba(255,240,200,0.9)'; for (const [a, b, r] of [[-0.5, 0.1, 0.05], [0.45, -0.45, 0.035]]) { g.beginPath(); for (let k = 0; k < 8; k++) { const an = k * Math.PI / 4, rr = k % 2 ? r * 0.25 : r; g.lineTo(X(ix + a * ir + Math.cos(an) * rr), Y(iy + b * ir + Math.sin(an) * rr)); } g.closePath(); g.fill(); } }
         g.restore();
         // upper lash line with a wing
         g.strokeStyle = ink; g.lineWidth = L(0.055);
@@ -112,6 +119,7 @@ export function faceTexture(look, expr = 'neutral', opts = {}) {
       g.fillStyle = '#e07a7a'; g.beginPath(); g.ellipse(X(0), Y(mk === 'o' ? -0.6 : -0.63), L(mk === 'o' ? 0.03 : 0.06), L(0.025), 0, 0, 7); g.fill();
     }
     if (E.tear) { g.fillStyle = 'rgba(190,225,255,0.95)'; g.beginPath(); g.ellipse(X(-0.42), Y(-0.24), L(0.025), L(0.045), 0, 0, 7); g.fill(); }
+    if (E.sweat2) { g.fillStyle = 'rgba(200,230,255,0.95)'; for (const [u, v, r] of [[-0.66, 0.2, 0.024], [0.7, -0.05, 0.02], [-0.58, 0.42, 0.018]]) { g.beginPath(); g.ellipse(X(u), Y(v), L(r), L(r * 1.8), 0, 0, 7); g.fill(); } }
     if (E.sweat) { g.fillStyle = 'rgba(200,230,255,0.95)'; g.beginPath(); g.ellipse(X(0.62), Y(0.32), L(0.03), L(0.055), 0, 0, 7); g.fill(); }
     if (look.wrinkles) {
       g.strokeStyle = 'rgba(150,90,80,0.7)'; g.lineWidth = L(0.012);

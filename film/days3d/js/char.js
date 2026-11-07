@@ -229,11 +229,37 @@ export function makeChar(look, opts = {}) {
   const legL = leg(1), legR = leg(-1);
 
   const HIP = 5.62;
+  const faceCache = new Map();
   const api = {
     root, hips, spine, chest, neck, head, hair, armL, armR, legL, legR, faceMat, look, tail, HIP,
-    setFace(expr, o = {}) { faceMat.map = faceTexture(look, expr, o); faceMat.needsUpdate = true; },
+    setFace(expr, o = {}) {
+      const k = expr + JSON.stringify(o);
+      if (api._face === k) return;
+      if (!faceCache.has(k)) faceCache.set(k, faceTexture(look, expr, { ...(opts.face || {}), ...o }));
+      faceMat.map = faceCache.get(k); faceMat.needsUpdate = true; api._face = k;
+    },
     setRim(color, k) {
       root.traverse((o) => { const m = o.material; if (m && m.userData && m.userData.rim) { m.userData.rim.value.set(color); if (k !== undefined) m.userData.rimK.value = k; } });
+    },
+    // two-bone IK: put the palm of arm 'L' or 'R' at a world point, elbow toward a pole given in chest space
+    ik(sideKey, target, pole) {
+      const a = sideKey === 'L' ? armL : armR, sd = sideKey === 'L' ? 1 : -1;
+      root.updateMatrixWorld(true);
+      const T = chest.worldToLocal(target.clone()).sub(a.sh.position);
+      const L1 = 1.7, L2 = 1.95, dist = Math.min(L1 + L2 - 0.02, Math.max(Math.abs(L1 - L2) + 0.05, T.length()));
+      const bend = Math.PI - Math.acos(Math.min(1, Math.max(-1, (L1 * L1 + L2 * L2 - dist * dist) / (2 * L1 * L2))));
+      const h0 = new THREE.Vector3(0, -L1 - L2 * Math.cos(bend), L2 * Math.sin(bend)).normalize();
+      const dn = T.clone().normalize();
+      const q1 = new THREE.Quaternion().setFromUnitVectors(h0, dn);
+      const e1 = new THREE.Vector3(0, -1, 0).applyQuaternion(q1);
+      const pl = (pole || new THREE.Vector3(sd * 0.8, -1, -0.6)).clone();
+      const proj = (v) => v.clone().sub(dn.clone().multiplyScalar(v.dot(dn))).normalize();
+      const pe = proj(e1), pp = proj(pl);
+      let ang = Math.acos(Math.min(1, Math.max(-1, pe.dot(pp)))); if (new THREE.Vector3().crossVectors(pe, pp).dot(dn) < 0) ang = -ang;
+      const q2 = new THREE.Quaternion().setFromAxisAngle(dn, ang);
+      a.sh.quaternion.copy(q2.multiply(q1)); a.el.rotation.set(-bend, 0, 0);
+      root.updateMatrixWorld(true);
+      return api;
     },
     pose(p = {}) {
       spine.rotation.set(p.lean || 0, p.twist || 0, p.side || 0);
