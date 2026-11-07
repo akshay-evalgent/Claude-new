@@ -1,0 +1,24 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-11-07T15:10:00Z"},
+  "title": "Science of Fitness asset board",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1600, "h": 1100, "title": "1 · Mood board"},
+    "Host-Options.dc.html": {"x": 1680, "y": 0, "w": 1600, "h": 1100, "title": "2 · Host: pick a design"},
+    "Host-Sheet.dc.html": {"x": 0, "y": 1220, "w": 1600, "h": 1300, "title": "3 · Host character sheet"},
+    "Poses.dc.html": {"x": 1680, "y": 1220, "w": 1600, "h": 1300, "title": "4 · Pose library"},
+    "Rival.dc.html": {"x": 0, "y": 2640, "w": 1600, "h": 1000, "title": "5 · The rival"},
+    "Science.dc.html": {"x": 1680, "y": 2640, "w": 1600, "h": 1000, "title": "6 · Inside-the-body assets"},
+    "Food.dc.html": {"x": 0, "y": 3760, "w": 1600, "h": 1100, "title": "7 · Food, vitamins, minerals"},
+    "Templates.dc.html": {"x": 1680, "y": 3760, "w": 1600, "h": 1100, "title": "8 · Screen templates"},
+    "Thumbnails.dc.html": {"x": 0, "y": 4980, "w": 1600, "h": 1100, "title": "9 · Thumbnail mock-ups"}
+  },
+  "order": ["Main.dc.html", "Host-Options.dc.html", "Host-Sheet.dc.html", "Poses.dc.html", "Rival.dc.html", "Science.dc.html", "Food.dc.html", "Templates.dc.html", "Thumbnails.dc.html"],
+  "notes": {
+    "boardtitle": {"x": 0, "y": -320, "text": "Science of Fitness · asset board v1", "kind": "title1", "maxW": 3280},
+    "howto": {"x": -620, "y": 0, "w": 520, "text": "How to review\n\n1. Go board by board, 1 to 9.\n2. Comment right on the thing you want changed: a host option, a colour, a pose, a template.\n3. On board 2, say which host you want: A, B or C, or a mix.\n4. Boxes marked PENDING are written specs. Their images are waiting on free GPU time. Comment on the spec now.\n\nNothing gets built until this board is signed off.", "fill": "teal", "size": "m"}
+  },
+  "designSystems": []
+}

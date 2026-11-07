@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Host design options</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#26E0C4}a:hover{color:#7FF0DD}
+</style>
+</helmet>
+<div style="width: 1600px; height: 1100px; box-sizing: border-box; padding: 56px 64px; background: #0A0C10; color: #ECF0F4; font-family: Inter, system-ui, sans-serif; display: flex; flex-direction: column; gap: 28px">
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; letter-spacing: 0.12em; color: #9AA3AF"><span style="width: 4px; height: 22px; background: #26E0C4"></span>THE HOST · PICK ONE</div>
+    <h1 style="margin: 0; font-size: 48px; font-weight: 900; line-height: 1.05">Three directions. Same body, different signature item.</h1>
+    <p style="margin: 0; font-size: 19px; color: #9AA3AF">The signature item is the only teal thing on screen in every shot, like The Rep Theory's orange shorts. Pick one, or mix: hair from one, accent from another.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; flex-grow: 1; min-height: 0">
+    <article style="background: #12161C; border: 2px solid #26E0C4; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column">
+      <div style="position: relative; flex-grow: 1; min-height: 0; background: #1A1A1A">
+        <img src="/_blob/6d8c23839afa7e66ee120954f0af08c9" alt="Option A: messy black hair, teal shorts with white stripe" style="width: 100%; height: 100%; object-fit: cover; object-position: top">
+        <span style="position: absolute; top: 16px; left: 16px; background: #26E0C4; color: #0A0C10; font-size: 14px; font-weight: 800; letter-spacing: 0.08em; padding: 6px 12px; border-radius: 999px">RECOMMENDED</span>
+      </div>
+      <div style="padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; align-items: baseline; gap: 12px"><span style="font-size: 40px; font-weight: 900; color: #26E0C4">A</span><span style="font-size: 22px; font-weight: 800">The student</span></div>
+        <div style="font-size: 16px; color: #CDD3DA">Messy black hair, calm eyes. <strong style="color: #26E0C4">Teal shorts with a white stripe.</strong></div>
+        <div style="font-size: 15px; color: #9AA3AF; line-height: 1.5">+ Shorts are visible in every pose, even from behind<br>+ Reads as a beginner who got there<br>− Closest silhouette to The Rep Theory's hero</div>
+      </div>
+    </article>
+    <article style="background: #12161C; border: 2px solid #262C36; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column">
+      <div style="flex-grow: 1; min-height: 0; background: #111">
+        <img src="/_blob/462ef97fcc85f48e990a1630606bc53e" alt="Option B: top knot, teal wrist wraps, black shorts" style="width: 100%; height: 100%; object-fit: cover; object-position: top">
+      </div>
+      <div style="padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; align-items: baseline; gap: 12px"><span style="font-size: 40px; font-weight: 900; color: #ECF0F4">B</span><span style="font-size: 22px; font-weight: 800">The fighter</span></div>
+        <div style="font-size: 16px; color: #CDD3DA">Undercut with a small top knot. <strong style="color: #26E0C4">Teal wrist wraps.</strong> Black shorts.</div>
+        <div style="font-size: 15px; color: #9AA3AF; line-height: 1.5">+ Most distinctive silhouette of the three<br>+ Wraps point at hands, grip, forearms: our hit topics<br>− Wraps get small in wide shots and thumbnails</div>
+      </div>
+    </article>
+    <article style="background: #12161C; border: 2px solid #262C36; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column">
+      <div style="flex-grow: 1; min-height: 0; background: #1A1A1A">
+        <img src="/_blob/26d8ac3eef25e3a280d3ff207aaa48bb" alt="Option C: cropped hair, teal headband, grey shorts" style="width: 100%; height: 100%; object-fit: cover; object-position: top">
+      </div>
+      <div style="padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; align-items: baseline; gap: 12px"><span style="font-size: 40px; font-weight: 900; color: #ECF0F4">C</span><span style="font-size: 22px; font-weight: 800">The coach</span></div>
+        <div style="font-size: 16px; color: #CDD3DA">Short cropped hair, friendly smile. <strong style="color: #26E0C4">Teal headband.</strong> Grey shorts.</div>
+        <div style="font-size: 15px; color: #9AA3AF; line-height: 1.5">+ Teal sits next to the face, so it survives a tiny thumbnail<br>+ Warmest, most approachable<br>− Headband reads slightly retro</div>
+      </div>
+    </article>
+  </div>
+  <p style="margin: 0; font-size: 15px; color: #9AA3AF">Concept art from FLUX.1-schnell. The production host is locked by training a character model on the chosen design, so proportions and face will tighten up.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1600,"height":1100}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

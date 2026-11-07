@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pose library</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#26E0C4}a:hover{color:#7FF0DD}
+</style>
+</helmet>
+<div style="width: 1600px; height: 1300px; box-sizing: border-box; padding: 56px 64px; background: #0A0C10; color: #ECF0F4; font-family: Inter, system-ui, sans-serif; display: flex; flex-direction: column; gap: 26px">
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; letter-spacing: 0.12em; color: #9AA3AF"><span style="width: 4px; height: 22px; background: #26E0C4"></span>POSE LIBRARY · STARTER SET OF 8</div>
+    <h1 style="margin: 0; font-size: 48px; font-weight: 900; line-height: 1.05">Every pose teaches something. Form must be exact.</h1>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px">
+    <figure style="margin: 0; background: #12161C; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+      <div style="position: relative; height: 300px; background: #FFFFFF">
+        <img src="/_blob/62ff58fb4302e3ba4b3c665b167b5d8a" alt="Push-up attempt with broken form" style="width: 100%; height: 100%; object-fit: contain">
+        <span style="position: absolute; top: 12px; left: 12px; background: #FF5454; color: #0A0C10; font-size: 13px; font-weight: 800; letter-spacing: 0.06em; padding: 6px 12px; border-radius: 999px">FORM WRONG · KNEES DOWN, HIPS PIKED</span>
+      </div>
+      <figcaption style="padding: 12px 18px; font-size: 15px; color: #9AA3AF"><strong style="color: #ECF0F4">Push-up.</strong> Prompt-only AI could not draw a straight body line.</figcaption>
+    </figure>
+    <figure style="margin: 0; background: #12161C; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+      <div style="position: relative; height: 300px; background: #111111">
+        <img src="/_blob/c82e63e4e86b219685c915c31fe0d280" alt="Plank attempt that came out as a kick" style="width: 100%; height: 100%; object-fit: contain">
+        <span style="position: absolute; top: 12px; left: 12px; background: #FF5454; color: #0A0C10; font-size: 13px; font-weight: 800; letter-spacing: 0.06em; padding: 6px 12px; border-radius: 999px">NOT A PLANK · IT DREW A KICK</span>
+      </div>
+      <figcaption style="padding: 12px 18px; font-size: 15px; color: #9AA3AF"><strong style="color: #ECF0F4">Forearm plank.</strong> Style is right, the exercise is not.</figcaption>
+    </figure>
+  </div>
+  <div style="background: #10201D; border: 1px solid #1E5C52; border-radius: 14px; padding: 18px 22px; display: flex; gap: 28px; align-items: center">
+    <strong style="font-size: 18px; color: #26E0C4; flex-shrink: 0">The fix for production</strong>
+    <span style="font-size: 16px; color: #CDD3DA">Photograph a real rep, extract its skeleton with OpenPose or DWPose, then draw the host on that skeleton with ControlNet. Two or three keyframes per rep, checked by a person for form.</span>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; flex-grow: 1; min-height: 0">
+    <div style="border: 2px dashed #39414D; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px"><span style="align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; color: #0A0C10; background: #FFB830; padding: 4px 10px; border-radius: 999px">PENDING</span><strong style="font-size: 18px">Squat, bottom position</strong><span style="font-size: 15px; color: #9AA3AF">Side view, heels down, chest up. Teaches hip and knee angles.</span></div>
+    <div style="border: 2px dashed #39414D; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px"><span style="align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; color: #0A0C10; background: #FFB830; padding: 4px 10px; border-radius: 999px">PENDING</span><strong style="font-size: 18px">Door row</strong><span style="font-size: 15px; color: #9AA3AF">Leaning back from an open door, both handles. The no-equipment back exercise.</span></div>
+    <div style="border: 2px dashed #39414D; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px"><span style="align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; color: #0A0C10; background: #FFB830; padding: 4px 10px; border-radius: 999px">PENDING</span><strong style="font-size: 18px">Flex with <span style="color: #FF5454">coral muscle glow</span></strong><span style="font-size: 15px; color: #9AA3AF">Waist up, biceps glowing coral. The anatomy-highlight look.</span></div>
+    <div style="border: 2px dashed #39414D; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px"><span style="align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; color: #0A0C10; background: #FFB830; padding: 4px 10px; border-radius: 999px">PENDING</span><strong style="font-size: 18px">Explaining, pointing</strong><span style="font-size: 15px; color: #9AA3AF">Teacher pose that sits beside any diagram or stat.</span></div>
+    <div style="border: 2px dashed #39414D; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px"><span style="align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; color: #0A0C10; background: #FFB830; padding: 4px 10px; border-radius: 999px">PENDING</span><strong style="font-size: 18px">Holding food, <span style="color: #FFB830">amber glow</span></strong><span style="font-size: 15px; color: #9AA3AF">A handful of pumpkin seeds toward camera. Opens every nutrient segment.</span></div>
+    <div style="border: 2px dashed #39414D; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px"><span style="align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; color: #0A0C10; background: #FFB830; padding: 4px 10px; border-radius: 999px">PENDING</span><strong style="font-size: 18px">Before and after</strong><span style="font-size: 15px; color: #9AA3AF">Same host, skinny and hunched next to lean and upright. Thumbnail staple.</span></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1600,"height":1300}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
