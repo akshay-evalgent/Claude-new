@@ -1,6 +1,6 @@
 # Episode 1: Why You're Skinny, and How to Actually Get Bigger
 
-**Target length:** about 13 minutes. That's 1606 words of narration at a relaxed 155 words a minute, plus holds for demos and the plan card.
+**Target length:** 11:30 with the recorded voiceover (`audio/vo-full.flac`), including holds for demos and the plan card.
 **Who it's for:** an 18-year-old who is skinny, trains at home or not at all yet, and says "I eat so much and never gain".
 **Promise:** by the end they understand why they're skinny in plain words, and they have a food and workout plan they can start this week.
 
@@ -31,15 +31,15 @@ Talk like a slightly older friend who has read the research and wants you to win
 **Chapters**
 ```
 0:00 1,000 extra calories a day
-1:20 Reason 1: you remember the big meals
-2:29 Reason 2: your body burns it off
-3:21 Reason 3: no reason to grow
-4:21 The "ectomorph" myth
-5:07 The food
-7:39 The workout
-10:17 The plan
-11:11 Quick questions: fat, supplements, football
-12:09 Start here
+1:13 Reason 1: you remember the big meals
+2:12 Reason 2: your body burns it off
+2:58 Reason 3: no reason to grow
+3:53 The "ectomorph" myth
+4:36 The food
+6:58 The workout
+9:22 The plan
+10:13 Quick questions: fat, supplements, football
+11:05 Start here
 ```
 
 ---
@@ -67,7 +67,7 @@ Each scene has five parts:
 > That's roughly an extra burger, fries and a drink. Every single day. For eight weeks.
 > Nobody goes to the gym. Nobody does anything special.
 
-### Scene 2 · 0:20
+### Scene 2 · 0:21
 **Visual:** The 16 figures fill with amber "fat" shading. Some barely change, and some fill up a lot.
 **Text:** `Some gained 10× more fat than others`
 **Source:** Levine et al., Science, 1999
@@ -76,7 +76,7 @@ Each scene has five parts:
 > Nope. Some people gained about ten times more fat than others.
 > Same food. Same eight weeks.
 
-### Scene 3 · 0:34
+### Scene 3 · 0:32
 **Visual:** The host on a chair, bouncing a knee, then getting up and pacing while on the phone (**NEW**: fidget loop). The legs glow coral with each bounce. Hard cut to the stat ring.
 **Text:** stat ring `692 calories a day`, sub-line `burned just by moving around (one person)`
 **Source:** Levine et al., Science, 1999
@@ -87,7 +87,7 @@ Each scene has five parts:
 > One person was burning almost seven hundred extra calories a day, just from that.
 > Their body burned off a big chunk of the extra food.
 
-### Scene 4 · 0:58
+### Scene 4 · 0:55
 **Visual:** The host faces the camera. Title card: `WHY YOU'RE SKINNY`. A small disclaimer line fades in at the bottom.
 **Text:** `Not medical advice. Sources on screen.`
 
@@ -99,12 +99,12 @@ Each scene has five parts:
 
 ## Part 1 · Why you're skinny
 
-### Scene 5 · 1:20 · Reason 1
+### Scene 5 · 1:13 · Reason 1
 **Visual:** Chapter label `REASON 1 · YOU REMEMBER THE BIG MEALS`. The rival leans into frame.
 
 > [RIVAL]: "Bro, I eat a LOT. I just have a fast metabolism."
 
-### Scene 6 · 1:27
+### Scene 6 · 1:17
 **Visual:** A week of meals as ink cards. Monday is a huge biryani glowing amber. Tuesday says "woke up late, no breakfast". Wednesday shows a packet of chips. Thursday says "not hungry". Then a bar chart for the week with a dashed "needed to grow" line, and the weekly average sits under it (**NEW**: food-week diagram).
 **Text:** `Your body counts the whole week, not your best day`
 
@@ -114,7 +114,7 @@ Each scene has five parts:
 > Your body doesn't care about your best day. It counts the whole week.
 > And for most skinny guys, the whole week adds up to just enough to stay the same.
 
-### Scene 7 · 2:03
+### Scene 7 · 1:48
 **Visual:** Zoom ladder: body, then stomach, then brain, with the brain glowing teal (`assets/anatomy/closeups/brain-spine-nerves.png`). A cartoon text bubble travels from stomach to brain: "we're full, stop."
 **Text:** `Stomach → brain: "we're full"`
 
@@ -124,7 +124,7 @@ Each scene has five parts:
 > So you eat a huge lunch, feel stuffed all afternoon, and dinner quietly gets smaller.
 > You're not lying when you say you eat a lot. You just don't eat a lot every day.
 
-### Scene 8 · 2:29 · Reason 2
+### Scene 8 · 2:12 · Reason 2
 **Visual:** Chapter label `REASON 2 · YOUR BODY BURNS IT OFF`. A phone battery icon splits into three parts: "staying alive" (biggest), "digesting food" (small), "moving" (the rest).
 **Text:** `Your daily energy: staying alive / digesting / moving`
 
@@ -133,7 +133,7 @@ Each scene has five parts:
 > A small part goes to digesting food.
 > And the rest goes to moving. Not just the gym. Walking to class, standing, fidgeting, pacing while you're on the phone.
 
-### Scene 9 · 2:53
+### Scene 9 · 2:35
 **Visual:** Back to the 16 figures. The ones who gained little now have teal glowing legs, moving. The `assets/anatomy/anim/nerve-signals.mp4` loop sits small in a corner.
 **Text:** `Eat more → body moves more (without you noticing)`
 **Source:** Levine et al., Science, 1999
@@ -143,7 +143,7 @@ Each scene has five parts:
 > So when you eat a bit more for a few days and nothing happens, it's not that food "doesn't work" on you.
 > Your body is burning some of it off. You just need a little more than you think.
 
-### Scene 10 · 3:21 · Reason 3
+### Scene 10 · 2:58 · Reason 3
 **Visual:** Chapter label `REASON 3 · NO REASON TO GROW`. Play `assets/anatomy/anim/zoom-to-biceps.mp4`, then cut to `assets/anatomy/micro/muscle-hierarchy.png`.
 **Text:** `Muscle is expensive`
 
@@ -151,7 +151,7 @@ Each scene has five parts:
 > Muscle is expensive. Your body has to spend energy to build it, and energy to keep it.
 > So it won't build any unless you give it a reason.
 
-### Scene 11 · 3:38
+### Scene 11 · 3:12
 **Visual:** `assets/anatomy/micro/mito-in-fibre.png` with two tiny ink crews on it: teal "builders" adding bricks and coral "demolition" removing bricks. A balance between them tips.
 **Text:** `Builders vs demolition, all day long`
 
@@ -160,7 +160,7 @@ Each scene has five parts:
 > If you don't train, both crews work at the same speed. Nothing changes.
 > Training hard tells the builders to work faster. And food and protein are their bricks.
 
-### Scene 12 · 4:01
+### Scene 12 · 3:35
 **Visual:** The host struggling through the last reps of a push-up set, with the chest glowing coral (**NEW**: host push-up, 2 keyframes). Small overlay of `assets/anatomy/muscle-highlights/chest-front.png`.
 **Text:** `Hard sets = the message`
 
@@ -169,12 +169,12 @@ Each scene has five parts:
 > No message, no new muscle.
 > Eat a ton without training, and most of it just turns into fat.
 
-### Scene 13 · 4:21 · The ectomorph myth
+### Scene 13 · 3:53 · The ectomorph myth
 **Visual:** The rival, arms crossed. A sepia "1940s" card with three body shapes gets stamped `MYTH`.
 
 > [RIVAL]: "Face it, bro. You're an ectomorph. You were born skinny."
 
-### Scene 14 · 4:28
+### Scene 14 · 3:56
 **Visual:** A chart of 585 tiny bars from slightly negative to very tall. Most sit in the middle, and the two ends glow.
 **Text:** `Same 12-week arm workout. Arm muscle change: −2% to +59%`
 **Source:** Hubal et al., Med Sci Sports Exerc, 2005
@@ -189,12 +189,12 @@ Each scene has five parts:
 
 ## Part 2 · The food
 
-### Scene 15 · 5:07
+### Scene 15 · 4:36
 **Visual:** Chapter label `PART 2 · THE FOOD`. The rival holds a bucket of fried chicken and a cola.
 
 > [RIVAL]: "Easy. Dirty bulk. Eat everything!"
 
-### Scene 16 · 5:12
+### Scene 16 · 4:39
 **Visual:** Stat-ring template with two rings filling, then a 60 kg host on a scale with "+150–300 g a week" ticking up slowly.
 **Text:** `Gain about 0.25–0.5% of your body weight a week` with callout `60 kg → about 150–300 g a week`
 **Source:** Iraki et al., Sports, 2019
@@ -205,7 +205,7 @@ Each scene has five parts:
 > If you weigh sixty kilos, that's around one fifty to three hundred grams a week.
 > Slow. Boring. Works.
 
-### Scene 17 · 5:41
+### Scene 17 · 5:06
 **Visual:** An ink bathroom scale. Seven daily numbers jump around, then a teal line shows the smooth weekly average. A "+300" chip slides in, drawn as a glass of milk and a banana.
 **Text:** `Weigh every morning. Look at the weekly average. Flat for 2 weeks? Add ~300 calories.`
 
@@ -215,7 +215,7 @@ Each scene has five parts:
 > If the average hasn't gone up in two weeks, add about three hundred calories a day.
 > That's a glass of milk and a banana. That's it.
 
-### Scene 18 · 6:06
+### Scene 18 · 5:29
 **Visual:** Bricks in an ink drawing, labelled "protein". Then the stat ring `1.6 g per kg a day` and `60 kg → about 96 g`.
 **Source:** Morton et al., Br J Sports Med, 2018
 
@@ -223,7 +223,7 @@ Each scene has five parts:
 > Scientists looked at forty-nine studies. Muscle gains stopped improving at about one point six grams of protein per kilo of body weight a day.
 > So if you weigh sixty kilos, aim for about ninety-six grams a day.
 
-### Scene 19 · 6:25
+### Scene 19 · 5:49
 **Visual:** A day of food builds up one item at a time, with amber outlines and a running protein counter (**NEW**: food line-up in the ink style).
 **Text:** a running total, with an `approx.` tag
 
@@ -241,7 +241,7 @@ Each scene has five parts:
 > Chicken or paneer with rotis for dinner. A handful of roasted chana as a snack.
 > Add the shake I'm about to show you, and you're there.
 
-### Scene 20 · 6:51
+### Scene 20 · 6:12
 **Visual:** An ink blender. Ingredients drop in with amber glints: 300 ml milk, a banana, 2 spoons of peanut butter, 40 g oats. The result card reads `about 640 calories · 23 g protein`.
 **Text:** `The skinny-guy shake`
 **Source:** approximate values from USDA FoodData Central
@@ -251,7 +251,7 @@ Each scene has five parts:
 > That's about six hundred forty calories and twenty-three grams of protein.
 > And it doesn't feel like eating a full meal. For skinny guys, that's a cheat code.
 
-### Scene 21 · 7:14
+### Scene 21 · 6:34
 **Visual:** Three amber tiles with ink drawings: a spoon of oil or ghee, a handful of peanuts, a sandwich with a clock.
 **Text:** `Spoon of oil/ghee ≈ 120 cal · handful of peanuts ≈ 170 cal · one daily snack`
 **Source:** approximate values from USDA FoodData Central
@@ -265,7 +265,7 @@ Each scene has five parts:
 
 ## Part 3 · The workout
 
-### Scene 22 · 7:39
+### Scene 22 · 6:58
 **Visual:** Chapter label `PART 3 · THE WORKOUT`. Three cards appear one by one.
 **Text:**
 - `1. Make sets hard: stop with 1–3 reps left`
@@ -279,7 +279,7 @@ Each scene has five parts:
 > Two. Do about ten hard sets per muscle, every week.
 > Three. Train each muscle two or three times a week. Not once.
 
-### Scene 23 · 7:59
+### Scene 23 · 7:16
 **Visual:** Split screen: the host doing push-ups, and the rival doing heavy dumbbell presses. Both chests glow the same coral.
 **Text:** `Body weight or dumbbells: both build muscle, if the set is hard`
 **Source:** Schoenfeld et al., J Strength Cond Res, 2017
@@ -288,7 +288,7 @@ Each scene has five parts:
 > Light weights build muscle too, as long as the set is hard enough.
 > Your muscle doesn't know if it's lifting a dumbbell or your own body. It only feels how hard it's working.
 
-### Scene 24 · 8:17 · The six moves
+### Scene 24 · 7:31 · The six moves
 **Visual:** Six quick do-and-don't cards. Each one shows the move, its target muscle glowing coral from the anatomy kit, the form cue, and "easier" and "harder" chips. Every card carries the safety tag.
 
 | Move | Muscle highlight | Form cue (on screen) | Easier | Harder |
@@ -309,7 +309,7 @@ Each scene has five parts:
 > And towel curls for your biceps, or chin-ups if you've got a bar. Keep your elbows by your sides.
 > Too hard? Every move has an easier version. Too easy? There's a harder one.
 
-### Scene 25 · 9:21
+### Scene 25 · 8:33
 **Visual:** A game-style XP bar fills with each rep. 3 sets × 8–15 reps. When all three sets hit 15, a "LEVEL UP" chip moves the card to the harder version.
 **Text:** `3 sets of 8–15. Hit 15 on every set? Level up.`
 
@@ -319,7 +319,7 @@ Each scene has five parts:
 > Switch to the harder version, or put some books in a backpack and wear it.
 > More reps, then a harder move. Like levelling up in a game.
 
-### Scene 26 · 9:48
+### Scene 26 · 8:54
 **Visual:** A rest timer ring counting down from 2:00. A small "warm-up set" chip appears before set one.
 **Text:** `One easy warm-up set. Rest 1–3 minutes between sets.`
 
@@ -327,7 +327,7 @@ Each scene has five parts:
 > Before each move, do one easy warm-up set.
 > And rest one to three minutes between sets. If you rush, the next set gets weak, and weak sets don't send the message.
 
-### Scene 27 · 10:04
+### Scene 27 · 9:08
 **Visual:** The host asleep with a moon, then a phone showing 3:00 AM and a stat ring `−18%`.
 **Text:** `One night without sleep: −18% muscle building`
 **Source:** Lamon et al., Physiol Rep, 2021
@@ -340,7 +340,7 @@ Each scene has five parts:
 
 ## Part 4 · The plan
 
-### Scene 28 · 10:17
+### Scene 28 · 9:22
 **Visual:** One plan card to screenshot, with the week across and three rows.
 **Text:**
 
@@ -358,7 +358,7 @@ Footer: `Workout = 6 moves × 3 hard sets. Sleep 7–9 hours.`
 > Eat about three hundred extra calories a day, hit your protein, and drink the shake if you get full fast.
 > Weigh every morning, check the weekly average. If it's flat for two weeks, eat a bit more.
 
-### Scene 29 · 10:52
+### Scene 29 · 9:56
 **Visual:** A 12-week timeline. In weeks 1 to 4 the brain glows teal, labelled "getting stronger: your brain learns the moves". In weeks 4 to 12 the muscle glows coral, labelled "getting bigger". Use the `nerve-signals.mp4` and `muscle-turntable.mp4` loops.
 **Text:** `Weeks 1–4: stronger. Weeks 4–12: bigger.`
 
@@ -371,7 +371,7 @@ Footer: `Workout = 6 moves × 3 hard sets. Sleep 7–9 hours.`
 
 ## Quick questions
 
-### Scene 30 · 11:11
+### Scene 30 · 10:13
 **Visual:** The rival raises a hand. A teal "Q" card reads `Won't I just get fat?`. A slow teal weight line climbs next to a steep coral "dirty bulk" line.
 **Text:** `Slow gain = mostly muscle. Fast gain = mostly fat.`
 
@@ -380,7 +380,7 @@ Footer: `Workout = 6 moves × 3 hard sets. Sleep 7–9 hours.`
 > Gain slowly, and most of it goes where you want.
 > If your belly grows way faster than your arms and chest, eat a little less.
 
-### Scene 31 · 11:29
+### Scene 31 · 10:28
 **Visual:** Q card `Do I need supplements?`. Shelves of tubs get crossed out until one plain tub is left, labelled "creatine monohydrate", with an amber outline.
 **Text:** `Not needed. Creatine has the best evidence.`
 **Source:** Kreider et al., J Int Soc Sports Nutr, 2017
@@ -391,7 +391,7 @@ Footer: `Workout = 6 moves × 3 hard sets. Sleep 7–9 hours.`
 > Protein powder is just food in a box. Useful, not required.
 > Got a health condition? Ask a doctor first.
 
-### Scene 32 · 11:53
+### Scene 32 · 10:52
 **Visual:** Q card `Can I still play football?`. The host walks, then plays football, with legs glowing teal.
 **Text:** `Sports and walking: yes. Just eat a bit more on those days.`
 
@@ -403,13 +403,13 @@ Footer: `Workout = 6 moves × 3 hard sets. Sleep 7–9 hours.`
 
 ## Close
 
-### Scene 33 · 12:09
+### Scene 33 · 11:05
 **Visual:** The rival, now holding the shake, looks at his own glowing muscle card.
 
 > [RIVAL]: "So... eat a bit more, train hard, sleep. That's it?"
 > [HOST]: "That's it. For twelve weeks. Don't skip."
 
-### Scene 34 · 12:19
+### Scene 34 · 11:12
 **Visual:** The host faces the camera. End card with the next-episode thumbnail.
 **Text:** `Comment: your height, weight, and your 12-week goal`
 
@@ -428,15 +428,15 @@ Not medical advice. We're not doctors. If you're losing weight without trying, o
 
 CHAPTERS
 0:00 1,000 extra calories a day
-1:20 Reason 1: you remember the big meals
-2:29 Reason 2: your body burns it off
-3:21 Reason 3: no reason to grow
-4:21 The "ectomorph" myth
-5:07 The food
-7:39 The workout
-10:17 The plan
-11:11 Quick questions: fat, supplements, football
-12:09 Start here
+1:13 Reason 1: you remember the big meals
+2:12 Reason 2: your body burns it off
+2:58 Reason 3: no reason to grow
+3:53 The "ectomorph" myth
+4:36 The food
+6:58 The workout
+9:22 The plan
+10:13 Quick questions: fat, supplements, football
+11:05 Start here
 
 SOURCES
 - Levine JA, Eberhardt NL, Jensen MD. Role of nonexercise activity thermogenesis in resistance to fat gain in humans. Science, 1999. https://pubmed.ncbi.nlm.nih.gov/9880251/
