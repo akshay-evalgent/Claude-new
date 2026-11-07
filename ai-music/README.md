@@ -24,6 +24,24 @@ Both notebooks master the finished songs. You can match the loudness and tone of
 
 The Kaggle version runs everything inside the notebook, with no public links or tunnels. That keeps it within Kaggle's rules for personal use.
 
+### Run it on Kaggle without opening Kaggle
+
+[`kaggle_runner/run_on_kaggle.py`](kaggle_runner/run_on_kaggle.py) builds a batch version of the Kaggle notebook with your song baked in. It pushes it to your account as a **private** notebook on GPU T4 x2, waits for the run, and downloads the mastered MP3s to `ai-music/output/`, which git ignores.
+
+```bash
+pip install kaggle
+```
+
+```bash
+python ai-music/kaggle_runner/run_on_kaggle.py --song ai-music/kaggle_runner/song.json
+```
+
+- **Token:** put your Kaggle token in `KAGGLE_API_TOKEN` (create one at kaggle.com/settings/api). Your account must be phone-verified for GPU and internet.
+- **Run time:** each run is a fresh Kaggle session (install, model load, song), so expect roughly 30–45 minutes of your weekly GPU quota.
+- **Your song:** edit [`song.json`](kaggle_runner/song.json) for caption, lyrics, language, takes, duration, BPM, key, model and mastering.
+- **Reference mastering:** upload a reference track as a Kaggle dataset, then set `"reference_dataset": "you/dataset-slug"` and `"mastering": "reference"`.
+- **Preview first:** `--dry-run` builds the notebook without pushing.
+
 ## How close to Suno is this?
 
 The most recent public comparison is WildSongBench (Sept 2026), run by the YuE2 team. Higher SongBench is better; lower PER means clearer lyrics.
