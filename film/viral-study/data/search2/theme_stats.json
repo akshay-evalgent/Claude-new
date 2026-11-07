@@ -1,0 +1,210 @@
+[
+ {
+  "theme": "grandparents",
+  "n": 40,
+  "median": 118952,
+  "third_best": 15017787,
+  "clone_share": 0.3,
+  "hits_1m": 13,
+  "opportunity": 5.02,
+  "top": [
+   {
+    "views": 55645707,
+    "channel": "CGMeetup",
+    "title": "CGI Animated Short Film: \"Mr Indifferent\" by Aryasb Feiz | CGMeetup"
+   },
+   {
+    "views": 31675287,
+    "channel": "Unity",
+    "title": "WiNDUP: Award-winning animated short film | Unity"
+   },
+   {
+    "views": 15017787,
+    "channel": "Adult Swim",
+    "title": "Jack Stauber\u2019s OPAL | adult swim smalls"
+   }
+  ]
+ },
+ {
+  "theme": "mother_food",
+  "n": 40,
+  "median": 217870,
+  "third_best": 39887622,
+  "clone_share": 0.15,
+  "hits_1m": 13,
+  "opportunity": 6.46,
+  "top": [
+   {
+    "views": 80317253,
+    "channel": "Kurzfilm Agentur Hamburg",
+    "title": "Timber | Short Film about Solidarity by Nils Hedinger"
+   },
+   {
+    "views": 50457982,
+    "channel": "david lisbe",
+    "title": "\"Heavenly Appeals\" a short film by David Lisbe"
+   },
+   {
+    "views": 39887622,
+    "channel": "Artmoeba Productions",
+    "title": "\"A Folded Wish\" | CGI Animated Short Film (2020)"
+   }
+  ]
+ },
+ {
+  "theme": "growing_up",
+  "n": 40,
+  "median": 4643773,
+  "third_best": 121148096,
+  "clone_share": 0.03,
+  "hits_1m": 30,
+  "opportunity": 7.88,
+  "top": [
+   {
+    "views": 557326668,
+    "channel": "Dogs Inc",
+    "title": "Pip | A Short Animated Film by Dogs Inc"
+   },
+   {
+    "views": 276156789,
+    "channel": "Patrick Smith",
+    "title": "\"POUR 585\" Tyranny grows from the indoctrinated in this Animated Short By Patrick Smith"
+   },
+   {
+    "views": 121148096,
+    "channel": "Sony Pictures Animation",
+    "title": "Hair Love | Oscar\u00ae-Winning Short Film (Full) | Sony Pictures Animation"
+   }
+  ]
+ },
+ {
+  "theme": "try_again",
+  "n": 40,
+  "median": 3359103,
+  "third_best": 71310986,
+  "clone_share": 0.07,
+  "hits_1m": 27,
+  "opportunity": 7.26,
+  "top": [
+   {
+    "views": 557326668,
+    "channel": "Dogs Inc",
+    "title": "Pip | A Short Animated Film by Dogs Inc"
+   },
+   {
+    "views": 276156789,
+    "channel": "Patrick Smith",
+    "title": "\"POUR 585\" Tyranny grows from the indoctrinated in this Animated Short By Patrick Smith"
+   },
+   {
+    "views": 71310986,
+    "channel": "GreenTree Production",
+    "title": "HOPE (2020)"
+   }
+  ]
+ },
+ {
+  "theme": "friendship",
+  "n": 40,
+  "median": 6864345,
+  "third_best": 62271408,
+  "clone_share": 0.03,
+  "hits_1m": 31,
+  "opportunity": 7.6,
+  "top": [
+   {
+    "views": 96282261,
+    "channel": "Erste Group",
+    "title": "Erste Christmas Ad 2018: What would Christmas be without love?"
+   },
+   {
+    "views": 71758520,
+    "channel": "Eduardo Verastegui",
+    "title": "Snack Attack"
+   },
+   {
+    "views": 62271408,
+    "channel": "TheCGBros",
+    "title": "CGI 3D Animated Short: \"Take Me Home\" - by Nair Archawattana | TheCGBros"
+   }
+  ]
+ },
+ {
+  "theme": "teacher",
+  "n": 40,
+  "median": 5865027,
+  "third_best": 62065307,
+  "clone_share": 0.0,
+  "hits_1m": 34,
+  "opportunity": 7.79,
+  "top": [
+   {
+    "views": 86787573,
+    "channel": "TheCGBros",
+    "title": "\ud83c\udfc6CGI 3D Animated Short Film\ud83c\udfc6: \"Dia De Los Muertos\" - by Team Whoo Kazoo + Ringling | TheCGBros"
+   },
+   {
+    "views": 62883714,
+    "channel": "Pencilmation",
+    "title": "Pencilmate's Battle Of Ink! | Animated Cartoons Characters | Animated Short Films | Pencilmation"
+   },
+   {
+    "views": 62065307,
+    "channel": "Ashley Yeajee Lee",
+    "title": "Seeing Things in Black and White - SVA Animated Film"
+   }
+  ]
+ },
+ {
+  "theme": "whatif",
+  "n": 40,
+  "median": 288355,
+  "third_best": 55645707,
+  "clone_share": 0.33,
+  "hits_1m": 17,
+  "opportunity": 5.23,
+  "top": [
+   {
+    "views": 121148096,
+    "channel": "Sony Pictures Animation",
+    "title": "Hair Love | Oscar\u00ae-Winning Short Film (Full) | Sony Pictures Animation"
+   },
+   {
+    "views": 86787573,
+    "channel": "TheCGBros",
+    "title": "\ud83c\udfc6CGI 3D Animated Short Film\ud83c\udfc6: \"Dia De Los Muertos\" - by Team Whoo Kazoo + Ringling | TheCGBros"
+   },
+   {
+    "views": 55645707,
+    "channel": "CGMeetup",
+    "title": "CGI Animated Short Film: \"Mr Indifferent\" by Aryasb Feiz | CGMeetup"
+   }
+  ]
+ },
+ {
+  "theme": "siblings",
+  "n": 40,
+  "median": 1776011,
+  "third_best": 61841502,
+  "clone_share": 0.17,
+  "hits_1m": 23,
+  "opportunity": 6.43,
+  "top": [
+   {
+    "views": 92052242,
+    "channel": "LAIKA Studios",
+    "title": "Wildwood \u2013 Official Teaser Trailer | In Theatres Now"
+   },
+   {
+    "views": 62065307,
+    "channel": "Ashley Yeajee Lee",
+    "title": "Seeing Things in Black and White - SVA Animated Film"
+   },
+   {
+    "views": 61841502,
+    "channel": "TheCGBros",
+    "title": "CGI Animated Short: \"Runaway\" - by Susan Yung, Emily Springer, Esther Parobek + Ringling | TheCGBros"
+   }
+  ]
+ }
+]
