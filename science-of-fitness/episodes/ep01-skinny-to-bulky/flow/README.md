@@ -2,29 +2,40 @@
 
 The character-driven version of the episode. Rohan, a genuinely skinny 18-year-old, acts out every idea. Tiger, the big gym bro, pushes the myths. The tiny Muscle Crew shows what happens inside the body. On-screen text drops to a few key numbers.
 
+## Three ways to produce it
+
+Pick one. You can also mix them, since the assembler takes whatever exists.
+
+| Route | Generations | Effort | Prompts |
+|---|---|---|---|
+| **A. Storyboard grids + hero clips (recommended)** | 9 images + ~10 videos | Lowest. Same look as the reference channels. | `GRIDS.md` (+ hero shots in `SHOTS.md`) |
+| B. Multi-shot clips (Kling 3.0, Seedance 2.0, Vidu) | 59 videos (24 priority) | Medium | `MULTISHOT.md` |
+| C. One clip per shot | 73 videos (28 tier 1) | Highest | `SHOTS.md` |
+
+For free tools and their limits, see `../../../VIDEO-GEN-TOOLS.md`.
+
 | File | What |
 |---|---|
 | `CHARACTER-SHEET.md` | The three characters, their exact descriptions, and the prompts for their reference images. **Start here.** |
-| `SHOTS.md` | 73 shot prompts, ready to paste, each timed to the voiceover |
-| `shots.json` | The same shots with exact time windows, used by the assembler |
-| `shots/` | Drop your Flow clips here, named by shot ID (`03A.mp4`) |
+| `GRIDS.md` / `grids.json` | Route A: 9 storyboard-sheet prompts (3×3 panels) covering all 73 shots, plus the hero-clip list |
+| `MULTISHOT.md` / `blocks.json` | Route B: 59 multi-shot prompts of up to 15 s each |
+| `SHOTS.md` / `shots.json` | Route C: 73 single-shot prompts, each timed to the voiceover |
+| `shots/` | Drop everything here: `G01.png`… (grids), `B01.mp4`… (blocks), `03A.mp4`… (shots) |
 
 ## Steps
 
 1. Make the reference images: sheets A (Rohan), C (Rohan, week 12), D (Tiger) and E (the Muscle Crew).
-2. Generate the **tier 1** shots below. That's enough for an engaging first version.
-3. Put the clips in `shots/`, or send them to me.
+2. Make the 9 storyboard grids in `GRIDS.md`, then the ~10 hero clips it lists.
+3. Put the files in `shots/`, or send them to me.
 4. Assemble:
 
 ```bash
 python3 scripts/video/assemble_ep01.py
 ```
 
-The assembler writes `video/ep01-flow-cut.mp4`. Each clip is fitted to its window on the voiceover. Any shot you haven't made yet falls back to the first-cut visuals, so you can watch the episode improve as shots come in.
+The assembler writes `video/ep01-flow-cut.mp4`. For every moment it uses the best footage available: a shot clip, then a multi-shot block, then the storyboard panel (cut out, upscaled and animated with a slow push-in), then the first cut. To check a few scenes quickly, add `--scenes 1-5`.
 
-To check a few scenes quickly, add `--scenes 1-5`.
-
-## Tier 1 checklist (28 shots)
+## Route C · tier 1 checklist (28 shots)
 
 | Shot | Plays at | Length | Ingredients | What happens |
 |---|---|---|---|---|

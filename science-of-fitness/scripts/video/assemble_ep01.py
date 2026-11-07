@@ -2,11 +2,14 @@
 
     python3 scripts/video/assemble_ep01.py [--shots DIR] [--scenes 1-3] [--out FILE]
 
-For every shot in flow/shots.json:
-  * if DIR/<ID>.mp4 exists (e.g. 03A.mp4), it is fitted to the shot's window: played at normal
-    speed and trimmed if long; slowed down to 0.75x at most if short, then held on its last frame
-    with a slow push-in;
-  * otherwise the window falls back to the first-cut visuals (scripts/video/ep01_video.py).
+For every moment of the voiceover it uses the best footage available, in this order:
+  1. DIR/<shot>.mp4      a single-shot clip (e.g. 03A.mp4), fitted to the shot's window
+  2. DIR/<block>.mp4     a multi-shot clip (e.g. B07.mp4, see flow/MULTISHOT.md), fitted to the block's window
+  3. DIR/<grid>.png      a 3x3 storyboard sheet (e.g. G02.png, see flow/GRIDS.md): the shot's panel is
+                         cut out, upscaled and animated with a slow push-in and drift
+  4. the first-cut visuals (scripts/video/ep01_video.py)
+Clips are played at normal speed and trimmed if long, or slowed to 0.75x at most and then held on
+their last frame with a slow push-in if short.
 Then the shot's overlay (one key number) is added, and everything is joined with the voiceover.
 """
 import argparse, json, os, shutil, subprocess, sys
@@ -18,6 +21,9 @@ import ep01_video as v
 EP = v.EP
 FPS, W, H = v.FPS, v.W, v.H
 SHOTS = json.load(open(os.path.join(EP, "flow", "shots.json")))
+BLOCKS = json.load(open(os.path.join(EP, "flow", "blocks.json"))) if os.path.exists(os.path.join(EP, "flow", "blocks.json")) else []
+GRIDS = json.load(open(os.path.join(EP, "flow", "grids.json"))) if os.path.exists(os.path.join(EP, "flow", "grids.json")) else []
+PANEL_OF = {sid: (g["id"], k) for g in GRIDS for k, sid in enumerate(g["shots"])}
 ARGS = None
 
 
@@ -60,6 +66,48 @@ class Fitted:
         return big.crop((x0, y0, x0 + W, y0 + H))
 
 
+def find_grid(gid):
+    for ext in (".png", ".jpg", ".jpeg", ".webp"):
+        p = os.path.join(ARGS.shots, gid + ext)
+        if os.path.exists(p):
+            return p
+    return None
+
+
+def trim_gutters(im):
+    """Cut light gutters/borders off a panel crop."""
+    import numpy as np
+    a = np.asarray(im.convert("L")).astype(np.float32)
+    rows = np.flatnonzero(a.mean(1) < 200); cols = np.flatnonzero(a.mean(0) < 200)
+    if len(rows) < a.shape[0] * 0.5 or len(cols) < a.shape[1] * 0.5:
+        return im
+    return im.crop((cols[0], rows[0], cols[-1] + 1, rows[-1] + 1))
+
+
+class Still:
+    """One storyboard panel, upscaled to cover 1920x1080 and animated with a slow push-in and drift."""
+
+    def __init__(self, grid_path, k, seed):
+        g = Image.open(grid_path).convert("RGB")
+        cw, ch = g.width / 3, g.height / 3
+        r, c = divmod(k, 3)
+        ix, iy = cw * 0.02, ch * 0.02
+        cell = g.crop((int(c * cw + ix), int(r * ch + iy), int((c + 1) * cw - ix), int((r + 1) * ch - iy)))
+        cell = trim_gutters(cell)
+        s = max(W / cell.width, H / cell.height) * 1.1
+        self.base = cell.resize((int(cell.width * s), int(cell.height * s)), Image.LANCZOS)
+        self.dir = (-1) ** seed
+
+    def frame(self, t, window):
+        p = min(1.0, t / max(window, 0.1))
+        bw, bh = self.base.size
+        w = min(bw, bh * W / H) / (1.0 + 0.07 * p)  # 16:9 crop that slowly tightens (push-in)
+        h = w * H / W
+        x0 = (bw - w) / 2 + self.dir * (bw - w) / 2 * (p - 0.5) * 0.8  # gentle sideways drift
+        y0 = (bh - h) / 2
+        return self.base.crop((int(x0), int(y0), int(x0 + w), int(y0 + h))).resize((W, H), Image.BILINEAR).convert("RGBA")
+
+
 def overlay(fr, text, t):
     if not text:
         return
@@ -79,12 +127,18 @@ def render_scene(sc):
                           "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", "-pix_fmt", "yuv420p",
                           out], stdin=subprocess.PIPE)
     v.loop_clips(sc)
-    clips = {}
+    clips, stills, bclips = {}, {}, {}
     used = 0
-    for s in shots:
+    for i, s in enumerate(shots):
         path = os.path.join(ARGS.shots, s["id"] + ".mp4")
         if os.path.exists(path):
             clips[s["id"]] = Fitted(path); used += 1
+        elif s["id"] in PANEL_OF:
+            gp = find_grid(PANEL_OF[s["id"]][0])
+            if gp:
+                stills[s["id"]] = Still(gp, PANEL_OF[s["id"]][1], i); used += 1
+    myblocks = [b for b in BLOCKS if b["start"] < scene["end"] and b["end"] > scene["start"]
+                and os.path.exists(os.path.join(ARGS.shots, b["id"] + ".mp4"))]
     for fi in range(f0, f1):
         g = fi / FPS
         cur = shots[0]
@@ -94,16 +148,28 @@ def render_scene(sc):
         lt = g - cur["start"]
         win = cur["end"] - cur["start"]
         fr = None
-        if cur["id"] in clips:
+        if cur["id"] in clips:  # 1. a single-shot clip
             img = clips[cur["id"]].frame(lt, win)
             if img is not None:
                 fr = img.copy()
-                overlay(fr, cur["overlay"], lt)
+        if fr is None:  # 2. a multi-shot block covering this moment
+            for b in myblocks:
+                if b["start"] <= g < b["end"]:
+                    if b["id"] not in bclips:
+                        bclips[b["id"]] = Fitted(os.path.join(ARGS.shots, b["id"] + ".mp4"))
+                    img = bclips[b["id"]].frame(g - b["start"], b["end"] - b["start"])
+                    if img is not None:
+                        fr = img.copy()
+                    break
+        if fr is None and cur["id"] in stills:  # 3. an animated storyboard panel
+            fr = stills[cur["id"]].frame(lt, win)
+        if fr is not None:
+            overlay(fr, cur["overlay"], lt)
         if fr is None:  # fallback: first-cut visuals for this moment
             fr = v.frame(sc, g - scene["start"], scene["end"] - scene["start"])
         p.stdin.write(fr.convert("RGB").tobytes())
     p.stdin.close(); p.wait()
-    return sc, used, len(shots)
+    return sc, used + len(myblocks), len(shots)
 
 
 def main():

@@ -1,0 +1,847 @@
+[
+ {
+  "id": "B01",
+  "start": 0.0,
+  "end": 14.88,
+  "shots": [
+   "01A",
+   "01B"
+  ],
+  "length": 15,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 15-second multi-shot sequence with 2 cuts, the same characters in every shot. Shot 1 (0-9s): Wide static shot: sixteen different young adults of varied builds stand in a neat row in the dark, each holding a tray with a burger, fries and a drink. A soft spotlight above each person. They look at their trays, then at each other. Shot 2 (9-15s): Rohan sits alone at a small table in the dark. A burger, fries and a drink slide in front of him from off-screen. He stares at the food, wide-eyed, then looks up at the camera. Slow push-in, medium shot. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B02",
+  "start": 14.88,
+  "end": 20.87,
+  "shots": [
+   "01C"
+  ],
+  "length": 6,
+  "priority": false,
+  "ingredients": [],
+  "prompt": "A 6-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-6s): The same sixteen people sit at one long table eating burgers in fast motion while overhead lights cycle from day to night again and again, showing weeks passing. Nobody exercises. Camera slowly tracks along the table. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B03",
+  "start": 20.87,
+  "end": 31.96,
+  "shots": [
+   "02A"
+  ],
+  "length": 11,
+  "priority": true,
+  "ingredients": [],
+  "prompt": "A 11-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-11s): Slow pan along the row of sixteen young adults standing in the dark. Their bellies grow at very different rates: some swell round with amber-tinted fat, others barely change at all. Comedic contrast, people glance at each other's bellies. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B04",
+  "start": 31.96,
+  "end": 43.49,
+  "shots": [
+   "03A",
+   "03B"
+  ],
+  "length": 12,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 12-second multi-shot sequence with 2 cuts, the same characters in every shot. Shot 1 (0-8s): Close-up: Rohan sits on a chair scrolling his phone while his knee bounces fast and his fingers tap without him noticing. Small teal sparks fly off the bouncing leg like energy being burned. Camera slowly orbits. Shot 2 (8-12s): Rohan stands up and paces back and forth while talking on the phone, then walks around restlessly. Faint teal energy trails follow his moving legs. Medium-wide shot. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B05",
+  "start": 43.49,
+  "end": 54.6,
+  "shots": [
+   "03C"
+  ],
+  "length": 11,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 11-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-11s): Rohan stands next to a burger floating in the air. The burger dissolves into glowing teal sparks that stream into his legs as he keeps fidgeting and moving; the sparks burn away into the dark. He looks down, surprised. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B06",
+  "start": 54.6,
+  "end": 61.32,
+  "shots": [
+   "04A"
+  ],
+  "length": 7,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 7-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-7s): Rohan stands in front of a tall mirror on a dark stage. He pinches his thin upper arm, lifts his loose t-shirt sleeve, sighs and drops his shoulders. Over-the-shoulder shot into the mirror. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B07",
+  "start": 61.32,
+  "end": 73.34,
+  "shots": [
+   "04B"
+  ],
+  "length": 12,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 12-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-12s): Rohan turns from the mirror to face the camera, holds up three fingers with a small determined smile, then nods. Slow push-in to a medium close-up. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B08",
+  "start": 73.34,
+  "end": 86.59,
+  "shots": [
+   "05A",
+   "06A"
+  ],
+  "length": 13,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 13-second multi-shot sequence with 2 cuts, the same characters in every shot. Shot 1 (0-4s): Rohan proudly shows a huge plate piled high with food and pats his flat stomach, grinning. Mouth moving as if talking, but no audible speech. Shot 2 (4-13s): Warm golden memory glow: Rohan at a wedding buffet with fairy lights in the dark, happily eating his second plate of biryani, cheeks full. Soft vignette like a fond memory. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B09",
+  "start": 86.59,
+  "end": 95.24,
+  "shots": [
+   "06B",
+   "06C"
+  ],
+  "length": 9,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 9-second multi-shot sequence with 2 cuts, the same characters in every shot. Shot 1 (0-5s): Rohan wakes up late, panics at his alarm clock, grabs his bag and runs out the door; an empty breakfast plate is left behind on the table. Quick comedic action. Shot 2 (5-9s): Rohan at a desk eating only a small packet of chips for lunch. Then evening: he pushes a full plate away and shakes his head, not hungry. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B10",
+  "start": 95.24,
+  "end": 108.26,
+  "shots": [
+   "06D"
+  ],
+  "length": 13,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 13-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-13s): Rohan walks along one very long table holding seven plates for seven days: one plate is huge and overflowing, the other six are nearly empty. He looks back at the huge plate, then at the empty ones. Camera tracks beside him. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B11",
+  "start": 108.26,
+  "end": 119.5,
+  "shots": [
+   "07A"
+  ],
+  "length": 11,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 11-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-11s): X-ray view through Rohan's body: a cartoon stomach glows coral as it fills with food, and sends a glowing teal message bubble racing up through his neck to his brain, which lights up. Stylized, clean. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B12",
+  "start": 119.5,
+  "end": 131.83,
+  "shots": [
+   "07B"
+  ],
+  "length": 12,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 12-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-12s): Rohan lies on a sofa after a huge lunch, holding his stuffed stomach. The light changes to evening; a dinner plate arrives and he takes only two small bites, then pushes it away. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B13",
+  "start": 131.83,
+  "end": 145.81,
+  "shots": [
+   "08A"
+  ],
+  "length": 14,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 14-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-14s): Rohan stands in the dark while a giant glowing phone-battery outline floats beside him. Inside his body, his heart and brain glow softly as the battery's bar drains toward them. Medium shot. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B14",
+  "start": 145.81,
+  "end": 154.71,
+  "shots": [
+   "08B"
+  ],
+  "length": 9,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 9-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-9s): Quick montage in one continuous shot: Rohan walks to class with his backpack, stands in line, fidgets with his pen, paces while on the phone. Faint teal energy trails follow his movements. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B15",
+  "start": 154.71,
+  "end": 165.83,
+  "shots": [
+   "09A"
+  ],
+  "length": 11,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 11-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-11s): Rohan eats an extra sandwich. Right after, his foot starts tapping on its own and he gets up and wanders around. He steps on a bathroom scale and frowns because the needle does not move. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B16",
+  "start": 165.83,
+  "end": 178.3,
+  "shots": [
+   "09B"
+  ],
+  "length": 12,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 12-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-12s): Rohan adds one more snack, a glass of milk and a banana, to his day. He steps on the scale again; the needle ticks up a little and he smiles with relief. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B17",
+  "start": 178.3,
+  "end": 192.12,
+  "shots": [
+   "10A"
+  ],
+  "length": 14,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 14-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-14s): Camera zooms from Rohan's thin upper arm straight into the skin, revealing the muscle inside as a huge dark construction site of long fibres lit by work lights. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B18",
+  "start": 192.12,
+  "end": 208.26,
+  "shots": [
+   "11A"
+  ],
+  "length": 15,
+  "priority": true,
+  "ingredients": [
+   "Muscle Crew sheet"
+  ],
+  "prompt": "A 15-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-15s): Inside the muscle: the Muscle Crew. The teal builders stack amber protein bricks onto a long muscle fibre while the coral demolition team chips bricks off at the same pace, so the fibre stays the same size. Wide shot. Characters: the Muscle Crew: tiny chibi construction workers living inside the muscle; builders in teal hard hats carrying glowing amber protein bricks; a demolition team in coral hard hats with tiny hammers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B19",
+  "start": 208.26,
+  "end": 214.94,
+  "shots": [
+   "11B"
+  ],
+  "length": 7,
+  "priority": true,
+  "ingredients": [
+   "Muscle Crew sheet"
+  ],
+  "prompt": "A 7-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-7s): Inside the muscle: an alarm light flashes as a training signal; the Muscle Crew. The teal builders cheer and speed up, a small truck delivers a load of glowing amber bricks, and the muscle fibre visibly grows thicker. Characters: the Muscle Crew: tiny chibi construction workers living inside the muscle; builders in teal hard hats carrying glowing amber protein bricks; a demolition team in coral hard hats with tiny hammers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B20",
+  "start": 214.94,
+  "end": 227.18,
+  "shots": [
+   "12A"
+  ],
+  "length": 12,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 12-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-12s): Side view: Rohan doing push-ups on the floor. On the last rep his arms shake, he lowers slowly, face straining, and just barely pushes up. A soft teal pulse flashes through his chest muscles at the top. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B21",
+  "start": 227.18,
+  "end": 235.97,
+  "shots": [
+   "12B",
+   "13A"
+  ],
+  "length": 9,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet",
+   "Tiger sheet"
+  ],
+  "prompt": "A 9-second multi-shot sequence with 2 cuts, the same characters in every shot. Shot 1 (0-5s): Rohan sits on the sofa eating huge amounts of snacks without training; comedic: his belly gets soft and round while his arms stay just as thin. He looks down at his belly, confused. Shot 2 (5-9s): Tiger looms over Rohan, pokes his skinny chest with one finger and laughs. Rohan shrinks back, embarrassed. Mouth moving as if talking, but no audible speech. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B22",
+  "start": 235.97,
+  "end": 245.09,
+  "shots": [
+   "14A"
+  ],
+  "length": 9,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 9-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-9s): An old sepia-toned 1940s poster showing three body-type silhouettes hangs in the dark. Rohan walks up, looks at it skeptically, then rips it in half. No readable words on the poster. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B23",
+  "start": 245.09,
+  "end": 262.42,
+  "shots": [
+   "14B"
+  ],
+  "length": 15,
+  "priority": true,
+  "ingredients": [],
+  "prompt": "A 15-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-15s): A huge dark hall with hundreds of young people in rows all doing the same dumbbell curl in sync. Their arms grow at different rates: a few barely change, a few grow a lot, most grow a medium amount. Slow aerial pan. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B24",
+  "start": 262.42,
+  "end": 275.81,
+  "shots": [
+   "14C"
+  ],
+  "length": 13,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 13-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-13s): Rohan sets a dumbbell down after a short workout and starts walking away, bored. The scene rewinds: he walks backwards, picks the dumbbell up again and keeps curling, determined. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B25",
+  "start": 275.81,
+  "end": 290.48,
+  "shots": [
+   "15A",
+   "16A"
+  ],
+  "length": 15,
+  "priority": true,
+  "ingredients": [
+   "Muscle Crew sheet",
+   "Rohan sheet",
+   "Tiger sheet"
+  ],
+  "prompt": "A 15-second multi-shot sequence with 2 cuts, the same characters in every shot. Shot 1 (0-3s): Tiger holds a giant bucket of fried chicken and a huge cola and shoves them toward Rohan, grinning. Mouth moving as if talking, but no audible speech. Shot 2 (3-15s): Inside the body: the Muscle Crew. The builders can only lay amber bricks at a steady pace; extra bricks keep arriving, pile up off to the side and turn into soft amber blobs of fat drifting toward the waist. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones | the Muscle Crew: tiny chibi construction workers living inside the muscle; builders in teal hard hats carrying glowing amber protein bricks; a demolition team in coral hard hats with tiny hammers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B26",
+  "start": 290.48,
+  "end": 305.57,
+  "shots": [
+   "16B"
+  ],
+  "length": 15,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 15-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-15s): Rohan steps onto a bathroom scale each week as calendar pages flip past behind him; the scale needle creeps up very slowly. He gives a calm thumbs up. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B27",
+  "start": 305.57,
+  "end": 318.91,
+  "shots": [
+   "17A"
+  ],
+  "length": 13,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 13-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-13s): Morning: Rohan with messy bed hair, yawning, steps onto a bathroom scale before breakfast. The shot repeats across several mornings with slightly different light, as if days are passing. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B28",
+  "start": 318.91,
+  "end": 331.97,
+  "shots": [
+   "17B",
+   "18A"
+  ],
+  "length": 13,
+  "priority": true,
+  "ingredients": [
+   "Muscle Crew sheet",
+   "Rohan sheet"
+  ],
+  "prompt": "A 13-second multi-shot sequence with 2 cuts, the same characters in every shot. Shot 1 (0-10s): Rohan drinks a tall glass of milk and eats a banana in two bites, grinning at the camera. Shot 2 (10-13s): Inside the muscle: the Muscle Crew. A small food truck backs up and the teal builders unload stacks of glowing amber protein bricks, carry them along the fibre and slot them in. Cheerful, busy. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | the Muscle Crew: tiny chibi construction workers living inside the muscle; builders in teal hard hats carrying glowing amber protein bricks; a demolition team in coral hard hats with tiny hammers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B29",
+  "start": 331.97,
+  "end": 348.98,
+  "shots": [
+   "18B"
+  ],
+  "length": 15,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 15-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-15s): Rohan steps on a bathroom scale, then turns to a kitchen counter and lines up eggs, a bowl of dal, a glass of milk and a piece of chicken; each food glows warm amber as he places it. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B30",
+  "start": 348.98,
+  "end": 356.71,
+  "shots": [
+   "19A"
+  ],
+  "length": 8,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 8-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-8s): Rohan in a small kitchen in the morning cooks three eggs in a pan and makes toast, then eats at the counter. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B31",
+  "start": 356.71,
+  "end": 372.12,
+  "shots": [
+   "19B"
+  ],
+  "length": 15,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 15-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-15s): Rohan eats rice, dal and a bowl of curd at lunch; cut to evening, he eats chicken with rotis. Then he grabs a handful of roasted chana. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B32",
+  "start": 372.12,
+  "end": 379.91,
+  "shots": [
+   "20A"
+  ],
+  "length": 8,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 8-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-8s): Rohan makes a shake: pours milk into a blender, adds a banana, two spoons of peanut butter and oats, and blends it. Close-up of the blender spinning. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B33",
+  "start": 379.91,
+  "end": 393.43,
+  "shots": [
+   "20B"
+  ],
+  "length": 14,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 14-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-14s): Rohan drinks the whole glass of shake easily in a few gulps, wipes his mouth and gives a big thumbs up, not looking full at all. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B34",
+  "start": 393.43,
+  "end": 404.07,
+  "shots": [
+   "21A"
+  ],
+  "length": 11,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 11-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-11s): Close-up: Rohan drizzles a spoon of golden ghee over his rice and dal, mixes it in and takes a bite, smiling. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B35",
+  "start": 404.07,
+  "end": 418.11,
+  "shots": [
+   "21B",
+   "21C"
+  ],
+  "length": 14,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 14-second multi-shot sequence with 2 cuts, the same characters in every shot. Shot 1 (0-5s): Rohan walks past a jar of peanuts on his desk and grabs a small handful without stopping, munching as he walks. Shot 2 (5-14s): Rohan finishes a workout, wipes his face with a towel and immediately eats a sandwich, glancing at a clock on the wall that shows the same time every day. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B36",
+  "start": 418.11,
+  "end": 430.8,
+  "shots": [
+   "22A"
+  ],
+  "length": 13,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet",
+   "Tiger sheet"
+  ],
+  "prompt": "A 13-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-13s): Rohan does push-ups on a mat while Tiger crouches beside him, coaching, holding up one, two, then three fingers to count the last reps. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B37",
+  "start": 430.8,
+  "end": 436.03,
+  "shots": [
+   "22B"
+  ],
+  "length": 5,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 5-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-5s): Rohan marks a wall calendar with a teal marker on three days of the week; quick cuts show him working out, resting, working out, resting. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B38",
+  "start": 436.03,
+  "end": 450.99,
+  "shots": [
+   "23A"
+  ],
+  "length": 15,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet",
+   "Tiger sheet"
+  ],
+  "prompt": "A 15-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-15s): Split screen: on the left Tiger does a heavy dumbbell bench press in a gym; on the right Rohan does push-ups in his bedroom. A glowing coral outline of the chest muscle pulses identically on both of them. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B39",
+  "start": 450.99,
+  "end": 461.97,
+  "shots": [
+   "24A",
+   "24B"
+  ],
+  "length": 11,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 11-second multi-shot sequence with 2 cuts, the same characters in every shot. Shot 1 (0-4s): Rohan pushes his bed aside and rolls out a mat in his small bedroom, ready to train. Wide shot. Shot 2 (4-11s): Exact side view: Rohan does slow push-ups with perfect form on a mat: body in one straight line from head to heels, hands under the shoulders, elbows about 45 degrees from his body, chest lowers near the floor. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B40",
+  "start": 461.97,
+  "end": 475.41,
+  "shots": [
+   "24C",
+   "24D"
+  ],
+  "length": 13,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 13-second multi-shot sequence with 2 cuts, the same characters in every shot. Shot 1 (0-7s): Side view: Rohan does inverted rows on an open door: holding both door handles, feet near the bottom of the door, body straight and leaning back, he pulls his chest toward the door edge and lowers slowly. Shot 2 (7-13s): Side view: Rohan does a split squat: one foot forward, one back, torso upright, he lowers his back knee slowly toward the floor while the front knee stays over his toes, then stands back up. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B41",
+  "start": 475.41,
+  "end": 486.6,
+  "shots": [
+   "24E",
+   "24F"
+  ],
+  "length": 11,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 11-second multi-shot sequence with 2 cuts, the same characters in every shot. Shot 1 (0-6s): Side view: Rohan does a pike push-up: hips high in an upside-down V, hands on the floor, he bends his elbows so his head moves down between his hands, then presses back up. Shot 2 (6-11s): Side view: Rohan lies on his back on a mat and does a single-leg glute bridge: one foot planted, other leg straight up, he lifts his hips high, pauses at the top, and lowers slowly. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B42",
+  "start": 486.6,
+  "end": 494.07,
+  "shots": [
+   "24G"
+  ],
+  "length": 8,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 8-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-8s): Rohan sits on a chair doing a towel curl: a towel looped under one foot, he pulls the ends up with both hands, elbows pinned to his sides, against his own leg's resistance. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B43",
+  "start": 494.07,
+  "end": 512.4,
+  "shots": [
+   "24H"
+  ],
+  "length": 15,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 15-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-15s): Rohan does an easy push-up with his hands on a table, then cut to a hard push-up with his feet up on a chair. He grins after each. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B44",
+  "start": 512.4,
+  "end": 522.38,
+  "shots": [
+   "25A"
+  ],
+  "length": 10,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 10-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-10s): Rohan finishes a set of push-ups easily, looks bored, then stuffs heavy books into a backpack and straps it on. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B45",
+  "start": 522.38,
+  "end": 534.11,
+  "shots": [
+   "25B"
+  ],
+  "length": 12,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 12-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-12s): Rohan does push-ups wearing a backpack full of books; on the last rep a game-style level-up ring of teal light bursts around him and he pumps his fist. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B46",
+  "start": 534.11,
+  "end": 547.97,
+  "shots": [
+   "26A"
+  ],
+  "length": 14,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 14-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-14s): Rohan sits on the floor between sets, breathing, sipping water and watching a timer on his phone, then gets back up for the next set. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B47",
+  "start": 547.97,
+  "end": 562.09,
+  "shots": [
+   "27A",
+   "27B"
+  ],
+  "length": 14,
+  "priority": true,
+  "ingredients": [
+   "Muscle Crew sheet",
+   "Rohan sheet"
+  ],
+  "prompt": "A 14-second multi-shot sequence with 2 cuts, the same characters in every shot. Shot 1 (0-7s): 3 AM: Rohan in bed scrolling his phone, face lit blue-white by the screen. Inset x-ray of his arm: the Muscle Crew, yawning and working slowly. Shot 2 (7-14s): Rohan sleeps peacefully, moonlight through a window. Inside his arm, the Muscle Crew work happily and fast, stacking amber bricks. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | the Muscle Crew: tiny chibi construction workers living inside the muscle; builders in teal hard hats carrying glowing amber protein bricks; a demolition team in coral hard hats with tiny hammers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B48",
+  "start": 562.09,
+  "end": 574.18,
+  "shots": [
+   "28A"
+  ],
+  "length": 12,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 12-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-12s): Rohan crosses off days on a wall calendar with a teal marker; between marks, quick cuts of him training, walking, resting. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B49",
+  "start": 574.18,
+  "end": 581.9,
+  "shots": [
+   "28B"
+  ],
+  "length": 8,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 8-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-8s): Rohan eats a full plate of food, then blends and drinks his shake. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B50",
+  "start": 581.9,
+  "end": 595.63,
+  "shots": [
+   "28C"
+  ],
+  "length": 14,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 14-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-14s): Morning: Rohan steps on the bathroom scale, checks it, and nods calmly. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B51",
+  "start": 595.63,
+  "end": 603.47,
+  "shots": [
+   "29A"
+  ],
+  "length": 8,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 8-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-8s): Rohan takes a mirror selfie on day one with his phone, standing in the dark in front of a tall mirror, looking unsure. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B52",
+  "start": 603.47,
+  "end": 614.64,
+  "shots": [
+   "29B",
+   "30A"
+  ],
+  "length": 11,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet",
+   "Rohan week-12 sheet"
+  ],
+  "prompt": "A 11-second multi-shot sequence with 2 cuts, the same characters in every shot. Shot 1 (0-9s): Time-lapse in front of the same mirror, same pose: Rohan gradually fills out over twelve weeks, shoulders broadening, chest and arms growing, until he becomes Rohan (twelve weeks later). He lowers the phone and smiles. Shot 2 (9-11s): Rohan in front of the mirror pinches a little skin at his belly, worried. Mouth moving as if talking, but no audible speech. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Rohan twelve weeks later: the same face, hair and outfit, but broader shoulders, a fuller chest and thicker arms, the white t-shirt now fits snugly, standing upright and confident; still lean and natural, not a bodybuilder. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B53",
+  "start": 614.64,
+  "end": 627.77,
+  "shots": [
+   "30B"
+  ],
+  "length": 13,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet",
+   "Tiger sheet"
+  ],
+  "prompt": "A 13-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-13s): Tiger pats Rohan on the back reassuringly and points to the mirror, where Rohan looks lean and slightly bigger; Rohan relaxes and smiles. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B54",
+  "start": 627.77,
+  "end": 642.06,
+  "shots": [
+   "31A",
+   "31B"
+  ],
+  "length": 14,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet",
+   "Tiger sheet"
+  ],
+  "prompt": "A 14-second multi-shot sequence with 2 cuts, the same characters in every shot. Shot 1 (0-5s): Rohan stands in a supplement shop, overwhelmed by tall shelves of colorful tubs. Tiger walks in, pushes the shelves of tubs aside and hands him a single small plain tub. Shot 2 (5-14s): Rohan reads the label of a small plain tub of creatine, shrugs, and puts it next to his eggs and milk on the kitchen counter. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B55",
+  "start": 642.06,
+  "end": 651.25,
+  "shots": [
+   "31C"
+  ],
+  "length": 9,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 9-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-9s): Rohan holds a tub of protein powder in one hand and a plate of eggs and chicken in the other, looks at both, and shrugs as if they are the same thing. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B56",
+  "start": 651.25,
+  "end": 664.14,
+  "shots": [
+   "32A"
+  ],
+  "length": 13,
+  "priority": false,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 13-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-13s): Rohan plays football with friends on a night pitch under floodlights, then sits down after the game with a big plate of food. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B57",
+  "start": 664.14,
+  "end": 669.81,
+  "shots": [
+   "33A"
+  ],
+  "length": 6,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet",
+   "Tiger sheet"
+  ],
+  "prompt": "A 6-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-6s): Rohan and Tiger face each other; Rohan asks a question with open hands, Tiger grins and they bump fists. Mouth moving as if talking, but no audible speech. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B58",
+  "start": 669.81,
+  "end": 679.45,
+  "shots": [
+   "34A"
+  ],
+  "length": 10,
+  "priority": false,
+  "ingredients": [
+   "Rohan week-12 sheet"
+  ],
+  "prompt": "A 10-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-10s): Rohan (twelve weeks later) faces the camera, smiles and points down toward the comments. Characters: Rohan twelve weeks later: the same face, hair and outfit, but broader shoulders, a fuller chest and thicker arms, the white t-shirt now fits snugly, standing upright and confident; still lean and natural, not a bodybuilder. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "B59",
+  "start": 679.45,
+  "end": 688.02,
+  "shots": [
+   "34B"
+  ],
+  "length": 9,
+  "priority": true,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "prompt": "A 9-second multi-shot sequence with 1 cuts, the same characters in every shot. Shot 1 (0-9s): Teaser: Rohan sprints at full speed down a dark running track, then at about ten seconds suddenly slows, bends over and pants, exhausted. Freeze on his face. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ }
+]

@@ -248,3 +248,111 @@ def build_sheet():
 
 if __name__ == "__main__":
     build_sheet()
+
+
+def build_blocks(max_len=15.0, max_cuts=6):
+    """Group consecutive shots into multi-shot generations (Kling 3.0 / Seedance 2.0 / Vidu style):
+    up to 15 s and 6 cuts per generation, one prompt listing each cut with its timing."""
+    rows = json.load(open(os.path.join(EP, "flow", "shots.json")))
+    blocks, cur = [], []
+    for r in rows:
+        if cur and (sum(x["length"] for x in cur) + r["length"] > max_len or len(cur) >= max_cuts):
+            blocks.append(cur); cur = []
+        cur.append(r)
+    if cur:
+        blocks.append(cur)
+    out, md = [], ["# Episode 1 · Multi-shot prompts (fewer generations)", "",
+                   f"The same {len(rows)} shots from `SHOTS.md`, grouped into **{len(blocks)} multi-shot generations**. Each one is a single prompt that asks the model for several cuts in one clip of up to 15 seconds. Kling 3.0's multi-shot mode, Seedance 2.0 on Dreamina and Vidu can all take prompts like this.", "",
+                   "**How to use:**",
+                   "1. Attach the listed character references in the tool. Kling calls them Elements, Vidu calls them References, Seedance uses image references.",
+                   "2. Paste the prompt and set the length shown.",
+                   "3. Download and name the file by its block ID, for example `B07.mp4`. Put it in `flow/shots/`.",
+                   "4. The assembler places the whole block over its window on the voiceover.", "",
+                   "**Priority** marks blocks that contain tier 1 shots. Start with those. Any block you skip falls back to the first cut.", ""]
+    fmt = lambda x: f"{int(x // 60)}:{int(x % 60):02d}"
+    for i, b in enumerate(blocks, 1):
+        bid = f"B{i:02d}"
+        total = sum(x["length"] for x in b)
+        gen_len = min(15, max(5, round(total)))
+        scale = gen_len / total
+        t, cuts, chars = 0.0, [], []
+        for k, x in enumerate(b, 1):
+            d = x["length"] * scale
+            action = x["prompt"].split(" Characters:")[0].split(" Style:")[0]
+            cuts.append(f"Shot {k} ({t:.0f}-{t + d:.0f}s): {action}")
+            t += d
+            for c in (ROHAN, ROHAN12, TIGER, CREW):
+                if c in x["prompt"] and c not in chars:
+                    chars.append(c)
+        ings = sorted({g for x in b for g in x["ingredients"]})
+        prompt = (f"A {gen_len}-second multi-shot sequence with {len(b)} cuts, the same characters in every shot. " + " ".join(cuts)
+                  + (" Characters: " + " | ".join(chars) + "." if chars else "") + f" {STYLE} {TAIL}")
+        prio = any(x["tier"] == 1 for x in b)
+        out.append({"id": bid, "start": b[0]["start"], "end": b[-1]["end"], "shots": [x["id"] for x in b], "length": gen_len,
+                    "priority": prio, "ingredients": ings, "prompt": prompt})
+        md += [f"## {bid} · {fmt(b[0]['start'])}–{fmt(b[-1]['end'])} · {gen_len} s · {len(b)} cuts{' · **priority**' if prio else ''}", "",
+               f"Covers shots {', '.join(x['id'] for x in b)}. Ingredients: {', '.join(ings) or 'none'}.", "", "```text", prompt, "```", ""]
+    json.dump(out, open(os.path.join(EP, "flow", "blocks.json"), "w"), indent=1)
+    open(os.path.join(EP, "flow", "MULTISHOT.md"), "w").write("\n".join(md))
+    print(len(blocks), "multi-shot blocks;", sum(1 for o in out if o["priority"]), "priority")
+
+
+if __name__ == "__main__":
+    build_blocks()
+
+
+HERO = ["03A", "03C", "11A", "11B", "12A", "13A", "20B", "24B", "29B", "34B"]  # moments worth real motion
+
+
+def build_grids(per=9):
+    """Nine shots per image: a 3x3 storyboard sheet. The assembler slices it into panels and animates them (2.5D)."""
+    rows = json.load(open(os.path.join(EP, "flow", "shots.json")))
+    n_sheets = -(-len(rows) // per)
+    base, extra = divmod(len(rows), n_sheets)
+    sheets, i = [], 0
+    for k in range(n_sheets):  # balanced: e.g. 73 shots -> one sheet of 9, eight of 8
+        size = base + (1 if k < extra else 0)
+        sheets.append(rows[i:i + size]); i += size
+    out = []
+    md = ["# Episode 1 · Storyboard grids (the fastest route)", "",
+          f"All {len(rows)} shots as **{len(sheets)} images**. Each image is a 3×3 storyboard sheet: nine panels of the same characters, one per shot. Drawing them together keeps the characters consistent, and nine generations cover the whole episode.", "",
+          "This is close to how The Rep Theory works: mostly still illustrations with subtle motion. The assembler slices each sheet into its nine panels, upscales them, and animates them with push-ins, drift and glow, timed to the voiceover.", "",
+          "**How to use:**",
+          "1. Use an image model that accepts reference images: Gemini (Nano Banana), Google Flow's image generation, Dreamina (Seedream), or Vidu. Attach the character sheets listed for the grid.",
+          "2. Paste the prompt. Ask for 16:9 or the widest option.",
+          "3. Check all nine panels follow the order and the characters look right. Rohan must stay skinny, except week 12. Re-roll weak sheets, or re-make single panels using the prompts in `SHOTS.md`.",
+          "4. Save as `G01.png`, `G02.png`… in `flow/shots/`.", "",
+          "Then make the **hero clips** below as real video, using your free daily video credits. These are the moments that need real motion.", "",
+          "| Hero shot | Why it needs motion |", "|---|---|"]
+    why = {"03A": "the bouncing knee is the whole point", "03C": "food turning into burned energy", "11A": "the Muscle Crew at work",
+           "11B": "the crew speeding up and the fibre growing", "12A": "the struggle on the last rep", "13A": "Tiger poking Rohan",
+           "20B": "the shake going down easily", "24B": "push-up form must be seen moving", "29B": "the 12-week transformation",
+           "34B": "the sprint that runs out at ten seconds"}
+    md += [f"| {h} | {why[h]} |" for h in HERO] + ["", "Hero clip prompts are the matching shots in `SHOTS.md`. Name them by shot ID, for example `29B.mp4`.", ""]
+    fmt = lambda x: f"{int(x // 60)}:{int(x % 60):02d}"
+    for gi, sh in enumerate(sheets, 1):
+        gid = f"G{gi:02d}"
+        panels, chars = [], []
+        for k, x in enumerate(sh, 1):
+            action = x["prompt"].split(" Characters:")[0].split(" Style:")[0].replace(" Mouth moving as if talking, but no audible speech.", " Talking.")
+            panels.append(f"Panel {k}: {action}")
+            for c in (ROHAN, ROHAN12, TIGER, CREW):
+                if c in x["prompt"] and c not in chars:
+                    chars.append(c)
+        n = len(sh)
+        blank = " The ninth panel (bottom right) is plain black." if n == 8 else ""
+        prompt = (f"A storyboard sheet in 16:9: a 3 by 3 grid of separate panels, read left to right, top to bottom, "
+                  f"each panel 16:9 with a thin white gutter between panels, no panel numbers. The same characters look identical in every panel. "
+                  + " ".join(panels) + blank + (" Characters: " + " | ".join(chars) + "." if chars else "")
+                  + " Style: 2D anime, black-and-white seinen manga look, crisp ink lines, grey screentone shading; only teal, coral and amber elements in color; near-black backgrounds inside the panels. No text, speech bubbles, captions or numbers.")
+        ings = sorted({g for x in sh for g in x["ingredients"]})
+        out.append({"id": gid, "shots": [x["id"] for x in sh], "rows": 3, "cols": 3, "ingredients": ings, "prompt": prompt})
+        md += [f"## {gid} · shots {sh[0]['id']}–{sh[-1]['id']} · {fmt(sh[0]['start'])}–{fmt(sh[-1]['end'])}", "",
+               f"Ingredients: {', '.join(ings) or 'none'}. Panels in order: {', '.join(x['id'] for x in sh)}.", "", "```text", prompt, "```", ""]
+    json.dump(out, open(os.path.join(EP, "flow", "grids.json"), "w"), indent=1)
+    open(os.path.join(EP, "flow", "GRIDS.md"), "w").write("\n".join(md))
+    print(len(sheets), "grid sheets")
+
+
+if __name__ == "__main__":
+    build_grids()
