@@ -106,10 +106,10 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
 
 <header class="hero">
   <figure>
-    <img src="img/f4_neighbour.jpg" width="1600" height="900" alt="Style frame: on a rooftop at night an old couple dance under a river of bright stars while a young man in a red scarf watches from a lit doorway.">
+    <img src="img/u2_card.jpg" width="1600" height="900" alt="Style frame: a young man in a red scarf slumps on his bed under his phone's blue light; above him a paper card reads DAYS LEFT 21,236; on the shelf his jar glows with the same number.">
     <div class="title">
       <div class="wrap">
-        <div class="eyebrow">whatifgraphics · film two · mood board and character sheet</div>
+        <div class="eyebrow">whatifgraphics · film two · mood board v2, in the SkyeWei format</div>
         <h1 style="margin-top:0.5rem"><span class="n">30,000</span> DAYS</h1>
         <p class="q">What if you could see how many days you have left?</p>
       </div>
@@ -119,8 +119,9 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
 
 <section class="intro">
   <div class="wrap stack">
-    <p class="lede">At birth everyone gets a glass jar of about 30,000 glowing marbles, one for each day of an average life. Every night one marble rises out of the window and becomes a star. Days he spends become bright stars. Days he puts off become dim ones. A wordless 2:30 paper-cut lightbox film in the LANTERN style, built so the number in the thumbnail is also the clock inside the story.</p>
-    <p class="small muted">Every image on this page was rendered by the film's own engine. These are the actual characters, props and lighting, not references.</p>
+    <p class="lede">Everyone has a glass jar of about 30,000 glowing marbles, one for each day of an average life, and a phone that reminds them how many are left. He keeps tapping "Remind me later". Each night one marble rises out of the window and becomes a star: bright if he lived the day, dim if he put it off.</p>
+    <p class="lede">Version two follows the format of SkyeWei's <em>I'll Start Tomorrow…</em> (8.99M views, 8.1% likes): countdown cards, screens that tell the story, close-ups, a daydream at about 37%, a surreal panic, and a light ending. The look, characters and story stay ours: paper-cut lightbox, made in code.</p>
+    <p class="small muted">Every image on this page was rendered by the film's own engine.</p>
   </div>
 </section>
 
@@ -165,20 +166,31 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
   </div>
 </section>
 
-<section id="story">
+<section id="format">
   <div class="wrap stack-lg">
     <div class="stack">
-      <div class="eyebrow">Story spine · 2:30</div>
-      <h2>One jar, one life, one sky</h2>
+      <div class="eyebrow">The format, measured</div>
+      <h2>What viewers rewatch in <em>I'll Start Tomorrow…</em>, and our version of each beat</h2>
+      <p class="muted">Replay is YouTube's "most replayed" curve for that video (1.00 is its peak). It shows which beats people go back for, and which they skip.</p>
     </div>
-    <div class="spine">
-      <div class="tc">0:00</div><div class="beat"><strong>Day 1.</strong> A newborn, a mother leaning over the crib, and on the shelf a jar that glows: 30,000. The first sound is a marble's tink.</div>
-      <div class="tc">0:08</div><div class="beat"><strong>The gold years.</strong> Each night one marble rises through the window and becomes a bright star. Kites, fireflies, the scarf his mother knits.</div>
-      <div class="tc">0:30</div><div class="beat"><strong>LATER.</strong> The guitar, the sketchbook, the running shoes, Mom's calls: each goes into a box marked LATER. The marbles keep rising but become dim stars. The boxes wall up his window until he can't see the sky.</div>
-      <div class="tc">0:58</div><div class="beat"><strong>The turn.</strong> Music through the ceiling. On the roof the neighbour, three marbles left, dances with his wife under a sky blazing with bright stars. He looks up at his own patch of sky: dim. His jar says 18,250.</div>
-      <div class="tc">1:20</div><div class="beat"><strong>Spend today.</strong> He tears down the LATER wall. Guitar at dawn, the run, the call to Mom. Every marble now rises bright, and his sky starts to fill.</div>
-      <div class="tc">1:55</div><div class="beat"><strong>A life.</strong> A wedding, a child, grey hair. The label runs from 18,250 down to 50, and every window in the city holds its own jar.</div>
-      <div class="tc">2:10</div><div class="beat"><strong>His sky.</strong> A new jar of 30,000 beside a crib. He lifts his granddaughter to a window full of his days. <em>You get about 30,000 days. Today is one of them.</em></div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Their beat</th><th>Replay</th><th>Our beat</th><th>Our time</th></tr></thead>
+        <tbody>
+          <tr><td>"NEW PROJECT" dialog: the premise in one UI box</td><td class="num">0.84</td><td>Lock screen at 2:14 a.m.: "DAYS LEFT 21,236 · Remind me later"</td><td class="num">0:00</td></tr>
+          <tr><td>"DUE IN 30 DAYS" card</td><td class="num">0.29</td><td>Card: DAYS LEFT 21,236, the same number glowing on his jar</td><td class="num">0:06</td></tr>
+          <tr><td>Phone-app montage</td><td class="num">0.45</td><td>Feed, game, "Next episode in 5": every swipe, a marble tinks out of the jar</td><td class="num">0:12</td></tr>
+          <tr><td>Wall of screens</td><td class="num">0.08–0.22</td><td>The endless feed: him in every phone. Kept to 6 s because nobody rewatches it</td><td class="num">0:40</td></tr>
+          <tr><td>"DUE IN 7", night phone</td><td class="num">0.88</td><td>Card: DAYS LEFT 18,250. The LATER boxes now cover his window</td><td class="num">0:50</td></tr>
+          <tr><td><strong>"COMPLETED!" daydream</strong></td><td class="num"><strong>1.00</strong></td><td><strong>The daydream: he plays one chord and sees the life he could have, on stage with a sky on fire. Then the guitar goes back in the box.</strong></td><td class="num">1:00 (36%)</td></tr>
+          <tr><td>Extreme close-up of eyes</td><td class="num">0.40</td><td>His eye, the draining jar in the pupil, a bead of sweat</td><td class="num">1:10</td></tr>
+          <tr><td>"DUE IN 3 DAYS", skeleton, fire</td><td class="num">0.41</td><td>Card: DAYS LEFT 14,600, in red. The jar towers, marbles pour, the LATER boxes avalanche</td><td class="num">1:15</td></tr>
+          <tr><td>Phone close-up, a message</td><td class="num">0.54</td><td>The turn: on the roof, the neighbour's score next to his</td><td class="num">1:30</td></tr>
+          <tr><td>Progress bar, "EXPORTING…"</td><td class="num">0.01–0.2</td><td>The comeback: a STARS bar climbs, "UPLOADING first_song". Cut to 25 s because the grind is the least-watched part</td><td class="num">1:50</td></tr>
+          <tr><td>23:59 on the phone</td><td class="num">0.15</td><td>23:59. Today's marble rises, and it is bright</td><td class="num">2:15</td></tr>
+          <tr><td>Light ending, asleep</td><td class="num">0.69</td><td>Asleep under a filling sky; a 2 s flash-forward to old age; the end line</td><td class="num">2:25</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -186,34 +198,47 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
 <section id="frames">
   <div class="wrap stack-lg">
     <div class="stack">
-      <div class="eyebrow">Style frames</div>
-      <h2>Six moments that set the look</h2>
+      <div class="eyebrow">Style frames · 2:45</div>
+      <h2>The film in nine frames</h2>
     </div>
 
     <div class="frame">
-      <figure><img src="img/f1_day1.jpg" width="1600" height="900" alt="A mother leans over a crib at night; on a shelf a glass jar of glowing marbles is labelled 30,000."></figure>
-      <div class="note"><span class="tc">0:00 · DAY 1</span><h3>The jar is the light</h3><p>Warm ladder. The jar is the brightest thing in the room, and its label is the first number we see. This is the hook frame: light in the dark and a number in the first second.</p><span class="chip"><i style="background:#2a170c"></i><i style="background:#5a3a26"></i><i style="background:#ffc566"></i></span></div>
+      <figure><img src="img/u1_lock.jpg" width="1600" height="900" alt="A hand holds a phone at 2:14 a.m.; a notification reads DAYS LEFT 21,236 with a Remind me later button; a glowing jar behind shows the same number."></figure>
+      <div class="note"><span class="tc">0:00 · THE HOOK</span><h3>A notification everyone recognises</h3><p>The premise in one frame: a lock screen, a number, and the button we all press. The jar behind it holds the same count in light.</p><span class="chip"><i style="background:#05060e"></i><i style="background:#1d2a58"></i><i style="background:#ffc566"></i></span></div>
     </div>
     <div class="frame">
-      <figure><img src="img/f3_later.jpg" width="1600" height="900" alt="A young man slumps on a couch lit blue by his phone; behind him a wall of cardboard boxes stamped LATER blocks the window; a dimmer jar on a desk reads 19,012."></figure>
-      <div class="note"><span class="tc">0:30 · LATER</span><h3>The enemy is a cardboard box</h3><p>Cold ladder, with the phone's blue as the second light. The boxes literally block his sky, and the guitar neck sticks out of one. The jar on the desk is dimmer than at birth.</p><span class="chip"><i style="background:#070b1c"></i><i style="background:#1a2546"></i><i style="background:#c6dbff"></i></span></div>
+      <figure><img src="img/u2_card.jpg" width="1600" height="900" alt="DAYS LEFT 21,236 card above a young man on his bed with his phone; his jar on the shelf."></figure>
+      <div class="note"><span class="tc">0:06 · CARD ONE</span><h3>The countdown card</h3><p>Backlit paper with lit cut-out type. The cards return at 18,250 and 14,600; each jump is a beat viewers rewatch.</p><span class="chip"><i style="background:#070b1c"></i><i style="background:#1a2546"></i><i style="background:#c6dbff"></i></span></div>
     </div>
     <div class="frame">
-      <figure><img src="img/f4_neighbour.jpg" width="1600" height="900" alt="An old couple dance on a rooftop under a river of stars; their jar reads 3; a young man watches from a lit doorway."></figure>
-      <div class="note"><span class="tc">0:58 · THE TURN</span><h3>Three marbles, a full sky</h3><p>Violet ladder. The neighbour has almost no days left and the brightest sky on the street. His wide-eyed face is the realisation; nobody explains it.</p><span class="chip"><i style="background:#0b0820"></i><i style="background:#2c1f4a"></i><i style="background:#fff4d8"></i></span></div>
+      <figure><img src="img/u3_screens.jpg" width="1600" height="900" alt="Three phones: a feed, a puzzle game at level 248, and Next episode in 5; small marbles fall beside each."></figure>
+      <div class="note"><span class="tc">0:12 · THE MONTAGE</span><h3>Every swipe costs a marble</h3><p>The habit everyone has, shown on screens people recognise. Each swipe sounds a small glass tink, the film's sound logo.</p><span class="chip"><i style="background:#121a40"></i><i style="background:#3a2a6a"></i><i style="background:#ffb3a0"></i></span></div>
     </div>
     <div class="frame">
-      <figure><img src="img/f5_spend.jpg" width="1600" height="900" alt="At dawn on a hill a young man in a red scarf plays guitar while glowing marbles rise from his jar into the sky."></figure>
-      <div class="note"><span class="tc">1:20 · SPEND TODAY</span><h3>Days rise bright</h3><p>Dawn ladder. The scarf flies, the marbles climb as warm stars. The guitar from the LATER box is out and played.</p><span class="chip"><i style="background:#3a2a5c"></i><i style="background:#8a5a6a"></i><i style="background:#f2a46a"></i></span></div>
+      <figure><img src="img/u4_feedwall.jpg" width="1600" height="900" alt="An endless wall of glowing phone screens, each showing a tiny scrolling figure; the young man stands among them."></figure>
+      <div class="note"><span class="tc">0:40 · SURREAL ONE</span><h3>The endless feed</h3><p>Paper phones stacked in depth, each with him inside. Six seconds at most.</p><span class="chip"><i style="background:#04050c"></i><i style="background:#2e4a9a"></i><i style="background:#0a0f22"></i></span></div>
     </div>
     <div class="frame">
-      <figure><img src="img/f2_city.jpg" width="1600" height="900" alt="A night city where every lit window holds a small glowing jar; a man in a red scarf stands on a rooftop beside his own jar."></figure>
-      <div class="note"><span class="tc">1:55 · A LIFE</span><h3>Every window has a jar</h3><p>The world rule made visible: everyone is counting. Some windows burn bright, some barely glow.</p><span class="chip"><i style="background:#050a1e"></i><i style="background:#1a2a55"></i><i style="background:#ffc566"></i></span></div>
+      <figure><img src="img/u5_eye.jpg" width="1600" height="900" alt="Extreme close-up of a wide eye; the jar of marbles is reflected in the pupil; a bead of sweat."></figure>
+      <div class="note"><span class="tc">1:10 · THE EYE</span><h3>The jar in his pupil</h3><p>The format's close-up, in paper. Just after the daydream, the drop back into reality.</p><span class="chip"><i style="background:#2a0a08"></i><i style="background:#c98a62"></i><i style="background:#f3ead8"></i></span></div>
     </div>
     <div class="frame">
-      <figure><img src="img/f6_sky.jpg" width="1600" height="900" alt="An old man lifts his baby granddaughter toward a window full of stars; a new jar beside the crib reads 30,000; his own jar reads 50."></figure>
-      <div class="note"><span class="tc">2:10 · HIS SKY</span><h3>The ending rhymes with Day 1</h3><p>A new jar of 30,000 by a new crib. His own reads 50, and the window is full of his days. The end line is set as text in the picture.</p><span class="chip"><i style="background:#03061a"></i><i style="background:#4a3020"></i><i style="background:#ffbf66"></i></span></div>
+      <figure><img src="img/u6_panic.jpg" width="1600" height="900" alt="Red room: DAYS LEFT 14,600; a giant jar pours marbles; LATER boxes fly as the young man runs."></figure>
+      <div class="note"><span class="tc">1:15 · SURREAL TWO</span><h3>The panic room</h3><p>Their skeleton and fire become our jar towering over him, marbles pouring out and the LATER boxes avalanching. It's comic and loud, and nobody dies.</p><span class="chip"><i style="background:#2a0606"></i><i style="background:#5a120a"></i><i style="background:#ff7a5c"></i></span></div>
     </div>
+    <div class="frame">
+      <figure><img src="img/u7_scores.jpg" width="1600" height="900" alt="Rooftop: the old neighbour and his wife dance under a river of stars, tagged 24,880 stars, 3 days left; the young man in the doorway is tagged 1,204 stars, 18,250 left."></figure>
+      <div class="note"><span class="tc">1:30 · THE TURN</span><h3>The score that matters</h3><p>Two tags say everything: he has more days and far fewer stars. No dialogue needed.</p><span class="chip"><i style="background:#0b0820"></i><i style="background:#2c1f4a"></i><i style="background:#fff4d8"></i></span></div>
+    </div>
+    <div class="frame">
+      <figure><img src="img/u8_upload.jpg" width="1600" height="900" alt="At his desk he uploads first_song.mp3 at 92 percent; a guitar beside him; a bright star rises outside; a STARS bar climbs from 1,204 to 1,973."></figure>
+      <div class="note"><span class="tc">1:50 · THE COMEBACK</span><h3>A progress bar he wants to fill</h3><p>The format's progress UI turned around: now the bar counts days spent. Kept short.</p><span class="chip"><i style="background:#2a180c"></i><i style="background:#1d2a58"></i><i style="background:#ffc566"></i></span></div>
+    </div>
+    <div class="frame">
+      <figure><img src="img/u9_end.jpg" width="1600" height="900" alt="He sleeps; through the window a river of bright stars fills the sky; text: You get about 30,000 days. Today is one of them."></figure>
+      <div class="note"><span class="tc">2:25 · THE ENDING</span><h3>Asleep under his own sky</h3><p>A light ending, like theirs. A 2 s flash-forward (old him lifting a granddaughter to the window, below) gives the life-sized payoff before the line.</p><span class="chip"><i style="background:#03061a"></i><i style="background:#0e1838"></i><i style="background:#ffbf66"></i></span></div>
+    </div>
+    <figure class="sheet"><img src="img/f6_sky.jpg" width="1600" height="900" alt="Flash-forward: the old man lifts his granddaughter toward a window full of stars."><figcaption>Flash-forward frame, 2:33.</figcaption></figure>
   </div>
 </section>
 
@@ -227,6 +252,7 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
     <div class="ladders">
       <div class="ladder"><div class="sw"><span style="background:#2a170c"></span><span style="background:#5a3a26"></span><span style="background:#94603a"></span><span style="background:#ffc566"></span></div><div class="cap"><b>Gold years</b><code>#2a170c #5a3a26 #94603a #ffc566</code></div></div>
       <div class="ladder"><div class="sw"><span style="background:#070b1c"></span><span style="background:#1a2546"></span><span style="background:#3f5a92"></span><span style="background:#c6dbff"></span></div><div class="cap"><b>LATER</b><code>#070b1c #1a2546 #3f5a92 #c6dbff</code></div></div>
+      <div class="ladder"><div class="sw"><span style="background:#2a0606"></span><span style="background:#5a120a"></span><span style="background:#c98a62"></span><span style="background:#ff7a5c"></span></div><div class="cap"><b>Panic</b><code>#2a0606 #5a120a #c98a62 #ff7a5c</code></div></div>
       <div class="ladder"><div class="sw"><span style="background:#0b0820"></span><span style="background:#2c1f4a"></span><span style="background:#7d8fb8"></span><span style="background:#fff4d8"></span></div><div class="cap"><b>The turn</b><code>#0b0820 #2c1f4a #7d8fb8 #fff4d8</code></div></div>
       <div class="ladder"><div class="sw"><span style="background:#3a2a5c"></span><span style="background:#8a5a6a"></span><span style="background:#f2a46a"></span><span style="background:#ffe2a8"></span></div><div class="cap"><b>Spend today</b><code>#3a2a5c #8a5a6a #f2a46a #ffe2a8</code></div></div>
       <div class="ladder"><div class="sw"><span style="background:#03061a"></span><span style="background:#0e1838"></span><span style="background:#4a3020"></span><span style="background:#ffbf66"></span></div><div class="cap"><b>His sky</b><code>#03061a #0e1838 #4a3020 #ffbf66</code></div></div>
@@ -242,10 +268,11 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
       <h2>Everything on screen means one thing</h2>
     </div>
     <div class="rules">
-      <div><h3>The jar is the clock</h3><p>The only counter in the film, written on its label. Fewer marbles means less glow, so his rooms really do get darker as he ages, unless the sky outside is bright.</p></div>
+      <div><h3>The jar is the clock</h3><p>The count appears three ways: on the jar's label, on the lock screen, and on the countdown cards. They always agree. Fewer marbles means less glow, so his rooms really do get darker as he ages, unless the sky outside is bright.</p></div>
       <div><h3>Stars are days</h3><p>Spent days rise warm and bright with a chime. Wasted days hang as cold pinpricks. The sky is the scoreboard and the final payoff.</p></div>
       <div class="scarf"><h3>The scarf is love</h3><p>His mother knits it at 7. It is the one saturated colour on him at every age, so you always know where he is in a wide shot.</p></div>
       <div><h3>LATER is the enemy</h3><p>A cardboard box. Everything he postpones goes in one. They pile up until they block the window and the sky.</p></div>
+      <div><h3>Screens are paper too</h3><p>Phones, cards and progress bars are lit panels with cut-out type, so the format's UI language stays inside the lightbox look.</p></div>
       <div><h3>Faces carry it</h3><p>A backlit face sheet with cut eyes, brows and mouth. No one speaks; the face tells you how a day went.</p></div>
       <div><h3>No one dies on screen</h3><p>The neighbour's jar reads 3 and he is dancing. Sadness lowers sharing; lift and one action raise it.</p></div>
     </div>
@@ -301,7 +328,7 @@ footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var
         <ol class="decide">
           <li><span><strong>End line:</strong> "Today is one of them." or "Spend one today."</span></li>
           <li><span><strong>Lead title:</strong> the "What if" question (fits the channel name) or "30,000 DAYS".</span></li>
-          <li><span><strong>Length:</strong> 2:30 as boarded, or 3:00 with a longer middle.</span></li>
+          <li><span><strong>Length:</strong> 2:45 as boarded (theirs is 4:25; ours drops their least-watched grind).</span></li>
           <li><span><strong>Anything to change</strong> on the cast or the look.</span></li>
         </ol>
       </div>
