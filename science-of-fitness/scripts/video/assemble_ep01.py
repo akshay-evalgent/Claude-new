@@ -17,6 +17,7 @@ from multiprocessing import Pool
 from PIL import Image, ImageDraw
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import ep01_video as v
+from panels import cut_panel
 
 EP = v.EP
 FPS, W, H = v.FPS, v.W, v.H
@@ -74,26 +75,11 @@ def find_grid(gid):
     return None
 
 
-def trim_gutters(im):
-    """Cut light gutters/borders off a panel crop."""
-    import numpy as np
-    a = np.asarray(im.convert("L")).astype(np.float32)
-    rows = np.flatnonzero(a.mean(1) < 200); cols = np.flatnonzero(a.mean(0) < 200)
-    if len(rows) < a.shape[0] * 0.5 or len(cols) < a.shape[1] * 0.5:
-        return im
-    return im.crop((cols[0], rows[0], cols[-1] + 1, rows[-1] + 1))
-
-
 class Still:
     """One storyboard panel, upscaled to cover 1920x1080 and animated with a slow push-in and drift."""
 
     def __init__(self, grid_path, k, seed):
-        g = Image.open(grid_path).convert("RGB")
-        cw, ch = g.width / 3, g.height / 3
-        r, c = divmod(k, 3)
-        ix, iy = cw * 0.02, ch * 0.02
-        cell = g.crop((int(c * cw + ix), int(r * ch + iy), int((c + 1) * cw - ix), int((r + 1) * ch - iy)))
-        cell = trim_gutters(cell)
+        cell = cut_panel(grid_path, k)
         s = max(W / cell.width, H / cell.height) * 1.1
         self.base = cell.resize((int(cell.width * s), int(cell.height * s)), Image.LANCZOS)
         self.dir = (-1) ** seed

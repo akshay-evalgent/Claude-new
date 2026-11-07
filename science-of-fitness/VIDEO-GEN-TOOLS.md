@@ -53,6 +53,8 @@ For no watermarks, no daily caps and commercial rights, run open models on a fre
 | **Licences** | **Wan 2.2: Apache-2.0.** Commercial use is fine, and no rights are claimed over outputs. **LTX-2/2.3: Lightricks community licence.** Free below $10M annual revenue, with a no-competing-products clause. |
 | **Trade-off** | Quality and speed are below Kling or Seedance, and setup takes an evening. Character consistency comes from starting each clip from a keyframe, such as a storyboard panel. |
 
+**Ready to run:** `episodes/ep01-skinny-to-bulky/kaggle/ep01-wangp-batch.ipynb`. It batch-generates Episode 1's shots with Wan 2.2 on Kaggle, unattended, and hands back a zip for the assembler. See that folder's README.
+
 **Toonflow**, an open-source studio for AI anime short dramas from our repo list, handles script, storyboard, character assets and generation in one app. It needs model API keys or local models, so it's free only with open models.
 
 ## Licences matter for a monetised channel

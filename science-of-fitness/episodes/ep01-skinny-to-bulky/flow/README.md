@@ -2,7 +2,7 @@
 
 The character-driven version of the episode. Rohan, a genuinely skinny 18-year-old, acts out every idea. Tiger, the big gym bro, pushes the myths. The tiny Muscle Crew shows what happens inside the body. On-screen text drops to a few key numbers.
 
-## Three ways to produce it
+## Four ways to produce it
 
 Pick one. You can also mix them, since the assembler takes whatever exists.
 
@@ -11,6 +11,7 @@ Pick one. You can also mix them, since the assembler takes whatever exists.
 | **A. Storyboard grids + hero clips (recommended)** | 9 images + ~10 videos | Lowest. Same look as the reference channels. | `GRIDS.md` (+ hero shots in `SHOTS.md`) |
 | B. Multi-shot clips (Kling 3.0, Seedance 2.0, Vidu) | 59 videos (24 priority) | Medium | `MULTISHOT.md` |
 | C. One clip per shot | 73 videos (28 tier 1) | Highest | `SHOTS.md` |
+| D. Batch on Kaggle's free GPU (Wan 2.2, no watermark) | 10–73 clips, unattended | One notebook run. Lower quality than Kling or Seedance. | `../kaggle/README.md` |
 
 For free tools and their limits, see `../../../VIDEO-GEN-TOOLS.md`.
 
