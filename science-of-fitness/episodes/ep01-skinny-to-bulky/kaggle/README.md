@@ -33,6 +33,21 @@ python3 scripts/video/assemble_ep01.py
 
 The assembler uses each clip where it exists. Elsewhere it falls back to grid panels and then the first cut.
 
+## Or launch it from the command line
+
+With a Kaggle API key in the environment (`KAGGLE_USERNAME` and `KAGGLE_KEY`, or `KAGGLE_API_TOKEN` and `KAGGLE_USERNAME`), one script does the whole run:
+- pushes the notebook as a private kernel, with a T4 and internet on;
+- waits for the run to finish;
+- unzips the clips into `../flow/shots/`.
+
+```bash
+pip install kaggle
+```
+
+```bash
+python3 scripts/video/run_on_kaggle.py --set hero
+```
+
 ## What the notebook does
 
 | Step | What |
