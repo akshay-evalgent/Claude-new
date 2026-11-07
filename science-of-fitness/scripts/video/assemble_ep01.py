@@ -41,7 +41,8 @@ class Fitted:
         self.dur = probe(path)
         vf = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS}"
         self.p = subprocess.Popen(["ffmpeg", "-loglevel", "error", "-i", path, "-vf", vf, "-an", "-f", "rawvideo",
-                                   "-pix_fmt", "rgba", "-"], stdout=subprocess.PIPE)
+                                   "-pix_fmt", "rgba", "-"], stdout=subprocess.PIPE,
+                                  stderr=subprocess.DEVNULL)  # quiet when a long clip is cut off early
         self.i, self.last, self.ended = -1, None, False
 
     def _read_to(self, idx):

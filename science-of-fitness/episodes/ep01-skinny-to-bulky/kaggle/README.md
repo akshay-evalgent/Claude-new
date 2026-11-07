@@ -73,16 +73,26 @@ python3 scripts/video/run_on_kaggle.py --set hero
 
 A session that stops early still keeps every finished clip in `ep01-shots.zip`. To finish the rest, add that zip's clips as an input dataset and run again. The notebook skips shots that already exist.
 
-## Not tested here
+## First real run: 7 November 2026, the 10 hero shots
 
-I checked the notebook's flow locally, with a stand-in for WanGP:
-- building the batch;
-- cutting grid panels;
-- chunking;
-- skipping finished shots;
-- collecting and zipping clips.
+| | |
+|---|---|
+| Machine | Tesla T4, driver 580, so the notebook picked PyTorch 2.10 with CUDA 13. Attention: sdpa. |
+| Install | 5 minutes |
+| Per shot at 1280×704, 5 s | About 7 minutes. Denoising is about 2.6 min (3 steps × 52 s). The rest is model loading, decoding and saving. |
+| Whole run | 77 minutes for 10 shots, with no errors |
+| Estimate for all 73 | About 8.5 hours, which fits in one 12-hour run. At `960x544`, expect roughly half that. |
 
-I have not run it on Kaggle, because this machine has no GPU and no Kaggle account. The first real run is the test. If the install or a generation fails, send me the cell's error output.
+**How the clips look:**
+- **Style:** it holds well across all shots: black-and-white manga, teal shorts, amber bricks.
+- **Strongest shots:** the Muscle Crew shots (11A, 11B), 03A and 20B.
+- **Weak spots:**
+  - Rohan's face and build drift between text-only shots. In 12A he isn't skinny enough.
+  - Tiger came out fat instead of muscular (13A).
+  - The push-up form in 24B is wrong: the hips are piked.
+  - 29B shows mirror panels instead of a time-lapse.
+
+  Starting shots from the storyboard sheets or keyframes fixes the drift. Redo the exercise-form shots from a keyframe, or keep the first-cut move cards for them.
 
 ## Change the shots
 
