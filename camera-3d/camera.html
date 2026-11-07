@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DSLR Inside Out</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one full-bleed canvas; a title in the top-left corner; a control deck along the bottom; part labels float over the scene. */
+:root{
+  --bg:#0b0c0e; --fg:#e9e6e0; --muted:#8f8c86; --line:rgba(233,230,224,.16);
+  --panel:rgba(14,15,18,.84); --accent:#c8102e; --hot:#ffb070;
+  --ui:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  color-scheme:dark;
+}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font-family:var(--ui);overflow:hidden}
+#stage{position:fixed;inset:0;touch-action:none;cursor:grab}
+#stage.grabbing{cursor:grabbing}
+#stage.hot{cursor:pointer}
+canvas{display:block;width:100%;height:100%}
+#labels{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.lbl{position:absolute;left:0;top:0;font:500 11px/1.25 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--fg);white-space:nowrap;opacity:0;padding:2px 0;will-change:transform}
+.lbl::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:calc(var(--lift,19px) - 5px);background:rgba(233,230,224,.45)}
+.lbl::before{content:"";position:absolute;left:50%;top:calc(100% + var(--lift,19px) - 5px);width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--fg)}
+.lbl.hot{color:var(--hot)}
+.lbl.hot::before{background:var(--hot)}
+#hud{position:fixed;left:0;top:0;pointer-events:none;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+#hud h1{margin:0;font:600 15px/1.2 var(--ui);letter-spacing:.01em}
+#hud p{margin:4px 0 0;font:400 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+#deck{position:fixed;left:0;right:0;bottom:0;pointer-events:none;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;padding-top:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+#info{pointer-events:auto;min-width:0;flex:1 1 260px;max-width:440px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:3px;padding:10px 14px;backdrop-filter:blur(6px)}
+#info b{display:block;font:600 14px/1.2 var(--ui)}
+#info span{display:block;margin-top:3px;font:400 13px/1.4 var(--ui);color:var(--muted)}
+#info.hot{border-left-color:var(--hot)}
+#info.hot span{color:var(--fg)}
+#ctl{pointer-events:auto;display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
+.btn{font:500 11px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:10px 13px;cursor:pointer;backdrop-filter:blur(6px)}
+.btn:hover{border-color:rgba(233,230,224,.4)}
+.btn:focus-visible{outline:2px solid var(--hot);outline-offset:2px}
+.btn.on{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.btn.fire{border-color:rgba(200,16,46,.6)}
+.sl{display:flex;flex-direction:column;gap:5px;font:400 10px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:8px 10px 9px;backdrop-filter:blur(6px)}
+.sl label{display:flex;justify-content:space-between;gap:10px}
+.sl output{color:var(--fg);font-variant-numeric:tabular-nums}
+.sl input{width:118px;margin:0;accent-color:var(--accent)}
+@media (max-width:620px){
+  #info{flex-basis:100%;max-width:none}
+  .lbl{font-size:10px}
+  .sl input{width:96px}
+}
+@media (prefers-reduced-motion:reduce){ .lbl{transition:none} }
+</style>
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+</head>
+<body>
+<div id="stage"></div>
+<div id="labels"></div>
+<div id="hud"><h1>DSLR Inside Out</h1><p>Full-frame body · 50 mm f/1.4 · 32 parts</p></div>
+<div id="deck">
+  <div id="info"><b id="infoName">50 mm f/1.4 on a full-frame body</b><span id="infoLine">Hover a part to see what it does. Drag to orbit, scroll to zoom, press Explode to take it apart.</span></div>
+  <div id="ctl">
+    <button class="btn fire" id="bFire" type="button" title="Space">Fire shutter</button>
+    <button class="btn" id="bXray" type="button" title="X">X-ray</button>
+    <button class="btn" id="bExplode" type="button" title="E">Explode</button>
+    <div class="sl"><label for="sAp">Aperture <output id="oAp">f/1.4</output></label><input id="sAp" type="range" min="0" max="7" step="1" value="0"></div>
+    <div class="sl"><label for="sFo">Focus <output id="oFo">∞</output></label><input id="sFo" type="range" min="0" max="100" step="1" value="0"></div>
+    <button class="btn" id="bSound" type="button">Sound on</button>
+  </div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+
+/* ---------- renderer, scene, camera ---------- */
+const stage=document.getElementById('stage');
+const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setClearColor(0x0b0c0e,1);
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.05;
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+stage.appendChild(renderer.domElement);
+const scene=new THREE.Scene();
+const cam=new THREE.PerspectiveCamera(32,1,2,8000);
+
+/* studio environment: one big warm softbox top-left, a thin cold rim strip back-right, a faint floor bounce */
+{
+  const env=new THREE.Scene();
+  env.add(new THREE.Mesh(new THREE.SphereGeometry(1500,16,8),new THREE.MeshBasicMaterial({color:0x0d0e11,side:THREE.BackSide})));
+  const o=new THREE.Vector3();
+  const panel=(w,h,c,i,p)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(c).multiplyScalar(i)}));m.position.copy(p);m.lookAt(o);env.add(m);};
+  panel(700,450,0xfff1dc,7,new THREE.Vector3(-500,650,450));
+  panel(70,800,0xd6e6ff,5,new THREE.Vector3(600,150,-600));
+  panel(900,160,0xffffff,1.6,new THREE.Vector3(100,350,-900));
+  panel(1200,1200,0x2a2c33,0.5,new THREE.Vector3(0,-900,0));
+  const pm=new THREE.PMREMGenerator(renderer);
+  scene.environment=pm.fromScene(env,0.03).texture;
+  pm.dispose();
+}
+const key=new THREE.DirectionalLight(0xfff1dc,2.6);
+key.position.set(-260,420,330);
+key.castShadow=true;
+key.shadow.mapSize.set(2048,2048);
+Object.assign(key.shadow.camera,{left:-600,right:600,top:600,bottom:-600,near:50,far:1800});
+key.shadow.bias=-0.0004; key.shadow.normalBias=0.8;
+scene.add(key,key.target);
+const rim=new THREE.DirectionalLight(0xcfe0ff,1.3); rim.position.set(380,160,-420); scene.add(rim);
+scene.add(new THREE.AmbientLight(0x6a6e7a,0.55));
+const inner=new THREE.PointLight(0xfff1dc,1.2,260,1.2); inner.position.set(-30,40,-10); scene.add(inner);
+
+/* ---------- procedural textures (canvas, no image files) ---------- */
+function canvasTex(w,h,draw,{srgb=true,repeat}={}){
+  const c=document.createElement('canvas'); c.width=w; c.height=h; const g=c.getContext('2d'); draw(g,w,h);
+  const t=new THREE.CanvasTexture(c); if(srgb) t.colorSpace=THREE.SRGBColorSpace;
+  t.wrapS=t.wrapT=THREE.RepeatWrapping; if(repeat) t.repeat.set(...repeat); t.anisotropy=8;
+  return {tex:t,canvas:c,ctx:g,redraw(){draw(g,w,h);t.needsUpdate=true;}};
+}
+const gripTex=canvasTex(64,64,(g,w,h)=>{ g.fillStyle='#808080'; g.fillRect(0,0,w,h); g.strokeStyle='#b4b4b4'; g.lineWidth=5;
+  for(let i=-2;i<=2;i++){ g.beginPath(); g.moveTo(i*w,0); g.lineTo(i*w+h,h); g.stroke(); g.beginPath(); g.moveTo(i*w+w,0); g.lineTo(i*w,h); g.stroke(); } },{srgb:false,repeat:[0.18,0.18]});
+const ridgeTex=canvasTex(512,8,(g,w,h)=>{ g.fillStyle='#606060'; g.fillRect(0,0,w,h); g.fillStyle='#c0c0c0'; for(let i=0;i<64;i++) g.fillRect(i*8,0,4,h); },{srgb:false});
+const pcbTex=canvasTex(512,320,(g,w,h)=>{ g.fillStyle='#1b4a2c'; g.fillRect(0,0,w,h); let s=7;
+  const rnd=()=>{s=(s*16807)%2147483647;return s/2147483647;};
+  g.strokeStyle='#c9a84c'; g.lineWidth=2; g.lineCap='round';
+  for(let i=0;i<70;i++){ let x=rnd()*w,y=rnd()*h; g.beginPath(); g.moveTo(x,y); for(let k=0;k<4;k++){ if(rnd()<.5) x+= (rnd()-.5)*160; else y+=(rnd()-.5)*120; g.lineTo(x,y);} g.stroke(); }
+  g.fillStyle='#d8b65a'; for(let i=0;i<120;i++){ g.beginPath(); g.arc(rnd()*w,rnd()*h,3,0,7); g.fill(); }
+  g.fillStyle='#163d24'; for(let i=0;i<14;i++){ g.fillRect(rnd()*w,rnd()*h,20+rnd()*40,8+rnd()*16); } });
+const FST=[1.4,2,2.8,4,5.6,8,11,16]; let apIdx=0;
+const lcdTex=canvasTex(256,128,(g,w,h)=>{ g.fillStyle='#8f9a84'; g.fillRect(0,0,w,h); g.fillStyle='#1b1d1a';
+  g.font='500 40px "IBM Plex Mono",monospace'; g.textBaseline='middle'; g.textAlign='left'; g.fillText('1/250',16,36);
+  g.textAlign='right'; g.fillText('F'+FST[apIdx],240,36); g.font='500 22px "IBM Plex Mono",monospace'; g.textAlign='left'; g.fillText('ISO 400',16,92); g.textAlign='right'; g.fillText('[ 999 ]',240,92); });
+const dialTex=canvasTex(256,256,(g,w,h)=>{ g.fillStyle='#17181b'; g.fillRect(0,0,w,h); g.beginPath(); g.arc(128,128,124,0,7); g.fillStyle='#232529'; g.fill();
+  const modes=['B','M','Av','Tv','P','A+','C1','C2','C3']; g.font='600 24px Archivo,sans-serif'; g.textAlign='center'; g.textBaseline='middle';
+  modes.forEach((m,i)=>{ const a=-Math.PI*0.5+(i-4)*0.42; const x=128+96*Math.cos(a), y=128+96*Math.sin(a); g.fillStyle=m==='A+'?'#7ad27a':'#e9e6e0'; g.save(); g.translate(x,y); g.rotate(a+Math.PI/2); g.fillText(m,0,0); g.restore(); });
+  g.fillStyle='#e9e6e0'; g.fillRect(124,16,8,22); });
+let focusT=0;
+const scaleTex=canvasTex(256,48,(g,w,h)=>{ g.fillStyle='#101114'; g.fillRect(0,0,w,h); g.fillStyle='#e9e6e0'; g.font='500 20px "IBM Plex Mono",monospace'; g.textAlign='center'; g.textBaseline='middle';
+  const marks=[['∞',0],['3',.18],['1.5',.36],['1',.52],['0.7',.7],['0.5',.86],['0.45',1]];
+  marks.forEach(([t,p])=>{ const x=128+(p-focusT)*180; if(x>-20&&x<w+20){ g.fillText(t,x,18); g.fillRect(x-1,34,2,8);} });
+  g.fillStyle='#c8102e'; g.fillRect(127,2,2,44); });
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{lcdTex.redraw();dialTex.redraw();scaleTex.redraw();});
+
+/* ---------- materials: every mesh gets its own instance so highlight and x-ray stay local ---------- */
+const MAT={
+  body:()=>new THREE.MeshStandardMaterial({color:0x1c1d20,roughness:0.72,metalness:0.35}),
+  rubber:()=>new THREE.MeshStandardMaterial({color:0x121315,roughness:0.95,metalness:0,bumpMap:gripTex.tex,bumpScale:0.5}),
+  rubberPlain:()=>new THREE.MeshStandardMaterial({color:0x121315,roughness:0.95,metalness:0}),
+  metal:()=>new THREE.MeshStandardMaterial({color:0xb8bcc2,roughness:0.32,metalness:1}),
+  darkMetal:()=>new THREE.MeshStandardMaterial({color:0x34373c,roughness:0.45,metalness:0.9}),
+  blade:()=>new THREE.MeshStandardMaterial({color:0x2b2d31,roughness:0.45,metalness:0.85,side:THREE.DoubleSide}),
+  glass:()=>new THREE.MeshPhysicalMaterial({color:0xa9e2da,transmission:0.96,roughness:0.03,ior:1.52,thickness:6,metalness:0,clearcoat:1,clearcoatRoughness:0.02,attenuationColor:new THREE.Color(0x1e3a3c),attenuationDistance:80,side:THREE.DoubleSide}),
+  prism:()=>new THREE.MeshPhysicalMaterial({color:0xd8f0ee,transmission:0.9,roughness:0.05,ior:1.52,thickness:20,metalness:0,clearcoat:1,side:THREE.DoubleSide}),
+  frosted:()=>new THREE.MeshPhysicalMaterial({color:0xcfd4d0,roughness:0.75,transmission:0.55,thickness:1,side:THREE.DoubleSide}),
+  red:()=>new THREE.MeshStandardMaterial({color:0xc8102e,roughness:0.42,metalness:0.15}),
+  sensor:()=>new THREE.MeshPhysicalMaterial({color:0x2a2f3a,roughness:0.12,metalness:0.6,iridescence:1,iridescenceIOR:1.35,iridescenceThicknessRange:[200,520]}),
+  pcb:()=>new THREE.MeshStandardMaterial({color:0xffffff,roughness:0.55,metalness:0.1,map:pcbTex.tex}),
+  chip:()=>new THREE.MeshStandardMaterial({color:0x101114,roughness:0.5,metalness:0.4}),
+  screen:()=>new THREE.MeshPhysicalMaterial({color:0x06080b,roughness:0.06,metalness:0.2,clearcoat:1}),
+  mirror:()=>new THREE.MeshStandardMaterial({color:0xffffff,roughness:0.03,metalness:1}),
+  lcd:()=>new THREE.MeshStandardMaterial({color:0xffffff,roughness:0.5,metalness:0,map:lcdTex.tex}),
+  scale:()=>new THREE.MeshStandardMaterial({color:0xffffff,roughness:0.6,metalness:0,map:scaleTex.tex}),
+  battery:()=>new THREE.MeshStandardMaterial({color:0x26282c,roughness:0.6,metalness:0.1}),
+  card:()=>new THREE.MeshStandardMaterial({color:0x2d2f33,roughness:0.55,metalness:0.1}),
+};
+
+/* ---------- geometry helpers ---------- */
+function roundedBox(w,h,d,r){
+  r=Math.min(r,w/2-0.01,h/2-0.01,d/2-0.01);
+  const W=w-2*r,H=h-2*r,rr=Math.min(r,W/2,H/2)*0.98;
+  const s=new THREE.Shape();
+  s.moveTo(-W/2+rr,-H/2); s.lineTo(W/2-rr,-H/2); s.quadraticCurveTo(W/2,-H/2,W/2,-H/2+rr); s.lineTo(W/2,H/2-rr);
+  s.quadraticCurveTo(W/2,H/2,W/2-rr,H/2); s.lineTo(-W/2+rr,H/2); s.quadraticCurveTo(-W/2,H/2,-W/2,H/2-rr); s.lineTo(-W/2,-H/2+rr);
+  s.quadraticCurveTo(-W/2,-H/2,-W/2+rr,-H/2);
+  const g=new THREE.ExtrudeGeometry(s,{depth:d-2*r,bevelEnabled:true,bevelThickness:r,bevelSize:r,bevelSegments:5,curveSegments:6});
+  g.translate(0,0,-(d-2*r)/2); return g;
+}
+function ring(rOut,rIn,depth,seg=96){
+  const s=new THREE.Shape(); s.absarc(0,0,rOut,0,Math.PI*2,false);
+  const h=new THREE.Path(); h.absarc(0,0,rIn,0,Math.PI*2,true); s.holes.push(h);
+  const g=new THREE.ExtrudeGeometry(s,{depth,bevelEnabled:false,curveSegments:seg}); g.translate(0,0,-depth/2); return g;
+}
+function rectRing(w,h,iw,ih,depth){
+  const s=new THREE.Shape(); s.moveTo(-w/2,-h/2); s.lineTo(w/2,-h/2); s.lineTo(w/2,h/2); s.lineTo(-w/2,h/2); s.closePath();
+  const p=new THREE.Path(); p.moveTo(-iw/2,-ih/2); p.lineTo(-iw/2,ih/2); p.lineTo(iw/2,ih/2); p.lineTo(iw/2,-ih/2); p.closePath(); s.holes.push(p);
+  const g=new THREE.ExtrudeGeometry(s,{depth,bevelEnabled:false}); g.translate(0,0,-depth/2); return g;
+}
+function lensGeom(r,t,c1,c2){
+  const pts=[],n=18;
+  for(let i=0;i<=n;i++){const x=r*i/n; pts.push(new THREE.Vector2(x,-t/2-c2*(1-(x/r)**2)));}
+  for(let i=n;i>=0;i--){const x=r*i/n; pts.push(new THREE.Vector2(x,t/2+c1*(1-(x/r)**2)));}
+  const g=new THREE.LatheGeometry(pts,72); g.rotateX(Math.PI/2); return g;
+}
+function pentaGeom(pts,width,bevel){
+  const s=new THREE.Shape(); pts.forEach(([z,y],i)=>i?s.lineTo(z,y):s.moveTo(z,y)); s.closePath();
+  const g=new THREE.ExtrudeGeometry(s,{depth:width-(bevel?2*bevel:0),bevelEnabled:!!bevel,bevelThickness:bevel||0,bevelSize:bevel||0,bevelSegments:3});
+  g.translate(0,0,-(width-(bevel?2*bevel:0))/2); g.rotateY(-Math.PI/2); return g;
+}
+function bladeGeom(){
+  const s=new THREE.Shape(); s.moveTo(-8,0); s.lineTo(27,0); s.quadraticCurveTo(29,-4,25,-9); s.lineTo(14,-17); s.quadraticCurveTo(0,-18,-9,-10); s.lineTo(-8,0);
+  return new THREE.ShapeGeometry(s,8);
+}
+
+/* ---------- part registry ---------- */
+const rig=new THREE.Group(); scene.add(rig);
+const parts=[]; const shells=[];
+function part(name,line,explode,shell=false){
+  const g=new THREE.Group(); g.name=name;
+  g.userData={part:true,name,line,explode:new THREE.Vector3(...explode)};
+  parts.push(g); if(shell) shells.push(g); rig.add(g); return g;
+}
+function mesh(geo,mat,parent,pos,rot){
+  const m=new THREE.Mesh(geo,mat); if(pos) m.position.set(...pos); if(rot) m.rotation.set(...rot);
+  m.castShadow=true; m.receiveShadow=true; parent.add(m); return m;
+}
+
+/* ---------- body ---------- */
+const frontCover=part('Front cover','Magnesium alloy shell that carries the lens mount and seals the front of the mirror box.',[0,0,70],true);
+mesh(roundedBox(152,108,37.5,5),MAT.body(),frontCover,[0,-3.75,18.75]);
+mesh(new THREE.CylinderGeometry(4,4,2,24),MAT.rubberPlain(),frontCover,[42,-6,38],[Math.PI/2,0,0]); // lens release
+mesh(new THREE.CylinderGeometry(2.2,2.2,1,16),new THREE.MeshStandardMaterial({color:0xff3b30,emissive:0x7a0000,roughness:0.3}),frontCover,[-46,22,38],[Math.PI/2,0,0]); // self-timer lamp
+
+const rearCover=part('Rear cover','The back half of the shell; it holds the screen, the eyepiece and the thumb controls.',[0,0,-170],true);
+mesh(roundedBox(152,108,37.5,5),MAT.body(),rearCover,[0,-3.75,-18.75]);
+
+const topCover=part('Top cover','The top plate; the dials, the shutter release and the hot shoe all mount through it.',[0,60,0],true);
+mesh(roundedBox(152,7.5,75,2.5),MAT.body(),topCover,[0,53.75,0]);
+
+const grip=part('Rubber grip','Textured rubber over the battery bay so the camera sits in one hand.',[-40,0,70],true);
+mesh(roundedBox(26,94,46,6),MAT.rubber(),grip,[-65,-5,33]);
+mesh(new THREE.CylinderGeometry(9,9,6,32),MAT.darkMetal(),grip,[-65,43,24],[0,0,Math.PI/2]); // main dial
+
+const hump=part('Pentaprism housing','The hump over the prism; it also carries the hot shoe.',[0,110,0],true);
+mesh(pentaGeom([[-24,0],[24,0],[24,15],[0,24],[-24,18]],56,2),MAT.body(),hump,[0,57.5,0]);
+
+const shoe=part('Hot shoe','Metal rails and contacts that hold a flash and fire it with the shutter.',[0,145,0]);
+mesh(new THREE.BoxGeometry(20,1.5,20),MAT.metal(),shoe,[0,82.2,0]);
+mesh(new THREE.BoxGeometry(3,3,20),MAT.metal(),shoe,[-9.5,84.4,0]);
+mesh(new THREE.BoxGeometry(3,3,20),MAT.metal(),shoe,[9.5,84.4,0]);
+mesh(new THREE.CylinderGeometry(1.6,1.6,1,12),new THREE.MeshStandardMaterial({color:0xd8b65a,metalness:1,roughness:0.3}),shoe,[0,83.3,0]);
+
+const modeDial=part('Mode dial','Chooses who sets the exposure: you, the camera, or a mix of the two.',[20,85,0]);
+{ const g=new THREE.CylinderGeometry(15,15,8,64); const side=MAT.darkMetal(); side.bumpMap=ridgeTex.tex; side.bumpScale=0.4;
+  const m=new THREE.Mesh(g,[side,new THREE.MeshStandardMaterial({color:0xffffff,roughness:0.5,map:dialTex.tex}),MAT.darkMetal()]);
+  m.position.set(50,61.5,-8); m.castShadow=m.receiveShadow=true; modeDial.add(m);
+  mesh(new THREE.CylinderGeometry(4,4,2,24),MAT.metal(),modeDial,[50,66.5,-8]); }
+
+const shutterBtn=part('Shutter button','Half-press focuses and meters; the full press fires the shutter.',[-40,50,70]);
+const shutterBtnMesh=mesh(new THREE.CylinderGeometry(6.5,6.5,3,32),MAT.darkMetal(),shutterBtn,[-65,44.5,38]);
+mesh(ring(8.5,6.8,1.5),MAT.rubberPlain(),shutterBtn,[-65,43.5,38],[Math.PI/2,0,0]);
+
+const topLcd=part('Top LCD','Shows shutter speed, aperture, ISO and shots left without lifting the camera to your eye.',[-10,85,0]);
+{ const g=new THREE.PlaneGeometry(36,20); g.rotateX(-Math.PI/2); g.rotateY(Math.PI); mesh(g,MAT.lcd(),topLcd,[-40,57.6,-6]);
+  mesh(rectRing(40,24,36,20,1),MAT.darkMetal(),topLcd,[-40,57.8,-6],[Math.PI/2,0,0]); }
+
+const rearScreen=part('Rear screen','Plays back the picture and shows the menus and live view.',[0,0,-215],true);
+mesh(new THREE.BoxGeometry(86,60,1.2),MAT.darkMetal(),rearScreen,[14,-8,-38.2]);
+mesh(new THREE.BoxGeometry(80,54,0.8),MAT.screen(),rearScreen,[14,-8,-39.2]);
+
+const rearCtl=part('Rear controls','The quick control dial and SET button for the thumb; the menu buttons for the left hand.',[0,0,-215]);
+{ const d=MAT.darkMetal(); d.bumpMap=ridgeTex.tex; d.bumpScale=0.4;
+  mesh(new THREE.CylinderGeometry(16,16,3,64),d,rearCtl,[-50,-14,-39],[Math.PI/2,0,0]);
+  mesh(new THREE.CylinderGeometry(6,6,1.5,32),MAT.rubberPlain(),rearCtl,[-50,-14,-40.8],[Math.PI/2,0,0]);
+  mesh(new THREE.CylinderGeometry(4,3,3,16),MAT.rubberPlain(),rearCtl,[-42,16,-39.5],[Math.PI/2,0,0]);
+  [26,12,-2,-16].forEach(y=>mesh(roundedBox(7,5,2,1),MAT.rubberPlain(),rearCtl,[66,y,-38.8])); }
+
+const eyepiece=part('Eyepiece','Where you look; a small lens inside the rubber cup focuses your eye on the prism.',[0,10,-205],true);
+mesh(rectRing(34,22,22,14,6),MAT.rubberPlain(),eyepiece,[0,30,-40.5]);
+mesh(new THREE.BoxGeometry(22,14,1),MAT.glass(),eyepiece,[0,30,-39.2]);
+
+const lugL=part('Strap lug','One of two steel eyelets the neck strap clips to.',[-45,15,0]);
+mesh(new THREE.TorusGeometry(3.5,0.9,10,24),MAT.metal(),lugL,[-77,42,0],[0,Math.PI/2,0]);
+const lugR=part('Strap lug ','The other strap eyelet; the strap runs between the two.',[45,15,0]);
+mesh(new THREE.TorusGeometry(3.5,0.9,10,24),MAT.metal(),lugR,[77,42,0],[0,Math.PI/2,0]);
+
+const tripod=part('Tripod socket','A quarter-inch thread in the base plate for a tripod or a quick-release plate.',[0,-70,0]);
+mesh(ring(6.5,3.2,2.5),MAT.metal(),tripod,[0,-57.6,0],[Math.PI/2,0,0]);
+
+const battery=part('Battery','Lithium-ion pack in the grip; about 900 shots on one charge.',[0,-100,0]);
+mesh(roundedBox(18,54,36,2),MAT.battery(),battery,[-65,-14,32]);
+mesh(new THREE.BoxGeometry(12,1,8),new THREE.MeshStandardMaterial({color:0xd8b65a,metalness:1,roughness:0.3}),battery,[-65,13.2,22]);
+
+const card=part('Memory card','Where the files land; it slides into the door on the side of the body.',[75,0,0]);
+mesh(roundedBox(3.3,43,36,0.8),MAT.card(),card,[62,-4,-6]);
+mesh(new THREE.BoxGeometry(0.4,24,8),new THREE.MeshStandardMaterial({color:0xd8b65a,metalness:1,roughness:0.3}),card,[63.7,-4,-22]);
+
+/* ---------- mirror box, prism, shutter, sensor, board ---------- */
+const mirrorBox=part('Mirror box','The dark chamber between lens and sensor that the mirror swings inside.',[0,0,0]);
+mesh(new THREE.BoxGeometry(46,1,40),MAT.chip(),mirrorBox,[0,18,5]);
+mesh(new THREE.BoxGeometry(46,1,40),MAT.chip(),mirrorBox,[0,-18,5]);
+mesh(new THREE.BoxGeometry(1,36,40),MAT.chip(),mirrorBox,[23,0,5]);
+mesh(new THREE.BoxGeometry(1,36,40),MAT.chip(),mirrorBox,[-23,0,5]);
+
+const mirror=part('Reflex mirror','At 45° it bounces the image up to the prism; it flips out of the way for the exposure.',[0,0,20]);
+const mirrorPivot=new THREE.Group(); mirrorPivot.position.set(0,16,-14); mirror.add(mirrorPivot);
+{ const m=mesh(new THREE.BoxGeometry(40,1,42),MAT.mirror(),mirrorPivot,[0,-0.5,21]);
+  const back=mesh(new THREE.BoxGeometry(40,0.6,42),MAT.chip(),mirrorPivot,[0,0.3,21]); }
+mirrorPivot.rotation.x=Math.PI/4;
+
+const screenPlate=part('Focusing screen','A matte plate where the mirror forms the image you see in the viewfinder.',[0,30,0]);
+mesh(new THREE.BoxGeometry(37,0.8,25),MAT.frosted(),screenPlate,[0,19.5,5]);
+mesh(rectRing(41,29,37,25,1.2),MAT.chip(),screenPlate,[0,19.5,5],[Math.PI/2,0,0]);
+
+const prism=part('Pentaprism','Glass block that turns the screen image right way round and sends it to the eyepiece.',[0,45,0]);
+mesh(pentaGeom([[-14,0],[14,0],[14,13],[0,26],[-14,16]],40,0),MAT.prism(),prism,[0,22,0]);
+
+const shutter=part('Shutter','Two curtains of blades; the slit between them sweeps across the sensor for the exposure.',[0,0,-60]);
+mesh(rectRing(52,78,37,25,1.2),MAT.chip(),shutter,[0,0,-6]);
+mesh(rectRing(52,78,37,25,1.2),MAT.chip(),shutter,[0,0,-10]);
+const curtain1=new THREE.Group(), curtain2=new THREE.Group(); shutter.add(curtain1,curtain2);
+for(let i=0;i<3;i++){ mesh(new THREE.BoxGeometry(37,8.6,0.5),MAT.darkMetal(),curtain1,[0,8.6*(i-1),-7.4]); mesh(new THREE.BoxGeometry(37,8.6,0.5),MAT.darkMetal(),curtain2,[0,8.6*(i-1),-8.6]); }
+curtain2.position.y=26;
+
+const sensor=part('Image sensor','The 36 × 24 mm full-frame chip that turns the light into the photograph.',[0,0,-95]);
+const sensorMesh=mesh(new THREE.BoxGeometry(36,24,1),MAT.sensor(),sensor,[0,0,-12]);
+mesh(new THREE.BoxGeometry(50,40,1.5),MAT.chip(),sensor,[0,0,-13.6]);
+mesh(rectRing(40,28,36,24,0.6),MAT.metal(),sensor,[0,0,-11.4]);
+
+const board=part('Main board','The processor that reads the sensor, writes the file and runs everything else.',[0,0,-135]);
+mesh(new THREE.BoxGeometry(110,70,1.5),MAT.pcb(),board,[0,-4,-24]);
+mesh(new THREE.BoxGeometry(16,16,1.6),MAT.chip(),board,[-12,-2,-25.6]);
+mesh(new THREE.BoxGeometry(12,12,0.4),MAT.metal(),board,[-12,-2,-26.6]);
+mesh(new THREE.BoxGeometry(22,9,1.4),MAT.chip(),board,[22,-14,-25.5]);
+mesh(new THREE.BoxGeometry(9,9,1.4),MAT.chip(),board,[30,12,-25.5]);
+
+/* ---------- lens ---------- */
+const mount=part('Lens mount','Steel bayonet that locks the lens on and passes power and focus signals through its pins.',[0,0,110]);
+mesh(ring(33,27,6.5),MAT.metal(),mount,[0,0,40.75]);
+mesh(ring(27.2,24,2),MAT.chip(),mount,[0,0,39]);
+mesh(new THREE.SphereGeometry(1.6,12,8),MAT.red(),mount,[0,34.5,40.5]);
+
+const barrel=part('Lens barrel','The outer sleeve that holds every element on one axis.',[0,0,215],true);
+mesh(ring(38,34.5,79),MAT.body(),barrel,[0,0,83.5]);
+mesh(ring(38,31,3),MAT.darkMetal(),barrel,[0,0,121.5]);
+mesh(ring(34.6,20,2),MAT.chip(),barrel,[0,0,45]);
+{ const g=new THREE.PlaneGeometry(22,7); g.rotateX(-Math.PI/2); g.rotateY(Math.PI); mesh(g,MAT.scale(),barrel,[0,38.1,104]); }
+
+const focusRing=part('Focus ring','Turning it slides the inner elements to move the plane of focus.',[0,0,262],true);
+const focusRingMesh=new THREE.Group(); focusRingMesh.position.z=84; focusRing.add(focusRingMesh);
+{ const m=MAT.rubberPlain(); m.bumpMap=ridgeTex.tex; m.bumpScale=0.7;
+  const g=new THREE.CylinderGeometry(40,40,28,96,1,true); g.rotateX(Math.PI/2); mesh(g,m,focusRingMesh,[0,0,0]);
+  mesh(ring(40,38,0.6),MAT.rubberPlain(),focusRingMesh,[0,0,14]); mesh(ring(40,38,0.6),MAT.rubberPlain(),focusRingMesh,[0,0,-14]); }
+
+const redRing=part('Red ring','Marks the lens as the maker’s top line; it does nothing else.',[0,0,292],true);
+mesh(ring(39.2,37.9,4),MAT.red(),redRing,[0,0,110]);
+
+const frontEl=part('Front element','The big outer glass that gathers the light; coated so it reflects less.',[0,0,135]);
+mesh(lensGeom(30,6,5,1),MAT.glass(),frontEl,[0,0,117]);
+
+const frontGroup=part('Front group','Elements that bend the light inward and cancel colour fringing.',[0,0,122]);
+const fg1=mesh(lensGeom(26,5,3,2),MAT.glass(),frontGroup,[0,0,104]);
+const fg2=mesh(lensGeom(24,4,1,3),MAT.glass(),frontGroup,[0,0,92]);
+
+const aperture=part('Aperture','Nine blades that iris in and out to set how much light passes and how deep the focus is.',[0,0,114]);
+mesh(ring(33,13,1),MAT.darkMetal(),aperture,[0,0,81.6]);
+mesh(ring(33,13,1),MAT.darkMetal(),aperture,[0,0,78.4]);
+const blades=[]; const RP=12;
+for(let i=0;i<9;i++){ const phi=i*Math.PI*2/9; const pv=new THREE.Group(); pv.position.set(RP*Math.cos(phi),RP*Math.sin(phi),79.2+i*0.14); pv.userData.phi=phi; aperture.add(pv);
+  mesh(bladeGeom(),MAT.blade(),pv); blades.push(pv); }
+
+const rearGroup=part('Rear group','Elements behind the aperture that flatten the image onto the sensor.',[0,0,108]);
+const rg1=mesh(lensGeom(22,4,2,2),MAT.glass(),rearGroup,[0,0,66]);
+const rg2=mesh(lensGeom(20,3,-1,2),MAT.glass(),rearGroup,[0,0,56]);
+
+const rearEl=part('Rear element','The last glass before the mount; it hands the image to the mirror box.',[0,0,100]);
+mesh(lensGeom(19,3,2,1),MAT.glass(),rearEl,[0,0,48]);
+
+/* exposure beam (not a part) */
+const beam=new THREE.Mesh(new THREE.CylinderGeometry(16,26,1,32,1,true),new THREE.MeshBasicMaterial({color:0xf2e9d8,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
+beam.geometry.rotateX(Math.PI/2); beam.visible=false; scene.add(beam);
+
+/* label anchors at rest */
+parts.forEach(p=>{ const b=new THREE.Box3().setFromObject(p); p.userData.center=b.getCenter(new THREE.Vector3()); });
+
+/* ---------- labels ---------- */
+const labelsEl=document.getElementById('labels');
+const LIFT=[19,48,33];
+parts.forEach((p,i)=>{ const d=document.createElement('div'); d.className='lbl'; d.textContent=p.userData.name.trim(); d.style.setProperty('--lift',LIFT[i%3]+'px'); labelsEl.appendChild(d); p.userData.label=d; p.userData.lift=LIFT[i%3]; });
+
+/* ---------- orbit camera (drag to orbit, wheel / pinch to zoom) ---------- */
+const ctl={theta:-0.55,phi:1.15,dist:430,target:new THREE.Vector3(0,0,25),vt:0,vp:0,distGoal:430,targetGoal:new THREE.Vector3(0,0,25),thetaGoal:-0.55,phiGoal:1.15,autoFrame:true,autoAngle:false};
+function applyCam(){ const r=ctl.dist,p=ctl.phi,t=ctl.theta;
+  cam.position.set(ctl.target.x+r*Math.sin(p)*Math.sin(t),ctl.target.y+r*Math.cos(p),ctl.target.z+r*Math.sin(p)*Math.cos(t)); cam.lookAt(ctl.target); }
+const ptrs=new Map(); let dragging=false,lastX=0,lastY=0,pinchD=0,moved=0,lastInput=performance.now();
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+stage.addEventListener('pointerdown',e=>{ stage.setPointerCapture(e.pointerId); ptrs.set(e.pointerId,[e.clientX,e.clientY]); lastInput=performance.now();
+  if(ptrs.size===1){ dragging=true; ctl.autoAngle=false; moved=0; lastX=e.clientX; lastY=e.clientY; ctl.vt=ctl.vp=0; stage.classList.add('grabbing'); }
+  if(ptrs.size===2){ const a=[...ptrs.values()]; pinchD=Math.hypot(a[0][0]-a[1][0],a[0][1]-a[1][1]); } });
+stage.addEventListener('pointermove',e=>{ lastInput=performance.now();
+  if(ptrs.has(e.pointerId)) ptrs.set(e.pointerId,[e.clientX,e.clientY]);
+  if(ptrs.size===2){ const a=[...ptrs.values()]; const d=Math.hypot(a[0][0]-a[1][0],a[0][1]-a[1][1]); if(pinchD>0){ ctl.dist=THREE.MathUtils.clamp(ctl.dist*pinchD/d,120,2600); ctl.autoFrame=false; } pinchD=d; return; }
+  if(dragging){ const dx=e.clientX-lastX,dy=e.clientY-lastY; lastX=e.clientX; lastY=e.clientY; moved+=Math.abs(dx)+Math.abs(dy);
+    ctl.vt=-dx*0.005; ctl.vp=-dy*0.005; ctl.theta+=ctl.vt; ctl.phi=THREE.MathUtils.clamp(ctl.phi+ctl.vp,0.12,Math.PI-0.12); }
+  else { pointer.x=(e.clientX/innerWidth)*2-1; pointer.y=-(e.clientY/innerHeight)*2+1; pointerDirty=true; } });
+const endPtr=e=>{ ptrs.delete(e.pointerId); if(ptrs.size<2) pinchD=0; if(ptrs.size===0){ dragging=false; stage.classList.remove('grabbing'); } };
+stage.addEventListener('pointerup',endPtr); stage.addEventListener('pointercancel',endPtr);
+stage.addEventListener('pointerleave',()=>{ if(!dragging){ hoverPart=null; pointerDirty=false; applyHover(); } });
+stage.addEventListener('wheel',e=>{ e.preventDefault(); lastInput=performance.now(); ctl.dist=THREE.MathUtils.clamp(ctl.dist*Math.exp(e.deltaY*0.0012),120,2600); ctl.autoFrame=false; },{passive:false});
+
+/* ---------- hover ---------- */
+const raycaster=new THREE.Raycaster(); const pointer=new THREE.Vector2(-9,-9); let pointerDirty=false; let hoverPart=null;
+const infoEl=document.getElementById('info'),infoName=document.getElementById('infoName'),infoLine=document.getElementById('infoLine');
+const DEFAULT_NAME=infoName.textContent, DEFAULT_LINE=infoLine.textContent;
+function setEmissive(p,on){ p.traverse(o=>{ if(!o.isMesh) return; const ms=Array.isArray(o.material)?o.material:[o.material];
+  ms.forEach(m=>{ if(!m.emissive) return; if(on){ if(m.userData.em===undefined){ m.userData.em=m.emissive.getHex(); m.userData.emi=m.emissiveIntensity; } m.emissive.setHex(0xffb070); m.emissiveIntensity=0.26; }
+    else if(m.userData.em!==undefined){ m.emissive.setHex(m.userData.em); m.emissiveIntensity=m.userData.emi; delete m.userData.em; } }); }); }
+let shownPart=null;
+function applyHover(){ if(hoverPart===shownPart) return;
+  if(shownPart){ setEmissive(shownPart,false); shownPart.userData.label.classList.remove('hot'); if(xrayCur>0.001) setXray(xrayCur); }
+  shownPart=hoverPart;
+  if(shownPart){ setEmissive(shownPart,true); shownPart.userData.label.classList.add('hot'); infoName.textContent=shownPart.userData.name.trim(); infoLine.textContent=shownPart.userData.line; infoEl.classList.add('hot'); stage.classList.add('hot'); }
+  else { infoName.textContent=DEFAULT_NAME; infoLine.textContent=DEFAULT_LINE; infoEl.classList.remove('hot'); stage.classList.remove('hot'); } }
+function pick(){ raycaster.setFromCamera(pointer,cam); const hits=raycaster.intersectObjects(rig.children,true); let p=null;
+  for(const h of hits){ let o=h.object; const ms=Array.isArray(o.material)?o.material:[o.material]; if(ms[0].opacity<0.3&&ms[0].transparent) continue; while(o&&!o.userData.part) o=o.parent; if(o){ p=o; break; } }
+  hoverPart=p; applyHover(); }
+
+/* ---------- state: explode, x-ray, shutter, aperture, focus ---------- */
+let exT=0, exAnim=null, exploded=false;
+let xrayOn=false, xrayCur=0;
+let shot=null, soundOn=true, autoXray=false, shotFreeze=null;
+window.__dbg={freezeShot:t=>{ shotFreeze=t; if(t!=null&&!shot) shot={t0:performance.now(),s1:true,s2:true,s3:true}; },state:()=>({xrayOn,xrayCur,shells:shells.length,sample:shells.map(p=>{let m=null;p.traverse(o=>{if(!m&&o.isMesh)m=Array.isArray(o.material)?o.material[0]:o.material;});return [p.name,m.transparent,+m.opacity.toFixed(2),m.depthWrite];})})};
+let apCur=0, apGoal=0;
+const easeInOut=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const easeBack=t=>{const c=0.7;return 1+(c+1)*Math.pow(t-1,3)+c*Math.pow(t-1,2);};
+function toggleExplode(){ exploded=!exploded; exAnim={from:exT,to:exploded?1:0,t0:performance.now(),dur:exploded?1700:650,ease:exploded?easeInOut:easeBack};
+  ctl.distGoal=exploded?950:430; ctl.targetGoal.set(0,exploded?15:0,exploded?80:25); ctl.thetaGoal=exploded?-1.05:-0.55; ctl.phiGoal=exploded?1.2:1.15; ctl.autoFrame=true; ctl.autoAngle=true;
+  document.getElementById('bExplode').textContent=exploded?'Assemble':'Explode'; document.getElementById('bExplode').classList.toggle('on',exploded); }
+function toggleXray(){ xrayOn=!xrayOn; document.getElementById('bXray').classList.toggle('on',xrayOn); }
+function setXray(v){ shells.forEach(p=>p.traverse(o=>{ if(!o.isMesh) return; const ms=Array.isArray(o.material)?o.material:[o.material]; o.castShadow=v<0.5;
+  ms.forEach(m=>{ const op=1-v*0.84; const want=v>0.001; if(m.transparent!==want){ m.transparent=want; m.needsUpdate=true; } m.opacity=op; m.depthWrite=v<0.5; if(m.emissive&&m.userData.em===undefined){ m.emissive.setHex(0x7d8ba3); m.emissiveIntensity=v*0.35; } }); })); }
+function fire(){ if(shot) return; shot={t0:performance.now(),s1:false,s2:false,s3:false}; autoXray=!xrayOn&&!exploded; if(soundOn) ensureAudio(); }
+
+/* audio: a synthesised two-part shutter (mirror slap, then the curtains) */
+let actx=null;
+function ensureAudio(){ try{ if(!actx) actx=new (window.AudioContext||window.webkitAudioContext)(); if(actx.state==='suspended') actx.resume(); }catch(e){ actx=null; } }
+function noise(dur,freq,q,gain,decay){ if(!actx) return; const sr=actx.sampleRate,len=Math.floor(sr*dur),buf=actx.createBuffer(1,len,sr),d=buf.getChannelData(0);
+  for(let i=0;i<len;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/len,decay);
+  const src=actx.createBufferSource(); src.buffer=buf; const f=actx.createBiquadFilter(); f.type='bandpass'; f.frequency.value=freq; f.Q.value=q; const g=actx.createGain(); g.gain.value=gain;
+  src.connect(f); f.connect(g); g.connect(actx.destination); src.start(); }
+function thump(freq,gain,dur){ if(!actx) return; const t=actx.currentTime,o=actx.createOscillator(),g=actx.createGain(); o.type='sine'; o.frequency.setValueAtTime(freq,t); o.frequency.exponentialRampToValueAtTime(freq*0.4,t+dur);
+  g.gain.setValueAtTime(gain,t); g.gain.exponentialRampToValueAtTime(0.0001,t+dur); o.connect(g); g.connect(actx.destination); o.start(t); o.stop(t+dur); }
+const SFX={ slap(){ noise(0.06,1800,1.2,0.5,3); thump(140,0.5,0.12); }, curtain(){ noise(0.035,4200,2,0.35,4); noise(0.05,900,1,0.3,3); }, back(){ noise(0.08,1200,1,0.45,2.5); thump(110,0.55,0.16); } };
+
+/* ---------- UI wiring ---------- */
+document.getElementById('bExplode').addEventListener('click',toggleExplode);
+document.getElementById('bXray').addEventListener('click',toggleXray);
+document.getElementById('bFire').addEventListener('click',fire);
+document.getElementById('bSound').addEventListener('click',e=>{ soundOn=!soundOn; e.currentTarget.textContent=soundOn?'Sound on':'Sound off'; e.currentTarget.classList.toggle('on',!soundOn); });
+const sAp=document.getElementById('sAp'),oAp=document.getElementById('oAp'),sFo=document.getElementById('sFo'),oFo=document.getElementById('oFo');
+sAp.addEventListener('input',()=>{ apIdx=+sAp.value; oAp.textContent='f/'+FST[apIdx]; apGoal=Math.acos(1.4/FST[apIdx]); lcdTex.redraw(); });
+sFo.addEventListener('input',()=>{ focusT=sFo.value/100; const m=focusT<0.02?'∞':(0.45/Math.pow(focusT,0.5)).toFixed(2)+' m'; oFo.textContent=m; scaleTex.redraw(); });
+addEventListener('keydown',e=>{ if(e.target.tagName==='INPUT') return; if(e.code==='Space'){ e.preventDefault(); fire(); } else if(e.key==='e'||e.key==='E') toggleExplode(); else if(e.key==='x'||e.key==='X') toggleXray(); });
+
+/* ---------- resize ---------- */
+function resize(){ const w=stage.clientWidth,h=stage.clientHeight; renderer.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); }
+addEventListener('resize',resize); resize();
+
+/* ---------- frame loop ---------- */
+const tmpV=new THREE.Vector3(), tmpA=new THREE.Vector3(), tmpB=new THREE.Vector3();
+const lerp=THREE.MathUtils.lerp;
+let prevNow=performance.now();
+function frame(now){
+  requestAnimationFrame(frame);
+  const dt=Math.min(250,now-prevNow); prevNow=now;
+  // explode tween
+  if(exAnim){ const u=Math.min(1,(now-exAnim.t0)/exAnim.dur); exT=exAnim.from+(exAnim.to-exAnim.from)*exAnim.ease(u); if(u>=1) exAnim=null; }
+  parts.forEach(p=>p.position.copy(p.userData.explode).multiplyScalar(exT));
+  // camera framing + inertia + idle drift
+  const k6=1-Math.pow(0.94,dt/16.7), k12=1-Math.pow(0.88,dt/16.7), k15=1-Math.pow(0.85,dt/16.7);
+  if(ctl.autoFrame){ ctl.dist=lerp(ctl.dist,ctl.distGoal,k6); ctl.target.lerp(ctl.targetGoal,k6); }
+  if(ctl.autoAngle&&!dragging){ ctl.theta=lerp(ctl.theta,ctl.thetaGoal,k6); ctl.phi=lerp(ctl.phi,ctl.phiGoal,k6); if(Math.abs(ctl.theta-ctl.thetaGoal)<0.002) ctl.autoAngle=false; }
+  if(!dragging){ ctl.theta+=ctl.vt; ctl.phi=THREE.MathUtils.clamp(ctl.phi+ctl.vp,0.12,Math.PI-0.12); ctl.vt*=0.92; ctl.vp*=0.92;
+    if(!reduced&&now-lastInput>6000&&!hoverPart) ctl.theta+=0.0012; }
+  applyCam();
+  // x-ray fade
+  const xg=(xrayOn||(shot&&autoXray))?1:0; const nx=lerp(xrayCur,xg,k12); if(Math.abs(nx-xrayCur)>0.0005){ xrayCur=nx; setXray(xrayCur); }
+  // aperture + focus
+  apCur=lerp(apCur,apGoal,k15); blades.forEach(b=>{ b.rotation.z=b.userData.phi+Math.PI/2+apCur; });
+  focusRingMesh.rotation.z=lerp(focusRingMesh.rotation.z,focusT*2.1,k15);
+  const fz=lerp(fg1.position.z-104,focusT*7,k15); fg1.position.z=104+fz; fg2.position.z=92+fz; rg1.position.z=66+fz*0.5; rg2.position.z=56+fz*0.5;
+  // shutter sequence
+  let mirrorA=Math.PI/4, c1y=0, c2y=26, btnY=44.5, glow=0;
+  if(shot){ const t=shotFreeze??(now-shot.t0);
+    if(t<70) mirrorA=lerp(Math.PI/4,-0.03,easeInOut(t/70)); else if(t<300) mirrorA=-0.03; else if(t<420) mirrorA=lerp(-0.03,Math.PI/4,easeBack((t-300)/120)); else mirrorA=Math.PI/4;
+    if(t>=90) c1y=t<115?lerp(0,-26,(t-90)/25):(t<420?-26:(t<520?lerp(-26,0,(t-420)/100):0));
+    if(t>=210) c2y=t<235?lerp(26,0,(t-210)/25):(t<520?0:(t<620?lerp(0,26,(t-520)/100):26));
+    btnY=t<60?44.5-1.2*(t/60):(t<200?44.5-1.2*(1-(t-60)/140):44.5);
+    if(t>115&&t<215) glow=t<135?(t-115)/20:(t>195?(215-t)/20:1);
+    if(t>=60&&!shot.s1){ shot.s1=true; if(soundOn) SFX.slap(); }
+    if(t>=235&&!shot.s2){ shot.s2=true; if(soundOn) SFX.curtain(); }
+    if(t>=420&&!shot.s3){ shot.s3=true; if(soundOn) SFX.back(); }
+    if(t>720){ shot=null; autoXray=false; } }
+  mirrorPivot.rotation.x=mirrorA; curtain1.position.y=c1y; curtain2.position.y=c2y; shutterBtnMesh.position.y=btnY;
+  sensorMesh.material.emissive.setHex(0xf2e9d8); sensorMesh.material.emissiveIntensity=glow*1.4;
+  beam.visible=glow>0.01; beam.material.opacity=glow*0.35;
+  if(beam.visible){ frontEl.children[0].getWorldPosition(tmpA); sensorMesh.getWorldPosition(tmpB); const L=tmpA.distanceTo(tmpB); beam.position.copy(tmpA).add(tmpB).multiplyScalar(0.5); beam.scale.set(1,1,L); beam.lookAt(tmpB); }
+  // hover
+  if(pointerDirty&&!dragging){ pointerDirty=false; pick(); }
+  // labels
+  const show=exT>0.03; const lo=THREE.MathUtils.clamp((exT-0.55)/0.45,0,1); const W=innerWidth,H=innerHeight;
+  if(!show){ parts.forEach(p=>{ const d=p.userData.label; if(d.style.opacity!=='0') d.style.opacity='0'; }); }
+  else {
+    const items=[];
+    parts.forEach(p=>{ const d=p.userData.label; tmpV.copy(p.userData.center).add(p.position).project(cam);
+      if(tmpV.z>1||tmpV.z<-1){ d.style.opacity='0'; return; }
+      if(!p.userData.w) p.userData.w=d.offsetWidth||80;
+      items.push({p,d,x:(tmpV.x*0.5+0.5)*W,y:(-tmpV.y*0.5+0.5)*H,w:p.userData.w+8,h:18}); });
+    items.sort((a,b)=>a.x-b.x); const placed=[];
+    for(const it of items){ let lift=it.p.userData.lift;
+      for(let k=0;k<10;k++){ const x0=it.x-it.w/2,x1=it.x+it.w/2,y1=it.y-lift,y0=y1-it.h;
+        if(!placed.some(b=>x0<b.x1&&x1>b.x0&&y0<b.y1&&y1>b.y0)) break; lift+=it.h+4; }
+      placed.push({x0:it.x-it.w/2,x1:it.x+it.w/2,y0:it.y-lift-it.h,y1:it.y-lift});
+      it.d.style.setProperty('--lift',lift+'px');
+      it.d.style.transform=`translate(${it.x.toFixed(1)}px,${it.y.toFixed(1)}px) translate(-50%,calc(-100% - ${lift}px))`; it.d.style.opacity=lo.toFixed(2); }
+  }
+  renderer.render(scene,cam);
+}
+applyCam();
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
