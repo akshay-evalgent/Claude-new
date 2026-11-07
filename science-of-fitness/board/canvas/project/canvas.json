@@ -14,7 +14,7 @@
     "Food.dc.html": {"x": 0, "y": 3760, "w": 1600, "h": 1100, "title": "7 · Food, vitamins, minerals"},
     "Templates.dc.html": {"x": 1680, "y": 3760, "w": 1600, "h": 1100, "title": "8 · Screen templates"},
     "Thumbnails.dc.html": {"x": 0, "y": 4980, "w": 1600, "h": 1100, "title": "9 · Thumbnail mock-ups"},
-    "Anatomy.dc.html": {"x": 1680, "y": 4980, "w": 1600, "h": 4300, "title": "10 · Anatomy kit: skin, muscle, bone, nerves"}
+    "Anatomy.dc.html": {"x": 1680, "y": 4980, "w": 1600, "h": 6300, "title": "10 · Anatomy kit: skin, muscle, bone, nerves, tendons, mitochondria"}
   },
   "order": ["Main.dc.html", "Host-Options.dc.html", "Host-Sheet.dc.html", "Poses.dc.html", "Rival.dc.html", "Science.dc.html", "Food.dc.html", "Templates.dc.html", "Thumbnails.dc.html", "Anatomy.dc.html"],
   "notes": {

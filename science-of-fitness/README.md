@@ -8,7 +8,7 @@ Start here, in order:
 3. `ANIME-ANIMATION-REPOS.md`: free GitHub tools, with a section ranking them for this look.
 4. `assets/style-frames/`: rendered template frames and a 7-second motion test. Regenerate them with `python3 scripts/style_frames.py`.
 5. `board/`: the asset board for review before production, with its live link.
-6. `assets/anatomy/`: the anatomy kit, covering skin, muscle, bone and nerves in manga ink. It has full-body layers, highlights, close-ups, microscopic views and animations. Read its README for the credit line.
+6. `assets/anatomy/`: the anatomy kit, covering skin, muscle, bone, nerves, tendon X-rays and mitochondria in manga ink. It has full-body layers, highlights, close-ups, microscopic views and animations. Read its README for the credit line.
 
 ```
 science-of-fitness/
@@ -21,7 +21,7 @@ science-of-fitness/
 ├── board/                      asset board source, concept images and status
 ├── scripts/style_frames.py     renders the frames above (needs Pillow and ffmpeg)
 ├── scripts/gen_board_images.py concept art through a free FLUX.1-schnell Space
-├── scripts/anatomy/            prep_bp3d.py, manga_render.py, nerves.py, build_kit.py, micro.py
+├── scripts/anatomy/            prep_bp3d.py, manga_render.py, nerves.py, build_kit.py, micro.py, tendons.py, mito.py
 └── data/
     ├── reference-channels-2026-11-07.tsv   views, length and title for every video on both channels
     └── repos-checked-2026-11-07.tsv        stars, licence and last push for every repo checked
