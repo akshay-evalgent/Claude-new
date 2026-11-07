@@ -1,0 +1,1026 @@
+[
+ {
+  "id": "01A",
+  "scene": 1,
+  "tier": 1,
+  "start": 0.0,
+  "end": 8.55,
+  "length": 8.6,
+  "ingredients": [],
+  "overlay": "+1,000 calories a day",
+  "voiceover": "Okay, imagine this. Scientists take sixteen people and make them eat a thousand extra calories every day.",
+  "prompt": "Wide static shot: sixteen different young adults of varied builds stand in a neat row in the dark, each holding a tray with a burger, fries and a drink. A soft spotlight above each person. They look at their trays, then at each other. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "01B",
+  "scene": 1,
+  "tier": 2,
+  "start": 8.55,
+  "end": 14.88,
+  "length": 6.3,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "That's roughly an extra burger, fries and a drink. Every single day. For eight weeks.",
+  "prompt": "Rohan sits alone at a small table in the dark. A burger, fries and a drink slide in front of him from off-screen. He stares at the food, wide-eyed, then looks up at the camera. Slow push-in, medium shot. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "01C",
+  "scene": 1,
+  "tier": 2,
+  "start": 14.88,
+  "end": 20.87,
+  "length": 6.0,
+  "ingredients": [],
+  "overlay": "8 weeks",
+  "voiceover": "Nobody goes to the gym. Nobody does anything special.",
+  "prompt": "The same sixteen people sit at one long table eating burgers in fast motion while overhead lights cycle from day to night again and again, showing weeks passing. Nobody exercises. Camera slowly tracks along the table. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "02A",
+  "scene": 2,
+  "tier": 1,
+  "start": 20.87,
+  "end": 31.96,
+  "length": 11.1,
+  "ingredients": [],
+  "overlay": "up to 10x more fat",
+  "voiceover": "You'd think everyone gains the same, right? Nope. Some people gained about ten times more fat than others. Same food. Same eight weeks.",
+  "prompt": "Slow pan along the row of sixteen young adults standing in the dark. Their bellies grow at very different rates: some swell round with amber-tinted fat, others barely change at all. Comedic contrast, people glance at each other's bellies. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "03A",
+  "scene": 3,
+  "tier": 1,
+  "start": 31.96,
+  "end": 39.73,
+  "length": 7.8,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "So what was different about the ones who stayed skinny? Their bodies started moving more. Without them even noticing.",
+  "prompt": "Close-up: Rohan sits on a chair scrolling his phone while his knee bounces fast and his fingers tap without him noticing. Small teal sparks fly off the bouncing leg like energy being burned. Camera slowly orbits. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "03B",
+  "scene": 3,
+  "tier": 2,
+  "start": 39.73,
+  "end": 43.49,
+  "length": 3.8,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Shaking their leg. Standing up more. Walking around.",
+  "prompt": "Rohan stands up and paces back and forth while talking on the phone, then walks around restlessly. Faint teal energy trails follow his moving legs. Medium-wide shot. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "03C",
+  "scene": 3,
+  "tier": 1,
+  "start": 43.49,
+  "end": 54.6,
+  "length": 11.1,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "692 calories a day",
+  "voiceover": "One person was burning almost seven hundred extra calories a day, just from that. Their body burned off a big chunk of the extra food.",
+  "prompt": "Rohan stands next to a burger floating in the air. The burger dissolves into glowing teal sparks that stream into his legs as he keeps fidgeting and moving; the sparks burn away into the dark. He looks down, surprised. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "04A",
+  "scene": 4,
+  "tier": 2,
+  "start": 54.6,
+  "end": 61.32,
+  "length": 6.7,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "If you're the guy who says \"bro, I eat so much and I still don't gain\", this video is for you.",
+  "prompt": "Rohan stands in front of a tall mirror on a dark stage. He pinches his thin upper arm, lifts his loose t-shirt sleeve, sighs and drops his shoulders. Over-the-shoulder shot into the mirror. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "04B",
+  "scene": 4,
+  "tier": 2,
+  "start": 61.32,
+  "end": 73.34,
+  "length": 12.0,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Three reasons you're skinny. And a simple plan to fix it, at home. Quick thing first: we're not doctors. If you're losing weight without trying, get checked by one.",
+  "prompt": "Rohan turns from the mirror to face the camera, holds up three fingers with a small determined smile, then nods. Slow push-in to a medium close-up. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "05A",
+  "scene": 5,
+  "tier": 1,
+  "start": 73.34,
+  "end": 77.02,
+  "length": 3.7,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "[ROHAN] \"Bro, I eat a LOT. I just have a fast metabolism.\"",
+  "prompt": "Rohan proudly shows a huge plate piled high with food and pats his flat stomach, grinning. Mouth moving as if talking, but no audible speech. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "06A",
+  "scene": 6,
+  "tier": 2,
+  "start": 77.02,
+  "end": 86.59,
+  "length": 9.6,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Eating \"a lot\" is tricky. You remember the big meals. That wedding. That pizza night. That time you finished two plates of biryani.",
+  "prompt": "Warm golden memory glow: Rohan at a wedding buffet with fairy lights in the dark, happily eating his second plate of biryani, cheeks full. Soft vignette like a fond memory. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "06B",
+  "scene": 6,
+  "tier": 2,
+  "start": 86.59,
+  "end": 91.17,
+  "length": 4.6,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "You don't remember the day you woke up late and skipped breakfast. Or the lunch that was just chips. Or the day you weren't hungry.",
+  "prompt": "Rohan wakes up late, panics at his alarm clock, grabs his bag and runs out the door; an empty breakfast plate is left behind on the table. Quick comedic action. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "06C",
+  "scene": 6,
+  "tier": 2,
+  "start": 91.17,
+  "end": 95.24,
+  "length": 4.1,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "You don't remember the day you woke up late and skipped breakfast. Or the lunch that was just chips. Or the day you weren't hungry.",
+  "prompt": "Rohan at a desk eating only a small packet of chips for lunch. Then evening: he pushes a full plate away and shakes his head, not hungry. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "06D",
+  "scene": 6,
+  "tier": 1,
+  "start": 95.24,
+  "end": 108.26,
+  "length": 13.0,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Your body doesn't care about your best day. It counts the whole week. And for most skinny guys, the whole week adds up to just enough to stay the same.",
+  "prompt": "Rohan walks along one very long table holding seven plates for seven days: one plate is huge and overflowing, the other six are nearly empty. He looks back at the huge plate, then at the empty ones. Camera tracks beside him. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "07A",
+  "scene": 7,
+  "tier": 2,
+  "start": 108.26,
+  "end": 119.5,
+  "length": 11.2,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Why does this happen? When you eat, your stomach stretches, and it basically texts your brain: \"we're full, stop eating.\" Some people get that message early and loud.",
+  "prompt": "X-ray view through Rohan's body: a cartoon stomach glows coral as it fills with food, and sends a glowing teal message bubble racing up through his neck to his brain, which lights up. Stylized, clean. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "07B",
+  "scene": 7,
+  "tier": 2,
+  "start": 119.5,
+  "end": 131.83,
+  "length": 12.3,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "So you eat a huge lunch, feel stuffed all afternoon, and dinner quietly gets smaller. You're not lying when you say you eat a lot. You just don't eat a lot every day.",
+  "prompt": "Rohan lies on a sofa after a huge lunch, holding his stuffed stomach. The light changes to evening; a dinner plate arrives and he takes only two small bites, then pushes it away. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "08A",
+  "scene": 8,
+  "tier": 3,
+  "start": 131.83,
+  "end": 145.81,
+  "length": 14.0,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Second reason. Think of your daily energy like your phone battery. Most of it goes to just keeping you alive. Your heart, your brain, keeping you warm. A small part goes to digesting food.",
+  "prompt": "Rohan stands in the dark while a giant glowing phone-battery outline floats beside him. Inside his body, his heart and brain glow softly as the battery's bar drains toward them. Medium shot. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "08B",
+  "scene": 8,
+  "tier": 2,
+  "start": 145.81,
+  "end": 154.71,
+  "length": 8.9,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "And the rest goes to moving. Not just the gym. Walking to class, standing, fidgeting, pacing while you're on the phone.",
+  "prompt": "Quick montage in one continuous shot: Rohan walks to class with his backpack, stands in line, fidgets with his pen, paces while on the phone. Faint teal energy trails follow his movements. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "09A",
+  "scene": 9,
+  "tier": 2,
+  "start": 154.71,
+  "end": 165.83,
+  "length": 11.1,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "That last part is sneaky. Remember the study? When people ate more, some of them started moving more automatically. They didn't plan it. Their body just did it.",
+  "prompt": "Rohan eats an extra sandwich. Right after, his foot starts tapping on its own and he gets up and wanders around. He steps on a bathroom scale and frowns because the needle does not move. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "09B",
+  "scene": 9,
+  "tier": 2,
+  "start": 165.83,
+  "end": 178.3,
+  "length": 12.5,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "So when you eat a bit more for a few days and nothing happens, it's not that food \"doesn't work\" on you. Your body is burning some of it off. You just need a little more than you think.",
+  "prompt": "Rohan adds one more snack, a glass of milk and a banana, to his day. He steps on the scale again; the needle ticks up a little and he smiles with relief. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "10A",
+  "scene": 10,
+  "tier": 2,
+  "start": 178.3,
+  "end": 192.12,
+  "length": 13.8,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Third reason. And this is the big one. Muscle is expensive. Your body has to spend energy to build it, and energy to keep it. So it won't build any unless you give it a reason.",
+  "prompt": "Camera zooms from Rohan's thin upper arm straight into the skin, revealing the muscle inside as a huge dark construction site of long fibres lit by work lights. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "11A",
+  "scene": 11,
+  "tier": 1,
+  "start": 192.12,
+  "end": 208.26,
+  "length": 16.1,
+  "ingredients": [
+   "Muscle Crew sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Think of your muscle like a building that's always being worked on. One crew keeps building new parts. Another crew keeps tearing old parts down. If you don't train, both crews work at the same speed. Nothing changes.",
+  "prompt": "Inside the muscle: the Muscle Crew. The teal builders stack amber protein bricks onto a long muscle fibre while the coral demolition team chips bricks off at the same pace, so the fibre stays the same size. Wide shot. Characters: the Muscle Crew: tiny chibi construction workers living inside the muscle; builders in teal hard hats carrying glowing amber protein bricks; a demolition team in coral hard hats with tiny hammers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "11B",
+  "scene": 11,
+  "tier": 1,
+  "start": 208.26,
+  "end": 214.94,
+  "length": 6.7,
+  "ingredients": [
+   "Muscle Crew sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Training hard tells the builders to work faster. And food and protein are their bricks.",
+  "prompt": "Inside the muscle: an alarm light flashes as a training signal; the Muscle Crew. The teal builders cheer and speed up, a small truck delivers a load of glowing amber bricks, and the muscle fibre visibly grows thicker. Characters: the Muscle Crew: tiny chibi construction workers living inside the muscle; builders in teal hard hats carrying glowing amber protein bricks; a demolition team in coral hard hats with tiny hammers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "12A",
+  "scene": 12,
+  "tier": 1,
+  "start": 214.94,
+  "end": 227.18,
+  "length": 12.2,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "And \"training hard\" means sets where, by the end, you can barely do another rep. That struggle is the message to your body: \"we need more muscle.\" No message, no new muscle.",
+  "prompt": "Side view: Rohan doing push-ups on the floor. On the last rep his arms shake, he lowers slowly, face straining, and just barely pushes up. A soft teal pulse flashes through his chest muscles at the top. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "12B",
+  "scene": 12,
+  "tier": 2,
+  "start": 227.18,
+  "end": 232.37,
+  "length": 5.2,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Eat a ton without training, and most of it just turns into fat.",
+  "prompt": "Rohan sits on the sofa eating huge amounts of snacks without training; comedic: his belly gets soft and round while his arms stay just as thin. He looks down at his belly, confused. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "13A",
+  "scene": 13,
+  "tier": 1,
+  "start": 232.37,
+  "end": 235.97,
+  "length": 3.6,
+  "ingredients": [
+   "Rohan sheet",
+   "Tiger sheet"
+  ],
+  "overlay": "",
+  "voiceover": "[TIGER] \"Face it, bro. You're an ectomorph. You were born skinny.\"",
+  "prompt": "Tiger looms over Rohan, pokes his skinny chest with one finger and laughs. Rohan shrinks back, embarrassed. Mouth moving as if talking, but no audible speech. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "14A",
+  "scene": 14,
+  "tier": 2,
+  "start": 235.97,
+  "end": 245.09,
+  "length": 9.1,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "That \"ectomorph\" thing comes from an old 1940s theory about body types and personality. Not from muscle science.",
+  "prompt": "An old sepia-toned 1940s poster showing three body-type silhouettes hangs in the dark. Rohan walks up, looks at it skeptically, then rips it in half. No readable words on the poster. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "14B",
+  "scene": 14,
+  "tier": 1,
+  "start": 245.09,
+  "end": 262.42,
+  "length": 17.3,
+  "ingredients": [],
+  "overlay": "585 people, -2% to +59%",
+  "voiceover": "Genes do matter, though. In one study, five hundred eighty-five people did the exact same twelve-week arm workout. Some barely grew. A few grew their arm muscles by more than half. But most people were somewhere in the middle. And they grew.",
+  "prompt": "A huge dark hall with hundreds of young people in rows all doing the same dumbbell curl in sync. Their arms grow at different rates: a few barely change, a few grow a lot, most grow a medium amount. Slow aerial pan. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "14C",
+  "scene": 14,
+  "tier": 2,
+  "start": 262.42,
+  "end": 275.81,
+  "length": 13.4,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "You won't know which one you are until you train properly, eat enough, and give it time. Most skinny guys quit way before they find out.",
+  "prompt": "Rohan sets a dumbbell down after a short workout and starts walking away, bored. The scene rewinds: he walks backwards, picks the dumbbell up again and keeps curling, determined. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "15A",
+  "scene": 15,
+  "tier": 1,
+  "start": 275.81,
+  "end": 278.46,
+  "length": 2.6,
+  "ingredients": [
+   "Rohan sheet",
+   "Tiger sheet"
+  ],
+  "overlay": "",
+  "voiceover": "[TIGER] \"Easy. Dirty bulk. Eat everything!\"",
+  "prompt": "Tiger holds a giant bucket of fried chicken and a huge cola and shoves them toward Rohan, grinning. Mouth moving as if talking, but no audible speech. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "16A",
+  "scene": 16,
+  "tier": 1,
+  "start": 278.46,
+  "end": 290.48,
+  "length": 12.0,
+  "ingredients": [
+   "Muscle Crew sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Not so fast. Your body can only build muscle at a certain speed. Anything extra just becomes fat. So you want a small extra amount of food, every day.",
+  "prompt": "Inside the body: the Muscle Crew. The builders can only lay amber bricks at a steady pace; extra bricks keep arriving, pile up off to the side and turn into soft amber blobs of fat drifting toward the waist. Characters: the Muscle Crew: tiny chibi construction workers living inside the muscle; builders in teal hard hats carrying glowing amber protein bricks; a demolition team in coral hard hats with tiny hammers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "16B",
+  "scene": 16,
+  "tier": 2,
+  "start": 290.48,
+  "end": 305.57,
+  "length": 15.1,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "0.25-0.5% a week",
+  "voiceover": "A review of the research suggests gaining about a quarter to half a percent of your body weight per week. If you weigh sixty kilos, that's around one fifty to three hundred grams a week. Slow. Boring. Works.",
+  "prompt": "Rohan steps onto a bathroom scale each week as calendar pages flip past behind him; the scale needle creeps up very slowly. He gives a calm thumbs up. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "17A",
+  "scene": 17,
+  "tier": 2,
+  "start": 305.57,
+  "end": 318.91,
+  "length": 13.3,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "How do you know you're eating enough? Weigh yourself every morning. After the toilet, before breakfast. Your weight will jump around every day. That's normal. Just look at the average for the week.",
+  "prompt": "Morning: Rohan with messy bed hair, yawning, steps onto a bathroom scale before breakfast. The shot repeats across several mornings with slightly different light, as if days are passing. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "17B",
+  "scene": 17,
+  "tier": 2,
+  "start": 318.91,
+  "end": 328.67,
+  "length": 9.8,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "+300 calories",
+  "voiceover": "If the average hasn't gone up in two weeks, add about three hundred calories a day. That's a glass of milk and a banana. That's it.",
+  "prompt": "Rohan drinks a tall glass of milk and eats a banana in two bites, grinning at the camera. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "18A",
+  "scene": 18,
+  "tier": 1,
+  "start": 328.67,
+  "end": 331.97,
+  "length": 3.3,
+  "ingredients": [
+   "Muscle Crew sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Next, protein. Protein is the bricks.",
+  "prompt": "Inside the muscle: the Muscle Crew. A small food truck backs up and the teal builders unload stacks of glowing amber protein bricks, carry them along the fibre and slot them in. Cheerful, busy. Characters: the Muscle Crew: tiny chibi construction workers living inside the muscle; builders in teal hard hats carrying glowing amber protein bricks; a demolition team in coral hard hats with tiny hammers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "18B",
+  "scene": 18,
+  "tier": 2,
+  "start": 331.97,
+  "end": 348.98,
+  "length": 17.0,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "1.6 g per kg a day \u00b7 60 kg \u2192 96 g",
+  "voiceover": "Scientists looked at forty-nine studies. Muscle gains stopped improving at about one point six grams of protein per kilo of body weight a day. So if you weigh sixty kilos, aim for about ninety-six grams a day.",
+  "prompt": "Rohan steps on a bathroom scale, then turns to a kitchen counter and lines up eggs, a bowl of dal, a glass of milk and a piece of chicken; each food glows warm amber as he places it. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "19A",
+  "scene": 19,
+  "tier": 2,
+  "start": 348.98,
+  "end": 356.71,
+  "length": 7.7,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Sounds like a lot? It's not. Three eggs and toast for breakfast. Rice, dal and curd for lunch.",
+  "prompt": "Rohan in a small kitchen in the morning cooks three eggs in a pan and makes toast, then eats at the counter. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "19B",
+  "scene": 19,
+  "tier": 2,
+  "start": 356.71,
+  "end": 372.12,
+  "length": 15.4,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "about 96 g protein",
+  "voiceover": "Chicken or paneer with rotis for dinner. A handful of roasted chana as a snack. Add the shake I'm about to show you, and you're there.",
+  "prompt": "Rohan eats rice, dal and a bowl of curd at lunch; cut to evening, he eats chicken with rotis. Then he grabs a handful of roasted chana. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "20A",
+  "scene": 20,
+  "tier": 1,
+  "start": 372.12,
+  "end": 379.91,
+  "length": 7.8,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "If you get full fast, drink your calories. Milk, a banana, two spoons of peanut butter, some oats. Blend it.",
+  "prompt": "Rohan makes a shake: pours milk into a blender, adds a banana, two spoons of peanut butter and oats, and blends it. Close-up of the blender spinning. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "20B",
+  "scene": 20,
+  "tier": 1,
+  "start": 379.91,
+  "end": 393.43,
+  "length": 13.5,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "about 640 calories \u00b7 23 g protein",
+  "voiceover": "That's about six hundred forty calories and twenty-three grams of protein. And it doesn't feel like eating a full meal. For skinny guys, that's a cheat code.",
+  "prompt": "Rohan drinks the whole glass of shake easily in a few gulps, wipes his mouth and gives a big thumbs up, not looking full at all. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "21A",
+  "scene": 21,
+  "tier": 2,
+  "start": 393.43,
+  "end": 404.07,
+  "length": 10.6,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "+120",
+  "voiceover": "Three more easy tricks. One. Add a spoon of oil or ghee to your rice or dal. About a hundred twenty calories, and you won't even notice.",
+  "prompt": "Close-up: Rohan drizzles a spoon of golden ghee over his rice and dal, mixes it in and takes a bite, smiling. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "21B",
+  "scene": 21,
+  "tier": 2,
+  "start": 404.07,
+  "end": 409.28,
+  "length": 5.2,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "+170",
+  "voiceover": "Two. Keep peanuts around. A small handful is about one seventy.",
+  "prompt": "Rohan walks past a jar of peanuts on his desk and grabs a small handful without stopping, munching as he walks. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "21C",
+  "scene": 21,
+  "tier": 2,
+  "start": 409.28,
+  "end": 418.11,
+  "length": 8.8,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Three. Add one snack at the same time every day, like a sandwich after your workout. Habits beat motivation.",
+  "prompt": "Rohan finishes a workout, wipes his face with a towel and immediately eats a sandwich, glancing at a clock on the wall that shows the same time every day. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "22A",
+  "scene": 22,
+  "tier": 1,
+  "start": 418.11,
+  "end": 430.8,
+  "length": 12.7,
+  "ingredients": [
+   "Rohan sheet",
+   "Tiger sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Now the workout. Just three rules. One. Make your sets hard. Stop when you've only got one to three reps left in you. Two. Do about ten hard sets per muscle, every week.",
+  "prompt": "Rohan does push-ups on a mat while Tiger crouches beside him, coaching, holding up one, two, then three fingers to count the last reps. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "22B",
+  "scene": 22,
+  "tier": 2,
+  "start": 430.8,
+  "end": 436.03,
+  "length": 5.2,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Three. Train each muscle two or three times a week. Not once.",
+  "prompt": "Rohan marks a wall calendar with a teal marker on three days of the week; quick cuts show him working out, resting, working out, resting. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "23A",
+  "scene": 23,
+  "tier": 2,
+  "start": 436.03,
+  "end": 450.99,
+  "length": 15.0,
+  "ingredients": [
+   "Rohan sheet",
+   "Tiger sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Good news if you don't have a gym. Light weights build muscle too, as long as the set is hard enough. Your muscle doesn't know if it's lifting a dumbbell or your own body. It only feels how hard it's working.",
+  "prompt": "Split screen: on the left Tiger does a heavy dumbbell bench press in a gym; on the right Rohan does push-ups in his bedroom. A glowing coral outline of the chest muscle pulses identically on both of them. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "24A",
+  "scene": 24,
+  "tier": 3,
+  "start": 450.99,
+  "end": 454.98,
+  "length": 4.0,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Here are six moves for your whole body. No equipment.",
+  "prompt": "Rohan pushes his bed aside and rolls out a mat in his small bedroom, ready to train. Wide shot. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "24B",
+  "scene": 24,
+  "tier": 1,
+  "start": 454.98,
+  "end": 461.97,
+  "length": 7.0,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Push-ups, for your chest. Keep your body straight like a plank, elbows a bit in, not flared out.",
+  "prompt": "Exact side view: Rohan does slow push-ups with perfect form on a mat: body in one straight line from head to heels, hands under the shoulders, elbows about 45 degrees from his body, chest lowers near the floor. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "24C",
+  "scene": 24,
+  "tier": 1,
+  "start": 461.97,
+  "end": 469.71,
+  "length": 7.7,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Door rows, for your back. Hold both handles of an open door, lean back, and pull your chest to the door.",
+  "prompt": "Side view: Rohan does inverted rows on an open door: holding both door handles, feet near the bottom of the door, body straight and leaning back, he pulls his chest toward the door edge and lowers slowly. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "24D",
+  "scene": 24,
+  "tier": 1,
+  "start": 469.71,
+  "end": 475.41,
+  "length": 5.7,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Split squats, for your legs. Front knee follows your toes. Go down slow.",
+  "prompt": "Side view: Rohan does a split squat: one foot forward, one back, torso upright, he lowers his back knee slowly toward the floor while the front knee stays over his toes, then stands back up. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "24E",
+  "scene": 24,
+  "tier": 1,
+  "start": 475.41,
+  "end": 481.53,
+  "length": 6.1,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Pike push-ups, for your shoulders. Hips up high, head goes down between your hands.",
+  "prompt": "Side view: Rohan does a pike push-up: hips high in an upside-down V, hands on the floor, he bends his elbows so his head moves down between his hands, then presses back up. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "24F",
+  "scene": 24,
+  "tier": 1,
+  "start": 481.53,
+  "end": 486.6,
+  "length": 5.1,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Single-leg glute bridges. Push through your heel and pause at the top.",
+  "prompt": "Side view: Rohan lies on his back on a mat and does a single-leg glute bridge: one foot planted, other leg straight up, he lifts his hips high, pauses at the top, and lowers slowly. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "24G",
+  "scene": 24,
+  "tier": 2,
+  "start": 486.6,
+  "end": 494.07,
+  "length": 7.5,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "And towel curls for your biceps, or chin-ups if you've got a bar. Keep your elbows by your sides.",
+  "prompt": "Rohan sits on a chair doing a towel curl: a towel looped under one foot, he pulls the ends up with both hands, elbows pinned to his sides, against his own leg's resistance. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "24H",
+  "scene": 24,
+  "tier": 2,
+  "start": 494.07,
+  "end": 512.4,
+  "length": 18.3,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Too hard? Every move has an easier version. Too easy? There's a harder one.",
+  "prompt": "Rohan does an easy push-up with his hands on a table, then cut to a hard push-up with his feet up on a chair. He grins after each. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "25A",
+  "scene": 25,
+  "tier": 2,
+  "start": 512.4,
+  "end": 522.38,
+  "length": 10.0,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "How do you level up? Do three sets of eight to fifteen reps. When you can do fifteen on all three sets, the move is too easy for you now.",
+  "prompt": "Rohan finishes a set of push-ups easily, looks bored, then stuffs heavy books into a backpack and straps it on. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "25B",
+  "scene": 25,
+  "tier": 1,
+  "start": 522.38,
+  "end": 534.11,
+  "length": 11.7,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Switch to the harder version, or put some books in a backpack and wear it. More reps, then a harder move. Like levelling up in a game.",
+  "prompt": "Rohan does push-ups wearing a backpack full of books; on the last rep a game-style level-up ring of teal light bursts around him and he pumps his fist. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "26A",
+  "scene": 26,
+  "tier": 3,
+  "start": 534.11,
+  "end": 547.97,
+  "length": 13.9,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Two small things. Before each move, do one easy warm-up set. And rest one to three minutes between sets. If you rush, the next set gets weak, and weak sets don't send the message.",
+  "prompt": "Rohan sits on the floor between sets, breathing, sipping water and watching a timer on his phone, then gets back up for the next set. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "27A",
+  "scene": 27,
+  "tier": 1,
+  "start": 547.97,
+  "end": 555.23,
+  "length": 7.3,
+  "ingredients": [
+   "Rohan sheet",
+   "Muscle Crew sheet"
+  ],
+  "overlay": "-18% muscle building",
+  "voiceover": "And sleep. In one study, just one night without sleep cut muscle building by eighteen percent.",
+  "prompt": "3 AM: Rohan in bed scrolling his phone, face lit blue-white by the screen. Inset x-ray of his arm: the Muscle Crew, yawning and working slowly. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | the Muscle Crew: tiny chibi construction workers living inside the muscle; builders in teal hard hats carrying glowing amber protein bricks; a demolition team in coral hard hats with tiny hammers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "27B",
+  "scene": 27,
+  "tier": 2,
+  "start": 555.23,
+  "end": 562.09,
+  "length": 6.9,
+  "ingredients": [
+   "Rohan sheet",
+   "Muscle Crew sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Staying up till 3am scrolling isn't free. Aim for seven to nine hours.",
+  "prompt": "Rohan sleeps peacefully, moonlight through a window. Inside his arm, the Muscle Crew work happily and fast, stacking amber bricks. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | the Muscle Crew: tiny chibi construction workers living inside the muscle; builders in teal hard hats carrying glowing amber protein bricks; a demolition team in coral hard hats with tiny hammers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "28A",
+  "scene": 28,
+  "tier": 2,
+  "start": 562.09,
+  "end": 574.18,
+  "length": 12.1,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "plan card",
+  "voiceover": "Here's the whole plan. Screenshot this. Three workouts a week: Monday, Wednesday, Friday. Six moves, three hard sets each. Walk on the days in between.",
+  "prompt": "Rohan crosses off days on a wall calendar with a teal marker; between marks, quick cuts of him training, walking, resting. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "28B",
+  "scene": 28,
+  "tier": 2,
+  "start": 574.18,
+  "end": 581.9,
+  "length": 7.7,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Eat about three hundred extra calories a day, hit your protein, and drink the shake if you get full fast.",
+  "prompt": "Rohan eats a full plate of food, then blends and drinks his shake. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "28C",
+  "scene": 28,
+  "tier": 2,
+  "start": 581.9,
+  "end": 595.63,
+  "length": 13.7,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Weigh every morning, check the weekly average. If it's flat for two weeks, eat a bit more.",
+  "prompt": "Morning: Rohan steps on the bathroom scale, checks it, and nods calmly. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "29A",
+  "scene": 29,
+  "tier": 2,
+  "start": 595.63,
+  "end": 603.47,
+  "length": 7.8,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "What to expect. The first few weeks, you'll get stronger fast. That's mostly your brain learning the moves.",
+  "prompt": "Rohan takes a mirror selfie on day one with his phone, standing in the dark in front of a tall mirror, looking unsure. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "29B",
+  "scene": 29,
+  "tier": 1,
+  "start": 603.47,
+  "end": 613.03,
+  "length": 9.6,
+  "ingredients": [
+   "Rohan week-12 sheet",
+   "Rohan sheet"
+  ],
+  "overlay": "12 weeks",
+  "voiceover": "Getting bigger takes longer. Give it twelve weeks. Take a photo on day one. You'll want it later.",
+  "prompt": "Time-lapse in front of the same mirror, same pose: Rohan gradually fills out over twelve weeks, shoulders broadening, chest and arms growing, until he becomes Rohan (twelve weeks later). He lowers the phone and smiles. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Rohan twelve weeks later: the same face, hair and outfit, but broader shoulders, a fuller chest and thicker arms, the white t-shirt now fits snugly, standing upright and confident; still lean and natural, not a bodybuilder. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "30A",
+  "scene": 30,
+  "tier": 1,
+  "start": 613.03,
+  "end": 614.64,
+  "length": 1.6,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "[ROHAN] \"Won't I just get fat?\"",
+  "prompt": "Rohan in front of the mirror pinches a little skin at his belly, worried. Mouth moving as if talking, but no audible speech. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "30B",
+  "scene": 30,
+  "tier": 2,
+  "start": 614.64,
+  "end": 627.77,
+  "length": 13.1,
+  "ingredients": [
+   "Rohan sheet",
+   "Tiger sheet"
+  ],
+  "overlay": "",
+  "voiceover": "A little fat comes with any bulk. That's normal. Gain slowly, and most of it goes where you want. If your belly grows way faster than your arms and chest, eat a little less.",
+  "prompt": "Tiger pats Rohan on the back reassuringly and points to the mirror, where Rohan looks lean and slightly bigger; Rohan relaxes and smiles. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "31A",
+  "scene": 31,
+  "tier": 2,
+  "start": 627.77,
+  "end": 632.49,
+  "length": 4.7,
+  "ingredients": [
+   "Rohan sheet",
+   "Tiger sheet"
+  ],
+  "overlay": "",
+  "voiceover": "[ROHAN] \"Do I need supplements?\" No. Food and training do the real work.",
+  "prompt": "Rohan stands in a supplement shop, overwhelmed by tall shelves of colorful tubs. Tiger walks in, pushes the shelves of tubs aside and hands him a single small plain tub. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "31B",
+  "scene": 31,
+  "tier": 2,
+  "start": 632.49,
+  "end": 642.06,
+  "length": 9.6,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "creatine: most researched",
+  "voiceover": "If you want one, creatine is the most researched. It helps you build muscle when you train, and it's considered safe for healthy adults.",
+  "prompt": "Rohan reads the label of a small plain tub of creatine, shrugs, and puts it next to his eggs and milk on the kitchen counter. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "31C",
+  "scene": 31,
+  "tier": 3,
+  "start": 642.06,
+  "end": 651.25,
+  "length": 9.2,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Protein powder is just food in a box. Useful, not required. Got a health condition? Ask a doctor first.",
+  "prompt": "Rohan holds a tub of protein powder in one hand and a plate of eggs and chicken in the other, looks at both, and shrugs as if they are the same thing. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "32A",
+  "scene": 32,
+  "tier": 2,
+  "start": 651.25,
+  "end": 664.14,
+  "length": 12.9,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "",
+  "voiceover": "[ROHAN] \"Can I still play football or do cardio?\" Yes. Sports and walking are great for you, and they won't stop you growing. They just burn energy. So on days you play, eat a bit more.",
+  "prompt": "Rohan plays football with friends on a night pitch under floodlights, then sits down after the game with a big plate of food. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "33A",
+  "scene": 33,
+  "tier": 1,
+  "start": 664.14,
+  "end": 669.81,
+  "length": 5.7,
+  "ingredients": [
+   "Rohan sheet",
+   "Tiger sheet"
+  ],
+  "overlay": "",
+  "voiceover": "[ROHAN] \"So... eat a bit more, train hard, sleep. That's it?\" [TIGER] \"That's it. For twelve weeks. Don't skip.\"",
+  "prompt": "Rohan and Tiger face each other; Rohan asks a question with open hands, Tiger grins and they bump fists. Mouth moving as if talking, but no audible speech. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers | Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "34A",
+  "scene": 34,
+  "tier": 2,
+  "start": 669.81,
+  "end": 679.45,
+  "length": 9.6,
+  "ingredients": [
+   "Rohan week-12 sheet"
+  ],
+  "overlay": "",
+  "voiceover": "Drop your height, your weight, and your goal for the next twelve weeks in the comments. We read them, and your questions become the next videos.",
+  "prompt": "Rohan (twelve weeks later) faces the camera, smiles and points down toward the comments. Characters: Rohan twelve weeks later: the same face, hair and outfit, but broader shoulders, a fuller chest and thicker arms, the white t-shirt now fits snugly, standing upright and confident; still lean and natural, not a bodybuilder. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ },
+ {
+  "id": "34B",
+  "scene": 34,
+  "tier": 1,
+  "start": 679.45,
+  "end": 688.02,
+  "length": 8.6,
+  "ingredients": [
+   "Rohan sheet"
+  ],
+  "overlay": "Next episode",
+  "voiceover": "Next time: why you run out of energy after ten seconds of sprinting.",
+  "prompt": "Teaser: Rohan sprints at full speed down a dark running track, then at about ten seconds suddenly slows, bends over and pants, exhausted. Freeze on his face. Characters: Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. Style: 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome; solid near-black background with minimal props; smooth animation; 16:9. No text, captions, numbers, logos or watermarks. No speech, music or sound effects."
+ }
+]

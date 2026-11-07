@@ -1,6 +1,8 @@
 # Episode 1 video: first cut
 
-`ep01-first-cut.mp4` is the full episode: 11:30, 1920×1080, 30 fps, with the voiceover from `../audio/`.
+**Next version:** the character-driven cut built from Google Flow shots. See `../flow/README.md`. This first cut also serves as its fallback for any shot not made yet.
+
+`ep01-first-cut.mp4` is the full episode: 11:28, 1920×1080, 30 fps, with the three-voice voiceover from `../audio/`.
 
 ## What's in it
 
@@ -23,21 +25,20 @@
 
 ## Stand-in art: replace before publishing
 
-The host and rival don't exist yet, so this cut uses stand-ins. A small "FIRST CUT · STAND-IN ART" tag sits top-right on every frame.
+Rohan and Tiger don't have final art yet, so this cut uses stand-ins. A small "FIRST CUT · STAND-IN ART" tag sits top-right on every frame.
 
 | Character | Stand-in | Made by |
 |---|---|---|
-| Host | Concept host A from the asset board, cut out of its background | `scripts/video/characters.py` |
-| Rival | The anatomy skin figure, widened and tinted grey: a bald, bulky "big guy" | `scripts/video/characters.py` |
+| Rohan | Concept host A, cut out and narrowed below the neck so he reads as skinny | `scripts/video/characters.py` |
+| Tiger | The anatomy skin figure, widened and tinted grey: a bald, bulky "big guy" | `scripts/video/characters.py` |
 
 The script's NEW assets are drawn as simple ink icons and charts: food, the stomach, the blender and the phone. The 585-person chart shows an illustrative spread with the study's real range of −2% to +59%, and it's labelled as illustrative.
 
 **To finish the episode:**
-1. Lock the host and rival designs on the asset board.
-2. Replace `video/art/host.png` and `video/art/rival.png`. Ideally add pose art: push-up, fidget loop, asleep.
-3. Set `DRAFT = False` in `scripts/video/ep01_video.py`.
-4. Re-render the episode.
-5. Optionally re-record the voiceover with a real voice, keeping the same timings.
+1. Make the character reference sheets and the shots in Google Flow. Follow `../flow/README.md`.
+2. Put the clips in `../flow/shots/`.
+3. Run `python3 scripts/video/assemble_ep01.py`. It writes `ep01-flow-cut.mp4`, using the Flow shots and falling back to this cut wherever a shot is missing.
+4. Before publishing, set `DRAFT = False` in `scripts/video/ep01_video.py`, so the fallback frames lose the "first cut" tag.
 
 ## Files
 

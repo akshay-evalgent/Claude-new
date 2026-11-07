@@ -4,7 +4,7 @@ AI-generated voiceover, made with Kokoro (open-source text-to-speech, Apache-2.0
 
 | File | What | Use it for |
 |---|---|---|
-| `vo-full.flac` | The whole narration, 11:30, 48 kHz, lossless | The edit's voice track |
+| `vo-full.flac` | The whole narration, 11:28, 48 kHz, lossless | The edit's voice track |
 | `vo-full.mp3` | The same at 160 kbps | Listening on a phone, sharing |
 | `scenes/scene-01.mp3` … `scene-34.mp3` | One clip per scene, cut from the full track | Swapping or re-timing single scenes |
 | `vo.srt` | Subtitles, one cue per line, timed to the audio | Upload to YouTube as captions, or burn in |
@@ -16,8 +16,9 @@ The scene timestamps and chapters in `SCRIPT.md` were updated to match this audi
 
 | Character | Kokoro voice | Speed |
 |---|---|---|
-| Narrator and host | `am_michael` | 0.87 |
-| Rival | `am_fenrir` (deeper, a different character) | 0.97 |
+| Narrator | `am_michael` | 0.87 |
+| Rohan, the skinny guy | `am_puck` (younger, lighter) | 0.98 |
+| Tiger, the rival | `am_fenrir` (deeper) | 0.97 |
 
 | Setting | Value |
 |---|---|

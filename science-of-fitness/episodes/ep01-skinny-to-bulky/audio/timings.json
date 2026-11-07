@@ -1,5 +1,5 @@
 {
- "duration": 689.72,
+ "duration": 688.02,
  "scenes": [
   {
    "scene": 1,
@@ -28,181 +28,181 @@
   {
    "scene": 5,
    "start": 73.343,
-   "end": 77.185,
+   "end": 77.02,
    "lines": 1
   },
   {
    "scene": 6,
-   "start": 77.185,
-   "end": 108.426,
+   "start": 77.02,
+   "end": 108.261,
    "lines": 5
   },
   {
    "scene": 7,
-   "start": 108.426,
-   "end": 131.995,
+   "start": 108.261,
+   "end": 131.83,
    "lines": 5
   },
   {
    "scene": 8,
-   "start": 131.995,
-   "end": 154.874,
+   "start": 131.83,
+   "end": 154.709,
    "lines": 4
   },
   {
    "scene": 9,
-   "start": 154.874,
-   "end": 178.461,
+   "start": 154.709,
+   "end": 178.296,
    "lines": 4
   },
   {
    "scene": 10,
-   "start": 178.461,
-   "end": 192.28,
+   "start": 178.296,
+   "end": 192.115,
    "lines": 3
   },
   {
    "scene": 11,
-   "start": 192.28,
-   "end": 215.1,
+   "start": 192.115,
+   "end": 214.935,
    "lines": 4
   },
   {
    "scene": 12,
-   "start": 215.1,
-   "end": 232.53,
+   "start": 214.935,
+   "end": 232.365,
    "lines": 4
   },
   {
    "scene": 13,
-   "start": 232.53,
-   "end": 236.138,
+   "start": 232.365,
+   "end": 235.973,
    "lines": 1
   },
   {
    "scene": 14,
-   "start": 236.138,
-   "end": 275.98,
+   "start": 235.973,
+   "end": 275.815,
    "lines": 5
   },
   {
    "scene": 15,
-   "start": 275.98,
-   "end": 278.621,
+   "start": 275.815,
+   "end": 278.456,
    "lines": 1
   },
   {
    "scene": 16,
-   "start": 278.621,
-   "end": 305.739,
+   "start": 278.456,
+   "end": 305.574,
    "lines": 5
   },
   {
    "scene": 17,
-   "start": 305.739,
-   "end": 328.835,
+   "start": 305.574,
+   "end": 328.67,
    "lines": 5
   },
   {
    "scene": 18,
-   "start": 328.835,
-   "end": 349.148,
+   "start": 328.67,
+   "end": 348.983,
    "lines": 3
   },
   {
    "scene": 19,
-   "start": 349.148,
-   "end": 372.283,
+   "start": 348.983,
+   "end": 372.118,
    "lines": 4
   },
   {
    "scene": 20,
-   "start": 372.283,
-   "end": 393.597,
+   "start": 372.118,
+   "end": 393.432,
    "lines": 4
   },
   {
    "scene": 21,
-   "start": 393.597,
-   "end": 418.276,
+   "start": 393.432,
+   "end": 418.111,
    "lines": 4
   },
   {
    "scene": 22,
-   "start": 418.276,
-   "end": 436.198,
+   "start": 418.111,
+   "end": 436.033,
    "lines": 4
   },
   {
    "scene": 23,
-   "start": 436.198,
-   "end": 451.151,
+   "start": 436.033,
+   "end": 450.986,
    "lines": 3
   },
   {
    "scene": 24,
-   "start": 451.151,
-   "end": 512.566,
+   "start": 450.986,
+   "end": 512.401,
    "lines": 8
   },
   {
    "scene": 25,
-   "start": 512.566,
-   "end": 534.278,
+   "start": 512.401,
+   "end": 534.113,
    "lines": 5
   },
   {
    "scene": 26,
-   "start": 534.278,
-   "end": 548.139,
+   "start": 534.113,
+   "end": 547.974,
    "lines": 3
   },
   {
    "scene": 27,
-   "start": 548.139,
-   "end": 562.251,
+   "start": 547.974,
+   "end": 562.086,
    "lines": 3
   },
   {
    "scene": 28,
-   "start": 562.251,
-   "end": 595.798,
+   "start": 562.086,
+   "end": 595.633,
    "lines": 5
   },
   {
    "scene": 29,
-   "start": 595.798,
-   "end": 613.193,
+   "start": 595.633,
+   "end": 613.028,
    "lines": 4
   },
   {
    "scene": 30,
-   "start": 613.193,
-   "end": 627.991,
+   "start": 613.028,
+   "end": 627.773,
    "lines": 4
   },
   {
    "scene": 31,
-   "start": 627.991,
-   "end": 651.697,
+   "start": 627.773,
+   "end": 651.253,
    "lines": 5
   },
   {
    "scene": 32,
-   "start": 651.697,
-   "end": 665.073,
+   "start": 651.253,
+   "end": 664.138,
    "lines": 3
   },
   {
    "scene": 33,
-   "start": 665.073,
-   "end": 671.511,
+   "start": 664.138,
+   "end": 669.811,
    "lines": 2
   },
   {
    "scene": 34,
-   "start": 671.511,
-   "end": 689.72,
+   "start": 669.811,
+   "end": 688.021,
    "lines": 3
   }
  ],
@@ -299,685 +299,685 @@
   },
   {
    "start": 73.34320833333334,
-   "end": 76.43537500000001,
-   "speaker": "rival",
+   "end": 76.270375,
+   "speaker": "skinny",
    "text": "\"Bro, I eat a LOT. I just have a fast metabolism.\""
   },
   {
-   "start": 77.18537500000001,
-   "end": 78.80108333333334,
+   "start": 77.020375,
+   "end": 78.63608333333333,
    "speaker": "narrator",
    "text": "Eating \"a lot\" is tricky."
   },
   {
-   "start": 79.12108333333333,
-   "end": 86.43808333333334,
+   "start": 78.95608333333332,
+   "end": 86.27308333333332,
    "speaker": "narrator",
    "text": "You remember the big meals. That wedding. That pizza night. That time you finished two plates of biryani."
   },
   {
-   "start": 86.75808333333333,
-   "end": 95.08808333333333,
+   "start": 86.59308333333331,
+   "end": 94.92308333333331,
    "speaker": "narrator",
    "text": "You don't remember the day you woke up late and skipped breakfast. Or the lunch that was just chips. Or the day you weren't hungry."
   },
   {
-   "start": 95.40808333333332,
-   "end": 99.84124999999999,
+   "start": 95.2430833333333,
+   "end": 99.67624999999997,
    "speaker": "narrator",
    "text": "Your body doesn't care about your best day. It counts the whole week."
   },
   {
-   "start": 100.16124999999998,
-   "end": 105.67612499999998,
+   "start": 99.99624999999996,
+   "end": 105.51112499999996,
    "speaker": "narrator",
    "text": "And for most skinny guys, the whole week adds up to just enough to stay the same."
   },
   {
-   "start": 108.42612499999998,
-   "end": 109.81120833333331,
+   "start": 108.26112499999996,
+   "end": 109.64620833333329,
    "speaker": "narrator",
    "text": "Why does this happen?"
   },
   {
-   "start": 110.1312083333333,
-   "end": 116.06599999999997,
+   "start": 109.96620833333328,
+   "end": 115.90099999999995,
    "speaker": "narrator",
    "text": "When you eat, your stomach stretches, and it basically texts your brain: \"we're full, stop eating.\""
   },
   {
-   "start": 116.38599999999997,
-   "end": 119.34112499999996,
+   "start": 116.22099999999995,
+   "end": 119.17612499999994,
    "speaker": "narrator",
    "text": "Some people get that message early and loud."
   },
   {
-   "start": 119.66112499999996,
-   "end": 125.79954166666663,
+   "start": 119.49612499999994,
+   "end": 125.6345416666666,
    "speaker": "narrator",
    "text": "So you eat a huge lunch, feel stuffed all afternoon, and dinner quietly gets smaller."
   },
   {
-   "start": 126.11954166666662,
-   "end": 131.24462499999996,
+   "start": 125.9545416666666,
+   "end": 131.07962499999994,
    "speaker": "narrator",
    "text": "You're not lying when you say you eat a lot. You just don't eat a lot every day."
   },
   {
-   "start": 131.99462499999996,
-   "end": 136.5237083333333,
+   "start": 131.82962499999994,
+   "end": 136.35870833333328,
    "speaker": "narrator",
    "text": "Second reason. Think of your daily energy like your phone battery."
   },
   {
-   "start": 136.8437083333333,
-   "end": 142.59129166666662,
+   "start": 136.67870833333328,
+   "end": 142.4262916666666,
    "speaker": "narrator",
    "text": "Most of it goes to just keeping you alive. Your heart, your brain, keeping you warm."
   },
   {
-   "start": 142.9112916666666,
-   "end": 145.65570833333328,
+   "start": 142.7462916666666,
+   "end": 145.49070833333326,
    "speaker": "narrator",
    "text": "A small part goes to digesting food."
   },
   {
-   "start": 145.97570833333327,
-   "end": 154.12395833333326,
+   "start": 145.81070833333325,
+   "end": 153.95895833333324,
    "speaker": "narrator",
    "text": "And the rest goes to moving. Not just the gym. Walking to class, standing, fidgeting, pacing while you're on the phone."
   },
   {
-   "start": 154.87395833333326,
-   "end": 156.60262499999993,
+   "start": 154.70895833333324,
+   "end": 156.4376249999999,
    "speaker": "narrator",
    "text": "That last part is sneaky."
   },
   {
-   "start": 156.92262499999993,
-   "end": 165.67599999999993,
+   "start": 156.7576249999999,
+   "end": 165.5109999999999,
    "speaker": "narrator",
    "text": "Remember the study? When people ate more, some of them started moving more automatically. They didn't plan it. Their body just did it."
   },
   {
-   "start": 165.99599999999992,
-   "end": 172.42583333333326,
+   "start": 165.8309999999999,
+   "end": 172.26083333333324,
    "speaker": "narrator",
    "text": "So when you eat a bit more for a few days and nothing happens, it's not that food \"doesn't work\" on you."
   },
   {
-   "start": 172.74583333333325,
-   "end": 177.71087499999993,
+   "start": 172.58083333333323,
+   "end": 177.5458749999999,
    "speaker": "narrator",
    "text": "Your body is burning some of it off. You just need a little more than you think."
   },
   {
-   "start": 178.46087499999993,
-   "end": 181.25683333333328,
+   "start": 178.2958749999999,
+   "end": 181.09183333333326,
    "speaker": "narrator",
    "text": "Third reason. And this is the big one."
   },
   {
-   "start": 181.57683333333327,
-   "end": 188.0565416666666,
+   "start": 181.41183333333325,
+   "end": 187.89154166666657,
    "speaker": "narrator",
    "text": "Muscle is expensive. Your body has to spend energy to build it, and energy to keep it."
   },
   {
-   "start": 188.37654166666658,
-   "end": 191.5297916666666,
+   "start": 188.21154166666656,
+   "end": 191.36479166666658,
    "speaker": "narrator",
    "text": "So it won't build any unless you give it a reason."
   },
   {
-   "start": 192.2797916666666,
-   "end": 196.8209166666666,
+   "start": 192.11479166666658,
+   "end": 196.65591666666657,
    "speaker": "narrator",
    "text": "Think of your muscle like a building that's always being worked on."
   },
   {
-   "start": 197.14091666666658,
-   "end": 202.7355416666666,
+   "start": 196.97591666666656,
+   "end": 202.57054166666657,
    "speaker": "narrator",
    "text": "One crew keeps building new parts. Another crew keeps tearing old parts down."
   },
   {
-   "start": 203.05554166666658,
-   "end": 208.1010416666666,
+   "start": 202.89054166666656,
+   "end": 207.93604166666657,
    "speaker": "narrator",
    "text": "If you don't train, both crews work at the same speed. Nothing changes."
   },
   {
-   "start": 208.42104166666658,
-   "end": 214.35016666666658,
+   "start": 208.25604166666656,
+   "end": 214.18516666666656,
    "speaker": "narrator",
    "text": "Training hard tells the builders to work faster. And food and protein are their bricks."
   },
   {
-   "start": 215.10016666666658,
-   "end": 220.2281666666666,
+   "start": 214.93516666666656,
+   "end": 220.06316666666658,
    "speaker": "narrator",
    "text": "And \"training hard\" means sets where, by the end, you can barely do another rep."
   },
   {
-   "start": 220.5481666666666,
-   "end": 224.68799999999993,
+   "start": 220.38316666666657,
+   "end": 224.5229999999999,
    "speaker": "narrator",
    "text": "That struggle is the message to your body: \"we need more muscle.\""
   },
   {
-   "start": 225.00799999999992,
-   "end": 227.02524999999991,
+   "start": 224.8429999999999,
+   "end": 226.8602499999999,
    "speaker": "narrator",
    "text": "No message, no new muscle."
   },
   {
-   "start": 227.3452499999999,
-   "end": 231.77983333333324,
+   "start": 227.1802499999999,
+   "end": 231.61483333333322,
    "speaker": "narrator",
    "text": "Eat a ton without training, and most of it just turns into fat."
   },
   {
-   "start": 232.52983333333324,
-   "end": 235.38795833333324,
+   "start": 232.36483333333322,
+   "end": 235.22295833333322,
    "speaker": "rival",
    "text": "\"Face it, bro. You're an ectomorph. You were born skinny.\""
   },
   {
-   "start": 236.13795833333324,
-   "end": 244.9318749999999,
+   "start": 235.97295833333322,
+   "end": 244.76687499999989,
    "speaker": "narrator",
    "text": "That \"ectomorph\" thing comes from an old 1940s theory about body types and personality. Not from muscle science."
   },
   {
-   "start": 245.2518749999999,
-   "end": 253.56941666666657,
+   "start": 245.08687499999988,
+   "end": 253.40441666666655,
    "speaker": "narrator",
    "text": "Genes do matter, though. In one study, five hundred eighty-five people did the exact same twelve-week arm workout."
   },
   {
-   "start": 253.88941666666656,
-   "end": 258.5614999999999,
+   "start": 253.72441666666654,
+   "end": 258.3964999999999,
    "speaker": "narrator",
    "text": "Some barely grew. A few grew their arm muscles by more than half."
   },
   {
-   "start": 258.8814999999999,
-   "end": 262.2624166666666,
+   "start": 258.7164999999999,
+   "end": 262.09741666666656,
    "speaker": "narrator",
    "text": "But most people were somewhere in the middle. And they grew."
   },
   {
-   "start": 262.5824166666666,
-   "end": 272.2296249999999,
+   "start": 262.41741666666655,
+   "end": 272.06462499999986,
    "speaker": "narrator",
    "text": "You won't know which one you are until you train properly, eat enough, and give it time. Most skinny guys quit way before they find out."
   },
   {
-   "start": 275.9796249999999,
-   "end": 277.8707083333332,
+   "start": 275.81462499999986,
+   "end": 277.7057083333332,
    "speaker": "rival",
    "text": "\"Easy. Dirty bulk. Eat everything!\""
   },
   {
-   "start": 278.6207083333332,
-   "end": 286.4322083333332,
+   "start": 278.4557083333332,
+   "end": 286.2672083333332,
    "speaker": "narrator",
    "text": "Not so fast. Your body can only build muscle at a certain speed. Anything extra just becomes fat."
   },
   {
-   "start": 286.7522083333332,
-   "end": 290.32566666666656,
+   "start": 286.5872083333332,
+   "end": 290.16066666666654,
    "speaker": "narrator",
    "text": "So you want a small extra amount of food, every day."
   },
   {
-   "start": 290.64566666666656,
-   "end": 297.0128749999999,
+   "start": 290.48066666666654,
+   "end": 296.8478749999999,
    "speaker": "narrator",
    "text": "A review of the research suggests gaining about a quarter to half a percent of your body weight per week."
   },
   {
-   "start": 297.3328749999999,
-   "end": 302.9594999999999,
+   "start": 297.16787499999987,
+   "end": 302.79449999999986,
    "speaker": "narrator",
    "text": "If you weigh sixty kilos, that's around one fifty to three hundred grams a week."
   },
   {
-   "start": 303.27949999999987,
-   "end": 304.9886666666665,
+   "start": 303.11449999999985,
+   "end": 304.8236666666665,
    "speaker": "narrator",
    "text": "Slow. Boring. Works."
   },
   {
-   "start": 305.7386666666665,
-   "end": 307.63987499999985,
+   "start": 305.5736666666665,
+   "end": 307.4748749999998,
    "speaker": "narrator",
    "text": "How do you know you're eating enough?"
   },
   {
-   "start": 307.95987499999984,
-   "end": 312.3841249999998,
+   "start": 307.7948749999998,
+   "end": 312.2191249999998,
    "speaker": "narrator",
    "text": "Weigh yourself every morning. After the toilet, before breakfast."
   },
   {
-   "start": 312.7041249999998,
-   "end": 318.75541666666646,
+   "start": 312.5391249999998,
+   "end": 318.59041666666644,
    "speaker": "narrator",
    "text": "Your weight will jump around every day. That's normal. Just look at the average for the week."
   },
   {
-   "start": 319.07541666666646,
-   "end": 324.5451249999998,
+   "start": 318.91041666666644,
+   "end": 324.3801249999998,
    "speaker": "narrator",
    "text": "If the average hasn't gone up in two weeks, add about three hundred calories a day."
   },
   {
-   "start": 324.8651249999998,
-   "end": 328.08491666666646,
+   "start": 324.7001249999998,
+   "end": 327.91991666666644,
    "speaker": "narrator",
    "text": "That's a glass of milk and a banana. That's it."
   },
   {
-   "start": 328.83491666666646,
-   "end": 331.8162916666665,
+   "start": 328.66991666666644,
+   "end": 331.65129166666645,
    "speaker": "narrator",
    "text": "Next, protein. Protein is the bricks."
   },
   {
-   "start": 332.13629166666647,
-   "end": 342.98008333333314,
+   "start": 331.97129166666645,
+   "end": 342.8150833333331,
    "speaker": "narrator",
    "text": "Scientists looked at forty-nine studies. Muscle gains stopped improving at about one point six grams of protein per kilo of body weight a day."
   },
   {
-   "start": 343.30008333333313,
-   "end": 348.3981249999998,
+   "start": 343.1350833333331,
+   "end": 348.2331249999998,
    "speaker": "narrator",
    "text": "So if you weigh sixty kilos, aim for about ninety-six grams a day."
   },
   {
-   "start": 349.1481249999998,
-   "end": 351.1952499999998,
+   "start": 348.9831249999998,
+   "end": 351.0302499999998,
    "speaker": "narrator",
    "text": "Sounds like a lot? It's not."
   },
   {
-   "start": 351.5152499999998,
-   "end": 356.55820833333314,
+   "start": 351.3502499999998,
+   "end": 356.3932083333331,
    "speaker": "narrator",
    "text": "Three eggs and toast for breakfast. Rice, dal and curd for lunch."
   },
   {
-   "start": 356.87820833333313,
-   "end": 363.1751666666665,
+   "start": 356.7132083333331,
+   "end": 363.01016666666646,
    "speaker": "narrator",
    "text": "Chicken or paneer with rotis for dinner. A handful of roasted chana as a snack."
   },
   {
-   "start": 363.4951666666665,
-   "end": 366.53279166666647,
+   "start": 363.33016666666646,
+   "end": 366.36779166666645,
    "speaker": "narrator",
    "text": "Add the shake I'm about to show you, and you're there."
   },
   {
-   "start": 372.28279166666647,
-   "end": 374.9559999999998,
+   "start": 372.11779166666645,
+   "end": 374.79099999999977,
    "speaker": "narrator",
    "text": "If you get full fast, drink your calories."
   },
   {
-   "start": 375.2759999999998,
-   "end": 379.75862499999977,
+   "start": 375.11099999999976,
+   "end": 379.59362499999975,
    "speaker": "narrator",
    "text": "Milk, a banana, two spoons of peanut butter, some oats. Blend it."
   },
   {
-   "start": 380.07862499999976,
-   "end": 385.1704166666664,
+   "start": 379.91362499999974,
+   "end": 385.0054166666664,
    "speaker": "narrator",
    "text": "That's about six hundred forty calories and twenty-three grams of protein."
   },
   {
-   "start": 385.4904166666664,
-   "end": 390.8473333333331,
+   "start": 385.3254166666664,
+   "end": 390.6823333333331,
    "speaker": "narrator",
    "text": "And it doesn't feel like eating a full meal. For skinny guys, that's a cheat code."
   },
   {
-   "start": 393.5973333333331,
-   "end": 395.23287499999975,
+   "start": 393.4323333333331,
+   "end": 395.06787499999973,
    "speaker": "narrator",
    "text": "Three more easy tricks."
   },
   {
-   "start": 395.55287499999974,
-   "end": 403.91237499999977,
+   "start": 395.3878749999997,
+   "end": 403.74737499999975,
    "speaker": "narrator",
    "text": "One. Add a spoon of oil or ghee to your rice or dal. About a hundred twenty calories, and you won't even notice."
   },
   {
-   "start": 404.23237499999976,
-   "end": 409.12462499999975,
+   "start": 404.06737499999974,
+   "end": 408.95962499999973,
    "speaker": "narrator",
    "text": "Two. Keep peanuts around. A small handful is about one seventy."
   },
   {
-   "start": 409.44462499999975,
-   "end": 417.52637499999975,
+   "start": 409.2796249999997,
+   "end": 417.3613749999997,
    "speaker": "narrator",
    "text": "Three. Add one snack at the same time every day, like a sandwich after your workout. Habits beat motivation."
   },
   {
-   "start": 418.27637499999975,
-   "end": 420.79333333333307,
+   "start": 418.1113749999997,
+   "end": 420.62833333333305,
    "speaker": "narrator",
    "text": "Now the workout. Just three rules."
   },
   {
-   "start": 421.11333333333306,
-   "end": 426.7493333333331,
+   "start": 420.94833333333304,
+   "end": 426.58433333333306,
    "speaker": "narrator",
    "text": "One. Make your sets hard. Stop when you've only got one to three reps left in you."
   },
   {
-   "start": 427.0693333333331,
-   "end": 430.64233333333306,
+   "start": 426.90433333333306,
+   "end": 430.47733333333304,
    "speaker": "narrator",
    "text": "Two. Do about ten hard sets per muscle, every week."
   },
   {
-   "start": 430.96233333333305,
-   "end": 435.44762499999973,
+   "start": 430.79733333333303,
+   "end": 435.2826249999997,
    "speaker": "narrator",
    "text": "Three. Train each muscle two or three times a week. Not once."
   },
   {
-   "start": 436.19762499999973,
-   "end": 438.4820416666664,
+   "start": 436.0326249999997,
+   "end": 438.3170416666664,
    "speaker": "narrator",
    "text": "Good news if you don't have a gym."
   },
   {
-   "start": 438.8020416666664,
-   "end": 443.09183333333306,
+   "start": 438.6370416666664,
+   "end": 442.92683333333304,
    "speaker": "narrator",
    "text": "Light weights build muscle too, as long as the set is hard enough."
   },
   {
-   "start": 443.41183333333305,
-   "end": 450.40074999999973,
+   "start": 443.24683333333303,
+   "end": 450.2357499999997,
    "speaker": "narrator",
    "text": "Your muscle doesn't know if it's lifting a dumbbell or your own body. It only feels how hard it's working."
   },
   {
-   "start": 451.15074999999973,
-   "end": 454.8252083333331,
+   "start": 450.9857499999997,
+   "end": 454.66020833333306,
    "speaker": "narrator",
    "text": "Here are six moves for your whole body. No equipment."
   },
   {
-   "start": 455.1452083333331,
-   "end": 461.81149999999974,
+   "start": 454.98020833333305,
+   "end": 461.6464999999997,
    "speaker": "narrator",
    "text": "Push-ups, for your chest. Keep your body straight like a plank, elbows a bit in, not flared out."
   },
   {
-   "start": 462.13149999999973,
-   "end": 469.5580416666664,
+   "start": 461.9664999999997,
+   "end": 469.39304166666636,
    "speaker": "narrator",
    "text": "Door rows, for your back. Hold both handles of an open door, lean back, and pull your chest to the door."
   },
   {
-   "start": 469.8780416666664,
-   "end": 475.25766666666635,
+   "start": 469.71304166666636,
+   "end": 475.09266666666633,
    "speaker": "narrator",
    "text": "Split squats, for your legs. Front knee follows your toes. Go down slow."
   },
   {
-   "start": 475.57766666666635,
-   "end": 481.3751249999997,
+   "start": 475.4126666666663,
+   "end": 481.21012499999966,
    "speaker": "narrator",
    "text": "Pike push-ups, for your shoulders. Hips up high, head goes down between your hands."
   },
   {
-   "start": 481.6951249999997,
-   "end": 486.44691666666637,
+   "start": 481.53012499999966,
+   "end": 486.28191666666635,
    "speaker": "narrator",
    "text": "Single-leg glute bridges. Push through your heel and pause at the top."
   },
   {
-   "start": 486.76691666666636,
-   "end": 493.9141249999997,
+   "start": 486.60191666666634,
+   "end": 493.74912499999965,
    "speaker": "narrator",
    "text": "And towel curls for your biceps, or chin-ups if you've got a bar. Keep your elbows by your sides."
   },
   {
-   "start": 494.23412499999966,
-   "end": 499.81591666666634,
+   "start": 494.06912499999964,
+   "end": 499.6509166666663,
    "speaker": "narrator",
    "text": "Too hard? Every move has an easier version. Too easy? There's a harder one."
   },
   {
-   "start": 512.5659166666663,
-   "end": 513.8277916666664,
+   "start": 512.4009166666663,
+   "end": 513.6627916666663,
    "speaker": "narrator",
    "text": "How do you level up?"
   },
   {
-   "start": 514.1477916666664,
-   "end": 516.7576666666664,
+   "start": 513.9827916666663,
+   "end": 516.5926666666663,
    "speaker": "narrator",
    "text": "Do three sets of eight to fifteen reps."
   },
   {
-   "start": 517.0776666666665,
-   "end": 522.2271249999998,
+   "start": 516.9126666666664,
+   "end": 522.0621249999997,
    "speaker": "narrator",
    "text": "When you can do fifteen on all three sets, the move is too easy for you now."
   },
   {
-   "start": 522.5471249999998,
-   "end": 527.0700833333332,
+   "start": 522.3821249999997,
+   "end": 526.9050833333331,
    "speaker": "narrator",
    "text": "Switch to the harder version, or put some books in a backpack and wear it."
   },
   {
-   "start": 527.3900833333332,
-   "end": 531.527625,
+   "start": 527.2250833333331,
+   "end": 531.3626249999999,
    "speaker": "narrator",
    "text": "More reps, then a harder move. Like levelling up in a game."
   },
   {
-   "start": 534.277625,
-   "end": 535.5921249999999,
+   "start": 534.1126249999999,
+   "end": 535.4271249999998,
    "speaker": "narrator",
    "text": "Two small things."
   },
   {
-   "start": 535.912125,
-   "end": 538.9695416666666,
+   "start": 535.7471249999999,
+   "end": 538.8045416666665,
    "speaker": "narrator",
    "text": "Before each move, do one easy warm-up set."
   },
   {
-   "start": 539.2895416666667,
-   "end": 547.38875,
+   "start": 539.1245416666666,
+   "end": 547.2237499999999,
    "speaker": "narrator",
    "text": "And rest one to three minutes between sets. If you rush, the next set gets weak, and weak sets don't send the message."
   },
   {
-   "start": 548.13875,
-   "end": 549.1045416666666,
+   "start": 547.9737499999999,
+   "end": 548.9395416666665,
    "speaker": "narrator",
    "text": "And sleep."
   },
   {
-   "start": 549.4245416666666,
-   "end": 555.076875,
+   "start": 549.2595416666666,
+   "end": 554.9118749999999,
    "speaker": "narrator",
    "text": "In one study, just one night without sleep cut muscle building by eighteen percent."
   },
   {
-   "start": 555.396875,
-   "end": 561.50125,
+   "start": 555.231875,
+   "end": 561.33625,
    "speaker": "narrator",
    "text": "Staying up till 3am scrolling isn't free. Aim for seven to nine hours."
   },
   {
-   "start": 562.25125,
-   "end": 565.0301666666667,
+   "start": 562.08625,
+   "end": 564.8651666666666,
    "speaker": "narrator",
    "text": "Here's the whole plan. Screenshot this."
   },
   {
-   "start": 565.3501666666667,
-   "end": 571.7057500000001,
+   "start": 565.1851666666666,
+   "end": 571.54075,
    "speaker": "narrator",
    "text": "Three workouts a week: Monday, Wednesday, Friday. Six moves, three hard sets each."
   },
   {
-   "start": 572.0257500000001,
-   "end": 574.0221666666667,
+   "start": 571.86075,
+   "end": 573.8571666666667,
    "speaker": "narrator",
    "text": "Walk on the days in between."
   },
   {
-   "start": 574.3421666666668,
-   "end": 581.7455833333335,
+   "start": 574.1771666666667,
+   "end": 581.5805833333334,
    "speaker": "narrator",
    "text": "Eat about three hundred extra calories a day, hit your protein, and drink the shake if you get full fast."
   },
   {
-   "start": 582.0655833333335,
-   "end": 588.0479166666669,
+   "start": 581.9005833333334,
+   "end": 587.8829166666668,
    "speaker": "narrator",
    "text": "Weigh every morning, check the weekly average. If it's flat for two weeks, eat a bit more."
   },
   {
-   "start": 595.7979166666669,
-   "end": 597.0657083333335,
+   "start": 595.6329166666668,
+   "end": 596.9007083333335,
    "speaker": "narrator",
    "text": "What to expect."
   },
   {
-   "start": 597.3857083333336,
-   "end": 603.3188750000003,
+   "start": 597.2207083333335,
+   "end": 603.1538750000002,
    "speaker": "narrator",
    "text": "The first few weeks, you'll get stronger fast. That's mostly your brain learning the moves."
   },
   {
-   "start": 603.6388750000003,
-   "end": 606.9423333333336,
+   "start": 603.4738750000002,
+   "end": 606.7773333333336,
    "speaker": "narrator",
    "text": "Getting bigger takes longer. Give it twelve weeks."
   },
   {
-   "start": 607.2623333333337,
-   "end": 610.443291666667,
+   "start": 607.0973333333336,
+   "end": 610.278291666667,
    "speaker": "narrator",
    "text": "Take a photo on day one. You'll want it later."
   },
   {
-   "start": 613.193291666667,
-   "end": 614.3585000000004,
-   "speaker": "rival",
+   "start": 613.028291666667,
+   "end": 614.1405833333337,
+   "speaker": "skinny",
    "text": "\"Won't I just get fat?\""
   },
   {
-   "start": 614.8585000000004,
-   "end": 618.0982500000003,
+   "start": 614.6405833333337,
+   "end": 617.8803333333336,
    "speaker": "narrator",
    "text": "A little fat comes with any bulk. That's normal."
   },
   {
-   "start": 618.4182500000004,
-   "end": 621.9289583333338,
+   "start": 618.2003333333337,
+   "end": 621.711041666667,
    "speaker": "narrator",
    "text": "Gain slowly, and most of it goes where you want."
   },
   {
-   "start": 622.2489583333338,
-   "end": 627.2412083333338,
+   "start": 622.0310416666671,
+   "end": 627.0232916666671,
    "speaker": "narrator",
    "text": "If your belly grows way faster than your arms and chest, eat a little less."
   },
   {
-   "start": 627.9912083333338,
-   "end": 629.5776666666671,
-   "speaker": "narrator",
+   "start": 627.7732916666671,
+   "end": 628.9531666666671,
+   "speaker": "skinny",
    "text": "\"Do I need supplements?\""
   },
   {
-   "start": 629.8976666666672,
-   "end": 632.6150833333338,
+   "start": 629.4531666666671,
+   "end": 632.1705833333338,
    "speaker": "narrator",
    "text": "No. Food and training do the real work."
   },
   {
-   "start": 632.9350833333339,
-   "end": 642.1816666666672,
+   "start": 632.4905833333338,
+   "end": 641.7371666666671,
    "speaker": "narrator",
    "text": "If you want one, creatine is the most researched. It helps you build muscle when you train, and it's considered safe for healthy adults."
   },
   {
-   "start": 642.5016666666672,
-   "end": 647.5473750000006,
+   "start": 642.0571666666672,
+   "end": 647.1028750000005,
    "speaker": "narrator",
    "text": "Protein powder is just food in a box. Useful, not required."
   },
   {
-   "start": 647.8673750000006,
-   "end": 650.9472916666673,
+   "start": 647.4228750000005,
+   "end": 650.5027916666672,
    "speaker": "narrator",
    "text": "Got a health condition? Ask a doctor first."
   },
   {
-   "start": 651.6972916666673,
-   "end": 654.5311666666673,
-   "speaker": "narrator",
+   "start": 651.2527916666672,
+   "end": 653.4153750000006,
+   "speaker": "skinny",
    "text": "\"Can I still play football or do cardio?\""
   },
   {
-   "start": 654.8511666666674,
-   "end": 659.7476250000008,
+   "start": 653.9153750000006,
+   "end": 658.811833333334,
    "speaker": "narrator",
    "text": "Yes. Sports and walking are great for you, and they won't stop you growing."
   },
   {
-   "start": 660.0676250000008,
-   "end": 664.3232916666675,
+   "start": 659.131833333334,
+   "end": 663.3875000000007,
    "speaker": "narrator",
    "text": "They just burn energy. So on days you play, eat a bit more."
   },
   {
-   "start": 665.0732916666675,
-   "end": 667.6750833333342,
-   "speaker": "rival",
+   "start": 664.1375000000007,
+   "end": 666.6101666666674,
+   "speaker": "skinny",
    "text": "\"So... eat a bit more, train hard, sleep. That's it?\""
   },
   {
-   "start": 668.1750833333342,
-   "end": 670.7606666666676,
-   "speaker": "host",
+   "start": 667.1101666666674,
+   "end": 669.0612083333341,
+   "speaker": "rival",
    "text": "\"That's it. For twelve weeks. Don't skip.\""
   },
   {
-   "start": 671.5106666666676,
-   "end": 676.7046250000009,
+   "start": 669.8112083333341,
+   "end": 675.0051666666674,
    "speaker": "narrator",
    "text": "Drop your height, your weight, and your goal for the next twelve weeks in the comments."
   },
   {
-   "start": 677.0246250000009,
-   "end": 680.8330416666676,
+   "start": 675.3251666666674,
+   "end": 679.1335833333341,
    "speaker": "narrator",
    "text": "We read them, and your questions become the next videos."
   },
   {
-   "start": 681.1530416666676,
-   "end": 686.1200833333343,
+   "start": 679.4535833333341,
+   "end": 684.4206250000008,
    "speaker": "narrator",
    "text": "Next time: why you run out of energy after ten seconds of sprinting."
   }

@@ -41,3 +41,14 @@ hh, ww = out.shape[:2]
 out = cv2.resize(out, (int(ww * 1.38), hh), interpolation=cv2.INTER_AREA)
 cv2.imwrite(os.path.join(OUT, "rival.png"), out)
 print("host", rgba.shape, "rival", out.shape)
+
+# skinny stand-in for Rohan until Flow art exists: narrow everything below the neck, keep the head
+host = cv2.imread(os.path.join(OUT, "host.png"), cv2.IMREAD_UNCHANGED)
+hh, ww = host.shape[:2]
+neck = int(hh * 0.205)
+head, body = host[:neck], host[neck:]
+body = cv2.resize(body, (int(ww * 0.74), body.shape[0]), interpolation=cv2.INTER_AREA)
+pad = (ww - body.shape[1]) // 2
+body = cv2.copyMakeBorder(body, 0, 0, pad, ww - body.shape[1] - pad, cv2.BORDER_CONSTANT, value=(0, 0, 0, 0))
+cv2.imwrite(os.path.join(OUT, "skinny.png"), np.vstack([head, body]))
+print("skinny", host.shape)

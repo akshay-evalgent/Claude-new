@@ -1,10 +1,10 @@
 # Episode 1: Why You're Skinny, and How to Actually Get Bigger
 
-**Target length:** 11:30 with the recorded voiceover (`audio/vo-full.flac`), including holds for demos and the plan card.
+**Target length:** 11:28 with the recorded voiceover (`audio/vo-full.flac`), including holds for demos and the plan card.
 **Who it's for:** an 18-year-old who is skinny, trains at home or not at all yet, and says "I eat so much and never gain".
 **Promise:** by the end they understand why they're skinny in plain words, and they have a food and workout plan they can start this week.
 
-Placeholders: `[HOST]` and `[RIVAL]` are the character names, still to be chosen on the board.
+Characters: `[SKINNY]` is Rohan, the skinny 18-year-old the episode follows. `[RIVAL]` is Tiger, the big gym bro who believes the myths and becomes his friend by the end. The narrator is off-screen. Names are placeholders. Character designs and Google Flow prompts are in `flow/`.
 
 ---
 
@@ -26,7 +26,7 @@ Talk like a slightly older friend who has read the research and wants you to win
 2. "I Eat So Much and Never Gain" — Here's Why
 3. How Skinny Guys Build Muscle at Home (no gym)
 
-**Thumbnail:** the host in a split image. On the left, skinny and hunched. On the right, bigger and upright, with the chest and shoulders glowing coral. A handwritten "(not your genes)" with one coral arrow. Teal shorts are the only colour besides the glow.
+**Thumbnail:** Rohan in a split image. On the left, skinny and hunched. On the right, bigger and upright, with the chest and shoulders glowing coral. A handwritten "(not your genes)" with one coral arrow. Teal shorts are the only colour besides the glow.
 
 **Chapters**
 ```
@@ -34,12 +34,12 @@ Talk like a slightly older friend who has read the research and wants you to win
 1:13 Reason 1: you remember the big meals
 2:12 Reason 2: your body burns it off
 2:58 Reason 3: no reason to grow
-3:53 The "ectomorph" myth
+3:52 The "ectomorph" myth
 4:36 The food
 6:58 The workout
 9:22 The plan
 10:13 Quick questions: fat, supplements, football
-11:05 Start here
+11:04 Start here
 ```
 
 ---
@@ -77,7 +77,7 @@ Each scene has five parts:
 > Same food. Same eight weeks.
 
 ### Scene 3 · 0:32
-**Visual:** The host on a chair, bouncing a knee, then getting up and pacing while on the phone (**NEW**: fidget loop). The legs glow coral with each bounce. Hard cut to the stat ring.
+**Visual:** Rohan on a chair, bouncing a knee, then getting up and pacing while on the phone (**NEW**: fidget loop). The legs glow coral with each bounce. Hard cut to the stat ring.
 **Text:** stat ring `692 calories a day`, sub-line `burned just by moving around (one person)`
 **Source:** Levine et al., Science, 1999
 
@@ -88,7 +88,7 @@ Each scene has five parts:
 > Their body burned off a big chunk of the extra food.
 
 ### Scene 4 · 0:55
-**Visual:** The host faces the camera. Title card: `WHY YOU'RE SKINNY`. A small disclaimer line fades in at the bottom.
+**Visual:** Rohan faces the camera. Title card: `WHY YOU'RE SKINNY`. A small disclaimer line fades in at the bottom.
 **Text:** `Not medical advice. Sources on screen.`
 
 > If you're the guy who says "bro, I eat so much and I still don't gain", this video is for you.
@@ -102,7 +102,7 @@ Each scene has five parts:
 ### Scene 5 · 1:13 · Reason 1
 **Visual:** Chapter label `REASON 1 · YOU REMEMBER THE BIG MEALS`. The rival leans into frame.
 
-> [RIVAL]: "Bro, I eat a LOT. I just have a fast metabolism."
+> [SKINNY]: "Bro, I eat a LOT. I just have a fast metabolism."
 
 ### Scene 6 · 1:17
 **Visual:** A week of meals as ink cards. Monday is a huge biryani glowing amber. Tuesday says "woke up late, no breakfast". Wednesday shows a packet of chips. Thursday says "not hungry". Then a bar chart for the week with a dashed "needed to grow" line, and the weekly average sits under it (**NEW**: food-week diagram).
@@ -161,7 +161,7 @@ Each scene has five parts:
 > Training hard tells the builders to work faster. And food and protein are their bricks.
 
 ### Scene 12 · 3:35
-**Visual:** The host struggling through the last reps of a push-up set, with the chest glowing coral (**NEW**: host push-up, 2 keyframes). Small overlay of `assets/anatomy/muscle-highlights/chest-front.png`.
+**Visual:** Rohan struggling through the last reps of a push-up set, with the chest glowing coral (**NEW**: Rohan push-up, 2 keyframes). Small overlay of `assets/anatomy/muscle-highlights/chest-front.png`.
 **Text:** `Hard sets = the message`
 
 > And "training hard" means sets where, by the end, you can barely do another rep.
@@ -169,7 +169,7 @@ Each scene has five parts:
 > No message, no new muscle.
 > Eat a ton without training, and most of it just turns into fat.
 
-### Scene 13 · 3:53 · The ectomorph myth
+### Scene 13 · 3:52 · The ectomorph myth
 **Visual:** The rival, arms crossed. A sepia "1940s" card with three body shapes gets stamped `MYTH`.
 
 > [RIVAL]: "Face it, bro. You're an ectomorph. You were born skinny."
@@ -194,8 +194,8 @@ Each scene has five parts:
 
 > [RIVAL]: "Easy. Dirty bulk. Eat everything!"
 
-### Scene 16 · 4:39
-**Visual:** Stat-ring template with two rings filling, then a 60 kg host on a scale with "+150–300 g a week" ticking up slowly.
+### Scene 16 · 4:38
+**Visual:** Stat-ring template with two rings filling, then a 60 kg Rohan on a scale with "+150–300 g a week" ticking up slowly.
 **Text:** `Gain about 0.25–0.5% of your body weight a week` with callout `60 kg → about 150–300 g a week`
 **Source:** Iraki et al., Sports, 2019
 
@@ -251,7 +251,7 @@ Each scene has five parts:
 > That's about six hundred forty calories and twenty-three grams of protein.
 > And it doesn't feel like eating a full meal. For skinny guys, that's a cheat code.
 
-### Scene 21 · 6:34
+### Scene 21 · 6:33
 **Visual:** Three amber tiles with ink drawings: a spoon of oil or ghee, a handful of peanuts, a sandwich with a clock.
 **Text:** `Spoon of oil/ghee ≈ 120 cal · handful of peanuts ≈ 170 cal · one daily snack`
 **Source:** approximate values from USDA FoodData Central
@@ -280,7 +280,7 @@ Each scene has five parts:
 > Three. Train each muscle two or three times a week. Not once.
 
 ### Scene 23 · 7:16
-**Visual:** Split screen: the host doing push-ups, and the rival doing heavy dumbbell presses. Both chests glow the same coral.
+**Visual:** Split screen: Rohan doing push-ups, and the rival doing heavy dumbbell presses. Both chests glow the same coral.
 **Text:** `Body weight or dumbbells: both build muscle, if the set is hard`
 **Source:** Schoenfeld et al., J Strength Cond Res, 2017
 
@@ -309,7 +309,7 @@ Each scene has five parts:
 > And towel curls for your biceps, or chin-ups if you've got a bar. Keep your elbows by your sides.
 > Too hard? Every move has an easier version. Too easy? There's a harder one.
 
-### Scene 25 · 8:33
+### Scene 25 · 8:32
 **Visual:** A game-style XP bar fills with each rep. 3 sets × 8–15 reps. When all three sets hit 15, a "LEVEL UP" chip moves the card to the harder version.
 **Text:** `3 sets of 8–15. Hit 15 on every set? Level up.`
 
@@ -328,7 +328,7 @@ Each scene has five parts:
 > And rest one to three minutes between sets. If you rush, the next set gets weak, and weak sets don't send the message.
 
 ### Scene 27 · 9:08
-**Visual:** The host asleep with a moon, then a phone showing 3:00 AM and a stat ring `−18%`.
+**Visual:** Rohan asleep with a moon, then a phone showing 3:00 AM and a stat ring `−18%`.
 **Text:** `One night without sleep: −18% muscle building`
 **Source:** Lamon et al., Physiol Rep, 2021
 
@@ -375,7 +375,7 @@ Footer: `Workout = 6 moves × 3 hard sets. Sleep 7–9 hours.`
 **Visual:** The rival raises a hand. A teal "Q" card reads `Won't I just get fat?`. A slow teal weight line climbs next to a steep coral "dirty bulk" line.
 **Text:** `Slow gain = mostly muscle. Fast gain = mostly fat.`
 
-> [RIVAL]: "Won't I just get fat?"
+> [SKINNY]: "Won't I just get fat?"
 > A little fat comes with any bulk. That's normal.
 > Gain slowly, and most of it goes where you want.
 > If your belly grows way faster than your arms and chest, eat a little less.
@@ -385,17 +385,17 @@ Footer: `Workout = 6 moves × 3 hard sets. Sleep 7–9 hours.`
 **Text:** `Not needed. Creatine has the best evidence.`
 **Source:** Kreider et al., J Int Soc Sports Nutr, 2017
 
-> "Do I need supplements?"
+> [SKINNY]: "Do I need supplements?"
 > No. Food and training do the real work.
 > If you want one, creatine is the most researched. It helps you build muscle when you train, and it's considered safe for healthy adults.
 > Protein powder is just food in a box. Useful, not required.
 > Got a health condition? Ask a doctor first.
 
-### Scene 32 · 10:52
-**Visual:** Q card `Can I still play football?`. The host walks, then plays football, with legs glowing teal.
+### Scene 32 · 10:51
+**Visual:** Q card `Can I still play football?`. Rohan walks, then plays football, with legs glowing teal.
 **Text:** `Sports and walking: yes. Just eat a bit more on those days.`
 
-> "Can I still play football or do cardio?"
+> [SKINNY]: "Can I still play football or do cardio?"
 > Yes. Sports and walking are great for you, and they won't stop you growing.
 > They just burn energy. So on days you play, eat a bit more.
 
@@ -403,14 +403,14 @@ Footer: `Workout = 6 moves × 3 hard sets. Sleep 7–9 hours.`
 
 ## Close
 
-### Scene 33 · 11:05
+### Scene 33 · 11:04
 **Visual:** The rival, now holding the shake, looks at his own glowing muscle card.
 
-> [RIVAL]: "So... eat a bit more, train hard, sleep. That's it?"
-> [HOST]: "That's it. For twelve weeks. Don't skip."
+> [SKINNY]: "So... eat a bit more, train hard, sleep. That's it?"
+> [RIVAL]: "That's it. For twelve weeks. Don't skip."
 
-### Scene 34 · 11:12
-**Visual:** The host faces the camera. End card with the next-episode thumbnail.
+### Scene 34 · 11:10
+**Visual:** Rohan faces the camera. End card with the next-episode thumbnail.
 **Text:** `Comment: your height, weight, and your 12-week goal`
 
 > Drop your height, your weight, and your goal for the next twelve weeks in the comments.
@@ -431,12 +431,12 @@ CHAPTERS
 1:13 Reason 1: you remember the big meals
 2:12 Reason 2: your body burns it off
 2:58 Reason 3: no reason to grow
-3:53 The "ectomorph" myth
+3:52 The "ectomorph" myth
 4:36 The food
 6:58 The workout
 9:22 The plan
 10:13 Quick questions: fat, supplements, football
-11:05 Start here
+11:04 Start here
 
 SOURCES
 - Levine JA, Eberhardt NL, Jensen MD. Role of nonexercise activity thermogenesis in resistance to fat gain in humans. Science, 1999. https://pubmed.ncbi.nlm.nih.gov/9880251/
@@ -487,6 +487,8 @@ Before recording, someone should open each paper link once to confirm the wordin
 
 ## Asset checklist
 
+The character-driven version is planned shot by shot in `flow/SHOTS.md`, with character designs in `flow/CHARACTER-SHEET.md`. The list below is what the first cut used.
+
 **Already in the kit:**
 - `assets/anatomy/anim/zoom-to-biceps.mp4`, `nerve-signals.mp4`, `muscle-turntable.mp4`
 - `assets/anatomy/micro/muscle-hierarchy.png`, `mito-in-fibre.png`
@@ -495,9 +497,9 @@ Before recording, someone should open each paper link once to confirm the wordin
 - Templates in `assets/style-frames/`: title card, stat ring, do-and-don't, zoom ladder
 
 **To make:**
-1. The host, locked as a character model. Needs: fidget loop, pacing on the phone, push-up (2 keyframes), door row, split squat, pike push-up, glute bridge, towel curl, asleep, football, facing camera.
+1. Rohan (skinny and week-12 versions), locked as a character model. Needs: fidget loop, pacing on the phone, push-up (2 keyframes), door row, split squat, pike push-up, glute bridge, towel curl, asleep, football, facing camera.
 2. The rival: arms crossed, fried-chicken bucket, dumbbell press, holding the shake, hand raised.
 3. 16 grey ink people with amber "fat fill" states.
 4. Food: burger meal, week-of-meals cards, day of food, blender, oil, peanuts, sandwich, all in ink with amber outlines.
 5. Motion graphics from the templates: phone-battery energy split, builders vs demolition crews, 585-bar chart, scale with weekly average, XP level-up bar, rest timer, 12-week timeline.
-6. Thumbnail: the host's skinny and bigger split.
+6. Thumbnail: Rohan's skinny and bigger split.

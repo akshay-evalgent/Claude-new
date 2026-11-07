@@ -296,7 +296,7 @@ def icon(name, size=220, color=INK, accent=AMBER):
 
 # ------------------------------------------------------------------ characters
 def character(fr, who, t, x, y_bottom, height=860, bob=6, a=1.0):
-    path = os.path.join(ART, "host.png" if who == "host" else "rival.png")
+    path = os.path.join(ART, {"host": "skinny.png", "skinny": "skinny.png", "rival": "rival.png"}[who])
     sp = load(path, 2000, height)
     put(fr, sp, x, y_bottom + math.sin(t * 2.2) * bob, a, "mb")
 
@@ -311,7 +311,7 @@ def speech(fr, t, who, s, t0=0.0, side="left"):
     if p > 0:
         bub = card(bw, bh, INK, INK, r=40, width=2).copy(); bub.alpha_composite(tx, (45, 34))
         put(fr, bub, bx, 300, p, "lt", scale=0.92 + 0.08 * p)
-        name = {"host": "[HOST]", "rival": "[RIVAL]"}[who]
+        name = {"host": "[ROHAN]", "skinny": "[ROHAN]", "rival": "[TIGER]"}[who]
         put(fr, text(name, 26, "Bold", MUTED, False), bx + 10, 300 - 44, p)
 
 
@@ -449,7 +449,7 @@ def s2(fr, t, D, sc):
 
 def s3(fr, t, D, sc):
     hx = 560
-    path = os.path.join(ART, "host.png")
+    path = os.path.join(ART, "skinny.png")
     pulse = 0.5 + 0.5 * math.sin(t * 7)
     put(fr, legs_glow(path), hx, H - 20 + 60 + math.sin(t * 6.6) * 10, 0.45 + 0.45 * pulse, "mb")
     character(fr, "host", t * 3, hx, H - 20, 980, bob=10)
@@ -473,7 +473,7 @@ def s4(fr, t, D, sc):
 
 
 def s5(fr, t, D, sc):
-    speech(fr, t, "rival", "Bro, I eat a LOT. I just have a fast metabolism.")
+    speech(fr, t, "skinny", "Bro, I eat a LOT. I just have a fast metabolism.")
 
 
 def s6(fr, t, D, sc):
@@ -931,7 +931,7 @@ def qcard(fr, t, q, t0=0):
 
 def s30(fr, t, D, sc):
     if t < L(sc, 1):
-        speech(fr, t, "rival", "Won't I just get fat?"); return
+        speech(fr, t, "skinny", "Won't I just get fat?"); return
     qcard(fr, t, "Won't I just get fat?", L(sc, 1))
     x0, y0, x1, y1 = 300, 860, 1500, 320
     d = ImageDraw.Draw(fr)
@@ -973,9 +973,9 @@ def s32(fr, t, D, sc):
 
 def s33(fr, t, D, sc):
     if t < L(sc, 1):
-        speech(fr, t, "rival", "So... eat a bit more, train hard, sleep. That's it?")
+        speech(fr, t, "skinny", "So... eat a bit more, train hard, sleep. That's it?")
     else:
-        speech(fr, t - L(sc, 1), "host", "That's it. For twelve weeks. Don't skip.", side="right")
+        speech(fr, t - L(sc, 1), "rival", "That's it. For twelve weeks. Don't skip.", side="right")
 
 
 def s34(fr, t, D, sc):

@@ -1,6 +1,6 @@
 Episode 1 · Why You're Skinny, and How to Actually Get Bigger
-Narration only. Talk like a slightly older friend: relaxed, simple, warm. Pause at each line break.
-Lines starting with [RIVAL] or [HOST] are character lines (different voice or delivery).
+Narration only. Narrator: relaxed, simple, warm. Pause at each line break.
+[SKINNY] = Rohan (younger, lighter voice). [RIVAL] = Tiger (deep, loud, friendly).
 Recorded version: audio/vo-full.flac (timestamps below match it).
 
 
@@ -32,7 +32,7 @@ Quick thing first: we're not doctors. If you're losing weight without trying, ge
 == PART 1 · WHY YOU'RE SKINNY ==
 
 [Scene 5 · 1:13]
-[RIVAL]: "Bro, I eat a LOT. I just have a fast metabolism."
+[SKINNY]: "Bro, I eat a LOT. I just have a fast metabolism."
 
 [Scene 6 · 1:17]
 Eating "a lot" is tricky.
@@ -77,7 +77,7 @@ That struggle is the message to your body: "we need more muscle."
 No message, no new muscle.
 Eat a ton without training, and most of it just turns into fat.
 
-[Scene 13 · 3:53]
+[Scene 13 · 3:52]
 [RIVAL]: "Face it, bro. You're an ectomorph. You were born skinny."
 
 [Scene 14 · 3:56]
@@ -92,7 +92,7 @@ You won't know which one you are until you train properly, eat enough, and give 
 [Scene 15 · 4:36]
 [RIVAL]: "Easy. Dirty bulk. Eat everything!"
 
-[Scene 16 · 4:39]
+[Scene 16 · 4:38]
 Not so fast. Your body can only build muscle at a certain speed. Anything extra just becomes fat.
 So you want a small extra amount of food, every day.
 A review of the research suggests gaining about a quarter to half a percent of your body weight per week.
@@ -123,7 +123,7 @@ Milk, a banana, two spoons of peanut butter, some oats. Blend it.
 That's about six hundred forty calories and twenty-three grams of protein.
 And it doesn't feel like eating a full meal. For skinny guys, that's a cheat code.
 
-[Scene 21 · 6:34]
+[Scene 21 · 6:33]
 Three more easy tricks.
 One. Add a spoon of oil or ghee to your rice or dal. About a hundred twenty calories, and you won't even notice.
 Two. Keep peanuts around. A small handful is about one seventy.
@@ -152,7 +152,7 @@ Single-leg glute bridges. Push through your heel and pause at the top.
 And towel curls for your biceps, or chin-ups if you've got a bar. Keep your elbows by your sides.
 Too hard? Every move has an easier version. Too easy? There's a harder one.
 
-[Scene 25 · 8:33]
+[Scene 25 · 8:32]
 How do you level up?
 Do three sets of eight to fifteen reps.
 When you can do fifteen on all three sets, the move is too easy for you now.
@@ -187,30 +187,30 @@ Take a photo on day one. You'll want it later.
 == QUICK QUESTIONS ==
 
 [Scene 30 · 10:13]
-[RIVAL]: "Won't I just get fat?"
+[SKINNY]: "Won't I just get fat?"
 A little fat comes with any bulk. That's normal.
 Gain slowly, and most of it goes where you want.
 If your belly grows way faster than your arms and chest, eat a little less.
 
 [Scene 31 · 10:28]
-"Do I need supplements?"
+[SKINNY]: "Do I need supplements?"
 No. Food and training do the real work.
 If you want one, creatine is the most researched. It helps you build muscle when you train, and it's considered safe for healthy adults.
 Protein powder is just food in a box. Useful, not required.
 Got a health condition? Ask a doctor first.
 
-[Scene 32 · 10:52]
-"Can I still play football or do cardio?"
+[Scene 32 · 10:51]
+[SKINNY]: "Can I still play football or do cardio?"
 Yes. Sports and walking are great for you, and they won't stop you growing.
 They just burn energy. So on days you play, eat a bit more.
 
 == CLOSE ==
 
-[Scene 33 · 11:05]
-[RIVAL]: "So... eat a bit more, train hard, sleep. That's it?"
-[HOST]: "That's it. For twelve weeks. Don't skip."
+[Scene 33 · 11:04]
+[SKINNY]: "So... eat a bit more, train hard, sleep. That's it?"
+[RIVAL]: "That's it. For twelve weeks. Don't skip."
 
-[Scene 34 · 11:12]
+[Scene 34 · 11:10]
 Drop your height, your weight, and your goal for the next twelve weeks in the comments.
 We read them, and your questions become the next videos.
 Next time: why you run out of energy after ten seconds of sprinting.

@@ -9,7 +9,7 @@ Writes into <episode>/audio/:
   timings.json                 scene start/end and per-line timing
 Then updates the scene timestamps and chapters in SCRIPT.md to the real audio.
 
-Voices: narrator and [HOST] = am_michael, [RIVAL] = am_fenrir.
+Voices: narrator = am_michael, [SKINNY] Rohan = am_puck, [RIVAL] Tiger = am_fenrir.
 """
 import json, os, re, subprocess, sys
 import numpy as np
@@ -19,7 +19,7 @@ from kokoro_onnx import Kokoro
 EP, MODEL, VOICES = sys.argv[1], sys.argv[2], sys.argv[3]
 SCRIPT = os.path.join(EP, "SCRIPT.md")
 OUT = os.path.join(EP, "audio")
-VOICE = {"narrator": ("am_michael", 0.87), "host": ("am_michael", 0.87), "rival": ("am_fenrir", 0.97)}
+VOICE = {"narrator": ("am_michael", 0.87), "host": ("am_michael", 0.87), "rival": ("am_fenrir", 0.97), "skinny": ("am_puck", 0.98)}
 GAP_LINE, GAP_SPEAKER, GAP_SCENE = 0.32, 0.5, 0.75
 HOLD = {"1": 1.0, "2": 1.0, "3": 1.0, "6": 2.0, "14": 3.0, "19": 5.0, "20": 2.0, "24": 12.0, "25": 2.0, "28": 7.0,
         "29": 2.0, "34": 3.0}  # extra silence (s) after scenes that need time for visuals
@@ -41,7 +41,7 @@ def parse():
         if cur is not None and line.startswith("> "):
             t = line[2:].strip()
             spk = "narrator"
-            m2 = re.match(r"\[(RIVAL|HOST)\]:\s*(.*)", t)
+            m2 = re.match(r"\[(RIVAL|HOST|SKINNY)\]:\s*(.*)", t)
             if m2:
                 spk, t = m2.group(1).lower(), m2.group(2)
             cur["lines"].append({"speaker": spk, "text": t})
@@ -102,7 +102,7 @@ def main():
         return f"{int(h):02d}:{int(m):02d}:{int(s):02d},{int(round((s % 1) * 1000)) % 1000:03d}"
     with open(os.path.join(OUT, "vo.srt"), "w", encoding="utf-8") as f:
         for i, c in enumerate(cues, 1):
-            who = {"rival": "[RIVAL] ", "host": "[HOST] "}.get(c["speaker"], "")
+            who = {"rival": "[TIGER] ", "host": "[HOST] ", "skinny": "[ROHAN] "}.get(c["speaker"], "")
             f.write(f"{i}\n{ts(c['start'])} --> {ts(c['end'])}\n{who}{c['text']}\n\n")
     json.dump({"duration": round(pos, 2), "scenes": timings, "lines": cues}, open(os.path.join(OUT, "timings.json"), "w"), indent=1)
     update_script(timings, pos)
