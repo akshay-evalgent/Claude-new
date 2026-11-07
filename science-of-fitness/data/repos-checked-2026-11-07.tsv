@@ -95,3 +95,13 @@ Anil-matcha/vox-ai-motion-graphics-generator	322	2026-09-02	none	false	🎬 Turn
 RepDB/exercise-dataset	129	2026-10-29	NOASSERTION	false	Free exercise dataset: 701 exercises in JSON with 512px WebP images, muscles, equipment and EN/DE/ES instructi
 Yuan-ManX/ComfyUI-AniSora	57	2025-05-27	MIT	false	ComfyUI-AniSora is now available in ComfyUI, Index-AniSora is the most powerful open-source animated video gen
 ayzitix/aniblend	3	2026-10-04	NOASSERTION	false	Anime cel-shading and inverted hull outlines for Blender 4.2+/5.x (EEVEE/Cycles) — multi-light toon shader, in
+danielgatis/rembg	25373	2026-11-06	MIT	false	Rembg is a tool to remove images background
+bmaltais/kohya_ss	12660	2026-08-01	Apache-2.0	false	
+ostris/ai-toolkit	12573	2026-11-04	MIT	false	The ultimate training toolkit for finetuning diffusion models
+kohya-ss/sd-scripts	7254	2026-11-03	Apache-2.0	false	
+ZhengPeng7/BiRefNet	4381	2026-10-25	MIT	false	[CAAI AIR'24] Bilateral Reference for High-Resolution Dichotomous Image Segmentation
+Acly/krita-ai-diffusion	10850	2026-11-06	GPL-3.0	false	Streamlined interface for generating images with AI in Krita. Inpaint and outpaint with optional text prompt, 
+1038lab/ComfyUI-RMBG	2222	2026-10-20	GPL-3.0	false	A ComfyUI custom node designed for advanced image background removal and object, face, clothes, and fashion se
+tin2tin/Pallaidium	1554	2026-10-29	GPL-3.0	false	PALLAIDIUM — a generative AI movie studio, seamlessly integrated into the Blender Video Editor (VSE), enabling
+ManimCommunity/manim-voiceover	327	2026-06-15	MIT	false	Manim plugin for all things voiceover
+CMU-Perceptual-Computing-Lab/openpose	34563	2024-08-03	NOASSERTION	false	OpenPose: Real-time multi-person keypoint detection library for body, face, hands, and foot estimation

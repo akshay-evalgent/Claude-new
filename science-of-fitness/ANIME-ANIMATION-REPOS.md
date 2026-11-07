@@ -2,7 +2,7 @@
 
 For the **Science of Fitness** YouTube channel: long-form animated explainers on training, muscles, food, vitamins and minerals, in an anime look.
 
-Every repo below was checked on GitHub on 7 November 2026. Stars, last push and license come from the GitHub API. The raw list of all 96 checked repos is in `data/repos-checked-2026-11-07.tsv`.
+Every repo below was checked on GitHub on 7 November 2026. Stars, last push and license come from the GitHub API. The raw list of all 106 checked repos is in `data/repos-checked-2026-11-07.tsv`.
 
 "Free" here means the code is free to download and run. The models still need a GPU, either your own or a rented one. A few licenses block commercial use, which matters once the channel is monetised. Those are marked **check license**.
 
@@ -22,6 +22,38 @@ A long science video is mostly diagrams, labels and motion graphics, with an ani
 | Subtitles | **faster-whisper** | Auto captions from the narration. |
 | Smoothing and upscale | **RIFE** for in-between frames, **Anime4K** or **Real-ESRGAN** for 1080p/4K | Makes AI clips and low-fps animation look finished. |
 | Edit and assemble | **Kdenlive** or **Shotcut**, or code-driven with **Remotion** / **HyperFrames** | Final timeline, music, captions. |
+
+## Matching the reference look (The Rep Theory style)
+
+The reference channels are mostly still manga-style drawings with motion graphics on top, not full AI video. See `REFERENCE-CHANNELS.md`. That changes which tools matter most:
+
+| Priority | Job | Repo |
+|---|---|---|
+| Must have | Run everything | ComfyUI (+ ComfyUI-Manager, or StabilityMatrix to install) |
+| Must have | Keep one host identical across every shot | **ostris/ai-toolkit** or **bmaltais/kohya_ss** (train a character LoRA), plus IP-Adapter for quick tests |
+| Must have | Put the host in the exact exercise pose | ControlNet with **comfyui_controlnet_aux** (OpenPose from your own photos) |
+| Must have | Cut the host onto a dark background | **danielgatis/rembg** or **BiRefNet** (ComfyUI-RMBG in ComfyUI) |
+| Must have | Fix hands, paint the muscle glow and accent | Krita with **Acly/krita-ai-diffusion** |
+| Must have | Info-graphics timed to narration | Motion Canvas, or HyperFrames or Remotion |
+| High | Inside-the-body diagrams | Manim (+ manim-voiceover), Blender with Z-Anatomy |
+| High | Rep loops from 2 keyframes | ToonCrafter, RIFE |
+| Nice to have | A few hero motion shots per episode | Wan 2.2, Index-AniSora, FramePack |
+| Skip for now | Talking-head lip sync | The references never show the host talking. Narration is voice-over. |
+
+### Added for this look (checked 7 November 2026)
+
+| Repo | Stars | Last push | License | What it does |
+|---|---:|---|---|---|
+| [ostris/ai-toolkit](https://github.com/ostris/ai-toolkit) | 12,573 | 2026-11-04 | MIT | Trains LoRAs for SDXL, Flux, Wan and others, with a web UI. The easiest way to lock your host's design. |
+| [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) | 12,660 | 2026-08-01 | Apache-2.0 | GUI for kohya's LoRA training scripts. The long-standing standard for anime character LoRAs. |
+| [kohya-ss/sd-scripts](https://github.com/kohya-ss/sd-scripts) | 7,254 | 2026-11-03 | Apache-2.0 | The training scripts underneath kohya_ss. |
+| [danielgatis/rembg](https://github.com/danielgatis/rembg) | 25,373 | 2026-11-06 | MIT | Background removal from the command line. Batch-cuts every pose. |
+| [ZhengPeng7/BiRefNet](https://github.com/ZhengPeng7/BiRefNet) | 4,381 | 2026-10-25 | MIT | Sharper cut-outs around hair and fingers. |
+| [1038lab/ComfyUI-RMBG](https://github.com/1038lab/ComfyUI-RMBG) | 2,222 | 2026-10-20 | GPL-3.0 | rembg and BiRefNet as ComfyUI nodes, plus clothing and body-part masks for the muscle glow. |
+| [Acly/krita-ai-diffusion](https://github.com/Acly/krita-ai-diffusion) | 10,850 | 2026-11-06 | GPL-3.0 | Generate and inpaint inside Krita. Fix hands, add props and paint the glow by hand. |
+| [ManimCommunity/manim-voiceover](https://github.com/ManimCommunity/manim-voiceover) | 327 | 2026-06-15 | MIT | Times Manim animations to the narration automatically. |
+| [tin2tin/Pallaidium](https://github.com/tin2tin/Pallaidium) | 1,554 | 2026-10-29 | GPL-3.0 | Generative AI inside Blender's video editor, if you prefer to assemble in Blender. |
+| [CMU-Perceptual-Computing-Lab/openpose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) | 34,563 | 2024-08-03 | **non-commercial** | The original pose detector. Use the ComfyUI preprocessors instead, which bundle commercially usable alternatives such as DWPose. |
 
 ---
 
