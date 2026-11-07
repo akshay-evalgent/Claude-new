@@ -2,7 +2,7 @@
 
 Live board, with comments: https://claude.ai/artifact/E55GnnmNSyJTEfJQbyhu8U. It's private until it's shared from its Share menu.
 
-Nine artboards to review before any video is built:
+Ten artboards to review before any video is built:
 
 | # | Board | Status |
 |---|---|---|
@@ -15,6 +15,7 @@ Nine artboards to review before any video is built:
 | 7 | Food, vitamins, minerals | Tiles, capsules and bars ready. 2 food drawings pending. |
 | 8 | Screen templates | Ready |
 | 9 | Thumbnail mock-ups | 3 mock-ups ready |
+| 10 | Anatomy kit: skin, muscle, bone, nerves | Ready. Files in `assets/anatomy/`. |
 
 Pending images are waiting on free GPU time. The free Hugging Face quota ran out after 7 images. Regenerate them with:
 

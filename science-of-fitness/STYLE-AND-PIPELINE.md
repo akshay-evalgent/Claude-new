@@ -129,7 +129,7 @@ Each step names the tool from `ANIME-ANIMATION-REPOS.md` that does the job.
 | 3. Pose for real | Photograph or film yourself doing each exercise. Extract the skeleton. Generate the host in that exact pose. Make 2 or 3 keyframes per rep. | comfyui_controlnet_aux (OpenPose), ControlNet |
 | 4. Cut out | Remove the background and place the host on `#0A0C10`. | rembg or BiRefNet (ComfyUI-RMBG inside ComfyUI) |
 | 5. Accent and muscle glow | Keep the host grayscale. Colour only the teal item, then paint the worked muscle in coral on its own layer. | Krita with krita-ai-diffusion for fixes and inpainting |
-| 6. Anatomy and inside-the-body shots | Render muscles, bones and organs from the Z-Anatomy models in grayscale with line art and a coral target. Cells, mitochondria and molecules are drawn in the same ink style, or built as diagrams. | Blender, Z-Anatomy, Manim |
+| 6. Anatomy and inside-the-body shots | **Built.** `assets/anatomy/` holds skin, muscle, bone and nerve layers rendered from the BodyParts3D atlas in manga ink, plus close-ups, microscopic views and animations. Make new highlights or angles with `scripts/anatomy/build_kit.py`. Mitochondria and molecule shots are still to do. | `scripts/anatomy/`, BodyParts3D, Manim |
 | 7. Info-graphics | Chapter labels, tiles, rings, do-and-don't cards and plans, timed to the narration. | Motion Canvas, or HyperFrames or Remotion. `scripts/style_frames.py` is the visual spec. |
 | 8. Rep loops | Make in-betweens from 2 keyframes. | ToonCrafter, RIFE |
 | 9. Hero shots | 3 to 6 short clips per episode, made from your keyframes. | Wan 2.2 or Index-AniSora, through ComfyUI |
