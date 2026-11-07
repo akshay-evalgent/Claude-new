@@ -65,7 +65,7 @@ What's one thing in your LATER box? Write it here, then go do it today.
 | Audience | No, it's not made for kids | "Made for kids" turns comments off, and the comments carry the share trigger |
 | Altered or synthetic content | No | Required only for realistic content that could pass as real. This is stylised animation. |
 | Category | Film & Animation | |
-| Video language | English | On-screen words are English with Japanese sound effects, which read as sound in any language |
+| Video language | English | Every word on screen is English, including the comic-style sound words (BZZT, TINK, BOOM!) |
 | Subtitles | Upload all 7 `.srt` files | A wordless film is native in every market once the screen words are translated |
 | Title and description translations | Hindi, Spanish, Portuguese (below) | Each translation opens a search and browse pool |
 | Tags | 30000 days, how many days do you have left, animated short film, short film about time, procrastination, remind me later, anime short film, life is short, emotional animation | Tags matter little; these cover search phrasing |
@@ -125,7 +125,7 @@ It tells you whether views are still growing period over period (R > 1) or fadin
 
 | Check | Rule | Film | Short |
 |---|---|---|---|
-| Frame one brightness (luma) | > 20 | 35.4 | 38.3 |
+| Frame one brightness (luma) | > 20 | 35.3 | 38.2 |
 | First motion | ≤ 1 s | 0.0 s | 0.0 s |
 | Longest unchanged stretch | ≤ 2.0 s | 1.6 s | 1.6 s |
 | Longest black | ≤ 0.3 s | 0.1 s | 0.0 s |
@@ -140,7 +140,7 @@ Before posting, watch it once with sound on headphones. The mix was balanced by 
 ## 5. Credits and licences
 
 - Story, characters, animation, music and sound: original, made in code for whatifgraphics.
-- three.js (MIT). Fonts: Archivo, Playfair Display and Fredoka (SIL Open Font License, files and licences in `fonts/`); IPAGothic (IPA Font License) for Japanese.
+- three.js (MIT). Fonts: Archivo, Playfair Display and Fredoka (SIL Open Font License, files and licences in `fonts/`).
 - The thumbnail and title format follows Day One Films' (a format, not their words, art or character).
 
 ## 6. Rebuild

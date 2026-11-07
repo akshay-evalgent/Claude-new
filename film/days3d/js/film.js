@@ -73,7 +73,7 @@ function lockDraw(st) {
       g.textAlign = 'left'; g.fillStyle = '#5a5470'; g.font = '700 22px Archivo'; g.fillText('30,000 DAYS', x + 108, y + 52); g.textAlign = 'right'; g.font = '500 20px Archivo'; g.fillText('now', x + cw - 26, y + 52);
       g.textAlign = 'left'; g.fillStyle = '#16122a'; g.font = '800 30px Archivo'; g.fillText(st.title || 'DAYS LEFT', x + 108, y + 92);
       g.font = '800 64px Archivo'; g.fillText(st.days || '21,236', x + 26, y + 170);
-      g.font = '24px IPAGothic'; g.fillStyle = '#5a5470'; g.fillText(st.jp || `残り ${st.days || '21,236'} 日`, x + 28, y + 210);
+      g.font = '600 18px Archivo'; g.fillStyle = '#5a5470'; g.fillText(st.sub || 'days left in your jar', x + 28, y + 210);
       U.rrect(g, x + 26, y + 232, cw - 52, 50, 25); g.fillStyle = st.pressed ? '#d89a3a' : '#ffc566'; g.fill();
       g.fillStyle = '#2a170c'; g.textAlign = 'center'; g.font = '700 24px Archivo'; g.fillText(st.button || 'Remind me later', w / 2, y + 266);
       g.globalAlpha = 1;
@@ -149,9 +149,8 @@ export const FILM = {
       },
       overlay(g, W, H, t) {
         const k = K(W, H); U.vignette(g, W, H, 0.6);
-        sfxAt(g, W, H, t, 0.45, 'ブブッ', W * (ctx.vertical ? 0.72 : 0.44), H * (ctx.vertical ? 0.12 : 0.1), 84, { rot: 0.18, fill: '#bfe0ff', stroke: '#16122a', outer: 'rgba(0,0,0,0)', d: 0.8, shake: true });
-        sfxAt(g, W, H, t, 1.55, 'ブブッ', W * (ctx.vertical ? 0.3 : 0.5), H * (ctx.vertical ? 0.16 : 0.16), 70, { rot: -0.12, fill: '#bfe0ff', stroke: '#16122a', outer: 'rgba(0,0,0,0)', d: 0.7, shake: true });
-        U.text(g, '午前二時十四分', 48 * k, H - 92 * k, { font: `${26 * k}px IPAGothic`, color: 'rgba(255,255,255,0.6)' });
+        sfxAt(g, W, H, t, 0.45, 'BZZT', W * (ctx.vertical ? 0.72 : 0.44), H * (ctx.vertical ? 0.12 : 0.1), 84, { rot: 0.18, fill: '#bfe0ff', stroke: '#16122a', outer: 'rgba(0,0,0,0)', d: 0.8, shake: true });
+        sfxAt(g, W, H, t, 1.55, 'BZZT', W * (ctx.vertical ? 0.3 : 0.5), H * (ctx.vertical ? 0.16 : 0.16), 70, { rot: -0.12, fill: '#bfe0ff', stroke: '#16122a', outer: 'rgba(0,0,0,0)', d: 0.7, shake: true });
         U.text(g, '2:14 A.M.', 48 * k, H - 52 * k, { font: `700 ${30 * k}px Archivo`, color: 'rgba(255,255,255,0.85)', letter: 6 * k });
       },
     };
@@ -172,7 +171,7 @@ export const FILM = {
         if (ctx.vertical) cam(camera, [8 - u * 1.5, 9 - u * 0.5, 4 - u * 2], [-2.5, 7.5, -12], 60);
         else cam(camera, [13 - u * 2.5, 9.5 - u * 0.6, 9 - u * 3], [-1.0, 7.4, -13], 44);
       },
-      overlay(g, W, H, t) { U.vignette(g, W, H, 0.55); card(g, W, H, t, 0.5, 'DAYS LEFT', '21,236', '残り 21,236 日', { x: ctx.vertical ? W / 2 : W * 0.3, y: ctx.vertical ? H * 0.16 : H * 0.2 }); },
+      overlay(g, W, H, t) { U.vignette(g, W, H, 0.55); card(g, W, H, t, 0.5, 'DAYS LEFT', '21,236', null, { x: ctx.vertical ? W / 2 : W * 0.3, y: ctx.vertical ? H * 0.16 : H * 0.2 }); },
     };
   } },
 
@@ -216,11 +215,11 @@ export const FILM = {
       },
       overlay(g, W, H, t) {
         const k = K(W, H); U.vignette(g, W, H, 0.5);
-        SW.forEach((arr, i) => arr.forEach((s0) => sfxAt(g, W, H, t, s0 + 0.15, 'チン', W * (0.27 + i * 0.26) + 60 * k, H * (0.62 + (i % 2) * 0.05), 44, { rot: -0.15, fill: '#ffd27a', stroke: '#2a170c', d: 0.5 })));
+        SW.forEach((arr, i) => arr.forEach((s0) => sfxAt(g, W, H, t, s0 + 0.15, 'TINK', W * (0.27 + i * 0.26) + 60 * k, H * (0.62 + (i % 2) * 0.05), 44, { rot: -0.15, fill: '#ffd27a', stroke: '#2a170c', d: 0.5 })));
         const n = SW.flat().filter((x) => x + 0.15 <= t).length;
         U.text(g, 'DAYS LEFT', W / 2, H - 112 * k, { font: `700 ${20 * k}px Archivo`, color: 'rgba(255,244,220,0.75)', align: 'center', letter: 8 * k });
         U.text(g, fmt(21236 - n), W / 2, H - 52 * k, { font: `800 ${54 * k}px Archivo`, color: '#ffd27a', align: 'center', glow: 'rgba(255,170,60,0.8)', blur: 20 * k });
-        U.text(g, 'スワイプ一回、ビー玉一個', W / 2, 64 * k, { font: `${26 * k}px IPAGothic`, color: 'rgba(255,244,220,0.75)', align: 'center' });
+        U.text(g, 'EVERY SWIPE COSTS A MARBLE', W / 2, 70 * k, { font: `800 ${30 * k}px Archivo`, color: 'rgba(255,244,220,0.85)', align: 'center', letter: 6 * k });
       },
     };
   } },
@@ -244,8 +243,8 @@ export const FILM = {
       },
       overlay(g, W, H, t) {
         const k = K(W, H); U.vignette(g, W, H, 0.55);
-        if (t < 3.0) sfxAt(g, W, H, t, 0.15, 'プルルル', W * (ctx.vertical ? 0.7 : 0.47), H * 0.12, 64, { rot: 0.1, fill: '#ffe0f0', stroke: '#2a1428', d: 2.6, shake: true });
-        sfxAt(g, W, H, t, 3.25, 'チン', W * (ctx.vertical ? 0.75 : 0.66), H * (ctx.vertical ? 0.5 : 0.42), 52, { rot: -0.15, fill: '#ffd27a', stroke: '#2a170c', d: 0.7 });
+        if (t < 3.0) sfxAt(g, W, H, t, 0.15, 'RING RING', W * (ctx.vertical ? 0.7 : 0.47), H * 0.12, 64, { rot: 0.1, fill: '#ffe0f0', stroke: '#2a1428', d: 2.6, shake: true });
+        sfxAt(g, W, H, t, 3.25, 'TINK', W * (ctx.vertical ? 0.75 : 0.66), H * (ctx.vertical ? 0.5 : 0.42), 52, { rot: -0.15, fill: '#ffd27a', stroke: '#2a170c', d: 0.7 });
       },
     };
   } },
@@ -288,8 +287,8 @@ export const FILM = {
         const x = ctx.vertical ? W / 2 : W - 60 * k, al = ctx.vertical ? 'center' : 'right', y = ctx.vertical ? 150 * k : 92 * k;
         U.text(g, 'DAYS LEFT', x, y - 54 * k, { font: `700 ${20 * k}px Archivo`, color: 'rgba(255,244,220,0.75)', align: al, letter: 8 * k });
         U.text(g, fmt(days), x, y, { font: `800 ${64 * k}px Archivo`, color: '#ffd27a', align: al, glow: 'rgba(255,170,60,0.8)', blur: 20 * k });
-        U.text(g, `AGE ${Math.floor(age)} · ${Math.floor(age)}歳`, x, y + 44 * k, { font: `700 ${22 * k}px IPAGothic`, color: 'rgba(255,244,220,0.7)', align: al });
-        sfxAt(g, W, H, t, 6.0, 'あとで…', W * 0.7, H * 0.7, 56, { rot: -0.1, fill: '#e8dcc8', stroke: '#2a2030', d: 1.6 });
+        U.text(g, `AGE ${Math.floor(age)}`, x, y + 44 * k, { font: `700 ${22 * k}px Archivo`, color: 'rgba(255,244,220,0.7)', align: al });
+        sfxAt(g, W, H, t, 6.0, 'LATER…', W * 0.7, H * 0.7, 56, { rot: -0.1, fill: '#e8dcc8', stroke: '#2a2030', d: 1.6 });
       },
     };
   } },
@@ -328,7 +327,7 @@ export const FILM = {
         if (ctx.vertical) cam(camera, [10 - u * 2, 7 + u, 10 - u * 2], [4, 5, -12], 64);
         else cam(camera, [16 - u * 4, 6 + u * 1.2, 12 - u * 3], [5, 6, -12], 46);
       },
-      overlay(g, W, H, t) { U.vignette(g, W, H, 0.6); card(g, W, H, t, 0.6, 'DAYS LEFT', '18,250', '残り 18,250 日', { x: ctx.vertical ? W / 2 : W * 0.3, y: ctx.vertical ? H * 0.15 : H * 0.2, color: '#ffe2a8' }); },
+      overlay(g, W, H, t) { U.vignette(g, W, H, 0.6); card(g, W, H, t, 0.6, 'DAYS LEFT', '18,250', null, { x: ctx.vertical ? W / 2 : W * 0.3, y: ctx.vertical ? H * 0.15 : H * 0.2, color: '#ffe2a8' }); },
     };
   } },
 
@@ -364,7 +363,7 @@ export const FILM = {
         if (ctx.vertical) cam(camera, [-3 + u, 7.5 - u, 4 - u], [2.0, 5.0, -7], 60);
         else cam(camera, [-4.5 + u * 1.5, 7.2 - u * 0.8, 3.5 - u * 1.5], [2.2, 5.0, -7.5], 46);
       },
-      overlay(g, W, H, t) { U.vignette(g, W, H, 0.55); sfxAt(g, W, H, t, 5.65, 'ジャーン', W * (ctx.vertical ? 0.5 : 0.72), H * 0.3, 72, { rot: -0.1, fill: '#fff4d0', stroke: '#3a2a5c', d: 1.2 }); whiteout(g, W, H, A.seg(t, 6.4, 7.0)); },
+      overlay(g, W, H, t) { U.vignette(g, W, H, 0.55); sfxAt(g, W, H, t, 5.65, 'STRUM!', W * (ctx.vertical ? 0.5 : 0.72), H * 0.3, 72, { rot: -0.1, fill: '#fff4d0', stroke: '#3a2a5c', d: 1.2 }); whiteout(g, W, H, A.seg(t, 6.4, 7.0)); },
     };
   } },
 
@@ -429,7 +428,7 @@ export const FILM = {
         const u = A.inOut(t / 3), beat = A.pulse(t, 0.4, 0.25) + A.pulse(t, 1.4, 0.25) * 1.2;
         camera.fov = (ctx.vertical ? 30 : 22) - beat * 1.2; camera.position.copy(c0).lerp(c1, u); camera.lookAt(eye.x + 0.12, eye.y + 0.02, eye.z); camera.updateProjectionMatrix();
       },
-      overlay(g, W, H, t) { U.vignette(g, W, H, 0.45 + (A.pulse(t, 0.4, 0.25) + A.pulse(t, 1.4, 0.25)) * 0.2); sfxAt(g, W, H, t, 0.4, 'ドクン', W * 0.8, H * 0.2, 96, { rot: 0.1, d: 0.8 }); sfxAt(g, W, H, t, 1.4, 'ドクン', W * 0.25, H * 0.78, 110, { rot: -0.1, d: 0.9 }); if (!ctx.vertical) U.letterbox(g, W, H, 0.1); },
+      overlay(g, W, H, t) { U.vignette(g, W, H, 0.45 + (A.pulse(t, 0.4, 0.25) + A.pulse(t, 1.4, 0.25)) * 0.2); sfxAt(g, W, H, t, 0.4, 'BA-DUM', W * 0.8, H * 0.2, 96, { rot: 0.1, d: 0.8 }); sfxAt(g, W, H, t, 1.4, 'BA-DUM', W * 0.25, H * 0.78, 110, { rot: -0.1, d: 0.9 }); if (!ctx.vertical) U.letterbox(g, W, H, 0.1); },
     };
   } },
 
@@ -440,7 +439,7 @@ export const FILM = {
     box(scene, [60, 1, 60], [0, -0.5, 0], '#1c2042');
     const B = new THREE.Group(); scene.add(B);
     const side = '#b8874f'; box(B, [6, 4, 0.2], [0, 2, 2.9], side); box(B, [6, 4, 0.2], [0, 2, -2.9], side); box(B, [0.2, 4, 6], [2.9, 2, 0], side); box(B, [0.2, 4, 6], [-2.9, 2, 0], side);
-    const lt = canvasTex(512, 256, (g, w, h) => { g.fillStyle = '#c99a62'; g.fillRect(0, 0, w, h); g.fillStyle = '#3a2410'; g.textAlign = 'center'; g.font = '800 120px Archivo'; g.fillText('LATER', w / 2, h * 0.62); g.font = '40px IPAGothic'; g.fillText('あとで', w / 2, h * 0.88); });
+    const lt = canvasTex(512, 256, (g, w, h) => { g.fillStyle = '#c99a62'; g.fillRect(0, 0, w, h); g.fillStyle = '#3a2410'; g.textAlign = 'center'; g.font = '800 130px Archivo'; g.fillText('LATER', w / 2, h * 0.68); });
     const front = new THREE.Mesh(new THREE.PlaneGeometry(5.6, 3.6), toon('#ffffff', { map: lt, steps: [0.6, 1.0] })); front.position.set(0, 2, 3.01); B.add(front);
     const flapL = new THREE.Group(); flapL.position.set(-2.9, 4, 0); B.add(flapL); box(flapL, [2.9, 0.15, 5.8], [1.45, 0, 0], side);
     const flapR = new THREE.Group(); flapR.position.set(2.9, 4, 0); B.add(flapR); box(flapR, [2.9, 0.15, 5.8], [-1.45, 0, 0], side);
@@ -454,7 +453,7 @@ export const FILM = {
         const sh = A.pulse(t, 1.0, 0.2) * 0.15;
         cam(camera, [0 + sh, 7.5 + sh, ctx.vertical ? 15 : 12], [0, 2.8, 0], ctx.vertical ? 56 : 40);
       },
-      overlay(g, W, H, t) { U.vignette(g, W, H, 0.55); sfxAt(g, W, H, t, 1.0, 'バタン', W * 0.5, H * 0.18, 96, { rot: -0.08, fill: '#ffffff', stroke: '#1a1220', d: 0.9, shake: true }); },
+      overlay(g, W, H, t) { U.vignette(g, W, H, 0.55); sfxAt(g, W, H, t, 1.0, 'SLAM!', W * 0.5, H * 0.18, 96, { rot: -0.08, fill: '#ffffff', stroke: '#1a1220', d: 0.9, shake: true }); },
     };
   } },
 
@@ -497,10 +496,10 @@ export const FILM = {
         const k = K(W, H); P.reseed(Math.floor(t * 12) + 1);
         U.speedLines(g, W, H, W * (ctx.vertical ? 0.5 : 0.42), H * 0.42, { n: 220, r0: Math.min(W, H) * 0.42, color: 'rgba(255,230,210,0.5)', seed: Math.floor(t * 12) + 3 });
         U.vignette(g, W, H, 0.6, '40,0,0');
-        card(g, W, H, t, 0.3, 'DAYS LEFT', '14,600', '残り 14,600 日', { x: ctx.vertical ? W / 2 : W * 0.55, y: H * (ctx.vertical ? 0.12 : 0.15), size: 92, color: '#ffe0c0', glow: 'rgba(255,80,40,0.9)' });
-        for (const s0 of [1.0, 4.5, 8.0]) sfxAt(g, W, H, t, s0, 'ドドドド', W * 0.22, H * 0.83, 110, { rot: -0.12, fill: '#ffffff', stroke: '#2a0606', grow: 0.06, d: 2.6, shake: true });
-        sfxAt(g, W, H, t, 2.4, 'ガラガラ', W * (ctx.vertical ? 0.7 : 0.16), H * 0.26, 64, { rot: 0.1, fill: '#ffd27a', stroke: '#2a0606', d: 2.0 });
-        sfxAt(g, W, H, t, 10.5, 'ドーン', W * 0.5, H * 0.45, 150, { rot: -0.05, fill: '#ffffff', stroke: '#2a0606', d: 1.1, shake: true });
+        card(g, W, H, t, 0.3, 'DAYS LEFT', '14,600', null, { x: ctx.vertical ? W / 2 : W * 0.55, y: H * (ctx.vertical ? 0.12 : 0.15), size: 92, color: '#ffe0c0', glow: 'rgba(255,80,40,0.9)' });
+        for (const s0 of [1.0, 4.5, 8.0]) sfxAt(g, W, H, t, s0, 'RUMBLE', W * 0.22, H * 0.83, 110, { rot: -0.12, fill: '#ffffff', stroke: '#2a0606', grow: 0.06, d: 2.6, shake: true });
+        sfxAt(g, W, H, t, 2.4, 'CRASH', W * (ctx.vertical ? 0.7 : 0.16), H * 0.26, 64, { rot: 0.1, fill: '#ffd27a', stroke: '#2a0606', d: 2.0 });
+        sfxAt(g, W, H, t, 10.5, 'BOOM!', W * 0.5, H * 0.45, 150, { rot: -0.05, fill: '#ffffff', stroke: '#2a0606', d: 1.1, shake: true });
         blackout(g, W, H, A.seg(t, 11.7, 11.85));
       },
     };
@@ -521,7 +520,7 @@ export const FILM = {
         if (ctx.vertical) cam(camera, [3 + sh, 10, 6], [-3.5, 9, -9.5], 50);
         else cam(camera, [4 + sh, 9.6, 4.5], [-3.5, 9.4, -9.5], 40);
       },
-      overlay(g, W, H, t) { U.vignette(g, W, H, 0.6); blackout(g, W, H, 1 - A.seg(t, 0.0, 0.12)); sfxAt(g, W, H, t, 0.3, 'ハッ', W * 0.62, H * 0.3, 90, { rot: 0.1, d: 0.9, shake: true }); notes(g, W, H, t, 1.4, W * 0.55, H * 0.25, { n: 4 }); },
+      overlay(g, W, H, t) { U.vignette(g, W, H, 0.6); blackout(g, W, H, 1 - A.seg(t, 0.0, 0.12)); sfxAt(g, W, H, t, 0.3, 'GASP!', W * 0.62, H * 0.3, 90, { rot: 0.1, d: 0.9, shake: true }); notes(g, W, H, t, 1.4, W * 0.55, H * 0.25, { n: 4 }); },
     };
   } },
 
@@ -579,8 +578,8 @@ export const FILM = {
         const rows = (stars, left, c1) => [['STARS', stars, c1], ['DAYS LEFT', left, '#ff9a8a']];
         if (t > 3.6 && t < (ctx.vertical ? 6.6 : 11.2)) { const a = A.seg(t, 3.6, 4.0) * (1 - (ctx.vertical ? A.seg(t, 6.0, 6.6) : A.seg(t, 10.8, 11.2))); g.save(); g.globalAlpha = a; U.tag(g, cl(nx - 20 * k), ny - 200 * k, rows(fmt(24880 * A.out(A.seg(t, 3.7, 5.2))), '3', '#ffd27a'), { px: nx + 20 * k, py: ny + 20 * k, w: 320 }); g.restore(); }
         if (t > 7.2 && (ctx.vertical || t < 11.3)) { const a = A.seg(t, 7.2, 7.6) * (ctx.vertical ? 1 : 1 - A.seg(t, 10.9, 11.3)); g.save(); g.globalAlpha = a; U.tag(g, cl(hx - 60 * k), hy - 200 * k, [['STARS', fmt(1204 * A.out(A.seg(t, 7.3, 8.3))), '#9fc0ff'], ['DAYS LEFT', '18,250', '#ffffff']], { px: hx + 10 * k, py: hy + 10 * k, edge: '#9fc0ff', w: 320 }); g.restore(); }
-        sfxAt(g, W, H, t, 1.2, 'キラキラ', W * 0.5, H * 0.1, 56, { rot: 0.08, fill: '#fff4d0', stroke: '#2c1f4a', d: 2.0 });
-        sfxAt(g, W, H, t, 10.8, 'ハッハッハ！', W * (ctx.vertical ? 0.55 : 0.7), H * 0.22, 64, { rot: 0.06, fill: '#ffffff', stroke: '#2c1f4a', d: 2.0 });
+        sfxAt(g, W, H, t, 1.2, 'TWINKLE', W * 0.5, H * 0.1, 56, { rot: 0.08, fill: '#fff4d0', stroke: '#2c1f4a', d: 2.0 });
+        sfxAt(g, W, H, t, 10.8, 'HA HA HA!', W * (ctx.vertical ? 0.55 : 0.7), H * 0.22, 64, { rot: 0.06, fill: '#ffffff', stroke: '#2c1f4a', d: 2.0 });
       },
     };
   } },
@@ -610,7 +609,7 @@ export const FILM = {
         if (ctx.vertical) cam(camera, [3, 7.5, 3], [1.0, 6.5, -10], 64);
         else cam(camera, [7 - t * 0.3, 7.6, 3 - t * 0.3], [1.0, 6.8, -10.5], 46);
       },
-      overlay(g, W, H, t) { U.vignette(g, W, H, 0.55); sfxAt(g, W, H, t, 1.5, 'ビリッ', W * 0.62, H * 0.6, 70, { rot: 0.1, fill: '#ffffff', d: 0.7 }); },
+      overlay(g, W, H, t) { U.vignette(g, W, H, 0.55); sfxAt(g, W, H, t, 1.5, 'RIIIP', W * 0.62, H * 0.6, 70, { rot: 0.1, fill: '#ffffff', d: 0.7 }); },
     };
   } },
 
@@ -657,7 +656,7 @@ export const FILM = {
         const k = K(W, H); U.vignette(g, W, H, 0.45);
         const stars = 1204 + (1973 - 1204) * A.smooth(t / 20);
         const x = 60 * k, y = H - 120 * k, w = (ctx.vertical ? W - 120 * k : W * 0.42);
-        U.text(g, 'STARS', x, y - 18 * k, { font: `800 ${24 * k}px Archivo`, color: '#ffd27a', letter: 6 * k }); U.text(g, '輝いた日', x + 120 * k, y - 18 * k, { font: `${22 * k}px IPAGothic`, color: 'rgba(255,240,220,0.7)' });
+        U.text(g, 'STARS', x, y - 18 * k, { font: `800 ${24 * k}px Archivo`, color: '#ffd27a', letter: 6 * k }); U.text(g, 'days well spent', x + 120 * k, y - 18 * k, { font: `600 ${20 * k}px Archivo`, color: 'rgba(255,240,220,0.7)' });
         U.rrect(g, x, y, w, 26 * k, 13 * k); g.fillStyle = 'rgba(255,255,255,0.15)'; g.fill();
         U.rrect(g, x, y, Math.max(26 * k, w * (stars / 2700)), 26 * k, 13 * k); g.fillStyle = '#ffc566'; g.fill();
         U.text(g, fmt(stars), x + w, y - 18 * k, { font: `800 ${34 * k}px Archivo`, color: '#ffd27a', align: 'right' });
@@ -668,7 +667,7 @@ export const FILM = {
           U.text(g, 'first_song.mp3', bx + 24 * k, by + 42 * k, { font: `700 ${26 * k}px Archivo`, color: '#fff' }); U.text(g, `${Math.round(up * 100)}%`, bx + 346 * k, by + 42 * k, { font: `800 ${26 * k}px Archivo`, color: '#ffc566', align: 'right' });
           U.rrect(g, bx + 24 * k, by + 68 * k, 322 * k, 16 * k, 8 * k); g.fillStyle = 'rgba(255,255,255,0.15)'; g.fill(); U.rrect(g, bx + 24 * k, by + 68 * k, Math.max(16 * k, 322 * k * up), 16 * k, 8 * k); g.fillStyle = '#ffc566'; g.fill(); g.restore();
         }
-        [3.4, 8.4, 13.4, 18.0].forEach((n0) => sfxAt(g, W, H, t, n0 + 1.6, 'キラッ', W * (ctx.vertical ? 0.7 : 0.6), H * 0.16, 54, { rot: 0.1, fill: '#fff4d0', stroke: '#3a2a5c', d: 0.9 }));
+        [3.4, 8.4, 13.4, 18.0].forEach((n0) => sfxAt(g, W, H, t, n0 + 1.6, 'TWINKLE', W * (ctx.vertical ? 0.7 : 0.6), H * 0.16, 54, { rot: 0.1, fill: '#fff4d0', stroke: '#3a2a5c', d: 0.9 }));
         notes(g, W, H, t, 0.6, W * 0.42, H * 0.45, { n: 5 }); notes(g, W, H, t, 7.0, W * 0.56, H * 0.42, { n: 5 }); notes(g, W, H, t, 14.5, W * 0.45, H * 0.4, { n: 5 });
       },
     };
@@ -691,7 +690,7 @@ export const FILM = {
       bloom: { strength: 0.85, radius: 0.6, threshold: 0.75 },
       update(t) {
         const midnight = t > 8.0;
-        draw({ time: midnight ? '0:00' : '23:59', date: midnight ? 'Wednesday' : 'Tuesday', notif: midnight ? A.out(A.seg(t, 8.0, 8.4)) : -1, title: 'TODAY: SPENT', days: '17,329', jp: '今日を使った ✓', button: 'See your sky', bg0: '#101a40' });
+        draw({ time: midnight ? '0:00' : '23:59', date: midnight ? 'Wednesday' : 'Tuesday', notif: midnight ? A.out(A.seg(t, 8.0, 8.4)) : -1, title: 'TODAY: SPENT', days: '17,329', sub: 'Today: lived ✓', button: 'See your sky', bg0: '#101a40' });
         if (lid) { const off = A.inOut(A.seg(t, 1.2, 2.2)); lid.position.x = off * 1.4; lid.position.y = 3.9 * 1.04 + off * 0.2; lid.rotation.z = off * 0.5; }
         const rise = A.seg(t, 2.6, 7.2), u = A.inOut(rise);
         const p = V(3 + Math.sin(u * 5) * 0.4 * u, 7.8 + u * 9 + (rise > 0.6 ? (rise - 0.6) * 30 : 0), -19.0 - (rise > 0.6 ? (rise - 0.6) * 300 : 0));
@@ -704,7 +703,7 @@ export const FILM = {
       overlay(g, W, H, t) {
         const k = K(W, H); U.vignette(g, W, H, 0.45);
         U.text(g, t > 8 ? '0:00' : '23:59', W / 2, H * 0.12, { font: `700 ${46 * k}px Archivo`, color: 'rgba(255,244,220,0.9)', align: 'center', letter: 6 * k });
-        sfxAt(g, W, H, t, 6.8, 'キラッ', W * 0.7, H * 0.2, 70, { rot: 0.1, fill: '#fff4d0', stroke: '#1e2448', d: 1.2 });
+        sfxAt(g, W, H, t, 6.8, 'TWINKLE', W * 0.7, H * 0.2, 70, { rot: 0.1, fill: '#fff4d0', stroke: '#1e2448', d: 1.2 });
         if (t > 7.0) { const a = A.seg(t, 7.0, 7.4); g.save(); g.globalAlpha = a; U.text(g, `STARS ${fmt(1974)}`, W / 2, H * 0.22, { font: `800 ${34 * k}px Archivo`, color: '#ffd27a', align: 'center', letter: 4 * k }); g.restore(); }
       },
     };
@@ -733,7 +732,7 @@ export const FILM = {
     return {
       bloom: cfg.bloom,
       update(t) { const u = A.inOut(t / 3); camera.position.copy(p0).add(V(-u * 1.2, u * 0.6, -u * 2)); camera.lookAt(0, 14.5, -11); camera.fov = ctx.vertical ? 66 : 50; camera.updateProjectionMatrix(); },
-      overlay(g, W, H, t) { const k = K(W, H); U.vignette(g, W, H, 0.45); if (!ctx.vertical) U.letterbox(g, W, H, 0.08); U.text(g, '50 YEARS LATER · 五十年後', 56 * k, (ctx.vertical ? 140 : H * 0.08 + 52) * k / (ctx.vertical ? k : 1), { font: `700 ${24 * k}px Archivo`, color: 'rgba(255,244,220,0.8)', letter: 4 * k }); whiteout(g, W, H, (1 - A.seg(t, 0, 0.3)) * 0.8); },
+      overlay(g, W, H, t) { const k = K(W, H); U.vignette(g, W, H, 0.45); if (!ctx.vertical) U.letterbox(g, W, H, 0.08); U.text(g, '50 YEARS LATER', 56 * k, (ctx.vertical ? 140 : H * 0.08 + 52) * k / (ctx.vertical ? k : 1), { font: `700 ${24 * k}px Archivo`, color: 'rgba(255,244,220,0.8)', letter: 4 * k }); whiteout(g, W, H, (1 - A.seg(t, 0, 0.3)) * 0.8); },
     };
   } },
 
@@ -754,12 +753,11 @@ export const FILM = {
         if (band > 0) { const cy = H * 0.4 + fs * 0.9, gr = g.createRadialGradient(W / 2, cy, 0, W / 2, cy, W * 0.62); gr.addColorStop(0, `rgba(3,5,22,${0.72 * band})`); gr.addColorStop(0.55, `rgba(3,5,22,${0.45 * band})`); gr.addColorStop(1, 'rgba(3,5,22,0)'); g.save(); g.translate(W / 2, cy); g.scale(1, (fs * 3.2) / (W * 0.62)); g.translate(-W / 2, -cy); g.fillStyle = gr; g.fillRect(0, cy - W * 0.62, W, W * 1.24); g.restore(); }
         g.save(); g.globalAlpha = a1; U.text(g, 'You get about 30,000 days.', W / 2, H * 0.4, { font: `italic 600 ${fs}px Playfair`, color: '#fff4dc', align: 'center', glow: 'rgba(0,0,0,0.9)', blur: 22 }); g.restore();
         g.save(); g.globalAlpha = a2; U.text(g, 'Today is one of them.', W / 2, H * 0.4 + fs * 1.3, { font: `italic 600 ${fs}px Playfair`, color: '#ffd27a', align: 'center', glow: 'rgba(0,0,0,0.9)', blur: 22 });
-        U.text(g, '人生はおよそ三万日。今日もその一日。', W / 2, H * 0.4 + fs * 2.4, { font: `${26 * k}px IPAGothic`, color: 'rgba(255,244,220,0.75)', align: 'center' }); g.restore();
+        g.restore();
         const a3 = A.seg(t, 5.4, 6.2);
         g.save(); g.globalAlpha = a3;
         U.text(g, '30,000 DAYS', W / 2, H * 0.36, { font: `800 ${(ctx.vertical ? 120 : 132) * k}px Archivo`, color: '#ffd27a', align: 'center', glow: 'rgba(255,170,60,0.85)', blur: 40 * k });
-        U.text(g, '三万日', W / 2, H * 0.36 + 70 * k, { font: `${40 * k}px IPAGothic`, color: 'rgba(255,244,220,0.85)', align: 'center', letter: 18 * k });
-        U.text(g, 'an animated short film · whatifgraphics', W / 2, H * 0.36 + 124 * k, { font: `600 ${24 * k}px Archivo`, color: 'rgba(255,244,220,0.7)', align: 'center', letter: 4 * k });
+        U.text(g, 'an animated short film · whatifgraphics', W / 2, H * 0.36 + 72 * k, { font: `600 ${24 * k}px Archivo`, color: 'rgba(255,244,220,0.7)', align: 'center', letter: 4 * k });
         g.restore();
         blackout(g, W, H, A.seg(t, 8.6, 9.0) * 0.0);
       },

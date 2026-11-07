@@ -51,7 +51,7 @@ SDH = [
 
 TEXT = {
     'en': dict(time214='2:14 a.m.', notif='30,000 DAYS · DAYS LEFT 21,236 · [Remind me later]', reminder='Reminder set: later', days21236='DAYS LEFT: 21,236',
-               swipe='One swipe, one marble · DAYS LEFT 21,236 → 21,203', mom='Mom ♥ · incoming call · [Remind me later]', remind1h='Remind me in 1 hour',
+               swipe='Every swipe costs a marble · DAYS LEFT 21,236 → 21,203', mom='Mom ♥ · incoming call · [Remind me later]', remind1h='Remind me in 1 hour',
                years='DAYS LEFT 21,226 → 18,262 · AGE 24 → 32', later='Later…', days18250='DAYS LEFT: 18,250', days14600='DAYS LEFT: 14,600',
                tag_neighbour='Neighbour · STARS 24,880 · DAYS LEFT 3', tag_him='Him · STARS 1,204 · DAYS LEFT 18,250', stars_bar='STARS (days well spent) 1,204 → 1,973',
                upload='first_song.mp3 · uploading', time2359='23:59', spent='0:00 · TODAY: SPENT ✓ · DAYS LEFT 17,329 · STARS 1,974', later50='50 years later',

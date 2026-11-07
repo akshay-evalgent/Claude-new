@@ -127,12 +127,11 @@ export function laterBox(parent, s = 1, o = {}) {
   const key = o.text || 'LATER';
   if (!boxTex[key]) boxTex[key] = canvasTex(256, 256, (g, w, h) => {
     g.fillStyle = '#c99a62'; g.fillRect(0, 0, w, h); g.fillStyle = 'rgba(90,50,20,0.25)'; g.fillRect(0, h * 0.42, w, h * 0.16);
-    g.fillStyle = '#3a2410'; g.textAlign = 'center'; g.font = '800 62px Archivo'; g.fillText(key, w / 2, h * 0.62);
-    g.font = '400 22px IPAGothic'; g.fillText('あとで', w / 2, h * 0.8);
+    g.fillStyle = '#3a2410'; g.textAlign = 'center'; g.font = `800 ${key.length > 6 ? 46 : 62}px Archivo`; g.fillText(key, w / 2, h * 0.66);
   });
   const side = toon('#b8874f', { steps: [0.55, 0.8, 1.0] }), front = toon('#ffffff', { map: boxTex[key], steps: [0.55, 0.8, 1.0] });
   const b = mesh(new THREE.BoxGeometry(s, s * 0.8, s * 0.8), [side, side, side, side, front, side], 0.03, parent);
-  const tape = mesh(new THREE.BoxGeometry(s * 0.2, s * 0.81, s * 0.81), toon('#e2c08a', { steps: [0.6, 1.0] }), null, b);
+  const tape = mesh(new THREE.BoxGeometry(s * 0.2, s * 0.02, s * 0.82), toon('#e2c08a', { steps: [0.6, 1.0] }), null, b); tape.position.y = s * 0.4;
   return b;
 }
 

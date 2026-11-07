@@ -31,6 +31,14 @@ export function hLines(g, W, H, o = {}) {     // horizontal motion lines
 
 // Japanese sound effect: heavy outlined letters, optionally slanted
 export function sfx(g, text, x, y, size, o = {}) {
+  if (/^[\x20-\x7E\u2026]+$/.test(text)) {   // Latin: draw the word whole
+    g.save(); g.translate(x, y); g.rotate(o.rot || 0); g.transform(1, 0, o.skew ?? -0.1, 1, 0, 0);
+    g.font = `700 ${size}px Fredoka`; g.textAlign = o.align || 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round'; g.letterSpacing = `${size * 0.03}px`;
+    g.lineWidth = size * 0.3; g.strokeStyle = o.outer || '#ffffff'; if (o.outer !== 'rgba(0,0,0,0)') g.strokeText(text, 0, 0);
+    g.lineWidth = size * 0.14; g.strokeStyle = o.stroke || '#120c0a'; g.strokeText(text, 0, 0);
+    g.fillStyle = o.fill || '#ffffff'; g.fillText(text, 0, 0);
+    g.restore(); return;
+  }
   g.save(); g.translate(x, y); g.rotate(o.rot || 0); g.transform(1, 0, o.skew || -0.12, 1, 0, 0);
   g.font = `${size}px IPAGothic`; g.textAlign = o.align || 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
   const chars = [...text]; let cx = 0;

@@ -40,16 +40,16 @@ DAYS LEFT: 21,236
 
 9
 00:00:12,300 --> 00:00:12,600
-One swipe, one marble · DAYS LEFT 21,236 → 21,203
+Every swipe costs a marble · DAYS LEFT 21,236 → 21,203
 
 10
 00:00:12,600 --> 00:00:16,000
-One swipe, one marble · DAYS LEFT 21,236 → 21,203
+Every swipe costs a marble · DAYS LEFT 21,236 → 21,203
 [a glass marble tinks with every swipe]
 
 11
 00:00:16,000 --> 00:00:21,000
-One swipe, one marble · DAYS LEFT 21,236 → 21,203
+Every swipe costs a marble · DAYS LEFT 21,236 → 21,203
 
 12
 00:00:21,200 --> 00:00:24,000
