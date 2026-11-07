@@ -1,0 +1,314 @@
+<title>30,000 DAYS</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a light table at night. Frames are pinned full-bleed in one column; notes run in a narrow margin beside them on wide screens. */
+:root {
+  --night: #0b0a14;
+  --board: #15131f;
+  --rule: #2b2739;
+  --paper: #f0e5cf;
+  --muted: #aa9f8c;
+  --gold: #ffc566;
+  --scarf: #c8583c;
+  --display: "Playfair Display", "Georgia", serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Menlo", monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--night); color: var(--paper); font: 400 17px/1.6 var(--body); margin: 0; -webkit-font-smoothing: antialiased; }
+a { color: var(--gold); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.wrap { max-width: 72rem; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+section { padding-block: 3.2rem; border-top: 1px solid var(--rule); }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); line-height: 1.1; }
+h3 { font-size: 1.2rem; }
+p, li { max-width: 66ch; margin: 0; }
+.eyebrow { font: 600 0.74rem/1.3 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+.muted { color: var(--muted); }
+.small { font-size: 0.92rem; }
+.stack { display: flex; flex-direction: column; gap: 1rem; }
+.stack-lg { display: flex; flex-direction: column; gap: 1.8rem; }
+img { display: block; width: 100%; height: auto; border-radius: 3px; }
+
+/* hero */
+.hero { position: relative; padding-block: 0; border: 0; }
+.hero figure { margin: 0; position: relative; }
+.hero img { border-radius: 0; }
+.hero .title { position: absolute; left: 0; right: 0; bottom: 0; padding: 2.4rem max(16px, env(safe-area-inset-left, 0px)) 1.6rem;
+  background: linear-gradient(to top, rgba(11,10,20,0.96), rgba(11,10,20,0.6) 60%, rgba(11,10,20,0)); }
+.hero h1 { font-size: clamp(2.6rem, 9vw, 6rem); font-weight: 800; letter-spacing: 0.02em; line-height: 0.95; font-variant-numeric: lining-nums; }
+.hero h1 .n { color: var(--gold); text-shadow: 0 0 28px rgba(255,197,102,0.45); }
+.hero .q { font-family: var(--display); font-style: italic; font-size: clamp(1.1rem, 2.4vw, 1.5rem); color: var(--paper); margin-top: 0.5rem; }
+.intro { padding-block: 2rem 2.6rem; border: 0; }
+.intro .lede { font-size: 1.12rem; }
+
+/* tables */
+.tbl { overflow-x: auto; border: 1px solid var(--rule); border-radius: 4px; background: var(--board); }
+table { border-collapse: collapse; width: 100%; min-width: 46rem; font-size: 0.94rem; }
+th, td { text-align: left; vertical-align: top; padding: 0.65rem 0.8rem; border-bottom: 1px solid var(--rule); }
+tr:last-child td { border-bottom: 0; }
+th { font: 600 0.72rem/1.3 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--gold); font-family: var(--mono); font-size: 0.86rem; }
+td a { color: var(--paper); }
+
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: 1.6rem; }
+.two > div { min-width: 0; }
+.list { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.45rem; }
+
+/* spine */
+.spine { display: grid; grid-template-columns: 4.6rem minmax(0, 1fr); gap: 0.2rem 1rem; }
+.spine .tc { font: 600 0.9rem/1.6 var(--mono); color: var(--gold); font-variant-numeric: tabular-nums; }
+.spine .beat { padding-bottom: 0.8rem; border-bottom: 1px solid var(--rule); }
+.spine .beat strong { font-family: var(--display); font-weight: 600; font-size: 1.05rem; }
+.spine .beat:last-child { border-bottom: 0; }
+
+/* frames */
+.frame { display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: 1.4rem; align-items: start; }
+.frame figure { margin: 0; }
+.frame .note { display: flex; flex-direction: column; gap: 0.5rem; padding-top: 0.2rem; }
+.frame .note .tc { font: 600 0.8rem var(--mono); color: var(--gold); letter-spacing: 0.06em; }
+.frame .note h3 { font-size: 1.25rem; }
+.frame .note p { font-size: 0.95rem; color: var(--muted); }
+.frame .chip { display: inline-flex; gap: 6px; }
+.frame .chip i { width: 18px; height: 18px; border-radius: 3px; display: inline-block; border: 1px solid rgba(255,255,255,0.12); }
+@media (max-width: 52rem) { .frame { grid-template-columns: minmax(0, 1fr); } }
+
+/* palette */
+.ladders { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem; }
+.ladder { background: var(--board); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.ladder .sw { display: flex; height: 4.2rem; }
+.ladder .sw span { flex: 1; }
+.ladder .cap { padding: 0.7rem 0.8rem 0.8rem; display: flex; flex-direction: column; gap: 0.2rem; }
+.ladder .cap b { font-family: var(--display); font-weight: 600; }
+.ladder .cap code { font: 400 0.74rem var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+
+.rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.2rem 1.6rem; }
+.rules > div { min-width: 0; display: flex; flex-direction: column; gap: 0.35rem; padding-left: 0.9rem; border-left: 2px solid var(--gold); }
+.rules > div.scarf { border-left-color: var(--scarf); }
+.rules p { font-size: 0.95rem; color: var(--muted); }
+
+.sheet { display: flex; flex-direction: column; gap: 0.5rem; }
+.sheet figcaption { font-size: 0.9rem; color: var(--muted); }
+figure { margin: 0; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); gap: 1.4rem; }
+.grid2 > figure { min-width: 0; }
+
+.decide { counter-reset: d; display: flex; flex-direction: column; gap: 0.8rem; margin: 0; padding: 0; list-style: none; }
+.decide li { counter-increment: d; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0.6rem; }
+.decide li::before { content: counter(d); font: 600 0.9rem/1.7 var(--mono); color: var(--night); background: var(--gold); border-radius: 50%; width: 1.7rem; height: 1.7rem; text-align: center; }
+footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.86rem; }
+</style>
+
+<header class="hero">
+  <figure>
+    <img src="img/f4_neighbour.jpg" width="1600" height="900" alt="Style frame: on a rooftop at night an old couple dance under a river of bright stars while a young man in a red scarf watches from a lit doorway.">
+    <div class="title">
+      <div class="wrap">
+        <div class="eyebrow">whatifgraphics · film two · mood board and character sheet</div>
+        <h1 style="margin-top:0.5rem"><span class="n">30,000</span> DAYS</h1>
+        <p class="q">What if you could see how many days you have left?</p>
+      </div>
+    </div>
+  </figure>
+</header>
+
+<section class="intro">
+  <div class="wrap stack">
+    <p class="lede">At birth everyone gets a glass jar of about 30,000 glowing marbles, one for each day of an average life. Every night one marble rises out of the window and becomes a star. Days he spends become bright stars. Days he puts off become dim ones. A wordless 2:30 paper-cut lightbox film in the LANTERN style, built so the number in the thumbnail is also the clock inside the story.</p>
+    <p class="small muted">Every image on this page was rendered by the film's own engine. These are the actual characters, props and lighting, not references.</p>
+  </div>
+</section>
+
+<section id="competition">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="eyebrow">What's winning on YouTube</div>
+      <h2>Explainers win the click; stories win the heart. Nobody does both.</h2>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Video</th><th>Views</th><th>Format</th><th>Its hook</th><th>What it lacks</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://www.youtube.com/watch?v=JXeJANDKwDc">Kurzgesagt · When This Number Hits 5200, You Will be Dead</a></td><td class="num">12.6M</td><td>9:36 explainer</td><td>One huge number and a progress bar ending in a skull</td><td>No character; ends on dread</td></tr>
+          <tr><td><a href="https://www.youtube.com/watch?v=F8zqVO8UqTM">SkyeWei · I'll Start Tomorrow…</a></td><td class="num">8.99M</td><td>4:25 animated story</td><td>A face lit by a phone; "DUE IN 30 DAYS" counting down</td><td>The stakes are one project, not a life. Its like rate is 8.1%, against 5.2% for Pursuit of Wonder.</td></tr>
+          <tr><td><a href="https://www.youtube.com/watch?v=BOksW_NabEk">Ze Frank · The Time You Have (In JellyBeans)</a></td><td class="num">8.95M</td><td>2:45 live-action explainer</td><td>"YOUR LIFE = 28,835 DAYS" over a pile of jellybeans</td><td>Arithmetic, no story, no one to feel for</td></tr>
+          <tr><td><a href="https://www.youtube.com/watch?v=LrRfjmv-5cQ">Pursuit of Wonder · How Short Life Is</a></td><td class="num">4.8M</td><td>5:47 clip-art explainer</td><td>A tombstone</td><td>A lecture; clip art</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="two">
+      <div class="stack">
+        <h3>What we take</h3>
+        <ul class="list">
+          <li>A number big enough to stop a thumb: the jar's label, in the thumbnail and in every frame.</li>
+          <li>A face. SkyeWei shows faces win likes, so the puppets now have a backlit face sheet with eight expressions.</li>
+          <li>A habit everyone has: putting things off, drawn as one enemy, the LATER box.</li>
+          <li>A light ending that asks for one action.</li>
+        </ul>
+      </div>
+      <div class="stack">
+        <h3>Where we beat them</h3>
+        <ul class="list">
+          <li>The number lives inside a story, so it rises and falls with a life you care about.</li>
+          <li>The payoff is a picture, a sky made of the days he spent, instead of a sum.</li>
+          <li>2:30, shorter than all four, so more people finish it.</li>
+          <li>No narration: it works in every language, with captions in seven.</li>
+          <li>It ends on a choice for today, never on death.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="eyebrow">Story spine · 2:30</div>
+      <h2>One jar, one life, one sky</h2>
+    </div>
+    <div class="spine">
+      <div class="tc">0:00</div><div class="beat"><strong>Day 1.</strong> A newborn, a mother leaning over the crib, and on the shelf a jar that glows: 30,000. The first sound is a marble's tink.</div>
+      <div class="tc">0:08</div><div class="beat"><strong>The gold years.</strong> Each night one marble rises through the window and becomes a bright star. Kites, fireflies, the scarf his mother knits.</div>
+      <div class="tc">0:30</div><div class="beat"><strong>LATER.</strong> The guitar, the sketchbook, the running shoes, Mom's calls: each goes into a box marked LATER. The marbles keep rising but become dim stars. The boxes wall up his window until he can't see the sky.</div>
+      <div class="tc">0:58</div><div class="beat"><strong>The turn.</strong> Music through the ceiling. On the roof the neighbour, three marbles left, dances with his wife under a sky blazing with bright stars. He looks up at his own patch of sky: dim. His jar says 18,250.</div>
+      <div class="tc">1:20</div><div class="beat"><strong>Spend today.</strong> He tears down the LATER wall. Guitar at dawn, the run, the call to Mom. Every marble now rises bright, and his sky starts to fill.</div>
+      <div class="tc">1:55</div><div class="beat"><strong>A life.</strong> A wedding, a child, grey hair. The label runs from 18,250 down to 50, and every window in the city holds its own jar.</div>
+      <div class="tc">2:10</div><div class="beat"><strong>His sky.</strong> A new jar of 30,000 beside a crib. He lifts his granddaughter to a window full of his days. <em>You get about 30,000 days. Today is one of them.</em></div>
+    </div>
+  </div>
+</section>
+
+<section id="frames">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="eyebrow">Style frames</div>
+      <h2>Six moments that set the look</h2>
+    </div>
+
+    <div class="frame">
+      <figure><img src="img/f1_day1.jpg" width="1600" height="900" alt="A mother leans over a crib at night; on a shelf a glass jar of glowing marbles is labelled 30,000."></figure>
+      <div class="note"><span class="tc">0:00 · DAY 1</span><h3>The jar is the light</h3><p>Warm ladder. The jar is the brightest thing in the room, and its label is the first number we see. This is the hook frame: light in the dark and a number in the first second.</p><span class="chip"><i style="background:#2a170c"></i><i style="background:#5a3a26"></i><i style="background:#ffc566"></i></span></div>
+    </div>
+    <div class="frame">
+      <figure><img src="img/f3_later.jpg" width="1600" height="900" alt="A young man slumps on a couch lit blue by his phone; behind him a wall of cardboard boxes stamped LATER blocks the window; a dimmer jar on a desk reads 19,012."></figure>
+      <div class="note"><span class="tc">0:30 · LATER</span><h3>The enemy is a cardboard box</h3><p>Cold ladder, with the phone's blue as the second light. The boxes literally block his sky, and the guitar neck sticks out of one. The jar on the desk is dimmer than at birth.</p><span class="chip"><i style="background:#070b1c"></i><i style="background:#1a2546"></i><i style="background:#c6dbff"></i></span></div>
+    </div>
+    <div class="frame">
+      <figure><img src="img/f4_neighbour.jpg" width="1600" height="900" alt="An old couple dance on a rooftop under a river of stars; their jar reads 3; a young man watches from a lit doorway."></figure>
+      <div class="note"><span class="tc">0:58 · THE TURN</span><h3>Three marbles, a full sky</h3><p>Violet ladder. The neighbour has almost no days left and the brightest sky on the street. His wide-eyed face is the realisation; nobody explains it.</p><span class="chip"><i style="background:#0b0820"></i><i style="background:#2c1f4a"></i><i style="background:#fff4d8"></i></span></div>
+    </div>
+    <div class="frame">
+      <figure><img src="img/f5_spend.jpg" width="1600" height="900" alt="At dawn on a hill a young man in a red scarf plays guitar while glowing marbles rise from his jar into the sky."></figure>
+      <div class="note"><span class="tc">1:20 · SPEND TODAY</span><h3>Days rise bright</h3><p>Dawn ladder. The scarf flies, the marbles climb as warm stars. The guitar from the LATER box is out and played.</p><span class="chip"><i style="background:#3a2a5c"></i><i style="background:#8a5a6a"></i><i style="background:#f2a46a"></i></span></div>
+    </div>
+    <div class="frame">
+      <figure><img src="img/f2_city.jpg" width="1600" height="900" alt="A night city where every lit window holds a small glowing jar; a man in a red scarf stands on a rooftop beside his own jar."></figure>
+      <div class="note"><span class="tc">1:55 · A LIFE</span><h3>Every window has a jar</h3><p>The world rule made visible: everyone is counting. Some windows burn bright, some barely glow.</p><span class="chip"><i style="background:#050a1e"></i><i style="background:#1a2a55"></i><i style="background:#ffc566"></i></span></div>
+    </div>
+    <div class="frame">
+      <figure><img src="img/f6_sky.jpg" width="1600" height="900" alt="An old man lifts his baby granddaughter toward a window full of stars; a new jar beside the crib reads 30,000; his own jar reads 50."></figure>
+      <div class="note"><span class="tc">2:10 · HIS SKY</span><h3>The ending rhymes with Day 1</h3><p>A new jar of 30,000 by a new crib. His own reads 50, and the window is full of his days. The end line is set as text in the picture.</p><span class="chip"><i style="background:#03061a"></i><i style="background:#4a3020"></i><i style="background:#ffbf66"></i></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="palette">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="eyebrow">Palette</div>
+      <h2>One ladder per chapter; the jar's gold never changes</h2>
+      <p class="muted">Each chapter is a value ladder from the back sheet to the front, per the lightbox grammar: back light and translucent, front dark. A new ladder means a new place in his life.</p>
+    </div>
+    <div class="ladders">
+      <div class="ladder"><div class="sw"><span style="background:#2a170c"></span><span style="background:#5a3a26"></span><span style="background:#94603a"></span><span style="background:#ffc566"></span></div><div class="cap"><b>Gold years</b><code>#2a170c #5a3a26 #94603a #ffc566</code></div></div>
+      <div class="ladder"><div class="sw"><span style="background:#070b1c"></span><span style="background:#1a2546"></span><span style="background:#3f5a92"></span><span style="background:#c6dbff"></span></div><div class="cap"><b>LATER</b><code>#070b1c #1a2546 #3f5a92 #c6dbff</code></div></div>
+      <div class="ladder"><div class="sw"><span style="background:#0b0820"></span><span style="background:#2c1f4a"></span><span style="background:#7d8fb8"></span><span style="background:#fff4d8"></span></div><div class="cap"><b>The turn</b><code>#0b0820 #2c1f4a #7d8fb8 #fff4d8</code></div></div>
+      <div class="ladder"><div class="sw"><span style="background:#3a2a5c"></span><span style="background:#8a5a6a"></span><span style="background:#f2a46a"></span><span style="background:#ffe2a8"></span></div><div class="cap"><b>Spend today</b><code>#3a2a5c #8a5a6a #f2a46a #ffe2a8</code></div></div>
+      <div class="ladder"><div class="sw"><span style="background:#03061a"></span><span style="background:#0e1838"></span><span style="background:#4a3020"></span><span style="background:#ffbf66"></span></div><div class="cap"><b>His sky</b><code>#03061a #0e1838 #4a3020 #ffbf66</code></div></div>
+      <div class="ladder"><div class="sw"><span style="background:#120c0a"></span><span style="background:#a8452e"></span><span style="background:#e9bd92"></span><span style="background:#ffc566"></span></div><div class="cap"><b>Constants</b><code>ink #120c0a · scarf #a8452e · face #e9bd92 · jar #ffc566</code></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="eyebrow">Light and motif rules</div>
+      <h2>Everything on screen means one thing</h2>
+    </div>
+    <div class="rules">
+      <div><h3>The jar is the clock</h3><p>The only counter in the film, written on its label. Fewer marbles means less glow, so his rooms really do get darker as he ages, unless the sky outside is bright.</p></div>
+      <div><h3>Stars are days</h3><p>Spent days rise warm and bright with a chime. Wasted days hang as cold pinpricks. The sky is the scoreboard and the final payoff.</p></div>
+      <div class="scarf"><h3>The scarf is love</h3><p>His mother knits it at 7. It is the one saturated colour on him at every age, so you always know where he is in a wide shot.</p></div>
+      <div><h3>LATER is the enemy</h3><p>A cardboard box. Everything he postpones goes in one. They pile up until they block the window and the sky.</p></div>
+      <div><h3>Faces carry it</h3><p>A backlit face sheet with cut eyes, brows and mouth. No one speaks; the face tells you how a day went.</p></div>
+      <div><h3>No one dies on screen</h3><p>The neighbour's jar reads 3 and he is dancing. Sadness lowers sharing; lift and one action raise it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="characters">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="eyebrow">Character sheet</div>
+      <h2>Him, at every age</h2>
+      <p class="muted">Paper puppets: joints rotate, nothing bends. The cowlick and the scarf stay the same from 7 to 82; the coat, glasses and beard tell you the year.</p>
+    </div>
+    <figure class="sheet"><img src="img/lineup.jpg" width="1600" height="900" alt="Lineup of the protagonist at ages 7, 16, 26, 41, 63 and 82, each with the red scarf, labelled with days left."><figcaption>Days left at each age, from 30,000 minus 365.25 a year: 27,443 · 24,156 · 20,504 · 15,025 · 6,989 · 50.</figcaption></figure>
+    <figure class="sheet"><img src="img/faces.jpg" width="1600" height="900" alt="Eight expressions on the protagonist's backlit face sheet: neutral, tired, sad, wide, determined, happy, laugh, asleep."><figcaption>Eight faces. The brow and the eye carry most of it; the mouth is a single cut in profile.</figcaption></figure>
+    <div class="grid2">
+      <figure class="sheet"><img src="img/poses.jpg" width="1600" height="900" alt="Pose sheet: walking, scrolling on a couch, reaching for the jar, running, playing guitar, and the neighbour dancing."><figcaption>Key poses. The scarf follows wind and speed.</figcaption></figure>
+      <figure class="sheet"><img src="img/cast.jpg" width="1600" height="900" alt="Cast: mother knitting, mother later on the phone, the neighbour in a hat, his wife, the granddaughter, and a full jar."><figcaption>Mother, mother later, the neighbour, his wife, the granddaughter, the jar.</figcaption></figure>
+    </div>
+    <figure class="sheet"><img src="img/props.jpg" width="1600" height="900" alt="Props: jars at 30,000, 20,504, 6,989 and 3; LATER boxes; a guitar; a marble rising into a star."><figcaption>The jar at four points in a life, the LATER boxes, the guitar, and a marble rising into a star.</figcaption></figure>
+  </div>
+</section>
+
+<section id="package">
+  <div class="wrap stack-lg">
+    <div class="stack">
+      <div class="eyebrow">Thumbnail, title and sound</div>
+      <h2>The number in the thumbnail is the clock in the film</h2>
+    </div>
+    <div class="frame">
+      <figure><img src="img/f7_thumb.jpg" width="1600" height="900" alt="Thumbnail mock: HOW MANY DAYS LEFT? beside a glowing jar labelled 20,504 and a wide-eyed young man in a red scarf."></figure>
+      <div class="note">
+        <span class="tc">THUMBNAIL A</span>
+        <h3>A face, a jar, a number</h3>
+        <p>Combines Kurzgesagt's big number with SkyeWei's face. 20,504 is the count at 26, the age most of the audience is near.</p>
+        <p><strong style="color:var(--paper)">Title:</strong> What If You Could See How Many Days You Have Left?</p>
+        <p><strong style="color:var(--paper)">Alt:</strong> 30,000 DAYS | An Animated Short Film</p>
+        <p><strong style="color:var(--paper)">First line:</strong> If you're 25, you have about 20,900 days left. Here's what one man did with his.</p>
+      </div>
+    </div>
+    <div class="two">
+      <div class="stack">
+        <h3>Sound palette</h3>
+        <ul class="list">
+          <li><strong>The tink.</strong> One glass marble a night is the sound logo. In the time-lapses the tinks speed up into a rhythm.</li>
+          <li><strong>The neighbour's waltz.</strong> A 3/4 tune on an old gramophone leaks through the ceiling at the turn, then becomes the full score at dawn.</li>
+          <li><strong>Childhood:</strong> music box and felt piano. <strong>LATER:</strong> a cold pad, phone buzz, cardboard thuds.</li>
+          <li><strong>The end:</strong> strings under the last line. No narration anywhere.</li>
+        </ul>
+      </div>
+      <div class="stack">
+        <h3>Decide before production</h3>
+        <ol class="decide">
+          <li><span><strong>End line:</strong> "Today is one of them." or "Spend one today."</span></li>
+          <li><span><strong>Lead title:</strong> the "What if" question (fits the channel name) or "30,000 DAYS".</span></li>
+          <li><span><strong>Length:</strong> 2:30 as boarded, or 3:00 with a longer middle.</span></li>
+          <li><span><strong>Anything to change</strong> on the cast or the look.</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Rendered by <code>film/days/moodboard.py</code> on the LANTERN engine. View counts from YouTube on 7 November 2026. Style grammar: Paper-cut Lightbox (Lemo-Opuscar, MIT); story, characters and art are original.</div>
+</footer>
