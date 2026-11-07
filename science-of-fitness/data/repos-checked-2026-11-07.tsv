@@ -1,0 +1,97 @@
+repo	stars	last_push	license	archived	description
+AUTOMATIC1111/stable-diffusion-webui	165250	2026-03-02	AGPL-3.0	false	Stable Diffusion web UI
+Comfy-Org/ComfyUI	145536	2026-11-07	GPL-3.0	false	The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface. The fastest l
+harry0703/MoneyPrinterTurbo	140524	2026-11-07	MIT	false	利用 AI 大模型和自动化工作流，根据主题或关键词一键生成高清短视频。Generate HD short videos from a topic or keyword with an automated AI workf
+openai/whisper	112160	2026-08-31	MIT	false	Robust Speech Recognition via Large-Scale Weak Supervision
+3b1b/manim	96228	2026-09-09	MIT	false	Animation engine for explanatory math videos
+heygen-com/hyperframes	80361	2026-11-07	Apache-2.0	false	Write HTML. Render video. Built for agents.
+calesthio/OpenMontage	78029	2026-11-03	AGPL-3.0	false	World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent sk
+remotion-dev/remotion	71431	2026-11-07	NOASSERTION	false	🎥      Make videos programmatically with React
+FFmpeg/FFmpeg	66684	2026-11-07	NOASSERTION	false	Mirror of https://git.ffmpeg.org/ffmpeg.git
+RVC-Boss/GPT-SoVITS	64477	2026-10-31	MIT	false	1 min voice data can also be used to train a good TTS model! (few shot voice cloning)
+lllyasviel/Fooocus	53833	2025-12-01	GPL-3.0	false	Focus on prompting and generating
+ManimCommunity/manim	42323	2026-11-05	MIT	false	A community-maintained Python framework for creating mathematical animations. 
+2noise/ChatTTS	39993	2026-04-10	AGPL-3.0	false	A generative speech model for daily dialogue.
+myshell-ai/OpenVoice	38170	2025-04-19	MIT	false	Instant voice cloning by MIT and MyShell. Audio foundation model.
+xinntao/Real-ESRGAN	37401	2024-08-06	BSD-3-Clause	false	Real-ESRGAN aims at developing Practical Algorithms for General Image/Video Restoration.
+lllyasviel/ControlNet	34151	2024-02-25	Apache-2.0	false	Let us control diffusion models!
+airbnb/lottie-web	32374	2025-09-01	MIT	false	Render After Effects animations natively on Web, Android and iOS, and React Native. http://airbnb.io/lottie/
+ATH-MaaS/Pixelle-Video	29846	2026-06-14	Apache-2.0	false	🚀 AI 全自动短视频引擎 | AI Fully Automated Short Video Engine
+resemble-ai/chatterbox	27640	2026-11-04	MIT	false	SoTA open-source TTS
+SYSTRAN/faster-whisper	26559	2026-11-06	MIT	false	Faster Whisper transcription with CTranslate2
+QwenAudio/CosyVoice	24325	2026-05-25	Apache-2.0	false	Multi-lingual large voice generation model, providing inference, training and deployment full-stack ability.
+blender/blender	21718	2026-11-07	NOASSERTION	false	Official mirror of Blender
+bloc97/Anime4K	21608	2024-08-17	MIT	false	A High-Quality Real Time Upscaler for Anime Video
+HBAI-Ltd/Toonflow-app	20996	2026-11-05	MIT	false	短剧、漫剧制作工具 Toonflow：开源 AI 视频创作平台，集成剧本创作、智能分镜、角色与场景资产管理、图像生成和视频生成。融合无限画布、AI Agent 与可视化工作流，支持本地部署、自选模型、跨平台客户端、MCP
+motion-canvas/motion-canvas	19716	2026-07-02	MIT	false	Visualize Your Ideas With Code
+KlingAIResearch/LivePortrait	19422	2026-06-01	NOASSERTION	false	Bring portraits to life!
+audacity/audacity	18982	2026-11-06	NOASSERTION	false	Audio Editor                                     
+Wan-Video/Wan2.2	18446	2026-09-21	Apache-2.0	false	Wan: Open and Advanced Large-Scale Video Generative Models
+Wan-Video/Wan2.1	17400	2026-03-05	Apache-2.0	false	Wan: Open and Advanced Large-Scale Video Generative Models
+lllyasviel/FramePack	17345	2025-10-16	Apache-2.0	false	Lets make video diffusion practical!
+AaronFeng753/Waifu2x-Extension-GUI	17195	2026-11-02	NOASSERTION	false	Video, Image and GIF upscale/enlarge(Super-Resolution) and Video frame interpolation. Achieved with Waifu2x,  
+Comfy-Org/ComfyUI-Manager	16755	2026-11-02	GPL-3.0	false	ComfyUI-Manager is an extension designed to enhance the usability of ComfyUI. It offers management functions t
+mltframework/shotcut	15628	2026-11-04	GPL-3.0	false	cross-platform (Qt), open-source (GPLv3) video editor
+SWivid/F5-TTS	15530	2026-11-03	MIT	false	Official code for "F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching"
+Tencent-Hunyuan/Hunyuan3D-2	15341	2025-10-28	NOASSERTION	false	High-Resolution 3D Assets Generation with Large Scale Hunyuan3D Diffusion Models.
+HumanAIGC/AnimateAnyone	14782	2025-09-20	Apache-2.0	false	Animate Anyone: Consistent and Controllable Image-to-Video Synthesis for Character Animation
+microsoft/TRELLIS	14208	2026-10-27	MIT	false	Official repo for paper "Structured 3D Latents for Scalable and Versatile 3D Generation" (CVPR'25 Spotlight).
+OpenTalker/SadTalker	14188	2024-06-26	NOASSERTION	false	[CVPR 2023] SadTalker：Learning Realistic 3D Motion Coefficients for Stylized Audio-Driven Single Image Talking
+Rudrabha/Wav2Lip	13270	2025-06-22	none	false	This repository contains the codes of "A Lip Sync Expert Is All You Need for Speech to Lip Generation In the W
+zai-org/CogVideo	13187	2025-11-04	Apache-2.0	false	text and image to video generation: CogVideoX (2024) and CogVideo (ICLR 2023)
+lllyasviel/stable-diffusion-webui-forge	13115	2025-07-31	AGPL-3.0	false	
+Tencent-Hunyuan/HunyuanVideo	12738	2026-10-08	NOASSERTION	false	HunyuanVideo: A Systematic Framework For Large Video Generation Model
+guoyww/AnimateDiff	12288	2024-07-31	Apache-2.0	false	Official implementation of AnimateDiff.
+Tongyi-MAI/Z-Image	12139	2026-02-09	Apache-2.0	false	
+Lightricks/LTX-Video	11336	2026-11-02	Apache-2.0	false	Official repository for LTX-Video
+rhasspy/piper	11318	2025-08-26	MIT	true	A fast, local neural text to speech system
+KDE/krita	10706	2026-11-07	GPL-3.0	false	Krita is a free and open source cross-platform application that offers an end-to-end solution for creating dig
+Lightricks/LTX-2	10125	2026-11-05	Apache-2.0	false	Official Python inference and LoRA trainer package for the LTX-2 audio–video generative model.
+hexgrad/kokoro	9951	2025-08-06	Apache-2.0	false	https://hf.co/hexgrad/Kokoro-82M
+LykosAI/StabilityMatrix	8993	2026-10-21	AGPL-3.0	false	Multi-Platform Package Manager for Stable Diffusion
+QwenLM/Qwen-Image	8463	2026-02-10	Apache-2.0	false	Qwen-Image is a powerful image generation foundation model capable of complex text rendering and precise image
+opentoonz/opentoonz	8035	2026-11-06	NOASSERTION	false	OpenToonz - An open-source full-featured 2D animation creation software
+TMElyralab/MuseTalk	6896	2025-09-26	NOASSERTION	false	MuseTalk: Real-Time High Quality Lip Synchorization with Latent Space Inpainting
+kijai/ComfyUI-WanVideoWrapper	6812	2026-05-24	Apache-2.0	false	
+OpenShot/openshot-qt	6753	2026-11-07	NOASSERTION	false	OpenShot Video Editor is an award-winning free and open-source video editor for Linux, Mac, and Windows, and i
+tencent-ailab/IP-Adapter	6713	2024-06-28	Apache-2.0	false	The image prompt adapter is designed to enable a pretrained text-to-image diffusion model to generate images w
+HVision-NKU/StoryDiffusion	6494	2024-09-26	Apache-2.0	false	Accepted as [NeurIPS 2024] Spotlight Presentation Paper
+bytedance/LatentSync	6255	2025-06-20	Apache-2.0	false	Taming Stable Diffusion for Lip Sync!
+OHF-Voice/piper1-gpl	6195	2026-11-02	GPL-3.0	false	Fast and local neural text-to-speech engine
+cubiq/ComfyUI_IPAdapter_plus	6175	2025-04-14	GPL-3.0	false	
+KDE/kdenlive	6063	2026-11-07	GPL-3.0	false	Free and open source video editor, based on MLT Framework and KDE Frameworks
+Doubiiu/ToonCrafter	6059	2025-03-19	Apache-2.0	false	[SIGGRAPH Asia 2024, Journal Track] ToonCrafter: Generative Cartoon Interpolation
+remsky/Kokoro-FastAPI	5650	2026-11-06	Apache-2.0	false	Dockerized OpenAI-compatible wrapper for Kokoro-82M text-to-speech w/multiplatform CPU, AMD, NVIDIA GPU PyTorc
+mifi/editly	5590	2025-05-12	MIT	false	Slick, declarative command line video editing & API
+Kwai-Kolors/Kolors	4595	2024-11-13	Apache-2.0	false	Kolors Team
+Tencent-Hunyuan/HunyuanVideo-1.5	4592	2026-04-10	NOASSERTION	false	HunyuanVideo-1.5: A leading lightweight video generation model
+bryandlee/animegan2-pytorch	4450	2023-01-06	MIT	false	PyTorch implementation of AnimeGANv2
+Fannovel16/comfyui_controlnet_aux	4267	2026-10-11	Apache-2.0	false	ComfyUI's ControlNet Auxiliary Preprocessors
+Kosinkadink/ComfyUI-AnimateDiff-Evolved	3564	2026-07-28	Apache-2.0	false	Improved AnimateDiff for ComfyUI and Advanced Sampling Support
+Vincentwei1021/anything2explainer	3104	2026-09-18	NOASSERTION	false	Topic in, narrated explainer video out. A Claude Code / Codex skill that turns any topic into a black-canvas m
+MeiGen-AI/MultiTalk	3030	2026-05-22	Apache-2.0	false	[NeurIPS 2025] Let Them Talk: Audio-Driven Multi-Person Conversational Video Generation
+Doubiiu/DynamiCrafter	3003	2024-09-08	Apache-2.0	false	[ECCV 2024, Oral] DynamiCrafter: Animating Open-domain Images with Video Diffusion Priors
+ModelTC/LightX2V	2993	2026-11-06	Apache-2.0	false	Lightweight Image Video Action Generation Inference Framework
+black-forest-labs/flux2	2844	2026-03-12	Apache-2.0	false	Official inference repo for FLUX.2 models
+bilibili/Index-anisora	2538	2026-07-16	Apache-2.0	false	
+synfig/synfig	2373	2026-11-01	GPL-3.0	false	This is the Official source code repository of Synfig Studio animation software
+pixiv/three-vrm	2258	2026-10-22	MIT	false	Use VRM on Three.js
+Tencent-Hunyuan/HunyuanVideo-Avatar	2212	2025-12-16	NOASSERTION	false	
+yuhonas/free-exercise-db	2102	2026-09-27	Unlicense	false	Open Public Domain Exercise Dataset in JSON format, over 800 exercises with a browsable public searchable fron
+TachibanaYoshino/AnimeGANv3	2050	2025-08-23	none	false	Use AnimeGANv3 to make your own animation works, including turning photos or videos into anime.
+pencil2d/pencil	1864	2026-11-05	GPL-2.0	false	Pencil2D is an easy, intuitive tool to make 2D hand-drawn animations. Pencil2D is open source and cross-platfo
+Tencent-Hunyuan/HunyuanVideo-I2V	1854	2026-04-07	NOASSERTION	false	HunyuanVideo-I2V: A Customizable Image-to-Video Model based on HunyuanVideo
+Fantasy-AMAP/fantasy-talking	1629	2026-01-26	Apache-2.0	false	[ACM MM 2025] FantasyTalking: Realistic Talking Portrait Generation via Coherent Motion Synthesis
+gyoridavid/short-video-maker	1472	2025-06-21	MIT	false	Creates short videos for TikTok, Instagram Reels, and YouTube Shorts using the Model Context Protocol (MCP) an
+Woolverine94/biniou	1152	2026-11-07	GPL-3.0	false	a self-hosted webui for 30+ generative ai
+nihui/rife-ncnn-vulkan	1128	2024-01-02	MIT	false	RIFE, Real-Time Intermediate Flow Estimation for Video Frame Interpolation implemented with ncnn library
+Tencent-Hunyuan/InstantCharacter	1043	2025-05-14	NOASSERTION	false	
+hzwer/Practical-RIFE	1038	2026-08-27	MIT	false	More practical frame interpolation approach.
+lcy362/agnes-video-generator	659	2026-11-06	MIT	false	Open-source, self-hosted AI video generator — completely free. Text to multi-scene video with narration, subti
+UllrAI/CineGen-ShortDrama	570	2026-09-25	NOASSERTION	false	AI Director - AI Manga, Anime, Animation, storyboard, Generation System. 开源 AI 漫剧、动漫、短剧，解说漫、动态漫，生成系统。
+xeronsh/KomaSlate	413	2026-11-06	none	false	KomaSlate — 本地优先、非破坏性开源 AI 分镜工作台 | Local-first, non-destructive AI storyboarding workspace with shot retake, v
+LluisV/Z-Anatomy	410	2024-12-25	NOASSERTION	false	Z-Anatomy app Unity project
+Anil-matcha/vox-ai-motion-graphics-generator	322	2026-09-02	none	false	🎬 Turn any topic into a finished Vox-style paper-collage explainer / motion graphics video — script, collage k
+RepDB/exercise-dataset	129	2026-10-29	NOASSERTION	false	Free exercise dataset: 701 exercises in JSON with 512px WebP images, muscles, equipment and EN/DE/ES instructi
+Yuan-ManX/ComfyUI-AniSora	57	2025-05-27	MIT	false	ComfyUI-AniSora is now available in ComfyUI, Index-AniSora is the most powerful open-source animated video gen
+ayzitix/aniblend	3	2026-10-04	NOASSERTION	false	Anime cel-shading and inverted hull outlines for Blender 4.2+/5.x (EEVEE/Cycles) — multi-light toon shader, in
