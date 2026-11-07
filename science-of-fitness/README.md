@@ -9,6 +9,7 @@ Start here, in order:
 4. `assets/style-frames/`: rendered template frames and a 7-second motion test. Regenerate them with `python3 scripts/style_frames.py`.
 5. `board/`: the asset board for review before production, with its live link.
 6. `assets/anatomy/`: the anatomy kit, covering skin, muscle, bone, nerves, tendon X-rays and mitochondria in manga ink. It has full-body layers, highlights, close-ups, microscopic views and animations. Read its README for the credit line.
+7. `episodes/`: one folder per episode, with the production script (`SCRIPT.md`) and the narration-only recording file (`VO.txt`). Episode 1 is in `ep01-skinny-to-bulky/`.
 
 ```
 science-of-fitness/
@@ -19,6 +20,7 @@ science-of-fitness/
 ├── assets/style-frames/        00-palette, 01-title-card, 02-nutrient-card, 03-do-dont, 04-zoom-ladder, 05-stat-ring, 06-motion-test-stat.mp4, contact-sheet
 ├── assets/anatomy/             anatomy kit: body/, muscle-highlights/, bone-highlights/, closeups/, micro/, hero/, anim/, previews/
 ├── board/                      asset board source, concept images and status
+├── episodes/ep01-skinny-to-bulky/  SCRIPT.md (scenes, visuals, sources, description) and VO.txt (narration only)
 ├── scripts/style_frames.py     renders the frames above (needs Pillow and ffmpeg)
 ├── scripts/gen_board_images.py concept art through a free FLUX.1-schnell Space
 ├── scripts/anatomy/            prep_bp3d.py, manga_render.py, nerves.py, build_kit.py, micro.py, tendons.py, mito.py
