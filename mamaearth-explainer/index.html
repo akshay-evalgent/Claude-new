@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Mamaearth Goodness Explainer</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,600&family=Nunito:wght@600;700;800;900&display=swap">
+<style>
+/* 1080x1920 vertical film. Every move is a GSAP tween on one master timeline so the renderer can seek to any frame. */
+:root{--cream:#F6F1E7;--sage:#CFE3D6;--teal:#0E7C7B;--deep:#0B4F4E;--ink:#1D2A2A;--leaf:#3E8E5B;--leaf2:#5FA874;--orange:#F28C38;--onion:#B65C7E;--turm:#E8B84A;--amber:#C9823E;--red:#D9412F;--white:#FFFDF9;--bark:#7A4E2D}
+html,body{margin:0;background:#000;height:100%}
+body{display:flex;align-items:center;justify-content:center}
+#film{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--cream);font-family:'Nunito',system-ui,sans-serif;color:var(--ink);flex:none}
+.scene{position:absolute;inset:0;visibility:hidden}
+.bg{position:absolute;inset:0}
+.h{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:136px;line-height:1.02;letter-spacing:-.022em;position:absolute;left:90px;right:90px}
+.h .ln{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.h .ln span{display:block;will-change:transform}
+.h em{font-style:italic;font-weight:600;color:var(--teal)}
+.eyebrow{font-weight:900;font-size:38px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);position:absolute;left:90px}
+.sub{font-size:60px;font-weight:700;position:absolute;left:90px;right:90px;line-height:1.2}
+.white{color:var(--white)}
+/* S1 */
+.jar{position:absolute;width:420px;height:300px;border-radius:44px;background:#fff;border:7px solid var(--ink);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:44px;letter-spacing:.1em;text-align:center;box-sizing:border-box}
+.jar::before{content:"";position:absolute;top:-44px;left:96px;right:96px;height:52px;border-radius:18px 18px 0 0;background:var(--ink)}
+.strike{position:absolute;left:30px;top:1300px;width:1020px;height:28px;background:var(--red);border-radius:14px;transform-origin:left center}
+/* S2 */
+.leaf{position:absolute;left:190px;top:420px;width:700px;height:900px;transform-origin:50% 100%}
+/* S3 */
+.bottle{position:absolute;display:flex;flex-direction:column;align-items:center}
+.cap{background:#1D2A2A;border-radius:18px 18px 6px 6px}
+.body{position:relative;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
+.label{background:var(--white);border-radius:22px;padding:22px 18px;text-align:center;font-weight:900;line-height:1.05;font-size:40px;width:78%;box-sizing:border-box}
+.label small{display:block;font-size:24px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-top:10px;opacity:.75}
+.shadow{position:absolute;width:360px;height:70px;border-radius:50%;background:rgba(14,124,123,.18);left:0}
+.callout{position:absolute;background:#fff;border-radius:70px;padding:16px 40px 16px 16px;display:flex;align-items:center;gap:20px;font-weight:900;font-size:44px;box-shadow:0 14px 34px rgba(29,42,42,.14);transform-origin:left center;white-space:nowrap}
+.callout .ic{width:88px;height:88px;border-radius:50%;flex:none;display:grid;place-items:center}
+/* S4 */
+.badge{position:absolute;left:220px;top:300px;width:640px;height:640px;transform-origin:center}
+.ring{position:absolute;left:540px;top:620px;width:640px;height:640px;margin:-320px 0 0 -320px;border-radius:50%;border:14px solid var(--teal);transform-origin:center}
+.rows{position:absolute;left:120px;top:1280px;display:flex;flex-direction:column;gap:34px}
+.row{display:flex;align-items:center;gap:34px;font-size:66px;font-weight:800;color:var(--deep)}
+.row svg{width:96px;height:96px;flex:none}
+/* S5 */
+.tree{position:absolute;left:90px;top:760px;width:900px;height:1000px}
+/* S6 */
+.tile{position:absolute;width:430px;height:520px;border-radius:52px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;font-size:58px;font-weight:900;color:var(--deep);box-shadow:0 18px 40px rgba(29,42,42,.10)}
+.tile svg{width:190px;height:190px}
+/* S7 */
+.mark{position:absolute;left:0;right:0;top:720px;text-align:center;font-weight:900;font-size:176px;letter-spacing:-.03em;color:var(--white);transform-origin:center}
+.tag{position:absolute;left:0;right:0;top:930px;text-align:center;font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:600;font-size:76px;color:var(--sage)}
+.note{position:absolute;left:90px;right:90px;bottom:110px;text-align:center;font-size:32px;font-weight:700;letter-spacing:.04em;color:rgba(255,253,249,.72)}
+.endleaf{position:absolute;width:260px;height:330px;transform-origin:50% 100%}
+#play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(11,79,78,.55);cursor:pointer;z-index:9}
+#play b{font-size:64px;font-weight:900;color:#fff;background:var(--teal);padding:36px 80px;border-radius:200px;letter-spacing:.06em}
+#play[hidden]{display:none}
+</style>
+</head>
+<body>
+<div id="film">
+
+  <!-- S1: read the back of your bottle -->
+  <section class="scene" id="s1">
+    <div class="bg" style="background:var(--cream)"></div>
+    <div class="eyebrow" id="e1" style="top:170px">Every bathroom shelf</div>
+    <div class="h" id="h1a" style="top:260px"><span class="ln"><span>Read the back</span></span><span class="ln"><span>of your bottle.</span></span></div>
+    <div class="h" id="h1b" style="top:260px"><span class="ln"><span>Hard to say.</span></span><span class="ln"><span>Harder <em>on skin.</em></span></span></div>
+    <div class="jar" style="left:90px;top:980px">SULPHATES</div>
+    <div class="jar" style="left:570px;top:980px">PARABENS</div>
+    <div class="jar" style="left:90px;top:1360px">MINERAL<br>OIL</div>
+    <div class="jar" style="left:570px;top:1360px">SILICONES</div>
+    <div class="strike" id="strike"></div>
+  </section>
+
+  <!-- S2: the question -->
+  <section class="scene" id="s2">
+    <div class="bg" style="background:var(--sage)"></div>
+    <svg class="leaf" id="leaf" viewBox="0 0 700 900"><path d="M350 880 C 40 700, -10 300, 350 20 C 710 300, 660 700, 350 880 Z" fill="#3E8E5B"/><path d="M350 870 L350 70" stroke="#CFE3D6" stroke-width="10" stroke-linecap="round" fill="none"/><path d="M350 640 C 240 580, 190 500, 170 420 M350 500 C 440 440, 490 360, 510 290 M350 360 C 260 310, 230 250, 220 200" stroke="#CFE3D6" stroke-width="7" stroke-linecap="round" fill="none"/></svg>
+    <div class="eyebrow" id="e2" style="top:170px">Mamaearth · Gurugram · 2016</div>
+    <div class="h" id="h2a" style="top:1280px;font-size:112px"><span class="ln"><span>Two parents</span></span><span class="ln"><span>asked one question.</span></span></div>
+    <div class="h" id="h2b" style="top:1280px"><span class="ln"><span>What if it was</span></span><span class="ln"><span><em>all</em> safe?</span></span></div>
+  </section>
+
+  <!-- S3: goodness of nature, three products -->
+  <section class="scene" id="s3">
+    <div class="bg" style="background:var(--cream)"></div>
+    <div class="eyebrow" id="e3" style="top:170px">Goodness of Nature</div>
+    <div class="h" id="h3" style="top:250px"><span class="ln"><span>Made with</span></span><span class="ln"><span>what <em>grows.</em></span></span></div>
+    <div class="shadow" id="sh1" style="left:90px;top:1520px;width:320px"></div>
+    <div class="shadow" id="sh2" style="left:400px;top:1520px;width:280px"></div>
+    <div class="shadow" id="sh3" style="left:740px;top:1520px;width:280px"></div>
+    <div class="bottle" id="b1" style="left:110px;top:900px">
+      <div class="cap" style="width:130px;height:70px"></div>
+      <div class="body" style="width:280px;height:580px;background:var(--amber);border-radius:70px 70px 44px 44px"><div class="label" style="color:#7A2E4C">Onion<br>Hair Oil<small>with redensyl</small></div></div>
+    </div>
+    <div class="bottle" id="b2" style="left:420px;top:880px">
+      <div class="cap" style="width:110px;height:60px"></div>
+      <div class="body" style="width:240px;height:610px;background:var(--turm);border-radius:36px 36px 120px 120px"><div class="label" style="color:#6B4A0A">Ubtan<br>Face Wash<small>turmeric · saffron</small></div></div>
+    </div>
+    <div class="bottle" id="b3" style="left:770px;top:1060px">
+      <div class="cap" style="width:90px;height:120px;border-radius:30px 30px 8px 8px"></div>
+      <div class="body" style="width:220px;height:380px;background:var(--orange);border-radius:50px 50px 40px 40px"><div class="label" style="color:#8A3C08;font-size:34px">Vitamin C<br>Serum<small>brightening</small></div></div>
+    </div>
+    <div class="callout" id="c1" style="left:60px;top:800px"><span class="ic" style="background:#F4DCE6"><svg width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="34" r="22" fill="#B65C7E"/><circle cx="30" cy="34" r="14" fill="none" stroke="#F4DCE6" stroke-width="4"/><circle cx="30" cy="34" r="6" fill="none" stroke="#F4DCE6" stroke-width="4"/><path d="M30 12 L30 4" stroke="#3E8E5B" stroke-width="6" stroke-linecap="round"/></svg></span>Red onion</div>
+    <div class="callout" id="c2" style="left:380px;top:720px"><span class="ic" style="background:#FBEFC9"><svg width="60" height="60" viewBox="0 0 60 60"><path d="M12 40 C 8 24, 24 10, 36 14 C 52 20, 54 36, 44 46 C 36 54, 18 54, 12 40 Z" fill="#E8B84A"/><path d="M40 16 C 44 10, 52 10, 54 16" stroke="#C98A14" stroke-width="5" stroke-linecap="round" fill="none"/></svg></span>Turmeric</div>
+    <div class="callout" id="c3" style="left:560px;top:960px"><span class="ic" style="background:#FDE3CC"><svg width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="#F28C38"/><circle cx="30" cy="30" r="18" fill="#FBD2A6"/><path d="M30 12 V48 M12 30 H48 M17 17 L43 43 M43 17 L17 43" stroke="#F28C38" stroke-width="3"/></svg></span>Vitamin C</div>
+  </section>
+
+  <!-- S4: made safe -->
+  <section class="scene" id="s4">
+    <div class="bg" style="background:var(--white)"></div>
+    <div class="ring" id="ring"></div>
+    <svg class="badge" id="badge" viewBox="0 0 640 640">
+      <defs><path id="arc" d="M320 320 m -228 0 a 228 228 0 1 1 456 0 a 228 228 0 1 1 -456 0"/></defs>
+      <circle cx="320" cy="320" r="310" fill="#0E7C7B"/>
+      <circle cx="320" cy="320" r="268" fill="none" stroke="#FFFDF9" stroke-width="6"/>
+      <circle cx="320" cy="320" r="186" fill="none" stroke="#FFFDF9" stroke-width="6"/>
+      <text font-family="Nunito, sans-serif" font-weight="900" font-size="46" fill="#FFFDF9" textLength="1428" lengthAdjust="spacing"><textPath href="#arc" startOffset="0" textLength="1428" lengthAdjust="spacing">MADE SAFE · CERTIFIED · MADE SAFE · CERTIFIED · </textPath></text>
+      <path d="M232 330 L296 394 L418 254" fill="none" stroke="#FFFDF9" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="h" id="h4" style="top:1000px;font-size:104px"><span class="ln"><span>Asia&rsquo;s first brand</span></span><span class="ln"><span>with <em>MADE SAFE</em></span></span><span class="ln"><span>products.</span></span></div>
+    <div class="rows" id="rows" style="top:1380px">
+      <div class="row"><svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="46" fill="#CFE3D6"/><path class="tk" d="M28 50 L43 64 L70 34" fill="none" stroke="#0E7C7B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>No sulphates</div>
+      <div class="row"><svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="46" fill="#CFE3D6"/><path class="tk" d="M28 50 L43 64 L70 34" fill="none" stroke="#0E7C7B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>No parabens</div>
+      <div class="row"><svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="46" fill="#CFE3D6"/><path class="tk" d="M28 50 L43 64 L70 34" fill="none" stroke="#0E7C7B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>No mineral oil</div>
+      <div class="row"><svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="46" fill="#CFE3D6"/><path class="tk" d="M28 50 L43 64 L70 34" fill="none" stroke="#0E7C7B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>No silicones</div>
+    </div>
+  </section>
+
+  <!-- S5: plant goodness -->
+  <section class="scene" id="s5">
+    <div class="bg" style="background:var(--sage)"></div>
+    <div class="h" id="h5" style="top:220px"><span class="ln"><span>Every order</span></span><span class="ln"><span>plants <em>a tree.</em></span></span></div>
+    <svg class="tree" id="tree" viewBox="0 0 900 1000">
+      <ellipse cx="450" cy="960" rx="380" ry="34" fill="rgba(14,124,123,.18)"/>
+      <rect id="trunk" x="418" y="520" width="64" height="440" rx="30" fill="#7A4E2D"/>
+      <g id="canopy">
+        <circle cx="450" cy="470" r="200" fill="#3E8E5B"/>
+        <circle cx="300" cy="560" r="150" fill="#5FA874"/>
+        <circle cx="610" cy="560" r="150" fill="#5FA874"/>
+        <circle cx="360" cy="380" r="140" fill="#5FA874"/>
+        <circle cx="560" cy="360" r="130" fill="#3E8E5B"/>
+      </g>
+      <g id="leaves">
+        <ellipse cx="200" cy="0" rx="14" ry="26" fill="#3E8E5B"/><ellipse cx="420" cy="0" rx="14" ry="26" fill="#5FA874"/><ellipse cx="640" cy="0" rx="14" ry="26" fill="#3E8E5B"/>
+        <ellipse cx="300" cy="0" rx="14" ry="26" fill="#5FA874"/><ellipse cx="760" cy="0" rx="14" ry="26" fill="#3E8E5B"/><ellipse cx="520" cy="0" rx="14" ry="26" fill="#5FA874"/>
+      </g>
+    </svg>
+    <div class="eyebrow" id="e5" style="top:1700px;left:0;right:0;text-align:center">Plant Goodness</div>
+  </section>
+
+  <!-- S6: the range -->
+  <section class="scene" id="s6">
+    <div class="bg" style="background:var(--cream)"></div>
+    <div class="h" id="h6" style="top:200px"><span class="ln"><span>One shelf.</span></span><span class="ln"><span><em>All</em> safe.</span></span></div>
+    <div class="tile" id="t1" style="left:90px;top:640px"><svg viewBox="0 0 190 190"><rect x="60" y="40" width="70" height="120" rx="30" fill="#CFE3D6"/><rect x="75" y="18" width="40" height="34" rx="12" fill="#0E7C7B"/><rect x="72" y="92" width="46" height="40" rx="10" fill="#fff"/></svg>Baby</div>
+    <div class="tile" id="t2" style="left:560px;top:640px"><svg viewBox="0 0 190 190"><path d="M60 40 C 120 40, 130 90, 90 110 C 50 130, 60 170, 120 160" fill="none" stroke="#B65C7E" stroke-width="22" stroke-linecap="round"/></svg>Hair</div>
+    <div class="tile" id="t3" style="left:90px;top:1200px"><svg viewBox="0 0 190 190"><circle cx="95" cy="95" r="62" fill="#E8B84A"/><circle cx="74" cy="86" r="7" fill="#1D2A2A"/><circle cx="116" cy="86" r="7" fill="#1D2A2A"/><path d="M70 114 C 85 132, 105 132, 120 114" fill="none" stroke="#1D2A2A" stroke-width="7" stroke-linecap="round"/></svg>Face</div>
+    <div class="tile" id="t4" style="left:560px;top:1200px"><svg viewBox="0 0 190 190"><path d="M95 30 C 130 80, 150 100, 150 125 A 55 55 0 0 1 40 125 C 40 100, 60 80, 95 30 Z" fill="#0E7C7B"/></svg>Body</div>
+  </section>
+
+  <!-- S7: end card -->
+  <section class="scene" id="s7">
+    <div class="bg" style="background:var(--teal)"></div>
+    <svg class="endleaf" id="el1" viewBox="0 0 700 900" style="left:140px;top:280px"><path d="M350 880 C 40 700, -10 300, 350 20 C 710 300, 660 700, 350 880 Z" fill="#CFE3D6" opacity=".9"/></svg>
+    <svg class="endleaf" id="el2" viewBox="0 0 700 900" style="left:700px;top:1180px;width:200px;height:260px"><path d="M350 880 C 40 700, -10 300, 350 20 C 710 300, 660 700, 350 880 Z" fill="#5FA874" opacity=".9"/></svg>
+    <div class="mark" id="mark">mamaearth</div>
+    <div class="tag" id="tag">Goodness of Nature</div>
+    <div class="note" id="note">Concept film · Not an official Mamaearth production</div>
+  </section>
+
+  <div id="play"><b>PLAY</b></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+const B=0.625;                       // one beat at 96 BPM; every cut lands on the grid
+const tl=gsap.timeline({paused:true});
+const EASE='power4.out';
+
+function lines(sel,at,stagger=0.11){ tl.fromTo(sel+' .ln span',{yPercent:112},{yPercent:0,duration:0.75,ease:EASE,stagger},at); }
+function linesOut(sel,at){ tl.to(sel+' .ln span',{yPercent:-112,duration:0.38,ease:'power3.in',stagger:0.05},at); }
+function fade(sel,at,dur=0.5,from={}){ tl.fromTo(sel,{autoAlpha:0,y:30,...from},{autoAlpha:1,y:0,duration:dur,ease:EASE},at); }
+function wipe(next,prev,at){ tl.set(next,{autoAlpha:1},at); tl.fromTo(next,{yPercent:100},{yPercent:0,duration:0.5,ease:'power3.inOut'},at); tl.set(prev,{autoAlpha:0},at+0.52); }
+
+/* S1  0.0 - 5.0 */
+tl.set('#s1',{autoAlpha:1},0);
+tl.set('#h1b .ln span',{yPercent:112},0);
+fade('#e1',0.05,0.5);
+lines('#h1a',0.12);
+const jars=gsap.utils.toArray('#s1 .jar');
+jars.forEach((j,i)=>{ tl.fromTo(j,{y:-1900,rotation:(i%2?6:-6)},{y:0,rotation:0,duration:0.55,ease:'bounce.out'},1.05+i*B); });
+tl.fromTo('#strike',{scaleX:0,rotation:-14},{scaleX:1,rotation:-14,duration:0.32,ease:'power4.inOut'},3.75);
+tl.to(jars,{x:(i)=>(i%2?8:-8),duration:0.08,yoyo:true,repeat:3},3.8);
+linesOut('#h1a',3.72);
+lines('#h1b',3.95);
+
+/* S2  5.0 - 10.0 */
+wipe('#s2','#s1',4.75);
+tl.fromTo('#leaf',{scale:0,rotation:-28,transformOrigin:'50% 100%'},{scale:1,rotation:0,duration:1.5,ease:'power3.out'},5.1);
+fade('#e2',5.3,0.5);
+lines('#h2a',5.45);
+linesOut('#h2a',7.4);
+tl.set('#h2b .ln span',{yPercent:112},0);
+lines('#h2b',7.65);
+tl.to('#leaf',{rotation:4,y:-20,duration:2.4,ease:'sine.inOut',yoyo:true,repeat:1},6.6);
+
+/* S3  10.0 - 18.75 */
+wipe('#s3','#s2',9.75);
+fade('#e3',10.15,0.5);
+lines('#h3',10.3);
+[['#b1','#sh1',10.6],['#b2','#sh2',11.9],['#b3','#sh3',13.1]].forEach(([b,s,at])=>{
+  tl.fromTo(b,{y:1100,rotation:-4},{y:0,rotation:0,duration:0.8,ease:'back.out(1.3)'},at);
+  tl.fromTo(s,{scaleX:0.2,autoAlpha:0},{scaleX:1,autoAlpha:1,duration:0.5,ease:EASE},at+0.3);
+  tl.to(b,{y:-14,duration:1.6,ease:'sine.inOut',yoyo:true,repeat:-1},at+0.9);
+});
+[['#c1',14.4],['#c2',15.0],['#c3',15.6]].forEach(([c,at])=>{ tl.fromTo(c,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1,duration:0.55,ease:'back.out(2)'},at); });
+
+/* S4  18.75 - 25.0 */
+wipe('#s4','#s3',18.5);
+tl.set('#badge',{autoAlpha:0},0);
+tl.fromTo('#badge',{scale:2.6,autoAlpha:0,rotation:-14},{scale:1,autoAlpha:1,rotation:-6,duration:0.26,ease:'power4.in'},19.1);
+tl.fromTo('#ring',{scale:0.5,autoAlpha:0.7},{scale:2.4,autoAlpha:0,duration:0.7,ease:'power2.out'},19.34);
+tl.fromTo('#s4',{x:0},{x:10,duration:0.05,yoyo:true,repeat:5},19.34);
+tl.to('#badge',{rotation:-3,y:-10,duration:2.2,ease:'sine.inOut',yoyo:true,repeat:-1},19.6);
+lines('#h4',19.65);
+const rows=gsap.utils.toArray('#rows .row');
+rows.forEach((r,i)=>{ const at=21.25+i*B; tl.fromTo(r,{x:-60,autoAlpha:0},{x:0,autoAlpha:1,duration:0.4,ease:EASE},at-0.1);
+  tl.fromTo(r.querySelector('.tk'),{strokeDasharray:80,strokeDashoffset:80},{strokeDashoffset:0,duration:0.28,ease:'power2.out'},at); });
+
+/* S5  25.0 - 31.25 */
+wipe('#s5','#s4',24.75);
+lines('#h5',25.3);
+tl.fromTo('#trunk',{scaleY:0,transformOrigin:'50% 100%'},{scaleY:1,duration:1.0,ease:'power2.out'},25.6);
+tl.fromTo('#canopy circle',{scale:0,transformOrigin:'50% 50%'},{scale:1,duration:0.7,ease:'back.out(1.6)',stagger:0.14},26.3);
+tl.to('#canopy',{rotation:1.5,transformOrigin:'50% 100%',duration:1.8,ease:'sine.inOut',yoyo:true,repeat:-1},27.2);
+gsap.utils.toArray('#leaves ellipse').forEach((l,i)=>{ tl.fromTo(l,{y:-80,x:0,rotation:0,autoAlpha:0},{y:1050,x:(i%2?90:-90),rotation:(i%2?220:-220),autoAlpha:1,duration:3.2+i*0.25,ease:'none',repeat:-1},27.4+i*0.45); });
+fade('#e5',28.2,0.5);
+
+/* S6  31.25 - 36.25 */
+wipe('#s6','#s5',31.0);
+lines('#h6',31.3);
+gsap.utils.toArray('#s6 .tile').forEach((t,i)=>{ tl.fromTo(t,{x:(i%2?700:-700),rotation:(i%2?5:-5),autoAlpha:0},{x:0,rotation:0,autoAlpha:1,duration:0.6,ease:'power4.out'},31.5+i*0.4); });
+tl.to('#s6 .tile',{y:-12,duration:1.5,ease:'sine.inOut',yoyo:true,repeat:-1,stagger:0.2},33.2);
+
+/* S7  36.25 - 42.0 */
+wipe('#s7','#s6',36.0);
+tl.fromTo('#mark',{scale:0.6,autoAlpha:0},{scale:1,autoAlpha:1,duration:0.8,ease:'back.out(1.4)'},36.5);
+fade('#tag',37.0,0.6);
+fade('#note',37.6,0.6);
+tl.fromTo('#el1',{rotation:-20,y:40,autoAlpha:0},{rotation:0,y:0,autoAlpha:1,duration:1.2,ease:'power3.out'},36.4);
+tl.fromTo('#el2',{rotation:30,y:60,autoAlpha:0},{rotation:0,y:0,autoAlpha:1,duration:1.2,ease:'power3.out'},36.7);
+tl.to('#el1',{rotation:5,y:-24,duration:2.6,ease:'sine.inOut',yoyo:true,repeat:-1},37.6);
+tl.to('#el2',{rotation:-6,y:18,duration:2.2,ease:'sine.inOut',yoyo:true,repeat:-1},37.9);
+tl.to('#mark',{y:-8,duration:2.5,ease:'sine.inOut',yoyo:true,repeat:-1},37.4);
+tl.set({},{},42.0); // pin the total length
+
+window.__dur=42.0;
+window.__seek=t=>{ tl.pause(); tl.seek(t,false); };
+window.__ready=(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>true);
+
+/* normal viewing: click to play with the score if it is next to the file */
+const play=document.getElementById('play');
+if(location.search.includes('render')){ play.hidden=true; tl.seek(0,false); }
+play.addEventListener('click',()=>{ play.hidden=true; const a=new Audio('mix.wav'); a.play().catch(()=>{}); tl.seek(0,false); tl.play(); });
+/* fit the 1080x1920 film into whatever window shows it */
+function fit(){ const s=Math.min(innerWidth/1080,innerHeight/1920); document.getElementById('film').style.transform='scale('+s+')'; document.getElementById('film').style.transformOrigin='center'; }
+if(!location.search.includes('render')){ addEventListener('resize',fit); fit(); }
+</script>
+</body>
+</html>
