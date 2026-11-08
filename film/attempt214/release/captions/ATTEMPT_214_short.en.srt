@@ -1,0 +1,95 @@
+1
+00:00:00,000 --> 00:00:00,600
+ATTEMPT 2
+
+2
+00:00:00,600 --> 00:00:02,500
+[plucked strings · each attempt rings one note higher]
+ATTEMPT 2
+
+3
+00:00:02,500 --> 00:00:05,000
+[plucked strings · each attempt rings one note higher]
+ATTEMPT 7
+
+4
+00:00:05,000 --> 00:00:06,600
+ATTEMPT 15
+
+5
+00:00:06,600 --> 00:00:07,500
+[children laughing]
+ATTEMPT 15
+
+6
+00:00:07,500 --> 00:00:08,000
+[children laughing]
+ATTEMPT 23
+
+7
+00:00:08,000 --> 00:00:10,000
+ATTEMPT 23
+
+8
+00:00:10,000 --> 00:00:11,800
+[heavy rain]
+ATTEMPT 213
+
+9
+00:00:11,900 --> 00:00:12,600
+[splash]
+ATTEMPT 213
+
+10
+00:00:12,600 --> 00:00:15,000
+[children laughing]
+ATTEMPT 213
+
+11
+00:00:15,000 --> 00:00:16,000
+ATTEMPT 213
+
+12
+00:00:16,000 --> 00:00:19,400
+[birdsong · strings swell]
+ATTEMPT 213
+
+13
+00:00:19,400 --> 00:00:22,000
+ATTEMPT 213
+
+14
+00:00:27,000 --> 00:00:28,000
+ATTEMPT 214
+
+15
+00:00:28,000 --> 00:00:29,100
+[a held breath]
+ATTEMPT 214
+
+16
+00:00:29,100 --> 00:00:33,400
+ATTEMPT 214
+
+17
+00:00:33,400 --> 00:00:37,000
+[wind · the plane flutters · the orchestra rises]
+ATTEMPT 214
+
+18
+00:00:37,000 --> 00:00:44,700
+ATTEMPT 214
+
+19
+00:00:44,700 --> 00:00:45,500
+[the melody comes home · a harp sweeps up]
+ATTEMPT 214
+
+20
+00:00:45,500 --> 00:00:48,500
+[the melody comes home · a harp sweeps up]
+
+21
+00:00:51,600 --> 00:00:55,600
+Most people stop at 213.
+

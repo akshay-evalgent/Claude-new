@@ -1,0 +1,50 @@
+[
+ {
+  "file": "ATTEMPT_214_master_1080p.mp4",
+  "duration": 150.0,
+  "size": "1920x1080",
+  "fps": "24/1",
+  "first_frame_luma": 99.2,
+  "first_motion_s": 0.0,
+  "longest_still_s": 1.7,
+  "longest_black_s": 0.0,
+  "end_hold_s": 0.0,
+  "mean_change": 2.52,
+  "lufs": -13.9,
+  "true_peak": -3.6,
+  "lra": 10.2,
+  "rules": {
+   "hook: frame one lit (luma > 20)": "PASS",
+   "hook: motion within 1 s": "PASS",
+   "pace: no still stretch > 2.0 s": "PASS",
+   "black: no black run > 0.3 s": "PASS",
+   "end: frozen end hold < 1.4 s": "PASS",
+   "sound: -14 LUFS +-1": "PASS",
+   "sound: true peak <= -1 dBTP": "PASS"
+  }
+ },
+ {
+  "file": "ATTEMPT_214_short_1080x1920.mp4",
+  "duration": 55.583333,
+  "size": "1080x1920",
+  "fps": "24/1",
+  "first_frame_luma": 137.5,
+  "first_motion_s": 0.4,
+  "longest_still_s": 1.4,
+  "longest_black_s": 0.0,
+  "end_hold_s": 0.0,
+  "mean_change": 3.71,
+  "lufs": -13.9,
+  "true_peak": -1.8,
+  "lra": 10.3,
+  "rules": {
+   "hook: frame one lit (luma > 20)": "PASS",
+   "hook: motion within 1 s": "PASS",
+   "pace: no still stretch > 2.0 s": "PASS",
+   "black: no black run > 0.3 s": "PASS",
+   "end: frozen end hold < 1.4 s": "PASS",
+   "sound: -14 LUFS +-1": "PASS",
+   "sound: true peak <= -1 dBTP": "PASS"
+  }
+ }
+]

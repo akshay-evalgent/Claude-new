@@ -1,6 +1,6 @@
 # ATTEMPT 214 · upload kit for whatifgraphics
 
-The film and its Short, made in the Impasto · Palette Knife style. The files are in `film/attempt214/release/`. The master MP4 is over GitHub's 100 MB file limit, so it is not in git: it was sent with this kit, and section 6 rebuilds it.
+The film and its Short, made in the Impasto · Palette Knife style. The files are in `film/attempt214/release/`. The master MP4 (150 s, 225 MB) is over GitHub's 100 MB file limit, so it is not in git: it was sent with this kit, and section 6 rebuilds it.
 
 | File | What it is | Where it goes |
 |---|---|---|
@@ -121,7 +121,17 @@ It tells you whether views are still growing period over period (R > 1) or fadin
 
 ## 4. Pre-flight results
 
-PREFLIGHT_TABLE
+| Check | Rule | Film | Short |
+|---|---|---|---|
+| Frame one brightness (luma) | > 20 | 99.2 | 137.5 |
+| First motion | ≤ 1 s | 0.0 s | 0.4 s |
+| Longest unchanged stretch | ≤ 2.0 s | 1.7 s | 1.4 s |
+| Longest black | ≤ 0.3 s | 0.0 s | 0.0 s |
+| Frozen end hold | < 1.4 s | 0.0 s | 0.0 s |
+| Loudness | −14 LUFS ± 1 | -13.9 LUFS | -13.9 LUFS |
+| True peak | ≤ −1 dBTP | -3.6 dBTP | -1.8 dBTP |
+
+Every rule passes on both files. Numbers are measured from the finished MP4s (`release/preflight.json`).
 
 Before posting, watch it once with sound on headphones. The mix was balanced by measurement, not by ear.
 

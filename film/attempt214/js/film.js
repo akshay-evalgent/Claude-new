@@ -447,7 +447,7 @@ export const FILM = {
         const P = new FG.Painter();
         // two planes keep crossing, small, far away
         for (let i = 0; i < 4; i++) { const blue = i % 2 === 1, u = ((t * 0.18 + i * 0.25) % 1); const p = [lerp(blue ? 2300 : 100, blue ? 100 : 2300, u), 1250 - Math.sin(u * Math.PI) * 300 - i * 30]; FG.plane(P, p, blue ? Math.PI + 0.2 - u * 0.4 : -0.2 + u * 0.4, { scale: 0.6, bank: 0.6, blue, seed: 7900 + i }); }
-        const cam = camIn({ x: 1200, y: 750, z: 1.0 + t * 0.006 }, 2400, 1500, W, H);
+        const cam = camIn(vertical ? { x: 1170 + t * 16, y: 760, z: 1.3 + t * 0.03 } : { x: 1200, y: 750, z: 1.0 + t * 0.006 }, 2400, 1500, W, H);   // vertical: a slow drift so the hold is never still
         P.flush(E, E.layer, cam);
         if (t < 5.6) return { A, B: B1, cam, mix: seg(t, 0.4, 1.6) * 1.05 - seg(t, 4.6, 5.4) * 1.05, mixDir: [1, 0], mixSpan: W * 0.8, mixOff: W * 0.12, grey: 0, light: [-0.6, 0.45, 0.4], lightCol: [1.08, 1.02, 0.92] };
         return { A, B: B2, cam, mix: seg(t, 5.8, 7.0) * 1.05, mixDir: [1, 0], mixSpan: W * 0.8, mixOff: W * 0.12, grey: 0, light: [-0.6, 0.45, 0.4], lightCol: [1.08, 1.02, 0.92] };
