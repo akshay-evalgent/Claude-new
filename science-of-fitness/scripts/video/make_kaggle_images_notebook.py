@@ -13,7 +13,7 @@ from make_kaggle_notebook import SETUP, INSTALL, WANGP_REF, md, code
 SETTINGS = f"""
 ATTENTION = "sdpa"
 PROFILE   = 4
-CHUNK     = 1          # jobs per WanGP run (one per run keeps each model separate)
+CHUNK     = 12         # jobs per WanGP run
 HOURS     = 11.0
 WANGP_REF = "{WANGP_REF}"
 """
@@ -28,7 +28,7 @@ for root, _, files in os.walk("/kaggle/input"):
 def refs_of(j):
     v = j.get("image_start")
     return list(j.get("image_refs", [])) + ([v] if isinstance(v, str) else list(v or []))
-missing = sorted({r for j in JOBS for r in refs_of(j) if r not in found})
+missing = sorted({r for j in JOBS for r in refs_of(j) if r not in found and not r.startswith("@")})  # "@name": made earlier in this run
 assert not missing, f"reference images not found in /kaggle/input: {missing}"
 done = {os.path.splitext(f)[0] for f in os.listdir(f"{WORK}/results")} if os.path.isdir(f"{WORK}/results") else set()
 QUEUE = []
@@ -36,9 +36,9 @@ for j in JOBS:
     if j["output_filename"] in done:
         continue
     if j.get("image_refs"):
-        j["image_refs"] = [found[r] for r in j["image_refs"]]
+        j["image_refs"] = [found.get(r, r) for r in j["image_refs"]]
     if isinstance(j.get("image_start"), str):
-        j["image_start"] = found[j["image_start"]]
+        j["image_start"] = found.get(j["image_start"], j["image_start"])
     QUEUE.append(j)
 print(len(QUEUE), "jobs to run")
 """
@@ -66,6 +66,19 @@ for n in range(0, (len(QUEUE) + CHUNK - 1) // CHUNK):
     tasks = QUEUE[n * CHUNK:(n + 1) * CHUNK]
     if per and per * len(tasks) > HOURS * 3600 - (time.time() - T0):
         print("Stopping before the time limit. Run again to continue."); break
+    for j in tasks:  # point "@name" references at images made by earlier chunks
+        for key in ("image_start", "image_refs"):
+            v = j.get(key)
+            vals = v if isinstance(v, list) else [v]
+            new = []
+            for x in vals:
+                if isinstance(x, str) and x.startswith("@"):
+                    hit = [f for f in os.listdir(IMAGES) if os.path.splitext(f)[0] == x[1:]]
+                    assert hit, f"{x[1:]} was not made"
+                    x = f"{IMAGES}/{hit[0]}"
+                new.append(x)
+            if v is not None:
+                j[key] = new if isinstance(v, list) else new[0]
     path = f"{TMP}/img-chunk-{n:02d}.json"
     json.dump(tasks, open(path, "w"))
     cmd = (f"cd {WANGP} && {sys.executable} wgp.py --process {path} --output-dir {RAW} "
