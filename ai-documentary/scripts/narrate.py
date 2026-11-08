@@ -11,8 +11,8 @@ import soundfile as sf
 from kokoro_onnx import Kokoro
 
 LEAD, GAP, TAIL = 1.5, 1.4, 4.0  # silence before the first line, between beats, and for the end card
-SAY = [(r"\bBrihadeeswarar\b", "Bree-ha-dee-shwa-rar"), (r"\bThanjavur\b", "Tun-jah-voor"), (r"\bChola\b", "Cho-la"),
-       (r"\bRaja Raja\b", "Raa-ja Raa-ja"), (r"\b1003\b", "ten oh three"), (r"\b1010\b", "ten ten")]
+SAY = [(r"\bBrihadeeswarar\b", "Bree-hud-eesh-wa-rar"), (r"\bThanjavur\b", "Tun-jah-voor"), (r"\bChola\b", "Cho-la"),
+       (r"\bRaja Raja\b", "Raaja Raaja"), (r"\b1003\b", "ten oh three"), (r"\b1010\b", "ten ten")]
 
 
 def speakable(t):
