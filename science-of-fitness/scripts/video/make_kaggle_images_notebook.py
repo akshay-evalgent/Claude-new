@@ -3,7 +3,7 @@
     python3 scripts/video/make_kaggle_images_notebook.py JOBS.json OUT.ipynb
 
 Reuses the GPU check and WanGP install cells of the shot notebook. Reference images come from an attached Kaggle
-dataset (run_on_kaggle.py --images uploads them). Results: /kaggle/working/images/<name>.png and images.zip.
+dataset (run_on_kaggle.py --images uploads them). Results: /kaggle/working/results/<name>.png|mp4 and results.zip.
 """
 import json, os, sys
 
@@ -13,7 +13,7 @@ from make_kaggle_notebook import SETUP, INSTALL, WANGP_REF, md, code
 SETTINGS = f"""
 ATTENTION = "sdpa"
 PROFILE   = 4
-CHUNK     = 7          # images per WanGP run (one model per run in the photoreal test)
+CHUNK     = 1          # jobs per WanGP run (one per run keeps each model separate)
 HOURS     = 11.0
 WANGP_REF = "{WANGP_REF}"
 """
@@ -25,22 +25,27 @@ found = {}
 for root, _, files in os.walk("/kaggle/input"):
     for f in files:
         found.setdefault(f, os.path.join(root, f))
-missing = sorted({r for j in JOBS for r in j.get("image_refs", []) if r not in found})
+def refs_of(j):
+    v = j.get("image_start")
+    return list(j.get("image_refs", [])) + ([v] if isinstance(v, str) else list(v or []))
+missing = sorted({r for j in JOBS for r in refs_of(j) if r not in found})
 assert not missing, f"reference images not found in /kaggle/input: {missing}"
-done = {os.path.splitext(f)[0] for f in os.listdir(f"{WORK}/images")} if os.path.isdir(f"{WORK}/images") else set()
+done = {os.path.splitext(f)[0] for f in os.listdir(f"{WORK}/results")} if os.path.isdir(f"{WORK}/results") else set()
 QUEUE = []
 for j in JOBS:
     if j["output_filename"] in done:
         continue
     if j.get("image_refs"):
         j["image_refs"] = [found[r] for r in j["image_refs"]]
+    if isinstance(j.get("image_start"), str):
+        j["image_start"] = found[j["image_start"]]
     QUEUE.append(j)
-print(len(QUEUE), "images to make")
+print(len(QUEUE), "jobs to run")
 """
 
 RUN = r"""
 import zipfile
-IMAGES = f"{WORK}/images"
+IMAGES = f"{WORK}/results"
 os.makedirs(IMAGES, exist_ok=True)
 
 def collect():
@@ -48,10 +53,10 @@ def collect():
     for root, _, files in os.walk(RAW):
         for f in files:
             stem, ext = os.path.splitext(f)
-            if ext.lower() in (".png", ".jpg", ".jpeg", ".webp"):
+            if ext.lower() in (".png", ".jpg", ".jpeg", ".webp", ".mp4"):
                 stem = re.sub(r"\(\d+\)$", "", stem)
                 shutil.copy2(os.path.join(root, f), f"{IMAGES}/{stem}{ext.lower()}"); n += 1
-    with zipfile.ZipFile(f"{WORK}/images.zip", "w") as z:
+    with zipfile.ZipFile(f"{WORK}/results.zip", "w") as z:
         for f in sorted(os.listdir(IMAGES)):
             z.write(f"{IMAGES}/{f}", f)
     return n
@@ -70,7 +75,7 @@ for n in range(0, (len(QUEUE) + CHUNK - 1) // CHUNK):
     t = time.time()
     code = sh(cmd, check=False)
     per = (time.time() - t) / len(tasks)
-    print(f"chunk {n + 1}: exit {code}, {per:.0f} s per image, {collect()} images so far, "
+    print(f"chunk {n + 1}: exit {code}, {per:.0f} s per job, {collect()} results so far, "
           f"{(time.time() - T0) / 3600:.1f} h", flush=True)
 print(sorted(os.listdir(IMAGES)))
 shutil.rmtree(RAW, ignore_errors=True)

@@ -129,13 +129,13 @@ def run_images(a):
     out = tempfile.mkdtemp(prefix="kaggle-out-")
     kaggle("kernels", "output", kid, "-p", out, "-o", check=False)
     os.makedirs(a.out, exist_ok=True)
-    z = os.path.join(out, "images.zip")
+    z = os.path.join(out, "results.zip")
     if os.path.exists(z):
         with zipfile.ZipFile(z) as f:
             f.extractall(a.out)
-            print(f"{len(f.namelist())} images -> {a.out}")
+            print(f"{len(f.namelist())} results -> {a.out}")
     else:
-        print("No images.zip. Output files:", os.listdir(out))
+        print("No results.zip. Output files:", os.listdir(out))
     print("Output and log:", out)
 
 
