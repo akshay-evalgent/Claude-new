@@ -3,6 +3,7 @@
     pip install kaggle
     python3 scripts/video/run_on_kaggle.py [--set hero] [--model 5b] [--res ""] [--no-wait] [--dry-run]
     python3 scripts/video/run_on_kaggle.py --fetch      # just download the last run's output
+    python3 scripts/video/run_on_kaggle.py --images JOBS.json --out DIR   # image jobs (scripts/video/kaggle_images.py)
 
 Credentials come from the environment: KAGGLE_USERNAME + KAGGLE_KEY, or KAGGLE_API_TOKEN (+ KAGGLE_USERNAME),
 or ~/.kaggle/kaggle.json. The kernel is pushed as a private notebook with a T4 GPU and internet on. When it finishes,
@@ -71,6 +72,73 @@ def fetch(kid):
     return out
 
 
+def push_and_wait(d, kid, wait=True):
+    print(kaggle("kernels", "push", "-p", d).strip())
+    print(f"Running on Kaggle: https://www.kaggle.com/code/{kid}")
+    if not wait:
+        return False
+    t0, last = time.time(), None
+    while True:
+        time.sleep(120)
+        s = kaggle("kernels", "status", kid, check=False).strip()
+        st = re.search(r'status "?(?:KernelWorkerStatus\.)?(\w+)', s, re.I)
+        st = st.group(1).lower() if st else s
+        if st != last:
+            print(f"[{(time.time() - t0) / 60:.0f} min] {st}", flush=True); last = st
+        if st in ("complete", "error", "cancelacknowledged", "cancelrequested"):
+            return st == "complete"
+
+
+def upload_refs(user, refs, slug):
+    """Create or update a private dataset holding the reference images; returns its id."""
+    did = f"{user}/{slug}"
+    d = tempfile.mkdtemp(prefix="kaggle-refs-")
+    for r in refs:
+        shutil.copy2(r, d)
+    json.dump({"title": slug, "id": did, "licenses": [{"name": "other"}]}, open(os.path.join(d, "dataset-metadata.json"), "w"))
+    exists = subprocess.run(["kaggle", "datasets", "status", did], capture_output=True, text=True).returncode == 0
+    if exists:
+        print(kaggle("datasets", "version", "-p", d, "-m", "update refs", "--dir-mode", "zip").strip())
+    else:
+        print(kaggle("datasets", "create", "-p", d, "--dir-mode", "zip").strip())
+    for _ in range(30):  # wait until Kaggle has processed it
+        if "ready" in kaggle("datasets", "status", did, check=False).lower():
+            break
+        time.sleep(10)
+    return did
+
+
+def run_images(a):
+    from make_kaggle_images_notebook import main as make_nb
+    user = username()
+    spec = json.load(open(a.images))
+    slug = f"sof-images-{os.path.splitext(os.path.basename(a.images))[0]}".lower().replace("_", "-")
+    kid = f"{user}/{slug}"
+    did = upload_refs(user, spec["refs"], "sof-refs") if spec["refs"] else None
+    d = tempfile.mkdtemp(prefix="kaggle-kernel-")
+    jobs = os.path.join(d, "jobs.json")
+    json.dump({"jobs": spec["jobs"]}, open(jobs, "w"), indent=1, ensure_ascii=False)
+    make_nb(jobs, os.path.join(d, f"{slug}.ipynb"))
+    os.remove(jobs)
+    json.dump({"id": kid, "title": slug, "code_file": f"{slug}.ipynb", "language": "python", "kernel_type": "notebook",
+               "is_private": True, "enable_gpu": True, "enable_tpu": False, "enable_internet": True,
+               "machine_shape": "NvidiaTeslaT4", "dataset_sources": [did] if did else [], "competition_sources": [],
+               "kernel_sources": [], "model_sources": []}, open(os.path.join(d, "kernel-metadata.json"), "w"), indent=1)
+    if not push_and_wait(d, kid, not a.no_wait):
+        print("Run did not complete; fetching what exists.")
+    out = tempfile.mkdtemp(prefix="kaggle-out-")
+    kaggle("kernels", "output", kid, "-p", out, "-o", check=False)
+    os.makedirs(a.out, exist_ok=True)
+    z = os.path.join(out, "images.zip")
+    if os.path.exists(z):
+        with zipfile.ZipFile(z) as f:
+            f.extractall(a.out)
+            print(f"{len(f.namelist())} images -> {a.out}")
+    else:
+        print("No images.zip. Output files:", os.listdir(out))
+    print("Output and log:", out)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--set", default="hero")
@@ -80,7 +148,12 @@ def main():
     ap.add_argument("--no-wait", action="store_true")
     ap.add_argument("--fetch", action="store_true", help="only download the last run's output")
     ap.add_argument("--dry-run", action="store_true", help="write the kernel folder but don't push")
+    ap.add_argument("--images", default=None, help="image job file from kaggle_images.py")
+    ap.add_argument("--out", default="kaggle-images", help="where --images results are unzipped")
     a = ap.parse_args()
+    if a.images:
+        sys.path.insert(0, HERE)
+        return run_images(a)
 
     kid = f"{username()}/{SLUG}" if not a.dry_run else f"USERNAME/{SLUG}"
     if a.fetch:
@@ -97,20 +170,9 @@ def main():
     if a.dry_run:
         print("kernel folder:", d); return
 
-    print(kaggle("kernels", "push", "-p", d).strip())
-    print(f"Running on Kaggle: https://www.kaggle.com/code/{kid}")
+    push_and_wait(d, kid, not a.no_wait)
     if a.no_wait:
         return
-    t0, last = time.time(), None
-    while True:
-        time.sleep(120)
-        s = kaggle("kernels", "status", kid, check=False).strip()
-        st = re.search(r'status "?(?:KernelWorkerStatus\.)?(\w+)', s, re.I)
-        st = st.group(1).lower() if st else s
-        if st != last:
-            print(f"[{(time.time() - t0) / 60:.0f} min] {st}", flush=True); last = st
-        if st in ("complete", "error", "cancelacknowledged", "cancelrequested"):
-            break
     fetch(kid)
 
 

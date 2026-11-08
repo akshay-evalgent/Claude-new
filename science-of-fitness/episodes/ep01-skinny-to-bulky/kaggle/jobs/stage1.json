@@ -1,0 +1,532 @@
+{
+ "jobs": [
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "Character model sheet of one character drawn four times side by side at the same size: front view, three-quarter view, side profile and back view, full body, standing relaxed with arms at his sides. Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome. Only the shorts are teal. Plain light-grey background, even lighting, the whole body visible, no text, no labels, no logos.",
+   "resolution": "1536x1024",
+   "seed": 300,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "sheet_rohan_1"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "Character model sheet of one character drawn four times side by side at the same size: front view, three-quarter view, side profile and back view, full body, standing relaxed with arms at his sides. Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome. Only the shorts are teal. Plain light-grey background, even lighting, the whole body visible, no text, no labels, no logos.",
+   "resolution": "1536x1024",
+   "seed": 301,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "sheet_rohan_2"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "Character model sheet of one character drawn four times side by side at the same size: front view, three-quarter view, side profile and back view, full body, standing relaxed with arms at his sides. Rohan, a very skinny 18-year-old South Asian guy: narrow shoulders, flat chest, visible collarbones, thin arms and very thin wrists, bony elbows and knees, long thin neck, slight forward slouch; short messy black hair with a fringe over his forehead; big expressive dark eyes; light warm-grey skin tone; oversized plain white t-shirt hanging loose on his frame, teal shorts, white sneakers. 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome. Only the shorts are teal. Plain light-grey background, even lighting, the whole body visible, no text, no labels, no logos.",
+   "resolution": "1536x1024",
+   "seed": 302,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "sheet_rohan_3"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "Character model sheet of one character drawn four times side by side at the same size: front view, three-quarter view, side profile and back view, full body, arms crossed in the front view. Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome. He is muscular, not fat: a bodybuilder's V-shaped torso and a narrow waist. He has no color at all. Plain light-grey background, even lighting, the whole body visible, no text, no labels, no logos.",
+   "resolution": "1536x1024",
+   "seed": 310,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "sheet_tiger_1"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "Character model sheet of one character drawn four times side by side at the same size: front view, three-quarter view, side profile and back view, full body, arms crossed in the front view. Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome. He is muscular, not fat: a bodybuilder's V-shaped torso and a narrow waist. He has no color at all. Plain light-grey background, even lighting, the whole body visible, no text, no labels, no logos.",
+   "resolution": "1536x1024",
+   "seed": 311,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "sheet_tiger_2"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "Character model sheet of one character drawn four times side by side at the same size: front view, three-quarter view, side profile and back view, full body, arms crossed in the front view. Tiger, a huge bald bodybuilder in his mid-20s: thick neck, short stubble beard, big cocky grin, massive shoulders and arms, grey tank top, grey joggers, grey sneakers, small towel over one shoulder; drawn only in flat grey tones. 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome. He is muscular, not fat: a bodybuilder's V-shaped torso and a narrow waist. He has no color at all. Plain light-grey background, even lighting, the whole body visible, no text, no labels, no logos.",
+   "resolution": "1536x1024",
+   "seed": 312,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "sheet_tiger_3"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "Character sheet of tiny chibi construction workers: three builders in teal hard hats, one carrying a glowing amber brick, one pushing a wheelbarrow of amber bricks, one waving; and two demolition workers in coral hard hats holding tiny hammers. 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome. Plain light-grey background, even lighting, the whole body visible, no text, no labels, no logos.",
+   "resolution": "1536x1024",
+   "seed": 320,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "sheet_crew_1"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "Character sheet of tiny chibi construction workers: three builders in teal hard hats, one carrying a glowing amber brick, one pushing a wheelbarrow of amber bricks, one waving; and two demolition workers in coral hard hats holding tiny hammers. 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome. Plain light-grey background, even lighting, the whole body visible, no text, no labels, no logos.",
+   "resolution": "1536x1024",
+   "seed": 321,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "sheet_crew_2"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "Character sheet of tiny chibi construction workers: three builders in teal hard hats, one carrying a glowing amber brick, one pushing a wheelbarrow of amber bricks, one waving; and two demolition workers in coral hard hats holding tiny hammers. 2D anime, black-and-white seinen manga look, crisp black ink lines, grey screentone shading and hatching; only teal, coral and amber elements are in color, everything else monochrome. Plain light-grey background, even lighting, the whole body visible, no text, no labels, no logos.",
+   "resolution": "1536x1024",
+   "seed": 322,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "sheet_crew_3"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "character model sheet on a solid near-black background, the same young man as in image 1 (same face, hair, build and teal shorts) drawn three times standing in a row, full body: left figure faces the viewer (front view), middle figure in side profile, right figure seen from behind (back view), lean athletic young man about 20, short black messy hair falling over his forehead, calm focused eyes, bare chest, teal training shorts with a thin white side stripe, barefoot, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "1536x1024",
+   "seed": 500,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "host_a_turnaround_1",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "character model sheet on a solid near-black background, the same young man as in image 1 (same face, hair, build and teal shorts) drawn three times standing in a row, full body: left figure faces the viewer (front view), middle figure in side profile, right figure seen from behind (back view), lean athletic young man about 20, short black messy hair falling over his forehead, calm focused eyes, bare chest, teal training shorts with a thin white side stripe, barefoot, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "1536x1024",
+   "seed": 501,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "host_a_turnaround_2",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "character expression sheet on a solid near-black background, six head and shoulders portraits of the same young man as in image 1 (same face, hair, build and teal shorts) in a 3 by 2 grid: calm, smiling, surprised, determined, thinking with hand on chin, laughing, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, grayscale",
+   "resolution": "1536x1024",
+   "seed": 510,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "host_a_expressions_1",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "character expression sheet on a solid near-black background, six head and shoulders portraits of the same young man as in image 1 (same face, hair, build and teal shorts) in a 3 by 2 grid: calm, smiling, surprised, determined, thinking with hand on chin, laughing, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, grayscale",
+   "resolution": "1536x1024",
+   "seed": 511,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "host_a_expressions_2",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "exact side view of the same young man as in image 1 (same face, hair, build and teal shorts) in a high plank push-up position on the floor: arms straight and vertical, hands directly under the shoulders, body in one straight line from head to heels, hips level with the shoulders, not raised, toes on the floor, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "1344x768",
+   "seed": 520,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "pose_pushup_1",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "exact side view of the same young man as in image 1 (same face, hair, build and teal shorts) in a high plank push-up position on the floor: arms straight and vertical, hands directly under the shoulders, body in one straight line from head to heels, hips level with the shoulders, not raised, toes on the floor, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "1344x768",
+   "seed": 521,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "pose_pushup_2",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "exact side view of the same young man as in image 1 (same face, hair, build and teal shorts) holding a forearm plank: both forearms flat on the floor, elbows directly under the shoulders, body in one straight line from head to heels, hips level, toes on the floor, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "1344x768",
+   "seed": 530,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "pose_plank_1",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "exact side view of the same young man as in image 1 (same face, hair, build and teal shorts) holding a forearm plank: both forearms flat on the floor, elbows directly under the shoulders, body in one straight line from head to heels, hips level, toes on the floor, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "1344x768",
+   "seed": 531,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "pose_plank_2",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "exact side view of the same young man as in image 1 (same face, hair, build and teal shorts) at the bottom of a bodyweight squat: thighs parallel to the floor, heels flat, knees over the toes, chest up, back straight, arms reaching forward for balance, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "896x1152",
+   "seed": 540,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "pose_squat_1",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "exact side view of the same young man as in image 1 (same face, hair, build and teal shorts) at the bottom of a bodyweight squat: thighs parallel to the floor, heels flat, knees over the toes, chest up, back straight, arms reaching forward for balance, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "896x1152",
+   "seed": 541,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "pose_squat_2",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "side view of the same young man as in image 1 (same face, hair, build and teal shorts) doing an inverted row on an open door: both hands grip the two door handles, feet together on the floor either side of the door edge, body leaning back in a straight line, arms pulling his chest toward the door, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "1152x896",
+   "seed": 550,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "pose_door_row_1",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "side view of the same young man as in image 1 (same face, hair, build and teal shorts) doing an inverted row on an open door: both hands grip the two door handles, feet together on the floor either side of the door edge, body leaning back in a straight line, arms pulling his chest toward the door, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "1152x896",
+   "seed": 551,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "pose_door_row_2",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "the same young man as in image 1 (same face, hair, build and teal shorts) flexing both biceps, front view, waist up, the biceps muscles glow bright coral red like an anatomy highlight, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal and the biceps glow coral, everything else grayscale",
+   "resolution": "896x1152",
+   "seed": 560,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "pose_flex_glow_1",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "the same young man as in image 1 (same face, hair, build and teal shorts) flexing both biceps, front view, waist up, the biceps muscles glow bright coral red like an anatomy highlight, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal and the biceps glow coral, everything else grayscale",
+   "resolution": "896x1152",
+   "seed": 561,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "pose_flex_glow_2",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "the same young man as in image 1 (same face, hair, build and teal shorts) pointing to the side and explaining something, friendly teacher pose, waist up, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "896x1152",
+   "seed": 570,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "pose_explain_1",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "the same young man as in image 1 (same face, hair, build and teal shorts) pointing to the side and explaining something, friendly teacher pose, waist up, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "896x1152",
+   "seed": 571,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "pose_explain_2",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "the same young man as in image 1 (same face, hair, build and teal shorts) holding out a handful of pumpkin seeds toward the viewer, waist up, the seeds glow warm amber, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal and the seeds amber, everything else grayscale",
+   "resolution": "896x1152",
+   "seed": 580,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "pose_seeds_1",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "the same young man as in image 1 (same face, hair, build and teal shorts) holding out a handful of pumpkin seeds toward the viewer, waist up, the seeds glow warm amber, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal and the seeds amber, everything else grayscale",
+   "resolution": "896x1152",
+   "seed": 581,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "pose_seeds_2",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "manga panel, side view: the same young man as in image 1 (same face, hair, build and teal shorts) on the left winning a tug of war, leaning back and pulling a thick rope, against a huge muscular bald bodybuilder man with stubble, massive shoulders and arms, loud cocky expression, grey tank top and grey sweatpants, comedic but friendly, drawn in flat grey tones on the right who stumbles forward, shocked, dramatic, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "1536x896",
+   "seed": 590,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "versus_tugofwar_1",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "manga panel, side view: the same young man as in image 1 (same face, hair, build and teal shorts) on the left winning a tug of war, leaning back and pulling a thick rope, against a huge muscular bald bodybuilder man with stubble, massive shoulders and arms, loud cocky expression, grey tank top and grey sweatpants, comedic but friendly, drawn in flat grey tones on the right who stumbles forward, shocked, dramatic, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "1536x896",
+   "seed": 591,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "versus_tugofwar_2",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "manga ink before and after split in two halves: on the left the same young man as in image 1 (same face, hair, build and teal shorts) but skinny and hunched, thin arms, narrow shoulders; on the right the same young man lean, upright and confident, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "1536x896",
+   "seed": 600,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "mood_skinny_fit_1",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "manga ink before and after split in two halves: on the left the same young man as in image 1 (same face, hair, build and teal shorts) but skinny and hunched, thin arms, narrow shoulders; on the right the same young man lean, upright and confident, black and white seinen manga illustration, detailed pencil hatching and ink shading, realistic muscle anatomy, clean confident linework, solid near-black background, only the shorts are teal colored, everything else is grayscale",
+   "resolution": "1536x896",
+   "seed": 601,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "mood_skinny_fit_2",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "cinematic dark scene, the same young man as in image 1 (same face, hair, build and teal shorts) seen from behind, standing in front of a giant floating manga ink anatomy diagram of a human arm muscle, faint teal glow, moody, black and white manga with teal accent, near-black background",
+   "resolution": "1536x896",
+   "seed": 610,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "mood_lab_1",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "cinematic dark scene, the same young man as in image 1 (same face, hair, build and teal shorts) seen from behind, standing in front of a giant floating manga ink anatomy diagram of a human arm muscle, faint teal glow, moody, black and white manga with teal accent, near-black background",
+   "resolution": "1536x896",
+   "seed": 611,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "mood_lab_2",
+   "video_prompt_type": "I",
+   "image_refs": [
+    "host_a_front.jpg"
+   ]
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "full body character design, front view, arms crossed, huge muscular bald bodybuilder man with stubble, massive shoulders and arms, loud cocky expression, grey tank top and grey sweatpants, comedic but friendly, drawn in flat grey tones, black and white manga illustration, ink shading, solid near-black background, grayscale",
+   "resolution": "768x1152",
+   "seed": 620,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "rival_front_1"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "full body character design, front view, arms crossed, huge muscular bald bodybuilder man with stubble, massive shoulders and arms, loud cocky expression, grey tank top and grey sweatpants, comedic but friendly, drawn in flat grey tones, black and white manga illustration, ink shading, solid near-black background, grayscale",
+   "resolution": "768x1152",
+   "seed": 621,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "rival_front_2"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "manga ink still life seen from above: a plate with grilled chicken, rice, broccoli and a fried egg, beside a glass of milk, grayscale with thin warm amber outlines, solid near-black background",
+   "resolution": "1344x768",
+   "seed": 630,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "food_plate_1"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "manga ink still life seen from above: a plate with grilled chicken, rice, broccoli and a fried egg, beside a glass of milk, grayscale with thin warm amber outlines, solid near-black background",
+   "resolution": "1344x768",
+   "seed": 631,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "food_plate_2"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "manga ink still life of magnesium-rich foods in a row: pumpkin seeds, spinach leaves, almonds, black beans and a square of dark chocolate, grayscale with a warm amber glow, solid near-black background",
+   "resolution": "1344x768",
+   "seed": 640,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "food_minerals_1"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "flux2_klein_4b",
+   "image_mode": 1,
+   "prompt": "manga ink still life of magnesium-rich foods in a row: pumpkin seeds, spinach leaves, almonds, black beans and a square of dark chocolate, grayscale with a warm amber glow, solid near-black background",
+   "resolution": "1344x768",
+   "seed": 641,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "food_minerals_2"
+  }
+ ],
+ "refs": [
+  "/home/user/Claude-new/science-of-fitness/scripts/video/../../board/gen/host_a_front.jpg"
+ ]
+}
