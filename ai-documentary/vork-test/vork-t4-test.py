@@ -53,8 +53,16 @@ txt = open(src_icd).read().replace("__NV_VK_ICD__", "libGLX_nvidia.so.0") if os.
 open("/usr/share/vulkan/icd.d/nvidia_icd.json", "w").write(txt)
 print(txt)
 
+
+sh("env | grep -i -E 'NVIDIA_DRIVER_CAPABILITIES|NVIDIA_VISIBLE|CUDA_VERSION'; ls -la /dev/nvidia* /dev/dri 2>&1")
+sh("ldd /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.0 | grep -i 'not found' ; echo ldd-done")
+sh("VK_LOADER_DEBUG=error,warn,driver vulkaninfo --summary 2>&1 | grep -v '^$' | head -40")
+
 sh("vulkaninfo --summary 2>&1 | head -40")
 sh("vulkaninfo 2>/dev/null | grep -E 'VK_KHR_ray_query|VK_KHR_acceleration_structure|deviceName' | sort -u | head")
+rc, vk = sh("vulkaninfo --summary 2>&1 | head -5")
+if "no drivers" in vk or rc:
+    print("Vulkan still unavailable; skipping vork."); raise SystemExit(0)
 sh("curl -fL https://github.com/voyager-so/vork/releases/latest/download/install.sh -o /tmp/vork-install.sh && VORK_NO_MODIFY_PATH=1 sh /tmp/vork-install.sh", t=1500)
 os.environ["PATH"] = os.path.expanduser("~/.local/bin") + ":" + os.environ["PATH"]
 sh("vork setup", t=1500)
