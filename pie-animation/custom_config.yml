@@ -1,0 +1,7 @@
+# Picked up automatically when manimgl is run from this folder.
+camera:
+  background_color: "#1C1D22"
+tex:
+  # The "default" template pulls in many LaTeX packages (physics, calligra, ...).
+  # "basic" only needs amsmath/amssymb/xcolor, so a small TeX install is enough.
+  template: "basic"
