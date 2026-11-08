@@ -13,7 +13,7 @@ from make_kaggle_notebook import SETUP, INSTALL, WANGP_REF, md, code
 SETTINGS = f"""
 ATTENTION = "sdpa"
 PROFILE   = 4
-CHUNK     = 20         # images per WanGP run
+CHUNK     = 7          # images per WanGP run (one model per run in the photoreal test)
 HOURS     = 11.0
 WANGP_REF = "{WANGP_REF}"
 """

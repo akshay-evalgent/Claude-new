@@ -1,0 +1,243 @@
+{
+ "jobs": [
+  {
+   "settings_version": 2.83,
+   "model_type": "z_image",
+   "image_mode": 1,
+   "prompt": "A nautilus shell cut in half on a dark slate surface, its chambers forming a perfect golden spiral, pearly nacre catching soft window light, tiny scratches and growth lines visible. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2026,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "zimg_nautilus"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "z_image",
+   "image_mode": 1,
+   "prompt": "Extreme close-up of the center of a sunflower at golden hour, florets arranged in perfect interlocking Fibonacci spirals, tiny dew drops, a honeybee at the edge. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2027,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "zimg_sunflower"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "z_image",
+   "image_mode": 1,
+   "prompt": "Macro shot of a romanesco broccoli head, perfect repeating fractal cones spiralling to a point, lime-green, fine water droplets, dark background, side light. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2028,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "zimg_romanesco"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "z_image",
+   "image_mode": 1,
+   "prompt": "Macro photograph of a single snowflake resting on dark blue wool, perfect six-fold crystal symmetry, every branch and ice ridge sharp, soft cold backlight. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2029,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "zimg_snowflake"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "z_image",
+   "image_mode": 1,
+   "prompt": "A young fern frond unfurling into a tight perfect spiral in a misty rainforest, covered in fine hairs and raindrops, soft green bokeh behind. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2030,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "zimg_fern"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "z_image",
+   "image_mode": 1,
+   "prompt": "Wide symmetrical landscape at dawn: a snow-capped mountain perfectly mirrored in a glassy still alpine lake, thin mist on the water, pine trees on both shores, centred composition. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2031,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "zimg_lake"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "z_image",
+   "image_mode": 1,
+   "prompt": "Cinematic photo of a very skinny 18-year-old South Asian guy in an oversized plain white t-shirt and teal shorts, standing in a small dim neighbourhood gym, looking nervously at a loaded barbell, visible collarbones and thin wrists, realistic skin texture, moody window light. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2032,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "zimg_gym_kid"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "krea2_turbo",
+   "image_mode": 1,
+   "prompt": "A nautilus shell cut in half on a dark slate surface, its chambers forming a perfect golden spiral, pearly nacre catching soft window light, tiny scratches and growth lines visible. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2026,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "krea_nautilus"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "krea2_turbo",
+   "image_mode": 1,
+   "prompt": "Extreme close-up of the center of a sunflower at golden hour, florets arranged in perfect interlocking Fibonacci spirals, tiny dew drops, a honeybee at the edge. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2027,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "krea_sunflower"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "krea2_turbo",
+   "image_mode": 1,
+   "prompt": "Macro shot of a romanesco broccoli head, perfect repeating fractal cones spiralling to a point, lime-green, fine water droplets, dark background, side light. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2028,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "krea_romanesco"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "krea2_turbo",
+   "image_mode": 1,
+   "prompt": "Macro photograph of a single snowflake resting on dark blue wool, perfect six-fold crystal symmetry, every branch and ice ridge sharp, soft cold backlight. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2029,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "krea_snowflake"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "krea2_turbo",
+   "image_mode": 1,
+   "prompt": "A young fern frond unfurling into a tight perfect spiral in a misty rainforest, covered in fine hairs and raindrops, soft green bokeh behind. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2030,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "krea_fern"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "krea2_turbo",
+   "image_mode": 1,
+   "prompt": "Wide symmetrical landscape at dawn: a snow-capped mountain perfectly mirrored in a glassy still alpine lake, thin mist on the water, pine trees on both shores, centred composition. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2031,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "krea_lake"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "krea2_turbo",
+   "image_mode": 1,
+   "prompt": "Cinematic photo of a very skinny 18-year-old South Asian guy in an oversized plain white t-shirt and teal shorts, standing in a small dim neighbourhood gym, looking nervously at a loaded barbell, visible collarbones and thin wrists, realistic skin texture, moody window light. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2032,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "krea_gym_kid"
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "qwen_image_2512_20B",
+   "image_mode": 1,
+   "prompt": "A nautilus shell cut in half on a dark slate surface, its chambers forming a perfect golden spiral, pearly nacre catching soft window light, tiny scratches and growth lines visible. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2026,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "qwen_nautilus",
+   "num_inference_steps": 25
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "qwen_image_2512_20B",
+   "image_mode": 1,
+   "prompt": "Extreme close-up of the center of a sunflower at golden hour, florets arranged in perfect interlocking Fibonacci spirals, tiny dew drops, a honeybee at the edge. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2027,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "qwen_sunflower",
+   "num_inference_steps": 25
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "qwen_image_2512_20B",
+   "image_mode": 1,
+   "prompt": "Macro shot of a romanesco broccoli head, perfect repeating fractal cones spiralling to a point, lime-green, fine water droplets, dark background, side light. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2028,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "qwen_romanesco",
+   "num_inference_steps": 25
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "qwen_image_2512_20B",
+   "image_mode": 1,
+   "prompt": "Macro photograph of a single snowflake resting on dark blue wool, perfect six-fold crystal symmetry, every branch and ice ridge sharp, soft cold backlight. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2029,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "qwen_snowflake",
+   "num_inference_steps": 25
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "qwen_image_2512_20B",
+   "image_mode": 1,
+   "prompt": "A young fern frond unfurling into a tight perfect spiral in a misty rainforest, covered in fine hairs and raindrops, soft green bokeh behind. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2030,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "qwen_fern",
+   "num_inference_steps": 25
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "qwen_image_2512_20B",
+   "image_mode": 1,
+   "prompt": "Wide symmetrical landscape at dawn: a snow-capped mountain perfectly mirrored in a glassy still alpine lake, thin mist on the water, pine trees on both shores, centred composition. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2031,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "qwen_lake",
+   "num_inference_steps": 25
+  },
+  {
+   "settings_version": 2.83,
+   "model_type": "qwen_image_2512_20B",
+   "image_mode": 1,
+   "prompt": "Cinematic photo of a very skinny 18-year-old South Asian guy in an oversized plain white t-shirt and teal shorts, standing in a small dim neighbourhood gym, looking nervously at a loaded barbell, visible collarbones and thin wrists, realistic skin texture, moody window light. Ultra-realistic cinematic photograph, shot on a full-frame camera with a macro or prime lens, natural light, real textures and fine surface detail, shallow depth of field, rich but natural color grading, 8k, no text, no watermark.",
+   "resolution": "1344x768",
+   "seed": 2032,
+   "batch_size": 1,
+   "prompt_enhancer": "",
+   "output_filename": "qwen_gym_kid",
+   "num_inference_steps": 25
+  }
+ ],
+ "refs": []
+}
