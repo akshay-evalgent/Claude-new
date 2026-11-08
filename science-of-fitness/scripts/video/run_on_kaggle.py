@@ -73,7 +73,10 @@ def fetch(kid):
 
 
 def push_and_wait(d, kid, wait=True):
-    print(kaggle("kernels", "push", "-p", d).strip())
+    out = kaggle("kernels", "push", "-p", d).strip()
+    print(out)
+    if "error" in out.lower():
+        sys.exit("Push failed; nothing is running on Kaggle.")
     print(f"Running on Kaggle: https://www.kaggle.com/code/{kid}")
     if not wait:
         return False
