@@ -185,12 +185,12 @@ class PieToPi(Scene):
         self.outro(slices)
 
     # -- helpers -----------------------------------------------------------
-    def set_caption(self, text, **kwargs):
+    def set_caption(self, text, run_time=1.0):
         new = Text(text, font=FONT, font_size=34, fill_color=GREY_A)
         new.move_to(2.45 * UP)
         old = getattr(self, "caption", None)
         if old is None:
-            self.play(FadeIn(new, shift=0.15 * UP), **kwargs)
+            self.play(FadeIn(new, shift=0.15 * UP), run_time=run_time)
         else:
             self.play(
                 LaggedStart(
@@ -198,7 +198,7 @@ class PieToPi(Scene):
                     FadeIn(new, shift=0.15 * UP),
                     lag_ratio=0.85,
                 ),
-                **kwargs,
+                run_time=run_time,
             )
         self.caption = new
 
