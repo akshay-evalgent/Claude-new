@@ -1,7 +1,7 @@
 """WanGP job files for an AI-footage documentary (run with science-of-fitness/scripts/video/run_on_kaggle.py --images).
 
     python3 ai-documentary/scripts/doc_jobs.py stills DOC_DIR OUT.json [--only 04C,09A] [--seed-offset 0]
-    python3 ai-documentary/scripts/doc_jobs.py motion DOC_DIR OUT.json [--reroll 04C,09A] [--seed-offset 100]
+    python3 ai-documentary/scripts/doc_jobs.py motion DOC_DIR OUT.json [--reroll 04C,09A] [--clips 01A,02A] [--seed-offset 100]
 
 stills: one Krea 2 Turbo still per shot (1536x864).
 motion: Wan 2.2 5B clip (5 s, 1248x704) for every shot with a motion prompt, starting from DOC_DIR/stills/<id>.jpg.
@@ -22,6 +22,7 @@ def main():
     ap.add_argument("mode", choices=["stills", "motion"])
     ap.add_argument("doc"); ap.add_argument("out")
     ap.add_argument("--only", default=""); ap.add_argument("--reroll", default="")
+    ap.add_argument("--clips", default="", help="motion: animate only these shots (default: every shot with a motion prompt)")
     ap.add_argument("--seed-offset", type=int, default=0)
     a = ap.parse_args()
     spec = json.load(open(os.path.join(a.doc, "shots.json")))
@@ -37,8 +38,9 @@ def main():
         for i, s in enumerate(shots):
             if s["id"] in reroll:
                 jobs.append(still_task(s, 4000 + a.seed_offset + i))  # new still, made first
+        clips = {x.strip() for x in a.clips.split(",") if x.strip()}
         for i, s in enumerate(shots):
-            if not s["motion"]:
+            if not s["motion"] or (clips and s["id"] not in clips):
                 continue
             if s["id"] in reroll:
                 start = "@" + s["id"]

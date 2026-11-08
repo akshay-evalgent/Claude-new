@@ -30,16 +30,16 @@ AI-generated reconstruction. Stills: Krea 2 Turbo. Motion: Wan 2.2 5B. Narration
 
 - **04A** (motion) An ancient granite quarry in 11th-century South India: dozens of workers in white dhotis cutting stone on a huge rock face, dust in the air, morning light, people seen only from a distance or from behind, no close-up faces. *Motion:* Workers swing hammers and move about the rock face, dust drifting in the light, slow pan.
 - **04B** (still) Close-up of a granite surface with a straight row of chiselled wedge holes holding iron wedges, stone dust, a wooden mallet lying beside them.
-- **04C** (motion) A stonecutter seen from behind striking a line of iron wedges in a granite block with a heavy wooden mallet in 11th-century South India, chips flying, warm low sun. *Motion:* He swings the mallet down onto the wedges, stone chips and dust fly, camera holds steady.
+- **04C** (motion) A stonecutter in a white dhoti seen from behind, kneeling on top of a large granite block and striking short iron wedges set into a row of holes along the top surface of the block with a heavy wooden mallet in 11th-century South India, chips flying, warm low sun. *Motion:* He swings the mallet down onto the wedges, stone chips and dust fly, camera holds steady.
 - **04D** (still) A huge granite block split cleanly in two along a line of wedge holes, dust settling, ancient quarry, soft light.
 
 ## Beat 5
 
 > The blocks, some weighing many tonnes, were dragged on wooden sledges and rollers, pulled by teams of people and, very likely, elephants, toward the city.
 
-- **05A** (motion) A huge rectangular granite block on a heavy wooden sledge over log rollers, pulled with thick ropes by a long line of workers on a dusty track in 11th-century South India, people seen only from a distance or from behind, no close-up faces. *Motion:* The line of workers leans into the ropes and pulls forward, the sledge slides slowly, dust rises.
+- **05A** (motion) A huge rectangular granite block on a heavy wooden sledge with flat runners resting on round log rollers, no wheels and no rails, pulled with thick ropes by a long line of workers on a dusty track in 11th-century South India, people seen only from a distance or from behind, no close-up faces. *Motion:* The line of workers leans into the ropes and pulls forward, the sledge slides slowly, dust rises.
 - **05B** (motion) Two Asian elephants pulling thick ropes tied to a large granite block along a riverbank lined with palm trees, golden dust in the light, wide shot. *Motion:* The elephants walk slowly forward, the ropes tighten, dust drifts up.
-- **05C** (still) Wide shot of a long caravan of granite blocks on wooden sledges stretching along a dirt road beside a river toward a distant town, evening light.
+- **05C** (still) Wide shot of a long caravan of granite blocks on wooden sledges stretching along a dirt road beside a river toward a distant South Indian town of thatched roofs and palm trees, no modern buildings, evening light.
 
 ## Beat 6
 
@@ -75,7 +75,7 @@ AI-generated reconstruction. Stills: Krea 2 Turbo. Motion: Wan 2.2 5B. Narration
 
 > Meanwhile, sculptors carved gods, dancers and guardians into the stone. Painters covered the inner walls with murals. And inscriptions on the walls recorded the names of the people who served the temple.
 
-- **10A** (motion) A sculptor seen from behind carving the figure of a dancer into a granite wall with a chisel, stone chips falling, warm oil-lamp light. *Motion:* The chisel taps, small chips fall, dust drifts in the lamp light.
+- **10A** (motion) A sculptor in a white dhoti seen fully from behind, face not visible, carving the figure of a dancer into a granite wall with an iron chisel, stone chips falling, warm light from small clay oil lamps on the floor. *Motion:* The chisel taps, small chips fall, dust drifts in the lamp light.
 - **10B** (still) Detailed ancient carved granite sculptures of Hindu deities and door guardians on a temple wall, weathered stone, side light.
 - **10C** (still) A faded ancient mural on the inner wall of a temple showing dancers and royal figures, cracked plaster, dim warm light.
 - **10D** (still) Close-up of rows of ancient Tamil inscriptions carved into a granite temple wall, raking light, weathered stone.
@@ -85,7 +85,7 @@ AI-generated reconstruction. Stills: Krea 2 Turbo. Motion: Wan 2.2 5B. Narration
 > In about 1010, roughly seven years after it began, the temple was complete. Lamps were lit, and the first rituals began.
 
 - **11A** (motion) Hundreds of small oil lamps glowing along the dark stone corridors of an ancient temple, smoke curling upward. *Motion:* The flames flicker, smoke drifts upward, slow forward dolly along the corridor.
-- **11B** (motion) Two priests in white seen from behind carrying a brass oil lamp toward the dark doorway of an ancient temple sanctum, incense smoke in the air. *Motion:* The priests walk slowly toward the doorway, smoke swirls, the flame flickers.
+- **11B** (motion) Two bare-chested temple priests in white dhotis seen from behind carrying a brass oil lamp toward the dark doorway of an ancient temple sanctum, incense smoke in the air. *Motion:* The priests walk slowly toward the doorway, smoke swirls, the flame flickers.
 - **11C** (still) An ancient granite temple at night lit by fires and oil lamps, its tall tower glowing warm against a starry sky.
 
 ## Beat 12

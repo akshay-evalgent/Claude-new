@@ -36,16 +36,16 @@ BEATS = [
         ("04A", f"An ancient granite quarry {ERA}: dozens of workers in white dhotis cutting stone on a huge rock face, dust in the air, morning light, {CROWD}.",
          "Workers swing hammers and move about the rock face, dust drifting in the light, slow pan."),
         ("04B", "Close-up of a granite surface with a straight row of chiselled wedge holes holding iron wedges, stone dust, a wooden mallet lying beside them.", None),
-        ("04C", f"A stonecutter seen from behind striking a line of iron wedges in a granite block with a heavy wooden mallet {ERA}, chips flying, warm low sun.",
+        ("04C", f"A stonecutter in a white dhoti seen from behind, kneeling on top of a large granite block and striking short iron wedges set into a row of holes along the top surface of the block with a heavy wooden mallet {ERA}, chips flying, warm low sun.",
          "He swings the mallet down onto the wedges, stone chips and dust fly, camera holds steady."),
         ("04D", "A huge granite block split cleanly in two along a line of wedge holes, dust settling, ancient quarry, soft light.", None),
     ]),
     ("The blocks, some weighing many tonnes, were dragged on wooden sledges and rollers, pulled by teams of people and, very likely, elephants, toward the city.", [
-        ("05A", f"A huge rectangular granite block on a heavy wooden sledge over log rollers, pulled with thick ropes by a long line of workers on a dusty track {ERA}, {CROWD}.",
+        ("05A", f"A huge rectangular granite block on a heavy wooden sledge with flat runners resting on round log rollers, no wheels and no rails, pulled with thick ropes by a long line of workers on a dusty track {ERA}, {CROWD}.",
          "The line of workers leans into the ropes and pulls forward, the sledge slides slowly, dust rises."),
         ("05B", "Two Asian elephants pulling thick ropes tied to a large granite block along a riverbank lined with palm trees, golden dust in the light, wide shot.",
          "The elephants walk slowly forward, the ropes tighten, dust drifts up."),
-        ("05C", "Wide shot of a long caravan of granite blocks on wooden sledges stretching along a dirt road beside a river toward a distant town, evening light.", None),
+        ("05C", "Wide shot of a long caravan of granite blocks on wooden sledges stretching along a dirt road beside a river toward a distant South Indian town of thatched roofs and palm trees, no modern buildings, evening light.", None),
     ]),
     ("At the site, the foundations went down first. Then the walls rose, course by course, each stone cut to lock into the next. Much of the temple stands without mortar, held by its own weight and careful joints.", [
         ("06A", f"High view of an ancient construction site {ERA}: the massive square granite base of a temple being built, workers placing stones, wooden scaffolding and ramps, dust, {CROWD}.",
@@ -72,7 +72,7 @@ BEATS = [
         ("09B", "The dome-shaped granite capstone crowning the top of an ancient South Indian temple tower against a clear blue sky, a golden finial on top.", None),
     ]),
     ("Meanwhile, sculptors carved gods, dancers and guardians into the stone. Painters covered the inner walls with murals. And inscriptions on the walls recorded the names of the people who served the temple.", [
-        ("10A", "A sculptor seen from behind carving the figure of a dancer into a granite wall with a chisel, stone chips falling, warm oil-lamp light.",
+        ("10A", "A sculptor in a white dhoti seen fully from behind, face not visible, carving the figure of a dancer into a granite wall with an iron chisel, stone chips falling, warm light from small clay oil lamps on the floor.",
          "The chisel taps, small chips fall, dust drifts in the lamp light."),
         ("10B", "Detailed ancient carved granite sculptures of Hindu deities and door guardians on a temple wall, weathered stone, side light.", None),
         ("10C", "A faded ancient mural on the inner wall of a temple showing dancers and royal figures, cracked plaster, dim warm light.", None),
@@ -81,7 +81,7 @@ BEATS = [
     ("In about 1010, roughly seven years after it began, the temple was complete. Lamps were lit, and the first rituals began.", [
         ("11A", "Hundreds of small oil lamps glowing along the dark stone corridors of an ancient temple, smoke curling upward.",
          "The flames flicker, smoke drifts upward, slow forward dolly along the corridor."),
-        ("11B", "Two priests in white seen from behind carrying a brass oil lamp toward the dark doorway of an ancient temple sanctum, incense smoke in the air.",
+        ("11B", "Two bare-chested temple priests in white dhotis seen from behind carrying a brass oil lamp toward the dark doorway of an ancient temple sanctum, incense smoke in the air.",
          "The priests walk slowly toward the doorway, smoke swirls, the flame flickers."),
         ("11C", "An ancient granite temple at night lit by fires and oil lamps, its tall tower glowing warm against a starry sky.", None),
     ]),
