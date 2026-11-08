@@ -1,0 +1,21 @@
+{
+ "jobs": [
+  {
+   "settings_version": 2.83,
+   "prompt": "Slow, steady cinematic push-in toward the snow-capped mountain. Thin morning mist drifts slowly across the glassy lake from left to right, faint ripples spread across the water and gently shimmer the mirror reflection, soft dawn light slowly warms the snowy peak, a few birds glide far away in the sky, the pine trees stay still. Photorealistic, natural real-world motion, smooth stable camera, no cuts.",
+   "negative_prompt": "cartoon, painting, cgi, morphing, warping, flicker, jitter, fast camera, camera shake, text, watermark, blurry",
+   "image_prompt_type": "S",
+   "image_start": "krea_lake.jpg",
+   "repeat_generation": 1,
+   "prompt_enhancer": "",
+   "model_type": "ti2v_2_2_fastwan",
+   "resolution": "1280x704",
+   "video_length": 121,
+   "seed": 7,
+   "output_filename": "lake_wan22_5b"
+  }
+ ],
+ "refs": [
+  "research/photoreal-test/krea_lake.jpg"
+ ]
+}
