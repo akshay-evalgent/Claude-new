@@ -1,2 +1,9 @@
 film/input/
 __pycache__/
+butterfly-news/web/frames/
+butterfly-news/out/stills/
+butterfly-news/out/video_only.mp4
+butterfly-news/out/contact.jpg
+butterfly-news/out/render.log
+butterfly-news/audio/mix_raw.wav
+butterfly-news/audio/stems_music.wav

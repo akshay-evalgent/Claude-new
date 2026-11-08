@@ -1,0 +1,220 @@
+{
+ "fps": 30,
+ "duration": 30.0,
+ "bpm": 120,
+ "channel": {
+  "zh": "野报",
+  "en": "WILD BRIEF",
+  "topic_zh": "帝王蝶",
+  "topic_en": "MONARCHS"
+ },
+ "shots": [
+  {
+   "id": "hook",
+   "t0": 0.0,
+   "t1": 3.0,
+   "kind": "footage",
+   "src": "pismo_over",
+   "in": 2.0
+  },
+  {
+   "id": "half",
+   "t0": 3.0,
+   "t1": 6.0,
+   "kind": "footage",
+   "src": "pismo_sun",
+   "in": 4.0
+  },
+  {
+   "id": "chart",
+   "t0": 6.0,
+   "t1": 9.5,
+   "kind": "ledger"
+  },
+  {
+   "id": "freeze",
+   "t0": 9.5,
+   "t1": 11.5,
+   "kind": "footage",
+   "src": "euc_branch",
+   "in": 3.0,
+   "freeze_at": 0.3
+  },
+  {
+   "id": "split",
+   "t0": 11.5,
+   "t1": 14.5,
+   "kind": "split",
+   "left": "euc_branch",
+   "left_in": 8.0,
+   "right": "pismo_over",
+   "right_in": 11.0
+  },
+  {
+   "id": "breath",
+   "t0": 14.5,
+   "t1": 17.0,
+   "kind": "footage",
+   "src": "pismo_sun",
+   "in": 14.0
+  },
+  {
+   "id": "doc1",
+   "t0": 17.0,
+   "t1": 20.5,
+   "kind": "paper",
+   "hl": 0
+  },
+  {
+   "id": "doc2",
+   "t0": 20.5,
+   "t1": 22.0,
+   "kind": "paper",
+   "hl": 1
+  },
+  {
+   "id": "grove",
+   "t0": 22.0,
+   "t1": 24.0,
+   "kind": "footage",
+   "src": "euc_branch",
+   "in": 12.0,
+   "punch": true
+  },
+  {
+   "id": "verd1",
+   "t0": 24.0,
+   "t1": 27.0,
+   "kind": "footage",
+   "src": "fws_monarch",
+   "in": 0.4
+  },
+  {
+   "id": "verd2",
+   "t0": 27.0,
+   "t1": 30.0,
+   "kind": "footage",
+   "src": "pismo_over",
+   "in": 15.0
+  }
+ ],
+ "captions": [
+  {
+   "t0": 0.7,
+   "t1": 3.0,
+   "zh": "今冬加州|只数到{1.2万只}",
+   "en": "Just over 12,000 western monarchs this winter."
+  },
+  {
+   "t0": 3.0,
+   "t1": 6.0,
+   "zh": "比1997年|少了{99%}",
+   "en": "99% fewer than in 1997."
+  },
+  {
+   "t0": 6.4,
+   "t1": 9.5,
+   "zh": "2020年|只剩{1,901只}",
+   "en": "By 2020: just 1,901."
+  },
+  {
+   "t0": 9.6,
+   "t1": 11.5,
+   "zh": "就这样|{没了}？",
+   "en": "Was that the end?"
+  },
+  {
+   "t0": 11.5,
+   "t1": 14.5,
+   "zh": "第二年冬天|回来了{24.7万只}",
+   "en": "Next winter: 247,000 came back."
+  },
+  {
+   "t0": 14.5,
+   "t1": 17.0,
+   "zh": "一年之间|多了{130倍}",
+   "en": "130 times as many, in a single year.",
+   "silent": true
+  },
+  {
+   "t0": 17.0,
+   "t1": 20.5,
+   "zh": "可惜没守住|2024年{不到1万}",
+   "en": "But it didn't last: under 10,000 by 2024."
+  },
+  {
+   "t0": 20.5,
+   "t1": 23.6,
+   "zh": "60多处越冬地|{已被毁掉}",
+   "en": "Over 60 of their winter roost sites have been destroyed."
+  },
+  {
+   "t0": 24.0,
+   "t1": 26.5,
+   "zh": "它们|{回得来}",
+   "en": "They can come back.",
+   "verdict": true
+  },
+  {
+   "t0": 26.5,
+   "t1": 30.0,
+   "zh": "前提是|{越冬林还在}",
+   "en": "If they still have somewhere to spend the winter.",
+   "verdict": true
+  }
+ ],
+ "voice": [
+  {
+   "t": 0.25,
+   "text": "Just over twelve thousand western monarchs this winter."
+  },
+  {
+   "t": 3.1,
+   "text": "Ninety-nine percent fewer than in nineteen ninety-seven."
+  },
+  {
+   "t": 6.5,
+   "text": "By twenty twenty: just nineteen hundred and one."
+  },
+  {
+   "t": 9.95,
+   "text": "Was that the end?"
+  },
+  {
+   "t": 11.6,
+   "text": "Next winter: two hundred forty-seven thousand came back."
+  },
+  {
+   "t": 17.1,
+   "text": "But it didn't last: under ten thousand by twenty twenty-four."
+  },
+  {
+   "t": 20.6,
+   "text": "Over sixty of their winter roost sites have been destroyed."
+  },
+  {
+   "t": 24.15,
+   "text": "They can come back."
+  },
+  {
+   "t": 26.6,
+   "text": "If they still have somewhere to spend the winter."
+  }
+ ],
+ "silences": [
+  [
+   9.5,
+   11.5
+  ],
+  [
+   23.5,
+   24.0
+  ]
+ ],
+ "hits": {
+  "hook": 0.1,
+  "turn": 11.5,
+  "stamp": 13.1,
+  "verdict": 24.0
+ }
+}

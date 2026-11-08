@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<title>帝王蝶 · Caption News</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;800&family=Noto+Sans+SC:wght@500;900&display=block">
+<style>
+:root{
+  --ivory:#F7F5EF; --honey:#FFC21A; --ink:#0E0E0C; --red:#FF4A3D; --grey:#8D8B83; --mute:#5E5C55; --ledger:#151512;
+  --zh:'Noto Sans SC',sans-serif; --en:'Inter Tight','Inter',sans-serif;
+}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:#0b0b0a;color:var(--ivory);font-family:var(--zh)}
+.layer{position:absolute;inset:0;visibility:hidden}
+.ftg-wrap{position:absolute;inset:0;overflow:hidden}
+.ftg{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:50% 50%;filter:contrast(1.07) saturate(.92) brightness(.98)}
+.warm{position:absolute;inset:0;background:#ff9a3c;mix-blend-mode:soft-light;opacity:.06;pointer-events:none}
+/* gradients under type */
+#gBottom{position:absolute;left:0;right:0;top:560px;bottom:0;background:linear-gradient(to bottom,rgba(8,8,7,0),rgba(8,8,7,.84))}
+#gRadial{position:absolute;inset:0;background:radial-gradient(1100px 620px at 0% 100%,rgba(8,8,7,.55),rgba(8,8,7,0) 70%)}
+#gDoc{position:absolute;left:0;right:0;top:640px;bottom:0;background:linear-gradient(to bottom,rgba(8,8,7,0),rgba(8,8,7,.8) 55%,rgba(8,8,7,.9))}
+#gData{position:absolute;left:0;right:0;top:820px;bottom:0;background:linear-gradient(to bottom,rgba(8,8,7,0),rgba(8,8,7,.6))}
+#gTop{position:absolute;left:0;right:0;top:0;height:200px;background:linear-gradient(to bottom,rgba(8,8,7,.55),rgba(8,8,7,0))}
+/* channel bug */
+#bug{position:absolute;left:96px;top:52px;height:46px;display:flex;align-items:stretch;background:var(--honey);color:var(--ink)}
+#bug .n{display:flex;align-items:center;gap:10px;padding:0 16px;font:900 27px/1 var(--zh)}
+#bug .n i{font:800 15px/1 var(--en);font-style:normal;letter-spacing:.14em}
+#bug .t{display:flex;align-items:center;gap:9px;padding:0 16px;background:var(--ink);color:var(--honey);font:900 22px/1 var(--zh)}
+#bug .t i{font:800 14px/1 var(--en);font-style:normal;letter-spacing:.14em;color:var(--ivory)}
+/* source tag */
+#src{position:absolute;left:96px;top:108px;height:36px;display:flex;align-items:stretch;font-size:19px}
+#src .k{display:flex;align-items:center;padding:0 12px;background:var(--ivory);color:var(--ink);font:900 19px/1 var(--zh)}
+#src .v{display:flex;align-items:center;padding:0 14px;background:rgba(14,14,12,.88);color:var(--ivory);font:500 19px/1 var(--en);letter-spacing:.02em;white-space:nowrap}
+/* footage credit */
+#credit{position:absolute;right:40px;top:40px;padding:6px 12px;background:rgba(0,0,0,.5);font:500 19px/1.1 var(--en);color:rgba(247,245,239,.92);white-space:nowrap}
+#credit b{font:900 19px/1 var(--zh);margin-right:8px}
+#tc{position:absolute;right:40px;top:82px;padding:8px 14px;background:rgba(14,14,12,.85);font:800 24px/1 var(--en);color:var(--ivory);display:flex;gap:12px;align-items:center;font-variant-numeric:tabular-nums}
+#tc .pz{display:flex;gap:5px}#tc .pz s{display:block;width:6px;height:22px;background:var(--honey);text-decoration:none}
+/* caption card */
+#cap{position:absolute;left:120px;top:0;width:1700px}
+#cap .zh{position:absolute;left:0;white-space:nowrap;font:900 88px/1 var(--zh);text-shadow:0 2px 20px rgba(0,0,0,.55);letter-spacing:.01em}
+#cap .zh.v{font-size:110px}
+#cap .ch{display:inline-block;transform-origin:30% 70%;margin-right:.1em}
+#cap .kw{position:relative;display:inline-block;padding:0 .12em;margin:0 .04em;isolation:isolate}
+#cap .kw .bg{position:absolute;left:0;right:0;top:.04em;bottom:-.02em;background:var(--honey);transform-origin:0 50%;z-index:-1}
+#cap .en{position:absolute;left:2px;white-space:nowrap;font:500 33px/1 var(--en);text-shadow:0 2px 14px rgba(0,0,0,.6)}
+/* numbers: fixed digit cells */
+.num{display:inline-flex;font-family:var(--en);font-weight:800;line-height:1}
+.num span{display:inline-block;width:.6em;text-align:center}
+.num span.c{width:.27em}
+.num span.p{width:.78em}
+/* hook */
+#hookKick{position:absolute;left:120px;top:282px;font:900 40px/1 var(--zh);text-shadow:0 2px 16px rgba(0,0,0,.5)}
+#hookKick i{display:block;margin-top:12px;font:500 22px/1 var(--en);font-style:normal;letter-spacing:.16em;color:rgba(247,245,239,.85)}
+#hookRow{position:absolute;left:120px;top:376px;display:flex;align-items:flex-end;gap:22px}
+#hookBlock{background:var(--honey);color:var(--ink);padding:14px 30px 10px;font-size:212px}
+#hookUnit{font:900 96px/1 var(--zh);padding-bottom:18px;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+#hookSubj{position:absolute;left:120px;top:650px;font:900 58px/1 var(--zh);text-shadow:0 2px 16px rgba(0,0,0,.5)}
+#hookSubj i{font:500 28px/1 var(--en);font-style:normal;margin-left:18px;color:rgba(247,245,239,.85)}
+/* proportion by darkness */
+#halfDark{position:absolute;inset:0;overflow:hidden}
+#halfDark .ftg{filter:grayscale(1) brightness(.34) contrast(1.05)}
+#halfLine{position:absolute;top:0;bottom:0;width:6px;margin-left:-3px;background:var(--honey);box-shadow:0 0 18px rgba(255,194,26,.6)}
+#halfFig{position:absolute;left:120px;top:250px}
+#halfFig .big{font-size:250px;color:var(--ivory)}
+#halfFig .sub{margin-top:18px;font:500 30px/1.25 var(--en);color:var(--grey)}
+#halfFig .sub b{font-weight:800;color:var(--ivory)}
+/* ledger card */
+.ledger{position:absolute;inset:0;background:var(--ledger);overflow:hidden}
+.ledger .rules{position:absolute;inset:0;background:repeating-linear-gradient(to bottom,transparent 0 53px,rgba(255,255,255,.045) 53px 54px)}
+.ledger .m1,.ledger .m2{position:absolute;top:0;bottom:0;width:2px;background:rgba(255,74,61,.55)}
+.ledger .m1{left:78px}.ledger .m2{left:86px}
+.streaks{position:absolute;left:-260px;top:0;bottom:0;width:260px}
+.streaks s{position:absolute;left:0;height:3px;background:linear-gradient(to right,rgba(247,245,239,0),rgba(247,245,239,.75));text-decoration:none}
+#chTitle{position:absolute;left:120px;top:178px;font:900 64px/1 var(--zh)}
+#chTitle i{display:block;margin-top:14px;font:500 26px/1 var(--en);font-style:normal;color:var(--grey)}
+#chart{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:1400px 560px}
+#chart text{font-family:var(--en)}
+/* split */
+.half{position:absolute;top:0;bottom:0;width:960px;overflow:hidden}
+.half .ftg{width:960px}
+#spL{left:0}#spR{left:960px}
+#spL .ftg{filter:grayscale(.85) brightness(.55) contrast(1.05)}
+#spL .tint{position:absolute;inset:0;background:#ff4a3d;mix-blend-mode:multiply;opacity:.42}
+#spDiv{position:absolute;left:958px;top:0;width:4px;height:1080px;background:var(--honey);transform-origin:50% 0}
+.spLab{position:absolute;top:196px;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.spLab .lb{background:var(--ivory);color:var(--ink);padding:8px 16px;font:900 34px/1 var(--zh)}
+.spLab .lb i{font:800 20px/1 var(--en);font-style:normal;letter-spacing:.12em;margin-left:10px}
+.spLab .ct{display:flex;align-items:flex-end;gap:10px;font-size:150px;text-shadow:0 2px 20px rgba(0,0,0,.55)}
+.spLab .ct em{font:900 56px/1 var(--zh);font-style:normal;padding-bottom:14px}
+#spLabL{left:120px}#spLabR{left:1080px}
+#stamp{position:absolute;left:960px;top:560px;transform:translate(-50%,-50%);background:var(--honey);color:var(--ink);padding:10px 26px 6px;font-size:118px;box-shadow:0 10px 40px rgba(0,0,0,.45)}
+/* paper */
+.desk{position:absolute;inset:0;background:radial-gradient(1400px 900px at 40% 40%,#2a2824,#121110 70%)}
+.paper{position:absolute;left:0;top:0;width:1870px;height:2420px;transform-origin:0 0;box-shadow:0 40px 90px rgba(0,0,0,.65),0 6px 18px rgba(0,0,0,.4)}
+.paper img{position:absolute;inset:0;width:100%;height:100%}
+.paper .hl{position:absolute;background:var(--honey);mix-blend-mode:multiply;transform-origin:0 50%}
+.vign{position:absolute;inset:0;background:radial-gradient(1300px 820px at 45% 42%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55))}
+.pnum{position:absolute;left:1370px;top:300px;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.pnum .lb{font:900 36px/1 var(--zh);text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.pnum .lb i{font:500 22px/1 var(--en);font-style:normal;margin-left:10px;color:rgba(247,245,239,.8)}
+.pnum .blk{background:var(--honey);color:var(--ink);padding:12px 26px 8px;font-size:170px;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+/* freeze */
+#brk{position:absolute;inset:0;pointer-events:none}
+#brk div{position:absolute;width:70px;height:70px;border:0 solid var(--honey)}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- footage layers: one img each, frame set per t -->
+  <div class="layer" id="L-hook"><div class="ftg-wrap"><img class="ftg" alt=""></div><div class="warm"></div>
+    <div id="hookKick">2025年冬 · 加州越冬林<i>WESTERN MONARCH COUNT · MID-SEASON</i></div>
+    <div id="hookRow"><div id="hookBlock" class="num"></div><div id="hookUnit">只</div></div>
+    <div id="hookSubj">西部帝王蝶<i>western monarchs</i></div>
+  </div>
+  <div class="layer" id="L-half"><div class="ftg-wrap"><img class="ftg" alt=""></div><div class="warm"></div>
+    <div id="halfDark"><img class="ftg" alt=""></div>
+    <div id="halfLine"></div>
+    <div id="halfFig"><div class="big num"></div><div class="sub">1997 → 2025<br><b>1,235,490 → 12,260</b> monarchs</div></div>
+  </div>
+  <div class="layer" id="L-chart"><div class="ledger"><div class="rules"></div><div class="m1"></div><div class="m2"></div>
+    <svg id="chart" viewBox="0 0 1920 1080"></svg>
+    <div id="chTitle">冬季数量<i>Western monarchs counted each winter, 1997–2025</i></div></div>
+    <div class="streaks"></div>
+  </div>
+  <div class="layer" id="L-freeze"><div class="ftg-wrap"><img class="ftg" alt=""></div><div class="warm"></div>
+    <div id="brk"><div style="border-top-width:6px;border-left-width:6px"></div><div style="border-top-width:6px;border-right-width:6px"></div><div style="border-bottom-width:6px;border-left-width:6px"></div><div style="border-bottom-width:6px;border-right-width:6px"></div></div>
+  </div>
+  <div class="layer" id="L-split">
+    <div class="half" id="spL"><img class="ftg" alt=""><div class="tint"></div></div>
+    <div class="half" id="spR"><img class="ftg" alt=""><div class="warm"></div></div>
+    <div id="spDiv"></div>
+    <div class="spLab" id="spLabL"><div class="lb">2020年冬<i>2020</i></div><div class="ct"><span class="num" style="color:var(--red)"></span><em>只</em></div></div>
+    <div class="spLab" id="spLabR"><div class="lb">2021年冬<i>2021</i></div><div class="ct"><span class="num"></span><em>只</em></div></div>
+    <div id="stamp" class="num"></div>
+  </div>
+  <div class="layer" id="L-breath"><div class="ftg-wrap"><img class="ftg" alt=""></div><div class="warm"></div></div>
+  <div class="layer" id="L-doc1"><div class="desk"></div><div class="paper" id="paper1"><img src="doc/page-1.jpg" alt=""></div><div class="vign"></div>
+    <div class="pnum" id="pnum1"><div class="lb">2024年<i>winter count</i></div><div class="blk num"></div></div>
+    <div class="streaks"></div>
+  </div>
+  <div class="layer" id="L-doc2"><div class="desk"></div><div class="paper" id="paper2"><img src="doc/page-2.jpg" alt=""></div><div class="vign"></div>
+    <div class="pnum" id="pnum2"><div class="lb">越冬地被毁<i>roost sites destroyed</i></div><div class="blk num"></div></div>
+  </div>
+  <div class="layer" id="L-grove"><div class="ftg-wrap"><img class="ftg" alt=""></div><div class="warm"></div></div>
+  <div class="layer" id="L-verd1"><div class="ftg-wrap"><img class="ftg" alt=""></div><div class="warm"></div></div>
+  <div class="layer" id="L-verd2"><div class="ftg-wrap"><img class="ftg" alt=""></div><div class="warm"></div></div>
+
+  <!-- global overlays -->
+  <div id="gDoc"></div><div id="gBottom"></div><div id="gRadial"></div><div id="gData"></div><div id="gTop"></div>
+  <div id="bug"><div class="n">野报<i>WILD BRIEF</i></div><div class="t">帝王蝶<i>MONARCHS</i></div></div>
+  <div id="src"><div class="k">来源</div><div class="v"></div></div>
+  <div id="credit"></div>
+  <div id="tc"><div class="pz"><s></s><s></s></div><span>00:09:24</span></div>
+  <div id="cap"><div class="zh"></div><div class="en"></div></div>
+  <div id="flash"></div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
