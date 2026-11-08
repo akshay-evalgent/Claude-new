@@ -113,7 +113,7 @@ def grade(a, rng):
     out = np.stack([CURVE[c][a[..., c]] for c in range(3)], -1).astype(np.int16)
     g = out.mean(-1, keepdims=True)
     out = g + (out - g) * 0.92                       # slightly less saturation
-    out += rng.normal(0, 3.2, (H // 2, W // 2, 1)).repeat(2, 0).repeat(2, 1)  # film grain
+    out += rng.normal(0, 2.2, (H // 2, W // 2, 1)).repeat(2, 0).repeat(2, 1)  # film grain
     out = np.clip(out, 0, 255).astype(np.uint8)
     out[:BAR] = 0; out[H - BAR:] = 0                 # letterbox
     return out
@@ -166,7 +166,7 @@ def main():
     enc = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
                             "-r", str(FPS), "-i", "-", "-ss", f"{T0:.3f}", "-t", f"{T1 - T0:.3f}",
                             "-i", os.path.join(a.doc, "audio", "narration.flac"), "-map", "0:v", "-map", "1:a",
-                            "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-pix_fmt", "yuv420p",
+                            "-c:v", "libx264", "-preset", "slow", "-crf", "21", "-tune", "grain", "-pix_fmt", "yuv420p",
                             "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-shortest", out], stdin=subprocess.PIPE)
     rng = np.random.default_rng(7)
     title = spec.get("title", "")
