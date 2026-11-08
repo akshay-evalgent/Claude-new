@@ -119,12 +119,17 @@ reqs = open(f"{WANGP}/requirements.txt").read().splitlines()
 if not NEW_STACK:
     reqs = [r for r in reqs if not re.match(r"\s*(--extra-index-url|torchcodec|onnxruntime-gpu)", r)]
 open(f"{TMP}/requirements.txt", "w").write("\n".join(reqs) + "\n")
-if sh(f"cd {WANGP} && pip install -q -r {TMP}/requirements.txt -c {TMP}/constraints.txt", check=False):
+for attempt in range(3):   # GitHub-hosted wheels sometimes fail with a passing 5xx error
+    if not sh(f"cd {WANGP} && pip install -q -r {TMP}/requirements.txt -c {TMP}/constraints.txt", check=False):
+        break
+    print(f"Install attempt {attempt + 1} failed; retrying in 30 s."); time.sleep(30)
+else:
     print("Full install failed; installing the requirements one by one and skipping the ones that don't fit.")
     for r in reqs:
         r = r.split("#")[0].strip()
         if r and not r.startswith("-"):
-            sh(f"pip install -q '{r}' -c {TMP}/constraints.txt", check=False)
+            if sh(f"pip install -q '{r}' -c {TMP}/constraints.txt", check=False):
+                sh(f"pip install -q --no-deps '{r}' -c {TMP}/constraints.txt", check=False)  # keep the package itself
 
 ATTN = ATTENTION
 if ATTN == "sage":
