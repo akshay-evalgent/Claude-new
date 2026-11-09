@@ -27,7 +27,7 @@ if(only){
   for(const t of only){
     await page.evaluate(t => window.__seek(t), t);
     const t1 = Date.now();
-    await page.screenshot({ path: path.join(root, 'build', `still_${t.toFixed(2)}${DBG!=='0' ? '_d'+DBG : ''}.png`) });
+    await page.screenshot({ timeout: 0, path: path.join(root, 'build', `still_${t.toFixed(2)}${DBG!=='0' ? '_d'+DBG : ''}.png`) });
     console.log('still', t, ((Date.now()-t1)/1000).toFixed(1)+'s');
   }
 } else {
@@ -35,7 +35,7 @@ if(only){
   for(let i=FROM;i<Math.min(N,TO);i++){
     const t = (i + 0.5)/FPS;
     await page.evaluate(t => window.__seek(t), t);
-    await page.screenshot({ path: path.join(frames, `f${String(i).padStart(4,'0')}.png`) });
+    await page.screenshot({ path: path.join(frames, `f${String(i).padStart(4,'0')}.png`), timeout: 0 });
     if(i % 48 === 0) console.log('frame', i, ((Date.now()-t1)/1000).toFixed(1)+'s');
   }
   if(MUX) execSync(`ffmpeg -y -loglevel error -framerate ${FPS} -i "${frames}/f%04d.png" -i "${root}/build/score.wav" ` +
