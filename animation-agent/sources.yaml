@@ -1,0 +1,96 @@
+# Where the Scout looks. Adding a source is a config change, not a code change.
+# `access` says how we reach it: ytdlp | api | rss | fetch | search | manual.
+# `needs_key` names the optional free key that improves access. Empty means keyless.
+
+video_platforms:
+  - name: YouTube
+    access: ytdlp
+    queries: ["motion design", "animation breakdown", "2D animation process", "3D animation short", "stop motion", "kinetic typography", "oddly satisfying animation", "AI animation"]
+    needs_key: YOUTUBE_API_KEY   # optional, for comment threads
+  - name: Vimeo Staff Picks
+    access: ytdlp
+    urls: ["https://vimeo.com/channels/staffpicks", "https://vimeo.com/categories/animation"]
+  - name: TikTok
+    access: ytdlp
+    note: single posts and user pages work; hashtag feeds are broken upstream. Run on a home machine.
+  - name: Instagram Reels
+    access: ytdlp
+    note: single posts only.
+
+communities:
+  - name: Reddit
+    access: api
+    subreddits: [MotionDesign, animation, AfterEffects, blender, Simulated, oddlysatisfying, StopMotion, generative, Cinema4D, houdini]
+    needs_key: REDDIT_CLIENT_ID
+
+blogs_and_news:
+  - {name: Motionographer, access: rss, url: "https://motionographer.com/feed/"}
+  - {name: School of Motion blog, access: fetch, url: "https://www.schoolofmotion.com/blog"}
+  - {name: Cartoon Brew, access: rss, url: "https://www.cartoonbrew.com/feed"}
+  - {name: Animation World Network, access: rss, url: "https://www.awn.com/rss.xml"}
+  - {name: Motion Awards / Annecy / SIGGRAPH winners, access: fetch, urls: ["https://motionawards.com", "https://www.annecyfestival.com", "https://www.siggraph.org"]}
+
+github:
+  # New tools and techniques show up here first. We track repos, releases and trending.
+  access: api            # GitHub REST search works keyless at 10 req/min; GITHUB_TOKEN raises it to 30
+  needs_key: GITHUB_TOKEN
+  topics: [animation, motion-graphics, motion-design, video-generation, text-to-video, image-to-video, lottie, rive, remotion, manim, creative-coding, shaders, procedural-animation]
+  watch_repos:
+    - remotion-dev/remotion        # React video: animations written as code
+    - 3b1b/manim                   # math animation engine
+    - ManimCommunity/manim
+    - motion-canvas/motion-canvas
+    - rive-app/rive-runtime
+    - airbnb/lottie-web
+    - greensock/GSAP
+    - mrdoob/three.js
+    - processing/p5.js
+    - Wan-Video/Wan2.1             # open video generation models
+    - Tencent/HunyuanVideo
+    - Lightricks/LTX-Video
+    - guoyww/AnimateDiff
+    - comfyanonymous/ComfyUI
+    - bradautomates/claude-video   # agents that watch video (reference)
+  trending_query: "topic:animation created:>{since} stars:>20"
+  releases: true          # poll /releases of watch_repos for changelogs describing new techniques
+
+research:
+  # Papers and labs: where styles and generation techniques are invented before they go viral.
+  - name: arXiv
+    access: api           # free, keyless Atom API
+    categories: [cs.GR, cs.CV, cs.MM]
+    queries: ["character animation", "video generation", "motion synthesis", "stylized rendering", "non-photorealistic rendering", "animation interpolation", "keyframe", "cel animation"]
+  - name: Google Research blog
+    access: rss
+    url: "https://research.google/blog/rss/"
+  - name: Google DeepMind (Veo)
+    access: fetch
+    url: "https://deepmind.google/technologies/veo/"
+  - name: Hugging Face papers and models
+    access: api
+    urls: ["https://huggingface.co/papers", "https://huggingface.co/api/models?pipeline_tag=text-to-video&sort=trending"]
+  - name: Papers with Code successor / Semantic Scholar
+    access: api
+    url: "https://api.semanticscholar.org/graph/v1/paper/search?query=animation"
+
+ai_video_tools_and_showcases:
+  # Products and model launches that change what is possible, plus places people show off
+  # results (including animations generated with coding models like Claude writing Remotion,
+  # Manim, CSS or Three.js).
+  - {name: Runway, access: fetch, url: "https://runwayml.com/research"}
+  - {name: Kling, access: fetch, url: "https://klingai.com"}
+  - {name: Pika, access: fetch, url: "https://pika.art"}
+  - {name: Luma Dream Machine, access: fetch, url: "https://lumalabs.ai/dream-machine"}
+  - {name: Opus Clip, access: fetch, url: "https://www.opus.pro", note: "USER TO CONFIRM: you mentioned 'opuscar'; assumed Opus Clip"}
+  - {name: Claude / coding-model animation showcases, access: search, queries: ["Claude Opus animation Remotion", "Claude generated animation CSS", "AI coded animation manim showcase", "Claude Code animation demo"], note: "USER TO CONFIRM: add specific sites you follow"}
+  - {name: Product Hunt animation tools, access: rss, url: "https://www.producthunt.com/feed?category=design-tools"}
+
+tool_changelogs:
+  # New features in tools create new looks within weeks. Release notes are high-signal, low-noise.
+  - {name: After Effects, access: fetch, url: "https://helpx.adobe.com/after-effects/using/whats-new.html"}
+  - {name: Blender, access: fetch, url: "https://developer.blender.org/docs/release_notes/"}
+  - {name: Cavalry, access: fetch, url: "https://cavalry.scenegroup.co/changelog/"}
+  - {name: Rive, access: fetch, url: "https://rive.app/changelog"}
+  - {name: Jitter, access: fetch, url: "https://jitter.video/changelog/"}
+  - {name: Spline, access: fetch, url: "https://spline.design/updates"}
+  - {name: TouchDesigner, access: fetch, url: "https://derivative.ca/release-notes"}
