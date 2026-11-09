@@ -3,3 +3,4 @@ __pycache__/
 film/temple/build/frames/
 film/temple/build/*.png
 film/temple/build/score.wav
+film/temple/build/*.log

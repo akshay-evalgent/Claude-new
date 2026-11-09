@@ -1,8 +1,9 @@
 # The Pool Remembers — a ten-second temple clip, directed as Nolan would
 
-Reference plate: `src/reference.webp` (Nandi before a stepped temple tank, morning light through the canopy).
-Deliverables: `temple-10s.mp4` (1920x1080, 24 fps, stereo-safe mono score) and `index.html`
-(the same clip as a real-time WebGL page with sound; open it and press PLAY).
+Reference only: `src/reference.webp` (Nandi before a stepped temple tank, morning light through the canopy).
+No pixel of it is used. The whole picture is generated in code: a raymarched signed-distance scene
+in one GLSL fragment shader. Deliverables: `temple-10s.mp4` (1920x1080, 24 fps, mono score) and
+`index.html` (the same film rendered live in WebGL with sound; open it and press PLAY).
 
 ## How Nolan would think about ten seconds
 
@@ -32,8 +33,8 @@ Deliverables: `temple-10s.mp4` (1920x1080, 24 fps, stereo-safe mono score) and `
 |---|---|---|
 | 0.00 – 0.70 | Black. | Drone (55 Hz) fades in. |
 | 0.70 | Hard cut in, already pushing. 1.0x. | Shepard riser begins. |
-| 2.10 | The drop lands at the pool's centre (story-time 1.4). Elliptical ring, 92 px/s. | Plink + stone-hall tail. |
-| 0.70 – 6.00 | Push-in to 1.078x on Nandi's eye. Foreground grows faster than the temple (depth parallax). Spout ripples, surface swell, dust settling in the shafts. | Riser climbs; drone breathes. |
+| 2.10 | The drop lands at the pool's centre (story-time 1.4). Ring spreads at 0.42 m/s. | Plink + stone-hall tail. |
+| 0.70 – 6.00 | Dolly 0.75 m forward toward Nandi's eye, constant velocity, true 3D parallax. Spout ripples, surface swell, dust settling in the shafts. | Riser climbs; drone breathes. |
 | 6.00 – 6.12 | Freeze. Three frames. | Single clock tick. |
 | 6.12 – 8.70 | Inversion: story-time runs 5.3 → 0 in 2.58 s. Ring contracts, dust rises, dolly pulls out. Grade desaturates 14 % more and shifts cold. | Riser descends; drop plays reversed at 8.02; faint high shimmer. |
 | 8.70 | Hard cut to black. | Silence. |
@@ -45,18 +46,33 @@ Deliverables: `temple-10s.mp4` (1920x1080, 24 fps, stereo-safe mono score) and `
 - 35 mm grain, anamorphic chromatic spread at the frame edges, heavy but soft vignette.
 - 16:9 full frame; no letterbox (Nolan dislikes masking the picture).
 
+## The scene, all in code
+
+- **Nandi**: smooth-unioned ellipsoids and capsules (body, hump, neck, long muzzle, dewlap, folded legs,
+  tail), crescent horns, leaf ears, a ceremonial cloth shell over the back, two garland tori with bells,
+  an eye; dark granite with faint lichen and carved banding. On a two-step plinth with fallen leaves.
+- **The tank**: a cavity carved from the pavement, coping, a far wall with two lion-head spouts and
+  falling jets. The water is an analytic plane with a height field (two spout sources, the drop packet,
+  slow swell): reflection by a second raymarch, refraction to a tiled floor with caustics, Fresnel, glints.
+- **The temple**: a pillared hall with mouldings, niches, a deep black doorway and a stepped roof; a
+  curvilinear nagara shikhara (softened-square plan, stepped courses, ratha ribs, sukanasa, amalaka,
+  kalasha) with a smaller tower to the right and a low shrine to the left.
+- **Trees**: trunks, a banyan limb with hanging roots, noise-displaced canopy blobs, a foliage wall behind.
+  The sky is seen through a procedural leaf canopy; the same canopy mask gates the sun.
+- **Light**: a sun behind the temple to the upper right, soft shadows, ambient occlusion, sky ambient
+  and side bounce; volumetric shafts marched along the view ray through the canopy mask; dust motes.
+- **Look**: desaturated 18 %, cold shadow tint, warm highlights, soft shoulder, S-curve, vignette,
+  35 mm grain. The inversion desaturates a further 14 % and shifts colder.
+
 ## Pipeline
 
 ```
-python3 build/make_masks.py   # plate.jpg (watermark cloned out), masks.png (R water, G depth, B light)
 python3 build/make_audio.py   # score.wav / score.m4a, synthesised from the same timeline
-python3 build/pack.py         # inlines plate, masks and score -> index.html (self-contained)
-node build/render.cjs         # Playwright renders 240 frames at 1920x1080 and ffmpeg muxes temple-10s.mp4
-node build/render.cjs 2.1,6.0 # stills at those clock times -> build/still_*.png
+python3 build/pack.py         # inlines the score -> index.html (self-contained, ~190 KB)
+node build/render.cjs         # Playwright renders 240 frames (W, Q env) and ffmpeg muxes temple-10s.mp4
+node build/render.cjs 2.1,6.0 # stills at those clock times -> build/still_*.png (DBG=1..4 for debug views)
 ```
 
-The whole picture is one fragment shader (`src/index.template.html`): per-pixel depth parallax for
-the dolly, a height field for the water (two spout sources, one drop packet, slow swell) that is
-differentiated for refraction and specular, angular value-noise light shafts masked to the canopy,
-hash-grid dust motes, then the grade. Every frame is a pure function of clock time, so the browser
-page and the rendered MP4 are the same film.
+Every frame is a pure function of clock time, so the browser page and the rendered MP4 are the same film.
+The live page caps its internal width at 960 px because every pixel is raymarched; the MP4 was rendered
+at 1280x720 in software (SwiftShader) and upscaled to 1080p.
