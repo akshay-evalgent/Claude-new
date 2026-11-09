@@ -33,7 +33,7 @@ class Settings(BaseSettings):
     langsmith_project: str = "animation-agent"
     langsmith_endpoint: str = "https://api.smith.langchain.com"
     langsmith_agent_id: str = "animation-agent"
-    langsmith_agent_environment: str = "local"
+    langsmith_agent_environment: str = "development"
 
     youtube_api_key: str = ""
     reddit_client_id: str = ""

@@ -73,7 +73,8 @@ description (two sentences, no metrics) and watch `confidence` drop and `open_qu
 1. Sign up at smith.langchain.com, Developer plan, create an API key.
 2. In `.env`: `LANGSMITH_TRACING=true`, `LANGSMITH_API_KEY=...`. If you registered the agent in
    LangSmith's "Connect an agent" dialog, also set `LANGSMITH_AGENT_ID` to the ID you chose and
-   `LANGSMITH_AGENT_ENVIRONMENT=local`. The tracer reads both from the environment and attaches
+   `LANGSMITH_AGENT_ENVIRONMENT` to one of `local`, `development`, `staging` or `production`
+   (default `development`). The tracer reads both from the environment and attaches
    them to every run, so the agent's page in LangSmith can group traces by agent and by
    environment (local vs prod). Leave `LANGSMITH_ENDPOINT` at the default unless you are on the
    EU region.
