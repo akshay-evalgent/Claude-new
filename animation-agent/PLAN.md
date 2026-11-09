@@ -163,20 +163,19 @@ class RunState(TypedDict):
   Analyst, a rubric judge for "why it works" quality, a citation-coverage check for Critic.
 - Regression runs on every prompt change.
 
-## 4. Tech stack
+## 4. Tech stack (free-first; see FREE-STACK.md for the research behind each row)
 
 | Concern | Choice | Why |
 |---|---|---|
-| Language | Python 3.12, `uv` | LangGraph is Python-first; uv keeps installs fast and reproducible |
-| LLM | Claude via `langchain-anthropic`, model id from `.env` | strong long-context reasoning and structured output; multimodal for frame analysis |
+| Language | Python 3.12+, `uv` | LangGraph is Python-first; uv keeps installs fast and reproducible |
+| LLM | **This Claude account through the Claude Agent SDK** by default; `.env` switch to `langchain-anthropic` (API key), Gemini free tier, or Ollama | No paid key needed to start; provider switch teaches provider-agnostic design |
 | Orchestration | `langgraph` | explicit state machine, parallel fan-out with `Send`, checkpoints, interrupts |
 | Schemas | Pydantic v2 | typed Technique Cards, validated LLM output |
-| Search | Tavily (default) or Exa | clean results with dates, generous free tier |
-| Video metadata | YouTube Data API v3, `youtube-transcript-api`, `praw` | official or tolerated access |
-| Storage | SQLite + Chroma (local), Postgres + pgvector (later) | zero setup to start, clear upgrade path |
-| Tracing and evals | `langsmith` | required to debug and to prove improvements |
-| CLI / scheduler | Typer CLI; cron or LangGraph Server for scheduled runs | simple first, hosted later |
-| Dev UI | LangGraph Studio | watch the graph execute node by node |
+| Discovery | **yt-dlp** (keyless: search, stats, captions, Vimeo, TikTok/Instagram single posts), `ddgs` keyless web search, PRAW with a free Reddit app, optional free YouTube Data API and Tavily keys | all free; cloud IPs are blocked by YouTube and Reddit, so Scout/Analyst run on your machine |
+| Video understanding | yt-dlp download, ffmpeg frame sampling, captions or local `faster-whisper`, frames read by Claude | the same pipeline every open-source "watch a video" skill uses, built by us |
+| Storage | SQLite + Chroma local (Chroma's built-in local embeddings), Postgres + pgvector later | zero setup, no embedding API key |
+| Tracing and evals | LangSmith Developer plan (free, 5k traces/month); Arize Phoenix self-hosted as backup | required to debug and to prove improvements |
+| CLI / scheduler | Typer CLI; cron on your machine; `langgraph dev` for Studio | hosted LangGraph is not on the free tier |
 
 ## 5. Repository layout
 
@@ -256,6 +255,8 @@ makes it trustworthy and self-sustaining.
 
 ## 9. Immediate next steps
 
-1. Confirm the stack choices above (Python, Claude, Tavily, SQLite + Chroma to start).
-2. Create accounts and keys: Anthropic, LangSmith, Tavily, YouTube Data API, Reddit app.
-3. Build Milestone 0 and 1.
+1. Confirm the free-first stack in FREE-STACK.md and the Claude Agent SDK as the default LLM path.
+2. Free accounts only: LangSmith Developer plan (needed), Reddit script app and Google key for
+   YouTube Data API (optional, can be added later).
+3. Install `deno` or make sure `node` is on PATH for yt-dlp on your machine.
+4. Build Milestone 0 and 1.
