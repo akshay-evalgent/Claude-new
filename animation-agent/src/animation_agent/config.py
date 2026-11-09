@@ -8,9 +8,15 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Literal
 
+from dotenv import load_dotenv
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 ROOT = Path(__file__).resolve().parents[2]
+
+# Load .env into the real process environment first. pydantic-settings reads .env for
+# *our* Settings object, but libraries like LangSmith read os.environ directly, so
+# LANGSMITH_TRACING and LANGSMITH_API_KEY must be exported, not just parsed.
+load_dotenv(ROOT / ".env")
 
 
 class Settings(BaseSettings):
