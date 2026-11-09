@@ -31,6 +31,9 @@ class Settings(BaseSettings):
     langsmith_tracing: bool = False
     langsmith_api_key: str = ""
     langsmith_project: str = "animation-agent"
+    langsmith_endpoint: str = "https://api.smith.langchain.com"
+    langsmith_agent_id: str = "animation-agent"
+    langsmith_agent_environment: str = "local"
 
     youtube_api_key: str = ""
     reddit_client_id: str = ""
