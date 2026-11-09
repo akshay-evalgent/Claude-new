@@ -1,0 +1,29 @@
+CHIMNEY RUSH GAME TEMPLATE - LICENSE
+
+By buying or downloading this template you get a non-exclusive, worldwide,
+perpetual license to use it under these terms.
+
+YOU MAY
+- Use the template to make any number of games, free or commercial.
+- Modify, reskin, translate and extend it in any way.
+- Publish games made with it on any website, store or game portal, and earn
+  money from them (ads, in-app purchases, sales, sponsorships).
+- Let clients use games you build for them with this template.
+
+YOU MAY NOT
+- Resell, sublicense, share or give away the template or its source code as a
+  template, starter kit, asset pack or source-code product, whether modified
+  or not.
+- Publish an unchanged copy of the original "Chimney Rush" game (same name,
+  look and levels) as your own game. Give your game its own name and look.
+- Upload the source code to a public repository.
+
+NO WARRANTY
+The template is provided "as is", without warranty of any kind. The author is
+not liable for any claim, damages or other liability arising from its use.
+Platform SDKs and their rules belong to their owners and can change; you are
+responsible for meeting the requirements of the places where you publish.
+
+AI DISCLOSURE
+The code, procedural artwork and generated sound in this template were made
+with AI assistance and then tested and tuned by the author.

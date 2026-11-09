@@ -1,2 +1,4 @@
 film/input/
 __pycache__/
+games/chimney-rush/dist/
+node_modules/

@@ -1,0 +1,7 @@
+{
+  "_comment": "Paste the IDs the portals give you, then run: node tools/build.mjs",
+  "gamedistribution": "",
+  "gamemonetize": "",
+  "y8AppId": "",
+  "y8GameId": ""
+}
