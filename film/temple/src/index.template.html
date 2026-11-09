@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Pool Remembers</title>
+<meta name="description" content="A ten-second temple clip directed in the manner of Christopher Nolan: one slow push-in, one drop, time runs backward.">
+<style>
+  :root { color-scheme: dark; --bg:#000; --fg:#f2f1ec; }
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);overflow:hidden;
+    font-family:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;}
+  #stage{position:fixed;inset:0;display:grid;place-items:center;background:#000;}
+  #frame{position:relative;background:#000;}
+  canvas{display:block;width:100%;height:100%;}
+  #title{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;
+    opacity:0;letter-spacing:.62em;text-indent:.62em;font-weight:300;
+    font-size:calc(var(--fh) * .034);color:var(--fg);}
+  #title small{display:block;margin-top:.9em;letter-spacing:.34em;text-indent:.34em;
+    font-size:.42em;opacity:.55;}
+  #play{position:absolute;inset:0;display:grid;place-items:center;cursor:pointer;
+    background:rgba(0,0,0,.72);border:0;color:var(--fg);font:inherit;}
+  #play span{border:1px solid rgba(242,241,236,.6);padding:.9em 1.8em;letter-spacing:.35em;
+    text-indent:.35em;font-size:calc(var(--fh) * .016);font-weight:300;}
+  #play small{position:absolute;bottom:6%;left:0;right:0;text-align:center;letter-spacing:.2em;
+    font-size:calc(var(--fh) * .011);opacity:.5;font-weight:300;}
+  #play[hidden]{display:none;}
+  #bars{position:absolute;left:0;right:0;height:0;background:#000;pointer-events:none;}
+</style>
+</head>
+<body>
+<div id="stage"><div id="frame">
+  <canvas id="gl"></canvas>
+  <div id="title">TEMPLE</div>
+  <button id="play" aria-label="Play"><span>PLAY</span><small>SOUND ON &middot; 10 S</small></button>
+</div></div>
+<audio id="score" preload="auto" src="%%SCORE%%"></audio>
+
+<script id="vs" type="x-shader/x-vertex">
+attribute vec2 aPos; varying vec2 vUV;
+void main(){ vUV = vec2(aPos.x*0.5+0.5, 0.5-aPos.y*0.5); gl_Position = vec4(aPos,0.0,1.0); }
+</script>
+<script id="fs" type="x-shader/x-fragment">
+precision highp float;
+varying vec2 vUV;
+uniform sampler2D uPlate, uMasks;
+uniform vec2 uRes;            // canvas pixels
+uniform float uT;             // clock time 0..10
+uniform float uS;             // story time 0..5.3 (runs backward in the inversion)
+uniform float uRev;           // 0 forward, 1 inverted
+uniform float uCut;           // 1 picture, 0 black
+const vec2 IMG = vec2(1280.0, 720.0);
+const float S_MAX = 5.3;
+
+float hash(vec2 p){ p = fract(p*vec2(123.34, 456.21)); p += dot(p, p+45.32); return fract(p.x*p.y); }
+float hash1(float x){ return fract(sin(x*127.1)*43758.5453); }
+float vnoise(float x){ float i = floor(x), f = fract(x); f = f*f*(3.0-2.0*f); return mix(hash1(i), hash1(i+1.0), f); }
+float vnoise2(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f);
+  return mix(mix(hash(i),hash(i+vec2(1,0)),f.x), mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x), f.y); }
+
+// water height field in image pixels
+float ringPacket(vec2 q, vec2 c, float age, float speed, float width, float decay){
+  if(age <= 0.0) return 0.0;
+  vec2 d = (q - c)*vec2(1.0, 2.25);           // perspective: rings are ellipses
+  float r = length(d);
+  float R = age*speed;
+  float w = width + age*14.0;
+  float g = exp(-pow((r - R)/w, 2.0));
+  return g*sin((r - R)*0.42)*exp(-age*decay);
+}
+float height(vec2 q, float s){
+  float h = 0.0;
+  // continuous ambient agitation from the two spouts
+  for(int i=0;i<2;i++){
+    vec2 c = i==0 ? vec2(615.0, 447.0) : vec2(975.0, 447.0);
+    vec2 d = (q - c)*vec2(1.0, 2.25); float r = length(d);
+    h += 0.65*sin(r*0.30 - s*7.5)*exp(-r/150.0) * (i==0 ? 1.0 : 0.6);
+  }
+  // the drop: the single event of the film. Lands at story-time 1.4.
+  h += 2.2*ringPacket(q, vec2(830.0, 540.0), s - 1.4, 92.0, 10.0, 0.42);
+  // a faint second, slower capillary ring behind the main wavefront
+  h += 0.8*ringPacket(q, vec2(830.0, 540.0), s - 1.55, 60.0, 8.0, 0.6);
+  // slow surface swell
+  h += 0.35*sin(q.x*0.012 + q.y*0.021 + s*0.9) + 0.25*sin(q.x*0.021 - q.y*0.013 - s*0.7);
+  return h;
+}
+
+vec3 samplePlate(vec2 p){
+  // mild anamorphic chromatic spread at the frame edges
+  vec2 r = (p - 0.5)*0.0016;
+  return vec3(texture2D(uPlate, p + r).r, texture2D(uPlate, p).g, texture2D(uPlate, p - r).b);
+}
+
+void main(){
+  vec2 uv = vUV;
+  if(uCut < 0.5){ gl_FragColor = vec4(0.0,0.0,0.0,1.0); return; }
+
+  // ---- 1. the dolly: a constant-velocity push toward Nandi's eye ----------
+  float zoom = 1.0 + 0.078*(uS/S_MAX);
+  vec2 focal = vec2(0.33, 0.30);
+  float dep = texture2D(uMasks, uv).g;
+  float zp = 1.0 + (zoom - 1.0)*(0.78 + 0.44*dep);     // nearer things grow faster (parallax)
+  vec2 p = focal + (uv - focal)/zp;
+
+  // ---- 2. the pool ---------------------------------------------------------
+  vec3 m = texture2D(uMasks, p).rgb;
+  float water = m.r;
+  vec2 q = p*IMG;
+  vec3 col;
+  float spec = 0.0;
+  if(water > 0.003){
+    float e = 1.5;
+    float h0 = height(q, uS);
+    float hx = height(q + vec2(e,0.0), uS) - h0;
+    float hy = height(q + vec2(0.0,e), uS) - h0;
+    vec2 grad = vec2(hx, hy)/e;
+    vec2 off = grad*vec2(0.0045, 0.0032)*water;        // refraction into the reflection
+    col = samplePlate(p + off);
+    // light from above right; the far side of a wave catches it
+    spec = clamp(-grad.y*0.9 + grad.x*0.35, 0.0, 1.0);
+    spec = pow(spec, 1.6)*water;
+    col += spec*vec3(0.55, 0.62, 0.6);
+    col = mix(samplePlate(p), col, water);
+  } else {
+    col = samplePlate(p);
+  }
+
+  // ---- 3. practical light: shafts through the canopy -----------------------
+  vec2 sun = vec2(0.80, 0.02);
+  vec2 dsun = p - sun;
+  float ang = atan(dsun.y, dsun.x);
+  float rr = length(dsun);
+  float shafts = vnoise(ang*16.0 + uS*0.06)*0.55 + vnoise(ang*6.0 - uS*0.035)*0.45;
+  shafts = pow(shafts, 3.4);
+  float breath = 0.80 + 0.20*sin(uS*0.9 + 0.6);
+  float plateL = dot(samplePlate(p), vec3(0.299, 0.587, 0.114));
+  float rayI = m.b*shafts*smoothstep(0.08, 0.40, rr)*(1.0 - smoothstep(0.40, 0.90, rr))*breath*(0.25 + 0.75*plateL);
+  col += rayI*0.30*vec3(1.0, 0.93, 0.78);
+
+  // ---- 4. dust in the light -------------------------------------------------
+  float motes = 0.0;
+  for(int L=0; L<2; L++){
+    float sc = L==0 ? 26.0 : 44.0;
+    vec2 g = p*sc;
+    vec2 cell = floor(g);
+    for(int j=-1;j<=1;j++) for(int i=-1;i<=1;i++){
+      vec2 c = cell + vec2(float(i), float(j));
+      float h1 = hash(c + 3.1*float(L)), h2 = hash(c + 7.7 + 3.1*float(L)), h3 = hash(c+11.3);
+      vec2 drift = vec2(sin(uS*0.35 + h1*6.283)*0.18, uS*(0.05 + 0.07*h2));   // settle downward
+      vec2 pos = c + vec2(h1, h2) + drift;
+      pos = cell + vec2(float(i), float(j)) + fract(vec2(h1,h2) + drift);     // keep inside its cell
+      float d = length(g - pos)*(L==0 ? 1.0 : 1.3);
+      float tw = 0.55 + 0.45*sin(uS*(1.5 + h3*3.0) + h3*20.0);
+      motes += smoothstep(0.075, 0.0, d)*tw*step(0.55, h3);
+    }
+  }
+  col += motes*m.b*0.5*vec3(1.0, 0.95, 0.85);
+
+  // ---- 5. grade: desaturate, cold shadows, warm highlights, a touch colder when inverted ----
+  float luma = dot(col, vec3(0.299, 0.587, 0.114));
+  col = mix(col, vec3(luma), 0.24 + 0.14*uRev);
+  vec3 lift = vec3(0.015, 0.030, 0.050) + uRev*vec3(-0.01, 0.0, 0.03);
+  vec3 gain = vec3(1.02, 0.995, 0.955) + uRev*vec3(-0.04, -0.01, 0.03);
+  col = col*gain + lift*(1.0 - luma);
+  col = (col - 0.5)*1.10 + 0.5;
+  col = pow(max(col, 0.0), vec3(1.0/1.02));
+
+  // vignette and grain
+  float v = length((uv - 0.5)*vec2(1.0, 0.85))*1.35;
+  col *= 1.0 - 0.42*pow(v, 2.6);
+  float frame = floor(uT*24.0);
+  float gr = hash(gl_FragCoord.xy + vec2(frame*7.13, frame*3.71)) - 0.5;
+  col += gr*0.055*(1.0 - 0.6*luma);
+
+  gl_FragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
+}
+</script>
+
+<script>
+(() => {
+  // ------------------------------------------------------------------ timeline
+  const CUT_IN = 0.70, FREEZE = 6.00, FREEZE_LEN = 0.12, CUT_OUT = 8.70, TITLE = 9.00, END = 10.0;
+  const S_MAX = FREEZE - CUT_IN, REV_LEN = CUT_OUT - (FREEZE + FREEZE_LEN);
+  function state(t){
+    let s, rev = 0, cut = 1;
+    if(t < CUT_IN){ s = 0; cut = 0; }
+    else if(t < FREEZE){ s = t - CUT_IN; }
+    else if(t < FREEZE + FREEZE_LEN){ s = S_MAX; }
+    else if(t < CUT_OUT){ const k = (t - FREEZE - FREEZE_LEN)/REV_LEN; s = S_MAX*(1-k); rev = Math.min(1, k*2.5); }
+    else { s = 0; cut = 0; rev = 1; }
+    const titleA = t < TITLE ? 0 : Math.min(1, (t - TITLE)/0.45);
+    return { s, rev, cut, titleA };
+  }
+
+  // ------------------------------------------------------------------ setup
+  const params = new URLSearchParams(location.search);
+  const RENDER = params.has('render');
+  const frameEl = document.getElementById('frame');
+  const canvas = document.getElementById('gl');
+  const titleEl = document.getElementById('title');
+  const playBtn = document.getElementById('play');
+  const audio = document.getElementById('score');
+  const gl = canvas.getContext('webgl', { preserveDrawingBuffer: true, antialias: false, alpha: false });
+  if(!gl){ playBtn.querySelector('span').textContent = 'WEBGL UNAVAILABLE'; return; }
+
+  function fit(){
+    const W = innerWidth, H = innerHeight;
+    let w = W, h = Math.round(W*9/16);
+    if(h > H){ h = H; w = Math.round(H*16/9); }
+    frameEl.style.width = w+'px'; frameEl.style.height = h+'px';
+    frameEl.style.setProperty('--fh', h+'px');
+    const dpr = RENDER ? 1 : Math.min(devicePixelRatio || 1, 2);
+    canvas.width = Math.round(w*dpr); canvas.height = Math.round(h*dpr);
+    gl.viewport(0, 0, canvas.width, canvas.height);
+  }
+  addEventListener('resize', () => { fit(); if(!playing) draw(lastT); });
+
+  function shader(type, id){
+    const sh = gl.createShader(type); gl.shaderSource(sh, document.getElementById(id).textContent); gl.compileShader(sh);
+    if(!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(sh));
+    return sh;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, shader(gl.VERTEX_SHADER, 'vs')); gl.attachShader(prog, shader(gl.FRAGMENT_SHADER, 'fs'));
+  gl.linkProgram(prog); if(!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
+  gl.useProgram(prog);
+  const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+  const aPos = gl.getAttribLocation(prog, 'aPos'); gl.enableVertexAttribArray(aPos); gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+  const U = {}; for(const n of ['uPlate','uMasks','uRes','uT','uS','uRev','uCut']) U[n] = gl.getUniformLocation(prog, n);
+
+  function texture(img, unit, linear){
+    const tex = gl.createTexture(); gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    return tex;
+  }
+  function load(src){ return new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = src; }); }
+
+  let playing = false, lastT = 0, t0 = 0, raf = 0;
+  function draw(t){
+    lastT = t;
+    const st = state(t);
+    gl.uniform2f(U.uRes, canvas.width, canvas.height);
+    gl.uniform1f(U.uT, t); gl.uniform1f(U.uS, st.s); gl.uniform1f(U.uRev, st.rev); gl.uniform1f(U.uCut, st.cut);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+    titleEl.style.opacity = st.titleA.toFixed(3);
+  }
+  function tick(){
+    let t = (performance.now() - t0)/1000;
+    if(!audio.paused && !isNaN(audio.currentTime) && audio.currentTime > 0.05) t = audio.currentTime;
+    if(t >= END){ draw(END); stop(); return; }
+    draw(t); raf = requestAnimationFrame(tick);
+  }
+  function start(){
+    playing = true; playBtn.hidden = true;
+    t0 = performance.now();
+    audio.currentTime = 0; const p = audio.play(); if(p && p.catch) p.catch(() => {});
+    raf = requestAnimationFrame(tick);
+  }
+  function stop(){
+    playing = false; cancelAnimationFrame(raf);
+    try{ audio.pause(); }catch(e){}
+    playBtn.querySelector('span').textContent = 'REPLAY'; playBtn.hidden = false;
+  }
+  playBtn.addEventListener('click', start);
+
+  Promise.all([load('%%PLATE%%'), load('%%MASKS%%')]).then(([plate, masks]) => {
+    texture(plate, 0, true); texture(masks, 1, true);
+    gl.uniform1i(U.uPlate, 0); gl.uniform1i(U.uMasks, 1);
+    fit();
+    if(RENDER){
+      playBtn.hidden = true;
+      window.__seek = (t) => { draw(t); gl.finish(); return true; };
+      window.__ready = true;
+    } else {
+      draw(1.2);   // a still of the opening frame behind the play button
+    }
+  }).catch(err => { playBtn.querySelector('span').textContent = 'FAILED TO LOAD'; console.error(err); });
+})();
+</script>
+</body>
+</html>

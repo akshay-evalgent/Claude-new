@@ -1,2 +1,5 @@
 film/input/
 __pycache__/
+film/temple/build/frames/
+film/temple/build/*.png
+film/temple/build/score.wav
