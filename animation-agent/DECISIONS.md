@@ -2,6 +2,28 @@
 
 Every architectural choice, the alternative, and why. Newest first.
 
+## Milestone 5
+
+- **One human checkpoint, in front of publishing.** It is the only outward-facing step. Per-card
+  approval would duplicate the Critic and turn the reviewer into a rubber stamp.
+- **The Reporter is a separate node before `human_review`.** A node that interrupts reruns from
+  its first line on resume; drafting there would pay for the draft again on every answer.
+- **The Reporter writes prose only; code renders titles, links and numbers from the cards.**
+  Same rule as the Analyst. Invented card ids are dropped, forgotten cards are kept.
+- **The digest features Critic-approved cards; the rest are listed as held back.** PLAN.md's
+  "confidence under 0.5" rule would exclude most approved cards, because metadata-only cards
+  honestly score 0.3 to 0.5. Unapproved cards are capped at 0.49, so the intent is preserved.
+- **Review answers are a Pydantic model; a bad answer pauses again with a note.** Human input is
+  input. Crashing a paused run over a typo would be worse than asking again.
+- **`human_review` routes with `Command`, with `destinations` declared.** The decision comes
+  from the interrupt's return value, which a conditional edge could only read if it were stashed
+  in the state first.
+- **Up to three redrafts per digest.** Bounded loops apply to humans too.
+- **Publishing writes a Markdown file and records every decision, including rejections.**
+  Email or Notion delivery is Milestone 10.
+- **Non-interactive shells leave the run paused and print how to review it.** Scheduled runs
+  must never block on a prompt.
+
 ## Milestone 4
 
 - **One run is one thread; the run id is the thread id.** Resuming, listing and inspecting runs

@@ -24,7 +24,7 @@ def graph(tmp_path, cp, store, fetched, analyst=None):
         analyze=build_card_graph(analyst_chain=analyst or scripted(card()), critic_chain=scripted(approve()),
                                  comments=comments_ok),
         librarian=make_librarian(db_path=tmp_path / "anim.db"),
-        checkpointer=cp, store=store,
+        with_digest=False, checkpointer=cp, store=store,
     )
 
 

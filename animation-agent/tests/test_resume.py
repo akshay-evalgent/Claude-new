@@ -28,7 +28,7 @@ def build(tmp_path, cp, store, log, librarian=None, critic=None):
         triage=make_triage(judge=judge(DECISIONS)),
         analyze=build_card_graph(analyst_chain=analyst, critic_chain=critic or scripted(approve()), comments=comments_ok),
         librarian=librarian or make_librarian(db_path=tmp_path / "anim.db"),
-        checkpointer=cp, store=store,
+        with_digest=False, checkpointer=cp, store=store,
     )
 
 

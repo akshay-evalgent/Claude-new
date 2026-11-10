@@ -19,11 +19,12 @@ def build(tmp_path, decisions=DECISIONS, analyst=None, critic=None):
         analyze=build_card_graph(analyst_chain=analyst or scripted(card()), critic_chain=critic or scripted(approve()),
                                  comments=comments_ok),
         librarian=make_librarian(db_path=tmp_path / "test.db"),
+        with_digest=False,
     )
 
 
 def test_graph_shape():
-    g = build_graph(scout=lambda s: {}, triage=lambda s: {}, librarian=lambda s: {}).get_graph()
+    g = build_graph(scout=lambda s: {}, triage=lambda s: {}, librarian=lambda s: {}, with_digest=False).get_graph()
     edges = {(e.source, e.target, e.conditional) for e in g.edges}
     assert ("triage", "analyze", True) in edges and ("triage", "librarian", True) in edges
     assert ("scout", "triage", False) in edges and ("analyze", "librarian", False) in edges

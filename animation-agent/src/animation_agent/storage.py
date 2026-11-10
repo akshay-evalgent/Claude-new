@@ -52,6 +52,14 @@ CREATE TABLE IF NOT EXISTS triage (
     reason       TEXT,
     PRIMARY KEY (run_id, video_id)
 );
+CREATE TABLE IF NOT EXISTS digests (
+    run_id     TEXT PRIMARY KEY,
+    status     TEXT,
+    path       TEXT,
+    rounds     INTEGER,
+    decided_at TEXT,
+    markdown   TEXT
+);
 CREATE TABLE IF NOT EXISTS runs (
     run_id      TEXT PRIMARY KEY,
     started_at  TEXT,
@@ -124,6 +132,17 @@ class CardStore:
                 [(run_id, d.video_id, d.title, int(d.is_animation), d.interest, d.viral_score, d.priority,
                   int(d.selected), d.reason) for d in decisions],
             )
+
+    def save_digest(self, run_id: str, status: str, path: str | None, markdown: str, rounds: int) -> None:
+        with closing(self._connect()) as conn, conn:
+            conn.execute("INSERT OR REPLACE INTO digests VALUES (?, ?, ?, ?, ?, ?)",
+                         (run_id, status, path, rounds, datetime.now(timezone.utc).isoformat(timespec="seconds"), markdown))
+
+    def list_digests(self, limit: int = 10) -> list[dict[str, Any]]:
+        with closing(self._connect()) as conn:
+            rows = conn.execute("SELECT run_id, status, path, rounds, decided_at FROM digests "
+                                "ORDER BY decided_at DESC LIMIT ?", (limit,)).fetchall()
+        return [dict(r) for r in rows]
 
     def list_cards(self, limit: int = 20) -> list[dict[str, Any]]:
         """Newest first, with the Critic's verdict from the run that last wrote the card (None before M3)."""

@@ -108,8 +108,9 @@ def run(
     stats_budget: int = typer.Option(20, "--stats-budget", min=1, max=40, help="How many search hits get full stats."),
     parallel: int = typer.Option(4, "--parallel", "-p", min=1, max=10, help="Most card pipelines running at once."),
     include_seen: bool = typer.Option(False, "--include-seen", help="Ignore memory: reconsider videos seen before."),
+    digest: bool = typer.Option(True, "--digest/--no-digest", help="Draft a digest and pause for your review."),
 ):
-    """Run the graph: Scout, Triage, parallel Analyst+Critic pipelines, Librarian."""
+    """Run the graph: Scout, Triage, parallel Analyst+Critic pipelines, Librarian, then the digest review."""
     import uuid
 
     if within not in UPLOAD_WINDOWS:
@@ -119,7 +120,7 @@ def run(
               "include_seen": include_seen}
     if query:
         inputs["queries"] = query
-    _execute(inputs, run_id, parallel)
+    _execute(inputs, run_id, parallel, with_digest=digest)
 
 
 @app.command()
@@ -131,15 +132,104 @@ def resume(
     from .graph import build_graph
     from .memory import open_memory
 
-    with open_memory() as (checkpointer, store):
-        snapshot = build_graph(checkpointer=checkpointer, store=store).get_state(_thread(run_id))
+    snapshot = _snapshot(run_id)
     if not snapshot.values:
         raise typer.BadParameter(f"No run {run_id!r} in the checkpoints. List runs with: uv run anim runs")
     if not snapshot.next:
         typer.echo(f"Run {run_id} already finished.")
         raise typer.Exit()
+    if snapshot.interrupts:
+        typer.echo(f"Run {run_id} is waiting for your review, not stopped. Use: uv run anim review {run_id}")
+        raise typer.Exit()
     typer.echo(f"Resuming run {run_id} at: {', '.join(snapshot.next)}")
     _execute(None, run_id, parallel)            # input None means "continue from the checkpoint"
+
+
+@app.command()
+def review(
+    run_id: str = typer.Argument(..., help="A run waiting for review (see `anim runs`)."),
+    approve: bool = typer.Option(False, "--approve", help="Publish the digest as it is."),
+    reject: bool = typer.Option(False, "--reject", help="Publish nothing."),
+    feedback: str = typer.Option(None, "--feedback", help="Ask the Reporter for a new draft that changes this."),
+    edit_file: Path = typer.Option(None, "--edit-file", help="Publish this file's text instead of the draft."),
+):
+    """Review a paused digest: approve, edit, revise or reject. No flags: interactive."""
+    snapshot = _snapshot(run_id)
+    if not snapshot.interrupts:
+        typer.echo(f"Run {run_id} is not waiting for review.")
+        raise typer.Exit()
+    chosen = [x for x in (approve, reject, feedback is not None, edit_file is not None) if x]
+    if len(chosen) > 1:
+        raise typer.BadParameter("Choose one of --approve, --reject, --feedback or --edit-file.")
+    if not chosen:
+        _review_loop(run_id, snapshot.interrupts[0].value)
+        return
+    if approve:
+        answer = {"action": "approve"}
+    elif reject:
+        answer = {"action": "reject"}
+    elif feedback is not None:
+        answer = {"action": "revise", "feedback": feedback}
+    else:
+        answer = {"action": "edit", "text": edit_file.read_text()}
+    _execute(_resume_with(answer), run_id, 4)
+
+
+def _snapshot(run_id: str):
+    from .graph import build_graph
+    from .memory import open_memory
+
+    with open_memory() as (checkpointer, store):
+        return build_graph(checkpointer=checkpointer, store=store).get_state(_thread(run_id))
+
+
+def _resume_with(answer: dict):
+    """Command(resume=...) is how a paused run receives the human's answer."""
+    from langgraph.types import Command
+
+    return Command(resume=answer)
+
+
+def _review_loop(run_id: str, payload: dict) -> None:
+    """Show the paused digest and ask what to do. Non-interactive shells get instructions instead."""
+    import sys
+
+    typer.echo(f"\n{'=' * 30} digest draft, round {payload.get('round', 1)} {'=' * 30}\n")
+    typer.echo(payload.get("digest", ""))
+    typer.echo("=" * 80)
+    if payload.get("note"):
+        typer.echo(f"Note: {payload['note']}")
+    later = (f"Run {run_id} is paused and saved. Review it any time with:\n"
+             f"  uv run anim review {run_id}                      (interactive)\n"
+             f"  uv run anim review {run_id} --approve | --reject | --feedback \"...\" | --edit-file digest.md")
+    if not sys.stdin.isatty():
+        typer.echo(later)
+        return
+    while True:
+        choice = typer.prompt("[a]pprove, [e]dit, [r]evise, re[j]ect, or [l]ater", default="l").strip().lower()[:1]
+        if choice == "a":
+            answer = {"action": "approve"}
+        elif choice == "e":
+            import click                                # typer is built on click, which owns the editor helper
+
+            text = click.edit(payload.get("digest", ""), extension=".md")
+            if text is None:
+                typer.echo("No changes were saved in the editor.")
+                continue
+            answer = {"action": "edit", "text": text}
+        elif choice == "r":
+            answer = {"action": "revise", "feedback": typer.prompt("What should change")}
+        elif choice == "j":
+            if not typer.confirm("Publish nothing for this run?"):
+                continue
+            answer = {"action": "reject"}
+        elif choice == "l":
+            typer.echo(later)
+            return
+        else:
+            continue
+        break
+    _execute(_resume_with(answer), run_id, 4)
 
 
 def _thread(run_id: str, parallel: int | None = None) -> dict:
@@ -150,7 +240,8 @@ def _thread(run_id: str, parallel: int | None = None) -> dict:
     return config
 
 
-def _execute(inputs: dict | None, run_id: str, parallel: int) -> None:
+def _execute(inputs, run_id: str, parallel: int, with_digest: bool = True) -> None:
+    """Start, continue or answer a run. `inputs` is a dict (new run), None (resume) or a Command."""
     from .graph import build_graph
     from .memory import open_memory
     from .nodes.librarian import default_db_path
@@ -169,7 +260,7 @@ def _execute(inputs: dict | None, run_id: str, parallel: int) -> None:
                 learned = backfill_from_cards(store, CardStore(default_db_path()).list_cards(limit=100_000))
                 if learned:
                     typer.echo(f"memory was empty: learned {learned} cards already in the knowledge base")
-            graph = build_graph(checkpointer=checkpointer, store=store)
+            graph = build_graph(checkpointer=checkpointer, store=store, with_digest=with_digest)
             stream = graph.stream(inputs, _thread(run_id, parallel), stream_mode=["updates", "custom"], subgraphs=True)
             for namespace, mode, data in stream:
                 if mode == "custom":
@@ -181,6 +272,7 @@ def _execute(inputs: dict | None, run_id: str, parallel: int) -> None:
                     if isinstance(out, dict):
                         errors += out.get("errors", [])
                         _show_update(node, out, default_db_path())
+            pending = graph.get_state(_thread(run_id)).interrupts   # paused for a human?
     except KeyboardInterrupt:
         import os
         import sys
@@ -194,7 +286,12 @@ def _execute(inputs: dict | None, run_id: str, parallel: int) -> None:
         os._exit(130)
     for err in errors:
         typer.echo(f"! {err}", err=True)
-    typer.echo("See them with: uv run anim cards")
+    if pending:
+        _review_loop(run_id, pending[0].value)
+    elif inputs is not None and not isinstance(inputs, dict):
+        pass                                                # an answered review: publish already reported
+    else:
+        typer.echo("See them with: uv run anim cards")
 
 
 def _show_update(node: str, out: dict, db_path) -> None:
@@ -215,6 +312,11 @@ def _show_update(node: str, out: dict, db_path) -> None:
                        f"confidence {card.confidence:.2f}")
     elif node == "librarian":
         typer.echo(f"[librarian] saved {len(out['saved'])} cards to {db_path}; memory updated")
+    elif node == "reporter":
+        typer.echo(f"[reporter] digest draft {out['digest_round']} ready for review")
+    elif node == "publish":
+        typer.echo(f"[publish] digest published to {out['digest_path']}" if out.get("digest_path")
+                   else "[publish] digest rejected; nothing published")
 
 
 @app.command()
@@ -235,7 +337,8 @@ def runs(limit: int = typer.Option(10, "--limit", "-n", help="How many runs to l
     if not rows:
         typer.echo("No runs yet. Start one with: uv run anim run")
     for started, tid, snap in sorted(rows, key=lambda r: r[0], reverse=True)[:limit]:
-        status = "finished" if not snap.next else f"stopped before {', '.join(snap.next)}"
+        status = ("finished" if not snap.next else "waiting for review" if snap.interrupts
+                  else f"stopped before {', '.join(snap.next)}")
         typer.echo(f"{tid}  {started[:19]:<19}  {len(snap.values.get('candidates', [])):>3} candidates  "
                    f"{len(snap.values.get('cards', [])):>2} cards  {status}")
 
@@ -277,6 +380,19 @@ def memory(
         v = item.value
         detail = f"approved={v.get('approved')}" if v["status"] == "analysed" else f"interest {v.get('interest')}"
         typer.echo(f"{item.key:<22} {v['status']:<9} {v.get('on', ''):<10} {detail:<15} {v.get('title', '')[:55]}")
+
+
+@app.command()
+def digests(limit: int = typer.Option(10, "--limit", "-n", help="How many to list.")):
+    """List digest decisions: published, edited or rejected."""
+    from .nodes.librarian import default_db_path
+    from .storage import CardStore
+
+    rows = CardStore(default_db_path()).list_digests(limit)
+    if not rows:
+        typer.echo("No digests yet.")
+    for r in rows:
+        typer.echo(f"{r['run_id']}  {r['decided_at'][:19]}  {r['status']:<9} drafts {r['rounds']}  {r['path'] or '-'}")
 
 
 @app.command("cards")

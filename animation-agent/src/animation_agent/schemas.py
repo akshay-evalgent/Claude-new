@@ -9,7 +9,7 @@ from __future__ import annotations
 from datetime import date
 from typing import Literal
 
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, Field, HttpUrl, model_validator
 
 StyleFamily = Literal[
     "2d_hand_drawn",
@@ -190,3 +190,36 @@ class Review(BaseModel):
     confidence: float | None = None
     issues: list[Issue] = Field(default_factory=list, description="Unresolved issues; empty when approved.")
     history: list[str] = Field(default_factory=list, description="One line per Critic round.")
+
+
+# ---- Milestone 5: the digest and the human review -------------------------------------------
+
+class DigestItem(BaseModel):
+    card_id: str
+    takeaway: str = Field(description="One or two sentences: what a motion designer should learn or try from this piece. Only what the card supports.")
+
+
+class DigestDraft(BaseModel):
+    """The editorial parts of a digest. Code adds titles, links and numbers from the cards."""
+
+    headline: str = Field(description="Under 12 words. Names the pattern or the standout piece. No hype.")
+    intro: str = Field(description="Two or three sentences on what this batch shows as a whole.")
+    items: list[DigestItem] = Field(description="One per card, in the order a motion designer should read them.")
+    open_questions: list[str] = Field(default_factory=list, max_length=5,
+                                      description="The most useful questions the cards could not answer.")
+
+
+class ReviewAnswer(BaseModel):
+    """What the human sends back when the run is paused for review. Validated like any input."""
+
+    action: Literal["approve", "edit", "revise", "reject"]
+    text: str | None = Field(default=None, description="The edited digest, for action 'edit'.")
+    feedback: str | None = Field(default=None, description="What the Reporter should change, for action 'revise'.")
+
+    @model_validator(mode="after")
+    def _needs_its_field(self) -> "ReviewAnswer":
+        if self.action == "edit" and not (self.text or "").strip():
+            raise ValueError("action 'edit' needs the edited digest in 'text'")
+        if self.action == "revise" and not (self.feedback or "").strip():
+            raise ValueError("action 'revise' needs 'feedback' saying what to change")
+        return self
