@@ -1,0 +1,14 @@
+# One voice per character. With the free backend, `voice` is a plain-language voice description for Qwen3 TTS
+# VoiceDesign (the ElevenLabs voice name it replaces is kept in the comment). Japanese voices, English subtitles.
+akane:
+  name: Akane
+  voice: "A Japanese woman of about nineteen with a bright, slightly husky voice, cocky and full of energy, speaking quickly with a grin"   # ElevenLabs: Jessica
+  stability: 0.35
+  similarity_boost: 0.8
+  ref: char-akane-v1
+jin:
+  name: Jin
+  voice: "A Japanese man of about twenty-two with a low, calm, smooth voice, composed and dry, speaking slowly and quietly"   # ElevenLabs: Brian
+  stability: 0.55
+  similarity_boost: 0.8
+  ref: char-jin-v1

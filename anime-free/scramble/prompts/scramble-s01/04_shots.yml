@@ -1,0 +1,99 @@
+# 480 frames (20 s): street 60, akane 60, jin 60, charge 36, exchange 84, kick 36, slide 48, smile 48, tag 48.
+# Quiet shots lock the camera; the run gets a travelling camera; the fast beats are retimed takes.
+# Shot prompts use a short style sentence, not the whole style bible: a long palette list confuses a motion prompt.
+---
+- name: street
+  image: street
+  frames: 60
+  seconds: 3
+  prompt: "Hand-drawn 2D anime film, cel shading, rainy neon night. The same crossing as in the image, ONE CONTINUOUS TAKE with no cuts. The crowd under umbrellas keeps walking across the zebra stripes in every direction, rain falls, neon signs flicker and their reflections shimmer on the wet asphalt. In the middle the woman in the red jacket and the man in the white hoodie stand perfectly still, facing each other, while everyone else moves around them. No new objects, no text."
+  camera:
+    move: slow push-in (dolly in) from the high wide view, no rotation
+    from: the high wide shot in the image
+    to: slightly closer on the two still figures in the middle
+    timing: constant and slow from first frame to last
+    anchors: the two still figures stay in the centre of the frame
+- name: akane
+  image: akane
+  frames: 60
+  seconds: 3
+  audio: akane
+  prompt: "Hand-drawn 2D anime film, cel shading, rainy neon night. The same young woman as in the image, on-model, ONE CONTINUOUS TAKE with no cuts. 0-0.4 s: closed-mouth grin, rain running down her jacket. 0.4-2 s: she says a short line with clear cocky mouth movements, chin lifting, her raised fist tightening. 2-3 s: her mouth closes into a wide grin. The whole time blurred people with umbrellas walk past behind her and in front of her, rain falls, neon light flickers on her face. Same face, same outfit. No new objects, no text."
+  camera:
+    move: locked-off medium close-up, a tripod camera with no movement
+- name: jin
+  image: jin
+  frames: 60
+  seconds: 3
+  audio: jin
+  prompt: "Hand-drawn 2D anime film, cel shading, rainy neon night. The same young man as in the image, on-model, ONE CONTINUOUS TAKE with no cuts. 0-0.5 s: he looks back over his shoulder, calm, mouth closed, hands in his pockets. 0.5-2 s: he says a short dry line with small mouth movements, one eyebrow lifting slightly. 2-3 s: his mouth closes and he slowly turns his body to face the left of the frame, taking his hands out of his pockets. The whole time blurred people with umbrellas keep walking past, rain runs off his hoodie. Same face, same outfit. No new objects, no text."
+  camera:
+    move: locked-off medium shot, a tripod camera with no movement
+- name: charge
+  image: charge
+  frames: 36
+  seconds: 2.5
+  source_frames: 60
+  retime: true
+  prompt: "Hand-drawn 2D anime film, cel shading, rainy neon night. The same young woman as in the image, on-model, alone, ONE CONTINUOUS TAKE with no cuts. She sprints flat out from left to right with long powerful strides, her feet really pushing off the wet asphalt and throwing up water, arms pumping, ponytail and red jacket whipping back. She stays in the centre of the frame because the camera travels with her. The whole street rushes past behind her from right to left the entire time: umbrellas and people whip by as blurred streaks, neon signs smear into long lines of magenta, cyan and amber, zebra stripes flash under her feet. No new objects, no text."
+  camera:
+    move: fast lateral tracking shot, the camera travels sideways to the right alongside the runner at her exact speed, never stopping
+    from: the side view in the image
+    to: the same side view of her, much further across the street
+    timing: full speed from the first frame to the last
+    anchors: she stays centred, the background never stops moving from right to left
+- name: exchange
+  image: exchange
+  frames: 84
+  seconds: 5
+  source_frames: 108
+  retime: true
+  prompt: "Hand-drawn 2D anime film, cel shading, rainy neon night. The same woman in the red jacket and the same man in the white hoodie as in the image, on-model, ONE CONTINUOUS TAKE with no cuts, a clean hand-to-hand exchange with weight behind every blow. 0-0.8 s: the woman on the left finishes a straight right punch and the man on the right parries it with his forearm. 0.8-1.7 s: she swings a left hook and he leans back out of its way. 1.7-2.8 s: he answers with one straight punch and she blocks it with both forearms, sliding back a step with water spraying at her feet. 2.8-4.2 s: she steps back in with a fast one-two, landing on his raised forearms. 4.2-5 s: the pair push apart, breathing hard, guards up. Each keeps exactly two arms and two legs, same outfits, the woman stays on the left, the man on the right. Rain falls, puddles splash. No energy effects, no new people, no text."
+  camera:
+    move: smooth partial arc around the two fighters, about 40 degrees in total, never a full rotation
+    from: the slightly low medium-wide two-shot in the image
+    to: the same distance, moved about 40 degrees around them to the right
+    timing: slow and constant from first frame to last
+    anchors: the woman stays on the left, the man stays on the right, the crowd ring stays far behind
+- name: kick
+  image: kick
+  frames: 36
+  seconds: 2.5
+  source_frames: 48
+  retime: true
+  prompt: "Hand-drawn 2D anime film, cel shading, rainy neon night. The same woman in the red jacket and the same man in the white hoodie as in the image, on-model, ONE CONTINUOUS TAKE with no cuts. 0-0.4 s: the woman whips her high roundhouse kick through with her whole body. 0.4 s: her shin slams into the man's crossed forearms, a ring of rainwater bursts outward from the contact. 0.4-2 s: he is driven backwards to the right, feet skidding and spraying water, forearms still crossed, while she follows through and lands. Same faces, same outfits, each keeps two arms and two legs. No energy effects, no new people, no text."
+  camera:
+    move: small sharp push-in, then a slight shake on the contact
+    from: the low medium shot in the image
+    to: slightly closer on the contact
+    timing: fast at first, then almost still
+- name: slide
+  image: slide
+  frames: 48
+  seconds: 2.5
+  prompt: "Hand-drawn 2D anime film, cel shading, rainy neon night. The same man in the white hoodie and the same woman in the red jacket as in the image, on-model, ONE CONTINUOUS TAKE with no cuts. 0-1.2 s: the man skids backwards to the right in a low crouch, his feet cutting two long sprays of water out of the wet asphalt, one hand dragging on the ground, slowing down. 1.2-2.5 s: he comes to a stop and lifts his head, eyes sharp, water settling around him. Far on the left the woman stays small in her fighting stance. The crowd ring stays far behind, rain falls. No new people, no text."
+  camera:
+    move: quick slight pan right with the skidding man, about 10 degrees, then settling
+    from: the wide low shot in the image
+    to: the same wide shot framed on the man as he stops
+    timing: fast, then settling
+    anchors: the zebra stripes and the crowd ring stay in the background
+- name: smile
+  image: smile
+  frames: 48
+  seconds: 2.5
+  audio: jin
+  prompt: "Hand-drawn 2D anime film, cel shading, rainy neon night. The same young man as in the image, on-model, ONE CONTINUOUS TAKE with no cuts. 0-0.5 s: he lowers his taped forearms, mouth closed, rain dripping from his silver hair. 0.5-1.5 s: he says two quiet words with small mouth movements and the corner of his mouth lifts into a small smile. 1.5-2.5 s: his mouth closes, the small smile stays, steam drifts off his forearms. Blurred neon and the crowd stay soft behind him. Same face, same outfit. No new objects, no text."
+  camera:
+    move: very slow push-in
+    from: the medium close-up in the image
+    to: slightly closer on his face
+    timing: constant
+- name: tag
+  image: tag
+  frames: 48
+  seconds: 2.5
+  audio: akane
+  prompt: "Hand-drawn 2D anime film, cel shading, rainy neon night. The same young woman as in the image, on-model, ONE CONTINUOUS TAKE with no cuts. 0-0.3 s: fists up, bouncing lightly on her toes, grinning with her mouth closed. 0.3-1.8 s: she says a short excited line with clear mouth movements, laughing, and beckons once with her front hand. 1.8-2.5 s: her mouth closes in a big grin and she settles back into her guard. Rain falls, her ponytail sways, blurred neon and the crowd stay soft behind her. Same face, same outfit. No new objects, no text."
+  camera:
+    move: locked-off medium shot, a tripod camera with no movement

@@ -1,0 +1,4 @@
+# The working project is created by upstream `mv.rb init` plus ./setup.sh; only our own files are tracked.
+project/
+__pycache__/
+*.pyc

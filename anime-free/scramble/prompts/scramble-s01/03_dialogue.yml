@@ -1,0 +1,39 @@
+# Scene time in seconds. Shots: street 0-2.5, akane 2.5-5, jin 5-7.5, charge 7.5-9, exchange 9-12.5, kick 12.5-14,
+# slide 14-16, smile 16-18, tag 18-20. keep_s stops a take from running into the next shot.
+---
+- name: akane-found
+  character: akane
+  at: 2.9
+  language_code: ja
+  text: "[cocky, grinning] やっと見つけた、ジン！"
+  subtitle: Found you at last, Jin!
+  keep_s: 2.0
+- name: jin-here
+  character: jin
+  at: 5.5
+  language_code: ja
+  text: "[calm, dry, unimpressed] ここでやる気か。"
+  subtitle: Here? Seriously?
+  keep_s: 1.9
+- name: akane-kiai
+  character: akane
+  at: 13.05
+  vo: true
+  language_code: ja
+  text: "[fierce short battle shout] はあっ！"
+  subtitle: " "
+  keep_s: 0.9
+- name: jin-notbad
+  character: jin
+  at: 16.45
+  language_code: ja
+  text: "[quiet, impressed, a small smile] …悪くない。"
+  subtitle: ...Not bad.
+  keep_s: 1.5
+- name: akane-more
+  character: akane
+  at: 18.2
+  language_code: ja
+  text: "[cocky, laughing, excited] まだまだ、これから！"
+  subtitle: I'm just getting started!
+  keep_s: 1.75

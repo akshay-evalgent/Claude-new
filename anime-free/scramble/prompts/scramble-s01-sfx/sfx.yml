@@ -1,0 +1,29 @@
+# Rain and the crowd carry the street; every blow gets its own sound on the frame it lands.
+source: output/scramble-s01/final_overlay.mp4
+out: output/scramble-s01/final_sfx.mp4
+rel_db: -6
+peak_db: -3
+max_gain_db: 18
+voice_dip_db: 5
+sounds:
+  street: {prompt: "Busy city crossing at night in steady rain, rain on umbrellas and wet asphalt, a large crowd walking and murmuring, distant traffic, no music, no clear voices", duration: 20}
+  gasp: {prompt: "A crowd of people gasping and stepping back in surprise on a wet street, startled murmur, no music, no clear words", duration: 3}
+  run: {prompt: "One person sprinting across wet asphalt through shallow puddles, fast splashing footsteps, isolated, no music, no voices", duration: 2}
+  whoosh: {prompt: "One short fast punch whoosh through the air, anime fight sound effect, isolated, no music, no voices", duration: 1}
+  block: {prompt: "One hard punch landing on a raised forearm, a tight meaty smack, anime fight sound effect, isolated, no music, no voices", duration: 1}
+  impact: {prompt: "One huge heavy kick impact with a deep boom and a sharp crack, anime finishing blow sound effect, isolated, no music, no voices", duration: 2}
+  skid: {prompt: "Sneakers skidding backwards across wet asphalt with a long spray of water, isolated, no music, no voices", duration: 2}
+cues:
+  - {at: 0.0, sound: street, rel_db: -9, len: 20.0, fade: 0.4}
+  - {at: 7.5, sound: run, rel_db: 6, len: 1.5, fade: 0.1}
+  - {at: 8.4, sound: gasp, rel_db: 2, len: 2.5, fade: 0.4}
+  - {at: 9.3, sound: whoosh, rel_db: 3, len: 0.3, fade: 0.05}
+  - {at: 9.5, sound: block, rel_db: 7, len: 0.5, fade: 0.05}
+  - {at: 10.1, sound: whoosh, rel_db: 3, len: 0.3, fade: 0.05}
+  - {at: 10.3, sound: block, rel_db: 7, len: 0.5, fade: 0.05}
+  - {at: 11.0, sound: whoosh, rel_db: 3, len: 0.3, fade: 0.05}
+  - {at: 11.2, sound: block, rel_db: 8, len: 0.5, fade: 0.05}
+  - {at: 11.9, sound: block, rel_db: 8, len: 0.5, fade: 0.05}
+  - {at: 13.0, sound: whoosh, rel_db: 5, len: 0.4, fade: 0.05}
+  - {at: 13.3, sound: impact, rel_db: 12, len: 1.2, fade: 0.2}
+  - {at: 14.0, sound: skid, rel_db: 8, len: 1.8, fade: 0.2}

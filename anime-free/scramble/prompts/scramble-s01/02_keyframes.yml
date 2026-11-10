@@ -1,0 +1,106 @@
+# First frames. Every shot paints the characters and the street in one image, composed from the character sheets and
+# the location painting as reference images. With the free backend these go to FLUX.2 Klein 4B.
+street:
+  base: false
+  refs: [loc-street-v1, char-akane-v1, char-jin-v1]
+  prompt: >-
+    {{STYLE}} A single film still, one painted image, not a character sheet. High wide shot looking down across the
+    rainy scramble crossing from image 1 at night: zebra stripes on wet black asphalt mirroring magenta and cyan neon,
+    a dense crowd under umbrellas crossing in every direction. In the middle of the crossing two small figures stand
+    completely still, six metres apart, facing each other, while the crowd flows around them: on the left the young
+    woman from image 2 in her red bomber jacket with her black ponytail, on the right the young man from image 3 in
+    his white hoodie with silver-white hair. Both are small in the frame, seen full-body. Fine rain, haze, puddles.
+    No readable text, no lettering.
+akane:
+  base: false
+  refs: [char-akane-v1, loc-street-v1]
+  prompt: >-
+    {{STYLE}} A single film still, one painted image, not a character sheet. Medium close-up, slightly low angle, of
+    the 19-year-old woman from image 1 standing on the rainy scramble crossing from image 2 at night: the same face,
+    sharp amber eyes, long black hair in a high ponytail with a red tie, red bomber jacket with white collar stripes
+    open over a black crop top, black fingerless gloves. She is in the left half of the frame, framed from the waist
+    up, in three-quarter view facing the RIGHT of the frame, eyes locked on someone off-screen to the right, a cocky
+    grin with her mouth closed, one gloved fist raised to chest height. Magenta neon rim light on the left side of her
+    face and hair, cyan light on the right, raindrops on her jacket, wet hair strands. Behind her, out of focus,
+    pedestrians with umbrellas walk past and neon signs glow as soft bokeh. An out-of-focus umbrella edge crosses the
+    near foreground at the right. No other faces in focus, no text.
+jin:
+  base: false
+  refs: [char-jin-v1, loc-street-v1]
+  prompt: >-
+    {{STYLE}} A single film still, one painted image, not a character sheet. Medium shot of the 22-year-old man from
+    image 1 standing on the rainy scramble crossing from image 2 at night: the same face, narrow steel-grey eyes, short
+    messy silver-white hair, white zip hoodie with the hood down open over a black t-shirt, white tape on his hands.
+    He is in the right half of the frame, framed from the hips up, body turned away with his back three-quarters to
+    the camera, looking back over his left shoulder toward the LEFT of the frame with a calm, unreadable face and his
+    mouth closed, both hands in his hoodie pockets. Cyan neon rim light on his hair and shoulder, warm amber shop light
+    on his cheek, rain running off the hoodie. Around him, out of focus, pedestrians with umbrellas keep walking. Wet
+    asphalt and zebra stripes mirror the lights below. No other faces in focus, no text.
+charge:
+  base: false
+  refs: [char-akane-v1, loc-street-v1]
+  prompt: >-
+    {{STYLE}} A single film still from a fast tracking shot, one painted image, not a character sheet. The rainy
+    scramble crossing from image 2 at night. The 19-year-old woman from image 1 alone, the same face, black ponytail
+    with a red tie, red bomber jacket over a black crop top, black cargo trousers, white sneakers, sprinting flat out
+    from left to right in pure side view in the centre of the frame, seen full-body from knee height. Mid-stride,
+    leaning hard forward, rear leg driving off the wet asphalt and throwing up a fan of water, fists pumping, jaw set,
+    ponytail and jacket streaming behind her. The camera travels beside her at her speed, so the crowd, umbrellas and
+    neon signs behind her are smeared into long horizontal motion-blur streaks of magenta, cyan and amber, while she
+    stays sharp. Zebra stripes streak past under her feet. No other sharp figures, no text.
+exchange:
+  base: false
+  refs: [char-akane-v1, char-jin-v1, loc-street-v1]
+  prompt: >-
+    {{STYLE}} A single film still, one painted image, not a character sheet. Slightly low medium-wide two-shot on the
+    wet asphalt of the scramble crossing from image 3 at night. On the LEFT the woman from image 1 in her red bomber
+    jacket and black cargo trousers, on the RIGHT the man from image 2 in his white hoodie and charcoal trousers, the
+    same faces and hair, both in fighting guards one arm's length apart, full bodies in frame down to the knees. She
+    has just started a straight right punch, his left forearm rises to parry it. Fierce focused faces with closed
+    mouths. Far behind them the crowd has backed away into a wide ring, small and out of focus under umbrellas, with
+    neon signs glowing above. Magenta and cyan rim light on both fighters, rain, their reflections in the puddles.
+    Exactly two people in focus, no text.
+kick:
+  base: false
+  refs: [char-akane-v1, char-jin-v1, loc-street-v1]
+  prompt: >-
+    {{STYLE}} A single film still, one painted image, not a character sheet. Dramatic low-angle medium shot in profile
+    on the rainy scramble crossing from image 3 at night. On the LEFT the woman from image 1 in her red bomber jacket
+    spins on her left foot and drives a high roundhouse kick with her right leg, hips turned, ponytail whipping, fierce
+    shout. On the RIGHT the man from image 2 in his white hoodie has both taped forearms crossed in front of his head
+    to block, feet braced, eyes sharp, her shin a hand's width from his forearms and not yet touching. The same faces
+    and hair. Water drops hang in the air around her foot, neon signs blur behind them, the crowd is a soft ring far
+    away. Exactly two people in focus, no text.
+slide:
+  base: false
+  refs: [char-jin-v1, char-akane-v1, loc-street-v1]
+  prompt: >-
+    {{STYLE}} A single film still, one painted image, not a character sheet. Wide low shot on the rainy scramble
+    crossing from image 3 at night. In the RIGHT half of the frame the man from image 1 in his white hoodie, the same
+    face and silver-white hair, is pushed backwards in a low crouch, both feet skidding on the wet asphalt and throwing
+    long sprays of water forward, one taped hand touching the ground, the other forearm still raised, eyes up and
+    sharp. Far on the LEFT of the frame, small, the woman from image 2 in her red bomber jacket lands from her kick
+    in a fighting stance. Zebra stripes and neon reflections stretch between them, the crowd stands in a wide ring far
+    behind under umbrellas. Exactly two people in focus, no text.
+smile:
+  base: false
+  refs: [char-jin-v1, loc-street-v1]
+  prompt: >-
+    {{STYLE}} A single film still, one painted image, not a character sheet. Medium close-up of the 22-year-old man
+    from image 1 on the rainy scramble crossing from image 2 at night, the same face, steel-grey eyes, short messy
+    silver-white hair wet from the rain, white hoodie. He is centred, framed from the chest up, facing the camera
+    turned slightly to the LEFT of the frame, lowering his taped forearms from in front of his face, looking past the
+    camera to the left with a calm face and his mouth closed. Cyan rim light on his hair, magenta light on his
+    shoulder, light steam rising from his forearms, rain. Behind him the neon signs and the crowd are soft bokeh. No
+    other faces in focus, no text.
+tag:
+  base: false
+  refs: [char-akane-v1, loc-street-v1]
+  prompt: >-
+    {{STYLE}} A single film still, one painted image, not a character sheet. Medium shot of the 19-year-old woman from
+    image 1 on the rainy scramble crossing from image 2 at night, the same face, amber eyes, black ponytail with a red
+    tie, red bomber jacket over a black crop top, black fingerless gloves. She is centred, framed from the hips up,
+    facing the RIGHT of the frame in three-quarter view, both fists raised in a kickboxing guard, bouncing on her toes,
+    a big cocky grin with her mouth closed, breathing hard, wet hair strands on her forehead. Magenta rim light from
+    the left, cyan from the right, rain. Behind her the crowd ring and the neon signs are soft bokeh. No other faces
+    in focus, no text.
