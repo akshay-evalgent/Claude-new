@@ -31,6 +31,7 @@ uv run anim memory          # what the agent remembers analysing or skipping
 uv run anim review <run id> # approve, edit, revise or reject a paused digest; `anim digests` lists decisions
 uv run anim ask "..."       # question the knowledge base; answers cite their cards
 uv run anim trends          # trends across recent cards (--refresh recomputes); `anim taxonomy` lists sub-styles
+uv run anim eval run        # evals against evals/baseline.json; `anim eval build` refreshes the datasets
 ```
 
 To open the graph in LangGraph Studio: `uv run --with "langgraph-cli[inmem]" langgraph dev`.
@@ -50,4 +51,5 @@ example `uv sync --extra anthropic` with an `ANTHROPIC_API_KEY`.
 | 5 Human in the loop: Reporter drafts a digest, `interrupt()` pauses for approve / edit / revise / reject, then publish | done |
 | 6 Knowledge base and Q&A: local Chroma embeddings, self-query filters with relaxation, `anim ask` with checked citations | done |
 | 7 Synthesis: trends across cards with evidence counts computed in code, change tracking, taxonomy, digest sections | done |
-| 8 Evals: frozen datasets, LLM-as-judge rubrics, regression checks, CI | next |
+| 8 Evals: frozen datasets, code metrics plus an Opus judge, baseline with regression checks, CI workflow | done |
+| 9 Multimodal: frames sampled from top videos, visual notes merged into cards | next |

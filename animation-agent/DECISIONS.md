@@ -2,6 +2,22 @@
 
 Every architectural choice, the alternative, and why. Newest first.
 
+## Milestone 8
+
+- **Eval datasets are files in git, not queries.** Comparable over time and runnable in CI.
+- **The card pipeline now stores each card's source material.** New cards become exact Analyst
+  eval inputs; older ones were rebuilt from YouTube.
+- **Draft labels come from Opus and are marked `opus-draft`; humans confirm with `anim eval
+  label`.** Labelling should not block evals, and model agreement must never pass for ground truth.
+- **Code metrics first (quote coverage, recall@k), then an Opus judge with an anchored rubric.**
+- **Tolerances: 0.05 for ratios, 0.3 for 1-5 judge scores.** Judges and Haiku are noisy.
+- **Triage `MIN_INTEREST` raised from 2 to 3 on eval evidence, not to 4.** 4 scored higher on 40
+  model-drafted labels with 7 positives; too little evidence for the stricter gate. Revisit after
+  human labels.
+- **CI runs tests plus the free retrieval eval on every change; model evals only with an
+  `ANTHROPIC_API_KEY` secret.** No paid key is needed to keep the gate.
+- **LangSmith upload is optional and was not exercised here (no key).** Covered by a fake-client test.
+
 ## Milestone 7
 
 - **The Synthesizer runs after the Librarian, over approved cards from the last 30 days.** Trends

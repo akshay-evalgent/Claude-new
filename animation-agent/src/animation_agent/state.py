@@ -39,6 +39,7 @@ class RunState(RunInput, total=False):
     selected: list[Candidate]                               # Triage: the ones sent for analysis
     cards: Annotated[list[TechniqueCard], operator.add]     # each parallel card pipeline appends one
     reviews: Annotated[list[Review], operator.add]          # ...and its Critic review
+    sources: Annotated[list[dict], operator.add]            # ...and the source material it was written from
     errors: Annotated[list[str], operator.add]              # any node appends
     saved: list[str]                                        # Librarian: ids of cards written
     trends: list[Trend]                                     # Synthesizer: trends across recent cards
@@ -63,6 +64,7 @@ class CardInput(TypedDict):
 class CardOutput(TypedDict, total=False):
     cards: Annotated[list[TechniqueCard], operator.add]
     reviews: Annotated[list[Review], operator.add]
+    sources: Annotated[list[dict], operator.add]            # {"card_id", "source"}: frozen eval inputs
     errors: Annotated[list[str], operator.add]
 
 

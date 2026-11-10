@@ -62,7 +62,7 @@ def accept(state: CardState) -> dict:
                 + "; ".join(i.problem for i in unresolved[:3]))
     review = Review(card_id=card.id, rounds=state.get("attempts", 0), approved=approved,
                     confidence=card.confidence, issues=unresolved, history=state.get("history", []))
-    return {"cards": [card], "reviews": [review]}
+    return {"cards": [card], "reviews": [review], "sources": [{"card_id": card.id, "source": state.get("source", "")}]}
 
 
 def build_card_graph(

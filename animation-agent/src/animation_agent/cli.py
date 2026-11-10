@@ -543,5 +543,158 @@ def check():
     typer.echo(f"provider={settings.llm_provider} model={settings.llm_model} tracing={settings.langsmith_tracing}")
 
 
+# ---- Milestone 8: evals --------------------------------------------------------------------
+
+eval_app = typer.Typer(no_args_is_help=True, help="Evals: measure each step on frozen datasets.")
+app.add_typer(eval_app, name="eval")
+SUITES = ["triage", "analyst", "retrieval"]
+
+
+@eval_app.command("build")
+def eval_build(
+    draft_labels: bool = typer.Option(False, "--draft-labels", help="Ask Opus to draft missing Triage labels (marked opus-draft)."),
+):
+    """(Re)build evals/datasets/ from the knowledge base. Existing labels and qa.jsonl are kept."""
+    from .evals import datasets as ds
+    from .nodes.librarian import default_db_path
+    from .storage import CardStore
+
+    cards_db = CardStore(default_db_path())
+    cards = ds.build_cards(cards_db)
+    ds.save("cards", cards)
+    analyst = ds.build_analyst(cards_db)
+    ds.save("analyst", analyst)
+    triage = ds.build_triage(cards_db, existing=ds.load("triage"))
+    if draft_labels:
+        from .evals.judge import build_label_chain
+
+        typer.echo(f"drafted {ds.draft_labels(triage, build_label_chain())} Triage labels with Opus")
+    ds.save("triage", triage)
+    labelled = [r for r in triage if r.get("label")]
+    human = sum(1 for r in labelled if r["label"].get("source") == "human")
+    typer.echo(f"cards.jsonl {len(cards)} | analyst.jsonl {len(analyst)} "
+               f"({sum(r['origin'] == 'stored' for r in analyst)} stored sources) | triage.jsonl {len(triage)} "
+               f"({len(labelled)} labelled, {human} by a human) | qa.jsonl {len(ds.load('qa'))}")
+    if labelled and human < len(labelled):
+        typer.echo("Draft labels are a strong model's opinion. Confirm them with: uv run anim eval label")
+
+
+@eval_app.command("run")
+def eval_run(
+    suites: list[str] = typer.Argument(None, help=f"Which suites: {', '.join(SUITES)}. Default: all."),
+    limit: int = typer.Option(3, "--limit", "-n", min=1, help="Analyst items to replay (each costs two Opus calls)."),
+    k: int = typer.Option(4, "--k", min=1, max=10, help="Retrieval depth for recall@k."),
+    planner: bool = typer.Option(False, "--planner", help="Retrieval eval through the Haiku query planner."),
+    save_baseline: bool = typer.Option(False, "--save-baseline", help="Store these metrics as the new baseline."),
+    check: bool = typer.Option(False, "--check", help="Exit with code 1 if any metric regressed (for CI)."),
+):
+    """Run eval suites, compare with evals/baseline.json, save results to evals/results/."""
+    import json
+    from datetime import datetime, timezone
+
+    from .evals import datasets as ds
+    from .evals.compare import regressions
+    from .evals.runners import eval_analyst, eval_retrieval, eval_triage
+
+    chosen = suites or SUITES
+    unknown = set(chosen) - set(SUITES)
+    if unknown:
+        raise typer.BadParameter(f"Unknown suites: {sorted(unknown)}. Choose from {SUITES}.")
+    results = {}
+    if "triage" in chosen:
+        rows = ds.load("triage")
+        if any(r.get("label") for r in rows):
+            results["triage"] = eval_triage(rows)
+        else:
+            typer.echo("triage: skipped, no labelled rows (run `anim eval build --draft-labels`).")
+    if "analyst" in chosen:
+        rows = ds.load("analyst")
+        if rows:
+            results["analyst"] = eval_analyst(rows, limit=limit)
+        else:
+            typer.echo("analyst: skipped, no rows (run `anim eval build`).")
+    if "retrieval" in chosen:
+        qa, cards = ds.load("qa"), ds.load("cards")
+        if qa and cards:
+            from .qa_graph import build_planner_chain
+
+            results["retrieval"] = eval_retrieval(qa, cards, k=k, planner=build_planner_chain() if planner else None)
+        else:
+            typer.echo("retrieval: skipped, needs qa.jsonl and cards.jsonl (run `anim eval build`).")
+
+    metrics = {suite: r["metrics"] for suite, r in results.items()}
+    for suite, m in metrics.items():
+        extra = f"  labels: {results[suite]['label_sources']}" if suite == "triage" else ""
+        typer.echo(f"{suite:<10} " + "  ".join(f"{k} {v}" for k, v in m.items()) + extra)
+    ds.RESULTS.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    (ds.RESULTS / f"{stamp}.json").write_text(json.dumps(results, indent=1, default=str))
+    baseline = json.loads(ds.BASELINE.read_text()) if ds.BASELINE.exists() else {}
+    found = regressions(metrics, baseline)
+    if save_baseline:
+        baseline.update(metrics)
+        ds.BASELINE.write_text(json.dumps(baseline, indent=1) + "\n")
+        typer.echo(f"baseline updated: {ds.BASELINE}")
+    elif not baseline:
+        typer.echo("No baseline yet. Save one with --save-baseline.")
+    for line in found:
+        typer.echo(f"REGRESSION {line}", err=True)
+    if not found and baseline and not save_baseline:
+        typer.echo("No regressions against the baseline.")
+    typer.echo(f"details: {ds.RESULTS / (stamp + '.json')}")
+    if check and found:
+        raise typer.Exit(1)
+
+
+@eval_app.command("label")
+def eval_label():
+    """Confirm or correct Triage labels by hand. Enter keeps the current answer."""
+    import sys
+
+    from .evals import datasets as ds
+
+    rows = ds.load("triage")
+    todo = [r for r in rows if not r.get("label") or r["label"].get("source") != "human"]
+    if not todo:
+        typer.echo("Every Triage row already has a human label.")
+        return
+    if not sys.stdin.isatty():
+        typer.echo(f"{len(todo)} rows need a human label. Run this command in an interactive terminal.")
+        return
+
+    def ask(question: str, current: bool | None) -> bool:
+        default = "y" if current else "n" if current is not None else None
+        while True:
+            answer = typer.prompt(question, default=default or "").strip().lower()[:1]
+            if answer in ("y", "n"):
+                return answer == "y"
+
+    for n, r in enumerate(todo, 1):
+        lab = r.get("label") or {}
+        typer.echo(f"\n[{n}/{len(todo)}] {r['line']}")
+        try:
+            is_anim = ask("Is it mainly animation? [y/n]", lab.get("is_animation"))
+            worth = ask("Worth a full Technique Card? [y/n]", lab.get("worth_card")) if is_anim else False
+        except (KeyboardInterrupt, EOFError, typer.Abort):
+            break
+        r["label"] = {"is_animation": is_anim, "worth_card": worth, "source": "human"}
+        ds.save("triage", rows)
+    typer.echo(f"Saved. {sum(1 for r in rows if (r.get('label') or {}).get('source') == 'human')} rows have human labels.")
+
+
+@eval_app.command("push")
+def eval_push(replace: bool = typer.Option(False, "--replace", help="Overwrite datasets that already exist.")):
+    """Upload the datasets to LangSmith (needs LANGSMITH_API_KEY)."""
+    from .config import settings
+    from .evals import datasets as ds
+    from .evals.langsmith_sync import push
+
+    if not settings.langsmith_api_key:
+        typer.echo("LANGSMITH_API_KEY is not set in .env.")
+        raise typer.Exit(1)
+    for line in push({name: ds.load(name) for name in ("triage", "analyst", "qa")}, replace=replace):
+        typer.echo(line)
+
+
 if __name__ == "__main__":
     app()

@@ -71,6 +71,11 @@ CREATE TABLE IF NOT EXISTS trends (
     run_id      TEXT,
     trend_json  TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS sources (
+    card_id TEXT PRIMARY KEY,
+    run_id  TEXT,
+    source  TEXT NOT NULL
+);
 CREATE TABLE IF NOT EXISTS runs (
     run_id      TEXT PRIMARY KEY,
     started_at  TEXT,
@@ -154,6 +159,16 @@ class CardStore:
             rows = conn.execute("SELECT run_id, status, path, rounds, decided_at FROM digests "
                                 "ORDER BY decided_at DESC LIMIT ?", (limit,)).fetchall()
         return [dict(r) for r in rows]
+
+    def save_source(self, card_id: str, run_id: str, source: str) -> None:
+        """The exact text a card was written from. Evals replay it to test prompt changes."""
+        with closing(self._connect()) as conn, conn:
+            conn.execute("INSERT OR REPLACE INTO sources VALUES (?, ?, ?)", (card_id, run_id, source))
+
+    def get_source(self, card_id: str) -> str | None:
+        with closing(self._connect()) as conn:
+            row = conn.execute("SELECT source FROM sources WHERE card_id = ?", (card_id,)).fetchone()
+        return row["source"] if row else None
 
     def save_trends(self, trends: list[Trend], run_id: str) -> None:
         with closing(self._connect()) as conn, conn:

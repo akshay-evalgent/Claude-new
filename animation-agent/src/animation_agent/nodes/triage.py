@@ -23,7 +23,9 @@ from ..state import RunState
 
 PROMPTS = Path(__file__).resolve().parents[1] / "prompts"
 DEFAULT_MAX_CARDS = 3
-MIN_INTEREST = 2
+# Raised from 2 to 3 after the first Triage eval (Milestone 8): at 2, most picks were labelled
+# not worth a card (precision 0.22); 3 doubled precision with no loss of recall. See Lesson 8.
+MIN_INTEREST = 3
 # Every candidate already passed Scout's popularity filter, so craft decides most of the ranking.
 INTEREST_WEIGHT, VIRAL_WEIGHT = 0.7, 0.3
 

@@ -25,6 +25,7 @@ def test_approved_first_time():
     assert len(out["cards"]) == 1 and out["cards"][0].confidence == 0.6
     review = out["reviews"][0]
     assert review.approved and review.rounds == 1 and review.issues == []
+    assert out["sources"][0]["card_id"] == "youtube:a" and "can't find the loop" in out["sources"][0]["source"]
 
 
 def test_revisions_carry_the_draft_and_the_issues():

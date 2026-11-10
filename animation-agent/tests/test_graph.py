@@ -54,6 +54,7 @@ def test_end_to_end(tmp_path):
     store = CardStore(tmp_path / "test.db")
     assert {r["id"]: r["approved"] for r in store.list_cards()} == {"youtube:a": 1, "youtube:d": 1}
     assert store.get_review("youtube:a")["rounds"] == 1
+    assert 'Video: "video a"' in store.get_source("youtube:a")              # frozen input for evals
 
 
 def test_card_pipelines_run_in_parallel(tmp_path):
