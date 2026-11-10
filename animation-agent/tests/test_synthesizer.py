@@ -100,3 +100,21 @@ def test_digest_shows_trends_and_what_changed():
     assert "## Trends" in text and "### Clay" in text and "2 cards from 2 creators" in text
     assert "[title a](https://y/a)" in text and "- New: Clay" in text
     assert render_trends([], {}) == []
+
+
+def test_a_reworded_trend_with_the_same_cards_continues_instead_of_fading():
+    old = Trend(id="kinetic-type-for-lyrics", name="Kinetic type for lyrics", hypothesis="h", what_to_try="t",
+                card_ids=["a", "c"], evidence_count=2, independent_sources=2, confidence=0.5,
+                first_seen=TODAY - timedelta(days=3), last_seen=TODAY - timedelta(days=3))
+    trends, changes = build_trends(draft(td("Kinetic type for lyric videos", ["a", "c"])), CARDS,
+                                   {old.id: old}, TODAY)
+    assert [(t.id, t.name, t.status) for t in trends] == [("kinetic-type-for-lyrics", "Kinetic type for lyrics", "continuing")]
+    assert trends[0].first_seen == TODAY - timedelta(days=3)
+    assert changes["new"] == [] and changes["fading"] == []
+
+
+def test_different_cards_under_a_new_name_stay_a_new_trend():
+    old = Trend(id="clay", name="Clay", hypothesis="h", what_to_try="t", card_ids=["a", "b"], evidence_count=2,
+                independent_sources=1, confidence=0.4, first_seen=TODAY, last_seen=TODAY)
+    trends, changes = build_trends(draft(td("Puppet builds", ["c", "d"])), CARDS, {"clay": old}, TODAY)
+    assert trends[0].status == "new" and changes["fading"] == ["Clay"]

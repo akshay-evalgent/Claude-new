@@ -35,6 +35,7 @@ PROMPTS = Path(__file__).resolve().parents[1] / "prompts"
 WINDOW_DAYS = 30
 MAX_CARDS = 40
 MIN_SUPPORT = 2
+SAME_TREND_OVERLAP = 0.5        # share of supporting cards two trends must have in common to be one trend
 TAXONOMY = ("taxonomy",)
 
 
@@ -85,6 +86,25 @@ def resolve_ids(raw_ids: list[str], cards: dict[str, TechniqueCard]) -> tuple[li
     return known, unknown
 
 
+def match_previous(name: str, card_ids: list[str], previous: dict[str, Trend], taken: set[str]) -> Trend | None:
+    """Find the earlier trend this one continues: same name, or failing that, mostly the same cards.
+
+    Models reword names between runs ("for lyrics" vs "for lyric videos"). Matching on the cards
+    keeps one trend from being reported as both new and fading.
+    """
+    prev = previous.get(slug(name))
+    if prev is not None and prev.id not in taken:
+        return prev
+    ids, best, best_overlap = set(card_ids), None, 0.0
+    for p in previous.values():
+        if p.id in taken:
+            continue
+        overlap = len(ids & set(p.card_ids)) / len(ids | set(p.card_ids))
+        if overlap > best_overlap:
+            best, best_overlap = p, overlap
+    return best if best_overlap >= SAME_TREND_OVERLAP else None
+
+
 def build_trends(draft: SynthesisDraft, cards: dict[str, TechniqueCard], previous: dict[str, Trend],
                  today: date) -> tuple[list[Trend], dict[str, list[str]]]:
     trends: list[Trend] = []
@@ -96,10 +116,11 @@ def build_trends(draft: SynthesisDraft, cards: dict[str, TechniqueCard], previou
             continue
         counter_ids = [cid for cid in resolve_ids(d.counter_card_ids, cards)[0] if cid not in support_ids]
         support = [cards[cid] for cid in support_ids]
-        tid, prev = slug(d.name), previous.get(slug(d.name))
+        prev = match_previous(d.name, support_ids, previous, {t.id for t in trends})
         status = "new" if prev is None else "growing" if len(support_ids) > prev.evidence_count else "continuing"
         trends.append(Trend(
-            id=tid, name=d.name, hypothesis=d.hypothesis, what_to_try=d.what_to_try,
+            id=prev.id if prev else slug(d.name), name=prev.name if prev else d.name,
+            hypothesis=d.hypothesis, what_to_try=d.what_to_try,
             card_ids=support_ids, counter_card_ids=counter_ids, evidence_count=len(support_ids),
             independent_sources=len({c.virality.creator or c.id for c in support}),
             confidence=trend_confidence(support, len(counter_ids)), status=status,
