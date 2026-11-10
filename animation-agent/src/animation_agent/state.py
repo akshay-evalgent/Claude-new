@@ -52,6 +52,7 @@ class RunState(RunInput, total=False):
     digest_status: str                                      # human: approved, edited or rejected
     review_note: str | None                                 # why the last answer was not accepted
     digest_path: str                                        # Publish: where the file went
+    deliveries: list[dict]                                  # Publish: per channel, ok or why not
 
 
 # ---- The per-card subgraph (Milestone 3) ----------------------------------------------------

@@ -1,10 +1,17 @@
-"""Safety net for the whole suite: no test may call the real model or the real network.
+"""Safety net for the whole suite: no test may call the real model or the network, or send traces.
 
 Every node takes its model chain, search, comments and frame sampler as arguments so tests can
 inject fakes. If a test forgets one, these make the mistake fail fast with a clear message instead
 of hanging on, and paying for, a real Claude call or a YouTube download.
 """
+import os
+
 import pytest
+
+# Tests must not send traces either. A machine with LANGSMITH_TRACING=true in its environment would
+# otherwise upload about a hundred fake-graph traces per test run and eat the monthly trace quota.
+os.environ["LANGSMITH_TRACING"] = "false"
+os.environ["LANGCHAIN_TRACING_V2"] = "false"
 
 
 @pytest.fixture(autouse=True)

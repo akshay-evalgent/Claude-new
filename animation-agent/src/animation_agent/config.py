@@ -45,6 +45,18 @@ class Settings(BaseSettings):
     ytdlp_cookies_from_browser: str = ""   # e.g. "chrome": use your browser's YouTube session for downloads
     frames_per_run: int = 3                 # how many top candidates per run get frames (0 turns it off)
 
+    # Delivery (Milestone 10). DELIVER_TO is a comma-separated list: file, email, notion.
+    deliver_to: str = "file"
+    smtp_host: str = ""
+    smtp_port: int = 587
+    smtp_starttls: bool = True
+    smtp_user: str = ""
+    smtp_password: str = ""
+    email_from: str = ""
+    email_to: str = ""
+    notion_token: str = ""
+    notion_parent_page_id: str = ""
+
     data_dir: Path = ROOT / "data"
 
 

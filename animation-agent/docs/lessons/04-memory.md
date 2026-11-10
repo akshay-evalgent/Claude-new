@@ -103,8 +103,10 @@ code that uses them stays the same.
   but alarming. The CLI now exits at once after printing the resume hint, exactly like a killed
   process, which is what checkpoints are built to survive.
 - **Memory started empty.** The first memory run re-analysed a video that already had a card from
-  Milestone 3. `backfill_from_cards()` now teaches an empty memory every card in the knowledge
-  base. It runs only while memory is empty, so a later `--forget` is respected.
+  Milestone 3. `backfill_from_cards()` now teaches memory every card in the knowledge base that it
+  has no record of. (Milestone 10 found that the first version, which ran only on a completely
+  empty memory, missed cards when memory already held a few entries. It now fills gaps before every
+  run, and `--forget` leaves a "forgotten" marker so the forget still sticks.)
 - **Checkpoints warned about unregistered types.** Fixed with the allowlist above, before it
   becomes an error in a future LangGraph release.
 
@@ -132,8 +134,8 @@ re-examines videos that never got a card.
 A resume is a separate `invoke`, so it is a separate trace, and it begins at the node it resumed
 from, for example `analyze`, with no `scout` or `triage` spans. Put the stopped and the resumed
 traces side by side: together they should show each step exactly once, apart from the one that was
-mid-call. (This was checked here through the CLI output and the tests, not in LangSmith itself,
-because this environment has no LangSmith key.)
+mid-call. (This was checked through the CLI output and the tests. Traces from the build session do reach
+LangSmith: the environment set `LANGSMITH_TRACING` and a key, a fact found only in Milestone 10.)
 
 ## Concepts you now own
 

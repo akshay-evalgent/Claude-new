@@ -85,12 +85,18 @@ def test_is_settled_rules():
     assert not is_settled({"status": "something else"}, today)
 
 
-def test_backfill_teaches_an_empty_memory_once(tmp_path):
-    rows = [{"id": "youtube:a", "title": "old card", "approved": 1, "last_updated": "2026-11-09"}]
+def test_backfill_fills_gaps_and_respects_forget(tmp_path):
+    from animation_agent.memory import forget
+
+    rows = [{"id": "youtube:a", "title": "old card", "approved": 1, "last_updated": "2026-11-09"},
+            {"id": "youtube:b", "title": "older card", "approved": 1, "last_updated": "2026-11-08"}]
     with open_memory(tmp_path / "cp.db", tmp_path / "mem.db") as (_, store):
-        assert backfill_from_cards(store, rows) == 1
+        store.put(VIDEOS, "youtube:z", {"status": "skipped", "on": "2026-11-09"})    # memory is not empty
+        assert backfill_from_cards(store, rows) == 2                                   # gaps are filled anyway
         assert store.get(VIDEOS, "youtube:a").value["status"] == "analysed"
-        store.delete(VIDEOS, "youtube:a")
-        store.put(VIDEOS, "youtube:z", {"status": "skipped", "on": "2026-11-09"})
-        assert backfill_from_cards(store, rows) == 0        # memory is not empty: a forget sticks
-        assert store.get(VIDEOS, "youtube:a") is None
+        forget(store, "youtube:a")
+        assert backfill_from_cards(store, rows) == 0                                   # the forget sticks
+        assert not is_settled(store.get(VIDEOS, "youtube:a").value)                    # and it can be picked again
+        store.put(VIDEOS, "youtube:b", {"status": "skipped", "on": "2026-11-09"})      # a later run skipped it
+        assert backfill_from_cards(store, rows) == 1                                   # a card proves it was analysed
+        assert store.get(VIDEOS, "youtube:b").value["status"] == "analysed"

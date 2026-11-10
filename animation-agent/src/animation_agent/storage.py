@@ -76,6 +76,14 @@ CREATE TABLE IF NOT EXISTS sources (
     run_id  TEXT,
     source  TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS deliveries (
+    run_id  TEXT NOT NULL,
+    channel TEXT NOT NULL,
+    ok      INTEGER,
+    detail  TEXT,
+    at      TEXT,
+    PRIMARY KEY (run_id, channel)
+);
 CREATE TABLE IF NOT EXISTS runs (
     run_id      TEXT PRIMARY KEY,
     started_at  TEXT,
@@ -153,6 +161,12 @@ class CardStore:
         with closing(self._connect()) as conn, conn:
             conn.execute("INSERT OR REPLACE INTO digests VALUES (?, ?, ?, ?, ?, ?)",
                          (run_id, status, path, rounds, datetime.now(timezone.utc).isoformat(timespec="seconds"), markdown))
+
+    def save_deliveries(self, run_id: str, deliveries: list[dict]) -> None:
+        at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        with closing(self._connect()) as conn, conn:
+            conn.executemany("INSERT OR REPLACE INTO deliveries VALUES (?, ?, ?, ?, ?)",
+                             [(run_id, d["channel"], int(d["ok"]), d["detail"], at) for d in deliveries])
 
     def list_digests(self, limit: int = 10) -> list[dict[str, Any]]:
         with closing(self._connect()) as conn:

@@ -1,7 +1,7 @@
 """Optional: upload the frozen datasets to LangSmith, so experiments can run against them there.
 
-Needs LANGSMITH_API_KEY. Not exercised in the cloud session that built this (no key there);
-the fake-client test checks the calls it makes.
+Needs LANGSMITH_API_KEY. The build session checked the API connection read-only but did not
+upload, to avoid writing to the owner's workspace unasked; the fake-client test checks the calls.
 """
 from __future__ import annotations
 

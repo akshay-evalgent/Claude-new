@@ -110,6 +110,8 @@ def run(
     include_seen: bool = typer.Option(False, "--include-seen", help="Ignore memory: reconsider videos seen before."),
     digest: bool = typer.Option(True, "--digest/--no-digest", help="Draft a digest and pause for your review."),
     frames: int = typer.Option(None, "--frames", min=0, max=10, help="Top picks that get frames sampled (default FRAMES_PER_RUN; 0 = off)."),
+    unattended: bool = typer.Option(False, "--unattended", help="For schedules: never prompt; notify and wait for review."),
+    auto_approve: bool = typer.Option(False, "--auto-approve", help="Publish the first draft without a human. Explicit opt-in."),
 ):
     """Run the graph: Scout, Triage, parallel Analyst+Critic pipelines, Librarian, then the digest review."""
     import uuid
@@ -123,7 +125,8 @@ def run(
         inputs["queries"] = query
     if frames is not None:
         inputs["frames_per_run"] = frames
-    _execute(inputs, run_id, parallel, with_digest=digest)
+    _execute(inputs, run_id, parallel, with_digest=digest, unattended=unattended or auto_approve,
+             auto_approve=auto_approve)
 
 
 @app.command()
@@ -193,6 +196,20 @@ def _resume_with(answer: dict):
     return Command(resume=answer)
 
 
+def _notify_pending(run_id: str, payload: dict) -> None:
+    """Unattended runs never prompt. Leave the draft where you will see it, and email a notice if configured."""
+    from .delivery import notify_review
+    from .nodes.publish import default_digest_dir
+
+    folder = default_digest_dir()
+    folder.mkdir(parents=True, exist_ok=True)
+    pending = folder / f"PENDING-{run_id}.md"
+    pending.write_text(payload.get("digest", ""))
+    typer.echo(f"Digest waiting for review: {pending}\nReview with: uv run anim review {run_id}")
+    for d in notify_review(run_id, payload.get("digest", "")):
+        typer.echo(f"  [{d.channel}] review notice {'sent' if d.ok else 'NOT sent'}: {d.detail}")
+
+
 def _review_loop(run_id: str, payload: dict) -> None:
     """Show the paused digest and ask what to do. Non-interactive shells get instructions instead."""
     import sys
@@ -243,7 +260,8 @@ def _thread(run_id: str, parallel: int | None = None) -> dict:
     return config
 
 
-def _execute(inputs, run_id: str, parallel: int, with_digest: bool = True) -> None:
+def _execute(inputs, run_id: str, parallel: int, with_digest: bool = True, unattended: bool = False,
+             auto_approve: bool = False) -> None:
     """Start, continue or answer a run. `inputs` is a dict (new run), None (resume) or a Command."""
     from .graph import build_graph
     from .memory import open_memory
@@ -262,7 +280,7 @@ def _execute(inputs, run_id: str, parallel: int, with_digest: bool = True) -> No
 
                 learned = backfill_from_cards(store, CardStore(default_db_path()).list_cards(limit=100_000))
                 if learned:
-                    typer.echo(f"memory was empty: learned {learned} cards already in the knowledge base")
+                    typer.echo(f"memory learned {learned} cards from the knowledge base that it had not recorded")
             from .kb import default_kb
 
             graph = build_graph(checkpointer=checkpointer, store=store, with_digest=with_digest, kb=default_kb)
@@ -291,7 +309,12 @@ def _execute(inputs, run_id: str, parallel: int, with_digest: bool = True) -> No
         os._exit(130)
     for err in errors:
         typer.echo(f"! {err}", err=True)
-    if pending:
+    if pending and auto_approve:
+        typer.echo("auto-approve: publishing the first draft without review (--auto-approve)")
+        _execute(_resume_with({"action": "approve"}), run_id, parallel)
+    elif pending and unattended:
+        _notify_pending(run_id, pending[0].value)
+    elif pending:
         _review_loop(run_id, pending[0].value)
     elif inputs is not None and not isinstance(inputs, dict):
         pass                                                # an answered review: publish already reported
@@ -329,6 +352,9 @@ def _show_update(node: str, out: dict, db_path) -> None:
     elif node == "publish":
         typer.echo(f"[publish] digest published to {out['digest_path']}" if out.get("digest_path")
                    else "[publish] digest rejected; nothing published")
+        for d in out.get("deliveries", []):
+            if d["channel"] != "file":
+                typer.echo(f"  [{d['channel']}] {'delivered' if d['ok'] else 'NOT delivered'}: {d['detail']}")
 
 
 @app.command()
@@ -378,19 +404,20 @@ def memory(
     forget: str = typer.Option(None, "--forget", help="Forget one video, e.g. youtube:abc123, so it can be picked again."),
 ):
     """Show what long-term memory holds: videos analysed or recently skipped."""
-    from .memory import VIDEOS, open_memory, recent_memories
+    from .memory import VIDEOS, forget as forget_video, open_memory, recent_memories
 
     with open_memory() as (_, store):
         if forget:
-            store.delete(VIDEOS, forget)
-            typer.echo(f"Forgot {forget}.")
+            forget_video(store, forget)
+            typer.echo(f"Forgot {forget}. It can be picked again.")
             return
         items = recent_memories(store, limit)
         total = len(store.search(VIDEOS, limit=100_000))
     typer.echo(f"{total} videos in memory")
     for item in items:
         v = item.value
-        detail = f"approved={v.get('approved')}" if v["status"] == "analysed" else f"interest {v.get('interest')}"
+        detail = (f"approved={v.get('approved')}" if v["status"] == "analysed" else
+                  f"interest {v.get('interest')}" if v["status"] == "skipped" else "")
         typer.echo(f"{item.key:<22} {v['status']:<9} {v.get('on', ''):<10} {detail:<15} {v.get('title', '')[:55]}")
 
 
@@ -712,6 +739,74 @@ def eval_push(replace: bool = typer.Option(False, "--replace", help="Overwrite d
         raise typer.Exit(1)
     for line in push({name: ds.load(name) for name in ("triage", "analyst", "qa")}, replace=replace):
         typer.echo(line)
+
+
+# ---- Milestone 10: running on its own -------------------------------------------------------
+
+@app.command()
+def doctor(live: bool = typer.Option(False, "--live", help="Also make one tiny model call and one YouTube search.")):
+    """Check everything the agent needs, with a fix for anything missing."""
+    from .doctor import run_checks
+
+    checks = run_checks(live=live)
+    marks = {"ok": "ok  ", "warn": "WARN", "fail": "FAIL"}
+    for c in checks:
+        typer.echo(f"{marks[c.status]}  {c.name:<20} {c.detail}")
+        if c.status != "ok" and c.fix:
+            typer.echo(f"      fix: {c.fix}")
+    failed = [c for c in checks if c.status == "fail"]
+    typer.echo(f"\n{len(checks) - len(failed)} of {len(checks)} checks passed without failure"
+               + ("" if not failed else f"; {len(failed)} must be fixed."))
+    if failed:
+        raise typer.Exit(1)
+
+
+schedule_app = typer.Typer(no_args_is_help=True, help="Run the agent on a schedule with cron.")
+app.add_typer(schedule_app, name="schedule")
+
+
+@schedule_app.command("show")
+def schedule_show(
+    every: str = typer.Option("week", "--every", help="day or week"),
+    day: str = typer.Option("mon", "--day", help="For weekly runs: mon, tue, ... sun"),
+    at: str = typer.Option("08:00", "--at", help="24-hour local time, HH:MM"),
+    args: str = typer.Option("", "--args", help="Extra arguments for `anim run`, e.g. \"--cards 5\"."),
+):
+    """Print the cron line without installing it."""
+    from .schedule import cron_line, installed
+
+    typer.echo(cron_line(every, day, at, args))
+    current = installed()
+    typer.echo(f"\ncurrently installed:\n{current}" if current else "\nnothing installed yet")
+
+
+@schedule_app.command("install")
+def schedule_install(
+    every: str = typer.Option("week", "--every", help="day or week"),
+    day: str = typer.Option("mon", "--day", help="For weekly runs: mon, tue, ... sun"),
+    at: str = typer.Option("08:00", "--at", help="24-hour local time, HH:MM"),
+    args: str = typer.Option("", "--args", help="Extra arguments for `anim run`, e.g. \"--cards 5\"."),
+):
+    """Add (or replace) the agent's line in your crontab."""
+    import shutil
+
+    from .schedule import cron_line, install
+
+    if not shutil.which("crontab"):
+        typer.echo("No crontab command on this machine. Print the line with `anim schedule show` and add it "
+                   "to your system's scheduler.")
+        raise typer.Exit(1)
+    line = cron_line(every, day, at, args)
+    install(line)
+    typer.echo(f"Installed:\n{line}\nLogs: data/logs/scheduled.log. Remove with: uv run anim schedule remove")
+
+
+@schedule_app.command("remove")
+def schedule_remove():
+    """Remove the agent's line from your crontab."""
+    from .schedule import remove
+
+    typer.echo("Removed." if remove() else "Nothing to remove.")
 
 
 if __name__ == "__main__":

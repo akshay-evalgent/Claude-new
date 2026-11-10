@@ -116,18 +116,28 @@ def remember_run(store: BaseStore, run_id: str, cards: list[TechniqueCard], revi
 
 
 def backfill_from_cards(store: BaseStore, card_rows: list[dict]) -> int:
-    """First use only: teach an empty memory every card already in the knowledge base.
+    """Teach memory every card in the knowledge base that it does not know about yet.
 
-    Cards written before memory existed would otherwise be analysed, and paid for, again. It runs
-    only while the namespace is empty, so `anim memory --forget` keeps working afterwards.
+    Cards written before memory existed would otherwise be analysed, and paid for, again. It only
+    fills gaps: a card proves the video was analysed, so a "skipped" record is upgraded, while a
+    "forgotten" marker left by `anim memory --forget` wins, so a forget sticks. Cheap enough to run
+    before every new run.
     """
-    if store.search(VIDEOS, limit=1):
-        return 0
+    added = 0
     for row in card_rows:
+        existing = store.get(VIDEOS, row["id"])
+        if existing is not None and existing.value.get("status") != "skipped":
+            continue                                    # analysed already, or deliberately forgotten
         store.put(VIDEOS, row["id"], {"status": "analysed", "card_id": row["id"], "approved": row.get("approved"),
                                       "confidence": row.get("confidence"), "title": row.get("title", ""),
                                       "run_id": "backfill", "on": row.get("last_updated") or date.today().isoformat()})
-    return len(card_rows)
+        added += 1
+    return added
+
+
+def forget(store: BaseStore, key: str) -> None:
+    """Let a video be picked again. Leaves a marker instead of deleting, so backfill will not re-add it."""
+    store.put(VIDEOS, key, {"status": "forgotten", "on": date.today().isoformat()})
 
 
 def recent_memories(store: BaseStore, limit: int = 20) -> list[Item]:

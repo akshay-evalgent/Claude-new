@@ -94,8 +94,8 @@ uv run anim eval run --save-baseline   # after a change you have decided to keep
 uv run anim eval push                  # upload datasets to LangSmith (needs LANGSMITH_API_KEY)
 ```
 
-`eval push` was not run here, because this environment has no LangSmith key; a test checks the
-calls it makes. The CI workflow is in place, and its free eval step was run locally.
+`eval push` was left for you to run, so nothing was written to your LangSmith workspace unasked;
+the API connection was checked read-only, and a test checks the calls the upload makes. The CI workflow is in place, and its free eval step was run locally.
 
 ## Concepts you now own
 

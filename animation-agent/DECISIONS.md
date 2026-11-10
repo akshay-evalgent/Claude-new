@@ -2,6 +2,23 @@
 
 Every architectural choice, the alternative, and why. Newest first.
 
+## Milestone 10
+
+- **Run on your own machine with cron, not hosted LangGraph Server.** Hosted deployment is not on
+  the free plan, and YouTube blocks datacenter IPs for downloads. `langgraph.json` keeps Studio and
+  a later move to LangGraph Server open.
+- **`--unattended` never prompts and never publishes on its own; `--auto-approve` is a separate,
+  explicit opt-in.** The human gate from Milestone 5 survives scheduling.
+- **Review notices go by email only.** A draft does not belong in Notion until approved.
+- **Delivery channels are independent, after the file is written.** One failure never loses the
+  digest; each outcome is stored and printed.
+- **The cron line embeds the current PATH and logs to `data/logs/scheduled.log`.** Cron's default
+  PATH cannot find uv, node, ffmpeg or claude.
+- **`anim doctor` checks every requirement with a fix; `--live` makes one tiny model call and one
+  search.**
+- **Tests switch tracing off.** Found when the doctor showed this environment had tracing on: test
+  runs had uploaded about 1,900 fake traces in a day.
+
 ## Milestone 9
 
 - **Frames for the top `FRAMES_PER_RUN` picks only (default 3).** Each costs a download and an
@@ -32,7 +49,8 @@ Every architectural choice, the alternative, and why. Newest first.
   human labels.
 - **CI runs tests plus the free retrieval eval on every change; model evals only with an
   `ANTHROPIC_API_KEY` secret.** No paid key is needed to keep the gate.
-- **LangSmith upload is optional and was not exercised here (no key).** Covered by a fake-client test.
+- **LangSmith upload is optional and was left for the owner to run.** The API connection was
+  checked read-only; the upload itself is covered by a fake-client test.
 
 ## Milestone 7
 
@@ -106,8 +124,9 @@ Every architectural choice, the alternative, and why. Newest first.
   A skip never downgrades an analysed video. `--include-seen` and `--forget` are the overrides.
 - **Scout filters on memory before fetching stats.** Known videos then cost nothing at all.
   Alternative: filter in Triage, which would still pay for stats.
-- **Memory backfills from the knowledge base, only while empty.** Cards from before Milestone 4
-  would otherwise be paid for again; running only on an empty memory keeps `--forget` meaningful.
+- **Memory backfills from the knowledge base by filling gaps before every run; `--forget` leaves a
+  marker.** (Revised in Milestone 10: the first version ran only on an empty memory and missed cards
+  when memory already had entries, which caused two re-analyses.)
 - **Ctrl-C exits immediately after printing the resume hint.** Waiting for in-flight calls only
   produced tracebacks; anything mid-call reruns on resume either way.
 - **Nodes that take `store` do not use `from __future__ import annotations`.** LangGraph reads the
