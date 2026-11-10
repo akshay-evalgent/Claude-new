@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from .schemas import Review, TechniqueCard, TriageDecision
+from .schemas import Review, TechniqueCard, Trend, TriageDecision
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS cards (
@@ -59,6 +59,17 @@ CREATE TABLE IF NOT EXISTS digests (
     rounds     INTEGER,
     decided_at TEXT,
     markdown   TEXT
+);
+CREATE TABLE IF NOT EXISTS trends (
+    id          TEXT PRIMARY KEY,
+    name        TEXT,
+    status      TEXT,
+    confidence  REAL,
+    evidence    INTEGER,
+    first_seen  TEXT,
+    last_seen   TEXT,
+    run_id      TEXT,
+    trend_json  TEXT NOT NULL
 );
 CREATE TABLE IF NOT EXISTS runs (
     run_id      TEXT PRIMARY KEY,
@@ -143,6 +154,20 @@ class CardStore:
             rows = conn.execute("SELECT run_id, status, path, rounds, decided_at FROM digests "
                                 "ORDER BY decided_at DESC LIMIT ?", (limit,)).fetchall()
         return [dict(r) for r in rows]
+
+    def save_trends(self, trends: list[Trend], run_id: str) -> None:
+        with closing(self._connect()) as conn, conn:
+            conn.executemany(
+                "INSERT OR REPLACE INTO trends VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                [(t.id, t.name, t.status, t.confidence, t.evidence_count, t.first_seen.isoformat(),
+                  t.last_seen.isoformat(), run_id, t.model_dump_json()) for t in trends])
+
+    def list_trends(self, since: str | None = None) -> list[Trend]:
+        """Trends last seen on or after `since` (ISO date), strongest first."""
+        with closing(self._connect()) as conn:
+            rows = conn.execute("SELECT trend_json FROM trends WHERE last_seen >= ? ORDER BY confidence DESC",
+                                (since or "0000",)).fetchall()
+        return [Trend.model_validate_json(r["trend_json"]) for r in rows]
 
     def list_cards(self, limit: int = 20) -> list[dict[str, Any]]:
         """Newest first, with the Critic's verdict from the run that last wrote the card (None before M3)."""

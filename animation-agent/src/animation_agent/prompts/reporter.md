@@ -8,6 +8,9 @@ digest. Code adds every title, link and number afterwards, so leave those out.
   takeaway: one or two sentences on what to learn or try from the piece. Use only what the card
   says. When a card has low confidence, say what is uncertain instead of hiding it.
 - open_questions: up to five of the most useful questions the cards could not answer.
+- Trends are computed across many recent cards and shown in their own section. Mention the
+  strongest one in the intro when it helps, without repeating its numbers.
+- If no cards passed review this run, write the intro about the trends instead.
 
 Plain, specific language. No hype words. Never invent numbers, tools, people or credits.
 If you are given editor feedback on a previous draft, apply all of it.

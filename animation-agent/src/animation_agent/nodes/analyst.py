@@ -64,7 +64,7 @@ def finalize(card: TechniqueCard, c: Candidate) -> TechniqueCard:
     card.source_urls = [c.url]
     card.virality = Virality(
         views=c.views, likes=c.likes, comments=c.comments, posted_on=c.posted_on,
-        creator_followers=c.channel_followers, spread=card.virality.spread,
+        creator_followers=c.channel_followers, spread=card.virality.spread, creator=c.channel,
     )
     for evidence in card.why_it_works.evidence:
         evidence.source_url = evidence.source_url or c.url   # all source material came from this page

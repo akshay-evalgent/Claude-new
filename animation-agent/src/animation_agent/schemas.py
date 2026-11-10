@@ -63,6 +63,7 @@ class Virality(BaseModel):
     views_per_day: float | None = Field(default=None, description="views / days since posted. Computed by code, not the model.")
     like_rate: float | None = Field(default=None, description="likes / views. Computed by code.")
     spread: list[str] = Field(default_factory=list, description="Other platforms or sources where this item appeared.")
+    creator: str | None = Field(default=None, description="Channel or creator name. Set by code from the tools.")
 
 
 class TechniqueCard(BaseModel):
@@ -241,3 +242,46 @@ class QueryPlan(BaseModel):
 class CitedAnswer(BaseModel):
     answer: str = Field(description="Markdown. Cite cards inline as [1], [2] using the numbers given. Every factual sentence needs a citation.")
     insufficient: bool = Field(description="True when the cards do not answer the question.")
+
+
+# ---- Milestone 7: synthesis across cards ----------------------------------------------------
+
+class TrendDraft(BaseModel):
+    """A pattern the Synthesizer proposes. Code checks the card ids and computes the confidence."""
+
+    name: str = Field(description="Short and specific, e.g. 'Emotional clay village stories'. Reuse a previous trend's name if it is the same pattern.")
+    hypothesis: str = Field(description="Why this may be rising, as a hypothesis, citing what the cards show.")
+    card_ids: list[str] = Field(description="Ids of the cards that support it. At least two.")
+    counter_card_ids: list[str] = Field(default_factory=list, description="Ids of cards that cut against it, if any.")
+    what_to_try: str = Field(description="One sentence: what a motion designer could try because of this.")
+
+
+class StyleProposal(BaseModel):
+    name: str = Field(description="A sub-style name worth tracking, e.g. 'AI-assisted watercolor shorts'.")
+    family: StyleFamily
+    description: str
+    card_ids: list[str]
+
+
+class SynthesisDraft(BaseModel):
+    trends: list[TrendDraft] = Field(default_factory=list, max_length=6)
+    new_styles: list[StyleProposal] = Field(default_factory=list, max_length=4,
+                                            description="Sub-styles seen in at least two cards that the taxonomy does not have yet.")
+
+
+class Trend(BaseModel):
+    """A trend as stored and reported. Everything except the prose is computed by code."""
+
+    id: str
+    name: str
+    hypothesis: str
+    what_to_try: str
+    card_ids: list[str]
+    counter_card_ids: list[str] = Field(default_factory=list)
+    evidence_count: int = Field(description="Approved cards supporting it.")
+    independent_sources: int = Field(description="Distinct creators among the supporting cards.")
+    confidence: float
+    status: Literal["new", "growing", "continuing"] = "new"
+    first_seen: date
+    last_seen: date
+    examples: list[dict[str, str]] = Field(default_factory=list, description="Title and URL of up to three supporting cards.")

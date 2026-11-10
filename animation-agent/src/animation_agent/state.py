@@ -17,7 +17,7 @@ from __future__ import annotations
 import operator
 from typing import Annotated, TypedDict
 
-from .schemas import Candidate, Critique, Review, TechniqueCard, TriageDecision
+from .schemas import Candidate, Critique, Review, TechniqueCard, Trend, TriageDecision
 
 
 class RunInput(TypedDict, total=False):
@@ -41,6 +41,9 @@ class RunState(RunInput, total=False):
     reviews: Annotated[list[Review], operator.add]          # ...and its Critic review
     errors: Annotated[list[str], operator.add]              # any node appends
     saved: list[str]                                        # Librarian: ids of cards written
+    trends: list[Trend]                                     # Synthesizer: trends across recent cards
+    trend_changes: dict[str, list[str]]                     # Synthesizer: new, growing, fading, dropped
+    new_styles: list[str]                                   # Synthesizer: sub-styles added to the taxonomy
     digest: str                                             # Reporter: current draft, as Markdown
     digest_round: int                                       # Reporter: drafts written so far
     digest_feedback: str | None                             # human: last revision request

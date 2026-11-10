@@ -2,7 +2,8 @@
 
     START -> scout -> triage --(Send, one per selected video)--> analyze -> librarian
                          \\__________(nothing selected)___________________/      |
-                                                                  (no approved cards) -> END
+                                                                             synthesizer
+                                                           (no approved cards, no trends) -> END
                                                                                  v
                           reporter -> human_review --approve/edit/reject--> publish -> END
                              ^              |
@@ -27,7 +28,8 @@ from typing import Callable
 from langgraph.graph import END, START, StateGraph
 
 from animation_agent.nodes import (build_card_graph, human_review, make_librarian, make_publish, make_reporter,
-                                   make_scout, make_triage, route_after_librarian, route_after_triage)
+                                   make_scout, make_synthesizer, make_triage, route_after_synthesis,
+                                   route_after_triage)
 from animation_agent.state import RunInput, RunState
 
 
@@ -38,6 +40,7 @@ def build_graph(
     librarian: Callable | None = None,
     reporter: Callable | None = None,
     publish: Callable | None = None,
+    synthesizer: Callable | None = None,
     *,
     with_digest: bool = True,
     kb: Callable | None = None,
@@ -66,11 +69,13 @@ def build_graph(
     if not with_digest:
         builder.add_edge("librarian", END)
     else:
+        builder.add_node("synthesizer", synthesizer or make_synthesizer())
         builder.add_node("reporter", reporter or make_reporter())
         # human_review routes itself with Command(goto=...); `destinations` lets LangGraph draw it.
         builder.add_node("human_review", human_review, destinations=("publish", "reporter", "human_review"))
         builder.add_node("publish", publish or make_publish())
-        builder.add_conditional_edges("librarian", route_after_librarian, ["reporter", END])
+        builder.add_edge("librarian", "synthesizer")
+        builder.add_conditional_edges("synthesizer", route_after_synthesis, ["reporter", END])
         builder.add_edge("reporter", "human_review")
         builder.add_edge("publish", END)
     return builder.compile(name="animation-pipeline", checkpointer=checkpointer, store=store)

@@ -1,10 +1,11 @@
 """The digest and the human review: interrupt, resume with Command, publish. No network."""
 from animation_agent.graph import build_graph
 from animation_agent.memory import open_memory
-from animation_agent.nodes import build_card_graph, make_librarian, make_publish, make_reporter, make_scout, make_triage
+from animation_agent.nodes import (build_card_graph, make_librarian, make_publish, make_reporter, make_scout,
+                                   make_synthesizer, make_triage)
 from animation_agent.nodes.human_review import MAX_DIGEST_REVISIONS
 from animation_agent.nodes.reporter import render_digest
-from animation_agent.schemas import DigestDraft, DigestItem, Issue, Review
+from animation_agent.schemas import DigestDraft, DigestItem, Issue, Review, SynthesisDraft
 from animation_agent.storage import CardStore
 from langgraph.types import Command
 
@@ -27,6 +28,7 @@ def build(tmp_path, cp, store, reporter=None, critic=None):
         librarian=make_librarian(db_path=tmp_path / "anim.db"),
         reporter=make_reporter(chain=reporter or scripted(DRAFT)),
         publish=make_publish(out_dir=tmp_path / "digests", db_path=tmp_path / "anim.db"),
+        synthesizer=make_synthesizer(chain=scripted(SynthesisDraft()), db_path=tmp_path / "anim.db"),
         checkpointer=cp, store=store,
     )
 

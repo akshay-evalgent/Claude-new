@@ -314,6 +314,11 @@ def _show_update(node: str, out: dict, db_path) -> None:
                        f"confidence {card.confidence:.2f}")
     elif node == "librarian":
         typer.echo(f"[librarian] saved {len(out['saved'])} cards to {db_path}; memory updated")
+    elif node == "synthesizer":
+        ch = out.get("trend_changes") or {}
+        bits = [f"{k}: {', '.join(v)}" for k, v in ch.items() if v and k != "dropped"]
+        typer.echo(f"[synthesizer] {len(out.get('trends', []))} trends" + (f" ({'; '.join(bits)})" if bits else "")
+                   + (f"; new styles: {', '.join(out['new_styles'])}" if out.get("new_styles") else ""))
     elif node == "reporter":
         typer.echo(f"[reporter] digest draft {out['digest_round']} ready for review")
     elif node == "publish":
@@ -431,6 +436,54 @@ def index(rebuild: bool = typer.Option(False, "--rebuild", help="Clear the searc
     kb = default_kb()
     n = index_all(kb, CardStore(default_db_path()), rebuild=rebuild)
     typer.echo(f"Indexed {n} cards; the index now holds {kb.count()}.")
+
+
+@app.command()
+def trends(
+    refresh: bool = typer.Option(False, "--refresh", help="Recompute trends now from recent approved cards (one model call)."),
+    days: int = typer.Option(30, "--days", min=1, max=365, help="Window of cards to synthesize from."),
+):
+    """Show the current trends, each backed by at least two approved cards."""
+    from datetime import date, timedelta
+
+    from .memory import open_memory
+    from .nodes.librarian import default_db_path
+    from .nodes.synthesizer import build_synthesizer_chain, synthesize
+    from .storage import CardStore
+
+    cards_db = CardStore(default_db_path())
+    if refresh:
+        with open_memory() as (_, store):
+            out = synthesize(cards_db, build_synthesizer_chain(), store, window_days=days)
+        ch = out["trend_changes"]
+        for key in ("new", "growing", "fading", "dropped"):
+            if ch.get(key):
+                typer.echo(f"{key}: {', '.join(ch[key])}")
+        if out["new_styles"]:
+            typer.echo(f"new styles in the taxonomy: {', '.join(out['new_styles'])}")
+    found = cards_db.list_trends(since=(date.today() - timedelta(days=days)).isoformat())
+    if not found:
+        typer.echo("No trends yet. They need at least two approved cards: try `anim trends --refresh`.")
+    for t in found:
+        typer.echo(f"\n{t.name}  [{t.status}, {t.evidence_count} cards from {t.independent_sources} creators, "
+                   f"confidence {t.confidence:.2f}, since {t.first_seen}]\n  {t.hypothesis}\n  Try: {t.what_to_try}")
+        for e in t.examples:
+            typer.echo(f"  - {e['title'][:70]}  {e['url']}")
+
+
+@app.command()
+def taxonomy():
+    """Sub-styles the Synthesizer has added to the taxonomy, with their supporting cards."""
+    from .memory import open_memory
+    from .nodes.synthesizer import TAXONOMY
+
+    with open_memory() as (_, store):
+        items = store.search(TAXONOMY, limit=500)
+    if not items:
+        typer.echo("The taxonomy has no discovered sub-styles yet.")
+    for item in sorted(items, key=lambda i: i.value.get("first_seen", "")):
+        v = item.value
+        typer.echo(f"{v['name']}  ({v['family']}, {len(v.get('card_ids', []))} cards, since {v.get('first_seen')})\n  {v['description']}")
 
 
 @app.command()

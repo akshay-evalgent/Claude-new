@@ -2,6 +2,25 @@
 
 Every architectural choice, the alternative, and why. Newest first.
 
+## Milestone 7
+
+- **The Synthesizer runs after the Librarian, over approved cards from the last 30 days.** Trends
+  need history, and the knowledge base has it; reading from SQLite keeps the node independent of
+  what this particular run found.
+- **The model proposes trends with card ids; code validates, counts and scores them.** At least
+  two supporting cards; distinct creators count as independent sources; confidence is a formula.
+- **Card ids are resolved tolerantly, and unknown ids are reported in the drop reason.** Harmless
+  formatting should not kill a trend; invented ids must.
+- **Trends are tracked by a slug of their name; the prompt asks for names to be reused.** Enables
+  new, growing, continuing and fading without asking the model to diff.
+- **Discovered sub-styles go to a taxonomy in the long-term store, only with two cards behind
+  them.** The fixed style families stay in code; the vocabulary below them grows.
+- **A digest is written if this run approved a card or there are trends.** A run with no new cards
+  can still report what the trends are doing.
+- **Cards now record their creator (`virality.creator`).** Needed to count independent sources.
+- **`tests/conftest.py` blocks real model calls in every test.** Added after a test silently used
+  the real Synthesizer, its model and the real database.
+
 ## Milestone 6
 
 - **Chroma with its built-in local embedding model.** PLAN.md's choice; no embedding key, and
