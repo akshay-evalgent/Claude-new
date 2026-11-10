@@ -60,6 +60,7 @@ async function openManual(browser, base, w, h, seed) {
     const G = window.__CR.Game;
     G.manualClock = true;
     window.__CR.Storage.data.tutorialDone = true;
+    window.__CR.Storage.data.kidTipDone = true; // keep tip boxes out of store footage
     window.__CR.Storage.data.coins = 480;
     window.__CR.Storage.data.owned = ["classic", "frost", "evergreen"];
   });
@@ -107,9 +108,15 @@ async function screenshots(browser, base) {
   await page.close();
 }
 
-async function video(browser, base, { name, w, h, seconds, fps, seed, startDeliveries }) {
+// coverFrame: open on the static cover for half a second (CrazyGames asks for this).
+async function video(browser, base, { name, w, h, seconds, fps, seed, startDeliveries, coverFrame }) {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "cr-frames-"));
   const page = await openManual(browser, base, w, h, seed);
+  const coverSecs = coverFrame ? 0.5 : 0;
+  if (coverFrame) {
+    const url = await page.evaluate(([w2, h2]) => window.__CR.coverPNG(w2, h2, true), [w, h]);
+    fs.writeFileSync(path.join(tmp, "cover.png"), Buffer.from(url.split(",")[1], "base64"));
+  }
   await page.evaluate((d) => {
     const G = window.__CR.Game;
     G.startRun();
@@ -117,15 +124,23 @@ async function video(browser, base, { name, w, h, seconds, fps, seed, startDeliv
     G.autoplay = true;
   }, startDeliveries);
   await stepFrames(page, fps, fps); // settle for one second before recording
-  const total = Math.round(seconds * fps);
+  const total = Math.round((seconds - coverSecs) * fps);
   for (let i = 0; i < total; i++) {
     await stepFrames(page, 1, fps);
     await grab(page, path.join(tmp, `${String(i).padStart(5, "0")}.jpg`), "jpg");
   }
   await page.close();
   const out = path.join(VID, `${name}.mp4`);
-  execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-framerate", String(fps), "-i", path.join(tmp, "%05d.jpg"),
-    "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20", "-preset", "medium", "-an", "-movflags", "+faststart", out]);
+  const enc = ["-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20", "-preset", "medium", "-an", "-movflags", "+faststart", out];
+  if (coverFrame) {
+    execFileSync("ffmpeg", ["-y", "-loglevel", "error",
+      "-loop", "1", "-framerate", String(fps), "-t", String(coverSecs), "-i", path.join(tmp, "cover.png"),
+      "-framerate", String(fps), "-i", path.join(tmp, "%05d.jpg"),
+      "-filter_complex", `[0:v]scale=${w}:${h},setsar=1,format=yuv420p[c];[1:v]scale=${w}:${h},setsar=1,format=yuv420p[g];[c][g]concat=n=2:v=1:a=0[v]`,
+      "-map", "[v]", ...enc]);
+  } else {
+    execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-framerate", String(fps), "-i", path.join(tmp, "%05d.jpg"), ...enc]);
+  }
   fs.rmSync(tmp, { recursive: true, force: true });
   console.log(`  video  ${name}.mp4  (${(fs.statSync(out).size / 1e6).toFixed(1)} MB)`);
 }
@@ -144,8 +159,8 @@ async function main() {
   await screenshots(browser, base);
   if (process.argv[2] !== "images") {
     // CrazyGames: 16:9 and 2:3, 15-20 s, no sound. Y8: 16:9, at least 1280x720 and 15 s.
-    await video(browser, base, { name: "gameplay-1920x1080-16x9-20s", w: 1920, h: 1080, seconds: 20, fps: 30, seed: 41, startDeliveries: 9 });
-    await video(browser, base, { name: "gameplay-1080x1620-2x3-20s", w: 1080, h: 1620, seconds: 20, fps: 30, seed: 42, startDeliveries: 9 });
+    await video(browser, base, { name: "gameplay-1920x1080-16x9-20s", w: 1920, h: 1080, seconds: 20, fps: 30, seed: 41, startDeliveries: 9, coverFrame: true });
+    await video(browser, base, { name: "gameplay-1080x1620-2x3-20s", w: 1080, h: 1620, seconds: 20, fps: 30, seed: 42, startDeliveries: 9, coverFrame: true });
     // Poki animated thumbnail: square, 50 fps, 4-6 s, muted (needed only at Poki soft release).
     await video(browser, base, { name: "poki-animated-thumbnail-1080x1080-5s-50fps", w: 1080, h: 1080, seconds: 5, fps: 50, seed: 43, startDeliveries: 12 });
   }
