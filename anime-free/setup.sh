@@ -13,7 +13,7 @@ grep -q 'free/client' "$PROJECT/lib/fal_mv_gen.rb" || \
   sed -i 's|^require "fal/client"$|require "fal/client"\nrequire "free/client" if ENV["MV_BACKEND"] == "free"|' "$PROJECT/lib/fal_mv_gen.rb"
 grep -q 'free/tasks' "$PROJECT/Rakefile" || \
   printf '\nif ENV["MV_BACKEND"] == "free"\n  require_relative "lib/free/tasks"\n  Free::Tasks.install\nend\n' >> "$PROJECT/Rakefile"
-# ImageMagick 6 installs have `convert` but no `magick` entry point.
+# ImageMagick 6 installs have `convert` but no `magick` entry point. See free.env for the other Linux settings.
 if ! command -v magick >/dev/null && command -v convert >/dev/null; then
   printf '#!/bin/sh\ncase "$1" in identify|montage|composite|mogrify|compare|convert) c="$1"; shift; exec "$c" "$@";; *) exec convert "$@";; esac\n' > /usr/local/bin/magick && chmod +x /usr/local/bin/magick
 fi
