@@ -2,6 +2,26 @@
 
 Every architectural choice, the alternative, and why. Newest first.
 
+## Milestone 4
+
+- **One run is one thread; the run id is the thread id.** Resuming, listing and inspecting runs
+  all key off the id printed when a run starts.
+- **SQLite checkpointer and store from `langgraph-checkpoint-sqlite`, in separate files.**
+  `checkpoints.db` (safe to delete), `memory.db` (the agent's notes) and `anim.db` (the product)
+  have different lifetimes, so they live apart. Postgres replaces both in Milestone 10.
+- **Checkpoint serializer allowlists exactly the models in `schemas.py`.** Loading classes from
+  disk is a security decision; LangGraph is moving to block unregistered types.
+- **Memory policy: analysed is permanent, skipped lasts 30 days, failures are not remembered.**
+  A skip never downgrades an analysed video. `--include-seen` and `--forget` are the overrides.
+- **Scout filters on memory before fetching stats.** Known videos then cost nothing at all.
+  Alternative: filter in Triage, which would still pay for stats.
+- **Memory backfills from the knowledge base, only while empty.** Cards from before Milestone 4
+  would otherwise be paid for again; running only on an empty memory keeps `--forget` meaningful.
+- **Ctrl-C exits immediately after printing the resume hint.** Waiting for in-flight calls only
+  produced tracebacks; anything mid-call reruns on resume either way.
+- **Nodes that take `store` do not use `from __future__ import annotations`.** LangGraph reads the
+  parameter type to decide what to inject, and string annotations silently get nothing.
+
 ## Milestone 3
 
 - **Triage uses Haiku; Analyst and Critic use Opus.** PLAN.md's cost plan. Triage is one easy

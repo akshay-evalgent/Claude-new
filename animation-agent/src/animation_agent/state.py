@@ -27,12 +27,14 @@ class RunInput(TypedDict, total=False):
     uploaded_within: str        # default: "month"
     max_cards: int              # how many candidates Triage may send for analysis (default 3)
     stats_budget: int           # how many search hits get full stats (default 20)
+    include_seen: bool          # ignore long-term memory and reconsider videos seen before
     run_id: str
     started_at: str
 
 
 class RunState(RunInput, total=False):
     candidates: list[Candidate]                             # Scout writes; replaced, not appended
+    already_seen: list[str]                                 # Scout: hits dropped because memory knew them
     triage: list[TriageDecision]                            # Triage: one decision per candidate
     selected: list[Candidate]                               # Triage: the ones sent for analysis
     cards: Annotated[list[TechniqueCard], operator.add]     # each parallel card pipeline appends one

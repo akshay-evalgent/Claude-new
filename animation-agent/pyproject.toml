@@ -14,6 +14,7 @@ dependencies = [
     "pyyaml>=6.0",
     "typer>=0.12",
     "yt-dlp[default]>=2025.10",
+    "langgraph-checkpoint-sqlite>=3.0",
 ]
 
 [project.optional-dependencies]

@@ -9,23 +9,7 @@ from animation_agent.nodes.scout import default_queries
 from animation_agent.schemas import Comment
 from animation_agent.storage import CardStore
 
-from fakes import TODAY, approve, cand, card, comments_ok, judge, scripted
-
-
-def fake_search(query, n, window, sort):
-    if query == "broken":
-        raise RuntimeError("search page changed")
-    light = {"clay": [cand("a", 10_000, 1), cand("b", 90_000, 30), cand("d", 3_000, 2)],
-             "loop": [cand("a", 10_000, 1), cand("c", 500, 2)]}
-    return [c.model_copy(update={"posted_on": None, "likes": None}) for c in light[query]], None
-
-
-def fake_fetch(ids):
-    full = {"a": cand("a", 10_000, 1), "b": cand("b", 90_000, 30), "d": cand("d", 3_000, 2)}   # "c" was deleted
-    return [full[i].with_metrics() for i in ids if i in full], ({"c": "LookupError: gone"} if "c" in ids else {})
-
-
-DECISIONS = {"a": (True, 4), "b": (False, 5), "d": (True, 3)}   # b is not animation
+from fakes import DECISIONS, TODAY, approve, cand, card, comments_ok, fake_fetch, fake_search, judge, scripted
 
 
 def build(tmp_path, decisions=DECISIONS, analyst=None, critic=None):
