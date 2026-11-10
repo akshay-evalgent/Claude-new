@@ -58,9 +58,27 @@ def phrase(words, at, who):
             out.append({'t0': at + cur[0]['s'], 't1': at + cur[-1]['e'], 'text': ' '.join(toks), 'who': who})
             cur = []
     return out
+# hand-set phrases: (text on screen, how many spoken words it covers); falls back to automatic if Whisper splits differently
+PHRASES = {
+ 'A1': [('Santa has one night.', 4), ('Physics says it could', 4), ('cost him 23 years.', 4)],
+ 'A2': [('Fly that fast,', 3), ('and every second on his watch', 6), ('is 9 hours at home.', 5)],
+ 'A3': [('For him, it was one night.', 6), ('For her, it was a lifetime.', 6)],
+ 'H1': [('Midnight to 6.', 3), ('Nearly 800 km a second.', 5)],
+ 'H2': [('Now push him close', 4), ('to the speed of light.', 5)],
+ 'H3': [('Einstein showed that', 3), ('the faster you move,', 4), ('the slower your clock ticks.', 5)],
+ 'H4': [('He lives one night.', 4), ('The North Pole', 3), ('lives 23 years.', 3)],
+ 'H5': [('He lands at 6', 4), ('in the morning.', 3), ('Right on time.', 3)]}
+def phrased(key, words, at, who):
+    spec = PHRASES.get(key)
+    if not spec or sum(n for _, n in spec) != len(words):
+        print('automatic captions for', key, len(words), [w['w'] for w in words]); return phrase(words, at, who)
+    out, i = [], 0
+    for txt, n in spec:
+        out.append({'t0': at + words[i]['s'], 't1': at + words[i + n - 1]['e'], 'text': txt, 'who': who}); i += n
+    return out
 caps = []
-for c in ('A1', 'A2', 'A3'): caps += phrase(clip_words(c), START[c], 'presenter')
-for lid in placed: caps += phrase(nar[lid]['words'], placed[lid], 'narrator')
+for c in ('A1', 'A2', 'A3'): caps += phrased(c, clip_words(c), START[c], 'presenter')
+for lid in placed: caps += phrased(lid, nar[lid]['words'], placed[lid], 'narrator')
 caps.append({'t0': HER[0], 't1': SUB[1], 'text': 'You were gone one night.', 'who': 'her'})
 caps.sort(key=lambda c: c['t0'])
 for a, b in zip(caps, caps[1:]): a['t1'] = min(max(a['t1'], a['t0'] + 0.7), b['t0'])

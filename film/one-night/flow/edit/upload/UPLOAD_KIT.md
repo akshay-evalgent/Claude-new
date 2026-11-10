@@ -2,7 +2,7 @@
 
 | File | Use |
 |---|---|
-| `one-night-short.mp4` | The Short. 50 seconds, 1080x1920, 24 fps, AAC stereo at about -14 LUFS, captions burned in. |
+| `one-night-short.mp4` | The Short. 61.6 seconds, 1080x1920, 24 fps, AAC stereo at about -14 LUFS, captions burned in. The presenter is on camera at 0:00, 0:20 and 0:55. |
 | `cover-mrs-claus-1080x1920.jpg` | Shorts cover, first choice. |
 | `cover-watch-1080x1920.jpg` | Shorts cover, alternative. |
 | `thumbnail-1280x720.jpg` | For a community post, or the long video's end screen. |
@@ -36,7 +36,7 @@ The numbers:
 At the real delivery speed, relativity barely touches him: his watch would end the night about half a
 second slow. The 23 years is the "what if".
 
-Made with AI-generated video (Google Flow, Veo), AI narration and an original score.
+Made with AI-generated video and voices (Google Flow, Veo) and an original score.
 
 #Shorts #Physics #Santa #Christmas #Einstein #Relativity #TimeDilation #Science #WhatIf
 ```
@@ -63,7 +63,7 @@ Would you take the trip?
 
 | Setting | Choose |
 |---|---|
-| Altered or synthetic content | **Yes.** The video uses realistic AI-generated people and scenes, and YouTube requires this disclosure. |
+| Altered or synthetic content | **Yes.** The video uses a realistic AI-generated presenter, a cloned AI voice and AI scenes, and YouTube requires this disclosure. |
 | Audience | **No, it's not made for kids.** It's a physics explainer for a general audience. This is your legal call under YouTube's rules on children's content, so check it fits your channel. |
 | Category | Science & Technology, or Education |
 | Video language and caption language | English |
@@ -71,7 +71,7 @@ Would you take the trip?
 | Licence | Standard YouTube Licence |
 | Allow remixing | On. It helps Shorts spread. |
 | Related video | Link the long "Physics of One Night" video when it's live. |
-| Cover | Choose `cover-mrs-claus-1080x1920.jpg`, or pick the frame at 0:42 in the YouTube app. |
+| Cover | Choose `cover-mrs-claus-1080x1920.jpg`, or pick the frame at 0:52 in the YouTube app. |
 
 ## When to post
 
@@ -84,7 +84,8 @@ Would you take the trip?
 
 - **Video:** your own Google Flow (Veo) generations. The small sparkle in the corner is Flow's visible AI
   watermark, and it was left in place.
-- **Narration:** generated with the open-source Kokoro text-to-speech model, `af_heart` voice, under the Apache 2.0 licence.
+- **Presenter:** her on-camera lines are the original Veo audio from your Flow clips, untouched, so the lip sync is exactly as generated.
+- **Narration:** her voice, cloned from those three clips with the open-source Chatterbox model (MIT licence). Each line was checked word for word, and scores as close to her on-camera voice as her three clips score to each other.
 - **Music:** an original score synthesised for this film. There is nothing to claim or clear.
 - **Numbers:** World Bank population, land and urbanisation data (2022 to 2023); the route and speed model
   is in `film/one-night/physics/one_night.py`.
