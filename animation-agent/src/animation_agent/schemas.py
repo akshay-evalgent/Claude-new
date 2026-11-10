@@ -33,7 +33,8 @@ class Evidence(BaseModel):
     """A claim is only as good as its citation. Every 'why it works' point carries one."""
 
     claim: str = Field(description="One specific, checkable statement.")
-    quote: str = Field(description="Short verbatim quote or concrete observation from the source that supports the claim.")
+    quote: str = Field(description="Short verbatim quote copied exactly from the source material that supports the claim. "
+                                   "No paraphrase: the Critic checks it word for word.")
     source_url: str | None = Field(default=None, description="Where the quote came from, if known.")
 
 
@@ -139,3 +140,53 @@ class Comment(BaseModel):
     text: str
     likes: int = 0
     by_creator: bool = False
+
+
+# ---- Milestone 3: Triage and Critic ---------------------------------------------------------
+
+class TriageJudgement(BaseModel):
+    """The model's call on one video. Popularity is scored separately, in code."""
+
+    video_id: str
+    is_animation: bool = Field(description="True if the video itself is mainly animation, including tutorials and breakdowns that show animation being made.")
+    interest: int = Field(ge=0, le=5, description="How much a motion designer could learn from it. 5 = a clear, nameable technique with visible craft; 1 = generic or mass-produced.")
+    reason: str = Field(description="One sentence naming what is, or is not, worth studying.")
+
+
+class TriageVerdicts(BaseModel):
+    decisions: list[TriageJudgement]
+
+
+class TriageDecision(TriageJudgement):
+    """A judgement plus the numbers code adds to it."""
+
+    title: str = ""
+    viral_score: float = Field(default=0.0, description="0-5, from views per day and views per follower ranked within the batch.")
+    priority: float = Field(default=0.0, description="0.7 x interest + 0.3 x viral_score.")
+    selected: bool = False
+
+
+class Issue(BaseModel):
+    field: str = Field(description="Where the problem is, e.g. 'why_it_works.hook', 'how_it_is_made[2]', 'tools', 'evidence[1]'.")
+    problem: str
+    fix: str = Field(description="What the analyst should change.")
+
+
+class Critique(BaseModel):
+    """The Critic's verdict on one draft card."""
+
+    verdict: Literal["approve", "revise"] = Field(description="approve when nothing on the card would mislead a reader; revise otherwise.")
+    issues: list[Issue] = Field(default_factory=list)
+    confidence: float = Field(ge=0, le=1, description="How far a reader can trust this card, given what the source material can support.")
+    summary: str = Field(description="One sentence.")
+
+
+class Review(BaseModel):
+    """What the Critic loop concluded about one card. Stored next to the card."""
+
+    card_id: str
+    rounds: int = Field(description="How many drafts the Analyst wrote.")
+    approved: bool
+    confidence: float | None = None
+    issues: list[Issue] = Field(default_factory=list, description="Unresolved issues; empty when approved.")
+    history: list[str] = Field(default_factory=list, description="One line per Critic round.")

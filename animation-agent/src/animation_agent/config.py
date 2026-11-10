@@ -23,7 +23,8 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=ROOT / ".env", env_file_encoding="utf-8", extra="ignore")
 
     llm_provider: Literal["claude-code", "anthropic", "gemini", "ollama"] = "claude-code"
-    llm_model: str = "claude-opus-5-5"
+    llm_model: str = "claude-opus-5-5"          # Analyst and Critic: judgement-heavy steps
+    llm_model_triage: str = "claude-haiku-5-5"  # Triage: a quick yes/no per video; about 1/40 of Opus's price
     anthropic_api_key: str = ""
     google_api_key: str = ""
     ollama_model: str = "llama3.1"

@@ -21,7 +21,7 @@ from ..tools.youtube import fetch_videos, search_youtube
 
 RESULTS_PER_QUERY = 10
 DEFAULT_WINDOW = "month"
-DEFAULT_STATS_BUDGET = 12
+DEFAULT_STATS_BUDGET = 20
 
 
 def default_queries(path=ROOT / "sources.yaml") -> list[str]:

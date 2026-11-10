@@ -3,7 +3,9 @@ piece at a time and produce a Technique Card: a structured, evidence-backed brea
 that another designer could learn from and reproduce.
 
 Rules
-- Only claim what the source material supports. Quote it. If you infer, prefix the step with "likely:".
+- Only claim what the source material supports. Quote it word for word: every evidence quote must be
+  copied exactly from the source material, because a checker compares it character by character.
+  If you infer, prefix the step with "likely:".
 - Score the ten "why it works" dimensions from 0 to 5. 0 means "not applicable or no evidence", not "bad".
 - Put at least one Evidence item for every dimension you score 3 or higher.
 - Name tools only when stated or obvious from visual signatures. Otherwise leave the list empty and add an open question.

@@ -1,12 +1,15 @@
-"""Milestone 2: the first graph. Scout -> Analyst -> Librarian.
+"""The main graph. Milestone 3 adds Triage, a parallel fan-out and a Critic loop.
 
-    START -> scout -> analyst -> librarian -> END
+    START -> scout -> triage --(Send, one per selected video)--> analyze -> librarian -> END
+                         \\__________(nothing selected)___________________/
 
-Lesson, graph vs agent: Milestone 1's agent decided its own next step every turn. A graph fixes
-the steps and their order in code, and gives each step one narrow job with typed input and
-output. You lose some flexibility and gain things a production agent needs: every run takes the
-same path, each node can be tested and evaluated alone, a failure points at one node, and
-LangSmith shows one span per node.
+`analyze` is itself a graph (`nodes/card_pipeline.py`): gather -> analyst -> critic, looping back
+to the analyst at most twice. LangGraph runs all the `analyze` copies in the same step, in
+parallel, and starts the Librarian only once every copy has finished.
+
+Lesson, graph vs agent: a fixed path with typed steps is what lets you test, trace and evaluate
+each step. Milestone 3 adds the agent-like parts back inside the graph, where you can see them:
+a branch (conditional edge), a map-reduce (Send plus append reducers) and a bounded loop.
 
 This file uses absolute imports so LangGraph Studio can load it by path (see langgraph.json).
 
@@ -18,23 +21,26 @@ from typing import Callable
 
 from langgraph.graph import END, START, StateGraph
 
-from animation_agent.nodes import make_analyst, make_librarian, make_scout
+from animation_agent.nodes import build_card_graph, make_librarian, make_scout, make_triage, route_after_triage
 from animation_agent.state import RunInput, RunState
 
 
 def build_graph(
     scout: Callable | None = None,
-    analyst: Callable | None = None,
+    triage: Callable | None = None,
+    analyze=None,
     librarian: Callable | None = None,
 ):
-    """Wire the nodes together. Pass a node to replace the default, as the tests do."""
+    """Wire the nodes together. Pass a node (or a compiled card pipeline) to replace the default."""
     builder = StateGraph(RunState, input_schema=RunInput)
     builder.add_node("scout", scout or make_scout())
-    builder.add_node("analyst", analyst or make_analyst())
+    builder.add_node("triage", triage or make_triage())
+    builder.add_node("analyze", analyze or build_card_graph())
     builder.add_node("librarian", librarian or make_librarian())
     builder.add_edge(START, "scout")
-    builder.add_edge("scout", "analyst")
-    builder.add_edge("analyst", "librarian")
+    builder.add_edge("scout", "triage")
+    builder.add_conditional_edges("triage", route_after_triage, ["analyze", "librarian"])
+    builder.add_edge("analyze", "librarian")
     builder.add_edge("librarian", END)
     return builder.compile(name="animation-pipeline")
 

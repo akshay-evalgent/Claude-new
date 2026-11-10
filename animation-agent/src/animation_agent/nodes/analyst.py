@@ -1,26 +1,29 @@
-"""Analyst: turn the top candidates into Technique Cards. The only node that calls a model.
+"""Analyst: write a Technique Card for one candidate, or revise it from the Critic's feedback.
 
-It reuses Milestone 0's chain (analyst prompt -> model -> validated TechniqueCard). What is new
-is the source material: real metadata and the most-liked viewer comments instead of a pasted
-description. After the model answers, `finalize()` overwrites every *fact* on the card (id,
-URL, title, metrics, dates) with the values the tools measured. The model judges; code copies facts.
+Since Milestone 3 this node runs inside the per-card subgraph (`card_pipeline.py`), once per
+draft. The first time it writes from the source material; after a "revise" verdict it gets its
+previous draft plus the Critic's issues and returns a corrected card.
 
-Cards are analysed one after another here. Each takes the better part of a minute, which is
-the motivation for Milestone 3's parallel fan-out.
+After the model answers, `finalize()` overwrites every *fact* on the card (id, URL, title,
+metrics, dates) with what the tools measured. The model judges; code copies facts.
 """
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Callable
 
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import Runnable
+from langgraph.config import get_stream_writer
 
-from ..m0_card_from_text import build_chain, enrich
-from ..schemas import Candidate, Comment, TechniqueCard, Virality
-from ..state import RunState
-from ..tools.youtube import fetch_top_comments
+from ..llm import get_model
+from ..m0_card_from_text import enrich
+from ..schemas import Candidate, Comment, Critique, TechniqueCard, Virality
+from ..state import CardState
 
-DEFAULT_MAX_CARDS = 3
+PROMPTS = Path(__file__).resolve().parents[1] / "prompts"
 COMMENTS_PER_VIDEO = 15
+CODE_OWNED_FIELDS = {"id", "title", "source_urls", "virality", "first_seen", "last_updated"}
 
 
 def source_material(c: Candidate, comments: list[Comment]) -> str:
@@ -50,7 +53,12 @@ def source_material(c: Candidate, comments: list[Comment]) -> str:
 
 
 def finalize(card: TechniqueCard, c: Candidate) -> TechniqueCard:
-    """Replace every fact on the card with what the tools measured."""
+    """Return a copy of the card with every fact replaced by what the tools measured.
+
+    It copies rather than edits in place: parallel branches must never mutate an object another
+    branch might hold. A test caught exactly that when two pipelines shared one fake card.
+    """
+    card = card.model_copy(deep=True)
     card.id = f"{c.platform}:{c.video_id}"
     card.title = c.title
     card.source_urls = [c.url]
@@ -63,27 +71,44 @@ def finalize(card: TechniqueCard, c: Candidate) -> TechniqueCard:
     return enrich(card)                                       # computes views_per_day, like_rate, dates
 
 
-def make_analyst(
-    chain: Runnable | None = None,
-    comments: Callable[[str, int], list[Comment]] = fetch_top_comments,
-) -> Callable[[RunState], dict]:
-    def analyst(state: RunState) -> dict:
-        picks = state.get("candidates", [])[: state.get("max_cards") or DEFAULT_MAX_CARDS]
-        card_chain = chain or build_chain().with_config(run_name="analyst")
-        cards: list[TechniqueCard] = []
-        errors: list[str] = []
-        for c in picks:
-            try:
-                top_comments = comments(c.video_id, COMMENTS_PER_VIDEO)
-            except Exception as exc:                          # comments are nice to have, not required
-                top_comments = []
-                errors.append(f"analyst: comments for {c.video_id} unavailable: {type(exc).__name__}: {exc}")
-            try:
-                card = card_chain.invoke({"description": source_material(c, top_comments)})
-            except Exception as exc:                          # one bad card must not sink the run
-                errors.append(f"analyst: card for {c.video_id} failed: {type(exc).__name__}: {str(exc)[:300]}")
-                continue
-            cards.append(finalize(card, c))
-        return {"cards": cards, "errors": errors}
+def revision_note(draft: TechniqueCard, critique: Critique) -> str:
+    """What the Analyst sees on a revision: its own draft and the issues to fix."""
+    issues = "\n".join(f"{i}. [{x.field}] {x.problem} Fix: {x.fix}" for i, x in enumerate(critique.issues, 1))
+    return (
+        "\n\nA reviewer checked your previous draft against the source material and asked for changes."
+        f"\n\nYOUR PREVIOUS DRAFT:\n{draft.model_dump_json(indent=1, exclude=CODE_OWNED_FIELDS)}"
+        f"\n\nREVIEWER ISSUES (fix every one):\n{issues or '(none listed)'}"
+        "\n\nChange only what the issues ask for and keep every other field as it was, so that fixing one "
+        "thing does not break another. Return the complete corrected Technique Card, not only the changes."
+    )
+
+
+def build_analyst_chain() -> Runnable:
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", (PROMPTS / "analyst.md").read_text()),
+        ("human", "Analyse this animation and return a Technique Card.\n\nSOURCE MATERIAL:\n{source}{revision}"),
+    ])
+    return (prompt | get_model("analyst").with_structured_output(TechniqueCard)).with_config(run_name="analyst")
+
+
+def make_analyst_node(chain: Runnable | None = None) -> Callable[[CardState], dict]:
+    built: list[Runnable] = []                          # build the real chain once, on first use
+
+    def analyst(state: CardState) -> dict:
+        c = state["candidate"]
+        attempt = state.get("attempts", 0) + 1
+        draft, critique = state.get("draft"), state.get("critique")
+        revision = revision_note(draft, critique) if draft is not None and critique is not None else ""
+        if chain is None and not built:
+            built.append(build_analyst_chain())
+        try:
+            card = (chain or built[0]).invoke({"source": state["source"], "revision": revision})
+        except Exception as exc:                        # one bad draft must not sink the run
+            return {"attempts": attempt, "failed": True,
+                    "errors": [f"analyst: draft {attempt} for {c.video_id} failed: {type(exc).__name__}: {str(exc)[:300]}"]}
+        # Progress for whoever streams with stream_mode="custom" (the CLI does). The draft itself is
+        # private subgraph state, so it never appears in the main graph's "updates" stream.
+        get_stream_writer()({"node": "analyst", "video": c.title, "text": f"draft {attempt}"})
+        return {"draft": finalize(card, c), "attempts": attempt}
 
     return analyst

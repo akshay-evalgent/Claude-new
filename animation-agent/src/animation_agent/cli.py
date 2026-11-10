@@ -104,11 +104,13 @@ def _preview(tool_output: str) -> str:
 def run(
     query: list[str] = typer.Option(None, "--query", "-q", help="Search query; repeat for several. Default: sources.yaml."),
     within: str = typer.Option("month", "--within", "-w", help=f"Upload window: {', '.join(UPLOAD_WINDOWS)}."),
-    cards: int = typer.Option(3, "--cards", "-c", min=1, max=10, help="How many top candidates become Technique Cards."),
-    stats_budget: int = typer.Option(12, "--stats-budget", min=1, max=40, help="How many search hits get full stats."),
+    cards: int = typer.Option(3, "--cards", "-c", min=1, max=10, help="Most candidates Triage may send for analysis."),
+    stats_budget: int = typer.Option(20, "--stats-budget", min=1, max=40, help="How many search hits get full stats."),
+    parallel: int = typer.Option(4, "--parallel", "-p", min=1, max=10, help="Most card pipelines running at once."),
 ):
-    """Milestone 2: run the graph. Scout finds videos, Analyst writes cards, Librarian saves them."""
+    """Run the graph: Scout, Triage, parallel Analyst+Critic pipelines, Librarian."""
     from .graph import graph
+    from .nodes.librarian import default_db_path
 
     if within not in UPLOAD_WINDOWS:
         raise typer.BadParameter(f"--within must be one of: {', '.join(UPLOAD_WINDOWS)}")
@@ -116,24 +118,39 @@ def run(
     if query:
         inputs["queries"] = query
 
-    # stream_mode="updates" yields {node_name: partial_update} as each node finishes.
+    # Two stream modes at once. "updates" yields each main-graph node's partial update as it
+    # finishes. "custom" yields progress events the Analyst and Critic emit with get_stream_writer(),
+    # and subgraphs=True lets those through from inside each parallel card pipeline.
+    # max_concurrency caps how many Send branches run at once.
     errors: list[str] = []
-    for update in graph.stream(inputs, stream_mode="updates"):
-        for node, out in update.items():
+    stream = graph.stream(inputs, stream_mode=["updates", "custom"], subgraphs=True,
+                          config={"max_concurrency": parallel})
+    for namespace, mode, data in stream:
+        if mode == "custom":
+            typer.echo(f"  [{data['node']}] {data['video'][:45]}: {data['text'][:110]}")
+            continue
+        if namespace:                                       # inner updates: progress came via "custom"
+            continue
+        for node, out in data.items():
+            if not isinstance(out, dict):
+                continue
             errors += out.get("errors", [])
             if node == "scout":
-                cands = out["candidates"]
-                typer.echo(f"[scout] run {out['run_id']}: {len(cands)} candidates from {len(out['queries'])} queries "
-                           f"(uploaded within {out['uploaded_within']}). Top {min(cards, len(cands))} go to the analyst:")
-                for c in cands[:cards]:
-                    typer.echo(f"  {c.views_per_day or 0:>12,.0f}/day  {c.title[:70]}  [{c.channel}]")
-            elif node == "analyst":
-                typer.echo(f"[analyst] {len(out['cards'])} cards:")
-                for card in out["cards"]:
-                    typer.echo(f"  {card.style_family:<22} confidence {card.confidence:.2f}  {card.title[:60]}")
+                typer.echo(f"[scout] run {out['run_id']}: {len(out['candidates'])} candidates from "
+                           f"{len(out['queries'])} queries (uploaded within {out['uploaded_within']})")
+            elif node == "triage":
+                picked = [d for d in out["triage"] if d.selected]
+                skipped = len(out["triage"]) - len(picked)
+                typer.echo(f"[triage] {len(picked)} selected, {skipped} skipped:")
+                for d in sorted(picked, key=lambda d: d.priority, reverse=True):
+                    typer.echo(f"  priority {d.priority:.1f} (interest {d.interest}, viral {d.viral_score:.1f})  "
+                               f"{d.title[:55]}\n      {d.reason[:110]}")
+            elif node == "analyze":
+                for card, review in zip(out.get("cards", []), out.get("reviews", [])):
+                    verdict = "approved" if review.approved else "NOT approved"
+                    typer.echo(f"[card] {card.title[:50]}: {verdict} after {review.rounds} drafts, "
+                               f"confidence {card.confidence:.2f}")
             elif node == "librarian":
-                from .nodes.librarian import default_db_path
-
                 typer.echo(f"[librarian] saved {len(out['saved'])} cards to {default_db_path()}")
     for err in errors:
         typer.echo(f"! {err}", err=True)
@@ -151,7 +168,9 @@ def list_cards(limit: int = typer.Option(20, "--limit", "-n", help="How many car
         typer.echo("No cards yet. Run: uv run anim run")
     for r in rows:
         vpd = f"{r['views_per_day']:,.0f}/day" if r["views_per_day"] is not None else "-"
-        typer.echo(f"{r['id']:<22} {r['style_family']:<22} conf {r['confidence']:.2f} {vpd:>12}  {r['title'][:60]}")
+        review = {1: "approved", 0: "flagged"}.get(r["approved"], "unreviewed")
+        typer.echo(f"{r['id']:<22} {r['style_family']:<22} conf {r['confidence']:.2f} {review:<10} {vpd:>12}  "
+                   f"{r['title'][:55]}")
 
 
 @app.command()
@@ -160,10 +179,18 @@ def show(card_id: str = typer.Argument(..., help="Card id from `anim cards`, e.g
     from .nodes.librarian import default_db_path
     from .storage import CardStore
 
-    card = CardStore(default_db_path()).get_card(card_id)
+    store = CardStore(default_db_path())
+    card = store.get_card(card_id)
     if card is None:
         raise typer.BadParameter(f"No card with id {card_id!r}. List ids with: uv run anim cards")
     typer.echo(card.model_dump_json(indent=2))
+    review = store.get_review(card_id)
+    if review:
+        import json
+
+        typer.echo(f"\nCritic: {'approved' if review['approved'] else 'not approved'} after {review['rounds']} drafts", err=True)
+        for line in json.loads(review["history"]):
+            typer.echo(f"  {line}", err=True)
 
 
 @app.command()

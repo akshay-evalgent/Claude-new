@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from .schemas import TechniqueCard
+from .schemas import Review, TechniqueCard, TriageDecision
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS cards (
@@ -29,6 +29,28 @@ CREATE TABLE IF NOT EXISTS cards (
     last_updated  TEXT,
     run_id        TEXT,
     card_json     TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS reviews (
+    card_id    TEXT NOT NULL,
+    run_id     TEXT NOT NULL,
+    rounds     INTEGER,
+    approved   INTEGER,
+    confidence REAL,
+    issues     TEXT,
+    history    TEXT,
+    PRIMARY KEY (card_id, run_id)
+);
+CREATE TABLE IF NOT EXISTS triage (
+    run_id       TEXT NOT NULL,
+    video_id     TEXT NOT NULL,
+    title        TEXT,
+    is_animation INTEGER,
+    interest     INTEGER,
+    viral_score  REAL,
+    priority     REAL,
+    selected     INTEGER,
+    reason       TEXT,
+    PRIMARY KEY (run_id, video_id)
 );
 CREATE TABLE IF NOT EXISTS runs (
     run_id      TEXT PRIMARY KEY,
@@ -86,12 +108,39 @@ class CardStore:
                  json.dumps(queries), candidates, json.dumps(cards), json.dumps(errors)),
             )
 
+    def save_review(self, review: Review, run_id: str) -> None:
+        with closing(self._connect()) as conn, conn:
+            conn.execute(
+                "INSERT OR REPLACE INTO reviews VALUES (?, ?, ?, ?, ?, ?, ?)",
+                (review.card_id, run_id, review.rounds, int(review.approved), review.confidence,
+                 json.dumps([i.model_dump() for i in review.issues]), json.dumps(review.history)),
+            )
+
+    def save_triage(self, run_id: str, decisions: list[TriageDecision]) -> None:
+        """Every decision, kept or not. Milestone 8 turns these rows into a labelled eval set."""
+        with closing(self._connect()) as conn, conn:
+            conn.executemany(
+                "INSERT OR REPLACE INTO triage VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                [(run_id, d.video_id, d.title, int(d.is_animation), d.interest, d.viral_score, d.priority,
+                  int(d.selected), d.reason) for d in decisions],
+            )
+
     def list_cards(self, limit: int = 20) -> list[dict[str, Any]]:
+        """Newest first, with the Critic's verdict from the run that last wrote the card (None before M3)."""
         with closing(self._connect()) as conn:
             rows = conn.execute(
-                """SELECT id, title, style_family, confidence, views, views_per_day, last_updated
-                   FROM cards ORDER BY last_updated DESC, views_per_day DESC LIMIT ?""", (limit,)).fetchall()
+                """SELECT c.id, c.title, c.style_family, c.confidence, c.views, c.views_per_day, c.last_updated,
+                          r.approved, r.rounds
+                   FROM cards c LEFT JOIN reviews r ON r.card_id = c.id AND r.run_id = c.run_id
+                   ORDER BY c.last_updated DESC, c.views_per_day DESC LIMIT ?""", (limit,)).fetchall()
         return [dict(r) for r in rows]
+
+    def get_review(self, card_id: str) -> dict[str, Any] | None:
+        with closing(self._connect()) as conn:
+            row = conn.execute(
+                """SELECT r.* FROM reviews r JOIN cards c ON c.id = r.card_id AND c.run_id = r.run_id
+                   WHERE r.card_id = ?""", (card_id,)).fetchone()
+        return dict(row) if row else None
 
     def get_card(self, card_id: str) -> TechniqueCard | None:
         with closing(self._connect()) as conn:

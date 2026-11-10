@@ -245,15 +245,22 @@ def _tool_turn_message(result: dict[str, Any]) -> AIMessage:
                      response_metadata=result["usage"])
 
 
+def model_name(role: str) -> str:
+    """Cheap steps get a cheap model. Only Triage is cheap so far; everything else gets LLM_MODEL."""
+    if role == "triage" and settings.llm_model_triage:
+        return settings.llm_model_triage
+    return settings.llm_model
+
+
 def get_model(role: str = "analyst") -> BaseChatModel:
-    """Return the chat model for a role. Roles let us route cheap steps to cheap models later."""
+    """Return the chat model for a role: "triage" routes to LLM_MODEL_TRIAGE, the rest to LLM_MODEL."""
     provider = settings.llm_provider
     if provider == "claude-code":
-        return ClaudeCodeChatModel(model=settings.llm_model)
+        return ClaudeCodeChatModel(model=model_name(role))
     if provider == "anthropic":
         from langchain_anthropic import ChatAnthropic
 
-        return ChatAnthropic(model=settings.llm_model, api_key=settings.anthropic_api_key, max_tokens=16000)
+        return ChatAnthropic(model=model_name(role), api_key=settings.anthropic_api_key, max_tokens=16000)
     if provider == "gemini":
         from langchain_google_genai import ChatGoogleGenerativeAI
 

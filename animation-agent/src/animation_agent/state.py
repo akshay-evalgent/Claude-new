@@ -17,7 +17,7 @@ from __future__ import annotations
 import operator
 from typing import Annotated, TypedDict
 
-from .schemas import Candidate, TechniqueCard
+from .schemas import Candidate, Critique, Review, TechniqueCard, TriageDecision
 
 
 class RunInput(TypedDict, total=False):
@@ -25,14 +25,40 @@ class RunInput(TypedDict, total=False):
 
     queries: list[str]          # default: the YouTube queries in sources.yaml
     uploaded_within: str        # default: "month"
-    max_cards: int              # how many candidates the Analyst turns into cards (default 3)
-    stats_budget: int           # how many search hits get full stats (default 12)
+    max_cards: int              # how many candidates Triage may send for analysis (default 3)
+    stats_budget: int           # how many search hits get full stats (default 20)
     run_id: str
     started_at: str
 
 
 class RunState(RunInput, total=False):
     candidates: list[Candidate]                             # Scout writes; replaced, not appended
-    cards: Annotated[list[TechniqueCard], operator.add]     # Analyst appends
+    triage: list[TriageDecision]                            # Triage: one decision per candidate
+    selected: list[Candidate]                               # Triage: the ones sent for analysis
+    cards: Annotated[list[TechniqueCard], operator.add]     # each parallel card pipeline appends one
+    reviews: Annotated[list[Review], operator.add]          # ...and its Critic review
     errors: Annotated[list[str], operator.add]              # any node appends
     saved: list[str]                                        # Librarian: ids of cards written
+
+
+# ---- The per-card subgraph (Milestone 3) ----------------------------------------------------
+# Each selected candidate gets its own copy of this state, so parallel pipelines never see each
+# other's drafts. Only the output keys flow back to RunState, where the append reducers merge them.
+
+class CardInput(TypedDict):
+    candidate: Candidate
+
+
+class CardOutput(TypedDict, total=False):
+    cards: Annotated[list[TechniqueCard], operator.add]
+    reviews: Annotated[list[Review], operator.add]
+    errors: Annotated[list[str], operator.add]
+
+
+class CardState(CardInput, CardOutput, total=False):
+    source: str                                     # the text every claim must come from
+    draft: TechniqueCard | None                     # latest Analyst draft
+    critique: Critique | None                       # latest Critic verdict
+    attempts: int                                   # drafts written so far
+    history: Annotated[list[str], operator.add]     # one line per Critic round
+    failed: bool                                    # a revision failed; keep the last good draft

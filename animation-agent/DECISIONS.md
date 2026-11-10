@@ -2,6 +2,30 @@
 
 Every architectural choice, the alternative, and why. Newest first.
 
+## Milestone 3
+
+- **Triage uses Haiku; Analyst and Critic use Opus.** PLAN.md's cost plan. Triage is one easy
+  judgement per video in a single call. Set by `LLM_MODEL_TRIAGE`; non-Claude providers use one model.
+- **Triage splits judgement from arithmetic.** The model scores interest without seeing views;
+  code scores popularity. Priority = 0.7 × interest + 0.3 × viral. Craft gets most of the weight
+  because Scout already filtered for popularity; at 60/40, popularity alone could outrank craft.
+- **If Triage fails, fall back to popularity and record it.** A degraded run beats a stopped run.
+- **Each selected video runs a subgraph, fanned out with `Send`.** Alternative: a flat graph where
+  one Critic reviews every card and sends weak ones back. That needs a reducer that replaces cards
+  by id and makes retries share state; per-video subgraphs keep each loop private and parallel.
+- **The Critic checks quotes in code before the model reviews.** Quotes must be verbatim. A quote
+  missing from the source forces "revise" regardless of the model's verdict.
+- **The loop allows two revisions; after that the card is kept, flagged, confidence capped at
+  0.49.** PLAN.md: under 0.5 means excluded from digests. Keeping it preserves the work and the
+  reasons it failed.
+- **The Critic sets card confidence.** As PLAN.md specified.
+- **The Critic sees its previous round's issues; the Analyst changes only what they ask.** A live
+  run oscillated (each revision fixed one issue and introduced another) until it hit the cap.
+  Memory of the last round targets that; one rerun converged, which is evidence, not proof.
+- **Progress from inside the subgraph uses custom stream events, not a wider output schema.**
+  Widening the schema would leak drafts and critiques into the main graph's state.
+- **Every Triage decision is stored, selected or not.** It is free labelled data for Milestone 8.
+
 ## Milestone 2
 
 - **Scout and Librarian are plain code; only the Analyst calls a model.** Queries come from
@@ -19,6 +43,7 @@ Every architectural choice, the alternative, and why. Newest first.
   Re-runs update rows instead of duplicating them. The store lives in `storage.py`; PLAN.md's
   `memory/` package arrives with checkpoints and long-term memory in Milestone 4.
 - **Analysts run one after another for now.** Parallel fan-out with `Send` is Milestone 3's lesson.
+  (Superseded in Milestone 3.)
 
 ## Milestone 1
 
