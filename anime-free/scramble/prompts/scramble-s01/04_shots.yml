@@ -18,6 +18,7 @@
   frames: 60
   seconds: 3
   audio: akane
+  believable: nobody runs here, the word is used for rainwater on her jacket
   prompt: "Hand-drawn 2D anime film, cel shading, rainy neon night. The same young woman as in the image, on-model, ONE CONTINUOUS TAKE with no cuts. 0-0.4 s: closed-mouth grin, rain running down her jacket. 0.4-2 s: she says a short line with clear cocky mouth movements, chin lifting, her raised fist tightening. 2-3 s: her mouth closes into a wide grin. The whole time blurred people with umbrellas walk past behind her and in front of her, rain falls, neon light flickers on her face. Same face, same outfit. No new objects, no text."
   camera:
     move: locked-off medium close-up, a tripod camera with no movement
@@ -26,6 +27,7 @@
   frames: 60
   seconds: 3
   audio: jin
+  believable: nobody runs here, the word is used for rainwater on his hoodie
   prompt: "Hand-drawn 2D anime film, cel shading, rainy neon night. The same young man as in the image, on-model, ONE CONTINUOUS TAKE with no cuts. 0-0.5 s: he looks back over his shoulder, calm, mouth closed, hands in his pockets. 0.5-2 s: he says a short dry line with small mouth movements, one eyebrow lifting slightly. 2-3 s: his mouth closes and he slowly turns his body to face the left of the frame, taking his hands out of his pockets. The whole time blurred people with umbrellas keep walking past, rain runs off his hoodie. Same face, same outfit. No new objects, no text."
   camera:
     move: locked-off medium shot, a tripod camera with no movement

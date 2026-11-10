@@ -17,6 +17,11 @@ grep -q 'free/tasks' "$PROJECT/Rakefile" || \
 if ! command -v magick >/dev/null && command -v convert >/dev/null; then
   printf '#!/bin/sh\ncase "$1" in identify|montage|composite|mogrify|compare|convert) c="$1"; shift; exec "$c" "$@";; *) exec convert "$@";; esac\n' > /usr/local/bin/magick && chmod +x /usr/local/bin/magick
 fi
+# The p5 renderer starts Chromium without --no-sandbox, which fails as root in a container.
+CHROME_BIN="${CHROME_BIN:-$(ls /opt/pw-browsers/chromium-*/chrome-linux64/chrome /usr/bin/chromium /usr/bin/google-chrome 2>/dev/null | head -1)}"
+if [ -n "$CHROME_BIN" ] && [ ! -x /usr/local/bin/chrome-for-p5 ]; then
+  printf '#!/bin/sh\nexec "%s" --no-sandbox --disable-dev-shm-usage "$@"\n' "$CHROME_BIN" > /usr/local/bin/chrome-for-p5 && chmod +x /usr/local/bin/chrome-for-p5
+fi
 # Local worker environment: Kaggle CLI and CPU speech recognition.
 if [ ! -x "$PROJECT/.venv-free/bin/python" ]; then
   (command -v uv >/dev/null && uv venv -q -p 3.12 "$PROJECT/.venv-free") || python3 -m venv "$PROJECT/.venv-free"

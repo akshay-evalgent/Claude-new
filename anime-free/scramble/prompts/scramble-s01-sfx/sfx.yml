@@ -14,16 +14,21 @@ sounds:
   impact: {prompt: "One huge heavy kick impact with a deep boom and a sharp crack, anime finishing blow sound effect, isolated, no music, no voices", duration: 2}
   skid: {prompt: "Sneakers skidding backwards across wet asphalt with a long spray of water, isolated, no music, no voices", duration: 2}
 cues:
+  # Blow times read from a 6 fps contact sheet of the finished plate.
   - {at: 0.0, sound: street, rel_db: -9, len: 20.0, fade: 0.4}
   - {at: 7.5, sound: run, rel_db: 6, len: 1.5, fade: 0.1}
-  - {at: 8.4, sound: gasp, rel_db: 2, len: 2.5, fade: 0.4}
-  - {at: 9.3, sound: whoosh, rel_db: 3, len: 0.3, fade: 0.05}
-  - {at: 9.5, sound: block, rel_db: 7, len: 0.5, fade: 0.05}
-  - {at: 10.1, sound: whoosh, rel_db: 3, len: 0.3, fade: 0.05}
-  - {at: 10.3, sound: block, rel_db: 7, len: 0.5, fade: 0.05}
-  - {at: 11.0, sound: whoosh, rel_db: 3, len: 0.3, fade: 0.05}
+  - {at: 8.3, sound: gasp, rel_db: 2, len: 2.5, fade: 0.4}
+  - {at: 9.03, sound: whoosh, rel_db: 3, len: 0.3, fade: 0.05}
+  - {at: 9.15, sound: block, rel_db: 7, len: 0.5, fade: 0.05}
+  - {at: 9.58, sound: whoosh, rel_db: 3, len: 0.3, fade: 0.05}
+  - {at: 9.7, sound: block, rel_db: 7, len: 0.5, fade: 0.05}
+  - {at: 10.28, sound: whoosh, rel_db: 3, len: 0.3, fade: 0.05}
+  - {at: 10.4, sound: block, rel_db: 8, len: 0.5, fade: 0.05}
+  - {at: 10.72, sound: block, rel_db: 7, len: 0.5, fade: 0.05}
+  - {at: 11.08, sound: whoosh, rel_db: 3, len: 0.3, fade: 0.05}
   - {at: 11.2, sound: block, rel_db: 8, len: 0.5, fade: 0.05}
-  - {at: 11.9, sound: block, rel_db: 8, len: 0.5, fade: 0.05}
-  - {at: 13.0, sound: whoosh, rel_db: 5, len: 0.4, fade: 0.05}
-  - {at: 13.3, sound: impact, rel_db: 12, len: 1.2, fade: 0.2}
-  - {at: 14.0, sound: skid, rel_db: 8, len: 1.8, fade: 0.2}
+  - {at: 11.62, sound: block, rel_db: 8, len: 0.5, fade: 0.05}
+  - {at: 12.3, sound: whoosh, rel_db: 5, len: 0.35, fade: 0.05}
+  - {at: 12.5, sound: impact, rel_db: 12, len: 1.4, fade: 0.2}
+  - {at: 13.0, sound: skid, rel_db: 7, len: 1.0, fade: 0.2}
+  - {at: 14.0, sound: skid, rel_db: 8, len: 1.4, fade: 0.3}
