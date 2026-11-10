@@ -83,6 +83,7 @@ class TechniqueCard(BaseModel):
     confidence: float = Field(ge=0, le=1, description="Set low when the source is thin. The Critic node adjusts this later.")
 
     # Bookkeeping, filled by code not by the model.
+    id: str | None = Field(default=None, description="Stable key such as 'youtube:<video id>'. Set by code.")
     first_seen: date | None = None
     last_updated: date | None = None
 
@@ -107,6 +108,7 @@ class Candidate(BaseModel):
     comments: int | None = None
     tags: list[str] = Field(default_factory=list)
     description: str = ""
+    found_by: list[str] = Field(default_factory=list, description="Search queries that surfaced this video.")
 
     # Computed by code in `with_metrics()`, never asked of the model.
     views_per_day: float | None = None
@@ -129,3 +131,11 @@ class Candidate(BaseModel):
             if self.channel_followers:
                 self.views_per_follower = round(self.views / self.channel_followers, 2)
         return self
+
+
+class Comment(BaseModel):
+    """A viewer comment. The best evidence for 'why it works' is what viewers say they love."""
+
+    text: str
+    likes: int = 0
+    by_creator: bool = False

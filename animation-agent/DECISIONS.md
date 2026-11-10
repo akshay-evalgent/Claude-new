@@ -2,6 +2,24 @@
 
 Every architectural choice, the alternative, and why. Newest first.
 
+## Milestone 2
+
+- **Scout and Librarian are plain code; only the Analyst calls a model.** Queries come from
+  `sources.yaml`, shortlisting is a sort by views per day. Judgement goes where it is needed,
+  and Triage (Milestone 3) is where shortlisting becomes a judgement.
+- **Nodes are built by factories that take their dependencies.** Tests inject fake search, model
+  and database and run the real graph. Alternative: monkeypatching module globals, which hides
+  the dependencies.
+- **The Analyst's source material is metadata plus the 15 most-liked comments.** Comments are the
+  best free evidence for "why it works" and cost about three seconds per video. Transcripts and
+  frames are blocked from cloud IPs and come in Milestone 9.
+- **Code overwrites every fact on a card after the model answers.** Id, title, URL, metrics and
+  dates come from the tools. The model only supplies judgement.
+- **Cards are stored as full JSON plus a few query columns, keyed by `youtube:<video id>`.**
+  Re-runs update rows instead of duplicating them. The store lives in `storage.py`; PLAN.md's
+  `memory/` package arrives with checkpoints and long-term memory in Milestone 4.
+- **Analysts run one after another for now.** Parallel fan-out with `Send` is Milestone 3's lesson.
+
 ## Milestone 1
 
 - **First tool is yt-dlp YouTube search, not web search.** PLAN.md listed `web_search`. Keyless web

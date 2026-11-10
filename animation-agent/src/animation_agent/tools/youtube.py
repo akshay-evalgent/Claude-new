@@ -23,7 +23,7 @@ from urllib.parse import quote, quote_plus
 from langchain_core.tools import tool
 
 from ..config import settings
-from ..schemas import Candidate
+from ..schemas import Candidate, Comment
 
 UploadWindow = Literal["any", "hour", "today", "week", "month", "year"]
 SortBy = Literal["relevance", "views", "date"]
@@ -51,7 +51,7 @@ class _QuietLogger:
         self.errors.append(msg)
 
 
-def _extract(url: str, *, flat: bool = False, limit: int | None = None) -> dict[str, Any]:
+def _extract(url: str, *, flat: bool = False, limit: int | None = None, comments: int = 0) -> dict[str, Any]:
     """The only function that touches yt-dlp. Tests replace it with a fake."""
     import yt_dlp
 
@@ -71,6 +71,10 @@ def _extract(url: str, *, flat: bool = False, limit: int | None = None) -> dict[
         opts["extract_flat"] = "in_playlist"
     if limit:
         opts["playlistend"] = limit
+    if comments:
+        # Top-level comments only, YouTube's "top" order, no replies.
+        opts["getcomments"] = True
+        opts["extractor_args"]["youtube"].update(max_comments=[str(comments), "all", "0", "0"], comment_sort=["top"])
     with yt_dlp.YoutubeDL(opts) as ydl:
         return ydl.extract_info(url, download=False) or {}
 
@@ -184,6 +188,15 @@ def fetch_videos(ids_or_urls: list[str], max_workers: int = 4) -> tuple[list[Can
             else:
                 found.append(result)
     return found, errors
+
+
+def fetch_top_comments(id_or_url: str, n: int = 15) -> list[Comment]:
+    """Top-level comments in YouTube's "top" order, most-liked first. Empty if comments are off."""
+    info = _extract(_video_url(id_or_url), comments=n)
+    raw = [c for c in (info.get("comments") or []) if c.get("parent", "root") == "root" and c.get("text")]
+    raw.sort(key=lambda c: c.get("like_count") or 0, reverse=True)
+    return [Comment(text=c["text"][:400], likes=c.get("like_count") or 0, by_creator=bool(c.get("author_is_uploader")))
+            for c in raw[:n]]
 
 
 # ---- What the model sees -----------------------------------------------------------------

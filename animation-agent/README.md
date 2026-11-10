@@ -24,7 +24,11 @@ uv run pytest -q
 uv run anim card            # Milestone 0: one Technique Card from the sample description
 uv run anim youtube "claymation" --within month --sort views --stats   # Milestone 1: the tool alone
 uv run anim research        # Milestone 1: the ReAct agent answers "what trended this month"
+uv run anim run             # Milestone 2: the graph finds videos, writes cards, saves them to SQLite
+uv run anim cards           # list saved cards; `uv run anim show <id>` prints one
 ```
+
+To open the graph in LangGraph Studio: `uv run --with "langgraph-cli[inmem]" langgraph dev`.
 
 Switch provider by editing `LLM_PROVIDER` in `.env` and installing the matching extra, for
 example `uv sync --extra anthropic` with an `ANTHROPIC_API_KEY`.
@@ -35,4 +39,5 @@ example `uv sync --extra anthropic` with an `ANTHROPIC_API_KEY`.
 |---|---|
 | 0 Foundation: schema, provider adapter, structured output, tracing hooks | done |
 | 1 First tool and ReAct agent: yt-dlp YouTube tools, tool calling in the adapter, hand-written loop with guards | done |
-| 2 First graph: Scout, Analyst, Librarian with SQLite | next |
+| 2 First graph: Scout, Analyst and Librarian nodes, cards in SQLite, Studio config | done |
+| 3 Control flow: Triage with conditional edges, parallel Analysts with `Send`, Critic loop | next |

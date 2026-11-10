@@ -101,6 +101,72 @@ def _preview(tool_output: str) -> str:
 
 
 @app.command()
+def run(
+    query: list[str] = typer.Option(None, "--query", "-q", help="Search query; repeat for several. Default: sources.yaml."),
+    within: str = typer.Option("month", "--within", "-w", help=f"Upload window: {', '.join(UPLOAD_WINDOWS)}."),
+    cards: int = typer.Option(3, "--cards", "-c", min=1, max=10, help="How many top candidates become Technique Cards."),
+    stats_budget: int = typer.Option(12, "--stats-budget", min=1, max=40, help="How many search hits get full stats."),
+):
+    """Milestone 2: run the graph. Scout finds videos, Analyst writes cards, Librarian saves them."""
+    from .graph import graph
+
+    if within not in UPLOAD_WINDOWS:
+        raise typer.BadParameter(f"--within must be one of: {', '.join(UPLOAD_WINDOWS)}")
+    inputs = {"uploaded_within": within, "max_cards": cards, "stats_budget": stats_budget}
+    if query:
+        inputs["queries"] = query
+
+    # stream_mode="updates" yields {node_name: partial_update} as each node finishes.
+    errors: list[str] = []
+    for update in graph.stream(inputs, stream_mode="updates"):
+        for node, out in update.items():
+            errors += out.get("errors", [])
+            if node == "scout":
+                cands = out["candidates"]
+                typer.echo(f"[scout] run {out['run_id']}: {len(cands)} candidates from {len(out['queries'])} queries "
+                           f"(uploaded within {out['uploaded_within']}). Top {min(cards, len(cands))} go to the analyst:")
+                for c in cands[:cards]:
+                    typer.echo(f"  {c.views_per_day or 0:>12,.0f}/day  {c.title[:70]}  [{c.channel}]")
+            elif node == "analyst":
+                typer.echo(f"[analyst] {len(out['cards'])} cards:")
+                for card in out["cards"]:
+                    typer.echo(f"  {card.style_family:<22} confidence {card.confidence:.2f}  {card.title[:60]}")
+            elif node == "librarian":
+                from .nodes.librarian import default_db_path
+
+                typer.echo(f"[librarian] saved {len(out['saved'])} cards to {default_db_path()}")
+    for err in errors:
+        typer.echo(f"! {err}", err=True)
+    typer.echo("See them with: uv run anim cards")
+
+
+@app.command("cards")
+def list_cards(limit: int = typer.Option(20, "--limit", "-n", help="How many cards to list.")):
+    """List saved Technique Cards, newest first."""
+    from .nodes.librarian import default_db_path
+    from .storage import CardStore
+
+    rows = CardStore(default_db_path()).list_cards(limit)
+    if not rows:
+        typer.echo("No cards yet. Run: uv run anim run")
+    for r in rows:
+        vpd = f"{r['views_per_day']:,.0f}/day" if r["views_per_day"] is not None else "-"
+        typer.echo(f"{r['id']:<22} {r['style_family']:<22} conf {r['confidence']:.2f} {vpd:>12}  {r['title'][:60]}")
+
+
+@app.command()
+def show(card_id: str = typer.Argument(..., help="Card id from `anim cards`, e.g. youtube:abc123.")):
+    """Print one saved Technique Card as JSON."""
+    from .nodes.librarian import default_db_path
+    from .storage import CardStore
+
+    card = CardStore(default_db_path()).get_card(card_id)
+    if card is None:
+        raise typer.BadParameter(f"No card with id {card_id!r}. List ids with: uv run anim cards")
+    typer.echo(card.model_dump_json(indent=2))
+
+
+@app.command()
 def check():
     """Show which provider is active and whether tracing is on."""
     from .config import settings
