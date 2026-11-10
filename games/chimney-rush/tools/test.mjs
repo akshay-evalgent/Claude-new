@@ -204,10 +204,12 @@ async function main() {
     await clickButton(page, "play");
     check("web: PLAY button starts a run", (await state(page)) === "playing");
     await page.evaluate(() => { window.__CR.Game.autoplay = true; });
-    await page.waitForTimeout(22000);
-    const s1 = await page.evaluate(() => ({ st: window.__CR.Game.state, stats: window.__CR.Game.stats, wind: window.__CR.Game.windOn }));
-    check("web: gifts land in chimneys (autopilot, 22 s)", s1.stats.delivered >= 10 && s1.stats.fails === 0, `delivered ${s1.stats.delivered}, fails ${s1.stats.fails}`);
-    check("web: wind kicks in after 10 deliveries", s1.wind === true);
+    await page.waitForTimeout(34000);
+    const s1 = await page.evaluate(() => ({ st: window.__CR.Game.state, stats: window.__CR.Game.stats, wind: window.__CR.Game.windOn, kidSeen: window.__CR.Game.kidSeen }));
+    const st1 = s1.stats;
+    check("web: gifts land in chimneys (autopilot, 34 s)", st1.delivered >= 14 && st1.fails === 0, `delivered ${st1.delivered}, fails ${st1.fails}, stolen ${st1.stolen}, bonks ${st1.bonks}`);
+    check("web: the Rooftop Rascal shows up after 6 deliveries", s1.kidSeen === true);
+    check("web: wind kicks in after 14 deliveries", s1.wind === true);
     await page.keyboard.press("Escape");
     check("web: Escape pauses", (await state(page)) === "paused");
     await page.keyboard.press("Space");
@@ -236,6 +238,55 @@ async function main() {
     await clickButton(page, "sound");
     check("web: sound toggle persists", (await page.evaluate(() => window.__CR.Storage.data.sound)) === false);
     check("web: no script errors", errors.length === 0, errors.slice(0, 3).join(" | "));
+    await ctx.close();
+  }
+
+  // ---------- the Rooftop Rascal's rules ----------
+  {
+    const { ctx, page, errors } = await openGame(browser, `${base}/web/index.html?test=1&seed=6`);
+    const r = await page.evaluate(() => {
+      const G = window.__CR.Game, out = {};
+      window.__CR.Storage.data.tutorialDone = true;
+      G.startRun();
+      G.manualClock = true;
+      out.spawned = G.spawnKid(false);
+      const k = G.kid;
+      // mid-jump, arms up: he steals
+      k.state = "jump";
+      k.jump = { x0: k.wx, y0: k.y, x1: k.wx + 100, y1: k.y, t: 0.25, T: 0.5, h: 40, house: k.house };
+      const g = { x: k.wx - G.scroll, y: k.y - 60 };
+      out.inAir = G.kidCollide(g);
+      G.combo = 7; G.runCoins = 5;
+      const lives = G.lives;
+      G.kidSteal(g);
+      out.steal = { stolen: G.stats.stolen, keptHearts: G.lives === lives, combo: G.combo, coins: G.runCoins, carrying: k.carrying };
+      // the chimney a stolen gift was meant for is excused
+      const h = G.houses.find((x) => x.chimneys.length && x.x - G.scroll > G.L.sleighX);
+      const c = h.chimneys[0];
+      G.kidSteal({ x: h.x - G.scroll + c.ox, y: c.topY - 40 });
+      out.excused = c.missed === true;
+      // taking off or landing: low and off balance, so a hit knocks him off
+      k.jump.t = 0.02;
+      out.lowInJump = G.kidCollide({ x: k.wx - G.scroll, y: k.y - 30 });
+      // on a roof: a gift on the head knocks him off
+      k.state = "run"; k.jump = null;
+      const g2 = { x: k.wx - G.scroll, y: k.y - 40 };
+      out.onRoof = G.kidCollide(g2);
+      const score = G.score, coins = G.runCoins, carried = k.carrying;
+      G.kidBonk(g2);
+      out.bonk = { bonks: G.stats.bonks, gained: G.score - score, coins: G.runCoins - coins, carried: carried, state: k.state, keptHearts: G.lives === lives };
+      out.missFar = G.kidCollide({ x: k.wx - G.scroll + 200, y: k.y - 40 });
+      return out;
+    });
+    check("rascal: spawns on a rooftop", r.spawned === true);
+    check("rascal: grabs a gift at the top of a jump", r.inAir === "steal");
+    check("rascal: a steal costs the combo and 2 coins, not a heart", r.steal.stolen === 1 && r.steal.keptHearts && r.steal.combo === 0 && r.steal.coins === 3 && r.steal.carrying === 1, JSON.stringify(r.steal));
+    check("rascal: the chimney a stolen gift was meant for is excused", r.excused === true);
+    check("rascal: a hit while taking off knocks him off", r.lowInJump === "bonk");
+    check("rascal: a gift on his head while he runs knocks him off", r.onRoof === "bonk" && r.bonk.state === "bonked");
+    check("rascal: knocking him off pays points, coins and his stolen gifts back", r.bonk.bonks === 1 && r.bonk.gained >= 25 && r.bonk.coins === 3 + 2 * r.bonk.carried && r.bonk.keptHearts, JSON.stringify(r.bonk));
+    check("rascal: gifts that miss him are unaffected", r.missFar === null);
+    check("rascal: no script errors", errors.length === 0, errors.slice(0, 2).join(" | "));
     await ctx.close();
   }
 

@@ -2,7 +2,7 @@
 
 A complete, polished one-tap arcade game you can reskin and publish under your own name. Plain JavaScript and Canvas: no engine, no dependencies, no image or audio files. The whole game is about 30 KB.
 
-**What players do:** fly a sleigh over a snowy town and drop a gift down every chimney. Wind pushes falling gifts sideways, double chimneys need two quick drops, golden chimneys pay bonus coins, and streaks trigger a double-points Fever mode. Coins buy six sleigh skins.
+**What players do:** fly a sleigh over a snowy town and drop a gift down every chimney. A parkour kid, the Rooftop Rascal, runs and leaps across the roofs to steal gifts in mid-air; dropping a gift on his head while he runs knocks him off. Wind pushes falling gifts sideways, double chimneys need two quick drops, golden chimneys pay bonus coins, and streaks trigger a double-points Fever mode. Coins buy six sleigh skins.
 
 ## What's included
 
@@ -36,14 +36,14 @@ Almost everything lives in `src/js/config.js`:
 | Game name and tagline | `title`, `tagline` |
 | Sky, snow, UI and button colours | `colors` |
 | House, roof, gift and ribbon colours | `houseWalls`, `houseRoofs`, `giftColors`, `ribbonColors` |
-| Speed, gaps, chimney sizes, wind | `difficulty` |
+| Speed, gaps, chimney sizes, wind, the Rooftop Rascal | `difficulty` |
 | Lives and healing | `lives`, `healEvery` |
 | Points, combos, Fever, coin rewards | `scoring` |
 | Ad frequency and which rewarded ads exist | `ads` |
 | Shop items (colours, pattern, price) | `skins` |
 | Every on-screen word | `text` (translate the game here) |
 
-To change the artwork itself, edit `src/js/art.js`. Each object has its own function (`drawSleigh`, `drawGift`, `drawHouse`, `drawSky`...). Replace a function body with `ctx.drawImage(...)` to use your own sprites. For example, a drone dropping pizzas onto rooftops needs new `drawSleigh` and `drawGift` functions and nothing else.
+To change the artwork itself, edit `src/js/art.js`. Each object has its own function (`drawSleigh`, `drawGift`, `drawHouse`, `drawKid`, `drawSky`...). Replace a function body with `ctx.drawImage(...)` to use your own sprites. For example, a drone dropping pizzas onto rooftops needs new `drawSleigh` and `drawGift` functions and nothing else.
 
 ## Publishing on web game portals
 

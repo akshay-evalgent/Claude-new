@@ -32,6 +32,11 @@
       brick: "#a3473a",
       brickDark: "#7a3329",
       gold: "#f6c445",
+      kidHoodie: "#ff8a1f",
+      kidPants: "#2b3a67",
+      kidSkin: "#f1c27d",
+      kidHat: "#2a9d8f",
+      kidSack: "#7a4e2d",
       text: "#ffffff",
       textDim: "rgba(255,255,255,0.72)",
       accent: "#ffcf3f",
@@ -66,11 +71,18 @@
       gap: [[90, 190], [45, 115]], // [min,max] gap between houses at start -> at full difficulty
       chimneyWidth: [54, 38],
       noChimneyChance: 0.14,
-      doubleChimneyAfter: 14, // deliveries before double-chimney houses appear
+      doubleChimneyAfter: 20, // deliveries before double-chimney houses appear
       doubleChance: [0.18, 0.4],
       goldenChance: 0.09,
-      windAfter: 10, // deliveries before wind starts
-      windMax: [55, 150] // max sideways push (units/s^2)
+      windAfter: 14, // deliveries before wind starts
+      windMax: [55, 150], // max sideways push (units/s^2)
+      // The Rooftop Rascal: a parkour kid who runs across the roofs and steals
+      // gifts in mid-jump. Gifts that land on him while he runs knock him off.
+      kidAfter: 6, // deliveries before he first shows up
+      kidCooldown: [8, 3.5], // seconds between his visits (start -> full difficulty)
+      kidDrift: [85, 130], // how fast he drifts toward the sleigh on screen (units/s)
+      kidJumpSpeed: 175, // minimum forward speed while jumping (units/s)
+      kidScale: 1.3 // drawing and hit-box size of the kid
     },
 
     lives: 3,
@@ -86,7 +98,10 @@
       feverSeconds: 8,
       coinsPerDelivery: 1,
       coinsPerfect: 1,
-      coinsGolden: 5
+      coinsGolden: 5,
+      kidBonk: 25, // points for knocking the Rooftop Rascal off a roof
+      coinsKidBonk: 3,
+      coinsPerRecoveredGift: 2 // stolen gifts that spill out of his sack
     },
 
     ads: {
@@ -129,6 +144,12 @@
       missed: "Missed!",
       oops: "Oops!",
       bonk: "Bonk!",
+      stolen: "Stolen!",
+      kidBonk: "BONK!",
+      kidIntro: "ROOFTOP RASCAL!",
+      kidTip1: "A rooftop rascal is after your gifts!",
+      kidTip2: "Bonk him while he runs. He steals gifts when he jumps!",
+      recovered: "gifts back!",
       fever: "FEVER! x2",
       heart: "+1 HEART",
       wind: "WIND",

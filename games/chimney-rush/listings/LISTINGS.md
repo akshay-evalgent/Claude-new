@@ -19,13 +19,13 @@ Drop every gift down a chimney! A one-tap holiday arcade game.
 **Description** (used everywhere a description is asked for; 200–500 characters)
 
 ```
-Fly a sleigh over a snowy town at night and drop a gift down every chimney! Time each drop so the gift lands right in the chimney. The town scrolls faster as you go, wind starts pushing your gifts sideways, and some houses have two chimneys. Land perfect drops to build combos, trigger Fever for double points, grab bonus coins from golden chimneys and unlock six festive sleighs.
+Fly a sleigh over a snowy town at night and drop a gift down every chimney! Watch out for the Rooftop Rascal, a parkour kid who leaps across the roofs to snatch your gifts in mid-air. Drop a gift on his head while he runs to knock him off. The town speeds up, wind pushes your gifts sideways and some houses have two chimneys. Build combos, trigger Fever for double points and unlock six festive sleighs.
 ```
 
 **Instructions / controls** (200–500 characters)
 
 ```
-Tap the screen, click, or press Space (or the Down arrow) to drop a gift. Gifts fall straight down from the sleigh, so drop just before a chimney passes underneath. Every chimney needs a gift, and a gift that misses costs a heart. Watch the wind arrow at the top of the screen: wind pushes falling gifts sideways. Press P or Esc to pause.
+Tap the screen, click, or press Space to drop a gift. Gifts fall straight down from the sleigh, so drop just before a chimney passes underneath. Every chimney needs a gift, and a gift that misses costs a heart. The Rooftop Rascal steals gifts when he jumps: drop one on his head while he runs to knock him off. Wind pushes falling gifts sideways. Press P or Esc to pause.
 ```
 
 **Short controls line** (for fields that want one line)
@@ -62,8 +62,8 @@ Tap / click / Space: drop a gift. P or Esc: pause.
 |---|---|
 | Upload | `release/chimney-rush-gamedistribution.zip`, rebuilt after the game ID is added (see the launch checklist) |
 | Thumbnails | `gamedistribution-512x512.png`, `gamedistribution-512x384.png`, `gamedistribution-200x120.png`; optional `gamedistribution-1280x550.png`, `gamedistribution-1280x720.png` |
-| Description | shared description (380 characters) |
-| Instructions | shared instructions (338 characters) |
+| Description | shared description (404 characters) |
+| Instructions | shared instructions (371 characters) |
 | Genres (1–2) | Casual, Arcade |
 | Tags (1–5) | christmas, santa, one button, timing, winter |
 | Mobile Ready | Yes (touch, both orientations) |
@@ -115,7 +115,10 @@ Fly a sleigh over a snowy town at night and drop a gift down every chimney!
 HOW TO PLAY
 Tap, click or press Space to drop a gift. Gifts fall straight down from the sleigh, so drop just before a chimney passes underneath. Every chimney needs a gift; a gift that misses costs a heart.
 
-WHAT MAKES IT TRICKY
+WATCH OUT FOR THE ROOFTOP RASCAL
+A parkour kid leaps from roof to roof trying to snatch your gifts. At the top of a jump, arms up, he grabs any gift that comes near him. On a roof he's an easy target: drop a gift on his head to knock him off and get his stolen gifts back as coins.
+
+WHAT ELSE MAKES IT TRICKY
 - The town speeds up the longer you last
 - Wind pushes falling gifts sideways (watch the arrow at the top)
 - Some houses have two chimneys
@@ -152,6 +155,7 @@ PLAY THE DEMO
 
 WHAT'S INCLUDED
 - Full game source, 7 commented JavaScript files
+- A parkour enemy (the Rooftop Rascal) who runs the rooftops, jumps gaps, vaults chimneys and steals gifts mid-air
 - Ads already wired for CrazyGames (SDK v3), Poki (SDK v2), GameDistribution and GameMonetize: interstitials between runs, rewarded "continue" and "double coins", gameplay events, muting during ads
 - Build script that writes one upload-ready zip per portal
 - Cover, thumbnail and screenshot generator for any size

@@ -68,7 +68,11 @@
     pointerDown: false,
     tutorialT: 0,
     autoplay: false,
-    stats: { delivered: 0, perfect: 0, fails: 0 },
+    kid: null, // the Rooftop Rascal, when he's around
+    kidTimer: 0,
+    kidSeen: false,
+    kidTipT: 0,
+    stats: { delivered: 0, perfect: 0, fails: 0, stolen: 0, bonks: 0 },
 
     // ------------------------------------------------------------------ setup
     init: function (canvas) {
@@ -137,6 +141,8 @@
       this.wind = 0;
       this.windTarget = 0;
       this.windOn = false;
+      this.kid = null;
+      this.kidTimer = demo ? 2.5 : 1.2;
       this.spawnHouses();
     },
 
@@ -266,8 +272,10 @@
       this.lastNoChimney = false;
       this.bestAtStart = S.data.best;
       this.windTimer = 0;
-      this.stats = { delivered: 0, perfect: 0, fails: 0 };
+      this.stats = { delivered: 0, perfect: 0, fails: 0, stolen: 0, bonks: 0 };
       this.tutorialT = S.data.tutorialDone ? 0 : 7;
+      this.kidSeen = false;
+      this.kidTipT = 0;
       this.resetWorld(false);
       AU.play("start");
       P().gameplayStart();
@@ -342,6 +350,7 @@
           if (!c.served && cx < L.sleighX + 260) c.missed = true;
         }
       }
+      if (this.kid && this.kid.state !== "bonked") { this.kid = null; this.kidTimer = 4; }
       this.state = "playing";
       this.cooldown = 0.3;
       this.showBanner("GO!", 1.2, "#7dffb0");
@@ -406,8 +415,7 @@
       this.stats.delivered++;
       var perfect = Math.abs(dx) <= Sc.perfectWindow;
       if (perfect) this.stats.perfect++;
-      var mult = Math.min(Sc.maxMultiplier, 1 + Math.floor(this.combo / Sc.comboStep));
-      var pts = (Sc.deliver + (perfect ? Sc.perfectBonus : 0)) * mult * (this.fever > 0 ? 2 : 1);
+      var pts = (Sc.deliver + (perfect ? Sc.perfectBonus : 0)) * this.multiplier() * (this.fever > 0 ? 2 : 1);
       this.score += pts;
       this.runCoins += Sc.coinsPerDelivery + (perfect ? Sc.coinsPerfect : 0) + (c.golden ? Sc.coinsGolden : 0);
       AU.play("deliver", this.combo);
@@ -417,11 +425,7 @@
       this.addText("+" + pts, cx, top - 20, perfect ? "#ffe066" : "#ffffff", 24, true);
       if (perfect) this.addText(T.perfect, cx, top - 48, "#7dffb0", 18, true);
       if (c.golden) this.addText("+" + Sc.coinsGolden + " coins", cx, top - 72, "#ffd76a", 16, true);
-      if (this.combo % Sc.feverEvery === 0) {
-        this.fever = Sc.feverSeconds;
-        this.showBanner(T.fever, 1.6, "#ff7ad9");
-        AU.play("fever");
-      }
+      this.checkFever();
       if (this.deliveries % CFG.healEvery === 0 && this.lives < CFG.lives) {
         this.lives++;
         this.showBanner(T.heart, 1.5, "#ff6b81");
@@ -439,10 +443,24 @@
       }
     },
 
+    checkFever: function () {
+      var Sc = CFG.scoring;
+      if (this.combo > 0 && this.combo % Sc.feverEvery === 0) {
+        this.fever = Sc.feverSeconds;
+        this.showBanner(CFG.text.fever, 1.6, "#ff7ad9");
+        AU.play("fever");
+      }
+    },
+
+    multiplier: function () {
+      var Sc = CFG.scoring;
+      return Math.min(Sc.maxMultiplier, 1 + Math.floor(this.combo / Sc.comboStep));
+    },
+
     fail: function (kind, x, y, worldText) {
       if (this.state !== "playing") return;
       var T = CFG.text;
-      var label = kind === "missed" ? T.missed : kind === "bonk" ? T.bonk : T.oops;
+      var label = kind === "missed" ? T.missed : kind === "bonk" ? T.bonk : kind === "stolen" ? T.stolen : T.oops;
       this.addText(label, x, y - 18, "#ff9a9a", 22, worldText !== false);
       if (this.grace > 0) return; // one mistake never costs two hearts
       this.grace = 0.7;
@@ -544,6 +562,266 @@
       }
     },
 
+    // ------------------------------------------------------------------ the Rooftop Rascal
+    // A parkour kid who runs across the roofs, jumps the gaps between houses and
+    // vaults over chimneys. He runs right but slower than the town scrolls, so on
+    // screen he drifts toward the sleigh, hangs around under it for a few seconds,
+    // then leaves. In the air (arms up) he snatches any gift he touches; on a roof
+    // a gift on the head knocks him off.
+
+    spawnKid: function (demo) {
+      var L = this.L;
+      var enter = demo ? this.scroll - 30 : this.scroll + L.W + 24;
+      var h = null, i, j;
+      for (i = 0; i < this.houses.length; i++) {
+        var hh = this.houses[i];
+        if (hh.x + hh.w + hh.oh - 12 > enter) { h = hh; break; }
+      }
+      if (!h) return false;
+      var wx = Math.max(enter, h.x - h.oh + 10);
+      for (j = 0; j < h.chimneys.length; j++) {
+        var c = h.chimneys[j];
+        if (wx > h.x + c.ox - c.w / 2 - 16 && wx < h.x + c.ox + c.w / 2 + 16) wx = h.x + c.ox + c.w / 2 + 16;
+      }
+      if (wx > h.x + h.w + h.oh - 10) return false;
+      this.kid = {
+        wx: wx, y: A.roofYAt(h, wx - h.x), state: "run", house: h, jump: null,
+        carrying: 0, celebrate: 0, rot: 0, vx: 0, vy: 0, vk: 0,
+        demo: !!demo, anim: this.rnd() * 10,
+        lingerT: lerp(2.6, 4.4, this.diff())
+      };
+      return true;
+    },
+
+    kidCooldown: function () {
+      var D = CFG.difficulty;
+      return lerp(D.kidCooldown[0], D.kidCooldown[1], this.diff()) + this.rnd() * 2;
+    },
+
+    onKidArrives: function () {
+      if (!this.kidSeen) {
+        this.kidSeen = true;
+        this.showBanner(CFG.text.kidIntro, 2.2, CFG.colors.kidHoodie);
+        if (!S.data.kidTipDone) this.kidTipT = 5.5;
+      }
+      AU.play("kidAlert");
+    },
+
+    // World speed while running. On screen this is his drift toward the sleigh:
+    // he sprints in from the right, weaves around under the sleigh, then leaves.
+    kidRunSpeed: function (k, dt) {
+      var L = this.L, D = CFG.difficulty;
+      var inRun = this.state === "playing" || this.state === "dying";
+      if (k.demo || !inRun) return (this.state === "gameover" ? 25 : 60) + 120;
+      var base = lerp(D.kidDrift[0], D.kidDrift[1], this.diff()) * L.speedScale;
+      var sx = k.wx - this.scroll, drift;
+      if (k.lingerT > 0 && sx < L.sleighX + 140) {
+        // steer toward a spot that weaves back and forth across the drop line
+        k.lingerT -= dt;
+        var target = L.sleighX + 10 + 32 * Math.sin(k.anim * 1.4);
+        drift = clamp((sx - target) * 2.4, -0.7 * base, 1.4 * base);
+      } else if (k.lingerT > 0) {
+        drift = base * 1.7;
+      } else {
+        drift = base * 1.3;
+      }
+      return Math.max(20, this.speed - drift);
+    },
+
+    // He only grabs gifts near the top of a jump, arms up. On take-off and
+    // landing he's low and off balance, so a gift knocks him off instead.
+    kidGrabbing: function (k) {
+      if (k.state !== "jump") return false;
+      var s = k.jump.t / k.jump.T;
+      return s > 0.12 && s < 0.88;
+    },
+
+    kidJump: function (k, x1, y1, apexY, house, speed, sim) {
+      var x0 = k.wx, y0 = k.y;
+      k.state = "jump";
+      k.jump = { x0: x0, y0: y0, x1: x1, y1: y1, t: 0, T: Math.max(0.24, (x1 - x0) / speed), h: Math.max(12, (y0 + y1) / 2 - apexY), house: house };
+      var sx = k.wx - this.scroll;
+      if (!sim && !k.demo && this.state === "playing" && sx > 0 && sx < this.L.W) AU.play("kidHop");
+    },
+
+    kidGapJump: function (k, h, speed, apexCap, sim) {
+      var idx = this.houses.indexOf(h);
+      var next = idx >= 0 ? this.houses[idx + 1] : null;
+      if (!next) { this.kidJump(k, k.wx + 120, k.y + 60, k.y - 40, null, speed, sim); return; }
+      var lx = next.x - next.oh + 12;
+      var ly = A.roofYAt(next, lx - next.x);
+      var apex = Math.min(k.y, ly) - (30 + (lx - k.wx) * 0.13);
+      if (apexCap != null) apex = Math.min(apex, apexCap);
+      this.kidJump(k, lx, ly, apex, next, speed, sim);
+    },
+
+    // Advances one kid by dt; returns false once he's gone. sim = prediction only.
+    stepKid: function (k, dt, sim) {
+      var L = this.L, D = CFG.difficulty;
+      k.anim += dt;
+      if (k.celebrate > 0) k.celebrate -= dt;
+      var vk = this.kidRunSpeed(k, dt);
+      k.vk = vk;
+      var jumpSpeed = Math.max(vk * 1.35, D.kidJumpSpeed * L.speedScale);
+      if (k.state === "run") {
+        var h = k.house;
+        k.wx += vk * dt;
+        var acted = false;
+        for (var j = 0; j < h.chimneys.length && !acted; j++) {
+          var c = h.chimneys[j];
+          var cl = h.x + c.ox - c.w / 2 - 4, cr = h.x + c.ox + c.w / 2 + 4;
+          if (cr > k.wx - 6 && cl - (k.wx + 9) < 12) {
+            var lx = cr + 12;
+            if (lx - h.x <= h.w + h.oh - 6) this.kidJump(k, lx, A.roofYAt(h, lx - h.x), c.topY - 30, h, jumpSpeed, sim);
+            else this.kidGapJump(k, h, jumpSpeed, c.topY - 30, sim);
+            acted = true;
+          }
+        }
+        if (!acted) {
+          if (k.wx - h.x >= h.w + h.oh - 6) this.kidGapJump(k, h, jumpSpeed, null, sim);
+          else k.y = A.roofYAt(h, k.wx - h.x);
+        }
+      } else if (k.state === "jump") {
+        var jp = k.jump;
+        jp.t += dt;
+        var s = Math.min(1, jp.t / jp.T);
+        k.wx = lerp(jp.x0, jp.x1, s);
+        k.y = lerp(jp.y0, jp.y1, s) - jp.h * 4 * s * (1 - s);
+        if (s >= 1) {
+          if (!jp.house) return false;
+          k.state = "run";
+          k.house = jp.house;
+          k.jump = null;
+          k.y = A.roofYAt(k.house, k.wx - k.house.x);
+        }
+      } else if (k.state === "bonked") {
+        k.vy += 1100 * dt;
+        k.wx += k.vx * dt;
+        k.y += k.vy * dt;
+        k.rot += dt * 9;
+        if (k.y > L.groundY + 90) return false;
+      }
+      var sx = k.wx - this.scroll;
+      if (sx < -60 || ((k.demo || this.state === "gameover") && sx > L.W + 60)) return false;
+      return true;
+    },
+
+    updateKid: function (dt) {
+      var D = CFG.difficulty, k = this.kid;
+      if (!k) {
+        if (this.state === "playing" && this.deliveries >= D.kidAfter) {
+          this.kidTimer -= dt;
+          if (this.kidTimer <= 0) {
+            if (this.spawnKid(false)) this.onKidArrives();
+            else this.kidTimer = 0.4;
+          }
+        } else if (this.state === "title" || this.state === "shop") {
+          this.kidTimer -= dt;
+          if (this.kidTimer <= 0 && !this.spawnKid(true)) this.kidTimer = 0.5;
+        }
+        return;
+      }
+      if (!this.stepKid(k, dt, false)) {
+        this.kid = null;
+        this.kidTimer = k.demo ? 6 + this.rnd() * 4 : this.kidCooldown();
+      }
+    },
+
+    // Where the kid will be in t seconds (used by the autopilot to aim).
+    predictKid: function (t) {
+      var k = this.kid, c = {}, key;
+      for (key in k) c[key] = k[key];
+      if (k.jump) { c.jump = {}; for (key in k.jump) c.jump[key] = k.jump[key]; }
+      var saved = this.scroll, ok = true;
+      var steps = Math.max(1, Math.round(t * 60));
+      for (var i = 0; i < steps && ok; i++) {
+        this.scroll += this.speed / 60;
+        ok = this.stepKid(c, 1 / 60, true);
+      }
+      var out = ok ? { x: c.wx - this.scroll, y: c.y, state: c.state, grabbing: this.kidGrabbing(c) } : null;
+      this.scroll = saved;
+      return out;
+    },
+
+    // "steal" while he's in the air, "bonk" while he's running on a roof
+    kidCollide: function (g) {
+      var k = this.kid;
+      if (!k || k.demo || this.state !== "playing") return null;
+      if (k.state !== "run" && k.state !== "jump") return null;
+      var half = CFG.physics.giftSize / 2;
+      var air = this.kidGrabbing(k);
+      var kx = k.wx - this.scroll;
+      var ks = CFG.difficulty.kidScale;
+      var w = (air ? 17 : 13) * ks, top = k.y - (air ? 64 : 48) * ks;
+      if (Math.abs(g.x - kx) < w + half && g.y + half > top && g.y - half < k.y) return air ? "steal" : "bonk";
+      return null;
+    },
+
+    kidSteal: function (g) {
+      var k = this.kid, T = CFG.text;
+      k.carrying++;
+      k.celebrate = 0.9;
+      k.lingerT += 0.8; // greedy: he hangs around longer
+      this.stats.stolen++;
+      // the chimney this gift was meant for is excused: no heart lost for it
+      for (var i = 0; i < this.houses.length; i++) {
+        var h = this.houses[i], sx = h.x - this.scroll;
+        for (var j = 0; j < h.chimneys.length; j++) {
+          var c = h.chimneys[j];
+          if (!c.served && !c.missed && Math.abs(sx + c.ox - g.x) < 70 && c.topY > g.y - 20) c.missed = true;
+        }
+      }
+      var lost = Math.min(2, this.runCoins);
+      this.runCoins -= lost;
+      this.combo = 0;
+      this.fever = 0;
+      var kx = k.wx - this.scroll;
+      var ks = CFG.difficulty.kidScale;
+      this.addText(T.stolen, kx, k.y - 92 * ks, "#ffb37a", 22, true);
+      if (lost > 0) this.addText("-" + lost + " coins", kx, k.y - 70 * ks, "#ffd76a", 15, true);
+      this.shake = 3;
+      AU.play("steal");
+    },
+
+    kidBonk: function (g) {
+      var k = this.kid, Sc = CFG.scoring, T = CFG.text;
+      this.combo++;
+      var pts = Sc.kidBonk * this.multiplier() * (this.fever > 0 ? 2 : 1);
+      this.score += pts;
+      var coins = Sc.coinsKidBonk + k.carrying * Sc.coinsPerRecoveredGift;
+      this.runCoins += coins;
+      this.stats.bonks++;
+      var kx = k.wx - this.scroll;
+      var ks = CFG.difficulty.kidScale;
+      this.burst(kx, k.y - 40 * ks, 16, "#ffd76a");
+      this.addText(T.kidBonk + " +" + pts, kx, k.y - 80 * ks, "#ffe066", 24, true);
+      if (k.carrying > 0) {
+        for (var i = 0; i < k.carrying; i++) {
+          this.parts.push({ x: k.wx + (i - k.carrying / 2) * 8, y: k.y - 30, vx: -60 + this.rnd() * 160, vy: -340 - this.rnd() * 120, life: 0.9, max: 0.9, gift: { color: CFG.giftColors[i % CFG.giftColors.length], ribbon: CFG.ribbonColors[i % CFG.ribbonColors.length] }, r: 0 });
+        }
+        this.addText("+" + k.carrying * Sc.coinsPerRecoveredGift + " " + T.recovered, kx, k.y - 104 * ks, "#9fe8b8", 16, true);
+      }
+      k.state = "bonked";
+      k.vx = 60;
+      k.vy = -300;
+      k.rot = 0;
+      k.carrying = 0;
+      this.shake = 5;
+      AU.play("kidBonk");
+      this.checkFever();
+      if (!S.data.kidTipDone) { S.data.kidTipDone = true; S.save(); this.kidTipT = Math.min(this.kidTipT, 0.6); }
+    },
+
+    // seconds of open roof ahead of the kid before he has to jump
+    kidRunway: function (k) {
+      var h = k.house, next = h.x + h.w + h.oh - 6;
+      for (var j = 0; j < h.chimneys.length; j++) {
+        var c = h.chimneys[j], cl = h.x + c.ox - c.w / 2 - 4 - 25;
+        if (cl > k.wx && cl < next) next = cl;
+      }
+      return Math.max(0, next - k.wx) / Math.max(1, k.vk);
+    },
+
     // ------------------------------------------------------------------ fx
     burst: function (x, y, n, color) {
       for (var i = 0; i < n; i++) {
@@ -590,6 +868,7 @@
         this.scroll += (this.state === "gameover" ? 25 : 60) * dt;
         this.spawnHouses();
         this.cullHouses();
+        this.updateKid(dt);
         if (this.state === "gameover") this.goT += dt;
       }
       if (this.banner) { this.banner.t -= dt; if (this.banner.t <= 0) this.banner = null; }
@@ -636,7 +915,15 @@
         g.x += g.vx * dt;
         g.y += g.vy * dt;
         g.rot += g.vr * dt;
+        var kidHit = this.kidCollide(g);
+        if (kidHit === "steal") { this.kidSteal(g); this.gifts.splice(i, 1); continue; }
+        if (kidHit === "bonk") { this.kidBonk(g); this.gifts.splice(i, 1); continue; }
         if (this.resolveGift(g, py)) this.gifts.splice(i, 1);
+      }
+      this.updateKid(dt);
+      if (this.kidTipT > 0) {
+        this.kidTipT -= dt;
+        if (this.kidTipT <= 0 && !S.data.kidTipDone) { S.data.kidTipDone = true; S.save(); }
       }
       if (this.state === "playing") this.checkMissed();
       if (this.state === "dying") {
@@ -684,6 +971,27 @@
       if (this.state === "title" && !this.busy) { this.requestStart(false); return; }
       if (this.state !== "playing") return;
       var L = this.L, gv = CFG.physics.gravity, y0 = L.sleighY + 22 + this.bob;
+      var k = this.kid;
+      if (k && !k.demo && k.state !== "bonked" && this.botBonks !== false && this.t - (k.botAimT || -9) > 0.8) {
+        var headDrop = 40 * CFG.difficulty.kidScale;
+        var headY = k.y - headDrop, pk = null, tfk = 0;
+        for (var it = 0; it < 2; it++) {
+          var dyk = headY - y0;
+          if (dyk < 20) { pk = null; break; }
+          tfk = (-40 + Math.sqrt(1600 + 2 * gv * dyk)) / gv;
+          pk = this.predictKid(tfk);
+          if (!pk) break;
+          headY = pk.y - headDrop;
+        }
+        if (pk && pk.state !== "bonked" && !pk.grabbing) {
+          var aim = L.sleighX + 0.5 * this.wind * tfk * tfk;
+          if (Math.abs(pk.x - aim) < 6) {
+            k.botAimT = this.t;
+            this.cooldown = 0;
+            this.dropGift();
+          }
+        }
+      }
       for (var i = 0; i < this.houses.length; i++) {
         var h = this.houses[i], sx = h.x - this.scroll;
         for (var j = 0; j < h.chimneys.length; j++) {
@@ -897,6 +1205,13 @@
         var lg = this.landed[i];
         A.drawGift(ctx, lg.wx - this.scroll, lg.y, gs, lg.rot, lg.color, lg.ribbon);
       }
+      if (this.kid) {
+        var k = this.kid, ksx = k.wx - this.scroll;
+        if (ksx > -60 && ksx < L.W + 60) {
+          var pose = k.state === "bonked" ? "bonked" : this.kidGrabbing(k) ? "jump" : "run";
+          A.drawKid(ctx, ksx, k.y, pose, k.anim, { carrying: k.carrying, celebrate: k.celebrate, rot: k.rot, scale: CFG.difficulty.kidScale });
+        }
+      }
       var playing = this.state === "playing" || this.state === "dying" || this.state === "paused";
       if (playing) {
         ctx.save();
@@ -1073,6 +1388,23 @@
         var s = 1 + Math.max(0, 0.25 - (b.max - b.t)) * 1.4;
         ctx.globalAlpha = Math.max(0, a);
         A.text(ctx, b.text, L.W / 2, L.sleighY + 112, 30 * s, b.color, { stroke: "rgba(10,10,30,0.9)", weight: "900" });
+        ctx.globalAlpha = 1;
+      }
+      if (this.kid && !this.kid.demo && this.state === "playing") {
+        var kk = this.kid, ksx2 = kk.wx - this.scroll;
+        if (ksx2 > L.W - 8 && kk.state !== "bonked") A.drawKidAlert(ctx, L.W - 34, clamp(kk.y - 30, 120, L.groundY - 60), this.t);
+      }
+      if (this.kidTipT > 0 && this.state === "playing") {
+        var ka = Math.min(1, this.kidTipT, (5.5 - this.kidTipT) * 3);
+        ctx.globalAlpha = Math.max(0, ka);
+        var kty = L.sleighY + 160;
+        var ktw = Math.min(L.W - L.sleighX - 60, 600);
+        var ktx = Math.max(L.sleighX + 40, L.W / 2 - ktw / 2);
+        ctx.fillStyle = "rgba(8,12,36,0.78)";
+        A.roundRect(ctx, ktx, kty - 34, ktw, 70, 16);
+        ctx.fill();
+        A.text(ctx, CFG.text.kidTip1, ktx + ktw / 2, kty - 12, Math.min(19, ktw * 0.042), "#ffb37a", { weight: "800" });
+        A.text(ctx, CFG.text.kidTip2, ktx + ktw / 2, kty + 14, Math.min(15, ktw * 0.03), "#ffffff", { weight: "700" });
         ctx.globalAlpha = 1;
       }
       if (this.tutorialT > 0 && this.state === "playing") {

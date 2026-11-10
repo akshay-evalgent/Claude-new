@@ -15,7 +15,8 @@
     sound: true,
     music: true,
     runs: 0,
-    tutorialDone: false
+    tutorialDone: false,
+    kidTipDone: false
   };
 
   var localBackend = {

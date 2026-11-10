@@ -1,6 +1,6 @@
 # Chimney Rush
 
-A one-tap holiday arcade game for web game portals. Players fly a sleigh over a snowy town and drop a gift down every chimney. Wind, double chimneys, golden bonus chimneys, combos, a Fever mode and six unlockable sleighs keep it interesting.
+A one-tap holiday arcade game for web game portals. Players fly a sleigh over a snowy town and drop a gift down every chimney. The Rooftop Rascal, a parkour kid who leaps across the roofs, steals gifts in mid-air unless you knock him off first. Wind, double chimneys, golden bonus chimneys, combos, a Fever mode and six unlockable sleighs keep it interesting.
 
 It's built to test which marketplaces pay. The same game is packaged for CrazyGames, GameDistribution, GameMonetize, Y8, Poki and itch.io. The source code is also packaged as a $12 template for itch.io and Gumroad.
 
@@ -24,7 +24,7 @@ This writes one zip per platform to `release/`, plus `dist/artifact/chimney-rush
 node tools/test.mjs
 ```
 
-This plays every build in a headless browser, including ad flows against simulated portal SDKs. It currently passes 84 checks.
+This plays every build in a headless browser, including ad flows against simulated portal SDKs. It currently passes 94 checks.
 
 ```bash
 node tools/assets.mjs

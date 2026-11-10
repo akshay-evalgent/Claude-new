@@ -209,6 +209,23 @@
           var d = [523, 440, 349, 262];
           for (i = 0; i < d.length; i++) this.bell(d[i], 0.6, 0.12, i * 0.17);
           break;
+        case "kidHop":
+          this.tone(280, 0.16, { type: "triangle", vol: 0.05, slideTo: 620 });
+          break;
+        case "steal":
+          // cheeky "hehe"
+          this.tone(900, 0.08, { type: "square", vol: 0.045, slideTo: 700 });
+          this.tone(1000, 0.1, { type: "square", vol: 0.045, slideTo: 760, when: 0.11 });
+          break;
+        case "kidBonk":
+          this.tone(420, 0.35, { type: "sine", vol: 0.16, slideTo: 110 });
+          this.tone(660, 0.12, { type: "square", vol: 0.04, slideTo: 330, when: 0.02 });
+          this.noise(0.12, { vol: 0.12, type: "bandpass", freq: 1500 });
+          break;
+        case "kidAlert":
+          this.tone(740, 0.09, { type: "triangle", vol: 0.05 });
+          this.tone(988, 0.12, { type: "triangle", vol: 0.05, when: 0.1 });
+          break;
         case "start":
           this.bell(659, 0.3, 0.1);
           this.bell(988, 0.4, 0.1, 0.08);

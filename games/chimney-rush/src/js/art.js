@@ -961,6 +961,175 @@
     }
   };
 
+  // ---------- the Rooftop Rascal (parkour kid) ----------
+  // Feet at (x, y), facing right. pose: "run" | "jump" | "bonked".
+  // o: { carrying: stolen gifts in the sack, celebrate: >0 while holding up a
+  //      stolen gift, rot: spin while tumbling, scale }
+  A.drawKid = function (ctx, x, y, pose, t, o) {
+    var C = CR.CONFIG.colors;
+    o = o || {};
+    var carrying = Math.min(o.carrying || 0, 6);
+    var hoodie = C.kidHoodie, dark = A.shade(C.kidHoodie, -0.28), skin = C.kidSkin;
+    var p = t * 15; // stride phase
+    var hipY = -20;
+    ctx.save();
+    ctx.translate(x, y);
+    if (o.scale) ctx.scale(o.scale, o.scale);
+    if (pose === "bonked") {
+      ctx.translate(0, -22);
+      ctx.rotate(o.rot || 0);
+      ctx.translate(0, 22);
+    }
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+    if (pose === "run") {
+      ctx.fillStyle = "rgba(0,0,0,0.2)";
+      ctx.beginPath(); ctx.ellipse(1, 1, 12, 2.6, 0, 0, TAU); ctx.fill();
+    }
+
+    // legs: thigh then shin, with the knee bending more on the back swing
+    function leg(a, bend) {
+      var kx = Math.sin(a) * 10, ky = hipY + Math.cos(a) * 10;
+      var fx = kx + Math.sin(a - bend) * 10, fy = ky + Math.cos(a - bend) * 10;
+      ctx.strokeStyle = C.kidPants;
+      ctx.lineWidth = 5.5;
+      ctx.beginPath(); ctx.moveTo(0, hipY); ctx.lineTo(kx, ky); ctx.lineTo(fx, fy); ctx.stroke();
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath(); ctx.ellipse(fx + 2, fy, 4.3, 2.6, 0, 0, TAU); ctx.fill();
+    }
+    if (pose === "run") {
+      var s1 = Math.sin(p), s2 = Math.sin(p + Math.PI);
+      leg(s1 * 0.85, 0.35 + Math.max(0, -s1) * 1.1);
+      leg(s2 * 0.85, 0.35 + Math.max(0, -s2) * 1.1);
+    } else if (pose === "jump") {
+      leg(1.25, 1.95);
+      leg(0.7, 1.55);
+    } else {
+      leg(0.6, 0.3);
+      leg(-0.5, 0.2);
+    }
+
+    // upper body, leaning into the run
+    ctx.save();
+    ctx.translate(0, hipY);
+    if (pose === "run") ctx.rotate(0.2);
+
+    // sack on the back, bigger with every stolen gift
+    var sr = 7 + carrying * 1.4;
+    ctx.fillStyle = C.kidSack;
+    ctx.beginPath(); ctx.ellipse(-9 - carrying * 0.7, -10, sr * 0.85, sr, -0.3, 0, TAU); ctx.fill();
+    if (carrying > 0) {
+      var gc = CR.CONFIG.giftColors;
+      for (var gi = 0; gi < Math.min(carrying, 3); gi++) {
+        ctx.fillStyle = gc[gi % gc.length];
+        ctx.fillRect(-15 - carrying * 0.7 + gi * 5, -12 - sr, 6, 6);
+      }
+    }
+
+    // hoodie
+    ctx.fillStyle = dark;
+    ctx.beginPath(); ctx.arc(-2, -18, 5.5, 0, TAU); ctx.fill();
+    ctx.fillStyle = hoodie;
+    A.roundRect(ctx, -7, -18, 14, 20, 5); ctx.fill();
+    ctx.fillStyle = dark;
+    ctx.fillRect(-7, -1, 14, 3);
+    ctx.fillRect(-1, -12, 7, 2);
+
+    // grab glow while airborne: the warning that this is when he steals
+    if (pose === "jump") {
+      var gl = ctx.createRadialGradient(2, -38, 2, 2, -38, 20);
+      gl.addColorStop(0, "rgba(255, 120, 60, 0.55)");
+      gl.addColorStop(1, "rgba(255, 120, 60, 0)");
+      ctx.fillStyle = gl;
+      ctx.beginPath(); ctx.arc(2, -38, 20, 0, TAU); ctx.fill();
+    }
+
+    // arms
+    function arm(ax, ay) {
+      ctx.strokeStyle = hoodie;
+      ctx.lineWidth = 4.5;
+      ctx.beginPath(); ctx.moveTo(1, -15); ctx.lineTo(ax, ay); ctx.stroke();
+      ctx.fillStyle = skin;
+      ctx.beginPath(); ctx.arc(ax, ay, 2.7, 0, TAU); ctx.fill();
+    }
+    if (pose === "run") {
+      if (o.celebrate > 0) {
+        arm(5, -36);
+        arm(-8, -6);
+        A.drawGift(ctx, 5, -43, 12, Math.sin(t * 10) * 0.2, "#e63946", "#ffd166");
+      } else {
+        var sa = Math.sin(p) * 0.95;
+        arm(1 + Math.sin(-sa) * 11, -15 + Math.cos(-sa) * 11);
+        arm(1 + Math.sin(sa) * 11, -15 + Math.cos(sa) * 11);
+      }
+    } else if (pose === "jump") {
+      arm(-4, -37);
+      arm(8, -38);
+    } else {
+      arm(-11, -21);
+      arm(12, -24);
+    }
+
+    // head
+    ctx.fillStyle = skin;
+    ctx.beginPath(); ctx.arc(3, -25, 7.5, 0, TAU); ctx.fill();
+    ctx.fillStyle = "rgba(255,120,110,0.55)";
+    ctx.beginPath(); ctx.arc(7, -23, 1.8, 0, TAU); ctx.fill();
+    if (pose === "bonked") {
+      ctx.strokeStyle = "#2b1d14";
+      ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      ctx.moveTo(4.5, -27.5); ctx.lineTo(7.5, -24.5);
+      ctx.moveTo(7.5, -27.5); ctx.lineTo(4.5, -24.5);
+      ctx.stroke();
+    } else {
+      ctx.fillStyle = "#2b1d14";
+      ctx.beginPath(); ctx.arc(6.5, -26, 1.4, 0, TAU); ctx.fill();
+    }
+    ctx.strokeStyle = "#7a2e1a";
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    if (pose === "jump") ctx.arc(7.2, -21.6, 1.7, 0, TAU);
+    else ctx.arc(6, -22.4, 2.6, 0.1 * Math.PI, 0.8 * Math.PI);
+    ctx.stroke();
+    // beanie with pom-pom
+    ctx.fillStyle = C.kidHat;
+    ctx.beginPath(); ctx.ellipse(2.5, -29, 8.4, 6.5, -0.1, Math.PI, TAU); ctx.fill();
+    ctx.fillStyle = A.shade(C.kidHat, -0.22);
+    A.roundRect(ctx, -6, -31, 17, 3.6, 1.8); ctx.fill();
+    ctx.fillStyle = "#ffffff";
+    ctx.beginPath(); ctx.arc(1, -36.5, 2.9, 0, TAU); ctx.fill();
+
+    if (pose === "bonked") {
+      for (var si = 0; si < 3; si++) {
+        var ang = t * 7 + (si * TAU) / 3;
+        A.drawStar(ctx, 3 + Math.cos(ang) * 12, -36 + Math.sin(ang) * 4, 3.4, 1.4, 5, "#ffd76a", ang);
+      }
+    }
+    ctx.restore();
+    ctx.restore();
+  };
+
+  // "He's coming" marker shown at the right edge just before the Rascal arrives.
+  A.drawKidAlert = function (ctx, x, y, t) {
+    var C = CR.CONFIG.colors;
+    var s = 1 + Math.sin(t * 12) * 0.1;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(s, s);
+    ctx.fillStyle = "rgba(0,0,0,0.3)";
+    ctx.beginPath(); ctx.arc(0, 2, 17, 0, TAU); ctx.fill();
+    ctx.fillStyle = C.kidHoodie;
+    ctx.beginPath(); ctx.arc(0, 0, 16, 0, TAU); ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(14, -7); ctx.lineTo(24, 0); ctx.lineTo(14, 7);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+    A.text(ctx, "!", x, y + 1, 22, "#ffffff", { weight: "900" });
+  };
+
   // ---------- snowflakes ----------
   A.drawFlakes = function (ctx, flakes) {
     ctx.fillStyle = "#ffffff";

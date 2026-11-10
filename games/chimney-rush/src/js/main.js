@@ -99,6 +99,13 @@
     // a second gift on its way down, halfway between the sleigh and the chimney
     var midY = target ? (sy + 26 * k + target.c.topY - 30) / 2 : sy + 60 * k;
     A.drawGift(ctx, sx, midY, gs, -0.25, "#2a9d8f", "#ffffff");
+    // the Rooftop Rascal leaping in to snatch it
+    var kc = Math.min(2.1, k * 1.15);
+    ctx.save();
+    ctx.translate(sx + 36 * kc, midY + 58 * kc);
+    ctx.rotate(-0.4);
+    A.drawKid(ctx, 0, 0, "jump", 0.7, { scale: kc });
+    ctx.restore();
     A.drawSleigh(ctx, sx, sy, CR.CONFIG.skins[0], t, k, -0.04);
 
     var fr = A.rng(77);
