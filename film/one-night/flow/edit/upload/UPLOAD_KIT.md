@@ -82,8 +82,9 @@ Would you take the trip?
 
 ## Rights and sources
 
-- **Video:** your own Google Flow (Veo) generations. The small sparkle in the corner is Flow's visible AI
-  watermark, and it was left in place.
+- **Video:** your own Google Flow (Veo) generations. Flow's visible corner sparkle was removed in the edit
+  (`build/unwatermark.py`). Google's invisible SynthID watermark is still in the footage, so keep the
+  "Altered or synthetic content" setting on **Yes** and the "Made with AI" line in the description.
 - **Presenter:** her on-camera lines are the original Veo audio from your Flow clips, untouched, so the lip sync is exactly as generated.
 - **Narration:** her voice, cloned from those three clips with the open-source Chatterbox model (MIT licence). Each line was checked word for word, and scores as close to her on-camera voice as her three clips score to each other.
 - **Music:** an original score synthesised for this film. There is nothing to claim or clear.

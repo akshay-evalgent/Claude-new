@@ -180,11 +180,13 @@ subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(root/'build/mix_
 
 # ------------------------------------------------------------------ picture
 x, y, w, h = 392, 1590, 500, 92
+WM = (571, 1131, 86, 90)            # the watermark box in the 720x1280 source, with a small margin
 ins = []
-for c in ORDER: ins += ['-i', str(root/'src'/f'{c}.mp4')]
+for c in ORDER: ins += ['-i', str(root/'src_clean'/f'{c}.mp4')]      # watermark removed by build/unwatermark.py
 ins += ['-f', 'lavfi', '-i', f'color=c=black:s=720x1280:r=24:d={TITLE_LEN}']
 fc = ("".join(f"[{i}:v]settb=AVTB,fps=24,format=yuv420p[v{i}];" for i in range(7)) +
-      "".join(f"[v{i}]" for i in range(7)) + "concat=n=7:v=1:a=0,scale=1080:1920:flags=lanczos,unsharp=5:5:0.45:5:5:0,split[base][strip];"
+      "".join(f"[v{i}]" for i in range(7)) + "concat=n=7:v=1:a=0,"
+      "scale=1080:1920:flags=lanczos,unsharp=5:5:0.45:5:5:0,split[base][strip];"
       f"[strip]crop={w}:{h}:{x}:{y},boxblur=20:2,format=yuva420p,geq=lum='p(X,Y)':cb='p(X,Y)':cr='p(X,Y)':a='255*clip(min(min(X,W-X),min(Y,H-Y))/14,0,1)'[soft];"
       f"[base][soft]overlay={x}:{y}:enable='between(t,{SUB[0]:.2f},{SUB[1]:.2f})',"
       f"ass={root/'build/captions_full.ass'}:fontsdir=/usr/share/fonts/opentype/inter[v]")
