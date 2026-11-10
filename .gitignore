@@ -4,3 +4,7 @@ film/temple/build/frames/
 film/temple/build/*.png
 film/temple/build/score.wav
 film/temple/build/*.log
+film/one-night/short/build/frames/
+film/one-night/short/build/still_*.png
+film/one-night/short/build/score.wav
+film/one-night/short/build/*.log

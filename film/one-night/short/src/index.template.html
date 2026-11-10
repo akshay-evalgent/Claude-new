@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One Night</title>
+<meta name="description" content="A 45-second vertical short, every frame raymarched in code: Santa's one night lasts 23 years at home.">
+<style>
+  :root { color-scheme: dark; --bg:#000; --fg:#f2f1ec; }
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);overflow:hidden;
+    font-family:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;}
+  #stage{position:fixed;inset:0;display:grid;place-items:center;background:#000;}
+  #frame{position:relative;background:#000;}
+  canvas{display:block;width:100%;height:100%;}
+  #sub{position:absolute;left:8%;right:8%;bottom:17%;text-align:center;opacity:0;pointer-events:none;
+    font-size:calc(var(--fh) * .026);letter-spacing:.02em;font-weight:400;color:#f4efe6;
+    text-shadow:0 0 calc(var(--fh) * .01) rgba(0,0,0,.9);}
+  #q{position:absolute;left:8%;right:8%;top:9%;text-align:center;opacity:0;pointer-events:none;
+    font-size:calc(var(--fh) * .024);letter-spacing:.04em;font-weight:300;line-height:1.35;color:#f4efe6;}
+  #play{position:absolute;inset:0;display:grid;place-items:center;cursor:pointer;
+    background:rgba(0,0,0,.7);border:0;color:var(--fg);font:inherit;}
+  #play span{border:1px solid rgba(242,241,236,.6);padding:.9em 1.8em;letter-spacing:.35em;
+    text-indent:.35em;font-size:calc(var(--fh) * .02);font-weight:300;}
+  #play small{position:absolute;bottom:6%;left:0;right:0;text-align:center;letter-spacing:.2em;
+    font-size:calc(var(--fh) * .013);opacity:.55;font-weight:300;}
+  #play[hidden]{display:none;}
+</style>
+</head>
+<body>
+<div id="stage"><div id="frame">
+  <canvas id="gl"></canvas>
+  <div id="q">What if Santa's one night<br>lasted 23 years at home?</div>
+  <div id="sub">You were gone one night.</div>
+  <button id="play" aria-label="Play"><span>PLAY</span><small>SOUND ON &middot; 45 S &middot; RENDERED LIVE</small></button>
+</div></div>
+<audio id="score" preload="auto" src="%%SCORE%%"></audio>
+<script id="vs" type="x-shader/x-vertex">
+attribute vec2 aPos; varying vec2 vUV;
+void main(){ vUV = aPos*0.5+0.5; gl_Position = vec4(aPos,0.0,1.0); }
+</script>
+<script id="common" type="x-shader/x-fragment">%%COMMON%%</script>
+<script id="s-watch" type="x-shader/x-fragment">%%WATCH%%</script>
+<script id="s-ext" type="x-shader/x-fragment">%%EXT%%</script>
+<script id="s-room" type="x-shader/x-fragment">%%ROOM%%</script>
+<script id="s-living" type="x-shader/x-fragment">%%LIVING%%</script>
+<script id="main" type="x-shader/x-fragment">%%MAIN%%</script>
+<script>
+(() => {
+  const END = 45.0;
+  // ------------------------------------------------------------------ helpers
+  const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+  const lerp = (a, b, k) => a + (b - a)*k;
+  const L3 = (a, b, k) => [lerp(a[0], b[0], k), lerp(a[1], b[1], k), lerp(a[2], b[2], k)];
+  const sstep = (a, b, x) => { const k = clamp((x - a)/(b - a), 0, 1); return k*k*(3 - 2*k); };
+  const years = t => clamp((t - 3)/27, 0, 1)*23;
+  const TAU = Math.PI*2;
+  function watchAngles(sec){
+    // the second hand jumps on each second with a small overshoot, like a real escapement
+    const whole = Math.floor(sec), f = sec - whole;
+    const jump = f < 0.07 ? Math.sin(f/0.07*Math.PI*0.5)*1.06 : (f < 0.14 ? 1.06 - 0.06*(f - 0.07)/0.07 : 1.0);
+    const s = (whole - 1) + jump;
+    return { s: TAU*((s % 60 + 60) % 60)/60, m: TAU*((s/60) % 60)/60, h: TAU*((s/3600) % 12)/12 };
+  }
+  // ------------------------------------------------------------------ the shots
+  // Each returns the scene, the camera (constant-velocity moves, Nolan's dolly) and the scene's settings.
+  function shot(t){
+    const u = { uYears: 0, uDawn: 0, uWarp: 0, uTimelapse: 0, uSlow: 0, uFrost: 0.5, uPresentY: 0, uHandUp: 0,
+      uSleigh: [-2.4, 0.05, 6.5], uPitch: 0, uGallop: t*9.0, uSleighOn: 0, uSleighScale: 1, uDayAz: 0, uDayAmt: 0,
+      uExpo: 1.6, uWarmth: 0.5, uRoll: 0, uFov: 0.7 };
+    let scene, pos, tgt, k;
+    const W = (a, b, k2, ta, tb) => { pos = L3(a, b, k2); tgt = L3(ta, tb, k2); };
+    if(t < 3.0){                                                   // 1. the watch, before midnight
+      scene = 'watch'; k = t/3.0;
+      W([0.45, 12.2, -9.6], [0.3, 10.2, -8.0], k, [0.2, 0.5, 1.2], [0.2, 0.6, 1.0]);
+      const a = watchAngles(86397 + t);
+      Object.assign(u, { uWatchH: a.h, uWatchM: a.m, uWatchS: a.s, uFrost: 0.5, uExpo: 2.2, uWarmth: 0.35, uFov: 0.62 });
+    } else if(t < 12.0){                                           // 2. midnight: the launch
+      scene = 'ext'; const tau = t - 3.0;
+      const y = 0.05 + 0.6*(Math.exp(0.85*Math.max(tau - 0.15, 0)) - 1);
+      u.uSleigh = [-2.4 + 1.4*tau, y, 6.5];
+      u.uPitch = 1.25*sstep(0.0, 1.8, tau);
+      u.uSleighOn = 1;
+      const camA = [0.8, 0.85, -3.2], camB = [0.5, 0.75, -2.0];
+      pos = L3(camA, camB, tau/9.0);
+      const look = [-0.6, 2.6, 8.0];
+      const follow = [u.uSleigh[0] + 1.2, u.uSleigh[1] + 1.0, 6.5];
+      tgt = L3(look, follow, sstep(1.2, 3.2, tau));
+      const shake = Math.exp(-tau*3.0)*(tau > 0 ? 1 : 0);
+      u.uRoll = 0.02*shake*Math.sin(tau*60.0);
+      pos = [pos[0] + 0.04*shake*Math.sin(tau*47), pos[1] + 0.05*shake*Math.sin(tau*53), pos[2]];
+      u.uWarp = sstep(6.0, 7.6, tau);
+      Object.assign(u, { uExpo: 2.6, uWarmth: 0.2, uFov: 0.85, uDawn: 0, uYears: 0 });
+    } else if(t < 22.0 || (t >= 26.5 && t < 27.5)){               // 3. home, 23 years in timelapse
+      const yr = years(t);
+      const season = clamp(0.5 + 0.5*Math.sin(TAU*yr - 1.2), 0, 1);
+      Object.assign(u, { uYears: yr, uTimelapse: 1, uDayAz: t*TAU*1.3, uDayAmt: season, uWarmth: 0.6 });
+      if((t >= 12.0 && t < 14.5) || (t >= 18.5 && t < 20.0)){   //    the window from outside
+        scene = 'ext';
+        const k2 = t < 14.5 ? (t - 12.0)/2.5*0.62 : 0.62 + (t - 18.5)/1.5*0.38;
+        W([-1.0, 1.5, 5.6], [-1.22, 1.55, 8.1], k2, [-1.3, 1.6, 9.5], [-1.3, 1.56, 9.5]);
+        Object.assign(u, { uDawn: 0.85*season, uExpo: 2.2, uFov: 0.72 });
+      } else if(t >= 14.5 && t < 16.5){                          //    the clock
+        scene = 'room'; k = (t - 14.5)/2.0;
+        W([1.7, 1.86, -0.4], [2.05, 1.89, -0.12], k, [2.79, 1.9, 0.2], [2.79, 1.91, 0.2]);
+        Object.assign(u, { uExpo: 2.4, uFov: 0.72 });
+      } else {                                                   //    the door frame, rising with the marks
+        scene = 'room';
+        let y0, y1, k3;
+        if(t < 18.5){ k3 = (t - 16.5)/2.0; y0 = 0.85; y1 = 1.3; }
+        else if(t < 22.0){ k3 = (t - 20.0)/2.0; y0 = 1.3; y1 = 1.62; }
+        else { k3 = (t - 26.5)/1.0; y0 = 1.62; y1 = 1.78; }
+        const yy = lerp(y0, y1, k3);
+        pos = [-2.2, yy - 0.05, 0.5]; tgt = [-2.97, yy, 1.16];
+        Object.assign(u, { uExpo: 2.4, uFov: 0.62 });
+      }
+    } else if(t < 30.0){                                           // 4. one present, three seconds
+      scene = 'living';
+      const k4 = t < 26.5 ? (t - 22.0)/8.0 : (t - 23.0)/7.0;
+      W([0.75, 0.2, -0.15], [0.55, 0.18, 0.35], clamp(k4, 0, 1), [0.0, 0.42, 1.5], [0.0, 0.34, 1.5]);
+      const d = clamp((t - 22.0)/3.0, 0, 1);
+      u.uPresentY = 0.75*Math.pow(1 - d, 2.2);
+      u.uHandUp = 1.6*Math.pow(clamp((t - 25.2)/1.3, 0, 1), 2.0);
+      Object.assign(u, { uSlow: 1, uExpo: 1.5, uWarmth: 0.9, uFov: 0.9 });
+    } else if(t < 34.0){                                           // 5. dawn: he lands
+      scene = 'ext'; const k5 = (t - 30.0)/4.0;
+      const d = clamp((t - 30.0)/3.0, 0, 1), e = 1 - Math.pow(1 - d, 2.4);
+      u.uSleigh = [lerp(-4.6, -2.4, e), lerp(22.0, 0.05, e), 6.5];
+      u.uPitch = lerp(-0.55, 0, e);
+      u.uGallop = Math.min(t, 33.0)*9.0;
+      u.uSleighOn = 1;
+      W([1.0, 0.7, -3.6], [0.6, 0.72, -2.0], k5, [-0.8, 2.4, 8.0], [-0.9, 2.0, 8.0]);
+      Object.assign(u, { uDawn: 1, uYears: 23, uExpo: 0.95, uWarmth: 0.8, uFov: 0.85 });
+    } else if(t < 37.0){                                           // 6. inside: marks, messages
+      scene = 'room'; k = (t - 34.0)/3.0;
+      pos = L3([-3.4, 1.62, 0.62], [-2.35, 1.6, 0.95], k); tgt = L3([-1.9, 1.15, 2.6], [0.4, 1.3, 2.6], sstep(0.15, 1.0, k));
+      Object.assign(u, { uYears: 23, uDawn: 1, uDayAz: -0.3, uDayAmt: 0.8, uExpo: 2.2, uWarmth: 0.7, uFov: 0.85 });
+    } else if(t < 42.6){                                           // 7. her, at the window
+      scene = 'room'; k = (t - 37.0)/5.6;
+      W([0.55, 1.5, 0.35], [0.72, 1.48, 1.0], k, [0.9, 1.4, 2.7], [0.9, 1.44, 2.7]);
+      Object.assign(u, { uYears: 23, uDawn: 1, uDayAz: -0.3, uDayAmt: 0.8, uExpo: 2.2, uWarmth: 0.7, uFov: 0.75 });
+    } else {                                                       // 8. the watch: six in the morning
+      scene = 'watch'; k = (t - 42.6)/2.4;
+      W([0.6, 14.2, -11.2], [0.45, 12.2, -9.6], k, [0.2, 0.4, 1.4], [0.2, 0.5, 1.2]);
+      const a = watchAngles(6*3600 + 0.3 + (t - 42.6));
+      Object.assign(u, { uWatchH: a.h, uWatchM: a.m, uWatchS: a.s, uFrost: 0.95, uExpo: 2.2, uWarmth: 0.35, uFov: 0.62 });
+    }
+    u.uCamPos = pos; u.uCamTgt = tgt;
+    return { scene, u };
+  }
+
+  // ------------------------------------------------------------------ text drawn as textures
+  function dialCanvas(){
+    const c = document.createElement('canvas'); c.width = c.height = 1024;
+    const g = c.getContext('2d');
+    const grd = g.createRadialGradient(512, 470, 50, 512, 512, 520);
+    grd.addColorStop(0, '#f6f1e4'); grd.addColorStop(1, '#ddd3bd');
+    g.fillStyle = grd; g.fillRect(0, 0, 1024, 1024);
+    g.translate(512, 512);
+    g.strokeStyle = '#1b1a18'; g.fillStyle = '#1b1a18';
+    g.lineWidth = 3; g.beginPath(); g.arc(0, 0, 470, 0, TAU); g.stroke();
+    g.lineWidth = 2; g.beginPath(); g.arc(0, 0, 440, 0, TAU); g.stroke();
+    for(let i = 0; i < 60; i++){
+      const a = i/60*TAU; g.save(); g.rotate(a);
+      g.lineWidth = i % 5 ? 3 : 7;
+      g.beginPath(); g.moveTo(0, -470); g.lineTo(0, i % 5 ? -446 : -430); g.stroke(); g.restore();
+    }
+    const R = ['XII','I','II','III','IIII','V','VI','VII','VIII','IX','X','XI'];
+    g.font = '86px "Liberation Serif", "DejaVu Serif", Georgia, serif';
+    g.textAlign = 'center'; g.textBaseline = 'middle';
+    for(let i = 0; i < 12; i++){
+      g.save(); g.rotate(i/12*TAU); g.translate(0, -360); g.fillText(R[i], 0, 0); g.restore();
+    }
+    g.font = '30px "Liberation Serif", "DejaVu Serif", Georgia, serif';
+    g.fillText('NORTH POLE', 0, -170);
+    g.font = 'italic 24px "Liberation Serif", "DejaVu Serif", Georgia, serif';
+    g.fillText('one night', 0, 190);
+    return c;
+  }
+  const MARKS_W = 128, MARKS_H = 2048;
+  const marksCanvas = document.createElement('canvas'); marksCanvas.width = MARKS_W; marksCanvas.height = MARKS_H;
+  let marksDrawn = -1;
+  function heightAt(i){       // the apprentice was four in 2026; full grown by eighteen
+    const age = 4 + i;
+    return age >= 18 ? 1.71 + 0.002*(age - 18) : 1.02 + (1.71 - 1.02)*Math.pow((age - 4)/14, 0.85);
+  }
+  function drawMarks(n){
+    if(n === marksDrawn) return false;
+    marksDrawn = n;
+    const g = marksCanvas.getContext('2d');
+    g.fillStyle = '#000'; g.fillRect(0, 0, MARKS_W, MARKS_H);
+    g.strokeStyle = '#fff'; g.fillStyle = '#fff'; g.lineWidth = 3;
+    g.font = '15px "Liberation Sans", "DejaVu Sans", Arial, sans-serif'; g.textBaseline = 'bottom';
+    for(let i = 0; i <= n; i++){
+      const y = (1 - heightAt(i)/2.2)*MARKS_H + Math.sin(i*7.3)*1.5;
+      g.beginPath(); g.moveTo(6, y); g.lineTo(80 + 10*Math.sin(i*3.1), y + Math.sin(i*1.9)*1.5); g.stroke();
+      g.fillText("'" + String(26 + i).padStart(2, '0'), 84, y + 6);
+    }
+    return true;
+  }
+  function screenCanvas(){
+    const c = document.createElement('canvas'); c.width = 1024; c.height = 640;
+    const g = c.getContext('2d');
+    g.fillStyle = '#0b1016'; g.fillRect(0, 0, 1024, 640);
+    g.fillStyle = '#e9edf2'; g.font = '600 40px "Liberation Sans", "DejaVu Sans", Arial, sans-serif';
+    g.fillText('Messages', 48, 74);
+    g.fillStyle = '#7fb0e8'; g.font = '28px "Liberation Sans", "DejaVu Sans", Arial, sans-serif';
+    g.fillText('8,402 unread  ·  23 years', 48, 118);
+    const rows = [
+      ['24 Dec 2049', 'Still here. The lamp is lit.'],
+      ['25 Dec 2041', 'He has your laugh.'],
+      ['24 Dec 2038', 'I kept the lamp in the window.'],
+      ['25 Dec 2033', 'He asked me if you were real.'],
+      ['25 Dec 2031', 'Taller than the door handle now.'],
+      ['25 Dec 2027', 'The little one keeps asking for you.'],
+      ['25 Dec 2026', 'Kettle is on. Come home.'],
+    ];
+    rows.forEach(([d, m], i) => {
+      const y = 180 + i*64;
+      g.fillStyle = '#16202b'; g.fillRect(36, y - 40, 952, 56);
+      g.fillStyle = '#4c9cff'; g.beginPath(); g.arc(64, y - 12, 9, 0, TAU); g.fill();
+      g.fillStyle = '#8796a8'; g.font = '24px "Liberation Sans", "DejaVu Sans", Arial, sans-serif'; g.fillText(d, 92, y - 4);
+      g.fillStyle = '#e9edf2'; g.font = '30px "Liberation Sans", "DejaVu Sans", Arial, sans-serif'; g.fillText(m, 280, y - 2);
+    });
+    return c;
+  }
+
+  // ------------------------------------------------------------------ WebGL
+  const params = new URLSearchParams(location.search);
+  const RENDER = params.has('render');
+  const MAXH = params.has('h') ? parseInt(params.get('h')) : (RENDER ? 4096 : 800);
+  const frameEl = document.getElementById('frame'), canvas = document.getElementById('gl');
+  const subEl = document.getElementById('sub'), qEl = document.getElementById('q');
+  const playBtn = document.getElementById('play'), audio = document.getElementById('score');
+  const gl = canvas.getContext('webgl', { preserveDrawingBuffer: true, antialias: false, alpha: false });
+  if(!gl){ playBtn.querySelector('span').textContent = 'WEBGL UNAVAILABLE'; return; }
+  function fit(){
+    const Wd = innerWidth, Hd = innerHeight;
+    let h = Hd, w = Math.round(Hd*9/16);
+    if(w > Wd){ w = Wd; h = Math.round(Wd*16/9); }
+    frameEl.style.width = w + 'px'; frameEl.style.height = h + 'px';
+    frameEl.style.setProperty('--fh', h + 'px');
+    const scale = Math.min(1, MAXH/h);
+    canvas.width = Math.round(w*scale); canvas.height = Math.round(h*scale);
+    gl.viewport(0, 0, canvas.width, canvas.height);
+  }
+  addEventListener('resize', () => { fit(); if(!playing) draw(lastT); });
+  const src = id => document.getElementById(id).textContent;
+  function compile(type, text){
+    const sh = gl.createShader(type); gl.shaderSource(sh, text); gl.compileShader(sh);
+    if(!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(sh));
+    return sh;
+  }
+  const UNI = ['uRes','uT','uL','uQ','uExpo','uWarmth','uCamPos','uCamTgt','uFov','uRoll','uYears','uDawn','uWarp','uTimelapse','uSlow',
+    'uWatchH','uWatchM','uWatchS','uFrost','uPresentY','uHandUp','uSleigh','uPitch','uGallop','uSleighOn','uSleighScale','uDayAz','uDayAmt','uTex0','uTex1','uTex2'];
+  const progs = {};
+  const vs = compile(gl.VERTEX_SHADER, src('vs'));
+  try {
+    for(const [name, id] of [['watch','s-watch'],['ext','s-ext'],['room','s-room'],['living','s-living']]){
+      const p = gl.createProgram();
+      gl.attachShader(p, vs);
+      gl.attachShader(p, compile(gl.FRAGMENT_SHADER, src('common') + '\n' + src(id) + '\n' + src('main')));
+      gl.linkProgram(p);
+      if(!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(name + ': ' + gl.getProgramInfoLog(p));
+      const loc = {}; for(const n of UNI) loc[n] = gl.getUniformLocation(p, n);
+      progs[name] = { p, loc, aPos: gl.getAttribLocation(p, 'aPos') };
+    }
+  } catch(err){ console.error(String(err)); window.__error = String(err); playBtn.querySelector('span').textContent = 'SHADER FAILED'; return; }
+  const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+  function makeTex(unit, source){
+    const tex = gl.createTexture(); gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    return tex;
+  }
+  makeTex(0, dialCanvas());
+  drawMarks(0); const marksTex = makeTex(1, marksCanvas);
+  makeTex(2, screenCanvas());
+
+  let playing = false, lastT = 0, t0 = 0, raf = 0;
+  function draw(t){
+    lastT = t;
+    const { scene, u } = shot(Math.min(t, END - 1e-4));
+    if(drawMarks(Math.min(14, Math.floor(u.uYears + 1e-6)))){   // he stops growing at eighteen
+      gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, marksTex);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, marksCanvas);
+    }
+    const P = progs[scene];
+    gl.useProgram(P.p);
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.enableVertexAttribArray(P.aPos); gl.vertexAttribPointer(P.aPos, 2, gl.FLOAT, false, 0, 0);
+    const L = P.loc;
+    gl.uniform2f(L.uRes, canvas.width, canvas.height);
+    gl.uniform1f(L.uT, t); gl.uniform1f(L.uQ, 1.0);
+    gl.uniform1i(L.uTex0, 0); gl.uniform1i(L.uTex1, 1); gl.uniform1i(L.uTex2, 2);
+    for(const [k, v] of Object.entries(u)){
+      if(!L[k]) continue;
+      if(Array.isArray(v)) gl.uniform3f(L[k], v[0], v[1], v[2]); else gl.uniform1f(L[k], v);
+    }
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+    subEl.style.opacity = (t >= 40.0 && t < 42.6) ? sstep(40.0, 40.25, t).toFixed(3) : '0';
+    qEl.style.opacity = t < 2.6 ? (1 - sstep(2.2, 2.6, t)).toFixed(3) : '0';
+  }
+  function tick(){
+    let t = (performance.now() - t0)/1000;
+    if(!audio.paused && audio.currentTime > 0.05) t = audio.currentTime;
+    if(t >= END){ if(LOOP){ restart(); return; } draw(0); stop(); return; }
+    draw(t); raf = requestAnimationFrame(tick);
+  }
+  const LOOP = true;
+  function restart(){ t0 = performance.now(); audio.currentTime = 0; const p = audio.play(); if(p && p.catch) p.catch(() => {}); raf = requestAnimationFrame(tick); }
+  function start(){ playing = true; playBtn.hidden = true; restart(); }
+  function stop(){ playing = false; cancelAnimationFrame(raf); try{ audio.pause(); }catch(e){}
+    playBtn.querySelector('span').textContent = 'REPLAY'; playBtn.hidden = false; }
+  playBtn.addEventListener('click', start);
+  canvas.addEventListener('click', () => { if(playing) stop(); });
+  fit();
+  if(RENDER){ playBtn.hidden = true; window.__seek = t => { draw(t); gl.finish(); return true; }; window.__ready = true; }
+  else draw(1.0);
+})();
+</script>
+</body>
+</html>
