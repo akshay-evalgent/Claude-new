@@ -1,0 +1,60 @@
+== EVERY CHILD UNDER 15 ON EARTH ==
+  kids           2.02e+09
+  homes          1.01e+09
+  countries      217
+  T_h            33
+  route_km       9.45e+07
+  laps           2.36e+03
+  speed_kms      795
+  mach           2.32e+03
+  frac_c         0.00265
+  visits_per_s   8.49e+03
+  hop_m          93.7
+  hop_us         118
+  accel_g        2.75e+09
+  lost_ms        557
+  gained_ns      13
+  curve_g        1.01e+04
+  vs_galaxy      1.45
+  sun_hours      1.87
+  drag_vs_humanity 9.65e+04
+  payload_t      2.02e+06
+  energy_J       2.57e+30
+  energy_years   4.34e+09
+  drag_W         1.81e+18
+  drag_suns      4.73e-09
+
+== ONLY CHILDREN IN CHRISTIAN HOMES (Pew share, applied evenly) ==
+  kids           5.81e+08
+  homes          2.9e+08
+  route_km       5.07e+07
+  speed_kms      427
+  mach           1.24e+03
+  accel_g        4.25e+08
+  lost_ms        160
+  energy_years   1.04e+08
+
+== SENSITIVITY: children per home ==
+  1.5: homes 1.34e+09  route 1.09e+08 km  speed 918 km/s  lost 743 ms  4.24e+09 g
+  2.0: homes 1.01e+09  route 9.45e+07 km  speed 795 km/s  lost 557 ms  2.75e+09 g
+  3.0: homes 6.72e+08  route 7.71e+07 km  speed 649 km/s  lost 371 ms  1.5e+09 g
+
+== SENSITIVITY: urban density (people/km^2) ==
+  2500: route 1.01e+08 km  speed 849 km/s  lost 636 ms
+  5000: route 9.45e+07 km  speed 795 km/s  lost 557 ms
+  10000: route 8.99e+07 km  speed 757 km/s  lost 505 ms
+
+== 1990 SPY MAGAZINE CHECK: 91.8 million homes, 31 hours ==
+  visits per second 822.6
+
+== ONE NIGHT = 23 YEARS AT HOME ==
+  gamma          6.11e+03
+  one_minus_beta 1.34e-08
+  beta_pct       100
+  ke_J           5.49e+23
+  ke_years       927
+  miller_gamma   6.14e+04
+  vs_miller      0.0996
+
+== THE STAND-INS ==
+  people needed at 30 km/h and 10 min per home: 2.14e+07  (0.02 per home)
