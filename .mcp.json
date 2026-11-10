@@ -1,8 +1,10 @@
 {
   "mcpServers": {
     "brave-browser": {
-      "command": "npx",
+      "command": "cmd",
       "args": [
+        "/c",
+        "npx",
         "-y",
         "@playwright/mcp@latest",
         "--extension",
@@ -14,12 +16,14 @@
       }
     },
     "brave-direct": {
-      "command": "npx",
+      "command": "cmd",
       "args": [
+        "/c",
+        "npx",
         "-y",
         "@playwright/mcp@latest",
         "--executable-path",
-        "${BRAVE_PATH:-/usr/bin/brave-browser}",
+        "${BRAVE_PATH:-C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe}",
         "--user-data-dir",
         "${BRAVE_MCP_PROFILE_DIR:-./.brave-mcp-profile}",
         "--output-dir",
@@ -27,8 +31,8 @@
       ]
     },
     "brave-search": {
-      "command": "npx",
-      "args": ["-y", "@brave/brave-search-mcp-server", "--transport", "stdio"],
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@brave/brave-search-mcp-server", "--transport", "stdio"],
       "env": {
         "BRAVE_API_KEY": "${BRAVE_API_KEY}"
       }
