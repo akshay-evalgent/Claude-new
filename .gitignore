@@ -17,5 +17,6 @@ film/one-night/short-vo/build/preview/
 film/one-night/short-vo/kaggle/dataset/index.html
 film/one-night/short-vo/kaggle/out/
 film/one-night/short-vo/build/segs/
-film/one-night/flow/edit/build/
+film/one-night/flow/edit/build/*
+!film/one-night/flow/edit/build/edit.py
 film/one-night/flow/edit/vo/takes/bf_emma/
