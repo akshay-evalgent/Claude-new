@@ -2,7 +2,8 @@
 """Worker of the free backend for the make-an-anime pipeline (see lib/free/client.rb).
 
     free_backend.py submit REQUEST.json KEY   answer one request now, or queue it (exit 75)
-    free_backend.py kaggle [--no-wait]        run the queue in one Kaggle GPU session, store the results
+    free_backend.py kaggle [--no-wait] [--only image,edit]
+                                              run the queue (or only some kinds) in one Kaggle GPU session
     free_backend.py collect                   fetch the last batch's results again
     free_backend.py status                    list queued and stored requests
 
@@ -10,7 +11,7 @@ Each paid Fal endpoint is mapped to an open model:
 
     openai/gpt-image-2.6/.../text-to-image  -> Z-Image Turbo                        (Kaggle, WanGP)
     openai/gpt-image-2.6/.../edit           -> FLUX.2 Klein 4B with reference images (Kaggle, WanGP)
-    minimax/h3-max/image-to-video           -> Wan 2.2 I2V 14B Lightning, 4 steps    (Kaggle, WanGP)
+    minimax/h3-max/image-to-video           -> Wan 2.2 I2V 14B + Lightning LoRAs     (Kaggle, WanGP)
     elevenlabs/tts/eleven-v4                -> Qwen3 TTS VoiceDesign                 (Kaggle, WanGP)
     elevenlabs/music/v2.5                   -> ACE-Step 1.5                          (Kaggle, WanGP)
     elevenlabs/sound-effects/v3             -> Stable Audio 3 Small SFX              (Kaggle, WanGP)
@@ -46,6 +47,15 @@ VIDEO_MAX_FRAMES = 81
 KERNEL_SLUG = os.environ.get("FREE_KAGGLE_KERNEL", "anime-free-batch")
 DATASET_SLUG = os.environ.get("FREE_KAGGLE_DATASET", "anime-free-inputs")
 
+# Wan 2.2 I2V 14B (int8) with the Lightning LoRAs, 4 steps: WanGP's "Lightning i2v v2025-10-14 2 Phases - 4 Steps"
+# profile. The merged "Enhanced Lightning v2" checkpoint is FP8-only, which a T4 has to emulate: its first clip did not
+# finish one denoising step in 95 minutes.
+VIDEO_LIGHTNING = {
+    "num_inference_steps": 4, "guidance_scale": 1, "guidance2_scale": 1, "switch_threshold": 876, "model_switch_phase": 1,
+    "guidance_phases": 2, "flow_shift": 5, "loras_multipliers": "1;0 0;1",
+    "activated_loras": [
+        "https://huggingface.co/DeepBeepMeep/Wan2.2/resolve/main/loras_accelerators/Wan2.2_I2V_A14B_HIGH_lightx2v_MoE_distill_lora_rank_64_bf16.safetensors",
+        "https://huggingface.co/DeepBeepMeep/Wan2.2/resolve/main/loras_accelerators/Wan2.2_I2V_A14B_LOW_4steps_lora_rank64_Seko_V1_forKJ.safetensors"]}
 VIDEO_NEGATIVE = ("text, captions, subtitles, letters, watermark, logo, photorealistic, 3d render, cgi, blurry, low quality, "
                   "flicker, deformed face, distorted body, extra fingers, extra limbs, fused fingers, bad hands, extra people, "
                   "static frame, scene cut, split screen")
@@ -198,7 +208,7 @@ def translate(job, inputs):
         return {"kind": kind, "tasks": [{"task": t, "fallback": fallback}]}
     if kind == "video":
         frames = video_frames(inp.get("duration", 5))
-        t = base_task("i2v_2_2_Enhanced_Lightning_v2", inp["prompt"], key, seed) | {
+        t = base_task("i2v_2_2", inp["prompt"], key, seed) | VIDEO_LIGHTNING | {
             "negative_prompt": VIDEO_NEGATIVE, "resolution": VIDEO_RES, "video_length": frames, "repeat_generation": 1,
             "image_prompt_type": "SE" if inp.get("end_image_url") else "S",
             "image_start": inputs.add(local_path(inp["image_url"]), max_side=1920)}
@@ -286,8 +296,11 @@ def push_inputs(user, folder):
     raise SystemExit(f"dataset {ref} did not become ready")
 
 
-def build_batch():
+def build_batch(only=None):
+    """only: kinds to take from the queue (image, edit, video, voice, music, sfx); the rest stays queued."""
     jobs = [json.load(open(f)) for f in sorted(glob.glob(os.path.join(QUEUE, "*.json")), key=os.path.getmtime)]
+    if only:
+        jobs = [j for j in jobs if kind_of(j["endpoint"]) in only]
     if not jobs:
         raise SystemExit("nothing queued")
     batch = time.strftime("%Y%m%d-%H%M%S")
@@ -442,7 +455,8 @@ def collect(batch=None):
 
 
 def run_kaggle(args):
-    batch, folder, _plan, inputs = build_batch()
+    only = args[args.index("--only") + 1].split(",") if "--only" in args else None
+    batch, folder, _plan, inputs = build_batch(only)
     ref = push_batch(folder, inputs)
     if "--no-wait" in args:
         print(json.dumps({"batch": batch, "kernel": ref, "next": "free_backend.py collect"}))
