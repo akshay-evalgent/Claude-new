@@ -245,9 +245,12 @@ def _tool_turn_message(result: dict[str, Any]) -> AIMessage:
                      response_metadata=result["usage"])
 
 
+CHEAP_ROLES = {"triage", "query"}   # quick classification and query parsing
+
+
 def model_name(role: str) -> str:
-    """Cheap steps get a cheap model. Only Triage is cheap so far; everything else gets LLM_MODEL."""
-    if role == "triage" and settings.llm_model_triage:
+    """Cheap steps get the cheap model (LLM_MODEL_TRIAGE); everything else gets LLM_MODEL."""
+    if role in CHEAP_ROLES and settings.llm_model_triage:
         return settings.llm_model_triage
     return settings.llm_model
 

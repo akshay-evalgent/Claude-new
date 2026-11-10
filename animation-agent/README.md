@@ -29,6 +29,7 @@ uv run anim cards           # list saved cards and the Critic's verdict; `uv run
 uv run anim resume <run id> # continue a stopped run; `anim runs` lists runs, `anim history <id>` its steps
 uv run anim memory          # what the agent remembers analysing or skipping
 uv run anim review <run id> # approve, edit, revise or reject a paused digest; `anim digests` lists decisions
+uv run anim ask "..."       # question the knowledge base; answers cite their cards
 ```
 
 To open the graph in LangGraph Studio: `uv run --with "langgraph-cli[inmem]" langgraph dev`.
@@ -46,4 +47,5 @@ example `uv sync --extra anthropic` with an `ANTHROPIC_API_KEY`.
 | 3 Control flow: Haiku Triage with conditional edges, parallel card pipelines with `Send`, Critic loop with a retry cap | done |
 | 4 Memory: SQLite checkpoints to resume a stopped run, a long-term store so no video is analysed twice | done |
 | 5 Human in the loop: Reporter drafts a digest, `interrupt()` pauses for approve / edit / revise / reject, then publish | done |
-| 6 Knowledge base and Q&A: Chroma embeddings, hybrid retrieval, `anim ask` with citations | next |
+| 6 Knowledge base and Q&A: local Chroma embeddings, self-query filters with relaxation, `anim ask` with checked citations | done |
+| 7 Synthesis: trends across cards with evidence counts, taxonomy, digest | next |

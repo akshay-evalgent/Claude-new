@@ -260,7 +260,9 @@ def _execute(inputs, run_id: str, parallel: int, with_digest: bool = True) -> No
                 learned = backfill_from_cards(store, CardStore(default_db_path()).list_cards(limit=100_000))
                 if learned:
                     typer.echo(f"memory was empty: learned {learned} cards already in the knowledge base")
-            graph = build_graph(checkpointer=checkpointer, store=store, with_digest=with_digest)
+            from .kb import default_kb
+
+            graph = build_graph(checkpointer=checkpointer, store=store, with_digest=with_digest, kb=default_kb)
             stream = graph.stream(inputs, _thread(run_id, parallel), stream_mode=["updates", "custom"], subgraphs=True)
             for namespace, mode, data in stream:
                 if mode == "custom":
@@ -380,6 +382,55 @@ def memory(
         v = item.value
         detail = f"approved={v.get('approved')}" if v["status"] == "analysed" else f"interest {v.get('interest')}"
         typer.echo(f"{item.key:<22} {v['status']:<9} {v.get('on', ''):<10} {detail:<15} {v.get('title', '')[:55]}")
+
+
+@app.command()
+def ask(
+    question: str = typer.Argument(..., help="A question about the techniques in your knowledge base."),
+    k: int = typer.Option(6, "--k", min=1, max=20, help="How many cards to retrieve."),
+    plan: bool = typer.Option(True, "--plan/--no-plan", help="Let a cheap model turn the question into filters."),
+):
+    """Ask the knowledge base. Answers cite the cards they come from."""
+    from .kb import default_kb
+    from .nodes.librarian import default_db_path
+    from .qa_graph import build_qa_graph, index_all
+    from .storage import CardStore
+
+    kb, cards_db = default_kb(), CardStore(default_db_path())
+    if kb.count() == 0 and cards_db.list_cards(limit=1):
+        typer.echo(f"Search index was empty: indexed {index_all(kb, cards_db)} cards from anim.db.")
+    result = build_qa_graph(kb, cards_db, use_planner=plan).invoke({"question": question, "k": k})
+    p = result["plan"]
+    filters = [f"style in {p.style_families}" if p.style_families else "",
+               f"difficulty <= {p.max_difficulty}" if p.max_difficulty else "",
+               f"difficulty >= {p.min_difficulty}" if p.min_difficulty else "",
+               f"tools {p.tools}" if p.tools else "", "" if p.include_unapproved else "approved only"]
+    typer.echo(f"search: \"{p.search_text}\"; filters: {', '.join(f for f in filters if f) or 'none'}"
+               + (f"; relaxed: {', '.join(result['relaxed'])}" if result.get("relaxed") else ""))
+    if not result.get("hits"):
+        typer.echo("\nNo cards in the knowledge base match this question yet.")
+        return
+    typer.echo(f"\n{result['answer']}\n")
+    if result.get("citations"):
+        typer.echo("Sources:")
+        for c in result["citations"]:
+            flag = "" if c["approved"] else ", not approved"
+            typer.echo(f"  [{c['n']}] {c['title'][:70]} (confidence {c['confidence']:.2f}{flag})\n      {c['url']}")
+    for w in result.get("warnings", []):
+        typer.echo(f"! {w}", err=True)
+
+
+@app.command()
+def index(rebuild: bool = typer.Option(False, "--rebuild", help="Clear the search index first.")):
+    """Copy every card from anim.db into the search index."""
+    from .kb import default_kb
+    from .nodes.librarian import default_db_path
+    from .qa_graph import index_all
+    from .storage import CardStore
+
+    kb = default_kb()
+    n = index_all(kb, CardStore(default_db_path()), rebuild=rebuild)
+    typer.echo(f"Indexed {n} cards; the index now holds {kb.count()}.")
 
 
 @app.command()

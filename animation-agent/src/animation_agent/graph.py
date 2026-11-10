@@ -40,6 +40,7 @@ def build_graph(
     publish: Callable | None = None,
     *,
     with_digest: bool = True,
+    kb: Callable | None = None,
     checkpointer=None,
     store=None,
 ):
@@ -57,7 +58,7 @@ def build_graph(
     builder.add_node("scout", scout or make_scout())
     builder.add_node("triage", triage or make_triage())
     builder.add_node("analyze", analyze or build_card_graph())
-    builder.add_node("librarian", librarian or make_librarian())
+    builder.add_node("librarian", librarian or make_librarian(kb=kb))
     builder.add_edge(START, "scout")
     builder.add_edge("scout", "triage")
     builder.add_conditional_edges("triage", route_after_triage, ["analyze", "librarian"])
@@ -75,5 +76,7 @@ def build_graph(
     return builder.compile(name="animation-pipeline", checkpointer=checkpointer, store=store)
 
 
-# The compiled graph LangGraph Studio and `langgraph dev` load.
-graph = build_graph()
+# The compiled graph LangGraph Studio and `langgraph dev` load. It indexes cards for search too.
+from animation_agent.kb import default_kb  # noqa: E402
+
+graph = build_graph(kb=default_kb)

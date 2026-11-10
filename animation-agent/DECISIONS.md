@@ -2,6 +2,24 @@
 
 Every architectural choice, the alternative, and why. Newest first.
 
+## Milestone 6
+
+- **Chroma with its built-in local embedding model.** PLAN.md's choice; no embedding key, and
+  the model runs offline after one download. Full cards stay in SQLite; Chroma holds a document
+  and filterable metadata per card.
+- **Numbers live in metadata, never in the embedded text.** Vectors cannot compare quantities.
+- **A cheap model turns the question into a `QueryPlan` (self-query).** Filters are exact, so
+  they must be explicit; the prompt keeps them to what the question demands.
+- **Filters relax in a fixed order (tools, difficulty, style, approval) below two hits, and the
+  answer is told.** Better a labelled near match than an empty answer.
+- **Approved cards only, unless the question asks for more.** Same gate as the digest.
+- **Tools are matched in code after retrieval.** A card has several tools; a lowercase substring
+  match is simpler and more reliable than a metadata filter.
+- **Citations are numbers checked in code; the Sources list is built from the cards.** Invented
+  numbers are removed and reported; uncited answers are flagged.
+- **The Librarian indexes new cards, loading the embedding model only when there are cards.**
+  An indexing failure is recorded, not fatal: the cards are safe in SQLite.
+
 ## Milestone 5
 
 - **One human checkpoint, in front of publishing.** It is the only outward-facing step. Per-card

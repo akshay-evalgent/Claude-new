@@ -15,6 +15,7 @@ dependencies = [
     "typer>=0.12",
     "yt-dlp[default]>=2025.10",
     "langgraph-checkpoint-sqlite>=3.0",
+    "chromadb>=1.0",
 ]
 
 [project.optional-dependencies]

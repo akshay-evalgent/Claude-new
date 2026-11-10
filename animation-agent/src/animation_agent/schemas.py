@@ -223,3 +223,21 @@ class ReviewAnswer(BaseModel):
         if self.action == "revise" and not (self.feedback or "").strip():
             raise ValueError("action 'revise' needs 'feedback' saying what to change")
         return self
+
+
+# ---- Milestone 6: questions over the knowledge base -----------------------------------------
+
+class QueryPlan(BaseModel):
+    """A question turned into a search: text to embed plus hard filters."""
+
+    search_text: str = Field(description="What to search for by meaning: the technique, style or effect asked about, in plain words.")
+    style_families: list[StyleFamily] = Field(default_factory=list, description="Only if the question limits the style family.")
+    max_difficulty: int | None = Field(default=None, ge=1, le=5, description="Only if the question asks for easy or beginner-friendly work.")
+    min_difficulty: int | None = Field(default=None, ge=1, le=5, description="Only if the question asks for advanced or hard work.")
+    tools: list[str] = Field(default_factory=list, description="Software named in the question, e.g. Blender, After Effects.")
+    include_unapproved: bool = Field(default=False, description="True only if the question explicitly asks for flagged or unreviewed cards too.")
+
+
+class CitedAnswer(BaseModel):
+    answer: str = Field(description="Markdown. Cite cards inline as [1], [2] using the numbers given. Every factual sentence needs a citation.")
+    insufficient: bool = Field(description="True when the cards do not answer the question.")
