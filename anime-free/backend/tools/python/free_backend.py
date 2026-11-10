@@ -96,7 +96,11 @@ def run(cmd, check=True, **kw):
 def whisper(key, inp):
     from faster_whisper import WhisperModel
     model = WhisperModel(os.environ.get("FREE_WHISPER", "small"), device="cpu", compute_type="int8")
-    segments, _info = model.transcribe(local_path(inp["audio_url"]), language=inp.get("language") or None,
+    import numpy as np
+    # Decoded by ffmpeg to 16 kHz mono floats: faster-whisper's own decoder depends on the installed PyAV version.
+    pcm = subprocess.run(["ffmpeg", "-v", "error", "-i", local_path(inp["audio_url"]), "-f", "f32le", "-ac", "1",
+                          "-ar", "16000", "-"], capture_output=True, check=True).stdout
+    segments, _info = model.transcribe(np.frombuffer(pcm, dtype=np.float32), language=inp.get("language") or None,
                                        task=inp.get("task", "transcribe"))
     chunks = [{"timestamp": [round(s.start, 2), round(s.end, 2)], "text": s.text} for s in segments]
     write_result(key, {"text": "".join(c["text"] for c in chunks).strip(), "chunks": chunks, "backend": "faster-whisper"})
@@ -143,6 +147,11 @@ class Inputs:
 
     def add(self, path, max_side=None):
         path = os.path.abspath(path)
+        stem = os.path.splitext(os.path.basename(path))[0]
+        if not os.path.exists(path) and os.path.exists(os.path.join(QUEUE, f"{stem}.json")):
+            # Not made yet: it is the output of another request in this batch (a sheet for a keyframe, a keyframe for
+            # a shot). The kernel points the task at that output once it exists.
+            return f"@@OUT@@{stem}" + (f"|{max_side}" if max_side else "")
         if path not in self.names:
             digest = hashlib.sha256(open(path, "rb").read()).hexdigest()[:10]
             stem, ext = os.path.splitext(os.path.basename(path))

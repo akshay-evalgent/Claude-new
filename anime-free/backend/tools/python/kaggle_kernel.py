@@ -84,20 +84,41 @@ for root, _, files in os.walk("/kaggle/input"):
 print(len(found), "input files:", sorted(found)[:40])
 
 
+def output_of(stem):
+    hits = [f for f in os.listdir(RES) if os.path.splitext(f)[0] == stem]
+    return f"{RES}/{hits[0]}" if hits else None
+
+
 def resolve(value):
+    """Input placeholders -> paths. Returns None when an output this task depends on was not made."""
     if isinstance(value, list):
-        return [resolve(v) for v in value]
+        out = [resolve(v) for v in value]
+        return None if any(v is None for v in out) else out
     if isinstance(value, str) and value.startswith("@@IN@@"):
         name = value[len("@@IN@@"):]
         assert name in found, f"input {name} is not in /kaggle/input"
         return found[name]
+    if isinstance(value, str) and value.startswith("@@OUT@@"):
+        stem, _, side = value[len("@@OUT@@"):].partition("|")
+        src = output_of(stem)
+        if src is None or not side:
+            return src
+        small = f"{TMP}/ref-{stem}-{side}.jpg"
+        if not os.path.exists(small):
+            sh(f"ffmpeg -y -v error -i {src} -vf \"scale='min({side},iw)':'min({side},ih)':force_original_aspect_ratio=decrease\" -q:v 2 {small}")
+        return small
     return value
 
 
-for e in ENTRIES:
-    for which in ("task", "fallback"):
-        if e.get(which):
-            e[which] = {k: resolve(v) for k, v in e[which].items()}
+def ready(task):
+    """The task with its inputs resolved, or None while something it depends on is missing."""
+    out = {}
+    for k, v in task.items():
+        r = resolve(v)
+        if r is None and v is not None:
+            return None
+        out[k] = r
+    return out
 
 
 def collect():
@@ -118,7 +139,12 @@ def run_group(model, tasks, label):
     info = {"model": model, "label": label, "tasks": len(tasks), "attempts": []}
     REPORT["groups"].append(info)
     for profile in PROFILES:
-        todo = [t for t in tasks if not have(t["output_filename"])]
+        pending = [t for t in tasks if not have(t["output_filename"])]
+        todo = [r for r in map(ready, pending) if r]
+        blocked = [t["output_filename"] for t in pending if ready(t) is None]
+        if blocked:
+            info["blocked"] = blocked
+            print(f"[{label}] {model}: {len(blocked)} tasks wait for an output that was not made: {blocked}", flush=True)
         if not todo:
             break
         path = f"{TMP}/{label}-{model}-p{profile}.json"
@@ -141,17 +167,17 @@ def run_group(model, tasks, label):
 
 
 # ---- generate: one WanGP run per model, in the order the models first appear ------------------------------------------
+# Later models may depend on earlier outputs, so each model's fallbacks run right after it.
 order = []
 for e in ENTRIES:
     if e["task"]["model_type"] not in order:
         order.append(e["task"]["model_type"])
 for model in order:
-    run_group(model, [e["task"] for e in ENTRIES if e["task"]["model_type"] == model], "main")
-
-# ---- fallbacks for whatever is still missing --------------------------------------------------------------------------
-fallbacks = [e["fallback"] for e in ENTRIES if e.get("fallback") and not have(e["task"]["output_filename"])]
-for model in dict.fromkeys(t["model_type"] for t in fallbacks):
-    run_group(model, [t for t in fallbacks if t["model_type"] == model], "fallback")
+    mine = [e for e in ENTRIES if e["task"]["model_type"] == model]
+    run_group(model, [e["task"] for e in mine], "main")
+    fallbacks = [e["fallback"] for e in mine if e.get("fallback") and not have(e["task"]["output_filename"])]
+    for fb_model in dict.fromkeys(t["model_type"] for t in fallbacks):
+        run_group(fb_model, [t for t in fallbacks if t["model_type"] == fb_model], "fallback")
 
 REPORT["missing"] = [e["task"]["output_filename"] for e in ENTRIES if not have(e["task"]["output_filename"])]
 save_report()

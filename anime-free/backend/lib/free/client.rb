@@ -18,7 +18,18 @@ require "logger"
 # Files never leave the machine except inside that Kaggle session: an "upload" is a file:// URL.
 module Free
   # Raised when a request was queued for the next Kaggle batch instead of being answered now.
-  class Deferred < StandardError; end
+  class Deferred < StandardError
+    attr_reader :key
+
+    def initialize(message, key: nil)
+      super(message)
+      @key = key
+    end
+
+    # Where the result will be stored once the batch has run. Recorded as a provisional url so that the steps that
+    # depend on this one (keyframes on sheets, shots on keyframes) can be queued in the same Kaggle batch.
+    def future_file(ext = "png") = File.expand_path(File.join("output", "free", "files", "#{key}.#{ext}"))
+  end
 
   ROOT = File.expand_path("../..", __dir__)
   WORKER = File.join(ROOT, "tools", "python", "free_backend.py")
@@ -52,7 +63,7 @@ module Free
         File.write(request, JSON.generate(endpoint: endpoint_id, input: input))
         out, status = Open3.capture2e(Free.python, WORKER, "submit", request, key)
         if status.exitstatus == EXIT_DEFERRED
-          raise Deferred, "#{endpoint_id}: queued as #{key} for the next Kaggle batch (rake free:kaggle)"
+          raise Deferred.new("#{endpoint_id}: queued as #{key} for the next Kaggle batch (rake free:kaggle)", key: key)
         end
         raise Fal::Error, "free backend failed for #{endpoint_id}:\n#{out}" unless status.success? && File.file?(Free.result_path(key))
       end

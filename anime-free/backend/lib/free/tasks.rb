@@ -44,6 +44,10 @@ module Free
             step.generate(name, spec)
           rescue Free::Deferred => e
             note.call("#{step_name} #{name}", e)
+            if step_name == "keyframes" # a provisional item: shots can be queued against it in the same batch
+              items = (step.project[step.key]&.dig("items") || {}).merge(name => { "url" => "file://#{e.future_file}", "path" => e.future_file, "provisional" => true })
+              step.project.record(step.key, items: items)
+            end
           end
         end
       else
@@ -51,6 +55,8 @@ module Free
           step.send(:submit) unless step.done? && ENV["FORCE"] != "1"
         rescue Free::Deferred => e
           note.call(step_name, e)
+          # a provisional sheet url: keyframes can be queued against it in the same batch
+          step.project.record(step.key, url: "file://#{e.future_file}", provisional: true) if step_name == "ref_base"
         end
       end
       queued

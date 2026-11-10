@@ -2,7 +2,7 @@
 # the location painting as reference images. With the free backend these go to FLUX.2 Klein 4B.
 street:
   base: false
-  refs: [loc-street-v1, char-akane-v1, char-jin-v1]
+  refs: [loc-street-v2, char-akane-v2, char-jin-v2]
   prompt: >-
     {{STYLE}} A single film still, one painted image, not a character sheet. High wide shot looking down across the
     rainy scramble crossing from image 1 at night: zebra stripes on wet black asphalt mirroring magenta and cyan neon,
@@ -13,7 +13,7 @@ street:
     No readable text, no lettering.
 akane:
   base: false
-  refs: [char-akane-v1, loc-street-v1]
+  refs: [char-akane-v2, loc-street-v2]
   prompt: >-
     {{STYLE}} A single film still, one painted image, not a character sheet. Medium close-up, slightly low angle, of
     the 19-year-old woman from image 1 standing on the rainy scramble crossing from image 2 at night: the same face,
@@ -26,7 +26,7 @@ akane:
     near foreground at the right. No other faces in focus, no text.
 jin:
   base: false
-  refs: [char-jin-v1, loc-street-v1]
+  refs: [char-jin-v2, loc-street-v2]
   prompt: >-
     {{STYLE}} A single film still, one painted image, not a character sheet. Medium shot of the 22-year-old man from
     image 1 standing on the rainy scramble crossing from image 2 at night: the same face, narrow steel-grey eyes, short
@@ -38,7 +38,7 @@ jin:
     asphalt and zebra stripes mirror the lights below. No other faces in focus, no text.
 charge:
   base: false
-  refs: [char-akane-v1, loc-street-v1]
+  refs: [char-akane-v2, loc-street-v2]
   prompt: >-
     {{STYLE}} A single film still from a fast tracking shot, one painted image, not a character sheet. The rainy
     scramble crossing from image 2 at night. The 19-year-old woman from image 1 alone, the same face, black ponytail
@@ -50,7 +50,7 @@ charge:
     stays sharp. Zebra stripes streak past under her feet. No other sharp figures, no text.
 exchange:
   base: false
-  refs: [char-akane-v1, char-jin-v1, loc-street-v1]
+  refs: [char-akane-v2, char-jin-v2, loc-street-v2]
   prompt: >-
     {{STYLE}} A single film still, one painted image, not a character sheet. Slightly low medium-wide two-shot on the
     wet asphalt of the scramble crossing from image 3 at night. On the LEFT the woman from image 1 in her red bomber
@@ -62,7 +62,7 @@ exchange:
     Exactly two people in focus, no text.
 kick:
   base: false
-  refs: [char-akane-v1, char-jin-v1, loc-street-v1]
+  refs: [char-akane-v2, char-jin-v2, loc-street-v2]
   prompt: >-
     {{STYLE}} A single film still, one painted image, not a character sheet. Dramatic low-angle medium shot in profile
     on the rainy scramble crossing from image 3 at night. On the LEFT the woman from image 1 in her red bomber jacket
@@ -73,7 +73,7 @@ kick:
     away. Exactly two people in focus, no text.
 slide:
   base: false
-  refs: [char-jin-v1, char-akane-v1, loc-street-v1]
+  refs: [char-jin-v2, char-akane-v2, loc-street-v2]
   prompt: >-
     {{STYLE}} A single film still, one painted image, not a character sheet. Wide low shot on the rainy scramble
     crossing from image 3 at night. In the RIGHT half of the frame the man from image 1 in his white hoodie, the same
@@ -84,7 +84,7 @@ slide:
     behind under umbrellas. Exactly two people in focus, no text.
 smile:
   base: false
-  refs: [char-jin-v1, loc-street-v1]
+  refs: [char-jin-v2, loc-street-v2]
   prompt: >-
     {{STYLE}} A single film still, one painted image, not a character sheet. Medium close-up of the 22-year-old man
     from image 1 on the rainy scramble crossing from image 2 at night, the same face, steel-grey eyes, short messy
@@ -95,7 +95,7 @@ smile:
     other faces in focus, no text.
 tag:
   base: false
-  refs: [char-akane-v1, loc-street-v1]
+  refs: [char-akane-v2, loc-street-v2]
   prompt: >-
     {{STYLE}} A single film still, one painted image, not a character sheet. Medium shot of the 19-year-old woman from
     image 1 on the rainy scramble crossing from image 2 at night, the same face, amber eyes, black ponytail with a red
