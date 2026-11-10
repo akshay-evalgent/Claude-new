@@ -42,6 +42,8 @@ class Settings(BaseSettings):
     tavily_api_key: str = ""
     github_token: str = ""
     ytdlp_js_runtime: str = "node"
+    ytdlp_cookies_from_browser: str = ""   # e.g. "chrome": use your browser's YouTube session for downloads
+    frames_per_run: int = 3                 # how many top candidates per run get frames (0 turns it off)
 
     data_dir: Path = ROOT / "data"
 

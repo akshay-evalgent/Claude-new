@@ -37,7 +37,31 @@ from .config import settings
 
 
 def _text(m: BaseMessage) -> str:
-    return m.content if isinstance(m.content, str) else json.dumps(m.content)
+    """Text of a message. For multimodal content, only the text parts: images travel separately."""
+    if isinstance(m.content, str):
+        return m.content
+    return "\n".join(p.get("text", "") if isinstance(p, dict) else str(p)
+                     for p in m.content if not (isinstance(p, dict) and p.get("type") in ("image", "image_url")))
+
+
+def _image_blocks(messages: Sequence[BaseMessage]) -> list[dict]:
+    """Collect images from message content, as Anthropic image blocks. Accepts Anthropic-style
+    {"type": "image", "source": ...} and LangChain-style {"type": "image_url", "image_url": data URL}."""
+    blocks: list[dict] = []
+    for m in messages:
+        if isinstance(m.content, str):
+            continue
+        for part in m.content:
+            if not isinstance(part, dict):
+                continue
+            if part.get("type") == "image" and "source" in part:
+                blocks.append({"type": "image", "source": part["source"]})
+            elif part.get("type") == "image_url":
+                url = part["image_url"]["url"] if isinstance(part["image_url"], dict) else part["image_url"]
+                header, _, data = url.partition(",")
+                media = header.removeprefix("data:").split(";")[0] or "image/jpeg"
+                blocks.append({"type": "image", "source": {"type": "base64", "media_type": media, "data": data}})
+    return blocks
 
 
 def _split_messages(messages: Sequence[BaseMessage]) -> tuple[str | None, str]:
@@ -119,7 +143,8 @@ def _tool_instructions(specs: list[dict], tool_choice: str | None) -> str:
 
 
 async def _run_query(
-    prompt: str, system_prompt: str | None, model: str, schema: dict | None, max_turns: int = 3
+    prompt: str, system_prompt: str | None, model: str, schema: dict | None, max_turns: int = 3,
+    images: list[dict] | None = None,
 ) -> dict[str, Any]:
     from claude_agent_sdk import AssistantMessage, ClaudeAgentOptions, ResultMessage, TextBlock, query
 
@@ -136,7 +161,14 @@ async def _run_query(
     text_parts: list[str] = []
     structured: Any = None
     usage: dict[str, Any] = {}
-    async for msg in query(prompt=prompt, options=options):
+    request: Any = prompt
+    if images:
+        # Images need the SDK's streaming-input mode: one user message with image blocks, then text.
+        async def one_message():
+            yield {"type": "user", "message": {"role": "user", "content": [*images, {"type": "text", "text": prompt}]},
+                   "parent_tool_use_id": None, "session_id": "default"}
+        request = one_message()
+    async for msg in query(prompt=request, options=options):
         if isinstance(msg, AssistantMessage):
             for block in msg.content:
                 if isinstance(block, TextBlock):
@@ -190,7 +222,8 @@ class ClaudeCodeChatModel(BaseChatModel):
         if self.tool_specs:
             schema = _tool_turn_schema(self.tool_specs, self.tool_choice)
             system_prompt = f"{system_prompt or ''}\n\n{_tool_instructions(self.tool_specs, self.tool_choice)}".strip()
-        result = _run_sync(_run_query(prompt, system_prompt, self.model, schema, self.max_turns))
+        images = _image_blocks(messages)
+        result = _run_sync(_run_query(prompt, system_prompt, self.model, schema, self.max_turns, images=images or None))
         if os.environ.get("ANIM_DEBUG"):
             print(f"[llm] {self.model} cost=${result['usage'].get('cost_usd') or 0:.4f} "
                   f"duration={result['usage'].get('duration_ms', 0)}ms", file=sys.stderr)

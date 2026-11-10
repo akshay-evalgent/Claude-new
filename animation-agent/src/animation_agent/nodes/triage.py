@@ -109,4 +109,8 @@ def route_after_triage(state: RunState) -> list[Send] | str:
     selected = state.get("selected") or []
     if not selected:
         return "librarian"
-    return [Send("analyze", {"candidate": c}) for c in selected]
+    from ..config import settings
+
+    # Frames cost a download and a vision call, so only the highest-priority picks get them.
+    with_frames = state.get("frames_per_run", settings.frames_per_run)
+    return [Send("analyze", {"candidate": c, "visual": i < with_frames}) for i, c in enumerate(selected)]

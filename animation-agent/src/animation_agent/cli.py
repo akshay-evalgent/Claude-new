@@ -109,6 +109,7 @@ def run(
     parallel: int = typer.Option(4, "--parallel", "-p", min=1, max=10, help="Most card pipelines running at once."),
     include_seen: bool = typer.Option(False, "--include-seen", help="Ignore memory: reconsider videos seen before."),
     digest: bool = typer.Option(True, "--digest/--no-digest", help="Draft a digest and pause for your review."),
+    frames: int = typer.Option(None, "--frames", min=0, max=10, help="Top picks that get frames sampled (default FRAMES_PER_RUN; 0 = off)."),
 ):
     """Run the graph: Scout, Triage, parallel Analyst+Critic pipelines, Librarian, then the digest review."""
     import uuid
@@ -120,6 +121,8 @@ def run(
               "include_seen": include_seen}
     if query:
         inputs["queries"] = query
+    if frames is not None:
+        inputs["frames_per_run"] = frames
     _execute(inputs, run_id, parallel, with_digest=digest)
 
 
@@ -248,7 +251,7 @@ def _execute(inputs, run_id: str, parallel: int, with_digest: bool = True) -> No
 
     typer.echo(f"run {run_id} (if it stops, continue with: uv run anim resume {run_id})")
     # Two stream modes at once. "updates" yields each main-graph node's partial update as it
-    # finishes. "custom" yields progress events the Analyst and Critic emit with get_stream_writer(),
+    # finishes. "custom" yields progress events nodes emit with progress.emit(),
     # and subgraphs=True lets those through from inside each parallel card pipeline.
     errors: list[str] = []
     try:
@@ -314,6 +317,8 @@ def _show_update(node: str, out: dict, db_path) -> None:
                        f"confidence {card.confidence:.2f}")
     elif node == "librarian":
         typer.echo(f"[librarian] saved {len(out['saved'])} cards to {db_path}; memory updated")
+    elif node == "look":
+        pass                                                # reported through progress events
     elif node == "synthesizer":
         ch = out.get("trend_changes") or {}
         bits = [f"{k}: {', '.join(v)}" for k, v in ch.items() if v and k != "dropped"]
@@ -484,6 +489,19 @@ def taxonomy():
     for item in sorted(items, key=lambda i: i.value.get("first_seen", "")):
         v = item.value
         typer.echo(f"{v['name']}  ({v['family']}, {len(v.get('card_ids', []))} cards, since {v.get('first_seen')})\n  {v['description']}")
+
+
+@app.command()
+def look(url: str = typer.Argument(..., help="A video URL: YouTube from a home connection, Vimeo from anywhere.")):
+    """Sample frames from a video and print what a vision model sees in them."""
+    from .nodes.look import build_vision_chain, look_at
+
+    try:
+        text, _ = look_at(url, url, build_vision_chain())
+    except Exception as exc:
+        typer.echo(f"Could not get frames: {type(exc).__name__}: {str(exc)[:300]}", err=True)
+        raise typer.Exit(1)
+    typer.echo(text)
 
 
 @app.command()

@@ -15,7 +15,7 @@ the append reducer they all land, without it only the last one would survive.
 from __future__ import annotations
 
 import operator
-from typing import Annotated, TypedDict
+from typing import Annotated, NotRequired, TypedDict
 
 from .schemas import Candidate, Critique, Review, TechniqueCard, Trend, TriageDecision
 
@@ -28,6 +28,7 @@ class RunInput(TypedDict, total=False):
     max_cards: int              # how many candidates Triage may send for analysis (default 3)
     stats_budget: int           # how many search hits get full stats (default 20)
     include_seen: bool          # ignore long-term memory and reconsider videos seen before
+    frames_per_run: int         # how many of the selected candidates get frames sampled (default from .env)
     run_id: str
     started_at: str
 
@@ -59,6 +60,7 @@ class RunState(RunInput, total=False):
 
 class CardInput(TypedDict):
     candidate: Candidate
+    visual: NotRequired[bool]                       # sample frames for this one (top candidates only)
 
 
 class CardOutput(TypedDict, total=False):

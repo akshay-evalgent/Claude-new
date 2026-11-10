@@ -13,8 +13,8 @@ LangSmith, free-first.
 ## Setup
 
 Requirements: Python 3.11+, [uv](https://docs.astral.sh/uv/), and the `claude` CLI logged in
-(for the default provider). From Milestone 1, keep Node or Deno on PATH: yt-dlp, which uv
-installs, uses it for YouTube's JavaScript checks. ffmpeg is needed from Milestone 9.
+(for the default provider). Keep Node or Deno on PATH: yt-dlp, which uv installs, uses it for
+YouTube's JavaScript checks. ffmpeg and ffprobe are needed for frames (Milestone 9).
 
 ```bash
 cd animation-agent
@@ -32,6 +32,7 @@ uv run anim review <run id> # approve, edit, revise or reject a paused digest; `
 uv run anim ask "..."       # question the knowledge base; answers cite their cards
 uv run anim trends          # trends across recent cards (--refresh recomputes); `anim taxonomy` lists sub-styles
 uv run anim eval run        # evals against evals/baseline.json; `anim eval build` refreshes the datasets
+uv run anim look <url>      # sample frames from a video and see what the vision model notes
 ```
 
 To open the graph in LangGraph Studio: `uv run --with "langgraph-cli[inmem]" langgraph dev`.
@@ -52,4 +53,5 @@ example `uv sync --extra anthropic` with an `ANTHROPIC_API_KEY`.
 | 6 Knowledge base and Q&A: local Chroma embeddings, self-query filters with relaxation, `anim ask` with checked citations | done |
 | 7 Synthesis: trends across cards with evidence counts computed in code, change tracking, taxonomy, digest sections | done |
 | 8 Evals: frozen datasets, code metrics plus an Opus judge, baseline with regression checks, CI workflow | done |
-| 9 Multimodal: frames sampled from top videos, visual notes merged into cards | next |
+| 9 Multimodal: frames from the top picks (scene detection), vision notes merged into the source material | done |
+| 10 Deploy: schedule, digest delivery, health check | next |

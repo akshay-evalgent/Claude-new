@@ -22,10 +22,10 @@ from typing import Callable
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import Runnable
-from langgraph.config import get_stream_writer
 from langgraph.store.base import BaseStore
 
 from ..llm import get_model
+from ..progress import emit
 from ..schemas import StyleProposal, SynthesisDraft, TechniqueCard, Trend
 from ..state import RunState
 from ..storage import CardStore
@@ -180,8 +180,8 @@ def make_synthesizer(chain: Runnable | None = None, db_path: Path | None = None,
         except Exception as exc:                        # trends are a bonus; never lose the run over them
             return {"trends": [], "trend_changes": {}, "new_styles": [],
                     "errors": [f"synthesizer: failed ({type(exc).__name__}: {str(exc)[:300]})"]}
-        get_stream_writer()({"node": "synthesizer", "video": f"{len(out['trends'])} trends",
-                             "text": ", ".join(f"{t.name} ({t.evidence_count})" for t in out["trends"][:4]) or "none"})
+        emit("synthesizer", f"{len(out['trends'])} trends",
+             ", ".join(f"{t.name} ({t.evidence_count})" for t in out["trends"][:4]) or "none")
         return out
 
     return synthesizer

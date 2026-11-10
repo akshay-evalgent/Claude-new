@@ -2,6 +2,22 @@
 
 Every architectural choice, the alternative, and why. Newest first.
 
+## Milestone 9
+
+- **Frames for the top `FRAMES_PER_RUN` picks only (default 3).** Each costs a download and an
+  image-heavy model call; Triage priority decides who gets them.
+- **Code chooses frames: the hook at 0.5 s, then ffmpeg scene changes, then even fill, six at most,
+  512 px wide.** A pure function, tested without video.
+- **The vision model writes `VisualNotes`; code formats them into the source material.** One
+  evidence trail: the Analyst quotes the notes and the Critic's verbatim check covers them.
+- **Images go through the Agent SDK's streaming-input mode.** Same adapter, same structured output.
+- **Download failures are recorded, not fatal.** YouTube blocks cloud IPs; the card falls back to
+  metadata. `YTDLP_COOKIES_FROM_BROWSER` is the documented fix for home machines that still get
+  challenged.
+- **Video only, first minute, 480p at most.** Enough for stills, and cheap to fetch.
+- **`progress.emit()` replaces direct `get_stream_writer()` calls.** Progress must never break a node.
+- **The test guard also blocks YouTube lookups and downloads.**
+
 ## Milestone 8
 
 - **Eval datasets are files in git, not queries.** Comparable over time and runnable in CI.

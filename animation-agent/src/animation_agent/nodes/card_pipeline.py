@@ -1,6 +1,6 @@
-"""The per-card subgraph: gather -> analyst -> critic -> (analyst again | accept).
+"""The per-card subgraph: gather -> look -> analyst -> critic -> (analyst again | accept).
 
-    START -> gather -> analyst --> critic --approve--> accept -> END
+    START -> gather -> look -> analyst --> critic --approve--> accept -> END
                          ^           |
                          +--revise---+   (at most MAX_REVISIONS times)
 
@@ -20,6 +20,7 @@ from ..state import CardInput, CardOutput, CardState
 from ..tools.youtube import fetch_top_comments
 from .analyst import COMMENTS_PER_VIDEO, make_analyst_node, source_material
 from .critic import make_critic_node, route_after_critic
+from .look import make_look
 
 UNAPPROVED_CONFIDENCE_CAP = 0.49   # PLAN.md: cards under 0.5 are kept but left out of digests
 
@@ -69,14 +70,18 @@ def build_card_graph(
     analyst_chain: Runnable | None = None,
     critic_chain: Runnable | None = None,
     comments: Callable[[str, int], list[Comment]] = fetch_top_comments,
+    vision_chain: Runnable | None = None,
+    sampler: Callable | None = None,
 ):
     builder = StateGraph(CardState, input_schema=CardInput, output_schema=CardOutput)
     builder.add_node("gather", make_gather(comments))
+    builder.add_node("look", make_look(vision_chain, sampler) if sampler else make_look(vision_chain))
     builder.add_node("analyst", make_analyst_node(analyst_chain))
     builder.add_node("critic", make_critic_node(critic_chain))
     builder.add_node("accept", accept)
     builder.add_edge(START, "gather")
-    builder.add_edge("gather", "analyst")
+    builder.add_edge("gather", "look")
+    builder.add_edge("look", "analyst")
     builder.add_conditional_edges("analyst", route_after_analyst, ["critic", "accept", END])
     builder.add_conditional_edges("critic", route_after_critic, ["analyst", "accept"])
     builder.add_edge("accept", END)

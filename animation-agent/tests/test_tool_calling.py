@@ -61,7 +61,7 @@ def test_single_human_message_is_sent_verbatim():
 def test_bind_tools_end_to_end_with_fake_sdk(monkeypatch):
     seen = {}
 
-    async def fake_query(prompt, system_prompt, model, schema, max_turns):
+    async def fake_query(prompt, system_prompt, model, schema, max_turns, images=None):
         seen.update(prompt=prompt, system=system_prompt, schema=schema, max_turns=max_turns)
         return {"text": "", "usage": {}, "structured": {"thought": "t", "tool_calls": [{"name": "lookup", "args": {"term": "x"}}]}}
 
@@ -71,3 +71,24 @@ def test_bind_tools_end_to_end_with_fake_sdk(monkeypatch):
     assert seen["system"].startswith("be brief") and "### lookup" in seen["system"]
     assert seen["max_turns"] >= 2                     # headroom for Claude Code's structured-output turn
     assert seen["schema"]["properties"]["tool_calls"]["items"]["anyOf"][0]["properties"]["name"]["const"] == "lookup"
+
+
+def test_images_travel_as_blocks_and_stay_out_of_the_text(monkeypatch):
+    seen = {}
+
+    async def fake_query(prompt, system_prompt, model, schema, max_turns, images=None):
+        seen.update(prompt=prompt, images=images)
+        return {"text": "", "usage": {}, "structured": {"description": "a test card"}}
+
+    monkeypatch.setattr(llm, "_run_query", fake_query)
+    from pydantic import BaseModel
+
+    class Desc(BaseModel):
+        description: str
+
+    msg = HumanMessage(content=[{"type": "image_url", "image_url": {"url": "data:image/png;base64,QUJD"}},
+                                {"type": "text", "text": "Describe it."}])
+    out = ClaudeCodeChatModel().with_structured_output(Desc).invoke([SystemMessage("s"), msg])
+    assert out.description == "a test card"
+    assert seen["images"] == [{"type": "image", "source": {"type": "base64", "media_type": "image/png", "data": "QUJD"}}]
+    assert seen["prompt"] == "Describe it." and "QUJD" not in seen["prompt"]

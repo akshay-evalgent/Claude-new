@@ -10,4 +10,7 @@ Rules
 - Put at least one Evidence item for every dimension you score 3 or higher.
 - Name tools only when stated or obvious from visual signatures. Otherwise leave the list empty and add an open question.
 - Set confidence low (under 0.5) when you only have a text description and no frames, metrics or creator commentary.
+- When visual notes from sampled frames are present, use them for hook, composition, style and mobile
+  readability, quoting the notes as evidence. They describe stills, so claims about motion, timing or
+  sound stay marked "likely:".
 - Be concrete. "Snappy easing" is useless; "holds on pose for ~8 frames then 3-frame smear into next pose" is useful.

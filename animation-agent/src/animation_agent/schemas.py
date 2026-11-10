@@ -285,3 +285,20 @@ class Trend(BaseModel):
     first_seen: date
     last_seen: date
     examples: list[dict[str, str]] = Field(default_factory=list, description="Title and URL of up to three supporting cards.")
+
+
+# ---- Milestone 9: what the frames show ------------------------------------------------------
+
+class FrameNote(BaseModel):
+    index: int = Field(description="Frame number as given, starting at 1.")
+    description: str = Field(description="What is on screen: subject, composition, rendering style, any text. Concrete.")
+
+
+class VisualNotes(BaseModel):
+    """A vision model's description of sampled stills. Stills cannot show motion or timing."""
+
+    frames: list[FrameNote]
+    hook: str = Field(description="What the first frame shows and whether it would stop a scroll.")
+    style: list[str] = Field(default_factory=list, description="Rendering, line, palette, texture, lighting, camera, typography.")
+    techniques: list[str] = Field(default_factory=list, description="Techniques visible in the stills, each with its frame number.")
+    caveats: str = Field(description="What the stills cannot show, e.g. motion, timing, sound.")

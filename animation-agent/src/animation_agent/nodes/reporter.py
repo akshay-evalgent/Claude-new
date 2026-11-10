@@ -15,9 +15,9 @@ from typing import Callable
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import Runnable
-from langgraph.config import get_stream_writer
 
 from ..llm import get_model
+from ..progress import emit
 from ..schemas import DigestDraft, Review, TechniqueCard, Trend
 from ..state import RunState
 
@@ -155,7 +155,7 @@ def make_reporter(chain: Runnable | None = None) -> Callable[[RunState], dict]:
                                f"{t.hypothesis}" for t in trends) or "(none)"
         draft = (chain or built[0]).invoke({"cards": "\n\n".join(card_brief(c) for c in featured) or "(none this run)",
                                             "trends": trend_text, "revision": revision})
-        get_stream_writer()({"node": "reporter", "video": f"digest round {rnd}", "text": draft.headline})
+        emit("reporter", f"digest round {rnd}", draft.headline)
         return {"digest": render_digest(draft, featured, held, state["run_id"], trends=trends,
                                         changes=state.get("trend_changes")),
                 "digest_round": rnd, "digest_feedback": None}

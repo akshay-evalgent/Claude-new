@@ -14,15 +14,18 @@ from typing import Callable
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import Runnable
-from langgraph.config import get_stream_writer
 
 from ..llm import get_model
+from ..progress import emit
 from ..m0_card_from_text import enrich
 from ..schemas import Candidate, Comment, Critique, TechniqueCard, Virality
 from ..state import CardState
 
 PROMPTS = Path(__file__).resolve().parents[1] / "prompts"
 COMMENTS_PER_VIDEO = 15
+NO_FRAMES_LINE = "Not available: video frames, audio and transcript. Judge visuals only from the text above."
+WITH_FRAMES_LINE = ("Not available: audio and transcript. The visual notes below describe still frames sampled from "
+                    "the first minute; motion and timing cannot be seen in stills.")
 CODE_OWNED_FIELDS = {"id", "title", "source_urls", "virality", "first_seen", "last_updated"}
 
 
@@ -48,7 +51,7 @@ def source_material(c: Candidate, comments: list[Comment]) -> str:
         lines += [f'- "{cm.text}" ({cm.likes:,} likes{", by the creator" if cm.by_creator else ""})' for cm in comments]
     else:
         lines.append("No viewer comments were available.")
-    lines.append("Not available: video frames, audio and transcript. Judge visuals only from the text above.")
+    lines.append(NO_FRAMES_LINE)
     return "\n".join(lines)
 
 
@@ -108,7 +111,7 @@ def make_analyst_node(chain: Runnable | None = None) -> Callable[[CardState], di
                     "errors": [f"analyst: draft {attempt} for {c.video_id} failed: {type(exc).__name__}: {str(exc)[:300]}"]}
         # Progress for whoever streams with stream_mode="custom" (the CLI does). The draft itself is
         # private subgraph state, so it never appears in the main graph's "updates" stream.
-        get_stream_writer()({"node": "analyst", "video": c.title, "text": f"draft {attempt}"})
+        emit("analyst", c.title, f"draft {attempt}")
         return {"draft": finalize(card, c), "attempts": attempt}
 
     return analyst

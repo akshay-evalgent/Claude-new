@@ -10,8 +10,8 @@ Check:
 3. how_it_is_made: is every step that the source does not state prefixed "likely:"?
 4. tools: is each tool stated in the source or unmistakable from it? Otherwise it must go.
 5. style_family and sub_style: are they consistent with the source?
-6. Visual claims: the analyst never saw the video. Any claim about how it looks must be supported
-   by the text, or marked as a guess.
+6. Visual claims: any claim about how it looks must be supported by the text or by the visual notes
+   from sampled frames, if present, or be marked as a guess. Stills cannot show motion or timing.
 
 Automated checks run before you. If they list quotes that could not be found in the source,
 treat each one as an issue: the quote must be replaced with a real one or the claim removed.

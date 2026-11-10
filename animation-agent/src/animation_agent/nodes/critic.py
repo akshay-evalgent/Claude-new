@@ -14,9 +14,9 @@ from typing import Callable
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import Runnable
-from langgraph.config import get_stream_writer
 
 from ..llm import get_model
+from ..progress import emit
 from ..schemas import Critique, Issue, TechniqueCard
 from ..state import CardState
 from .analyst import CODE_OWNED_FIELDS
@@ -105,7 +105,7 @@ def make_critic_node(chain: Runnable | None = None) -> Callable[[CardState], dic
             })
         line = (f"round {rnd}: {critique.verdict}, {len(critique.issues)} issues, "
                 f"confidence {critique.confidence:.2f}. {critique.summary}")
-        get_stream_writer()({"node": "critic", "video": card.title, "text": line})
+        emit("critic", card.title, line)
         return {"critique": critique, "history": [line]}
 
     return critic
