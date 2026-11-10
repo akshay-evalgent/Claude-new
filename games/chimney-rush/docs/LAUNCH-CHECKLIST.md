@@ -11,6 +11,18 @@ Everything you upload is already made:
 
 Your part is creating the accounts and clicking upload. Those steps need your identity, tax and payout details.
 
+## Get the files onto your computer (5 minutes)
+
+1. Sign in to GitHub with the account that can see `akshay-evalgent/Claude-new`.
+2. Download everything in one go:
+   https://github.com/akshay-evalgent/Claude-new/archive/refs/heads/claude/gifted-brown-cqo3yn.zip
+3. Unzip it and open `games/chimney-rush/`. You'll use three folders:
+   - `release/`: the game files to upload. **Upload these zips as they are; don't unzip them.**
+   - `listings/images/` and `listings/video/`: covers, screenshots and videos.
+   - `listings/LISTINGS.md`: the text to copy and paste.
+
+When I rebuild a zip (for example after you send me a game ID), download the same link again.
+
 ## Before you start (once, about 30 minutes)
 
 - **A PayPal account.** Most portals pay through PayPal; some also offer bank transfer.
