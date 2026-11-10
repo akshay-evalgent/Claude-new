@@ -1,7 +1,7 @@
 # Render one slice of "One Night" on a Kaggle machine and encode it as a near-lossless video segment.
 # The slice bounds and whether to try the GPU are filled in by kaggle/make_kernels.py.
 import os, subprocess, glob, shutil, time, json
-FROM, TO, TRY_GPU = 571, 786, True
+FROM, TO, TRY_GPU = 786, 1573, True
 OUT = "/kaggle/working"; FR = "/tmp/frames"; os.makedirs(FR, exist_ok=True)
 T0 = time.time()
 def sh(cmd, t=3600):
@@ -73,7 +73,7 @@ from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
     b = p.chromium.launch(args=args)
     pg = b.new_page(viewport={"width": 1080, "height": 1920}, device_scale_factor=1)
-    pg.goto("file://" + src + "?render=1&k=0&scale=0.67")
+    pg.goto("file://" + src + "?render=1&k=0&scale=1.0&kbase=4&khi=6")
     pg.wait_for_function("window.__ready === true || window.__error", timeout=900000)
     err = pg.evaluate("window.__error")
     if err: print("PAGE ERROR", err); raise SystemExit(1)

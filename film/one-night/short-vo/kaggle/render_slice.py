@@ -73,7 +73,7 @@ from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
     b = p.chromium.launch(args=args)
     pg = b.new_page(viewport={"width": 1080, "height": 1920}, device_scale_factor=1)
-    pg.goto("file://" + src + "?render=1&k=0&scale=0.67")
+    pg.goto("file://" + src + "?render=1&k=0&scale=__SCALE__&kbase=__KBASE__&khi=__KHI__")
     pg.wait_for_function("window.__ready === true || window.__error", timeout=900000)
     err = pg.evaluate("window.__error")
     if err: print("PAGE ERROR", err); raise SystemExit(1)

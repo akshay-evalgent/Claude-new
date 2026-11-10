@@ -2200,7 +2200,8 @@ void main(){
   const params = new URLSearchParams(location.search);
   const RENDER = params.has('render');
   const K = parseInt(params.get('k') || (RENDER ? '0' : '1'));   // 0 = choose per shot
-  const KSHOT = { launch: 3, dawn: 3 };
+  const KBASE = parseInt(params.get('kbase') || '2'), KHI = parseInt(params.get('khi') || '3');   // sub-frames: most shots, and the fast ones
+  const KSHOT = { launch: KHI, dawn: KHI };
   const SCALE = parseFloat(params.get('scale') || (RENDER ? '1' : '0.5'));
   const frameEl = document.getElementById('frame'), canvas = document.getElementById('gl');
   const capEl = document.getElementById('cap'), playBtn = document.getElementById('play'), audio = document.getElementById('score');
@@ -2278,9 +2279,11 @@ void main(){
   let lastT = 0;
   function draw(t){
     lastT = t;
-    Kcur = K > 0 ? K : (KSHOT[shotAt(t).name] || 2);
+    Kcur = K > 0 ? K : (KSHOT[shotAt(t).name] || KBASE);
     const KF = Kcur;
-    const JIT = KF === 1 ? [[0, 0]] : KF === 2 ? [[-0.25, -0.25], [0.25, 0.25]] : KF === 3 ? [[-0.33, -0.1], [0.33, -0.2], [0.0, 0.33]] : [[-0.375, -0.125], [0.125, -0.375], [0.375, 0.125], [-0.125, 0.375]];
+    const JIT = KF === 1 ? [[0, 0]] : KF === 2 ? [[-0.25, -0.25], [0.25, 0.25]] : KF === 3 ? [[-0.33, -0.1], [0.33, -0.2], [0.0, 0.33]] :
+      KF === 4 ? [[-0.375, -0.125], [0.125, -0.375], [0.375, 0.125], [-0.125, 0.375]] :
+      Array.from({ length: KF }, (_, i) => [((i*0.618034) % 1) - 0.5, ((i + 0.5)/KF) - 0.5]);
     const mid = shot(t);
     // 1. accumulate the sub-frames across a 180-degree shutter
     gl.bindFramebuffer(gl.FRAMEBUFFER, acc.f); gl.viewport(0, 0, IW, IH);

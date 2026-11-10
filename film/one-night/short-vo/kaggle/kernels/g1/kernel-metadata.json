@@ -1,11 +1,11 @@
 {
- "id": "akkikmr/one-night-render-d",
- "title": "one-night-render-d",
+ "id": "akkikmr/one-night-render-g1",
+ "title": "one-night-render-g1",
  "code_file": "render.py",
  "language": "python",
  "kernel_type": "script",
  "is_private": true,
- "enable_gpu": false,
+ "enable_gpu": true,
  "enable_tpu": false,
  "enable_internet": true,
  "dataset_sources": [
@@ -13,5 +13,6 @@
  ],
  "kernel_sources": [],
  "competition_sources": [],
- "model_sources": []
+ "model_sources": [],
+ "machine_shape": "NvidiaTeslaT4"
 }
