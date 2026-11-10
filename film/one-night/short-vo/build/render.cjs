@@ -1,7 +1,7 @@
 // Render frames: node build/render.cjs [t1,t2,...]   (stills)   or   FROM=0 TO=1574 node build/render.cjs   (frames)
 // Env: K sub-frames (4), SCALE internal render scale (1), H output height (1920)
 const { chromium } = require('playwright');
-const { mkdirSync, readFileSync } = require('node:fs');
+const { mkdirSync, readFileSync, existsSync } = require('node:fs');
 const path = require('node:path');
 (async () => {
 const root = path.resolve(__dirname, '..');
@@ -28,8 +28,11 @@ if(only){
 } else {
   const t1 = Date.now();
   for(let i = FROM; i < TO; i++){
+    const out = path.join(frames, `f${String(i).padStart(4, '0')}.png`);
+    if(existsSync(out)) continue;                       // resume: skip frames already rendered
     await page.evaluate(t => window.__seek(t), (i + 0.5)/FPS);
-    await page.screenshot({ path: path.join(frames, `f${String(i).padStart(4, '0')}.png`), timeout: 0 });
+    await page.screenshot({ path: out + '.tmp.png', timeout: 0 });
+    require('node:fs').renameSync(out + '.tmp.png', out);
     if(i % 24 === 0) console.log('frame', i, ((Date.now() - t1)/1000).toFixed(1) + 's');
   }
   console.log('frames', FROM, 'to', TO, 'done');
