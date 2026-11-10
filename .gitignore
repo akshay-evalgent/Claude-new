@@ -20,3 +20,4 @@ film/one-night/short-vo/build/segs/
 film/one-night/flow/edit/build/*
 !film/one-night/flow/edit/build/edit.py
 film/one-night/flow/edit/vo/takes/bf_emma/
+film/one-night/flow/edit/vo/takes/her/*_t*.wav
