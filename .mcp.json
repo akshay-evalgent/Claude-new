@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "brave-browser": {
+    "comet-browser": {
       "command": "cmd",
       "args": [
         "/c",
@@ -9,13 +9,13 @@
         "@playwright/mcp@latest",
         "--extension",
         "--output-dir",
-        "${BRAVE_MCP_OUTPUT_DIR:-./downloads}"
+        "${COMET_MCP_OUTPUT_DIR:-./downloads}"
       ],
       "env": {
         "PLAYWRIGHT_MCP_EXTENSION_TOKEN": "${PLAYWRIGHT_MCP_EXTENSION_TOKEN:-}"
       }
     },
-    "brave-direct": {
+    "comet-direct": {
       "command": "cmd",
       "args": [
         "/c",
@@ -23,11 +23,11 @@
         "-y",
         "@playwright/mcp@latest",
         "--executable-path",
-        "${BRAVE_PATH:-C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe}",
+        "${COMET_PATH}",
         "--user-data-dir",
-        "${BRAVE_MCP_PROFILE_DIR:-./.brave-mcp-profile}",
+        "${COMET_MCP_PROFILE_DIR:-./.comet-mcp-profile}",
         "--output-dir",
-        "${BRAVE_MCP_OUTPUT_DIR:-./downloads}"
+        "${COMET_MCP_OUTPUT_DIR:-./downloads}"
       ]
     },
     "brave-search": {

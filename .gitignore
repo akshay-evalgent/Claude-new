@@ -3,5 +3,5 @@ __pycache__/
 
 # local browser automation state
 .env
-.brave-mcp-profile/
+.comet-mcp-profile/
 downloads/

@@ -1,15 +1,14 @@
 {
-  "enabledMcpjsonServers": ["brave-browser", "brave-direct", "brave-search"],
+  "enabledMcpjsonServers": ["comet-browser", "comet-direct", "brave-search"],
   "permissions": {
     "allow": [
-      "mcp__brave-browser",
-      "mcp__brave-direct",
+      "mcp__comet-browser",
+      "mcp__comet-direct",
       "mcp__brave-search",
       "WebFetch",
       "WebSearch",
       "Bash(npx @playwright/mcp *)",
-      "Bash(curl *)",
-      "Bash(wget *)"
+      "Bash(curl *)"
     ]
   }
 }
