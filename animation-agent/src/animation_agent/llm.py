@@ -6,8 +6,13 @@ through the Claude Agent SDK. Tomorrow it can be an API key, Gemini, or a local 
 and no node changes.
 
 The interesting part is `ClaudeCodeChatModel`: it adapts the Agent SDK to LangChain's
-`BaseChatModel` interface so LangGraph, LangSmith tracing, and `with_structured_output`
-all work with it. Writing an adapter like this is how you plug *anything* into LangChain.
+`BaseChatModel` interface so LangGraph, LangSmith tracing, `with_structured_output` and
+`bind_tools` all work with it. Writing an adapter like this is how you plug *anything*
+into LangChain.
+
+Milestone 1 adds tool calling. Read `bind_tools` and `_tool_turn_schema`: they show that
+"tool calling" is nothing magic. The model fills a schema that says which function to run
+with which arguments, your code runs it, and the result goes back as a message.
 """
 from __future__ import annotations
 
@@ -15,46 +20,116 @@ import asyncio
 import json
 import os
 import sys
-from typing import Any, Iterator, Sequence
+import uuid
+from typing import Any, Callable, Sequence
 
 from langchain_core.callbacks import CallbackManagerForLLMRun
 from langchain_core.language_models import BaseChatModel
-from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage
+from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage, ToolMessage
+from langchain_core.messages.tool import ToolCall
 from langchain_core.outputs import ChatGeneration, ChatResult
 from langchain_core.runnables import Runnable, RunnableLambda
+from langchain_core.tools import BaseTool
+from langchain_core.utils.function_calling import convert_to_openai_tool
 from pydantic import BaseModel
 
 from .config import settings
 
 
+def _text(m: BaseMessage) -> str:
+    return m.content if isinstance(m.content, str) else json.dumps(m.content)
+
+
 def _split_messages(messages: Sequence[BaseMessage]) -> tuple[str | None, str]:
     """The Agent SDK takes one system prompt and one user prompt per query.
 
-    We fold the conversation into a single transcript. Good enough for single-shot
-    nodes, which is all this agent needs; multi-turn chat would use ClaudeSDKClient.
+    We fold the conversation into a single transcript, including the tool calls the model
+    made and the results that came back. Every ReAct step re-sends the whole transcript,
+    which is how chat APIs work too: the model is stateless, the message list is the memory.
     """
-    system_parts: list[str] = []
+    system = "\n\n".join(_text(m) for m in messages if isinstance(m, SystemMessage)) or None
+    rest = [m for m in messages if not isinstance(m, SystemMessage)]
+    if len(rest) == 1 and isinstance(rest[0], HumanMessage):
+        return system, _text(rest[0])
+
     convo: list[str] = []
-    for m in messages:
-        text = m.content if isinstance(m.content, str) else json.dumps(m.content)
-        if isinstance(m, SystemMessage):
-            system_parts.append(text)
-        elif isinstance(m, HumanMessage):
-            convo.append(text if len(messages) - len(system_parts) == 1 else f"User: {text}")
+    for m in rest:
+        text = _text(m)
+        if isinstance(m, HumanMessage):
+            convo.append(f"User: {text}")
         elif isinstance(m, AIMessage):
-            convo.append(f"Assistant: {text}")
+            if text:
+                convo.append(f"Assistant: {text}")
+            for call in m.tool_calls:
+                convo.append(f"Assistant called tool `{call['name']}` (call id {call['id']}) "
+                             f"with arguments {json.dumps(call['args'], ensure_ascii=False)}")
+        elif isinstance(m, ToolMessage):
+            flag = ", FAILED" if m.status == "error" else ""
+            convo.append(f"Tool result for call id {m.tool_call_id} (`{m.name}`{flag}):\n{text}")
         else:
             convo.append(text)
-    return ("\n\n".join(system_parts) or None), "\n\n".join(convo)
+    return system, "\n\n".join(convo)
 
 
-async def _run_query(prompt: str, system_prompt: str | None, model: str, schema: dict | None) -> dict[str, Any]:
+def _tool_turn_schema(specs: list[dict], tool_choice: str | None) -> dict:
+    """The JSON schema for one ReAct turn: a thought, then either tool calls or a final answer.
+
+    Each allowed call is `{"name": <one tool>, "args": <that tool's own argument schema>}`,
+    so the arguments are validated against the tool's signature before our code sees them.
+    """
+    call_variants = [
+        {
+            "type": "object",
+            "properties": {"name": {"type": "string", "const": spec["name"]}, "args": spec["parameters"]},
+            "required": ["name", "args"],
+            "additionalProperties": False,
+        }
+        for spec in specs
+    ]
+    properties: dict[str, Any] = {
+        "thought": {"type": "string", "description": "Briefly: what you know so far and what you will do next."},
+        "final_answer": {"type": "string", "description": "Your complete answer to the user. Only when you are done calling tools."},
+    }
+    required = ["thought"]
+    if tool_choice != "none":
+        properties["tool_calls"] = {
+            "type": "array",
+            "items": {"anyOf": call_variants},
+            "description": "Tools to run now. Several independent calls may go in one turn. Empty when giving final_answer.",
+        }
+        if tool_choice in ("any", "required"):
+            properties["tool_calls"]["minItems"] = 1
+            required.append("tool_calls")
+    return {"type": "object", "properties": properties, "required": required, "additionalProperties": False}
+
+
+def _tool_instructions(specs: list[dict], tool_choice: str | None) -> str:
+    lines = ["## Tools", "",
+             "You can call the tools below. You do not run them yourself: list the calls in `tool_calls`",
+             "and their results come back to you in the next turn.", ""]
+    for spec in specs:
+        lines.append(f"### {spec['name']}\n{spec.get('description', '').strip()}\n")
+    if tool_choice == "none":
+        lines.append("Tools are disabled for this turn. Reply with `thought` and `final_answer` only.")
+    else:
+        lines += ["Reply with one JSON object each turn:",
+                  "- To use tools: `thought` plus `tool_calls`. Batch independent calls into one turn.",
+                  "- To finish: `thought` plus `final_answer`, with no `tool_calls`."]
+    return "\n".join(lines)
+
+
+async def _run_query(
+    prompt: str, system_prompt: str | None, model: str, schema: dict | None, max_turns: int = 3
+) -> dict[str, Any]:
     from claude_agent_sdk import AssistantMessage, ClaudeAgentOptions, ResultMessage, TextBlock, query
 
     options = ClaudeAgentOptions(
         system_prompt=system_prompt or "You are a precise analyst. Answer directly.",
         model=model,
-        max_turns=1,
+        # Claude Code returns structured output through an internal tool call, and retries when
+        # the output fails the schema. Both use turns. With tools=[] nothing else can, so a little
+        # headroom costs nothing on success and avoids "Reached maximum number of turns" errors.
+        max_turns=max_turns,
         tools=[],                      # a pure model call: no file, shell, or web tools
         output_format={"type": "json_schema", "schema": schema} if schema else None,
     )
@@ -68,7 +143,8 @@ async def _run_query(prompt: str, system_prompt: str | None, model: str, schema:
                     text_parts.append(block.text)
         elif isinstance(msg, ResultMessage):
             structured = getattr(msg, "structured_output", None)
-            usage = {"cost_usd": msg.total_cost_usd, "duration_ms": msg.duration_ms, "usage": msg.usage}
+            usage = {"cost_usd": msg.total_cost_usd, "duration_ms": msg.duration_ms, "num_turns": msg.num_turns,
+                     "usage": msg.usage}
     return {"text": "".join(text_parts), "structured": structured, "usage": usage}
 
 
@@ -90,6 +166,9 @@ class ClaudeCodeChatModel(BaseChatModel):
 
     model: str = "claude-opus-5-5"
     json_schema: dict | None = None   # set by with_structured_output
+    tool_specs: list[dict] | None = None  # set by bind_tools
+    tool_choice: str | None = None        # None/"auto", "any"/"required", or "none"
+    max_turns: int = 3                    # SDK turns per call; see _run_query
 
     @property
     def _llm_type(self) -> str:
@@ -107,13 +186,31 @@ class ClaudeCodeChatModel(BaseChatModel):
         **kwargs: Any,
     ) -> ChatResult:
         system_prompt, prompt = _split_messages(messages)
-        result = _run_sync(_run_query(prompt, system_prompt, self.model, self.json_schema))
+        schema = self.json_schema
+        if self.tool_specs:
+            schema = _tool_turn_schema(self.tool_specs, self.tool_choice)
+            system_prompt = f"{system_prompt or ''}\n\n{_tool_instructions(self.tool_specs, self.tool_choice)}".strip()
+        result = _run_sync(_run_query(prompt, system_prompt, self.model, schema, self.max_turns))
         if os.environ.get("ANIM_DEBUG"):
-            print(f"[llm] {self.model} cost=${result['usage'].get('cost_usd', 0):.4f} "
+            print(f"[llm] {self.model} cost=${result['usage'].get('cost_usd') or 0:.4f} "
                   f"duration={result['usage'].get('duration_ms', 0)}ms", file=sys.stderr)
-        content = json.dumps(result["structured"]) if result["structured"] is not None else result["text"]
-        message = AIMessage(content=content, response_metadata=result["usage"])
+        if self.tool_specs:
+            message = _tool_turn_message(result)
+        else:
+            content = json.dumps(result["structured"]) if result["structured"] is not None else result["text"]
+            message = AIMessage(content=content, response_metadata=result["usage"])
         return ChatResult(generations=[ChatGeneration(message=message)])
+
+    def bind_tools(
+        self,
+        tools: Sequence[dict[str, Any] | type | Callable | BaseTool],
+        *,
+        tool_choice: str | None = None,
+        **kwargs: Any,
+    ) -> Runnable:
+        """Same signature as every LangChain chat model, so agent code never knows the provider."""
+        specs = [convert_to_openai_tool(t)["function"] for t in tools]
+        return self.model_copy(update={"tool_specs": specs, "tool_choice": tool_choice})
 
     def with_structured_output(self, schema: type[BaseModel], **kwargs: Any) -> Runnable:
         """Return a runnable that yields a validated Pydantic object.
@@ -127,6 +224,25 @@ class ClaudeCodeChatModel(BaseChatModel):
             return schema.model_validate_json(msg.content if isinstance(msg.content, str) else json.dumps(msg.content))
 
         return bound | RunnableLambda(_parse).with_config(run_name=f"parse_{schema.__name__}")
+
+
+def _tool_turn_message(result: dict[str, Any]) -> AIMessage:
+    """Turn the model's structured reply into a standard AIMessage with `tool_calls`."""
+    data = result["structured"]
+    if data is None:
+        try:
+            data = json.loads(result["text"])
+        except (TypeError, ValueError):
+            return AIMessage(content=result["text"], response_metadata=result["usage"])
+    thought = data.get("thought", "")
+    calls = [
+        ToolCall(name=c["name"], args=c.get("args") or {}, id=f"call_{uuid.uuid4().hex[:12]}")
+        for c in data.get("tool_calls") or []
+        if isinstance(c, dict) and c.get("name")
+    ]
+    content = thought if calls else (data.get("final_answer") or thought)
+    return AIMessage(content=content, tool_calls=calls, additional_kwargs={"thought": thought},
+                     response_metadata=result["usage"])
 
 
 def get_model(role: str = "analyst") -> BaseChatModel:

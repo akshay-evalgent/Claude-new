@@ -85,3 +85,47 @@ class TechniqueCard(BaseModel):
     # Bookkeeping, filled by code not by the model.
     first_seen: date | None = None
     last_updated: date | None = None
+
+
+class Candidate(BaseModel):
+    """A video a tool found. Metadata only: we never store the media itself.
+
+    Milestone 1 tools return these. In Milestone 2 the Scout node outputs a list of them
+    and Triage ranks them, so the shape is fixed now even though only YouTube fills it.
+    """
+
+    platform: str = "youtube"
+    video_id: str
+    url: str
+    title: str
+    channel: str | None = None
+    channel_followers: int | None = None
+    posted_on: date | None = None
+    duration_s: int | None = None
+    views: int | None = None
+    likes: int | None = None
+    comments: int | None = None
+    tags: list[str] = Field(default_factory=list)
+    description: str = ""
+
+    # Computed by code in `with_metrics()`, never asked of the model.
+    views_per_day: float | None = None
+    like_rate: float | None = None
+    comment_rate: float | None = None
+    views_per_follower: float | None = Field(
+        default=None, description="views / channel followers. Above 1 means the video outgrew its channel: a strong viral signal."
+    )
+
+    def with_metrics(self, today: date | None = None) -> "Candidate":
+        """Fill the ratio fields from the raw counts. Same rule as M0's `enrich()`: compute, don't ask."""
+        today = today or date.today()
+        if self.views is not None and self.posted_on:
+            self.views_per_day = round(self.views / max((today - self.posted_on).days, 1), 1)
+        if self.views:
+            if self.likes is not None:
+                self.like_rate = round(self.likes / self.views, 4)
+            if self.comments is not None:
+                self.comment_rate = round(self.comments / self.views, 5)
+            if self.channel_followers:
+                self.views_per_follower = round(self.views / self.channel_followers, 2)
+        return self
