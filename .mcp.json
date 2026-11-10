@@ -1,0 +1,37 @@
+{
+  "mcpServers": {
+    "brave-browser": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest",
+        "--extension",
+        "--output-dir",
+        "${BRAVE_MCP_OUTPUT_DIR:-./downloads}"
+      ],
+      "env": {
+        "PLAYWRIGHT_MCP_EXTENSION_TOKEN": "${PLAYWRIGHT_MCP_EXTENSION_TOKEN:-}"
+      }
+    },
+    "brave-direct": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest",
+        "--executable-path",
+        "${BRAVE_PATH:-/usr/bin/brave-browser}",
+        "--user-data-dir",
+        "${BRAVE_MCP_PROFILE_DIR:-./.brave-mcp-profile}",
+        "--output-dir",
+        "${BRAVE_MCP_OUTPUT_DIR:-./downloads}"
+      ]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@brave/brave-search-mcp-server", "--transport", "stdio"],
+      "env": {
+        "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+      }
+    }
+  }
+}

@@ -1,2 +1,7 @@
 film/input/
 __pycache__/
+
+# local browser automation state
+.env
+.brave-mcp-profile/
+downloads/
