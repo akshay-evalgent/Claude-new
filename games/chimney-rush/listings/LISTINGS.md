@@ -151,7 +151,7 @@ Works on desktop and phones, in landscape or portrait. No sign-up, no ads on thi
 A complete, polished one-tap arcade game you can reskin and publish under your own name. Plain JavaScript and Canvas: no engine, no dependencies, no image or audio files. About 30 KB.
 
 PLAY THE DEMO
-(link to the free Chimney Rush page)
+https://naruto1008.itch.io/chimney-rush
 
 WHAT'S INCLUDED
 - Full game source, 7 commented JavaScript files

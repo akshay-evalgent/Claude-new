@@ -6,7 +6,7 @@ Update every Monday. "Plays" means whatever the dashboard calls gameplays or ses
 
 | Platform | Account | Submitted | Live | Public link | Notes |
 |---|---|---|---|---|---|
-| itch.io (game) | | | | | |
+| itch.io (game) | naruto.1008 | 2026-11-10 | 2026-11-10 | https://naruto1008.itch.io/chimney-rush | Free, plays in browser; checked on desktop and phone |
 | CrazyGames | | | | | Basic Launch test: 7–21 days, no revenue |
 | GameMonetize | | | | | Needs Game ID → rebuild |
 | GameDistribution | | | | | Needs gameId → rebuild; review up to 3 weeks |
