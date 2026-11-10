@@ -1,0 +1,751 @@
+[
+ {
+  "id": "L1",
+  "voice": "am_michael",
+  "dur": 3.95,
+  "words": [
+   {
+    "w": "Santa",
+    "s": 0.45,
+    "e": 0.875
+   },
+   {
+    "w": "has",
+    "s": 0.875,
+    "e": 1.2
+   },
+   {
+    "w": "one",
+    "s": 1.2,
+    "e": 1.475
+   },
+   {
+    "w": "night",
+    "s": 1.475,
+    "e": 1.825
+   },
+   {
+    "w": "to",
+    "s": 1.825,
+    "e": 1.925
+   },
+   {
+    "w": "deliver",
+    "s": 1.925,
+    "e": 2.438
+   },
+   {
+    "w": "every",
+    "s": 2.438,
+    "e": 2.788
+   },
+   {
+    "w": "present",
+    "s": 2.788,
+    "e": 3.675
+   }
+  ],
+  "heard": "Santa has one night to deliver every present.",
+  "match": true
+ },
+ {
+  "id": "L2",
+  "voice": "am_michael",
+  "dur": 2.05,
+  "words": [
+   {
+    "w": "Midnight",
+    "s": 0.45,
+    "e": 0.875
+   },
+   {
+    "w": "to",
+    "s": 0.875,
+    "e": 1.025
+   },
+   {
+    "w": "six",
+    "s": 1.025,
+    "e": 1.75
+   }
+  ],
+  "heard": "Midnight to 6.",
+  "match": false
+ },
+ {
+  "id": "L3",
+  "voice": "am_michael",
+  "dur": 4.725,
+  "words": [
+   {
+    "w": "But",
+    "s": 0.375,
+    "e": 0.5
+   },
+   {
+    "w": "what",
+    "s": 0.5,
+    "e": 0.637
+   },
+   {
+    "w": "if",
+    "s": 0.637,
+    "e": 0.738
+   },
+   {
+    "w": "he",
+    "s": 0.738,
+    "e": 0.863
+   },
+   {
+    "w": "flew",
+    "s": 0.863,
+    "e": 1.125
+   },
+   {
+    "w": "so",
+    "s": 1.125,
+    "e": 1.4
+   },
+   {
+    "w": "fast",
+    "s": 1.4,
+    "e": 1.825
+   },
+   {
+    "w": "that",
+    "s": 1.825,
+    "e": 2.038
+   },
+   {
+    "w": "time",
+    "s": 2.038,
+    "e": 2.675
+   },
+   {
+    "w": "itself",
+    "s": 2.675,
+    "e": 3.125
+   },
+   {
+    "w": "began",
+    "s": 3.125,
+    "e": 3.462
+   },
+   {
+    "w": "to",
+    "s": 3.462,
+    "e": 3.587
+   },
+   {
+    "w": "bend",
+    "s": 3.587,
+    "e": 4.425
+   }
+  ],
+  "heard": "But what if he flew so fast that time itself began to bend?",
+  "match": true
+ },
+ {
+  "id": "L4",
+  "voice": "am_michael",
+  "dur": 5.3,
+  "words": [
+   {
+    "w": "Einstein",
+    "s": 0.425,
+    "e": 0.988
+   },
+   {
+    "w": "showed",
+    "s": 0.988,
+    "e": 1.325
+   },
+   {
+    "w": "that",
+    "s": 1.325,
+    "e": 1.475
+   },
+   {
+    "w": "the",
+    "s": 1.475,
+    "e": 1.613
+   },
+   {
+    "w": "faster",
+    "s": 1.613,
+    "e": 2.075
+   },
+   {
+    "w": "you",
+    "s": 2.075,
+    "e": 2.225
+   },
+   {
+    "w": "move",
+    "s": 2.225,
+    "e": 2.9
+   },
+   {
+    "w": "the",
+    "s": 3.025,
+    "e": 3.175
+   },
+   {
+    "w": "slower",
+    "s": 3.175,
+    "e": 3.625
+   },
+   {
+    "w": "your",
+    "s": 3.625,
+    "e": 3.812
+   },
+   {
+    "w": "clock",
+    "s": 3.812,
+    "e": 4.213
+   },
+   {
+    "w": "ticks",
+    "s": 4.213,
+    "e": 5.025
+   }
+  ],
+  "heard": "Einstein showed that the faster you move, the slower your clock ticks.",
+  "match": true
+ },
+ {
+  "id": "L5",
+  "voice": "am_michael",
+  "dur": 6.4,
+  "words": [
+   {
+    "w": "Fly",
+    "s": 0.4,
+    "e": 0.688
+   },
+   {
+    "w": "close",
+    "s": 0.688,
+    "e": 1.05
+   },
+   {
+    "w": "enough",
+    "s": 1.05,
+    "e": 1.35
+   },
+   {
+    "w": "to",
+    "s": 1.35,
+    "e": 1.438
+   },
+   {
+    "w": "the",
+    "s": 1.438,
+    "e": 1.525
+   },
+   {
+    "w": "speed",
+    "s": 1.525,
+    "e": 1.837
+   },
+   {
+    "w": "of",
+    "s": 1.837,
+    "e": 1.988
+   },
+   {
+    "w": "light",
+    "s": 1.988,
+    "e": 2.7
+   },
+   {
+    "w": "and",
+    "s": 2.837,
+    "e": 2.987
+   },
+   {
+    "w": "one",
+    "s": 2.987,
+    "e": 3.25
+   },
+   {
+    "w": "night",
+    "s": 3.25,
+    "e": 3.525
+   },
+   {
+    "w": "for",
+    "s": 3.525,
+    "e": 3.65
+   },
+   {
+    "w": "you",
+    "s": 3.65,
+    "e": 3.8
+   },
+   {
+    "w": "can",
+    "s": 3.8,
+    "e": 3.975
+   },
+   {
+    "w": "be",
+    "s": 3.975,
+    "e": 4.188
+   },
+   {
+    "w": "years",
+    "s": 4.188,
+    "e": 4.7
+   },
+   {
+    "w": "for",
+    "s": 4.7,
+    "e": 4.862
+   },
+   {
+    "w": "everyone",
+    "s": 4.862,
+    "e": 5.325
+   },
+   {
+    "w": "else",
+    "s": 5.325,
+    "e": 6.125
+   }
+  ],
+  "heard": "Fly close enough to the speed of light, and one night for you can be years for everyone else.",
+  "match": true
+ },
+ {
+  "id": "L6",
+  "voice": "am_michael",
+  "dur": 4.525,
+  "words": [
+   {
+    "w": "At",
+    "s": 0.4,
+    "e": 0.537
+   },
+   {
+    "w": "home",
+    "s": 0.537,
+    "e": 0.925
+   },
+   {
+    "w": "nobody",
+    "s": 0.975,
+    "e": 1.4
+   },
+   {
+    "w": "is",
+    "s": 1.4,
+    "e": 1.562
+   },
+   {
+    "w": "moving",
+    "s": 1.562,
+    "e": 2.25
+   },
+   {
+    "w": "Their",
+    "s": 2.375,
+    "e": 2.562
+   },
+   {
+    "w": "clocks",
+    "s": 2.562,
+    "e": 3.075
+   },
+   {
+    "w": "run",
+    "s": 3.075,
+    "e": 3.325
+   },
+   {
+    "w": "normally",
+    "s": 3.325,
+    "e": 4.225
+   }
+  ],
+  "heard": "At home, nobody is moving. Their clocks run normally.",
+  "match": true
+ },
+ {
+  "id": "L7",
+  "voice": "am_michael",
+  "dur": 3.9,
+  "words": [
+   {
+    "w": "Every",
+    "s": 0.4,
+    "e": 0.688
+   },
+   {
+    "w": "second",
+    "s": 0.688,
+    "e": 1.012
+   },
+   {
+    "w": "on",
+    "s": 1.012,
+    "e": 1.113
+   },
+   {
+    "w": "his",
+    "s": 1.113,
+    "e": 1.288
+   },
+   {
+    "w": "watch",
+    "s": 1.288,
+    "e": 1.875
+   },
+   {
+    "w": "is",
+    "s": 1.875,
+    "e": 2.062
+   },
+   {
+    "w": "nine",
+    "s": 2.062,
+    "e": 2.475
+   },
+   {
+    "w": "hours",
+    "s": 2.475,
+    "e": 2.925
+   },
+   {
+    "w": "here",
+    "s": 2.925,
+    "e": 3.6
+   }
+  ],
+  "heard": "Every second on his watch is nine hours here.",
+  "match": true
+ },
+ {
+  "id": "L8",
+  "voice": "am_michael",
+  "dur": 3.825,
+  "words": [
+   {
+    "w": "He",
+    "s": 0.375,
+    "e": 0.5
+   },
+   {
+    "w": "spends",
+    "s": 0.5,
+    "e": 0.925
+   },
+   {
+    "w": "three",
+    "s": 0.925,
+    "e": 1.25
+   },
+   {
+    "w": "seconds",
+    "s": 1.25,
+    "e": 1.7
+   },
+   {
+    "w": "in",
+    "s": 1.7,
+    "e": 1.788
+   },
+   {
+    "w": "a",
+    "s": 1.788,
+    "e": 1.9
+   },
+   {
+    "w": "child's",
+    "s": 1.9,
+    "e": 2.438
+   },
+   {
+    "w": "living",
+    "s": 2.438,
+    "e": 2.8
+   },
+   {
+    "w": "room",
+    "s": 2.8,
+    "e": 3.55
+   }
+  ],
+  "heard": "He spends three seconds in a child's living room.",
+  "match": true
+ },
+ {
+  "id": "L9",
+  "voice": "am_michael",
+  "dur": 3.2,
+  "words": [
+   {
+    "w": "Back",
+    "s": 0.4,
+    "e": 0.675
+   },
+   {
+    "w": "home",
+    "s": 0.675,
+    "e": 1.125
+   },
+   {
+    "w": "more",
+    "s": 1.2,
+    "e": 1.387
+   },
+   {
+    "w": "than",
+    "s": 1.387,
+    "e": 1.488
+   },
+   {
+    "w": "a",
+    "s": 1.488,
+    "e": 1.575
+   },
+   {
+    "w": "day",
+    "s": 1.575,
+    "e": 1.825
+   },
+   {
+    "w": "goes",
+    "s": 1.825,
+    "e": 2.138
+   },
+   {
+    "w": "by",
+    "s": 2.138,
+    "e": 2.9
+   }
+  ],
+  "heard": "Back home, more than a day goes by.",
+  "match": true
+ },
+ {
+  "id": "L10",
+  "voice": "am_michael",
+  "dur": 1.7,
+  "words": [
+   {
+    "w": "One",
+    "s": 0.45,
+    "e": 0.738
+   },
+   {
+    "w": "year",
+    "s": 0.738,
+    "e": 1.4
+   }
+  ],
+  "heard": "One year.",
+  "match": true
+ },
+ {
+  "id": "L11",
+  "voice": "am_michael",
+  "dur": 1.35,
+  "words": [
+   {
+    "w": "Ten",
+    "s": 0.4,
+    "e": 1.025
+   }
+  ],
+  "heard": "10",
+  "match": false
+ },
+ {
+  "id": "L12",
+  "voice": "am_michael",
+  "dur": 1.75,
+  "words": [
+   {
+    "w": "Twenty-three",
+    "s": 0.375,
+    "e": 1.45
+   }
+  ],
+  "heard": "23",
+  "match": false
+ },
+ {
+  "id": "L13",
+  "voice": "am_michael",
+  "dur": 4.05,
+  "words": [
+   {
+    "w": "He",
+    "s": 0.375,
+    "e": 0.525
+   },
+   {
+    "w": "lands",
+    "s": 0.525,
+    "e": 0.9
+   },
+   {
+    "w": "at",
+    "s": 0.9,
+    "e": 1.075
+   },
+   {
+    "w": "six",
+    "s": 1.075,
+    "e": 1.387
+   },
+   {
+    "w": "in",
+    "s": 1.387,
+    "e": 1.462
+   },
+   {
+    "w": "the",
+    "s": 1.462,
+    "e": 1.55
+   },
+   {
+    "w": "morning",
+    "s": 1.55,
+    "e": 2.225
+   },
+   {
+    "w": "Right",
+    "s": 2.388,
+    "e": 2.675
+   },
+   {
+    "w": "on",
+    "s": 2.675,
+    "e": 2.913
+   },
+   {
+    "w": "time",
+    "s": 2.913,
+    "e": 3.75
+   }
+  ],
+  "heard": "He lands at six in the morning right on time",
+  "match": true
+ },
+ {
+  "id": "L14",
+  "voice": "am_michael",
+  "dur": 4.025,
+  "words": [
+   {
+    "w": "But",
+    "s": 0.35,
+    "e": 0.463
+   },
+   {
+    "w": "the",
+    "s": 0.463,
+    "e": 0.575
+   },
+   {
+    "w": "house",
+    "s": 0.575,
+    "e": 0.95
+   },
+   {
+    "w": "has",
+    "s": 0.95,
+    "e": 1.175
+   },
+   {
+    "w": "waited",
+    "s": 1.175,
+    "e": 1.738
+   },
+   {
+    "w": "through",
+    "s": 1.738,
+    "e": 2.0
+   },
+   {
+    "w": "twenty-three",
+    "s": 2.0,
+    "e": 2.663
+   },
+   {
+    "w": "Christmases",
+    "s": 2.663,
+    "e": 3.75
+   }
+  ],
+  "heard": "But the house has waded through 23 Christmases.",
+  "match": false
+ },
+ {
+  "id": "L15",
+  "voice": "bf_emma",
+  "dur": 2.375,
+  "words": [
+   {
+    "w": "You",
+    "s": 0.3,
+    "e": 0.412
+   },
+   {
+    "w": "were",
+    "s": 0.412,
+    "e": 0.537
+   },
+   {
+    "w": "gone",
+    "s": 0.537,
+    "e": 0.875
+   },
+   {
+    "w": "one",
+    "s": 0.875,
+    "e": 1.125
+   },
+   {
+    "w": "night",
+    "s": 1.125,
+    "e": 2.05
+   }
+  ],
+  "heard": "You were gone one night.",
+  "match": true
+ },
+ {
+  "id": "L16",
+  "voice": "am_michael",
+  "dur": 2.15,
+  "words": [
+   {
+    "w": "For",
+    "s": 0.4,
+    "e": 0.55
+   },
+   {
+    "w": "him",
+    "s": 0.55,
+    "e": 0.825
+   },
+   {
+    "w": "it",
+    "s": 0.875,
+    "e": 1.038
+   },
+   {
+    "w": "was",
+    "s": 1.038,
+    "e": 1.85
+   }
+  ],
+  "heard": "For him it was.",
+  "match": true
+ }
+]

@@ -1,0 +1,417 @@
+{
+ "anchors": {
+  "midnight": 6.26,
+  "warp": 16.427,
+  "home": 23.782,
+  "tick": 28.512,
+  "tick_second": 29.124,
+  "clock": 30.464,
+  "present": 32.767,
+  "day": 37.627,
+  "marks": 40.677,
+  "year1": 41.627,
+  "ten": 42.732,
+  "aged": 43.662,
+  "t23": 44.362,
+  "dawn": 46.317,
+  "touchdown": 49.017,
+  "inside": 52.797,
+  "her": 57.552,
+  "watch_end": 61.882,
+  "end": 65.562
+ },
+ "shots": [
+  {
+   "name": "watch_open",
+   "t0": 0.0,
+   "t1": 6.26
+  },
+  {
+   "name": "launch",
+   "t0": 6.26,
+   "t1": 16.427
+  },
+  {
+   "name": "warp",
+   "t0": 16.427,
+   "t1": 23.782
+  },
+  {
+   "name": "window_normal",
+   "t0": 23.782,
+   "t1": 28.512
+  },
+  {
+   "name": "watch_tick",
+   "t0": 28.512,
+   "t1": 30.464
+  },
+  {
+   "name": "clock_spin",
+   "t0": 30.464,
+   "t1": 32.767
+  },
+  {
+   "name": "present",
+   "t0": 32.767,
+   "t1": 37.627
+  },
+  {
+   "name": "window_day",
+   "t0": 37.627,
+   "t1": 40.677
+  },
+  {
+   "name": "marks",
+   "t0": 40.677,
+   "t1": 43.662
+  },
+  {
+   "name": "house_aged",
+   "t0": 43.662,
+   "t1": 46.317
+  },
+  {
+   "name": "dawn",
+   "t0": 46.317,
+   "t1": 52.797
+  },
+  {
+   "name": "interior",
+   "t0": 52.797,
+   "t1": 57.552
+  },
+  {
+   "name": "her",
+   "t0": 57.552,
+   "t1": 61.882
+  },
+  {
+   "name": "watch_end",
+   "t0": 61.882,
+   "t1": 65.562
+  }
+ ],
+ "vo": [
+  {
+   "id": "L1",
+   "at": 0.325,
+   "dur": 4.05,
+   "who": "narrator"
+  },
+  {
+   "id": "L2",
+   "at": 4.03,
+   "dur": 2.2,
+   "who": "narrator"
+  },
+  {
+   "id": "L3",
+   "at": 7.535,
+   "dur": 4.825,
+   "who": "narrator"
+  },
+  {
+   "id": "L4",
+   "at": 11.89,
+   "dur": 5.075,
+   "who": "narrator"
+  },
+  {
+   "id": "L5",
+   "at": 16.852,
+   "dur": 6.45,
+   "who": "narrator"
+  },
+  {
+   "id": "L6",
+   "at": 24.057,
+   "dur": 4.575,
+   "who": "narrator"
+  },
+  {
+   "id": "L7",
+   "at": 28.562,
+   "dur": 4.175,
+   "who": "narrator"
+  },
+  {
+   "id": "L8",
+   "at": 33.442,
+   "dur": 4.175,
+   "who": "narrator"
+  },
+  {
+   "id": "L9",
+   "at": 37.497,
+   "dur": 3.3,
+   "who": "narrator"
+  },
+  {
+   "id": "L10",
+   "at": 41.002,
+   "dur": 1.725,
+   "who": "narrator"
+  },
+  {
+   "id": "L11",
+   "at": 42.482,
+   "dur": 1.35,
+   "who": "narrator"
+  },
+  {
+   "id": "L12",
+   "at": 44.137,
+   "dur": 1.85,
+   "who": "narrator"
+  },
+  {
+   "id": "L13",
+   "at": 48.642,
+   "dur": 4.075,
+   "who": "narrator"
+  },
+  {
+   "id": "L14",
+   "at": 53.172,
+   "dur": 4.4,
+   "who": "narrator"
+  },
+  {
+   "id": "L15",
+   "at": 58.952,
+   "dur": 2.375,
+   "who": "her"
+  },
+  {
+   "id": "L16",
+   "at": 62.332,
+   "dur": 2.35,
+   "who": "narrator"
+  }
+ ],
+ "captions": [
+  {
+   "t0": 0.6,
+   "t1": 2.15,
+   "text": "Santa has one night",
+   "who": "narrator"
+  },
+  {
+   "t0": 2.15,
+   "t1": 4.075,
+   "text": "to deliver every present",
+   "who": "narrator"
+  },
+  {
+   "t0": 4.305,
+   "t1": 5.93,
+   "text": "Midnight to six",
+   "who": "narrator"
+  },
+  {
+   "t0": 7.76,
+   "t1": 8.297,
+   "text": "But what if he",
+   "who": "narrator"
+  },
+  {
+   "t0": 8.297,
+   "t1": 9.61,
+   "text": "flew so fast",
+   "who": "narrator"
+  },
+  {
+   "t0": 9.61,
+   "t1": 11.11,
+   "text": "that time itself began",
+   "who": "narrator"
+  },
+  {
+   "t0": 11.11,
+   "t1": 12.035,
+   "text": "to bend",
+   "who": "narrator"
+  },
+  {
+   "t0": 12.165,
+   "t1": 13.165,
+   "text": "Einstein showed",
+   "who": "narrator"
+  },
+  {
+   "t0": 13.165,
+   "t1": 14.64,
+   "text": "that the faster you move",
+   "who": "narrator"
+  },
+  {
+   "t0": 14.74,
+   "t1": 16.665,
+   "text": "the slower your clock ticks",
+   "who": "narrator"
+  },
+  {
+   "t0": 17.127,
+   "t1": 18.277,
+   "text": "Fly close enough to",
+   "who": "narrator"
+  },
+  {
+   "t0": 18.277,
+   "t1": 19.577,
+   "text": "the speed of light",
+   "who": "narrator"
+  },
+  {
+   "t0": 19.677,
+   "t1": 20.327,
+   "text": "and one night",
+   "who": "narrator"
+  },
+  {
+   "t0": 20.327,
+   "t1": 21.04,
+   "text": "for you can be",
+   "who": "narrator"
+  },
+  {
+   "t0": 21.04,
+   "t1": 23.002,
+   "text": "years for everyone else",
+   "who": "narrator"
+  },
+  {
+   "t0": 24.282,
+   "t1": 24.882,
+   "text": "At home",
+   "who": "narrator"
+  },
+  {
+   "t0": 24.969,
+   "t1": 26.307,
+   "text": "nobody is moving",
+   "who": "narrator"
+  },
+  {
+   "t0": 26.407,
+   "t1": 28.332,
+   "text": "Their clocks run normally",
+   "who": "narrator"
+  },
+  {
+   "t0": 28.812,
+   "t1": 29.562,
+   "text": "Every second",
+   "who": "narrator"
+  },
+  {
+   "t0": 29.562,
+   "t1": 30.524,
+   "text": "on his watch",
+   "who": "narrator"
+  },
+  {
+   "t0": 30.524,
+   "t1": 32.437,
+   "text": "is nine hours here",
+   "who": "narrator"
+  },
+  {
+   "t0": 33.667,
+   "t1": 35.392,
+   "text": "He spends three seconds",
+   "who": "narrator"
+  },
+  {
+   "t0": 35.392,
+   "t1": 37.317,
+   "text": "in a child's living room",
+   "who": "narrator"
+  },
+  {
+   "t0": 37.747,
+   "t1": 38.547,
+   "text": "Back home",
+   "who": "narrator"
+  },
+  {
+   "t0": 38.647,
+   "t1": 39.372,
+   "text": "more than a day",
+   "who": "narrator"
+  },
+  {
+   "t0": 39.372,
+   "t1": 40.497,
+   "text": "goes by",
+   "who": "narrator"
+  },
+  {
+   "t0": 41.277,
+   "t1": 42.402,
+   "text": "One year",
+   "who": "narrator"
+  },
+  {
+   "t0": 42.732,
+   "t1": 43.482,
+   "text": "Ten",
+   "who": "narrator"
+  },
+  {
+   "t0": 44.362,
+   "t1": 45.262,
+   "text": "Twenty-three",
+   "who": "narrator"
+  },
+  {
+   "t0": 48.892,
+   "t1": 50.005,
+   "text": "He lands at six",
+   "who": "narrator"
+  },
+  {
+   "t0": 50.005,
+   "t1": 50.892,
+   "text": "in the morning",
+   "who": "narrator"
+  },
+  {
+   "t0": 51.03,
+   "t1": 52.417,
+   "text": "Right on time",
+   "who": "narrator"
+  },
+  {
+   "t0": 53.397,
+   "t1": 54.484,
+   "text": "But the house has",
+   "who": "narrator"
+  },
+  {
+   "t0": 54.484,
+   "t1": 57.034,
+   "text": "waited through twenty-three Christmases",
+   "who": "narrator"
+  },
+  {
+   "t0": 59.252,
+   "t1": 60.977,
+   "text": "You were gone one night",
+   "who": "her"
+  },
+  {
+   "t0": 62.582,
+   "t1": 63.232,
+   "text": "For him",
+   "who": "narrator"
+  },
+  {
+   "t0": 63.344,
+   "t1": 64.382,
+   "text": "it was",
+   "who": "narrator"
+  }
+ ]
+}
