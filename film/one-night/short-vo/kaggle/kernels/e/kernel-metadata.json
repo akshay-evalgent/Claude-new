@@ -1,0 +1,17 @@
+{
+ "id": "akkikmr/one-night-render-e",
+ "title": "one-night-render-e",
+ "code_file": "render.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": true,
+ "dataset_sources": [
+  "akkikmr/one-night-render"
+ ],
+ "kernel_sources": [],
+ "competition_sources": [],
+ "model_sources": []
+}

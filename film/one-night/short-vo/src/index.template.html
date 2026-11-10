@@ -6,6 +6,7 @@
 <title>One Night</title>
 <meta name="description" content="A 65-second vertical short with narration, every frame raymarched in code: what if Santa's one night lasted 23 years at home?">
 <style>
+%%FONTS%%
   :root { color-scheme: dark; --bg:#000; --fg:#f4efe6; }
   html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);overflow:hidden;
     font-family:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;}
@@ -38,7 +39,10 @@
 <script id="main" type="x-shader/x-fragment">%%MAIN%%</script>
 <script id="post" type="x-shader/x-fragment">%%POST%%</script>
 <script>
-(() => {
+(async () => {
+  // every machine that renders this must draw text with the same font files
+  try { await Promise.all(['600 20px Inter', 'italic 500 20px Inter', '400 20px Inter', '20px "Liberation Serif"', 'italic 20px "Liberation Serif"',
+    'bold 20px "DejaVu Sans"', '20px "DejaVu Serif"'].map(f => document.fonts.load(f))); } catch(e) {}
   const TL = JSON.parse(document.getElementById('timeline').textContent);
   const A = TL.anchors, END = A.end;
   const clamp = (x, a, b) => Math.min(b, Math.max(a, x));

@@ -14,3 +14,6 @@ film/one-night/short-vo/build/*.wav
 film/one-night/short-vo/build/*.log
 film/one-night/short-vo/build/solo.png
 film/one-night/short-vo/build/preview/
+film/one-night/short-vo/kaggle/dataset/index.html
+film/one-night/short-vo/kaggle/out/
+film/one-night/short-vo/build/segs/
