@@ -176,6 +176,7 @@ The upstream toolkit is written on macOS. These were needed here, and `setup.sh`
 | `results/contact-sheet.jpg` | Frames across the finished film |
 | `scramble/` | Story, style bible, cast, every prompt and the approved plan |
 | `backend/` | The free backend: Ruby client, rake tasks, Python worker, Kaggle kernel script |
+| `flow-comparison/` | The same prompts and start frames packaged for a Google Flow comparison |
 | `setup.sh`, `free.env`, `sync.sh` | Installer, Linux environment, copy-back helper |
 
 ## Where to take it next
