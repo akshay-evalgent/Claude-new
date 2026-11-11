@@ -307,7 +307,7 @@ A **client council**: 8 to 12 founders and operators abroad who already buy serv
 
 ### Vetting, which is the brand
 
-A pitch is published only if: the LinkedIn account is older than a year with real work history · the proof link opens and shows the work · one service for one kind of client, not "we do everything" · a price is stated · they answer our test message within 24 hours. Expect to reject seven in ten. Say so publicly. The rejection rate is the reason a client reads the Thursday post.
+A pitch is published only if: a real LinkedIn profile with a face, a name and dated work history · the proof link opens and shows the work · one service for one kind of client, not "we do everything" · a price is stated · they answer our test message within 24 hours. Expect to reject seven in ten. Say so publicly. The rejection rate is the reason a client reads the Thursday post.
 
 ### Weekly rhythm, revised
 

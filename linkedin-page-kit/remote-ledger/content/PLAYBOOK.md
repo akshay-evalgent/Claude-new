@@ -58,7 +58,7 @@ Each request gets an apply-by of Friday and the pitch form link. On Friday you f
 Until there are five real requests a week, Wednesday is a getting-paid card (rails, fees, a reader's story with credit).
 
 ## Thursday routine: pitches (45 minutes, from week 2)
-1. Open the Tally pitch submissions. For each: the five checks (account older than a year with real history; one service for one client type; proof link opens and shows the work; price in USD; replied to the test message within 24 hours). Send the test message on Tuesday ("Thanks for pitching. One question: what's the smallest version of this you'd sell for $500?"). The reply quality is half the check.
+1. Open the Tally pitch submissions. For each: the five checks (a real profile with a face, a name and dated work history; one service for one client type; proof link opens and shows the work; price in USD; replied to the test message within 24 hours). Send the test message on Tuesday ("Thanks for pitching. One question: what's the smallest version of this you'd sell for $500?"). The reply quality is half the check.
 2. Five that pass go on the Thursday card or a five-slide carousel: name or company, service, who it's for, proof, price from, overlap. Their LinkedIn or site link in the comment, with their yes.
 3. The rejection count is said out loud in the caption: "31 pitched, 5 passed, the usual reasons were X and Y".
 4. Rejected pitchers get one line each by email with the reason. They are next month's good pitches.

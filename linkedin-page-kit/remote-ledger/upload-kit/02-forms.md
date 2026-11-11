@@ -1,3 +1,7 @@
+# The forms
+
+Built in Notion on 11 Nov 2026: the private page **Remote Ledger Inbox** holds the Pitches and Requests databases, each with a form tab. The steps to finish them are on that page. The Tally spec below is the alternative if you prefer Tally.
+
 # The three Tally forms (free account at tally.so → New form → add fields in this order)
 
 ## 1 · Pitch (providers in India)

@@ -110,9 +110,9 @@ Nobody paid us for this and there are no referral links in it. If your real stat
   images=[f"{W}/04-rules.png", f"{W}/04-rules-square.png"], tags="",
   caption="""From next Thursday, this page publishes pitches from people in India who want clients abroad. Free.
 
-How it works. You fill a form: what you do in twelve words, who it's for, one proof link that opens, your price in dollars, how many hours you can overlap and with which time zone. We check five things. If it passes, you're on the Thursday card under your name or your company, and clients who've asked us for exactly that get it in their inbox.
+How it works. You fill a form: what you do in twelve words, who it's for, one proof link that opens, your price in dollars, how many hours you can overlap and with which time zone. We check five things. If it passes, you're on the Thursday card under your name or your company, and when a client abroad asks us for exactly that, your pitch is in the shortlist we send them.
 
-The five checks. Your LinkedIn account is older than a year and has real history on it. One service for one kind of client, not everything for everyone. The proof link opens and shows the work. There's a price. You answer our test message within 24 hours.
+The five checks. A real LinkedIn profile, with your face, your name and work history with dates. One service for one kind of client, not everything for everyone. The proof link opens and shows the work. There's a price. You answer our test message within 24 hours.
 
 We expect to reject seven in ten. That's the point. A client abroad reads this card because it's short and because somebody looked.
 
@@ -126,10 +126,10 @@ What do you sell, and who abroad should be buying it? One line, below. We'll tel
 #India
 #RemoteWork
 #RemoteLedger""",
-  first_comment="""Pitch form (free): [paste your Tally pitch form link]
-Clients abroad with something to get done: [paste your Tally request form link]
+  first_comment="""Pitch form, free: [paste the Pitch form share link]
+Clients abroad with something to get done: [paste the Request form share link]
 
-First pitches go up Thursday 19 November. Test messages go out the Tuesday before."""),
+First pitches go up Thursday 19 November. We send the test messages on Tuesday 17th, so watch your inbox."""),
  dict(slug="not-a-desk-job", when="Fri 13 Nov · 1:30 pm IST", pillar="Not a desk job", kind="image",
   images=[f"{W}/05-not-a-desk-job.png", f"{W}/05-not-a-desk-job-square.png"], tags="",
   caption="""Not everyone wants a desk job. Four ways to be paid from home by people abroad, with the number taken from the page itself.

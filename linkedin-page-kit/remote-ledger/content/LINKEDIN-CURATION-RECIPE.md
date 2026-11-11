@@ -22,7 +22,7 @@ Filter: author is a founder, operator or hiring manager outside India; the ask h
 - `("Skydo" OR "Payoneer" OR "Wise") AND ("FIRA" OR "freelancer" OR "invoice")`
 - `"LUT" AND ("freelancer" OR "export of services")`
 - `"Upwork" AND "India" AND ("earned" OR "month")`
-Filter: a number or a screenshot in the post; the author's profile is older than a year with real history; they are not selling a course, a cohort or "DM for the method".
+Filter: a number or a screenshot in the post; the author's profile has a face and real, dated history; they are not selling a course, a cohort or "DM for the method".
 
 **Roles open to India (Monday backup)**
 - `"we're hiring" AND "remote" AND ("worldwide" OR "anywhere" OR "India")`
@@ -41,7 +41,7 @@ Filter: the post or the link it points to says India or worldwide in its own wor
 - `"bookkeeper" AND ("QuickBooks" OR "Xero") AND "India" AND ("client" OR "US")`
 
 ## Validate before anything is reposted (five checks, two minutes)
-1. **Real person.** Profile older than a year, real roles with dates, a face, activity beyond this one post. No profile → no repost.
+1. **Real person.** A face, a name, real roles with dates, a face, activity beyond this one post. No profile → no repost.
 2. **A fact in it.** A number, a screenshot, a link, a named company. A feeling is not a fact.
 3. **Fresh.** Posted in the last 7 days. For a request, no comment saying it is filled.
 4. **Not selling.** No course, no cohort, no "DM me for the system", no fee to apply. These are the scams the page exists to filter, and we never give them reach.
