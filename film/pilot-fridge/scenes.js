@@ -491,33 +491,50 @@ function tag(txt, t, t0 = 0) {
   return g(`translate(${f1(x)} 56) rotate(-3)`, `<rect x="6" y="8" width="${w}" height="112" rx="16" fill="${C.ink}" opacity=".18"/><rect x="0" y="0" width="${w}" height="112" rx="16" fill="${C.paper}" ${S} stroke-width="5"/><text x="${w / 2}" y="82" font-family="Hand" font-size="80" fill="${C.text}" text-anchor="middle" letter-spacing="3">${esc(txt)}</text>`);
 }
 
-// ---------- shots ----------
-// c = {t, d, v, at(word), frame}; t is shot-local seconds.
-const SHOTS = {
-  s01: { cam: [1300, 560, 1.0, 1.1], draw(c) {
+// ---------- scenes (reusable drawings) ----------
+// c = {t, d, v, at(word), frame}; t is shot-local seconds. o = per-shot options.
+// Times: DONE = already finished before the shot starts, NEVER = does not happen in this shot.
+const DONE = -10, NEVER = 1e9;
+function sparkle(x, y, t, t0, s = 1) {
+  if (t < t0) return '';
+  const p = clamp((t - t0) / 0.7), sc = s * Math.sin(Math.PI * p) * 1.2;
+  if (sc <= 0.01) return '';
+  return g(`translate(${f1(x)} ${f1(y)}) rotate(${f1(p * 90)}) scale(${sc.toFixed(3)})`, `<path d="M0 -44 Q7 -7 44 0 Q7 7 0 44 Q-7 7 -44 0 Q-7 -7 0 -44 Z" fill="#FFF3B0" stroke="${C.accent}" stroke-width="4"/>`);
+}
+function bowl(s = 1) {
+  return g(`scale(${s})`, `<path d="M-80 -10 Q-76 50 0 54 Q76 50 80 -10 Z" fill="${C.wood}" ${S} stroke-width="5"/><ellipse cx="0" cy="-10" rx="80" ry="16" fill="#6E5235" ${S} stroke-width="5"/>`);
+}
+function brainSvg(t) {
+  const w = Math.sin(t * 22) * 5;
+  let o = `<path d="${smooth([[-120, 10], [-112, -50], [-60, -88], [0, -80], [60, -90], [114, -52], [122, 10], [80, 52], [0, 46], [-80, 54]])}" fill="#F4A7B4" ${S} stroke-width="6"/>`;
+  o += `<path d="M0 -78 Q-10 -20 0 44 M-80 -40 q20 -20 40 0 t40 0 M30 -50 q20 -20 40 0 t30 10 M-90 10 q20 -20 40 0 t40 0 M20 0 q20 -20 40 0 t40 0 M-50 30 q20 -14 40 0" fill="none" stroke="#C9687C" stroke-width="5" stroke-linecap="round"/>`;
+  o += `<path d="M-160 -40 q-20 30 0 60 M-190 -60 q-30 50 0 100 M160 -40 q20 30 0 60 M190 -60 q30 50 0 100" fill="none" ${S} stroke-width="5" opacity=".7"/>`;
+  return g(`rotate(${f1(w)})`, o);
+}
+const shrug = { la: [-42, -128], ra: [42, 128] };
+const SC = {
+  kitchenNight(c) {
     let s = kitchen(true);
     s += clock(860, 280, 72, 11, 52);
     s += fridge(1300, 900, 380, 660, { col: '#D5DCE3', led: true, hum: true, t: c.t, humCol: '#E7E1D0' });
     return s;
-  } },
-  s02: { cam: [980, 560, 1.0, 1.05], draw(c) {
+  },
+  fridgeOpen(c, o) {
     let s = paper();
-    const o = { open: true };
-    s += fridge(980, 960, 420, 760, o);
-    const [s1, s2, s3] = o.shelves;
-    s += pop(900, s1 - 4, c.t, c.at('Milk'), milk());
-    s += pop(1010, s2 - 4, c.t, c.at('Eggs'), eggs());
-    s += pop(960, s3 - 18, c.t, c.at('Leftovers'), leftovers());
-    s += check(1470, 430, 1.1, c.t, c.at('Safe'));
-    s += hand('for days', 1480, 600, 96, c.t, c.at('days'));
+    const fo = { open: true };
+    s += fridge(980, 960, 420, 760, fo);
+    const [s1, s2, s3] = fo.shelves;
+    s += pop(900, s1 - 4, c.t, o.milk, milk());
+    s += pop(1010, s2 - 4, c.t, o.eggs, eggs());
+    s += pop(960, s3 - 18, c.t, o.left, leftovers());
+    if (o.check !== undefined) { s += check(1470, 430, 1.1, c.t, o.check); s += hand('for days', 1480, 600, 96, c.t, o.days); }
     return s;
-  } },
-  s03: { cam: [960, 540, 1.02, 1.08], draw(c) {
+  },
+  rewind(c) {
     let s = paper();
     const flip = eio(c.t / 0.55) * 180;
     s += g(`translate(520 540) rotate(${f1(flip)})`, hourglass(1.25, Math.max(0, c.t - 0.55)));
-    const rot = -c.t * 140;
-    s += g(`translate(520 540) rotate(${f1(rot)})`, `<path d="M-230 0 A230 230 0 0 1 120 -196" fill="none" ${S} stroke-width="10"/><path d="M98 -228 L128 -192 L80 -176" fill="none" ${S} stroke-width="10"/><path d="M230 0 A230 230 0 0 1 -120 196" fill="none" ${S} stroke-width="10"/><path d="M-98 228 L-128 192 L-80 176" fill="none" ${S} stroke-width="10"/>`);
+    s += g(`translate(520 540) rotate(${f1(-c.t * 140)})`, `<path d="M-230 0 A230 230 0 0 1 120 -196" fill="none" ${S} stroke-width="10"/><path d="M98 -228 L128 -192 L80 -176" fill="none" ${S} stroke-width="10"/><path d="M230 0 A230 230 0 0 1 -120 196" fill="none" ${S} stroke-width="10"/><path d="M-98 228 L-128 192 L-80 176" fill="none" ${S} stroke-width="10"/>`);
     s += hand('REWIND', 1240, 470, 200, c.t, 0.12, { per: 0.05 });
     if (c.t > 0.5) {
       const n = Math.round(eout((c.t - 0.5) / 1.3) * 50) * 1000;
@@ -525,27 +542,37 @@ const SHOTS = {
     }
     for (let i = 0; i < 6; i++) {
       const p = clamp(c.t / 0.7 - i * 0.08);
-      if (p > 0 && p < 1) s += `<path d="M${f1(2000 - p * 2300)} ${150 + i * 150} h${260}" stroke="${C.ink}" stroke-width="6" stroke-linecap="round" opacity="${f1(0.35 * Math.sin(Math.PI * p))}"/>`;
+      if (p > 0 && p < 1) s += `<path d="M${f1(2000 - p * 2300)} ${150 + i * 150} h260" stroke="${C.ink}" stroke-width="6" stroke-linecap="round" opacity="${f1(0.35 * Math.sin(Math.PI * p))}"/>`;
     }
     return s;
-  } },
-  s04: { cam: [900, 680, 1.0, 1.07], draw(c) {
+  },
+  hunter(c, o = {}) {
     let s = bgSavanna({ seed: 5 });
     s += acacia(1640, 650, 0.95);
     s += g('translate(1260 930) scale(1.35)', antelope(true, c.t));
     s += person({ x: 640, y: 960, s: 1.32, t: c.t, seed: 2, face: 'smug', la: [-38, 32], ra: [26, 150],
-      holdR: e => spear(e[0], e[1], 180, 380, 0.45) });
+      holdR: e => spear(e[0], e[1], 180, 380, 0.45) + (o.glint !== undefined ? sparkle(e[0], e[1] - 258, c.t, o.glint, 0.9) : '') });
     return s;
-  } },
-  s05: { cam: [1240, 760, 1.25, 1.0], draw(c) {
+  },
+  family(c) {
+    let s = bgSavanna({ seed: 37 });
+    s += hut(1380, 700, 1.3);
+    s += acacia(300, 650, 0.6);
+    s += person({ x: 760, y: 965, s: 1.25, t: c.t, seed: 5, long: true, hairC: C.hair2, face: 'happy', la: [-14, -6], ra: [55, 30] });
+    s += person({ x: 980, y: 972, s: 0.8, t: c.t, seed: 9, face: 'happy', flip: true, la: [80, 95], ra: [70, 95], bob: 2,
+      front: (L, R) => g(`translate(${f1((L[0] + R[0]) / 2)} ${f1((L[1] + R[1]) / 2 - 6)})`, bowl(0.75)) });
+    s += person({ x: 1110, y: 975, s: 0.6, t: c.t, seed: 12, face: 'surprised', la: [-20, -8], ra: [35, -60] });
+    return s;
+  },
+  pile(c) {
     let s = bgSavanna({ seed: 7 });
     s += meatPile(1250, 930, 1.35, 3);
     s += person({ x: 470, y: 935, s: 1.08, t: c.t, seed: 2, face: 'surprised', la: [-30, -60], ra: [30, 60] });
     s += person({ x: 680, y: 935, s: 1.0, t: c.t, seed: 5, long: true, face: 'surprised', hairC: C.hair2, la: [-14, -8], ra: [40, 150] });
     s += person({ x: 840, y: 945, s: 0.68, t: c.t, seed: 9, face: 'happy', la: [-150, -170], ra: [150, 170] });
     return s;
-  } },
-  s06: { cam: [1000, 760, 1.0, 1.1], draw(c) {
+  },
+  rot(c) {
     let s = bgSavanna({ seed: 11, sky: ['#F3D49C', '#FBEBCB'], hills: '#E3C893', ground: '#E8C584' });
     s += sun(1600, 190, 92, c.t);
     s += heatWaves(1080, 760, c.t, 4, 110);
@@ -554,25 +581,72 @@ const SHOTS = {
     s += person({ x: 560, y: 965, s: 1.32, t: c.t, seed: 3, face: 'worried', la: [-150, 128], ra: [16, 8], armsFront: true });
     s += `<rect width="${W}" height="${H}" fill="#F59A2C" opacity=".07"/>`;
     return s;
-  } },
-  s07: { cam: [960, 560, 1.0, 1.04], draw(c) {
+  },
+  noFridge(c) {
     let s = paper();
     s += fridge(640, 860, 280, 500, {});
     s += g('translate(1290 610)', iceCube(1.25));
     s += xmark(640, 610, 190, c.t, c.at('fridge'));
     s += xmark(1290, 610, 170, c.t, c.at('ice'));
     return s;
-  } },
-  s08: { cam: [980, 560, 1.0, 1.06], draw(c) {
+  },
+  think(c, o) {
     let s = paper();
     s += `<ellipse cx="960" cy="990" rx="190" ry="20" fill="${C.ink}" opacity=".1"/>`;
     const sc = Math.sin(c.t * 14) * 9;
     s += person({ x: 960, y: 985, s: 1.45, t: c.t, seed: 2, face: 'think', la: [-14, -6], ra: [150, -150 + sc], armsFront: true });
-    s += pop(1230, 430, c.t, c.at('what'), questionMark(300, Math.sin(c.t * 3) * 8));
-    s += pop(1380, 300, c.t, c.at('do'), questionMark(170, -12));
+    s += pop(1230, 430, c.t, o.q1, questionMark(300, Math.sin(c.t * 3) * 8));
+    s += pop(1380, 300, c.t, o.q2, questionMark(170, -12));
     return s;
-  } },
-  s09: { cam: [1100, 640, 1.0, 1.06], draw(c) {
+  },
+  modernFridge(c) {
+    let s = paper();
+    const fo = { open: true };
+    s += fridge(1200, 960, 400, 720, fo);
+    const [s1, s2, s3] = fo.shelves;
+    s += g(`translate(1240 ${f1(s2 - 4)})`, eggs()) + g(`translate(1180 ${f1(s3 - 18)})`, leftovers());
+    const sip = Math.sin(c.t * 4) * 6;
+    s += person({ x: 690, y: 975, s: 1.32, kind: 'modern', t: c.t, seed: 3, face: 'smug', shirt: '#7D8FA8', la: [-38, 32], ra: [140, -100 + sip], armsFront: true,
+      front: (L, R) => g(`translate(${f1(R[0] + 4)} ${f1(R[1] + 16)}) rotate(-125) scale(.6) translate(0 150)`, milk()) });
+    return s;
+  },
+  brain(c) {
+    let s = paper();
+    s += `<ellipse cx="960" cy="990" rx="190" ry="20" fill="${C.ink}" opacity=".1"/>`;
+    s += person(Object.assign({ x: 960, y: 985, s: 1.3, kind: 'modern', t: c.t, seed: 3, face: 'worried', shirt: '#7D8FA8' }, shrug));
+    s += pop(960, 270, c.t, 0.05, g('scale(1.45)', brainSvg(c.t)));
+    return s;
+  },
+  objection(c) {
+    let s = paper();
+    s += person({ x: 560, y: 985, s: 1.3, kind: 'modern', t: c.t, seed: 3, face: 'smug', shirt: '#7D8FA8', la: [-38, 32], ra: [110, 60 + Math.sin(c.t * 9) * 12] });
+    const b = `<path d="M-400 -170 H400 Q440 -170 440 -130 V130 Q440 170 400 170 H-160 L-300 260 L-250 170 H-400 Q-440 170 -440 130 V-130 Q-440 -170 -400 -170 Z" fill="#FFFFFF" ${S} stroke-width="6"/>`;
+    s += pop(1240, 420, c.t, 0.0, b, 0.3);
+    s += hand('CAVEMEN?', 1240, 380, 120, c.t, c.at('Cavemen') - 0.05, { per: 0.03 });
+    s += hand('They just let it rot.', 1240, 510, 96, c.t, c.at('They') - 0.05, { per: 0.03, ls: 1 });
+    return s;
+  },
+  assume(c) {
+    let s = bgSavanna({ seed: 41, sky: ['#D9D3C4', '#EEE8DA'], hills: '#D2C6A8', ground: '#DCC69A' });
+    s += meatPile(1150, 940, 1.05, 21, '#8A8A4C');
+    for (let i = 0; i < 3; i++) { const p = (c.t * 0.6 + i / 3) % 1; s += `<path d="M${1080 + i * 70} ${f1(760 - p * 140)} q14 -18 0 -36 q-14 -18 0 -36" fill="none" stroke="#7E9A5A" stroke-width="6" stroke-linecap="round" opacity="${f1(Math.sin(Math.PI * p) * 0.9)}"/>`; }
+    s += g('translate(1150 780) scale(1.4) translate(-1150 -780)', fliesAround(1150, 780, c.t, 7, 150, 70));
+    s += person(Object.assign({ x: 620, y: 965, s: 1.3, t: c.t, seed: 2, face: 'neutral' }, shrug));
+    s += pop(860, 300, c.t, 0.35, questionMark(220, Math.sin(c.t * 3) * 8));
+    s += `<rect width="${W}" height="${H}" fill="#8C8270" opacity=".10"/>`;
+    return s;
+  },
+  tricks(c) {
+    let s = paper();
+    s += hand('THEY HAD TRICKS.', 960, 330, 150, c.t, 0.0, { per: 0.03 });
+    const icons = [sun(0, 0, 70, c.t), `<circle cx="-40" cy="10" r="46" fill="${C.smoke}" ${S} stroke-width="5"/><circle cx="20" cy="-20" r="56" fill="${C.smoke}" ${S} stroke-width="5"/><circle cx="60" cy="20" r="40" fill="${C.smoke}" ${S} stroke-width="5"/>`, g(`rotate(${f1(c.t * 30)})`, snowflake(0.95))];
+    icons.forEach((ic, i) => {
+      s += pop(560 + i * 400, 640, c.t, 0.3 + i * 0.2, ic);
+      s += hand(String(i + 1), 560 + i * 400, 860, 110, c.t, 0.4 + i * 0.2, { col: C.accent });
+    });
+    return s;
+  },
+  dry(c) {
     let s = bgSavanna({ seed: 13 });
     s += sun(1660, 170, 80, c.t);
     s += rack(1200, 930, 560, 400, c.t, { n: 8, wind: 1.6 });
@@ -581,28 +655,28 @@ const SHOTS = {
     s += windLines(c.t, 260, 5);
     s += tag('TRICK 1', c.t, 0);
     return s;
-  } },
-  s10: { cam: [1060, 560, 1.0, 1.04], draw(c) {
+  },
+  diagram(c) {
     let s = paper();
     const tHung = c.at('hung'), tDry = c.at('dry'), tWeeks = c.at('weeks');
     s += g('translate(520 330)', strip(380, C.meat, Math.sin(c.t * 2) * 2, 76));
     s += hand('FRESH', 520, 820, 86, c.t, 0.05);
     s += arrow(700, 520, 1010, 520, c.t, tHung, 0.5, C.ink, 60);
     s += pop(860, 360, c.t, tHung + 0.15, sun(0, 0, 40, c.t));
-    s += g(`translate(1180 ${f1(330 + 10)})`, c.t > tDry ? strip(lerp(380, 330, eout((c.t - tDry) / 0.6)), '#6B2D20', 0, lerp(76, 58, eout((c.t - tDry) / 0.6))) : '');
+    s += g('translate(1180 340)', c.t > tDry ? strip(lerp(380, 330, eout((c.t - tDry) / 0.6)), '#6B2D20', 0, lerp(76, 58, eout((c.t - tDry) / 0.6))) : '');
     s += hand('DRIED', 1180, 820, 86, c.t, tDry + 0.1);
     s += pop(1580, 470, c.t, tWeeks, calendar(1.25, 'WEEKS', Math.min(28, 1 + Math.floor(Math.max(0, c.t - tWeeks) * 26))));
     return s;
-  } },
-  s11: { cam: [1000, 640, 1.0, 1.08], draw(c) {
-    let s = bgSavanna({ seed: 17, sky: ['#EFA972', '#F8D9B0'], hills: '#D8A878', ground: '#D9B47A', trees: true, behind: `<circle cx="1500" cy="600" r="110" fill="#F7883A" opacity=".95"/>` });
+  },
+  smokeRack(c) {
+    let s = bgSavanna({ seed: 17, sky: ['#EFA972', '#F8D9B0'], hills: '#D8A878', ground: '#D9B47A', behind: `<circle cx="1500" cy="600" r="110" fill="#F7883A" opacity=".95"/>` });
     s += rack(1000, 930, 520, 420, c.t, { n: 6, col: ['#9C3D30', '#86352A'], wind: 0.5 });
     s += fire(1000, 950, 1.15, c.t);
     s += smoke(1000, 760, c.t, { n: 12, rise: 640, drift: 90, op: 0.8 });
     s += tag('TRICK 2', c.t, 0);
     return s;
-  } },
-  s12: { cam: [900, 620, 1.14, 1.2], draw(c) {
+  },
+  fliesAway(c) {
     let s = bgSavanna({ seed: 17, sky: ['#EFA972', '#F8D9B0'], hills: '#D8A878', ground: '#D9B47A', behind: `<circle cx="1500" cy="600" r="110" fill="#F7883A" opacity=".95"/>` });
     s += rack(1000, 930, 520, 420, c.t, { n: 6, col: ['#86352A', '#7A2F25'], wind: 0.5 });
     s += fire(1000, 950, 1.15, c.t);
@@ -610,85 +684,93 @@ const SHOTS = {
     s += person({ x: 500, y: 945, s: 1.05, t: c.t, seed: 4, face: 'happy', hip: 60, ll: [112, 10], rl: [100, -4], la: [-10, 40], ra: [30, 70] });
     const tf = c.at('flies');
     for (let i = 0; i < 6; i++) {
-      const base = [1650 + i * 40, 420 + (i * 53) % 240];
-      const near = [1220 + (i % 3) * 30, 520 + (i * 41) % 200];
+      const base = [1650 + i * 40, 420 + (i * 53) % 240], near = [1220 + (i % 3) * 30, 520 + (i * 41) % 200];
       let x, y;
       if (c.t < tf) { const p = eout(c.t / Math.max(0.3, tf)); x = lerp(base[0], near[0], p) + Math.sin(c.t * 9 + i) * 14; y = lerp(base[1], near[1], p) + Math.cos(c.t * 11 + i) * 12; }
       else { const p = Math.pow(clamp((c.t - tf) / 0.9), 2); x = lerp(near[0], 2100 + i * 30, p) + Math.sin(c.t * 9 + i) * 14; y = lerp(near[1], 200 + i * 40, p); }
       s += fly(x, y, c.t, i);
     }
     return s;
-  } },
-  s13: { cam: [1000, 660, 1.0, 1.07], draw(c) {
+  },
+  snow(c, o) {
     let s = bgSnow(c.t);
     s += `<ellipse cx="1230" cy="905" rx="200" ry="44" fill="#86A0B0" ${S} stroke-width="5"/><ellipse cx="1230" cy="914" rx="168" ry="30" fill="#5E7889"/>`;
-    s += g('translate(1230 905) scale(.62)', `<clipPath id="pit"><ellipse cx="0" cy="8" rx="270" ry="50"/></clipPath><g clip-path="url(#pit)">${g('translate(0 40)', meat(1.1, 4, C.meat, -8))}</g>`);
+    if (!o.walk) s += g('translate(1230 905) scale(.62)', `<clipPath id="pit"><ellipse cx="0" cy="8" rx="270" ry="50"/></clipPath><g clip-path="url(#pit)">${g('translate(0 40)', meat(1.1, 4, C.meat, -8))}</g>`);
     s += `<path d="${smooth([[1440, 910], [1480, 850], [1560, 830], [1640, 860], [1680, 915]], false)} Z" fill="#EEF4F7" ${S} stroke-width="5"/>`;
-    const dig = Math.sin(c.t * 5) * 0.5 + 0.5;
-    s += person({ x: 820, y: 960, s: 1.2, t: c.t, seed: 6, face: 'neutral', cloak: true, la: [50, lerp(70, 90, dig)], ra: [60, lerp(85, 105, dig)],
-      holdR: e => spear(e[0], e[1], lerp(38, 48, dig), 330, 0.14) });
-    for (let i = 0; i < 3; i++) { const p = (c.t * 0.8 + i / 3) % 1; s += `<circle cx="${f1(900 + p * 90)}" cy="${f1(520 - p * 60)}" r="${f1(10 + p * 26)}" fill="#FFFFFF" opacity="${f1(0.8 * (1 - p))}"/>`; }
+    let px = 820;
+    if (o.walk) {
+      px = lerp(380, 760, eout(c.t / Math.max(0.5, c.d)));
+      const sw = Math.sin(c.t * 10) * 20;
+      s += person({ x: px, y: 960, s: 1.2, t: c.t, seed: 6, face: 'neutral', cloak: true, ll: [-sw, -sw * 0.6], rl: [sw, sw * 0.6], la: [-14, -6], ra: [140, -160],
+        holdR: e => g(`translate(${f1(e[0] - 10)} ${f1(e[1] + 10)})`, meat(0.7, 4, C.meat, 20)) });
+    } else {
+      const dig = Math.sin(c.t * 5) * 0.5 + 0.5;
+      s += person({ x: px, y: 960, s: 1.2, t: c.t, seed: 6, face: 'neutral', cloak: true, la: [50, lerp(70, 90, dig)], ra: [60, lerp(85, 105, dig)],
+        holdR: e => spear(e[0], e[1], lerp(38, 48, dig), 330, 0.14) });
+    }
+    for (let i = 0; i < 3; i++) { const p = (c.t * 0.8 + i / 3) % 1; s += `<circle cx="${f1(px + 80 + p * 90)}" cy="${f1(520 - p * 60)}" r="${f1(10 + p * 26)}" fill="#FFFFFF" opacity="${f1(0.8 * (1 - p))}"/>`; }
     s += snowfall(c.t, 70);
-    s += tag('TRICK 3', c.t, 0);
+    if (o.tag) s += tag('TRICK 3', c.t, 0);
     return s;
-  } },
-  s14: { cam: [960, 540, 1.0, 1.05], draw(c) {
+  },
+  freezer(c) {
     let s = paper();
-    s += hand("NATURE'S", 960, 470, 170, c.t, 0.05, { per: 0.045 });
-    s += hand('FREEZER', 960, 700, 230, c.t, c.at('freezer'), { per: 0.05, col: '#3E7FA6' });
+    s += hand("NATURE'S", 960, 470, 170, c.t, 0.05, { per: 0.04 });
+    s += hand('FREEZER', 960, 700, 230, c.t, c.at('freezer') - 0.05, { per: 0.045, col: '#3E7FA6' });
     s += pop(1530, 320, c.t, 0.25, g(`rotate(${f1(c.t * 25)})`, snowflake(1.0)));
-    s += pop(380, 760, c.t, 0.55, g(`rotate(${f1(-c.t * 30)})`, snowflake(0.6)));
+    s += pop(380, 760, c.t, 0.5, g(`rotate(${f1(-c.t * 30)})`, snowflake(0.6)));
     return s;
-  } },
-  s15: { cam: [960, 560, 1.0, 1.05], draw(c) {
+  },
+  bubble(c, o) {
     let s = paper();
     s += rock(640, 912, 165, 72, 5);
     s += person({ x: 640, y: 960, s: 1.25, t: c.t, seed: 2, face: 'think', hip: 120, ll: [86, 4], rl: [76, -2], la: [-20, -8], ra: [60, -140] });
-    s += pop(1260, 380, c.t, 0.1, thought(0, 0, 330, 230, -470, 200), 0.45);
-    s += pop(1260, 400, c.t, 0.3, fridge(0, 130, 150, 260, {}));
-    s += xmark(1260, 380, 150, c.t, c.at("wasn't"));
+    s += pop(1260, 380, c.t, o.pop, thought(0, 0, 330, 230, -470, 200), 0.45);
+    s += pop(1260, 400, c.t, o.pop + 0.2, fridge(0, 130, 150, 260, {}));
+    s += xmark(1260, 380, 150, c.t, o.x);
     return s;
-  } },
-  s16: { cam: [960, 820, 1.4, 1.0], draw(c) {
+  },
+  campNight(c) {
     let s = bgNight(c.t);
     s += hut(300, 670, 1.1, '#6B5038') + hut(1640, 660, 1.2, '#6B5038') + hut(1240, 640, 0.7, '#6B5038');
     s += `<ellipse cx="960" cy="900" rx="720" ry="190" fill="#F28C28" opacity=".22"/>`;
-    s += person({ x: 760, y: 840, s: 0.82, t: c.t, seed: 5, face: 'happy', long: true, hip: 50, ll: [118, 8], rl: [106, -2], la: [-10, 30], ra: [40, 80] });
-    s += person({ x: 1170, y: 840, s: 0.82, t: c.t, seed: 8, face: 'laugh', flip: true, hip: 50, ll: [118, 8], rl: [106, -2], la: [-10, 30], ra: [40, 80], shake: 0.6 });
+    const sitP = { hip: 50, ll: [118, 8], rl: [106, -2], la: [-10, 30] };
+    s += person(Object.assign({ x: 760, y: 840, s: 0.82, t: c.t, seed: 5, face: 'happy', long: true, ra: [40, 80] }, sitP));
+    s += person(Object.assign({ x: 1170, y: 840, s: 0.82, t: c.t, seed: 8, face: 'laugh', flip: true, ra: [40, 80], shake: 0.6 }, sitP));
     s += fire(960, 920, 1.05, c.t);
-    s += person({ x: 560, y: 960, s: 1.0, t: c.t, seed: 2, face: 'happy', hip: 50, ll: [118, 8], rl: [106, -2], la: [-10, 30], ra: [40, 70] });
-    s += person({ x: 1370, y: 960, s: 1.0, t: c.t, seed: 9, face: 'happy', flip: true, beard: true, hairC: C.hair2, hip: 50, ll: [118, 8], rl: [106, -2], la: [-10, 30], ra: [40, 70] });
+    s += person(Object.assign({ x: 560, y: 960, s: 1.0, t: c.t, seed: 2, face: 'happy', ra: [40, 70] }, sitP));
+    s += person(Object.assign({ x: 1370, y: 960, s: 1.0, t: c.t, seed: 9, face: 'happy', flip: true, beard: true, hairC: C.hair2, ra: [40, 70] }, sitP));
     return s;
-  } },
-  s17: { cam: [960, 620, 1.0, 1.05], draw(c) {
+  },
+  share(c) {
     let s = bgSavanna({ seed: 19 });
     s += hut(260, 660, 0.9) + hut(1700, 650, 1.0) + hut(1330, 630, 0.6);
     s += meatPile(1060, 975, 0.62, 31);
     const recv = [[430, 935, 1.0, false, { long: true, seed: 5 }], [650, 945, 0.68, false, { seed: 9 }], [1480, 935, 1.0, true, { seed: 8 }], [1700, 935, 0.95, true, { seed: 10, beard: true, hairC: C.hair2 }]];
-    const t0 = c.at('shares') - 0.05;
+    const t0 = c.at('shares') - 0.05, gap = 0.3, fly_ = 0.4;
     recv.forEach((r, i) => {
-      const ti = t0 + i * 0.42, got = c.t > ti + 0.45;
+      const ti = t0 + i * gap, got = c.t > ti + fly_;
       const ra = got || c.t > ti - 0.2 ? [120, 150] : [20, 8];
       const sc = r[2];
       s += person(Object.assign({ x: r[0], y: r[1], s: sc, t: c.t, flip: r[3], face: got ? 'happy' : 'neutral', la: [-14, -6], ra,
         holdR: got ? (e => g(`translate(${f1(e[0])} ${f1(e[1] - 10)})`, meat(0.42, 40 + i))) : null }, r[4]));
       if (c.t > ti && !got) {
-        const p = eio((c.t - ti) / 0.45), sx = 1060, sy = 880;
-        const hx = r[0] + (r[3] ? -1 : 1) * 95 * sc, hy = r[1] - 300 * sc;
-        const x = lerp(sx, hx, p), y = lerp(sy, hy, p) - Math.sin(Math.PI * p) * 220;
+        const p = eio((c.t - ti) / fly_), hx = r[0] + (r[3] ? -1 : 1) * 95 * sc, hy = r[1] - 300 * sc;
+        const x = lerp(1060, hx, p), y = lerp(880, hy, p) - Math.sin(Math.PI * p) * 220;
         s += g(`translate(${f1(x)} ${f1(y)}) rotate(${f1(p * 360)})`, meat(0.42, 40 + i));
       }
     });
     s += person({ x: 960, y: 935, s: 1.15, t: c.t, seed: 2, face: 'happy', la: [-60, -90], ra: [60, 90] });
     return s;
-  } },
-  s18: { cam: [980, 620, 1.0, 1.05], draw(c) {
+  },
+  nextWeek(c, o) {
     let s = bgSavanna({ seed: 23 });
     s += acacia(240, 650, 0.8);
-    const walk = clamp(c.t / 1.1), wx = lerp(1640, 1270, eout(walk)), stepping = walk < 1;
-    const sw = stepping ? Math.sin(c.t * 11) * 22 : 0;
-    const tg = c.at('shares'), passing = c.t > tg && c.t < tg + 0.5, given = c.t >= tg + 0.5;
-    s += person({ x: 640, y: 960, s: 1.25, t: c.t, seed: 2, face: given ? 'laugh' : 'happy', la: [-30, -60], ra: [120, 140],
+    const arrive = o.mode === 'arrive';
+    const walk = arrive ? clamp(c.t / 1.1) : 1, wx = lerp(1640, 1270, eout(walk));
+    const sw = walk < 1 ? Math.sin(c.t * 11) * 22 : 0;
+    const tg = arrive ? NEVER : c.at('shares'), passing = c.t > tg && c.t < tg + 0.5, given = c.t >= tg + 0.5;
+    s += person({ x: 640, y: 960, s: 1.25, t: c.t, seed: 2, face: given ? 'laugh' : (arrive ? 'neutral' : 'happy'), la: [-30, -60], ra: arrive ? [16, 8] : [120, 140],
       holdR: given ? (e => g(`translate(${f1(e[0])} ${f1(e[1] - 10)})`, meat(0.55, 51))) : null });
     s += person({ x: wx, y: 960, s: 1.25, t: c.t, seed: 10, flip: true, beard: true, hairC: C.hair2, face: 'happy', ll: [-sw, -sw * 0.6], rl: [sw, sw * 0.6],
       la: [-14, -6], ra: given || passing ? [110, 120] : [40, 120],
@@ -697,42 +779,45 @@ const SHOTS = {
       const p = eio((c.t - tg) / 0.5), x = lerp(wx - 120, 760, p), y = lerp(560, 600, p) - Math.sin(Math.PI * p) * 120;
       s += g(`translate(${f1(x)} ${f1(y)})`, meat(0.55, 51));
     }
-    s += tag('NEXT WEEK', c.t, 0);
+    if (arrive) {
+      const tl = c.at('lucky');
+      s += sparkle(wx - 150, 380, c.t, tl - 0.1, 1.0) + sparkle(wx + 60, 300, c.t, tl + 0.05, 0.7) + sparkle(wx - 220, 560, c.t, tl + 0.15, 0.6);
+      s += tag('NEXT WEEK', c.t, 0);
+    }
     return s;
-  } },
-  s19: { cam: [960, 560, 1.0, 1.05], draw(c) {
+  },
+  research(c, o) {
     let s = bgSavanna({ seed: 29, trees: false });
     s += domeHut(1440, 660, 0.7) + domeHut(1690, 650, 0.55) + domeHut(1220, 650, 0.45);
     s += acacia(260, 650, 0.6);
     const wr = Math.sin(c.t * 18) * 6;
     s += person({ x: 470, y: 965, s: 1.28, kind: 'research', t: c.t, seed: 4, face: 'think', la: [40, 100], ra: [55, 112 + wr],
       front: (L, R) => g(`translate(${f1(L[0] + 26)} ${f1(L[1] - 12)}) rotate(-12)`, `<rect x="-38" y="-48" width="76" height="96" rx="6" fill="#FFFFFF" ${S} stroke-width="4"/><path d="M-24 -26 H24 M-24 -8 H24 M-24 10 H14" stroke="#9AA" stroke-width="3"/>`) });
-    const pg = popS(c.t, 0.35, 0.45);
-    if (pg > 0) {
+    if (o.page) {
+      const pg = popS(c.t, 0.0, 0.4);
       let note = `<rect x="-360" y="-250" width="720" height="500" rx="10" fill="#FFFDF7" ${S} stroke-width="5"/><path d="M-360 -190 H360" stroke="#E3B7B0" stroke-width="3"/>`;
       note += g('translate(0 30)', meat(0.6, 61));
       const spots = [[-250, -90], [-260, 120], [0, 175], [250, 120], [250, -90], [0, -150]];
       spots.forEach((p, i) => {
-        const tt = 0.9 + i * 0.28;
-        note += arrow(p[0] * 0.25, 30 + p[1] * 0.2, p[0] * 0.78, 30 + p[1] * 0.78, c.t, tt, 0.3, C.text);
-        note += pop(p[0], 30 + p[1], c.t, tt + 0.25, `<circle r="26" fill="#FFFFFF" ${S} stroke-width="4"/><circle cx="-8" cy="-2" r="3.5" fill="${C.ink}"/><circle cx="8" cy="-2" r="3.5" fill="${C.ink}"/><path d="M-8 9 Q0 15 8 9" fill="none" ${S} stroke-width="3"/>`);
+        const tt = 0.25 + i * 0.13;
+        note += arrow(p[0] * 0.25, 30 + p[1] * 0.2, p[0] * 0.78, 30 + p[1] * 0.78, c.t, tt, 0.25, C.text);
+        note += pop(p[0], 30 + p[1], c.t, tt + 0.2, `<circle r="26" fill="#FFFFFF" ${S} stroke-width="4"/><circle cx="-8" cy="-2" r="3.5" fill="${C.ink}"/><circle cx="8" cy="-2" r="3.5" fill="${C.ink}"/><path d="M-8 9 Q0 15 8 9" fill="none" ${S} stroke-width="3"/>`);
       });
-      s += g(`translate(1180 520) rotate(2) scale(${pg.toFixed(3)})`, note);
+      s += g(`translate(1180 540) rotate(2) scale(${pg.toFixed(3)})`, note);
     }
-    s += `<g transform="translate(0 0)">${hand('THE HADZA  ·  TANZANIA', 1180, 200, 92, c.t, c.at('Hadza') - 0.1, { per: 0.03 })}</g>`;
-    s += pop(650, 168, c.t, c.at('Tanzania'), `<path d="M0 30 C-34 -6 -30 -46 0 -46 C30 -46 34 -6 0 30 Z" fill="${C.red}" ${S} stroke-width="4"/><circle cx="0" cy="-20" r="10" fill="#FFFFFF"/>`);
+    s += hand('THE HADZA  ·  TANZANIA', 1180, 200, 92, c.t, o.label, { per: 0.03 });
+    s += pop(650, 168, c.t, o.label + 0.6, `<path d="M0 30 C-34 -6 -30 -46 0 -46 C30 -46 34 -6 0 30 Z" fill="${C.red}" ${S} stroke-width="4"/><circle cx="0" cy="-20" r="10" fill="#FFFFFF"/>`);
     return s;
-  } },
-  s20: { cam: [960, 540, 1.0, 1.04], draw(c) {
+  },
+  spoils(c, o) {
     let s = paper();
-    s += hand('MEAT SPOILS.', 1010, 420, 160, c.t, 0.05, { per: 0.04 });
-    const tf = c.at('favour') - 0.15;
-    s += hand("A FAVOUR DOESN'T.", 960, 650, 160, c.t, tf, { per: 0.04, col: C.accent });
-    s += pop(400, 370, c.t, 0.3, g('rotate(-10)', meat(0.8, 71, '#8C7A4E')) + `<path d="M-30 -80 q10 -20 0 -40 M10 -86 q10 -20 0 -40 M50 -80 q10 -20 0 -40" fill="none" stroke="#7E9A5A" stroke-width="5" stroke-linecap="round"/>`);
-    s += pop(960, 850, c.t, tf + 0.75, g(`scale(${f1(1 + 0.06 * Math.sin(c.t * 6))})`, heart(1.2)));
+    s += hand('MEAT SPOILS.', 1010, 420, 160, c.t, o.l1, { per: 0.035 });
+    s += hand("A FAVOUR DOESN'T.", 960, 650, 160, c.t, o.l2, { per: 0.035, col: C.accent });
+    s += pop(400, 370, c.t, o.l1 + 0.15, g('rotate(-10)', meat(0.8, 71, '#8C7A4E')) + `<path d="M-30 -80 q10 -20 0 -40 M10 -86 q10 -20 0 -40 M50 -80 q10 -20 0 -40" fill="none" stroke="#7E9A5A" stroke-width="5" stroke-linecap="round"/>`);
+    s += pop(960, 850, c.t, o.l2 + 0.8, g(`scale(${f1(1 + 0.06 * Math.sin(c.t * 6))})`, heart(1.2)));
     return s;
-  } },
-  s21: { cam: [1080, 600, 1.0, 1.06], draw(c) {
+  },
+  kitchenDay(c) {
     let s = kitchen(false, { wx: 150 });
     s += `<rect x="40" y="600" width="560" height="280" fill="#E7D3B0" ${S} stroke-width="5"/><rect x="20" y="580" width="600" height="30" rx="6" fill="#B79A72" ${S} stroke-width="5"/><path d="M320 610 V880 M80 700 h40 M360 700 h40" ${S} stroke-width="5"/>`;
     s += fridge(1360, 900, 360, 640, {});
@@ -740,8 +825,8 @@ const SHOTS = {
     s += person({ x: 900, y: 960, s: 1.32, kind: 'modern', t: c.t, seed: 3, face: 'tired', shirt: '#7D8FA8', la: [40, 110], ra: [60, lerp(100, 170, eat)],
       front: (L, R) => g(`translate(${f1(L[0] + 20)} ${f1(L[1] + 16)})`, g('scale(.62)', leftovers())) + g(`translate(${f1(R[0])} ${f1(R[1])}) rotate(${f1(lerp(-30, -150, eat))})`, `<path d="M0 0 L0 -48 M-7 -48 V-62 M0 -48 V-64 M7 -48 V-62" stroke="#8B949B" stroke-width="5" stroke-linecap="round"/>`) });
     return s;
-  } },
-  s22: { cam: [960, 760, 1.2, 1.0], draw(c) {
+  },
+  campEnd(c) {
     let s = bgNight(c.t, { seed: 31 });
     s += hut(280, 670, 1.1, '#6B5038') + hut(1650, 660, 1.2, '#6B5038');
     s += `<ellipse cx="960" cy="900" rx="760" ry="200" fill="#F28C28" opacity=".24"/>`;
@@ -754,7 +839,47 @@ const SHOTS = {
       holdR: e => g(`translate(${f1(e[0])} ${f1(e[1] - 8)})`, meat(0.4, 81)) }, sitP));
     s += person(Object.assign({ x: 1380, y: 965, s: 1.0, t: c.t, seed: 10, face: 'happy', flip: true, beard: true, hairC: C.hair2, la: [-10, 30], ra: [60, 110] }, sitP));
     return s;
-  } },
+  },
+};
+
+// ---------- shot list ----------
+// cam: [focusX, focusY, zoomStart, zoomEnd] or a function c => [focusX, focusY, zoom].
+const SHOTS = {
+  s01: { cam: [1300, 560, 1.0, 1.1], draw: c => SC.kitchenNight(c) },
+  s02: { cam: [980, 560, 1.0, 1.05], draw: c => SC.fridgeOpen(c, { milk: c.at('Milk'), eggs: c.at('Eggs'), left: c.at('Leftovers') }) },
+  s03: { cam: [1150, 540, 1.06, 1.12], draw: c => SC.fridgeOpen(c, { milk: DONE, eggs: DONE, left: DONE, check: c.at('safe'), days: c.at('days') }) },
+  s04: { cam: [960, 540, 1.02, 1.08], draw: c => SC.rewind(c) },
+  s05: { cam: [900, 680, 1.0, 1.07], draw: c => SC.hunter(c) },
+  s06: { cam: [640, 520, 1.75, 1.85], draw: c => SC.hunter(c, { glint: c.at('spear') }) },
+  s07: { cam: [920, 640, 1.0, 1.06], draw: c => SC.family(c) },
+  s08: { cam: [1240, 760, 1.25, 1.0], draw: c => SC.pile(c) },
+  s09: { cam: c => { const p = eio((c.t - (c.at('it') - 0.35)) / 0.75); return [lerp(1600, 1080, p), lerp(260, 760, p), lerp(1.7, 1.12, p)]; }, draw: c => SC.rot(c) },
+  s10: { cam: [960, 560, 1.0, 1.04], draw: c => SC.noFridge(c) },
+  s11: { cam: [980, 560, 1.0, 1.06], draw: c => SC.think(c, { q1: c.at('problem') - 0.1, q2: c.at('problem') + 0.25 }) },
+  s12: { cam: [960, 560, 1.0, 1.06], draw: c => SC.modernFridge(c) },
+  s13: { cam: [960, 520, 1.0, 1.06], draw: c => SC.brain(c) },
+  s14: { cam: [960, 540, 1.0, 1.05], draw: c => SC.objection(c) },
+  s15: { cam: [900, 640, 1.0, 1.06], draw: c => SC.assume(c) },
+  s16: { cam: [960, 540, 1.0, 1.05], draw: c => SC.tricks(c) },
+  s17: { cam: [1100, 640, 1.0, 1.06], draw: c => SC.dry(c) },
+  s18: { cam: [1060, 560, 1.0, 1.04], draw: c => SC.diagram(c) },
+  s19: { cam: [1000, 640, 1.0, 1.08], draw: c => SC.smokeRack(c) },
+  s20: { cam: [900, 620, 1.14, 1.2], draw: c => SC.fliesAway(c) },
+  s21: { cam: [900, 640, 1.0, 1.05], draw: c => SC.snow(c, { walk: true, tag: true }) },
+  s22: { cam: [1100, 760, 1.25, 1.35], draw: c => SC.snow(c, {}) },
+  s23: { cam: [960, 540, 1.0, 1.05], draw: c => SC.freezer(c) },
+  s24: { cam: [960, 560, 1.0, 1.05], draw: c => SC.bubble(c, { pop: 0.05, x: NEVER }) },
+  s25: { cam: [1260, 400, 1.15, 1.25], draw: c => SC.bubble(c, { pop: DONE, x: c.at("wasn't") }) },
+  s26: { cam: [960, 820, 1.35, 1.0], draw: c => SC.campNight(c) },
+  s27: { cam: [960, 620, 1.0, 1.05], draw: c => SC.share(c) },
+  s28: { cam: [980, 620, 1.0, 1.05], draw: c => SC.nextWeek(c, { mode: 'arrive' }) },
+  s29: { cam: [960, 640, 1.12, 1.18], draw: c => SC.nextWeek(c, { mode: 'pass' }) },
+  s30: { cam: [960, 560, 1.0, 1.05], draw: c => SC.research(c, { page: false, label: c.at('Hadza') - 0.25 }) },
+  s31: { cam: [1180, 540, 1.08, 1.16], draw: c => SC.research(c, { page: true, label: DONE }) },
+  s32: { cam: [960, 540, 1.0, 1.03], draw: c => SC.spoils(c, { l1: 0.0, l2: NEVER }) },
+  s33: { cam: [960, 560, 1.03, 1.07], draw: c => SC.spoils(c, { l1: DONE, l2: 0.0 }) },
+  s34: { cam: [1080, 600, 1.0, 1.06], draw: c => SC.kitchenDay(c) },
+  s35: { cam: [960, 760, 1.2, 1.0], draw: c => SC.campEnd(c) },
 };
 function antelope(down, t) {
   const tan = '#C98B4E', belly = '#F3E4CA';
@@ -816,8 +941,9 @@ window.renderAt = T => {
   const t = T - sh.start, d = sh.end - sh.start, v = sh.vs - sh.start;
   const at = word => { const w = sh.words.find(x => x.w.toLowerCase().replace(/[^a-z']/g, '') === word.toLowerCase()); return w ? v + w.s : v + 0.3; };
   const c = { t, d, v, at, frame };
-  const [fx, fy, z0, z1] = def.cam;
-  const z = lerp(z0, z1, eio(t / d));
+  let fx, fy, z;
+  if (typeof def.cam === 'function') [fx, fy, z] = def.cam(c);
+  else { const [x, y, z0, z1] = def.cam; fx = x; fy = y; z = lerp(z0, z1, eio(t / d)); }
   const tr = `translate(${fx} ${fy}) scale(${z.toFixed(4)}) translate(${-fx} ${-fy})`;
   document.getElementById('scene').innerHTML = `<g filter="url(#wob${Math.floor(frame / 4) % 3})"><g transform="${tr}">${def.draw(c)}</g></g>`;
   document.getElementById('cap').innerHTML = captionSvg(T);

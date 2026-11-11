@@ -1,76 +1,97 @@
-"""Generate one narration clip per shot with Kokoro and build timeline.json.
+"""Generate the narration with Kokoro and build timeline.json.
+
+Each script line (one or more phrases) is spoken in a single pass so the
+intonation flows across cuts; the line is then split into shots at the word
+boundaries between phrases, using Kokoro's word timestamps.
 
 Usage: python3 tts.py [voice]
-Writes build/voice/<id>.wav (24 kHz mono), build/voice.wav and build/timeline.json.
+Writes build/voice.wav (24 kHz mono) and build/timeline.json.
 """
-import json, sys, os
+import json, os, re, sys
 import numpy as np
 import soundfile as sf
 from kokoro import KPipeline
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SR = 24000
+# Words missing from Kokoro 0.7.4's dictionary, given an inline pronunciation.
+SAY = {"Hadza": "[Hadza](/hˈɑdzə/)", "favour": "[favour](/fˈAvəɹ/)", "smartest": "[smartest](/smˈɑɹtəst/)"}
+
 script = json.load(open(os.path.join(HERE, "script.json")))
 voice = sys.argv[1] if len(sys.argv) > 1 else script["voice"]
 out = os.path.join(HERE, "build")
-os.makedirs(os.path.join(out, "voice"), exist_ok=True)
-
+os.makedirs(out, exist_ok=True)
 pipe = KPipeline(lang_code=voice[0])
+letters = lambda s: re.sub(r"[^a-z]", "", s.lower())
 
 
-def trim(a, thr=0.004):
-    idx = np.where(np.abs(a) > thr)[0]
-    if len(idx) == 0:
-        return a, 0.0
-    s = max(0, idx[0] - int(0.02 * SR))
-    e = min(len(a), idx[-1] + int(0.06 * SR))
-    return a[s:e], s / SR
+def speak(text):
+    say = text
+    for k, v in SAY.items():
+        say = re.sub(rf"\b{k}\b", v, say)
+    audio, toks, off = [], [], 0.0
+    for r in pipe(say, voice=voice, speed=script["speed"]):
+        a = np.asarray(r.audio, dtype=np.float32)
+        for t in (r.tokens or []):
+            if not t.text.strip():
+                continue
+            st = t.start_ts if t.start_ts is not None else (toks[-1]["e"] - off if toks else 0.0)
+            en = t.end_ts if t.end_ts is not None else st
+            toks.append({"w": t.text, "s": off + st, "e": off + en})
+        audio.append(a)
+        off += len(a) / SR
+    a = np.concatenate(audio)
+    idx = np.where(np.abs(a) > 0.004)[0]
+    s0 = max(0, idx[0] - int(0.02 * SR)); s1 = min(len(a), idx[-1] + int(0.06 * SR))
+    cut = s0 / SR
+    for t in toks:
+        t["s"] = round(max(0.0, t["s"] - cut), 3); t["e"] = round(max(0.0, t["e"] - cut), 3)
+    return a[s0:s1], toks
 
 
 t = script["lead_in"]
-timeline = []
-chunks = []
-for shot in script["shots"]:
-    audio, words, off = [], [], 0.0
-    for r in pipe(shot.get("say", shot["text"]), voice=voice, speed=script["speed"]):
-        a = r.audio.numpy() if hasattr(r.audio, "numpy") else np.asarray(r.audio)
-        for tok in (r.tokens or []):
-            if not tok.text.strip():
-                continue
-            st = tok.start_ts if tok.start_ts is not None else (words[-1]["e"] - off if words else 0.0)
-            en = tok.end_ts if tok.end_ts is not None else st
-            words.append({"w": tok.text, "ws": bool(tok.whitespace), "s": off + st, "e": off + en})
-        audio.append(a)
-        off += len(a) / SR
-    a = np.concatenate(audio).astype(np.float32)
-    a, cut = trim(a)
+shots, chunks = [], []
+for line in script["lines"]:
+    text = " ".join(p[1] for p in line["phrases"])
+    a, toks = speak(text)
     dur = len(a) / SR
-    for w in words:
-        w["s"] = round(max(0.0, w["s"] - cut), 3)
-        w["e"] = round(min(dur, w["e"] - cut), 3)
-    sf.write(os.path.join(out, "voice", shot["id"] + ".wav"), a, SR)
-    timeline.append({"id": shot["id"], "text": shot["text"], "vs": round(t, 3), "ve": round(t + dur, 3), "words": words})
+    # Assign tokens to phrases by counting letters; trailing punctuation stays with its phrase.
+    k = 0
+    for pid, ptxt in line["phrases"]:
+        need, got, words = len(letters(ptxt)), 0, []
+        while k < len(toks):
+            tl = letters(toks[k]["w"])
+            if got >= need and tl:
+                break
+            got += len(tl); words.append(toks[k]); k += 1
+        shots.append({"id": pid, "text": ptxt, "words": words, "line_t": t})
+    for w in toks[k:]:
+        shots[-1]["words"].append(w)
     chunks.append((t, a))
-    t += dur + script["gap"] + shot.get("pause", 0.0)
+    t += dur + script["gap"] + line.get("pause", 0.0)
 
-end = timeline[-1]["ve"] + script["tail"]
-# Cuts sit in the silent gap between phrases, slightly before the next voice.
-for i, s in enumerate(timeline):
+for s in shots:
+    s["vs"] = round(s["line_t"] + s["words"][0]["s"], 3)
+    s["ve"] = round(s["line_t"] + max(w["e"] for w in s["words"] if letters(w["w"])), 3)
+    s["words"] = [{"w": w["w"], "s": round(s["line_t"] + w["s"] - s["vs"], 3), "e": round(s["line_t"] + w["e"] - s["vs"], 3)} for w in s["words"]]
+    del s["line_t"]
+end = shots[-1]["ve"] + script["tail"]
+# Cut in the pause between phrases when there is one, otherwise just before the next word.
+for i, s in enumerate(shots):
     if i == 0:
         s["start"] = 0.0
-    else:
-        prev = timeline[i - 1]["ve"]
-        s["start"] = round(max(prev + 0.04, s["vs"] - 0.14), 3)
-for i, s in enumerate(timeline):
-    s["end"] = timeline[i + 1]["start"] if i + 1 < len(timeline) else round(end, 3)
+        continue
+    prev = shots[i - 1]["ve"]
+    s["start"] = round(max(prev + 0.02, s["vs"] - 0.08) if s["vs"] - prev > 0.1 else s["vs"] - 0.02, 3)
+for i, s in enumerate(shots):
+    s["end"] = shots[i + 1]["start"] if i + 1 < len(shots) else round(end, 3)
 
-total = int(np.ceil(end * SR))
-mix = np.zeros(total, np.float32)
+mix = np.zeros(int(np.ceil(end * SR)), np.float32)
 for st, a in chunks:
-    i = int(st * SR)
-    mix[i:i + len(a)] += a
+    i = int(st * SR); mix[i:i + len(a)] += a
 sf.write(os.path.join(out, "voice.wav"), mix, SR)
-json.dump({"voice": voice, "duration": round(end, 3), "shots": timeline}, open(os.path.join(out, "timeline.json"), "w"), indent=1)
-print(f"voice={voice} duration={end:.2f}s shots={len(timeline)}")
-for s in timeline:
-    print(f'{s["id"]} {s["start"]:6.2f}-{s["end"]:6.2f} ({s["end"]-s["start"]:.2f}s) words={len(s["words"])}  {s["text"]}')
+json.dump({"voice": voice, "duration": round(end, 3), "shots": shots}, open(os.path.join(out, "timeline.json"), "w"), indent=1)
+L = [s["end"] - s["start"] for s in shots]
+print(f"voice={voice} duration={end:.2f}s shots={len(shots)} shot median={np.median(L):.2f}s")
+for s in shots:
+    print(f'{s["id"]} {s["start"]:6.2f}-{s["end"]:6.2f} ({s["end"]-s["start"]:.2f}s) {" ".join(w["w"] for w in s["words"])}')

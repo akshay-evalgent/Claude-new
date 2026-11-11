@@ -1,108 +1,35 @@
 {
  "title": "How Did Ancient Humans Keep Food Without a Fridge?",
- "voice": "af_heart",
- "speed": 0.9,
- "lead_in": 0.35,
- "gap": 0.32,
- "tail": 2.2,
- "shots": [
-  {
-   "id": "s01",
-   "text": "Tonight, your fridge will hum in the dark.",
-   "pause": 0.2
-  },
-  {
-   "id": "s02",
-   "text": "Milk. Eggs. Leftovers. Safe for days."
-  },
-  {
-   "id": "s03",
-   "text": "Now rewind fifty thousand years.",
-   "pause": 0.45
-  },
-  {
-   "id": "s04",
-   "text": "A hunter brings down an antelope."
-  },
-  {
-   "id": "s05",
-   "text": "Far more meat than his family can eat."
-  },
-  {
-   "id": "s06",
-   "text": "And in this heat, it will rot within days."
-  },
-  {
-   "id": "s07",
-   "text": "No fridge. No ice."
-  },
-  {
-   "id": "s08",
-   "text": "So what does he do?",
-   "pause": 0.4
-  },
-  {
-   "id": "s09",
-   "text": "Trick one: the sun and the wind."
-  },
-  {
-   "id": "s10",
-   "text": "Thin strips, hung up to dry, keep for weeks."
-  },
-  {
-   "id": "s11",
-   "text": "Trick two: smoke."
-  },
-  {
-   "id": "s12",
-   "text": "It dries the meat, and keeps the flies away."
-  },
-  {
-   "id": "s13",
-   "text": "Trick three, up north: bury it in frozen ground."
-  },
-  {
-   "id": "s14",
-   "text": "Nature's own freezer.",
-   "pause": 0.4
-  },
-  {
-   "id": "s15",
-   "text": "But the smartest fridge wasn't a place at all.",
-   "say": "But the [smartest](/smˈɑɹtəst/) fridge wasn't a place at all."
-  },
-  {
-   "id": "s16",
-   "text": "It was other people.",
-   "pause": 0.4
-  },
-  {
-   "id": "s17",
-   "text": "He shares the meat with the whole camp."
-  },
-  {
-   "id": "s18",
-   "text": "Next week, someone else gets lucky, and shares with him."
-  },
-  {
-   "id": "s19",
-   "text": "Researchers living with the Hadza of Tanzania still see this today.",
-   "pause": 0.3,
-   "say": "Researchers living with the [Hadza](/hˈɑdzə/) of Tanzania still see this today."
-  },
-  {
-   "id": "s20",
-   "text": "Meat spoils. A favour doesn't.",
-   "pause": 0.45,
-   "say": "Meat spoils. A [favour](/fˈAvəɹ/) doesn't."
-  },
-  {
-   "id": "s21",
-   "text": "Your fridge stores food."
-  },
-  {
-   "id": "s22",
-   "text": "Theirs stored friendship."
-  }
+ "voice": "am_fenrir",
+ "speed": 0.95,
+ "lead_in": 0.3,
+ "gap": 0.14,
+ "tail": 2.4,
+ "notes": "Tone and rhythm follow the Max cro reference: second person, staccato lists of three, sentences split across cuts, the voiced objection, short pauses (reference median 0.13 s). Each line is spoken in one pass; each phrase is one shot.",
+ "lines": [
+  {"phrases": [["s01", "Tonight, a machine in your kitchen will hum in the dark."]]},
+  {"phrases": [["s02", "Milk. Eggs. Leftovers."], ["s03", "All of it, safe for days."]], "pause": 0.22},
+  {"phrases": [["s04", "Now take time back fifty thousand years."]], "pause": 0.1},
+  {"phrases": [["s05", "A hunter has just brought down an antelope."]]},
+  {"phrases": [["s06", "He has a spear."], ["s07", "A family to feed."], ["s08", "And more meat than they can eat."]]},
+  {"phrases": [["s09", "Under this sun, it will rot within days."]]},
+  {"phrases": [["s10", "No fridge. No ice."]]},
+  {"phrases": [["s11", "So he has to solve a problem"], ["s12", "you have never once thought about."]], "pause": 0.1},
+  {"phrases": [["s13", "Now your brain is probably saying,"], ["s14", "Cavemen? They just let it rot."]]},
+  {"phrases": [["s15", "At least, that's what we assume."]]},
+  {"phrases": [["s16", "But they had tricks."]], "pause": 0.12},
+  {"phrases": [["s17", "Trick one: the sun and the wind."]]},
+  {"phrases": [["s18", "Hung up to dry, thin strips keep for weeks."]]},
+  {"phrases": [["s19", "Trick two: smoke."]]},
+  {"phrases": [["s20", "It dries the meat, and keeps the flies away."]]},
+  {"phrases": [["s21", "Trick three, up north:"], ["s22", "a pit in frozen ground."]]},
+  {"phrases": [["s23", "Nature's own freezer."]], "pause": 0.15},
+  {"phrases": [["s24", "But the smartest fridge,"], ["s25", "wasn't a place at all."]]},
+  {"phrases": [["s26", "It was other people."]], "pause": 0.12},
+  {"phrases": [["s27", "He shares the meat with the whole camp."]]},
+  {"phrases": [["s28", "Next week, someone else gets lucky,"], ["s29", "and shares with him."]]},
+  {"phrases": [["s30", "Researchers living with the Hadza"], ["s31", "still see this today."]], "pause": 0.1},
+  {"phrases": [["s32", "Meat spoils."], ["s33", "A favour doesn't."]], "pause": 0.15},
+  {"phrases": [["s34", "Your fridge stores food."], ["s35", "Theirs stored friendship."]]}
  ]
 }
