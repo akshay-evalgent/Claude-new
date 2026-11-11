@@ -1,5 +1,5 @@
-Fee pages used, screenshots dated 6 Nov in our folder: skydo.com (fee table: $19 up to $2,000; $29 for $2,001 to $10,000; 0.3% above $10,000), wise.com/in/pricing, payoneer.com/pricing (their page says last updated 1 Jan 2026).
+Screenshots of every fee line are attached to this comment, taken today (11 Nov 2026) from skydo.com, wise.com/in/pricing/receive, payoneer.com/pricing and PayPal India's business fees page.
 
-The PayPal figure comes from a competitor's calculator, so treat it as their claim. If you have a recent PayPal India receipt, post the percentage and we'll replace it with yours.
+How we counted: dollars at the mid-market rate (₹93.8 today). GST is included where the company's own page states it, which is Skydo and Wise. Payoneer and PayPal don't state GST on these pages, so theirs may come out slightly higher.
 
-Nobody paid us to write this and there are no referral links in it.
+Nobody paid us for this and there are no referral links in it. If your real statement shows something different, post the number and we'll correct the card.

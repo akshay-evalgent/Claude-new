@@ -73,34 +73,39 @@ If one of these platforms has paid you, what did your real hourly come to once y
   first_comment="""The screenshot is attached to this comment: the top of alignerr.com and the listings further down the same page, taken 6 Nov 2026. Mercor's figures are from mercor.com and work.mercor.com/explore, same day.
 
 We don't have India-specific rates for either platform. If you've been paid by one, post the number and the kind of project and we'll print it next week, with your name if you want it."""),
- dict(slug="fee-card-2000-invoice", when="Wed 11 Nov · 8:30 am IST", pillar="Getting paid", kind="image",
-  images=[f"{W}/03-fee-2000.png", f"{W}/03-fee-2000-square.png"], tags="",
-  caption="""A client in Austin pays your $2,000 invoice. How much reaches you depends on which link you sent them.
+ dict(slug="fee-card-2000-invoice", when="Wed 11 Nov · 8:30 pm IST", pillar="Getting paid", kind="image",
+  images=[f"{W}/03-fee-2000.png", f"{W}/03-fee-2000-square.png", f"{W}/03-fee-2000-comment-proof.png"], tags="",
+  caption="""A client in Austin pays your $2,000 invoice. How much reaches you depends on which payment details you sent them.
 
-We put the same $2,000 through four rails using each company's own fee page, on 6 November.
+We worked out the same $2,000 on four rails today, using each company's own fee page or calculator.
 
-Skydo: flat $19 plus GST on the fee, no markup on the exchange rate, FIRA in your inbox. You keep about $1,978.
-Wise: mid-market rate, fee from 0.33% on their India page. About $1,993 on the quoted fee.
-Payoneer: 1% to receive into a USD receiving account. About $1,980, before conversion when you withdraw.
-PayPal: we couldn't open PayPal India's fee page, so we used Skydo's own calculator, which puts PayPal at 7.6% on this payment. About $1,848.
+Skydo: a flat $19, plus GST on the fee. No markup on the exchange rate. About $1,978 reaches you.
 
-That's a $130 gap between the top and the bottom of the card. Twelve invoices a year and it's about ₹1.3 lakh. A laptop.
+Wise Business: a $32.85 fee plus $5.91 GST, straight from Wise's India receiving calculator. About $1,961.
 
-Which rail do you use, and has a client ever refused it?
+Payoneer: 1% to receive in dollars, then 1.2% to 4% to withdraw to an Indian bank. Somewhere between $1,901 and $1,956. Their page gives a range, not a number.
+
+PayPal: 4.4% plus 30 cents on a payment from abroad, then 3% on the conversion to rupees. About $1,854.
+
+That's about $123 between the top and the bottom on one invoice, roughly ₹11,600. Twelve invoices a year and it's ₹1.4 lakh.
+
+Two things the card can't show. Wise only lets Indian residents receive money on a business account, so check that yours qualifies. And some clients will only pay by PayPal, which is worth something when you're starting out.
+
+Which one do you use, and has a client ever refused it?
 
 #GettingPaid
 #Freelance
 #Skydo
 #Wise
 #Payoneer
-#ExportOfServices
+#PayPal
 #India
 #RemoteLedger""",
-  first_comment="""Fee pages used, screenshots dated 6 Nov in our folder: skydo.com (fee table: $19 up to $2,000; $29 for $2,001 to $10,000; 0.3% above $10,000), wise.com/in/pricing, payoneer.com/pricing (their page says last updated 1 Jan 2026).
+  first_comment="""Screenshots of every fee line are attached to this comment, taken today (11 Nov 2026) from skydo.com, wise.com/in/pricing/receive, payoneer.com/pricing and PayPal India's business fees page.
 
-The PayPal figure comes from a competitor's calculator, so treat it as their claim. If you have a recent PayPal India receipt, post the percentage and we'll replace it with yours.
+How we counted: dollars at the mid-market rate (₹93.8 today). GST is included where the company's own page states it, which is Skydo and Wise. Payoneer and PayPal don't state GST on these pages, so theirs may come out slightly higher.
 
-Nobody paid us to write this and there are no referral links in it."""),
+Nobody paid us for this and there are no referral links in it. If your real statement shows something different, post the number and we'll correct the card."""),
  dict(slug="pitch-form-opens", when="Thu 12 Nov · 8:30 pm IST", pillar="Pitches", kind="image",
   images=[f"{W}/04-rules.png", f"{W}/04-rules-square.png"], tags="",
   caption="""From next Thursday, this page publishes pitches from people in India who want clients abroad. Free.

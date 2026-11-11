@@ -1,21 +1,26 @@
-A client in Austin pays your $2,000 invoice. How much reaches you depends on which link you sent them.
+A client in Austin pays your $2,000 invoice. How much reaches you depends on which payment details you sent them.
 
-We put the same $2,000 through four rails using each company's own fee page, on 6 November.
+We worked out the same $2,000 on four rails today, using each company's own fee page or calculator.
 
-Skydo: flat $19 plus GST on the fee, no markup on the exchange rate, FIRA in your inbox. You keep about $1,978.
-Wise: mid-market rate, fee from 0.33% on their India page. About $1,993 on the quoted fee.
-Payoneer: 1% to receive into a USD receiving account. About $1,980, before conversion when you withdraw.
-PayPal: we couldn't open PayPal India's fee page, so we used Skydo's own calculator, which puts PayPal at 7.6% on this payment. About $1,848.
+Skydo: a flat $19, plus GST on the fee. No markup on the exchange rate. About $1,978 reaches you.
 
-That's a $130 gap between the top and the bottom of the card. Twelve invoices a year and it's about ₹1.3 lakh. A laptop.
+Wise Business: a $32.85 fee plus $5.91 GST, straight from Wise's India receiving calculator. About $1,961.
 
-Which rail do you use, and has a client ever refused it?
+Payoneer: 1% to receive in dollars, then 1.2% to 4% to withdraw to an Indian bank. Somewhere between $1,901 and $1,956. Their page gives a range, not a number.
+
+PayPal: 4.4% plus 30 cents on a payment from abroad, then 3% on the conversion to rupees. About $1,854.
+
+That's about $123 between the top and the bottom on one invoice, roughly ₹11,600. Twelve invoices a year and it's ₹1.4 lakh.
+
+Two things the card can't show. Wise only lets Indian residents receive money on a business account, so check that yours qualifies. And some clients will only pay by PayPal, which is worth something when you're starting out.
+
+Which one do you use, and has a client ever refused it?
 
 #GettingPaid
 #Freelance
 #Skydo
 #Wise
 #Payoneer
-#ExportOfServices
+#PayPal
 #India
 #RemoteLedger

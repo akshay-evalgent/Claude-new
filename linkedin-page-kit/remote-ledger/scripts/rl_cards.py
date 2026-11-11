@@ -85,29 +85,36 @@ def pay_card(spec, out, square=False):
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True); im.save(out); return out
 
 def fee_card(spec, out, square=False):
+    """Rows: name, what reaches you (big), the rule, and a bar for the fee taken. keep_hi makes a range."""
     im,d,W,H,M = frame(square, spec.get("checked","Checked 6 Nov 2026"))
     y=128
     d.text((M,y), spec["kicker"].upper(), font=T["body"](22,"SemiBold"), fill=T["accent"]); y+=42
     ft=fit_font(d, spec["title"], lambda s:T["display"](s,"SemiBold"), W-2*M, 68 if not square else 56)
     d.text((M,y), spec["title"], font=ft, fill=T["ink"]); y+=int(ft.size*1.3)
-    y=block(d,(M,y),spec["subtitle"],T["body"](25),T["muted"],W-2*M,1.2)+26
-    rows=spec["rows"]; rh=(H-96-y-(150 if not square else 40))//len(rows)
-    fname=T["display"](34 if not square else 30,"SemiBold"); frule=T["body"](22); fkeep=T["mono"](40 if not square else 34,"Bold")
-    maxv=max(r["keep"] for r in rows)
+    y=block(d,(M,y),spec["subtitle"],T["body"](24),T["muted"],W-2*M,1.2)+22
+    rows=spec["rows"]; total=spec.get("amount",2000)
+    rh=(H-96-y-(150 if not square else 30))//len(rows)
+    fname=T["display"](34 if not square else 30,"SemiBold"); frule=T["body"](21 if not square else 19); fkeep=T["mono"](38 if not square else 32,"Bold"); ffee=T["mono"](20,"Bold")
+    maxfee=max(total-r["keep"] for r in rows); barw=W-2*M-190
     for i,r in enumerate(rows):
         d.line((M,y,W-M,y), fill=T["rule"], width=1)
         ty=y+14
         d.text((M,ty), r["name"], font=fname, fill=T["ink"])
-        kt=f"${r['keep']:,.0f}"; d.text((W-M-tl(d,kt,fkeep), ty-2), kt, font=fkeep, fill=(T["accent"] if i==0 else T["ink"]))
-        ty2=ty+int(fname.size*1.25)
-        ty3=block(d,(M,ty2), r["rule"], frule, T["muted"], W-2*M, 1.2)
-        # bar
-        by=ty3+14; bw=int((W-2*M)*r["keep"]/maxv)
-        d.rounded_rectangle((M,by,W-M,by+14), radius=7, fill=T["bg2"], outline=T["rule"], width=1)
-        d.rounded_rectangle((M,by,M+bw,by+14), radius=7, fill=(T["accent"] if i==0 else T["ink"]))
+        kt=r.get("keep_text", f"${r['keep']:,.0f}")
+        d.text((W-M-tl(d,kt,fkeep), ty-2), kt, font=fkeep, fill=(T["accent"] if i==0 else T["ink"]))
+        ty2=ty+int(fname.size*1.3)
+        ty3=block(d,(M,ty2), r["rule"], frule, T["muted"], W-2*M, 1.2) if not square else ty2
+        by=ty3+10; fee=total-r["keep"]
+        lo=int(barw*(fee if "keep_hi" not in r else total-r["keep_hi"])/maxfee); hi=int(barw*fee/maxfee)
+        d.rounded_rectangle((M,by,M+barw,by+12), radius=6, fill=T["bg2"], outline=T["rule"], width=1)
+        if "keep_hi" in r:
+            d.rounded_rectangle((M,by,M+hi,by+12), radius=6, fill=(236,190,184))
+        d.rounded_rectangle((M,by,M+max(lo,12),by+12), radius=6, fill=T["strike"])
+        ftxt=r.get("fee_text", f"−${fee:,.0f}")
+        d.text((M+barw+16, by-5), ftxt, font=ffee, fill=T["strike"])
         y+=rh
     d.line((M,y,W-M,y), fill=T["rule"], width=1)
-    if not square: block(d,(M,y+22),spec["note"],T["body"](23,"Medium"),T["muted"],W-2*M,1.22)
+    if not square: block(d,(M,y+20),spec["note"],T["body"](22,"Medium"),T["muted"],W-2*M,1.22)
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True); im.save(out); return out
 
 def rules_card(spec, out, square=False):
