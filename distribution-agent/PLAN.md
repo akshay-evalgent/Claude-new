@@ -245,3 +245,12 @@ Stack:
 - https://polar.sh/docs/merchant-of-record/fees
 - https://dodopayments.com/pricing
 - https://support.stripe.com/questions/stripe-accounts-are-invite-only-in-india
+
+## Playbooks by product type
+
+| Product | File |
+|---|---|
+| AI agents and AI products | `AI-AGENTS-PLAYBOOK.md` |
+| SaaS and micro-SaaS | `SAAS-PLAYBOOK.md` |
+| Templates, courses and ebooks | `TEMPLATES-COURSES-EBOOKS-PLAYBOOK.md` |
+| Newsletters and paid communities | `NEWSLETTERS-COMMUNITIES-PLAYBOOK.md` |
