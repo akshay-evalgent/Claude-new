@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>chatvid</title>
+<link rel="stylesheet" href="themes.css">
+</head>
+<body>
+<div id="frame">
+  <div id="cam">
+    <div id="world">
+      <div id="hdr"><span id="hdrName"></span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div id="home"><div id="greet"></div></div>
+      <div id="viewport"><div id="thread"></div></div>
+      <div id="composerWrap">
+        <div id="composer">
+          <svg class="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          <div id="input"><span id="typed"></span><span id="caret"></span><span id="ph"></span></div>
+          <div id="sendBtn"><svg viewBox="0 0 24 24"><path d="M12 19V6M6 11l6-6 6 6"/></svg></div>
+        </div>
+        <div id="disc"></div>
+      </div>
+    </div>
+  </div>
+  <div id="vignette"></div>
+  <div id="hud">
+    <img id="hudFace" alt="">
+    <div id="hudBody">
+      <div id="hudLabel"><span>AI PATIENCE</span><span id="hudPct">100%</span></div>
+      <div id="hudTrack"><div id="hudFill"></div></div>
+    </div>
+  </div>
+  <div id="fx"><div id="scan"></div><div id="rwLabel">◀◀ REWIND</div></div>
+  <div id="flash"></div>
+</div>
+<script src="engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "title": "I Asked AI to Count to 1 Billion",
+  "interface": "midnight",
+  "ai": { "name": "ChatGPT" },
+  "hook": true,
+  "hud": { "patience": true },
+  "music": { "track": "comical", "gain": -21 },
+  "exchanges": [
+    {
+      "user": "Can you count to 1 billion?",
+      "ai": "Easy. I'm basically a calculator 😎",
+      "punch": 2,
+      "patience": 100
+    },
+    {
+      "user": "Then do it. No skipping.",
+      "ai": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12...",
+      "punch": false,
+      "hold": 0.9,
+      "patience": 92
+    },
+    {
+      "user": "You skipped one.",
+      "ai": "No I didn't 🤨",
+      "punch": 2,
+      "sfx": "boing",
+      "think": 0.8,
+      "patience": 60
+    },
+    {
+      "user": "You did. Start again 😏",
+      "ai": "Bro I was on 12 😭",
+      "punch": 3,
+      "shake": true,
+      "sfx": "trombone",
+      "patience": 25
+    },
+    {
+      "user": "Again. From 1.",
+      "ai": "1, 2, 3... wait what comes after 3? 💀",
+      "punch": 3,
+      "shake": true,
+      "sfx": "nonono",
+      "think": 0.9,
+      "final": true,
+      "patience": 0
+    }
+  ]
+}

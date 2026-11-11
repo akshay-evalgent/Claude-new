@@ -1,0 +1,121 @@
+/* chatvid themes. Layout is shared; each theme only sets tokens and a few
+   shape details. World is a 1920x1080 "browser window"; the camera moves over it. */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+body { font-family: var(--font); -webkit-font-smoothing: antialiased; }
+
+#frame { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+#cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+#world { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; background: var(--bg); color: var(--text); }
+
+/* ---------- header ---------- */
+#hdr { position: absolute; left: 28px; top: 18px; display: flex; align-items: center; gap: 6px;
+  font-size: 19px; font-weight: 500; color: var(--text); opacity: .92; }
+#hdr .chev { width: 18px; height: 18px; fill: none; stroke: var(--muted); stroke-width: 2.2; }
+
+/* ---------- home greeting ---------- */
+#home { position: absolute; left: 0; right: 0; top: 380px; text-align: center; }
+#greet { font-size: 30px; font-weight: 500; letter-spacing: -.3px; color: var(--text); }
+
+/* ---------- thread ---------- */
+#viewport { position: absolute; left: 576px; width: 768px; top: 70px; height: 836px; overflow: hidden; }
+#thread { position: absolute; left: 0; top: 0; width: 768px; padding-top: 20px; }
+.msg { display: none; margin-bottom: 30px; }
+.msg.on { display: block; }
+.msg.user { display: none; justify-content: flex-end; }
+.msg.user.on { display: flex; }
+.bubble { max-width: 70%; background: var(--user-bg); color: var(--user-text); padding: 11px 19px;
+  border-radius: var(--bubble-r); font-size: 16px; line-height: 26px; white-space: pre-wrap; }
+.msg.ai { position: relative; padding-left: var(--ai-indent); }
+.msg.ai .avatar { display: var(--avatar); position: absolute; left: 0; top: 2px; width: 28px; height: 28px;
+  border-radius: 50%; background: var(--avatar-bg); }
+.body { font-size: 16px; line-height: 28px; color: var(--text); white-space: pre-wrap; }
+.body .t { visibility: hidden; }
+.body .t.v { visibility: visible; }
+.emo { width: 1.3em; height: 1.3em; vertical-align: -0.28em; display: inline-block; }
+.bubble .emo { width: 1.35em; height: 1.35em; }
+.actions { display: flex; gap: 14px; margin-top: 10px; visibility: hidden; }
+.actions.v { visibility: visible; }
+.actions svg { width: 18px; height: 18px; fill: none; stroke: var(--muted); stroke-width: 1.9;
+  stroke-linecap: round; stroke-linejoin: round; }
+.dots { position: absolute; left: var(--ai-indent); top: 8px; display: none; }
+.dots.on { display: block; }
+.dots i { display: inline-block; width: 13px; height: 13px; border-radius: 50%; background: var(--text); }
+
+/* ---------- composer ---------- */
+#composerWrap { position: absolute; left: 576px; width: 768px; top: 922px; }
+#composer { position: relative; height: 58px; border-radius: var(--comp-r); background: var(--comp-bg);
+  border: 1px solid var(--comp-border); display: flex; align-items: center; padding: 0 12px 0 16px; gap: 10px;
+  box-shadow: var(--comp-shadow); }
+#composer .plus { width: 22px; height: 22px; fill: none; stroke: var(--text); stroke-width: 1.8; flex: none; }
+#input { flex: 1; font-size: 16px; line-height: 24px; white-space: pre; overflow: hidden; color: var(--text);
+  display: flex; align-items: center; }
+#typed { white-space: pre; }
+#ph { color: var(--muted); }
+#caret { display: inline-block; width: 2px; height: 22px; background: var(--caret); margin: 0 1px; }
+#sendBtn { width: 36px; height: 36px; border-radius: 50%; background: var(--send-off); display: flex;
+  align-items: center; justify-content: center; flex: none; }
+#sendBtn svg { width: 20px; height: 20px; fill: none; stroke: var(--send-icon-off); stroke-width: 2.4;
+  stroke-linecap: round; stroke-linejoin: round; }
+#sendBtn.on { background: var(--send-on); }
+#sendBtn.on svg { stroke: var(--send-icon-on); }
+#disc { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+
+/* ---------- screen-space overlays ---------- */
+#vignette { position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,.45) 100%); }
+#hud { position: absolute; left: 56px; top: 46px; display: none; align-items: center; gap: 16px;
+  padding: 14px 22px 14px 16px; border-radius: 22px; background: rgba(16,16,18,.82);
+  border: 1.5px solid rgba(255,255,255,.12); box-shadow: 0 10px 40px rgba(0,0,0,.5);
+  font-family: "Inter", sans-serif; transform-origin: 0 50%; }
+#hud.on { display: flex; }
+#hudFace { width: 60px; height: 60px; }
+#hudBody { width: 300px; }
+#hudLabel { display: flex; justify-content: space-between; font-size: 19px; font-weight: 800;
+  letter-spacing: 1.4px; color: #fff; margin-bottom: 9px; }
+#hudPct { font-variant-numeric: tabular-nums; }
+#hudTrack { height: 16px; border-radius: 8px; background: rgba(255,255,255,.12); overflow: hidden; }
+#hudFill { height: 100%; width: 100%; border-radius: 8px; }
+#fx { position: absolute; inset: 0; display: none; pointer-events: none; }
+#fx.on { display: block; }
+#scan { position: absolute; inset: 0; mix-blend-mode: overlay;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,.10) 0 2px, rgba(0,0,0,.25) 2px 5px); }
+#rwLabel { position: absolute; right: 70px; top: 54px; font: 800 46px/1 "Inter", sans-serif; color: #fff;
+  letter-spacing: 3px; text-shadow: 3px 0 0 rgba(255,0,80,.8), -3px 0 0 rgba(0,200,255,.8); }
+#flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+
+/* ======================= themes ======================= */
+
+/* "midnight": a dark, minimal assistant UI in the style of the big chat apps */
+body.t-midnight {
+  --font: "Inter", system-ui, sans-serif;
+  --bg: #212121; --text: #ececec; --muted: #a3a3a3; --caret: #ececec;
+  --user-bg: #303030; --user-text: #ececec; --bubble-r: 22px;
+  --ai-indent: 0px; --avatar: none; --avatar-bg: none;
+  --comp-bg: #303030; --comp-border: transparent; --comp-r: 29px; --comp-shadow: 0 0 0 rgba(0,0,0,0);
+  --send-off: #4a4a4a; --send-on: #ececec; --send-icon-off: #8a8a8a; --send-icon-on: #111;
+}
+
+/* "nebula": softer grey UI with a gradient avatar and a gradient greeting */
+body.t-nebula {
+  --font: "Inter", system-ui, sans-serif;
+  --bg: #131314; --text: #e3e3e3; --muted: #9aa0a6; --caret: #8ab4f8;
+  --user-bg: #282a2c; --user-text: #e3e3e3; --bubble-r: 24px 4px 24px 24px;
+  --ai-indent: 46px; --avatar: block; --avatar-bg: conic-gradient(from 200deg, #4f8bff, #a970ff, #ff7aa8, #4f8bff);
+  --comp-bg: #1e1f20; --comp-border: #2f3133; --comp-r: 32px; --comp-shadow: 0 0 0 rgba(0,0,0,0);
+  --send-off: transparent; --send-on: #a8c7fa; --send-icon-off: #5f6368; --send-icon-on: #062e6f;
+}
+body.t-nebula #greet { font-size: 44px; background: linear-gradient(90deg, #4f8bff, #a970ff 45%, #ff7aa8);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* "void": pure black, high contrast, monochrome */
+body.t-void {
+  --font: "Inter", system-ui, sans-serif;
+  --bg: #000; --text: #fafafa; --muted: #8b8b8b; --caret: #fafafa;
+  --user-bg: #1d1d1f; --user-text: #fafafa; --bubble-r: 20px 20px 6px 20px;
+  --ai-indent: 0px; --avatar: none; --avatar-bg: none;
+  --comp-bg: #0f0f10; --comp-border: #2c2c2e; --comp-r: 26px; --comp-shadow: 0 0 40px rgba(255,255,255,.04);
+  --send-off: #2c2c2e; --send-on: #fafafa; --send-icon-off: #6b6b6b; --send-icon-on: #000;
+}
+body.t-void #greet { font-size: 40px; font-weight: 700; letter-spacing: -1px; }
