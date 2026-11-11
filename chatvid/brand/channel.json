@@ -1,0 +1,18 @@
+{
+ "name": "Bot Bothered",
+ "handle": "@BotBothered",
+ "banner": {
+  "tagline": "I bother AI chatbots until they crack 🍞",
+  "schedule": "NEW VIDEOS EVERY TUESDAY & FRIDAY",
+  "deco": [
+   {"x": 70,   "y": 560, "text": "Hey *toaster* 👋", "side": "user", "color": "red",  "size": 46, "o": 0.55},
+   {"x": 40,   "y": 700, "text": "I'm ChatGPT 😤",   "side": "ai",   "color": "cyan", "size": 46, "o": 0.55},
+   {"x": 2110, "y": 560, "text": "Count to *1B* 🤓", "side": "user", "color": "red",  "size": 46, "o": 0.55},
+   {"x": 2090, "y": 700, "text": "1, 2, 3... 💀",    "side": "ai",   "color": "cyan", "size": 46, "o": 0.55},
+   {"x": 560,  "y": 210, "text": "Who's ChatGPT? 🍞", "side": "ai",  "color": "cyan", "size": 50, "o": 0.28},
+   {"x": 1560, "y": 260, "text": "Name *every* human 🤓", "side": "user", "color": "red", "size": 50, "o": 0.28},
+   {"x": 820,  "y": 1090, "text": "STOP 😭", "side": "ai", "color": "cyan", "size": 50, "o": 0.28},
+   {"x": 1380, "y": 1150, "text": "*Beep* if you're a toaster", "side": "user", "color": "red", "size": 50, "o": 0.28}
+  ]
+ }
+}

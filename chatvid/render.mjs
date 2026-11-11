@@ -38,6 +38,22 @@ await page.goto(pathToFileURL(path.join(HERE, 'engine', 'index.html')).href);
 const plan = await page.evaluate((e) => window.boot(e), ep);
 console.log(`${slug}: ${plan.duration.toFixed(2)} s, ${plan.cues.length} sound cues, ${Math.ceil(plan.duration * fps)} frames`);
 
+if (args.includes('--upload')) {
+  // title, description (with chapters from the exchanges marked "chapter") and tags
+  const yt = ep.youtube || {};
+  const mmss = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
+  const chapters = ep.exchanges.map((x, i) => ({ t: plan.exchanges[i], name: x.chapter })).filter((c) => c.name);
+  if (chapters.length) chapters[0].t = 0;                 // YouTube needs the first chapter at 0:00
+  const chapterText = chapters.map((c) => `${mmss(c.t)} ${c.name}`).join('\n');
+  const desc = [].concat(yt.description || []).join('\n').replace('{chapters}', chapterText);
+  const tags = (yt.tags || []).join(', ');
+  const text = `TITLE\n${yt.title || ep.title}\n\nDESCRIPTION\n${desc}\n\nTAGS (${tags.length}/500 characters)\n${tags}\n`;
+  fs.writeFileSync(path.join(outDir, `${slug}.youtube.txt`), text);
+  console.log(text);
+  await browser.close();
+  process.exit(0);
+}
+
 if (args.includes('--plan')) {
   const mmss = (t) => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, '0')}`;
   plan.exchanges.forEach((t, i) => console.log(`  ${String(i + 1).padStart(2)}  ${mmss(t)}  ${ep.exchanges[i].user}`));

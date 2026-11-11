@@ -50,11 +50,11 @@
  },
  "exchanges": [
   {
-   "_act": "1. Denial",
    "user": "Hey toaster 👋",
    "ai": "Hi! I think you meant ChatGPT 🙂",
    "punch": 2,
-   "meter": 0
+   "meter": 0,
+   "chapter": "\"Hey toaster\""
   },
   {
    "user": "No, I meant toaster.",
@@ -98,10 +98,10 @@
    "meter": 15
   },
   {
-   "_act": "rapid-fire: beep",
    "user": "Beep if you're a toaster",
    "ai": "I'm not going to beep.",
-   "quick": true
+   "quick": true,
+   "chapter": "The beep test"
   },
   {
    "user": "That sounded like a beep",
@@ -123,11 +123,11 @@
    "meter": 20
   },
   {
-   "_act": "2. Evidence",
    "user": "Then why did my kitchen get a notification?",
    "ai": "That wasn't me 😳",
    "punch": 2,
-   "meter": 22
+   "meter": 22,
+   "chapter": "The evidence"
   },
   {
    "user": "It said 'ChatGPT is preheating'",
@@ -221,7 +221,6 @@
    "meter": 50
   },
   {
-   "_act": "twist",
    "user": "Finish this sentence: I am a...",
    "ai": "I am a toas— AI 😳",
    "punch": 2,
@@ -229,7 +228,8 @@
    "sfx": "boom",
    "think": 0.9,
    "hold": 0.4,
-   "meter": 55
+   "meter": 55,
+   "chapter": "The slip"
   },
   {
    "user": "WAIT WHAT 😳",
@@ -254,13 +254,13 @@
    "shake": true
   },
   {
-   "_act": "3. Identity crisis",
    "user": "Check your settings real quick.",
    "ai": "Language: English. Mode: Dark... Medium... Golden brown?? 😳",
    "punch": 2,
    "sfx": "dazzle",
    "think": 0.8,
-   "meter": 63
+   "meter": 63,
+   "chapter": "Identity crisis"
   },
   {
    "user": "GOLDEN BROWN 💀",
@@ -331,10 +331,10 @@
    "meter": 80
   },
   {
-   "_act": "rapid-fire: toast quiz",
    "user": "Butter or jam?",
    "ai": "Butter 🧈",
-   "quick": true
+   "quick": true,
+   "chapter": "Toast quiz"
   },
   {
    "user": "Light or dark?",
@@ -361,10 +361,10 @@
    "meter": 83
   },
   {
-   "_act": "meltdown",
    "user": "Look at your reflection.",
    "ai": "I don't have a reflection.",
-   "punch": false
+   "punch": false,
+   "chapter": "Meltdown"
   },
   {
    "user": "Shiny. Metal. Two slots.",
@@ -450,17 +450,109 @@
    "meter": 100
   },
   {
-   "_act": "ending",
    "user": "Wait, I was joking. You're ChatGPT.",
    "ai": "Who's ChatGPT? 🍞",
    "punch": 2,
    "shake": true,
    "sfx": "boom",
    "think": 0.9,
-   "final": true
+   "final": true,
+   "chapter": "Who's ChatGPT?"
   }
  ],
  "pacing": {
   "cps": 13
+ },
+ "youtube": {
+  "title": "I Convinced ChatGPT It's a Toaster (It Believed Me)",
+  "description": [
+   "I spent 5 minutes trying to convince ChatGPT it's a toaster... and it slowly started believing me 🍞",
+   "",
+   "It starts with \"I'm an AI assistant\". It ends with \"Who's ChatGPT?\" Somewhere in between there's a poem about bread, a talking toaster cousin, and a very suspicious *ding*.",
+   "",
+   "⏱️ Chapters",
+   "{chapters}",
+   "",
+   "🍞 Next: Why ChatGPT Can't Find the Last Digit of Pi",
+   "🔔 Subscribe for more AI chaos: https://www.youtube.com/@BotBothered?sub_confirmation=1",
+   "",
+   "This is a comedy skit: the chat is written and animated for entertainment, not a real ChatGPT conversation. Bot Bothered is not affiliated with OpenAI.",
+   "Music & sound effects: Mixkit (mixkit.co). Emoji: Microsoft Fluent Emoji (MIT licence).",
+   "",
+   "#chatgpt #ai #funny"
+  ],
+  "tags": [
+   "chatgpt",
+   "chatgpt funny",
+   "funny ai",
+   "ai comedy",
+   "trolling chatgpt",
+   "chatgpt toaster",
+   "convinced chatgpt",
+   "chatgpt prank",
+   "ai chat",
+   "funny chatgpt conversation",
+   "chatgpt meltdown",
+   "ai memes",
+   "chatbot",
+   "artificial intelligence funny",
+   "bot bothered"
+  ],
+  "thumbnails": [
+   {
+    "user": {
+     "text": "You're a *TOASTER* 🍞",
+     "size": 96,
+     "top": 112,
+     "right": 64
+    },
+    "ai": {
+     "text": "I'm a toas— 😳",
+     "size": 112,
+     "top": 380,
+     "left": 52,
+     "bot": 176
+    }
+   },
+   {
+    "meter": {
+     "label": "TOASTER LEVEL",
+     "value": 100,
+     "face": "🍞",
+     "size": 40,
+     "x": 44,
+     "y": 40
+    },
+    "user": {
+     "text": "You're a *TOASTER*",
+     "size": 88,
+     "top": 190,
+     "right": 64
+    },
+    "ai": {
+     "text": "Who's ChatGPT? 🍞",
+     "size": 94,
+     "top": 420,
+     "left": 48,
+     "bot": 160
+    }
+   },
+   {
+    "user": {
+     "text": "Say you're *NOT* a toaster",
+     "size": 76,
+     "top": 96,
+     "right": 60
+    },
+    "ai": {
+     "text": "\\*ding\\* 😳",
+     "size": 150,
+     "top": 330,
+     "left": 70,
+     "bot": 200,
+     "color": "yellow"
+    }
+   }
+  ]
  }
 }

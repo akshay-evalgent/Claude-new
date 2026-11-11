@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bot Bothered brand</title>
+<style>
+  :root {
+    --bg: #050507; --ink: #ffffff; --cyan: #19e3ff; --red: #ff2e4d; --yellow: #ffd23f; --violet: #b36bff;
+    --font: "Inter Display", "Inter", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: transparent; }
+  body { font-family: var(--font); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  #root { position: relative; overflow: hidden; }
+  .bg { position: absolute; inset: 0; background: var(--bg); }
+  .glow { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .5; }
+
+  /* neon chat bubble */
+  .bub { position: relative; display: inline-flex; align-items: center; white-space: nowrap;
+    padding: .2em .46em .22em; border-radius: .42em; background: #07090c;
+    border: .045em solid var(--c); color: #fff; font-weight: 900; line-height: 1.08; letter-spacing: -.035em;
+    box-shadow: 0 0 .04em var(--c), 0 0 .18em var(--c), 0 0 .5em color-mix(in srgb, var(--c) 45%, transparent),
+      inset 0 0 .16em color-mix(in srgb, var(--c) 40%, transparent);
+    text-shadow: 0 .03em 0 rgba(0,0,0,.6); }
+  .bub.ai { border-bottom-left-radius: .14em; }
+  .bub.user { border-bottom-right-radius: .14em; }
+  .bub .hl { color: var(--red); }
+  .bub.red .hl { color: var(--red); }
+  .bub .tx { white-space: pre; }
+  .bub .emo { height: 1.08em; width: auto; margin-left: .14em; vertical-align: middle; filter: drop-shadow(0 .03em .05em rgba(0,0,0,.5)); }
+  .tail { position: absolute; width: .62em; height: .62em; bottom: -.207em; overflow: visible; }
+  .bub.ai .tail { left: -.29em; }
+  .bub.user .tail { right: -.29em; transform: scaleX(-1); }
+  .tail .f { fill: #07090c; }
+  .tail .s { fill: none; stroke: var(--c); stroke-linecap: round; stroke-linejoin: round; }
+  .tail.st { filter: drop-shadow(0 0 .03em var(--c)) drop-shadow(0 0 .12em var(--c)); }
+
+  .label { font-weight: 800; letter-spacing: .12em; color: var(--cyan); text-transform: uppercase;
+    text-shadow: 0 0 .4em color-mix(in srgb, var(--cyan) 60%, transparent); }
+  .bot { filter: drop-shadow(0 0 .12em color-mix(in srgb, var(--cyan) 70%, transparent)); }
+
+  /* meter (same look as the in-video HUD) */
+  .meter { display: inline-flex; align-items: center; gap: .5em; padding: .42em .7em .42em .5em; border-radius: .7em;
+    background: rgba(14,14,18,.92); border: .06em solid color-mix(in srgb, var(--mc) 80%, transparent);
+    box-shadow: 0 0 .5em color-mix(in srgb, var(--mc) 50%, transparent); }
+  .meter img { height: 1.9em; }
+  .meter .m-body { width: 12.5em; }
+  .meter .m-top { display: flex; justify-content: space-between; white-space: nowrap; gap: .8em; font-weight: 900; letter-spacing: .06em; font-size: .9em; margin-bottom: .32em; }
+  .meter .m-track { height: .55em; border-radius: .3em; background: rgba(255,255,255,.14); overflow: hidden; }
+  .meter .m-fill { height: 100%; border-radius: .3em; background: linear-gradient(90deg, #ff8a1e, #ffb347); }
+
+  .word { font-weight: 900; letter-spacing: -.045em; line-height: .92; }
+  .tag { font-weight: 700; letter-spacing: -.01em; color: #c9d1d9; }
+  .pill { display: inline-block; font-weight: 800; letter-spacing: .14em; padding: .5em 1.05em; border-radius: 99px;
+    border: .1em solid var(--cyan); color: var(--cyan); box-shadow: 0 0 .7em color-mix(in srgb, var(--cyan) 45%, transparent); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+  const EMO = (g) => '../assets/emoji/' + Array.from(g).map((c) => c.codePointAt(0)).filter((c) => c !== 0xfe0f).map((c) => c.toString(16)).join('-') + '.png';
+  const seg = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
+  const isEmo = (g) => /\p{Extended_Pictographic}/u.test(g);
+  // "You're a *TOASTER* 🍞" -> *word* is highlighted red, emoji become 3D images;
+  // write \\* for a literal asterisk
+  function fmt(s) {
+    let out = '', hl = false, esc = false;
+    for (const { segment: g } of seg.segment(s)) {
+      if (esc) { out += g; esc = false; }
+      else if (g === '\\') esc = true;
+      else if (g === '*') { out += hl ? '</span>' : '<span class="hl">'; hl = !hl; }
+      else if (isEmo(g)) out += `<img class="emo" src="${EMO(g)}">`;
+      else out += g.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+    }
+    return out + (hl ? '</span>' : '');
+  }
+  const TAIL_F = 'M30,8 C30,30 22,44 5,52 C20,53 34,48 46,40 L46,8 Z';
+  const TAIL_S = 'M30,8 C30,30 22,44 5,52 C20,53 34,48 46,40';
+  function bubble(text, side = 'ai', color = 'cyan', size = 100) {
+    return `<div class="bub ${side}" style="--c:var(--${color});font-size:${size}px"><span class="tx">${fmt(text)}</span>` +
+      `<svg class="tail" viewBox="0 0 60 60"><path class="f" d="${TAIL_F}"/></svg>` +
+      `<svg class="tail st" viewBox="0 0 60 60"><path class="s" d="${TAIL_S}" stroke-width="${size * 0.045 / (size * 0.62 / 60)}"/></svg></div>`;
+  }
+  function meter(label, value, face, size = 40, color = '#ff9a2e') {
+    return `<div class="meter" style="font-size:${size}px;--mc:${color}"><img src="${EMO(face)}"><div class="m-body">` +
+      `<div class="m-top"><span>${label}</span><span>${value}%</span></div><div class="m-track"><div class="m-fill" style="width:${value}%"></div></div></div></div>`;
+  }
+  const at = (x, y, html, extra = '') => `<div style="position:absolute;left:${x}px;top:${y}px;${extra}">${html}</div>`;
+  const img = (g, h, cls = '') => `<img class="${cls}" src="${EMO(g)}" style="height:${h}px">`;
+
+  const DRAW = {
+    // 800x800 profile picture; YouTube shows it as a circle, as small as 24 px
+    avatar(s) {
+      const W = s.size || 800, k = W / 800;
+      return `<div class="bg"></div>
+        <div class="glow" style="left:${150 * k}px;top:${170 * k}px;width:${500 * k}px;height:${460 * k}px;background:var(--cyan);opacity:.35"></div>
+        <div style="position:absolute;inset:${34 * k}px;border-radius:50%;border:${14 * k}px solid transparent;
+          background:conic-gradient(from 210deg,var(--cyan),var(--violet),var(--red),var(--cyan)) border-box;
+          -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+          filter:drop-shadow(0 0 ${14 * k}px var(--cyan))"></div>
+        ${at(150 * k, 150 * k, img('🤖', 500 * k, 'bot'), `font-size:${100 * k}px`)}
+        ${at(468 * k, 108 * k, img('💢', 230 * k), `transform:rotate(12deg);filter:drop-shadow(0 0 ${18 * k}px rgba(255,46,77,.8))`)}`;
+    },
+    // 2560x1440 banner; only the centre 1546x423 is guaranteed visible on every device
+    banner(s) {
+      const deco = (s.deco || []).map((d) => at(d.x, d.y, (d.bot ? `<span style="display:inline-flex;align-items:center;gap:22px">${img('🤖', 120, 'bot')}` : '') +
+        bubble(d.text, d.side, d.color, d.size || 64) + (d.bot ? '</span>' : ''), `opacity:${d.o ?? .5}`)).join('');
+      return `<div class="bg"></div>
+        <div class="glow" style="left:820px;top:430px;width:900px;height:560px;background:var(--cyan);opacity:.18"></div>
+        <div class="glow" style="left:1500px;top:520px;width:600px;height:420px;background:var(--red);opacity:.14"></div>
+        ${deco}
+        <div style="position:absolute;left:507px;top:508px;width:1546px;height:423px;display:flex;align-items:center;justify-content:center;gap:52px">
+          <div style="position:relative;width:300px;height:300px;flex:none">
+            ${at(10, 22, img('🤖', 270, 'bot'), 'font-size:60px')}
+            ${at(178, -6, img('💢', 128), 'transform:rotate(12deg);filter:drop-shadow(0 0 14px rgba(255,46,77,.8))')}
+          </div>
+          <div>
+            <div class="word" style="font-size:150px">BOT <span style="color:var(--red);text-shadow:0 0 30px rgba(255,46,77,.55)">BOTHERED</span></div>
+            <div class="tag" style="font-size:46px;margin:22px 0 26px 6px">${s.tagline}</div>
+            <div class="pill" style="font-size:28px;margin-left:6px">${s.schedule}</div>
+          </div>
+        </div>
+        ${s.guides ? '<div style="position:absolute;left:507px;top:508px;width:1546px;height:423px;outline:3px dashed #ff0"></div>' : ''}`;
+    },
+    // 150x150 transparent watermark (bottom-right of every video)
+    watermark() {
+      return `<div style="position:absolute;inset:6px;border-radius:50%;background:rgba(5,5,7,.85);border:5px solid var(--cyan)"></div>
+        ${at(26, 30, img('🤖', 98))}${at(84, 14, img('💢', 50), 'transform:rotate(12deg)')}`;
+    },
+    // 1280x720 thumbnail
+    thumb(s) {
+      let h = '<div class="bg"></div>';
+      if (s.glow !== false) h += `<div class="glow" style="left:160px;top:330px;width:900px;height:320px;background:var(--cyan);opacity:.16"></div>
+        <div class="glow" style="left:520px;top:60px;width:700px;height:260px;background:var(--${s.user?.color || 'red'});opacity:.14"></div>`;
+      if (s.meter) h += at(s.meter.x ?? 44, s.meter.y ?? 36, meter(s.meter.label, s.meter.value, s.meter.face, s.meter.size || 38));
+      if (s.user) h += `<div style="position:absolute;right:${s.user.right ?? 70}px;top:${s.user.top ?? 120}px">${bubble(s.user.text, 'user', s.user.color || 'red', s.user.size || 92)}</div>`;
+      if (s.ai) {
+        const a = s.ai;
+        h += at(a.left ?? 46, a.top ?? 372, `<div style="display:flex;align-items:center;gap:${a.gap ?? 34}px">${img('🤖', a.bot ?? 168, 'bot')}<div>` +
+          (a.name ? `<div class="label" style="font-size:${a.labelSize || 30}px;margin:0 0 18px 14px">${a.name}</div>` : '') +
+          bubble(a.text, 'ai', a.color || 'cyan', a.size || 104) + '</div></div>');
+      }
+      if (s.big) h += at(s.big.x, s.big.y, img(s.big.emoji, s.big.size), `transform:rotate(${s.big.rot || 0}deg);filter:drop-shadow(0 0 40px rgba(255,170,60,.45))`);
+      return h;
+    },
+  };
+
+  window.draw = async (kind, w, h, spec) => {
+    const root = document.getElementById('root');
+    root.style.width = w + 'px'; root.style.height = h + 'px';
+    root.innerHTML = DRAW[kind](spec || {});
+    await document.fonts.ready;
+    await Promise.all([...document.images].map((im) => (im.complete ? 0 : new Promise((r) => { im.onload = im.onerror = r; }))));
+  };
+</script>
+</body>
+</html>
