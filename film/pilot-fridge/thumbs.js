@@ -47,7 +47,52 @@ function thumbWorld(o = {}) {
 }
 const legsOff = { ll: [-4, -2], rl: [4, 2] };
 
+// Bigger, richer hero in the reference's style: thick-but-not-bloated outlines, furry tunic, sweat.
+function thick(svg, k) { return svg.replace(/stroke-width="([\d.]+)"/g, (m, v) => `stroke-width="${f1(+v * k)}"`); }
+function furTexture(seed, x0, x1, y0, y1, n = 70) {
+  const r = rng(seed); let a = '', b = '';
+  for (let i = 0; i < n; i++) {
+    const x = x0 + r() * (x1 - x0), y = y0 + r() * (y1 - y0), l = 6 + r() * 10, an = -0.6 + r() * 1.2;
+    const seg = `M${f1(x)} ${f1(y)} q${f1(Math.sin(an) * l * 0.5 + 3)} ${f1(l * 0.5)} ${f1(Math.sin(an) * l)} ${f1(l)} `;
+    if (i % 3) a += seg; else b += seg;
+  }
+  return `<path d="${a}" fill="none" stroke="#5E3A1A" stroke-width="2.2" stroke-linecap="round" opacity=".85"/><path d="${b}" fill="none" stroke="#B88250" stroke-width="2" stroke-linecap="round" opacity=".9"/>`;
+}
+function vulture(x, y, s) { return g(`translate(${x} ${y}) scale(${s})`, `<path d="M-60 0 Q-30 -22 0 0 Q30 -22 60 0 Q30 -8 0 6 Q-30 -8 -60 0 Z" fill="#3C3330"/>`); }
+function stink(x, y, n = 3, col = '#86A24E') {
+  let o = '';
+  for (let i = 0; i < n; i++) o += `<path d="M${x + (i - 1) * 60} ${y} q22 -26 0 -52 q-22 -26 0 -52" fill="none" stroke="${col}" stroke-width="9" stroke-linecap="round" opacity=".85"/>`;
+  return o;
+}
+function heroBig(o) {
+  const s = o.s, k = 2.1 / s;
+  const fur = () => furTexture(o.seed * 13 + 5, -48, 50, -278, -150, 90);
+  return thick(person(Object.assign({ bob: 0, t: 1.3, holdL: fur }, o)), k);
+}
+
 const THUMBS = {
+  fridgeRef() {
+    let bg = thumbWorld({ seed: 11, sunX: 1380, sunY: 250, sky: ['#6FBDE6', '#E6F4F2'] });
+    bg += vulture(1180, 330, 0.9) + vulture(1330, 280, 0.7) + vulture(1500, 360, 0.6);
+    bg += hut(1760, 640, 0.9) + fire(1560, 720, 0.45, 0.3);
+    bg += person({ x: 1640, y: 730, s: 0.5, t: 1, seed: 5, long: true, hairC: C.hair2, face: 'worried', la: [-150, 128], ra: [14, 6], armsFront: true, bob: 0 });
+    bg += person({ x: 1710, y: 735, s: 0.33, t: 1, seed: 9, face: 'worried', la: [-14, -6], ra: [14, 6], bob: 0 });
+    bg += meatPile(1330, 950, 1.35, 21, '#A34A3A') + stink(1330, 690, 3);
+    bg += g('translate(1330 760) scale(1.9) translate(-1330 -760)', fliesAround(1330, 760, 2.3, 9, 120, 55));
+    let fg = heroBig(Object.assign({ x: 560, y: 1780, s: 3.35, seed: 3, face: 'scared', la: [-24, -12], ra: [60, 150], armsFront: true,
+      front: (L, R) => g(`translate(${f1(R[0] + 26)} ${f1(R[1] - 6)}) rotate(-28)`, meat(1.0, 4, '#B04A3A', 0)) +
+        g('translate(0 -354)', `<path d="M-52 -64 q-9 16 0 26 q9 -10 0 -26 Z M-74 -36 q-7 12 0 20 q7 -8 0 -20 Z" fill="#8FD0F0" ${S} stroke-width="2.5"/>`) }, legsOff));
+    fg += g('translate(980 640) scale(2.4) translate(-980 -640)', fliesAround(980, 640, 1.1, 6, 70, 45));
+    return { bg, fg, text: thumbText(['NO FRIDGE?'], 960, 215, 230, 'middle', 1780) };
+  },
+  fridgeAlt() {
+    let bg = thumbWorld({ seed: 17, sunX: 700, sunY: 260, sky: ['#6FBDE6', '#E6F4F2'], ground: ['#F0C860', '#D29A3C'] });
+    bg += vulture(420, 330, 0.9) + vulture(600, 280, 0.7);
+    bg += g('translate(560 860) scale(2.3)', meat(1, 21, '#A34A3A', -10)) + stink(560, 640, 3);
+    bg += g('translate(560 760) scale(2.2) translate(-560 -760)', fliesAround(560, 760, 1.7, 9, 130, 60));
+    let fg = heroBig(Object.assign({ x: 1380, y: 1640, s: 3.0, seed: 2, face: 'worried', flip: true, la: [-150, 128], ra: [16, 8], armsFront: true }, legsOff));
+    return { bg, fg, text: thumbText(['STORED HOW?'], 960, 215, 230, 'middle', 1780) };
+  },
   fridge() {
     let bg = thumbWorld({ seed: 11, sunX: 1560, sunY: 300 });
     bg += hut(1500, 640, 0.9) + fire(1290, 690, 0.45, 0.3);
