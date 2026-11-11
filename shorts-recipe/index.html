@@ -1,0 +1,505 @@
+<title>3D Shorts Recipe</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Nunito:wght@800&display=swap">
+<style>
+/* Layout: a single reading column with wide "film strip" bands that break out for frames and timelines. */
+:root {
+  --bg: #f3f8fa;          /* cool studio white, tinted toward the cyan void */
+  --surface: #ffffff;
+  --ink: #0f2230;
+  --muted: #4e6573;
+  --rule: #d3e2e9;
+  --void: #23b4dc;        /* the cyan studio backdrop */
+  --void-soft: #def3fa;
+  --tee: #f2b705;         /* branded-shirt yellow, used sparingly */
+  --tee-ink: #5a4300;
+  --night: #16213a;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --cap: "Nunito", "Arial Rounded MT Bold", "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1720; --surface: #12212d; --ink: #e6f1f6; --muted: #9db3c0; --rule: #23394a;
+    --void: #45c6ea; --void-soft: #133140; --tee: #f5c430; --tee-ink: #f5c430; --night: #0a1222;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1720; --surface: #12212d; --ink: #e6f1f6; --muted: #9db3c0; --rule: #23394a;
+  --void: #45c6ea; --void-soft: #133140; --tee: #f5c430; --tee-ink: #f5c430; --night: #0a1222;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 40px 80px; display: grid; gap: 64px; }
+.col { max-width: 700px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; line-height: 1.15; margin: 0; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.5rem, 3.4vw, 2.1rem); font-weight: 800; letter-spacing: -0.01em; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+p { margin: 0; }
+.eyebrow { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 1.15rem; color: var(--muted); max-width: 62ch; }
+section { display: grid; gap: 22px; }
+.stack { display: grid; gap: 14px; }
+a { color: var(--void); }
+code, .mono { font-family: var(--mono); font-size: 0.9em; }
+code { background: var(--void-soft); padding: 1px 6px; border-radius: 4px; }
+strong { font-weight: 600; }
+
+/* stat strip: these figures are the measured spine of the recipe */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.stat { background: var(--surface); padding: 16px 18px; display: grid; gap: 2px; min-width: 0; }
+.stat b { font-family: var(--display); font-size: 1.9rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 0.86rem; line-height: 1.4; }
+
+/* beat timeline drawn to a 35 s scale */
+.timeline { overflow-x: auto; }
+.tl { min-width: 640px; display: grid; gap: 10px; }
+.tl-bar { position: relative; height: 64px; border-radius: 8px; overflow: hidden; display: flex; }
+.tl-seg { display: flex; flex-direction: column; justify-content: center; padding: 0 10px; font-size: 0.82rem; line-height: 1.25; border-right: 2px solid var(--bg); min-width: 0; }
+.tl-seg b { font-weight: 600; }
+.s-hook { background: var(--void); color: #04232e; }
+.s-why { background: var(--void-soft); color: var(--ink); }
+.s-but { background: var(--tee); color: #2a2000; }
+.s-esc { background: var(--void-soft); color: var(--ink); }
+.s-pay { background: var(--night); color: #f3f8fa; border-right: 0; }
+.tl-ticks { position: relative; height: 18px; font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+.tl-ticks span { position: absolute; transform: translateX(-50%); }
+.tl-ticks span:first-child { transform: none; }
+.tl-ticks span:last-child { transform: translateX(-100%); }
+
+/* tables */
+.tbl { overflow-x: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 500; background: var(--bg); }
+tr:last-child td { border-bottom: 0; }
+td.t { font-family: var(--mono); white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--muted); }
+td q { quotes: none; font-style: italic; }
+
+/* vertical frames, shown like phone screens */
+.frames { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+.frames.six { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+figure { margin: 0; display: grid; gap: 8px; align-content: start; min-width: 0; }
+figure img { width: 100%; aspect-ratio: 240 / 426; object-fit: cover; border-radius: 10px; display: block; background: var(--void-soft); }
+figcaption { font-size: 0.84rem; color: var(--muted); line-height: 1.4; }
+figcaption b { color: var(--ink); font-weight: 600; display: block; }
+.strip { display: grid; gap: 8px; }
+.strip .scroll { overflow-x: auto; border-radius: 8px; }
+.strip img { display: block; max-width: none; height: 200px; width: auto; }
+.strip p { font-size: 0.9rem; color: var(--muted); max-width: 70ch; }
+.strip p b { color: var(--ink); }
+
+/* rule lists */
+.rules { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.rules li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; }
+.rules li::before { content: ""; width: 14px; height: 14px; margin-top: 6px; border-radius: 3px; background: var(--void); }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+.two > * { min-width: 0; }
+
+/* caption specimen */
+.specimen { position: relative; border-radius: 12px; overflow: hidden; background: radial-gradient(circle at 50% 38%, #f6fdff 0, #8fdcf2 34%, #23b4dc 70%); aspect-ratio: 9 / 16; max-width: 260px; width: 100%; }
+.specimen .c { position: absolute; left: 0; right: 0; top: 76%; text-align: center; font-family: var(--cap); font-weight: 800; color: #fff; font-size: clamp(1rem, 4.2vw, 1.3rem); text-shadow: 0 0 2px rgba(0,0,0,.65), 0 2px 4px rgba(0,0,0,.55); }
+.specimen .guide { position: absolute; left: 8px; right: 8px; top: 78%; border-top: 1px dashed rgba(4,35,46,.45); }
+.specimen .lab { position: absolute; right: 10px; top: calc(78% + 4px); font-family: var(--mono); font-size: 0.68rem; color: #04232e; }
+
+/* script block */
+.script { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 22px; display: grid; gap: 10px; }
+.script p { font-size: 1.05rem; }
+.script mark { background: var(--void-soft); color: var(--ink); padding: 0 3px; border-radius: 3px; }
+.script mark.but { background: color-mix(in srgb, var(--tee) 35%, transparent); }
+.script mark.pay { background: var(--night); color: #f3f8fa; }
+
+.check { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.check li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; }
+.check li::before { content: ""; width: 16px; height: 16px; margin-top: 4px; border: 2px solid var(--void); border-radius: 4px; }
+pre { margin: 0; background: var(--night); color: #e6f1f6; padding: 14px 16px; border-radius: 8px; overflow-x: auto; font-family: var(--mono); font-size: 0.85rem; line-height: 1.5; }
+.note { font-size: 0.88rem; color: var(--muted); border-left: 3px solid var(--rule); padding-left: 14px; max-width: 70ch; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.9rem; }
+nav.toc a { color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--void); }
+nav.toc a:focus-visible, a:focus-visible { outline: 2px solid var(--void); outline-offset: 3px; }
+</style>
+
+<div class="wrap">
+
+<header class="stack">
+  <p class="eyebrow">Teardown of 20 Zack D Films shorts · measured 11 Nov 2026</p>
+  <h1>The 3D explainer shorts recipe</h1>
+  <p class="lede">Script, voice, sound, look, camera, transitions and captions, taken from 20 shorts with 0.2M to 19M views. Each rule is backed by a measurement or a frame you can see below.</p>
+  <nav class="toc" aria-label="Sections">
+    <a href="#script">Script</a><a href="#voice">Voice and sound</a><a href="#look">Look</a><a href="#camera">Camera and transitions</a><a href="#devices">Visual devices</a><a href="#captions">Captions</a><a href="#build">Build one</a><a href="#check">Checklist</a>
+  </nav>
+</header>
+
+<div class="stats" role="list">
+  <div class="stat" role="listitem"><b>0.00 s</b><span>voice starts on frame one in 19 of 19 narrated shorts</span></div>
+  <div class="stat" role="listitem"><b>35 s</b><span>median length (21–81 s); about 100 words</span></div>
+  <div class="stat" role="listitem"><b>178 wpm</b><span>median speaking pace, about 3 words a second</span></div>
+  <div class="stat" role="listitem"><b>~2.5 s</b><span>median shot before a cut or major camera change</span></div>
+  <div class="stat" role="listitem"><b>91%</b><span>of shots have a moving camera (149 of 164)</span></div>
+  <div class="stat" role="listitem"><b>0.75 s</b><span>median time between the last word and the end</span></div>
+</div>
+
+<!-- ============ SCRIPT ============ -->
+<section id="script">
+  <p class="eyebrow">01 · Script</p>
+  <h2>The title asks the question, the first second answers it in motion</h2>
+  <div class="col stack">
+    <p>Every narrated short starts speaking at 0.00 s with no greeting, no channel name and no "did you know". The title sets the topic ("Why Leatherback Turtles Cry"), so the first line can drop straight into the middle of the event: <em>"The turtle cries as she lays her eggs…"</em> To a viewer swiping in, it feels like they arrived mid-story and need to catch up.</p>
+  </div>
+
+  <div class="timeline" role="img" aria-label="Beat map of a 35 second short: hook 0 to 6 seconds, explanation pivot around 6 to 10 seconds, complication around 12 to 20, escalation to 31, payoff in the last 4 seconds">
+    <div class="tl">
+      <div class="tl-bar">
+        <div class="tl-seg s-hook" style="flex: 6"><b>Hook</b>action from the title</div>
+        <div class="tl-seg s-why" style="flex: 6"><b>"You see…"</b>the reason</div>
+        <div class="tl-seg s-but" style="flex: 8"><b>"But…"</b>complication</div>
+        <div class="tl-seg s-esc" style="flex: 11"><b>Escalate</b>numbers, consequences</div>
+        <div class="tl-seg s-pay" style="flex: 4"><b>Payoff</b>one line, cut</div>
+      </div>
+      <div class="tl-ticks"><span style="left:0">0 s</span><span style="left:17.1%">6</span><span style="left:34.3%">12</span><span style="left:57.1%">20</span><span style="left:88.6%">31</span><span style="left:100%">35 s</span></div>
+    </div>
+  </div>
+  <p class="note">Measured: in the 6 shorts that use "You see" / "See", it lands between 17% and 29% of the runtime. "But" appears 20 times across the 19 narrated shorts, usually once or twice, wherever the story needs a turn.</p>
+
+  <div class="two">
+    <div class="stack">
+      <h3>Hook rules</h3>
+      <ul class="rules">
+        <li><span>Open on the most visual moment of the title, already happening: "He stole his mother's car", "As the knife cut into the cantaloupe", "It shoves in its beak, grabs a worm".</span></li>
+        <li><span>Start with a pronoun or "The ___" that leans on the title for context (He, It, They, The arm, The baboon). It sounds like a continuation, which is what makes the loop work.</span></li>
+        <li><span>The first frame already shows the subject big in frame, mid-action, with a caption on screen. Never an establishing shot or a logo.</span></li>
+      </ul>
+    </div>
+    <div class="stack">
+      <h3>Retention rules</h3>
+      <ul class="rules">
+        <li><span>Chain sentences with <strong>and / but / so / then / until</strong> so there is never a full stop that feels like an ending. Median pauses over 0.5 s: one per short.</span></li>
+        <li><span>Answer the title's question by 20–30%, then open a new question with "But…" so the viewer stays for the consequence.</span></li>
+        <li><span>Use concrete numbers instead of adjectives: "33 people died", "chilled to exactly 52 degrees", "two gallons every hour", "30 times within a single blink".</span></li>
+        <li><span>Plain words, short clauses, no jargon. Second person ("your chest", "your team") for what-ifs and tutorials.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Opening frames: the subject, mid-action, at 0.4 s</h3>
+  <div class="frames six">
+    <figure><img src="frames/hook-car.jpg" alt="Hand turning a car ignition key" loading="lazy"><figcaption><b>"He stole his mother's car…"</b>Sent To Jail To Learn A Lesson · 5.7M</figcaption></figure>
+    <figure><img src="frames/hook-grenade.jpg" alt="Soldier placing a grenade into a glass" loading="lazy"><figcaption><b>"It's put into a glass cup…"</b>Grenades In Glass Cups · 0.2M</figcaption></figure>
+    <figure><img src="frames/hook-knife.jpg" alt="Knife cutting into a cantaloupe covered in green bacteria" loading="lazy"><figcaption><b>"As the knife cut into the cantaloupe…"</b>The Cantaloupes That Killed 33 · 6.3M</figcaption></figure>
+    <figure><img src="frames/hook-pillow.jpg" alt="Sleeping man in bed" loading="lazy"><figcaption><b>"The arm would gently lift your head…"</b>The Pillow Rotisserie · 1.5M</figcaption></figure>
+    <figure><img src="frames/hook-hummingbird.jpg" alt="Gloved hands removing a hummingbird's heart with tweezers" loading="lazy"><figcaption><b>"If a hummingbird's heart is removed…"</b>Hummingbird Hearts · 19M</figcaption></figure>
+    <figure><img src="frames/hook-baboon.jpg" alt="Baboon reaching into a hole in a tree" loading="lazy"><figcaption><b>"The baboon reaches into the hole…"</b>How Letting Go Can Set You Free · 8.4M</figcaption></figure>
+  </div>
+
+  <h3>Endings: the last line is the payoff, then cut</h3>
+  <p class="col">The median short ends 0.75 s after its last word. There is no outro, call to action or "follow for more". The final line is short and lands one of these payoffs:</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Payoff type</th><th>Last line (real examples)</th><th>Why it works</th></tr></thead>
+      <tbody>
+        <tr><td>Ironic reversal</td><td><q>…and then he drove away in the SUV, stealing it again.</q></td><td>Flips the "good thief" story in the final two words.</td></tr>
+        <tr><td>Grim number</td><td><q>And after a few months, 33 people died from the bacteria.</q></td><td>Pays off the title's promise with a hard fact.</td></tr>
+        <tr><td>Absurd escalation</td><td><q>…spread it on toast, and the tastiest breakfast wins.</q></td><td>Comedy beat that makes people rewatch or share.</td></tr>
+        <tr><td>Callback twist</td><td><q>…assured the man again that he wouldn't tell a soul.</q></td><td>Repeats a line from the start with a new, darker meaning.</td></tr>
+        <tr><td>Moral reframe</td><td><q>It's trapped by what it refuses to release. And sometimes people are too.</q></td><td>Turns an animal fact into a lesson about the viewer.</td></tr>
+        <tr><td>Visual payoff, no words</td><td>Snare: narration stops 5.4 s early and the bird gets caught on screen.</td><td>The tutorial "proves" itself; works with no voice.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="frames six">
+    <figure><img src="frames/pay-thief.jpg" alt="Thief driving the SUV away again" loading="lazy"><figcaption><b>"…stealing it again"</b>Ironic reversal</figcaption></figure>
+    <figure><img src="frames/pay-graves.jpg" alt="Aerial view of a graveyard at dusk" loading="lazy"><figcaption><b>"33 people died"</b>Grim number over a wide graveyard</figcaption></figure>
+    <figure><img src="frames/pay-snare.jpg" alt="Bird caught in a snare" loading="lazy"><figcaption><b>No words</b>The trap springs</figcaption></figure>
+    <figure><img src="frames/pay-photo.jpg" alt="Developed photograph floating on a pink background" loading="lazy"><figcaption><b>"…you'll have a photograph"</b>Tutorial result</figcaption></figure>
+  </div>
+
+  <div class="two">
+    <div class="stack">
+      <h3>Build the loop in</h3>
+      <p>In 7 of 19 shorts the last line flows straight back into the first, so the replay feels like one continuous video and the view counts again:</p>
+      <ul class="rules">
+        <li><span>"…before snatching it up and dancing again." → "It shoves in its beak, grabs a worm…"</span></li>
+        <li><span>"…turn a simple grenade into a booby trap." → "It's put into a glass cup…"</span></li>
+        <li><span>"…before you can even realize what's happening." → "When you touch the bug, it disappears…"</span></li>
+      </ul>
+      <p class="note">Write the last line first, then write an opening that could follow it.</p>
+    </div>
+    <div class="stack">
+      <h3>Titles</h3>
+      <p>Most of the 40 recent titles use one of five frames; the rest plainly state the event ("A Tree Grew Around This Bicycle"). All 40 end with a single emoji, and 39 of those are faces that signal the emotion:</p>
+      <ul class="rules">
+        <li><span><strong>How ___ Works / How To ___</strong> 🤔 — mechanism, tutorial</span></li>
+        <li><span><strong>Why ___</strong> 😨 🤢 😢 — hidden reason behind something familiar</span></li>
+        <li><span><strong>What If ___</strong> 🤔 😱 — impossible scenario (the 19M video)</span></li>
+        <li><span><strong>The ___ That/Who ___</strong> 😮 😳 — one specific event</span></li>
+        <li><span><strong>He/She Was ___</strong> 😬 — true-story hook</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Six formats in the sample</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Format</th><th>Count</th><th>Spine</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Mechanism</td><td class="t">5</td><td>Weird behaviour → "You see" → body or physics reason → consequence</td><td>Why Leatherback Turtles Cry · 9.6M</td></tr>
+        <tr><td>True story</td><td class="t">5</td><td>He/she did X → "But" → it went wrong → ironic or grim end</td><td>The Car Thief Who Came Back · 5.8M</td></tr>
+        <tr><td>Tutorial</td><td class="t">3</td><td>Imperative steps in first-person view → result shown</td><td>How To Build A Matchbox Camera · 13M</td></tr>
+        <tr><td>Fiction / absurd product</td><td class="t">3</td><td>Invention or ritual described deadpan → "But then" → disaster punchline</td><td>Making Butter With A Relay Baton · 9.8M</td></tr>
+        <tr><td>Parable</td><td class="t">2</td><td>Animal or classroom demo → "And people…" → lesson</td><td>How Letting Go Can Set You Free · 8.4M</td></tr>
+        <tr><td>What-if / history</td><td class="t">2</td><td>Impossible premise or banned object → step-by-step consequence</td><td>What If Humans Had Hummingbird Hearts · 19M</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr>
+
+<!-- ============ VOICE ============ -->
+<section id="voice">
+  <p class="eyebrow">02 · Voice and sound</p>
+  <h2>One fast, deadpan narrator over a quiet bed</h2>
+  <div class="two">
+    <div class="stack">
+      <h3>Voice</h3>
+      <ul class="rules">
+        <li><span><strong>Pace:</strong> 158–197 words per minute in 18 of 19 shorts, median 178. The suspense fiction piece slowed to 139 wpm with 17 pauses over half a second (one 2.7 s pause before the reveal). Speed is the default; pauses are a tool you save for fiction.</span></li>
+        <li><span><strong>Register:</strong> one male narrator, conversational American English, median pitch 135–185 Hz in most shorts (an energetic, mid-high speaking register). The two darkest stories measured lowest, at 103–110 Hz.</span></li>
+        <li><span><strong>Delivery:</strong> the punchline is said flat, at the same pace, with no dramatic slowdown. That deadpan is what makes "stealing it again" or "breakfast wins" land.</span></li>
+        <li><span><strong>Wording sounds spoken:</strong> "You see", "Now", "Well, let's just say", contractions everywhere.</span></li>
+      </ul>
+    </div>
+    <div class="stack">
+      <h3>Sound</h3>
+      <ul class="rules">
+        <li><span><strong>Loud and flat master:</strong> −9.1 to −13.1 LUFS integrated (median −10.9), loudness range only 1.4–3.7 LU. The voice never dips.</span></li>
+        <li><span><strong>A bed under the voice, never silence:</strong> between words the level drops only 5–13 dB (median 9.6 dB). Several spectrograms show one sustained pad or drone note under the voice rather than a beat, so the voice stays the hero.</span></li>
+        <li><span><strong>Foley on actions:</strong> the one short with no narration (air layering, 0.66M) runs on foley only: rustles, cuts, a chime. Put a sound on every on-screen action and a whoosh on every big camera move.</span></li>
+        <li><span><strong>Hard stop:</strong> audio ends with the picture, with no fade-out tail, so the loop restarts cleanly.</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">The voice and music notes come from measurements (pitch tracking, level between words, spectrograms), not from listening. Confirm the music and SFX choices by ear on two or three of the reference videos before you lock a style.</p>
+</section>
+
+<hr>
+
+<!-- ============ LOOK ============ -->
+<section id="look">
+  <p class="eyebrow">03 · Look</p>
+  <h2>Stylised-real 3D in two lighting worlds</h2>
+  <div class="col stack">
+    <p>Everything is 3D-rendered: slightly glossy, toy-like realism with soft global light, shallow depth of field and saturated colour. Science and explainer pieces sit in a <strong>bright cyan "studio void"</strong>: a sky-blue gradient with a white glow behind the subject. Crime and fiction move to <strong>moody practical light</strong>: warm tungsten interiors and blue night exteriors.</p>
+  </div>
+  <div class="frames six">
+    <figure><img src="frames/look-cyan.jpg" alt="Two characters in front of a bright cyan backdrop" loading="lazy"><figcaption><b>Cyan void</b>Brain / negativity · 5.8M</figcaption></figure>
+    <figure><img src="frames/look-cyan2.jpg" alt="Heron against a glowing blue sky" loading="lazy"><figcaption><b>Glow behind the subject</b>Eel and heron · 6.4M</figcaption></figure>
+    <figure><img src="frames/look-moody.jpg" alt="Priest in warm, dim confession booth light" loading="lazy"><figcaption><b>Warm tungsten</b>Vow Of Silence · 8.0M</figcaption></figure>
+    <figure><img src="frames/look-night.jpg" alt="Masked thief at a store parking lot at night" loading="lazy"><figcaption><b>Blue night</b>Car Thief · 5.8M</figcaption></figure>
+  </div>
+  <div class="two">
+    <ul class="rules">
+      <li><span><strong>Subject fills the frame.</strong> Most frames are close-ups or macros. Wide shots appear only to show scale or the end result.</span></li>
+      <li><span><strong>Recurring cast.</strong> Generic everyman characters, often in a branded t-shirt, act as "you" in the story.</span></li>
+    </ul>
+    <ul class="rules">
+      <li><span><strong>Branding lives inside the world,</strong> never as a corner logo: on the t-shirt, on a newspaper headline, carved in a tree trunk, in the soil layers.</span></li>
+      <li><span><strong>Cartoon physics is fine.</strong> Exaggerate (a chest full of hearts, a cream-filled baton) as long as the mechanism stays readable.</span></li>
+    </ul>
+  </div>
+  <div class="frames six">
+    <figure><img src="frames/brand-newspaper.jpg" alt="Newspaper with the channel name as masthead" loading="lazy"><figcaption><b>Newspaper masthead</b></figcaption></figure>
+    <figure><img src="frames/brand-tree.jpg" alt="Channel name carved into a tree trunk" loading="lazy"><figcaption><b>Carved in the set</b></figcaption></figure>
+    <figure><img src="frames/brand-soil.jpg" alt="Channel name embossed in soil cross-section" loading="lazy"><figcaption><b>Hidden in a cutaway</b></figcaption></figure>
+  </div>
+</section>
+
+<hr>
+
+<!-- ============ CAMERA ============ -->
+<section id="camera">
+  <p class="eyebrow">04 · Camera and transitions</p>
+  <h2>The camera never stops and never lets you leave the subject</h2>
+  <div class="two">
+    <ul class="rules">
+      <li><span><strong>Always moving:</strong> 149 of 164 detected shots had a measurable push, pull, pan, tilt or roll. Only 9% were locked off.</span></li>
+      <li><span><strong>Big push-ins on the key noun:</strong> the heron shot pushes in about 7× in under 7 s, from the whole bird to the hole in its body.</span></li>
+      <li><span><strong>Slow roll and drift:</strong> about two thirds of shots (107 of 164) roll more than 3°, so the frame feels handheld and alive even on a static subject.</span></li>
+    </ul>
+    <ul class="rules">
+      <li><span><strong>Cut on the phrase:</strong> a new shot or a big camera change about every 2.5 s. In the frame grids, cuts fall where a new caption phrase starts.</span></li>
+      <li><span><strong>Macro → wide → macro:</strong> alternate scale to keep the eye working: knife edge, then the farm, then bacteria on a rind.</span></li>
+      <li><span><strong>Action-speed handheld</strong> (shake, motion blur) only for violent or fast beats: the prison van, the relay sprint.</span></li>
+    </ul>
+  </div>
+
+  <h3>The five transitions that do most of the work</h3>
+  <div class="strip">
+    <div class="scroll"><img src="frames/tr-heart.jpg" alt="Twelve frames: a heart removed from a hummingbird is carried by tweezers into a man's chest, then the view becomes an x-ray of the heart inside the ribcage" loading="lazy"></div>
+    <p><b>1. Follow-the-object fly-through.</b> The camera tracks one object (a heart, a knife edge) and travels with it into a new scene or inside a body, so the shot change never feels like a cut. 2.4 s shown.</p>
+  </div>
+  <div class="strip">
+    <div class="scroll"><img src="frames/tr-screen.jpg" alt="Twelve frames: a camera's LCD shows the heron, the image on the screen dissolves into the full-frame heron scene" loading="lazy"></div>
+    <p><b>2. Screen-to-world dissolve.</b> An image inside the scene (camera screen, thought bubble, photo) grows and dissolves into the full frame. Used on "You see" to enter the explanation.</p>
+  </div>
+  <div class="strip">
+    <div class="scroll"><img src="frames/tr-cardswing.jpg" alt="Twelve frames at 20 per second: the whole picture rotates like a card on its vertical axis against black, revealing a cutaway of the tree" loading="lazy"></div>
+    <p><b>3. Card swing.</b> The whole frame spins on its vertical axis against black in about 0.25 s. It marks a pivot or a "what if": "Now it could…", "The problem is…".</p>
+  </div>
+  <div class="strip">
+    <div class="scroll"><img src="frames/tr-flythrough.jpg" alt="Twelve frames: the camera pushes along a knife edge into the inside of the cantaloupe, showing bacteria dragged in" loading="lazy"></div>
+    <p><b>4. Push through the surface.</b> Push in until the camera passes the skin, rind or wall and lands in a macro or cross-section of what's inside.</p>
+  </div>
+  <div class="strip">
+    <div class="scroll"><img src="frames/tr-whip.jpg" alt="Twelve frames: crash zoom onto a cheering boy followed by a motion-blurred whip pan" loading="lazy"></div>
+    <p><b>5. Crash zoom and whip.</b> A fast push onto a face or reaction, then a blurred whip pan into the next scene. Used for jumps in time ("Now people loved it so much…").</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- ============ DEVICES ============ -->
+<section id="devices">
+  <p class="eyebrow">05 · Visual devices</p>
+  <h2>Show the inside, show the thought, show the number</h2>
+  <p class="col">These devices turn an explanation into something you can watch. Use at least two per short.</p>
+  <div class="frames">
+    <figure><img src="frames/dev-cutaway-chest.jpg" alt="Circular hole cut in a man's chest showing many tiny hearts" loading="lazy"><figcaption><b>Cutaway hole</b>A clean round window into the body or object</figcaption></figure>
+    <figure><img src="frames/dev-cutaway-turtle.jpg" alt="Turtle body sliced open in cross-section" loading="lazy"><figcaption><b>Cross-section</b>Slice the subject to show the organ in place</figcaption></figure>
+    <figure><img src="frames/dev-xray.jpg" alt="Glowing blue x-ray ribcage with a red heart" loading="lazy"><figcaption><b>X-ray glow</b>Blue translucent body, the important part in red</figcaption></figure>
+    <figure><img src="frames/dev-arrows.jpg" alt="Transparent fish with cyan arrows showing bone growth" loading="lazy"><figcaption><b>Transparent skin and arrows</b>Animated arrows show force or growth</figcaption></figure>
+    <figure><img src="frames/dev-bacteria.jpg" alt="Glowing green bacteria on cantaloupe flesh" loading="lazy"><figcaption><b>Glowing particles</b>Bacteria, salt or germs made visible in neon</figcaption></figure>
+    <figure><img src="frames/dev-molecules.jpg" alt="Fat molecules floating on a pale background" loading="lazy"><figcaption><b>Molecule close-up</b>Abstract micro scene on a clean background</figcaption></figure>
+    <figure><img src="frames/dev-bubble-jail.jpg" alt="Thought bubble above parents showing their son in jail" loading="lazy"><figcaption><b>Thought bubble</b>A cloud inset for plans, fears and memories</figcaption></figure>
+    <figure><img src="frames/dev-bubble-baboon.jpg" alt="Thought bubble over a man showing the person he resents" loading="lazy"><figcaption><b>Recurring bubble</b>The same thought returning, for a lesson</figcaption></figure>
+    <figure><img src="frames/dev-ui-temp.jpg" alt="Bed display reading 52 degrees Fahrenheit" loading="lazy"><figcaption><b>In-world display</b>The number from the script shown on a screen</figcaption></figure>
+    <figure><img src="frames/dev-ui-update.jpg" alt="Bed screen showing a software update progress bar" loading="lazy"><figcaption><b>Progress bar</b>A time skip or system change you can see</figcaption></figure>
+    <figure><img src="frames/dev-ui-7ft.jpg" alt="Pink measuring line marking 7 feet up a tree" loading="lazy"><figcaption><b>Measurement line</b>Scale callouts drawn into the scene</figcaption></figure>
+    <figure><img src="frames/dev-ui-stopwatch.jpg" alt="Hand holding a stopwatch reading 29:52" loading="lazy"><figcaption><b>Prop clock</b>Time passing shown on a stopwatch or clock</figcaption></figure>
+    <figure><img src="frames/dev-pov-matchbox.jpg" alt="First-person hands cutting a matchbox" loading="lazy"><figcaption><b>First-person hands</b>Tutorials are mostly shot from the maker's eyes</figcaption></figure>
+    <figure><img src="frames/dev-pov-snare.jpg" alt="First-person hands drilling a hole in wood" loading="lazy"><figcaption><b>Hands, tight</b>Tool and hands fill the frame, no face</figcaption></figure>
+  </div>
+</section>
+
+<hr>
+
+<!-- ============ CAPTIONS ============ -->
+<section id="captions">
+  <p class="eyebrow">06 · Captions</p>
+  <h2>Small, white, two words at a time</h2>
+  <div class="two">
+    <div class="stack">
+      <ul class="rules">
+        <li><span><strong>1–3 words per caption,</strong> split at natural phrase breaks ("had swallowed" / "a living eel"), changing several times a second with the voice.</span></li>
+        <li><span><strong>White, bold, rounded sans</strong> in sentence case, with a thin dark shadow. No box, no coloured keyword highlights, no emoji.</span></li>
+        <li><span><strong>Centred, about 78% down the frame,</strong> above the Shorts UI and below the subject. Same place in every shot.</span></li>
+        <li><span><strong>Modest size:</strong> about 55% of the frame width for a two-word phrase. It reads clearly without covering the picture.</span></li>
+      </ul>
+      <p>The repo's <code>tools/captions.py</code> produces this style from your voiceover. Tested on the heron short, its captions landed on the same spot as the originals.</p>
+    </div>
+    <div class="specimen" role="img" aria-label="Caption specimen: white rounded bold text reading a living eel, centred at 78 percent of the frame height on a cyan glow backdrop">
+      <div class="guide"></div><span class="lab">78%</span>
+      <div class="c">a living eel</div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ============ BUILD ============ -->
+<section id="build">
+  <p class="eyebrow">07 · Build one</p>
+  <h2>Worked example: an original 34-second mechanism short</h2>
+  <p class="col">A new topic written to the recipe, with a shot sheet you can hand to an animator. Title: <strong>Why Your Fingers Wrinkle In Water 🤔</strong></p>
+  <div class="script">
+    <p class="eyebrow">Script · 102 words · about 34 s at 178 wpm</p>
+    <p><mark>Your fingertips start to wrinkle after about five minutes in the bath,</mark> but it's not because they're soaking up water. <mark>You see,</mark> your nerves are actually telling the blood vessels under your skin to shrink, which pulls the skin down into those ridges. And people with damaged nerves in their fingers don't wrinkle at all. <mark class="but">But</mark> scientists think the ridges work like tire treads, channeling water away so you can grip wet things. In one experiment, people with wrinkled fingers moved wet marbles faster than people with dry ones. <mark class="pay">Which means your body has been putting on rain tires this whole time.</mark></p>
+    <p class="note">The last line loops into the first: "…rain tires this whole time." → "Your fingertips start to wrinkle…". Check the facts against a source before publishing.</p>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Time</th><th>Line</th><th>Picture</th><th>Camera and transition</th><th>Device and sound</th></tr></thead>
+      <tbody>
+        <tr><td class="t">0.0–2.5</td><td>Your fingertips start to wrinkle…</td><td>Macro of a fingertip in bath water, ridges forming</td><td>Slow push-in and roll from frame one</td><td>Water lap foley; bed starts at full level</td></tr>
+        <tr><td class="t">2.5–5.0</td><td>…after about five minutes in the bath</td><td>Character in a bath, cyan void walls</td><td>Pull out to medium</td><td>Wall clock jumps 5 minutes</td></tr>
+        <tr><td class="t">5.0–7.5</td><td>but it's not because they're soaking up water</td><td>Water droplets bouncing off skin</td><td>Card swing in on "but"</td><td>Whoosh on the swing</td></tr>
+        <tr><td class="t">7.5–12.0</td><td>You see, your nerves are…</td><td>X-ray hand: nerves glow, vessels in red</td><td>Push through the skin into the x-ray</td><td>X-ray glow; soft pulse SFX</td></tr>
+        <tr><td class="t">12.0–15.5</td><td>…shrink, which pulls the skin down</td><td>Cross-section of fingertip, vessels contracting</td><td>Orbit around the cutaway</td><td>Cyan arrows pulling the skin</td></tr>
+        <tr><td class="t">15.5–19.0</td><td>people with damaged nerves… don't wrinkle</td><td>Two hands side by side, one smooth</td><td>Lateral slide between hands</td><td>Smooth hand outlined red</td></tr>
+        <tr><td class="t">19.0–24.0</td><td>But… like tire treads…</td><td>Fingertip morphs into a tire on a wet road</td><td>Match dissolve fingertip → tire</td><td>Water channels in glowing blue</td></tr>
+        <tr><td class="t">24.0–30.0</td><td>In one experiment… wet marbles</td><td>Two people racing to move marbles between bowls</td><td>Crash zoom on the faster hand</td><td>Stopwatch prop; marble clicks</td></tr>
+        <tr><td class="t">30.0–34.4</td><td>Which means… rain tires this whole time.</td><td>Hand with tiny tire tread, giving a thumbs-up</td><td>Push in, hard cut to black at 0.7 s after the last word</td><td>Deadpan read, audio ends with the picture</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="two">
+    <div class="stack">
+      <h3>Production pipeline</h3>
+      <ul class="rules">
+        <li><span><strong>Script:</strong> write the payoff first, then the hook that follows it. Aim for 80–120 words.</span></li>
+        <li><span><strong>Voice:</strong> record or generate the voiceover first at about 178 wpm. Everything else is timed to it.</span></li>
+        <li><span><strong>Captions:</strong> run <code>tools/captions.py</code> on the voice. The caption chunks are your cut list.</span></li>
+        <li><span><strong>3D:</strong> Blender or Unreal Engine with stock rigged characters and motion-capture clips. One environment per format (cyan void, kitchen, street at night) reused across videos keeps output fast and consistent.</span></li>
+        <li><span><strong>Camera:</strong> animate one move per caption chunk with eased keyframes; add 2–5° roll drift on every shot.</span></li>
+        <li><span><strong>Mix:</strong> voice on top, pad bed about 10 dB under it, foley on every action, master to about −11 LUFS, true peak under −1 dBTP.</span></li>
+      </ul>
+    </div>
+    <div class="stack">
+      <h3>Tools in the repo</h3>
+      <p>Caption burn-in in this style:</p>
+<pre>python tools/captions.py voice.wav captions.ass
+ffmpeg -i render.mp4 -vf "ass=captions.ass" -c:a copy final.mp4</pre>
+      <p>Score a finished short against these numbers:</p>
+<pre>python tools/check_short.py final.mp4</pre>
+      <p class="note">It reports first-word time, pace, end tail, loudness, median shot length and locked-shot share, marks each PASS or CHECK, and prints your first and last lines for the loop test.</p>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ============ CHECKLIST ============ -->
+<section id="check">
+  <p class="eyebrow">08 · Before you publish</p>
+  <h2>Checklist</h2>
+  <div class="two">
+    <ul class="check">
+      <li><span>Title uses one of the five frames and ends in one face emoji.</span></li>
+      <li><span>First word at 0.0 s; first frame shows the subject mid-action.</span></li>
+      <li><span>Question answered by 20–30%, then a "But" opens the next one.</span></li>
+      <li><span>At least one concrete number in the script.</span></li>
+      <li><span>Last line is the payoff; the video ends within 1 s of it.</span></li>
+      <li><span>Last line reads naturally into the first line.</span></li>
+    </ul>
+    <ul class="check">
+      <li><span>A new shot or big camera change every 2–3 s; no locked-off shots longer than that.</span></li>
+      <li><span>At least two inside/thought/number devices.</span></li>
+      <li><span>Captions 1–3 words, white, at 78% height, no highlights.</span></li>
+      <li><span>Voice 160–195 wpm; pauses only for suspense.</span></li>
+      <li><span>Bed under the voice, foley on actions, about −11 LUFS master.</span></li>
+      <li><span>Branding inside the scene, not a corner logo.</span></li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<footer class="stack note" style="max-width: 80ch">
+  <p><strong>How this was measured.</strong> 20 shorts from the channel (21–81 s, 0.2M–19M views on 11 Nov 2026), analysed from 240×426 copies. Speech was transcribed with word timings (Whisper small.en). Cuts were detected from colour-histogram jumps, and camera moves were estimated by tracking feature points between frames. This undercounts soft dissolves and can mistake a moving subject for a camera move, so the shot figures are approximate. Loudness is EBU R128 on the original stereo audio. Frames were checked by eye at 1 fps and 10–20 fps around transitions. With six to eight formats in a sample of 20, view counts by format are too few to rank formats. The per-video numbers, transcripts and scripts are in <code>shorts-recipe/analysis/</code>.</p>
+</footer>
+
+</div>
