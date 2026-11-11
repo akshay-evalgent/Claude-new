@@ -3,8 +3,9 @@
 A 59-second English pilot in the Max cro style (see `../maxcro-recipe/RECIPE.md`),
 with our own story, the reference's tone and rhythm, and the upgrades the original leaves out.
 
-Output: `pilot.mp4` (1920x1080, 30 fps, AAC stereo, -14.6 LUFS) and `thumbnail.png`
-(1280x720, the reference channel's bold yellow two-word style; rebuild with `node thumb.mjs`).
+Output: `pilot.mp4` (1920x1080, 30 fps, AAC stereo, -14.6 LUFS) and `thumbnails/fridge.png`
+(1280x720, in the reference channel's thumbnail format; see `../channel-plan/PLAN.md`).
+`node thumb.mjs` rebuilds every thumbnail in `thumbs.js`.
 
 ## Script
 

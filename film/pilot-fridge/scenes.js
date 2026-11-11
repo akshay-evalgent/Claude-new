@@ -83,6 +83,12 @@ function faceSvg(type, t, seed, look = 0) {
     eyes = `<path d="M${-ex - 9 + dx} ${ey} q9 ${type === 'smug' ? -5 : 4} 18 0 M${ex - 9 + dx} ${ey} q9 ${type === 'smug' ? -5 : 4} 18 0" fill="none" ${S} stroke-width="4.5"/>`;
   } else if (type === 'laugh') {
     eyes = `<path d="M${-ex - 9 + dx} ${ey + 3} q9 -12 18 0 M${ex - 9 + dx} ${ey + 3} q9 -12 18 0" fill="none" ${S} stroke-width="4.5"/>`;
+  } else if (type === 'scared' || type === 'sick') {
+    const ry = type === 'sick' ? 10 : 15;
+    eyes = `<ellipse cx="${-ex + dx}" cy="${ey}" rx="12.5" ry="${ry}" fill="#FFFFFF" ${S} stroke-width="3.5"/><ellipse cx="${ex + dx}" cy="${ey}" rx="12.5" ry="${ry}" fill="#FFFFFF" ${S} stroke-width="3.5"/><circle cx="${-ex + dx + 1}" cy="${ey + 2}" r="6" fill="${C.ink}"/><circle cx="${ex + dx + 1}" cy="${ey + 2}" r="6" fill="${C.ink}"/>`;
+    if (type === 'sick') eyes += `<path d="M${-ex - 13 + dx} ${ey - 2} H${-ex + 13 + dx} M${ex - 13 + dx} ${ey - 2} H${ex + 13 + dx}" ${S} stroke-width="4"/>`;
+  } else if (type === 'sleep') {
+    eyes = `<path d="M${-ex - 9 + dx} ${ey} q9 8 18 0 M${ex - 9 + dx} ${ey} q9 8 18 0" fill="none" ${S} stroke-width="4.5"/>`;
   } else if (blink) {
     eyes = `<path d="M${-ex - 7 + dx} ${ey} h14 M${ex - 7 + dx} ${ey} h14" ${S} stroke-width="4.5"/>`;
   } else {
@@ -92,12 +98,13 @@ function faceSvg(type, t, seed, look = 0) {
   const B = {
     worried: 'M-29 -9 L-10 -17 M10 -17 L29 -9', sad: 'M-29 -9 L-10 -17 M10 -17 L29 -9',
     surprised: 'M-29 -16 Q-19 -24 -9 -18 M9 -18 Q19 -24 29 -16', think: 'M-29 -12 L-10 -12 M9 -19 Q19 -25 29 -18',
-    tired: 'M-28 -8 L-10 -10 M10 -10 L28 -8',
+    tired: 'M-28 -8 L-10 -10 M10 -10 L28 -8', scared: 'M-30 -14 L-10 -24 M10 -24 L30 -14', sick: 'M-30 -12 L-10 -20 M10 -20 L30 -12',
   };
   if (B[type]) brows = `<path d="${B[type]}" fill="none" ${S} stroke-width="4"/>`;
   const Mo = {
     neutral: 'M-9 28 L9 27', happy: 'M-16 21 Q0 37 16 21', smug: 'M-14 24 Q3 33 17 20', worried: 'M-12 31 Q0 23 12 31',
     sad: 'M-13 32 Q0 22 13 32', think: 'M-6 29 L11 25', tired: 'M-10 29 L10 29',
+    scared: 'M-14 33 q7 -7 14 0 q7 7 14 0', sick: 'M-14 33 q7 -6 14 0 q7 6 14 0', sleep: 'M-8 27 Q0 33 8 27',
   };
   if (type === 'surprised') mouth = `<ellipse cx="0" cy="28" rx="7" ry="9" fill="${C.ink}"/>`;
   else if (type === 'laugh') mouth = `<path d="M-17 20 Q0 46 17 20 Z" fill="${C.ink}" ${S} stroke-width="3"/><path d="M-8 33 Q0 39 8 33" fill="#C85A4A"/>`;
@@ -950,19 +957,4 @@ window.renderAt = T => {
   const end = TL.duration;
   document.getElementById('fade').setAttribute('opacity', clamp((T - (end - 0.8)) / 0.8).toFixed(3));
   return sh.id;
-};
-
-// ---------- thumbnail ----------
-window.renderThumb = () => {
-  const t = 0.4;
-  let s = bgSavanna({ seed: 11, sky: ['#9FD0E8', '#F3EBCF'], hills: '#E3C893', ground: '#E8C584' });
-  s += sun(150, 140, 72, t);
-  s += meatPile(1340, 990, 1.25, 21);
-  s += g('translate(1340 820) scale(1.7) translate(-1340 -820)', fliesAround(1340, 820, 1.3, 9, 150, 70));
-  s += person({ x: 520, y: 1060, s: 1.75, t: 1.0, seed: 3, face: 'worried', la: [-150, 128], ra: [16, 8], armsFront: true, bob: 0 });
-  const txt = (x, y, size, str) => `<text x="${x}" y="${y}" font-family="Cap" font-size="${size}" text-anchor="middle" paint-order="stroke" stroke="${C.ink}" stroke-width="${size * 0.16}" stroke-linejoin="round" fill="#FFD83A">${str}</text>`;
-  s += txt(1250, 250, 200, 'NO FRIDGE?');
-  document.getElementById('scene').innerHTML = `<g filter="url(#wob0)">${s}</g>`;
-  document.getElementById('cap').innerHTML = '';
-  document.getElementById('fade').setAttribute('opacity', '0');
 };
