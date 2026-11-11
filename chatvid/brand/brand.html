@@ -83,7 +83,7 @@
   }
   function meter(label, value, face, size = 40, color = '#ff9a2e') {
     return `<div class="meter" style="font-size:${size}px;--mc:${color}"><img src="${EMO(face)}"><div class="m-body">` +
-      `<div class="m-top"><span>${label}</span><span>${value}%</span></div><div class="m-track"><div class="m-fill" style="width:${value}%"></div></div></div></div>`;
+      `<div class="m-top"><span>${label}</span><span>${value}%</span></div><div class="m-track"><div class="m-fill" style="width:${value}%;background:${color}"></div></div></div></div>`;
   }
   const at = (x, y, html, extra = '') => `<div style="position:absolute;left:${x}px;top:${y}px;${extra}">${html}</div>`;
   const img = (g, h, cls = '') => `<img class="${cls}" src="${EMO(g)}" style="height:${h}px">`;
@@ -132,7 +132,7 @@
       let h = '<div class="bg"></div>';
       if (s.glow !== false) h += `<div class="glow" style="left:160px;top:330px;width:900px;height:320px;background:var(--cyan);opacity:.16"></div>
         <div class="glow" style="left:520px;top:60px;width:700px;height:260px;background:var(--${s.user?.color || 'red'});opacity:.14"></div>`;
-      if (s.meter) h += at(s.meter.x ?? 44, s.meter.y ?? 36, meter(s.meter.label, s.meter.value, s.meter.face, s.meter.size || 38));
+      if (s.meter) h += at(s.meter.x ?? 44, s.meter.y ?? 36, meter(s.meter.label, s.meter.value, s.meter.face, s.meter.size || 38, s.meter.color));
       if (s.user) h += `<div style="position:absolute;right:${s.user.right ?? 70}px;top:${s.user.top ?? 120}px">${bubble(s.user.text, 'user', s.user.color || 'red', s.user.size || 92)}</div>`;
       if (s.ai) {
         const a = s.ai;

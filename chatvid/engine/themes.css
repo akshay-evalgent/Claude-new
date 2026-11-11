@@ -121,7 +121,7 @@ body.t-void {
 body.t-void #greet { font-size: 40px; font-weight: 700; letter-spacing: -1px; }
 
 /* ---------- spam wall reply ---------- */
-.msg.ai.wall .body { line-height: 27px; word-break: break-word; }
+.msg.ai.wall .body { line-height: 27px; word-break: break-word; overflow-wrap: anywhere; }
 .msg.ai.wall .body .emo { width: 1.25em; height: 1.25em; }
 
 /* ---------- end card ---------- */

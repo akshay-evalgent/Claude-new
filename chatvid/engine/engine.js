@@ -83,6 +83,16 @@
     return (ex.ai ? ex.ai + ' ' : '') + body + (w.end || '');
   }
 
+  // a wall of literal text (e.g. digits of pi): no spaces to split on, so it is
+  // cut into chunks that stream in one by one and wrap anywhere
+  function wallTokens(ex) {
+    const w = ex.wall, n = w.chunk || 6, g = graphemes(w.text), toks = [];
+    if (ex.ai) toks.push(...tokenize(ex.ai), { s: ' ', sp: true });
+    for (let i = 0; i < g.length; i += n) toks.push({ s: g.slice(i, i + n).join('') });
+    if (w.end) toks.push(...tokenize(w.end));
+    return toks;
+  }
+
   function tokenize(text) {
     const toks = []; let cur = '';
     const push = () => { if (cur) toks.push({ s: cur }); cur = ''; };
@@ -137,7 +147,7 @@
       const u = document.createElement('div'); u.className = 'msg user';
       u.innerHTML = `<div class="bubble">${rich(ex.user)}</div>`;
       const a = document.createElement('div'); a.className = 'msg ai' + (ex.wall ? ' wall' : '');
-      const toks = tokenize(aiText(ex));
+      const toks = ex.wall && ex.wall.text ? wallTokens(ex) : tokenize(aiText(ex));
       a.innerHTML = `<div class="avatar"></div><div class="body">${toks.map((t) => `<span class="t">${t.emo ? emoImg(t.s) : esc(t.s)}</span>`).join('')}</div>` +
         `<div class="actions">${ICONS}</div><div class="dots"><i></i></div>`;
       thread.append(u, a);

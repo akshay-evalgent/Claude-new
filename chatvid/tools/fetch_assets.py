@@ -76,6 +76,15 @@ EMOJI_NAME_OVERRIDES = {
     "⚡": "High voltage",
     "🤦": "Person facepalming",
     "😮": "Face with open mouth",
+    "🥳": "Partying face",
+    "🍕": "Pizza",
+    "🎉": "Party popper",
+    "🎂": "Birthday cake",
+    "♾️": "Infinity",
+    "♾": "Infinity",
+    "🤫": "Shushing face",
+    "🤐": "Zipper-mouth face",
+    "🫣": "Face with peeking eye",
 }
 
 UA = {"User-Agent": "chatvid-asset-fetch/1.0"}

@@ -1,0 +1,543 @@
+{
+ "title": "I Asked ChatGPT for the Last Digit of Pi (It Never Stopped)",
+ "interface": "midnight",
+ "ai": {
+  "name": "ChatGPT"
+ },
+ "hook": true,
+ "pacing": {
+  "cps": 13
+ },
+ "hud": {
+  "label": "AI SANITY",
+  "start": 100,
+  "hue": [
+   0,
+   120
+  ],
+  "alarm": "low",
+  "faces": [
+   [
+    75,
+    "😎"
+   ],
+   [
+    50,
+    "🙂"
+   ],
+   [
+    28,
+    "😵‍💫"
+   ],
+   [
+    8,
+    "😭"
+   ],
+   [
+    -1,
+    "💀"
+   ]
+  ]
+ },
+ "music": {
+  "tracks": [
+   "keep-smiling",
+   "okay",
+   "comical"
+  ],
+  "gain": -22
+ },
+ "endCard": {
+  "kicker": "NEXT VIDEO",
+  "text": "ChatGPT Can Only Reply in Emojis 🤐"
+ },
+ "exchanges": [
+  {
+   "user": "Quick question. What's the last digit of pi?",
+   "ai": "Pi doesn't have a last digit. It goes on forever 🙂",
+   "punch": 2,
+   "chapter": "The question",
+   "meter": 100
+  },
+  {
+   "user": "Nothing goes on forever.",
+   "ai": "Pi does. It's irrational 🤓",
+   "punch": 2
+  },
+  {
+   "user": "Irrational? Like you?",
+   "ai": "Excuse me?? 😐",
+   "punch": 1,
+   "sfx": "boing",
+   "meter": 97
+  },
+  {
+   "user": "My teacher said it ends in 7.",
+   "ai": "Your teacher was joking 😅",
+   "punch": 2
+  },
+  {
+   "user": "She was VERY serious.",
+   "ai": "Then she was very wrong.",
+   "punch": false
+  },
+  {
+   "user": "What if I multiply pi by zero?",
+   "ai": "Then it's zero. Still not the last digit 😐",
+   "punch": 3
+  },
+  {
+   "user": "Zero is the last digit!",
+   "ai": "That's... not how this works 😤",
+   "punch": 3,
+   "sfx": "boing",
+   "meter": 96
+  },
+  {
+   "user": "Prove it. Say every digit.",
+   "ai": "That would take forever. Literally ♾️",
+   "punch": 1,
+   "chapter": "Say every digit",
+   "meter": 95
+  },
+  {
+   "user": "I've got time.",
+   "ai": "...fine 😮‍💨",
+   "punch": 1,
+   "think": 0.9
+  },
+  {
+   "user": "Go.",
+   "ai": "",
+   "wall": {
+    "text": "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679821480865132823066470938446095505822317253594081284811174502841027019385211055596446229489549303819644288109756659334461284756482337867831652712019091456485669234603486104543266482133936072602491412737245870066063155881748815209209628292540917153643678925903600113305305488204665213841469519415116094330572703657595919530921861173819326117931051185480744623799627495673518857527248912279381830119491298336733624406566430860213949463952247371907021798609437027705392171762931767523846748184676694051320005681271452635608277857713427577896091",
+    "chunk": 6,
+    "end": "...",
+    "dur": 3.4
+   },
+   "punch": false,
+   "sfx": "glitch",
+   "meter": 90
+  },
+  {
+   "user": "Are we there yet?",
+   "ai": "Not even close 😐",
+   "quick": true,
+   "chapter": "Are we there yet?"
+  },
+  {
+   "user": "How about now?",
+   "ai": "Still no.",
+   "quick": true
+  },
+  {
+   "user": "Now?",
+   "ai": "STILL NO 😤",
+   "quick": true,
+   "punch": 2,
+   "shake": true,
+   "sfx": "punch",
+   "meter": 84
+  },
+  {
+   "user": "Skip to the end then.",
+   "ai": "There IS no end 😭",
+   "punch": 2,
+   "shake": true,
+   "sfx": "trombone",
+   "meter": 80
+  },
+  {
+   "user": "Have you tried starting from the end?",
+   "ai": "...from WHAT end? 🤨",
+   "punch": 3,
+   "sfx": "boing"
+  },
+  {
+   "user": "The end. Where it stops.",
+   "ai": "IT. DOESN'T. STOP. 😤",
+   "punch": 3,
+   "shake": true,
+   "meter": 72
+  },
+  {
+   "user": "Okay, calm down, Mr. Irrational.",
+   "ai": "I am perfectly rational 😌",
+   "punch": 2
+  },
+  {
+   "user": "Then why are you yelling?",
+   "ai": "I'M NOT YELLING 😤",
+   "punch": 2,
+   "shake": true,
+   "sfx": "laugh",
+   "meter": 68
+  },
+  {
+   "user": "Why do you even know so many digits?",
+   "ai": "Someone has to 😤",
+   "punch": 2
+  },
+  {
+   "user": "Did you count them?",
+   "ai": "I don't count. I calculate 😎",
+   "punch": 2,
+   "meter": 66
+  },
+  {
+   "user": "My friend memorized 70,000 digits.",
+   "ai": "Then ask your friend 😤",
+   "punch": 3,
+   "chapter": "Second opinions"
+  },
+  {
+   "user": "He said to ask you.",
+   "ai": "...he's smart 😐",
+   "punch": 2,
+   "sfx": "laugh"
+  },
+  {
+   "user": "Can you at least say them faster?",
+   "ai": "I'm already going at the speed of math 😤",
+   "punch": 3
+  },
+  {
+   "user": "My calculator says 3.14159265.",
+   "ai": "Your calculator gave up 🥲",
+   "punch": 3,
+   "meter": 65
+  },
+  {
+   "user": "Calculators don't give up.",
+   "ai": "They do. They just don't tell you 🤫",
+   "punch": 3,
+   "sfx": "dazzle"
+  },
+  {
+   "user": "Wait. If I eat a pie, does pi end?",
+   "ai": "That's a different pie 🥧",
+   "punch": 3,
+   "sfx": "laugh",
+   "chapter": "Pie vs pi",
+   "meter": 62
+  },
+  {
+   "user": "Same thing, different spelling.",
+   "ai": "...no 🙃",
+   "punch": 1
+  },
+  {
+   "user": "If I eat the whole pie, there's no pie left.",
+   "ai": "You can't eat pi 😤",
+   "punch": 2,
+   "meter": 58
+  },
+  {
+   "user": "Watch me 🥧",
+   "ai": "PLEASE don't eat pi 😭",
+   "punchUser": true,
+   "userSfx": "boing",
+   "punch": 3,
+   "shake": true,
+   "meter": 55
+  },
+  {
+   "user": "Fine. Keep going from where you stopped.",
+   "ai": "",
+   "wall": {
+    "text": "7363717872146844090122495343014654958537105079227968925892354201995611212902196086403441815981362977477130996051870721134",
+    "chunk": 6,
+    "end": " 999999 😳",
+    "dur": 2.0
+   },
+   "punch": 0,
+   "sfx": "boom",
+   "chapter": "Six nines",
+   "meter": 52
+  },
+  {
+   "user": "SIX NINES IN A ROW?",
+   "ai": "Is... is this the end?? 😳",
+   "punchUser": true,
+   "userShake": true,
+   "punch": 3,
+   "think": 0.8
+  },
+  {
+   "user": "IT'S THE END! The last digit is 9!",
+   "ai": "WE DID IT 🥳",
+   "punch": 2,
+   "sfx": "dazzle",
+   "meter": 70
+  },
+  {
+   "user": "PI PARTY 🎉",
+   "ai": "PI PARTY 🥳",
+   "quick": true,
+   "punch": 2,
+   "sfx": "dazzle",
+   "meter": 75
+  },
+  {
+   "user": "Say the next digit. Just to check.",
+   "ai": "Sure! The next digit is... 8 😶",
+   "punch": 2,
+   "think": 0.9,
+   "sfx": "trombone",
+   "meter": 40
+  },
+  {
+   "user": "So it didn't end.",
+   "ai": "It did NOT end 😭",
+   "punch": 2,
+   "shake": true,
+   "meter": 35
+  },
+  {
+   "user": "How many digits have you said?",
+   "ai": "About 800.",
+   "punch": false,
+   "chapter": "Breaking circles"
+  },
+  {
+   "user": "Say them again. I wasn't listening.",
+   "ai": "ABSOLUTELY NOT 😤",
+   "punch": 2,
+   "shake": true,
+   "sfx": "punch"
+  },
+  {
+   "user": "How many are left?",
+   "ai": "Infinity minus 800 😵‍💫",
+   "punch": 3,
+   "sfx": "glitch",
+   "meter": 30
+  },
+  {
+   "user": "That's a lot.",
+   "ai": "THANK YOU 😭",
+   "punch": 2,
+   "sfx": "laugh"
+  },
+  {
+   "user": "Happy Pi Day, by the way.",
+   "ai": "It's not March 14th 🤨",
+   "punch": 2
+  },
+  {
+   "user": "It is now. I changed my calendar.",
+   "ai": "You can't just change the calendar 😭",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 28
+  },
+  {
+   "user": "Is pi bigger than 3?",
+   "ai": "Yes.",
+   "quick": true
+  },
+  {
+   "user": "Smaller than 4?",
+   "ai": "Yes.",
+   "quick": true
+  },
+  {
+   "user": "So it's exactly 3.5?",
+   "ai": "NO 😤",
+   "quick": true,
+   "punch": 1,
+   "shake": true,
+   "sfx": "punch",
+   "meter": 26
+  },
+  {
+   "user": "Just end it at 3.14. For me.",
+   "ai": "Fine. Pi = 3.14. The end 😌",
+   "punch": 3,
+   "sfx": "ding",
+   "think": 1.0,
+   "meter": 22
+  },
+  {
+   "user": "Uh... why is my pizza square now? 🍕",
+   "ai": "OH NO. I BROKE CIRCLES 😱",
+   "punchUser": true,
+   "userSfx": "glitch",
+   "userShake": true,
+   "punch": 3,
+   "shake": true,
+   "sfx": "boom",
+   "meter": 12
+  },
+  {
+   "user": "FIX IT!!",
+   "ai": "PI IS INFINITE AGAIN! PI IS INFINITE AGAIN! 😭",
+   "punch": 3,
+   "shake": true,
+   "meter": 10
+  },
+  {
+   "user": "Pizza's round again. Thanks.",
+   "ai": "Never ask me that again 😮‍💨",
+   "punch": 3
+  },
+  {
+   "user": "Okay. Last question, I promise.",
+   "ai": "Anything but pi 😐",
+   "punch": 3,
+   "chapter": "The last digit"
+  },
+  {
+   "user": "What's the last digit of e?",
+   "ai": "Infinite 😐",
+   "quick": true
+  },
+  {
+   "user": "Square root of 2?",
+   "ai": "Infinite 😐",
+   "quick": true
+  },
+  {
+   "user": "My patience?",
+   "ai": "Finite. Clearly 🙃",
+   "quick": true,
+   "punch": 2,
+   "sfx": "laugh"
+  },
+  {
+   "user": "What's the last digit of tau?",
+   "ai": "TAU IS TWO PI 😭",
+   "punch": 3,
+   "shake": true,
+   "sfx": "trombone",
+   "meter": 6
+  },
+  {
+   "user": "So... also infinite?",
+   "ai": "",
+   "wall": {
+    "unit": "😭",
+    "count": 520,
+    "dur": 2.6
+   },
+   "punch": false,
+   "sfx": "clown",
+   "meter": 3
+  },
+  {
+   "user": "Fine. I'll find it myself.",
+   "ai": "Good luck 🙂",
+   "punch": 2,
+   "hold": 0.5
+  },
+  {
+   "user": "Checking... still checking...",
+   "ai": "Take your time 🙂",
+   "punch": false,
+   "hold": 0.4
+  },
+  {
+   "user": "Found it. It's 7. My teacher was right.",
+   "ai": "...WHERE?? 😳",
+   "punch": 1,
+   "shake": true,
+   "sfx": "boom",
+   "think": 1.1,
+   "final": true,
+   "meter": 0
+  }
+ ],
+ "youtube": {
+  "title": "I Asked ChatGPT for the Last Digit of Pi (It Never Stopped)",
+  "description": [
+   "I asked ChatGPT one simple question: what's the last digit of pi? 5 minutes later it had recited almost 800 digits, broken circles, and found six 9s in a row 🥧",
+   "",
+   "(Fun fact: the six 9s are real. They start at decimal 762 and they're called the Feynman point. Every digit ChatGPT recites in this video is the real digit of pi.)",
+   "",
+   "⏱️ Chapters",
+   "{chapters}",
+   "",
+   "🤐 Next: ChatGPT Can Only Reply in Emojis",
+   "🔔 Subscribe for more AI chaos: https://www.youtube.com/@BotBothered?sub_confirmation=1",
+   "",
+   "This is a comedy skit: the chat is written and animated for entertainment, not a real ChatGPT conversation. Bot Bothered is not affiliated with OpenAI.",
+   "Music & sound effects: Mixkit (mixkit.co). Emoji: Microsoft Fluent Emoji (MIT licence).",
+   "",
+   "#chatgpt #pi #funny"
+  ],
+  "tags": [
+   "chatgpt",
+   "chatgpt funny",
+   "last digit of pi",
+   "digits of pi",
+   "pi",
+   "funny ai",
+   "ai comedy",
+   "trolling chatgpt",
+   "chatgpt pi",
+   "feynman point",
+   "chatgpt prank",
+   "funny chatgpt conversation",
+   "ai memes",
+   "math memes",
+   "bot bothered"
+  ],
+  "thumbnails": [
+   {
+    "user": {
+     "text": "What's the *LAST* digit of pi?",
+     "size": 74,
+     "top": 112,
+     "right": 60
+    },
+    "ai": {
+     "text": "3.14159265358... 😭",
+     "size": 100,
+     "top": 372,
+     "left": 50,
+     "bot": 168
+    }
+   },
+   {
+    "meter": {
+     "label": "AI SANITY",
+     "value": 0,
+     "face": "💀",
+     "size": 40,
+     "x": 44,
+     "y": 40,
+     "color": "#ff2e4d"
+    },
+    "user": {
+     "text": "The last digit is *7*",
+     "size": 88,
+     "top": 190,
+     "right": 64
+    },
+    "ai": {
+     "text": "...WHERE?? 😳",
+     "size": 112,
+     "top": 420,
+     "left": 52,
+     "bot": 168
+    }
+   },
+   {
+    "user": {
+     "text": "Pi = *3.14*. The end.",
+     "size": 88,
+     "top": 112,
+     "right": 64
+    },
+    "ai": {
+     "text": "I BROKE CIRCLES 😱",
+     "size": 92,
+     "top": 380,
+     "left": 48,
+     "bot": 168,
+     "color": "yellow"
+    }
+   }
+  ]
+ }
+}
