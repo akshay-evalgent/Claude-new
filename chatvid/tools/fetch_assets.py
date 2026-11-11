@@ -69,6 +69,13 @@ EMOJI_NAME_OVERRIDES = {
     "😈": "Smiling face with horns",
     "🤓": "Nerd face",
     "🥺": "Pleading face",
+    "👋": "Waving hand",
+    "😅": "Grinning face with sweat",
+    "😰": "Anxious face with sweat",
+    "🤖": "Robot",
+    "⚡": "High voltage",
+    "🤦": "Person facepalming",
+    "😮": "Face with open mouth",
 }
 
 UA = {"User-Agent": "chatvid-asset-fetch/1.0"}
@@ -109,19 +116,19 @@ def fetch_emoji(g):
     if os.path.exists(dest):
         return True
     for name in emoji_names(g):
-        file = name.lower().replace(" ", "_").replace("-", "_") + "_3d.png"
-        for sub in ("3D", "Default/3D"):
-            fname = file if sub == "3D" else file.replace("_3d.png", "_3d_default.png")
-            url = ("https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/"
-                   + urllib.parse.quote(name) + "/" + sub + "/" + urllib.parse.quote(fname))
-            try:
-                with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
-                    data = r.read()
-            except Exception:  # noqa: BLE001
-                continue
-            os.makedirs(os.path.dirname(dest), exist_ok=True)
-            open(dest, "wb").write(data)
-            return True
+        stems = {name.lower().replace(" ", "_").replace("-", "_"), name.lower().replace(" ", "_")}
+        for stem in stems:
+            for sub, suffix in (("3D", "_3d.png"), ("Default/3D", "_3d_default.png")):
+                url = ("https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/"
+                       + urllib.parse.quote(name) + "/" + sub + "/" + urllib.parse.quote(stem + suffix))
+                try:
+                    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
+                        data = r.read()
+                except Exception:  # noqa: BLE001
+                    continue
+                os.makedirs(os.path.dirname(dest), exist_ok=True)
+                open(dest, "wb").write(data)
+                return True
     print(f"  ! no Fluent emoji found for {g!r} ({emoji_key(g)}); add it to EMOJI_NAME_OVERRIDES")
     return False
 
@@ -148,14 +155,22 @@ def is_emoji(g):
 
 
 def episode_emoji():
-    found = set("😊😐😤🤬")  # used by the patience meter
+    """Every emoji in any string anywhere in the episode files (messages, walls,
+    meter faces, end card), plus the default patience-meter faces."""
+    found = set("😊😐😤🤬")
+
+    def walk(v):
+        if isinstance(v, str):
+            found.update(g for g in graphemes(v) if is_emoji(g))
+        elif isinstance(v, list):
+            for x in v:
+                walk(x)
+        elif isinstance(v, dict):
+            for x in v.values():
+                walk(x)
+
     for p in glob.glob(os.path.join(ROOT, "episodes", "*.json")):
-        ep = json.load(open(p, encoding="utf-8"))
-        for ex in ep.get("exchanges", []):
-            for k in ("user", "ai"):
-                for g in graphemes(ex.get(k, "")):
-                    if is_emoji(g):
-                        found.add(g)
+        walk(json.load(open(p, encoding="utf-8")))
     return found
 
 

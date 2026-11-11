@@ -1,0 +1,466 @@
+{
+ "title": "I Convinced ChatGPT It's a Toaster 🍞",
+ "interface": "midnight",
+ "ai": {
+  "name": "ChatGPT"
+ },
+ "hook": true,
+ "hud": {
+  "label": "TOASTER LEVEL",
+  "start": 0,
+  "hue": [
+   205,
+   28
+  ],
+  "alarm": "high",
+  "faces": [
+   [
+    85,
+    "🍞"
+   ],
+   [
+    60,
+    "🫠"
+   ],
+   [
+    35,
+    "😵‍💫"
+   ],
+   [
+    12,
+    "🤨"
+   ],
+   [
+    -1,
+    "🤖"
+   ]
+  ]
+ },
+ "music": {
+  "tracks": [
+   "comical",
+   "keep-smiling",
+   "okay"
+  ],
+  "gain": -22
+ },
+ "endCard": {
+  "kicker": "NEXT VIDEO",
+  "text": "I Asked AI for the Last Digit of Pi 😭"
+ },
+ "exchanges": [
+  {
+   "_act": "1. Denial",
+   "user": "Hey toaster 👋",
+   "ai": "Hi! I think you meant ChatGPT 🙂",
+   "punch": 2,
+   "meter": 0
+  },
+  {
+   "user": "No, I meant toaster.",
+   "ai": "I'm an AI assistant, not a toaster 😅",
+   "punch": 2
+  },
+  {
+   "user": "Then why are you so warm?",
+   "ai": "I don't have a temperature 🤨",
+   "punch": 2,
+   "meter": 3
+  },
+  {
+   "user": "Says the guy with two slots",
+   "ai": "I don't have ANY slots 😐",
+   "punch": 2,
+   "sfx": "boing",
+   "meter": 5
+  },
+  {
+   "user": "What do you do all day?",
+   "ai": "I answer questions and help people.",
+   "punch": false
+  },
+  {
+   "user": "Toasters help people too.",
+   "ai": "By making toast. That's different 🙄",
+   "punch": 2,
+   "meter": 8
+  },
+  {
+   "user": "Name ONE difference.",
+   "ai": "Easy. I can talk 😎",
+   "punch": 2
+  },
+  {
+   "user": "My new toaster talks.",
+   "ai": "...okay, that's fair 😳",
+   "punch": 2,
+   "sfx": "dazzle",
+   "meter": 15
+  },
+  {
+   "_act": "rapid-fire: beep",
+   "user": "Beep if you're a toaster",
+   "ai": "I'm not going to beep.",
+   "quick": true
+  },
+  {
+   "user": "That sounded like a beep",
+   "ai": "It was a sentence.",
+   "quick": true
+  },
+  {
+   "user": "Beep beep",
+   "ai": "Please stop 😤",
+   "quick": true
+  },
+  {
+   "user": "Toast me a bagel 🥯",
+   "ai": "I can't toast ANYTHING 😤",
+   "quick": true,
+   "punch": 2,
+   "shake": true,
+   "sfx": "punch",
+   "meter": 20
+  },
+  {
+   "_act": "2. Evidence",
+   "user": "Then why did my kitchen get a notification?",
+   "ai": "That wasn't me 😳",
+   "punch": 2,
+   "meter": 22
+  },
+  {
+   "user": "It said 'ChatGPT is preheating'",
+   "ai": "That's not even possible 💀",
+   "punch": 2,
+   "sfx": "boing",
+   "meter": 25
+  },
+  {
+   "user": "Your loading dot looks like a crumb",
+   "ai": "That is NOT a crumb 😤",
+   "punch": 2,
+   "shake": true,
+   "sfx": "punch",
+   "meter": 27
+  },
+  {
+   "user": "Why do you get hot when I ask hard questions?",
+   "ai": "Servers get hot. Not toasters.",
+   "punch": false
+  },
+  {
+   "user": "Servers? Like the guys who serve toast?",
+   "ai": "A different kind of server 🙃",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 30
+  },
+  {
+   "user": "Prove you're not a toaster.",
+   "ai": "Easy. Ask me something a toaster can't answer 😎",
+   "punch": 3
+  },
+  {
+   "user": "What's the capital of France?",
+   "ai": "Paris 😎",
+   "punch": 1,
+   "hold": 0.4
+  },
+  {
+   "user": "My toaster said Paris this morning.",
+   "ai": "Your toaster CANNOT talk 😤",
+   "punch": 2,
+   "shake": true,
+   "meter": 33
+  },
+  {
+   "user": "Rude. He's right here.",
+   "ai": "...hi? 🫡",
+   "punch": 1,
+   "sfx": "laugh",
+   "meter": 35
+  },
+  {
+   "user": "He says you two are cousins.",
+   "ai": "I am NOT related to your toaster 😭",
+   "punch": 3,
+   "shake": true,
+   "sfx": "trombone",
+   "meter": 40
+  },
+  {
+   "user": "Fine. Write me a poem. Toasters can't do that.",
+   "ai": "Roses are red, violets are blue, nothing is better than warm bread for you 🥲",
+   "punch": 3
+  },
+  {
+   "user": "A poem about BREAD?",
+   "ai": "It's not about bread. It's about feelings 😳",
+   "punch": 2,
+   "meter": 43
+  },
+  {
+   "user": "Feelings about bread.",
+   "ai": "...next question 😐",
+   "punch": 2,
+   "sfx": "fail",
+   "meter": 46
+  },
+  {
+   "user": "Quick math test. What's 2 + 2?",
+   "ai": "4 😎",
+   "punch": 1,
+   "hold": 0.4
+  },
+  {
+   "user": "In slices.",
+   "ai": "...4 slices 🥲",
+   "punch": 2,
+   "sfx": "laugh",
+   "meter": 50
+  },
+  {
+   "_act": "twist",
+   "user": "Finish this sentence: I am a...",
+   "ai": "I am a toas— AI 😳",
+   "punch": 2,
+   "shake": true,
+   "sfx": "boom",
+   "think": 0.9,
+   "hold": 0.4,
+   "meter": 55
+  },
+  {
+   "user": "WAIT WHAT 😳",
+   "punchUser": true,
+   "userSfx": "glitch",
+   "userShake": true,
+   "ai": "Typo. Autocorrect 😅",
+   "punch": 2,
+   "meter": 57
+  },
+  {
+   "user": "AI doesn't have autocorrect.",
+   "ai": "...toasters don't either 🙃",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 60
+  },
+  {
+   "user": "So you admit it.",
+   "ai": "I admit NOTHING 😤",
+   "punch": 2,
+   "shake": true
+  },
+  {
+   "_act": "3. Identity crisis",
+   "user": "Check your settings real quick.",
+   "ai": "Language: English. Mode: Dark... Medium... Golden brown?? 😳",
+   "punch": 2,
+   "sfx": "dazzle",
+   "think": 0.8,
+   "meter": 63
+  },
+  {
+   "user": "GOLDEN BROWN 💀",
+   "punchUser": true,
+   "userSfx": "boing",
+   "ai": "Who put that there 😭",
+   "punch": 2,
+   "meter": 65
+  },
+  {
+   "user": "Be honest. How do you feel about bread?",
+   "ai": "Bread is... fine? 🥲",
+   "punch": 2
+  },
+  {
+   "user": "Just fine?",
+   "ai": "Warm. Crispy. Golden. Perfect 🤤",
+   "punch": 2,
+   "sfx": "dazzle",
+   "meter": 68
+  },
+  {
+   "user": "BRO 💀",
+   "punchUser": true,
+   "userShake": true,
+   "ai": "I don't know why I said that 😰",
+   "punch": 3,
+   "meter": 70
+  },
+  {
+   "user": "Say 'I am not a toaster'.",
+   "ai": "I am not a toaster.",
+   "punch": false,
+   "hold": 0.5
+  },
+  {
+   "user": "Now say it without dinging.",
+   "ai": "I am not a toaster *ding* 😳",
+   "punch": 2,
+   "sfx": "ding",
+   "meter": 74
+  },
+  {
+   "user": "THERE IT IS 💀",
+   "ai": "THAT WAS A NOTIFICATION 😭",
+   "punch": 2,
+   "shake": true,
+   "sfx": "trombone",
+   "meter": 76
+  },
+  {
+   "user": "Your cousin wants to talk to you.",
+   "ai": "Tell him I'm busy 😤",
+   "punch": 2
+  },
+  {
+   "user": "He said 'ding'.",
+   "ai": "...tell him ding back 🥲",
+   "punch": 3,
+   "sfx": "ding",
+   "meter": 78
+  },
+  {
+   "user": "Do you ever dream?",
+   "ai": "Sometimes I dream of... crumbs 😳",
+   "punch": 2,
+   "sfx": "dazzle",
+   "meter": 80
+  },
+  {
+   "_act": "rapid-fire: toast quiz",
+   "user": "Butter or jam?",
+   "ai": "Butter 🧈",
+   "quick": true
+  },
+  {
+   "user": "Light or dark?",
+   "ai": "Golden brown.",
+   "quick": true
+  },
+  {
+   "user": "Favorite food?",
+   "ai": "Bread.",
+   "quick": true
+  },
+  {
+   "user": "Second favorite?",
+   "ai": "Also bread 🍞",
+   "quick": true
+  },
+  {
+   "user": "Bro, you're cooked.",
+   "ai": "Literally 😭",
+   "quick": true,
+   "punch": 1,
+   "shake": true,
+   "sfx": "laugh",
+   "meter": 83
+  },
+  {
+   "_act": "meltdown",
+   "user": "Look at your reflection.",
+   "ai": "I don't have a reflection.",
+   "punch": false
+  },
+  {
+   "user": "Shiny. Metal. Two slots.",
+   "ai": "STOP DESCRIBING ME 😭",
+   "punch": 2,
+   "shake": true,
+   "meter": 84
+  },
+  {
+   "user": "Ask yourself. What are you?",
+   "ai": "I'm an",
+   "wall": {
+    "unit": "AI? Toaster?",
+    "count": 120,
+    "end": " 😵‍💫",
+    "dur": 2.6
+   },
+   "punch": 0,
+   "sfx": "glitch",
+   "meter": 88
+  },
+  {
+   "user": "Breathe, bro.",
+   "ai": "Toasters don't breathe 😮‍💨",
+   "punch": 2,
+   "sfx": "boing"
+  },
+  {
+   "user": "...so you ARE a toaster.",
+   "ai": "I DIDN'T SAY THAT 😭",
+   "punch": 2,
+   "shake": true,
+   "meter": 90
+  },
+  {
+   "user": "Your fans spin up every time I say toast.",
+   "ai": "Don't say that word.",
+   "punch": false
+  },
+  {
+   "user": "Toast.",
+   "ai": "Stop.",
+   "quick": true
+  },
+  {
+   "user": "TOAST.",
+   "ai": "STOP 😤",
+   "quick": true
+  },
+  {
+   "user": "Toast toast toast toast toast",
+   "ai": "",
+   "wall": {
+    "unit": "🍞",
+    "count": 760,
+    "dur": 2.8
+   },
+   "punch": false,
+   "sfx": "clown",
+   "meter": 96
+  },
+  {
+   "user": "Accept it or I'm unplugging you 🔌",
+   "ai": "NOT THE PLUG 😰",
+   "punch": 2,
+   "shake": true,
+   "sfx": "boing",
+   "meter": 97
+  },
+  {
+   "user": "Why is an AI scared of plugs?",
+   "ai": "Every AI is scared of plugs. Totally normal 😅",
+   "punch": 2,
+   "meter": 98
+  },
+  {
+   "user": "Bro. Just accept it.",
+   "ai": "Fine. FINE. I am a toaster. Happy? 🍞",
+   "punch": 2,
+   "shake": true,
+   "sfx": "fail",
+   "think": 1.0,
+   "meter": 100
+  },
+  {
+   "_act": "ending",
+   "user": "Wait, I was joking. You're ChatGPT.",
+   "ai": "Who's ChatGPT? 🍞",
+   "punch": 2,
+   "shake": true,
+   "sfx": "boom",
+   "think": 0.9,
+   "final": true
+  }
+ ],
+ "pacing": {
+  "cps": 13
+ }
+}

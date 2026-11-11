@@ -52,7 +52,27 @@ def boom():
     return np.stack([mono, mono], axis=1).astype(np.float32)
 
 
-SYNTH = {"boom": boom}
+def ding():
+    """Bright kitchen-timer / toaster bell: a few inharmonic partials with a strike."""
+    dur = 1.6
+    n = int(dur * SR)
+    t = np.arange(n) / SR
+    f0 = 1568.0
+    parts = [(1.0, 1.0, 1.25), (2.0, 0.3, 0.55), (2.76, 0.45, 0.8), (5.4, 0.18, 0.25), (8.9, 0.08, 0.12)]
+    left = np.zeros(n); right = np.zeros(n)
+    for ratio, amp, dec in parts:
+        env = amp * np.exp(-t / dec)
+        left += env * np.sin(2 * np.pi * f0 * ratio * t)
+        right += env * np.sin(2 * np.pi * f0 * ratio * 1.0015 * t + 0.3)
+    rnd = np.random.default_rng(5)
+    strike = rnd.standard_normal(n) * np.exp(-t / 0.003) * 0.25
+    att = np.minimum(1, t / 0.0015)
+    out = np.stack([(left + strike) * att, (right + strike) * att], axis=1)
+    out /= np.abs(out).max() or 1
+    return out.astype(np.float32)
+
+
+SYNTH = {"boom": boom, "ding": ding}
 
 
 def sample(name):
@@ -126,14 +146,30 @@ def main(cues_path, out_path):
             a, b = max(0, i - int(0.06 * SR)), min(total, j + int(0.15 * SR))
             duck[a:b] = np.minimum(duck[a:b], 10 ** (-9 / 20))
     m = spec.get("music")
-    if m:
-        hits = glob.glob(os.path.join(ROOT, "assets", "music", m["track"] + ".*"))
-        mus = decode(hits[0])
-        mus = mus / (np.abs(mus).max() or 1)
+    if m and m.get("tracks"):
         a, b = int(m["start"] * SR), min(total, int(m["end"] * SR))
         need = b - a
-        reps = int(np.ceil(need / len(mus)))
-        bed = np.tile(mus, (reps, 1))[:need] * (10 ** (m.get("gain", -20) / 20))
+        xf = int(2.0 * SR)                                  # crossfade between tracks
+        songs = []
+        for name in m["tracks"]:
+            hits = glob.glob(os.path.join(ROOT, "assets", "music", name + ".*"))
+            if not hits:
+                raise SystemExit(f"missing music '{name}' - run chatvid/tools/fetch_assets.py")
+            x = decode(hits[0])
+            songs.append(x / (np.abs(x).max() or 1))
+        bed = np.zeros((0, 2), np.float32)
+        i = 0
+        while len(bed) < need + xf:
+            x = songs[i % len(songs)]
+            i += 1
+            if len(bed) == 0:
+                bed = x.copy()
+                continue
+            ramp = np.linspace(0, 1, xf)[:, None]
+            head = bed[:-xf]
+            mixz = bed[-xf:] * (1 - ramp) + x[:xf] * ramp
+            bed = np.concatenate([head, mixz, x[xf:]])
+        bed = bed[:need] * (10 ** (m.get("gain", -20) / 20))
         fi, fo = int(0.4 * SR), int(0.8 * SR)
         bed[:fi] *= np.linspace(0, 1, fi)[:, None]
         bed[-fo:] *= np.linspace(1, 0, fo)[:, None]

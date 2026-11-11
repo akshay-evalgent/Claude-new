@@ -38,6 +38,13 @@ await page.goto(pathToFileURL(path.join(HERE, 'engine', 'index.html')).href);
 const plan = await page.evaluate((e) => window.boot(e), ep);
 console.log(`${slug}: ${plan.duration.toFixed(2)} s, ${plan.cues.length} sound cues, ${Math.ceil(plan.duration * fps)} frames`);
 
+if (args.includes('--plan')) {
+  const mmss = (t) => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, '0')}`;
+  plan.exchanges.forEach((t, i) => console.log(`  ${String(i + 1).padStart(2)}  ${mmss(t)}  ${ep.exchanges[i].user}`));
+  await browser.close();
+  process.exit(0);
+}
+
 const stills = opt('stills');
 if (stills) {
   for (const t of stills.split(',').map(Number)) {
