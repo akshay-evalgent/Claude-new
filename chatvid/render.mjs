@@ -57,37 +57,48 @@ if (stills) {
   process.exit(0);
 }
 
+// --remix: keep the picture of an earlier render, redo only the sound
+const remix = args.includes('--remix');
 const video = path.join(outDir, `${slug}.video.mp4`);
-const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'image2pipe', '-framerate', String(fps), '-i', '-',
-  '-c:v', 'libx264', '-preset', 'medium', '-crf', '16', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', video],
-  { stdio: ['pipe', 'inherit', 'inherit'] });
-const done = new Promise((r) => ff.on('close', r));
-const N = Math.ceil(plan.duration * fps);
-const t0 = Date.now();
-for (let i = 0; i < N; i++) {
-  await page.evaluate((x) => window.renderAt(x), i / fps);
-  const buf = await page.screenshot({ type: 'jpeg', quality: 96 });
-  if (!ff.stdin.write(buf)) await new Promise((r) => ff.stdin.once('drain', r));
-  if (i % 60 === 0) process.stdout.write(`\r  frame ${i}/${N}  ${((Date.now() - t0) / 1000).toFixed(0)} s`);
+if (remix) {
+  if (!fs.existsSync(out)) { console.error(`--remix needs an earlier render at ${out}`); process.exit(1); }
+  await browser.close();
+  fs.copyFileSync(out, video);
+} else {
+  const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'image2pipe', '-framerate', String(fps), '-i', '-',
+    '-c:v', 'libx264', '-preset', 'medium', '-crf', '16', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', video],
+    { stdio: ['pipe', 'inherit', 'inherit'] });
+  const done = new Promise((r) => ff.on('close', r));
+  const N = Math.ceil(plan.duration * fps);
+  const t0 = Date.now();
+  for (let i = 0; i < N; i++) {
+    await page.evaluate((x) => window.renderAt(x), i / fps);
+    const buf = await page.screenshot({ type: 'jpeg', quality: 96 });
+    if (!ff.stdin.write(buf)) await new Promise((r) => ff.stdin.once('drain', r));
+    if (i % 60 === 0) process.stdout.write(`\r  frame ${i}/${N}  ${((Date.now() - t0) / 1000).toFixed(0)} s`);
+  }
+  ff.stdin.end();
+  await done;
+  await browser.close();
+  console.log(`\r  ${N} frames in ${((Date.now() - t0) / 1000).toFixed(0)} s`);
 }
-ff.stdin.end();
-await done;
-await browser.close();
-console.log(`\r  ${N} frames in ${((Date.now() - t0) / 1000).toFixed(0)} s`);
 
 const cuesFile = path.join(outDir, `${slug}.cues.json`);
 const wav = path.join(outDir, `${slug}.mix.wav`);
 fs.writeFileSync(cuesFile, JSON.stringify({ duration: plan.duration, cues: plan.cues, music: plan.music }, null, 1));
 const mix = spawnSync('python3', [path.join(HERE, 'tools', 'mix.py'), cuesFile, wav], { stdio: 'inherit' });
 if (mix.status !== 0) process.exit(mix.status || 1);
-// measure the mix, then apply one gain so the result lands on -14 LUFS (YouTube's
-// reference level), with a limiter catching the peaks
-const meas = spawnSync('ffmpeg', ['-hide_banner', '-i', wav, '-af', 'ebur128', '-f', 'null', '-'], { encoding: 'utf8' });
-const I = Number((meas.stderr.match(/I:\s+(-?[\d.]+) LUFS\s*\n\s*Threshold/) || [])[1] ?? -14);
-const gain = Math.max(-12, Math.min(12, -14 - I));
-const mux = spawnSync('ffmpeg', ['-v', 'error', '-y', '-i', video, '-i', wav,
-  '-af', `volume=${gain.toFixed(2)}dB,alimiter=limit=0.84:level=false`, '-ar', '48000',
-  '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-shortest', out], { stdio: 'inherit' });
+// Loudness: two-pass loudnorm to -14 LUFS (YouTube's reference) with true-peak
+// limiting. A gentle 15 kHz low-pass and the AAC cutoff keep the encoder from
+// overshooting on sharp clicks. Very dynamic mixes land a little under -14.
+const PRE = 'lowpass=f=15000:p=2,lowpass=f=15000:p=2';
+const LN = 'loudnorm=I=-14:TP=-2:LRA=14';
+const pass1 = spawnSync('ffmpeg', ['-hide_banner', '-i', wav, '-af', `${PRE},${LN}:print_format=json`, '-f', 'null', '-'], { encoding: 'utf8' });
+const m = JSON.parse(pass1.stderr.slice(pass1.stderr.lastIndexOf('{'), pass1.stderr.lastIndexOf('}') + 1));
+const ln2 = `${LN}:measured_I=${m.input_i}:measured_TP=${m.input_tp}:measured_LRA=${m.input_lra}:measured_thresh=${m.input_thresh}:offset=${m.target_offset}:linear=true`;
+const mux = spawnSync('ffmpeg', ['-v', 'error', '-y', '-i', video, '-i', wav, '-map', '0:v', '-map', '1:a',
+  '-af', `${PRE},${ln2},aresample=48000`, '-c:v', 'copy', '-c:a', 'aac', '-b:a', '256k', '-cutoff', '15000',
+  '-shortest', '-movflags', '+faststart', out], { stdio: 'inherit' });
 if (mux.status !== 0) process.exit(mux.status || 1);
 fs.rmSync(video);
 console.log('wrote', out);

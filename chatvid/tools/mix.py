@@ -89,6 +89,15 @@ def sample(name):
     x = x / peak
     on = np.argmax(np.abs(x).max(axis=1) > 10 ** (-30 / 20))   # first sample above -30 dB of peak
     x = x[max(0, on - int(0.003 * SR)):]
+    if name.startswith("key"):
+        # key clicks are the sharpest transients in the mix: take the edge off
+        # (soft low-pass, ~1 ms fade-in) so they don't spike after loudness gain
+        k = np.hanning(9)[1:-1]
+        k /= k.sum()
+        x = np.stack([np.convolve(x[:, c], k, mode="same") for c in (0, 1)], axis=1)
+        f = int(0.001 * SR)
+        x[:f] *= np.linspace(0, 1, f)[:, None]
+        x /= np.abs(x).max() or 1
     _cache[name] = x
     return x
 
@@ -124,6 +133,34 @@ def fade_tail(x, ms=25):
     x = x.copy()
     x[-k:] *= np.linspace(1, 0, k)[:, None]
     return x
+
+
+def limit(x, ceil=0.89, max_gr_db=12.0, release=0.08, pct=97.0):
+    """Look-ahead peak limiter. Sets the level so only the loudest few percent of the
+    programme is limited (at most max_gr_db of gain reduction), instead of
+    scaling the whole mix down to fit its single loudest hit. pct sets how much
+    of the programme may be limited (97 = the loudest 3% of 1 ms blocks)."""
+    blk = 48                                        # 1 ms blocks
+    n = len(x)
+    pk = np.abs(x).max(axis=1)
+    pad = (-n) % blk
+    bp = np.concatenate([pk, np.zeros(pad, pk.dtype)]).reshape(-1, blk).max(axis=1)
+    loud = bp[bp > 1e-4]
+    ref = np.percentile(loud, pct) if len(loud) else 1.0
+    pre = min(ceil / max(ref, 1e-9), ceil * 10 ** (max_gr_db / 20) / max(bp.max(), 1e-9))
+    req = np.minimum(1.0, ceil / np.maximum(bp * pre, 1e-9))
+    la = req.copy()                                 # 2 ms look-ahead
+    la[:-1] = np.minimum(la[:-1], req[1:])
+    la[:-2] = np.minimum(la[:-2], req[2:])
+    g = np.empty_like(la)
+    cur, a = 1.0, 1 - np.exp(-1 / (release * 1000))
+    for i, r in enumerate(la):
+        cur = r if r < cur else cur + (r - cur) * a
+        g[i] = cur
+    centres = np.arange(len(g)) * blk + blk / 2
+    gs = np.interp(np.arange(n), centres, g).astype(np.float32)
+    y = x * pre * gs[:, None]
+    return np.clip(y, -0.99, 0.99)
 
 
 def main(cues_path, out_path):
@@ -178,8 +215,7 @@ def main(cues_path, out_path):
         d = np.convolve(duck, np.ones(k) / k, mode="same")
         out[a:b] += bed * d[a:b, None]
     out = out[: int(spec["duration"] * SR)]
-    peak = np.abs(out).max() or 1
-    out = np.tanh(out / peak * 1.2) / np.tanh(1.2) * 0.89     # gentle soft clip, peak ~ -1 dB
+    out = limit(out)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", "-", out_path],
                    input=out.astype(np.float32).tobytes(), check=True)
 

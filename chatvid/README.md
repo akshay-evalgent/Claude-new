@@ -6,7 +6,8 @@ cold-open hook with a rewind, sound effects and music, mixed to YouTube loudness
 No screen recording and no editing software needed.
 
 Samples: `samples/ai-is-a-toaster.mp4` (full 4:48 episode) and
-`samples/count-to-a-billion.mp4` (29 s test), both 1080p.
+`samples/count-to-a-billion.mp4` (29 s test). These are compressed previews;
+a fresh render in `out/` is the full-quality file to upload.
 
 ## Quick start
 
@@ -37,7 +38,8 @@ node chatvid/render.mjs chatvid/episodes/count-to-a-billion.json --stills 3.5,8,
 
 `--scale 2` renders 4K. `--stills` writes PNG frames at those times (seconds)
 instead of a video, for quick checks. `--plan` prints when each exchange starts
-and the total length, without rendering.
+and the total length, without rendering. `--remix` keeps the picture of the
+last render and redoes only the sound (under a minute for a 5-minute episode).
 
 Needs Node with Playwright and Chromium, ffmpeg, and Python 3 with numpy.
 
@@ -110,7 +112,8 @@ its zoomed size, not upscaled from a recording.
 - `engine/`: the chat page, with three themes in `themes.css` and the timeline and camera in `engine.js`.
 - `render.mjs`: drives Chromium frame by frame, then mixes and muxes the audio.
 - `tools/fetch_assets.py`: downloads sounds, music and emoji into `assets/` (not committed).
-- `tools/mix.py`: places the sound cues, synthesises the riser and ducks the music under stingers.
+- `tools/mix.py`: places the sound cues, synthesises `boom`, `ding` and the risers, ducks the music under stingers, and limits the loudest hits.
+- Final loudness: two-pass loudnorm towards -14 LUFS with true peaks held under -1 dBTP.
 - `episodes/`: scripts.
 
 ## Asset licences
