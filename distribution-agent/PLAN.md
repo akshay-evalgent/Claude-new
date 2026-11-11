@@ -254,3 +254,4 @@ Stack:
 | SaaS and micro-SaaS | `SAAS-PLAYBOOK.md` |
 | Templates, courses and ebooks | `TEMPLATES-COURSES-EBOOKS-PLAYBOOK.md` |
 | Newsletters and paid communities | `NEWSLETTERS-COMMUNITIES-PLAYBOOK.md` |
+| LinkedIn, Instagram, TikTok and YouTube, organic and ads | `PAID-AND-SOCIAL-CHANNELS-PLAYBOOK.md` |
