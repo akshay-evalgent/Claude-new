@@ -22,8 +22,44 @@ def decode(path):
     return np.frombuffer(raw, dtype=np.float32).reshape(-1, 2).copy()
 
 
+def boom():
+    """Vine-boom style meme hit, synthesised (no third-party audio, no copyright).
+    A pitch-dropping bass thump, saturated, with a click on the front and a dark
+    reverb tail."""
+    dur = 1.9
+    n = int(dur * SR)
+    t = np.arange(n) / SR
+    f = 46 + 120 * np.exp(-t / 0.05)                       # ~166 Hz falling to 46 Hz
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    body = (np.sin(ph) + 0.35 * np.sin(2 * ph) + 0.15 * np.sin(3 * ph)) * np.exp(-t / 0.42)
+    body *= np.minimum(1, t / 0.002)                        # 2 ms attack
+    body = np.tanh(2.6 * body) / np.tanh(2.6)               # saturation = the "boomy" grit
+    rnd = np.random.default_rng(11)
+    click = rnd.standard_normal(n) * np.exp(-t / 0.004) * 0.35
+    dry = body + click
+    # reverb: convolve with decaying, low-passed noise
+    ir_n = int(1.3 * SR)
+    ti = np.arange(ir_n) / SR
+    ir = rnd.standard_normal(ir_n) * np.exp(-ti / 0.35)
+    k = 24
+    ir = np.convolve(ir, np.ones(k) / k, mode="same")       # darken the tail
+    ir /= np.abs(ir).sum() / 40
+    wet = np.convolve(dry, ir)[:n]
+    wet /= np.abs(wet).max() or 1
+    mono = 0.82 * dry / (np.abs(dry).max() or 1) + 0.38 * wet
+    mono[-int(0.05 * SR):] *= np.linspace(1, 0, int(0.05 * SR))
+    mono /= np.abs(mono).max() or 1
+    return np.stack([mono, mono], axis=1).astype(np.float32)
+
+
+SYNTH = {"boom": boom}
+
+
 def sample(name):
     if name in _cache:
+        return _cache[name]
+    if name in SYNTH:
+        _cache[name] = SYNTH[name]()
         return _cache[name]
     hits = glob.glob(os.path.join(ROOT, "assets", "sfx", name + ".*"))
     if not hits:

@@ -63,7 +63,7 @@ Needs Node with Playwright and Chromium, ffmpeg, and Python 3 with numpy.
 | `hud.patience` | Show the patience meter; each exchange's `patience` (0-100) drains it. |
 | `music` | Track from `assets/music` (`comical`, `keep-smiling`, `okay`) and its level in dB. |
 | `punch` | How many trailing words (plus their emoji) to punch in on. `false` = no punch-in. |
-| `sfx` | Stinger on the punch-in: `boing`, `trombone`, `nonono`, `laugh`, `fail`, `dazzle`, `clown`, `punch`, `glitch`. |
+| `sfx` | Stinger on the punch-in: `boom` (vine-boom style, synthesised), `boing`, `trombone`, `laugh`, `fail`, `dazzle`, `clown`, `punch`, `glitch`. Any file you drop in `assets/sfx/<name>.wav` or `.mp3` can be used by its name. |
 | `shake` | Screen shake on the punch-in. |
 | `think` / `hold` / `punchHold` | Per-exchange timing overrides, in seconds. |
 | `final` | Last exchange: long slow push-in with a riser, then the video ends. |
@@ -101,4 +101,8 @@ its zoomed size, not upscaled from a recording.
   commercial use in videos, YouTube included. The files may not be redistributed
   on their own, which is why they are downloaded rather than committed. Mixkit
   music may not be registered with YouTube Content ID.
+- `boom` and the final riser are synthesised in `tools/mix.py`, so there is no
+  third-party audio in them at all. Famous meme clips (vine boom, bruh and so on)
+  found on soundboard sites are usually unlicensed copies and can get monetised
+  videos claimed; prefer these, or meme sounds you have a licence for.
 - Emoji: [Microsoft Fluent Emoji](https://github.com/microsoft/fluentui-emoji), MIT licence.
