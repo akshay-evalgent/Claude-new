@@ -1,0 +1,508 @@
+# How Did Ancient Humans Keep Food Without Fridges?
+# Format: one phrase per line = one shot.
+#   text ~pause >> scene {options} camera
+#   A line starting with "+" is spoken in the same breath as the line before it.
+#   No ">>" means: same picture as the previous shot, new framing.
+#   "= name mood" starts a chapter (sets the music mood).
+#   Option values "@word" / "@word+0.2" mean "when that word is spoken".
+# Facts checked 2026-11-11; sources in SOURCES.md.
+
+= hook open
+Tonight, a machine in your kitchen will hum in the dark. >> kitchenNight {} [1300,560,1,1.1]
+Milk. Eggs. Leftovers. >> fridgeOpen {"milk":"@Milk","eggs":"@Eggs","left":"@Leftovers"} [980,560,1,1.05]
++ All of it, safe for days. >> fridgeOpen {"milk":"DONE","eggs":"DONE","left":"DONE","check":"@safe","days":"@days"} [1150,540,1.06,1.12]
+You don't even think about it. >> modernFridge {} push
+You open the door, >> modernFridge {} [1200,560,1.15,1.2]
++ you take what you want, >> modernFridge {} [700,520,1.2,1.25]
++ and you close it again. ~0.25 >> kitchenNight {} [1300,600,1.15,1.05]
+But fridges are new. >> card {"lines":["FRIDGES","ARE NEW"],"icon":"clock"} push
+Electric fridges only became common in homes about a hundred years ago. >> fridgeHistory {"step":3} push
+Before that, many people kept food cool with blocks of ice, >> fridgeHistory {"step":2} push
++ cut from frozen lakes. ~0.15 >> fridgeHistory {"step":1} push
+Our species has been around for roughly three hundred thousand years. >> timeBar {"step":1} pull
+For more than ninety nine point nine percent of that time, >> timeBar {"step":2} push
++ there was no fridge at all. ~0.2 >> timeBar {"step":3} [1760,560,1.4,1.6]
+Now take time back fifty thousand years. ~0.15 >> rewind {} [960,540,1.02,1.08]
+A hunter has just brought down an antelope. >> hunter {} [900,680,1,1.07]
+He has a spear. >> hunter {"glint":"@spear"} [640,520,1.75,1.85]
++ A family to feed. >> family {} [920,640,1,1.06]
++ And more meat than they can eat. >> pile {} [1240,760,1.25,1]
+Under this sun, it will start to rot within days. >> rot {} sunToMeat
+No fridge. No ice. >> noFridge {} push
+No jars. No tins. >> card {"lines":["NO JARS.","NO TINS."],"at":[0,"@tins"],"icon":"jar"} push
+So he has to solve a problem >> think {"q1":"@problem-0.1","q2":"@problem+0.25"} [980,560,1,1.06]
++ you have never once thought about. ~0.1 >> modernFridge {} push
+How do you stop food from dying? ~0.2 >> card {"lines":["HOW DO YOU STOP","FOOD FROM DYING?"],"icon":"meat"} push
+Now your brain is probably saying, >> brain {} [960,520,1,1.06]
++ Cavemen? They just let it rot. >> objection {} [960,540,1,1.05]
+They ate what they caught, >> eatAll {} push
++ and they starved when they didn't. >> hungry {} push
+At least, that's what we assume. >> assume {} [900,640,1,1.06]
+But the evidence tells a different story. ~0.15 >> dig {"found":"bones"} push
+It's hidden in bones that were opened weeks too late. >> boneSkin {"mode":"open"} push
++ In a pit full of fish in Sweden. >> trench {"step":4} push
++ And in a storehouse built for grain that nobody had planted. ~0.15 >> granary {"mode":"plain"} push
+Ancient humans had tricks. >> tricks {} [960,540,1,1.05]
++ Clever ones. >> tricks {} [960,600,1.15,1.2]
+Some of them, we still use today. >> jerkyShop {} push
+And the best one of all >> share {"still":true} [960,620,1.1,1.0]
++ isn't something you can keep in a kitchen. ~0.2 >> kitchenDay {} pull
+But to understand it, >> card {"lines":["THE ENEMY"],"at":["@understand"],"icon":"bacteria"} push
++ we first have to understand the enemy. ~0.3 >> card {"lines":["THE ENEMY"],"at":["DONE"],"icon":"bacteria"} [960,520,1.04,1.12]
+
+= enemy tense
+Picture the antelope again. >> hunter {} [1260,840,1.5,1.6]
+The moment it dies, a clock starts ticking. >> clockMeat {} push
+Its body stops fighting back. >> clockMeat {} [1000,600,1.2,1.3]
++ And an invisible army moves in. >> bacteria {"mode":"army"} push
+Bacteria. ~0.15 >> bacteria {"mode":"army"} [960,540,1.25,1.35]
+They're on the skin. >> bacteria {"mode":"spots","spot":0} push
++ In the air. >> bacteria {"mode":"spots","spot":1} push
++ On the hunter's hands. >> bacteria {"mode":"spots","spot":2} push
+In the heat, some of them can double in as little as twenty minutes. >> bacteria {"mode":"multiply"} push
+One becomes two. >> bacteria {"mode":"count","n0":1,"at":"@two"} push
++ Two become four. >> bacteria {"mode":"count","n0":2,"at":"@four"} push
++ Four become eight. >> bacteria {"mode":"count","n0":4,"at":"@eight"} push
+Give them a warm afternoon, and there are millions. >> bacteria {"mode":"millions"} pull
+They eat the meat before you can. >> bacteria {"mode":"eat"} push
++ And some of them leave poison behind. ~0.15 >> bacteria {"mode":"poison"} push
+Eat that meat, and it can make you seriously ill. >> sickCave {} push
++ Out here, far from any help, that could kill you. ~0.15 >> sickCave {} [700,540,1.25,1.3]
+Then come the flies. >> flyEggs {"phase":"arrive"} push
+Within minutes, they find it. >> flyEggs {"phase":"land"} [1000,640,1.2,1.3]
++ They lay their eggs. >> flyEggs {"phase":"eggs"} [1000,640,1.5,1.6]
+And within a day, those eggs can hatch. ~0.15 >> flyEggs {"phase":"hatch"} [1000,640,1.5,1.4]
+Then comes the smell. >> smell {"mode":"waves"} push
++ And the smell is a signal. >> smell {"mode":"waves"} pull
+For hyenas. >> smell {"mode":"eyes","n":1} push
++ For lions. >> smell {"mode":"eyes","n":2} push
++ For every hungry thing on the savanna. >> smell {"mode":"eyes","n":5} pull
+So a pile of meat isn't just food. >> pile {} [1250,800,1.15,1.2]
+It's a beacon. >> smell {"mode":"beacon"} push
++ It says, come and get it. ~0.2 >> smell {"mode":"beacon"} [1100,700,1.25,1.3]
+And here's the strangest part. >> card {"lines":["THE STRANGE PART"],"icon":"magnifier"} push
+Nobody in the ancient world knew bacteria existed. >> microscope {"step":0} push
+No one would see one >> microscope {"step":1} push
++ until a Dutch cloth merchant built his own microscopes, >> microscope {"step":1} [1000,520,1.15,1.2]
++ in the sixteen hundreds. ~0.15 >> card {"lines":["THE 1670s"],"icon":"magnifier"} push
+So for hundreds of thousands of years, >> rewind {"label":"years","n":300} push
++ humans fought an enemy they could not see. ~0.2 >> bacteria {"mode":"army"} [960,560,1.0,1.1]
+And for a hunter, it was a cruel puzzle. >> think {"q1":"@puzzle","q2":"NEVER"} push
+Big animals are hard to catch. >> emptyHunt {} push
+Among the Hadza of Tanzania, who still hunt today, >> map {"region":"tanzania","label":"THE HADZA"} push
++ an average hunter brings down a big animal >> emptyHunt {"today":true} [800,600,1.2,1.25]
++ on about one day in thirty. >> calendarHunt {"n":2,"at":"@thirty"} push
+And then, suddenly, there's too much. ~0.15 >> pile {} [1240,760,1.3,1.05]
+Feast. >> feastFamine {"step":1} push
++ Then famine. >> feastFamine {"step":2} push
++ Feast. >> feastFamine {"step":3} push
++ Then famine. ~0.2 >> feastFamine {"step":4} pull
+Whoever could break that cycle >> feastFamine {"step":5} push
++ could survive the bad weeks. >> campNight {} [960,820,1.2,1.0]
+And ancient humans found ways to break it. ~0.2 >> hunter {} [700,600,1.3,1.4]
+
+= body curious
+The first one was so simple, you carry it right now. >> bodyFat {"step":0} push
+Your own body. ~0.15 >> bodyFat {"step":0} [960,520,1.2,1.3]
+When there's a feast, you eat. >> eatAll {} push
++ A lot. >> eatAll {} [700,560,1.4,1.5]
+And whatever your body doesn't need today, >> bodyFat {"step":1} push
++ it turns into fat. >> bodyFat {"step":2} push
+Fat is stored energy. >> bodyFat {"step":3} push
++ A fridge you carry everywhere. ~0.15 >> card {"lines":["A FRIDGE YOU","CARRY EVERYWHERE"],"icon":"heart"} push
+Humans store far more fat than our closest ape relatives. >> bodyFat {"step":4} push
+Even our babies are born chubby. ~0.15 >> bodyFat {"step":5} push
+That fat got our ancestors through the lean weeks. >> feastFamine {"step":4} [960,560,1.05,1.1]
+But a body can only carry so much. >> heavyLoad {} push
+Other animals have found ways to store food outside their bodies. >> card {"lines":["NATURE","DID IT FIRST"],"icon":"grain"} push
+A leopard drags its kill high up into a tree, >> leopard {} push
++ out of reach of lions and hyenas. >> leopard {} [1150,420,1.3,1.4]
+Then it can come back to it, again and again. ~0.15 >> leopard {"night":true} push
+Spotted hyenas have been seen stashing meat in water. >> hyenaWater {} push
+Squirrels bury nuts, >> squirrel {} push
++ and some of the ones they forget grow into trees. ~0.15 >> squirrel {"tree":true} push
+And acorn woodpeckers drill holes into a single tree, >> woodpecker {} push
++ and push an acorn into each one. >> woodpecker {"fill":true} push
+One of these granary trees can hold tens of thousands of acorns. ~0.2 >> woodpecker {"fill":true} [960,500,1.3,1.4]
+So storing food is old. >> card {"lines":["STORING FOOD","IS OLD"],"icon":"clock"} push
++ Much older than us. ~0.15 >> card {"lines":["STORING FOOD","IS OLD"],"at":["DONE","DONE"],"icon":"clock"} [960,520,1.08,1.15]
+But humans would go further than any other animal. ~0.2 >> tricks {} push
+To keep food outside the body, >> pile {} [1240,760,1.1,1.15]
++ they needed weapons against rot. >> card {"lines":["WEAPON #1"],"icon":"sun"} push
+And the first one >> sunSky {} [960,400,1,1.1]
++ was hanging right above their heads. ~0.25 >> sunSky {} [960,380,1.1,1.2]
+
+= sun curious
+The sun. ~0.2 >> sunSky {} [960,300,1.2,1.3]
+Here's the secret every bacterium hides. >> bacteria {"mode":"secret"} push
+It can't grow without water. >> bacteria {"mode":"thirsty"} push
+Take the water away, >> bacteria {"mode":"thirsty"} [960,540,1.2,1.25]
++ and it simply stops. ~0.15 >> bacteria {"mode":"dry"} push
+Fresh meat is about three quarters water. >> waterMeat {} push
+So the trick is simple. >> waterMeat {"drain":true} push
++ Get the water out. ~0.15 >> waterMeat {"drain":true} [960,560,1.15,1.2]
+First, you cut the meat into thin strips. >> cutStrips {} push
+Thin, so the air can reach the middle. >> cutStrips {} [1050,640,1.4,1.5]
+Then you hang them up. >> dry {} [1100,640,1,1.06]
+On branches. >> hangBranch {} push
++ On racks. >> dry {} [1200,700,1.3,1.35]
++ On a line of twisted grass. >> hangLine {} push
+The sun warms them. >> timelapse {"day":1} push
++ The wind carries the water away. >> windStrips {} push
+Day by day, the strips shrink. >> timelapse {"day":3} push
++ They turn dark. >> stripHard {"knock":false} push
++ They turn hard. >> stripHard {} push
+And the bacteria can't grow. ~0.15 >> bacteria {"mode":"dry"} push
+A strip of meat that would rot in two days >> rot {} [1080,800,1.3,1.35]
++ can now last for weeks. >> diagram {} [1060,560,1,1.04]
++ Even months. ~0.15 >> calendarFlip {"label":"MONTHS"} push
+People all over the world still do this. >> worldMap {"pins":["safrica","andes","plains","mongolia"]} pull
+In southern Africa, it's called biltong. >> map {"region":"safrica","label":"BILTONG"} push
+In the Andes, people called it ch'arki. >> map {"region":"andes","label":"CH'ARKI"} push
++ That's where the word jerky comes from. ~0.15 >> card {"lines":["CH'ARKI → JERKY"],"icon":"strip"} push
+In Norway, cod is still dried on wooden racks in the cold sea wind. >> fishRack {} push
++ It's called stockfish, and it can keep for years. ~0.15 >> fishRack {} [1100,520,1.25,1.3]
+On the great plains of North America, >> map {"region":"plains","label":"THE GREAT PLAINS"} push
++ people took it one step further. >> plains {} push
+They pounded dried bison meat into a coarse powder. >> pound {} push
+Mixed it with about the same amount of melted fat. >> pemmican {"step":1} push
++ Sometimes with berries. >> pemmican {"step":2} push
+The Cree name for it was pemmican. >> card {"lines":["PEMMICAN"],"icon":"bag"} push
+Sewn into rawhide bags, >> pemmican {"step":3} push
++ and kept dry, it could last for months, even years. ~0.15 >> calendarFlip {"label":"YEARS"} push
+It was the energy bar of the ancient world. ~0.2 >> card {"lines":["THE FIRST","ENERGY BAR"],"icon":"bag"} push
+But drying has a weakness. >> dry {} [1100,640,1.2,1.25]
+It needs sun. >> sunSky {"cloud":true} push
++ And it needs time. >> timelapse {"day":2} push
+And while the meat hangs there, >> dry {} [1200,700,1.4,1.45]
++ the flies are still circling. >> flyRack {} push
+So humans turned to their second weapon. >> card {"lines":["WEAPON #2"],"icon":"fire"} push
+The one thing no other animal could control. ~0.2 >> fireBig {} push
+Fire. ~0.3 >> fireBig {} [960,640,1.3,1.4]
+
+= smoke curious
+Fire had already changed everything. >> campNight {} pull
+It kept away the cold. >> fireUses {"mode":"cold"} push
++ It kept away the predators. >> fireUses {"mode":"predators"} push
++ It cooked food, and made it easier to eat. ~0.15 >> fireUses {"mode":"cook"} push
+But hang meat above it, >> smokeRack {} [1000,640,1,1.06]
++ and fire does something else. ~0.15 >> smokeRack {} [1000,700,1.25,1.3]
+The heat pulls out the water, faster than the sun. >> waterMeat {"drain":true,"fire":true} push
+And the smoke coats every strip >> smokeChem {"phase":1} push
++ with chemicals that bacteria hate. >> smokeChem {"phase":2} push
+Smoke drives many insects off, too. >> fliesAway {} [900,620,1.14,1.2]
+So the meat dries, >> smokeRack {} [1000,620,1.1,1.15]
++ and it's protected while it does. ~0.2 >> smokeRack {} [1000,620,1.2,1.0]
+Smoked meat. >> smokedFood {"item":"meat"} push
++ Smoked fish. >> smokedFood {"item":"fish"} push
+From the Arctic to the Amazon, people learned to do it. >> worldMap {"pins":["arctic","amazon"]} pull
+And it gave food a new flavour, too. ~0.25 >> tasteFace {} push
+Here's the honest part, though. >> card {"lines":["THE HONEST PART"],"icon":"magnifier"} push
+Meat rots. >> dig {"found":"nothing"} push
++ Wooden racks rot. >> dig {"found":"nothing"} [900,700,1.2,1.25]
++ Smoke leaves no fossil. >> dig {"found":"ash"} push
+So direct proof of ancient drying is very hard to find. >> dig {"found":"question"} push
+One of the best clues comes from Jordan. >> map {"region":"jordan","label":"KHARANEH IV"} push
+About nineteen thousand years ago, at a site called Kharaneh Four, >> card {"lines":["ABOUT 19,000","YEARS AGO"],"icon":"hourglass"} push
++ archaeologists found tiny post holes, >> postholes {"step":1} push
++ next to piles of gazelle bones. >> postholes {"step":2} push
+Maybe the holes held a drying rack. >> postholes {"step":3} push
+Maybe not. >> postholes {"step":4} push
+The researchers themselves call it tentative. ~0.2 >> lab {"phase":"study"} push
+So to see ancient humans storing food, >> dig {"found":"bones"} push
++ we need a clue that doesn't rot. >> boneSkin {"mode":"wrapped"} push
+And one of the best >> map {"region":"israel","label":"QESEM CAVE"} pull
++ was found in a cave in Israel. >> map {"region":"israel","label":"QESEM CAVE"} [960,540,1.15,1.25]
++ Hidden inside bones. ~0.3 >> boneSkin {"mode":"wrapped"} push
+
+= qesem wonder
+Qesem Cave. >> caveQesem {} push
++ Not far from modern Tel Aviv. ~0.15 >> map {"region":"israel","label":"QESEM CAVE","city":"Tel Aviv"} push
+Between about four hundred and twenty thousand, and two hundred thousand years ago, >> card {"lines":["420,000 –","200,000 YEARS AGO"],"icon":"hourglass"} push
++ early humans lived here. >> caveQesem {"people":true} push
+The cave is also famous for a hearth. >> caveQesem {"people":true} [960,960,1.5,1.6]
++ A fire that people came back to again and again, >> fireBig {} push
++ around three hundred thousand years ago. ~0.15 >> card {"lines":["ABOUT 300,000","YEARS AGO"],"icon":"fire"} push
+And they hunted. >> deer {"hunt":true} push
++ Mostly fallow deer. >> deer {} [1100,620,1.2,1.3]
+When researchers studied the leg bones, >> lab {"phase":"study"} push
++ they noticed something strange. ~0.15 >> boneSkin {"mode":"cutmarks"} push
+The cut marks were wrong. >> boneSkin {"mode":"cutmarks","x":"@wrong"} [960,520,1.3,1.4]
+Fresh skin comes off easily. >> skinPeel {"fresh":true} push
+But these bones had chop marks. >> boneSkin {"mode":"cutmarks"} [960,520,1.5,1.6]
+The kind you make when the skin has already dried, >> skinPeel {"fresh":false} push
++ and stuck hard to the bone. ~0.15 >> skinPeel {"fresh":false} [960,560,1.25,1.3]
+So these bones had not been eaten straight away. >> boneSkin {"mode":"wrapped"} pull
+They had been kept. >> boneSkin {"mode":"stack"} push
++ Wrapped in their own skin. >> boneSkin {"mode":"wrapped"} [960,560,1.25,1.3]
++ For weeks. ~0.15 >> calendarFlip {"label":"WEEKS"} push
+Then the team tested the idea. >> lab {"phase":"test"} push
+They took seventy nine deer leg bones, >> lab {"phase":"test"} [960,600,1.2,1.25]
++ left the skin on, >> wrappedRow {} push
++ and stored them outdoors. >> wrappedRow {"outdoors":true} push
+Every week, they cracked some open. >> boneSkin {"mode":"open"} push
+In cool autumn weather, >> wrappedRow {"outdoors":true,"autumn":true} push
++ the marrow inside stayed good for up to nine weeks. ~0.2 >> lab {"phase":"weeks"} push
+In warmer weather, it went off much sooner. ~0.15 >> lab {"phase":"warm"} push
+So this was a trick for the cool season. >> boneSkin {"mode":"stack"} [960,600,1.1,1.15]
+Think about what that means. ~0.1 >> think {"q1":"@means","q2":"NEVER"} push
+The skin is a wrapper. >> boneCan {"step":1} push
++ The bone is a can. >> boneCan {"step":2} push
+And the marrow, >> boneSkin {"mode":"open"} [960,540,1.6,1.7]
++ rich, fatty, full of energy, >> boneSkin {"mode":"open"} [960,540,1.7,1.6]
++ is sealed inside. ~0.2 >> boneCan {"step":3} push
+One of the researchers put it simply. >> lab {"phase":"study"} [700,560,1.2,1.25]
++ The bones were used like cans. ~0.2 >> card {"lines":["BONES","USED LIKE CANS"],"icon":"bone"} push
+And that tells us something bigger. >> card {"lines":["SOMETHING","BIGGER"],"icon":"clock"} push
+These people weren't just eating today. >> eatAll {} push
++ They were saving for tomorrow. ~0.2 >> boneSkin {"mode":"stack"} pull
+And once you start saving for tomorrow, >> card {"lines":["SAVING FOR","TOMORROW"],"icon":"snow"} push
++ you start looking for colder places to keep it. ~0.3 >> snow {"walk":true} [900,640,1,1.05]
+
+= cold cold
+Head north. >> worldMap {"pins":["ukraine"]} [1050,350,1.6,1.7]
++ To the edge of the ice. ~0.15 >> snow {"walk":true} [700,600,1.2,1.25]
+Cold is the third weapon. >> card {"lines":["WEAPON #3"],"icon":"snow"} push
+Bacteria hate the cold. >> bacteria {"mode":"cold"} push
++ Chill them, and they slow right down. >> bacteria {"mode":"cold"} [960,540,1.2,1.25]
++ Freeze them, and they almost stop. ~0.2 >> bacteria {"mode":"frozen"} push
+About eighteen thousand years ago, >> card {"lines":["ABOUT 18,000","YEARS AGO"],"icon":"snow"} push
++ on the plains of what is now Ukraine, >> map {"region":"ukraine","label":"MEZHYRICH"} push
++ people built huts out of mammoth bones. >> mammothHouse {} push
+Huge jaws. >> mammothHouse {} [760,880,1.5,1.6]
++ Tusks. >> mammothHouse {} [960,560,1.5,1.6]
++ Skulls. >> mammothHouse {} [960,700,1.6,1.7]
+And around these huts, >> mammothHouse {"pits":true} pull
++ archaeologists found large pits. >> mammothHouse {"pits":true} [1500,900,1.4,1.5]
+Some think the pits were dug down to ground that stayed frozen. >> pitDiagram {"step":1} push
+Natural freezers. ~0.15 >> card {"lines":["NATURAL","FREEZERS?"],"icon":"snow"} push
+Meat goes in. >> pitDiagram {"step":2} push
++ Earth and bone go on top. >> pitDiagram {"step":3} push
++ And the cold does the rest. ~0.2 >> pitDiagram {"step":4} push
+Not everyone agrees. >> card {"lines":["NOT EVERYONE","AGREES"],"icon":"magnifier"} push
+Some pits were also full of rubbish, tools, and bones burned as fuel. ~0.15 >> dig {"found":"bones"} push
+But in the far north, people still use the cold this way today. >> worldMap {"pins":["greenland"]} [700,280,1.6,1.7]
+In northwest Greenland, there's a dish called kiviak. >> map {"region":"greenland","label":"KIVIAK"} push
+Hundreds of little seabirds, called little auks, >> kiviak {"step":1} push
++ packed whole inside a sealskin, >> kiviak {"step":2} push
++ sewn shut, and sealed with fat, >> kiviak {"step":3} push
++ then left under rocks for months. >> kiviak {"step":4} push
+It ferments, slowly, in the cold. ~0.2 >> kiviak {"step":5} push
+High in the Andes, people found another way to use the cold. >> map {"region":"andes","label":"THE ANDES"} push
+They spread potatoes out on the ground. >> chuno {"step":1} push
+At night, the frost freezes them. >> chuno {"step":2} push
++ By day, the sun thaws them. >> chuno {"step":3} push
++ And people stamp on them, to squeeze the water out. >> chuno {"step":4} push
+After a few days, they're light, dry and hard. ~0.15 >> chuno {"step":5} push
+They're called chuño, and they can keep for years. >> card {"lines":["CHUÑO"],"icon":"snow"} push
+It's freeze-drying, without a single machine. ~0.2 >> card {"lines":["FREEZE-DRYING","WITHOUT A MACHINE"],"icon":"sun"} push
+Which brings us to the strangest trick of all. >> card {"lines":["THE STRANGEST","TRICK"],"icon":"bacteria"} push
+The one that doesn't fight bacteria. >> goodBad {"step":1} push
++ It recruits them. ~0.3 >> goodBad {"step":2} push
+
+= ferment curious
+Norje Sunnansund. >> map {"region":"sweden","label":"NORJE SUNNANSUND"} push
++ Southern Sweden. >> map {"region":"sweden","label":"NORJE SUNNANSUND"} [900,760,1.25,1.35]
+About nine thousand two hundred years ago. >> card {"lines":["ABOUT 9,200","YEARS AGO"],"icon":"fish"} push
+Hunter-gatherers lived here, beside a lake. >> lakeFish {} push
+And they caught fish. >> lakeFish {"catch":true} push
++ Mostly a small freshwater fish called roach. >> lakeFish {"catch":true} [1250,600,1.3,1.4]
+Researchers estimate they caught at least sixty tonnes of fish here. ~0.15 >> fishPile {} push
+Far more than anyone could eat fresh. >> fishPile {} [960,800,1.2,1.25]
+And they had no salt. >> noSalt {} push
++ And no pottery. >> noPot {} push
+What archaeologists found was a long pit, >> trench {"step":1} push
++ ringed by holes for wooden stakes, >> trench {"step":2} push
++ and packed with fish bones. >> trench {"step":3} push
+The best explanation is that the fish were fermented. >> trench {"step":5} push
+They were probably wrapped in animal skins, >> trench {"step":4} push
++ and buried. >> trench {"step":4} [960,500,1.2,1.25]
+Instead of rotting, >> goodBad {"step":1} push
++ the fish slowly turned sour. >> goodBad {"step":3} push
+Friendly bacteria take over. >> goodBad {"step":2} push
++ They make the food sour, >> goodBad {"step":3} [760,400,1.15,1.2]
++ and that keeps the dangerous ones out. ~0.15 >> goodBad {"step":4} push
+The lead researcher noted that this kind of fermentation needs a cold climate. >> lab {"phase":"study"} push
+And in return, it gives you food for months. >> fishPaste {} push
+It's the oldest known evidence of fermenting fish. ~0.2 >> card {"lines":["OLDEST KNOWN","FISH FERMENT"],"icon":"fish"} push
+And you still eat this trick. >> fridgeFerments {"step":0} push
+Cheese. >> fridgeFerments {"step":1} push
++ Yogurt. >> fridgeFerments {"step":2} push
++ Pickles. >> fridgeFerments {"step":3} push
++ Soy sauce. >> fridgeFerments {"step":4} push
+Half your fridge is full of friendly bacteria. ~0.2 >> fridgeFerments {"step":5} push
+But the Swedish pit tells us something else. >> lakeFish {} [900,600,1.15,1.2]
+You don't make sixty tonnes of food to store >> fishPile {} [960,700,1.1,1.0]
++ if you plan to move every few days. >> nomads {} push
+These hunter-gatherers were staying put. >> settled {} push
+And that is where our story starts to turn. ~0.3 >> settled {} [960,600,1.2,1.0]
+
+= salt cold
+First, a quick word about salt. >> noSalt {} [960,560,1.1,1.15]
+Today, salt is everywhere. >> saltWorld {} push
+But it came late. >> rewind {"n":8} push
+The oldest known salt works, in Romania, >> map {"region":"romania","label":"POIANA SLATINEI"} push
++ are about eight thousand years old. >> card {"lines":["ABOUT 8,000","YEARS AGO"],"icon":"jar"} push
+People there boiled salty spring water over fires >> saltBoil {} push
++ to make cakes of salt. ~0.15 >> saltBoil {"cakes":true} push
+For most of human history, >> rewind {"n":300} push
++ nobody could just salt their meat. ~0.2 >> noSalt {} push
+
+= grain wonder
+Now, head south again. >> worldMap {"pins":["jordan"]} [1100,460,1.6,1.7]
++ To Dhra', near the Dead Sea, in Jordan. >> map {"region":"jordan","label":"DHRA'"} push
+About eleven thousand three hundred years ago. >> card {"lines":["ABOUT 11,300","YEARS AGO"],"icon":"grain"} push
+People here built small round buildings >> granary {"mode":"build"} push
++ that weren't for living in. >> granary {"mode":"plain"} [960,600,1.15,1.2]
+They were for food. >> granary {"mode":"inside"} push
++ Wild barley. >> wildGrain {"kind":"barley"} push
+Nearby, at a site called Gilgal, archaeologists found a stash of around two hundred and sixty thousand wild barley grains, >> grainStash {"step":1} push
++ and a hundred and twenty thousand wild oat grains. ~0.15 >> grainStash {"step":2} push
+The floors were raised off the ground, >> granary {"mode":"floor"} push
++ resting on wooden beams set into notched stones. >> granary {"mode":"floor"} [1160,860,1.3,1.4]
+That let air flow underneath, >> granary {"mode":"air"} push
++ and kept damp and rodents out. ~0.15 >> granary {"mode":"rats"} push
+Here's the twist. >> card {"lines":["THE TWIST"],"icon":"grain"} push
+Nobody had planted this barley. >> wildGrain {"kind":"barley","noplant":true} push
++ It was wild. >> wildGrain {"kind":"barley","gather":true} push
+These storehouses came about a thousand years >> granary {"mode":"plain"} [960,560,1.1,1.15]
++ before farmed crops appear in the region. ~0.15 >> timelineStore {"step":1} push
+Storage came first. >> timelineStore {"step":2} push
++ Farming came after. ~0.15 >> timelineStore {"step":3} push
+And storage changed things. >> granary {"mode":"plain"} pull
+Because a full storehouse >> granary {"mode":"inside"} [960,600,1.2,1.25]
++ is something you can own. >> granary {"mode":"own"} push
+Something you can guard. >> granary {"mode":"guard"} push
++ Something you can steal. >> granary {"mode":"steal"} push
++ Something you can trade. ~0.15 >> granary {"mode":"trade"} push
+Some researchers argue that big food stores >> inequality {} push
++ are what made settled, unequal societies possible. >> inequality {} [960,560,1.15,1.2]
+Not gold. >> card {"lines":["NOT GOLD."],"icon":"gold"} push
++ Not weapons. >> card {"lines":["NOT WEAPONS."],"icon":"spear"} push
++ Leftovers. ~0.35 >> card {"lines":["LEFTOVERS."],"icon":"meat"} push
+
+= roots curious
+So let's count the tricks. >> card {"lines":["THE TRICKS"],"icon":"magnifier"} push
+Fat. >> bodyFat {"step":2} push
++ Sun and wind. >> dry {} push
++ Smoke. >> smokeRack {} push
++ Cold. >> pitDiagram {"step":4} push
++ Friendly bacteria. >> goodBad {"step":2} push
++ Salt, much later. >> noSalt {} push
++ And storehouses. ~0.25 >> granary {"mode":"inside"} push
+But for most of human history, >> nomads {} pull
++ before storehouses, before farms, >> timelineStore {"step":0} push
++ most people kept moving. >> nomads {} [960,640,1.2,1.25]
+They couldn't carry a winter's worth of food on their backs. >> heavyLoad {} push
+So they relied on food that keeps itself. ~0.15 >> card {"lines":["FOOD THAT","KEEPS ITSELF"],"icon":"grain"} push
+Roots and tubers can wait underground for months, >> tubers {"step":1} push
++ until someone digs them up. >> tubers {"step":2} push
+Hadza women still dig for tubers almost every day, with sharpened sticks. >> tubers {"step":2} [900,700,1.2,1.3]
+The ground itself was the pantry. ~0.15 >> tubers {"step":3} push
+And then there's honey. >> honey {"step":1} push
+Honey has so little water >> honey {"step":2} push
++ that bacteria can barely grow in it. >> honey {"step":3} push
+Sealed up, it can keep for years. ~0.15 >> calendarFlip {"label":"YEARS"} push
+In Tanzania, Hadza honey hunters whistle to a small bird, >> honeyguide {"step":1} push
++ called the greater honeyguide. >> honeyguide {"step":1} [1300,420,1.3,1.4]
+The bird leads them to a wild bees' nest. >> honeyguide {"step":2} push
+The people take the honey. >> honeyguide {"step":3} push
++ The bird eats the wax. ~0.2 >> honeyguide {"step":4} push
+A partnership between two species, >> honeyguide {"step":4} [1200,560,1.15,1.2]
++ built around food. ~0.2 >> card {"lines":["A PARTNERSHIP"],"icon":"heart"} push
+But meat is different. >> pile {} [1240,760,1.1,1.15]
+Meat doesn't wait. >> rot {} [1080,800,1.25,1.3]
+So what do you do with a whole antelope, >> hunter {} [1100,700,1.2,1.25]
++ when you're always on the move? ~0.25 >> nomads {} push
+
+= twist warm
+The answer is still alive today. >> map {"region":"tanzania","label":"THE HADZA"} pull
+Picture a Hadza camp at dusk. >> hadzaCamp {"dusk":true} push
++ Grass huts. A few fires. Children playing. >> hadzaCamp {"dusk":true} [960,640,1.2,1.25]
+When a Hadza hunter brings home a big animal, >> hadzaReturn {} push
++ he doesn't hide it. >> hadzaReturn {"hide":true} push
++ He doesn't sell it. >> hadzaReturn {"sell":true} push
+It's shared. >> share {"today":true} [960,620,1,1.05]
++ Across the camp. >> share {"today":true} [960,620,1.05,1.0]
+In one long study, the hunter's own household >> hadzaCamp {} push
++ kept only about a tenth of the meat. >> shareChart {} push
+The rest went to other families. ~0.2 >> share {"still":true, "today":true} [960,620,1.1,1.15]
+Why share? Researchers still argue about it. >> brain {} push
+Some say a generous hunter earns respect. >> hadzaReturn {"respect":true} push
++ Others say it's mostly about feeding family and friends. >> share {"still":true, "today":true} [700,620,1.2,1.25]
++ Probably, it's both. ~0.2 >> card {"lines":["PROBABLY","BOTH"],"icon":"heart"} push
+An anthropologist who lived with the Hadza, James Woodburn, wrote down why. >> research {"page":false,"label":"DONE"} push
+To preserve meat and store it would be largely wasted effort. >> quoteCard {"part":1} push
+Other people would simply demand meat when their own was finished. >> quoteCard {"part":2} push
+And it would be wrong to refuse them. ~0.2 >> quoteCard {"part":3} push
+To us, that sounds like a loss. >> lossThink {} push
+He did the work. >> hadzaReturn {} [760,560,1.2,1.25]
++ Why give it away? ~0.2 >> brain {} push
+But think about it differently. >> think {"q1":"@differently","q2":"NEVER","today":true} push
+Today, he has more meat than his family can eat. >> pile {"today":true} [1240,760,1.1,1.0]
+Next week, he might come home with nothing. >> emptyHunt {"home":true, "today":true} push
+And when he does, >> emptyHunt {"home":true, "today":true} [800,600,1.2,1.25]
++ someone else will have meat. >> nextWeek {"mode":"arrive", "today":true} [980,620,1,1.05]
+And they'll share it with him. ~0.2 >> nextWeek {"mode":"pass", "today":true} [960,640,1.12,1.18]
+Every piece he gives away >> share {"today":true} [960,640,1.3,1.35]
++ is stored. ~0.15 >> memory {"step":1} push
+Not in a pit. >> card {"lines":["NOT IN A PIT."],"icon":"snow"} push
++ Not in a bone. >> card {"lines":["NOT IN A BONE."],"icon":"bone"} push
++ In another person's memory. ~0.2 >> memory {"step":2} push
+Today, we'd call it insurance. >> card {"lines":["INSURANCE"],"icon":"heart"} push
+You pay in when you're lucky. >> share {"today":true} [960,620,1.2,1.25]
++ And you're paid out when you're not. ~0.2 >> nextWeek {"mode":"pass","today":true} [960,640,1.2,1.25]
+In the Kalahari, the Ju'hoansi took this even further. >> map {"region":"kalahari","label":"JU|'HOANSI"} push
+They kept gift partners. >> beads {} push
++ They called it hxaro. >> beads {} [960,520,1.2,1.25]
+A person might have around fifteen partners, >> hxaroMap {"step":1} pull
++ living anywhere from two to two hundred kilometres away. >> hxaroMap {"step":2} push
+The gifts weren't food. >> card {"lines":["NOT FOOD"],"icon":"meat"} push
++ They were beads. Arrows. Clothing. >> beads {"give":true} push
+But every gift built a promise. ~0.15 >> beads {"give":true} [960,560,1.2,1.25]
+If the rains failed in one place, >> drought {} push
++ you could walk to your partner's land, >> walkFar {} push
++ and you would be welcomed, and fed. ~0.2 >> walkFar {"arrived":true} push
+In one study, people spent over four months a year living with their partners. ~0.15 >> calendarFlip {"label":"MONTHS A YEAR","max":4} push
+A gift was a promise. >> beads {"give":true} [760,560,1.2,1.25]
++ A friendship was a food bank. ~0.2 >> card {"lines":["A FRIENDSHIP =","A FOOD BANK"],"icon":"heart"} push
+Meat spoils. >> spoils {"l1":0,"l2":"NEVER"} [960,540,1,1.03]
++ A favour doesn't. ~0.4 >> spoils {"l1":"DONE","l2":0} [960,560,1.03,1.07]
+
+= end warm
+So now, look at your fridge again. >> kitchenNight {} [1300,560,1.05,1.12]
+It keeps your food fresh for days. >> fridgeOpen {"milk":"DONE","eggs":"DONE","left":"DONE"} push
++ It never forgets to stay cold. >> kitchenNight {} [1300,600,1.25,1.3]
++ And it never asks for anything back. ~0.15 >> modernFridge {} push
+It took a long road to get here. >> card {"lines":["A LONG ROAD"],"icon":"clock"} push
+Much later, people in Persia built huge domed ice houses, called yakhchāls, >> yakhchal {} push
++ to keep ice through the summer. >> yakhchal {} [960,560,1.2,1.3]
+Then came iceboxes. >> fridgeHistory {"step":2} push
++ And then, the humming machine in your kitchen. ~0.15 >> kitchenNight {} [1300,560,1.1,1.15]
+And yet, with all our fridges, >> waste {"step":1} push
++ roughly a third of the world's food is lost or wasted. ~0.2 >> waste {"step":2} push
+You don't need your neighbours to fill your fridge. >> apartment {} push
++ You might not even know their names. ~0.2 >> apartment {"zoom":true} [960,500,1.2,1.3]
+But in some cities, people have started something new. >> communityFridge {} push
++ Community fridges. >> communityFridge {"label":true} push
+Anyone can leave food. >> communityFridge {"give":true} push
++ Anyone can take it. ~0.15 >> communityFridge {"take":true} push
+A fridge that works a little like a Hadza camp. ~0.25 >> communityFridge {"label":true} [960,560,1.15,1.2]
+Fifty thousand years ago, >> rewind {} [960,540,1.04,1.1]
++ a hunter stood over a pile of meat, >> pile {} [1240,760,1.2,1.0]
++ with the sun beating down, >> rot {} [1500,300,1.4,1.5]
++ and the flies circling. ~0.15 >> rot {} [1080,800,1.3,1.35]
+He had the sun. >> dry {} push
++ He had smoke. >> smokeRack {} push
++ He had the cold, and patience. ~0.15 >> snow {} [1100,760,1.2,1.3]
+None of these tricks were written down. >> card {"lines":["NEVER","WRITTEN DOWN"],"icon":"bone"} push
+They were passed on by doing. >> cutStrips {} [900,640,1.2,1.25]
+A child watching a parent cut strips of meat. >> teachKid {} push
++ A grandmother showing where the tubers grow. ~0.15 >> tubers {"step":2} [1200,600,1.2,1.25]
+But the smartest thing he could do >> hunter {} [640,520,1.6,1.7]
++ was turn, and call out to the camp. ~0.25 >> callCamp {} push
+Because for most of human history, >> rewind {"n":300} push
++ the safest place to keep food >> share {"still":true} [960,620,1.1,1.0]
++ was in the hands of people who trusted you. ~0.3 >> campNight {} [960,820,1.2,1.0]
+Your fridge stores food. >> kitchenDay {} [1080,600,1,1.06]
++ Theirs stored friendship. >> campEnd {} [960,760,1.2,1.0]
