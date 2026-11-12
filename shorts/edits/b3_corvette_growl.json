@@ -1,0 +1,164 @@
+{
+ "title": "He Knew His Late Wife's Car By The SOUND 😭",
+ "source": "l0Knepszy2Q",
+ "credit": "Credit: WD Detailing",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 1321.8,
+   "out": 1323.6,
+   "shots": [
+    {
+     "in": 1321.8,
+     "frame": "full",
+     "fx": 0.5,
+     "fy": 0.4,
+     "full_zoom": 1.2
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "This Corvette belonged to his late *wife*… and it had been rotting in a barn for almost 20 years.",
+   "shots": [
+    {
+     "in": 27.2,
+     "frame": "card"
+    },
+    {
+     "in": 40.8,
+     "frame": "card"
+    },
+    {
+     "in": 54.4,
+     "frame": "card"
+    },
+    {
+     "in": 81.6,
+     "frame": "full",
+     "fx": 0.4
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "So a detailing crew secretly restored it… and told him it *wouldn't* start.",
+   "shots": [
+    {
+     "in": 217.6,
+     "frame": "card"
+    },
+    {
+     "in": 476.0,
+     "frame": "card"
+    },
+    {
+     "in": 1060.8,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "But right before the reveal… he ended up in the *hospital*.",
+   "shots": [
+    {
+     "in": 1236.0,
+     "frame": "card"
+    },
+    {
+     "in": 1270.0,
+     "frame": "full",
+     "fx": 0.7,
+     "fy": 0.35,
+     "full_zoom": 1.3
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1281.7,
+   "out": 1287.3,
+   "shots": [
+    {
+     "in": 1281.7,
+     "frame": "full",
+     "fx": 0.7,
+     "fy": 0.35,
+     "full_zoom": 1.3
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Then he heard something *running* behind him…",
+   "shots": [
+    {
+     "in": 1309.0,
+     "frame": "full",
+     "fx": 0.5,
+     "fy": 0.4,
+     "full_zoom": 1.2
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1315.8,
+   "out": 1320.1,
+   "impact": true,
+   "shots": [
+    {
+     "in": 1315.8,
+     "frame": "full",
+     "fx": 0.48,
+     "fy": 0.4,
+     "full_zoom": 1.2
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1329.3,
+   "out": 1334.7,
+   "shots": [
+    {
+     "in": 1333.0,
+     "frame": "card",
+     "len": 2.4
+    },
+    {
+     "in": 1342.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "And he remembered the day his wife took it out *alone*…",
+   "shots": [
+    {
+     "in": 1366.0,
+     "frame": "card",
+     "fx": 0.55
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1373.9,
+   "out": 1382.4,
+   "frame": "card",
+   "fx": 0.6,
+   "text": "I turn around. She's got the car sideways out here with the tires *howling*"
+  },
+  {
+   "type": "clip",
+   "in": 1387.8,
+   "out": 1391.0,
+   "frame": "card",
+   "fx": 0.6,
+   "text": "She goes, well, I just couldn't *stop*."
+  }
+ ]
+}

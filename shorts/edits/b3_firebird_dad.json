@@ -1,0 +1,147 @@
+{
+ "title": "They Said It Wouldn't Start… Then THIS 😭",
+ "source": "67BzkY08h6w",
+ "credit": "Credit: WD Detailing",
+ "shot_defaults": {
+  "card": {
+   "zoom": 1.2,
+   "cy": 0.42
+  }
+ },
+ "beats": [
+  {
+   "type": "clip",
+   "in": 2234.2,
+   "out": 2236.1,
+   "shots": [
+    {
+     "in": 2236.6,
+     "frame": "card",
+     "len": 1.9
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "He bought his Firebird brand new in *1986*… but at 83, it had been sitting in his garage for years.",
+   "shots": [
+    {
+     "in": 33.75,
+     "frame": "card"
+    },
+    {
+     "in": 37.5,
+     "frame": "card"
+    },
+    {
+     "in": 46.25,
+     "frame": "card"
+    },
+    {
+     "in": 52.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 89.4,
+   "out": 98.0,
+   "frame": "card",
+   "fx": 0.4,
+   "text": "Like, this is his favorite car. He ain't had a smile, like, you know, since he ain't drove it. Like he said, he's 83 years old, so I want to get that *smile* on his face again."
+  },
+  {
+   "type": "clip",
+   "in": 77.1,
+   "out": 79.8,
+   "frame": "card"
+  },
+  {
+   "type": "vo",
+   "text": "So a detailing crew spent days bringing it back… then told him they couldn't get it *running*.",
+   "shots": [
+    {
+     "in": 2058.0,
+     "frame": "card"
+    },
+    {
+     "in": 2070.0,
+     "frame": "card"
+    },
+    {
+     "in": 2120.0,
+     "frame": "card"
+    },
+    {
+     "in": 2203.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 2212.4,
+   "out": 2220.65,
+   "impact": true,
+   "shots": [
+    {
+     "in": 2212.4,
+     "frame": "card",
+     "len": 5.6
+    },
+    {
+     "in": 2218.0,
+     "frame": "full",
+     "fx": 0.42,
+     "fy": 0.35
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 2226.9,
+   "out": 2230.5,
+   "shots": [
+    {
+     "in": 2229.4,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "And he kept his *promise*.",
+   "shots": [
+    {
+     "in": 2251.8,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 2253.0,
+   "out": 2257.0,
+   "captions": false,
+   "db": -18,
+   "shots": [
+    {
+     "in": 2253.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 2261.2,
+   "out": 2262.8,
+   "shots": [
+    {
+     "in": 2261.4,
+     "frame": "card"
+    }
+   ]
+  }
+ ]
+}

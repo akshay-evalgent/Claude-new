@@ -1,0 +1,143 @@
+{
+ "title": "She Thought The Dive FAILED… 😱📸",
+ "source": "glztIR8l5L8",
+ "credit": "Credit: Man + River",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 345.4,
+   "out": 348.2,
+   "frame": "card"
+  },
+  {
+   "type": "vo",
+   "text": "He did a headstand on a paddleboard… and dropped their brand-new *camera* into the river.",
+   "shots": [
+    {
+     "in": 46.5,
+     "frame": "card",
+     "zoom": 1.25,
+     "cy": 0.58
+    },
+    {
+     "in": 54.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Fans tagged a famous river diver… so he drove all the way from *Texas* to find it.",
+   "shots": [
+    {
+     "in": 14.2,
+     "frame": "card"
+    },
+    {
+     "in": 85.2,
+     "frame": "card"
+    },
+    {
+     "in": 227.2,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "He found it in just *five minutes*.",
+   "shots": [
+    {
+     "in": 353.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 348.55,
+   "out": 350.3,
+   "frame": "card"
+  },
+  {
+   "type": "clip",
+   "in": 359.2,
+   "out": 363.4,
+   "frame": "card"
+  },
+  {
+   "type": "vo",
+   "text": "But his wife had already gone home… so they let her think the dive had *failed*.",
+   "shots": [
+    {
+     "in": 1008.0,
+     "frame": "card"
+    },
+    {
+     "in": 1018.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1022.0,
+   "out": 1027.6,
+   "frame": "card"
+  },
+  {
+   "type": "clip",
+   "in": 1029.0,
+   "out": 1037.0,
+   "captions": false,
+   "impact": true,
+   "shots": [
+    {
+     "in": 1029.0,
+     "frame": "card",
+     "len": 3.0
+    },
+    {
+     "in": 1033.75,
+     "frame": "full",
+     "fx": 0.55,
+     "len": 2.0
+    },
+    {
+     "in": 1035.25,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "And the camera had recorded the *exact* moment it fell in.",
+   "shots": [
+    {
+     "in": 1088.0,
+     "frame": "card"
+    },
+    {
+     "in": 1095.5,
+     "frame": "card"
+    },
+    {
+     "in": 1098.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1057.7,
+   "out": 1060.4,
+   "shots": [
+    {
+     "in": 1058.5,
+     "frame": "card"
+    }
+   ]
+  }
+ ]
+}

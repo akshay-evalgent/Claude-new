@@ -1,0 +1,213 @@
+{
+ "title": "She'd Never Seen Anyone Who Looked Like Her 😭",
+ "source": "c6RQywrfdNQ",
+ "credit": "Credit: Kyle Le Dot Net",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 260.85,
+   "out": 262.75,
+   "shots": [
+    {
+     "in": 260.85,
+     "frame": "card",
+     "card_h": 1000,
+     "zoom": 2.15,
+     "fx": 0.25,
+     "cy": 0.5
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "She was adopted from Vietnam as a baby… and had never met anyone who *looked* like her.",
+   "shots": [
+    {
+     "in": 14.5,
+     "frame": "card",
+     "zoom": 1.2,
+     "cy": 0.42
+    },
+    {
+     "in": 29.0,
+     "frame": "card",
+     "zoom": 1.2,
+     "cy": 0.42
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Her birth certificate named a village. So Kyle went door to door… until he found her *family*.",
+   "shots": [
+    {
+     "in": 43.5,
+     "frame": "card",
+     "zoom": 1.2,
+     "cy": 0.42
+    },
+    {
+     "in": 72.5,
+     "frame": "card",
+     "zoom": 1.2,
+     "cy": 0.42
+    },
+    {
+     "in": 116.0,
+     "frame": "card",
+     "zoom": 1.2,
+     "cy": 0.42
+    },
+    {
+     "in": 145.0,
+     "frame": "card",
+     "zoom": 1.2,
+     "cy": 0.42
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Then he put them on a *video call*.",
+   "shots": [
+    {
+     "in": 300.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 308.8,
+   "out": 310.0,
+   "shots": [
+    {
+     "in": 308.8,
+     "frame": "card",
+     "card_h": 610,
+     "zoom": 2.0,
+     "fx": 0.75,
+     "cy": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 367.0,
+   "out": 370.7,
+   "text": "She says, your mom says, I'm so *emotional* and I miss you so much.",
+   "shots": [
+    {
+     "in": 367.0,
+     "frame": "card",
+     "card_h": 1000,
+     "zoom": 2.15,
+     "fx": 0.8,
+     "cy": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 476.9,
+   "out": 484.7,
+   "text": "your sister said your *dad* passed away three months ago. Yeah, just three months ago. Wow, so I just missed",
+   "shots": [
+    {
+     "in": 476.9,
+     "frame": "card",
+     "card_h": 610,
+     "zoom": 2.0,
+     "fx": 0.75,
+     "cy": 0.5,
+     "len": 3.5
+    },
+    {
+     "in": 480.4,
+     "frame": "card",
+     "card_h": 1000,
+     "zoom": 2.15,
+     "fx": 0.25,
+     "cy": 0.5
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Then her mom held up something she had kept… for *25* years.",
+   "shots": [
+    {
+     "in": 638.0,
+     "frame": "card",
+     "card_h": 610,
+     "zoom": 2.0,
+     "fx": 0.75,
+     "cy": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 640.7,
+   "out": 644.5,
+   "impact": true,
+   "shots": [
+    {
+     "in": 645.0,
+     "frame": "card",
+     "card_h": 1000,
+     "zoom": 2.15,
+     "fx": 0.66,
+     "cy": 0.5,
+     "len": 3.8
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 648.3,
+   "out": 651.55,
+   "shots": [
+    {
+     "in": 657.0,
+     "frame": "card",
+     "card_h": 610,
+     "zoom": 2.0,
+     "fx": 0.75,
+     "cy": 0.5,
+     "len": 3.25
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 653.4,
+   "out": 654.25,
+   "shots": [
+    {
+     "in": 653.4,
+     "frame": "card",
+     "card_h": 1000,
+     "zoom": 2.15,
+     "fx": 0.25,
+     "cy": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 688.8,
+   "out": 696.6,
+   "shots": [
+    {
+     "in": 688.8,
+     "frame": "card",
+     "card_h": 1000,
+     "zoom": 2.15,
+     "fx": 0.25,
+     "cy": 0.5
+    }
+   ]
+  }
+ ]
+}

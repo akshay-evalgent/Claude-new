@@ -1,0 +1,181 @@
+{
+ "title": "He Never Knew His Dad… Until This Video Call 😭💔",
+ "source": "6YQMq1yxCHY",
+ "credit": "Credit: The Leah and Blair Slog",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 2487.45,
+   "out": 2495.0,
+   "text": "When my sister told me, I saw my face in you, so I had no doubt that you are my *son*.",
+   "shots": [
+    {
+     "in": 2487.45,
+     "frame": "full",
+     "fx": 0.86,
+     "fy": 0.5,
+     "full_zoom": 1.12
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "He was born next to a U.S. Navy base in the Philippines… and never knew who his father *was*.",
+   "shots": [
+    {
+     "in": 84.0,
+     "frame": "card"
+    },
+    {
+     "in": 104.0,
+     "frame": "card"
+    },
+    {
+     "in": 2362.0,
+     "frame": "full",
+     "fx": 0.4,
+     "fy": 0.36,
+     "full_zoom": 1.35
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "His mom only remembered one name: *Chuck*, an American sailor.",
+   "shots": [
+    {
+     "in": 2318.0,
+     "frame": "full",
+     "fx": 0.55,
+     "fy": 0.36,
+     "full_zoom": 1.35
+    },
+    {
+     "in": 2296.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Then a DNA test found his real father… and his name wasn't Chuck at all.",
+   "shots": [
+    {
+     "in": 2340.0,
+     "frame": "card",
+     "zoom": 1.2,
+     "cy": 0.42
+    },
+    {
+     "in": 2344.0,
+     "frame": "card",
+     "zoom": 1.2,
+     "cy": 0.42
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 2354.3,
+   "out": 2360.4,
+   "text": "I was like, I'm shaking. There never was a *Chuck*. This is your biological father, Dennis.",
+   "shots": [
+    {
+     "in": 2356.0,
+     "frame": "card",
+     "zoom": 1.2,
+     "cy": 0.42,
+     "len": 3.0
+    },
+    {
+     "in": 2366.0,
+     "frame": "full",
+     "fx": 0.4,
+     "fy": 0.36,
+     "full_zoom": 1.35
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Dennis never knew he had a son… and he was waiting on a *video call*.",
+   "shots": [
+    {
+     "in": 2384.0,
+     "frame": "card"
+    },
+    {
+     "in": 2392.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 2424.45,
+   "out": 2433.85,
+   "impact": true,
+   "shots": [
+    {
+     "in": 2424.45,
+     "frame": "card",
+     "card_h": 1000,
+     "zoom": 2.0,
+     "fx": 0.2,
+     "cy": 0.5,
+     "len": 4.5
+    },
+    {
+     "in": 2429.0,
+     "frame": "full",
+     "fx": 0.86,
+     "fy": 0.5,
+     "full_zoom": 1.12
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 2593.5,
+   "out": 2598.45,
+   "shots": [
+    {
+     "in": 2570.0,
+     "frame": "full",
+     "fx": 0.76,
+     "fy": 0.5,
+     "len": 4.95
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 2768.8,
+   "out": 2774.0,
+   "shots": [
+    {
+     "in": 2769.7,
+     "frame": "card",
+     "len": 2.6
+    },
+    {
+     "in": 2858.8,
+     "frame": "full",
+     "fx": 0.75,
+     "fy": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 2949.3,
+   "out": 2950.7,
+   "shots": [
+    {
+     "in": 2950.6,
+     "frame": "card"
+    }
+   ]
+  }
+ ]
+}

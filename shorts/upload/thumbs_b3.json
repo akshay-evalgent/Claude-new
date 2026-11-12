@@ -1,0 +1,198 @@
+[
+ {
+  "name": "b3_01_corvette_growl",
+  "source": "l0Knepszy2Q",
+  "t": 1394.5,
+  "fx": 0.62,
+  "fy": 0.42,
+  "zoom": 1.15,
+  "text_y": 1330,
+  "color": "yellow",
+  "lines": [
+   [
+    "HIS LATE WIFE'S CORVETTE…",
+    "small"
+   ],
+   [
+    "HE KNEW THAT SOUND",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b3_02_florence_97",
+  "source": "hVdTiVeYnTU",
+  "t": 32.6,
+  "fx": 0.6,
+  "fy": 0.42,
+  "zoom": 1.3,
+  "text_y": 420,
+  "color": "red",
+  "lines": [
+   [
+    "97 YEARS OLD…",
+    "small"
+   ],
+   [
+    "SHE COULDN'T AFFORD IT",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b3_03_navy_father",
+  "source": "6YQMq1yxCHY",
+  "t": 2318.0,
+  "fx": 0.7,
+  "fy": 0.4,
+  "zoom": 1.2,
+  "text_y": 1340,
+  "color": "yellow",
+  "lines": [
+   [
+    "HE NEVER KNEW HIS DAD…",
+    "small"
+   ],
+   [
+    "WE LOOK ALIKE!",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b3_04_river_camera360",
+  "source": "glztIR8l5L8",
+  "t": 1054.0,
+  "fx": 0.58,
+  "fy": 0.45,
+  "text_y": 1330,
+  "color": "cyan",
+  "lines": [
+   [
+    "SHE THOUGHT IT WAS GONE…",
+    "small"
+   ],
+   [
+    "FOUND IT!",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b3_05_firebird_dad",
+  "source": "67BzkY08h6w",
+  "t": 2213.4,
+  "fx": 0.36,
+  "fy": 0.4,
+  "text_y": 1350,
+  "color": "yellow",
+  "lines": [
+   [
+    "THEY SAID IT WOULDN'T START…",
+    "small"
+   ],
+   [
+    "THEN THIS",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b3_06_lonely_neighbor",
+  "source": "Kq7Kff0i9Ks",
+  "t": 374.4,
+  "fx": 0.5,
+  "fy": 0.36,
+  "zoom": 1.35,
+  "text_y": 1340,
+  "color": "green",
+  "lines": [
+   [
+    "HE NEVER OPENED THE DOOR…",
+    "small"
+   ],
+   [
+    "SO THEY DID THIS",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b3_07_anna_vietnam",
+  "source": "c6RQywrfdNQ",
+  "t": 657.0,
+  "fx": 0.25,
+  "fy": 0.5,
+  "zoom": 2.1,
+  "text_y": 1340,
+  "color": "pink",
+  "lines": [
+   [
+    "SHE'D NEVER SEEN ANYONE",
+    "small"
+   ],
+   [
+    "WHO LOOKED LIKE HER",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b3_08_papaw_skidsteer",
+  "source": "TDeZv-URtL8",
+  "t": 1550.0,
+  "fx": 0.28,
+  "fy": 0.42,
+  "text_y": 1350,
+  "color": "green",
+  "lines": [
+   [
+    "30 YEARS HELPING OTHERS…",
+    "small"
+   ],
+   [
+    "NOW IT'S HIS TURN",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b3_09_mcdonald_dad",
+  "source": "jxzJk0SRY3I",
+  "t": 82.5,
+  "fx": 0.55,
+  "fy": 0.4,
+  "text_y": 1330,
+  "color": "yellow",
+  "lines": [
+   [
+    "HIS BIRTH DAD IS…",
+    "small"
+   ],
+   [
+    "A ROCK STAR",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b3_10_orphan_father",
+  "source": "UD4lp04bySQ",
+  "t": 199.8,
+  "fx": 0.5,
+  "fy": 0.38,
+  "zoom": 1.2,
+  "text_y": 1340,
+  "color": "red",
+  "lines": [
+   [
+    "RAISED IN AN ORPHANAGE…",
+    "small"
+   ],
+   [
+    "HE FOUND HIS DAD",
+    "big"
+   ]
+  ]
+ }
+]

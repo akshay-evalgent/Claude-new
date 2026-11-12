@@ -189,6 +189,164 @@ Generated from `edits/*.json`. **VO** = narrator (AI voice), **CLIP** = original
 - **CLIP** `2:16.0–2:16.9`: "I miss you so much."
 - **CLIP** `2:25.0–2:28.5`: "(reaction, no dialogue)"
 
+## b3_anna_vietnam
+
+**Title:** She'd Never Seen Anyone Who Looked Like Her 😭  
+**Source:** https://youtu.be/c6RQywrfdNQ (Credit: Kyle Le Dot Net)
+
+- **COLD OPEN** `4:20.9–4:22.8`: "I've never seen anybody that looks like me."
+- **VO:** She was adopted from Vietnam as a baby… and had never met anyone who **looked** like her.
+- **VO:** Her birth certificate named a village. So Kyle went door to door… until he found her **family**.
+- **VO:** Then he put them on a **video call**.
+- **CLIP** `5:08.8–5:10.0`: "Yeah, this guy looks just like you."
+- **CLIP** `6:07.0–6:10.7`: "She says, your mom says, I'm so **emotional** and I miss you so much."
+- **CLIP** `7:56.9–8:04.7`: "your sister said your **dad** passed away three months ago. Yeah, just three months ago. Wow, so I just missed"
+- **VO:** Then her mom held up something she had kept… for **25** years.
+- **CLIP** `10:40.7–10:44.5`: "She has a picture of you. I'll take it for you."
+- **CLIP** `10:48.3–10:51.5`: "She says that night and day she thought about you and missed you."
+- **CLIP** `10:53.4–10:54.2`: "That's so sweet."
+- **CLIP** `11:28.8–11:36.6`: "I just feel so much more at peace knowing that everyone is out there and exists and I haven't been forgotten"
+
+## b3_corvette_growl
+
+**Title:** He Knew His Late Wife's Car By The SOUND 😭  
+**Source:** https://youtu.be/l0Knepszy2Q (Credit: WD Detailing)
+
+- **COLD OPEN** `22:01.8–22:03.6`: "I know that growl anywhere."
+- **VO:** This Corvette belonged to his late **wife**… and it had been rotting in a barn for almost 20 years.
+- **VO:** So a detailing crew secretly restored it… and told him it **wouldn't** start.
+- **VO:** But right before the reveal… he ended up in the **hospital**.
+- **CLIP** `21:21.7–21:27.3`: "Thinking it's possibly some sort of cancer in my spine there that's treatable."
+- **VO:** Then he heard something **running** behind him…
+- **CLIP** `21:55.8–22:00.1`: "That's just wrong. That's just wrong."
+- **CLIP** `22:09.3–22:14.7`: "Yep, I'd know that growl anywhere. Gorgeous, gorgeous, gorgeous."
+- **VO:** And he remembered the day his wife took it out **alone**…
+- **CLIP** `22:53.9–23:02.4`: "I turn around. She's got the car sideways out here with the tires **howling**"
+- **CLIP** `23:07.8–23:11.0`: "She goes, well, I just couldn't **stop**."
+
+## b3_firebird_dad
+
+**Title:** They Said It Wouldn't Start… Then THIS 😭  
+**Source:** https://youtu.be/67BzkY08h6w (Credit: WD Detailing)
+
+- **COLD OPEN** `37:14.2–37:16.1`: "I ain't seen it like this in a minute."
+- **VO:** He bought his Firebird brand new in **1986**… but at 83, it had been sitting in his garage for years.
+- **CLIP** `1:29.4–1:38.0`: "Like, this is his favorite car. He ain't had a smile, like, you know, since he ain't drove it. Like he said, he's 83 years old, so I want to get that **smile** on his face again."
+- **CLIP** `1:17.1–1:19.8`: "Will you drive it around the block one time? Yeah."
+- **VO:** So a detailing crew spent days bringing it back… then told him they couldn't get it **running**.
+- **CLIP** `36:52.4–37:00.7`: "That's it. I know that sound."
+- **CLIP** `37:06.9–37:10.5`: "Oh my gosh. Bring back some memories. Yes."
+- **VO:** And he kept his **promise**.
+- **CLIP** `37:33.0–37:37.0`: "(reaction, no dialogue)"
+- **CLIP** `37:41.2–37:42.8`: "How was it? It was cool."
+
+## b3_florence_97
+
+**Title:** 97 Years Old… She Couldn't Afford To Fix Her Home 😭💔  
+**Source:** https://youtu.be/hVdTiVeYnTU (Credit: RUDAN Brothers)
+
+- **COLD OPEN** `0:00.0–0:06.0`: "Sorry, I'm in the bad shape, and I lost my **three** sons, so..."
+- **VO:** She's **97**. She lost three sons during COVID… and lives with the only one she has left.
+- **VO:** Their house was falling apart. The city ordered repairs… or they'd send their own contractors, and send them the **bill**.
+- **VO:** There was no way they could afford it. So a roofing crew offered to fix everything… for **free**.
+- **CLIP** `0:29.6–0:31.2`: "I don't know what to say"
+- **VO:** Then, on the final day… they showed her the **house**.
+- **CLIP** `56:09.8–56:15.5`: "I love you. I couldn't afford it. I love you very much."
+- **CLIP** `56:45.1–56:48.8`: "Thank you so much. I love you with all my heart"
+
+## b3_lonely_neighbor
+
+**Title:** Nobody Ever Opened The Door… So They Did THIS 😭  
+**Source:** https://youtu.be/Kq7Kff0i9Ks (Credit: RUDAN Brothers)
+
+- **COLD OPEN** `87:21.1–87:27.4`: "I have no words. I wish I had something to offer you, but your kindness is overwhelming."
+- **VO:** His roof was falling apart… but every time they knocked, nobody **answered**.
+- **CLIP** `84:19.9–84:23.1`: "I've been here 25 years, I've never spoken to him."
+- **VO:** Months later, a neighbor finally called. He had no **phone**… and he was too embarrassed to ask for help.
+- **CLIP** `6:10.3–6:19.3`: "I used to work for the railway. Uh -huh. And I did a lot of things. So I get a little pension from the railway, but it's not enough."
+- **VO:** So for five days, the crew rebuilt his entire house… completely **free**.
+- **CLIP** `85:58.7–86:02.6`: "It's a lot to take in Such a change"
+- **CLIP** `87:29.0–87:32.4`: "It just brings me to tears every time I talk about it."
+- **CLIP** `87:33.7–87:40.6`: "Because as a community, this is community is what it all means, right? And neighbors, this is what we need more of."
+
+## b3_mcdonald_dad
+
+**Title:** His Birth Dad Turned Out To Be FAMOUS 😳😭  
+**Source:** https://youtu.be/jxzJk0SRY3I (Credit: KMOV St. Louis)
+
+- **COLD OPEN** `1:14.8–1:20.7`: "Are you Michael **McDonald**? And he said, yeah, I'm afraid so."
+- **VO:** His birth parents were just **14** when he was born… so he was adopted as a baby.
+- **VO:** 58 years later, a DNA test led him to his birth father… and he asked him what he did for a living.
+- **CLIP** `0:55.0–0:56.6`: "And so he said, well, I'm a musician."
+- **VO:** His dad was Michael McDonald… of the **Doobie Brothers**. And yes, they share a first name, completely by coincidence.
+- **CLIP** `1:42.0–1:46.6`: "I always carried that **guilt** with me, and just to know that he was okay, and that he had a good life"
+- **CLIP** `2:13.2–2:19.8`: "and he just put his arms out and just gave me a big old bear hug and told me he loved me. And I told him the same."
+- **CLIP** `2:24.4–2:28.4`: "to get to meet my son, you know, after all these years, you know, thinking about him."
+
+## b3_navy_father
+
+**Title:** He Never Knew His Dad… Until This Video Call 😭💔  
+**Source:** https://youtu.be/6YQMq1yxCHY (Credit: The Leah and Blair Slog)
+
+- **COLD OPEN** `41:27.4–41:35.0`: "When my sister told me, I saw my face in you, so I had no doubt that you are my **son**."
+- **VO:** He was born next to a U.S. Navy base in the Philippines… and never knew who his father **was**.
+- **VO:** His mom only remembered one name: **Chuck**, an American sailor.
+- **VO:** Then a DNA test found his real father… and his name wasn't Chuck at all.
+- **CLIP** `39:14.3–39:20.4`: "I was like, I'm shaking. There never was a **Chuck**. This is your biological father, Dennis."
+- **VO:** Dennis never knew he had a son… and he was waiting on a **video call**.
+- **CLIP** `40:24.4–40:33.8`: "I'm so very happy that finally I've seen you. I've been waiting for this moment for a long time ago"
+- **CLIP** `43:13.5–43:18.4`: "It kind of chokes me up right now. I just want to hug you man."
+- **CLIP** `46:08.8–46:14.0`: "Love you. I want to hug you. I want to hug you too"
+- **CLIP** `49:09.3–49:10.7`: "Finally, I found my father."
+
+## b3_orphan_father
+
+**Title:** Raised In An Orphanage… He Found His Dad At 57 😭💔  
+**Source:** https://youtu.be/UD4lp04bySQ (Credit: KLTV 7)
+
+- **COLD OPEN** `2:16.3–2:19.1`: "I was like, oh, I just spoke with my father."
+- **VO:** He grew up in a German orphanage for **19** years… and nobody ever came to pick him up.
+- **VO:** Every day, he prayed over a rosary… please, one day, let me meet my **father**.
+- **VO:** Then a DNA test found a match: a man who served in the military in Germany in **1969**.
+- **CLIP** `1:37.1–1:40.8`: "And if I had known that, I would have brought him back to the United States with **me**."
+- **VO:** So Joshua called him… pretending to be an **insurance** agent.
+- **CLIP** `2:08.7–2:14.9`: "And then I became more and more nervous. Was you out in Kaiserslautern, Germany? I said, yes. And I stopped **talking**."
+- **VO:** The DNA test came back **99.9%**.
+- **CLIP** `2:41.4–2:46.9`: "Putting my rosary around his neck. The rosary I prayed every time when I prayed, he has it now."
+- **VO:** Then his dad walked him into a room… of **60** family members waiting to meet him.
+- **CLIP** `3:14.0–3:19.6`: "I'm emotional too right now because that's the biggest gift you can get to be loved."
+
+## b3_papaw_skidsteer
+
+**Title:** 30 Years Helping Others… Now It's HIS Turn 😭  
+**Source:** https://youtu.be/TDeZv-URtL8 (Credit: Murphys Diesel)
+
+- **COLD OPEN** `26:19.0–26:22.5`: "You're kidding. No, I'm serious. No, this is yours now."
+- **VO:** Her papaw is a **veteran**… and he's spent 30 years as a Salvation Army officer.
+- **CLIP** `1:09.1–1:13.6`: "He spent his entire life taking care of everybody else. Somebody needs to take care of him folks."
+- **VO:** His old Bobcat had **lawn furniture** for a seat… and it finally broke down.
+- **CLIP** `1:33.9–1:40.0`: "or he didn't even say anything, he just asked us how he could get into the American Dream giveaway."
+- **VO:** Family can't enter their giveaways… so they drove off and bought him a brand-new **skid steer** instead.
+- **CLIP** `26:09.6–26:15.0`: "you keep doing all this stuff for us to come out and visit. Your bobcat keeps breaking down on you"
+- **CLIP** `26:32.7–26:41.0`: "You can burn that bobcat to the ground Get rid of it Or retire it let it retire"
+
+## b3_river_camera360
+
+**Title:** She Thought The Dive FAILED… 😱📸  
+**Source:** https://youtu.be/glztIR8l5L8 (Credit: Man + River)
+
+- **COLD OPEN** `5:45.4–5:48.2`: "You're lying bro. You're lying."
+- **VO:** He did a headstand on a paddleboard… and dropped their brand-new **camera** into the river.
+- **VO:** Fans tagged a famous river diver… so he drove all the way from **Texas** to find it.
+- **VO:** He found it in just **five minutes**.
+- **CLIP** `5:48.6–5:50.3`: "That's it right? Yes."
+- **CLIP** `5:59.2–6:03.4`: "Bro! You're lying! Oh my god!"
+- **VO:** But his wife had already gone home… so they let her think the dive had **failed**.
+- **CLIP** `17:02.0–17:07.6`: "risks and they don't pay off But I had a good time and Actually, sometimes it does pay off"
+- **CLIP** `17:09.0–17:17.0`: "(reaction, no dialogue)"
+- **VO:** And the camera had recorded the **exact** moment it fell in.
+- **CLIP** `17:37.7–17:40.4`: "Hey just set the record straight. I was never mad at you"
+
 ## grandpa_ferrari
 
 **Title:** She Saw Her Late Grandpa's $1,000,000 Ferrari Restored… 😭❤️  

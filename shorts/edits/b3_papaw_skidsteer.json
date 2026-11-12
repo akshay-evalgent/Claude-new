@@ -1,0 +1,138 @@
+{
+ "title": "30 Years Helping Others… Now It's HIS Turn 😭",
+ "source": "TDeZv-URtL8",
+ "credit": "Credit: Murphys Diesel",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 1579.0,
+   "out": 1582.45,
+   "shots": [
+    {
+     "in": 1564.0,
+     "frame": "card",
+     "zoom": 1.6,
+     "fx": 0.55,
+     "cy": 0.45,
+     "len": 3.45
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Her papaw is a *veteran*… and he's spent 30 years as a Salvation Army officer.",
+   "shots": [
+    {
+     "in": 1565.5,
+     "frame": "card",
+     "zoom": 1.6,
+     "fx": 0.55,
+     "cy": 0.45
+    },
+    {
+     "in": 1550.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 69.1,
+   "out": 73.6,
+   "shots": [
+    {
+     "in": 69.1,
+     "frame": "full",
+     "fx": 0.5,
+     "fy": 0.4
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "His old Bobcat had *lawn furniture* for a seat… and it finally broke down.",
+   "shots": [
+    {
+     "in": 40.0,
+     "frame": "card"
+    },
+    {
+     "in": 76.0,
+     "frame": "card"
+    },
+    {
+     "in": 42.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 93.9,
+   "out": 99.95,
+   "shots": [
+    {
+     "in": 93.9,
+     "frame": "full",
+     "fx": 0.5,
+     "fy": 0.4
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Family can't enter their giveaways… so they drove off and bought him a brand-new *skid steer* instead.",
+   "shots": [
+    {
+     "in": 1168.0,
+     "frame": "card"
+    },
+    {
+     "in": 1629.0,
+     "frame": "card"
+    },
+    {
+     "in": 1632.6,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1569.6,
+   "out": 1575.0,
+   "impact": true,
+   "shots": [
+    {
+     "in": 1570.0,
+     "frame": "card",
+     "zoom": 1.6,
+     "fx": 0.55,
+     "cy": 0.45
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1592.7,
+   "out": 1601.0,
+   "shots": [
+    {
+     "in": 1589.0,
+     "frame": "full",
+     "fx": 0.5,
+     "fy": 0.4,
+     "len": 3.2
+    },
+    {
+     "in": 1655.4,
+     "frame": "card"
+    },
+    {
+     "in": 1667.4,
+     "frame": "card"
+    }
+   ]
+  }
+ ]
+}
