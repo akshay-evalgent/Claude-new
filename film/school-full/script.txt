@@ -1,0 +1,319 @@
+# How Did Ancient Kids Grow Up Without Schools?
+# Same format as film/fridge-full/script.txt. Facts checked 2026-11-12; see SOURCES.md.
+
+= hook open
+Monday morning. Your alarm goes off at seven. >> modernBed {"awake":true,"time":"07:00"} push
++ You grab your bag. >> schoolRun {"step":1} push
++ You catch the bus. >> schoolRun {"step":2} push
+And for the next six hours, you sit at a desk. >> classroom {} push
++ In a room full of kids your own age. >> classroom {} [960,700,1.3,1.4]
++ Facing one adult, at the front. ~0.15 >> classroom {} [1180,560,1.4,1.5]
+There's a bell. >> classroom {"bell":true} [1700,260,1.6,1.7]
++ A timetable. >> card {"lines":["A TIMETABLE"],"icon":"clock"} push
++ And tests. Lots of tests. ~0.2 >> classroom {"test":true} push
+In rich countries, school adds up to about seven and a half thousand hours of lessons, >> card {"lines":["7,600 HOURS"],"icon":"clock"} push
++ and that's only by your mid teens. ~0.2 >> classroom {"test":true} [960,760,1.2,1.3]
+It feels like school has always existed. >> classroom {} pull
++ It hasn't. ~0.2 >> card {"lines":["IT HASN'T."],"icon":"hourglass"} push
+For almost all of human history, there were no schools at all. >> timeBar2 {"step":2,"none":"NO SCHOOLS"} push
++ Most children only started going to school in the last two hundred years. ~0.2 >> timeBar2 {"step":3,"none":"NO SCHOOLS","yes":"SCHOOL FOR ALL"} [1700,640,1.3,1.4]
+Now take time back fifty thousand years. ~0.15 >> rewind {} [960,540,1.02,1.08]
+A five year old girl wakes up in a camp. >> kidWake {} push
+No school. >> card {"lines":["NO SCHOOL."],"icon":"book"} push
++ No teacher. >> card {"lines":["NO TEACHER."],"icon":"book"} push
++ No books. Writing won't be invented for another forty five thousand years. ~0.2 >> card {"lines":["NO BOOKS."],"icon":"book"} push
+And yet, by the time she's grown up, she'll need to know an enormous amount. >> knowList {"n":0} push
+Which plants are food, and which ones are poison. >> knowList {"n":1} push
++ Where to find water. >> knowList {"n":2} push
++ How to read an animal's tracks. >> knowList {"n":3} push
++ How to keep a baby alive. ~0.2 >> knowList {"n":4} push
+Now your brain is probably saying, >> brain {} [960,520,1,1.06]
++ Cavemen? Their kids didn't learn much. >> objection {"l1":"CAVEMEN?","l2":"Their kids didn't learn much."} [960,540,1,1.05]
++ They just copied their parents, and grunted. >> card {"lines":["COPY","AND GRUNT"],"icon":"magnifier"} push
+At least, that's what we assume. >> assume {} [900,640,1,1.06]
+But ancient children left clues everywhere. ~0.15 >> dig {"found":"bones"} push
++ Tiny finger marks, high on the ceilings of caves. >> flutings {} push
++ A trail of footprints where someone carried a toddler for more than a kilometre. >> whiteSands {"step":2} push
++ And kids today who gather their own food before they can read. >> kidForage {} push
+They all point to the oldest classroom on Earth. >> card {"lines":["THE OLDEST","CLASSROOM"],"at":["DONE","@oldest"],"icon":"book"} push
++ And it didn't have any walls. ~0.3 >> kidsPlay {} pull
+
+= childhood curious
+First, here's something strange about humans. >> card {"lines":["SOMETHING","STRANGE"],"icon":"magnifier"} push
+We take longer to grow up than any other primate. >> barChart {"rows":[["CHIMP",15],["HUMAN",19]],"unit":"","title":"AGE AT FIRST BABY"} push
+A wild chimpanzee usually has her first baby at around thirteen to fifteen. >> barChart {"rows":[["CHIMP",15],["HUMAN",19]],"unit":"","title":"AGE AT FIRST BABY"} [760,560,1.3,1.4]
++ In foraging societies, women typically have their first child at around nineteen. ~0.2 >> barChart {"rows":[["CHIMP",15],["HUMAN",19]],"unit":"","title":"AGE AT FIRST BABY"} [1160,500,1.3,1.4]
+Why would an animal stay small and helpless for so long? >> think {"q1":"@small","q2":"NEVER"} push
+Part of the answer is the brain. >> brainKid {"step":1} push
+In twenty fourteen, scientists worked out how much energy a child's brain uses. >> lab {"phase":"test"} push
+At around four years old, it uses energy equal to about two thirds of what the whole body burns at rest. >> brainKid {"step":2} push
++ Two thirds. ~0.2 >> brainKid {"step":2} [1380,520,1.3,1.4]
+And that's the same age when body growth is slowest. ~0.2 >> brainKid {"step":3} push
+Scientists think the child is putting its energy into its brain. >> brainKid {"step":3} [760,440,1.3,1.4]
+So what is all that brain power for? >> think {"q1":"@for","q2":"NEVER"} push
++ Learning. ~0.3 >> card {"lines":["LEARNING."],"icon":"book"} push
+And the hardest thing you ever learned, you learned without a school. >> wordsKid {} push
++ Your first language. ~0.2 >> wordsKid {"words":true} push
+By the time children start school, they already know thousands of words. >> wordsKid {"words":true} [960,500,1.2,1.3]
++ Around ten thousand, by one well known estimate. >> card {"lines":["~10,000","WORDS"],"icon":"book"} push
+Nobody sat them down at a desk to learn them. ~0.15 >> classroom {"empty":true} push
++ They picked them up by listening, and talking, and playing. ~0.3 >> kidsPlay {} push
+And in the hunter-gatherer world, there's a lot more to learn. >> knowList {"n":4} pull
+The Ju'hoansi of the Kalahari recognise more than a hundred wild plants as food. >> plantGrid {} push
++ Roots, berries, nuts, melons and gums. ~0.2 >> plantGrid {} [960,560,1.2,1.3]
+Then there's hunting. >> hunter {} push
+In twenty twenty, researchers looked at records from more than eighteen hundred hunters, in forty societies around the world. >> worldMap {"pins":["tanzania","bolivia","namibia","arctic","borneo","australia","amazon"]} push
+Hunters didn't reach their best until around their thirties. >> skillCurve {"step":2} push
++ Years after they'd stopped growing. >> skillCurve {"step":3} push
+Hunting isn't just strength. >> hunter {"glint":"@strength"} push
++ It's knowledge. Tracking, patience, knowing how animals think. >> card {"lines":["KNOWLEDGE"],"icon":"magnifier"} push
++ And that takes decades to learn. ~0.3 >> skillCurve {"step":3} [1100,520,1.2,1.3]
+
+= animals curious
+Other animals have to learn too. >> card {"lines":["OTHER","ANIMALS"],"icon":"leaf"} push
+Look at a young chimpanzee. >> termiteFish {} push
+Chimps fish for termites with a twig. >> termiteFish {} [1100,700,1.4,1.5]
++ They poke it into the mound, and pull it out covered in termites. ~0.2 >> termiteFish {"pull":true} [1100,640,1.5,1.6]
+At Gombe in Tanzania, scientists watched young chimps learn this. >> map {"region":"tanzania","label":"GOMBE"} push
+Young females spent more time watching their mothers fish, >> termiteFish {"watch":true} push
++ while young males spent more time playing. >> termiteFish {"watch":true,"play":true} push
+The daughters learned the skill more than two years earlier, on average. ~0.25 >> card {"lines":["DAUGHTERS:","2 YEARS EARLIER"],"icon":"leaf"} push
+Cracking nuts is even harder. >> nutCrack {} push
+A chimp needs a stone hammer, a flat rock, and good aim. >> nutCrack {} [960,760,1.4,1.5]
+In Guinea, young chimps only start cracking nuts at around three and a half to five years old. >> nutCrack {"fail":true} push
++ Before that, they steal the kernels from their mothers. >> nutCrack {} [1140,800,1.4,1.5]
++ And they keep getting better until they're about eleven. ~0.2 >> nutCrack {} pull
+But here's the thing. >> card {"lines":["HERE'S","THE THING"],"icon":"magnifier"} push
++ Chimp mothers rarely teach. >> termiteFish {"watch":true} pull
+The young ones mostly have to watch, and figure it out alone. >> nutCrack {"fail":true} push
+Real teaching is surprisingly rare in animals. >> card {"lines":["TEACHING","IS RARE"],"icon":"book"} push
+One famous example comes from meerkats. >> meerkat {} push
+Adult meerkats give their pups scorpions to practise on. >> meerkat {} [960,700,1.3,1.4]
++ At first, dead ones. >> meerkat {"step":1} push
++ Then live ones, with the sting bitten off. >> meerkat {"step":2} push
++ And finally, the real thing. ~0.2 >> meerkat {"step":3} push
+If the scorpion crawls away, the adult nudges it back to the pup. ~0.25 >> meerkat {"step":2} [960,780,1.3,1.4]
+Humans take teaching much further. >> kidsPlay {} pull
++ And it starts with the youngest learners of all. ~0.3 >> alloCare {"step":1} push
+
+= babies warm
+A human baby is born almost helpless. >> alloCare {"step":1} [960,600,1.3,1.4]
+And for most of history, it wasn't raised by its mother alone. >> alloCare {"step":2} push
+The anthropologist Sarah Hrdy calls humans cooperative breeders. >> card {"lines":["COOPERATIVE","BREEDERS"],"icon":"heart"} push
+Grandmothers. Aunts. Fathers. >> alloCare {"step":3} push
++ Older brothers and sisters. ~0.2 >> sibling {} push
+In many societies, older children do much of the carrying and minding of babies. >> sibling {} [800,600,1.3,1.4]
+Among the Efe people of Central Africa, researchers watched who held the babies. >> map {"region":"efe","label":"THE EFE"} push
+An Efe baby had about fourteen different caretakers, on average. >> alloCare {"step":4} push
++ By three weeks old, babies spent around forty percent of their time with someone other than their mother. ~0.2 >> alloCare {"step":4} [960,560,1.2,1.3]
+Every one of those people was a teacher. ~0.2 >> alloCare {"step":3} pull
+And sometimes, we can see them in the ground. >> card {"lines":["IN THE","GROUND"],"icon":"magnifier"} push
+At White Sands, in New Mexico, ancient footprints are preserved in what was once mud. >> map {"region":"newmexico","label":"WHITE SANDS"} push
+More than ten thousand years ago, someone walked across it for more than a kilometre and a half. >> whiteSands {"step":1} push
+Probably a young woman, or a teenager. >> whiteSands {"step":1} [700,600,1.4,1.5]
++ Every so often, a set of tiny toddler footprints appears beside theirs. >> whiteSands {"step":2} push
+They were carrying a child of about two. >> whiteSands {"step":2} [1100,580,1.5,1.6]
++ Now and then, they set the child down, >> whiteSands {"step":2} [1100,580,1.8,1.9]
++ maybe to rest their arms, >> carryKid {} push
++ then picked it up again, and kept going. ~0.25 >> carryKid {"lift":true} push
+Later, a giant ground sloth and a mammoth crossed the same trail. >> whiteSands {"step":3} push
+Then, hours later, the walker came back the other way. >> whiteSands {"step":4} push
++ Without the child. ~0.3 >> whiteSands {"step":4} [960,540,1.2,1.3]
+We'll never know their story. >> carryKid {} pull
++ But it's a moment of childhood, frozen in mud. ~0.3 >> whiteSands {"step":4} pull
+
+= play wonder
+So how did children actually learn? >> think {"q1":"@learn","q2":"NEVER"} push
+In two thousand nine, the psychologist Peter Gray asked anthropologists who had lived with hunter-gatherers. >> lab {"phase":"test"} push
++ How did the children spend their days? >> card {"lines":["HOW DID","THEY SPEND","THEIR DAYS?"],"icon":"sun"} push
+The answer, again and again, was play. ~0.25 >> kidsPlay {} push
+Children were free to play almost all day, every day. >> kidsPlay {} [960,700,1.2,1.3]
++ One researcher said Efe boys played nearly all the time, until they were fifteen or more. ~0.2 >> kidsPlay {"ages":true} push
+And they didn't play in a class of kids their own age. >> classroom {} push
++ They played in mixed groups. Toddlers, kids and teenagers together. ~0.2 >> kidsPlay {"ages":true} push
+In a small band, there might only be one or two other children your age. >> kidsPlay {"ages":true} [1180,700,1.3,1.4]
+The big kids looked after the little ones. >> kidsPlay {"ages":true} [700,760,1.4,1.5]
++ And the little ones copied the big ones. ~0.2 >> kidsPlay {"ages":true} [1200,760,1.4,1.5]
+And their games looked a lot like adult work. >> card {"lines":["GAMES","= WORK"],"icon":"spear"} push
+Among the Hadza of Tanzania, boys get their first small bows when they're about three. >> toyBow {} push
++ They spend years shooting at targets, at birds, and at small animals. ~0.2 >> toyBow {"shoot":true} push
+Hadza children, from around five years old, go out in groups to gather food. >> kidForage {"dig":true} push
++ Baobab fruit. Berries. Small roots. >> kidForage {} push
+They eat some of it on the spot, and bring the rest back to camp. >> kidForage {"eat":true} push
++ Girls tend to bring more home. Boys tend to eat more on the way. ~0.25 >> kidForage {"eat":true} [620,700,1.4,1.5]
+And it's not just the Hadza. >> card {"lines":["NOT JUST","THE HADZA"],"icon":"leaf"} push
+In the forests of Central Africa, researchers filmed Aka babies, just twelve to fourteen months old. >> map {"region":"aka","label":"THE AKA"} push
+They counted about eleven moments of teaching every hour. >> alloCare {"step":5} push
+Babies were handed real digging sticks, knives, and even small axes, >> alloCare {"step":5} [960,640,1.3,1.4]
++ and shown how to use them. ~0.2 >> alloCare {"step":5} [760,600,1.4,1.5]
+To us, that sounds dangerous. >> card {"lines":["DANGEROUS?"],"icon":"magnifier"} push
++ To them, it's just growing up. ~0.3 >> kidsPlay {"ages":true} pull
+Children may even have had toys. >> card {"lines":["TOYS?"],"icon":"hand"} push
+In the Arctic, about eight hundred years ago, Inuit ancestors left behind tiny harpoons, kayaks, sledges and dolls. >> toys {"step":1} push
++ Children's versions of the adult world. ~0.2 >> toys {"step":1} [960,560,1.2,1.3]
+And from France, more than fifteen thousand years ago, there's a little bone disc with a deer on each side. >> toys {"step":2} push
++ Some archaeologists think that if you spun it on a string, the animal would seem to move. >> toys {"step":3} push
++ It might have been a toy. ~0.25 >> toys {"step":3} [960,520,1.3,1.4]
+Children also left their footprints. >> card {"lines":["FOOTPRINTS"],"icon":"hand"} push
+On a beach in Normandy, France, scientists found two hundred and fifty seven Neanderthal footprints. >> map {"region":"normandy","label":"LE ROZEL"} push
++ About eighty thousand years old. >> footprints {} push
+Most of them were made by children and teenagers. ~0.2 >> footprints {"kids":true} push
++ The youngest was about two. ~0.2 >> footprints {"kids":true} [960,540,1.3,1.4]
+Neanderthal kids, on the shore, >> footprints {"kids":true} pull
++ just like kids today. ~0.3 >> kidsPlay {} push
+
+= caves wonder
+Children even left their marks deep inside caves. >> caveKids {} push
+In Rouffignac Cave, in France, the walls and ceilings are covered in finger lines. >> map {"region":"rouffignac","label":"ROUFFIGNAC"} push
++ Drawn in soft clay, more than thirteen thousand years ago. >> flutings {} push
+Researchers measured the width of the finger marks, >> flutings {"measure":true} push
++ and compared them with lines drawn in clay by more than a hundred modern children. >> flutings {"measure":true} [1100,380,1.4,1.5]
+Many were made by children as young as two to five. ~0.2 >> card {"lines":["2 TO 5","YEARS OLD"],"icon":"hand"} push
+And some of the lines are high up on the ceiling, >> flutings {} [1100,300,1.3,1.4]
++ far too high for a small child to reach. >> flutings {} pull
+They were probably held up by adults. ~0.3 >> flutings {"lift":true} push
+Picture it. >> flutings {"lift":true} [960,560,1.3,1.4]
++ An adult, holding a child up in the flickering lamplight, >> flutings {"lift":true} [960,420,1.5,1.6]
++ while the child traces lines in the clay. ~0.3 >> flutings {"lift":true} [1000,320,1.8,1.9]
+Maybe it was a game. >> card {"lines":["A GAME?"],"icon":"hand"} push
++ Maybe it meant something. ~0.15 >> card {"lines":["A GAME?","A RITUAL?"],"at":["DONE","@something"],"icon":"hand"} push
++ Either way, the children were there. ~0.25 >> flutings {"lift":true} pull
+In Chauvet Cave, a young person, perhaps a child, walked along a passage, >> chauvet {} push
++ wiping a burning torch on the wall along the way. >> chauvet {"wipe":true} push
+The charcoal from that torch is about twenty six thousand years old. ~0.25 >> chauvet {"wipe":true} [1300,420,1.4,1.5]
+And in twenty thirteen, something remarkable happened. >> card {"lines":["2013"],"icon":"magnifier"} push
+Three expert trackers from the Ju'hoansi San of Namibia >> map {"region":"namibia","label":"JU/'HOANSI TRACKERS"} push
++ were invited into Ice Age caves in France. >> trackers {} push
+They read the ancient footprints the way they'd read tracks in the Kalahari. >> trackers {"read":true} push
++ Who walked here. How old they were. Where they were going. >> trackers {"read":true} [960,860,1.3,1.4]
+They identified at least twenty four people. >> trackers {"read":true} pull
++ Ten of them were children or teenagers. ~0.25 >> trackers {"kids":true} push
+In one cave, they read the prints of a man and a teenage boy, >> trackers {"kids":true} [960,800,1.2,1.3]
++ carrying clay to sculpt a pair of bison. ~0.25 >> bisonClay {} push
+Not every scientist agrees with their readings. >> card {"lines":["NOT EVERYONE","AGREES"],"icon":"magnifier"} push
++ But skills like theirs are learned the same way. >> kidsTrack {} push
++ By watching, copying, and following the adults. ~0.3 >> kidsTrack {} [600,800,1.3,1.4]
+
+= tools tense
+Some skills are much harder to pick up. >> card {"lines":["HARDER","SKILLS"],"icon":"spear"} push
++ Like making stone tools. >> knapping {} push
+Hit the stone wrong, and you get nothing but useless chips. >> knapping {"fail":true} push
++ Or a cut finger. ~0.2 >> knapping {"fail":true} [960,620,1.5,1.6]
+Modern researchers have tried to learn it themselves. >> lab {"phase":"test"} push
+In one study, twenty six beginners practised making stone hand axes for up to ninety hours. >> handaxe {"step":1} push
+They improved fast for the first thirty hours, and then got stuck. >> handaxe {"step":1} [1350,560,1.3,1.4]
++ Most still weren't as good as the experts. ~0.2 >> handaxe {"step":2} push
+So how did ancient kids learn? >> think {"q1":"@learn","q2":"NEVER"} push
+At Etiolles, near Paris, people camped by a river about fifteen thousand years ago. >> map {"region":"etiolles","label":"ETIOLLES"} push
+Archaeologists fitted the broken flint back together, flake by flake. >> refit {} push
++ Like a three-dimensional jigsaw. ~0.2 >> refit {"build":true} push
+And they found two kinds of work. >> card {"lines":["TWO KINDS","OF WORK"],"icon":"spear"} push
+Master knappers, working the best flint by the central hearth. >> knapping {"expert":true} push
++ And beginners, practising on second-rate blocks at the edges of the camp. ~0.2 >> knapping {"kid":true} push
+Some of the beginners' work is clumsy and heavy-handed. >> knapping {"kid":true} [900,700,1.4,1.5]
++ Some is nearly as good as the masters'. ~0.2 >> knapping {"kid":true,"expert":true} pull
+It looks like children and teenagers were learning there, >> knapping {"kid":true,"expert":true} push
++ within sight of the experts. ~0.3 >> knapping {"kid":true,"expert":true} [960,640,1.3,1.4]
+And how you teach matters. >> card {"lines":["HOW YOU","TEACH"],"icon":"book"} push
+In twenty fifteen, researchers taught nearly two hundred volunteers to make simple stone flakes. >> lab {"phase":"test"} push
+Some worked it out on their own. >> barChart {"rows":[["ALONE",13]],"title":"FLAKE QUALITY","max":24} push
++ Some watched an expert. >> barChart {"rows":[["ALONE",13],["WATCHED",15.6]],"title":"FLAKE QUALITY","max":24} push
++ And some were taught with words. ~0.2 >> barChart {"rows":[["ALONE",13],["WATCHED",15.6],["TAUGHT",23.6]],"title":"FLAKE QUALITY","max":24} push
+Just watching barely helped. >> barChart {"rows":[["ALONE",13],["WATCHED",15.6],["TAUGHT",23.6]],"title":"FLAKE QUALITY","max":24} [960,600,1.3,1.4]
++ Teaching with words nearly doubled their results. >> barChart {"rows":[["ALONE",13],["WATCHED",15.6],["TAUGHT",23.6]],"title":"FLAKE QUALITY","max":24} [1300,500,1.3,1.4]
+Some scientists think teaching may even be one of the reasons language evolved. ~0.3 >> fireCircle {"talk":true} push
+
+= stories warm
+And the best time for words was after dark. >> fireCircle {"talk":true} pull
+In the Kalahari, the anthropologist Polly Wiessner recorded what the Ju'hoansi talked about. >> research {"text":"POLLY WIESSNER"} push
++ During the day, and at night. >> talkChart {"step":1} push
+In the daytime, much of the talk was about work, and complaints. >> talkChart {"step":2} push
++ Who didn't share. Who was lazy. >> talkChart {"step":2} [560,560,1.3,1.4]
++ Fewer than one conversation in ten involved a story. ~0.2 >> talkChart {"step":2} [560,700,1.4,1.5]
+But by the fire at night, >> fireCircle {"talk":true} push
++ more than three quarters of the long conversations were stories. ~0.25 >> talkChart {"step":3} push
+Stories about people far away. >> storyFire {} push
++ About hunts, and mistakes, and how to behave. ~0.2 >> storyFire {"bubble":true} push
+That's where children learned the rules of their world. >> storyFire {"bubble":true} [960,520,1.2,1.3]
+And good storytellers mattered. >> card {"lines":["GOOD","STORYTELLERS"],"icon":"fire"} push
+Among the Agta of the Philippines, skilled storytellers were about twice as likely to be chosen as campmates. >> map {"region":"philippines","label":"THE AGTA"} push
++ And on average, they had more surviving children. ~0.2 >> storyFire {"elder":true} push
+Stories can also last an astonishingly long time. >> card {"lines":["STORIES","LAST"],"icon":"hourglass"} push
+In Australia, Aboriginal stories from twenty one places along the coast seem to describe the sea drowning the land. >> coastStory {"step":1} push
++ Something that happened more than seven thousand years ago. ~0.2 >> coastStory {"step":2} push
+That's hundreds of generations, >> coastStory {"step":2} [960,560,1.2,1.3]
++ passed down from one child to the next, with no writing at all. ~0.25 >> storyFire {"bubble":true} pull
+And those memory skills still work. >> card {"lines":["MEMORY","SKILLS"],"icon":"book"} push
+In twenty twenty one, medical students in Australia were taught an Aboriginal memory method for about half an hour. >> memoryWalk {"step":1} push
++ They linked a list of twenty items to places in a landscape, and to a story. >> memoryWalk {"step":2} push
+Afterwards, they were roughly three times more likely to remember the whole list perfectly. ~0.3 >> memoryWalk {"step":3} push
+And in the Pacific, knowledge like this could cross oceans. >> canoe {} push
+In nineteen seventy six, the navigator Mau Piailug guided a voyaging canoe from Hawaii to Tahiti. >> canoe {"stars":true} push
++ About four thousand kilometres, with no compass and no map. >> canoe {"stars":true} [960,400,1.2,1.3]
+He read the stars, the swells, and the birds. >> canoe {"stars":true,"birds":true} push
+His grandfather had started teaching him when he was a small child. ~0.3 >> canoe {"kid":true} push
+
+= schools cold
+So when did schools appear? >> think {"q1":"@schools","q2":"NEVER"} push
++ When something came along that you couldn't learn just by watching. ~0.2 >> card {"lines":["WRITING"],"icon":"book"} push
+More than five thousand years ago, in Mesopotamia, people invented writing. >> map {"region":"sumer","label":"MESOPOTAMIA"} push
++ Pressed into clay tablets with a reed. >> tablet {} push
+Hundreds of signs. Years to master. >> tablet {"signs":true} push
+By about four thousand years ago, Sumerian scribes were trained in schools. >> tabletSchool {} push
++ They called them tablet houses. ~0.2 >> card {"lines":["TABLET","HOUSES"],"icon":"book"} push
+Pupils sat on benches and copied texts, over and over. >> tabletSchool {} [960,700,1.3,1.4]
+And one of their stories survives. >> tablet {"signs":true} push
++ It's about a schoolboy's bad day. >> tabletSchool {"cane":true} push
+He's late. He makes mistakes. >> tabletSchool {"cane":true} [700,600,1.3,1.4]
++ And, again and again, he gets beaten for it. ~0.2 >> tabletSchool {"cane":true} [1200,560,1.4,1.5]
+Then his father invites the teacher home for dinner, and gives him presents. >> tabletSchool {"gift":true} push
++ And suddenly, the teacher has nothing but praise for the boy. ~0.25 >> tabletSchool {"gift":true} [1300,560,1.3,1.4]
+School, it seems, was tough from the very start. ~0.2 >> card {"lines":["TOUGH","FROM THE START"],"icon":"book"} push
+For thousands of years, school was only for a few. >> card {"lines":["ONLY","FOR A FEW"],"icon":"gold"} push
++ Scribes. Priests. The children of the rich. >> tabletSchool {} pull
+Then, in seventeen sixty three, Prussia ordered children in the countryside to go to school. >> map {"region":"prussia","label":"PRUSSIA"} push
+Massachusetts followed in eighteen fifty two. England in eighteen eighty. >> classroom {} push
++ Rows of desks. A bell. One teacher, facing a class of the same age. ~0.2 >> classroom {"bell":true} push
+That's the school you know. >> classroom {} pull
++ And in human terms, it's brand new. ~0.2 >> timeBar2 {"step":3,"none":"NO SCHOOLS","yes":"SCHOOL FOR ALL"} [1700,640,1.3,1.4]
+Even today, about two hundred and seventy three million children and young people are out of school. ~0.3 >> card {"lines":["273 MILLION","OUT OF SCHOOL"],"icon":"book"} push
+
+= camp wonder
+So what did ancient children have instead? >> think {"q1":"@instead","q2":"NEVER"} push
+Researchers who study hunter-gatherer children today keep finding the same thing. >> lab {"phase":"test"} push
+Children learn mostly by watching. >> kidsTrack {} push
++ By copying. >> knapping {"kid":true,"expert":true} push
++ And by playing. >> kidsPlay {"ages":true} push
+Adults do teach, especially hard skills like hunting. >> alloCare {"step":5} push
++ But in Hadza and BaYaka camps, children taught each other more often than adults taught them. ~0.3 >> kidsPlay {"ages":true} [700,760,1.4,1.5]
+Think about what that means. >> card {"lines":["THINK","ABOUT IT"],"icon":"book"} push
+There was no classroom. >> classroom {"empty":true} push
++ Because the whole camp was the classroom. ~0.2 >> campSchool {} pull
+Every adult was a teacher. >> campSchool {} [700,700,1.3,1.4]
++ Every older kid was a teacher. >> campSchool {} [1200,760,1.3,1.4]
+Every walk to the water hole was a lesson. >> kidForage {} push
++ Every story by the fire was a lesson. >> storyFire {"bubble":true} push
+And the lessons didn't stop at the end of the day. ~0.2 >> fireCircle {"talk":true} push
+There was no bell. >> card {"lines":["NO BELL."],"icon":"clock"} push
++ No tests. >> card {"lines":["NO TESTS."],"icon":"book"} push
++ But there was a final exam. >> card {"lines":["A FINAL","EXAM"],"icon":"magnifier"} push
++ Survival. ~0.3 >> groundSleep {"eyes":3} push
+And for three hundred thousand years, >> timeBar2 {"step":1} push
++ children passed it, generation after generation. ~0.3 >> campSchool {} pull
+
+= end warm
+Today, children learn things no hunter-gatherer ever needed. >> classroom {} push
++ Reading. Algebra. Chemistry. >> classroom {"test":true} [700,420,1.4,1.5]
+And schools have done amazing things for the world. ~0.15 >> card {"lines":["AMAZING","THINGS"],"icon":"book"} push
+But some of the oldest ways of learning still work. >> kidsPlay {"ages":true} push
++ Playing. Watching. Asking the older kids. >> kidsPlay {"ages":true} [960,700,1.2,1.3]
++ Listening to stories. ~0.25 >> storyFire {"bubble":true} push
+Fifty thousand years ago, >> rewind {} [960,540,1.04,1.1]
++ a five year old girl woke up in a camp. >> kidWake {} push
+She had no books. >> card {"lines":["NO BOOKS."],"icon":"book"} push
++ No teacher at the front of a room. >> classroom {"empty":true} push
++ But she had grandmothers, and aunts, and older cousins. >> alloCare {"step":3} push
++ She had stories by the fire. >> storyFire {"bubble":true} push
++ And a whole world to practise on. ~0.3 >> kidsPlay {"ages":true} pull
+You went to school. >> classroom {} push
++ She grew up inside one. >> campSchool {} [960,760,1.2,1.0]

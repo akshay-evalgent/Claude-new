@@ -72,19 +72,19 @@ function heroBig(o) {
 
 // Night version of the thumbnail world, lit by a big moon and a campfire.
 function thumbNight(o = {}) {
-  o = Object.assign({ hz: 620, seed: 5, moonX: 1500, moonY: 230 }, o);
+  o = Object.assign({ hz: 620, seed: 5, moonX: 1500, moonY: 230, sky: ['#3B3477', '#F4955A'], hills: '#6A4A6E', ground: '#8A6440', stars: 30 }, o);
   const r = rng(o.seed);
-  let s = `<defs><linearGradient id="nsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14204A"/><stop offset="1" stop-color="#3D4F8A"/></linearGradient>` +
+  let s = `<defs><linearGradient id="nsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${o.sky[0]}"/><stop offset="1" stop-color="${o.sky[1]}"/></linearGradient>` +
     `<radialGradient id="moonglow"><stop offset="0" stop-color="#FFF6D0" stop-opacity=".55"/><stop offset="1" stop-color="#FFF6D0" stop-opacity="0"/></radialGradient>` +
     `<radialGradient id="eyeg"><stop offset="0" stop-color="#FFE45C"/><stop offset="1" stop-color="#FFE45C" stop-opacity="0"/></radialGradient></defs>`;
   s += `<rect width="${TW}" height="${o.hz + 40}" fill="url(#nsky)"/>`;
-  for (let i = 0; i < 90; i++) s += `<circle cx="${f1(r() * TW)}" cy="${f1(r() * (o.hz - 80))}" r="${f1(1.5 + r() * 3)}" fill="#FFF6D8" opacity="${f1(0.5 + r() * 0.5)}"/>`;
+  for (let i = 0; i < o.stars; i++) s += `<circle cx="${f1(r() * TW)}" cy="${f1(r() * (o.hz * 0.45))}" r="${f1(1.5 + r() * 3)}" fill="#FFF6D8" opacity="${f1(0.5 + r() * 0.5)}"/>`;
   s += `<circle cx="${o.moonX}" cy="${o.moonY}" r="260" fill="url(#moonglow)"/><circle cx="${o.moonX}" cy="${o.moonY}" r="95" fill="#FFF3C4" ${S} stroke-width="5"/><circle cx="${o.moonX - 30}" cy="${o.moonY - 20}" r="16" fill="#E9DDAA"/><circle cx="${o.moonX + 26}" cy="${o.moonY + 30}" r="11" fill="#E9DDAA"/>`;
   const hp = [[-50, o.hz + 10]];
   for (let i = 0; i <= 8; i++) hp.push([i * 250 - 40, o.hz - 30 - r() * 80]);
   hp.push([2000, o.hz + 10]);
-  s += `<path d="${smooth(hp, false)} L2000 ${o.hz + 40} L-50 ${o.hz + 40} Z" fill="#26325A"/>`;
-  s += `<rect y="${o.hz}" width="${TW}" height="${THH - o.hz}" fill="#4A3F33"/>`;
+  s += `<path d="${smooth(hp, false)} L2000 ${o.hz + 40} L-50 ${o.hz + 40} Z" fill="${o.hills}"/>`;
+  s += `<rect y="${o.hz}" width="${TW}" height="${THH - o.hz}" fill="${o.ground}"/>`;
   return s;
 }
 function glowEyes(x, y, s = 1) {
@@ -105,6 +105,30 @@ function leafBed(x, y, s = 1) {
 function mozzie(x, y, s = 1) { return g(`translate(${x} ${y}) scale(${s})`, `<path d="M0 0 L40 6" ${S} stroke-width="3"/><ellipse cx="-4" cy="-12" rx="16" ry="6" fill="#EAF2F5" stroke="${C.ink}" stroke-width="2.5" transform="rotate(-30)"/><ellipse cx="6" cy="-12" rx="16" ry="6" fill="#EAF2F5" stroke="${C.ink}" stroke-width="2.5" transform="rotate(30)"/><ellipse rx="15" ry="6" fill="#3C3330"/><path d="M-6 4 l-10 16 M2 5 l-4 18 M8 4 l6 16" ${S} stroke-width="2.5"/>`); }
 
 const THUMBS = {
+  schoolRef() {
+    let bg = thumbWorld({ seed: 41, sunX: 1500, sunY: 240, sky: ['#6FBDE6', '#E6F4F2'] });
+    bg += hut(1780, 640, 0.9) + hut(1240, 625, 0.55) + fire(1560, 730, 0.45, 0.6);
+    const k = 22;
+    bg += person({ x: 1300, y: 900, s: 0.7, t: 1, seed: 4, face: 'laugh', bob: 0, ll: [-k, -k * 0.6], rl: [k, k * 0.6], la: [-150, -170], ra: [150, 170] });
+    bg += person({ x: 1450, y: 920, s: 0.55, t: 1, seed: 9, long: true, hairC: C.hair2, face: 'laugh', bob: 0, ll: [k, k * 0.6], rl: [-k, -k * 0.6], la: [-40, -60], ra: [40, 60] });
+    bg += person({ x: 1620, y: 960, s: 1.0, t: 1, seed: 14, face: 'happy', beard: true, bob: 0, hip: 50, ll: [118, 8], rl: [106, -2], la: [60, 100], ra: [60, 110], armsFront: true, flip: true });
+    bg += person({ x: 1470, y: 980, s: 0.6, t: 1, seed: 12, face: 'think', bob: 0, hip: 50, ll: [118, 8], rl: [106, -2], la: [60, 100], ra: [60, 110], armsFront: true });
+    let fg = heroBig(Object.assign({ x: 560, y: 1780, s: 3.35, seed: 3, face: 'laugh', la: [-150, -170], ra: [70, 150], armsFront: true,
+      front: (L, R) => g(`translate(${f1(R[0] + 14)} ${f1(R[1] - 10)}) rotate(-10) scale(.8)`, `<path d="M0 -70 Q34 0 0 70" fill="none" stroke="${C.woodD}" stroke-width="7" stroke-linecap="round"/><path d="M0 -70 L0 70" stroke="#E8DCCB" stroke-width="3"/>`) }, legsOff));
+    return { bg, fg, text: thumbText(['NO SCHOOL?'], 960, 215, 230, 'middle', 1780) };
+  },
+  schoolAlt() {
+    let bg = thumbWorld({ seed: 47, sunX: 600, sunY: 250, sky: ['#6FBDE6', '#E6F4F2'] });
+    bg += hut(260, 640, 0.9) + fire(640, 760, 0.5, 0.4);
+    bg += person({ x: 420, y: 960, s: 1.15, t: 1, seed: 14, keepHair: true, hairC: '#B9B2A6', beard: true, face: 'happy', bob: 0, hip: 50, ll: [118, 8], rl: [106, -2], la: [60, 100], ra: [30, 90], armsFront: true,
+      front: (L, R) => g(`translate(${f1(L[0])} ${f1(L[1])})`, `<ellipse rx="36" ry="28" fill="#7E7A72" ${S} stroke-width="4"/>`) + g(`translate(${f1(R[0])} ${f1(R[1])})`, `<ellipse rx="22" ry="17" fill="#9C978F" ${S} stroke-width="4"/>`) });
+    bg += person({ x: 760, y: 980, s: 0.7, t: 1, seed: 9, face: 'surprised', bob: 0, hip: 50, ll: [118, 8], rl: [106, -2], la: [40, 80], ra: [40, 80], flip: true });
+    bg += person({ x: 900, y: 975, s: 0.6, t: 1, seed: 12, long: true, hairC: C.hair2, face: 'think', bob: 0, hip: 50, ll: [118, 8], rl: [106, -2], la: [40, 80], ra: [40, 80], flip: true });
+    for (let i = 0; i < 5; i++) bg += `<path d="M${520 + i * 34} ${830 - (i % 2) * 40} l16 -6 l4 14 Z" fill="#B8B2A8" stroke="${C.ink}" stroke-width="2"/>`;
+    let fg = heroBig(Object.assign({ x: 1380, y: 1700, s: 3.0, seed: 21, face: 'think', flip: true, hairC: '#3C2A1E', la: [60, 100], ra: [40, 110], armsFront: true,
+      front: (L, R) => g(`translate(${f1(L[0])} ${f1(L[1] + 6)}) scale(.5)`, `<path d="M-50 30 L-60 -20 L-20 -50 L40 -40 L56 10 L20 46 Z" fill="#7E7A72" ${S} stroke-width="5"/>`) + g(`translate(${f1(R[0])} ${f1(R[1] - 4)}) scale(.5)`, `<ellipse rx="30" ry="24" fill="#A8A296" ${S} stroke-width="5"/>`) }, legsOff));
+    return { bg, fg, text: thumbText(['LEARNED HOW?'], 960, 215, 230, 'middle', 1780) };
+  },
   bedRef() {
     let bg = thumbNight({ seed: 31, moonX: 1520, moonY: 230 });
     bg += `<ellipse cx="1400" cy="880" rx="620" ry="190" fill="#F28C28" opacity=".28"/>` + fire(1760, 870, 0.75, 0.9);
