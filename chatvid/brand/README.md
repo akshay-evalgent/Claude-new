@@ -35,7 +35,7 @@ check the handle in YouTube Studio before committing to it.
 | `export/profile-picture-800.png` | Profile picture | 800×800, shown as a circle (min 98×98, max 4 MB) |
 | `export/banner-2560x1440.png` | Banner | 2560×1440 (max 6 MB). Text sits in the 1546×423 centre that every device shows; the side bubbles appear on desktop and TV only. `banner-safe-area-check.png` shows the safe area. |
 | `export/watermark-150.png` | Video watermark (subscribe button) | 150×150 transparent PNG; display: entire video |
-| `export/<episode>-thumb-a/b/c.png` | Thumbnails | 1280×720, under 2 MB. Upload all three with **Test & compare**. |
+| `export/<episode>-thumb-a/b/c.png` | Thumbnails | 1280×720, under 2 MB. Upload all three with **Test & compare**. Layouts: two bubbles with the robot (default), a photo circle next to the user bubble (`photo`), or a split-screen "VS" with a photo on the left and the AI on the right (`vs` + `bubbles`, see `episodes/elon-vs-grok.json`). |
 
 ## Channel description (About)
 
