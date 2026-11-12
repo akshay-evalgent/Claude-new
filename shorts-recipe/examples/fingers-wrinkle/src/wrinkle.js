@@ -427,12 +427,12 @@ shot(C.thats, C.so, (s) => {
     rightMats.forEach(m => { m.opacity = lerp(1, 0.38, k); m.depthWrite = k < 0.5; });
     [n1, n2, spark, ring].forEach(m => m.visible = k > 0.02);
     nM.uniforms.fade.value = k; n2.material.uniforms.fade.value = k * 0.5; nM.uniforms.p.value = ((t * 0.9) % 1.3) - 0.1;
-    spark.material.opacity = k * (0.5 + 0.5 * Math.abs(Math.sin(t * 11))); spark.scale.setScalar(0.7 + 0.3 * Math.sin(t * 13));
-    const rk = ((t * 1.4) % 1); ring.scale.setScalar(0.6 + rk * 1.4); ring.material.opacity = k * (1 - rk);
+    spark.material.opacity = k * (0.5 + 0.5 * Math.abs(Math.sin(t * 11))); spark.scale.setScalar(1.25 + 0.45 * Math.sin(t * 13));
+    const rk = ((t * 1.4) % 1); ring.scale.setScalar(0.9 + rk * 1.9); ring.material.opacity = k * (1 - rk);
     [[dl, -0.78, 0], [dr, 0.78, 0.5]].forEach(([d, x, o]) => { const ph = ((t + o) % 1.1) / 1.1; d.position.set(x, 3.35 - (ph < 0.4 ? 0 : 9 * Math.pow(ph - 0.4, 2)), 0.1); d.position.y -= 0.0; d.visible = ph > 0.05 && d.position.y > -1; d.position.set(x + 0.05, 3.32 - (ph < 0.4 ? ph * 0.1 : 0.04 + 9 * Math.pow(ph - 0.4, 2)), 0.32); });
     const slide = E.io(seg(t, C.thats, C.thats + 1.1));
     if (t < 15.56) { const pos = lv(V(-1.9, 2.3, 4.6), V(0.25, 2.4, 7.9), slide), tg = lv(V(-0.7, 1.5, 0), V(0.05, 1.3, 0), slide); setCam(s.cam, pos, tg, drift(t, 1.8), 38); }
-    else { const c = seg(t, 15.56, C.so); setCam(s.cam, lv(V(2.3, 2.3, 3.3), V(1.75, 2.0, 2.4), c), V(0.75, 1.75, 0.1), -4 + drift(t, 1.8), 38); }
+    else { const c = seg(t, 15.56, C.so); setCam(s.cam, lv(V(3.0, 2.6, 5.0), V(2.6, 2.4, 4.3), c), V(0.55, 1.55, 0), -4 + drift(t, 1.8), 38); }
   };
 });
 
