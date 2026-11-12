@@ -57,12 +57,12 @@ Generated from `edits/*.json`. **VO** = narrator (AI voice), **CLIP** = original
 - **COLD OPEN** `70:28.7–70:32.4`: "It's perfect. Absolutely perfect."
 - **VO:** This grandpa's roof was so damaged it was **leaking**… but he couldn't afford to fix it.
 - **CLIP** `1:12.3–1:13.8`: "Yeah I can't afford it right now."
-- **VO:** So a crew of roofer brothers offered to fix it for **free**… and then his wife told them something.
-- **CLIP** `4:09.6–4:14.9`: "forms of cancer and I'm starting chemo very soon."
+- **VO:** So a roofing crew of brothers offered to fix it for **free**… and then his wife told them something.
+- **CLIP** `4:09.0–4:14.9`: "I have two forms of cancer and I'm starting chemo very soon."
 - **VO:** So they didn't stop at the roof. For two weeks, they secretly rebuilt their **entire** home.
 - **VO:** Then, on reveal day… they moved the **van**.
 - **CLIP** `70:33.5–70:38.6`: "(muted reaction shot)"
-- **CLIP** `71:50.9–71:59.8`: "Oh, I'm going to be well. And you know you will, exactly. Yeah, I will. I know I am. God's in it. He's got my hand and he's in this with me."
+- **CLIP** `71:50.9–72:00.3`: "Oh, I'm going to be well. And you know you will, exactly. Yeah, I will. I know I am. God's in it. He's got my hand and he's in this with me."
 
 ## mom_house
 
