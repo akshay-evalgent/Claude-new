@@ -25,6 +25,7 @@
   .bub.ai { border-bottom-left-radius: .14em; }
   .bub.user { border-bottom-right-radius: .14em; }
   .bub .hl { color: var(--red); }
+  .word .hl { color: var(--yellow); }
   .bub.red .hl { color: var(--red); }
   .bub .tx { white-space: pre; }
   .bub .tx > .emo:first-child { margin-left: 0; }
@@ -148,6 +149,25 @@
         h += at(v.vsX ?? split - 120, v.vsY ?? 215, `<div class="word" style="font-size:${v.vsSize ?? 150}px;color:var(--red);-webkit-text-stroke:5px #000;paint-order:stroke fill;` +
           `text-shadow:0 0 40px rgba(255,46,77,.7);transform:rotate(-8deg)">VS</div>`);
       }
+      if (s.full) {
+        // full-bleed film frame (documentary thumbnails)
+        const f = s.full;
+        h += `<img src="../assets/media/${f.image}.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;` +
+          `object-position:${f.pos || '50% 40%'};transform-origin:${f.pos || '50% 40%'};transform:scale(${f.zoom || 1});filter:contrast(1.08) saturate(1.1)">` +
+          `<div style="position:absolute;inset:0;background:linear-gradient(${f.shade === 'right' ? '270deg' : '90deg'},rgba(0,0,0,.78) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 70%)"></div>`;
+      }
+      if (s.ring) {
+        const r = s.ring;
+        h += `<svg style="position:absolute;inset:0" width="1280" height="720"><circle cx="${r.x}" cy="${r.y}" r="${r.r}" fill="none" stroke="#ffd23f" stroke-width="10" style="filter:drop-shadow(0 0 8px rgba(0,0,0,.8))"/></svg>`;
+        if (r.text) h += at(r.tx ?? r.x + r.r + 20, r.ty ?? r.y - r.r, `<div class="word" style="font-size:${r.size || 62}px;color:#ffd23f;-webkit-text-stroke:3px #000;paint-order:stroke fill;white-space:nowrap;text-shadow:0 6px 20px rgba(0,0,0,.8)">${fmt(r.text)}</div>`);
+      }
+      if (s.headline) {
+        const hl = s.headline;
+        h += at(hl.x ?? 52, hl.y ?? 330, `<div class="word" style="font-size:${hl.size || 104}px;line-height:.98;color:#fff;-webkit-text-stroke:3px #000;paint-order:stroke fill;text-shadow:0 8px 30px rgba(0,0,0,.85)">` +
+          hl.lines.map((l) => fmt(l)).join('<br>') + '</div>');
+      }
+      if (s.botBadge) h += at(s.botBadge.x ?? 52, s.botBadge.y ?? 52, `<div style="display:flex;align-items:center;gap:14px;background:rgba(0,0,0,.6);border:3px solid var(--cyan);border-radius:18px;padding:10px 18px 10px 12px;box-shadow:0 0 24px rgba(25,227,255,.45)">` +
+        `${img('🤖', 64)}<div style="font:800 30px/1.1 var(--font);letter-spacing:2px;color:#fff">${s.botBadge.text || 'NARRATED BY AI'}</div></div>`);
       for (const b of s.bubbles || []) {
         const pos = b.right != null ? `right:${b.right}px;` : `left:${b.x}px;`;
         h += `<div style="position:absolute;${pos}top:${b.y}px">${bubble(b.text, b.side || 'ai', b.color || 'cyan', b.size || 64)}</div>`;

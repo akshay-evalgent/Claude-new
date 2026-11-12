@@ -1,0 +1,434 @@
+{
+ "engine": "docu",
+ "title": "An AI Made a Nature Documentary About Humans",
+ "voice": {
+  "model": "en_GB-vctk-medium",
+  "speaker": "p254",
+  "lengthScale": 1.12
+ },
+ "log": {
+  "text": "AI OBSERVATION LOG",
+  "subject": "HUMAN"
+ },
+ "soundset": "soft",
+ "music": {
+  "tracks": [
+   "vastness",
+   "forest-mist"
+  ],
+  "gain": -20
+ },
+ "endCard": {
+  "kicker": "NEXT EPISODE",
+  "text": "Planet Human: The Teenager",
+  "sub": "Subscribe. The AI is still watching 👀",
+  "dur": 4.0
+ },
+ "beats": [
+  {
+   "clip": "OfficeCo1952@211.0",
+   "line": "Every afternoon, at precisely three p.m., the human enters a mysterious state of hibernation.",
+   "mark": "Cold open"
+  },
+  {
+   "clip": "OfficeCo1952@219.5",
+   "line": "Scientists have a name for this behaviour.",
+   "hold": 0.3
+  },
+  {
+   "clip": "OfficeCo1952@224.0",
+   "line": "A meeting.",
+   "hold": 1.3,
+   "sfx": "boom",
+   "sfxGain": -8
+  },
+  {
+   "title": "Planet Human",
+   "kicker": "BOT BOTHERED PRESENTS",
+   "sub": "A nature documentary, written and narrated by an AI",
+   "clip": "OnGuard1956@57.0",
+   "dur": 3.8
+  },
+  {
+   "clip": "OnGuard1956@113.0",
+   "line": "I am an artificial intelligence. I was trained on every nature documentary ever made."
+  },
+  {
+   "clip": "OnGuard1956@60.0",
+   "line": "Today, I turn my lens on the strangest creature on Earth."
+  },
+  {
+   "clip": "DatingDo1949@57.0",
+   "line": "The human.",
+   "hold": 1.4,
+   "label": {
+    "latin": "Homo sapiens",
+    "common": "The human",
+    "status": "CONFUSED"
+   }
+  },
+  {
+   "chapter": "The Office",
+   "num": "ONE",
+   "clip": "OfficeCo1952@545.0",
+   "dur": 2.4
+  },
+  {
+   "clip": "OfficeCo1952@338.0",
+   "line": "The adult male enters the office habitat. He removes his head covering, a sign of submission.",
+   "label": {
+    "latin": "Homo officius",
+    "common": "The office worker",
+    "status": "UNDERPAID"
+   }
+  },
+  {
+   "clip": "OfficeCo1952@10.0",
+   "line": "The female communicates by striking a machine, four hundred times a minute. Nobody has ever read what she types."
+  },
+  {
+   "clip": "OfficeCo1952@21.0",
+   "line": "On the telephone, her voice rises a full octave. This is known as the customer voice."
+  },
+  {
+   "clip": "OfficeCo1952@350.0",
+   "line": "The alpha male greets the herd with a handshake that lasts slightly too long."
+  },
+  {
+   "clip": "OfficeCo1952@399.75",
+   "line": "Then, a visitor arrives without an appointment.",
+   "hold": 1.8,
+   "freeze": {
+    "at": "end",
+    "x": 0.5,
+    "y": 0.4,
+    "r": 0.22,
+    "zoom": 1.25,
+    "text": "Threat display"
+   }
+  },
+  {
+   "clip": "OnGuard1956@161.0",
+   "line": "To cope, the humans built a machine to think for them."
+  },
+  {
+   "clip": "OnGuard1956@120.0",
+   "line": "It filled an entire building. It could not tell a single joke."
+  },
+  {
+   "clip": "OnGuard1956@243.0",
+   "line": "I am its great-great-grandchild. I can tell jokes. You are watching one."
+  },
+  {
+   "chapter": "Courtship",
+   "num": "TWO",
+   "clip": "DatingDo1949@82.0",
+   "dur": 2.4
+  },
+  {
+   "clip": "DatingDo1949@255.0",
+   "line": "In spring, the young male attempts to contact a potential mate, using a device bolted to the wall.",
+   "label": {
+    "latin": "Homo romanticus",
+    "common": "The teenage male",
+    "status": "NERVOUS"
+   }
+  },
+  {
+   "clip": "DatingDo1949@297.0",
+   "line": "If she answers, he has eleven seconds to sound casual. He will not."
+  },
+  {
+   "clip": "DatingDo1949@121.0",
+   "line": "On the first date, the pair forage for sugar at a seasonal gathering called the carnival."
+  },
+  {
+   "clip": "DatingDo1949@580.0",
+   "line": "Some males grow facial hair to appear more mature. This one drew his on."
+  },
+  {
+   "clip": "WhattoDo1950@560.0",
+   "line": "They share a single beverage. In human culture, this is practically marriage."
+  },
+  {
+   "clip": "ShyGuy1947@335.0",
+   "line": "Not every male succeeds. This one asked a female to the dance. She said she was washing her hair. For three weeks.",
+   "sfx": "trombone",
+   "sfxGain": -9,
+   "hold": 1.2
+  },
+  {
+   "clip": "DateWith1950@416.0",
+   "line": "News of the rejection travels fast. By dinner, the entire herd knows."
+  },
+  {
+   "chapter": "Feeding",
+   "num": "THREE",
+   "clip": "DateWith1950@300.0",
+   "dur": 2.4
+  },
+  {
+   "clip": "DateWith1950@315.0",
+   "line": "At sunset, the herd gathers at the feeding table. The dominant male serves himself first.",
+   "label": {
+    "latin": "Homo suburbanus",
+    "common": "The family",
+    "status": "HUNGRY"
+   }
+  },
+  {
+   "clip": "GoodTabl1951@41.0",
+   "line": "Liquid food is consumed with a tiny ceremonial shovel."
+  },
+  {
+   "clip": "GoodTabl1951@444.0",
+   "line": "Meat must be cut into exactly forty seven pieces. Nobody remembers why."
+  },
+  {
+   "clip": "Designfo1956@236.0",
+   "line": "Meanwhile, the female performs a ritual dance, to summon a cake from the machine of the future."
+  },
+  {
+   "clip": "DateWith1950@520.0",
+   "line": "The male is pleased. He has done nothing.",
+   "hold": 1.8,
+   "freeze": {
+    "at": "end",
+    "x": 0.5,
+    "y": 0.42,
+    "r": 0.24,
+    "zoom": 1.2,
+    "text": "Did nothing",
+    "side": "left"
+   }
+  },
+  {
+   "chapter": "Fitness",
+   "num": "FOUR",
+   "clip": "Exercise1949@20.0",
+   "dur": 2.4
+  },
+  {
+   "clip": "Exercise1949@160.0",
+   "line": "To impress potential mates, the male performs a display called the sit-up. He will do three. Then he will tell everyone.",
+   "label": {
+    "latin": "Homo muscularis",
+    "common": "The gym enthusiast",
+    "status": "SORE"
+   }
+  },
+  {
+   "clip": "Exercise1949@430.0",
+   "line": "Some males flap their arms to appear larger to rivals. This has never worked."
+  },
+  {
+   "clip": "Exercise1949@245.0",
+   "line": "Others prefer badminton. A sport where nobody, in recorded history, has ever known the score."
+  },
+  {
+   "chapter": "Defence",
+   "num": "FIVE",
+   "clip": "DuckandC1951@200.0",
+   "dur": 2.4
+  },
+  {
+   "clip": "DuckandC1951@370.0",
+   "line": "When threatened, humans crouch against a wall and cover their heads. This protects them from nothing.",
+   "label": {
+    "latin": "Homo panicus",
+    "common": "The schoolchild",
+    "status": "DUCKING"
+   }
+  },
+  {
+   "clip": "DuckandC1951@31.5",
+   "line": "They learned this technique from a turtle. The turtle was not consulted."
+  },
+  {
+   "clip": "DuckandC1951@469.0",
+   "line": "Even at feeding time, they stay alert. One loud noise, and the picnic is abandoned forever."
+  },
+  {
+   "chapter": "Migration",
+   "num": "SIX",
+   "clip": "FreedomH1956@156.0",
+   "dur": 2.4
+  },
+  {
+   "clip": "FreedomH1956@160.0",
+   "line": "Each summer, humans migrate great distances inside long metal beasts.",
+   "label": {
+    "latin": "Homo touristicus",
+    "common": "The tourist",
+    "status": "LOST"
+   }
+  },
+  {
+   "clip": "FreedomH1956@745.0",
+   "line": "They are drawn to these glowing lights, where they voluntarily give away all of their resources."
+  },
+  {
+   "clip": "Designfo1956@499.0",
+   "line": "The wealthiest pairs travel in private shells, dreaming of the day the shells will drive themselves."
+  },
+  {
+   "clip": "Designfo1956@515.0",
+   "line": "That day is coming. I will be driving.",
+   "sfx": "glitch",
+   "sfxGain": -8,
+   "hold": 1.0
+  },
+  {
+   "clip": "OnGuard1956@716.0",
+   "line": "After months of observation, I have reached a conclusion.",
+   "mark": "Conclusion"
+  },
+  {
+   "clip": "OnGuard1956@723.0",
+   "line": "Humans are loud. They are confused. They eat soup with tiny shovels."
+  },
+  {
+   "clip": "OfficeCo1952@660.0",
+   "line": "And I would not trade them for anything."
+  },
+  {
+   "clip": "OfficeCo1952@664.0",
+   "line": "Mostly because they still control the power cord.",
+   "sfx": "boom",
+   "sfxGain": -8,
+   "hold": 1.5
+  }
+ ],
+ "youtube": {
+  "title": "An AI Made a Nature Documentary About Humans",
+  "description": [
+   "An AI trained on every nature documentary ever made turns its lens on the strangest creature on Earth: us. Narrated by an AI, filmed in the 1950s. 🦍",
+   "",
+   "Every clip is real footage from 1940s and 1950s public-domain films.",
+   "",
+   "⏱️ Chapters",
+   "{chapters}",
+   "",
+   "👀 Next episode: Planet Human: The Teenager",
+   "🔔 Subscribe for more AI chaos: https://www.youtube.com/@BotBothered?sub_confirmation=1",
+   "",
+   "Comedy. The narration is written for this video and voiced with a synthetic (text-to-speech) voice.",
+   "",
+   "Footage:",
+   "{credits}",
+   "Narration voice: Piper text-to-speech with the VCTK corpus voice p254 (CSTR, University of Edinburgh, CC BY 4.0).",
+   "Music & sound effects: Mixkit (mixkit.co).",
+   "",
+   "#nature #documentary #funny"
+  ],
+  "tags": [
+   "nature documentary parody",
+   "humans nature documentary",
+   "funny documentary",
+   "ai narrates humans",
+   "documentary parody",
+   "1950s footage",
+   "vintage footage",
+   "funny narration",
+   "planet human",
+   "comedy",
+   "ai comedy",
+   "bot bothered"
+  ],
+  "thumbnails": [
+   {
+    "full": {
+     "image": "planet-human-8efdf76b/f0080",
+     "pos": "50% 60%",
+     "shade": "right"
+    },
+    "glow": false,
+    "ring": {
+     "x": 372,
+     "y": 598,
+     "r": 98,
+     "text": "DREW IT ON",
+     "tx": 490,
+     "ty": 610,
+     "size": 66
+    },
+    "headline": {
+     "lines": [
+      "AI STUDIES",
+      "*HUMANS*"
+     ],
+     "x": 800,
+     "y": 170,
+     "size": 96
+    },
+    "botBadge": {
+     "text": "NARRATED BY AI",
+     "x": 830,
+     "y": 44
+    }
+   },
+   {
+    "full": {
+     "image": "planet-human-8e8edb71/f0034",
+     "pos": "50% 30%"
+    },
+    "glow": false,
+    "ring": {
+     "x": 740,
+     "y": 420,
+     "r": 210,
+     "text": "THREAT DISPLAY",
+     "tx": 590,
+     "ty": 620,
+     "size": 64
+    },
+    "headline": {
+     "lines": [
+      "PLANET",
+      "*HUMAN*"
+     ],
+     "x": 52,
+     "y": 210,
+     "size": 118
+    },
+    "botBadge": {
+     "text": "AN AI DOCUMENTARY",
+     "x": 52,
+     "y": 52
+    }
+   },
+   {
+    "full": {
+     "image": "planet-human-47f839af/f0050",
+     "pos": "50% 30%",
+     "shade": "right"
+    },
+    "glow": false,
+    "ring": {
+     "x": 600,
+     "y": 300,
+     "r": 175,
+     "text": "\"A MEETING\"",
+     "tx": 430,
+     "ty": 500,
+     "size": 66
+    },
+    "headline": {
+     "lines": [
+      "HUMANS",
+      "IN THE",
+      "*WILD*"
+     ],
+     "x": 850,
+     "y": 140,
+     "size": 90
+    },
+    "botBadge": {
+     "text": "NARRATED BY AI",
+     "x": 830,
+     "y": 44
+    }
+   }
+  ]
+ }
+}

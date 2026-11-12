@@ -131,6 +131,12 @@ def sample(name):
     if name.startswith("@media:"):
         _cache[name] = clip_audio(name[7:])
         return _cache[name]
+    if name.startswith("@voice:"):                   # narration: levelled, never trimmed
+        x = decode(os.path.join(ROOT, "assets", "voice", name[7:]))
+        rms = float(np.sqrt(np.mean(x[np.abs(x).max(axis=1) > 1e-3] ** 2))) or 1e-6
+        x = x * min(10 ** (-15 / 20) / rms, 10 ** (-1 / 20) / (np.abs(x).max() or 1))
+        _cache[name] = x.astype(np.float32)
+        return _cache[name]
     if name in SYNTH:
         _cache[name] = SYNTH[name]()
         return _cache[name]
@@ -224,7 +230,7 @@ def main(cues_path, out_path):
     for c in spec["cues"]:
         x = riser(c["dur"]) if c["s"] == "@riser" else sample(c["s"])
         x = resample(x, c.get("rate", 1.0))
-        if c.get("dur") and c["s"] != "@riser" and not c["s"].startswith("@media:"):
+        if c.get("dur") and c["s"] != "@riser" and not c["s"].startswith(("@media:", "@voice:")):
             x = fade_tail(x[: int(c["dur"] * SR)])
         x = x * (10 ** (c.get("g", 0) / 20))
         i = int(c["t"] * SR)

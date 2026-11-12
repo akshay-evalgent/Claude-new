@@ -1,0 +1,54 @@
+/* Documentary-style episodes: full-frame footage with a narrator, subtitles,
+   species lower-thirds, freeze-frame call-outs and an "AI observation log" overlay. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+#frame { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #000;
+  font-family: "Inter", sans-serif; color: #fff; -webkit-font-smoothing: antialiased; }
+
+#bg { position: absolute; inset: -80px; width: calc(100% + 160px); height: calc(100% + 160px); object-fit: cover;
+  filter: blur(40px) brightness(.38) saturate(.7); }
+#shot { position: absolute; inset: 0; overflow: hidden; }
+#clip { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transform-origin: 50% 50%; }
+
+#ring { position: absolute; inset: 0; width: 1920px; height: 1080px; display: none; }
+#ringC { fill: none; stroke: #ffd23f; stroke-width: 9; filter: drop-shadow(0 0 10px rgba(0,0,0,.7)); }
+#ringLabel { position: absolute; display: none; font: 900 64px/1 "Inter Display", sans-serif; letter-spacing: -1px;
+  color: #ffd23f; text-transform: uppercase; -webkit-text-stroke: 3px #000; paint-order: stroke fill;
+  text-shadow: 0 6px 20px rgba(0,0,0,.8); white-space: nowrap; }
+
+#grain { position: absolute; inset: 0; opacity: .085; mix-blend-mode: overlay; pointer-events: none; }
+#vignette { position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%); }
+
+#log { position: absolute; left: 54px; top: 44px; font: 600 24px/1 "JetBrains Mono", monospace; letter-spacing: 2px;
+  color: rgba(255,255,255,.88); text-shadow: 0 2px 6px rgba(0,0,0,.8); }
+#rec { color: #ff3b3b; }
+#tc { position: absolute; right: 54px; top: 44px; font: 600 24px/1 "JetBrains Mono", monospace; letter-spacing: 2px;
+  color: rgba(255,255,255,.75); text-shadow: 0 2px 6px rgba(0,0,0,.8); }
+
+#label { position: absolute; left: 90px; bottom: 230px; display: none; padding-left: 26px;
+  border-left: 6px solid #ffd23f; text-shadow: 0 3px 12px rgba(0,0,0,.85); }
+#latin { font: italic 700 58px/1.05 "Inter Display", serif; letter-spacing: -.5px; }
+#common { font: 600 30px/1.3 "Inter", sans-serif; margin-top: 6px; color: rgba(255,255,255,.92); }
+#status { font: 700 24px/1.3 "JetBrains Mono", monospace; margin-top: 8px; color: #ffd23f; letter-spacing: 1px; }
+
+#subs { position: absolute; left: 0; right: 0; bottom: 86px; text-align: center; display: none; }
+#subText { display: inline-block; max-width: 1500px; padding: 10px 22px 12px; border-radius: 10px;
+  background: rgba(0,0,0,.62); font: 600 46px/1.25 "Inter", sans-serif; color: #fff; }
+
+#card { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(0,0,0,.55); text-align: center; }
+#cardKicker { font: 700 30px/1 "JetBrains Mono", monospace; letter-spacing: 10px; color: #ffd23f; margin-bottom: 26px; }
+#cardTitle { font: 900 150px/0.95 "Inter Display", sans-serif; letter-spacing: 6px; text-transform: uppercase;
+  text-shadow: 0 10px 40px rgba(0,0,0,.7); }
+#cardSub { font: 500 38px/1.3 "Inter", sans-serif; margin-top: 30px; color: rgba(255,255,255,.88); }
+
+#endcard { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center;
+  gap: 26px; background: radial-gradient(ellipse at center, #17171b, #050506); text-align: center; padding: 0 160px; }
+#ecKicker { font: 800 32px/1 "JetBrains Mono", monospace; letter-spacing: 8px; color: #9aa3ad; }
+#ecText { font: 900 92px/1.05 "Inter Display", sans-serif; letter-spacing: -1px; text-wrap: balance; }
+#ecSub { font: 600 34px/1.3 "Inter", sans-serif; color: #ffd23f; }
+
+#credit { position: absolute; right: 24px; bottom: 18px; font: 500 15px "Inter", sans-serif; color: rgba(255,255,255,.7);
+  text-shadow: 0 1px 3px rgba(0,0,0,.9); }
+#flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }

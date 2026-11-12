@@ -23,6 +23,16 @@ const epPath = args.find((a) => a.endsWith('.json'));
 if (!epPath) { console.error('usage: node chatvid/render.mjs <episode.json> [--out file.mp4] [--fps 30] [--scale 1] [--stills t1,t2]'); process.exit(1); }
 const ep = JSON.parse(fs.readFileSync(epPath, 'utf8'));
 if (opt('interface')) ep.interface = opt('interface');
+// documentary episodes: clips and narration timings come from tools/docu_prepare.py
+const baseSlug = path.basename(epPath, '.json');
+ep.__slug = baseSlug;
+const voiceDir = path.join(HERE, 'assets', 'voice', baseSlug);
+if (ep.engine === 'docu') {
+  const planFile = path.join(voiceDir, 'plan.json');
+  if (!fs.existsSync(planFile)) { console.error(`run: python3 chatvid/tools/docu_prepare.py ${epPath}`); process.exit(1); }
+  ep.__plan = JSON.parse(fs.readFileSync(planFile, 'utf8'));
+  ep.media = { ...(ep.media || {}), ...JSON.parse(fs.readFileSync(path.join(voiceDir, 'media.json'), 'utf8')) };
+}
 const creditsPath = path.join(HERE, 'assets', 'media', 'credits.json');
 const allCredits = fs.existsSync(creditsPath) ? JSON.parse(fs.readFileSync(creditsPath, 'utf8')) : {};
 ep.__credits = Object.fromEntries(Object.keys(ep.media || {}).filter((k) => allCredits[k]).map((k) => [k, allCredits[k]]));
@@ -44,7 +54,7 @@ const out = opt('out', path.join(outDir, `${slug}.mp4`));
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: scale });
 page.on('pageerror', (e) => console.error('page error:', e.message));
-await page.goto(pathToFileURL(path.join(HERE, 'engine', 'index.html')).href);
+await page.goto(pathToFileURL(path.join(HERE, ep.engine === 'docu' ? 'docu' : 'engine', 'index.html')).href);
 const plan = await page.evaluate((e) => window.boot(e), ep);
 console.log(`${slug}: ${plan.duration.toFixed(2)} s, ${plan.cues.length} sound cues, ${Math.ceil(plan.duration * fps)} frames`);
 
@@ -52,7 +62,8 @@ if (args.includes('--upload')) {
   // title, description (with chapters from the exchanges marked "chapter") and tags
   const yt = ep.youtube || {};
   const mmss = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
-  const chapters = ep.exchanges.map((x, i) => ({ t: plan.exchanges[i], name: x.chapter })).filter((c) => c.name);
+  const items = ep.exchanges || ep.beats;
+  const chapters = items.map((x, i) => ({ t: plan.exchanges[i], name: x.mark || x.chapter })).filter((c) => c.name);
   if (chapters.length) chapters[0].t = 0;                 // YouTube needs the first chapter at 0:00
   const chapterText = chapters.map((c) => `${mmss(c.t)} ${c.name}`).join('\n');
   const LIC = { 'CC BY 2.0': 'https://creativecommons.org/licenses/by/2.0/', 'CC BY 3.0': 'https://creativecommons.org/licenses/by/3.0/',
@@ -71,8 +82,12 @@ if (args.includes('--upload')) {
 }
 
 if (args.includes('--plan')) {
-  const mmss = (t) => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, '0')}`;
-  plan.exchanges.forEach((t, i) => console.log(`  ${String(i + 1).padStart(2)}  ${mmss(t)}  ${ep.exchanges[i].user}`));
+  const mmss = (t) => { const d = Math.round(t * 10); return `${Math.floor(d / 600)}:${String(Math.floor((d % 600) / 10)).padStart(2, '0')}.${d % 10}`; };
+  const items = ep.exchanges || ep.beats;
+  plan.exchanges.forEach((t, i) => {
+    const x = items[i];
+    console.log(`  ${String(i + 1).padStart(2)}  ${mmss(t)}  ${x.user || x.line || (x.title ? 'TITLE: ' + x.title : '') || (x.chapter ? 'CHAPTER: ' + x.chapter : '')}`);
+  });
   await browser.close();
   process.exit(0);
 }

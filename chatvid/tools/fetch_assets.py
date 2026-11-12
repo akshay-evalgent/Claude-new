@@ -43,6 +43,9 @@ MUSIC = {
     "comical": 2,      # Comical
     "keep-smiling": 15,
     "okay": 780,
+    "vastness": 184,           # Vastness (documentary / ambient)
+    "forest-mist": 148,        # Forest Mist Whispers
+    "lifes-a-movie": 322,      # Life's a Movie (epic)
 }
 
 # Fluent folder names follow CLDR short names; these differ from Python's

@@ -169,3 +169,44 @@ its zoomed size, not upscaled from a recording.
   found on soundboard sites are usually unlicensed copies and can get monetised
   videos claimed; prefer these, or meme sounds you have a licence for.
 - Emoji: [Microsoft Fluent Emoji](https://github.com/microsoft/fluentui-emoji), MIT licence.
+
+## Documentary episodes (`"engine": "docu"`)
+
+A second format: full-frame footage with an AI narrator, in the style of a nature
+documentary. Example: `episodes/planet-human.json` ("An AI Made a Nature
+Documentary About Humans").
+
+```bash
+python3 chatvid/tools/docu_prepare.py chatvid/episodes/planet-human.json
+```
+
+```bash
+node chatvid/render.mjs chatvid/episodes/planet-human.json
+```
+
+`docu_prepare.py` speaks every narration line with Piper text-to-speech, times
+each beat to its line, and cuts each beat's clip to exactly that length. Only
+new or edited lines are re-voiced and re-cut. Then render as usual (`--plan`,
+`--stills`, `--remix` and `--upload` all work).
+
+| Episode field | Meaning |
+|---|---|
+| `voice` | `{"model": "en_GB-vctk-medium", "speaker": "p254", "lengthScale": 1.12}`: a Piper voice (downloaded on first use). VCTK voices are CC BY 4.0; LibriVox-trained voices (norman, john, cori) are public domain. Avoid voices whose dataset is non-commercial (e.g. ryan). |
+| `log` | The recording overlay: `{"text": "AI OBSERVATION LOG", "subject": "HUMAN"}`; the film's year is added automatically. |
+| `beats` | The script, in order (below). |
+| `endCard` | `{"kicker", "text", "sub", "dur"}`. |
+
+| Beat field | Meaning |
+|---|---|
+| `clip` | `"OfficeCo1952@212.5"` (Internet Archive id @ start second) or `"nasa:<id>@12"`. |
+| `line` | Narration. Burned-in subtitles are generated from it (`noSubs` turns them off). |
+| `hold` | Seconds after the line ends (default 0.55). |
+| `label` | Species lower-third: `{"latin": "Homo officius", "common": "The office worker", "status": "UNDERPAID"}`. |
+| `freeze` | Freeze-frame call-out: `{"at": "end", "x": 0.5, "y": 0.4, "r": 0.22, "zoom": 1.25, "text": "Threat display"}` (x/y/r as fractions of the picture; `"at": "end"` = when the line finishes). |
+| `sfx`, `sfxAt`, `sfxGain` | A sound on the beat (default: when the line ends). |
+| `title` / `chapter` | Title card (`kicker`, `sub`) or chapter card (`num`), optionally over a `clip`. |
+| `mark` | Chapter name for the YouTube description when the beat isn't a chapter card. |
+| `audio` | Play the clip's original sound under the narration. |
+
+Thumbnails for documentaries can use a full-bleed frame: `full` (+ `shade`),
+`ring`, `headline` and `botBadge` in `youtube.thumbnails`.
