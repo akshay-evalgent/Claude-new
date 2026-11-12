@@ -1,0 +1,54 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.00,Short,,0,0,0,,Your fingertips start
+Dialogue: 0,0:00:01.00,0:00:01.44,Short,,0,0,0,,to wrinkle
+Dialogue: 0,0:00:01.44,0:00:02.60,Short,,0,0,0,,after about five
+Dialogue: 0,0:00:02.60,0:00:03.06,Short,,0,0,0,,minutes in
+Dialogue: 0,0:00:03.06,0:00:03.78,Short,,0,0,0,,the bath
+Dialogue: 0,0:00:03.78,0:00:04.24,Short,,0,0,0,,but it's not
+Dialogue: 0,0:00:04.24,0:00:05.16,Short,,0,0,0,,just because they're
+Dialogue: 0,0:00:05.16,0:00:06.50,Short,,0,0,0,,soaking up water
+Dialogue: 0,0:00:06.50,0:00:07.30,Short,,0,0,0,,You see
+Dialogue: 0,0:00:07.30,0:00:08.00,Short,,0,0,0,,your nerves are
+Dialogue: 0,0:00:08.00,0:00:08.78,Short,,0,0,0,,actually telling
+Dialogue: 0,0:00:08.78,0:00:09.58,Short,,0,0,0,,the blood vessels
+Dialogue: 0,0:00:09.58,0:00:10.42,Short,,0,0,0,,under your skin
+Dialogue: 0,0:00:10.42,0:00:10.98,Short,,0,0,0,,to shrink
+Dialogue: 0,0:00:10.98,0:00:11.58,Short,,0,0,0,,which pulls
+Dialogue: 0,0:00:11.58,0:00:12.36,Short,,0,0,0,,the skin down
+Dialogue: 0,0:00:12.36,0:00:13.68,Short,,0,0,0,,into those ridges
+Dialogue: 0,0:00:13.68,0:00:14.50,Short,,0,0,0,,That's why people
+Dialogue: 0,0:00:14.50,0:00:15.56,Short,,0,0,0,,with damaged nerves
+Dialogue: 0,0:00:15.56,0:00:16.20,Short,,0,0,0,,in their fingers
+Dialogue: 0,0:00:16.20,0:00:16.82,Short,,0,0,0,,don't wrinkle
+Dialogue: 0,0:00:16.82,0:00:17.70,Short,,0,0,0,,at all
+Dialogue: 0,0:00:17.70,0:00:18.16,Short,,0,0,0,,So why would
+Dialogue: 0,0:00:18.16,0:00:19.36,Short,,0,0,0,,your body bother?
+Dialogue: 0,0:00:19.36,0:00:20.08,Short,,0,0,0,,Scientists think
+Dialogue: 0,0:00:20.08,0:00:20.96,Short,,0,0,0,,the ridges work
+Dialogue: 0,0:00:20.96,0:00:22.46,Short,,0,0,0,,like tire treads
+Dialogue: 0,0:00:22.46,0:00:23.48,Short,,0,0,0,,channeling water away
+Dialogue: 0,0:00:23.48,0:00:24.06,Short,,0,0,0,,so you can
+Dialogue: 0,0:00:24.06,0:00:25.28,Short,,0,0,0,,grip wet things
+Dialogue: 0,0:00:25.28,0:00:26.60,Short,,0,0,0,,In one experiment
+Dialogue: 0,0:00:26.60,0:00:27.44,Short,,0,0,0,,people moved wet
+Dialogue: 0,0:00:27.44,0:00:28.20,Short,,0,0,0,,marbles faster
+Dialogue: 0,0:00:28.20,0:00:29.36,Short,,0,0,0,,with wrinkled fingers
+Dialogue: 0,0:00:29.36,0:00:30.08,Short,,0,0,0,,than with dry
+Dialogue: 0,0:00:30.08,0:00:30.78,Short,,0,0,0,,ones
+Dialogue: 0,0:00:30.78,0:00:31.20,Short,,0,0,0,,which means
+Dialogue: 0,0:00:31.20,0:00:31.92,Short,,0,0,0,,your body has
+Dialogue: 0,0:00:31.92,0:00:32.30,Short,,0,0,0,,been putting
+Dialogue: 0,0:00:32.30,0:00:33.30,Short,,0,0,0,,on rain tires
+Dialogue: 0,0:00:33.30,0:00:34.52,Short,,0,0,0,,this whole time
