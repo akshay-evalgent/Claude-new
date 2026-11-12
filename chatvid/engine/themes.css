@@ -129,5 +129,10 @@ body.t-void #greet { font-size: 40px; font-weight: 700; letter-spacing: -1px; }
   justify-content: center; gap: 28px; background: radial-gradient(ellipse at center, #17171b, #050506);
   font-family: "Inter", sans-serif; text-align: center; padding: 0 160px; }
 #ecKicker { font-size: 34px; font-weight: 800; letter-spacing: 8px; color: #9aa3ad; }
-#ecText { font-size: 82px; font-weight: 800; line-height: 1.12; letter-spacing: -1.5px; color: #fff; max-width: 1500px; }
+#ecText { font-size: 76px; font-weight: 800; line-height: 1.12; letter-spacing: -1.5px; color: #fff; max-width: 1640px; text-wrap: balance; }
 #ecText .emo { width: 1.05em; height: 1.05em; vertical-align: -0.16em; }
+
+/* ---------- jumbo emoji-only replies ---------- */
+.msg.ai.jumbo .body { font-size: 30px; line-height: 46px; }
+.msg.ai.jumbo .body .emo { width: 1.3em; height: 1.3em; vertical-align: -0.3em; margin-right: .04em; }
+.bubble .emo + .emo { margin-left: .04em; }

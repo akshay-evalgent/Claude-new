@@ -80,6 +80,29 @@ EMOJI_NAME_OVERRIDES = {
     "🍕": "Pizza",
     "🎉": "Party popper",
     "🎂": "Birthday cake",
+    "✖": "Multiply",
+    "❓": "Red question mark",
+    "❤": "Red heart",
+    "➕": "Plus",
+    "➖": "Minus",
+    "➗": "Divide",
+    "➡": "Right arrow",
+    "⭐": "Star",
+    "🅿": "P button",
+    "🆘": "Sos button",
+    "🐑": "Ewe",
+    "🐻‍❄": "Polar bear",
+    "👈": "Backhand index pointing left",
+    "👉": "Backhand index pointing right",
+    "👍": "Thumbs up",
+    "👎": "Thumbs down",
+    "💤": "Zzz",
+    "💥": "Collision",
+    "😺": "Grinning cat",
+    "🟦": "Blue square",
+    "🤷": "Person shrugging",
+    "🦁": "Lion",
+    "🧊": "Ice",
     "♾️": "Infinity",
     "♾": "Infinity",
     "🤫": "Shushing face",
@@ -110,8 +133,11 @@ def emoji_key(g):
 
 
 def emoji_names(g):
-    if g in EMOJI_NAME_OVERRIDES:
-        yield EMOJI_NAME_OVERRIDES[g]
+    bare = g.replace("\ufe0f", "")
+    for k in (g, bare):
+        if k in EMOJI_NAME_OVERRIDES:
+            yield EMOJI_NAME_OVERRIDES[k]
+            break
     base = "".join(c for c in g if ord(c) != 0xFE0F)
     try:
         n = unicodedata.name(base).lower()

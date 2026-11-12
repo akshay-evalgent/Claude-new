@@ -148,6 +148,9 @@
       u.innerHTML = `<div class="bubble">${rich(ex.user)}</div>`;
       const a = document.createElement('div'); a.className = 'msg ai' + (ex.wall ? ' wall' : '');
       const toks = ex.wall && ex.wall.text ? wallTokens(ex) : tokenize(aiText(ex));
+      // short emoji-only replies render big, like "jumbo" emoji in messaging apps
+      const emoOnly = !ex.wall && toks.length && toks.every((t) => t.emo || t.sp) && toks.filter((t) => t.emo).length <= 10;
+      if (emoOnly) a.classList.add('jumbo');
       a.innerHTML = `<div class="avatar"></div><div class="body">${toks.map((t) => `<span class="t">${t.emo ? emoImg(t.s) : esc(t.s)}</span>`).join('')}</div>` +
         `<div class="actions">${ICONS}</div><div class="dots"><i></i></div>`;
       thread.append(u, a);
@@ -158,6 +161,9 @@
 
   function punchSpans(x) {
     const n = x.ex.punch === true || x.ex.punch == null ? 2 : x.ex.punch;
+    if (n === 0) {                       // just the final token (usually the last emoji)
+      for (let j = x.toks.length - 1; j >= 0; j--) if (!x.toks[j].sp) return [x.spans[j]];
+    }
     const idx = []; let words = 0;
     for (let j = x.toks.length - 1; j >= 0; j--) {
       const t = x.toks[j];

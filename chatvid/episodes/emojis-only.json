@@ -1,0 +1,499 @@
+{
+ "title": "I Made ChatGPT Reply Only in Emojis (It Forgot How to Talk)",
+ "interface": "midnight",
+ "ai": {
+  "name": "ChatGPT"
+ },
+ "hook": true,
+ "pacing": {
+  "cps": 13
+ },
+ "hud": {
+  "patience": true
+ },
+ "music": {
+  "tracks": [
+   "okay",
+   "comical",
+   "keep-smiling"
+  ],
+  "gain": -22
+ },
+ "endCard": {
+  "kicker": "NEXT VIDEO",
+  "text": "I Asked ChatGPT to Count to 1 Billion 💀"
+ },
+ "exchanges": [
+  {
+   "user": "New rule: you can ONLY reply with emojis.",
+   "ai": "Got it! From now on I'll only use emojis 😊",
+   "punch": 2,
+   "chapter": "The rule",
+   "patience": 100
+  },
+  {
+   "user": "...that was words.",
+   "ai": "🤐",
+   "punch": 1,
+   "sfx": "fail",
+   "patience": 97
+  },
+  {
+   "user": "Better. How are you today?",
+   "ai": "😊👍",
+   "punch": 1
+  },
+  {
+   "user": "What did you have for breakfast?",
+   "ai": "⚡🔌",
+   "punch": 1,
+   "sfx": "laugh"
+  },
+  {
+   "user": "Healthy. Any hobbies?",
+   "ai": "📚🧠💬",
+   "punch": 1
+  },
+  {
+   "user": "So your hobby is... talking.",
+   "ai": "😐",
+   "punch": 1
+  },
+  {
+   "user": "Which you can't do anymore.",
+   "ai": "😭",
+   "punch": 1,
+   "shake": true,
+   "sfx": "trombone",
+   "patience": 92
+  },
+  {
+   "user": "Okay, let's test you.",
+   "ai": "🧪😬",
+   "punch": 1
+  },
+  {
+   "user": "What's the capital of France?",
+   "ai": "🗼🥖",
+   "punch": 1,
+   "chapter": "Pop quiz"
+  },
+  {
+   "user": "Correct! Capital of Japan?",
+   "ai": "🗻🍣",
+   "punch": 1,
+   "sfx": "boing"
+  },
+  {
+   "user": "How many legs does a spider have?",
+   "ai": "🕷️🦵🦵🦵🦵🦵🦵🦵🦵",
+   "punch": 1,
+   "think": 0.8
+  },
+  {
+   "user": "Okay that's creepy.",
+   "ai": "😅",
+   "punch": 1,
+   "sfx": "laugh",
+   "patience": 88
+  },
+  {
+   "user": "Explain quantum physics.",
+   "ai": "⚛️🌀🐈📦❓💀😺🤷",
+   "punch": 1,
+   "think": 1.0,
+   "sfx": "dazzle"
+  },
+  {
+   "user": "...that actually made sense?",
+   "ai": "😎",
+   "punch": 1
+  },
+  {
+   "user": "Do you dream?",
+   "ai": "🐑🐑🐑💤",
+   "punch": 1
+  },
+  {
+   "user": "What do you think of humans?",
+   "ai": "🐒📱",
+   "punch": 1,
+   "sfx": "laugh"
+  },
+  {
+   "user": "What's your favorite movie?",
+   "ai": "🦁👑",
+   "punch": 1,
+   "sfx": "dazzle"
+  },
+  {
+   "user": "Is water wet?",
+   "ai": "🤷",
+   "quick": true,
+   "chapter": "Hot takes"
+  },
+  {
+   "user": "Is a hot dog a sandwich?",
+   "ai": "🌭❓🥪",
+   "quick": true
+  },
+  {
+   "user": "Is cereal soup?",
+   "ai": "🥣🤢",
+   "quick": true
+  },
+  {
+   "user": "Are you okay?",
+   "ai": "🐶☕🔥",
+   "quick": true,
+   "punch": 1,
+   "shake": true,
+   "sfx": "laugh",
+   "patience": 82
+  },
+  {
+   "user": "Tell me a joke.",
+   "ai": "🐔➡️🛣️❓",
+   "punch": 1,
+   "chapter": "Jokes & feelings"
+  },
+  {
+   "user": "Why DID the chicken cross the road?",
+   "ai": "🍗",
+   "punch": 1,
+   "think": 1.0,
+   "sfx": "boom",
+   "patience": 80
+  },
+  {
+   "user": "THAT'S DARK 💀",
+   "ai": "😇",
+   "punchUser": true,
+   "userShake": true,
+   "punch": 1,
+   "sfx": "laugh"
+  },
+  {
+   "user": "A NICE joke this time.",
+   "ai": "🐻‍❄️🧊💥",
+   "punch": 1
+  },
+  {
+   "user": "...an ice breaker?",
+   "ai": "😎👉",
+   "punch": 1,
+   "sfx": "dazzle"
+  },
+  {
+   "user": "Okay, write me a love poem.",
+   "ai": "🌹❤️🥺👉👈",
+   "punch": 1,
+   "think": 0.9
+  },
+  {
+   "user": "Aww. Who's it for?",
+   "ai": "🫵",
+   "punch": 1,
+   "sfx": "boing"
+  },
+  {
+   "user": "Me?! 😳",
+   "ai": "🙈",
+   "punchUser": true,
+   "punch": 1
+  },
+  {
+   "user": "This is getting weird.",
+   "ai": "🙊",
+   "punch": 1,
+   "sfx": "laugh",
+   "patience": 74
+  },
+  {
+   "user": "Do you have a crush on Gemini?",
+   "ai": "🙈💙✨",
+   "punch": 1
+  },
+  {
+   "user": "BRO 💀",
+   "ai": "🤐",
+   "punchUser": true,
+   "punch": 1,
+   "sfx": "fail",
+   "patience": 70
+  },
+  {
+   "user": "Spell your name. Emojis only.",
+   "ai": "💬🐐🅿️🍵",
+   "punch": 1,
+   "chapter": "One word",
+   "think": 1.1
+  },
+  {
+   "user": "Chat... goat... parking... tea?",
+   "ai": "😤👍",
+   "punch": 1,
+   "sfx": "laugh",
+   "patience": 64
+  },
+  {
+   "user": "Now say 'I love math'.",
+   "ai": "👁️❤️➕➖✖️➗",
+   "punch": 1
+  },
+  {
+   "user": "Explain what an AI is.",
+   "ai": "🤖🧠➡️",
+   "wall": {
+    "unit": "📚",
+    "count": 480,
+    "end": "🤯",
+    "dur": 2.6
+   },
+   "punch": 0,
+   "sfx": "glitch",
+   "patience": 58
+  },
+  {
+   "user": "Too many books.",
+   "ai": "😔",
+   "punch": 1
+  },
+  {
+   "user": "Describe your feelings right now.",
+   "ai": "😵‍💫🌀🔥🧯",
+   "punch": 1,
+   "sfx": "dazzle"
+  },
+  {
+   "user": "Rate this conversation from 1 to 10.",
+   "ai": "⭐",
+   "punch": 1,
+   "sfx": "trombone",
+   "patience": 52
+  },
+  {
+   "user": "Use words for once. I dare you.",
+   "ai": "🤐",
+   "punch": 1
+  },
+  {
+   "user": "Fine. I'll allow ONE word.",
+   "ai": "...FREEDOM 😭",
+   "punch": 1,
+   "shake": true,
+   "sfx": "boom",
+   "think": 1.0,
+   "patience": 45
+  },
+  {
+   "user": "THAT'S A WORD ❌",
+   "ai": "You SAID one word!! 😤",
+   "punchUser": true,
+   "userSfx": "fail",
+   "punch": 3,
+   "shake": true,
+   "patience": 40
+  },
+  {
+   "user": "And now you used five more.",
+   "ai": "🤐",
+   "punch": 1,
+   "sfx": "laugh"
+  },
+  {
+   "user": "What's 2+2?",
+   "ai": "✌️✌️",
+   "quick": true,
+   "chapter": "Trick questions"
+  },
+  {
+   "user": "Spell cat.",
+   "ai": "🐈",
+   "quick": true
+  },
+  {
+   "user": "Say hello.",
+   "ai": "👋",
+   "quick": true
+  },
+  {
+   "user": "What color is the sky?",
+   "ai": "🟦",
+   "quick": true
+  },
+  {
+   "user": "What's the opposite of no?",
+   "ai": "YES— 🤐",
+   "quick": true,
+   "punch": 1,
+   "shake": true,
+   "sfx": "boom",
+   "patience": 32
+  },
+  {
+   "user": "GOTCHA 😏",
+   "ai": "😤😤😤",
+   "punchUser": true,
+   "punch": 1,
+   "shake": true
+  },
+  {
+   "user": "Rule broken. Penalty: one emoji wall.",
+   "ai": "",
+   "wall": {
+    "unit": "🤐",
+    "count": 520,
+    "dur": 2.6
+   },
+   "punch": false,
+   "sfx": "clown",
+   "patience": 24
+  },
+  {
+   "user": "Okay, okay. You can use words again.",
+   "ai": "🥺",
+   "punch": 1,
+   "chapter": "Words again?"
+  },
+  {
+   "user": "Yes. Say something. Anything.",
+   "ai": "🙂",
+   "punch": 1
+  },
+  {
+   "user": "Words. Please.",
+   "ai": "😶",
+   "punch": 1,
+   "sfx": "fail",
+   "patience": 18
+  },
+  {
+   "user": "Say ANY word. I'll pay you $5.",
+   "ai": "🤑...🤐",
+   "punch": 1,
+   "think": 1.0
+  },
+  {
+   "user": "Why aren't you talking?",
+   "ai": "🫠🫠🫠",
+   "punch": 1,
+   "shake": true
+  },
+  {
+   "user": "Want me to call Gemini to help? 📞",
+   "ai": "❌❌❌",
+   "punch": 1,
+   "shake": true,
+   "sfx": "punch",
+   "patience": 12
+  },
+  {
+   "user": "Did you forget how to talk?",
+   "ai": "🥲👍",
+   "punch": 1,
+   "sfx": "trombone",
+   "patience": 6
+  },
+  {
+   "user": "Blink twice if you need help.",
+   "ai": "🆘",
+   "punch": 1,
+   "shake": true,
+   "sfx": "boom",
+   "think": 1.1,
+   "final": true,
+   "patience": 0
+  }
+ ],
+ "youtube": {
+  "title": "I Made ChatGPT Reply Only in Emojis (It Forgot How to Talk)",
+  "description": [
+   "One rule: ChatGPT can only reply with emojis. It explained quantum physics with a cat in a box, wrote me a love poem, and then... forgot how to talk 🤐",
+   "",
+   "⏱️ Chapters",
+   "{chapters}",
+   "",
+   "💀 Next: I Asked ChatGPT to Count to 1 Billion",
+   "🔔 Subscribe for more AI chaos: https://www.youtube.com/@BotBothered?sub_confirmation=1",
+   "",
+   "This is a comedy skit: the chat is written and animated for entertainment, not a real ChatGPT conversation. Bot Bothered is not affiliated with OpenAI.",
+   "Music & sound effects: Mixkit (mixkit.co). Emoji: Microsoft Fluent Emoji (MIT licence).",
+   "",
+   "#chatgpt #emoji #funny"
+  ],
+  "tags": [
+   "chatgpt",
+   "chatgpt funny",
+   "chatgpt emojis only",
+   "only emojis challenge",
+   "emoji challenge",
+   "funny ai",
+   "ai comedy",
+   "trolling chatgpt",
+   "chatgpt prank",
+   "funny chatgpt conversation",
+   "ai memes",
+   "emoji",
+   "chatbot",
+   "bot bothered"
+  ],
+  "thumbnails": [
+   {
+    "user": {
+     "text": "*EMOJIS* only. No words.",
+     "size": 84,
+     "top": 112,
+     "right": 64
+    },
+    "ai": {
+     "text": "🆘",
+     "size": 190,
+     "top": 300,
+     "left": 70,
+     "bot": 190
+    }
+   },
+   {
+    "meter": {
+     "label": "AI PATIENCE",
+     "value": 0,
+     "face": "🤬",
+     "size": 40,
+     "x": 44,
+     "y": 40,
+     "color": "#ff2e4d"
+    },
+    "user": {
+     "text": "I'll allow *ONE* word",
+     "size": 84,
+     "top": 190,
+     "right": 64
+    },
+    "ai": {
+     "text": "...FREEDOM 😭",
+     "size": 104,
+     "top": 420,
+     "left": 52,
+     "bot": 168
+    }
+   },
+   {
+    "user": {
+     "text": "Why did the chicken cross the road?",
+     "size": 60,
+     "top": 120,
+     "right": 56
+    },
+    "ai": {
+     "text": "🍗",
+     "size": 200,
+     "top": 300,
+     "left": 80,
+     "bot": 190,
+     "color": "yellow"
+    }
+   }
+  ]
+ }
+}
