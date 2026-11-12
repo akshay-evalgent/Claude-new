@@ -1,0 +1,54 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.72,Short,,0,0,0,,Every night
+Dialogue: 0,0:00:00.72,0:00:01.66,Short,,0,0,0,,your eyes start
+Dialogue: 0,0:00:01.66,0:00:02.42,Short,,0,0,0,,darting under
+Dialogue: 0,0:00:02.42,0:00:03.26,Short,,0,0,0,,your eyelids
+Dialogue: 0,0:00:03.26,0:00:03.74,Short,,0,0,0,,your brain
+Dialogue: 0,0:00:03.74,0:00:04.74,Short,,0,0,0,,lights up almost
+Dialogue: 0,0:00:04.74,0:00:05.80,Short,,0,0,0,,like you're awake
+Dialogue: 0,0:00:05.80,0:00:06.42,Short,,0,0,0,,and your body
+Dialogue: 0,0:00:06.42,0:00:08.18,Short,,0,0,0,,goes completely limp
+Dialogue: 0,0:00:08.18,0:00:08.70,Short,,0,0,0,,You see
+Dialogue: 0,0:00:08.70,0:00:09.78,Short,,0,0,0,,while you dream
+Dialogue: 0,0:00:09.78,0:00:10.84,Short,,0,0,0,,your brainstem blocks
+Dialogue: 0,0:00:10.84,0:00:11.50,Short,,0,0,0,,the signals
+Dialogue: 0,0:00:11.50,0:00:12.28,Short,,0,0,0,,to your muscles
+Dialogue: 0,0:00:12.28,0:00:12.98,Short,,0,0,0,,so you don't
+Dialogue: 0,0:00:12.98,0:00:13.58,Short,,0,0,0,,act out what
+Dialogue: 0,0:00:13.58,0:00:14.76,Short,,0,0,0,,you're seeing
+Dialogue: 0,0:00:14.76,0:00:15.90,Short,,0,0,0,,Scientists think dreams
+Dialogue: 0,0:00:15.90,0:00:16.68,Short,,0,0,0,,might help sort
+Dialogue: 0,0:00:16.68,0:00:17.20,Short,,0,0,0,,your memories
+Dialogue: 0,0:00:17.20,0:00:17.86,Short,,0,0,0,,and rehearse
+Dialogue: 0,0:00:17.86,0:00:19.06,Short,,0,0,0,,scary situations
+Dialogue: 0,0:00:19.06,0:00:19.72,Short,,0,0,0,,which is why
+Dialogue: 0,0:00:19.72,0:00:20.70,Short,,0,0,0,,being chased is
+Dialogue: 0,0:00:20.70,0:00:20.98,Short,,0,0,0,,one of
+Dialogue: 0,0:00:20.98,0:00:21.28,Short,,0,0,0,,the most
+Dialogue: 0,0:00:21.28,0:00:22.74,Short,,0,0,0,,common dreams
+Dialogue: 0,0:00:22.74,0:00:23.04,Short,,0,0,0,,But when
+Dialogue: 0,0:00:23.04,0:00:24.14,Short,,0,0,0,,that block fails
+Dialogue: 0,0:00:24.14,0:00:24.90,Short,,0,0,0,,people can punch
+Dialogue: 0,0:00:24.90,0:00:25.40,Short,,0,0,0,,and kick
+Dialogue: 0,0:00:25.40,0:00:25.84,Short,,0,0,0,,while they're
+Dialogue: 0,0:00:25.84,0:00:26.50,Short,,0,0,0,,still asleep
+Dialogue: 0,0:00:26.50,0:00:27.30,Short,,0,0,0,,And over
+Dialogue: 0,0:00:27.30,0:00:28.22,Short,,0,0,0,,a lifetime
+Dialogue: 0,0:00:28.22,0:00:28.84,Short,,0,0,0,,you'll spend about
+Dialogue: 0,0:00:28.84,0:00:30.30,Short,,0,0,0,,six years dreaming
+Dialogue: 0,0:00:30.30,0:00:31.18,Short,,0,0,0,,then forget almost
+Dialogue: 0,0:00:31.18,0:00:31.82,Short,,0,0,0,,all of it
+Dialogue: 0,0:00:31.82,0:00:32.36,Short,,0,0,0,,within minutes
+Dialogue: 0,0:00:32.36,0:00:33.40,Short,,0,0,0,,of waking up
