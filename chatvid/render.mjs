@@ -113,7 +113,7 @@ if (remix) {
   fs.copyFileSync(out, video);
 } else {
   const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'image2pipe', '-framerate', String(fps), '-i', '-',
-    '-c:v', 'libx264', '-preset', 'medium', '-crf', '16', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', video],
+    '-c:v', 'libx264', '-preset', 'medium', '-crf', String(opt('crf', ep.crf ?? 16)), '-pix_fmt', 'yuv420p', '-movflags', '+faststart', video],
     { stdio: ['pipe', 'inherit', 'inherit'] });
   const done = new Promise((r) => ff.on('close', r));
   const N = Math.ceil(plan.duration * fps);

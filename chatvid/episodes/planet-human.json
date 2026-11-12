@@ -83,7 +83,7 @@
    }
   },
   {
-   "clip": "OfficeCo1952@10.0",
+   "clip": "OfficeCo1952@12.2",
    "line": "The female communicates by striking a machine, four hundred times a minute. Nobody has ever read what she types."
   },
   {
@@ -135,7 +135,7 @@
    }
   },
   {
-   "clip": "DatingDo1949@297.0",
+   "clip": "DatingDo1949@301.6",
    "line": "If she answers, he has eleven seconds to sound casual. He will not."
   },
   {
@@ -268,7 +268,7 @@
    "line": "They are drawn to these glowing lights, where they voluntarily give away all of their resources."
   },
   {
-   "clip": "Designfo1956@499.0",
+   "clip": "Designfo1956@502.1",
    "line": "The wealthiest pairs travel in private shells, dreaming of the day the shells will drive themselves."
   },
   {
@@ -430,5 +430,6 @@
     }
    }
   ]
- }
+ },
+ "crf": 19
 }
