@@ -585,27 +585,27 @@ shot(C.which, C.end + 0.2, (s) => {
   const paciM = new THREE.MeshPhysicalMaterial({ color: 0x7fd3ff, roughness: 0.25, clearcoat: 1 });
   const shield = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.045, 32), paciM); shield.rotation.x = Math.PI / 2; shield.position.set(0, -0.17, 0.62); shield.scale.set(1.25, 1, 0.85); H.add(shield);
   const pring = new THREE.Mesh(new THREE.TorusGeometry(0.085, 0.02, 10, 32), new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.3, clearcoat: 1 })); pring.position.set(0, -0.2, 0.68); H.add(pring);
-  const bowl = new THREE.Mesh(bowlGeo, steel); bowl.position.set(0.85, 0, 0.9); bowl.castShadow = bowl.receiveShadow = true; sc.add(bowl);
+  const bowl = new THREE.Mesh(bowlGeo, steel); bowl.position.set(1.15, 0, 1.15); bowl.castShadow = bowl.receiveShadow = true; sc.add(bowl);
   ownerLegs(sc, 2.2, -1.5);
   const bag = new THREE.Group(); sc.add(bag);
   const bagBody = new THREE.Mesh(new RoundedBoxGeometry(0.75, 1.05, 0.38, 4, 0.08), new THREE.MeshPhysicalMaterial({ color: 0xff6a3d, roughness: 0.45, clearcoat: 0.6 })); bag.add(bagBody);
   const lbl = textPlane('CAT FOOD', 0.66, '#ffffff', '#ff6a3d'); lbl.position.set(0, 0.05, 0.2); bag.add(lbl);
   const hand = makeHand({ forearm: 2.2, heroRadial: 80, curls: [[1.1, 1.2, 0.8], [1.2, 1.3, 0.9], [1.2, 1.3, 0.9], [1.2, 1.3, 0.9]] }); hand.scale.setScalar(0.3); sc.add(hand);
   const NK = 70, kib = new THREE.InstancedMesh(new THREE.SphereGeometry(0.05, 10, 8), new THREE.MeshPhysicalMaterial({ color: 0x8a4b22, roughness: 0.6 }), NK); kib.castShadow = true; sc.add(kib);
-  const kr = rng(31), K = []; for (let i = 0; i < NK; i++) { const a = kr() * 6.28, r = Math.sqrt(kr()) * 0.38; K.push({ t0: 31.5 + i * 0.022, x: 0.85 + Math.cos(a) * r, z: 0.9 + Math.sin(a) * r, y: 0.1 + kr() * 0.12 * (1 - r / 0.4) + Math.floor(i / 25) * 0.04 }); }
+  const kr = rng(31), K = []; for (let i = 0; i < NK; i++) { const a = kr() * 6.28, r = Math.sqrt(kr()) * 0.38; K.push({ t0: 31.5 + i * 0.022, x: 1.15 + Math.cos(a) * r, z: 1.15 + Math.sin(a) * r, y: 0.1 + kr() * 0.12 * (1 - r / 0.4) + Math.floor(i / 25) * 0.04 }); }
   const rings = purrRings(sc, 3, 0xffffff);
   const dummy = new THREE.Object3D();
   s.update = (t) => {
     const u = cat.userData; u.purr(t, 1); u.setLid(lerp(0.15, 0.62, smooth(C.fake - 0.2, C.fake + 0.4, t))); u.head.rotation.set(-0.18, 0.28, 0.1 * Math.sin(t * 1.4));
     const enter = E.out(seg(t, C.which + 0.3, 31.2)), tilt = E.io(seg(t, 30.9, 31.45));
-    const spout = V(0.95, 1.6, 0.75);
-    bag.position.set(lerp(2.6, 1.3, enter), lerp(3.4, 2.05, enter), 0.55); bag.rotation.set(0, 0, lerp(0, 1.9, tilt));
+    const spout = V(1.22, 1.6, 1.0);
+    bag.position.set(lerp(2.8, 1.6, enter), lerp(3.4, 2.05, enter), 0.8); bag.rotation.set(0, 0, lerp(0, 1.9, tilt));
     hand.rotation.set(0, 0, -Math.PI / 2 + lerp(0, 1.9, tilt)); hand.position.copy(bag.position).add(V(0.55, 0.25, -0.1));
     for (let i = 0; i < NK; i++) { const q = K[i], a = t - q.t0; if (a < 0) { dummy.scale.setScalar(0.0001); } else { const fall = clamp(a / 0.35); dummy.position.set(lerp(spout.x, q.x, fall), lerp(spout.y, q.y, fall) + (fall < 1 ? -0.0 : 0), lerp(spout.z, q.z, fall)); dummy.position.y = fall < 1 ? spout.y - (spout.y - q.y) * fall * fall : q.y; dummy.scale.setScalar(1); dummy.rotation.set(i, i * 2, 0); } dummy.updateMatrix(); kib.setMatrixAt(i, dummy.matrix); }
     kib.instanceMatrix.needsUpdate = true;
     rings(t, V(0.1, 1.45, 0.5), 0.8, 0.45);
     if (t < C.fake) { const c = seg(t, C.which, C.fake); setCam(s.cam, lv(V(1.9, 1.9, 5.8), V(1.6, 1.85, 5.0), c), V(0.45, 1.45, 0.2), 2 + drift(t, 1.5), 38); }
-    else { const c = seg(t, C.fake, C.end); setCam(s.cam, lv(V(0.6, 2.1, 4.3), V(0.45, 2.0, 3.7), c), V(0.35, 1.55, 0.4), -2 + drift(t, 1.5), 38); }
+    else { const c = seg(t, C.fake, C.end); setCam(s.cam, lv(V(1.45, 2.05, 4.9), V(1.25, 1.95, 4.3), c), V(0.65, 1.3, 0.6), -2 + drift(t, 1.5), 38); }
   };
 });
 
