@@ -1,0 +1,55 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.32,Short,,0,0,0,,You hear
+Dialogue: 0,0:00:00.32,0:00:00.96,Short,,0,0,0,,a song
+Dialogue: 0,0:00:00.96,0:00:01.74,Short,,0,0,0,,or a cold
+Dialogue: 0,0:00:01.74,0:00:02.62,Short,,0,0,0,,wind hits you
+Dialogue: 0,0:00:02.62,0:00:03.66,Short,,0,0,0,,and suddenly every
+Dialogue: 0,0:00:03.66,0:00:04.16,Short,,0,0,0,,hair on
+Dialogue: 0,0:00:04.16,0:00:05.06,Short,,0,0,0,,your arms stands
+Dialogue: 0,0:00:05.06,0:00:06.22,Short,,0,0,0,,straight up
+Dialogue: 0,0:00:06.22,0:00:06.92,Short,,0,0,0,,You see
+Dialogue: 0,0:00:06.92,0:00:07.58,Short,,0,0,0,,each hair has
+Dialogue: 0,0:00:07.58,0:00:08.42,Short,,0,0,0,,a tiny muscle
+Dialogue: 0,0:00:08.42,0:00:09.56,Short,,0,0,0,,attached to it
+Dialogue: 0,0:00:09.56,0:00:09.82,Short,,0,0,0,,and when
+Dialogue: 0,0:00:09.82,0:00:10.70,Short,,0,0,0,,your brain feels
+Dialogue: 0,0:00:10.70,0:00:11.26,Short,,0,0,0,,a jolt
+Dialogue: 0,0:00:11.26,0:00:12.28,Short,,0,0,0,,of cold
+Dialogue: 0,0:00:12.28,0:00:12.80,Short,,0,0,0,,fear
+Dialogue: 0,0:00:12.80,0:00:13.62,Short,,0,0,0,,or emotion
+Dialogue: 0,0:00:13.62,0:00:14.52,Short,,0,0,0,,it squeezes all
+Dialogue: 0,0:00:14.52,0:00:14.76,Short,,0,0,0,,of them
+Dialogue: 0,0:00:14.76,0:00:15.44,Short,,0,0,0,,at once
+Dialogue: 0,0:00:15.44,0:00:16.18,Short,,0,0,0,,pulling your skin
+Dialogue: 0,0:00:16.18,0:00:17.26,Short,,0,0,0,,into bumps
+Dialogue: 0,0:00:17.26,0:00:17.70,Short,,0,0,0,,For our
+Dialogue: 0,0:00:17.70,0:00:18.94,Short,,0,0,0,,furry ancestors
+Dialogue: 0,0:00:18.94,0:00:19.62,Short,,0,0,0,,this fluffed up
+Dialogue: 0,0:00:19.62,0:00:20.12,Short,,0,0,0,,their fur
+Dialogue: 0,0:00:20.12,0:00:21.02,Short,,0,0,0,,to trap warm
+Dialogue: 0,0:00:21.02,0:00:21.80,Short,,0,0,0,,air and make
+Dialogue: 0,0:00:21.80,0:00:22.82,Short,,0,0,0,,them look bigger
+Dialogue: 0,0:00:22.82,0:00:23.26,Short,,0,0,0,,just like
+Dialogue: 0,0:00:23.26,0:00:24.58,Short,,0,0,0,,a scared cat
+Dialogue: 0,0:00:24.58,0:00:25.14,Short,,0,0,0,,But since we
+Dialogue: 0,0:00:25.14,0:00:25.70,Short,,0,0,0,,lost most
+Dialogue: 0,0:00:25.70,0:00:26.52,Short,,0,0,0,,of our fur
+Dialogue: 0,0:00:26.52,0:00:27.14,Short,,0,0,0,,it barely does
+Dialogue: 0,0:00:27.14,0:00:28.16,Short,,0,0,0,,anything for us
+Dialogue: 0,0:00:28.16,0:00:29.18,Short,,0,0,0,,And they're called
+Dialogue: 0,0:00:29.18,0:00:30.14,Short,,0,0,0,,goosebumps because
+Dialogue: 0,0:00:30.14,0:00:31.10,Short,,0,0,0,,your skin ends
+Dialogue: 0,0:00:31.10,0:00:31.74,Short,,0,0,0,,up looking like
+Dialogue: 0,0:00:31.74,0:00:32.80,Short,,0,0,0,,a plucked goose
