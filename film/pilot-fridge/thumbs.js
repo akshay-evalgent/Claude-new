@@ -70,7 +70,60 @@ function heroBig(o) {
   return thick(person(Object.assign({ bob: 0, t: 1.3, holdL: fur }, o)), k);
 }
 
+// Night version of the thumbnail world, lit by a big moon and a campfire.
+function thumbNight(o = {}) {
+  o = Object.assign({ hz: 620, seed: 5, moonX: 1500, moonY: 230 }, o);
+  const r = rng(o.seed);
+  let s = `<defs><linearGradient id="nsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14204A"/><stop offset="1" stop-color="#3D4F8A"/></linearGradient>` +
+    `<radialGradient id="moonglow"><stop offset="0" stop-color="#FFF6D0" stop-opacity=".55"/><stop offset="1" stop-color="#FFF6D0" stop-opacity="0"/></radialGradient>` +
+    `<radialGradient id="eyeg"><stop offset="0" stop-color="#FFE45C"/><stop offset="1" stop-color="#FFE45C" stop-opacity="0"/></radialGradient></defs>`;
+  s += `<rect width="${TW}" height="${o.hz + 40}" fill="url(#nsky)"/>`;
+  for (let i = 0; i < 90; i++) s += `<circle cx="${f1(r() * TW)}" cy="${f1(r() * (o.hz - 80))}" r="${f1(1.5 + r() * 3)}" fill="#FFF6D8" opacity="${f1(0.5 + r() * 0.5)}"/>`;
+  s += `<circle cx="${o.moonX}" cy="${o.moonY}" r="260" fill="url(#moonglow)"/><circle cx="${o.moonX}" cy="${o.moonY}" r="95" fill="#FFF3C4" ${S} stroke-width="5"/><circle cx="${o.moonX - 30}" cy="${o.moonY - 20}" r="16" fill="#E9DDAA"/><circle cx="${o.moonX + 26}" cy="${o.moonY + 30}" r="11" fill="#E9DDAA"/>`;
+  const hp = [[-50, o.hz + 10]];
+  for (let i = 0; i <= 8; i++) hp.push([i * 250 - 40, o.hz - 30 - r() * 80]);
+  hp.push([2000, o.hz + 10]);
+  s += `<path d="${smooth(hp, false)} L2000 ${o.hz + 40} L-50 ${o.hz + 40} Z" fill="#26325A"/>`;
+  s += `<rect y="${o.hz}" width="${TW}" height="${THH - o.hz}" fill="#4A3F33"/>`;
+  return s;
+}
+function glowEyes(x, y, s = 1) {
+  return g(`translate(${x} ${y}) scale(${s})`, `<path d="${smooth([[-150, 40], [-130, -40], [-60, -80], [40, -84], [130, -40], [150, 40]])}" fill="#1E2A1C" ${S} stroke-width="5"/>` +
+    `<circle cx="-40" cy="-8" r="34" fill="url(#eyeg)" opacity=".7"/><circle cx="40" cy="-8" r="34" fill="url(#eyeg)" opacity=".7"/><ellipse cx="-40" cy="-8" rx="17" ry="12" fill="#FFE45C" ${S} stroke-width="3"/><ellipse cx="40" cy="-8" rx="17" ry="12" fill="#FFE45C" ${S} stroke-width="3"/><path d="M-40 -18 v20 M40 -18 v20" stroke="${C.ink}" stroke-width="5"/>`);
+}
+function sleeper(x, y, s = 1, col = C.tunic) {
+  let b = `<path d="M120 -28 Q240 -50 370 -22 Q392 20 370 58 Q240 66 120 56 Q100 12 120 -28 Z" fill="${col}" ${S} stroke-width="6"/><path d="M360 14 Q440 4 500 12 L590 22 M360 44 Q450 44 510 44 L596 48" fill="none" stroke="${C.ink}" stroke-width="15" stroke-linecap="round"/>`;
+  b += g('translate(70 -14) rotate(-14)', `<circle r="58" fill="#FFFFFF" ${S} stroke-width="5.5"/>` + hairCave(11, C.hair, false) + faceSvg('sleep', 1, 2));
+  return g(`translate(${x} ${y}) scale(${s})`, b);
+}
+function rockPillow(s = 1) { return g(`scale(${s})`, `<path d="${smooth([[-110, 20], [-100, -50], [-30, -80], [60, -74], [112, -20], [100, 40], [10, 62], [-80, 52]])}" fill="#A8A296" ${S} stroke-width="5"/><path d="M-60 -40 q30 -14 60 -6 M30 20 q24 -6 40 6" fill="none" stroke="#D6D1C6" stroke-width="6" stroke-linecap="round"/>`); }
+function leafBed(x, y, s = 1) {
+  const r = rng(77); let o = `<path d="M-330 40 Q0 -40 330 40 Q0 90 -330 40 Z" fill="#D9C27A" ${S} stroke-width="5"/>`;
+  for (let i = 0; i < 28; i++) { const lx = -280 + r() * 560, ly = 10 + r() * 30, a = -30 + r() * 60; o += g(`translate(${f1(lx)} ${f1(ly)}) rotate(${f1(a)}) scale(.7)`, `<path d="M-46 0 Q0 -26 46 0 Q0 26 -46 0 Z" fill="${['#5E8A3C', '#6F9A45', '#4E7A32'][i % 3]}" ${S} stroke-width="3.5"/><path d="M-40 0 H40" stroke="#3E6A2A" stroke-width="2.5"/>`); }
+  return g(`translate(${x} ${y}) scale(${s})`, o);
+}
+function mozzie(x, y, s = 1) { return g(`translate(${x} ${y}) scale(${s})`, `<path d="M0 0 L40 6" ${S} stroke-width="3"/><ellipse cx="-4" cy="-12" rx="16" ry="6" fill="#EAF2F5" stroke="${C.ink}" stroke-width="2.5" transform="rotate(-30)"/><ellipse cx="6" cy="-12" rx="16" ry="6" fill="#EAF2F5" stroke="${C.ink}" stroke-width="2.5" transform="rotate(30)"/><ellipse rx="15" ry="6" fill="#3C3330"/><path d="M-6 4 l-10 16 M2 5 l-4 18 M8 4 l6 16" ${S} stroke-width="2.5"/>`); }
+
 const THUMBS = {
+  bedRef() {
+    let bg = thumbNight({ seed: 31, moonX: 1520, moonY: 230 });
+    bg += `<ellipse cx="1400" cy="880" rx="620" ry="190" fill="#F28C28" opacity=".28"/>` + fire(1760, 870, 0.75, 0.9);
+    bg += sleeper(1230, 820, 0.85) + sleeper(1300, 990, 0.8, '#7A5A3A');
+    bg += glowEyes(1820, 690, 0.9) + glowEyes(1240, 640, 0.6);
+    let fg = heroBig(Object.assign({ x: 560, y: 1780, s: 3.35, seed: 3, face: 'tired', la: [-24, -12], ra: [60, 150], armsFront: true,
+      front: (L, R) => g(`translate(${f1(R[0] + 24)} ${f1(R[1] - 4)}) rotate(-12)`, rockPillow(0.42)) +
+        g('translate(0 -354)', `<path d="M-29 18 q11 8 22 0 M7 18 q11 8 22 0" fill="none" stroke="#8A6FA8" stroke-width="4.5" stroke-linecap="round"/>`) }, legsOff));
+    return { bg, fg, text: thumbText(['NO BED?'], 960, 215, 230, 'middle', 1780) };
+  },
+  bedAlt() {
+    let bg = thumbNight({ seed: 37, moonX: 420, moonY: 230 });
+    bg += `<ellipse cx="620" cy="880" rx="640" ry="190" fill="#F28C28" opacity=".3"/>` + fire(980, 850, 0.7, 0.4);
+    bg += leafBed(560, 860, 1.25) + sleeper(330, 850, 0.8);
+    [[300, 560, 3.0], [560, 450, 2.6], [800, 600, 2.8]].forEach(([x, y, k]) => { bg += mozzie(x, y, k) + `<path d="M${x - 50} ${y - 60} l110 110 M${x + 60} ${y - 60} l-110 110" stroke="${C.red}" stroke-width="16" stroke-linecap="round"/>`; });
+    let fg = heroBig(Object.assign({ x: 1380, y: 1700, s: 3.0, seed: 21, face: 'happy', flip: true, hairC: '#3C2A1E', la: [-14, -6], ra: [40, 120], armsFront: true,
+      front: (L, R) => g(`translate(${f1(R[0] - 10)} ${f1(R[1] - 30)}) rotate(20)`, `<path d="M0 60 L0 -150" stroke="${C.woodD}" stroke-width="8" stroke-linecap="round"/>` + [[-36, -40], [34, -60], [-32, -90], [30, -110], [0, -150]].map(([x, y], i) => g(`translate(${x} ${y}) rotate(${x < 0 ? -30 : 30})`, `<path d="M-40 0 Q0 -22 40 0 Q0 22 -40 0 Z" fill="${i % 2 ? '#5E8A3C' : '#6F9A45'}" ${S} stroke-width="3.5"/>`)).join('')) }, legsOff));
+    return { bg, fg, text: thumbText(['SLEPT HOW?'], 960, 215, 230, 'middle', 1780) };
+  },
   doctorRef() {
     let bg = thumbWorld({ seed: 23, sunX: 1450, sunY: 250, sky: ['#6FBDE6', '#E6F4F2'] });
     bg += hut(1760, 650, 1.0) + hut(1180, 630, 0.6) + fire(1330, 720, 0.55, 0.7);

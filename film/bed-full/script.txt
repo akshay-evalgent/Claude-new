@@ -1,0 +1,357 @@
+# How Did Ancient Humans Sleep Without Beds?
+# Same format as film/fridge-full/script.txt. Facts checked 2026-11-12; see SOURCES.md.
+
+= hook open
+Tonight, you'll climb into a soft bed. >> modernBed {} push
++ A mattress. A pillow. A warm duvet. >> modernBed {} [1100,640,1.3,1.4]
+You'll close the curtains. >> modernBed {} [370,350,1.4,1.5]
++ Lock the door. >> card {"lines":["DOOR LOCKED."],"icon":"bed"} push
++ And switch off the light. ~0.15 >> modernBed {"dark":true} push
+And then you'll lie there. >> modernBed {"awake":true} push
++ Scrolling. >> screenGlow {"plain":true} [1015,440,1.6,1.7]
++ Checking the time. >> modernBed {"awake":true,"time":"01:47"} [1780,800,1.7,1.8]
++ Wondering why you can't sleep. ~0.2 >> modernBed {"awake":true,"time":"02:13"} [730,560,1.6,1.7]
+You're not alone. >> sleepStats {} push
+In the United States, about one in three adults doesn't get enough sleep. >> sleepStats {} [960,500,1.1,1.15]
+We've built the most comfortable beds in history, >> modernBed {} pull
++ and we're still tired. ~0.2 >> modernBed {"awake":true,"time":"03:30"} push
+Now take time back fifty thousand years. ~0.15 >> rewind {} [960,540,1.02,1.08]
+The sun goes down over the grassland. >> groundSleep {"dusk":true} pull
++ A hunter lies down on the bare earth. >> groundSleep {} push
+No mattress. >> card {"lines":["NO MATTRESS."],"icon":"bed"} push
++ No pillow. >> card {"lines":["NO PILLOW."],"icon":"bed"} push
++ No walls. No door. ~0.15 >> card {"lines":["NO WALLS."],"icon":"bed"} push
+And somewhere out there in the dark, >> groundSleep {"eyes":1} pull
++ the lions are just waking up. ~0.2 >> groundSleep {"eyes":3} [400,760,1.4,1.5]
+Now your brain is probably saying, >> brain {} [960,520,1,1.06]
++ Cavemen? They slept on rocks. >> objection {"l1":"CAVEMEN?","l2":"They slept on rocks."} [960,540,1,1.05]
++ And they barely slept at all. >> card {"lines":["BARELY","SLEPT AT ALL"],"icon":"eye"} push
+Cold, hard ground. One eye open, all night long. >> groundSleep {"awake":true} push
+At least, that's what we assume. >> assume {} [900,640,1,1.06]
+But scientists have found their beds. ~0.15 >> dig {"found":"ash"} push
++ Real beds, about two hundred thousand years old. >> beddingLayers {"step":2} push
+They've found leaves that may have been chosen to fight insects. >> cryptocarya {} push
++ They've watched apes build a fresh bed every single night. >> treeNest {"build":true} push
++ And they've put sleep trackers on hunter-gatherers, >> tracker {} push
++ and found something nobody expected. ~0.2 >> sentinelChart {"blank":true} push
+To understand it, >> card {"lines":["THE DANGER"],"at":["@understand"],"icon":"moon"} push
++ we first have to see why sleep is so dangerous. ~0.3 >> card {"lines":["THE DANGER"],"at":["DONE"],"icon":"moon"} [960,520,1.04,1.12]
+
+= danger tense
+Think about what sleep really is. >> card {"lines":["WHAT IS","SLEEP?"],"icon":"moon"} push
+For hours, you can't see. >> groundSleep {} [560,880,1.5,1.6]
++ You can't run. >> groundSleep {} [760,930,1.3,1.4]
++ You barely hear what's coming. ~0.15 >> groundSleep {"eyes":2} pull
+For a wild animal, that sounds like a terrible idea. >> leopard {"night":true} push
+And yet, almost every animal scientists have studied sleeps, >> card {"lines":["EVERY ANIMAL","SLEEPS"],"icon":"moon"} push
++ or does something very like it. >> halfBrain {"mode":"fish"} push
+Some birds and dolphins even sleep with half of their brain at a time. >> halfBrain {"mode":"bird"} push
++ One half rests, >> halfBrain {"mode":"bird","half":true} [960,420,1.2,1.3]
++ while the other half keeps watch. ~0.2 >> halfBrain {"mode":"bird","half":true,"eye":true} [1060,380,1.35,1.45]
+And you do a little of this too. >> card {"lines":["YOU DO IT","TOO"],"icon":"eye"} push
+In twenty sixteen, scientists studied people sleeping in a new place for the first time. >> hotelBed {} push
++ During deep sleep, one half of the brain stayed more alert than the other. >> hotelBed {"half":true} push
++ It reacted more to strange sounds. >> hotelBed {"half":true,"beep":true} push
+That may be one reason you sleep so badly on your first night in a hotel. ~0.25 >> hotelBed {"awake":true} push
+So sleep must be worth the risk. >> card {"lines":["WORTH","THE RISK"],"icon":"moon"} push
+In nineteen sixty four, a seventeen year old student named Randy Gardner tried to stay awake as long as he could. >> gardner {"step":1} push
++ He lasted about eleven days. >> card {"lines":["11 DAYS","AWAKE"],"icon":"eye"} push
+By the end, he struggled to concentrate, >> gardner {"step":2} push
++ lost track of what he was saying, >> gardner {"step":2} [960,460,1.4,1.5]
++ and saw things that weren't there. >> gardner {"step":3} push
+At one point, he mistook a street sign for a person. ~0.2 >> gardner {"step":4} push
++ Afterwards, he recovered. ~0.2 >> gardner {"step":5} push
+Without enough of it, memory, mood and reactions all start to fail. >> modernBed {"awake":true,"time":"04:05"} push
+Sleep also does some of the brain's cleaning. >> card {"lines":["THE NIGHT","SHIFT"],"icon":"moon"} push
+In twenty thirteen, scientists watched the brains of sleeping mice. >> mouseBrain {"step":1} push
++ The gaps between their brain cells opened up, >> mouseBrain {"step":2} push
++ and waste washed out faster than when they were awake. ~0.2 >> mouseBrain {"step":3} push
+And for our ancestors, the night was full of hunters. ~0.15 >> leopard {"night":true} pull
+Lions do much of their hunting after dark. >> groundSleep {"eyes":3} push
++ So do hyenas. And leopards. ~0.15 >> leopard {"night":true} [760,400,1.3,1.4]
+And these weren't idle threats. >> card {"lines":["NOT","IDLE THREATS"],"icon":"bone"} push
+In a South African cave called Swartkrans, >> map {"region":"swartkrans","label":"SWARTKRANS"} push
++ scientists found part of a skull, from a young relative of ours. >> leopardSkull {} push
+It had two neat holes in it. >> leopardSkull {} [960,520,1.5,1.6]
+The researcher Bob Brain noticed how far apart they were. >> leopardSkull {"measure":true} push
++ They matched the lower fangs of a leopard. ~0.2 >> leopardSkull {"jaw":true} push
+He suggested that leopards dragged their prey up into trees near the cave, >> leopard {} push
++ and the bones fell in. ~0.2 >> dig {"found":"bones"} push
+He called his book, The Hunters or the Hunted? >> card {"lines":["HUNTERS","OR HUNTED?"],"icon":"bone"} push
+For a very long time, our relatives were both. >> dangerHunt {} push
+So where do you sleep, >> groundSleep {"eyes":3} pull
++ when the night is full of teeth? ~0.3 >> groundSleep {"eyes":3,"awake":true} [560,880,1.5,1.6]
+
+= nests curious
+Look at our closest living relatives. >> treeNest {} pull
+Every evening, a chimpanzee climbs into a tree, >> treeNest {} push
++ and builds itself a bed. >> treeNest {"build":true} push
+It bends branches into a springy platform. >> treeNest {"build":true} [960,560,1.3,1.4]
++ Then it lines it with leafy twigs, like a mattress. >> treeNest {} [960,520,1.6,1.7]
+And chimps can be picky about it. >> card {"lines":["PICKY"],"icon":"leaf"} push
+In Uganda, scientists found chimps choosing one kind of tree far more often than any other. >> map {"region":"uganda","label":"UGANDA"} push
++ It made up less than a tenth of the trees, but held nearly three quarters of the nests. ~0.15 >> treeNest {"label":"74% OF NESTS"} push
++ Its branches are stiff and strong. >> treeNest {"build":true} [960,560,1.3,1.4]
++ They make a firm, steady bed that won't sag in the night. ~0.2 >> treeNest {} push
+The whole job takes just a few minutes. >> card {"lines":["A FEW","MINUTES"],"icon":"clock"} push
+And most nights, it builds a brand new one. ~0.2 >> treeNest {"night":true,"lying":true} push
+Gorillas and orangutans build beds too. >> treeNest {"label":"ALL GREAT APES"} push
++ When it rains, orangutans sometimes add a roof of leaves. ~0.2 >> treeNest {"ape":"orangutan","roof":true,"rain":true} push
+In twenty eighteen, scientists swabbed forty one chimpanzee nests in Tanzania, >> tracker {"mode":"swab"} push
++ and looked at the bacteria inside. >> microView {} push
+Earlier research on homes in the United States had found >> modernBed {} push
++ that about a third of the bacteria in our beds come from our own bodies. >> nestMicrobes {"labels":["35%",""]} push
++ Skin. Mouths. >> nestMicrobes {"labels":["35%",""]} [690,600,1.3,1.4]
++ And, well, the other end. ~0.2 >> nestMicrobes {"labels":["35%",""],"title":"SKIN · MOUTH · GUT"} push
+In the chimp nests, it was only about three and a half percent. >> nestMicrobes {"labels":["35%","3.5%"]} push
++ And in all the nests they checked for bugs, they found just four parasites. >> nestMicrobes {"labels":["35%","3.5%"],"title":"JUST 4 PARASITES"} push
+In that way, at least, the chimps' beds were cleaner than ours. ~0.25 >> treeNest {"label":"CLEANER THAN OURS"} push
+Think about it. >> card {"lines":["THINK","ABOUT IT"],"icon":"bed"} push
+You might change your sheets every week or two. >> modernBed {} push
++ A chimp gets a brand new bed every night. ~0.2 >> treeNest {"build":true} push
+Many scientists think our early ancestors once slept the same way, >> treeNest {"night":true,"lying":true} pull
++ high up in the trees. >> treeNest {"night":true,"lying":true} [960,440,1.4,1.5]
+Up there, lions and hyenas can't reach you. >> treeNest {"night":true,"lying":true,"eyes":true} pull
+But then, something changed. >> card {"lines":["SOMETHING","CHANGED"],"icon":"hourglass"} push
+About two million years ago, a new kind of human appeared. >> card {"lines":["2 MILLION","YEARS AGO"],"icon":"hourglass"} push
++ Homo erectus. >> card {"lines":["HOMO ERECTUS"],"icon":"spear"} push
+Tall. Long legs. Built for walking, not for climbing. >> walkFar {} push
+Some researchers think that by around this time, our ancestors had left their tree nests, >> treeNest {} pull
++ and started sleeping on the ground. ~0.2 >> groundSleep {"eyes":2} push
+So how did they survive the night? ~0.3 >> think {"q1":"@survive","q2":"NEVER"} push
+
+= ground wonder
+Some researchers think fire was part of the answer. >> fireBig {} push
+Fire gives light. >> fireCircle {} [960,800,1.5,1.6]
++ It gives warmth. >> fireCircle {} [960,860,1.3,1.4]
++ And most animals keep their distance from it. ~0.15 >> groundSleep {"fire":true,"eyes":2} pull
+It may be what made sleeping on the ground possible. >> fireCircle {} pull
+Some of the oldest clear evidence of fire comes from Wonderwerk Cave, in South Africa, >> map {"region":"wonderwerk","label":"WONDERWERK CAVE"} push
++ about a million years ago. >> fireBig {} push
+And remember Swartkrans, the cave with the leopard bite? >> leopardSkull {"jaw":true} push
++ In its younger layers, Bob Brain found burned bones. >> dig {"found":"ash"} push
++ Possibly some of the oldest signs of fire anywhere. >> fireBig {} push
+Brain thought that with fire, the balance of power in the cave shifted. >> card {"lines":["THE HUNTED..."],"icon":"fire"} push
++ The hunted were becoming the hunters. ~0.2 >> card {"lines":["THE HUNTED...","BECOME HUNTERS?"],"at":["DONE","@hunters"],"icon":"fire"} push
+A later re-test found the evidence much less clear. >> card {"lines":["NOT","SO CLEAR"],"icon":"magnifier"} push
++ But it's a powerful idea. ~0.3 >> fireCircle {} push
+And something else changed too. >> card {"lines":["SOMETHING","ELSE"],"icon":"moon"} push
++ Our sleep itself. >> card {"lines":["OUR SLEEP"],"icon":"moon"} push
+Compared with other primates, humans sleep the least. >> sleepCompare {} push
+Based on our body and brain size, scientists expected us to sleep around nine and a half hours. >> sleepCompare {"rows":[["EXPECTED",9.6],["HUMAN",7.0]],"title":"HUMAN SLEEP"} push
++ We sleep about seven. ~0.15 >> sleepCompare {"rows":[["EXPECTED",9.6],["HUMAN",7.0]],"title":"HUMAN SLEEP"} [1180,500,1.2,1.3]
+But we spend more of our sleep in R E M. >> card {"lines":["MORE REM"],"icon":"eye"} push
++ That's the stage where most vivid dreams happen. >> dreamCloud {} push
+Our sleep seems to have got shorter, >> card {"lines":["SHORTER..."],"icon":"moon"} push
++ but deeper. ~0.15 >> card {"lines":["SHORTER...","BUT DEEPER"],"at":["DONE","@deeper"],"icon":"moon"} push
+One idea is that sleeping by the fire, in a group, was safer. >> fireCircle {} push
++ So we could get away with less of it, >> fireCircle {} [700,960,1.3,1.4]
++ and spend the extra hours awake, together. >> fireCircle {"talk":true} push
+Talking. Teaching. Making tools. >> campNight {} push
+And we didn't sleep alone. >> fireCircle {} pull
++ We slept in groups. >> fireCircle {} [960,960,1.2,1.25]
++ Close together, around the fire. ~0.3 >> fireCircle {} [960,900,1.4,1.5]
+
+= beds wonder
+So what did these early beds actually look like? >> think {"q1":"@beds","q2":"NEVER"} push
+For that, we have to go to a cliff on the border of South Africa and Eswatini. >> map {"region":"bordercave","label":"BORDER CAVE"} push
+There's a cave there called Border Cave. >> borderCave {"label":"BORDER CAVE"} push
+People used it, on and off, for more than two hundred thousand years. >> borderCave {} [960,800,1.3,1.4]
+In twenty twenty, a team led by the archaeologist Lyn Wadley dug into its oldest layers. >> dig {"found":"ash"} push
++ And they found grass. >> beddingLayers {"step":2} push
+Thin layers of it, laid down on purpose, >> beddingLayers {"step":2} [960,500,1.3,1.4]
++ on top of a layer of ash. ~0.2 >> beddingLayers {"step":3} push
+Bedding, roughly two hundred thousand years old. >> beddingLayers {"step":5,"title":"200,000 YEARS OLD"} push
+Why put grass on ash? >> think {"q1":"@ash","q2":"NEVER"} push
+The researchers think the ash may have helped keep crawling insects away. >> beddingLayers {"step":5,"ants":true} push
++ Ants can't easily walk through fine, powdery ash. ~0.15 >> beddingLayers {"step":5,"ants":true} [960,880,1.3,1.4]
+Some of the bedding also held bits of camphor bush. >> sibudu {"camphor":true} push
++ A strong-smelling plant that's still used to keep insects away. ~0.2 >> cryptocarya {"plant":"camphor"} push
+They didn't just lie down on the floor. >> groundSleep {} push
++ They built a bed, >> beddingLayers {"step":4} push
++ and it looks like they built it against bugs. ~0.2 >> beddingLayers {"step":5,"ants":true} pull
+And they didn't only sleep on it. >> borderCave {} push
++ The bedding is full of tiny grains of red ochre, and chips of stone from tool-making. >> beddingLayers {"step":5,"ochre":true} push
++ It was a bed, a sofa, and a workbench. ~0.3 >> fireCircle {"talk":true} push
+Now jump forward to about seventy seven thousand years ago, >> map {"region":"sibudu","label":"SIBUDU"} push
++ to a rock shelter called Sibudu. >> sibudu {"leaves":0,"label":"SIBUDU"} push
+Here, people made mats of sedges and rushes, >> sibudu {"leaves":0} [960,840,1.3,1.4]
++ and they topped them with leaves. >> sibudu {} push
+The leaves came from a tree called Cryptocarya woodii. >> cryptocarya {} push
+Its leaves contain chemicals that can kill mosquitoes. >> cryptocarya {} [1300,420,1.4,1.5]
++ And mosquitoes carry disease. ~0.2 >> sibudu {"mosquitoes":true} push
+Was it on purpose? >> think {"q1":"@purpose","q2":"NEVER"} push
++ We can't be certain. >> card {"lines":["WE CAN'T","BE CERTAIN"],"icon":"magnifier"} push
++ But they kept making beds like this, >> cryptocarya {} pull
++ layer after layer, for nearly forty thousand years. >> sibudu {} [960,860,1.4,1.5]
+Some of the leaves are so well preserved, you can still see their veins. ~0.2 >> leafFossil {} push
+And there's more. >> card {"lines":["AND","THERE'S MORE"],"icon":"fire"} push
+Then, from about seventy three thousand years ago, they started burning their old bedding. >> sibudu {"burn":true} push
+Probably to clear out pests and rubbish, >> sibudu {"burn":true} [960,700,1.3,1.4]
++ and start fresh. ~0.2 >> sibudu {} pull
+A clean bed. >> card {"lines":["A CLEAN BED"],"icon":"leaf"} push
++ No washing machine required. ~0.25 >> card {"lines":["A CLEAN BED","NO WASHING MACHINE"],"at":["DONE","@washing"],"icon":"leaf"} push
+And these weren't the only ones. >> worldMap {"pins":["bordercave","sibudu","ohalo"]} push
+About twenty three thousand years ago, on the shore of the Sea of Galilee, >> map {"region":"ohalo","label":"OHALO II"} push
++ people built huts out of branches. >> ohaloHut {"label":"OHALO II"} push
+The site lay underwater until the lake dropped in nineteen eighty nine. >> ohaloHut {"lake":true} push
+Inside one hut, archaeologists found bundles of grass, >> ohaloHut {"cut":true} push
++ laid along the walls, around a fire in the middle. ~0.2 >> ohaloHut {"cut":true} [960,840,1.5,1.6]
+Grass to lie on. A fire for warmth. >> fireCircle {} push
++ Walls of branches. >> ohaloHut {} pull
++ Not so different from a bedroom. ~0.3 >> modernBed {} push
+
+= today curious
+But a bed is only half the story. >> card {"lines":["HALF","THE STORY"],"icon":"bed"} push
++ The other half is sleep itself. >> card {"lines":["HOW LONG","DID THEY SLEEP?"],"icon":"clock"} push
+We can't measure the sleep of someone who died fifty thousand years ago. >> dig {"found":"bones"} push
++ But we can measure the next best thing. ~0.2 >> tracker {} push
+In twenty fifteen, the sleep scientists Gandhi Yetish and Jerome Siegel >> lab {"phase":"test"} push
++ studied three groups of people who still live without electricity. >> worldMap {"pins":["tanzania","namibia","bolivia"]} push
+The Hadza in Tanzania. >> map {"region":"tanzania","label":"THE HADZA"} push
++ The San in Namibia. >> map {"region":"namibia","label":"THE SAN"} push
++ And the Tsimane in Bolivia. ~0.15 >> map {"region":"bolivia","label":"THE TSIMANE"} push
+They wore sleep trackers on their wrists, >> tracker {} push
++ hundreds of nights in all. >> sentinelChart {"title":"NIGHT AFTER NIGHT","blank":true} push
+Most people expected them to sleep a lot. >> card {"lines":["THEY MUST","SLEEP A LOT"],"icon":"moon"} push
++ Nine hours. Ten. >> card {"lines":["9 HOURS?","10?"],"icon":"clock"} push
++ That's not what they found. ~0.2 >> card {"lines":["NOPE."],"icon":"magnifier"} push
+They slept between about five point seven and seven point one hours a night. >> sleepCompare {"rows":[["LOW",5.7],["HIGH",7.1],["MODERN",7.0]],"title":"HOURS ASLEEP"} push
++ About the same as many of us. ~0.2 >> sleepCompare {"rows":[["LOW",5.7],["HIGH",7.1],["MODERN",7.0]],"title":"HOURS ASLEEP"} [1340,500,1.2,1.3]
+And in winter, when nights are longer, two of the groups slept nearly an hour more. ~0.2 >> sunsetClock {"step":1,"winter":true} push
+They didn't go to bed when the sun went down, either. >> sunsetClock {"step":1} push
++ On average, they fell asleep more than three hours after sunset. >> sunsetClock {"step":2} push
++ And they usually woke before sunrise. ~0.2 >> sunsetClock {"step":3} push
+So what decided when they slept? >> think {"q1":"@decided","q2":"NEVER"} push
++ Temperature. >> tempCurve {} push
+Their sleep lined up with the coolest part of the night. >> tempCurve {} [1000,600,1.2,1.3]
++ They fell asleep as the air cooled, and woke near the coldest point, just before dawn. >> tempCurve {} [1600,700,1.3,1.4]
+And here's the part that should make you jealous. >> card {"lines":["THE","JEALOUS PART"],"icon":"moon"} push
+Insomnia was rare. >> hadzaNight {} push
++ So rare that two of the groups don't even have a word for it. ~0.3 >> card {"lines":["NO WORD","FOR INSOMNIA"],"icon":"eye"} push
+They slept about as long as us. >> sleepCompare {"rows":[["THEM",6.5],["US",7.0]],"title":"HOURS ASLEEP"} push
++ But without lying awake staring at the ceiling. >> modernBed {"awake":true,"time":"02:58"} push
+So what's different? ~0.3 >> think {"q1":"@different","q2":"NEVER"} push
+
+= light cold
+One answer is light. >> card {"lines":["LIGHT"],"icon":"sun"} push
+Your body has an internal clock. >> card {"lines":["A BODY","CLOCK"],"icon":"clock"} push
++ And the clock is set by light. ~0.15 >> sunSky {} push
+Inside your eyes, there are special light-sensing cells. >> eyeCells {"step":1} push
++ Their main job isn't seeing. >> eyeCells {"step":1} [960,540,1.2,1.3]
++ It's telling your brain whether it's day or night. >> eyeCells {"step":2} push
++ And they're most sensitive to blue light. ~0.2 >> eyeCells {"step":3} push
+In twenty thirteen, the scientist Kenneth Wright took a group of people camping in the Rocky Mountains. >> map {"region":"colorado","label":"COLORADO"} push
++ For a week. >> campingStudy {} push
+No phones. No torches. No electric light at all. >> campingStudy {} [560,900,1.4,1.5]
++ Just the sun, and a campfire. ~0.2 >> campingStudy {} [600,900,1.7,1.8]
+
+Before the trip, he measured a sleep hormone called melatonin. >> melatonin {"step":1} push
++ It rises in the evening, and tells your body it's time for bed. >> melatonin {"step":1} [960,560,1.2,1.3]
+After a week outdoors, it started rising about two hours earlier. >> melatonin {"step":2} push
++ Night owls turned into early birds. ~0.2 >> campingStudy {"dawn":true} push
+Their body clocks had moved, to match the sun. >> campingStudy {"dawn":true} [1500,300,1.4,1.5]
+A later study found that even a weekend of camping moved people's clocks earlier. >> campingStudy {} pull
++ And a week of winter camping moved them by more than two and a half hours. ~0.2 >> campingStudy {"winter":true} push
+The researchers also measured the light at night in those hunter-gatherer camps. >> hadzaNight {} push
++ Even with campfires burning, it stayed incredibly dim. ~0.2 >> hadzaNight {} [960,930,1.4,1.5]
+For almost all of human history, nights were lit by fire, or not at all. >> timeBar2 {"step":2,"none":"FIRE, OR DARKNESS"} push
++ Electric light only reached most homes in the last century or so. ~0.2 >> timeBar2 {"step":3,"none":"FIRE, OR DARKNESS","yes":"ELECTRIC LIGHT"} [1760,560,1.4,1.6]
+Now think about your evenings. >> screenGlow {"plain":true} push
+Bright ceiling lights. Laptops. Phones, inches from your face. >> screenGlow {"plain":true} [1015,440,1.4,1.5]
+All of that tells your brain the day isn't over yet. >> eyeCells {"step":3} push
++ So your clock gets pushed later, >> screenGlow {} [1600,300,1.4,1.5]
++ while your alarm stays exactly where it is. ~0.2 >> modernBed {"awake":true,"time":"06:30"} [1780,800,1.6,1.7]
+Our ancestors had one light at night. >> fireCircle {} pull
++ A fire. Dim, and orange. ~0.3 >> fireBig {} push
+
+= later warm
+When people settled down and built houses, >> settled {} push
++ beds started to rise off the ground. >> card {"lines":["UP OFF","THE GROUND"],"icon":"bed"} push
+About five thousand years ago, on the Orkney Islands, north of Scotland, >> map {"region":"orkney","label":"SKARA BRAE"} push
++ there was a village called Skara Brae. >> skaraBrae {"label":"SKARA BRAE"} push
+The village lay buried in sand until a great storm in eighteen fifty uncovered it. >> skaraBrae {"storm":true} push
+Its houses still have their furniture, >> skaraBrae {} [960,820,1.2,1.3]
++ made of stone. >> skaraBrae {} [620,820,1.6,1.7]
+Stone dressers. Stone hearths. >> skaraBrae {} [960,820,1.5,1.6]
++ And stone box beds, on either side of the fire. ~0.15 >> skaraBrae {"sleepers":true} [960,820,1.3,1.4]
+Nobody knows exactly what filled them. Perhaps heather, bracken or animal skins. >> skaraBrae {"sleepers":true} [1300,820,1.7,1.8]
+In ancient Egypt, many people rested their heads on something surprising. >> map {"region":"egypt","label":"EGYPT"} push
++ Not a pillow. >> card {"lines":["NOT A PILLOW"],"icon":"bed"} push
++ A headrest, carved from wood or stone. >> headrest {} push
+The young pharaoh Tutankhamun was buried with eight of them. >> headrest {"gold":true} push
++ One is carved from ivory, held up by a kneeling god. ~0.2 >> headrest {"gold":true} [960,600,1.3,1.4]
+In the Americas, people slept off the ground in a different way. >> hammock {} push
++ Hanging between two trees. >> hammock {} [960,560,1.3,1.4]
+The first European to write about one was Christopher Columbus, in fourteen ninety two. >> hammock {"ship":true} push
++ The word hammock comes from the Taino language of the Caribbean. ~0.2 >> card {"lines":["HAMACA"],"icon":"leaf"} push
+And the word mattress traces back to an Arabic word for a cushion, or a place where something is thrown down. ~0.2 >> card {"lines":["MATTRESS"],"icon":"bed"} push
+Then there's a strange idea about sleep in old Europe. >> segmented {"step":1} push
+The historian Roger Ekirch found hundreds of old references to a first sleep, >> segmented {"step":2} push
++ and a second sleep. >> segmented {"step":3} push
+People went to bed soon after dark, >> segmented {"step":2} [700,560,1.2,1.3]
++ woke up in the middle of the night for an hour or so, >> segmented {"step":4} push
++ and then went back to sleep. ~0.2 >> segmented {"step":3} [1300,560,1.2,1.3]
+Some people say this is how humans are meant to sleep. >> card {"lines":["THE NATURAL","WAY?"],"icon":"magnifier"} push
+But in the three societies Yetish studied, there was no sign of it. >> hadzaNight {} push
+One farming village in Madagascar did show a middle-of-the-night wake-up, on about half of all nights. >> map {"region":"madagascar","label":"MADAGASCAR"} push
+So it may be a habit that comes with long, dark nights, >> segmented {"step":4} pull
++ rather than the way all humans have always slept. ~0.3 >> card {"lines":["NOT THE","ANCIENT WAY"],"icon":"hourglass"} push
+
+= watch wonder
+Remember the hunter-gatherers with the sleep trackers? >> tracker {} push
++ There's one more study. And it's the strangest of all. ~0.2 >> card {"lines":["ONE MORE","STUDY"],"icon":"magnifier"} push
+In twenty seventeen, the researcher David Samson >> lab {"phase":"test"} push
++ tracked a Hadza camp for twenty days. >> hadzaNight {} push
+He looked at every minute of every night, >> sentinelChart {} push
++ and asked one simple question. >> sentinelChart {} [960,560,1.15,1.2]
+How often is everyone asleep at the same time? ~0.2 >> think {"q1":"@everyone","q2":"NEVER"} push
+The answer? >> sentinelChart {} [1188,560,1.3,1.4]
++ Almost never. ~0.15 >> sentinelChart {"highlight":"18 MIN"} push
+In more than two hundred and twenty hours of night, >> sentinelChart {"highlight":"18 MIN"} pull
++ everyone was asleep at once for just eighteen minutes. ~0.3 >> sentinelChart {"highlight":"18 MIN"} [1188,540,1.5,1.6]
+The rest of the time, someone was awake. On average, more than a third of the group. >> hadzaNight {"awake":"old"} push
++ Poking the fire. >> hadzaNight {"awake":"old"} [1700,760,1.6,1.7]
++ Listening. Watching. ~0.2 >> hadzaNight {"awake":"old"} [1700,700,1.9,2.0]
+And it wasn't random. >> card {"lines":["NOT","RANDOM"],"icon":"eye"} push
+Older people tended to go to bed early, and wake up early. >> sentinelChart {"rows":"old"} push
++ Younger people stayed up later. >> sentinelChart {"rows":"young"} push
+Like a night watch. ~0.15 >> hadzaNight {"awake":"old"} pull
++ Except nobody planned it. >> card {"lines":["NOBODY","PLANNED IT"],"icon":"moon"} push
+Now think about your grandparents. >> grandpa {"step":1} pull
++ Up at five in the morning. >> grandpa {"step":1} [600,560,1.2,1.3]
++ Asleep in their chair by nine. ~0.2 >> grandpa {"step":2} push
+We usually think of that as a problem. >> card {"lines":["A","PROBLEM?"],"icon":"clock"} push
+The researchers have a name for this idea. >> card {"lines":["THE POORLY SLEEPING","GRANDPARENT"],"icon":"eye"} push
++ The poorly sleeping grandparent hypothesis. ~0.2 >> grandpa {"step":1} [760,600,1.3,1.4]
+Your grandparents' early mornings might be a leftover from a time >> hadzaNight {"awake":"old"} pull
++ when somebody always had to be awake. ~0.3 >> fireCircle {"sentinel":true} [1500,780,1.4,1.5]
+And babies? >> coSleep {} push
++ In many cultures, babies sleep within reach of their mothers. >> coSleep {} [600,800,1.4,1.5]
++ It's almost universal among other primates. ~0.15 >> treeNest {"night":true,"lying":true,"baby":true} push
+Putting a baby to sleep alone, in a room of its own, is a fairly recent habit. ~0.2 >> modernBed {} push
+For most of human history, >> fireCircle {"sentinel":true} pull
++ sleeping alone would have been the dangerous thing. ~0.3 >> groundSleep {"eyes":3} push
+So did ancient humans sleep on bare rocks, with one eye open? >> groundSleep {"awake":true} push
++ Not quite. >> card {"lines":["NOT","QUITE."],"icon":"bed"} push
+They slept on beds that fought bugs. >> sibudu {} push
++ Around a fire that kept the night away. >> fireCircle {} push
++ And they could sleep deeply, >> fireCircle {} [700,960,1.3,1.4]
++ because someone else was keeping one eye open for them. ~0.4 >> fireCircle {"sentinel":true} [1500,780,1.5,1.6]
+
+= end warm
+Today, we sleep behind locked doors. >> modernBed {} push
++ On memory foam. >> modernBed {} [1100,700,1.3,1.4]
++ With blackout curtains, and white noise. ~0.15 >> modernBed {} [370,350,1.3,1.4]
+We're safer at night than any humans in history. >> card {"lines":["SAFER","THAN EVER"],"icon":"bed"} push
+And yet, millions of us lie awake. >> sleepStats {} push
++ Staring at a glowing screen, >> screenGlow {"plain":true} push
++ long after the sun has gone. ~0.2 >> screenGlow {} [1400,300,1.3,1.4]
+Fifty thousand years ago, >> rewind {} [960,540,1.04,1.1]
++ a hunter lay down on a bed of grass. >> groundSleep {"fire":true,"bed":true} push
+He had leaves to keep the insects away. >> sibudu {} push
++ A fire to keep the lions back. >> fireCircle {} push
++ And somewhere in the dark, an old woman, sitting up, >> fireCircle {"sentinel":true} [1500,780,1.4,1.5]
++ wide awake. ~0.3 >> fireCircle {"sentinel":true} [1500,700,1.8,1.9]
+Your bed has a mattress. >> modernBed {} push
++ Theirs had a guard. >> fireCircle {"sentinel":true} [960,800,1.2,1.0]
