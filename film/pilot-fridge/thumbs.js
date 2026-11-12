@@ -105,6 +105,25 @@ function leafBed(x, y, s = 1) {
 function mozzie(x, y, s = 1) { return g(`translate(${x} ${y}) scale(${s})`, `<path d="M0 0 L40 6" ${S} stroke-width="3"/><ellipse cx="-4" cy="-12" rx="16" ry="6" fill="#EAF2F5" stroke="${C.ink}" stroke-width="2.5" transform="rotate(-30)"/><ellipse cx="6" cy="-12" rx="16" ry="6" fill="#EAF2F5" stroke="${C.ink}" stroke-width="2.5" transform="rotate(30)"/><ellipse rx="15" ry="6" fill="#3C3330"/><path d="M-6 4 l-10 16 M2 5 l-4 18 M8 4 l6 16" ${S} stroke-width="2.5"/>`); }
 
 const THUMBS = {
+  govRef() {
+    let bg = thumbWorld({ seed: 61, sunX: 1500, sunY: 230, sky: ['#6FBDE6', '#E6F4F2'] });
+    bg += hut(1780, 640, 0.9) + hut(1080, 625, 0.55);
+    const crownS = `<path d="M-60 30 L-66 -30 L-34 0 L0 -46 L34 0 L66 -30 L60 30 Z" fill="#F2C443" ${S} stroke-width="5"/>`;
+    bg += person({ x: 1420, y: 960, s: 1.35, t: 1, seed: 21, beard: true, face: 'worried', bob: 0, la: [-14, -6], ra: [-120, -150],
+      holdR: e => g(`translate(${f1(e[0])} ${f1(e[1])}) rotate(20)`, `<path d="M0 0 L20 -160 Q30 -200 60 -190 Q80 -170 50 -140 L16 4 Z" fill="#8E5A3A" ${S} stroke-width="5"/>`),
+      front: () => g('translate(0 -440) scale(.7) rotate(-14)', crownS) });
+    bg += [[1150, 0.75, 'laugh'], [1680, 0.8, 'laugh'], [1800, 0.6, 'laugh']].map(([x, k, f], i) => person({ x, y: 990, s: k, t: 1, seed: 3 + i * 4, long: i === 1, hairC: i === 1 ? C.hair2 : C.hair, face: f, bob: 0, la: [-14, -6], ra: [-80, -100], flip: x > 1420 })).join('');
+    let fg = heroBig(Object.assign({ x: 560, y: 1780, s: 3.35, seed: 3, face: 'laugh', la: [-24, -12], ra: [-80, -95] }, legsOff));
+    return { bg, fg, text: thumbText(['NO GOVERNMENT?'], 960, 215, 230, 'middle', 1780) };
+  },
+  govAlt() {
+    let bg = thumbWorld({ seed: 67, sunX: 520, sunY: 240, sky: ['#6FBDE6', '#E6F4F2'] });
+    bg += g('translate(560 760)', `<rect x="-130" y="-80" width="260" height="300" rx="16" fill="#B8956A" ${S} stroke-width="7"/><rect x="-110" y="-300" width="220" height="230" rx="16" fill="#C0392B" ${S} stroke-width="7"/><rect x="-150" y="60" width="300" height="50" rx="10" fill="#9C7A55" ${S} stroke-width="6"/>` + g('translate(0 -360) scale(.9)', `<path d="M-90 40 L-100 -50 L-50 0 L0 -70 L50 0 L100 -50 L90 40 Z" fill="#F2C443" ${S} stroke-width="6"/><circle cx="0" cy="14" r="12" fill="${C.red}"/>`));
+    bg += `<path d="M300 520 L820 1000 M820 520 L300 1000" stroke="${C.red}" stroke-width="22" stroke-linecap="round" opacity=".85"/>`;
+    bg += [[220, 1000, 0.7], [380, 1030, 0.75], [700, 1040, 0.75], [880, 1000, 0.7]].map(([x, y, k], i) => person({ x, y, s: k, t: 1, seed: 3 + i * 4, long: i % 2 === 1, hairC: i % 2 ? C.hair2 : C.hair, face: 'happy', bob: 0, hip: 50, ll: [118, 8], rl: [106, -2], la: [40, 80], ra: [40, 80], flip: x > 560 })).join('');
+    let fg = heroBig(Object.assign({ x: 1380, y: 1700, s: 3.0, seed: 21, face: 'think', flip: true, hairC: '#3C2A1E', la: [-14, -6], ra: [150, -150], armsFront: true }, legsOff));
+    return { bg, fg, text: thumbText(['WHO RULED?'], 960, 215, 230, 'middle', 1780) };
+  },
   spiritRef() {
     let bg = thumbNight({ seed: 53, moonX: 1560, moonY: 200, sky: ['#5A4A8A', '#F6A85A'], hills: '#8E6A6E', ground: '#C08A50', stars: 18 });
     const pil = (x, y, k) => g(`translate(${x} ${y}) scale(${k})`, `<rect x="-60" y="-300" width="120" height="420" fill="#E6D9BE" ${S} stroke-width="6"/><rect x="-170" y="-380" width="340" height="110" rx="6" fill="#EDE2C8" ${S} stroke-width="6"/><path d="M-30 -200 q30 -40 60 0 q-10 30 -30 40 q-20 -10 -30 -40 Z M-40 0 q20 -20 0 -40 q-20 -20 0 -40" fill="none" stroke="#8E7E62" stroke-width="9"/>`);

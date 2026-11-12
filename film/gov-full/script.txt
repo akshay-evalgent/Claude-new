@@ -1,0 +1,261 @@
+# How Did Ancient Humans Live Without Government?
+# Same format as film/fridge-full/script.txt. Facts checked 2026-11-12; see SOURCES.md.
+
+= hook open
+Today, almost every person on Earth lives inside a country. >> worldMap {"pins":[]} push
++ The United Nations alone has a hundred and ninety three members. >> card {"lines":["193","MEMBERS"],"icon":"crown"} push
+Each one has someone in charge. >> govCity {} push
++ Presidents. Prime ministers. Kings and queens. >> govCity {"leader":true} push
+There are police on the streets. >> govCity {"police":true} push
++ Courts. Prisons. Taxes. >> govCity {"police":true} [1500,700,1.3,1.4]
+And there are laws for almost everything. >> lawBook {} push
++ How fast you can drive. Where you can park. What you can build. ~0.2 >> lawBook {"pages":true} push
+It feels like humans have always needed someone in charge. >> card {"lines":["ALWAYS","IN CHARGE?"],"icon":"crown"} push
+Now take time back fifty thousand years. ~0.15 >> rewind {} [960,540,1.02,1.08]
+A band of about thirty people sets up camp for the night. >> bandCamp {} push
+No president. >> card {"lines":["NO PRESIDENT."],"icon":"crown"} push
++ No police. >> card {"lines":["NO POLICE."],"icon":"crown"} push
++ No written laws. No prison. ~0.15 >> card {"lines":["NO PRISON."],"icon":"crown"} push
+So who decides where to go tomorrow? >> bandCamp {"talk":true} push
++ Who settles a fight? >> bandCamp {"fight":true} push
++ And what stops the strongest man from taking whatever he wants? ~0.2 >> bully {} push
+Now your brain is probably saying, >> brain {} [960,520,1,1.06]
++ Cavemen? That's easy. The biggest guy with the biggest club was the boss. >> objection {"l1":"CAVEMEN?","l2":"Biggest club wins."} [960,540,1,1.05]
++ Everyone else just did what he said. >> bully {"cower":true} push
+At least, that's what we assume. >> assume {} [900,640,1,1.06]
+But when anthropologists lived with hunter-gatherers, they found something surprising. >> research {"text":"ANTHROPOLOGISTS"} push
++ A hunter who brings home a huge animal gets mocked for it. >> mockMeat {} push
++ A man who acts like a boss gets laughed at, ignored, or left behind. >> walkAway {} push
+And the way they kept the peace may be one of the oldest human inventions of all. ~0.25 >> card {"lines":["THE OLDEST","INVENTION?"],"icon":"fire"} push
++ To see it, we have to start with our closest cousins. ~0.3 >> card {"lines":["OUR","COUSINS"],"icon":"leaf"} push
+
+= apes curious
+Chimpanzees definitely have bosses. >> chimpBoss {} push
+Every group has an alpha male, at the top of a strict ranking. >> chimpBoss {"rank":true} push
+Others bow to him, and greet him with little grunts. ~0.2 >> chimpBoss {"bow":true} push
+But becoming the boss isn't just about muscle. >> card {"lines":["NOT JUST","MUSCLE"],"icon":"crown"} push
+In the nineteen seventies, the scientist Frans de Waal watched a chimp colony at a zoo in the Netherlands. >> map {"region":"netherlands","label":"ARNHEM ZOO"} push
+He saw that becoming the boss took friends, not just muscle. >> chimpBoss {"allies":true} push
+The old alpha, Yeroen, lost his place to a stronger male called Luit. >> chimpBoss {"allies":true,"topple":true} push
++ So Yeroen teamed up with a young male, Nikkie. >> chimpBoss {"allies":true} [700,700,1.3,1.4]
+Together, they made Nikkie the new alpha, >> chimpBoss {"rank":true} push
++ while old Yeroen kept a lot of real influence behind the scenes. ~0.25 >> chimpBoss {"allies":true} pull
+He called his book Chimpanzee Politics. >> card {"lines":["CHIMPANZEE","POLITICS"],"icon":"crown"} push
+And at Gombe in Tanzania, in nineteen sixty four, Jane Goodall watched a low-ranking chimp called Mike take over his group. >> map {"region":"tanzania","label":"GOMBE"} push
++ Mike didn't have the biggest muscles. He'd even lost two of his big canine teeth. >> chimpBoss {"mike":true} push
++ He had empty kerosene cans, from Goodall's camp. >> chimpBoss {"mike":true,"cans":true} push
+He charged at the top males, kicking and banging the cans, making a terrifying racket. ~0.2 >> chimpBoss {"mike":true,"cans":true,"charge":true} push
++ They fled. Then they came back, and groomed him. >> chimpBoss {"mike":true,"cans":true,"bow":true} pull
+Within about four months, Mike was the alpha. ~0.25 >> chimpBoss {"mike":true,"cans":true,"bow":true} [560,600,1.3,1.4]
+Later researchers at Gombe noticed that alphas have different styles. >> chimpBoss {"rank":true} push
++ The smallest alpha they studied spent the most time grooming others. Friends instead of muscle. ~0.25 >> chimpBoss {"groom":true} push
+Our other close cousins, bonobos, do things differently again. >> map {"region":"bonobo","label":"BONOBOS"} push
+When a male bonobo bullies a female, other females often team up and chase him away. >> bonobos {} push
++ In one long study, most of the females' alliances were aimed at males. >> bonobos {"chase":true} push
++ And older females back up the younger ones. ~0.25 >> bonobos {"chase":true} [960,700,1.2,1.3]
+So our ancestors probably started out with bosses too. >> chimpBoss {"rank":true} pull
++ But somewhere along the way, humans did something very unusual. ~0.3 >> card {"lines":["SOMETHING","UNUSUAL"],"icon":"magnifier"} push
+
+= band warm
+Life in a hunter-gatherer band was small. >> bandCamp {} pull
+A typical camp held a few dozen people, often somewhere between twenty five and fifty. >> bandCamp {"count":true} push
+And they weren't all family. >> card {"lines":["NOT ALL","FAMILY"],"icon":"heart"} push
+In twenty eleven, researchers looked at who lived together in thirty two hunter-gatherer societies. >> worldMap {"pins":["tanzania","namibia","arctic","amazon","australia","borneo","andes","plains"]} push
+Most people in a band weren't close blood relatives. ~0.2 >> bandCamp {"friends":true} push
+They were friends, in-laws, and friends of friends. >> bandCamp {"friends":true} [960,760,1.2,1.3]
+Grown-up brothers and sisters often lived together, and both men and women could move between groups. ~0.2 >> walkAway {"family":true} push
+So who was in charge? >> think {"q1":"@charge","q2":"NEVER"} push
+Among the Hadza of Tanzania, the answer is nobody. >> map {"region":"tanzania","label":"THE HADZA"} push
++ There are no chiefs. >> hadzaCamp {} push
+Some people are respected, and listened to. >> hadzaCamp {} [700,700,1.3,1.4]
++ But nobody can give orders. ~0.2 >> card {"lines":["NO","ORDERS"],"icon":"crown"} push
+Decisions get made by talking, often for a long time. >> bandCamp {"talk":true} push
++ And if you don't like a decision? >> bandCamp {"talk":true} [1200,760,1.3,1.4]
++ You can just leave. ~0.25 >> walkAway {"family":true} push
+Among the Ju'hoansi, certain families were known as the owners of a waterhole and the land around it. >> map {"region":"namibia","label":"THE JU/'HOANSI"} push
++ But that made them hosts, not bosses. Nobody could give orders. ~0.25 >> bandCamp {"talk":true} push
+Hadza camps change all the time, as people move in and out. >> walkAway {"family":true} [1300,760,1.2,1.3]
+If two people really can't get along, one of them simply moves to another camp. ~0.2 >> walkAway {"family":true} pull
+Think about how powerful that is. >> card {"lines":["THINK","ABOUT IT"],"icon":"magnifier"} push
++ A boss is only a boss if people stay. ~0.3 >> walkAway {} push
+
+= leveling curious
+But hunter-gatherers didn't just avoid bosses. >> card {"lines":["NOT JUST","AVOIDING"],"icon":"crown"} push
++ They actively stopped them. ~0.2 >> card {"lines":["THEY","STOPPED THEM"],"icon":"crown"} push
+The anthropologist Christopher Boehm studied reports from forty eight societies. >> research {"text":"CHRISTOPHER BOEHM"} push
+He found that, again and again, ordinary people teamed up to keep any one person from getting too powerful. >> levelChart {"step":1} push
+He called it a reverse dominance hierarchy. >> levelChart {"step":2} push
++ Instead of one boss ruling the group, the group rules the boss. ~0.25 >> levelChart {"step":3} push
+And their favourite weapon was surprisingly gentle. >> card {"lines":["THE","WEAPON"],"icon":"magnifier"} push
++ Teasing. ~0.25 >> card {"lines":["TEASING."],"icon":"heart"} push
+In the nineteen sixties, the anthropologist Richard Lee lived with the Ju'hoansi of the Kalahari. >> map {"region":"namibia","label":"THE JU/'HOANSI"} push
+At Christmas, he bought the biggest, fattest ox he could find, as a gift for the whole camp. >> mockMeat {"ox":true} push
+But everyone insulted it. >> mockMeat {"ox":true,"mock":true} push
++ One woman asked him, do you expect us to eat that bag of bones? ~0.2 >> mockMeat {"ox":true,"mock":true} [960,600,1.3,1.4]
+Then the feast came, and the ox was huge, and delicious. >> feast {} push
++ They'd been teasing him all along. ~0.2 >> mockMeat {"ox":true,"laugh":true} push
+Later, a hunter called Tomazo explained why. >> quoteGov {"part":1} push
+When a young man kills much meat, he comes to think of himself as a chief, or a big man, and he thinks of the rest of us as his servants. >> quoteGov {"part":2} push
++ We can't accept this. ~0.2 >> quoteGov {"part":2} [960,400,1.2,1.3]
++ So we always speak of his meat as worthless. >> quoteGov {"part":3} push
++ This way, we cool his heart, and make him gentle. ~0.3 >> quoteGov {"part":4} push
+Another man, called Gaugo, explained how a good hunter should behave. >> modestHunter {} push
+He mustn't come home and boast. >> modestHunter {} [960,700,1.2,1.3]
++ He sits quietly by the fire, until someone asks what he saw today. >> modestHunter {"ask":true} push
++ Then he says, I'm no good for hunting. I saw nothing at all. Just a little tiny one. ~0.25 >> modestHunter {"reply":true} push
++ And everyone smiles, because they know he's killed something big. ~0.3 >> modestHunter {"smile":true} push
+And they had another trick. >> card {"lines":["ANOTHER","TRICK"],"icon":"spear"} push
++ Arrows. >> arrowLend {} push
+Hunters lent and swapped arrows all the time. >> arrowLend {"swap":true} push
++ And when an animal was killed, the meat often belonged to the owner of the arrow, who might not be the hunter. >> arrowLend {"meat":true} push
+So the credit, and the power to share the meat, was spread around. ~0.25 >> arrowLend {"meat":true} pull
+In many foraging groups, food sharing works the same way. >> shareMeat {} push
++ You don't wait to be offered. You ask for your share, and you get it. ~0.2 >> shareMeat {"ask":true} push
+Researchers call it demand sharing. ~0.25 >> card {"lines":["DEMAND","SHARING"],"icon":"meat"} push
+
+= gossip warm
+So who were the police? >> think {"q1":"@police","q2":"NEVER"} push
++ Everyone. ~0.2 >> card {"lines":["EVERYONE."],"icon":"eye"} push
+In small groups, everyone knows everyone's business. >> gossip {} push
+The psychologist Robin Dunbar's team listened to people chatting, and found that about two thirds of the talk was about social topics. >> gossip {"chart":true} push
++ People, relationships, who did what. ~0.2 >> gossip {} [960,600,1.2,1.3]
++ Surprisingly little of it was nasty. ~0.2 >> card {"lines":["NOT","NASTY"],"icon":"heart"} push
+That might sound petty. >> card {"lines":["PETTY?"],"icon":"magnifier"} push
++ But gossip is a powerful way to keep people in line. ~0.25 >> gossip {"spread":true} push
+The anthropologist Polly Wiessner recorded three hundred and eight Ju'hoansi conversations. >> research {"text":"POLLY WIESSNER"} push
+More than half of them included criticism of someone. >> gossip {"spread":true} pull
++ Praise was rare. ~0.2 >> card {"lines":["PRAISE","WAS RARE"],"icon":"magnifier"} push
+When someone acted like a big shot, it usually started with jokes and teasing. >> fireCircle {"talk":true} push
++ If that didn't work, the criticism got harsher. ~0.2 >> gossip {"spread":true} [960,600,1.2,1.3]
+One man who kept showing off was refused meat, and left camp for a few weeks. >> walkAway {} push
++ Another made peace by killing one of his own few cows, and sharing the meat with everyone. ~0.25 >> shareMeat {} push
+The aim wasn't to destroy someone. >> card {"lines":["NOT TO","DESTROY"],"icon":"heart"} push
++ It was to bring them back into line. ~0.25 >> bandCamp {"talk":true} push
+In Greenland, the Inuit had an even more entertaining solution. >> map {"region":"greenland","label":"GREENLAND"} push
+Two people with a quarrel would hold a song duel. >> songDuel {} push
++ They took turns singing insulting songs about each other, with a drum, in front of everyone. >> songDuel {"sing":true} push
+The audience laughed along. ~0.2 >> songDuel {"sing":true,"crowd":true} push
++ And the aim was usually to clear the air, so life could go on. ~0.2 >> songDuel {"crowd":true} pull
++ Though losing could be so embarrassing that one man is said to have left and gone into exile. ~0.3 >> walkAway {} push
+
+= bully tense
+But what if someone was truly dangerous? >> bully {} push
++ What if teasing didn't work? ~0.2 >> bully {"angry":true} push
+First, people would just stop cooperating with him. >> walkAway {} push
++ Not sharing. Not hunting with him. Not listening. ~0.2 >> walkAway {} [1300,760,1.3,1.4]
+And if that failed, the group had one last option. >> card {"lines":["ONE LAST","OPTION"],"icon":"spear"} push
+Life without police wasn't always peaceful. >> card {"lines":["NOT ALWAYS","PEACEFUL"],"icon":"spear"} push
+Richard Lee recorded twenty two killings among the Ju'hoansi between nineteen twenty and nineteen fifty five, mostly from fights that got out of hand. >> research {"text":"RICHARD LEE"} push
+In one case people remembered, a man who had killed several people was finally stopped by his own community, for good. ~0.3 >> bandCamp {"council":true} push
+Christopher Boehm found cases like this in many societies. >> levelChart {"step":3} push
++ Rare, but real. ~0.25 >> card {"lines":["RARE,","BUT REAL"],"icon":"magnifier"} push
+And some scientists think this changed us. >> card {"lines":["IT","CHANGED US?"],"icon":"heart"} push
+The anthropologist Richard Wrangham argues that, over many thousands of years, >> research {"text":"RICHARD WRANGHAM"} push
++ groups that stopped their worst bullies made humans calmer. >> calmChart {"step":1} push
+He estimates that chimpanzees fight within their own groups hundreds of times more often than people do. >> calmChart {"step":2} push
++ He thinks we may have, in a sense, tamed ourselves. ~0.3 >> calmChart {"step":2} [1300,560,1.3,1.4]
+It's a hypothesis, and it's still debated. >> card {"lines":["STILL","DEBATED"],"icon":"magnifier"} push
++ But it's a fascinating idea. Our friendliness might come from a very old kind of justice. ~0.3 >> fireCircle {"talk":true} pull
+
+= seasons wonder
+So were all hunter-gatherers equal? >> think {"q1":"@equal","q2":"NEVER"} push
++ Not at all. ~0.2 >> card {"lines":["NOT","AT ALL"],"icon":"crown"} push
+In Florida, the Calusa lived by fishing and gathering, not farming. >> map {"region":"florida","label":"THE CALUSA"} push
++ Yet in the fifteen hundreds, their ruler, whom the Spanish called Carlos, collected tribute from about fifty towns. >> calusa {} push
++ In fifteen sixty six, he met the Spanish governor of Florida, as one ruler to another. ~0.2 >> calusa {} [960,480,1.3,1.4]
+On the northwest coast of North America, rich fishing peoples had nobles, commoners, and even enslaved people. >> potlatch {} push
++ Chiefs won status by holding giant feasts, and giving away huge amounts of goods. ~0.25 >> potlatch {"give":true} push
+And some groups did something even more surprising. >> card {"lines":["EVEN MORE","SURPRISING"],"icon":"magnifier"} push
++ They changed their government with the seasons. ~0.25 >> seasons {"step":1} push
+On the Great Plains of North America, people spent much of the year in small, scattered bands. >> seasons {"step":1} [960,600,1.2,1.3]
+But in summer, they came together for the great bison hunt. >> bisonHunt {} push
+One wrong move could scare the whole herd away. >> bisonHunt {"herd":true} push
+So for those weeks, some nations appointed camp police, with real power to enforce the rules. ~0.2 >> bisonHunt {"police":true} push
+And when the hunt was over, that power simply ended. ~0.3 >> seasons {"step":2} push
+Far to the north, the French scholar Marcel Mauss noticed a similar rhythm among the Inuit. >> map {"region":"arctic","label":"THE INUIT"} push
++ Small family groups in summer, and big communal gatherings in winter, with different rules for each. >> seasons {"step":3} push
++ In the winter houses, there was more sharing, and more ritual. ~0.25 >> seasons {"step":3} [1360,600,1.3,1.4]
+Some researchers argue that this is the real story. >> card {"lines":["THE REAL","STORY?"],"icon":"magnifier"} push
++ For most of history, people didn't just live without government. >> bandCamp {} pull
++ They knew how to switch it on, and how to switch it off. ~0.3 >> seasons {"step":2} push
+And when they did have leaders, those leaders had to work for it. >> card {"lines":["LEADERS","WORKED"],"icon":"crown"} push
+The anthropologist Claude Levi-Strauss lived with the Nambikwara in Brazil. >> map {"region":"amazonia","label":"THE NAMBIKWARA"} push
++ Their chief couldn't force anyone to do anything. >> leaderSpeak {} push
++ He kept his followers only by being generous, and by keeping their trust. ~0.2 >> leaderSpeak {"give":true} push
+The French anthropologist Pierre Clastres argued that in many Amazonian societies, the chief was a peacemaker, a giver of gifts, and a fine speaker. >> leaderSpeak {"speak":true} push
++ But a chief who tried to give orders risked being deserted. ~0.25 >> walkAway {"family":true} push
+In parts of Melanesia, big men earned influence by gathering followers and throwing feasts. >> map {"region":"png","label":"MELANESIA"} push
++ It wasn't inherited. And if a big man pushed people too hard, they drifted away. ~0.3 >> potlatch {"give":true} push
+
+= states cold
+So where did kings come from? >> think {"q1":"@kings","q2":"NEVER"} push
+Much of the answer begins with farming. >> card {"lines":["FARMING"],"icon":"grain"} push
+Farmers could store grain. >> granaryKing {} push
++ And stored grain can be counted, guarded, taxed, and taken. ~0.2 >> granaryKing {"guard":true} push
+In twenty seventeen, researchers compared the sizes of houses at more than sixty ancient sites. >> lab {"phase":"test"} push
+Among hunter-gatherers, houses were mostly about the same size. >> barChart {"rows":[["FORAGERS",17]],"title":"INEQUALITY OF HOUSE SIZES","max":60} push
+After farming, the differences grew. >> barChart {"rows":[["FORAGERS",17],["FARMERS",35]],"title":"INEQUALITY OF HOUSE SIZES","max":60} push
++ And in the Old World, where farmers had oxen and horses, inequality climbed much higher. ~0.25 >> barChart {"rows":[["FORAGERS",17],["FARMERS",35],["OXEN & HORSES",48]],"title":"INEQUALITY OF HOUSE SIZES","max":60} push
+More than five thousand years ago, in Mesopotamia, Uruk grew into one of the world's first cities. >> uruk {} push
++ By about five thousand years ago, it may have held forty thousand people or more. >> uruk {"crowd":true} [960,700,1.2,1.3]
+Its walls enclosed about six square kilometres. ~0.15 >> uruk {} [960,560,1.2,1.3]
++ Far too many people to know each other. ~0.2 >> uruk {"crowd":true} push
+And to manage it, people invented something new. >> card {"lines":["SOMETHING","NEW"],"icon":"book"} push
++ Writing. >> tablet {"signs":true} push
+Much of the earliest writing wasn't poetry or stories. >> tablet {"signs":true} [960,560,1.3,1.4]
++ It was accounts. Grain, sheep, beer, rations, and work owed. ~0.25 >> tablet {"signs":true} [960,560,1.5,1.6]
+Writing helped turn power into paperwork. ~0.2 >> card {"lines":["POWER INTO","PAPERWORK"],"icon":"book"} push
+In Egypt, royal officials counted the cattle about every two years, to work out taxes. >> cattleCount {} push
++ Years were even named after it. The year of the fifth count. ~0.25 >> cattleCount {"label":true} push
+Then came the kings. >> king {} push
+An ancient Sumerian list of kings begins, after the kingship descended from heaven. >> king {"heaven":true} push
++ It claims the very first king ruled for twenty eight thousand, eight hundred years. ~0.25 >> card {"lines":["28,800","YEARS?"],"icon":"crown"} push
+And kings wrote laws. >> lawStele {} push
+The oldest law code we know comes from the city of Ur, more than four thousand years ago. >> lawStele {"step":1} push
+About three centuries later, King Hammurabi of Babylon had about two hundred and eighty laws carved on a black stone pillar, more than two metres tall. >> lawStele {"step":2} push
++ For everyone to see. ~0.2 >> lawStele {"step":2} [960,400,1.3,1.4]
+Centuries later, it was carried off as war loot, and found again in Iran in nineteen oh one. >> lawStele {"step":2} pull
++ Today, it stands in the Louvre, in Paris. ~0.25 >> lawStele {"step":2} [960,560,1.2,1.3]
+The Sumerians also gave us something else. >> card {"lines":["SOMETHING","ELSE"],"icon":"heart"} push
++ One of the earliest written words for freedom. ~0.2 >> amargi {} push
+Amargi. >> amargi {"say":true} push
++ It literally means, return to the mother. ~0.2 >> amargi {"say":true,"mother":true} push
++ It was used when people trapped by debts were set free to go home. ~0.3 >> amargi {"say":true,"mother":true} [960,700,1.2,1.3]
+Freedom, it seems, was something people remembered. ~0.3 >> walkAway {"family":true} pull
+And many people did walk away from the early states. >> fleeCity {} push
++ The political scientist James Scott argues that early states depended on grain, which is easy to see, measure, and tax, and that escaping them was common. >> fleeCity {"flee":true} push
++ and that for thousands of years, many people chose to live outside a state's reach. ~0.3 >> fleeCity {"flee":true} pull
+
+= cities wonder
+But big societies didn't always need kings. >> card {"lines":["NO KINGS","NEEDED?"],"icon":"crown"} push
+About six thousand years ago, in what is now Ukraine, people built enormous settlements. >> map {"region":"ukraine","label":"TRYPILLIA"} push
+Some had more than a thousand houses, laid out in great rings. >> trypillia {} push
++ How many people lived there, and for how much of the year, is still debated. ~0.2 >> trypillia {"zoom":true} push
+But archaeologists have found no palaces. >> trypillia {"zoom":true} [960,540,1.4,1.5]
++ No royal tombs. No clear sign of a ruling family. >> card {"lines":["NO","PALACES"],"icon":"crown"} push
+Instead, there were large buildings that may have been meeting houses. ~0.25 >> trypillia {"assembly":true} push
+In Mexico, the great city of Teotihuacan thrived for more than six hundred years, from about two thousand one hundred years ago. >> map {"region":"mexico","label":"TEOTIHUACAN"} push
+It was home to around a hundred thousand people. >> teotihuacan {} push
++ Most of them lived in more than two thousand apartment compounds, many with plastered floors and porches. >> teotihuacan {"zoom":true} push
+And archaeologists have found no royal tombs. ~0.3 >> teotihuacan {"zoom":true} [960,540,1.2,1.3]
++ How the city was ruled is still a mystery. ~0.2 >> card {"lines":["A","MYSTERY"],"icon":"magnifier"} push
+Kings weren't the only way to run a city. >> card {"lines":["NOT THE","ONLY WAY"],"icon":"crown"} push
++ They were just one choice. ~0.3 >> trypillia {} pull
+
+= end warm
+For almost all of human history, there was no government. >> timeBar2 {"step":2,"none":"NO GOVERNMENT"} push
++ Kings and states are a very recent experiment. ~0.2 >> timeBar2 {"step":3,"none":"NO GOVERNMENT","yes":"KINGS & STATES"} [1700,640,1.3,1.4]
+But no government never meant no rules. >> card {"lines":["NO RULES?"],"icon":"crown"} push
++ The rules were enforced by everyone. ~0.25 >> bandCamp {"talk":true} push
+Today, we have presidents, parliaments, and police. >> govCity {"police":true} push
++ And they do things no band ever could. Roads. Hospitals. Schools. ~0.2 >> govCity {"leader":true} push
+But the oldest tools of justice are still with us. >> card {"lines":["STILL","WITH US"],"icon":"heart"} push
++ Gossip. Teasing. Sharing. >> gossip {"spread":true} push
++ And the power to walk away. ~0.25 >> walkAway {"family":true} push
+Fifty thousand years ago, >> rewind {} [960,540,1.04,1.1]
++ a hunter came home with a huge animal, >> mockMeat {} push
++ and everyone told him it was worthless. >> mockMeat {"mock":true} push
++ Not to be cruel. >> mockMeat {"laugh":true} push
++ But so that no one would ever be the boss. ~0.3 >> bandCamp {"talk":true} pull
+You vote every few years. >> ballot {} push
++ They voted every day. >> walkAway {"family":true} [960,700,1.2,1.0]

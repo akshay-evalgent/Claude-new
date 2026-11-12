@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family: Hand; src: url(../pilot-fridge/fonts/PatrickHand-Regular.ttf); }
+@font-face { font-family: Cap; src: url(../pilot-fridge/fonts/Nunito-ExtraBold.ttf); }
+html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #FBF6EC; }
+svg { display: block; }
+</style>
+</head>
+<body>
+<svg id="v" xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <filter id="wob0" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="3.2" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="wob1" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="11"/><feDisplacementMap in="SourceGraphic" scale="3.2" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="wob2" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="27"/><feDisplacementMap in="SourceGraphic" scale="3.2" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="5"/><feColorMatrix type="saturate" values="0"/></filter>
+    <filter id="wash" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.0035 0.006" numOctaves="3" seed="9"/><feColorMatrix type="saturate" values="0"/></filter>
+    <filter id="soft" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="3"/></filter>
+    <radialGradient id="vig" cx="50%" cy="50%" r="75%"><stop offset="60%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#2B2118" stop-opacity="0.22"/></radialGradient>
+    <radialGradient id="fglow"><stop offset="0" stop-color="#FFB547" stop-opacity="0.85"/><stop offset="0.45" stop-color="#F28C28" stop-opacity="0.35"/><stop offset="1" stop-color="#F28C28" stop-opacity="0"/></radialGradient>
+    <radialGradient id="lglow"><stop offset="0" stop-color="#FFF4C8" stop-opacity="0.9"/><stop offset="1" stop-color="#FFF4C8" stop-opacity="0"/></radialGradient>
+    <radialGradient id="eyeglow"><stop offset="0" stop-color="#FFE45C" stop-opacity="1"/><stop offset="1" stop-color="#FFE45C" stop-opacity="0"/></radialGradient>
+  </defs>
+  <g id="scene"></g>
+  <rect width="1920" height="1080" filter="url(#wash)" opacity="0.10" style="mix-blend-mode:multiply"/>
+  <rect width="1920" height="1080" filter="url(#grain)" opacity="0.07" style="mix-blend-mode:multiply"/>
+  <rect width="1920" height="1080" fill="url(#vig)"/>
+  <g id="cap"></g>
+  <rect id="fade" width="1920" height="1080" fill="#000" opacity="0"/>
+</svg>
+<script src="../fridge-full/vendor/d3-array.min.js"></script>
+<script src="../fridge-full/vendor/d3-geo.min.js"></script>
+<script src="../fridge-full/vendor/topojson-client.min.js"></script>
+<script src="../fridge-full/vendor/world.js"></script>
+<script src="../fridge-full/scenes.js"></script>
+<script src="../fridge-full/lib.js"></script>
+<script src="../fridge-full/scenes_a.js"></script>
+<script src="../fridge-full/scenes_b.js"></script>
+<script src="../fridge-full/scenes_c.js"></script>
+<script src="../fridge-full/scenes_d.js"></script>
+<script src="../doctor-full/scenes_doc.js"></script>
+<script src="../bed-full/scenes_bed.js"></script>
+<script src="../school-full/scenes_school.js"></script>
+<script src="../spirit-full/scenes_spirit.js"></script>
+<script src="scenes_gov.js"></script>
+</body>
+</html>
