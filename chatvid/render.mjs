@@ -22,7 +22,10 @@ const opt = (k, d) => { const i = args.indexOf('--' + k); return i >= 0 ? args[i
 const epPath = args.find((a) => a.endsWith('.json'));
 if (!epPath) { console.error('usage: node chatvid/render.mjs <episode.json> [--out file.mp4] [--fps 30] [--scale 1] [--stills t1,t2]'); process.exit(1); }
 const ep = JSON.parse(fs.readFileSync(epPath, 'utf8'));
-if (opt('interface')) ep.interface = opt('interface');       // midnight | nebula | void
+if (opt('interface')) ep.interface = opt('interface');
+const creditsPath = path.join(HERE, 'assets', 'media', 'credits.json');
+const allCredits = fs.existsSync(creditsPath) ? JSON.parse(fs.readFileSync(creditsPath, 'utf8')) : {};
+ep.__credits = Object.fromEntries(Object.keys(ep.media || {}).filter((k) => allCredits[k]).map((k) => [k, allCredits[k]]));       // midnight | nebula | void
 if (opt('ai-name')) ep.ai = { ...(ep.ai || {}), name: opt('ai-name') };
 const fps = Number(opt('fps', ep.fps || 30));
 const scale = Number(opt('scale', 1));
@@ -45,7 +48,13 @@ if (args.includes('--upload')) {
   const chapters = ep.exchanges.map((x, i) => ({ t: plan.exchanges[i], name: x.chapter })).filter((c) => c.name);
   if (chapters.length) chapters[0].t = 0;                 // YouTube needs the first chapter at 0:00
   const chapterText = chapters.map((c) => `${mmss(c.t)} ${c.name}`).join('\n');
-  const desc = [].concat(yt.description || []).join('\n').replace('{chapters}', chapterText);
+  const LIC = { 'CC BY 2.0': 'https://creativecommons.org/licenses/by/2.0/', 'CC BY 3.0': 'https://creativecommons.org/licenses/by/3.0/',
+    'CC BY 4.0': 'https://creativecommons.org/licenses/by/4.0/', 'CC BY-SA 4.0': 'https://creativecommons.org/licenses/by-sa/4.0/' };
+  const credits = [...new Set(Object.values(ep.__credits).map((c) => c.credit))];
+  const lics = [...new Set(Object.values(ep.__credits).map((c) => c.licence).filter((l) => LIC[l]))];
+  const creditText = credits.map((c) => `- ${c}`).join('\n') +
+    (lics.length ? `\n(Photos are cropped and zoomed. ${lics.map((l) => `${l}: ${LIC[l]}`).join(' · ')})` : '');
+  const desc = [].concat(yt.description || []).join('\n').replace('{chapters}', chapterText).replace('{credits}', creditText);
   const tags = (yt.tags || []).join(', ');
   const text = `TITLE\n${yt.title || ep.title}\n\nDESCRIPTION\n${desc}\n\nTAGS (${tags.length}/500 characters)\n${tags}\n`;
   fs.writeFileSync(path.join(outDir, `${slug}.youtube.txt`), text);

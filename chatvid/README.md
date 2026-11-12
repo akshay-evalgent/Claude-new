@@ -69,6 +69,10 @@ Episode-level fields:
 | `hud` | The meter. `{"patience": true}` is the AI-patience preset (100 down to 0). Or define your own: `label`, `start`, `hue` ([colour at 0%, colour at 100%] as hue angles), `alarm` (`"high"`/`"low"`: pulse at 100% or 0%), `faces` ([[above %, emoji], ...]). |
 | `music` | `{"tracks": ["comical", "keep-smiling", "okay"], "gain": -22}`. Tracks play in order with 2 s crossfades and loop. |
 | `endCard` | `{"kicker": "NEXT VIDEO", "text": "...", "dur": 3}`: a card after the final punchline. |
+| `user` | Who is typing: `{"name": "Elon", "avatar": "<media key>", "avatarPos": "50% 30%"}` puts a round photo next to every user message. |
+| `badge` | Text pinned to the top-right corner for the whole video, e.g. `"PARODY"`. |
+| `intro` | Opening "VS" card after the hook: `{"image": "<media key>", "left": "ELON", "right": "GROK", "rightIcon": "🤖", "dur": 1.9}`. |
+| `media` | Photos the episode uses, fetched with their licence by `tools/fetch_media.py` (see below). |
 | `pacing` | Override any default timing, e.g. `{"cps": 13}` for slower typing. |
 
 Per-exchange fields:
@@ -85,8 +89,42 @@ Per-exchange fields:
 | `wall` | Spam-wall reply: `{"unit": "🍞", "count": 760, "end": " 😵‍💫", "dur": 2.8}`. The camera starts tight on the first line and pulls back to reveal the whole wall. `ai` becomes a prefix. |
 | `think` / `hold` / `punchHold` | Per-exchange timing overrides, in seconds. |
 | `final` | Last exchange: long slow push-in with a riser, then the end card (if any). |
+| `cutaway` | Full-screen photo after the punch-in: `{"image": "<media key>", "caption": "Elon right now 😐", "pos": "50% 12%", "zoom": [1.0, 1.12], "dur": 1.7, "sfx": "boom", "shake": true}`. The photo's credit is shown small in the corner. |
 
 Keys starting with `_` (like `_act`) are ignored, so you can use them for notes.
+
+The meter's `faces` can use photos too: `[70, "<media key>", "😊"]` shows the photo with the emoji as a badge.
+
+### Photos and footage (`media`)
+
+```json
+"media": {
+  "elon-smile": {"commons": "File:Elon_Musk_2015.jpg"},
+  "elon-face": {"commons": "File:Elon_Musk_2015.jpg", "crop": [0.1, 0.0, 0.8, 0.545]},
+  "mars":      {"nasa": "PIA01546"},
+  "my-photo":  {"file": "my-photo.jpg", "credit": "Photo: someone, used with permission", "short": "Photo: someone"}
+}
+```
+
+```bash
+python3 chatvid/tools/fetch_media.py chatvid/episodes/elon-vs-grok.json
+```
+
+- `commons`: a Wikimedia Commons file. The licence and author are read from its page. Prefer CC BY or public domain (CC BY-SA asks for share-alike).
+- `nasa`: a NASA Image Library id (public domain).
+- `file`: your own file in `assets/media/`, for material you have a licence or permission for.
+- `crop`: `[x, y, w, h]` as fractions of the image, e.g. to cut a face out for the meter or an avatar.
+
+Credits go to `assets/media/credits.json`; `--upload` puts them in the description (put `{credits}` where they should go).
+
+### Parodies of real people
+
+When an episode puts words in a real person's mouth:
+
+- Make it obviously parody: an "If…"/"(Parody)" title, the `badge`, and a disclaimer at the top of the description.
+- Answer **Yes** to YouTube's "altered or synthetic content" question.
+- Joke about their public, documented record; no invented crimes or scandals, no family, health or politics.
+- No voice cloning or fake video. The chat format is the parody.
 
 Global timing (typing speed, zoom lengths and so on) can be overridden with a
 `"pacing"` object; the defaults are at the top of `engine/engine.js`.

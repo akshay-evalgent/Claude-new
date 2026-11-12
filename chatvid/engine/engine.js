@@ -59,6 +59,9 @@
   const isEmoji = (g) => /\p{Extended_Pictographic}/u.test(g);
   const ekey = (g) => Array.from(g).map((c) => c.codePointAt(0)).filter((c) => c !== 0xfe0f).map((c) => c.toString(16)).join('-');
   const emoSrc = (g) => `../assets/emoji/${ekey(g)}.png`;
+  const mediaSrc = (k) => `../assets/media/${k}.jpg`;
+  const faceSrc = (f) => (isEmoji(f) ? emoSrc(f) : mediaSrc(f));
+  const setSrc = (el, src) => { if (el.dataset.src !== src) { el.src = src; el.dataset.src = src; } };
   const emoImg = (g) => `<img class="emo" src="${emoSrc(g)}" alt="">`;
   const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
   const rich = (s) => graphemes(s).map((g) => (isEmoji(g) ? emoImg(g) : esc(g))).join('');
@@ -123,7 +126,7 @@
 
   // ---------- state ----------
   let EP, P, X, HUD, shots, shakes, cues, meterSteps, mainStart, mainEnd, climax, endStart;
-  let composeCam, quickCam;
+  let composeCam, quickCam, cuts = [], introDur = 0;
 
   function build(ep) {
     const theme = THEMES[ep.interface] ? ep.interface : 'midnight';
@@ -142,10 +145,14 @@
       $('ecKicker').textContent = ep.endCard.kicker || 'NEXT VIDEO';
       $('ecText').innerHTML = rich(ep.endCard.text || '');
     }
+    $('badge').textContent = ep.badge || '';
+    $('badge').style.display = ep.badge ? 'block' : 'none';
+    const uav = ep.user && ep.user.avatar
+      ? `<img class="uav" src="${mediaSrc(ep.user.avatar)}" style="object-position:${ep.user.avatarPos || '50% 30%'}" alt="">` : '';
     const thread = $('thread');
     X = ep.exchanges.map((ex) => {
       const u = document.createElement('div'); u.className = 'msg user';
-      u.innerHTML = `<div class="bubble">${rich(ex.user)}</div>`;
+      u.innerHTML = `<div class="bubble">${rich(ex.user)}</div>${uav}`;
       const a = document.createElement('div'); a.className = 'msg ai' + (ex.wall ? ' wall' : '');
       const toks = ex.wall && ex.wall.text ? wallTokens(ex) : tokenize(aiText(ex));
       // short emoji-only replies render big, like "jumbo" emoji in messaging apps
@@ -209,7 +216,13 @@
     shots = [{ t: 0, dur: 0, cam: { cx: W / 2, cy: H / 2, s: 1 }, drift: 0.01 }];
     shakes = []; cues = []; meterSteps = [];
     const camFor = (x) => (x.ex.quick ? quickCam : composeCam);
-    let t = P.introHold;
+    cuts = [];
+    introDur = EP.intro ? (EP.intro.dur ?? 1.8) : 0;
+    if (introDur) {
+      cues.push({ t: 0.05, s: EP.intro.sfx || 'boom', g: -5, duck: true });
+      cues.push({ t: introDur - 0.22, s: 'whoosh', g: -10 });
+    }
+    let t = introDur + P.introHold;
     shots.push({ t, dur: P.introZoom, cam: camFor(X[0]), ease: 'inOutCubic', drift: 0.004 });
     cues.push({ t: t + 0.05, s: 'whoosh', g: -12 });
     t += P.introZoom + 0.08;
@@ -275,6 +288,15 @@
       if (HUD && target != null && target !== mv) {
         meterSteps.push({ t: hasPunch ? S.punch : S.streamEnd, from: mv, to: target });
         mv = target;
+      }
+      // ---- full-screen photo cutaway ("ELON RIGHT NOW:")
+      if (ex.cutaway) {
+        const c = ex.cutaway, d = c.dur ?? 1.7;
+        const cut = { ...c, t0: S.next, t1: S.next + d };
+        cuts.push(cut);
+        cues.push({ t: cut.t0, s: c.sfx || 'zoom', g: c.sfx ? -3 : -6, duck: !!c.sfx });
+        if (c.shake) shakes.push({ t: cut.t0 + 0.06, amp: 22, dur: 0.42 });
+        S.next = cut.t1;
       }
       // ---- hand over to the next exchange
       if (ex.final) {
@@ -356,8 +378,10 @@
     $('hud').style.borderColor = alarm ? `hsla(${hue},100%,60%,${0.45 + 0.55 * pulse})` : 'rgba(255,255,255,.12)';
     $('hudPct').textContent = `${Math.round(v)}%`;
     const face = HUD.faces.find(([th]) => v > th) || HUD.faces[HUD.faces.length - 1];
-    const src = emoSrc(face[1]);
-    if (!$('hudFace').src.endsWith(src.slice(2))) $('hudFace').src = src;
+    setSrc($('hudFace'), faceSrc(face[1]));
+    $('hudFace').classList.toggle('photo', !isEmoji(face[1]));
+    $('hudBadge').style.display = face[2] ? 'block' : 'none';
+    if (face[2]) setSrc($('hudBadge'), emoSrc(face[2]));
     $('hud').style.transform = `translateX(${shake}px) scale(${1 + bump})`;
   }
 
@@ -398,6 +422,41 @@
     const c = camAt(t), sh = shakeAt(t);
     $('cam').style.transform = `translate(${W / 2 + sh.x}px, ${H / 2 + sh.y}px) rotate(${sh.rot}deg) scale(${c.s}) translate(${-c.cx}px, ${-c.cy}px)`;
     hudAt(t);
+    // photo cutaway / opening VS card
+    const cut = cuts.find((c) => t >= c.t0 && t < c.t1);
+    const cutEl = $('cut');
+    if (introDur && t < introDur) {
+      const I = EP.intro, p = t / introDur;
+      cutEl.style.display = 'block';
+      $('cutPhoto').style.display = 'none';
+      $('vs').style.display = 'flex';
+      setSrc($('vsImg'), mediaSrc(I.image));
+      $('vsImg').style.objectPosition = I.pos || '50% 30%';
+      $('vsLName').innerHTML = rich(I.left || '');
+      $('vsRName').innerHTML = rich(I.right || '');
+      $('vsRIcon').innerHTML = rich(I.rightIcon || '🤖');
+      const sl = EASE.outExpo(clamp(p / 0.22, 0, 1));
+      $('vsL').style.transform = `translateX(${(1 - sl) * -110}%)`;
+      $('vsR').style.transform = `translateX(${(1 - sl) * 110}%)`;
+      const pop = clamp((p - 0.18) / 0.2, 0, 1);
+      $('vsMid').style.transform = `translate(-50%,-50%) scale(${pop ? 0.4 + 0.6 * EASE.outBack(pop) : 0}) rotate(-8deg)`;
+      $('vsImg').style.transform = `scale(${1.04 + 0.08 * p})`;
+    } else if (cut) {
+      const p = (t - cut.t0) / (cut.t1 - cut.t0);
+      const e = EASE.outExpo(clamp((t - cut.t0) / 0.16, 0, 1));
+      const [z0, z1] = cut.zoom || [1.0, 1.14];
+      const sh = shakeAt(t);
+      cutEl.style.display = 'block';
+      $('vs').style.display = 'none';
+      $('cutPhoto').style.display = 'block';
+      setSrc($('cutImg'), mediaSrc(cut.image));
+      $('cutImg').style.objectPosition = cut.pos || '50% 30%';
+      $('cutImg').style.transformOrigin = cut.pos || '50% 30%';
+      $('cutImg').style.transform = `translate(${sh.x}px, ${sh.y}px) scale(${lerp(z0, z1, p) * (1 + 0.22 * (1 - e))})`;
+      $('cutCap').innerHTML = rich(cut.caption || '');
+      $('cutCap').style.display = cut.caption ? 'block' : 'none';
+      $('cutCredit').textContent = (EP.__credits && EP.__credits[cut.image] && EP.__credits[cut.image].short) || '';
+    } else cutEl.style.display = 'none';
     // end card
     const ec = $('endcard');
     if (EP.endCard && t >= endStart) {
@@ -414,7 +473,11 @@
     build(ep);
     await document.fonts.ready;
     await Promise.all([...document.images].map((im) => (im.complete ? 0 : new Promise((r) => { im.onload = im.onerror = r; }))));
-    if (HUD) await Promise.all(HUD.faces.map(([, f]) => new Promise((r) => { const im = new Image(); im.onload = im.onerror = r; im.src = emoSrc(f); })));
+    const pre = [];
+    if (HUD) HUD.faces.forEach(([, f, b]) => { pre.push(faceSrc(f)); if (b) pre.push(emoSrc(b)); });
+    ep.exchanges.forEach((ex) => { if (ex.cutaway) pre.push(mediaSrc(ex.cutaway.image)); });
+    if (ep.intro) pre.push(mediaSrc(ep.intro.image));
+    await Promise.all(pre.map((src) => new Promise((r) => { const im = new Image(); im.onload = im.onerror = r; im.src = src; })));
     measure();
     plan();
     const hook = ep.hook !== false && ep.hook != null;

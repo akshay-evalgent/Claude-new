@@ -70,7 +70,11 @@ body { font-family: var(--font); -webkit-font-smoothing: antialiased; }
   border: 1.5px solid rgba(255,255,255,.12); box-shadow: 0 10px 40px rgba(0,0,0,.5);
   font-family: "Inter", sans-serif; transform-origin: 0 50%; }
 #hud.on { display: flex; }
+#hudFaceWrap { position: relative; width: 60px; height: 60px; flex: none; }
 #hudFace { width: 60px; height: 60px; }
+#hudFace.photo { border-radius: 50%; object-fit: cover; object-position: 50% 28%; border: 2px solid rgba(255,255,255,.7); }
+#hudBadge { position: absolute; right: -12px; bottom: -10px; width: 34px; height: 34px; display: none;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.6)); }
 #hudBody { width: 300px; }
 #hudLabel { display: flex; justify-content: space-between; font-size: 19px; font-weight: 800;
   letter-spacing: 1.4px; color: #fff; margin-bottom: 9px; }
@@ -136,3 +140,35 @@ body.t-void #greet { font-size: 40px; font-weight: 700; letter-spacing: -1px; }
 .msg.ai.jumbo .body { font-size: 30px; line-height: 46px; }
 .msg.ai.jumbo .body .emo { width: 1.3em; height: 1.3em; vertical-align: -0.3em; margin-right: .04em; }
 .bubble .emo + .emo { margin-left: .04em; }
+
+/* ---------- user avatar ---------- */
+.msg.user { align-items: flex-end; gap: 10px; }
+.uav { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; flex: none; border: 1.5px solid rgba(255,255,255,.25); }
+
+/* ---------- photo cutaways and the opening VS card ---------- */
+#cut { position: absolute; inset: 0; display: none; overflow: hidden; background: #000; }
+#cutPhoto, #cutImg { position: absolute; inset: 0; width: 100%; height: 100%; }
+#cutImg { object-fit: cover; }
+#cutCap { position: absolute; left: 80px; right: 80px; bottom: 90px; text-align: center;
+  font: 900 92px/1.05 "Inter Display", "Inter", sans-serif; letter-spacing: -2px; color: #fff; text-transform: uppercase;
+  -webkit-text-stroke: 3px #000; paint-order: stroke fill; text-shadow: 0 6px 24px rgba(0,0,0,.85); }
+#cutCap .emo { width: 1em; height: 1em; vertical-align: -0.12em; }
+#cutCredit { position: absolute; right: 22px; bottom: 16px; font: 500 15px "Inter", sans-serif; color: rgba(255,255,255,.75);
+  text-shadow: 0 1px 3px rgba(0,0,0,.9); }
+#vs { position: absolute; inset: 0; display: none; }
+#vsL, #vsR { position: absolute; top: 0; bottom: 0; width: 50%; overflow: hidden; }
+#vsL { left: 0; clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%); }
+#vsR { right: 0; background: radial-gradient(ellipse at 60% 45%, #1b1b20, #000 70%); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 28px; }
+#vsImg { width: 100%; height: 100%; object-fit: cover; }
+.vsName { font: 900 120px/1 "Inter Display", "Inter", sans-serif; letter-spacing: -3px; color: #fff;
+  -webkit-text-stroke: 3px #000; paint-order: stroke fill; text-shadow: 0 8px 30px rgba(0,0,0,.8); }
+#vsLName { position: absolute; left: 70px; bottom: 70px; }
+#vsRIcon .emo { width: 300px; height: 300px; filter: drop-shadow(0 0 40px rgba(25,227,255,.45)); }
+#vsMid { position: absolute; left: 50%; top: 50%; font: 900 150px/1 "Inter Display", sans-serif; color: #ff2e4d;
+  -webkit-text-stroke: 5px #000; paint-order: stroke fill; text-shadow: 0 0 50px rgba(255,46,77,.6); }
+
+/* ---------- parody badge ---------- */
+#badge { position: absolute; right: 52px; top: 50px; display: none; padding: 8px 16px; border-radius: 10px;
+  font: 800 24px/1 "Inter", sans-serif; letter-spacing: 5px; color: #fff; background: rgba(0,0,0,.55);
+  border: 2px solid rgba(255,255,255,.55); }

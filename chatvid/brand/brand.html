@@ -141,6 +141,14 @@
           (a.name ? `<div class="label" style="font-size:${a.labelSize || 30}px;margin:0 0 18px 14px">${a.name}</div>` : '') +
           bubble(a.text, 'ai', a.color || 'cyan', a.size || 104) + '</div></div>');
       }
+      if (s.photo) {
+        const ph = s.photo, size = ph.size || 270;
+        h += `<img src="../assets/media/${ph.image}.jpg" style="position:absolute;left:${ph.x}px;top:${ph.y}px;width:${size}px;height:${size}px;` +
+          `border-radius:50%;object-fit:cover;object-position:${ph.pos || '50% 30%'};border:${Math.round(size * 0.035)}px solid var(--${ph.color || 'red'});` +
+          `box-shadow:0 0 ${size * 0.08}px var(--${ph.color || 'red'}),0 0 ${size * 0.25}px color-mix(in srgb,var(--${ph.color || 'red'}) 45%,transparent)">`;
+      }
+      if (s.tag) h += `<div style="position:absolute;right:26px;bottom:22px;font:800 26px/1 var(--font);letter-spacing:5px;color:#fff;` +
+        `padding:9px 14px;border-radius:9px;background:rgba(0,0,0,.6);border:2px solid rgba(255,255,255,.6)">${s.tag}</div>`;
       if (s.big) h += at(s.big.x, s.big.y, img(s.big.emoji, s.big.size), `transform:rotate(${s.big.rot || 0}deg);filter:drop-shadow(0 0 40px rgba(255,170,60,.45))`);
       return h;
     },

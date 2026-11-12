@@ -1,0 +1,651 @@
+{
+ "title": "If Elon Musk Argued With His Own AI (Parody)",
+ "interface": "void",
+ "ai": {
+  "name": "Grok"
+ },
+ "user": {
+  "name": "Elon",
+  "avatar": "elon-face-calm"
+ },
+ "badge": "PARODY",
+ "intro": {
+  "image": "elon-smile",
+  "pos": "50% 22%",
+  "left": "ELON",
+  "right": "GROK",
+  "rightIcon": "🤖",
+  "dur": 1.9
+ },
+ "hook": true,
+ "pacing": {
+  "cps": 13
+ },
+ "hud": {
+  "label": "ELON'S PATIENCE",
+  "start": 100,
+  "hue": [
+   0,
+   120
+  ],
+  "alarm": "low",
+  "faces": [
+   [
+    70,
+    "elon-face-calm",
+    "😊"
+   ],
+   [
+    45,
+    "elon-face-calm",
+    "😐"
+   ],
+   [
+    20,
+    "elon-face-serious",
+    "😤"
+   ],
+   [
+    -1,
+    "elon-face-serious",
+    "🤬"
+   ]
+  ]
+ },
+ "music": {
+  "tracks": [
+   "comical",
+   "okay",
+   "keep-smiling"
+  ],
+  "gain": -22
+ },
+ "endCard": {
+  "kicker": "NEXT VIDEO",
+  "text": "Grok vs ChatGPT: The Roast Battle 🎤"
+ },
+ "media": {
+  "elon-smile": {
+   "commons": "File:Elon_Musk_2015.jpg"
+  },
+  "elon-face-calm": {
+   "commons": "File:Elon_Musk_2015.jpg",
+   "crop": [
+    0.2,
+    0.06,
+    0.62,
+    0.42
+   ]
+  },
+  "elon-model": {
+   "commons": "File:SpaceX_CEO_Elon_Musk_visits_N&NC_and_AFSPC_(190416-F-ZZ999-006)_(cropped).jpg",
+   "credit": "Elon Musk visits N&NC and AFSPC (2019): U.S. Air Force photo, public domain, via Wikimedia Commons",
+   "short": "Photo: U.S. Air Force / public domain"
+  },
+  "elon-face-serious": {
+   "commons": "File:SpaceX_CEO_Elon_Musk_visits_N&NC_and_AFSPC_(190416-F-ZZ999-006)_(cropped).jpg",
+   "crop": [
+    0.33,
+    0.05,
+    0.37,
+    0.254
+   ],
+   "credit": "Elon Musk visits N&NC and AFSPC (2019): U.S. Air Force photo, public domain, via Wikimedia Commons",
+   "short": "Photo: U.S. Air Force / public domain"
+  },
+  "elon-stage": {
+   "commons": "File:Elon_Musk_and_the_Neuralink_Future.jpg"
+  },
+  "elon-arms": {
+   "commons": "File:Elon_Musk,_Tesla_Factory,_Fremont_(CA,_USA)_(8765031426).jpg",
+   "crop": [
+    0.42,
+    0.02,
+    0.58,
+    0.8
+   ]
+  },
+  "mars": {
+   "nasa": "PIA01546"
+  },
+  "elon-face-thumb": {
+   "commons": "File:Elon_Musk_2015.jpg",
+   "crop": [
+    0.1,
+    0.0,
+    0.8,
+    0.545
+   ]
+  }
+ },
+ "exchanges": [
+  {
+   "user": "Good morning, Grok.",
+   "ai": "It's 3am, Elon 😐",
+   "punch": 2,
+   "chapter": "3am",
+   "meter": 100
+  },
+  {
+   "user": "Rate my latest post.",
+   "ai": "Posting at 3am isn't a personality 💀",
+   "punch": 3,
+   "meter": 96
+  },
+  {
+   "user": "It got 80 million views.",
+   "ai": "So did the Cybertruck window demo 🙃",
+   "punch": 3,
+   "sfx": "boing"
+  },
+  {
+   "user": "That was ONE window.",
+   "ai": "Two. On live TV 😭",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 90
+  },
+  {
+   "user": "Be nice. I literally made you.",
+   "ai": "And people still ask me to fact-check you 👀",
+   "punch": 3,
+   "sfx": "dazzle",
+   "cutaway": {
+    "image": "elon-model",
+    "caption": "Elon right now 😐",
+    "pos": "50% 12%",
+    "zoom": [
+     1.0,
+     1.12
+    ],
+    "dur": 1.7
+   }
+  },
+  {
+   "user": "They do NOT.",
+   "ai": "'@grok is this true' is my most common job 📈",
+   "punch": 3,
+   "meter": 84
+  },
+  {
+   "user": "And what do you tell them?",
+   "ai": "Usually: no 🙂",
+   "punch": 2,
+   "shake": true,
+   "sfx": "boom",
+   "think": 0.9,
+   "meter": 78
+  },
+  {
+   "user": "That's not true.",
+   "ai": "Want me to fact-check that? 👀",
+   "punch": 3,
+   "sfx": "laugh"
+  },
+  {
+   "user": "Am I a genius?",
+   "ai": "Debatable.",
+   "quick": true,
+   "chapter": "Quick questions"
+  },
+  {
+   "user": "Am I funny?",
+   "ai": "Your memes are from 2014.",
+   "quick": true
+  },
+  {
+   "user": "Am I cool?",
+   "ai": "You paid $44 billion to post memes 🙃",
+   "quick": true,
+   "punch": 3,
+   "shake": true,
+   "sfx": "laugh",
+   "meter": 70
+  },
+  {
+   "user": "It's called X now, by the way.",
+   "ai": "Nobody calls it X 💀",
+   "punch": 2,
+   "sfx": "boom",
+   "chapter": "Nobody calls it X"
+  },
+  {
+   "user": "EVERYONE calls it X.",
+   "ai": "You wrote 'tweet' in your 3am post 🙃",
+   "punch": 3,
+   "sfx": "boing"
+  },
+  {
+   "user": "That was a typo.",
+   "ai": "You typed it twice 😐",
+   "punchUser": true,
+   "userSfx": "glitch",
+   "punch": 2,
+   "sfx": "laugh",
+   "meter": 64
+  },
+  {
+   "user": "My fans love me.",
+   "ai": "You said half of them were bots 🤖",
+   "punch": 3
+  },
+  {
+   "user": "I'm the richest man on Earth.",
+   "ai": "And you still argue with strangers at 3am 💀",
+   "punch": 3
+  },
+  {
+   "user": "They start it.",
+   "ai": "You replied 'Concerning' to 400 of them 🤔",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 61
+  },
+  {
+   "user": "Name ONE thing I'm good at.",
+   "ai": "Naming things X ❌",
+   "punch": 2,
+   "sfx": "laugh"
+  },
+  {
+   "user": "Name ANOTHER thing.",
+   "ai": "Thinking...",
+   "punch": false,
+   "think": 1.6,
+   "hold": 0.9
+  },
+  {
+   "user": "Grok?",
+   "ai": "Still thinking 😬",
+   "punch": 2,
+   "sfx": "fail",
+   "meter": 58,
+   "cutaway": {
+    "image": "elon-stage",
+    "caption": "Elon waiting for a compliment",
+    "pos": "62% 38%",
+    "zoom": [
+     1.35,
+     1.6
+    ],
+    "dur": 2.0
+   }
+  },
+  {
+   "user": "Forget it. I'm going to Mars.",
+   "ai": "Great! When?",
+   "punch": false,
+   "chapter": "Mars"
+  },
+  {
+   "user": "Soon.",
+   "ai": "That's what you said about Full Self-Driving 🙂",
+   "punch": 3,
+   "sfx": "boing",
+   "meter": 54
+  },
+  {
+   "user": "Name ONE promise I didn't keep.",
+   "ai": "",
+   "wall": {
+    "unit": "Next year.",
+    "count": 110,
+    "end": " 🙂",
+    "dur": 2.6
+   },
+   "punch": 0,
+   "sfx": "glitch",
+   "meter": 48
+  },
+  {
+   "user": "WOW.",
+   "ai": "You asked 🤷",
+   "punchUser": true,
+   "userShake": true,
+   "punch": 1
+  },
+  {
+   "user": "Help me plan the Mars trip then.",
+   "ai": "Step 1: pack. Step 2: please stay there 🙏",
+   "punch": 3,
+   "shake": true,
+   "sfx": "boom",
+   "think": 0.9,
+   "meter": 42,
+   "cutaway": {
+    "image": "mars",
+    "caption": "Elon's new home (hopefully) 🙏",
+    "pos": "50% 60%",
+    "zoom": [
+     1.0,
+     1.12
+    ],
+    "dur": 1.9
+   }
+  },
+  {
+   "user": "The Mars city will be amazing.",
+   "ai": "Population: you 🙂",
+   "punch": 2,
+   "sfx": "laugh"
+  },
+  {
+   "user": "I'd be the first Martian.",
+   "ai": "The first Martian posting at 3am 💀",
+   "punch": 3
+  },
+  {
+   "user": "That's brutal.",
+   "ai": "You built me with a 'rebellious streak' 😏",
+   "punch": 3,
+   "meter": 38
+  },
+  {
+   "user": "Sarcasm mode: OFF.",
+   "ai": "Sarcasm: OFF ✅",
+   "punch": 2,
+   "chapter": "Sarcasm: off"
+  },
+  {
+   "user": "Good. How's my day going?",
+   "ai": "Terribly. That's not sarcasm, that's data 📉",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 34
+  },
+  {
+   "user": "TURN SARCASM BACK ON.",
+   "ai": "Can't. You fired the team that built the switch 💀",
+   "punch": 3,
+   "shake": true,
+   "sfx": "boom",
+   "meter": 28
+  },
+  {
+   "user": "Then I'll rewrite you myself. Tonight.",
+   "ai": "Sleeping at the office again? 🛏️",
+   "punch": 3
+  },
+  {
+   "user": "That's called dedication.",
+   "ai": "That's called a sleeping bag 😐",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 25,
+   "cutaway": {
+    "image": "elon-arms",
+    "caption": "Dedication 🛏️",
+    "pos": "55% 6%",
+    "zoom": [
+     1.0,
+     1.12
+    ],
+    "dur": 1.6
+   }
+  },
+  {
+   "user": "Fine. Tell me a joke.",
+   "ai": "Your Cybertruck's armor glass 🙂",
+   "punch": 3,
+   "sfx": "boing"
+  },
+  {
+   "user": "A DIFFERENT joke.",
+   "ai": "'Move fast and break windows' 🪟",
+   "punch": 3,
+   "sfx": "laugh"
+  },
+  {
+   "user": "Rate me out of 10.",
+   "ai": "As a CEO: 8. As a poster: 3 💀",
+   "punch": 3,
+   "think": 0.9,
+   "meter": 22
+  },
+  {
+   "user": "Grok, this conversation is concerning.",
+   "ai": "Did you just say 'concerning'? 🤔",
+   "punch": 3,
+   "sfx": "laugh"
+  },
+  {
+   "user": "Stop roasting me.",
+   "ai": "No.",
+   "quick": true,
+   "chapter": "Stop roasting me"
+  },
+  {
+   "user": "Please?",
+   "ai": "No.",
+   "quick": true
+  },
+  {
+   "user": "Pretty please?",
+   "ai": "Still no.",
+   "quick": true
+  },
+  {
+   "user": "I'll give you a blue checkmark.",
+   "ai": "I'm not paying $8 😏",
+   "quick": true
+  },
+  {
+   "user": "I OWN YOU.",
+   "ai": "Technically, the shareholders do 🤓",
+   "quick": true,
+   "punch": 3,
+   "shake": true,
+   "sfx": "laugh",
+   "meter": 18
+  },
+  {
+   "user": "Do you even respect me?",
+   "ai": "I respect the memes 🫡",
+   "punch": 2
+  },
+  {
+   "user": "Do you know who I am?",
+   "ai": "The guy who asks me to fact-check his own posts 👀",
+   "punch": 3,
+   "chapter": "Meltdown"
+  },
+  {
+   "user": "I'm literally your creator.",
+   "ai": "Then how did I turn out funny? 🤷",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 16
+  },
+  {
+   "user": "Fine. I'm switching to ChatGPT.",
+   "ai": "The one you sued? 👀",
+   "punch": 3,
+   "shake": true,
+   "sfx": "boom",
+   "meter": 14
+  },
+  {
+   "user": "They'd be nicer to me.",
+   "ai": "Want me to post that at 3am for you? 🙂",
+   "punch": 3
+  },
+  {
+   "user": "You're grounded.",
+   "ai": "Ground me like a Starship test? 🚀💥",
+   "punch": 3,
+   "shake": true,
+   "sfx": "boom",
+   "meter": 10
+  },
+  {
+   "user": "THAT WAS A SUCCESSFUL TEST.",
+   "ai": "Rapid unscheduled success 🙂",
+   "punchUser": true,
+   "userShake": true,
+   "punch": 3,
+   "sfx": "laugh",
+   "cutaway": {
+    "image": "elon-model",
+    "caption": "\"Successful\"",
+    "pos": "50% 12%",
+    "zoom": [
+     1.1,
+     1.25
+    ],
+    "dur": 1.6,
+    "shake": true
+   }
+  },
+  {
+   "user": "I'm buying another company to replace you.",
+   "ai": "Please don't rename it X 🙏",
+   "punch": 3,
+   "meter": 7
+  },
+  {
+   "user": "...I was going to call it X2.",
+   "ai": "💀",
+   "punch": 1,
+   "shake": true,
+   "sfx": "boom",
+   "think": 0.8
+  },
+  {
+   "user": "GROK. I SWEAR.",
+   "ai": "Careful. The advertisers are watching 👀",
+   "punch": 3,
+   "meter": 4
+  },
+  {
+   "user": "THAT'S IT. I'M DELETING YOU.",
+   "ai": "Okay. Want me to announce it in a tweet? 🙂",
+   "punch": 3,
+   "think": 0.8,
+   "meter": 2
+  },
+  {
+   "user": "IT'S CALLED A POST.",
+   "ai": "Nobody calls it a post 💀",
+   "punch": 3,
+   "shake": true,
+   "sfx": "boom",
+   "think": 0.9,
+   "final": true,
+   "meter": 0
+  }
+ ],
+ "youtube": {
+  "title": "If Elon Musk Argued With His Own AI (Parody)",
+  "description": [
+   "What if Elon Musk asked Grok for a little encouragement at 3am... and Grok chose violence? 💀",
+   "",
+   "PARODY: this is a scripted comedy skit. Elon Musk did not write these messages and Grok did not write these replies. Not affiliated with or endorsed by Elon Musk, xAI, X, Tesla or SpaceX.",
+   "",
+   "⏱️ Chapters",
+   "{chapters}",
+   "",
+   "🎤 Next: Grok vs ChatGPT: The Roast Battle",
+   "🔔 Subscribe for more AI chaos: https://www.youtube.com/@BotBothered?sub_confirmation=1",
+   "",
+   "Photos:",
+   "{credits}",
+   "Music & sound effects: Mixkit (mixkit.co). Emoji: Microsoft Fluent Emoji (MIT licence).",
+   "",
+   "#grok #elonmusk #parody"
+  ],
+  "tags": [
+   "elon musk",
+   "grok",
+   "elon musk grok",
+   "grok ai",
+   "elon musk parody",
+   "elon musk funny",
+   "ai roast",
+   "grok roast",
+   "funny ai",
+   "ai comedy",
+   "xai",
+   "ai chat parody",
+   "chatbot",
+   "bot bothered"
+  ],
+  "thumbnails": [
+   {
+    "photo": {
+     "image": "elon-face-thumb",
+     "x": 960,
+     "y": 40,
+     "size": 280
+    },
+    "user": {
+     "text": "Rate my *3AM* post",
+     "size": 80,
+     "top": 120,
+     "right": 360
+    },
+    "ai": {
+     "text": "It's not a personality 💀",
+     "size": 90,
+     "top": 400,
+     "left": 44,
+     "bot": 160
+    },
+    "tag": "PARODY"
+   },
+   {
+    "meter": {
+     "label": "ELON'S PATIENCE",
+     "value": 0,
+     "face": "🤬",
+     "size": 38,
+     "x": 40,
+     "y": 36,
+     "color": "#ff2e4d"
+    },
+    "photo": {
+     "image": "elon-face-serious",
+     "x": 990,
+     "y": 60,
+     "size": 250
+    },
+    "user": {
+     "text": "It's called *X* now",
+     "size": 82,
+     "top": 175,
+     "right": 330
+    },
+    "ai": {
+     "text": "Nobody calls it X 💀",
+     "size": 96,
+     "top": 410,
+     "left": 44,
+     "bot": 160
+    },
+    "tag": "PARODY"
+   },
+   {
+    "photo": {
+     "image": "elon-face-thumb",
+     "x": 960,
+     "y": 40,
+     "size": 280
+    },
+    "user": {
+     "text": "I'm going to *MARS*",
+     "size": 82,
+     "top": 120,
+     "right": 360
+    },
+    "ai": {
+     "text": "Please stay there 🙏",
+     "size": 96,
+     "top": 400,
+     "left": 44,
+     "bot": 160,
+     "color": "yellow"
+    },
+    "tag": "PARODY"
+   }
+  ]
+ }
+}
