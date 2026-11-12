@@ -41,7 +41,7 @@ function resolveOpt(v, c) {
   if (m) return c.at(m[1]) + (m[2] ? parseFloat(m[2]) : 0);
   return v;
 }
-const TEXT_KEYS = new Set(['lines', 'label', 'city', 'region', 'mode', 'kind', 'icon', 'item', 'found', 'phase', 'pins']);
+const TEXT_KEYS = new Set(['lines', 'label', 'city', 'region', 'mode', 'kind', 'icon', 'item', 'found', 'phase', 'pins', 'text', 'title', 'l1', 'l2', 'show']);
 function resolveOpts(o, c) { const r = {}; for (const k in o) r[k] = TEXT_KEYS.has(k) ? o[k] : resolveOpt(o[k], c); return r; }
 
 // ---------- cameras ----------

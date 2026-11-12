@@ -71,6 +71,26 @@ function heroBig(o) {
 }
 
 const THUMBS = {
+  doctorRef() {
+    let bg = thumbWorld({ seed: 23, sunX: 1450, sunY: 250, sky: ['#6FBDE6', '#E6F4F2'] });
+    bg += hut(1760, 650, 1.0) + hut(1180, 630, 0.6) + fire(1330, 720, 0.55, 0.7);
+    bg += person({ x: 1450, y: 960, s: 1.35, t: 1, seed: 14, face: 'happy', beard: true, hairC: '#B9B2A6', bob: 0, la: [-14, -6], ra: [120, 80],
+      holdR: e => g(`translate(${f1(e[0])} ${f1(e[1])}) rotate(-20)`, `<path d="M0 0 L0 -120" stroke="${C.woodD}" stroke-width="7" stroke-linecap="round"/>` + [[-30, -60], [28, -80], [-26, -110], [24, -128], [0, -150]].map(([x, y], i) => `<path d="${smooth([[x, y], [x * 1.6, y - 18], [x * 1.2, y - 40], [0, y - 6]])}" fill="${i % 2 ? '#7FAA4E' : '#97BE5F'}" ${S} stroke-width="3.5"/>`).join('')) });
+    bg += person({ x: 1640, y: 960, s: 0.8, t: 1, seed: 9, face: 'worried', la: [-14, -6], ra: [14, 6], bob: 0 });
+    let fg = heroBig(Object.assign({ x: 560, y: 1780, s: 3.35, seed: 3, face: 'sick', la: [-24, -12], ra: [70, 205], armsFront: true,
+      front: () => g('translate(0 -354)', `<path d="M44 -14 Q96 4 82 44 Q68 68 40 56" fill="#FFFFFF" ${S} stroke-width="5.5"/><ellipse cx="54" cy="22" rx="26" ry="22" fill="#F0A2A2" opacity=".85"/><path d="M-52 -64 q-9 16 0 26 q9 -10 0 -26 Z M-74 -36 q-7 12 0 20 q7 -8 0 -20 Z" fill="#8FD0F0" ${S} stroke-width="2.5"/><path d="M96 0 l28 -10 M100 28 l32 4 M92 54 l24 18" ${S} stroke="${C.red}" stroke-width="6"/>`) }, legsOff));
+    return { bg, fg, text: thumbText(['NO DOCTOR?'], 960, 215, 230, 'middle', 1780) };
+  },
+  doctorAlt() {
+    let bg = thumbWorld({ seed: 29, sunX: 600, sunY: 260, sky: ['#6FBDE6', '#E6F4F2'] });
+    bg += hut(300, 650, 1.0) + fire(620, 720, 0.55, 0.4);
+    bg += person({ x: 520, y: 960, s: 1.2, t: 1, seed: 5, long: true, hairC: C.hair2, face: 'happy', bob: 0, la: [-14, -6], ra: [80, 95], holdR: e => g(`translate(${f1(e[0] + 20)} ${f1(e[1])})`, bowl(0.6)) });
+    bg += person({ x: 780, y: 960, s: 1.1, t: 1, seed: 8, face: 'happy', bob: 0, la: [-14, -6], ra: [80, 95], holdR: e => g(`translate(${f1(e[0] + 20)} ${f1(e[1])})`, meat(0.45, 9)) });
+    let fg = heroBig(Object.assign({ x: 1380, y: 1700, s: 3.0, seed: 21, face: 'happy', flip: true, hairC: '#3C2A1E', la: [-14, -6], ra: [40, 120], armsFront: true,
+      front: (L, R) => g(`translate(${f1(R[0] - 20)} ${f1(R[1] + 14)}) rotate(-30)`, `<rect x="-46" y="-16" width="92" height="32" rx="12" fill="#FFFFFF" ${S} stroke-width="4"/><path d="M-20 -16 V16 M10 -16 V16" stroke="#C9C2B0" stroke-width="3"/>`) +
+        g('translate(0 -354)', `<path d="M-60 -20 Q0 -44 60 -20 L58 -2 Q0 -24 -58 -2 Z" fill="#FFFFFF" ${S} stroke-width="4"/><circle cx="26" cy="-18" r="6" fill="${C.red}" opacity=".8"/>`) }, legsOff));
+    return { bg, fg, text: thumbText(['HEALED HOW?'], 960, 215, 230, 'middle', 1780) };
+  },
   fridgeRef() {
     let bg = thumbWorld({ seed: 11, sunX: 1380, sunY: 250, sky: ['#6FBDE6', '#E6F4F2'] });
     bg += vulture(1180, 330, 0.9) + vulture(1330, 280, 0.7) + vulture(1500, 360, 0.6);

@@ -10,7 +10,7 @@ let TODAY = false;
     if (TODAY && (o.kind || 'cave') === 'cave') {
       o = Object.assign({}, o, { kind: 'modern', shirt: TODAY_SHIRTS[(o.seed || 0) % TODAY_SHIRTS.length], cloak: false, beard: false });
       if (o.long) o.hairLong = true; else o.shortHair = true;
-      o.hairC = '#2B2118';
+      if (!o.keepHair) o.hairC = '#2B2118';
     }
     return orig(o);
   };

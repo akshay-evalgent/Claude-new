@@ -1,0 +1,348 @@
+# How Did Ancient Humans Survive Without Doctors?
+# Same format as film/fridge-full/script.txt. Facts checked 2026-11-12; see SOURCES.md.
+
+= hook open
+Tonight, if a tooth starts to throb, you'll reach for a pill. >> modernPill {} push
+Tomorrow, a stranger in a white coat will fix it. >> dentistModern {} push
++ You'll lie back. >> dentistModern {} [1180,600,1.3,1.4]
++ You'll get an injection. >> dentistModern {"numb":true} push
++ And you won't feel a thing. ~0.2 >> dentistModern {"numb":true} [1180,600,1.3,1.4]
+If something worse happens, >> card {"lines":["SOMETHING","WORSE?"],"icon":"heart"} push
++ an ambulance can be at your door in minutes. ~0.2 >> ambulance {} push
+You don't even think about it. >> modernFridge {} push
+There's a pharmacy around the corner. >> pharmacy {} push
++ Thousands of medicines on its shelves. >> pharmacy {} [960,420,1.2,1.3]
+Pills for pain. Creams for cuts. Drops for sore eyes. ~0.15 >> pharmacy {} [960,560,1.1,1.15]
+But medicine, as we know it, is new. >> card {"lines":["MEDICINE","IS NEW"],"icon":"clock"} push
+Scientists only began to prove that germs cause disease in the eighteen sixties. >> microscope {"step":1} push
+Penicillin was discovered in nineteen twenty eight. >> herbs {"show":["mould"],"title":"1928"} push
++ It was first used to treat a patient in nineteen forty one. ~0.15 >> card {"lines":["1941"],"icon":"heart"} push
+Our species has been around for roughly three hundred thousand years. >> timeBar2 {"step":1} pull
+For almost all of that time, >> timeBar2 {"step":2} push
++ there was no doctor at all. ~0.2 >> timeBar2 {"step":3} [1760,560,1.4,1.6]
+Now take time back fifty thousand years. ~0.15 >> rewind {} [960,540,1.02,1.08]
+A man wakes up in a cave, with his jaw on fire. >> toothache {} push
+A tooth has gone bad. >> toothDiagram {"mode":"abscess"} push
++ The pain spreads through his face. >> toothache {} [800,560,1.4,1.5]
+No pharmacy. >> card {"lines":["NO PHARMACY."],"icon":"jar"} push
++ No dentist. >> card {"lines":["NO DENTIST."],"icon":"jar"} push
++ No painkiller. ~0.15 >> card {"lines":["NO PAINKILLER."],"icon":"jar"} push
+So he has to face something >> think {"q1":"@something","q2":"NEVER"} push
++ you have never had to face alone. ~0.1 >> modernPill {} push
+Now your brain is probably saying, >> brain {} [960,520,1,1.06]
++ Cavemen? They just suffered. Or they died. >> objection {"l1":"CAVEMEN?","l2":"They just suffered."} [960,540,1,1.05]
+Life was short and brutal. >> card {"lines":["SHORT","AND BRUTAL"],"icon":"bone"} push
++ Get hurt, get sick, and you were left behind. >> leftBehind {} push
+At least, that's what we assume. >> assume {} [900,640,1,1.06]
+But the evidence tells a different story. ~0.15 >> dig {"found":"bones"} push
+It's written in teeth. >> toothDiagram {"mode":"tartar"} push
++ In broken bones that healed. >> healedBone {"mode":"fracture"} push
++ And in skeletons of people who should have died, >> dig {"found":"bones"} [960,700,1.2,1.25]
++ but didn't. ~0.2 >> careFeed {"mode":"shanidar"} push
+To understand how, >> card {"lines":["THE DANGERS"],"at":["@understand"],"icon":"bone"} push
++ we first have to see what they were up against. ~0.3 >> card {"lines":["THE DANGERS"],"at":["DONE"],"icon":"bone"} [960,520,1.04,1.12]
+
+= dangers tense
+Life without doctors was dangerous. >> dangerHunt {} push
+Hunting meant getting close to big, angry animals, >> dangerHunt {} [1300,800,1.2,1.3]
++ with nothing but a spear. ~0.15 >> hunter {"glint":"@spear"} [640,520,1.75,1.85]
+Neanderthal skeletons are full of healed injuries. >> healedBone {"mode":"many"} push
+Broken ribs. >> healedBone {"mode":"fracture"} push
++ Broken arms. >> healedBone {"mode":"fracture"} [960,540,1.2,1.3]
++ Damaged skulls. ~0.15 >> healedBone {"mode":"skull"} push
+How do scientists know these injuries healed? >> think {"q1":"@healed","q2":"NEVER"} push
+Living bone repairs itself. >> healedBone {"mode":"fracture"} [960,540,1.15,1.2]
++ A break slowly knits back together, >> healedBone {"mode":"fracture"} [960,540,1.3,1.4]
++ and leaves a thick, smooth lump behind. >> healedBone {"mode":"fracture"} [960,540,1.5,1.6]
+If someone died right after an injury, the edges stay sharp. >> healedBone {"mode":"skull"} [960,560,1.2,1.25]
++ If they're smooth and rounded, the person lived on, for weeks, months or years. ~0.2 >> healedBone {"mode":"skull"} [1060,420,1.6,1.7]
+In the nineteen nineties, researchers compared their injuries to those of rodeo riders. >> card {"lines":["LIKE","RODEO RIDERS?"],"icon":"bone"} push
+A much larger study in twenty eighteen found something simpler. >> lab {"phase":"study"} push
+Neanderthals had head injuries about as often as early modern humans of the same time. ~0.2 >> card {"lines":["ABOUT THE SAME","AS EARLY MODERN HUMANS"],"icon":"bone"} push
+Life was rough for everyone. >> leftBehind {} [700,600,1.15,1.2]
+And here's a myth worth breaking. >> card {"lines":["A MYTH"],"icon":"magnifier"} push
+You may have heard that ancient people only lived to thirty. >> lifeSpan {"step":1} push
+That number is an average. >> lifeSpan {"step":2} push
++ And it's dragged down by how many babies and children died. >> lifeSpan {"step":3} push
+Studies of hunter-gatherers today find something else. >> map {"region":"tanzania","label":"HUNTER-GATHERERS TODAY"} push
+If you made it through childhood, >> lifeSpan {"step":4} push
++ you had a good chance of living into your sixties or seventies. >> lifeSpan {"step":5} push
+One large study of hunter-gatherer groups found the most common age of death for adults >> lab {"phase":"study"} push
++ was around seventy. ~0.2 >> lifeSpan {"step":5} [1300,560,1.2,1.25]
+So the real question isn't why they died young. >> card {"lines":["THE REAL","QUESTION"],"icon":"magnifier"} push
++ It's how so many of them lived so long. ~0.2 >> careFeed {"mode":"toothless"} pull
+Because the dangers were everywhere. >> dangerHunt {} [1000,700,1.1,1.15]
+Some of them, you couldn't even see. >> bacteria {"mode":"army"} push
+A small cut could become infected. >> bacteria {"mode":"spots","spot":2} push
++ A bad tooth could poison the blood. >> toothDiagram {"mode":"abscess"} [960,700,1.2,1.3]
+They did have two defences they didn't need to understand. >> card {"lines":["TWO","DEFENCES"],"icon":"fire"} push
+The first was fire. >> fireBig {} push
+Cooking kills many of the germs and parasites hiding in raw meat. >> fireUses {"mode":"cook"} push
++ Every cooked meal was a little bit of medicine. ~0.15 >> fireUses {"mode":"cook"} [700,700,1.2,1.25]
+The second was fever. >> feverBody {} push
+When the body fights an infection, it turns up its own heat. >> feverBody {"hot":true} push
+Many germs grow more slowly when it's hotter. >> bacteria {"mode":"cold"} push
+Even lizards do this. >> lizard {} push
++ When they're infected, they move to warmer spots to raise their body temperature. ~0.2 >> lizard {"sun":true} push
+And then there was birth. ~0.15 >> birthHelp {} push
+Human birth is unusually difficult. >> card {"lines":["A DIFFICULT","BIRTH"],"icon":"heart"} push
+A big baby head has to fit through a narrow pelvis, >> birthDiagram {"step":1} push
++ twisting on the way out. >> birthDiagram {"step":2} push
+And the baby usually comes out facing away from its mother, >> birthDiagram {"step":3} push
++ which makes it hard for her to guide it out alone. ~0.15 >> birthDiagram {"step":3} [960,560,1.15,1.2]
+So across almost every culture that's been studied, >> worldMap {"pins":["spain","iraq","borneo","vietnam","mahale","andes"]} pull
++ women have had help giving birth. >> birthHelp {"helper2":true} push
+Some scientists think helping at a birth >> birthHelp {"helper2":true} [960,700,1.2,1.25]
++ may be one of the oldest forms of medicine there is. ~0.25 >> card {"lines":["THE OLDEST","MEDICINE?"],"icon":"heart"} push
+
+= apes curious
+But here's something surprising. >> card {"lines":["SURPRISE"],"icon":"magnifier"} push
+Humans weren't the only ones to treat themselves. >> chimp {} push
+In nineteen eighty seven, in the Mahale Mountains of Tanzania, >> map {"region":"mahale","label":"MAHALE MOUNTAINS"} push
++ researchers watched a sick chimpanzee named Chausiku. >> chimp {} [960,520,1.2,1.25]
+She chewed the bitter pith of a shrub called Vernonia. >> chimp {"bitter":true} push
++ It tastes terrible. >> chimp {"bitter":true} [960,420,1.4,1.5]
+Healthy chimps rarely touch it. >> chimp {} [960,560,1.2,1.25]
+Within about a day, she was back on her feet. >> chimp {} pull
+The local Tongwe people use the same plant as medicine. ~0.2 >> herbs {"show":["vernonia"],"title":"VERNONIA"} push
+Scientists later found that the plant contains compounds that can work against parasites. ~0.15 >> bacteria {"mode":"dry"} push
+Many animals also eat clay. >> clayLick {} push
+Parrots in the Amazon gather at riverbanks to lick it. >> clayLick {} [960,460,1.2,1.3]
+Scientists think clay may soothe the stomach, >> clayLick {} [960,560,1.1,1.15]
++ and soak up toxins from their food. ~0.2 >> bacteria {"mode":"dry"} push
+People have done the same for a long time. >> clayLick {"people":true} push
++ Pharmacies once sold a white clay called kaolin, for upset stomachs. ~0.2 >> pharmacy {} [960,560,1.15,1.2]
+And in twenty twenty two, in a rainforest in Sumatra, >> map {"region":"sumatra","label":"SUMATRA"} push
++ researchers watched an orangutan named Rakus, >> orangutan {"step":1} push
++ with a fresh wound on his face. >> orangutan {"step":1} [1000,400,1.4,1.5]
+He chewed the leaves of a climbing plant that local people use as medicine. >> orangutan {"step":1} [1200,560,1.3,1.35]
+He dabbed the juice onto his wound, >> orangutan {"step":2} push
++ for about seven minutes. >> orangutan {"step":3} [1000,420,1.3,1.4]
+Then he covered it with the chewed leaves, like a bandage. ~0.15 >> orangutan {"step":3} push
+The wound closed in five days. >> orangutan {"step":4} push
++ Within a month, it had healed. ~0.2 >> orangutan {"step":4} [1000,420,1.3,1.4]
+So if apes can find medicine, >> chimp {} push
++ what about our ancestors? ~0.3 >> think {"q1":"@ancestors","q2":"NEVER"} push
+
+= plants wonder
+Remember the man with the toothache? >> toothache {} [760,560,1.2,1.25]
+In a cave in northern Spain called El Sidrón, >> map {"region":"spain","label":"EL SIDRÓN"} push
++ archaeologists found the remains of a group of Neanderthals. >> dig {"found":"bones"} push
+About forty nine thousand years old. ~0.15 >> card {"lines":["ABOUT 49,000","YEARS AGO"],"icon":"hourglass"} push
+Their teeth were crusted with tartar. >> toothDiagram {"mode":"tartar"} push
+Tartar is hard. >> toothDiagram {"mode":"tartar"} [960,500,1.3,1.4]
++ And it traps tiny bits of whatever you put in your mouth. >> toothDiagram {"mode":"tartar"} [1460,330,1.4,1.5]
+It's a time capsule. ~0.15 >> card {"lines":["A TIME CAPSULE"],"icon":"hourglass"} push
+In one adult's tartar, researchers found traces of wood smoke, >> fireBig {} push
++ cooked starches, >> card {"lines":["COOKED STARCH"],"icon":"grain"} push
++ and chemicals from two bitter plants. >> lab {"phase":"study"} push
+Yarrow. >> herbs {"show":["yarrow"]} push
++ And chamomile. >> herbs {"show":["yarrow","chamomile"],"at":["DONE",0.1]} push
+These plants have almost no value as food. >> bitterFace {} push
++ But people have used them as medicine for thousands of years. ~0.15 >> herbs {"show":["yarrow","chamomile"],"at":["DONE","DONE"],"title":"OLD MEDICINES"} push
+Other scientists say they could have been flavouring, >> card {"lines":["FLAVOURING?"],"icon":"magnifier"} push
++ or eaten by accident. ~0.15 >> card {"lines":["FLAVOURING?","ACCIDENT?"],"at":["DONE",0.05],"icon":"magnifier"} push
+Then, in twenty seventeen, a DNA study made one Neanderthal stand out. >> lab {"phase":"study"} [700,560,1.2,1.25]
+He had an abscess you can still see on his jaw. >> toothDiagram {"mode":"abscess"} push
++ And a nasty gut parasite. >> bacteria {"mode":"poison"} push
+In his tartar was DNA from poplar. >> herbs {"show":["poplar"]} push
+Poplar bark contains salicylic acid, >> herbs {"show":["poplar"],"at":["DONE"],"title":"SALICYLIC ACID"} push
++ a natural painkiller, related to aspirin. ~0.15 >> card {"lines":["RELATED","TO ASPIRIN"],"icon":"heart"} push
+There was also DNA from Penicillium. >> herbs {"show":["mould"]} push
++ The mould that penicillin was later made from. ~0.2 >> herbs {"show":["mould"],"at":["DONE"],"title":"PENICILLIUM"} push
+The researchers think he may have been treating himself. >> think {"q1":"@himself","q2":"NEVER"} push
+We can't know for sure. >> card {"lines":["WE CAN'T","KNOW FOR SURE"],"icon":"magnifier"} push
++ The mould may have come from old food. >> herbs {"show":["mould"],"at":["DONE"]} [960,700,1.2,1.25]
+But a sick man, with a painkiller and a mould in his mouth, >> toothache {} [760,600,1.3,1.35]
++ is a remarkable coincidence. ~0.25 >> card {"lines":["A REMARKABLE","COINCIDENCE"],"icon":"magnifier"} push
+And people kept using these plants. >> herbs {"show":["poplar","willow"],"at":["DONE",0.2]} push
+Willow, a close cousin of poplar, carries the same kind of painkiller in its bark. >> herbs {"show":["willow"]} push
+For thousands of years, people chewed it, and brewed it. >> herbs {"show":["willow"],"at":["DONE"]} [960,700,1.2,1.25]
+In eighteen ninety seven, chemists turned that ingredient into a pill. >> card {"lines":["1897"],"icon":"pill"} push
+We call it aspirin. ~0.25 >> modernPill {} push
+Ancient Egyptian medical texts, written more than three and a half thousand years ago, >> papyrus {} push
++ tell healers to dress wounds with honey, grease and lint. >> papyrus {"honey":true} push
+Honey has so little water that bacteria struggle to grow in it. ~0.15 >> honey {"step":3} push
+The same trick that keeps food from rotting. ~0.2 >> honey {"step":2} push
+Now jump forward to about five thousand three hundred years ago. >> rewind {"label":"years","n":5} push
+High in the Alps, >> map {"region":"alps","label":"THE ÖTZTAL ALPS"} push
++ a man died on a mountain pass. >> otzi {"mode":"walk"} push
+His body froze in the ice, >> bgCold {} push
++ and was found by hikers in nineteen ninety one. >> card {"lines":["FOUND IN 1991"],"icon":"snow"} push
+We call him Ötzi. ~0.15 >> otzi {"mode":"walk"} [760,560,1.3,1.4]
+Ötzi carried two pieces of birch fungus on leather strips. >> otzi {"mode":"fungus"} push
+That fungus has chemicals that may work against gut worms. >> herbs {"show":["fungus"]} push
++ And Ötzi had gut worms. ~0.15 >> bacteria {"mode":"poison"} push
+He also had sixty one tattoos. >> otzi {"mode":"tattoos"} push
+Simple lines, mostly on his lower back, knees, ankles and wrists. >> otzi {"mode":"tattoos"} [1360,560,1.25,1.3]
++ The same places where X-rays show his joints were worn. >> healedBone {"mode":"fracture"} push
+His DNA even shows that he carried the bacteria behind Lyme disease. ~0.15 >> bacteria {"mode":"spots","spot":1} push
+Many researchers think the tattoos were a kind of treatment. ~0.2 >> card {"lines":["A KIND OF","TREATMENT?"],"icon":"heart"} push
+But no medicine could have saved him. >> otzi {"mode":"walk"} [760,600,1.2,1.25]
++ An arrowhead was found in his left shoulder. ~0.25 >> otzi {"mode":"arrow"} push
+
+Here's the honest part, though. >> card {"lines":["THE HONEST PART"],"icon":"magnifier"} push
+Most illnesses leave no mark on bones. >> dig {"found":"nothing"} push
++ A fever, a cough, a stomach bug, they all disappear. >> dig {"found":"question"} push
+So we only see a small slice of ancient medicine. >> card {"lines":["A SMALL","SLICE"],"icon":"magnifier"} push
++ The parts that touched teeth and bone. ~0.3 >> toothDiagram {"mode":"healthy"} push
+
+= teeth curious
+If one thing hurt ancient people again and again, >> toothache {} [760,560,1.15,1.2]
++ it was teeth. ~0.15 >> toothDiagram {"mode":"abscess"} push
+At Krapina, in Croatia, about a hundred and thirty thousand years ago, >> map {"region":"croatia","label":"KRAPINA"} push
++ one Neanderthal had a twisted tooth. >> toothDiagram {"mode":"healthy"} push
+Next to it are grooves and scratches, >> toothDiagram {"mode":"toothpick"} push
++ probably made by poking at the sore spot with a stick or a grass stem. >> toothDiagram {"mode":"toothpick"} [1100,320,1.3,1.4]
+About fourteen thousand years ago, at Villabruna in Italy, >> map {"region":"italyN","label":"VILLABRUNA"} push
++ a young man had a big cavity in a back tooth. >> toothDiagram {"mode":"abscess"} push
+Under a microscope, the cavity shows scratch marks. >> toothDiagram {"mode":"flint"} push
++ Someone had scraped it out with pointed flint tools. >> toothDiagram {"mode":"flint"} [1080,240,1.4,1.5]
+It's the oldest known evidence of someone treating a cavity. ~0.15 >> card {"lines":["OLDEST KNOWN","CAVITY TREATMENT"],"icon":"magnifier"} push
+About a thousand years later, at a site in Tuscany, >> map {"region":"italyC","label":"RIPARO FREDIAN"} push
++ people went further. >> toothDiagram {"mode":"filling"} push
+Someone widened the holes in a person's two front teeth, >> toothDiagram {"mode":"filling"} [960,380,1.3,1.4]
++ and packed them with bitumen, >> toothDiagram {"mode":"filling"} [960,380,1.5,1.6]
++ a sticky black tar, mixed with plant fibres and hair. >> card {"lines":["BITUMEN"],"icon":"tar"} push
+Probably the oldest fillings ever found. ~0.2 >> card {"lines":["THE OLDEST","FILLINGS?"],"icon":"heart"} push
+And about nine thousand years ago, at Mehrgarh in Pakistan, >> map {"region":"pakistan","label":"MEHRGARH"} push
++ people were drilling teeth. >> toothDiagram {"mode":"drill"} push
+Archaeologists found eleven drilled molars, from nine adults. >> dig {"found":"bones"} push
+In experiments, a bow drill with a flint tip >> toothDiagram {"mode":"drill"} [960,200,1.3,1.4]
++ went through a tooth in less than a minute. >> card {"lines":["UNDER","A MINUTE"],"icon":"clock"} push
+And the patients were alive. >> dentistAncient {} push
+The edges of the holes were worn smooth by chewing afterwards. ~0.2 >> toothDiagram {"mode":"drill"} [960,320,1.5,1.6]
+But here's the twist. >> card {"lines":["THE TWIST"],"icon":"grain"} push
+Tooth trouble got much worse once people started farming. >> wildGrain {"kind":"barley"} push
+Soft, starchy grains feed the bacteria that rot teeth. ~0.2 >> bacteria {"mode":"eat"} push
+
+= surgery tense
+Teeth are one thing. >> toothDiagram {"mode":"healthy"} push
+But what about something bigger? ~0.2 >> card {"lines":["SOMETHING","BIGGER"],"icon":"bone"} push
+In twenty twenty two, archaeologists described a burial >> lab {"phase":"study"} push
++ from a cave in Borneo called Liang Tebo. >> map {"region":"borneo","label":"LIANG TEBO"} push
+It's at least thirty one thousand years old. ~0.15 >> borneoCave {"label":true} push
+The lower part of the left leg was missing. >> healedBone {"mode":"leg"} push
+It hadn't been bitten off. >> card {"lines":["NOT AN","ACCIDENT"],"icon":"bone"} push
++ It had been cut. >> healedBone {"mode":"leg"} [960,420,1.3,1.4]
+Cleanly. >> healedBone {"mode":"leg"} [960,420,1.5,1.6]
+And the missing foot wasn't in the grave. ~0.15 >> dig {"found":"nothing"} push
+It happened when this person was a child. >> crutchKid {} push
+And the bone had healed, with no sign of infection. >> healedBone {"mode":"leg"} pull
+This child survived, >> crutchKid {} [760,560,1.2,1.25]
++ and lived for another six to nine years, >> crutchKid {} [960,560,1.1,1.15]
++ in steep, rugged, rainforest country. ~0.15 >> borneoCave {} pull
+The researchers say whoever did it must have known where to cut, >> card {"lines":["WHERE","TO CUT"],"icon":"magnifier"} push
++ how to control the bleeding, >> card {"lines":["HOW TO STOP","THE BLEEDING"],"icon":"heart"} push
++ and how to keep the wound clean. >> bacteria {"mode":"dry"} push
+Before this find, the oldest known amputation was about seven thousand years old. >> card {"lines":["BEFORE:","7,000 YEARS"],"icon":"hourglass"} push
+This one is more than four times older. ~0.2 >> card {"lines":["NOW:","31,000 YEARS"],"icon":"hourglass"} push
+The same region of Borneo has some of the oldest known cave paintings in the world. ~0.15 >> borneoCave {} [960,700,1.2,1.3]
+How do you close a wound without thread? >> think {"q1":"@thread","q2":"NEVER"} push
+In parts of Africa, South America and Asia, people found a living answer. >> worldMap {"pins":["mahale","amazon","borneo"]} pull
+They held a big ant to the cut, >> antStitch {"step":1} push
++ let its jaws bite down across the wound, >> antStitch {"step":2} push
++ then pinched off its body. >> antStitch {"step":3} push
+The jaws stayed clamped shut, like a stitch. ~0.25 >> antStitch {"step":4} push
+And it's not the only operation people survived. >> card {"lines":["NOT THE ONLY ONE"],"icon":"bone"} push
+Across the world, archaeologists have found ancient skulls >> worldMap {"pins":["ukraine","france","andes"]} pull
++ with holes deliberately cut into them. >> healedBone {"mode":"skull"} push
+One of the oldest healed cases, from Ukraine, is over nine thousand years old. >> map {"region":"ukraine","label":"VASILYEVKA"} push
+The bone around the hole had grown back. >> healedBone {"mode":"skull"} [960,520,1.3,1.4]
++ Which means the patient lived. ~0.2 >> card {"lines":["THE PATIENT","LIVED"],"icon":"heart"} push
+In parts of ancient Peru, centuries later, >> map {"region":"andes","label":"PERU"} push
++ most patients survived the operation. ~0.3 >> card {"lines":["MOST","SURVIVED"],"icon":"heart"} push
+
+So let's count the remedies. >> card {"lines":["THE REMEDIES"],"icon":"heart"} push
+Bitter plants. >> herbs {"show":["yarrow","chamomile"],"at":["DONE","DONE"]} push
++ Tree bark. >> herbs {"show":["poplar"],"at":["DONE"]} push
++ Honey. >> honey {"step":2} push
++ Toothpicks and flint. >> toothDiagram {"mode":"flint"} push
++ Fillings and drills. >> toothDiagram {"mode":"drill"} push
++ Ant jaws. >> antStitch {"step":4} push
++ And even surgery. ~0.3 >> healedBone {"mode":"leg"} push
+
+= care warm
+But the most powerful medicine of all >> card {"lines":["THE MOST","POWERFUL MEDICINE"],"icon":"heart"} push
++ didn't grow in the ground. ~0.2 >> herbs {"show":["yarrow","chamomile","poplar"],"at":["DONE","DONE","DONE"]} push
+At Dmanisi, in Georgia, >> map {"region":"georgia","label":"DMANISI"} push
++ archaeologists found a skull nearly one point eight million years old. >> card {"lines":["NEARLY 1.8 MILLION","YEARS AGO"],"icon":"hourglass"} push
+These are some of the earliest humans ever found outside Africa. ~0.15 >> worldMap {"pins":["georgia"]} [1150,380,1.5,1.6]
+He had lost all but one of his teeth. >> toothless {} push
++ Years before he died. >> toothless {} [960,500,1.3,1.4]
+The empty sockets had filled in with bone. >> healedBone {"mode":"fracture"} push
+Without teeth, chewing tough raw food is hard. >> eatAll {} push
+Some researchers think others may have helped him, >> careFeed {"mode":"toothless"} push
++ by softening his food. >> careFeed {"mode":"toothless"} [960,640,1.15,1.2]
+Others point out that some toothless wild apes survive alone. ~0.15 >> card {"lines":["STILL","DEBATED"],"icon":"magnifier"} push
+In northern Spain there's a deep cave shaft called the Pit of the Bones. >> map {"region":"spain","label":"SIMA DE LOS HUESOS"} push
+Inside, archaeologists have found the remains of at least twenty eight people, >> dig {"found":"bones"} push
++ about four hundred and thirty thousand years old. ~0.15 >> card {"lines":["ABOUT 430,000","YEARS AGO"],"icon":"hourglass"} push
+Among them, >> dig {"found":"bones"} [960,700,1.2,1.25]
++ a child was born with a skull that grew the wrong way. >> card {"lines":["A CHILD","BORN DIFFERENT"],"icon":"heart"} push
+Researchers nicknamed the child Benjamina. >> careFeed {"mode":"benjamina"} push
+Benjamina lived for more than five years, >> careFeed {"mode":"benjamina"} [960,560,1.2,1.25]
++ maybe as many as twelve. >> calendarFlip {"label":"YEARS","max":12} push
+The researchers think this child got the same care as any other child in the group. ~0.2 >> careFeed {"mode":"benjamina"} [1000,520,1.3,1.35]
+And in Shanidar Cave, in Iraq, >> map {"region":"iraq","label":"SHANIDAR CAVE"} push
++ there's a Neanderthal man known as Shanidar One. >> careFeed {"mode":"shanidar"} push
+He was found in nineteen fifty seven, by the archaeologist Ralph Solecki. >> card {"lines":["RALPH SOLECKI","1957"],"icon":"magnifier"} push
++ He lived roughly fifty thousand years ago. >> card {"lines":["ABOUT 50,000","YEARS AGO"],"icon":"hourglass"} push
+At some point in his life, he suffered terrible injuries. >> healedBone {"mode":"many"} push
+A crushed eye socket, that may have left him blind in one eye. >> careFeed {"mode":"shanidar"} [760,600,1.3,1.4]
+His right arm withered, >> healedBone {"mode":"fracture"} push
++ and his forearm and hand were lost. >> healedBone {"mode":"leg"} push
+His leg injuries left him with a limp. >> dangerHunt {} [600,700,1.2,1.25]
++ And he was deaf in one ear. ~0.15 >> card {"lines":["DEAF","IN ONE EAR"],"icon":"bone"} push
+Yet his bones had healed. >> healedBone {"mode":"fracture"} [960,540,1.2,1.25]
+He lived for years after, and died in his forties. >> careFeed {"mode":"shanidar"} pull
+The anthropologist who studied him said his deafness alone would have made him easy prey. >> card {"lines":["\"EASY PREY\""],"icon":"bone"} push
+He couldn't have hunted much. >> leftBehind {} push
++ He couldn't have run from danger. >> dangerHunt {} push
+So someone fed him. >> careFeed {"mode":"shanidar"} [1150,600,1.2,1.25]
++ Someone protected him. >> campNight {} [960,820,1.2,1.0]
++ For years. ~0.2 >> calendarFlip {"label":"YEARS"} push
+And in northern Vietnam, about four thousand years ago, >> map {"region":"vietnam","label":"MAN BAC"} push
++ a young man lived with a paralysis that began in childhood. >> careFeed {"mode":"manbac"} push
+At least his lower body, and maybe all four limbs. >> careFeed {"mode":"manbac"} [700,800,1.3,1.4]
+For at least ten years, he depended completely on others. >> calendarFlip {"label":"YEARS","max":10} push
+Someone had to feed him every day. >> careFeed {"mode":"manbac"} [1180,700,1.2,1.25]
++ Wash him. >> careFeed {"mode":"manbac"} [900,700,1.15,1.2]
++ Turn him, so he didn't get sores. >> careFeed {"mode":"manbac"} [600,800,1.3,1.35]
+The archaeologist Lorna Tilley calls this the bioarchaeology of care. >> card {"lines":["BIOARCHAEOLOGY","OF CARE"],"icon":"heart"} push
+Reading kindness in old bones. ~0.25 >> card {"lines":["KINDNESS","IN OLD BONES"],"icon":"heart"} push
+And care may be why humans live so long at all. >> card {"lines":["WHY WE","LIVE SO LONG"],"icon":"heart"} push
+Unlike other apes, human women often live for decades after they stop having children. >> grandma {"step":1} push
+Among the Hadza, anthropologist Kristen Hawkes watched grandmothers at work. >> map {"region":"tanzania","label":"THE HADZA"} push
+They spent hours every day digging food, >> grandma {"step":2} push
++ and their grandchildren were better fed for it. >> grandma {"step":3} push
+Some scientists think grandmothers are one reason our species lives so long. ~0.2 >> grandma {"step":3} [960,560,1.15,1.2]
+So were ancient people left behind when they got sick or hurt? >> leftBehind {} push
++ Many of them, clearly, were not. ~0.2 >> share {"still":true} [960,620,1.1,1.0]
+The oldest medicine wasn't a plant. >> herbs {"show":["yarrow","chamomile"],"at":["DONE","DONE"]} push
++ It wasn't a sharp flint, or a drill. >> toothDiagram {"mode":"flint"} push
+It was someone who stayed. ~0.4 >> careFeed {"mode":"shanidar"} [960,620,1.1,1.15]
+
+= end warm
+Today, we have hospitals. >> hospitalCamp {} [480,560,1.3,1.35]
++ Antibiotics. >> herbs {"show":["mould"],"at":["DONE"],"title":"ANTIBIOTICS"} push
++ Painkillers in every kitchen. >> modernPill {} push
+We live longer than any humans before us. ~0.15 >> card {"lines":["LONGER LIVES"],"icon":"heart"} push
+But doctors have noticed something old. >> dentistModern {} push
+People with strong friendships and family ties >> socialChart {} push
++ tend to live longer than people who are isolated. >> socialChart {} [960,560,1.1,1.15]
+One large review of studies found the effect >> lab {"phase":"study"} push
++ was comparable to well-known risks, like smoking. ~0.25 >> card {"lines":["COMPARABLE","TO SMOKING"],"icon":"heart"} push
+Think about that. >> card {"lines":["THINK","ABOUT THAT"],"icon":"heart"} push
+We invented antibiotics, scanners, and transplants. >> hospitalCamp {} [480,560,1.2,1.25]
++ But the oldest treatment we know of still works. >> hospitalCamp {} [1440,600,1.2,1.25]
+A visit. A meal. Someone who sits with you. ~0.25 >> careFeed {"mode":"shanidar"} [1150,600,1.2,1.25]
+Fifty thousand years ago, >> rewind {} [960,540,1.04,1.1]
++ a man sat in a cave with his jaw on fire. >> toothache {} push
+He had bitter plants. >> herbs {"show":["yarrow","chamomile"],"at":["DONE","DONE"]} push
++ He had the bark of a tree. >> herbs {"show":["poplar"],"at":["DONE"]} push
++ Maybe, a little mould. ~0.15 >> herbs {"show":["mould"],"at":["DONE"]} push
+But what really kept people like him alive >> toothache {} [760,600,1.3,1.4]
++ was sitting next to them, by the fire. ~0.3 >> careFeed {"mode":"shanidar"} [960,620,1.15,1.2]
+Your medicine comes in a box. >> modernPill {} push
++ Theirs sat beside you. >> campEnd {} [960,760,1.2,1.0]
