@@ -1,0 +1,182 @@
+{
+ "title": "She Saved A Stranger's Baby On 9/11… 25 Years Later, This Happened 😭",
+ "source": "ylrwkI2l4EU",
+ "credit": "Credit: CBS News",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 358.25,
+   "out": 362.95,
+   "text": "She looked at me and she's like, thank you for saving my life on *9/11*, Darla.",
+   "shots": [
+    {
+     "in": 359.9,
+     "frame": "card",
+     "len": 4.7
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "On *9/11*, she ran for cover inside the World Trade Center… when a stranger walked out holding *two* babies.",
+   "shots": [
+    {
+     "in": 84.0,
+     "frame": "card"
+    },
+    {
+     "in": 96.0,
+     "frame": "card"
+    },
+    {
+     "in": 160.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 104.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 144.1,
+   "out": 151.55,
+   "shots": [
+    {
+     "in": 144.1,
+     "frame": "card"
+    },
+    {
+     "in": 147.0,
+     "frame": "full"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Seconds later, the ground *shook*.",
+   "shots": [
+    {
+     "in": 212.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 215.6,
+   "out": 220.35,
+   "impact": true,
+   "shots": [
+    {
+     "in": 216.0,
+     "frame": "card",
+     "len": 1.9
+    },
+    {
+     "in": 276.5,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "She ran with a nine-month-old she had never met… and *refused* to leave until the baby's mother was found.",
+   "shots": [
+    {
+     "in": 224.5,
+     "frame": "card"
+    },
+    {
+     "in": 228.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 288.5,
+     "frame": "card"
+    },
+    {
+     "in": 312.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "For years, that little girl only knew her as a family friend… until one night at *dinner*, she asked Darla one question.",
+   "shots": [
+    {
+     "in": 331.5,
+     "frame": "card"
+    },
+    {
+     "in": 336.0,
+     "frame": "card"
+    },
+    {
+     "in": 344.0,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 354.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 371.82,
+   "out": 374.6,
+   "text": "Did you run for your life? And I said, I ran for *both* of our lives.",
+   "shots": [
+    {
+     "in": 368.0,
+     "frame": "card",
+     "len": 2.78
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Now *25*, she just heard the whole story for the first time.",
+   "shots": [
+    {
+     "in": 412.0,
+     "frame": "full"
+    },
+    {
+     "in": 432.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 381.85,
+   "out": 388.3,
+   "shots": [
+    {
+     "in": 381.85,
+     "frame": "card"
+    },
+    {
+     "in": 383.6,
+     "frame": "full"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 388.3,
+   "out": 390.6,
+   "frame": "card",
+   "captions": false,
+   "db": -22
+  }
+ ]
+}

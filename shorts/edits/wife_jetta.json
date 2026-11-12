@@ -1,0 +1,187 @@
+{
+ "title": "He Hadn't Heard His Late Wife's Car In 18 Years… 😭❤️",
+ "source": "LRFl1ZbZDJE",
+ "credit": "Credit: WD Detailing",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 1633.3,
+   "out": 1636.55,
+   "frame": "card"
+  },
+  {
+   "type": "vo",
+   "text": "After his wife passed away, he parked her car in the backyard… and *never* drove it again.",
+   "shots": [
+    {
+     "in": 26.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 13.0,
+     "frame": "card"
+    },
+    {
+     "in": 28.5,
+     "frame": "card"
+    },
+    {
+     "in": 45.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 52.75,
+   "out": 56.4,
+   "frame": "full"
+  },
+  {
+   "type": "vo",
+   "text": "Years later, he was diagnosed with *cancer*. So his son secretly asked a detailing crew to bring her car back to life.",
+   "shots": [
+    {
+     "in": 7.0,
+     "frame": "card"
+    },
+    {
+     "in": 92.5,
+     "frame": "card"
+    },
+    {
+     "in": 100.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 194.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 61.9,
+   "out": 67.45,
+   "frame": "full"
+  },
+  {
+   "type": "vo",
+   "text": "*16* years outside had buried it in leaves, and the doors wouldn't even open. So they rebuilt it, piece by piece.",
+   "shots": [
+    {
+     "in": 104.5,
+     "frame": "card"
+    },
+    {
+     "in": 127.0,
+     "frame": "card"
+    },
+    {
+     "in": 392.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 896.5,
+     "frame": "card"
+    },
+    {
+     "in": 1220.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 1400.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Then they showed up at his ice cream shop… with a surprise he would *hear* before he could see it.",
+   "shots": [
+    {
+     "in": 1508.5,
+     "frame": "card"
+    },
+    {
+     "in": 1546.0,
+     "frame": "card"
+    },
+    {
+     "in": 1596.0,
+     "frame": "full",
+     "full_zoom": 1.25,
+     "fy": 0.38
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1604.9,
+   "out": 1609.75,
+   "frame": "full",
+   "full_zoom": 1.25,
+   "fy": 0.38,
+   "impact": true,
+   "sfx_caps": [
+    [
+     0.2,
+     3.0,
+     "*CAR STARTS*"
+    ]
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1623.95,
+   "out": 1625.6,
+   "frame": "card"
+  },
+  {
+   "type": "clip",
+   "in": 1627.4,
+   "out": 1631.4,
+   "captions": false,
+   "db": -18,
+   "shots": [
+    {
+     "in": 1627.4,
+     "frame": "card"
+    },
+    {
+     "in": 1629.4,
+     "frame": "full",
+     "push": 0.1
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1645.3,
+   "out": 1646.95,
+   "frame": "card"
+  },
+  {
+   "type": "clip",
+   "in": 1648.9,
+   "out": 1652.9,
+   "frame": "card"
+  },
+  {
+   "type": "clip",
+   "in": 1653.5,
+   "out": 1655.35,
+   "shots": [
+    {
+     "in": 1658.6,
+     "frame": "full",
+     "len": 1.85
+    }
+   ]
+  }
+ ]
+}

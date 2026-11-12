@@ -1,0 +1,181 @@
+{
+ "title": "They Secretly Rebuilt This Grandpa's Home While His Wife Fought Cancer 😭❤️",
+ "source": "XthcjFl1_S0",
+ "credit": "Credit: RUDAN Brothers",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 4228.7,
+   "out": 4232.35,
+   "frame": "card",
+   "zoom": 1.2,
+   "cy": 0.42
+  },
+  {
+   "type": "vo",
+   "text": "This grandpa's roof was so damaged it was *leaking*… but he couldn't afford to fix it.",
+   "shots": [
+    {
+     "in": 0.5,
+     "frame": "card"
+    },
+    {
+     "in": 3.0,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 37.5,
+     "frame": "card"
+    },
+    {
+     "in": 39.0,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 72.3,
+   "out": 73.8,
+   "frame": "card",
+   "zoom": 1.2,
+   "cy": 0.42,
+   "fx": 0.4
+  },
+  {
+   "type": "vo",
+   "text": "So a roofing crew of brothers offered to fix it for *free*… and then his wife told them something.",
+   "shots": [
+    {
+     "in": 76.0,
+     "frame": "card",
+     "zoom": 1.2,
+     "cy": 0.42
+    },
+    {
+     "in": 82.5,
+     "frame": "full",
+     "fx": 0.4,
+     "fy": 0.36,
+     "full_zoom": 1.25
+    },
+    {
+     "in": 94.5,
+     "frame": "full",
+     "fy": 0.36,
+     "full_zoom": 1.25
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 249.0,
+   "out": 254.9,
+   "frame": "full",
+   "fx": 0.67,
+   "fy": 0.33,
+   "full_zoom": 1.25
+  },
+  {
+   "type": "vo",
+   "text": "So they didn't stop at the roof. For two weeks, they secretly rebuilt their *entire* home.",
+   "shots": [
+    {
+     "in": 828.0,
+     "frame": "card"
+    },
+    {
+     "in": 1212.0,
+     "frame": "card"
+    },
+    {
+     "in": 1980.0,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 2844.0,
+     "frame": "card"
+    },
+    {
+     "in": 3228.0,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 3900.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Then, on reveal day… they moved the *van*.",
+   "shots": [
+    {
+     "in": 4202.0,
+     "frame": "card",
+     "zoom": 1.2,
+     "cy": 0.42
+    },
+    {
+     "in": 4216.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 4233.5,
+   "out": 4238.6,
+   "mute": true,
+   "captions": false,
+   "impact": true,
+   "shots": [
+    {
+     "in": 4233.5,
+     "frame": "card",
+     "len": 1.8
+    },
+    {
+     "in": 4235.6,
+     "frame": "full",
+     "fx": 0.5,
+     "len": 1.6
+    },
+    {
+     "in": 4239.8,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 4310.95,
+   "out": 4320.3,
+   "cap_skip": [
+    [
+     4312.6,
+     4313.5
+    ]
+   ],
+   "shots": [
+    {
+     "in": 4310.95,
+     "frame": "card",
+     "zoom": 1.2,
+     "cy": 0.42
+    },
+    {
+     "in": 4315.6,
+     "frame": "full",
+     "fx": 0.45,
+     "fy": 0.36,
+     "full_zoom": 1.2
+    }
+   ]
+  }
+ ]
+}

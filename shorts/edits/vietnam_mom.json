@@ -1,0 +1,183 @@
+{
+ "title": "She Met Her Birth Mom After 24 Years Apart… 😭❤️",
+ "source": "mmVtyxX8e9A",
+ "credit": "Credit: Kyle Le Dot Net",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 90.55,
+   "out": 94.2,
+   "text": "I thought I'd never see you again for the rest of my *life*.",
+   "shots": [
+    {
+     "in": 100.5,
+     "frame": "card",
+     "fx": 0.62,
+     "len": 3.65,
+     "push": 0.1
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "She was adopted from Vietnam at *six months* old… and spent 24 years wondering who her mother was.",
+   "shots": [
+    {
+     "in": 14.5,
+     "frame": "card"
+    },
+    {
+     "in": 20.5,
+     "frame": "card"
+    },
+    {
+     "in": 24.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 10.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Whenever life got hard, she recorded voice memos… talking to a mom she had never *met*.",
+   "shots": [
+    {
+     "in": 136.0,
+     "frame": "card"
+    },
+    {
+     "in": 140.0,
+     "frame": "full"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 144.25,
+   "out": 151.4,
+   "frame": "full"
+  },
+  {
+   "type": "vo",
+   "text": "Her mom was a single mother living in *poverty*… and gave her up so she could have a better life.",
+   "shots": [
+    {
+     "in": 28.5,
+     "frame": "card"
+    },
+    {
+     "in": 26.0,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 52.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Then, after *24* years, she flew back to Vietnam to finally meet her.",
+   "shots": [
+    {
+     "in": 38.5,
+     "frame": "card"
+    },
+    {
+     "in": 54.5,
+     "frame": "card"
+    },
+    {
+     "in": 58.3,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 31.6,
+   "out": 33.8,
+   "shots": [
+    {
+     "in": 40.5,
+     "frame": "card",
+     "len": 2.2
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 59.6,
+   "out": 69.3,
+   "impact": true,
+   "captions": false,
+   "manual_caps": [
+    [
+     7.9,
+     9.6,
+     "My *daughter*…"
+    ]
+   ],
+   "shots": [
+    {
+     "in": 59.6,
+     "frame": "full",
+     "fy": 0.42,
+     "full_zoom": 1.15,
+     "len": 3.4
+    },
+    {
+     "in": 63.0,
+     "frame": "card",
+     "card_h": 1080,
+     "len": 3.5
+    },
+    {
+     "in": 76.0,
+     "frame": "card",
+     "fx": 0.55
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 121.6,
+   "out": 124.4,
+   "captions": false,
+   "manual_caps": [
+    [
+     0.4,
+     2.2,
+     "Mom *loves* you."
+    ]
+   ],
+   "shots": [
+    {
+     "in": 121.6,
+     "frame": "full",
+     "fy": 0.4,
+     "full_zoom": 1.25
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 124.4,
+   "out": 127.2,
+   "captions": false,
+   "db": -18,
+   "shots": [
+    {
+     "in": 124.4,
+     "frame": "card"
+    }
+   ]
+  }
+ ]
+}

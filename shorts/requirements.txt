@@ -1,0 +1,5 @@
+numpy
+opencv-python-headless<5
+soundfile
+faster-whisper
+kokoro-onnx
