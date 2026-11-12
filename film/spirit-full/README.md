@@ -1,6 +1,6 @@
 # "What Did Ancient Humans Believe In?"
 
-DURATION, 1920x1080, 25 fps. 251 shots, 2,498 words, 10 chapters.
+15 min 54 s, 1920x1080, 25 fps. 251 shots, 2,498 words, 10 chapters.
 Thumbnails: `../pilot-fridge/thumbnails/spiritRef.png` and `spiritAlt.png`. Facts and sources: `SOURCES.md`.
 Upload kit: `../upload-kit/spirit/`.
 
