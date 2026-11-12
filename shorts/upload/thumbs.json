@@ -1,0 +1,158 @@
+[
+ {
+  "name": "01_wife_jetta",
+  "source": "LRFl1ZbZDJE",
+  "t": 1631.5,
+  "fx": 0.5,
+  "text_y": 1250,
+  "color": "yellow",
+  "lines": [
+   [
+    "HIS LATE WIFE'S CAR",
+    "small"
+   ],
+   [
+    "RUNS AGAIN",
+    "big"
+   ]
+  ],
+  "fy": 0.32,
+  "zoom": 1.2
+ },
+ {
+  "name": "02_911_baby",
+  "source": "ylrwkI2l4EU",
+  "t": 390.2,
+  "fx": 0.56,
+  "text_y": 1270,
+  "color": "red",
+  "lines": [
+   [
+    "THE BABY SHE SAVED ON 9/11",
+    "small"
+   ],
+   [
+    "25 YEARS LATER",
+    "big"
+   ]
+  ],
+  "fy": 0.45,
+  "zoom": 1.0
+ },
+ {
+  "name": "03_airman_dad",
+  "source": "pziWN_XZqck",
+  "t": 1253.8,
+  "fx": 0.42,
+  "text_y": 430,
+  "color": "yellow",
+  "lines": [
+   [
+    "SHE HAS NO IDEA",
+    "small"
+   ],
+   [
+    "HE'S HERE",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "04_grandpa_ferrari",
+  "source": "cXnXKZQveYA",
+  "t": 1435.3,
+  "fx": 0.64,
+  "fy": 0.42,
+  "zoom": 1.5,
+  "text_y": 1330,
+  "color": "cyan",
+  "lines": [
+   [
+    "WHAT WOULD",
+    "small"
+   ],
+   [
+    "GRANDPA SAY?",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "05_mom_house",
+  "source": "XlIo_XYmhLo",
+  "t": 6.8,
+  "fx": 0.5,
+  "text_y": 1320,
+  "color": "green",
+  "lines": [
+   [
+    "60 YEARS OF RENTING",
+    "small"
+   ],
+   [
+    "NOT ANYMORE",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "06_vietnam_mom",
+  "source": "mmVtyxX8e9A",
+  "t": 76.0,
+  "fx": 0.53,
+  "text_y": 1290,
+  "color": "pink",
+  "lines": [
+   [
+    "24 YEARS LATER",
+    "small"
+   ],
+   [
+    "\"MY DAUGHTER…\"",
+    "big"
+   ]
+  ],
+  "fy": 0.4,
+  "zoom": 1.05
+ },
+ {
+  "name": "07_grandpa_home",
+  "source": "XthcjFl1_S0",
+  "t": 4231.5,
+  "fx": 0.5,
+  "fy": 0.4,
+  "zoom": 1.25,
+  "text_y": 1330,
+  "color": "green",
+  "lines": [
+   [
+    "SHE HAS CANCER…",
+    "small"
+   ],
+   [
+    "SO THEY DID THIS",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "08_veteran_truck",
+  "source": "A86yWqjDhO0",
+  "t": 2346.5,
+  "fx": 0.4,
+  "text_y": 430,
+  "color": "yellow",
+  "lines": [
+   [
+    "90 YEARS OLD…",
+    "small"
+   ],
+   [
+    "HIS DAD'S TRUCK",
+    "big"
+   ]
+  ],
+  "fy": 0.5,
+  "zoom": 1.1
+ }
+]
