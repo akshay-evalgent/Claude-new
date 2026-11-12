@@ -75,7 +75,7 @@
   },
   "shock": {
    "archive": "OfficeCo1952",
-   "start": 399.0,
+   "start": 399.75,
    "dur": 1.6
   },
   "soda": {
@@ -650,7 +650,7 @@
   "thumbnails": [
    {
     "vs": {
-     "image": "shock/f0024",
+     "image": "shock/f0012",
      "pos": "45% 30%",
      "right": "GPT-1955",
      "nameSize": 78,
