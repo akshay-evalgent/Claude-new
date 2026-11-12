@@ -1,6 +1,6 @@
 # Why We Get Goosebumps 🥶
 
-A 33-second vertical short (20 shots) built to the recipe in `../../index.html`. It's character-driven, with eight characters plus a scared cat, a furry ancestor's predator and a plucked goose. It follows the mechanism format: a two-beat cold open (song, cold wind), a "You see" explanation at 19% of the runtime, a three-beat montage (cold, fear, emotion), the evolutionary reason, a "But since we lost most of our fur…" turn, and a visual pun for the payoff.
+A 33-second vertical short (20 shots) built to the recipe in `../../index.html`. It's character-driven: seven characters (including a furry ancestor), plus a sheet ghost, a scared cat, a predator and a plucked goose. It follows the mechanism format: a two-beat cold open (song, cold wind), a "You see" explanation at 19% of the runtime, a three-beat montage (cold, fear, emotion), the evolutionary reason, a "But since we lost most of our fur…" turn, and a visual pun for the payoff.
 
 ## Files
 
