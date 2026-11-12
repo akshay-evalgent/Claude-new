@@ -1,0 +1,273 @@
+# What Did Ancient Humans Believe In?
+# Same format as film/fridge-full/script.txt. Facts checked 2026-11-12; see SOURCES.md.
+
+= hook open
+All over the world, people gather in special buildings. >> worship {} push
++ Churches. Mosques. Temples. Synagogues. Shrines. >> worship {} [960,560,1.2,1.3]
+They pray. They sing. They light candles. ~0.15 >> worship {"candles":true} push
+About three in every four people alive today say they belong to a religion. >> card {"lines":["3 IN 4","PEOPLE"],"icon":"star"} push
++ And every culture anthropologists have described has some kind of ritual, >> worldMap {"pins":["tanzania","arctic","amazon","australia","borneo","namibia"]} push
++ some way of mourning the dead, and some idea of a world beyond the one we can see. ~0.2 >> worship {"sky":true} pull
+But where did it all begin? ~0.2 >> think {"q1":"@begin","q2":"NEVER"} push
+Now take time back fifty thousand years. ~0.15 >> rewind {} [960,540,1.02,1.08]
+A small group stands around a hole in the ground. >> graveside {} push
+No temple. >> card {"lines":["NO TEMPLE."],"icon":"star"} push
++ No holy book. >> card {"lines":["NO HOLY BOOK."],"icon":"star"} push
++ No priest. ~0.15 >> card {"lines":["NO PRIEST."],"icon":"star"} push
+And yet, they lay someone they loved gently into the earth. >> graveside {"lay":true} push
++ They sprinkle red ochre over the body. >> graveside {"ochre":true} push
++ And they place something beside them, for the journey. ~0.25 >> graveside {"ochre":true,"gift":true} [960,820,1.3,1.4]
+Now your brain is probably saying, >> brain {} [960,520,1,1.06]
++ Cavemen? They were too busy surviving to wonder about anything. >> objection {"l1":"CAVEMEN?","l2":"Too busy surviving."} [960,540,1,1.05]
++ Gods and rituals came later, with cities and kings. >> card {"lines":["CAME","LATER"],"icon":"gold"} push
+At least, that's what we assume. >> assume {} [900,640,1,1.06]
+But the evidence says something else. ~0.15 >> dig {"found":"bones"} push
++ A small child, laid to rest seventy eight thousand years ago, its head probably on a pillow. >> burialPit {"mode":"mtoto","pillow":true} push
++ Paintings of beings that are half human, half animal. >> therian {} push
++ And giant carved stone pillars, raised by hunter-gatherers, as farming was only just beginning. ~0.2 >> gobekli {} push
+We can't know exactly what ancient people believed. >> card {"lines":["WE CAN'T","KNOW EXACTLY"],"icon":"magnifier"} push
++ But we can see what they did. ~0.3 >> card {"lines":["BUT WE CAN SEE","WHAT THEY DID"],"icon":"magnifier"} push
+
+= animals curious
+To find the beginning, start with our animal cousins. >> card {"lines":["ANIMAL","COUSINS"],"icon":"leaf"} push
+Elephants seem to be drawn to the bones of their own kind. >> elephantBones {} push
+In Kenya, researchers laid out skulls and ivory in front of wild elephants. >> map {"region":"amboseli","label":"AMBOSELI"} push
+The elephants spent more time sniffing and touching elephant skulls than the skulls of other large animals. >> elephantBones {"touch":true} push
++ And the ivory interested them most of all. ~0.25 >> elephantBones {"touch":true} [1300,860,1.3,1.4]
+Chimpanzees react to death too. >> chimpMourn {"mode":"carry"} push
+In Guinea, two chimp mothers kept carrying their dead babies, >> chimpMourn {"mode":"carry"} [960,600,1.2,1.3]
++ one for nineteen days, the other for sixty eight. >> card {"lines":["19 DAYS","68 DAYS"],"icon":"heart"} push
+They kept grooming them, and shooing away the flies. ~0.25 >> chimpMourn {"mode":"carry"} [900,560,1.4,1.5]
+In a Scottish safari park, an old chimpanzee called Pansy died, surrounded by her group. >> chimpMourn {"mode":"pansy"} push
+They groomed her, and checked her for signs of life. >> chimpMourn {"mode":"pansy"} [960,700,1.3,1.4]
++ Her daughter Rosie stayed near the body all through the night. ~0.2 >> chimpMourn {"mode":"night"} push
+And for five days afterwards, none of the chimps would sleep on the platform where Pansy died. ~0.3 >> chimpMourn {"mode":"empty"} push
+Chimps do other strange things, too. >> card {"lines":["STRANGE","THINGS"],"icon":"leaf"} push
+Jane Goodall saw chimps put on dramatic displays at waterfalls. >> waterfall {} push
++ Swaying, splashing, throwing branches, for no obvious reason. >> waterfall {"display":true} push
+Afterwards, a chimp might sit on a rock and just watch the falling water. >> waterfall {} [700,700,1.3,1.4]
++ Goodall wondered if they were feeling something like wonder, or awe. ~0.25 >> waterfall {"display":true} [960,460,1.2,1.3]
+And in West Africa, hidden cameras caught chimps hurling stones at certain trees, >> stonePile {} push
++ with a loud call, again and again, until piles of stones built up. ~0.2 >> stonePile {"pile":true} push
+Nobody knows why they do it. >> think {"q1":"@why","q2":"NEVER"} push
++ The researchers noticed it looks a little like the stone heaps that humans build. ~0.2 >> stonePile {"pile":true} [1200,760,1.3,1.4]
+We can't read an animal's mind. >> card {"lines":["NO MIND","READING"],"icon":"magnifier"} push
++ But the roots of mourning, and maybe of wonder, could be very old. ~0.3 >> chimpMourn {"mode":"night"} pull
+
+= burials warm
+Humans went much further. >> card {"lines":["MUCH","FURTHER"],"icon":"star"} push
++ We buried our dead. >> graveside {"lay":true} push
+Some researchers argue it started very early. >> card {"lines":["VERY","EARLY?"],"icon":"hourglass"} push
+In a deep cave system in South Africa, they found the remains of Homo naledi, a small-brained relative of ours, >> map {"region":"safrica","label":"RISING STAR CAVE"} push
++ dated to between about two hundred and thirty six thousand, and three hundred and thirty five thousand years ago. >> dig {"found":"bones"} push
+The team thinks some bodies were placed in dug graves. >> burialPit {"mode":"neanderthal"} push
++ But many scientists aren't convinced yet. ~0.25 >> card {"lines":["NOT","CONVINCED"],"icon":"magnifier"} push
+The first burials almost everyone agrees on come later. >> card {"lines":["AGREED","BURIALS"],"icon":"star"} push
+At Qafzeh Cave in Israel, between about ninety and a hundred thousand years ago, a teenager was laid in a grave >> burialPit {"mode":"qafzeh"} push
++ with deer antlers held against the chest. ~0.2 >> burialPit {"mode":"qafzeh","antlers":true} [960,600,1.3,1.4]
+Years before, that teenager had survived a serious head injury. ~0.25 >> burialPit {"mode":"qafzeh","antlers":true} [760,540,1.5,1.6]
+In Kenya, in a cave called Panga ya Saidi, archaeologists found a tiny skeleton. >> map {"region":"panga","label":"PANGA YA SAIDI"} push
+A child, about three years old. >> burialPit {"mode":"mtoto"} push
++ The researchers named the child Mtoto, which means child in Swahili. ~0.2 >> card {"lines":["MTOTO"],"icon":"heart"} push
+Seventy eight thousand years ago, someone laid Mtoto on its side, with the knees drawn up, >> burialPit {"mode":"mtoto"} [960,600,1.3,1.4]
++ probably wrapped in a shroud. >> burialPit {"mode":"mtoto","shroud":true} push
+The head seems to have rested on something soft that later rotted away. >> burialPit {"mode":"mtoto","pillow":true} [800,560,1.5,1.6]
++ Perhaps a pillow. ~0.25 >> burialPit {"mode":"mtoto","pillow":true} [800,560,1.7,1.8]
+A pillow, for a child who would never wake up. ~0.4 >> burialPit {"mode":"mtoto","pillow":true} pull
+Neanderthals buried their dead too. >> burialPit {"mode":"neanderthal"} push
+At La Chapelle aux Saints in France, researchers argue that a Neanderthal man was laid in a pit dug for him, around fifty thousand years ago. ~0.2 >> map {"region":"lachapelle","label":"LA CHAPELLE"} push
+You may have heard of the Neanderthal flower burial. >> flowerBurial {} push
++ At Shanidar Cave in Iraq, scientists found ancient pollen around a skeleton. >> flowerBurial {"pollen":true} push
+For decades, people pictured mourners covering the body with flowers. >> flowerBurial {"flowers":true} push
+But the pollen was most likely carried in by bees that dig their nests in the ground. ~0.2 >> flowerBurial {"bees":true} push
+Science sometimes takes away the beautiful story. >> card {"lines":["NO","FLOWERS?"],"icon":"leaf"} push
++ But Neanderthals at Shanidar do seem to have laid their dead in one particular place in the cave. ~0.25 >> burialPit {"mode":"neanderthal"} pull
+And Neanderthals did something even stranger. >> card {"lines":["EVEN","STRANGER"],"icon":"magnifier"} push
+Deep inside Bruniquel Cave in France, more than three hundred metres from daylight, >> bruniquel {} push
++ someone broke off around four hundred stalagmites, >> bruniquel {"build":true} push
++ and arranged them into rings and piles. ~0.2 >> bruniquel {"build":true} [960,680,1.2,1.3]
+Every one of the structures shows traces of fire. >> bruniquel {"fire":true} push
++ They're about a hundred and seventy six thousand years old. ~0.2 >> bruniquel {"fire":true} [960,640,1.3,1.4]
+Nobody knows what the rings were for. >> think {"q1":"@for","q2":"NEVER"} push
++ But someone carried a light into total darkness, to build something no one would ever see from outside. ~0.3 >> bruniquel {"fire":true} pull
+
+= symbols wonder
+To believe in things you can't see, you need symbols. >> card {"lines":["SYMBOLS"],"icon":"star"} push
++ Things that stand for something else. ~0.2 >> ochre {} push
+One of the oldest is a colour. >> ochre {} [960,600,1.3,1.4]
++ Red. ~0.2 >> ochre {"grind":true} push
+In Kenya, around three hundred thousand years ago, people were already grinding red, iron-rich rock, probably for its colour. >> ochre {"grind":true} [960,700,1.3,1.4]
+In Blombos Cave in South Africa, people scratched crisscross patterns into lumps of ochre, >> blombos {"step":1} push
++ between about a hundred thousand and seventy five thousand years ago. >> blombos {"step":1} [960,560,1.3,1.4]
+And about seventy three thousand years ago, someone used an ochre crayon to draw on a stone flake. >> blombos {"step":2} push
++ It's the oldest drawing known. ~0.15 >> blombos {"step":2} [960,560,1.4,1.5]
++ The lines run off the edge, so it was once part of something bigger. ~0.25 >> blombos {"step":2} [1240,560,1.6,1.7]
+Then the graves begin to fill with beautiful things. >> sungir {} push
+In Wales, in eighteen twenty three, a geologist found a skeleton stained red with ochre. >> map {"region":"wales","label":"PAVILAND"} push
+He called it the Red Lady of Paviland. >> redLady {} push
++ But the Red Lady was really a young man, >> redLady {"man":true} push
++ buried about thirty three thousand years ago, with ivory ornaments. ~0.25 >> redLady {"man":true} [960,600,1.3,1.4]
+At Sungir in Russia, about thirty four thousand years ago, two boys were buried head to head. >> map {"region":"sungir","label":"SUNGIR"} push
+Their clothes were covered in more than ten thousand tiny beads, carved from mammoth ivory. >> sungir {"beads":true} push
++ A man buried nearby wore about three thousand more. >> sungir {"beads":true} [960,520,1.3,1.4]
+Making all those beads would have taken thousands of hours of work. ~0.25 >> sungir {"beads":true} [960,520,1.5,1.6]
+Long spears, made from straightened mammoth tusks, lay beside the boys. >> sungir {"beads":true,"spears":true} push
+Why spend all that time on people who were already gone? >> think {"q1":"@gone","q2":"NEVER"} push
++ Maybe because, to the people who buried them, they weren't completely gone. ~0.3 >> sungir {"beads":true} pull
+
+= art wonder
+Then came the art. >> card {"lines":["THE ART"],"icon":"hand"} push
+On the Indonesian island of Sulawesi, there's a cave painting at least fifty one thousand years old. >> map {"region":"sulawesi","label":"SULAWESI"} push
+It shows a wild pig, and three human-like figures around it. >> caveArt {"mode":"pig"} push
++ It's the oldest story scene known. ~0.25 >> caveArt {"mode":"pig"} [960,560,1.3,1.4]
+In another Sulawesi cave, there's a hunting scene at least forty eight thousand years old. >> caveArt {"mode":"hunt"} push
+Some of the hunters seem to have the heads of animals, or birds. >> therian {} push
+Beings that are part human, and part animal. ~0.2 >> therian {} [960,560,1.3,1.4]
+They don't exist in nature. >> card {"lines":["NOT IN","NATURE"],"icon":"eye"} push
++ Someone had to imagine them. ~0.3 >> therian {"glow":true} push
+In a cave in southern Germany, archaeologists found a figure carved from mammoth ivory. >> map {"region":"swabia","label":"HOHLENSTEIN-STADEL"} push
++ It was in hundreds of broken pieces. >> lionMan {"broken":true} push
+Put back together, it's about thirty one centimetres tall, and about forty thousand years old. >> lionMan {} push
+It has a human body, >> lionMan {} [960,700,1.4,1.5]
++ and the head of a cave lion. ~0.2 >> lionMan {} [960,330,1.6,1.7]
+It's called the Lion Man. >> lionMan {"label":true} push
+Carving it with stone tools would have taken hundreds of hours. ~0.25 >> lionMan {"carve":true} push
+Nearby caves held some of the oldest musical instruments known. >> flute {} push
++ Flutes. One is made from a vulture's wing bone, with five finger holes, around forty thousand years old. ~0.2 >> flute {"play":true} push
+Music. Stories. Imagined beings. >> card {"lines":["MUSIC.","STORIES.","IMAGINED BEINGS."],"icon":"star"} push
++ By forty thousand years ago, the human imagination was in full flight. ~0.3 >> lionMan {"label":true} pull
+Half human, half animal figures keep appearing. >> card {"lines":["AGAIN","AND AGAIN"],"icon":"eye"} push
+Deep inside Lascaux Cave in France, about twenty one thousand years ago, someone painted a stick man with a bird's head, >> birdMan {} push
++ falling back in front of a wounded bison. >> birdMan {"bison":true} push
+It's the only human figure in the whole cave. ~0.25 >> birdMan {"bison":true} [700,600,1.3,1.4]
+And in the Trois-Freres cave, high on a wall above a chamber full of animal engravings, >> sorcerer {} push
++ there's a figure archaeologists call the Sorcerer. Part human, part animal. ~0.25 >> sorcerer {"glow":true} push
+Some scientists noticed something else about these caves. >> echoCave {} push
+In certain caves, the paintings tend to cluster where the human voice resonates most. >> echoCave {"sing":true} push
++ Other studies found the link much weaker, so it's still an open question. ~0.2 >> card {"lines":["AN OPEN","QUESTION"],"icon":"magnifier"} push
+Some stalactites even show wear that suggests they were struck, like stone drums. >> echoCave {"strike":true} push
+Picture it. >> echoCave {"sing":true} pull
++ A flickering lamp. >> echoCave {"sing":true} [560,800,1.4,1.5]
++ Painted animals, moving in the shadows. >> echoCave {"sing":true} [1300,420,1.4,1.5]
++ And voices, echoing back from the dark. ~0.3 >> echoCave {"sing":true} pull
+
+= shaman curious
+What were these caves for? >> think {"q1":"@for","q2":"NEVER"} push
++ We can't ask the painters. >> card {"lines":["WE CAN'T","ASK THEM"],"icon":"hand"} push
+But some researchers look for clues in living hunter-gatherers. >> lab {"phase":"test"} push
+In the Kalahari, the Ju'hoansi hold a healing dance. >> trance {} push
+The women sit around the fire, clapping and singing. >> trance {"clap":true} push
++ The men dance around them, sometimes all night long. ~0.2 >> trance {"clap":true,"dance":true} push
+Some dancers enter a trance. >> trance {"clap":true,"dance":true,"glow":true} push
++ They say a healing energy, called num, boils up inside them, rising up the spine. >> trance {"clap":true,"dance":true,"glow":true} [1000,600,1.3,1.4]
++ Then they lay their hands on people, to draw out sickness. ~0.25 >> trance {"heal":true} push
+Roughly half of all adult men become healers, and some women too. ~0.25 >> card {"lines":["HALF","THE MEN"],"icon":"heart"} push
+The archaeologist David Lewis-Williams argued that much of the ancient rock art of southern Africa >> research {"text":"DAVID LEWIS-WILLIAMS"} push
++ shows the visions and feelings of trance. >> rockArt {} push
+It's an influential idea, though not everyone agrees. ~0.2 >> card {"lines":["NOT EVERYONE","AGREES"],"icon":"magnifier"} push
+Sometimes, archaeologists find someone who may have been a healer. >> card {"lines":["A HEALER?"],"icon":"heart"} push
+In Hilazon Tachtit cave in Israel, about twelve thousand years ago, a small, elderly woman was buried with great care. >> map {"region":"hilazon","label":"HILAZON TACHTIT"} push
+She had a disability, and walked with a limp. >> shamanGrave {} push
+Around her lay fifty tortoise shells, >> shamanGrave {"items":true} push
++ and parts of rare animals. An eagle. A leopard. A wild boar. ~0.2 >> shamanGrave {"items":true} [1200,600,1.3,1.4]
+And the people who buried her held a great feast. ~0.2 >> feast {} push
+The excavators think she may have been a shaman, >> shamanGrave {"items":true} pull
++ someone believed to travel between the human world, and the world of spirits. ~0.3 >> animism {"step":2} push
+
+= world warm
+So what did hunter-gatherers believe? >> think {"q1":"@believe","q2":"NEVER"} push
+In twenty sixteen, researchers compared the beliefs of thirty three hunter-gatherer societies from around the world. >> worldMap {"pins":["tanzania","arctic","amazon","australia","borneo","namibia","plains","andes"]} push
+One belief turned up in every single one. >> beliefChart {"step":1} push
++ Animism. ~0.2 >> card {"lines":["ANIMISM"],"icon":"leaf"} push
+The idea that animals, plants, rivers and mountains have spirits. >> animism {"step":1} push
++ That the whole world is alive, and aware. ~0.25 >> animism {"step":2} push
+About four in five groups believed in some kind of life after death. >> beliefChart {"step":2} push
++ About four in five had shamans. >> beliefChart {"step":3} push
+Nearly half honoured the spirits of their ancestors. >> card {"lines":["ANCESTORS"],"icon":"heart"} push
+But one thing was rare. >> card {"lines":["ONE THING","WAS RARE"],"icon":"magnifier"} push
++ A powerful god who takes an interest in how people behave. ~0.2 >> beliefChart {"step":4} push
+Only about one in seven groups had one. >> beliefChart {"step":4} [1100,820,1.2,1.3]
++ Gods like that are much more common in large, complex societies. ~0.3 >> card {"lines":["BIG","SOCIETIES"],"icon":"gold"} push
+When people began to farm and settle down, the ancestors moved in with them. >> card {"lines":["THE","ANCESTORS"],"icon":"heart"} push
+At Catalhoyuk in Turkey, about nine thousand years ago, people buried their dead beneath the floors of their own houses. >> houseFloor {} push
++ Sometimes right under the platforms where they slept. ~0.25 >> houseFloor {"cut":true} push
+At Jericho, people kept the skulls of some of the dead, and rebuilt their faces in plaster. >> plasterHead {} push
++ They set seashells in place of the eyes. ~0.25 >> plasterHead {"shells":true} push
+It sounds strange to us. >> card {"lines":["STRANGE?"],"icon":"magnifier"} push
++ But it may have been a way of keeping loved ones close. ~0.3 >> houseFloor {} pull
+For a hunter-gatherer, the sacred wasn't somewhere you went once a week. >> worship {} push
++ It was all around you. >> animism {"step":2} pull
+In the animal you hunted. >> animism {"step":3} push
++ In the river you drank from. >> animism {"step":4} push
++ In the stars you walked under. ~0.3 >> animism {"step":5} push
+
+= monuments wonder
+Then, about eleven and a half thousand years ago, something astonishing happened. >> card {"lines":["11,500","YEARS AGO"],"icon":"hourglass"} push
+On a hilltop in southern Turkey, people began raising enormous stone pillars. >> map {"region":"gobekli","label":"GOBEKLI TEPE"} push
+This is Gobekli Tepe. >> gobekli {} push
+The pillars are shaped like giant T's, the tallest about five and a half metres. >> gobekli {} [960,560,1.3,1.4]
++ They weigh up to about ten tonnes. ~0.2 >> gobekli {"haul":true} push
+And they're covered in carvings. >> gobekliPillar {} push
++ Foxes. Boars. Snakes. Vultures. >> gobekliPillar {"animals":true} push
+Some pillars even have arms and hands carved along their sides, as if they were giant people. ~0.25 >> gobekliPillar {"animals":true,"arms":true} [960,600,1.3,1.4]
+And here's the surprising part. >> card {"lines":["THE","SURPRISING PART"],"icon":"magnifier"} push
++ The people who built it were hunter-gatherers. >> gobekli {"haul":true} pull
++ Farming had barely begun. ~0.2 >> timeBar2 {"step":3,"none":"HUNTER-GATHERERS","yes":"FARMING"} [1700,640,1.3,1.4]
+The archaeologist who excavated it, Klaus Schmidt, called it a sanctuary. >> research {"text":"KLAUS SCHMIDT"} push
++ He said, first came the temple, then the city. ~0.25 >> card {"lines":["FIRST THE TEMPLE,","THEN THE CITY"],"icon":"star"} push
+Newer digs have found houses, grinding stones, and cisterns carved into the rock to collect rainwater. >> dig {"found":"bones"} push
++ So people probably lived there too. ~0.25 >> gobekli {} pull
+Later monuments were built to catch the sky. >> card {"lines":["CATCHING","THE SKY"],"icon":"sun"} push
+At Newgrange in Ireland, about five thousand two hundred years ago, people built a huge mound with a long stone passage. >> newgrange {} push
+Once a year, around the shortest day of winter, >> newgrange {"dawn":true} push
++ the rising sun shines through a small opening above the door, >> newgrange {"beam":true} push
++ and lights up the chamber at the heart of the mound for about seventeen minutes. ~0.25 >> newgrange {"beam":true} [1300,700,1.4,1.5]
+It's older than Stonehenge's stone circle, and older than the Pyramids of Giza. ~0.25 >> card {"lines":["OLDER THAN","THE PYRAMIDS"],"icon":"sun"} push
+At Stonehenge, the great stones line up with the midsummer sunrise, >> stonehenge {"summer":true} push
++ and the midwinter sunset. ~0.2 >> stonehenge {"winter":true} push
+The smaller bluestones were brought from Wales, more than two hundred kilometres away. >> stonehenge {"haul":true} push
++ And the six tonne Altar Stone came from the north east of Scotland, at least seven hundred and fifty kilometres away. ~0.2 >> map {"region":"britain","label":"STONEHENGE"} push
+Nearby, archaeologists found the remains of huge winter feasts. >> feast {"pigs":true} push
++ The pigs were raised all over Britain, some as far away as Scotland, and brought there to be eaten. ~0.3 >> feast {"pigs":true} [960,700,1.2,1.3]
+
+= why wonder
+So why? >> think {"q1":"@why","q2":"NEVER"} push
++ Why would people who lived on the edge of survival spend so much time on rituals? ~0.2 >> gobekli {"haul":true} push
+One answer might be this. >> card {"lines":["ONE","ANSWER"],"icon":"heart"} push
++ Rituals bring people together. ~0.2 >> circleDance {} push
+In twenty sixteen, researchers held a silent disco experiment. >> lab {"phase":"test"} push
+When people danced in sync with each other, >> circleDance {"sync":true} push
++ they felt closer to the group. >> circleDance {"sync":true} [960,640,1.2,1.3]
++ And they could tolerate more pain afterwards, a sign that their brains were releasing feel-good chemicals. ~0.25 >> card {"lines":["MORE","PAIN TOLERANCE"],"icon":"heart"} push
+In Mauritius, researchers studied a very demanding religious festival. >> map {"region":"mauritius","label":"MAURITIUS"} push
++ Men who took part in its painful ritual, or just watched it, later gave more money to the temple than men who only joined the prayers. ~0.25 >> card {"lines":["HARDER RITUAL,","MORE GIVING"],"icon":"heart"} push
+Dancing together. Singing together. Feasting together. >> circleDance {"sync":true} pull
++ Rituals may have helped turn a group of individuals into a team. ~0.3 >> fireCircle {"talk":true} push
+And sometimes, the evidence is simply about love. >> card {"lines":["ABOUT","LOVE"],"icon":"heart"} push
+At Ain Mallaha in Israel, about twelve thousand years ago, an older person was buried with one hand resting on a puppy. ~0.25 >> puppyHand {} push
+At Oberkassel in Germany, about fourteen thousand years ago, a man and a woman were buried with a dog. >> map {"region":"oberkassel","label":"OBERKASSEL"} push
+The dog was a puppy, about seven months old. >> dogGrave {} push
++ And its teeth show it had been very sick, again and again. >> dogGrave {"care":true} push
+It probably only survived for weeks because people nursed it. ~0.2 >> dogGrave {"care":true} [800,600,1.3,1.4]
+Someone cared for that puppy. >> dogGrave {"care":true} [960,800,1.2,1.3]
++ And when it died, they buried it beside them. ~0.3 >> dogGrave {} pull
+Maybe that's where it all begins. >> card {"lines":["WHERE IT","BEGINS"],"icon":"heart"} push
++ Not with gods, or temples. >> gobekli {} push
++ But with love, and loss, >> graveside {"lay":true} push
++ and the feeling that the ones we lose don't just disappear. ~0.3 >> sungir {"beads":true} pull
+
+= end warm
+Today, we build churches, mosques and temples. >> worship {} push
++ We have holy books, and calendars full of festivals. >> worship {"candles":true} push
+But the oldest rituals are still with us. >> card {"lines":["STILL","WITH US"],"icon":"star"} push
++ We still gather when someone dies. >> graveside {"lay":true} push
++ We still light fires and candles in the dark. >> worship {"candles":true} [960,700,1.3,1.4]
++ And we still look up at the stars, and wonder. ~0.25 >> animism {"step":5} push
+Fifty thousand years ago, >> rewind {} [960,540,1.04,1.1]
++ a small group stood around a grave. >> graveside {"ochre":true,"gift":true} push
+They had no temple. >> card {"lines":["NO TEMPLE."],"icon":"star"} push
++ No holy book. >> card {"lines":["NO HOLY BOOK."],"icon":"star"} push
++ But they had red ochre, and beads, and stories by the fire. >> fireCircle {"talk":true} push
++ And a world full of spirits, in every animal, every river, and every star. ~0.3 >> animism {"step":2} pull
+You visit a temple. >> worship {} push
++ They lived inside one. >> animism {"step":5} [960,600,1.2,1.0]

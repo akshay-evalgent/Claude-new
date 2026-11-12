@@ -105,6 +105,26 @@ function leafBed(x, y, s = 1) {
 function mozzie(x, y, s = 1) { return g(`translate(${x} ${y}) scale(${s})`, `<path d="M0 0 L40 6" ${S} stroke-width="3"/><ellipse cx="-4" cy="-12" rx="16" ry="6" fill="#EAF2F5" stroke="${C.ink}" stroke-width="2.5" transform="rotate(-30)"/><ellipse cx="6" cy="-12" rx="16" ry="6" fill="#EAF2F5" stroke="${C.ink}" stroke-width="2.5" transform="rotate(30)"/><ellipse rx="15" ry="6" fill="#3C3330"/><path d="M-6 4 l-10 16 M2 5 l-4 18 M8 4 l6 16" ${S} stroke-width="2.5"/>`); }
 
 const THUMBS = {
+  spiritRef() {
+    let bg = thumbNight({ seed: 53, moonX: 1560, moonY: 200, sky: ['#5A4A8A', '#F6A85A'], hills: '#8E6A6E', ground: '#C08A50', stars: 18 });
+    const pil = (x, y, k) => g(`translate(${x} ${y}) scale(${k})`, `<rect x="-60" y="-300" width="120" height="420" fill="#E6D9BE" ${S} stroke-width="6"/><rect x="-170" y="-380" width="340" height="110" rx="6" fill="#EDE2C8" ${S} stroke-width="6"/><path d="M-30 -200 q30 -40 60 0 q-10 30 -30 40 q-20 -10 -30 -40 Z M-40 0 q20 -20 0 -40 q-20 -20 0 -40" fill="none" stroke="#8E7E62" stroke-width="9"/>`);
+    bg += pil(1150, 720, 0.75) + pil(1450, 700, 0.95) + pil(1760, 730, 0.7);
+    bg += `<ellipse cx="1450" cy="860" rx="520" ry="110" fill="#F28C28" opacity=".25"/>` + fire(1320, 860, 0.6, 0.5);
+    for (let i = 0; i < 3; i++) bg += person({ x: 1200 + i * 150, y: 990, s: 0.7, t: 1, seed: 3 + i * 4, face: 'surprised', bob: 0, la: [-150, -170], ra: [150, 170] });
+    let fg = heroBig(Object.assign({ x: 560, y: 1780, s: 3.35, seed: 3, face: 'surprised', la: [-24, -12], ra: [-140, -165] }, legsOff));
+    return { bg, fg, text: thumbText(['NO TEMPLE?'], 960, 215, 230, 'middle', 1780) };
+  },
+  spiritAlt() {
+    let bg = `<rect width="1920" height="1080" fill="#D9B98A"/>`;
+    const r = rng(23); for (let i = 0; i < 40; i++) bg += `<ellipse cx="${f1(r() * 1920)}" cy="${f1(r() * 1080)}" rx="${f1(60 + r() * 140)}" ry="${f1(30 + r() * 60)}" fill="#C9A06A" opacity=".5"/>`;
+    bg += g('translate(620 640) scale(1.3)', `<path d="M-200 0 Q-180 -110 0 -120 Q160 -120 200 -40 Q220 20 180 40 L-170 40 Q-210 30 -200 0 Z" fill="none" stroke="#9C2E26" stroke-width="14"/><path d="M200 -40 l40 10 l-10 30 Z M-150 40 v60 M-90 40 v60 M110 40 v60 M160 40 v60" fill="none" stroke="#9C2E26" stroke-width="14" stroke-linecap="round"/>`);
+    for (const [x, y, k] of [[240, 300, 1], [480, 900, 0.8], [950, 320, 0.9]]) bg += g(`translate(${x} ${y}) scale(${k}) rotate(-12)`, `<path d="M-50 90 Q-70 20 -64 -20 L-60 -70 M-28 -10 L-26 -110 M0 -10 L2 -120 M28 -6 L32 -104 M48 30 L84 -20" stroke="#B8432E" stroke-width="30" stroke-linecap="round" fill="none" opacity=".8"/><ellipse cx="-4" cy="40" rx="56" ry="64" fill="#B8432E" opacity=".8"/>`);
+    bg += [[300, 720], [400, 700], [820, 820]].map(([x, y]) => g(`translate(${x} ${y})`, `<path d="M0 -60 V20 M0 20 l-20 50 M0 20 l20 50 M0 -40 l-30 30 M0 -40 l34 -20" stroke="#9C2E26" stroke-width="10" stroke-linecap="round" fill="none"/><circle cx="0" cy="-74" r="15" fill="#9C2E26"/>`)).join('');
+    const lion = `<path d="M-70 -140 Q-80 -40 -60 60 L-50 240 H-10 L0 120 L10 240 H50 L60 60 Q80 -40 70 -140 Z" fill="#EDE2C8" ${S} stroke-width="6"/><path d="M-70 -150 Q-80 -260 0 -270 Q80 -260 70 -150 Q40 -120 0 -120 Q-40 -120 -70 -150 Z" fill="#EDE2C8" ${S} stroke-width="6"/><circle cx="-60" cy="-262" r="18" fill="#EDE2C8" ${S} stroke-width="5"/><circle cx="60" cy="-262" r="18" fill="#EDE2C8" ${S} stroke-width="5"/><ellipse cx="0" cy="-162" rx="40" ry="28" fill="#F3EAD4" ${S} stroke-width="4"/><path d="M-30 -204 h16 M14 -204 h16" fill="none" ${S} stroke-width="5"/><path d="M-10 -172 L10 -172 L0 -160 Z" fill="#8E7E62"/>`;
+    let fg = heroBig(Object.assign({ x: 1380, y: 1700, s: 3.0, seed: 21, face: 'think', flip: true, hairC: '#3C2A1E', la: [-14, -6], ra: [60, 130], armsFront: true,
+      front: (L, R) => g(`translate(${f1(R[0] - 20)} ${f1(R[1] - 60)}) scale(.32)`, lion) }, legsOff));
+    return { bg, fg, text: thumbText(['BELIEVED WHAT?'], 960, 215, 230, 'middle', 1780) };
+  },
   schoolRef() {
     let bg = thumbWorld({ seed: 41, sunX: 1500, sunY: 240, sky: ['#6FBDE6', '#E6F4F2'] });
     bg += hut(1780, 640, 0.9) + hut(1240, 625, 0.55) + fire(1560, 730, 0.45, 0.6);
