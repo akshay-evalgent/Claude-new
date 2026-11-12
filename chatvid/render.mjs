@@ -27,7 +27,12 @@ const creditsPath = path.join(HERE, 'assets', 'media', 'credits.json');
 const allCredits = fs.existsSync(creditsPath) ? JSON.parse(fs.readFileSync(creditsPath, 'utf8')) : {};
 ep.__credits = Object.fromEntries(Object.keys(ep.media || {}).filter((k) => allCredits[k]).map((k) => [k, allCredits[k]]));
 ep.__mediaMeta = Object.fromEntries(Object.keys(ep.media || {}).map((k) => [k, path.join(HERE, 'assets', 'media', k, 'meta.json')])
-  .filter(([, f]) => fs.existsSync(f)).map(([k, f]) => [k, JSON.parse(fs.readFileSync(f, 'utf8'))]));       // midnight | nebula | void
+  .filter(([, f]) => fs.existsSync(f))
+  .map(([k, f]) => {
+    const m = JSON.parse(fs.readFileSync(f, 'utf8'));
+    // clips quieter than -36 dB on average are just film hiss: keep them silent
+    return [k, { ...m, audio: fs.existsSync(path.join(path.dirname(f), 'audio.wav')) && (m.audio_db ?? 0) > -36 }];
+  }));       // midnight | nebula | void
 if (opt('ai-name')) ep.ai = { ...(ep.ai || {}), name: opt('ai-name') };
 const fps = Number(opt('fps', ep.fps || 30));
 const scale = Number(opt('scale', 1));

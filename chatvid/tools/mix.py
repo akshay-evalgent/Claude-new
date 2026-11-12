@@ -75,8 +75,24 @@ def ding():
 SYNTH = {"boom": boom, "ding": ding}
 
 
+def clip_audio(key):
+    """A film clip's original sound. Unlike sound effects it is not trimmed (it has to
+    stay in sync with the picture); it is levelled to a common loudness instead."""
+    x = decode(os.path.join(ROOT, "assets", "media", key, "audio.wav"))
+    rms = float(np.sqrt(np.mean(x ** 2))) or 1e-6
+    # ~-16 dBFS RMS, peak <= -1 dB, and never more than +12 dB of boost (old film hiss)
+    x = x * min(10 ** (-16 / 20) / rms, 10 ** (-1 / 20) / (np.abs(x).max() or 1), 10 ** (12 / 20))
+    f_in, f_out = int(0.03 * SR), int(0.12 * SR)
+    x[:f_in] *= np.linspace(0, 1, f_in)[:, None]
+    x[-f_out:] *= np.linspace(1, 0, f_out)[:, None]
+    return x.astype(np.float32)
+
+
 def sample(name):
     if name in _cache:
+        return _cache[name]
+    if name.startswith("@media:"):
+        _cache[name] = clip_audio(name[7:])
         return _cache[name]
     if name in SYNTH:
         _cache[name] = SYNTH[name]()
@@ -171,7 +187,7 @@ def main(cues_path, out_path):
     for c in spec["cues"]:
         x = riser(c["dur"]) if c["s"] == "@riser" else sample(c["s"])
         x = resample(x, c.get("rate", 1.0))
-        if c.get("dur") and c["s"] != "@riser":
+        if c.get("dur") and c["s"] != "@riser" and not c["s"].startswith("@media:"):
             x = fade_tail(x[: int(c["dur"] * SR)])
         x = x * (10 ** (c.get("g", 0) / 20))
         i = int(c["t"] * SR)

@@ -14,7 +14,8 @@ An episode lists its media under "media":
 - archive: an Internet Archive film (public domain only), cut to a clip:
            {"archive": "DuckandC1951", "start": 30, "dur": 2.6}
 - noto:    an animated Google Noto emoji (CC BY 4.0), e.g. {"noto": "💀"}
-Clips and animated emoji are stored as frame sequences in assets/media/<key>/.
+Clips and animated emoji are stored as frame sequences in assets/media/<key>/;
+clips also keep their original sound there as audio.wav.
 
 Files land in chatvid/assets/media/<key>.jpg (max 2400 px wide) and every
 credit is written to chatvid/assets/media/credits.json, which
@@ -107,17 +108,48 @@ def frames(src_args, out_dir, fps, vf, ext):
     return n
 
 
+def clip_audio(src, out):
+    """The clip's original sound, cut with the same -ss/-t as its frames so they stay in sync."""
+    url, _, _ = archive_meta(src["archive"])
+    dest = os.path.join(out, "audio.wav")
+    cmd = ["ffmpeg", "-v", "error", "-y", "-ss", str(src["start"]), "-i", url, "-t", str(src["dur"]),
+           "-vn", "-ac", "2", "-ar", "48000", "-c:a", "pcm_s16le", dest]
+    for attempt in range(4):
+        if subprocess.run(cmd).returncode == 0:
+            audio_level(out)
+            return
+        time.sleep(10 * (attempt + 1))
+    print(f"  !    no audio for {out} (the clip will play silent)")
+
+
+def audio_level(out):
+    """Store the clip's mean loudness in meta.json; near-silent clips (just film hiss)
+    are left silent by the engine instead of being boosted."""
+    r = subprocess.run(["ffmpeg", "-i", os.path.join(out, "audio.wav"), "-af", "volumedetect", "-f", "null", "-"],
+                       capture_output=True, text=True).stderr
+    m = re.search(r"mean_volume: (-?[\d.]+) dB", r)
+    mp = os.path.join(out, "meta.json")
+    meta = json.load(open(mp)) if os.path.exists(mp) else {}
+    meta["audio_db"] = float(m.group(1)) if m else -99.0
+    json.dump(meta, open(mp, "w"))
+
+
 def sequence(key, src, credits):
     """Video clips (Internet Archive) and animated emoji (Google Noto) become frame sequences."""
     out = os.path.join(MEDIA, key)
     if os.path.exists(os.path.join(out, "meta.json")) and key in credits:
-        print(f"  ok   {key} (cached)")
+        if "archive" in src and not os.path.exists(os.path.join(out, "audio.wav")):
+            clip_audio(src, out)                         # older cache without sound
+            print(f"  ok   {key} (cached, audio added)")
+        else:
+            print(f"  ok   {key} (cached)")
         return
     if "archive" in src:
         url, credit, short = archive_meta(src["archive"])
         n = frames(["-ss", str(src["start"]), "-i", url, "-t", str(src["dur"])], out, 30,
                    "scale='trunc(iw*sar/2)*2':ih,setsar=1,scale=-2:1080:flags=lanczos,eq=contrast=1.06", "jpg")
         lic = "public domain"
+        clip_audio(src, out)                             # after frames(): it adds audio_db to meta.json
     else:
         cp = "_".join(f"{ord(c):x}" for c in src["noto"] if ord(c) != 0xFE0F)
         gif = os.path.join(MEDIA, f"_noto_{cp}.gif")

@@ -308,7 +308,11 @@
         const c = ex.cutaway, d = c.dur ?? 1.7;
         const cut = { ...c, t0: S.next, t1: S.next + d };
         cuts.push(cut);
-        cues.push({ t: cut.t0, s: c.sfx || 'zoom', g: c.sfx ? -3 : -6, duck: !!c.sfx });
+        // a film clip brings its own sound: play it (music dips under it) and skip the
+        // generic zoom whoosh so the original audio comes through clean
+        const m = seqMeta(c.image), clipAudio = m && m.audio && c.audio !== false;
+        if (clipAudio) cues.push({ t: cut.t0, s: '@media:' + c.image, g: c.audioGain ?? -2, dur: d, duck: true });
+        if (c.sfx || !clipAudio) cues.push({ t: cut.t0, s: c.sfx || 'zoom', g: c.sfx ? (clipAudio ? -8 : -3) : -6, duck: !!c.sfx });
         if (c.shake) shakes.push({ t: cut.t0 + 0.06, amp: 22, dur: 0.42 });
         S.next = cut.t1;
       }
