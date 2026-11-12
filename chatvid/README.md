@@ -5,7 +5,7 @@ messages, streamed replies, punch-in zooms, screen shake, a patience meter, a
 cold-open hook with a rewind, sound effects and music, mixed to YouTube loudness.
 No screen recording and no editing software needed.
 
-Samples: `samples/ai-is-a-toaster.mp4` (4:48), `samples/last-digit-of-pi.mp4` (4:47), `samples/emojis-only.mp4` (4:49), `samples/elon-vs-grok.mp4` (4:37, parody), `samples/1950s-mode.mp4` (4:39, real archive footage), `samples/year-3000-mode.mp4` (4:34, NASA footage) and
+Samples: `samples/ai-is-a-toaster.mp4` (4:48), `samples/last-digit-of-pi.mp4` (4:47), `samples/emojis-only.mp4` (4:49), `samples/elon-vs-grok.mp4` (4:37, parody), `samples/1950s-mode.mp4` (4:39, real archive footage), `samples/year-3000-mode.mp4` (4:34, NASA footage), `samples/planet-human-720p.mp4` (3:40, AI-narrated documentary, 720p preview) and
 `samples/count-to-a-billion.mp4` (29 s test). These are compressed previews;
 a fresh render in `out/` is the full-quality file to upload.
 
