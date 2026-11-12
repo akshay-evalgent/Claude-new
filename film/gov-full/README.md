@@ -1,6 +1,6 @@
 # "How Did Ancient Humans Live Without Government?"
 
-DURATION, 1920x1080, 25 fps. 239 shots, 2,428 words, 10 chapters.
+15 min 15 s, 1920x1080, 25 fps. 239 shots, 2,428 words, 10 chapters.
 Thumbnails: `../pilot-fridge/thumbnails/govRef.png` and `govAlt.png`. Facts and sources: `SOURCES.md`.
 Upload kit: `../upload-kit/gov/`.
 
