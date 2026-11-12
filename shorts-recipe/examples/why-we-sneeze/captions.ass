@@ -1,0 +1,59 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.80,Short,,0,0,0,,Your nose starts
+Dialogue: 0,0:00:00.80,0:00:01.60,Short,,0,0,0,,to tickle
+Dialogue: 0,0:00:01.60,0:00:02.10,Short,,0,0,0,,your eyes
+Dialogue: 0,0:00:02.10,0:00:03.02,Short,,0,0,0,,squeeze shut
+Dialogue: 0,0:00:03.02,0:00:03.58,Short,,0,0,0,,and your whole
+Dialogue: 0,0:00:03.58,0:00:04.82,Short,,0,0,0,,body launches whatever
+Dialogue: 0,0:00:04.82,0:00:05.60,Short,,0,0,0,,was in there
+Dialogue: 0,0:00:05.60,0:00:07.00,Short,,0,0,0,,across the room
+Dialogue: 0,0:00:07.00,0:00:07.74,Short,,0,0,0,,You see
+Dialogue: 0,0:00:07.74,0:00:08.30,Short,,0,0,0,,when dust
+Dialogue: 0,0:00:08.30,0:00:09.44,Short,,0,0,0,,or germs touch
+Dialogue: 0,0:00:09.44,0:00:10.48,Short,,0,0,0,,the nerves inside
+Dialogue: 0,0:00:10.48,0:00:11.36,Short,,0,0,0,,your nose
+Dialogue: 0,0:00:11.36,0:00:12.28,Short,,0,0,0,,your brain fires
+Dialogue: 0,0:00:12.28,0:00:12.88,Short,,0,0,0,,a reflex
+Dialogue: 0,0:00:12.88,0:00:13.46,Short,,0,0,0,,to blast
+Dialogue: 0,0:00:13.46,0:00:14.16,Short,,0,0,0,,them out
+Dialogue: 0,0:00:14.16,0:00:14.64,Short,,0,0,0,,and the spray
+Dialogue: 0,0:00:14.64,0:00:15.46,Short,,0,0,0,,can travel up
+Dialogue: 0,0:00:15.46,0:00:16.94,Short,,0,0,0,,to 26 feet
+Dialogue: 0,0:00:16.94,0:00:17.44,Short,,0,0,0,,But for about
+Dialogue: 0,0:00:17.44,0:00:17.88,Short,,0,0,0,,one in
+Dialogue: 0,0:00:17.88,0:00:18.66,Short,,0,0,0,,four people
+Dialogue: 0,0:00:18.66,0:00:19.16,Short,,0,0,0,,just stepping
+Dialogue: 0,0:00:19.16,0:00:20.16,Short,,0,0,0,,into bright sunlight
+Dialogue: 0,0:00:20.16,0:00:20.60,Short,,0,0,0,,can make
+Dialogue: 0,0:00:20.60,0:00:21.62,Short,,0,0,0,,them sneeze
+Dialogue: 0,0:00:21.62,0:00:22.88,Short,,0,0,0,,because scientists think
+Dialogue: 0,0:00:22.88,0:00:23.50,Short,,0,0,0,,the signals
+Dialogue: 0,0:00:23.50,0:00:24.32,Short,,0,0,0,,from their eyes
+Dialogue: 0,0:00:24.32,0:00:24.92,Short,,0,0,0,,get crossed
+Dialogue: 0,0:00:24.92,0:00:25.64,Short,,0,0,0,,with the nerves
+Dialogue: 0,0:00:25.64,0:00:26.90,Short,,0,0,0,,in their nose
+Dialogue: 0,0:00:26.90,0:00:27.38,Short,,0,0,0,,And you should
+Dialogue: 0,0:00:27.38,0:00:27.98,Short,,0,0,0,,never hold
+Dialogue: 0,0:00:27.98,0:00:28.42,Short,,0,0,0,,one in
+Dialogue: 0,0:00:28.42,0:00:29.86,Short,,0,0,0,,One man pinched
+Dialogue: 0,0:00:29.86,0:00:30.30,Short,,0,0,0,,his nose
+Dialogue: 0,0:00:30.30,0:00:30.84,Short,,0,0,0,,and closed
+Dialogue: 0,0:00:30.84,0:00:31.36,Short,,0,0,0,,his mouth
+Dialogue: 0,0:00:31.36,0:00:31.82,Short,,0,0,0,,to stop
+Dialogue: 0,0:00:31.82,0:00:32.72,Short,,0,0,0,,a sneeze
+Dialogue: 0,0:00:32.72,0:00:33.16,Short,,0,0,0,,and the pressure
+Dialogue: 0,0:00:33.16,0:00:33.96,Short,,0,0,0,,tore a hole
+Dialogue: 0,0:00:33.96,0:00:34.50,Short,,0,0,0,,in the back
+Dialogue: 0,0:00:34.50,0:00:35.34,Short,,0,0,0,,of his throat
