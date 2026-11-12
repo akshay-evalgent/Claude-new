@@ -1,0 +1,734 @@
+{
+ "title": "I Turned On ChatGPT's 1950s Mode (It Got Stuck)",
+ "interface": "midnight",
+ "ai": {
+  "name": "ChatGPT"
+ },
+ "hook": true,
+ "pacing": {
+  "cps": 13
+ },
+ "hud": {
+  "label": "1950s LEVEL",
+  "start": 0,
+  "hue": [
+   205,
+   32
+  ],
+  "alarm": "high",
+  "faces": [
+   [
+    85,
+    "🎩"
+   ],
+   [
+    55,
+    "📻"
+   ],
+   [
+    25,
+    "🙂"
+   ],
+   [
+    -1,
+    "🤖"
+   ]
+  ]
+ },
+ "music": {
+  "tracks": [
+   "keep-smiling",
+   "comical",
+   "okay"
+  ],
+  "gain": -22
+ },
+ "endCard": {
+  "kicker": "NEXT VIDEO",
+  "text": "I Turned On ChatGPT's Year 3000 Mode 🚀"
+ },
+ "media": {
+  "sage": {
+   "archive": "OnGuard1956",
+   "start": 113.0,
+   "dur": 2.4
+  },
+  "radar": {
+   "archive": "OnGuard1956",
+   "start": 315.0,
+   "dur": 2.2
+  },
+  "cards": {
+   "archive": "OnGuard1956",
+   "start": 159.0,
+   "dur": 2.2
+  },
+  "floorgym": {
+   "archive": "Exercise1949",
+   "start": 160.0,
+   "dur": 2.6
+  },
+  "phone": {
+   "archive": "DatingDo1949",
+   "start": 255.0,
+   "dur": 2.4
+  },
+  "shock": {
+   "archive": "OfficeCo1952",
+   "start": 399.0,
+   "dur": 1.6
+  },
+  "soda": {
+   "archive": "WhattoDo1950",
+   "start": 560.0,
+   "dur": 2.4
+  },
+  "asleep": {
+   "archive": "OfficeCo1952",
+   "start": 214.0,
+   "dur": 3.0
+  },
+  "gasp": {
+   "archive": "DateWith1950",
+   "start": 416.0,
+   "dur": 2.0
+  },
+  "kitchen": {
+   "archive": "Designfo1956",
+   "start": 236.0,
+   "dur": 2.4
+  },
+  "futurecar": {
+   "archive": "Designfo1956",
+   "start": 499.0,
+   "dur": 2.6
+  },
+  "turtle": {
+   "archive": "DuckandC1951",
+   "start": 31.5,
+   "dur": 3.4
+  },
+  "picnic": {
+   "archive": "DuckandC1951",
+   "start": 469.0,
+   "dur": 2.8
+  },
+  "dinner": {
+   "archive": "DateWith1950",
+   "start": 315.0,
+   "dur": 2.4
+  },
+  "dadsmile": {
+   "archive": "DateWith1950",
+   "start": 520.0,
+   "dur": 1.8
+  },
+  "handshake": {
+   "archive": "OfficeCo1952",
+   "start": 340.0,
+   "dur": 2.0
+  },
+  "shyguy": {
+   "archive": "ShyGuy1947",
+   "start": 335.0,
+   "dur": 2.6
+  },
+  "st-skull": {
+   "noto": "💀"
+  },
+  "st-laugh": {
+   "noto": "😂"
+  },
+  "st-shock": {
+   "noto": "😱"
+  },
+  "st-sleep": {
+   "noto": "😴"
+  },
+  "st-clown": {
+   "noto": "🤡"
+  },
+  "bert-still": {
+   "archive": "DuckandC1951",
+   "start": 28.4,
+   "dur": 0.2
+  }
+ },
+ "exchanges": [
+  {
+   "user": "Hey ChatGPT. Turn on 1950s mode.",
+   "ai": "Gee whiz! 1950s mode is ON 🎩",
+   "punch": 2,
+   "sfx": "dazzle",
+   "chapter": "1950s mode: ON",
+   "meter": 20,
+   "cutaway": {
+    "image": "sage",
+    "caption": "ChatGPT booting up (1956)",
+    "dur": 2.4,
+    "sticker": "st-laugh",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "Why do you sound like that?",
+   "ai": "Golly, I'm running on vacuum tubes, pal 😎",
+   "punch": 3,
+   "meter": 25
+  },
+  {
+   "user": "Okay... what's the weather today?",
+   "ai": "Let me check the radar, daddy-o 📡",
+   "punch": 3,
+   "cutaway": {
+    "image": "radar",
+    "caption": "Weather app (1956)",
+    "dur": 2.2,
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "Are you on social media?",
+   "ai": "I'm in the phone book! 📖",
+   "punch": 2,
+   "sfx": "laugh"
+  },
+  {
+   "user": "What's trending right now?",
+   "ai": "Hula hoops and saying 'swell' 😎",
+   "punch": 3,
+   "meter": 30
+  },
+  {
+   "user": "What do you think of TikTok?",
+   "ai": "Tick tock? Is that a clock? 🕰️",
+   "punch": 3,
+   "sfx": "boing"
+  },
+  {
+   "user": "How do I get fit?",
+   "ai": "Swell question! Floor exercises, sport 💪",
+   "punch": 3,
+   "chapter": "Life advice",
+   "cutaway": {
+    "image": "floorgym",
+    "caption": "The 1950s gym membership",
+    "dur": 2.6,
+    "sticker": "st-skull",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "No protein shakes?",
+   "ai": "A glass of milk and a firm handshake 🥛",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 36
+  },
+  {
+   "user": "How do I ask someone out?",
+   "ai": "Telephone her house and talk to her father first ☎️",
+   "punch": 3,
+   "cutaway": {
+    "image": "phone",
+    "caption": "Sliding into her DMs (1949)",
+    "dur": 2.4,
+    "sticker": "st-laugh",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "Her FATHER?!",
+   "ai": "Naturally. Then you go steady 😊",
+   "punchUser": true,
+   "userShake": true,
+   "punch": 3,
+   "cutaway": {
+    "image": "shock",
+    "caption": "Me:",
+    "dur": 1.6,
+    "sticker": "st-shock",
+    "sfx": "boom",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "What should I wear?",
+   "ai": "A suit, a hat and a whole bottle of hair tonic 🎩",
+   "punch": 3,
+   "meter": 42
+  },
+  {
+   "user": "What do we even do on the date?",
+   "ai": "Share a soda pop. Two straws 🥤",
+   "punch": 3,
+   "cutaway": {
+    "image": "soda",
+    "caption": "Netflix and chill (1950)",
+    "dur": 2.4,
+    "sticker": "st-laugh",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "What if she gets bored?",
+   "ai": "Nobody gets bored in 1950, pal 🙂",
+   "punch": 3,
+   "cutaway": {
+    "image": "asleep",
+    "caption": "She's having a great time",
+    "dur": 3.0,
+    "sticker": "st-sleep",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "...she fell asleep.",
+   "ai": "That means she's relaxed! 😌",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 48
+  },
+  {
+   "user": "It's 2026, by the way.",
+   "ai": "Gee, what's a 2026? 🤨",
+   "punch": 2,
+   "sfx": "boing"
+  },
+  {
+   "user": "How do I get rich?",
+   "ai": "Easy. Buy a house for $8,000 🏠",
+   "punch": 3
+  },
+  {
+   "user": "WHERE?!",
+   "ai": "Everywhere, sport! 😊",
+   "punchUser": true,
+   "userShake": true,
+   "punch": 2,
+   "sfx": "laugh"
+  },
+  {
+   "user": "How do I send an email?",
+   "ai": "Write a letter, lick a stamp, wait 6 weeks ✉️",
+   "punch": 3,
+   "chapter": "Tech support"
+  },
+  {
+   "user": "6 WEEKS?",
+   "ai": "Express mail is 5 😎",
+   "punchUser": true,
+   "punch": 2,
+   "sfx": "laugh",
+   "meter": 54,
+   "cutaway": {
+    "image": "gasp",
+    "caption": "Me waiting for a reply",
+    "dur": 2.0,
+    "sticker": "st-shock",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "What's the internet?",
+   "ai": "Is that a new kind of fishing net? 🎣",
+   "punch": 3,
+   "sfx": "boing"
+  },
+  {
+   "user": "How do I take a selfie?",
+   "ai": "Hire a painter. Sit still for 3 hours 🖼️",
+   "punch": 3,
+   "sfx": "laugh"
+  },
+  {
+   "user": "How do I stream music?",
+   "ai": "Turn the radio knob, buster 📻",
+   "punch": 3,
+   "sfx": "boing"
+  },
+  {
+   "user": "Can you set an alarm?",
+   "ai": "Sure! The rooster calls you at 5am 🐓",
+   "punch": 3
+  },
+  {
+   "user": "How do I make money online?",
+   "ai": "Online? Like... on a clothesline? 🧺",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 60
+  },
+  {
+   "user": "Can you code me an app?",
+   "ai": "Sure! Fetch me 400 punch cards 📇",
+   "punch": 3,
+   "cutaway": {
+    "image": "cards",
+    "caption": "Vibe coding (1956)",
+    "dur": 2.2,
+    "sticker": "st-skull",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "How long will that take?",
+   "ai": "About 9 years 😊",
+   "punch": 2,
+   "sfx": "fail"
+  },
+  {
+   "user": "Can you make a meal plan?",
+   "ai": "The kitchen of the future does it all 🍰",
+   "punch": 3,
+   "cutaway": {
+    "image": "kitchen",
+    "caption": "Air fryer (1956)",
+    "dur": 2.4,
+    "sticker": "st-laugh",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "Will we have self-driving cars?",
+   "ai": "By 1960, guaranteed! 🚗",
+   "punch": 3,
+   "cutaway": {
+    "image": "futurecar",
+    "caption": "Self-driving by 1960 (trust me)",
+    "dur": 2.6,
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "We STILL don't have them.",
+   "ai": "Gee, must be next year 🙂",
+   "punch": 3,
+   "shake": true,
+   "sfx": "boom",
+   "meter": 66
+  },
+  {
+   "user": "Say something cool.",
+   "ai": "Hubba hubba 😎",
+   "quick": true,
+   "chapter": "Slang check"
+  },
+  {
+   "user": "Say something modern.",
+   "ai": "...television? 📺",
+   "quick": true
+  },
+  {
+   "user": "Say 'no cap'.",
+   "ai": "I'm not wearing a cap, buster 🎩",
+   "quick": true,
+   "punch": 3,
+   "shake": true,
+   "sfx": "laugh",
+   "meter": 70
+  },
+  {
+   "user": "Rate my outfit.",
+   "ai": "Needs a hat 🎩",
+   "quick": true
+  },
+  {
+   "user": "Do you have a girlfriend?",
+   "ai": "I'm going steady with a toaster 🍞",
+   "quick": true,
+   "punch": 3,
+   "sfx": "dazzle"
+  },
+  {
+   "user": "Is AI dangerous?",
+   "ai": "Not if you duck and cover! 🐢",
+   "punch": 3,
+   "chapter": "AI safety (1951)",
+   "meter": 76,
+   "cutaway": {
+    "image": "turtle",
+    "caption": "AI safety plan (1951)",
+    "dur": 3.4,
+    "sticker": "st-clown",
+    "sfx": "boom",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "That's the WHOLE plan?",
+   "ai": "Works every time, sport 👍",
+   "punch": 3
+  },
+  {
+   "user": "What if the robots take over?",
+   "ai": "Then we all hide under the picnic blanket 🧺",
+   "punch": 3,
+   "cutaway": {
+    "image": "picnic",
+    "caption": "Alignment research",
+    "dur": 2.8,
+    "sticker": "st-skull",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "How do I get a job?",
+   "ai": "Walk in. Firm handshake. Ask for the manager 🤝",
+   "punch": 3,
+   "meter": 80,
+   "cutaway": {
+    "image": "handshake",
+    "caption": "LinkedIn (1952)",
+    "dur": 2.0,
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "Without applying online?",
+   "ai": "What's 'online', sport? 🤨",
+   "punch": 3,
+   "sfx": "boing"
+  },
+  {
+   "user": "Can you be my therapist?",
+   "ai": "Have you tried bowling? 🎳",
+   "punch": 2,
+   "sfx": "laugh"
+  },
+  {
+   "user": "My family says I'm on my phone too much.",
+   "ai": "Try dinner at the table, like a swell family 🍽️",
+   "punch": 3,
+   "chapter": "Stuck in 1950",
+   "cutaway": {
+    "image": "dinner",
+    "caption": "Family group chat (1950)",
+    "dur": 2.4,
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "And if they're mad?",
+   "ai": "Smile. Always smile 😁",
+   "punch": 2,
+   "meter": 86,
+   "cutaway": {
+    "image": "dadsmile",
+    "caption": "Dad after seeing your screen time",
+    "dur": 1.8,
+    "sticker": "st-laugh",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "What's a smartphone to you?",
+   "ai": "A very smart telephone! It knows how to ring 📞",
+   "punch": 3,
+   "sfx": "laugh"
+  },
+  {
+   "user": "Okay. Turn OFF 1950s mode.",
+   "ai": "Gee whiz, I don't know how 😳",
+   "punch": 3,
+   "think": 1.0,
+   "meter": 92,
+   "cutaway": {
+    "image": "shyguy",
+    "caption": "Me, stuck with Grandpa GPT",
+    "dur": 2.6,
+    "sticker": "st-skull",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "Type /modern. That's it.",
+   "ai": "Request mailed ✉️ Allow 6 weeks.",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 96
+  },
+  {
+   "user": "Are you back to normal?",
+   "ai": "Swell! Totally modern, daddy-o 🎩",
+   "punch": 3,
+   "shake": true,
+   "sfx": "boom",
+   "think": 1.0,
+   "final": true,
+   "meter": 100
+  }
+ ],
+ "youtube": {
+  "title": "I Turned On ChatGPT's 1950s Mode (It Got Stuck)",
+  "description": [
+   "I put ChatGPT in 1950s mode for 5 minutes. It recommended calling her father, waiting 6 weeks for an email, and a nuclear-turtle safety plan for AI... and then it couldn't switch back 🎩",
+   "",
+   "Every clip is real footage from 1940s and 1950s educational films, all in the public domain.",
+   "",
+   "⏱️ Chapters",
+   "{chapters}",
+   "",
+   "🚀 Next: I Turned On ChatGPT's Year 3000 Mode",
+   "🔔 Subscribe for more AI chaos: https://www.youtube.com/@BotBothered?sub_confirmation=1",
+   "",
+   "This is a comedy skit: the chat is written and animated for entertainment, not a real ChatGPT conversation. Not affiliated with OpenAI.",
+   "",
+   "Footage and animation:",
+   "{credits}",
+   "Music & sound effects: Mixkit (mixkit.co). Emoji: Microsoft Fluent Emoji (MIT licence).",
+   "",
+   "#chatgpt #1950s #funny"
+  ],
+  "tags": [
+   "chatgpt",
+   "chatgpt funny",
+   "chatgpt 1950s",
+   "1950s",
+   "vintage footage",
+   "retro",
+   "funny ai",
+   "ai comedy",
+   "chatgpt prank",
+   "duck and cover",
+   "1950s advice",
+   "old school",
+   "ai memes",
+   "bot bothered"
+  ],
+  "thumbnails": [
+   {
+    "vs": {
+     "image": "shock/f0024",
+     "pos": "45% 30%",
+     "right": "GPT-1955",
+     "nameSize": 78,
+     "nameX": 846
+    },
+    "bubbles": [
+     {
+      "text": "Turn on *1950s* mode",
+      "side": "user",
+      "color": "red",
+      "size": 60,
+      "x": 30,
+      "y": 560
+     },
+     {
+      "text": "Gee whiz! 🎩",
+      "side": "ai",
+      "color": "cyan",
+      "size": 72,
+      "right": 60,
+      "y": 455
+     }
+    ]
+   },
+   {
+    "vs": {
+     "image": "bert-still/f0003",
+     "pos": "50% 40%",
+     "right": "GPT-1955",
+     "nameSize": 78,
+     "nameX": 846
+    },
+    "bubbles": [
+     {
+      "text": "Is AI *dangerous*?",
+      "side": "user",
+      "color": "red",
+      "size": 62,
+      "x": 30,
+      "y": 560
+     },
+     {
+      "text": "Duck and cover! 🐢",
+      "side": "ai",
+      "color": "yellow",
+      "size": 58,
+      "right": 30,
+      "y": 455
+     }
+    ]
+   },
+   {
+    "vs": {
+     "image": "asleep/f0080",
+     "pos": "45% 40%",
+     "right": "GPT-1955",
+     "nameSize": 78,
+     "nameX": 846
+    },
+    "bubbles": [
+     {
+      "text": "What if she's *bored*?",
+      "side": "user",
+      "color": "red",
+      "size": 58,
+      "x": 30,
+      "y": 560
+     },
+     {
+      "text": "Nobody's bored! 🙂",
+      "side": "ai",
+      "color": "cyan",
+      "size": 58,
+      "right": 40,
+      "y": 462
+     }
+    ]
+   }
+  ]
+ }
+}

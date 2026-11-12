@@ -61,7 +61,21 @@
   const emoSrc = (g) => `../assets/emoji/${ekey(g)}.png`;
   const mediaSrc = (k) => `../assets/media/${k}.jpg`;
   const faceSrc = (f) => (isEmoji(f) ? emoSrc(f) : mediaSrc(f));
-  const setSrc = (el, src) => { if (el.dataset.src !== src) { el.src = src; el.dataset.src = src; } };
+  // image sources change per frame for video clips: remember the decode so the
+  // frame is only captured once every new image is on screen
+  let pending = [];
+  const setSrc = (el, src) => {
+    if (el.dataset.src !== src) { el.src = src; el.dataset.src = src; pending.push(el.decode().catch(() => {})); }
+  };
+  const seqMeta = (k) => (EP.__mediaMeta && EP.__mediaMeta[k]) || null;
+  // the image to show for a media key at local time u (seconds into the cut)
+  function mediaFrame(k, u, loop = false) {
+    const m = seqMeta(k);
+    if (!m) return mediaSrc(k);
+    let i = Math.floor(u * m.fps);
+    i = loop ? ((i % m.count) + m.count) % m.count : clamp(i, 0, m.count - 1);
+    return `../assets/media/${k}/f${String(i + 1).padStart(4, '0')}.${m.ext}`;
+  }
   const emoImg = (g) => `<img class="emo" src="${emoSrc(g)}" alt="">`;
   const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
   const rich = (s) => graphemes(s).map((g) => (isEmoji(g) ? emoImg(g) : esc(g))).join('');
@@ -449,8 +463,20 @@
       cutEl.style.display = 'block';
       $('vs').style.display = 'none';
       $('cutPhoto').style.display = 'block';
-      setSrc($('cutImg'), mediaSrc(cut.image));
+      const isClip = !!seqMeta(cut.image);
+      const frameSrc = mediaFrame(cut.image, (t - cut.t0) * (cut.speed || 1));
+      setSrc($('cutImg'), frameSrc);
+      $('cutImg').style.objectFit = isClip || cut.fit === 'contain' ? 'contain' : 'cover';
+      $('cutBg').style.display = isClip || cut.fit === 'contain' ? 'block' : 'none';
+      if (isClip || cut.fit === 'contain') setSrc($('cutBg'), frameSrc);
       $('cutImg').style.objectPosition = cut.pos || '50% 30%';
+      const st = $('cutSticker');
+      st.style.display = cut.sticker ? 'block' : 'none';
+      if (cut.sticker) {
+        setSrc(st, mediaFrame(cut.sticker, t - cut.t0, true));
+        const pop = EASE.outBack(clamp((t - cut.t0 - 0.12) / 0.3, 0, 1));
+        st.style.transform = `scale(${pop}) rotate(${-8 + 4 * Math.sin((t - cut.t0) * 3)}deg)`;
+      }
       $('cutImg').style.transformOrigin = cut.pos || '50% 30%';
       $('cutImg').style.transform = `translate(${sh.x}px, ${sh.y}px) scale(${lerp(z0, z1, p) * (1 + 0.22 * (1 - e))})`;
       $('cutCap').innerHTML = rich(cut.caption || '');
@@ -475,7 +501,7 @@
     await Promise.all([...document.images].map((im) => (im.complete ? 0 : new Promise((r) => { im.onload = im.onerror = r; }))));
     const pre = [];
     if (HUD) HUD.faces.forEach(([, f, b]) => { pre.push(faceSrc(f)); if (b) pre.push(emoSrc(b)); });
-    ep.exchanges.forEach((ex) => { if (ex.cutaway) pre.push(mediaSrc(ex.cutaway.image)); });
+    ep.exchanges.forEach((ex) => { if (ex.cutaway && !seqMeta(ex.cutaway.image)) pre.push(mediaSrc(ex.cutaway.image)); });
     if (ep.intro) pre.push(mediaSrc(ep.intro.image));
     await Promise.all(pre.map((src) => new Promise((r) => { const im = new Image(); im.onload = im.onerror = r; im.src = src; })));
     measure();
@@ -499,7 +525,8 @@
     return { duration, cues: all.sort((a, b) => a.t - b.t), music, mainStart, exchanges: X.map((x) => +(x.S.typeStart + mainStart).toFixed(2)) };
   };
 
-  window.renderAt = (T) => {
+  window.renderAt = async (T) => {
+    pending = [];
     const hook = window.__hook;
     let t, rew = 0;
     if (hook && T < P.hookDur) t = climax + T * 0.9;
@@ -515,5 +542,6 @@
     $('cam').style.filter = rew ? 'saturate(.55) contrast(1.25) hue-rotate(-12deg) blur(.6px)' : 'none';
     const f = hook ? T - mainStart : -1;
     $('flash').style.opacity = f >= 0 && f < 0.2 ? (0.5 * (1 - f / 0.2)).toFixed(3) : 0;
+    if (pending.length) await Promise.all(pending);
   };
 })();

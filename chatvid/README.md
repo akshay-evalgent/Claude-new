@@ -89,7 +89,7 @@ Per-exchange fields:
 | `wall` | Spam-wall reply: `{"unit": "🍞", "count": 760, "end": " 😵‍💫", "dur": 2.8}`. The camera starts tight on the first line and pulls back to reveal the whole wall. `ai` becomes a prefix. |
 | `think` / `hold` / `punchHold` | Per-exchange timing overrides, in seconds. |
 | `final` | Last exchange: long slow push-in with a riser, then the end card (if any). |
-| `cutaway` | Full-screen photo after the punch-in: `{"image": "<media key>", "caption": "Elon right now 😐", "pos": "50% 12%", "zoom": [1.0, 1.12], "dur": 1.7, "sfx": "boom", "shake": true}`. The photo's credit is shown small in the corner. |
+| `cutaway` | Full-screen photo **or video clip** after the punch-in (clips play on a blurred copy of themselves, so 4:3 film fills the frame). Add `"sticker": "<noto media key>"` for an animated emoji reaction. Example: `{"image": "<media key>", "caption": "Elon right now 😐", "pos": "50% 12%", "zoom": [1.0, 1.12], "dur": 1.7, "sfx": "boom", "shake": true}`. The photo's credit is shown small in the corner. |
 
 Keys starting with `_` (like `_act`) are ignored, so you can use them for notes.
 
@@ -112,6 +112,8 @@ python3 chatvid/tools/fetch_media.py chatvid/episodes/elon-vs-grok.json
 
 - `commons`: a Wikimedia Commons file. The licence and author are read from its page. Prefer CC BY or public domain (CC BY-SA asks for share-alike).
 - `nasa`: a NASA Image Library id (public domain).
+- `archive`: a public-domain film from the Internet Archive, cut to a clip: `{"archive": "DuckandC1951", "start": 31.5, "dur": 3.4}`. Only items marked public domain are accepted. The Prelinger collection (1940s-60s educational and industrial films) is a good source.
+- `noto`: a Google animated emoji (CC BY 4.0), used as a sticker: `{"noto": "💀"}`.
 - `file`: your own file in `assets/media/`, for material you have a licence or permission for.
 - `crop`: `[x, y, w, h]` as fractions of the image, e.g. to cut a face out for the meter or an avatar.
 

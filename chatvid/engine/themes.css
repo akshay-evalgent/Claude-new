@@ -172,3 +172,9 @@ body.t-void #greet { font-size: 40px; font-weight: 700; letter-spacing: -1px; }
 #badge { position: absolute; right: 52px; top: 50px; display: none; padding: 8px 16px; border-radius: 10px;
   font: 800 24px/1 "Inter", sans-serif; letter-spacing: 5px; color: #fff; background: rgba(0,0,0,.55);
   border: 2px solid rgba(255,255,255,.55); }
+
+/* ---------- video clips in cutaways ---------- */
+#cutBg { position: absolute; inset: -60px; width: calc(100% + 120px); height: calc(100% + 120px); object-fit: cover;
+  filter: blur(36px) brightness(.45) saturate(.8); display: none; }
+#cutSticker { position: absolute; right: 90px; bottom: 210px; width: 250px; height: 250px; display: none;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,.6)); }

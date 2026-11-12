@@ -25,7 +25,9 @@ const ep = JSON.parse(fs.readFileSync(epPath, 'utf8'));
 if (opt('interface')) ep.interface = opt('interface');
 const creditsPath = path.join(HERE, 'assets', 'media', 'credits.json');
 const allCredits = fs.existsSync(creditsPath) ? JSON.parse(fs.readFileSync(creditsPath, 'utf8')) : {};
-ep.__credits = Object.fromEntries(Object.keys(ep.media || {}).filter((k) => allCredits[k]).map((k) => [k, allCredits[k]]));       // midnight | nebula | void
+ep.__credits = Object.fromEntries(Object.keys(ep.media || {}).filter((k) => allCredits[k]).map((k) => [k, allCredits[k]]));
+ep.__mediaMeta = Object.fromEntries(Object.keys(ep.media || {}).map((k) => [k, path.join(HERE, 'assets', 'media', k, 'meta.json')])
+  .filter(([, f]) => fs.existsSync(f)).map(([k, f]) => [k, JSON.parse(fs.readFileSync(f, 'utf8'))]));       // midnight | nebula | void
 if (opt('ai-name')) ep.ai = { ...(ep.ai || {}), name: opt('ai-name') };
 const fps = Number(opt('fps', ep.fps || 30));
 const scale = Number(opt('scale', 1));
@@ -53,7 +55,7 @@ if (args.includes('--upload')) {
   const credits = [...new Set(Object.values(ep.__credits).map((c) => c.credit))];
   const lics = [...new Set(Object.values(ep.__credits).map((c) => c.licence).filter((l) => LIC[l]))];
   const creditText = credits.map((c) => `- ${c}`).join('\n') +
-    (lics.length ? `\n(Photos are cropped and zoomed. ${lics.map((l) => `${l}: ${LIC[l]}`).join(' · ')})` : '');
+    (lics.length ? `\n(Media is cropped and edited. ${lics.map((l) => `${l}: ${LIC[l]}`).join(' · ')})` : '');
   const desc = [].concat(yt.description || []).join('\n').replace('{chapters}', chapterText).replace('{credits}', creditText);
   const tags = (yt.tags || []).join(', ');
   const text = `TITLE\n${yt.title || ep.title}\n\nDESCRIPTION\n${desc}\n\nTAGS (${tags.length}/500 characters)\n${tags}\n`;
