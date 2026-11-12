@@ -1,0 +1,129 @@
+{
+ "title": "He Showed Up To Heart Surgery ALONE 😭",
+ "source": "nGxqelnBOIQ",
+ "credit": "Credit: CBS News / Steve Hartman",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 53.4,
+   "out": 56.85,
+   "frame": "full",
+   "fx": 0.45,
+   "text": "Why were you there by yourself? I have no *idea*."
+  },
+  {
+   "type": "vo",
+   "text": "This little boy was dropped off for *heart* surgery… with no adult at all.",
+   "shots": [
+    {
+     "in": 32.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 38.5,
+     "frame": "card"
+    },
+    {
+     "in": 42.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 45.2,
+   "out": 46.75,
+   "frame": "full",
+   "fx": 0.45
+  },
+  {
+   "type": "vo",
+   "text": "The anesthesiologist couldn't stop looking at him through the seven-hour surgery. She already had *six* kids… but she decided to take in a seventh.",
+   "shots": [
+    {
+     "in": 64.5,
+     "frame": "card"
+    },
+    {
+     "in": 66.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 72.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 82.5,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 87.7,
+   "out": 90.85,
+   "frame": "full",
+   "fx": 0.45
+  },
+  {
+   "type": "vo",
+   "text": "A year and a half later, the adoption was *official*. But he had five siblings still stuck in that same home.",
+   "shots": [
+    {
+     "in": 104.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 108.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 154.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "So she convinced her sister, her sister-in-law, and a co-worker… to adopt them *too*.",
+   "shots": [
+    {
+     "in": 124.5,
+     "frame": "card"
+    },
+    {
+     "in": 130.5,
+     "frame": "card"
+    },
+    {
+     "in": 136.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 139.45,
+   "out": 146.6,
+   "impact": true,
+   "shots": [
+    {
+     "in": 140.0,
+     "frame": "full",
+     "fx": 0.5,
+     "len": 3.4
+    },
+    {
+     "in": 157.5,
+     "frame": "card"
+    }
+   ]
+  }
+ ]
+}

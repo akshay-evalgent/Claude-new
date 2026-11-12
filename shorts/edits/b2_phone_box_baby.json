@@ -1,0 +1,135 @@
+{
+ "title": "He Found A Baby In A PHONE BOX 😭💔",
+ "source": "1sk670GyxtQ",
+ "credit": "Credit: Good Morning Britain (ITV)",
+ "shot_defaults": {
+  "card": {
+   "zoom": 1.35,
+   "cy": 0.4
+  },
+  "full": {
+   "full_zoom": 1.35,
+   "fy": 0.38
+  }
+ },
+ "beats": [
+  {
+   "type": "clip",
+   "in": 185.1,
+   "out": 186.5,
+   "frame": "full",
+   "fx": 0.6,
+   "text": "I asked, can I *keep* her? No, you can't."
+  },
+  {
+   "type": "vo",
+   "text": "In 1994, he found a newborn baby *abandoned* in a London phone box… her umbilical cord still attached.",
+   "shots": [
+    {
+     "in": 13.0,
+     "frame": "card",
+     "zoom": 1.4,
+     "cy": 0.38
+    },
+    {
+     "in": 247.0,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 19.0,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "He wasn't allowed to keep her. But she grew up reading about him.",
+   "shots": [
+    {
+     "in": 72.5,
+     "frame": "full",
+     "fx": 0.45
+    },
+    {
+     "in": 252.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 105.35,
+   "out": 110.7,
+   "frame": "full",
+   "fx": 0.42
+  },
+  {
+   "type": "vo",
+   "text": "22 years later, she launched an appeal to find him… and he came forward within *24 hours*.",
+   "shots": [
+    {
+     "in": 30.5,
+     "frame": "card"
+    },
+    {
+     "in": 156.5,
+     "frame": "card",
+     "zoom": 1.4,
+     "cy": 0.38
+    },
+    {
+     "in": 132.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 303.75,
+   "out": 311.7,
+   "frame": "card"
+  },
+  {
+   "type": "vo",
+   "text": "Now he's a bus driver, working through two *knee* replacements. So she raised 20,000 pounds… to help him retire.",
+   "shots": [
+    {
+     "in": 366.5,
+     "frame": "card"
+    },
+    {
+     "in": 396.5,
+     "frame": "card"
+    },
+    {
+     "in": 420.0,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 431.4,
+   "out": 434.35,
+   "frame": "full",
+   "fx": 0.42,
+   "text": "Literally, he's filled every *void* my mum left, my dad left, that everybody left."
+  },
+  {
+   "type": "clip",
+   "in": 463.3,
+   "out": 466.45,
+   "frame": "full",
+   "fx": 0.6,
+   "impact": true
+  },
+  {
+   "type": "clip",
+   "in": 470.25,
+   "out": 471.6,
+   "frame": "card"
+  }
+ ]
+}

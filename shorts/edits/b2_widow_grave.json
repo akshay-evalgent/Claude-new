@@ -1,0 +1,154 @@
+{
+ "title": "She Was Living At Her Husband's GRAVE 😭💔",
+ "source": "adxRtmamWnQ",
+ "credit": "Credit: CBS News / Steve Hartman",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 38.35,
+   "out": 44.3,
+   "frame": "card",
+   "fx": 0.45
+  },
+  {
+   "type": "vo",
+   "text": "After *26* years of marriage, she spent their house money on his grave instead… with a bench, so she could sit with him.",
+   "shots": [
+    {
+     "in": 30.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 28.5,
+     "frame": "card"
+    },
+    {
+     "in": 54.5,
+     "frame": "card"
+    },
+    {
+     "in": 58.5,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 53.9,
+   "out": 56.2,
+   "frame": "card"
+  },
+  {
+   "type": "vo",
+   "text": "Then she lost her job, got *evicted*… and moved into the cemetery.",
+   "shots": [
+    {
+     "in": 9.0,
+     "frame": "card",
+     "zoom": 1.25,
+     "cy": 0.42
+    },
+    {
+     "in": 84.5,
+     "frame": "card"
+    },
+    {
+     "in": 88.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 81.0,
+   "out": 84.2,
+   "frame": "card",
+   "fx": 0.55
+  },
+  {
+   "type": "clip",
+   "in": 90.5,
+   "out": 97.2,
+   "frame": "full",
+   "fx": 0.45,
+   "text": "You could have died there. I, yes, I assumed that I was gonna die there, and then along comes an *angel*."
+  },
+  {
+   "type": "vo",
+   "text": "A local police officer found her… and started a *fundraiser*.",
+   "shots": [
+    {
+     "in": 104.5,
+     "frame": "card"
+    },
+    {
+     "in": 116.5,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 109.1,
+   "out": 113.6,
+   "frame": "full",
+   "fx": 0.62
+  },
+  {
+   "type": "vo",
+   "text": "In just *20* days, she went from the cemetery… to a home of her own.",
+   "shots": [
+    {
+     "in": 126.5,
+     "frame": "card"
+    },
+    {
+     "in": 128.5,
+     "frame": "card"
+    },
+    {
+     "in": 134.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 133.0,
+   "out": 133.65,
+   "frame": "full",
+   "fx": 0.5
+  },
+  {
+   "type": "clip",
+   "in": 136.0,
+   "out": 136.95,
+   "shots": [
+    {
+     "in": 140.0,
+     "frame": "full",
+     "fx": 0.4,
+     "len": 0.95
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 145.0,
+   "out": 148.5,
+   "captions": false,
+   "db": -20,
+   "impact": true,
+   "shots": [
+    {
+     "in": 145.0,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  }
+ ]
+}

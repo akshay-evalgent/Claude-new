@@ -171,4 +171,9 @@ Source videos are named `<youtube-id>.mp4`. Kokoro model files go in `models/`: 
   - `mute`, `db`: audio level
   - `impact`: payoff boom
 
+- **Edit-wide options:**
+  - `shot_defaults`: defaults for every card or full shot, e.g. `{"card": {"zoom": 1.25, "cy": 0.42}}`. Use it to crop away a broadcaster's lower-third or burned-in subtitles across the whole edit.
+  - `auto_tail`: on by default. Clips extend past the transcript's last word so it isn't clipped, because whisper timings run early. Set `false` to cut exactly at `out`.
+- **Video-call footage:** card framing with `zoom` around 2.2 plus `fx`/`cy` on one participant's tile turns a grid call into close-ups.
+
 A clip whose shots have `len` plays b-roll over the original audio. Without `len`, the picture follows the source time (lip-sync).

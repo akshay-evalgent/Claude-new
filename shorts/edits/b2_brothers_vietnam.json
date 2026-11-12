@@ -1,0 +1,147 @@
+{
+ "title": "27 YEARS Later, They Found Mom's Family 😭💔",
+ "source": "jJ9BdRKIFS8",
+ "credit": "Credit: Kyle Le Dot Net",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 1272.05,
+   "out": 1274.35,
+   "text": "But your mom is no longer *here* now.",
+   "shots": [
+    {
+     "in": 1272.5,
+     "frame": "card",
+     "zoom": 2.2,
+     "fx": 0.8,
+     "cy": 0.23,
+     "len": 2.3,
+     "push": 0.1
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "*27* years ago, two baby brothers were given up for adoption in Vietnam.",
+   "shots": [
+    {
+     "in": 20.5,
+     "frame": "card"
+    },
+    {
+     "in": 28.5,
+     "frame": "card"
+    },
+    {
+     "in": 32.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Different families adopted them… but they grew up just *three hours* apart, and met up once a year.",
+   "shots": [
+    {
+     "in": 42.5,
+     "frame": "card"
+    },
+    {
+     "in": 44.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 46.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "They always wanted to find their *birth* mom. So Kyle, a YouTuber who reunites families, went to her village.",
+   "shots": [
+    {
+     "in": 48.5,
+     "frame": "card"
+    },
+    {
+     "in": 52.5,
+     "frame": "card"
+    },
+    {
+     "in": 56.5,
+     "frame": "card"
+    },
+    {
+     "in": 86.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Then he got her family on a *video call*…",
+   "shots": [
+    {
+     "in": 1246.0,
+     "frame": "card"
+    },
+    {
+     "in": 1250.0,
+     "frame": "card",
+     "zoom": 2.2,
+     "fx": 0.78,
+     "cy": 0.23
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1263.4,
+   "out": 1267.4,
+   "shots": [
+    {
+     "in": 1264.0,
+     "frame": "card",
+     "zoom": 2.2,
+     "fx": 0.8,
+     "cy": 0.23,
+     "len": 4.0
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1290.6,
+   "out": 1294.3,
+   "impact": true,
+   "shots": [
+    {
+     "in": 1289.5,
+     "frame": "card",
+     "zoom": 2.2,
+     "fx": 0.25,
+     "cy": 0.23,
+     "len": 3.7,
+     "push": 0.1
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1307.6,
+   "out": 1309.8,
+   "shots": [
+    {
+     "in": 1293.0,
+     "frame": "card",
+     "zoom": 2.2,
+     "fx": 0.8,
+     "cy": 0.23,
+     "len": 2.2
+    }
+   ]
+  }
+ ]
+}

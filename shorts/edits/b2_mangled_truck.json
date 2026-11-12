@@ -1,0 +1,165 @@
+{
+ "title": "The Whole Town MOCKED His Truck… 😭",
+ "source": "Zw0c2fmv1RM",
+ "credit": "Credit: CBS News / Steve Hartman",
+ "shot_defaults": {
+  "card": {
+   "zoom": 1.2,
+   "cy": 0.42
+  },
+  "full": {
+   "full_zoom": 1.2,
+   "fy": 0.38
+  }
+ },
+ "beats": [
+  {
+   "type": "clip",
+   "in": 52.5,
+   "out": 57.4,
+   "shots": [
+    {
+     "in": 52.5,
+     "frame": "card"
+    },
+    {
+     "in": 55.0,
+     "frame": "full",
+     "fx": 0.45
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "His truck was so wrecked, people thought it was *AI*… and the whole town mocked it online.",
+   "shots": [
+    {
+     "in": 44.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 48.5,
+     "frame": "card"
+    },
+    {
+     "in": 70.5,
+     "frame": "card"
+    },
+    {
+     "in": 76.5,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 24.2,
+   "out": 28.6,
+   "frame": "card"
+  },
+  {
+   "type": "vo",
+   "text": "But one local business owner wondered *why* anyone would still drive it.",
+   "shots": [
+    {
+     "in": 104.5,
+     "frame": "card"
+    },
+    {
+     "in": 92.5,
+     "frame": "full",
+     "fx": 0.55
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 97.35,
+   "out": 101.0,
+   "shots": [
+    {
+     "in": 100.2,
+     "frame": "full",
+     "fx": 0.55,
+     "len": 3.65
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "He started a fundraiser… and *500* strangers donated.",
+   "shots": [
+    {
+     "in": 112.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 114.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 123.45,
+   "out": 126.2,
+   "shots": [
+    {
+     "in": 126.6,
+     "frame": "full",
+     "fx": 0.45,
+     "len": 2.75
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "So he took his old truck for one *last* ride… to the Chevy dealer.",
+   "shots": [
+    {
+     "in": 134.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 140.5,
+     "frame": "card"
+    },
+    {
+     "in": 146.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 150.0,
+   "out": 154.0,
+   "mute": true,
+   "captions": false,
+   "impact": true,
+   "shots": [
+    {
+     "in": 150.0,
+     "frame": "card",
+     "len": 2.0
+    },
+    {
+     "in": 154.0,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 158.65,
+   "out": 164.0,
+   "frame": "full",
+   "fx": 0.5
+  }
+ ]
+}

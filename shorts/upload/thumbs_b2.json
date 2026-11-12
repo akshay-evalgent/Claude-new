@@ -1,0 +1,193 @@
+[
+ {
+  "name": "b2_01_caitie_house",
+  "source": "pxunUuSogHw",
+  "t": 4201.5,
+  "fx": 0.55,
+  "fy": 0.36,
+  "zoom": 1.4,
+  "text_y": 1300,
+  "color": "green",
+  "lines": [
+   [
+    "THEIR DAUGHTER DIED…",
+    "small"
+   ],
+   [
+    "SO STRANGERS DID THIS",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b2_02_rock_love",
+  "source": "9BVggIvfXnE",
+  "t": 141.5,
+  "fx": 0.5,
+  "text_y": 1150,
+  "color": "yellow",
+  "lines": [
+   [
+    "SINGLE FOR 76 YEARS…",
+    "small"
+   ],
+   [
+    "THEN A ROCK",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b2_03_river_camera",
+  "source": "6saQ5PpgO24",
+  "t": 113.5,
+  "fx": 0.5,
+  "fy": 0.5,
+  "text_y": 430,
+  "color": "cyan",
+  "lines": [
+   [
+    "LOST FOR 15 YEARS…",
+    "small"
+   ],
+   [
+    "WHOSE CAMERA?",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b2_04_camaro_legacy",
+  "source": "vZKU19CbowI",
+  "t": 80.5,
+  "fx": 0.5,
+  "fy": 0.45,
+  "text_y": 1330,
+  "color": "red",
+  "lines": [
+   [
+    "HE DIED BEFORE",
+    "small"
+   ],
+   [
+    "HE COULD SEE IT",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b2_05_bride_walks",
+  "source": "YeBHwGq1Zmc",
+  "t": 103.5,
+  "fx": 0.45,
+  "text_y": 1350,
+  "color": "pink",
+  "lines": [
+   [
+    "HE HAD NO IDEA…",
+    "small"
+   ],
+   [
+    "SHE WALKED",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b2_06_brothers_vietnam",
+  "source": "jJ9BdRKIFS8",
+  "t": 1266.5,
+  "fx": 0.8,
+  "fy": 0.24,
+  "zoom": 2.0,
+  "text_y": 1330,
+  "color": "red",
+  "lines": [
+   [
+    "27 YEARS SEARCHING…",
+    "small"
+   ],
+   [
+    "TOO LATE",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b2_07_doctor_adopts",
+  "source": "nGxqelnBOIQ",
+  "t": 62.0,
+  "fx": 0.42,
+  "text_y": 1360,
+  "color": "red",
+  "lines": [
+   [
+    "HE CAME TO HEART SURGERY",
+    "small"
+   ],
+   [
+    "ALONE",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b2_08_widow_grave",
+  "source": "adxRtmamWnQ",
+  "t": 60.5,
+  "fx": 0.66,
+  "fy": 0.35,
+  "text_y": 1360,
+  "color": "red",
+  "lines": [
+   [
+    "SHE WAS LIVING AT HER",
+    "small"
+   ],
+   [
+    "HUSBAND'S GRAVE",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b2_09_phone_box_baby",
+  "source": "1sk670GyxtQ",
+  "t": 247.0,
+  "fx": 0.5,
+  "fy": 0.36,
+  "zoom": 1.25,
+  "text_y": 1300,
+  "color": "red",
+  "lines": [
+   [
+    "HE FOUND HER IN",
+    "small"
+   ],
+   [
+    "A PHONE BOX",
+    "big"
+   ]
+  ]
+ },
+ {
+  "name": "b2_10_mangled_truck",
+  "source": "Zw0c2fmv1RM",
+  "t": 125.5,
+  "fx": 0.5,
+  "fy": 0.4,
+  "zoom": 1.2,
+  "text_y": 1380,
+  "color": "yellow",
+  "lines": [
+   [
+    "THE WHOLE TOWN MOCKED",
+    "small"
+   ],
+   [
+    "HIS TRUCK…",
+    "big"
+   ]
+  ]
+ }
+]

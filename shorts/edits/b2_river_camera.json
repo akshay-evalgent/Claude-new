@@ -1,0 +1,131 @@
+{
+ "title": "He Found A Camera Lost For 15 YEARS 😭",
+ "source": "6saQ5PpgO24",
+ "credit": "Credit: Man + River",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 1723.1,
+   "out": 1724.4,
+   "frame": "card"
+  },
+  {
+   "type": "vo",
+   "text": "This diver found a waterproof camera at the bottom of a river… lost *15 years* ago.",
+   "shots": [
+    {
+     "in": 99.5,
+     "frame": "full",
+     "fx": 0.45
+    },
+    {
+     "in": 111.0,
+     "frame": "card"
+    },
+    {
+     "in": 120.5,
+     "frame": "full",
+     "fx": 0.4
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 108.4,
+   "out": 110.95,
+   "frame": "card"
+  },
+  {
+   "type": "vo",
+   "text": "The memory card was so *corroded* his computer couldn't read it… so he sent it to a data recovery expert.",
+   "shots": [
+    {
+     "in": 156.5,
+     "frame": "card"
+    },
+    {
+     "in": 168.5,
+     "frame": "full",
+     "fx": 0.45
+    },
+    {
+     "in": 210.5,
+     "frame": "card"
+    },
+    {
+     "in": 228.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1647.0,
+   "out": 1648.9,
+   "shots": [
+    {
+     "in": 1644.5,
+     "frame": "card",
+     "len": 1.9
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "The photos were from *2011*. So he posted them on Facebook… and found the owner in one hour.",
+   "shots": [
+    {
+     "in": 1636.5,
+     "frame": "card"
+    },
+    {
+     "in": 1664.5,
+     "frame": "card"
+    },
+    {
+     "in": 1672.0,
+     "frame": "card"
+    },
+    {
+     "in": 1696.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1731.75,
+   "out": 1737.85,
+   "frame": "card"
+  },
+  {
+   "type": "clip",
+   "in": 1749.15,
+   "out": 1750.7,
+   "frame": "card"
+  },
+  {
+   "type": "vo",
+   "text": "Divers searched that day… but it stayed hidden for *15 years*.",
+   "shots": [
+    {
+     "in": 75.0,
+     "frame": "card"
+    },
+    {
+     "in": 88.5,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 1772.0,
+   "out": 1774.75,
+   "frame": "card",
+   "impact": true,
+   "auto_tail": false
+  }
+ ]
+}

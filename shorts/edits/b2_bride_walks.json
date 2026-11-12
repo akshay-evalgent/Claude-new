@@ -1,0 +1,122 @@
+{
+ "title": "Paralyzed Bride SURPRISED Her Groom 😭",
+ "source": "YeBHwGq1Zmc",
+ "credit": "Credit: Happily",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 7.5,
+   "out": 11.5,
+   "frame": "full",
+   "fx": 0.5
+  },
+  {
+   "type": "vo",
+   "text": "While she was pregnant, she suddenly *collapsed*… and woke up paralyzed from the hips down.",
+   "shots": [
+    {
+     "in": 15.0,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 24.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 26.5,
+     "frame": "full",
+     "fx": 0.45
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 38.95,
+   "out": 43.15,
+   "frame": "full",
+   "fx": 0.5
+  },
+  {
+   "type": "vo",
+   "text": "Her wedding was just months away. So she made a *secret* plan… to walk down the aisle.",
+   "shots": [
+    {
+     "in": 48.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 72.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 76.5,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Even the *groom* didn't know. He thought she'd be in her wheelchair.",
+   "shots": [
+    {
+     "in": 80.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 83.5,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 87.4,
+   "out": 91.95,
+   "frame": "full",
+   "fx": 0.5,
+   "impact": true
+  },
+  {
+   "type": "clip",
+   "in": 92.35,
+   "out": 98.0,
+   "shots": [
+    {
+     "in": 95.5,
+     "frame": "card",
+     "len": 2.4
+    },
+    {
+     "in": 101.6,
+     "frame": "full",
+     "fx": 0.5,
+     "push": 0.1
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 116.85,
+   "out": 124.0,
+   "shots": [
+    {
+     "in": 109.5,
+     "frame": "card",
+     "len": 3.0
+    },
+    {
+     "in": 121.0,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  }
+ ]
+}

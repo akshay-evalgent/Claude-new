@@ -1,0 +1,133 @@
+{
+ "title": "Single For 76 YEARS… Then She Threw A Rock 😭",
+ "source": "9BVggIvfXnE",
+ "credit": "Credit: CBS News / Steve Hartman",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 84.0,
+   "out": 89.5,
+   "text": "He was oblivious to her, so she hit him with a *rock*. Literally.",
+   "shots": [
+    {
+     "in": 94.5,
+     "frame": "card",
+     "len": 2.6
+    },
+    {
+     "in": 108.3,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "He was 65 and had been single his *whole* life. She was 76… and happy alone.",
+   "shots": [
+    {
+     "in": 10.0,
+     "frame": "full",
+     "fx": 0.55,
+     "fy": 0.4,
+     "full_zoom": 1.2
+    },
+    {
+     "in": 36.0,
+     "frame": "card"
+    },
+    {
+     "in": 40.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 15.9,
+   "out": 17.8,
+   "frame": "full",
+   "fx": 0.45,
+   "fy": 0.38,
+   "full_zoom": 1.2
+  },
+  {
+   "type": "clip",
+   "in": 27.75,
+   "out": 31.25,
+   "frame": "full",
+   "fx": 0.5
+  },
+  {
+   "type": "vo",
+   "text": "Then they both ended up in the same *cardiac* rehab… and she noticed his smile.",
+   "shots": [
+    {
+     "in": 76.5,
+     "frame": "card"
+    },
+    {
+     "in": 74.5,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 92.5,
+   "out": 99.65,
+   "shots": [
+    {
+     "in": 94.0,
+     "frame": "card",
+     "len": 4.6
+    },
+    {
+     "in": 98.4,
+     "frame": "full",
+     "fx": 0.45
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 104.7,
+   "out": 110.4,
+   "frame": "full",
+   "fx": 0.45
+  },
+  {
+   "type": "vo",
+   "text": "This week… they got *married*.",
+   "shots": [
+    {
+     "in": 114.5,
+     "frame": "card"
+    },
+    {
+     "in": 116.8,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 132.45,
+   "out": 138.2,
+   "impact": false,
+   "shots": [
+    {
+     "in": 136.5,
+     "frame": "card",
+     "len": 2.8
+    },
+    {
+     "in": 139.5,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  }
+ ]
+}

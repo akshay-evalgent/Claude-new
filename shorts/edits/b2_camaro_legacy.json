@@ -1,0 +1,134 @@
+{
+ "title": "His Grandpa Died Before He Could See It 😭💔",
+ "source": "vZKU19CbowI",
+ "credit": "Credit: WD Detailing",
+ "beats": [
+  {
+   "type": "clip",
+   "in": 2118.25,
+   "out": 2123.1,
+   "shots": [
+    {
+     "in": 2118.25,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "His grandpa had *stage 4* cancer… and the family wanted him to see his Camaro clean one last time.",
+   "shots": [
+    {
+     "in": 6.5,
+     "frame": "card"
+    },
+    {
+     "in": 80.5,
+     "frame": "card"
+    },
+    {
+     "in": 88.5,
+     "frame": "full",
+     "fx": 0.5
+    },
+    {
+     "in": 8.5,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "But before they could start… he *passed away*.",
+   "shots": [
+    {
+     "in": 10.5,
+     "frame": "card"
+    },
+    {
+     "in": 90.5,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 78.2,
+   "out": 84.95,
+   "shots": [
+    {
+     "in": 80.0,
+     "frame": "card",
+     "len": 3.2
+    },
+    {
+     "in": 100.5,
+     "frame": "full",
+     "fx": 0.45
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "So the crew restored his car for *free*… every square inch, in his memory.",
+   "shots": [
+    {
+     "in": 24.5,
+     "frame": "card"
+    },
+    {
+     "in": 64.5,
+     "frame": "card"
+    },
+    {
+     "in": 2025.5,
+     "frame": "card"
+    },
+    {
+     "in": 2057.5,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 2081.3,
+   "out": 2084.1,
+   "impact": true,
+   "shots": [
+    {
+     "in": 2081.3,
+     "frame": "card",
+     "push": 0.1
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 2138.4,
+   "out": 2145.4,
+   "shots": [
+    {
+     "in": 2138.4,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 2177.2,
+   "out": 2180.0,
+   "mute": true,
+   "captions": false,
+   "shots": [
+    {
+     "in": 2177.2,
+     "frame": "card",
+     "fx": 0.75
+    }
+   ]
+  }
+ ]
+}

@@ -296,7 +296,11 @@ def zoom_blur(img, strength):
         acc += affine_crop(img, img.shape[1] / 2, img.shape[0] / 2, s, img.shape[1], img.shape[0]).astype(np.float32)
     return (acc / (n + 1)).astype(np.uint8)
 
+SHOT_DEFAULTS = {}
+
 def render_shot(src, shot, n_frames, writer, state):
+    # per-edit defaults (e.g. crop away a broadcaster's lower-third) are overridden by the shot
+    shot = {**SHOT_DEFAULTS.get(shot.get("frame", "card"), {}), **shot}
     frame_mode = shot.get("frame", "card")
     zoom = shot.get("zoom", 1.0)
     push = shot.get("push", 0.07)
@@ -429,6 +433,7 @@ def main():
     tx_words = [w for s in tx for w in s["words"]]
     voice, speed = edl.get("voice", "am_michael"), edl.get("speed", 1.12)
     style = edl.get("style", {})
+    SHOT_DEFAULTS.update(edl.get("shot_defaults", {}))   # {"card": {...}, "full": {...}}
 
     # ---- 1. resolve beats into a timeline
     timeline, cap_events, cuts = [], [], []
@@ -436,6 +441,15 @@ def main():
     t = 0.0
     for b in edl["beats"]:
         if b["type"] == "clip":
+            if b.get("auto_tail", True) and not b.get("mute"):
+                # whisper word timings run early: let the last word finish before cutting
+                inside = [w for w in tx_words if b["in"] - 0.05 <= w["s"] < b["out"]]
+                if inside:
+                    end = max(w["e"] for w in inside) + 0.22
+                    later = [w["s"] for w in tx_words if w["s"] >= b["out"] and w not in inside]
+                    if later:
+                        end = min(end, min(later) - 0.05)
+                    b = dict(b, out=round(max(b["out"], end), 2))
             dur = b["out"] - b["in"]
             shots = b.get("shots") or [{"in": b["in"], "frame": b.get("frame", "card"), **{k: v for k, v in b.items() if k in ("fx", "fy", "cy", "zoom", "card_h", "full_zoom", "dark")}}]
             if any("len" in sh for sh in shots):
