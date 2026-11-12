@@ -1,0 +1,55 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.30,Short,,0,0,0,,Your diaphragm suddenly
+Dialogue: 0,0:00:01.30,0:00:02.40,Short,,0,0,0,,yanks down
+Dialogue: 0,0:00:02.40,0:00:02.96,Short,,0,0,0,,air rushes
+Dialogue: 0,0:00:02.96,0:00:04.04,Short,,0,0,0,,into your lungs
+Dialogue: 0,0:00:04.04,0:00:04.46,Short,,0,0,0,,and a split
+Dialogue: 0,0:00:04.46,0:00:05.14,Short,,0,0,0,,second later
+Dialogue: 0,0:00:05.14,0:00:06.16,Short,,0,0,0,,your vocal cords
+Dialogue: 0,0:00:06.16,0:00:07.26,Short,,0,0,0,,slam shut
+Dialogue: 0,0:00:07.26,0:00:07.80,Short,,0,0,0,,making that
+Dialogue: 0,0:00:07.80,0:00:09.10,Short,,0,0,0,,hic sound
+Dialogue: 0,0:00:09.10,0:00:09.92,Short,,0,0,0,,It usually starts
+Dialogue: 0,0:00:09.92,0:00:10.68,Short,,0,0,0,,when your stomach
+Dialogue: 0,0:00:10.68,0:00:11.68,Short,,0,0,0,,stretches from eating
+Dialogue: 0,0:00:11.68,0:00:12.42,Short,,0,0,0,,too fast
+Dialogue: 0,0:00:12.42,0:00:13.94,Short,,0,0,0,,or drinking soda
+Dialogue: 0,0:00:13.94,0:00:14.96,Short,,0,0,0,,irritating the nerves
+Dialogue: 0,0:00:14.96,0:00:15.62,Short,,0,0,0,,that control
+Dialogue: 0,0:00:15.62,0:00:16.70,Short,,0,0,0,,your breathing
+Dialogue: 0,0:00:16.70,0:00:17.16,Short,,0,0,0,,You see
+Dialogue: 0,0:00:17.16,0:00:18.16,Short,,0,0,0,,some scientists think
+Dialogue: 0,0:00:18.16,0:00:18.86,Short,,0,0,0,,hiccups are left
+Dialogue: 0,0:00:18.86,0:00:19.36,Short,,0,0,0,,over from
+Dialogue: 0,0:00:19.36,0:00:19.90,Short,,0,0,0,,our ancestors
+Dialogue: 0,0:00:19.90,0:00:20.46,Short,,0,0,0,,that lived
+Dialogue: 0,0:00:20.46,0:00:20.96,Short,,0,0,0,,in water
+Dialogue: 0,0:00:20.96,0:00:22.14,Short,,0,0,0,,because tadpoles use
+Dialogue: 0,0:00:22.14,0:00:22.98,Short,,0,0,0,,the same motion
+Dialogue: 0,0:00:22.98,0:00:23.64,Short,,0,0,0,,to push water
+Dialogue: 0,0:00:23.64,0:00:25.02,Short,,0,0,0,,over their gills
+Dialogue: 0,0:00:25.02,0:00:25.88,Short,,0,0,0,,Another idea is
+Dialogue: 0,0:00:25.88,0:00:26.62,Short,,0,0,0,,that hiccups help
+Dialogue: 0,0:00:26.62,0:00:27.44,Short,,0,0,0,,babies burp out
+Dialogue: 0,0:00:27.44,0:00:28.22,Short,,0,0,0,,air while nursing
+Dialogue: 0,0:00:28.22,0:00:29.28,Short,,0,0,0,,But one man
+Dialogue: 0,0:00:29.28,0:00:30.28,Short,,0,0,0,,hiccupped for 68
+Dialogue: 0,0:00:30.28,0:00:31.32,Short,,0,0,0,,years straight
+Dialogue: 0,0:00:31.32,0:00:32.20,Short,,0,0,0,,about 430
+Dialogue: 0,0:00:32.20,0:00:33.44,Short,,0,0,0,,million times
+Dialogue: 0,0:00:33.44,0:00:34.02,Short,,0,0,0,,and they finally
+Dialogue: 0,0:00:34.02,0:00:34.76,Short,,0,0,0,,stopped just
+Dialogue: 0,0:00:34.76,0:00:35.10,Short,,0,0,0,,a year
+Dialogue: 0,0:00:35.10,0:00:36.10,Short,,0,0,0,,before he died
