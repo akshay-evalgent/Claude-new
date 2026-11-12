@@ -66,4 +66,4 @@ All of it is in `src/dream.js` (one file). The reusable pieces are also saved se
 
 ## Rebuild
 
-`./build.sh` regenerates the voice, renders 1,013 frames (about 2¼ hours on 4 CPU cores with software WebGL; add `?sub=1` for a fast draft), mixes and masters the audio, and encodes both versions.
+`./build.sh` regenerates the voice, renders 1,013 frames (about 1¾ hours on 4 CPU cores with software WebGL; add `?sub=1` for a fast draft), mixes and masters the audio, and encodes both versions.

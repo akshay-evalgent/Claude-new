@@ -22,7 +22,7 @@ fi
 
 # 2. Frames (three.js in headless Chromium, 1080x1920 @ 30 fps).
 #    Each frame is 3-4 jittered sub-frames (anti-aliasing, soft shadows, 180-degree motion blur),
-#    then depth of field, bloom and a film grade. About 2.25 hours on 4 CPU cores with software WebGL.
+#    then depth of field, bloom and a film grade. About 1.75 hours on 4 CPU cores with software WebGL.
 #    For a fast draft pass add ?sub=1 to the page: PAGE='dream.html?sub=1'.
 (cd "$HERE/src" && npm install --silent)
 (cd "$HERE/src" && python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 & echo $! > "$WORK/http.pid")
@@ -37,6 +37,6 @@ ffmpeg -y -i "$WORK/mix_raw.wav" -af "volume=7dB,alimiter=limit=0.85:attack=3:re
 
 # 4. Encode, with and without burned-in captions
 cp "$HERE/src/node_modules/@expo-google-fonts/nunito/Nunito_800ExtraBold.ttf" "$WORK/fonts/"
-ffmpeg -y -framerate 30 -i "$WORK/frames/f_%05d.jpg" -i "$WORK/mix_master.wav" -vf "ass=$HERE/captions.ass:fontsdir=$WORK/fonts,format=yuv420p" -c:v libx264 -preset slow -crf 17 -profile:v high -c:a aac -b:a 192k -shortest -movflags +faststart "$WORK/why-we-dream.mp4"
-ffmpeg -y -framerate 30 -i "$WORK/frames/f_%05d.jpg" -i "$WORK/mix_master.wav" -vf "format=yuv420p" -c:v libx264 -preset slow -crf 17 -profile:v high -c:a aac -b:a 192k -shortest -movflags +faststart "$WORK/why-we-dream-no-captions.mp4"
+ffmpeg -y -framerate 30 -i "$WORK/frames/f_%05d.jpg" -i "$WORK/mix_master.wav" -vf "ass=$HERE/captions.ass:fontsdir=$WORK/fonts,format=yuv420p" -c:v libx264 -preset slow -crf 20 -profile:v high -c:a aac -b:a 192k -shortest -movflags +faststart "$WORK/why-we-dream.mp4"
+ffmpeg -y -framerate 30 -i "$WORK/frames/f_%05d.jpg" -i "$WORK/mix_master.wav" -vf "format=yuv420p" -c:v libx264 -preset slow -crf 20 -profile:v high -c:a aac -b:a 192k -shortest -movflags +faststart "$WORK/why-we-dream-no-captions.mp4"
 echo "done: $WORK/why-we-dream.mp4"

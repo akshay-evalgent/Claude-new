@@ -34,7 +34,13 @@ why do we dream, why do we dream at night, rem sleep, rem atonia, sleep paralysi
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | He sprints at the camera, terrified, with the roaring monster right behind him | **Main pick.** The most common dream, mid-chase, caption "being chased is" |
+| `thumbnail-alt-cat.jpg` | The cat sits on his chest while his arm dangles off the bed | Cute and strange; caption "goes completely limp" |
+| `thumbnail-alt-fall.jpg` | His partner on the floor beside the bed, eyes wide, after he kicked her out | Comedy angle; caption "still asleep" |
+| `thumbnail-alt-brain.jpg` | Glowing brain inside the translucent head on the pillow | Science angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 

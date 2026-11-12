@@ -1347,7 +1347,7 @@ shot(C.and1, C.but, (s) => {
     if (t < C.which) { const c = E.io(seg(t, C.and1 - 0.3, C.which + 0.2)); shoot(s.cam, lv(V(1.3, 2.8, 5.0), V(1.0, 2.6, 4.2), c), V(0, 2.1, -1.6), { fov: 40, t, focus: lv(V(1.3, 2.8, 5.0), V(1.0, 2.6, 4.2), c).distanceTo(V(0, 2.4, 0)) }); s.ap = 6; }
     else if (t < C.chased) { const sh = shake(t, 0.025); shoot(s.cam, V(0.5, 2.7, 4.8).add(sh), V(0, 2.05, -1.8), { fov: 42, t, hand: 1.6, focus: 4.8 }); s.ap = 7; }
     else if (t < C.common) { const c = E.io(seg(t, C.chased - 0.2, C.common + 0.2)); shoot(s.cam, lv(V(2.1, 0.8, 5.4), V(1.8, 0.75, 4.8), c).add(shake(t, 0.02)), V(-0.1, 2.1, -1.5), { fov: 44, t, hand: 1.5, roll: -5, focus: 5.0 }); s.ap = 6; }
-    else { const c = E.io(seg(t, C.common - 0.2, C.but + 0.2)); shoot(s.cam, lv(V(0.6, 3.25, 4.1), V(0.5, 3.15, 3.5), c).add(shake(t, 0.018)), V(0, 2.8, 0.3), { fov: 36, t, hand: 1.4 }); s.ap = 9; }
+    else { const c = E.io(seg(t, C.common - 0.2, C.but + 0.2)); shoot(s.cam, lv(V(0.6, 3.25, 4.1), V(0.5, 3.15, 3.5), c).add(shake(t * 0.35, 0.012)), V(0, 2.85, 0.45), { fov: 36, t, hand: 1.0 }); s.ap = 9; }
   };
 });
 
