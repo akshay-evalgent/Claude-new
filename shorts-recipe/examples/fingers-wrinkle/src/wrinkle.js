@@ -279,10 +279,12 @@ shot(0, C.but, (s) => {
     const pad = worldOf(heroTip, V(0, heroTip.userData.L - heroTip.userData.r * 1.05, heroTip.userData.r * 0.95));
     const macro = pad.clone().add(V(0.06, 0.04, 0.72)), macroEnd = pad.clone().add(V(0.03, 0.02, 0.5));
     const wide = V(0.35, 2.55, 7.6), wideT = V(0.2, 1.2, 0);
-    const k = E.io(seg(t, C.after, 3.05));
+    const k = E.io(seg(t, C.after, 2.3));
     const camPos = lv(lv(macro, macroEnd, E.out(seg(t, 0, C.after))), wide, k);
     const camT = lv(pad, wideT, k);
     setCam(s.cam, camPos, camT, lerp(-6 + 3 * seg(t, 0, 1.4), 2, k) + drift(t, 1.2), lerp(32, 38, k));
+    if (t >= 2.16 && t < 3.06) { const c = seg(t, 2.16, 3.06); setCam(s.cam, clock.position.clone().add(V(-0.35 + 0.15 * c, 0.05, 2.1 - 0.5 * c)), clock.position, -5 + drift(t, 1.5), 36); }
+    else if (t >= 3.06) { const c = seg(t, 3.06, 3.98); setCam(s.cam, V(2.6 - 0.3 * c, 0.95, 4.4 - 0.4 * c), V(-0.25, 1.15, 0.2), 3 + drift(t, 1.5), 38); }
   };
 });
 
@@ -314,9 +316,10 @@ shot(C.but, C.yousee, (s) => {
       else { d.m.position.copy(d.hit).add(d.out.clone().multiplyScalar(a)).add(V(0, -4.9 * a * a, 0)); const sq = Math.exp(-a * 18); d.m.scale.set(1 + 0.6 * sq, 1 - 0.5 * sq, 1 + 0.6 * sq); }
       d.sp.forEach((q, j) => { if (a < 0 || a > 0.5) { q.visible = false; return; } q.visible = true; const ang = d.seed + j * 1.57; q.position.copy(d.hit).add(V(Math.cos(ang) * a * 1.6, a * 1.4 - 4.9 * a * a, Math.sin(ang) * a * 0.8 + a * 0.6)); });
     }
-    const c = padAt(1.05, 0); const ang = lerp(-0.35, 0.25, E.io(seg(t, C.but, C.yousee)));
-    const rad = lerp(3.0, 2.4, seg(t, C.but, 6.0)) * lerp(1, 0.12, E.in(seg(t, 6.05, C.yousee + 0.12)));
-    const pos = c.clone().add(V(Math.sin(ang) * rad, 0.35 * rad / 3, Math.cos(ang) * rad));
+    const c = padAt(1.05, 0); const B = t >= 5.16;
+    const ang = B ? lerp(0.85, 0.6, seg(t, 5.16, C.yousee)) : lerp(-0.4, -0.1, E.io(seg(t, C.but, 5.16)));
+    const rad = (B ? lerp(1.9, 1.6, seg(t, 5.16, 6.0)) : lerp(3.0, 2.6, seg(t, C.but, 5.16))) * lerp(1, 0.12, E.in(seg(t, 6.05, C.yousee + 0.12)));
+    const pos = c.clone().add(V(Math.sin(ang) * rad, (B ? -0.1 : 0.35) * rad / 3, Math.cos(ang) * rad));
     setCam(s.cam, pos, c, drift(t, 2), 36);
   };
 });
@@ -357,9 +360,9 @@ shot(C.yousee, C.which, (s) => {
     const tipP = V(-0.64, 3.75, 0.25);
     const p0 = tipP.clone().add(V(0.0, 0.05, 0.55)), p1 = V(0.6, 0.9, 10.2), p2 = V(-0.2, 2.75, 4.4);
     const t0 = tipP, t1 = V(0, 1.0, 0), t2 = V(-0.5, 2.85, 0);
-    const k1 = E.io(seg(t, C.yousee, C.nerves + 0.45)), k2 = E.io(seg(t, C.blood - 0.1, C.blood + 1.1));
-    const pos = lv(lv(p0, p1, k1), p2, k2), tg = lv(lv(t0, t1, k1), t2, k2);
-    setCam(s.cam, pos, tg, drift(t, 2.2) - 3, 36);
+    const k1 = E.io(seg(t, C.yousee, C.nerves + 0.45));
+    if (t < C.blood) setCam(s.cam, lv(p0, p1, k1).add(V(0, 0, -0.5 * seg(t, C.nerves + 0.45, C.blood))), lv(t0, t1, k1), drift(t, 2.2) - 3, 36);
+    else { const c = E.out(seg(t, C.blood, C.which + 0.2)); setCam(s.cam, lv(V(-4.2, 3.7, 5.6), V(-3.1, 3.4, 4.3), c), V(-0.45, 2.5, 0), 6 + drift(t, 2), 36); }
   };
 });
 
@@ -428,9 +431,8 @@ shot(C.thats, C.so, (s) => {
     const rk = ((t * 1.4) % 1); ring.scale.setScalar(0.6 + rk * 1.4); ring.material.opacity = k * (1 - rk);
     [[dl, -0.78, 0], [dr, 0.78, 0.5]].forEach(([d, x, o]) => { const ph = ((t + o) % 1.1) / 1.1; d.position.set(x, 3.35 - (ph < 0.4 ? 0 : 9 * Math.pow(ph - 0.4, 2)), 0.1); d.position.y -= 0.0; d.visible = ph > 0.05 && d.position.y > -1; d.position.set(x + 0.05, 3.32 - (ph < 0.4 ? ph * 0.1 : 0.04 + 9 * Math.pow(ph - 0.4, 2)), 0.32); });
     const slide = E.io(seg(t, C.thats, C.thats + 1.1));
-    const pos = lv(V(-1.9, 2.3, 4.6), V(0.25, 2.4, 7.9), slide).add(V(0.35 * E.io(seg(t, C.dont - 0.2, C.so)), 0, -0.6 * E.io(seg(t, C.dont - 0.2, C.so))));
-    const tg = lv(V(-0.7, 1.5, 0), V(0.05, 1.3, 0), slide).add(V(0.35 * E.io(seg(t, C.dont - 0.2, C.so)), 0, 0));
-    setCam(s.cam, pos, tg, drift(t, 1.8), 38);
+    if (t < 15.56) { const pos = lv(V(-1.9, 2.3, 4.6), V(0.25, 2.4, 7.9), slide), tg = lv(V(-0.7, 1.5, 0), V(0.05, 1.3, 0), slide); setCam(s.cam, pos, tg, drift(t, 1.8), 38); }
+    else { const c = seg(t, 15.56, C.so); setCam(s.cam, lv(V(2.3, 2.3, 3.3), V(1.75, 2.0, 2.4), c), V(0.75, 1.75, 0.1), -4 + drift(t, 1.8), 38); }
   };
 });
 
@@ -445,9 +447,8 @@ shot(C.so, C.like + 0.4, (s) => {
     f.rotation.set(-0.1, 0, wob); f.updateMatrixWorld(true);
     const pad = worldOf(tip, V(0, tip.userData.L - 0.55, 0.48));
     const crash = E.expo(seg(t, C.so, C.so + 0.4));
-    const d = lerp(lerp(6.5, 1.7, crash), 0.75, E.io(seg(t, C.scientists - 0.2, C.like + 0.4)));
-    const pos = pad.clone().add(V(0.08 * d, 0.06 * d, d));
-    setCam(s.cam, pos, pad, drift(t, 1.5) + lerp(-8, 0, crash), 36);
+    if (t < C.scientists) { const d = lerp(6.5, 1.7, crash) - 0.3 * seg(t, C.so + 0.4, C.scientists); setCam(s.cam, pad.clone().add(V(0.08 * d, 0.06 * d, d)), pad, drift(t, 1.5) + lerp(-8, 0, crash), 36); }
+    else { const c = E.io(seg(t, C.scientists, C.like + 0.3)); const a = lerp(1.0, 0.08, c), d = lerp(1.5, 0.75, c); setCam(s.cam, pad.clone().add(V(Math.sin(a) * d, 0.05 * d, Math.cos(a) * d)), pad, drift(t, 1.5), 36); }
   };
 });
 
@@ -504,8 +505,8 @@ shot(C.like, C.inone, (s) => {
     const p0 = V(0.0, 1.12, 1.62), t0 = V(0, 1.0, 0.9);
     const p1 = V(2.9, 0.75, 3.6), t1 = V(-0.1, 0.65, -0.6);
     const p2 = V(2.2, 0.55, 2.7), t2 = V(0, 0.45, -0.9);
-    const k2 = E.io(seg(t, C.grip - 0.3, C.inone));
-    setCam(s.cam, lv(lv(p0, p1, k), p2, k2), lv(lv(t0, t1, k), t2, k2), lerp(90, 0, E.io(seg(t, C.like, C.like + 1.1))) + drift(t, 2), 38);
+    if (t < 23.48) setCam(s.cam, lv(p0, p1, k), lv(t0, t1, k), lerp(90, 0, E.io(seg(t, C.like, C.like + 1.1))) + drift(t, 2), 38);
+    else { const c = seg(t, 23.48, C.inone + 0.2); setCam(s.cam, lv(V(-1.6, 0.28, 2.2), V(-1.3, 0.3, 1.8), c), V(0.1, 0.35, -0.5), -3 + drift(t, 2), 38); }
   };
 });
 
@@ -561,11 +562,11 @@ shot(C.inone, C.whichmeans, (s) => {
     const el = Math.max(t - C.inone, 0), g = stopTex.c.getContext('2d');
     g.fillStyle = '#0d1a14'; g.fillRect(0, 0, 256, 128); g.fillStyle = '#7dffb0'; g.font = 'bold 74px monospace'; g.textAlign = 'center'; g.textBaseline = 'middle';
     g.fillText(`${String(Math.floor(el)).padStart(2, '0')}.${String(Math.floor((el % 1) * 100)).padStart(2, '0')}`, 128, 68); stopTex.t.needsUpdate = true;
-    const k1 = E.io(seg(t, C.faster - 0.2, C.wrinkled + 0.3)), k2 = E.io(seg(t, C.than - 0.1, C.dry + 0.5));
+    const k1 = t >= C.faster ? 1 : 0, k2 = t >= C.than ? 1 : 0, pz = V(0, -0.35 * (t >= C.than ? seg(t, C.than, C.whichmeans) : t >= C.faster ? seg(t, C.faster, C.than) : seg(t, C.inone, C.faster)), -0.3 * (t >= C.faster ? 1 : 0));
     const pW = V(0, 7.0, 5.9), tW = V(0, 0.15, 0.25);
     const pA = V(-0.9, 5.0, 4.4), tA = V(-0.9, 0.3, 0.15);
     const pB = V(0.9, 5.0, 4.4), tB = V(0.9, 0.3, 0.15);
-    setCam(s.cam, lv(lv(pW, pA, k1), pB, k2), lv(lv(tW, tA, k1), tB, k2), drift(t, 1.6), 38);
+    setCam(s.cam, lv(lv(pW, pA, k1), pB, k2).add(pz), lv(lv(tW, tA, k1), tB, k2), drift(t, 1.6), 38);
   };
 });
 
@@ -594,8 +595,8 @@ shot(C.whichmeans, C.end + 0.2, (s) => {
     splash.forEach((d, i) => { const a = ((t * 2.2 + i / 6) % 1) * 0.5; const ang = i * 1.05; d.position.copy(pad).add(V(0, 0.25, 0)).add(V(Math.cos(ang) * a * 1.4, a * 1.6 - 4.9 * a * a, Math.sin(ang) * a * 0.9)); d.visible = a > 0.02; });
     cloud.position.x = Math.sin(t * 0.8) * 0.15;
     const k = E.io(seg(t, C.whichmeans, C.end));
-    const pos = lv(V(0.8, 2.2, 8.6), pad.clone().add(V(0.45, 0.35, 2.1)), k), tg = lv(V(-0.2, 1.7, 0), pad, k);
-    setCam(s.cam, pos, tg, drift(t, 1.8) - 2, 38);
+    if (t < C.rain) { const k0 = E.io(seg(t, C.whichmeans, C.rain)); setCam(s.cam, lv(V(0.8, 2.2, 8.6), V(0.5, 2.1, 6.4), k0), V(-0.2, 1.7, 0), drift(t, 1.8) - 2, 38); }
+    else { const c = seg(t, C.rain, C.end); setCam(s.cam, pad.clone().add(lv(V(0.9, 0.45, 1.9), V(0.5, 0.3, 1.25), c)), pad, drift(t, 1.8) + 3, 38); }
   };
 });
 
