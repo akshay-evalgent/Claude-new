@@ -38,7 +38,7 @@ As with the channel, the thumbnail is a frame from the video: the subject large 
 |---|---|---|
 | `thumbnail-vertical.jpg` | The shivering guy next to the plucked goose | **Main pick.** Funny and odd, and it makes people want to know why |
 | `thumbnail-alt-arm.jpg` | Arm macro with the hairs standing straight up | The topic at a glance |
-| `thumbnail-alt-cat.jpg` | The scared black cat puffing up and hissing | Animal angle |
+| `thumbnail-alt-cat.jpg` | The scared cat puffing up and hissing | Animal angle |
 | `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.

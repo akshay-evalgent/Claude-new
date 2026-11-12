@@ -38,7 +38,7 @@ A 33-second vertical short (20 shots) built to the recipe in `../../index.html`.
 | 26.52 | it barely does anything for us | Forearm macro: sparse hairs, bumps that do nothing | Hard cut |
 | 28.16 | And they're called goosebumps | A plucked goose waddles in beside him, shivering too | Card swing |
 | 29.90 | because your skin ends up | Close-up of his bumpy arm | Hard cut |
-| 31.30 | looking like a plucked goose. | Him and the bumpy pink goose side by side; the goose honks; hard stop | Hard cut |
+| 31.30 | looking like a plucked goose. | Close-up of the bumpy pink goose looking at camera; it honks; hard stop | Hard cut |
 
 ## Sources to check before publishing
 

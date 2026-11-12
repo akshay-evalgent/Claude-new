@@ -593,7 +593,7 @@ function skinSlab() {
   g.userData.set = (k, glowM = 0) => {
     fol.forEach(o => {
       o.f.rotation.z = lerp(-0.75, -0.12, k);
-      const top = V(o.x + 0.42, 1.55, 0.07), bot = worldOfLocal(o.f, V(0, 0.55, 0));
+      const top = V(o.x - 0.5, 1.58, 0.07), bot = worldOfLocal(o.f, V(0, 0.28, 0)); bot.z = 0.07;
       const mid = top.clone().add(bot).multiplyScalar(0.5); o.muscle.position.copy(mid); const d = top.clone().sub(bot); o.muscle.quaternion.setFromUnitVectors(V(0, 1, 0), d.clone().normalize()); o.muscle.scale.set(1 + 0.35 * k, d.length() / 0.67, 1 + 0.35 * k);
       o.muscle.material.emissive.setRGB(0.25 + 0.6 * glowM, 0, 0);
       o.bump.scale.set(1, 0.02 + 0.45 * k, 1);
