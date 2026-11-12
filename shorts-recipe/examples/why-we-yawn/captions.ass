@@ -1,0 +1,55 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.96,Short,,0,0,0,,Your jaw drops
+Dialogue: 0,0:00:00.96,0:00:01.34,Short,,0,0,0,,your lungs
+Dialogue: 0,0:00:01.34,0:00:01.88,Short,,0,0,0,,fill up
+Dialogue: 0,0:00:01.88,0:00:02.30,Short,,0,0,0,,and for about
+Dialogue: 0,0:00:02.30,0:00:03.08,Short,,0,0,0,,six seconds you
+Dialogue: 0,0:00:03.08,0:00:03.50,Short,,0,0,0,,can't really
+Dialogue: 0,0:00:03.50,0:00:04.38,Short,,0,0,0,,stop it
+Dialogue: 0,0:00:04.38,0:00:04.80,Short,,0,0,0,,But it's not
+Dialogue: 0,0:00:04.80,0:00:05.46,Short,,0,0,0,,because your body
+Dialogue: 0,0:00:05.46,0:00:06.94,Short,,0,0,0,,needs more oxygen
+Dialogue: 0,0:00:06.94,0:00:07.30,Short,,0,0,0,,You see
+Dialogue: 0,0:00:07.30,0:00:08.20,Short,,0,0,0,,when scientists gave
+Dialogue: 0,0:00:08.20,0:00:09.44,Short,,0,0,0,,people extra oxygen
+Dialogue: 0,0:00:09.44,0:00:10.16,Short,,0,0,0,,to breathe
+Dialogue: 0,0:00:10.16,0:00:10.84,Short,,0,0,0,,they kept yawning
+Dialogue: 0,0:00:10.84,0:00:11.96,Short,,0,0,0,,just as much
+Dialogue: 0,0:00:11.96,0:00:12.56,Short,,0,0,0,,Instead
+Dialogue: 0,0:00:12.56,0:00:13.20,Short,,0,0,0,,a yawn pulls
+Dialogue: 0,0:00:13.20,0:00:14.02,Short,,0,0,0,,in cool air
+Dialogue: 0,0:00:14.02,0:00:14.78,Short,,0,0,0,,and pumps fresh
+Dialogue: 0,0:00:14.78,0:00:15.24,Short,,0,0,0,,blood to
+Dialogue: 0,0:00:15.24,0:00:15.72,Short,,0,0,0,,your head
+Dialogue: 0,0:00:15.72,0:00:16.56,Short,,0,0,0,,which some scientists
+Dialogue: 0,0:00:16.56,0:00:17.34,Short,,0,0,0,,think cools
+Dialogue: 0,0:00:17.34,0:00:18.00,Short,,0,0,0,,your brain down
+Dialogue: 0,0:00:18.00,0:00:19.30,Short,,0,0,0,,like a radiator
+Dialogue: 0,0:00:19.30,0:00:20.14,Short,,0,0,0,,That's why people
+Dialogue: 0,0:00:20.14,0:00:20.86,Short,,0,0,0,,yawn less
+Dialogue: 0,0:00:20.86,0:00:21.50,Short,,0,0,0,,when the air
+Dialogue: 0,0:00:21.50,0:00:22.66,Short,,0,0,0,,outside is hotter
+Dialogue: 0,0:00:22.66,0:00:23.94,Short,,0,0,0,,than their body
+Dialogue: 0,0:00:23.94,0:00:24.50,Short,,0,0,0,,And animals
+Dialogue: 0,0:00:24.50,0:00:25.60,Short,,0,0,0,,with bigger brains
+Dialogue: 0,0:00:25.60,0:00:27.12,Short,,0,0,0,,have longer yawns
+Dialogue: 0,0:00:27.12,0:00:28.18,Short,,0,0,0,,But the strangest
+Dialogue: 0,0:00:28.18,0:00:28.70,Short,,0,0,0,,part is
+Dialogue: 0,0:00:28.70,0:00:29.66,Short,,0,0,0,,that just reading
+Dialogue: 0,0:00:29.66,0:00:30.80,Short,,0,0,0,,about yawning can
+Dialogue: 0,0:00:30.80,0:00:31.92,Short,,0,0,0,,make you yawn
+Dialogue: 0,0:00:31.92,0:00:32.66,Short,,0,0,0,,So you've probably
+Dialogue: 0,0:00:32.66,0:00:33.48,Short,,0,0,0,,yawned at least
+Dialogue: 0,0:00:33.48,0:00:34.70,Short,,0,0,0,,once by now

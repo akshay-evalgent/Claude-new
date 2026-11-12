@@ -77,6 +77,11 @@ def chunk(words, max_words):
             cur = []
     if cur:
         out.append(cur)
+    # avoid a lone sentence-ending word ("up," / "it."): borrow the previous chunk's last word
+    for i in range(1, len(out)):
+        if (len(out[i]) == 1 and len(out[i - 1]) >= 3 and re.search(r"[.,!?;:]$", out[i][0]["w"].strip())
+                and not re.search(r"[.,!?;:]$", out[i - 1][-1]["w"].strip())):
+            out[i].insert(0, out[i - 1].pop())
     return out
 
 
