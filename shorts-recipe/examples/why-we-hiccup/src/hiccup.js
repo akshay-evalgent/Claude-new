@@ -734,7 +734,7 @@ shot(C.but, C.end + 0.2, (s) => {
     else if (t < C.about) { const c = seg(t, C.n68, C.about); setCam(s.cam, V(1.65, 3.4, -2.15).add(lv(V(0.3, 0.1, 2.4), V(0.2, 0.05, 2.0), c)), V(1.65, 3.4, -2.15), -2 + drift(t, 1.2), 38); }
     else if (t < C.and2) { const c = seg(t, C.about, C.and2); setCam(s.cam, V(-1.6, 3.6, -2.1).add(lv(V(-0.2, 0.0, 5.6), V(-0.1, 0.0, 5.1), c)), V(-1.6, 3.6, -2.1), 2 + drift(t, 1.2), 38); }
     else if (t < C.year) { const c = seg(t, C.and2, C.year); setCam(s.cam, lv(V(1.2, 3.2, 3.4), V(1.0, 3.1, 2.9), c), V(0.0, 2.75, 0.1), drift(t, 1.5), 38); }
-    else { const c = seg(t, C.year, C.end); setCam(s.cam, lv(V(1.5, 2.7, 6.6), V(1.35, 2.65, 6.0), c), V(0.85, 2.55, -1.0), drift(t, 1.0), 40); }
+    else { const c = seg(t, C.year, C.end); setCam(s.cam, lv(V(1.2, 2.75, 7.6), V(1.05, 2.7, 7.0), c), V(0.6, 2.4, -0.8), drift(t, 1.0), 40); }
     hic.lookAt(s.cam.position);
   };
 });

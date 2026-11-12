@@ -36,9 +36,9 @@ As with the channel, the thumbnail is a frame from the video: the subject large 
 
 | File | Frame | Use |
 |---|---|---|
-| `thumbnail-vertical.jpg` | The counter at 430 million with the old man | **Main pick.** The huge number creates curiosity |
-| `thumbnail-alt-hic.jpg` | The character mid-hiccup with "HIC!" | Instantly readable topic |
-| `thumbnail-alt-tadpole.jpg` | Tadpole gulping water over its gills | The surprising science angle |
+| `thumbnail-vertical.jpg` | The character mid-hiccup with a "HIC!" pop | **Main pick.** The topic reads instantly, mid-action, as the channel does it |
+| `thumbnail-alt-counter.jpg` | The counter reading 430,000,000 | Pair it with the alternative title about the 68-year case |
+| `thumbnail-alt-soda.jpg` | Chugging a fizzing soda | Relatable trigger angle |
 | `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
