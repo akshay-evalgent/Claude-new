@@ -74,6 +74,7 @@ Episode-level fields:
 | `intro` | Opening "VS" card after the hook: `{"image": "<media key>", "left": "ELON", "right": "GROK", "rightIcon": "🤖", "dur": 1.9}`. |
 | `media` | Photos the episode uses, fetched with their licence by `tools/fetch_media.py` (see below). |
 | `pacing` | Override any default timing, e.g. `{"cps": 13}` for slower typing. |
+| `soundset` | Sounds the camera makes on every move: `"soft"` (default: a quiet airy swoosh and a rounded "bloop" on punch-ins, built to repeat without tiring) or `"classic"` (the original sharper Mixkit whoosh set). Override single ones with `"sounds": {"whip": "soft-swoosh", "zoom": "soft-pop", "whoosh": "soft-swoosh"}`. |
 
 Per-exchange fields:
 
@@ -82,7 +83,7 @@ Per-exchange fields:
 | `user` / `ai` | The two messages. Emoji are rendered as Fluent 3D images. |
 | `meter` | New meter value (0-100) once this reply lands; `patience` also works. |
 | `punch` | How many trailing words (plus their emoji) to punch in on; `0` = only the final emoji; `false` = no punch-in. |
-| `sfx` | Stinger on the punch-in: `boom` (vine-boom style), `ding` (toaster bell), `boing`, `trombone`, `laugh`, `fail`, `dazzle`, `clown`, `punch`, `glitch`. `boom` and `ding` are synthesised. Any file you drop in `assets/sfx/<name>.wav` or `.mp3` can be used by its name. |
+| `sfx` | Stinger on the punch-in: `boom` (vine-boom style), `ding` (toaster bell), `rocket`, `boing`, `trombone`, `laugh`, `fail`, `dazzle`, `clown`, `punch`, `glitch`. `boom` and `ding` are synthesised. Any file you drop in `assets/sfx/<name>.wav` or `.mp3` can be used by its name. |
 | `shake` | Screen shake on the punch-in. |
 | `quick` | Rapid-fire: faster typing, no punch-in, and the camera holds one wider chat shot across consecutive quick exchanges. |
 | `punchUser` | Punch in on the user's own message right after sending (`userSfx`, `userShake` optional). |
@@ -113,6 +114,7 @@ python3 chatvid/tools/fetch_media.py chatvid/episodes/elon-vs-grok.json
 - `commons`: a Wikimedia Commons file. The licence and author are read from its page. Prefer CC BY or public domain (CC BY-SA asks for share-alike).
 - `nasa`: a NASA Image Library id (public domain).
 - `archive`: a public-domain film from the Internet Archive, cut to a clip with its sound: `{"archive": "DuckandC1951", "start": 31.5, "dur": 3.4}`. Only items marked public domain are accepted. The Prelinger collection (1940s-60s educational and industrial films) is a good source.
+- `nasa_video`: a NASA video clip (public domain): `{"nasa_video": "<nasa_id>", "start": 50, "dur": 3}`. Picture only by default, because NASA productions often carry licensed stock music; add `"audio": true` only for raw footage.
 - `noto`: a Google animated emoji (CC BY 4.0), used as a sticker: `{"noto": "💀"}`.
 - `file`: your own file in `assets/media/`, for material you have a licence or permission for.
 - `crop`: `[x, y, w, h]` as fractions of the image, e.g. to cut a face out for the meter or an avatar.

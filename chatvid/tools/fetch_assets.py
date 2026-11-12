@@ -36,6 +36,7 @@ SFX = {
     "rewind": 1093,    # Glitch sci fi rewind transition
     "glitch": 2595,    # Small electric glitch
     "punch": 2151,     # Soft quick punch
+    "rocket": 1714,    # Fast rocket whoosh
 }
 # name -> Mixkit stock music id
 MUSIC = {
@@ -117,6 +118,17 @@ EMOJI_NAME_OVERRIDES = {
     "📻": "Radio",
     "🏠": "House",
     "💪": "Flexed biceps",
+    "🌤": "Sun behind small cloud",
+    "😋": "Face savoring food",
+    "🔴": "Red circle",
+    "🧑‍🚀": "Astronaut",
+    "🏛": "Classical building",
+    "🌕": "Full moon",
+    "📶": "Antenna bars",
+    "🔒": "Locked",
+    "⚽": "Soccer ball",
+    "👽": "Alien",
+    "🛸": "Flying saucer",
     "♾️": "Infinity",
     "♾": "Infinity",
     "🤫": "Shushing face",

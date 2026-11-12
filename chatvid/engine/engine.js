@@ -39,6 +39,15 @@
     endCardDur: 3.0,
   };
 
+  // The sounds the camera itself makes. "soft" (default) is quiet and rounded so it can
+  // repeat every few seconds; "classic" is the original Mixkit whoosh set. An episode can
+  // pick a set ("soundset") or override single sounds ("sounds": {"whip": "..."}).
+  const SOUNDSETS = {
+    soft:    { whip: ['soft-swoosh', -17], zoom: ['soft-pop', -13], whoosh: ['soft-swoosh', -14] },
+    classic: { whip: ['whip', -11], zoom: ['zoom', -7], whoosh: ['whoosh', -12] },
+  };
+  let SND;
+
   const HUD_PRESETS = {
     patience: { label: 'AI PATIENCE', start: 100, hue: [0, 120], alarm: 'low',
       faces: [[70, '😊'], [40, '😐'], [15, '😤'], [-1, '🤬']] },
@@ -234,11 +243,11 @@
     introDur = EP.intro ? (EP.intro.dur ?? 1.8) : 0;
     if (introDur) {
       cues.push({ t: 0.05, s: EP.intro.sfx || 'boom', g: -5, duck: true });
-      cues.push({ t: introDur - 0.22, s: 'whoosh', g: -10 });
+      cues.push({ t: introDur - 0.22, s: SND.whoosh[0], g: SND.whoosh[1] + 2 });
     }
     let t = introDur + P.introHold;
     shots.push({ t, dur: P.introZoom, cam: camFor(X[0]), ease: 'inOutCubic', drift: 0.004 });
-    cues.push({ t: t + 0.05, s: 'whoosh', g: -12 });
+    cues.push({ t: t + 0.05, s: SND.whoosh[0], g: SND.whoosh[1] });
     t += P.introZoom + 0.08;
     let mv = HUD ? HUD.start : 0;
     X.forEach((x, i) => {
@@ -262,12 +271,12 @@
       let ready = S.send;
       if (ex.punchUser) {
         shots.push({ t: S.send + 0.05, dur: P.punchDur, cam: S.userCam, ease: 'outBack', drift: 0.03 });
-        cues.push({ t: S.send + 0.05, s: 'zoom', g: -7 });
+        cues.push({ t: S.send + 0.05, s: SND.zoom[0], g: SND.zoom[1] });
         if (ex.userSfx) cues.push({ t: S.send + 0.09, s: ex.userSfx, g: -3, duck: true });
         if (ex.userShake) shakes.push({ t: S.send + 0.12, amp: 18, dur: 0.38 });
         ready = S.send + 0.05 + P.punchDur + (ex.userHold ?? P.userPunchHold);
         shots.push({ t: ready, dur: 0.22, cam: q ? quickCam : S.replyCam, ease: 'outExpo', drift: 0.012 });
-        cues.push({ t: ready, s: 'whip', g: -14 });
+        cues.push({ t: ready, s: SND.whip[0], g: SND.whip[1] - 3 });
         ready += 0.12;
       } else if (!q) {
         shots.push({ t: S.send, dur: 0.2, cam: S.replyCam, ease: 'outExpo', drift: 0.012 });
@@ -291,7 +300,7 @@
       const holdP = ex.final ? P.finalHold : (ex.punchHold ?? P.punchHold);
       if (hasPunch) {
         shots.push({ t: S.punch, dur: P.punchDur, cam: S.punchCam, ease: 'outBack', drift: ex.final ? 0.085 : 0.028 });
-        cues.push({ t: S.punch, s: 'zoom', g: -7 });
+        cues.push({ t: S.punch, s: SND.zoom[0], g: SND.zoom[1] });
         if (ex.shake) shakes.push({ t: S.punch + P.punchDur * 0.6, amp: ex.final ? 26 : 20, dur: 0.42 });
         S.next = S.punch + P.punchDur + holdP;
       } else {
@@ -312,7 +321,7 @@
         // generic zoom whoosh so the original audio comes through clean
         const m = seqMeta(c.image), clipAudio = m && m.audio && c.audio !== false;
         if (clipAudio) cues.push({ t: cut.t0, s: '@media:' + c.image, g: c.audioGain ?? -2, dur: d, duck: true });
-        if (c.sfx || !clipAudio) cues.push({ t: cut.t0, s: c.sfx || 'zoom', g: c.sfx ? (clipAudio ? -8 : -3) : -6, duck: !!c.sfx });
+        if (c.sfx || !clipAudio) cues.push({ t: cut.t0, s: c.sfx || SND.zoom[0], g: c.sfx ? (clipAudio ? -8 : -3) : SND.zoom[1] + 1, duck: !!c.sfx });
         if (c.shake) shakes.push({ t: cut.t0 + 0.06, amp: 22, dur: 0.42 });
         S.next = cut.t1;
       }
@@ -326,7 +335,7 @@
           t = S.next;
         } else {
           shots.push({ t: S.next, dur: P.whip, cam: camFor(nx), ease: 'inOutCubic', drift: 0.004 });
-          cues.push({ t: S.next, s: 'whip', g: -11 });
+          cues.push({ t: S.next, s: SND.whip[0], g: SND.whip[1] });
           t = S.next + P.whip + 0.06;
         }
       } else {
@@ -338,7 +347,7 @@
     mainEnd = last.end;
     if (EP.endCard) {
       mainEnd += EP.endCard.dur ?? P.endCardDur;
-      cues.push({ t: endStart, s: 'whoosh', g: -9 });
+      cues.push({ t: endStart, s: SND.whoosh[0], g: SND.whoosh[1] + 3 });
       cues.push({ t: endStart + 0.12, s: 'pop', g: -8 });
     }
     if (climax == null) climax = last.punch + P.punchDur + 0.05;
@@ -500,6 +509,8 @@
   // ---------- public API ----------
   window.boot = async (ep) => {
     EP = ep; P = Object.assign({}, DEF, ep.pacing || {});
+    SND = { ...SOUNDSETS[ep.soundset || 'soft'] };
+    for (const [k, v] of Object.entries(ep.sounds || {})) SND[k] = Array.isArray(v) ? v : [v, SND[k] ? SND[k][1] : -10];
     build(ep);
     await document.fonts.ready;
     await Promise.all([...document.images].map((im) => (im.complete ? 0 : new Promise((r) => { im.onload = im.onerror = r; }))));
@@ -515,7 +526,7 @@
     const all = cues.map((c) => ({ ...c, t: c.t + mainStart }));
     if (hook) {
       const fin = X.find((x) => x.ex.final) || X[X.length - 1];
-      all.push({ t: 0, s: 'zoom', g: -8 });
+      all.push({ t: 0, s: SND.zoom[0], g: SND.zoom[1] - 1 });
       if (fin.ex.sfx) all.push({ t: 0.03, s: fin.ex.sfx, g: -4, duck: true });
       all.push({ t: P.hookDur - 0.05, s: 'rewind', g: -6, dur: P.rewindDur + 0.25 });
     }

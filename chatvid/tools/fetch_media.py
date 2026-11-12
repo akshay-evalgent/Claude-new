@@ -13,6 +13,9 @@ An episode lists its media under "media":
 - file:    something you supply yourself, already in chatvid/assets/media/.
 - archive: an Internet Archive film (public domain only), cut to a clip:
            {"archive": "DuckandC1951", "start": 30, "dur": 2.6}
+- nasa_video: a NASA video clip (public domain), picture only unless "audio": true
+           (NASA productions often carry licensed music; raw footage is safe):
+           {"nasa_video": "<nasa_id>", "start": 50, "dur": 3, "audio": true}
 - noto:    an animated Google Noto emoji (CC BY 4.0), e.g. {"noto": "💀"}
 Clips and animated emoji are stored as frame sequences in assets/media/<key>/;
 clips also keep their original sound there as audio.wav.
@@ -108,9 +111,30 @@ def frames(src_args, out_dir, fps, vf, ext):
     return n
 
 
+def nasa_video(nasa_id):
+    """Best rendition of a NASA Image and Video Library video, plus its credit."""
+    d = json.loads(get(f"https://images-api.nasa.gov/search?nasa_id={urllib.parse.quote(nasa_id)}"))
+    meta = d["collection"]["items"][0]["data"][0]
+    files = json.loads(get(f"https://images-api.nasa.gov/asset/{urllib.parse.quote(nasa_id)}"))["collection"]["items"]
+    mp4 = [f["href"] for f in files if f["href"].lower().endswith(".mp4")]
+    pick = next((h for tag in ("~large", "~medium", "~orig", "~small", "~mobile") for h in mp4 if tag in h), None)
+    if not pick:
+        raise SystemExit(f"no mp4 rendition for {nasa_id}")
+    center = meta.get("center") or "NASA"
+    who = "NASA/JPL-Caltech" if center == "JPL" else "NASA"
+    url = pick.replace("http://", "https://").replace(" ", "%20")
+    return url, f"{meta.get('title', nasa_id)}: {who}, public domain", f"Video: {who}"
+
+
+def clip_source(src):
+    if "archive" in src:
+        return archive_meta(src["archive"])
+    return nasa_video(src["nasa_video"])
+
+
 def clip_audio(src, out):
     """The clip's original sound, cut with the same -ss/-t as its frames so they stay in sync."""
-    url, _, _ = archive_meta(src["archive"])
+    url, _, _ = clip_source(src)
     dest = os.path.join(out, "audio.wav")
     cmd = ["ffmpeg", "-v", "error", "-y", "-ss", str(src["start"]), "-i", url, "-t", str(src["dur"]),
            "-vn", "-ac", "2", "-ar", "48000", "-c:a", "pcm_s16le", dest]
@@ -138,18 +162,22 @@ def sequence(key, src, credits):
     """Video clips (Internet Archive) and animated emoji (Google Noto) become frame sequences."""
     out = os.path.join(MEDIA, key)
     if os.path.exists(os.path.join(out, "meta.json")) and key in credits:
-        if "archive" in src and not os.path.exists(os.path.join(out, "audio.wav")):
+        if "archive" in src and src.get("audio", True) and not os.path.exists(os.path.join(out, "audio.wav")):
             clip_audio(src, out)                         # older cache without sound
             print(f"  ok   {key} (cached, audio added)")
         else:
             print(f"  ok   {key} (cached)")
         return
-    if "archive" in src:
-        url, credit, short = archive_meta(src["archive"])
+    if "archive" in src or "nasa_video" in src:
+        url, credit, short = clip_source(src)
+        grade = ",eq=contrast=1.06" if "archive" in src else ""
         n = frames(["-ss", str(src["start"]), "-i", url, "-t", str(src["dur"])], out, 30,
-                   "scale='trunc(iw*sar/2)*2':ih,setsar=1,scale=-2:1080:flags=lanczos,eq=contrast=1.06", "jpg")
+                   f"scale='trunc(iw*sar/2)*2':ih,setsar=1,scale=-2:1080:flags=lanczos{grade}", "jpg")
         lic = "public domain"
-        clip_audio(src, out)                             # after frames(): it adds audio_db to meta.json
+        # NASA productions often use licensed stock music: their sound is only taken when
+        # the episode asks for it ("audio": true), e.g. raw launch or station footage
+        if src.get("audio", "archive" in src):
+            clip_audio(src, out)                         # after frames(): it adds audio_db to meta.json
     else:
         cp = "_".join(f"{ord(c):x}" for c in src["noto"] if ord(c) != 0xFE0F)
         gif = os.path.join(MEDIA, f"_noto_{cp}.gif")
@@ -170,7 +198,7 @@ def main(ep_path):
     cpath = os.path.join(MEDIA, "credits.json")
     credits = json.load(open(cpath)) if os.path.exists(cpath) else {}
     for key, src in ep.get("media", {}).items():
-        if "archive" in src or "noto" in src:
+        if "archive" in src or "nasa_video" in src or "noto" in src:
             sequence(key, src, credits)
             json.dump(credits, open(cpath, "w"), indent=1, ensure_ascii=False)
             continue

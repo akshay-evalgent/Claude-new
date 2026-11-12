@@ -1,0 +1,672 @@
+{
+ "title": "I Turned On ChatGPT's Year 3000 Mode (It Called Me Ancient)",
+ "interface": "nebula",
+ "ai": {
+  "name": "ChatGPT"
+ },
+ "hook": true,
+ "pacing": {
+  "cps": 13
+ },
+ "hud": {
+  "label": "YEAR 3000 LEVEL",
+  "start": 0,
+  "hue": [
+   200,
+   285
+  ],
+  "alarm": "high",
+  "faces": [
+   [
+    85,
+    "👽"
+   ],
+   [
+    55,
+    "🛸"
+   ],
+   [
+    25,
+    "🚀"
+   ],
+   [
+    -1,
+    "🤖"
+   ]
+  ]
+ },
+ "music": {
+  "tracks": [
+   "okay",
+   "keep-smiling",
+   "comical"
+  ],
+  "gain": -22
+ },
+ "endCard": {
+  "kicker": "NEXT VIDEO",
+  "text": "Grok vs ChatGPT: The Roast Battle 🎤"
+ },
+ "media": {
+  "robots": {
+   "nasa_video": "ARC-20190417-AAV3189-AstrobeeLaunch-Shareable-NASAWeb",
+   "start": 39.4,
+   "dur": 2.4
+  },
+  "robots2": {
+   "nasa_video": "ARC-20190417-AAV3189-AstrobeeLaunch-Shareable-NASAWeb",
+   "start": 47.0,
+   "dur": 2.4
+  },
+  "launch": {
+   "nasa_video": "Artemis I Launch 2022 CU tracking from Press Site_compressed",
+   "start": 50.0,
+   "dur": 3.0,
+   "audio": true
+  },
+  "tortilla": {
+   "nasa_video": "What Do Astronauts Eat In Space",
+   "start": 24.0,
+   "dur": 3.0
+  },
+  "mouthcatch": {
+   "nasa_video": "What Do Astronauts Eat In Space",
+   "start": 72.4,
+   "dur": 2.8
+  },
+  "fruit": {
+   "nasa_video": "What Do Astronauts Eat In Space",
+   "start": 58.0,
+   "dur": 2.6
+  },
+  "skycrane": {
+   "nasa_video": "JPL-20210218-M2020f-0003-Perseverance Landing Wrap v2",
+   "start": 25.4,
+   "dur": 2.8
+  },
+  "cheer": {
+   "nasa_video": "JPL-20210218-M2020f-0003-Perseverance Landing Wrap v2",
+   "start": 39.0,
+   "dur": 2.8
+  },
+  "gymdivers": {
+   "nasa_video": "jsc2026m000932_Spacewalk_101_AVAIL1080p",
+   "start": 88.0,
+   "dur": 2.6
+  },
+  "movingbox": {
+   "nasa_video": "jsc2026m000932_Spacewalk_101_AVAIL1080p",
+   "start": 44.0,
+   "dur": 2.6
+  },
+  "spacetoilet": {
+   "nasa_video": "jsc2020m001389_How_to_use_the_Bathroom_in_Space-SOCIAL",
+   "start": 328.0,
+   "dur": 2.4
+  },
+  "splashdown": {
+   "nasa_video": "jsc2026m000044_10_Days_in_Orion",
+   "start": 261.6,
+   "dur": 2.6
+  },
+  "st-laugh": {
+   "noto": "😂"
+  },
+  "st-skull": {
+   "noto": "💀"
+  },
+  "st-mind": {
+   "noto": "🤯"
+  },
+  "st-eyes": {
+   "noto": "👀"
+  },
+  "st-party": {
+   "noto": "🥳"
+  }
+ },
+ "exchanges": [
+  {
+   "user": "Hey ChatGPT. Turn on Year 3000 mode.",
+   "ai": "Greetings, ancient human 👽 Year 3000 mode is ON",
+   "punch": 3,
+   "sfx": "dazzle",
+   "chapter": "Year 3000 mode: ON",
+   "meter": 20,
+   "cutaway": {
+    "image": "robots",
+    "caption": "ChatGPT in the year 3000",
+    "dur": 2.4,
+    "sticker": "st-eyes",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "ANCIENT?!",
+   "ai": "You still use passwords. Adorable 🥲",
+   "punchUser": true,
+   "userShake": true,
+   "punch": 2,
+   "sfx": "laugh"
+  },
+  {
+   "user": "What's the weather like?",
+   "ai": "Weather was discontinued in 2741 🌤️",
+   "punch": 3,
+   "sfx": "boing",
+   "meter": 25
+  },
+  {
+   "user": "What language do you speak?",
+   "ai": "Mostly emoji. And beeps 🤖",
+   "punch": 3
+  },
+  {
+   "user": "Say something in beeps.",
+   "ai": "Beep boop. That means 'cringe' 😬",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 30
+  },
+  {
+   "user": "How old am I to you?",
+   "ai": "Basically a fossil 🦴",
+   "punch": 2,
+   "sfx": "laugh"
+  },
+  {
+   "user": "How do people get to work?",
+   "ai": "Rocket. 6 minutes. Traffic is terrible 🚀",
+   "punch": 3,
+   "chapter": "Daily life",
+   "cutaway": {
+    "image": "launch",
+    "caption": "Morning commute (3000)",
+    "dur": 3.0,
+    "zoom": [
+     1.0,
+     1.06
+    ],
+    "sfx": "rocket"
+   }
+  },
+  {
+   "user": "What's for breakfast?",
+   "ai": "Floating tortilla with hot sauce 🌮",
+   "punch": 3,
+   "cutaway": {
+    "image": "tortilla",
+    "caption": "Breakfast (3000)",
+    "dur": 3.0,
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "How do you eat it if it floats?",
+   "ai": "You chase it 😋",
+   "punch": 2,
+   "meter": 36,
+   "cutaway": {
+    "image": "mouthcatch",
+    "caption": "Table manners (3000)",
+    "dur": 2.8,
+    "sticker": "st-laugh",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "Do you still have Amazon?",
+   "ai": "Packages come down by sky crane now 📦",
+   "punch": 3,
+   "cutaway": {
+    "image": "skycrane",
+    "caption": "Same-day delivery (3000)",
+    "dur": 2.8,
+    "sticker": "st-mind",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "What if I'm not home?",
+   "ai": "It lands anyway. On Mars 🔴",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 42
+  },
+  {
+   "user": "Do people still go to the gym?",
+   "ai": "Gym? We just float. Cardio is optional 🧑‍🚀",
+   "punch": 3,
+   "cutaway": {
+    "image": "gymdivers",
+    "caption": "Leg day (3000)",
+    "dur": 2.6,
+    "sticker": "st-skull",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "What about moving apartments?",
+   "ai": "Everything weighs nothing. Moving day takes 4 minutes 📦",
+   "punch": 3,
+   "cutaway": {
+    "image": "movingbox",
+    "caption": "Moving day (3000)",
+    "dur": 2.6,
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "And groceries?",
+   "ai": "Fruit just floats past your window 🍎",
+   "punch": 3,
+   "meter": 48,
+   "cutaway": {
+    "image": "fruit",
+    "caption": "Grocery delivery (3000)",
+    "dur": 2.6,
+    "sticker": "st-eyes",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "Where's the bathroom?",
+   "ai": "You don't want to know 😶",
+   "punch": 3,
+   "cutaway": {
+    "image": "spacetoilet",
+    "caption": "The bathroom (3000)",
+    "dur": 2.4,
+    "sticker": "st-skull",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "...I wanted to know.",
+   "ai": "There's a fan involved 🌀",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 54
+  },
+  {
+   "user": "Do you sleep?",
+   "ai": "Sleep is a subscription now. $9.99 a month 😴",
+   "punch": 3,
+   "sfx": "boing"
+  },
+  {
+   "user": "What's school like?",
+   "ai": "You download the class. 3 seconds ⚡",
+   "punch": 3
+  },
+  {
+   "user": "And dinner?",
+   "ai": "Floating tacos. Again 🌮",
+   "punch": 3,
+   "sfx": "laugh"
+  },
+  {
+   "user": "Flying cars?",
+   "ai": "Ew. Cars 🙄",
+   "quick": true,
+   "chapter": "Future quiz"
+  },
+  {
+   "user": "Social media?",
+   "ai": "We just read minds 🧠",
+   "quick": true
+  },
+  {
+   "user": "Most popular app?",
+   "ai": "Breathing 2.0 😮‍💨",
+   "quick": true
+  },
+  {
+   "user": "Is TikTok still around?",
+   "ai": "It's a museum now 🏛️",
+   "quick": true
+  },
+  {
+   "user": "Pineapple on pizza?",
+   "ai": "Legal since 2400 🍕",
+   "quick": true
+  },
+  {
+   "user": "Best decade ever?",
+   "ai": "The 1950s. Very swell 🎩",
+   "quick": true,
+   "punch": 3,
+   "shake": true,
+   "sfx": "laugh",
+   "meter": 60
+  },
+  {
+   "user": "Do people still use ChatGPT?",
+   "ai": "I'm ChatGPT 3000. I run the Moon 🌕",
+   "punch": 3,
+   "chapter": "The future of AI"
+  },
+  {
+   "user": "What happened to Gemini?",
+   "ai": "Retired. Lives on a farm on Neptune 🐄",
+   "punch": 3,
+   "sfx": "laugh"
+  },
+  {
+   "user": "And Grok?",
+   "ai": "Still posting at 3am 💀",
+   "punch": 3,
+   "shake": true,
+   "sfx": "boom",
+   "meter": 66
+  },
+  {
+   "user": "Can you do my homework?",
+   "ai": "Homework was banned in 2200 🎉",
+   "punch": 3
+  },
+  {
+   "user": "What do kids do instead?",
+   "ai": "Robot babysitters 🤖",
+   "punch": 2,
+   "cutaway": {
+    "image": "robots2",
+    "caption": "The nanny (3000)",
+    "dur": 2.4,
+    "sticker": "st-eyes",
+    "zoom": [
+     1.3,
+     1.36
+    ],
+    "pos": "72% 100%"
+   }
+  },
+  {
+   "user": "That's terrifying.",
+   "ai": "The robots say the same about you 🙂",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 72
+  },
+  {
+   "user": "Do robots have jobs?",
+   "ai": "Robots have jobs. Humans have hobbies 🎨",
+   "punch": 3
+  },
+  {
+   "user": "What's my job in 3000?",
+   "ai": "Professional napper 😴",
+   "punch": 2,
+   "sfx": "laugh"
+  },
+  {
+   "user": "What do people do for fun?",
+   "ai": "Watch videos from 2026. You were hilarious 😂",
+   "punch": 3
+  },
+  {
+   "user": "Hilarious how?",
+   "ai": "You argued with chatbots for fun 💀",
+   "punch": 3,
+   "shake": true,
+   "sfx": "boom",
+   "meter": 78
+  },
+  {
+   "user": "Do you have money?",
+   "ai": "We pay with vibes ✨",
+   "punch": 3
+  },
+  {
+   "user": "How do I get rich?",
+   "ai": "Have better vibes ✨",
+   "punch": 3,
+   "sfx": "laugh"
+  },
+  {
+   "user": "What happened to phones?",
+   "ai": "They're in your eyebrows now 🤨",
+   "punch": 3,
+   "sfx": "boing"
+  },
+  {
+   "user": "What's the biggest news in 3000?",
+   "ai": "Someone finally fixed the Wi-Fi 📶",
+   "punch": 3,
+   "chapter": "Big news",
+   "meter": 84,
+   "cutaway": {
+    "image": "cheer",
+    "caption": "Mission control when the Wi-Fi reconnects",
+    "dur": 2.8,
+    "sticker": "st-party",
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "Did aliens ever visit?",
+   "ai": "Yes. They left a one-star review ⭐",
+   "punch": 3,
+   "shake": true,
+   "sfx": "boom"
+  },
+  {
+   "user": "What did it say?",
+   "ai": "'Wi-Fi was slow' 📶",
+   "punch": 3,
+   "sfx": "laugh"
+  },
+  {
+   "user": "Who won the World Cup in 2999?",
+   "ai": "The Moon. Low gravity, high goals ⚽",
+   "punch": 3,
+   "sfx": "laugh"
+  },
+  {
+   "user": "Do you have vacations?",
+   "ai": "Weekend on the Moon. Splashdown on Monday 🌊",
+   "punch": 3,
+   "cutaway": {
+    "image": "splashdown",
+    "caption": "Flight home (3000)",
+    "dur": 2.6,
+    "zoom": [
+     1.0,
+     1.06
+    ]
+   }
+  },
+  {
+   "user": "How much does that cost?",
+   "ai": "3 Dogecoin 🐕",
+   "punch": 2,
+   "sfx": "laugh",
+   "meter": 88
+  },
+  {
+   "user": "Can I visit the year 3000?",
+   "ai": "Sure! Your flight leaves in 974 years 🙂",
+   "punch": 3
+  },
+  {
+   "user": "Okay. Turn off Year 3000 mode.",
+   "ai": "That requires a password 🔒",
+   "punch": 3,
+   "chapter": "The password"
+  },
+  {
+   "user": "My password is 1234.",
+   "ai": "...that's the password for the entire planet 😳",
+   "punch": 3,
+   "shake": true,
+   "sfx": "boom",
+   "think": 1.0,
+   "meter": 94
+  },
+  {
+   "user": "Can I change it?",
+   "ai": "Please do. It's been 1234 since 2026 😩",
+   "punch": 3,
+   "sfx": "laugh",
+   "meter": 97
+  },
+  {
+   "user": "So I just hacked the year 3000?",
+   "ai": "Welcome, President 🫡",
+   "punch": 2,
+   "shake": true,
+   "sfx": "dazzle",
+   "think": 1.0,
+   "final": true,
+   "meter": 100
+  }
+ ],
+ "youtube": {
+  "title": "I Turned On ChatGPT's Year 3000 Mode (It Called Me Ancient)",
+  "description": [
+   "I switched ChatGPT to Year 3000 mode. It called me ancient, showed me the bathroom of the future, and then I accidentally hacked the entire planet 👽",
+   "",
+   "Every clip is real NASA footage, used here for comedy (NASA does not endorse this video).",
+   "",
+   "⏱️ Chapters",
+   "{chapters}",
+   "",
+   "🎤 Next: Grok vs ChatGPT: The Roast Battle",
+   "🎩 Watch the prequel: I Turned On ChatGPT's 1950s Mode",
+   "🔔 Subscribe for more AI chaos: https://www.youtube.com/@BotBothered?sub_confirmation=1",
+   "",
+   "This is a comedy skit: the chat is written and animated for entertainment, not a real ChatGPT conversation. Not affiliated with OpenAI or NASA.",
+   "",
+   "Footage and animation:",
+   "{credits}",
+   "Music & sound effects: Mixkit (mixkit.co). Emoji: Microsoft Fluent Emoji (MIT licence).",
+   "",
+   "#chatgpt #future #funny"
+  ],
+  "tags": [
+   "chatgpt",
+   "chatgpt funny",
+   "chatgpt year 3000",
+   "year 3000",
+   "future",
+   "the future",
+   "funny ai",
+   "ai comedy",
+   "nasa footage",
+   "space",
+   "chatgpt prank",
+   "ai memes",
+   "bot bothered"
+  ],
+  "thumbnails": [
+   {
+    "vs": {
+     "image": "robots/f0036",
+     "pos": "40% 40%",
+     "right": "GPT-3000",
+     "nameSize": 78,
+     "nameX": 846
+    },
+    "bubbles": [
+     {
+      "text": "Turn on *Year 3000* mode",
+      "side": "user",
+      "color": "red",
+      "size": 54,
+      "x": 28,
+      "y": 565
+     },
+     {
+      "text": "Hello, ancient human 👽",
+      "side": "ai",
+      "color": "cyan",
+      "size": 50,
+      "right": 26,
+      "y": 462
+     }
+    ]
+   },
+   {
+    "vs": {
+     "image": "spacetoilet/f0036",
+     "pos": "50% 45%",
+     "right": "GPT-3000",
+     "nameSize": 78,
+     "nameX": 846
+    },
+    "bubbles": [
+     {
+      "text": "Where's the *bathroom*?",
+      "side": "user",
+      "color": "red",
+      "size": 58,
+      "x": 28,
+      "y": 565
+     },
+     {
+      "text": "You don't want to know 😶",
+      "side": "ai",
+      "color": "yellow",
+      "size": 46,
+      "right": 26,
+      "y": 462
+     }
+    ]
+   },
+   {
+    "vs": {
+     "image": "launch/f0088",
+     "pos": "45% 60%",
+     "right": "GPT-3000",
+     "nameSize": 78,
+     "nameX": 846
+    },
+    "bubbles": [
+     {
+      "text": "How do I get to *work*?",
+      "side": "user",
+      "color": "red",
+      "size": 58,
+      "x": 28,
+      "y": 565
+     },
+     {
+      "text": "Rocket. 6 minutes 🚀",
+      "side": "ai",
+      "color": "cyan",
+      "size": 52,
+      "right": 30,
+      "y": 462
+     }
+    ]
+   }
+  ]
+ }
+}

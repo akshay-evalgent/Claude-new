@@ -72,7 +72,44 @@ def ding():
     return out.astype(np.float32)
 
 
-SYNTH = {"boom": boom, "ding": ding}
+def soft_swoosh():
+    """Gentle camera move: a short, airy whisper (band-limited noise, soft swell)
+    in place of a sharp whoosh, so it can repeat every few seconds without tiring."""
+    dur = 0.34
+    n = int(dur * SR)
+    t = np.arange(n) / SR
+    rnd = np.random.default_rng(21)
+    noise = rnd.standard_normal((n, 2))
+    cut = 350 + 1300 * np.sin(np.pi * t / dur) ** 2          # cutoff swells 350 Hz -> 1.65 kHz -> back
+    a = np.exp(-2 * np.pi * cut / SR)
+    y = noise
+    for _ in range(3):                                      # three one-pole low-passes in a row: steep,
+        out = np.empty_like(y); acc = np.zeros(2)            # so there is no hiss up top, just soft air
+        for i in range(n):
+            acc = a[i] * acc + (1 - a[i]) * y[i]
+            out[i] = acc
+        y = out
+    env = np.sin(np.pi * np.clip(t / dur, 0, 1)) ** 2.5
+    pan = np.stack([1 - 0.35 * t / dur, 0.65 + 0.35 * t / dur], axis=1)  # drifts slightly left -> right
+    y = y * env[:, None] * pan
+    return (y / (np.abs(y).max() or 1)).astype(np.float32)
+
+
+def soft_pop():
+    """Gentle punch-in accent: a short, rounded "bloop" (falling sine with a soft attack)."""
+    dur = 0.22
+    n = int(dur * SR)
+    t = np.arange(n) / SR
+    f = 260 + 300 * np.exp(-t / 0.035)                       # 560 Hz falling to 260 Hz
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    env = np.minimum(1, t / 0.004) * np.exp(-t / 0.06)
+    y = (np.sin(ph) + 0.18 * np.sin(2 * ph)) * env
+    y[-int(0.03 * SR):] *= np.linspace(1, 0, int(0.03 * SR))   # fade to silence, no click
+    y = y / (np.abs(y).max() or 1)
+    return np.stack([y, y], axis=1).astype(np.float32)
+
+
+SYNTH = {"boom": boom, "ding": ding, "soft-swoosh": soft_swoosh, "soft-pop": soft_pop}
 
 
 def clip_audio(key):
