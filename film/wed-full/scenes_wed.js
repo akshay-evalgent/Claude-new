@@ -311,3 +311,14 @@ SCN.modena = c => {
   s += `<circle cx="760" cy="610" r="20" fill="${BONE}" ${S} stroke-width="4"/>`;
   return s + hand('MODENA · ~1,500 YEARS', 960, 150, 64, c.t, 0.3, { col: '#FFF3D6' });
 };
+
+// Comment prompt card (added after the analytics review: ask viewers a specific question).
+SCN.commentPrompt = (c, o) => {
+  let s = paper();
+  s += g('translate(960 460)', `<rect x="-560" y="-200" width="1120" height="360" rx="40" fill="#FFFFFF" ${S} stroke-width="7"/><path d="M-300 160 L-360 260 L-200 160 Z" fill="#FFFFFF" ${S} stroke-width="7"/><path d="M-298 156 H-198" stroke="#FFFFFF" stroke-width="10"/>`);
+  s += hand(o.q || 'WHAT DO YOU THINK?', 960, o.list ? 360 : 490, 84, c.t, 0.1, { col: C.accent });
+  if (o.list) o.list.forEach((l, i) => { s += pop(960, 440 + i * 70, c.t, 0.3 + i * 0.25, hand(`${i + 1}. ${l}`, 0, 0, 54, 1, DONE)); });
+  const bob = Math.sin(c.t * 4) * 8;
+  s += g(`translate(1460 ${f1(760 + bob)})`, `<path d="M-60 -40 H60 V40 H10 L-20 70 V40 H-60 Z" fill="${C.accent}" ${S} stroke-width="6"/><circle cx="-25" cy="0" r="8" fill="#FFFFFF"/><circle cx="0" cy="0" r="8" fill="#FFFFFF"/><circle cx="25" cy="0" r="8" fill="#FFFFFF"/>`) + hand('COMMENTS', 1460, 870, 50, c.t, 0.4, { col: C.accent });
+  return s;
+};

@@ -177,3 +177,47 @@ e.g. "7 Ancient Inventions That Still Work Today 🔥", cut from the existing an
 - Keep the house voice from the pilot: second person in the script, lists of three, sentences split across cuts, the voiced objection, named researchers, a callback ending.
 - Make the thumbnail first and judge it at phone size (about 320 px wide) before making the video.
 - Optional: Hindi versions. The reference proved that audience; the pipeline can take a Hindi script and voice.
+
+## Lessons from the first analytics (NO FRIDGE?, November 2026)
+
+**What YouTube reported.** About 2,180 impressions, mostly from Suggested videos, but a click-through rate (CTR) of only 1.42%. That gave 69 views, 1 like, 0 comments and 1 share. The channel's stronger long-form videos reach 4.57% CTR (Hachikō) and 3.73% (tariffs). Retention was strong. The problem is packaging and engagement, not the content.
+
+**Why.** The title was published as "7 Ways Ancient Humans Kept Food From Rotting". That reads as a listicle, not a survival story. The best hooks were hidden: 300,000 years without a fridge, meat sealed in bone, and friendship as a food bank. The thumbnail looked generic, and nothing in the video asked viewers to comment.
+
+### Title rules v2 (replace the old title rules)
+
+1. **Story, mystery or a hard number. Never a listicle.** No "7 ways", "5 facts" or "top 10".
+2. **Proven shapes:**
+   - "How Humans [survived/did X] for 300,000 Years Without [modern thing]"
+   - "What Did Humans Do Before [X] Existed?"
+   - "The [number]-Year-Old [object] That [surprise]"
+   - "Why [people] [did something unexpected]"
+3. **Put the strongest hook from the script into the title.** If the script's best moment isn't in the title or thumbnail, fix the packaging, not the script.
+4. **Emoji are optional.** Test with and without; the channel's best performers have none.
+5. **Upload with three titles in YouTube's Test & compare.** If CTR is below 3% after 48–72 hours, swap the title and thumbnail.
+
+### Thumbnail rules v2 ("contrast split", replaces rules 3–4 above)
+
+1. **Split frame.** Left: a dark navy panel with the glowing modern object (fridge, pills, phone-lit bed, classroom, temple, parliament, ring). Right: a bright ancient scene. The two halves are divided by a jagged white edge.
+2. **The hero is big on the right, with one strong emotion.** Put the story prop in view (marrow bone, swollen cheek, glowing eyes, Lion Man, crowned bully).
+3. **One red circle, on the single thing that makes people curious.**
+4. **Text is short and across the top.** The main thumbnail says "NO [X]?". The alternate uses a hard number or a mystery ("300,000 YEARS", "18 MINUTES", "31,000 YEARS").
+5. **Check it at phone size** (about 320 px wide) next to real competitors before uploading.
+
+Code: `film/pilot-fridge/thumbs.js`, entries `*V2` (main) and `*V2b` (alternate). Render with `node thumb.mjs fridgeV2 …`.
+
+### Engagement rules (every video from now on)
+
+1. **Ask a specific either/or question in the video, twice.**
+   - Once, lightly, around the middle.
+   - Once just before the final callback, on a "comments" card (`commentPrompt` scene).
+   - Example: "Which custom surprised you most: bride service, the mother-in-law language, or walking marriage?"
+2. **Pin the same question as the first comment** (`pinned_comment.txt` in each kit) within minutes of publishing.
+3. **Reply to and heart comments in the first hours.** Early discussion is what pushes a video into home feeds.
+4. **Surface the single most surprising fact in the first 30 seconds,** for example "friendship as a food bank".
+
+### Targets to watch in Studio (first 48 hours)
+
+- CTR of 4% or more.
+- Average view duration at least as long as now.
+- At least one comment per 100 views.

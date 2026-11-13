@@ -5,11 +5,19 @@
 | `video_1080p.mp4` | The video (15:15, 1080p, 25 fps). Not in git; it lives in `film/gov-full/gov_full.mp4`. |
 | `thumbnail.jpg` | Main thumbnail, 1280×720, in the reference channel's format ("NO GOVERNMENT?"). |
 | `thumbnail_alt.jpg` | Second thumbnail for YouTube's "Test & compare" ("WHO RULED?"). |
-| `title.txt` | Title, plus two alternatives. |
+| `title.txt` | Curiosity title, plus two test titles. |
 | `description.txt` | Paste-ready description with chapters, sources and hashtags. |
 | `tags.txt` | Paste into the Tags box. |
+| `pinned_comment.txt` | Question to post and pin as the first comment. |
 | `captions_en.srt` | English captions timed to the narration, word by word. |
 | `make_srt.py` | Rebuilds the captions if the narration changes. |
+
+## Packaging update (after the first analytics review)
+
+- `thumbnail.jpg` / `thumbnail_alt.jpg` now use the v2 "contrast split" design: a glowing modern object on a dark panel against a bright ancient story, with a red circle on the hook and short text. The old designs are still in `film/pilot-fridge/thumbnails/` if you want to compare.
+- `title.txt` now leads with a curiosity title (no listicles); put all three titles into YouTube's Test & compare.
+- `pinned_comment.txt` holds an either/or question. Post it as the first comment as soon as the video is live, pin it, and reply to early comments.
+- If CTR is still under 3% after 48–72 hours, swap the title and thumbnail for the alternates.
 
 ## Upload steps (YouTube Studio)
 

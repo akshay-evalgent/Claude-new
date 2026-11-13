@@ -104,7 +104,113 @@ function leafBed(x, y, s = 1) {
 }
 function mozzie(x, y, s = 1) { return g(`translate(${x} ${y}) scale(${s})`, `<path d="M0 0 L40 6" ${S} stroke-width="3"/><ellipse cx="-4" cy="-12" rx="16" ry="6" fill="#EAF2F5" stroke="${C.ink}" stroke-width="2.5" transform="rotate(-30)"/><ellipse cx="6" cy="-12" rx="16" ry="6" fill="#EAF2F5" stroke="${C.ink}" stroke-width="2.5" transform="rotate(30)"/><ellipse rx="15" ry="6" fill="#3C3330"/><path d="M-6 4 l-10 16 M2 5 l-4 18 M8 4 l6 16" ${S} stroke-width="2.5"/>`); }
 
+// ---------- v2 "contrast split" thumbnails (after the Nov 2026 analytics review) ----------
+// Left: dark panel with a glowing modern object. Right: bright ancient story with the hero. Short text on top.
+function v2Defs() { return `<defs><radialGradient id="cglow"><stop offset="0" stop-color="#E6F7FF" stop-opacity="1"/><stop offset=".35" stop-color="#7FD3FF" stop-opacity=".55"/><stop offset="1" stop-color="#2B6FA8" stop-opacity="0"/></radialGradient><linearGradient id="dark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B1222"/><stop offset="1" stop-color="#1B2A44"/></linearGradient></defs>`; }
+const SPLIT = 'M0 0 H820 L780 180 L840 360 L760 560 L830 760 L770 1080 H0 Z';
+function v2Left(inner) { return v2Defs() + `<path d="${SPLIT}" fill="url(#dark)"/>` + inner; }
+function v2Edge() { return `<path d="M820 0 L780 180 L840 360 L760 560 L830 760 L770 1080" fill="none" stroke="#0D0A07" stroke-width="30" stroke-linejoin="round"/><path d="M820 0 L780 180 L840 360 L760 560 L830 760 L770 1080" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linejoin="round"/>`; }
+function redCircle(x, y, rx, ry) { return `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="none" stroke="#0D0A07" stroke-width="26"/><ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="none" stroke="#FF2A2A" stroke-width="16"/>`; }
+function glowBehind(x, y, r) { return `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#cglow)"/>`; }
+function v2Clip(inner) { return `<clipPath id="rightc"><path d="M820 0 H1920 V1080 H770 L830 760 L760 560 L840 360 L780 180 Z"/></clipPath><g clip-path="url(#rightc)">${inner}</g>`; }
+// modern objects (left panel, centred around x≈400)
+function mFridge() { return glowBehind(400, 640, 420) + g('translate(400 660)', `<rect x="-190" y="-330" width="380" height="640" rx="24" fill="#E8EEF2" stroke="#0D0A07" stroke-width="8"/><rect x="-170" y="-310" width="340" height="600" fill="#DFF4FF"/>` + [ -170, -30, 110 ].map(y => `<path d="M-170 ${y} H170" stroke="#9FC6DA" stroke-width="8"/>`).join('') + `<rect x="-140" y="-250" width="90" height="70" rx="10" fill="#E05A4E" stroke="#0D0A07" stroke-width="4"/><rect x="-30" y="-260" width="70" height="80" rx="8" fill="#FFFFFF" stroke="#0D0A07" stroke-width="4"/><circle cx="110" cy="-220" r="34" fill="#7FC48A" stroke="#0D0A07" stroke-width="4"/><rect x="-130" y="-110" width="120" height="70" rx="10" fill="#F2C443" stroke="#0D0A07" stroke-width="4"/><path d="M30 -100 h90 v60 h-90 Z" fill="#C0392B" stroke="#0D0A07" stroke-width="4"/><path d="M-200 -330 L-330 -300 L-330 340 L-200 310 Z" fill="#CCD6DD" stroke="#0D0A07" stroke-width="8"/>`); }
+function mPills() { return glowBehind(400, 600, 420) + g('translate(400 640)', `<rect x="-120" y="-170" width="240" height="320" rx="30" fill="#F28C28" stroke="#0D0A07" stroke-width="8"/><rect x="-140" y="-230" width="280" height="80" rx="14" fill="#FFFFFF" stroke="#0D0A07" stroke-width="8"/><rect x="-100" y="-80" width="200" height="130" rx="10" fill="#FFFFFF" stroke="#0D0A07" stroke-width="5"/><path d="M-30 -15 h60 M0 -45 v60" stroke="#E0505A" stroke-width="18"/>`) + g('translate(250 900) rotate(-20)', `<rect x="-60" y="-24" width="120" height="48" rx="24" fill="#FFFFFF" stroke="#0D0A07" stroke-width="5"/><path d="M0 -24 h60 a24 24 0 0 1 0 48 h-60 Z" fill="#4F8AE0" stroke="#0D0A07" stroke-width="5"/>`) + g('translate(560 920) rotate(25)', `<rect x="-60" y="-24" width="120" height="48" rx="24" fill="#FFFFFF" stroke="#0D0A07" stroke-width="5"/><path d="M0 -24 h60 a24 24 0 0 1 0 48 h-60 Z" fill="#E0505A" stroke="#0D0A07" stroke-width="5"/>`); }
+function mBed() { return glowBehind(470, 560, 380) + g('translate(380 760)', `<rect x="-330" y="0" width="660" height="140" rx="20" fill="#E6E2DA" stroke="#0D0A07" stroke-width="8"/><rect x="-310" y="-70" width="200" height="90" rx="36" fill="#FFFFFF" stroke="#0D0A07" stroke-width="6"/><path d="M-120 -40 Q100 -110 320 -40 Q340 30 320 50 Q100 70 -120 50 Z" fill="#6F8FB5" stroke="#0D0A07" stroke-width="6"/>` + g('translate(-200 -100)', `<circle r="62" fill="#FFFFFF" stroke="#0D0A07" stroke-width="6"/><path d="M-30 -6 h20 M10 -6 h20 M-14 30 q14 -6 28 0" fill="none" stroke="#0D0A07" stroke-width="6" stroke-linecap="round"/>`) + `<rect x="-90" y="-250" width="90" height="150" rx="12" fill="#1C2742" stroke="#0D0A07" stroke-width="6" transform="rotate(20 -45 -175)"/><rect x="-80" y="-240" width="70" height="128" rx="8" fill="#BFE8FF" transform="rotate(20 -45 -175)"/>`) + g('translate(600 300)', `<rect x="-120" y="-60" width="240" height="110" rx="14" fill="#1C1A18" stroke="#0D0A07" stroke-width="6"/><text x="0" y="22" font-family="Thumb" font-size="70" fill="#FF4A4A" text-anchor="middle">2:13</text>`); }
+function mClass() { return glowBehind(400, 520, 420) + g('translate(400 520)', `<rect x="-300" y="-200" width="600" height="340" rx="10" fill="#2F5D4A" stroke="#8E5A3A" stroke-width="22"/><text x="0" y="-60" font-family="Thumb" font-size="80" fill="#F3F1E6" text-anchor="middle">2+2=?</text><text x="0" y="50" font-family="Thumb" font-size="60" fill="#F3F1E6" text-anchor="middle">TEST</text>`) + g('translate(400 900)', `<rect x="-280" y="-40" width="560" height="50" fill="#B98A5A" stroke="#0D0A07" stroke-width="6"/><path d="M-240 10 v150 M240 10 v150" stroke="#0D0A07" stroke-width="12"/><rect x="-80" y="-110" width="160" height="70" fill="#FFFFFF" stroke="#0D0A07" stroke-width="4" transform="rotate(-8)"/><text x="0" y="-60" font-family="Thumb" font-size="50" fill="#E0505A" text-anchor="middle" transform="rotate(-8)">F</text>`); }
+function mTemple() { return glowBehind(400, 620, 420) + g('translate(400 820)', `<path d="M-300 120 V-120 H300 V120 Z" fill="#2E3A5C" stroke="#0D0A07" stroke-width="6"/><path d="M-330 -120 L0 -320 L330 -120 Z" fill="#3A4A70" stroke="#0D0A07" stroke-width="6"/><rect x="-60" y="-40" width="120" height="160" rx="60" fill="#FFD27A"/>` + [-220, -130, 130, 220].map(x => `<rect x="${x - 18}" y="-100" width="36" height="220" fill="#46507A" stroke="#0D0A07" stroke-width="4"/>`).join('')) + [-260, -160, 160, 260].map((x, i) => `<rect x="${400 + x - 16}" y="${920 - (i % 2) * 20}" width="32" height="${80 + (i % 2) * 20}" fill="#FFF6E0" stroke="#0D0A07" stroke-width="4"/>` + fire(400 + x, 920 - (i % 2) * 20, 0.16, 1 + i)).join(''); }
+function mParliament() { const fl = 1; return glowBehind(400, 560, 420) + g('translate(400 720)', `<rect x="-300" y="-200" width="600" height="300" fill="#E6DCC4" stroke="#0D0A07" stroke-width="7"/><path d="M-330 -200 L0 -340 L330 -200 Z" fill="#D9CFBA" stroke="#0D0A07" stroke-width="7"/><path d="M-120 -260 Q0 -420 120 -260 Z" fill="#9FB8C9" stroke="#0D0A07" stroke-width="6"/>` + [...Array(6)].map((_, i) => `<rect x="${-260 + i * 100}" y="-170" width="36" height="250" fill="#FBF6EC" stroke="#0D0A07" stroke-width="4"/>`).join('')) + g('translate(400 960)', `<rect x="-180" y="-70" width="360" height="90" rx="18" fill="#FFFFFF" stroke="#0D0A07" stroke-width="6"/><rect x="-180" y="-34" width="360" height="22" fill="#2B5DA8"/><rect x="-50" y="-110" width="44" height="30" rx="6" fill="#FF3A3A" stroke="#0D0A07" stroke-width="4"/><rect x="6" y="-110" width="44" height="30" rx="6" fill="#3A7AFF" stroke="#0D0A07" stroke-width="4"/>`) + `<circle cx="372" cy="835" r="90" fill="#FF3A3A" opacity=".25"/><circle cx="428" cy="835" r="90" fill="#3A7AFF" opacity=".25"/>`; }
+function mRing() { return glowBehind(400, 600, 420) + g('translate(400 640)', `<ellipse rx="190" ry="190" fill="none" stroke="#0D0A07" stroke-width="56"/><ellipse rx="190" ry="190" fill="none" stroke="#F2C443" stroke-width="40"/><path d="M-90 -200 L0 -330 L90 -200 L0 -150 Z" fill="#DCF4FF" stroke="#0D0A07" stroke-width="7"/><path d="M-90 -200 H90 M0 -330 L-30 -200 L0 -150 L30 -200 Z" fill="none" stroke="#9FD3F0" stroke-width="4"/>`) + [[200, 380], [620, 420], [560, 900], [220, 880]].map(([x, y]) => `<path d="M${x} ${y - 40} l10 30 l30 10 l-30 10 l-10 30 l-10 -30 l-30 -10 l30 -10 Z" fill="#FFFFFF"/>`).join(''); }
+// ancient right side backgrounds (bright, saturated, deeper sky for text contrast)
+function aSavanna(seed, o = {}) { return thumbWorld(Object.assign({ seed, sunX: 1660, sunY: 260, sky: ['#3E9FE0', '#BFE6F6'], ground: ['#F2C845', '#D69A30'], hills: '#D9B868' }, o)); }
+function aDusk(seed, o = {}) { return thumbNight(Object.assign({ seed, moonX: 1700, moonY: 220, sky: ['#3B2E7A', '#F2884A'], hills: '#6A3E5A', ground: '#9A6230', stars: 20 }, o)); }
+function v2(o) {
+  const bg = v2Clip(o.right) ;
+  const fg = v2Left(o.left) + v2Edge() + (o.heroSvg || '') + (o.extra || '');
+  return { bg, fg, text: thumbText([o.text], 960, 215, 230, 'middle', 1800) };
+}
+function marrowBone() { return `<path d="M-120 -20 H120 V20 H-120 Z" fill="#F3EAD4" stroke="#0D0A07" stroke-width="7"/><circle cx="-128" cy="-26" r="26" fill="#F3EAD4" stroke="#0D0A07" stroke-width="7"/><circle cx="-128" cy="26" r="26" fill="#F3EAD4" stroke="#0D0A07" stroke-width="7"/><path d="M110 -34 L150 -10 L140 0 L150 14 L110 34 Z" fill="#F3EAD4" stroke="#0D0A07" stroke-width="7"/><ellipse cx="128" cy="0" rx="12" ry="22" fill="#E05A3A" stroke="#0D0A07" stroke-width="4"/>`; }
+
 const THUMBS = {
+  fridgeV2() {
+    const right = aSavanna(11) + vulture(1250, 330, 0.9) + vulture(1420, 280, 0.7) + hut(1820, 640, 0.8);
+    const hero = heroBig(Object.assign({ x: 1500, y: 1700, s: 3.0, seed: 3, face: 'surprised', flip: true, la: [-14, -6], ra: [-14, -6] }, legsOff));
+    const bone = g('translate(1110 820) rotate(-25) scale(1.5)', marrowBone());
+    return v2({ left: mFridge(), right, heroSvg: hero + bone, extra: redCircle(1110, 820, 280, 140), text: 'NO FRIDGE?' });
+  },
+  fridgeV2b() {
+    const right = aSavanna(17) + hut(1800, 640, 0.8) + fire(1600, 760, 0.5, 0.4) + [[1180, 'laugh', 4], [1340, 'happy', 9]].map(([x, f, sd]) => person({ x, y: 980, s: 0.85, t: 1, seed: sd, face: f, bob: 0, la: [-14, -6], ra: [-70, -90] })).join('') + g('translate(1260 780) scale(1.3)', meat(1, 21, '#A34A3A'));
+    const hero = heroBig(Object.assign({ x: 1560, y: 1700, s: 2.8, seed: 21, face: 'laugh', flip: true, hairC: '#3C2A1E', la: [-14, -6], ra: [-80, -100] }, legsOff));
+    return v2({ left: mFridge() + `<path d="M140 380 L660 940 M660 380 L140 940" stroke="#0D0A07" stroke-width="44" stroke-linecap="round"/><path d="M140 380 L660 940 M660 380 L140 940" stroke="#FF2A2A" stroke-width="28" stroke-linecap="round"/>`, right, heroSvg: hero, text: '300,000 YEARS' });
+  },
+  doctorV2() {
+    const right = aSavanna(23) + hut(1820, 650, 0.9) + fire(1650, 740, 0.45, 0.7);
+    const herb = `<path d="M0 0 L0 -140" stroke="#5C4430" stroke-width="8" stroke-linecap="round"/>` + [[-34, -60], [30, -82], [-30, -112], [26, -130], [0, -150]].map(([x, y], i) => `<path d="M${x} ${y} q${x < 0 ? -30 : 30} -10 ${x < 0 ? -50 : 50} 10 q${x < 0 ? 30 : -30} 14 ${x < 0 ? 50 : -50} -10 Z" fill="${i % 2 ? '#5E8A3C' : '#7FA34E'}" stroke="#0D0A07" stroke-width="3"/>`).join('');
+    const hero = heroBig(Object.assign({ x: 1380, y: 1700, s: 3.0, seed: 3, face: 'sick', flip: true, la: [70, 205], ra: [60, 130], armsFront: true,
+      front: (L, R) => g(`translate(${f1(R[0] - 10)} ${f1(R[1] + 30)}) scale(.8)`, herb) + g('translate(0 -354)', `<path d="M-44 -14 Q-96 4 -82 44 Q-68 68 -40 56" fill="#FFFFFF" stroke="#0D0A07" stroke-width="5.5"/><ellipse cx="-54" cy="22" rx="26" ry="22" fill="#F0A2A2" opacity=".85"/>`) }, legsOff));
+    return v2({ left: mPills(), right, heroSvg: hero, extra: redCircle(1542, 704, 130, 120), text: 'NO DOCTOR?' });
+  },
+  doctorV2b() {
+    const right = aSavanna(29) + hut(1820, 650, 0.9) + person({ x: 1200, y: 980, s: 1.0, t: 1, seed: 14, keepHair: true, hairC: '#B9B2A6', face: 'happy', bob: 0, la: [-14, -6], ra: [60, 90] });
+    const hero = heroBig(Object.assign({ x: 1500, y: 1700, s: 2.9, seed: 9, face: 'laugh', flip: true, la: [-150, -170], ra: [-14, -6], holdL: e => `<path d="M${f1(e[0])} ${f1(e[1])} L${f1(e[0] + 20)} ${f1(e[1] + 420)}" stroke="#8E5A3A" stroke-width="22" stroke-linecap="round"/>` }, legsOff));
+    return v2({ left: mPills(), right, heroSvg: hero, text: '31,000 YEARS' });
+  },
+  bedV2() {
+    const right = aDusk(31) + `<ellipse cx="1400" cy="880" rx="560" ry="160" fill="#F28C28" opacity=".3"/>` + fire(1720, 870, 0.65, 0.9) + glowEyes(1800, 690, 0.8) + glowEyes(1230, 660, 0.55) + sleeper(1280, 990, 0.8);
+    const hero = heroBig(Object.assign({ x: 1400, y: 1700, s: 3.0, seed: 3, face: 'tired', flip: true, la: [-24, -12], ra: [60, 150], armsFront: true, front: (L, R) => g(`translate(${f1(R[0] - 24)} ${f1(R[1] - 4)}) rotate(12)`, rockPillow(0.42)) + g('translate(0 -354)', `<path d="M-29 18 q11 8 22 0 M7 18 q11 8 22 0" fill="none" stroke="#8A6FA8" stroke-width="4.5" stroke-linecap="round"/>`) }, legsOff));
+    return v2({ left: mBed(), right, heroSvg: hero, extra: redCircle(1790, 690, 170, 90), text: 'NO BED?' });
+  },
+  bedV2b() {
+    const right = aDusk(37) + `<ellipse cx="1350" cy="900" rx="600" ry="160" fill="#F28C28" opacity=".3"/>` + fire(1300, 880, 0.6, 0.4) + sleeper(1000, 980, 0.7) + sleeper(1180, 1030, 0.6, '#7A5A3A');
+    const hero = heroBig(Object.assign({ x: 1560, y: 1700, s: 2.8, seed: 14, face: 'surprised', flip: true, keepHair: true, hairC: '#B9B2A6', la: [-14, -6], ra: [-14, -6] }, legsOff));
+    return v2({ left: mBed(), right, heroSvg: hero, text: '18 MINUTES' });
+  },
+  schoolV2() {
+    const right = aSavanna(41) + hut(1820, 640, 0.9) + hut(1300, 625, 0.55) + [[1150, 0.55, 9], [1300, 0.45, 12]].map(([x, k, sd]) => person({ x, y: 960, s: k, t: 1, seed: sd, face: 'laugh', bob: 0, la: [-150, -170], ra: [150, 170] })).join('');
+    const hero = heroBig(Object.assign({ x: 1420, y: 1760, s: 3.1, seed: 3, face: 'laugh', flip: true, la: [-150, -170], ra: [70, 150], armsFront: true, front: (L, R) => g(`translate(${f1(R[0] - 14)} ${f1(R[1] - 10)}) rotate(10) scale(.9)`, `<path d="M0 -70 Q-34 0 0 70" fill="none" stroke="#5C4430" stroke-width="8" stroke-linecap="round"/><path d="M0 -70 L0 70" stroke="#E8DCCB" stroke-width="3"/>`) }, legsOff));
+    return v2({ left: mClass(), right, heroSvg: hero, text: 'NO SCHOOL?' });
+  },
+  schoolV2b() {
+    let right = `<rect x="770" width="1150" height="1080" fill="#7A5E44"/><path d="M770 0 H1920 V640 Q1400 700 1100 660 Q900 640 770 700 Z" fill="#B99A72"/>`;
+    for (let i = 0; i < 12; i++) right += `<path d="M${900 + i * 85} 120 q30 120 10 260 M${920 + i * 85} 120 q30 120 10 260" fill="none" stroke="#8E6E4E" stroke-width="12" stroke-linecap="round"/>`;
+    const hero = heroBig(Object.assign({ x: 1420, y: 1700, s: 2.9, seed: 5, long: true, flip: true, hairC: '#4A2E17', face: 'laugh', la: [-150, -170], ra: [-150, -170] }, legsOff));
+    return v2({ left: mClass(), right, heroSvg: hero, extra: redCircle(1330, 260, 260, 150), text: 'NO TEACHER?' });
+  },
+  spiritV2() {
+    const pil = (x, y, k) => g(`translate(${x} ${y}) scale(${k})`, `<rect x="-60" y="-300" width="120" height="420" fill="#E6D9BE" stroke="#0D0A07" stroke-width="6"/><rect x="-170" y="-380" width="340" height="110" rx="6" fill="#EDE2C8" stroke="#0D0A07" stroke-width="6"/><path d="M-30 -200 q30 -40 60 0 q-10 30 -30 40 q-20 -10 -30 -40 Z M-40 0 q20 -20 0 -40 q-20 -20 0 -40" fill="none" stroke="#8E7E62" stroke-width="9"/>`);
+    const right = aDusk(53, { sky: ['#5A3E8A', '#F6A85A'], ground: '#C08A50', hills: '#8E6A6E' }) + pil(1060, 700, 0.75) + pil(1260, 690, 0.95);
+    const lion = `<path d="M-70 -140 Q-80 -40 -60 60 L-50 240 H-10 L0 120 L10 240 H50 L60 60 Q80 -40 70 -140 Z" fill="#EDE2C8" stroke="#0D0A07" stroke-width="6"/><path d="M-70 -150 Q-80 -260 0 -270 Q80 -260 70 -150 Q40 -120 0 -120 Q-40 -120 -70 -150 Z" fill="#EDE2C8" stroke="#0D0A07" stroke-width="6"/><circle cx="-60" cy="-262" r="18" fill="#EDE2C8" stroke="#0D0A07" stroke-width="5"/><circle cx="60" cy="-262" r="18" fill="#EDE2C8" stroke="#0D0A07" stroke-width="5"/><ellipse cx="0" cy="-162" rx="40" ry="28" fill="#F3EAD4" stroke="#0D0A07" stroke-width="4"/><path d="M-30 -204 h16 M14 -204 h16" fill="none" stroke="#0D0A07" stroke-width="5"/><path d="M-10 -172 L10 -172 L0 -160 Z" fill="#8E7E62"/>`;
+    const hero = heroBig(Object.assign({ x: 1520, y: 1700, s: 2.9, seed: 3, face: 'surprised', flip: true, la: [-14, -6], ra: [60, 130], armsFront: true, front: (L, R) => g(`translate(${f1(R[0] - 30)} ${f1(R[1] - 70)}) scale(.36)`, lion) }, legsOff));
+    return v2({ left: mTemple(), right, heroSvg: hero, text: 'NO TEMPLE?' });
+  },
+  spiritV2b() {
+    const right = aDusk(59, { sky: ['#5A3E8A', '#F6A85A'], ground: '#C08A50', hills: '#8E6A6E' }) + `<rect x="770" y="0" width="1150" height="1080" fill="#3A2E24" opacity=".35"/>`;
+    const lion = `<path d="M-70 -140 Q-80 -40 -60 60 L-50 240 H-10 L0 120 L10 240 H50 L60 60 Q80 -40 70 -140 Z" fill="#EDE2C8" stroke="#0D0A07" stroke-width="6"/><path d="M-70 -150 Q-80 -260 0 -270 Q80 -260 70 -150 Q40 -120 0 -120 Q-40 -120 -70 -150 Z" fill="#EDE2C8" stroke="#0D0A07" stroke-width="6"/><circle cx="-60" cy="-262" r="18" fill="#EDE2C8" stroke="#0D0A07" stroke-width="5"/><circle cx="60" cy="-262" r="18" fill="#EDE2C8" stroke="#0D0A07" stroke-width="5"/><ellipse cx="0" cy="-162" rx="40" ry="28" fill="#F3EAD4" stroke="#0D0A07" stroke-width="4"/><path d="M-30 -204 h16 M14 -204 h16" fill="none" stroke="#0D0A07" stroke-width="5"/><path d="M-10 -172 L10 -172 L0 -160 Z" fill="#8E7E62"/>`;
+    const hero = heroBig(Object.assign({ x: 1620, y: 1700, s: 2.8, seed: 9, face: 'surprised', flip: true, la: [-14, -6], ra: [-14, -6] }, legsOff));
+    return v2({ left: mTemple(), right, heroSvg: hero + g('translate(1120 720) scale(1.35)', lion), extra: redCircle(1120, 640, 200, 330), text: '40,000 YEARS' });
+  },
+  govV2() {
+    const crownS = `<path d="M-60 30 L-66 -30 L-34 0 L0 -46 L34 0 L66 -30 L60 30 Z" fill="#F2C443" stroke="#0D0A07" stroke-width="5"/>`;
+    const right = aSavanna(61) + hut(1830, 640, 0.8) + person({ x: 1200, y: 960, s: 1.25, t: 1, seed: 21, beard: true, face: 'worried', bob: 0, la: [-14, -6], ra: [-120, -150], holdR: e => g(`translate(${f1(e[0])} ${f1(e[1])}) rotate(20)`, `<path d="M0 0 L20 -160 Q30 -200 60 -190 Q80 -170 50 -140 L16 4 Z" fill="#8E5A3A" stroke="#0D0A07" stroke-width="5"/>`), front: () => g('translate(0 -440) scale(.7) rotate(-14)', crownS) });
+    const hero = heroBig(Object.assign({ x: 1560, y: 1700, s: 2.9, seed: 3, face: 'laugh', flip: true, la: [-80, -95], ra: [-14, -6] }, legsOff));
+    return v2({ left: mParliament(), right, heroSvg: hero, extra: redCircle(1200, 470, 110, 90), text: 'NO KINGS?' });
+  },
+  govV2b() {
+    const right = aSavanna(67) + hut(1300, 640, 0.6) + [[1080, 1000, 0.7], [1240, 1030, 0.75], [1040, 860, 0.6]].map(([x, y, k], i) => person({ x, y, s: k, t: 1, seed: 3 + i * 4, face: 'laugh', bob: 0, hip: 50, ll: [118, 8], rl: [106, -2], la: [40, 80], ra: [40, 80] })).join('');
+    const hero = heroBig(Object.assign({ x: 1560, y: 1700, s: 2.9, seed: 21, face: 'think', flip: true, hairC: '#3C2A1E', la: [-14, -6], ra: [150, -150], armsFront: true }, legsOff));
+    return v2({ left: mParliament(), right, heroSvg: hero, text: 'WHO RULED?' });
+  },
+  wedV2() {
+    const flowers = [[-30, -150], [20, -170], [50, -130], [-10, -110], [30, -95]].map(([x, y], i) => `<path d="M0 0 L${x * 0.6} ${y * 0.7}" stroke="#4E7A32" stroke-width="6"/>` + g(`translate(${x} ${y})`, [0, 1, 2, 3, 4].map(k => `<circle cx="${f1(Math.cos(k * 1.26) * 14)}" cy="${f1(Math.sin(k * 1.26) * 14)}" r="11" fill="${['#F28CA0', '#F2C443', '#B58FD0', '#FFFFFF', '#E05A4E'][i]}" stroke="#0D0A07" stroke-width="2"/>`).join('') + `<circle r="7" fill="#FFF3C4"/>`)).join('');
+    const right = aDusk(71, { sky: ['#7A4AAE', '#F6B27A'], ground: '#C99A5A', hills: '#A07A6E' }) + `<ellipse cx="1250" cy="900" rx="420" ry="120" fill="#F28C28" opacity=".3"/>` + fire(1250, 890, 0.5, 0.6) + person({ x: 1100, y: 990, s: 0.85, t: 1, seed: 3, face: 'laugh', bob: 0, hip: 50, ll: [118, 8], rl: [106, -2], la: [40, 80], ra: [40, 80] }) + g('translate(1250 560)', heart(1.2));
+    const hero = heroBig(Object.assign({ x: 1560, y: 1700, s: 2.9, seed: 5, long: true, flip: true, hairC: '#4A2E17', face: 'laugh', la: [-14, -6], ra: [60, 150], armsFront: true, front: (L, R) => g(`translate(${f1(R[0] - 10)} ${f1(R[1] - 10)}) scale(.6)`, flowers) }, legsOff));
+    return v2({ left: mRing(), right, heroSvg: hero, text: 'NO WEDDING?' });
+  },
+  wedV2b() {
+    const right = aSavanna(77) + hut(1800, 640, 0.8) + [[1050, 'happy', 14, true], [1200, 'laugh', 3, false], [1350, 'laugh', 5, true]].map(([x, f, sd, lg]) => person({ x, y: 980, s: 0.8, t: 1, seed: sd, long: lg, keepHair: lg && sd === 14, hairC: sd === 14 ? '#B9B2A6' : lg ? C.hair2 : C.hair, face: f, bob: 0, la: [-14, -6], ra: [-60, -80] })).join('') + g('translate(1200 560)', heart(0.9));
+    const hero = heroBig(Object.assign({ x: 1600, y: 1700, s: 2.8, seed: 21, face: 'think', flip: true, hairC: '#3C2A1E', la: [-14, -6], ra: [150, -150], armsFront: true }, legsOff));
+    return v2({ left: mRing(), right, heroSvg: hero, text: 'MARRIED HOW?' });
+  },
   wedRef() {
     let bg = thumbNight({ seed: 71, moonX: 1600, moonY: 200, sky: ['#7A6AAE', '#F6B27A'], hills: '#A07A6E', ground: '#C99A5A', stars: 10 });
     bg += `<ellipse cx="1350" cy="880" rx="560" ry="140" fill="#F28C28" opacity=".28"/>` + fire(1350, 880, 0.55, 0.6);
