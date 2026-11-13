@@ -74,4 +74,4 @@ All the code is in `src/brain-freeze.js` (one file). The new pieces are also sav
 
 ## Rebuild
 
-`./build.sh` regenerates the voice, renders 974 frames (about an hour on 4 CPU cores with software WebGL; add `?sub=1` for a fast draft), mixes and masters the audio, and encodes both versions.
+`./build.sh` regenerates the voice, renders 974 frames (about 70 minutes on 4 CPU cores with software WebGL; add `?sub=1` for a fast draft), mixes and masters the audio, and encodes both versions.

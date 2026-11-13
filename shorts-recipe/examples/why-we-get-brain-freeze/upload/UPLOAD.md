@@ -48,7 +48,13 @@ why do we get brain freeze, brain freeze, ice cream headache, cold stimulus head
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | The stab: eyes squeezed shut, teeth clenched, hand clamped to his temple, caption "a stabbing pain" | **Main pick.** Everyone knows that face |
+| `thumbnail-alt-frost.jpg` | Frost cracks spreading across his forehead | Curiosity angle; caption "into your forehead" |
+| `thumbnail-alt-vessels.jpg` | The vessels in the roof of the mouth flooding red | Science angle |
+| `thumbnail-alt-cafeteria.jpg` | A fast eater frozen mid-scoop, share prompt visible | Relatable/group angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
