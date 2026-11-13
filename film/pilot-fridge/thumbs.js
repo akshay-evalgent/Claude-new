@@ -105,6 +105,27 @@ function leafBed(x, y, s = 1) {
 function mozzie(x, y, s = 1) { return g(`translate(${x} ${y}) scale(${s})`, `<path d="M0 0 L40 6" ${S} stroke-width="3"/><ellipse cx="-4" cy="-12" rx="16" ry="6" fill="#EAF2F5" stroke="${C.ink}" stroke-width="2.5" transform="rotate(-30)"/><ellipse cx="6" cy="-12" rx="16" ry="6" fill="#EAF2F5" stroke="${C.ink}" stroke-width="2.5" transform="rotate(30)"/><ellipse rx="15" ry="6" fill="#3C3330"/><path d="M-6 4 l-10 16 M2 5 l-4 18 M8 4 l6 16" ${S} stroke-width="2.5"/>`); }
 
 const THUMBS = {
+  wedRef() {
+    let bg = thumbNight({ seed: 71, moonX: 1600, moonY: 200, sky: ['#7A6AAE', '#F6B27A'], hills: '#A07A6E', ground: '#C99A5A', stars: 10 });
+    bg += `<ellipse cx="1350" cy="880" rx="560" ry="140" fill="#F28C28" opacity=".28"/>` + fire(1350, 880, 0.55, 0.6);
+    bg += person({ x: 1200, y: 990, s: 0.95, t: 1, seed: 3, face: 'laugh', bob: 0, hip: 50, ll: [118, 8], rl: [106, -2], la: [40, 80], ra: [40, 80] }) + person({ x: 1500, y: 990, s: 0.9, t: 1, seed: 5, long: true, hairC: C.hair2, face: 'laugh', bob: 0, hip: 50, ll: [118, 8], rl: [106, -2], la: [40, 80], ra: [40, 80], flip: true });
+    bg += g('translate(1350 560)', heart(1.2));
+    bg += [[1000, 0.8, 14, true], [1720, 0.8, 21, false], [1840, 0.6, 9, true]].map(([x, k, sd, lg]) => person({ x, y: 980, s: k, t: 1, seed: sd, long: lg, keepHair: true, hairC: '#B9B2A6', face: 'happy', bob: 0, la: [-14, -6], ra: [14, 6], flip: x > 1350 })).join('');
+    const flowers = [[-30, -150], [20, -170], [50, -130], [-10, -110], [30, -95]].map(([x, y], i) => `<path d="M0 0 L${x * 0.6} ${y * 0.7}" stroke="#4E7A32" stroke-width="6"/>` + g(`translate(${x} ${y})`, [0, 1, 2, 3, 4].map(k => `<circle cx="${f1(Math.cos(k * 1.26) * 14)}" cy="${f1(Math.sin(k * 1.26) * 14)}" r="11" fill="${['#F28CA0', '#F2C443', '#B58FD0', '#FFFFFF', '#E05A4E'][i]}" ${S} stroke-width="2"/>`).join('') + `<circle r="7" fill="#FFF3C4"/>`)).join('');
+    let fg = heroBig(Object.assign({ x: 560, y: 1780, s: 3.35, seed: 3, face: 'laugh', la: [-24, -12], ra: [60, 150], armsFront: true,
+      front: (L, R) => g(`translate(${f1(R[0] + 10)} ${f1(R[1] - 10)}) scale(.55)`, flowers) }, legsOff));
+    return { bg, fg, text: thumbText(['NO WEDDING?'], 960, 215, 230, 'middle', 1780) };
+  },
+  wedAlt() {
+    let bg = thumbWorld({ seed: 77, sunX: 520, sunY: 240, sky: ['#6FBDE6', '#E6F4F2'] });
+    bg += hut(260, 650, 0.9) + hut(900, 640, 0.7);
+    bg += [[300, 'happy', 14, true], [460, 'laugh', 3, false], [760, 'laugh', 5, true], [920, 'happy', 21, false]].map(([x, f, sd, lg]) => person({ x, y: 980, s: 0.85, t: 1, seed: sd, long: lg, hairC: lg ? C.hair2 : C.hair, face: f, bob: 0, la: [-14, -6], ra: [-60, -80], flip: x > 610 })).join('');
+    bg += g('translate(610 760)', meat(0.6, 4)) + g('translate(610 560)', heart(0.8));
+    const ring = `<ellipse cx="0" cy="20" rx="80" ry="80" fill="none" stroke="#E6B33C" stroke-width="22"/><ellipse cx="0" cy="20" rx="80" ry="80" fill="none" ${S} stroke-width="4"/><path d="M-30 -60 L0 -110 L30 -60 L0 -40 Z" fill="#DCEFF7" ${S} stroke-width="4"/>`;
+    let fg = heroBig(Object.assign({ x: 1380, y: 1700, s: 3.0, seed: 21, face: 'think', flip: true, hairC: '#3C2A1E', la: [-14, -6], ra: [60, 130], armsFront: true,
+      front: (L, R) => g(`translate(${f1(R[0] - 30)} ${f1(R[1] - 70)}) scale(.75)`, ring.replace('stroke-width="22"', 'stroke-width="34"')) }, legsOff));
+    return { bg, fg, text: thumbText(['MARRIED HOW?'], 960, 215, 230, 'middle', 1780) };
+  },
   govRef() {
     let bg = thumbWorld({ seed: 61, sunX: 1500, sunY: 230, sky: ['#6FBDE6', '#E6F4F2'] });
     bg += hut(1780, 640, 0.9) + hut(1080, 625, 0.55);

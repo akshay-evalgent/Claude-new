@@ -1,0 +1,237 @@
+# How Did Ancient Humans Get Married?
+# Same format as film/fridge-full/script.txt. Facts checked 2026-11-13; see SOURCES.md.
+
+= hook open
+Picture a modern wedding. >> wedding {} push
++ The dress. The rings. The cake. >> wedding {"cake":true} [960,600,1.2,1.3]
++ The vows, and a piece of paper that makes it official. ~0.2 >> wedding {"paper":true} push
+In the United States, the average wedding now costs about thirty four thousand dollars. >> card {"lines":["$34,000"],"icon":"ring"} push
++ That's for around a hundred and seventeen guests, at nearly three hundred dollars each. ~0.2 >> wedding {"cake":true} pull
++ And yet people keep doing it, all over the world. ~0.2 >> worldMap {"pins":["tanzania","arctic","amazon","australia","borneo","namibia","andes","plains"]} push
+Anthropologists have found some kind of marriage in every known human culture. >> card {"lines":["EVERY","CULTURE"],"icon":"ring"} push
++ So where did it begin? ~0.2 >> think {"q1":"@begin","q2":"NEVER"} push
+Now take time back fifty thousand years. ~0.15 >> rewind {} [960,540,1.02,1.08]
+A young woman and a young man sit together by the fire. >> couple {} push
+No rings. >> card {"lines":["NO RINGS."],"icon":"ring"} push
++ No priest. No paper. >> card {"lines":["NO PAPER."],"icon":"ring"} push
++ No wedding at all. ~0.15 >> card {"lines":["NO WEDDING."],"icon":"ring"} push
+So how did two people become a couple? >> couple {"heart":true} push
++ And who got to decide? ~0.2 >> couple {"family":true} pull
+Now your brain is probably saying, >> brain {} [960,520,1,1.06]
++ Cavemen? That's easy. A man hit a woman over the head with a club, >> objection {"l1":"CAVEMEN?","l2":"Club, then drag."} [960,540,1,1.05]
++ and dragged her home by the hair. >> cartoonCave {} push
+At least, that's what we assume. >> assume {} [900,640,1,1.06]
+But that picture doesn't come from archaeology. >> cartoonCave {"frame":true} push
+It grew out of Victorian theories about marriage by capture, >> cartoonCave {"frame":true} [960,560,1.2,1.3]
++ dreamed up by a Scottish lawyer in the eighteen sixties, who never studied a hunter-gatherer society. >> research {"text":"JOHN McLENNAN, 1865"} push
+Then novels and films turned it into a joke, like Buster Keaton's comedy The Three Ages, in nineteen twenty three. >> film {} push
++ There's no evidence for it at all. ~0.2 >> card {"lines":["NO","EVIDENCE"],"icon":"magnifier"} push
+The real story is far more interesting. >> dig {"found":"bones"} push
++ It involves love that shows up in almost every culture on Earth. >> couple {"heart":true} push
++ Ancient family trees, rebuilt from DNA. >> familyTree {"step":1} push
++ And something so important, it may have helped create human society itself. ~0.3 >> card {"lines":["THE","IN-LAWS"],"icon":"heart"} push
+
+= apes curious
+To understand human marriage, start with how our cousins pair up. >> card {"lines":["OUR","COUSINS"],"icon":"leaf"} push
+Gibbons usually live as pairs. >> apePairs {"mode":"gibbon"} push
++ A male and a female, singing duets together in the trees. ~0.2 >> apePairs {"mode":"gibbon","sing":true} push
+Though even gibbons aren't always perfectly faithful. ~0.2 >> apePairs {"mode":"gibbon"} [960,600,1.2,1.3]
+Gorillas usually live in groups with one big adult male and several females, though some groups have more than one male. >> apePairs {"mode":"gorilla"} push
+Chimpanzees and bonobos live in bigger mixed groups, with no lasting couples. ~0.2 >> apePairs {"mode":"chimp"} push
+And there's a clue in their bodies. >> card {"lines":["A CLUE"],"icon":"magnifier"} push
+In species where males compete hard for mates, males tend to be much bigger than females. >> sizeChart {"step":1} push
+A male gorilla can weigh about twice as much as a female, or more. >> sizeChart {"step":2} push
++ Male chimps are about thirty percent heavier. >> sizeChart {"step":2} [700,600,1.2,1.3]
++ And men are only about fifteen percent heavier than women, on average. ~0.2 >> sizeChart {"step":3} push
+That puts us somewhere in between. >> sizeChart {"step":3} [1300,560,1.2,1.3]
++ Not quite gibbons. Not quite gorillas. ~0.2 >> apePairs {"mode":"gibbon"} pull
+Humans are flexible. >> card {"lines":["FLEXIBLE"],"icon":"heart"} push
++ But one thing keeps showing up, again and again. ~0.2 >> couple {"heart":true} push
++ Pairs. ~0.3 >> card {"lines":["PAIRS."],"icon":"heart"} push
+
+= love warm
+Why do humans pair up? >> think {"q1":"@pair","q2":"NEVER"} push
++ Part of the answer seems to be in the brain. >> brainKid {"step":1} push
+Scientists have studied two kinds of small rodents called voles. >> voles {} push
++ Prairie voles often form long-lasting pairs. >> voles {"pair":true} push
++ Their cousins, meadow voles, don't. ~0.2 >> voles {"pair":true,"meadow":true} push
+In two thousand four, researchers added extra receptors for a hormone called vasopressin to one reward area in the brains of male meadow voles. >> lab {"phase":"test"} push
++ Those males started preferring to stay close to one familiar partner. >> voles {"pair":true,"change":true} push
++ They spent much more time huddled side by side with her, rather than with a stranger. ~0.25 >> voles {"pair":true,"change":true} [960,700,1.3,1.4]
+Humans are much more complicated than voles. >> card {"lines":["MORE","COMPLICATED"],"icon":"magnifier"} push
++ But it shows the urge to bond can be built into the brain. ~0.25 >> brainKid {"step":1} push
+And what about love? >> card {"lines":["LOVE?"],"icon":"heart"} push
+Some people think romantic love is a modern invention. >> card {"lines":["MODERN?"],"icon":"magnifier"} push
+In nineteen ninety two, two anthropologists searched the records of a hundred and sixty six cultures around the world. >> worldMap {"pins":["tanzania","arctic","amazon","australia","borneo","namibia","andes","plains"]} push
+They found evidence of romantic love in a hundred and forty seven of them. ~0.2 >> loveChart {} push
++ For the rest, they suspected the records just had gaps. ~0.25 >> loveChart {"q":true} push
+Love songs. Love poems. Couples who ran away together. ~0.2 >> couple {"heart":true} push
+In the British Museum, there's a small carving from near Bethlehem, about eleven thousand years old. >> map {"region":"bethlehem","label":"NEAR BETHLEHEM"} push
+It's made from a single pebble, about ten centimetres tall, >> sakhri {} push
++ and shows two people in a close embrace. ~0.2 >> sakhri {"glow":true} push
+It looks different from every angle. >> sakhri {"glow":true} [960,560,1.2,1.3]
++ And it's often called the oldest known image of a couple. ~0.3 >> sakhri {"glow":true} [960,520,1.3,1.4]
+
+= why curious
+But love alone doesn't explain marriage. >> card {"lines":["NOT JUST","LOVE"],"icon":"heart"} push
++ Something else matters too. >> card {"lines":["SOMETHING","ELSE"],"icon":"magnifier"} push
++ Human babies. ~0.2 >> alloCare {"step":1} push
+A human baby is helpless for years. >> alloCare {"step":1} [960,600,1.3,1.4]
++ And raising one takes a huge amount of food and work. ~0.2 >> alloCare {"step":2} push
+A mother with a baby can't easily do it all alone. >> alloCare {"step":2} [960,600,1.2,1.3]
+Grandmothers help. Older children help. >> alloCare {"step":3} push
++ And in many societies, fathers help a lot too. ~0.2 >> dadCare {} push
+Among the Aka of Central Africa, fathers are within arm's reach of their babies for about half of each day. >> map {"region":"aka","label":"THE AKA"} push
++ Holding them, playing with them, comforting them. ~0.25 >> dadCare {"aka":true} push
+Some researchers think care like this helped favour lasting pair bonds. >> card {"lines":["LASTING","PAIRS"],"icon":"heart"} push
++ Two adults, sharing the work of raising children who take so long to grow up. ~0.3 >> parents {} push
+
+= foragers warm
+So what did marriage look like among hunter-gatherers? >> think {"q1":"@marriage","q2":"NEVER"} push
+Among the Hadza of Tanzania, marriages usually aren't arranged, and there's no ceremony at all. >> map {"region":"tanzania","label":"THE HADZA"} push
+A couple counts as married once they start living together. ~0.2 >> hadzaHut {} push
++ That's it. No party. No paperwork. ~0.2 >> hadzaHut {"pair":true} push
+And if it doesn't work out? >> think {"q1":"@work","q2":"NEVER"} push
++ They can separate, just as simply. >> walkAway {"family":true} push
+Divorce is fairly common, especially in the first years, and most Hadza adults marry more than once. >> hadzaHut {"pair":true} [960,700,1.2,1.3]
++ And only about four percent of marriages have more than one wife. ~0.25 >> card {"lines":["~4%"],"icon":"ring"} push
+When the anthropologist Frank Marlowe asked Hadza people what they wanted in a husband or wife, >> research {"text":"FRANK MARLOWE"} push
++ the answers were very practical. >> card {"lines":["VERY","PRACTICAL"],"icon":"meat"} push
+Both men and women said good character mattered most. >> wishList {"step":1} push
++ Women also cared about intelligence, and about a man being a good forager. >> wishList {"step":2} push
++ Men also cared about a wife who worked hard. ~0.2 >> wishList {"step":3} push
+Body size hardly mattered. Only one woman out of forty six said she wanted someone big. ~0.25 >> card {"lines":["1 IN 46"],"icon":"heart"} push
+In the Kalahari, the Ju'hoansi had another custom. >> map {"region":"namibia","label":"THE JU/'HOANSI"} push
++ It's called bride service. >> brideService {} push
+After the wedding, the young husband moved in with his wife's family, >> brideService {"move":true} push
++ and hunted for them, often for several years, sometimes as long as ten. ~0.25 >> brideService {"hunt":true} push
+After that, the couple could choose which family to live with. >> brideService {"hunt":true} [1300,700,1.2,1.3]
+First marriages were often arranged by parents. >> couple {"family":true} push
+But in the famous book Nisa, a Ju'hoansi woman remembers running away from early husbands she didn't want. >> nisa {} push
++ Divorce was possible, and was often started by the wife. >> walkAway {"family":true} push
++ Close to half of first marriages ended that way. ~0.25 >> walkAway {"family":true} [1300,760,1.2,1.3]
+And in many societies, marriage brought a surprising new rule. >> card {"lines":["A NEW","RULE"],"icon":"heart"} push
++ Keep your distance from your mother-in-law. ~0.2 >> inlawAvoid {} push
+Speakers of the Dyirbal language in Queensland, Australia, traditionally avoided talking directly to certain in-laws, or looking them in the eye. >> inlawAvoid {"talk":true} push
++ And when they were nearby, people switched to a special mother-in-law language, with the same grammar, but a whole different set of words. ~0.3 >> inlawAvoid {"talk":true} [960,600,1.2,1.3]
+
+= dna wonder
+For marriages long ago, we can't ask anyone. >> card {"lines":["WE CAN'T","ASK"],"icon":"magnifier"} push
++ But we can read their DNA. ~0.2 >> dna {} push
+Remember the two boys buried at Sungir, in Russia, about thirty four thousand years ago? >> sungir {"beads":true} push
+When scientists read the DNA of four people buried there, >> dna {"read":true} push
++ none were more closely related than second cousins. ~0.2 >> dna {"read":true} [960,560,1.2,1.3]
+Even though people lived in small bands, they seem to have found partners from a much wider network. ~0.3 >> bandNet {} push
+Neanderthals were different. >> card {"lines":["NEANDERTHALS"],"icon":"bone"} push
+In a cave in Siberia, scientists read the DNA of a group of Neanderthals, about fifty four thousand years old. >> map {"region":"siberia","label":"CHAGYRSKAYA CAVE"} push
++ Thirteen individuals in all. And among them, a father and his teenage daughter. >> neanderFamily {} push
+They seem to have lived in tiny communities of about ten to twenty people. >> neanderFamily {"group":true} push
++ And the DNA suggests the women were the ones who more often moved between groups. ~0.25 >> neanderFamily {"move":true} push
+In a nearby cave, there was a girl scientists call Denny. >> card {"lines":["DENNY"],"icon":"heart"} push
++ Her mother was a Neanderthal. Her father was a Denisovan, a different kind of human altogether. ~0.25 >> denny {} push
+About ninety thousand years ago, two different human groups met, and had a child. >> denny {"child":true} push
++ She lived to at least thirteen. And her Denisovan father had some Neanderthal ancestors of his own. ~0.2 >> denny {"child":true} [960,700,1.2,1.3]
++ All of this came from one small fragment of her bone. ~0.3 >> dna {"read":true} pull
+Then the farmers came, and their graves tell us even more. >> card {"lines":["FAMILY","TREES"],"icon":"heart"} push
+At Gurgy, in France, about six thousand seven hundred years ago, people were buried together as one big family. >> map {"region":"gurgy","label":"GURGY"} push
+Scientists read the DNA of ninety four people, and rebuilt a family tree of sixty four relatives. >> familyTree {"step":1} push
++ Seven generations long. >> familyTree {"step":2} push
+The men were mostly born there. >> familyTree {"step":3} push
++ Most of the women came from somewhere else. ~0.2 >> familyTree {"step":4} push
+And the grown-up daughters are almost missing. They seem to have moved away, to marry into other communities. ~0.25 >> familyTree {"step":4} [1300,560,1.2,1.3]
+There were no half-brothers or half-sisters at all, which suggests couples mostly stayed together. ~0.25 >> familyTree {"step":2} pull
+At Hazleton North, in England, a stone tomb about five thousand seven hundred years old held five generations of one family. >> map {"region":"hazleton","label":"HAZLETON NORTH"} push
+Most of them descended from one man, and four women with whom he had children. ~0.2 >> familyTree {"step":5} push
+And in the Lech valley in southern Germany, about four thousand years ago, >> map {"region":"lech","label":"LECH VALLEY"} push
++ most of the women had grown up far away, perhaps hundreds of kilometres. >> womenTravel {} push
++ They were often buried with rich jewellery. ~0.2 >> womenTravel {} [960,700,1.2,1.3]
+These households also included poorer, unrelated people, a sign that inequality had arrived too. ~0.2 >> granaryKing {"guard":true} push
+They carried new ideas, and new connections, with them. ~0.3 >> womenTravel {"links":true} push
+
+= ways curious
+So what's the natural way for humans to marry? >> think {"q1":"@natural","q2":"NEVER"} push
++ There isn't one. ~0.25 >> card {"lines":["THERE","ISN'T ONE"],"icon":"ring"} push
+In one famous survey of more than twelve hundred societies, >> worldMap {"pins":["tanzania","arctic","amazon","australia","borneo","namibia","andes","plains"]} push
++ about eighty five percent allowed a man to have more than one wife. >> marriageChart {"step":1} push
+Yet even in those societies, most men had just one. ~0.2 >> marriageChart {"step":2} push
+About fifteen percent allowed only one spouse. >> marriageChart {"step":3} push
++ And just four allowed a woman to have more than one husband. >> marriageChart {"step":4} push
++ Though later researchers found dozens more societies where it sometimes happened. ~0.2 >> marriageChart {"step":4} [1100,780,1.2,1.3]
+In the mountains of northwest Nepal, among the Nyinba, a group of brothers traditionally married one wife together, keeping the family farm in one piece. >> map {"region":"nepal","label":"THE NYINBA"} push
+And among the Mosuo of southwest China, couples traditionally keep separate homes. >> map {"region":"yunnan","label":"THE MOSUO"} push
+In what's called a walking marriage, the man visits at night, >> mosuo {} push
++ and children grow up in their mother's household, often with their uncles helping to raise them. >> mosuo {"home":true} push
++ Many fathers are still involved, and the custom is changing. ~0.25 >> mosuo {"home":true} [960,700,1.2,1.3]
+Marriage usually came with gifts. >> card {"lines":["GIFTS"],"icon":"gold"} push
+In about two thirds of societies, the groom's family gave gifts or wealth to the bride's family. That's called bridewealth. >> giftChart {"step":1} push
++ A dowry, where wealth goes with the bride, appears in fewer than four percent. ~0.25 >> giftChart {"step":2} push
+
+= written cold
+Then marriage got written down. >> card {"lines":["WRITTEN","DOWN"],"icon":"book"} push
+Some of the oldest marriage agreements we know come from the ancient Near East, pressed into clay. >> tablet {"signs":true} push
+One tablet, written about four thousand years ago by Assyrian merchants in what is now Turkey, >> tablet {"signs":true} [960,560,1.3,1.4]
++ even said what would happen if the couple had no child within two years. ~0.25 >> tablet {"signs":true} [960,560,1.5,1.6]
+Hammurabi's laws, about three thousand seven hundred and fifty years old, set rules for marriage gifts, dowries and divorce. >> lawStele {"step":2} push
+In ancient Egypt, marriage seems to have been a private arrangement, not a religious ceremony. >> map {"region":"egypt","label":"EGYPT"} push
++ The words for it meant something like founding a house. ~0.2 >> egyptHome {} push
+Women kept the property they brought into a marriage, and either partner could start a divorce. >> egyptHome {"papyrus":true} push
++ After a divorce, a woman could take back her own property, plus a share of what the couple had built up together. ~0.25 >> egyptHome {"papyrus":true} [1300,500,1.2,1.3]
+The Romans gave us something many people still use. >> card {"lines":["THE","ROMANS"],"icon":"ring"} push
++ Betrothal rings. >> rings {} push
+A Roman writer, Aulus Gellius, reported an old claim that a delicate nerve ran from the fourth finger of the left hand, straight to the heart. >> rings {"vein":true} push
++ It isn't true. But many people still wear a wedding ring on that finger. ~0.25 >> rings {"vein":true} [960,600,1.3,1.4]
+And sometimes the past leaves us something very tender. >> card {"lines":["TENDER"],"icon":"heart"} push
+In two thousand seven, near Mantua in Italy, archaeologists found two young people buried about six thousand years ago, >> map {"region":"mantua","label":"VALDARO"} push
++ facing each other, with their arms around each other. >> valdaro {} push
+They were only about eighteen to twenty years old. >> valdaro {} [960,560,1.2,1.3]
++ They're known as the Lovers of Valdaro, and you can still see them in a museum in Mantua. ~0.25 >> valdaro {} pull
+In Modena, two people buried hand in hand about fifteen hundred years ago turned out to both be men. >> modena {} push
++ Nobody knows what their relationship was. But someone chose to bury them together. ~0.3 >> modena {} [960,560,1.2,1.3]
+
+= lovematch warm
+For most of history, though, marriage wasn't mainly about love. >> card {"lines":["NOT ABOUT","LOVE?"],"icon":"heart"} push
+The historian Stephanie Coontz found that marriage was usually about property, alliances and work. >> research {"text":"STEPHANIE COONTZ"} push
++ She said she was surprised how unanimous people were, until the late seventeen hundreds, that love was not a good reason to marry. ~0.25 >> card {"lines":["LOVE?","NOT A GOOD REASON"],"icon":"heart"} push
++ Land. Money. Connections between families. ~0.2 >> couple {"family":true} push
+The idea that you should marry mainly for love >> couple {"heart":true} push
++ only became the ideal in Western Europe and North America from the late seventeen hundreds. ~0.25 >> timeBar2 {"step":3,"none":"MARRIAGE FOR FAMILY","yes":"MARRY FOR LOVE"} [1700,640,1.3,1.4]
+Many wedding traditions are newer than you'd think. >> wedding {} push
+When Queen Victoria married in eighteen forty, she wore white silk and lace, and helped make white wedding dresses fashionable. >> wedding {"dress":true} push
++ She chose English lace on purpose, to help lace makers in Devon. ~0.2 >> wedding {"dress":true} [840,600,1.3,1.4]
++ And the diamond engagement ring took off after a copywriter came up with a famous slogan in nineteen forty seven. >> rings {"diamond":true} push
++ A diamond is forever. >> rings {"diamond":true} [960,520,1.3,1.4]
++ In nineteen ninety nine, an advertising magazine named it the slogan of the century. ~0.3 >> rings {"diamond":true} pull
+
+= twist wonder
+So what was marriage really for? >> think {"q1":"@for","q2":"NEVER"} push
++ Here's one powerful idea. ~0.2 >> card {"lines":["ONE","BIG IDEA"],"icon":"heart"} push
+Think back to the chimps. >> apePairs {"mode":"chimp"} push
+A chimp has no lasting partner, >> apePairs {"mode":"chimp"} [960,700,1.2,1.3]
++ so it has no in-laws. ~0.25 >> card {"lines":["NO","IN-LAWS"],"icon":"heart"} push
+But when humans formed lasting pairs, something new appeared. >> couple {"family":true} push
+Your partner's parents. Their brothers and sisters. Their whole band. >> inlawWeb {"step":1} push
++ Suddenly, they were family too. ~0.25 >> inlawWeb {"step":2} push
+The primatologist Bernard Chapais argues that this was a turning point, and that recognising in-laws is uniquely human. >> research {"text":"BERNARD CHAPAIS"} push
+Marriages linked one band to another. >> bandNet {} push
++ And groups linked by marriage became relatives, which made peaceful ties between them possible. ~0.25 >> bandNet {"links":true} push
+In the Kalahari, people also kept gift-exchange partners in faraway camps. >> bandNet {"links":true} [960,560,1.2,1.3]
+In the nineteen seventies, the average person had about sixteen of them, some two hundred kilometres away, >> hxaroMap {} push
++ and spent around three months a year visiting. ~0.25 >> hxaroMap {} [960,560,1.2,1.3]
+Marriages and friendships like these built bridges between groups. ~0.2 >> inlawWeb {"step":3} push
+Seen this way, marriage wasn't just about two people. >> couple {"heart":true} push
++ It was how separate bands became one big human network. ~0.3 >> bandNet {"links":true} pull
+
+= end warm
+Today, weddings are bigger and fancier than ever. >> wedding {"cake":true} push
++ Rings, dresses, flowers, cakes. >> wedding {"dress":true} [960,600,1.2,1.3]
+And yet, the oldest parts are still there. >> card {"lines":["STILL","THERE"],"icon":"ring"} push
++ Two families, meeting each other. >> inlawWeb {"step":2} push
++ A feast. Gifts. Promises. ~0.2 >> feast {} push
++ And the hope that two people will look after each other. ~0.25 >> couple {"heart":true} push
+Fifty thousand years ago, >> rewind {} [960,540,1.04,1.1]
++ a young couple sat together by the fire. >> couple {} push
+They had no rings. No paper. No cake. >> card {"lines":["NO RINGS."],"icon":"ring"} push
++ But when they got together, two families became one, >> inlawWeb {"step":2} push
++ and two bands became friends. ~0.3 >> bandNet {"links":true} push
+You marry one person. >> wedding {} push
++ They married into a whole world. >> bandNet {"links":true} [960,600,1.2,1.0]
