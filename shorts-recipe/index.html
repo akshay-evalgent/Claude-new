@@ -139,7 +139,7 @@ nav.toc a:focus-visible, a:focus-visible { outline: 2px solid var(--void); outli
   <h1>The 3D explainer shorts recipe</h1>
   <p class="lede">Script, voice, sound, look, camera, transitions and captions, taken from 20 shorts with 0.2M to 19M views. Each rule is backed by a measurement or a frame you can see below.</p>
   <nav class="toc" aria-label="Sections">
-    <a href="#script">Script</a><a href="#voice">Voice and sound</a><a href="#look">Look</a><a href="#camera">Camera and transitions</a><a href="#devices">Visual devices</a><a href="#captions">Captions</a><a href="#build">Build one</a><a href="#check">Checklist</a>
+    <a href="#script">Script</a><a href="#voice">Voice and sound</a><a href="#look">Look</a><a href="#camera">Camera and transitions</a><a href="#devices">Visual devices</a><a href="#captions">Captions</a><a href="#engage">Engagement</a><a href="#build">Build one</a><a href="#check">Checklist</a>
   </nav>
 </header>
 
@@ -420,8 +420,43 @@ nav.toc a:focus-visible, a:focus-visible { outline: 2px solid var(--void); outli
 <hr>
 
 <!-- ============ BUILD ============ -->
+<section id="engage">
+  <p class="eyebrow">07 · Engagement</p>
+  <h2>Give every viewer something to do: rewatch, comment, send</h2>
+  <p class="col">Learnings from our own Why We Yawn short. Retention gets a short shown; comments and shares get it shown to new people. Build all three into the video and the upload, not as an afterthought.</p>
+  <div class="two">
+    <div class="stack">
+      <h3>1 · A loop nobody notices</h3>
+      <p>End on a word that needs the opening line to finish the sentence, so the replay sounds like the same video carrying on. A seamless loop pushes average percentage viewed toward 90–100%.</p>
+      <ul class="rules">
+        <li><span>"…got brain freeze twice as often as kids who ate slowly, <strong>because</strong>" → "When you slurp something icy too fast…"</span></li>
+        <li><span>"…<strong>And the moment it happens…</strong>" → "your jaw drops…"</span></li>
+      </ul>
+      <p class="note">Generate the voice reading the last line straight on into the first, then cut right after the bridge word. That way the narrator doesn't drop his pitch as if the video were over. Cut back to the opening picture for the final half-second, and pick a music tempo so the runtime is a whole number of bars.</p>
+    </div>
+    <div class="stack">
+      <h3>2 · A comment trigger</h3>
+      <p>Pin a comment that asks a personal, one-tap question about what the viewer just felt. It's almost impossible not to answer.</p>
+      <ul class="rules">
+        <li><span>"Be honest: did you yawn while watching this?"</span></li>
+        <li><span>"Be honest: did your forehead hurt just watching this? 🧊"</span></li>
+        <li><span>Either/or questions work too: "Worst brain freeze: slushie, ice cream or milkshake?"</span></li>
+      </ul>
+      <h3>3 · A share prompt</h3>
+      <p>Relatable facts get tagged. Put one on-screen line in the last third that names who to send it to.</p>
+      <ul class="rules">
+        <li><span>"Send this to someone and see if they yawn"</span></li>
+        <li><span>"Send this to someone who eats ice cream way too fast"</span></li>
+      </ul>
+      <p class="note">Keep it at the top of the frame, away from the captions, in the caption font.</p>
+    </div>
+  </div>
+</section>
+
+<hr>
+
 <section id="build">
-  <p class="eyebrow">07 · Build one</p>
+  <p class="eyebrow">08 · Build one</p>
   <h2>Worked example: an original 34-second mechanism short</h2>
   <p class="col">A new topic written to the recipe, with a shot sheet you can hand to an animator. Title: <strong>Why Your Fingers Wrinkle In Water 🤔</strong></p>
   <div class="script">
@@ -474,7 +509,7 @@ ffmpeg -i render.mp4 -vf "ass=captions.ass" -c:a copy final.mp4</pre>
 
 <!-- ============ CHECKLIST ============ -->
 <section id="check">
-  <p class="eyebrow">08 · Before you publish</p>
+  <p class="eyebrow">09 · Before you publish</p>
   <h2>Checklist</h2>
   <div class="two">
     <ul class="check">
@@ -483,7 +518,9 @@ ffmpeg -i render.mp4 -vf "ass=captions.ass" -c:a copy final.mp4</pre>
       <li><span>Question answered by 20–30%, then a "But" opens the next one.</span></li>
       <li><span>At least one concrete number in the script.</span></li>
       <li><span>Last line is the payoff; the video ends within 1 s of it.</span></li>
-      <li><span>Last line reads naturally into the first line.</span></li>
+      <li><span>Last line reads naturally into the first line, ideally ending on a bridge word ("because", "and the moment…").</span></li>
+      <li><span>Pinned comment asks a one-tap personal question ("Be honest: did you…?").</span></li>
+      <li><span>An on-screen share prompt in the last third names who to send it to.</span></li>
     </ul>
     <ul class="check">
       <li><span>A new shot or big camera change every 2–3 s; no locked-off shots longer than that.</span></li>
