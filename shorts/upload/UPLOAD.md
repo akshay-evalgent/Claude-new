@@ -2,6 +2,8 @@
 
 Post **one per day, in this order**, at the same time each day. Every block below is ready to copy.
 
+> **v2 re-cuts (based on YouTube's analytics of the first Short):** every video below except #1 (the car, already posted) now opens on its most emotional moment with bold on-screen hook text, gets to the payoff fast (20–37s instead of 40–56s), and ends on a line that loops back into the opening. Lengths and fallback frames are updated. **Pin the comment right after posting, and reply to the first comments in the first hour.** Targets after 48h: **≥75% stayed to watch** and **≥90% average viewed**.
+
 ## Settings (same for every video)
 
 | Setting | Value |
@@ -56,9 +58,9 @@ emotional, true story, heartwarming, late wife, widower, car restoration, car de
 
 ---
 
-## 2. The 9/11 baby (`02_911_baby.mp4`, 55s)
+## 2. The 9/11 baby (`02_911_baby.mp4`, 30s)
 
-**Thumbnail:** `thumbnails/02_911_baby.jpg` (fallback frame **0:49**)
+**Thumbnail:** `thumbnails/02_911_baby.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -92,9 +94,9 @@ Subscribe for a true story every day that restores your faith in people. ❤️
 
 ---
 
-## 3. The airman father (`03_airman_dad.mp4`, 55s)
+## 3. The airman father (`03_airman_dad.mp4`, 28s)
 
-**Thumbnail:** `thumbnails/03_airman_dad.jpg` (fallback frame **0:41**)
+**Thumbnail:** `thumbnails/03_airman_dad.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -128,9 +130,9 @@ father daughter reunion, long lost father, reunion, emotional reunion, dna test,
 
 ---
 
-## 4. Grandpa's Ferrari (`04_grandpa_ferrari.mp4`, 37s)
+## 4. Grandpa's Ferrari (`04_grandpa_ferrari.mp4`, 30s)
 
-**Thumbnail:** `thumbnails/04_grandpa_ferrari.jpg` (fallback frame **0:32**)
+**Thumbnail:** `thumbnails/04_grandpa_ferrari.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -164,9 +166,9 @@ ferrari, ferrari 330, classic ferrari, 1968 ferrari, grandpa, late grandpa, gran
 
 ---
 
-## 5. A house for mom (`05_mom_house.mp4`, 31s)
+## 5. A house for mom (`05_mom_house.mp4`, 21s)
 
-**Thumbnail:** `thumbnails/05_mom_house.jpg` (fallback frame **0:27**)
+**Thumbnail:** `thumbnails/05_mom_house.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -200,9 +202,9 @@ surprised mom with a house, bought my mom a house, gift for mom, mom surprise, b
 
 ---
 
-## 6. Birth mom in Vietnam (`06_vietnam_mom.mp4`, 50s)
+## 6. Birth mom in Vietnam (`06_vietnam_mom.mp4`, 35s)
 
-**Thumbnail:** `thumbnails/06_vietnam_mom.jpg` (fallback frame **0:45**)
+**Thumbnail:** `thumbnails/06_vietnam_mom.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -236,9 +238,9 @@ adoption reunion, adoptee, birth mother, meeting my birth mom, adopted from viet
 
 ---
 
-## 7. Grandpa's home makeover (`07_grandpa_home.mp4`, 43s)
+## 7. Grandpa's home makeover (`07_grandpa_home.mp4`, 27s)
 
-**Thumbnail:** `thumbnails/07_grandpa_home.jpg` (fallback frame **0:17**)
+**Thumbnail:** `thumbnails/07_grandpa_home.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -272,9 +274,9 @@ home makeover, house transformation, free roof, roof replacement, metal roof, ru
 
 ---
 
-## 8. The veteran's truck (`08_veteran_truck.mp4`, 46s)
+## 8. The veteran's truck (`08_veteran_truck.mp4`, 27s)
 
-**Thumbnail:** `thumbnails/08_veteran_truck.jpg` (fallback frame **0:40**)
+**Thumbnail:** `thumbnails/08_veteran_truck.jpg` (fallback frame **0:01**)
 
 **Title**
 ```

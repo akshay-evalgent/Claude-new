@@ -2,6 +2,12 @@
  "title": "27 YEARS Later, They Found Mom's Family 😭💔",
  "source": "jJ9BdRKIFS8",
  "credit": "Credit: Kyle Le Dot Net",
+ "speed": 1.18,
+ "hook": {
+  "text": "*27 years* searching for their mom…",
+  "until": 3.0,
+  "color": "red"
+ },
  "beats": [
   {
    "type": "clip",
@@ -18,11 +24,14 @@
      "len": 2.3,
      "push": 0.1
     }
-   ]
+   ],
+   "captions": false,
+   "impact": true,
+   "auto_tail": false
   },
   {
    "type": "vo",
-   "text": "*27* years ago, two baby brothers were given up for adoption in Vietnam.",
+   "text": "Two baby brothers were adopted from Vietnam. *27* years later, they asked Kyle to find their birth mom.",
    "shots": [
     {
      "in": 20.5,
@@ -33,44 +42,7 @@
      "frame": "card"
     },
     {
-     "in": 32.5,
-     "frame": "card"
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "Different families adopted them… but they grew up just *three hours* apart, and met up once a year.",
-   "shots": [
-    {
-     "in": 42.5,
-     "frame": "card"
-    },
-    {
-     "in": 44.5,
-     "frame": "full",
-     "fx": 0.5
-    },
-    {
-     "in": 46.5,
-     "frame": "card"
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "They always wanted to find their *birth* mom. So Kyle, a YouTuber who reunites families, went to her village.",
-   "shots": [
-    {
-     "in": 48.5,
-     "frame": "card"
-    },
-    {
      "in": 52.5,
-     "frame": "card"
-    },
-    {
-     "in": 56.5,
      "frame": "card"
     },
     {
@@ -81,7 +53,7 @@
   },
   {
    "type": "vo",
-   "text": "Then he got her family on a *video call*…",
+   "text": "He found her family… and put them on a *video call*.",
    "shots": [
     {
      "in": 1246.0,
@@ -115,7 +87,7 @@
    "type": "clip",
    "in": 1290.6,
    "out": 1294.3,
-   "impact": true,
+   "impact": false,
    "shots": [
     {
      "in": 1289.5,
@@ -140,6 +112,21 @@
      "fx": 0.8,
      "cy": 0.23,
      "len": 2.2
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "Because their mom…",
+   "pre": 0.0,
+   "post": 0.0,
+   "shots": [
+    {
+     "in": 1271.0,
+     "frame": "card",
+     "zoom": 2.2,
+     "fx": 0.8,
+     "cy": 0.23
     }
    ]
   }

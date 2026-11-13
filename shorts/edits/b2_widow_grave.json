@@ -2,7 +2,29 @@
  "title": "She Was Living At Her Husband's GRAVE 😭💔",
  "source": "adxRtmamWnQ",
  "credit": "Credit: CBS News / Steve Hartman",
+ "speed": 1.18,
+ "hook": {
+  "text": "She was living at her husband's *grave*.",
+  "until": 3.2,
+  "color": "red"
+ },
  "beats": [
+  {
+   "type": "clip",
+   "in": 145.0,
+   "out": 147.2,
+   "captions": false,
+   "impact": true,
+   "auto_tail": false,
+   "db": -18,
+   "shots": [
+    {
+     "frame": "full",
+     "in": 145.0
+    }
+   ],
+   "mute": true
+  },
   {
    "type": "clip",
    "in": 38.35,
@@ -12,13 +34,8 @@
   },
   {
    "type": "vo",
-   "text": "After *26* years of marriage, she spent their house money on his grave instead… with a bench, so she could sit with him.",
+   "text": "She spent their house money on his grave… then got *evicted*, and moved into the cemetery.",
    "shots": [
-    {
-     "in": 30.5,
-     "frame": "full",
-     "fx": 0.5
-    },
     {
      "in": 28.5,
      "frame": "card"
@@ -27,23 +44,6 @@
      "in": 54.5,
      "frame": "card"
     },
-    {
-     "in": 58.5,
-     "frame": "full",
-     "fx": 0.5
-    }
-   ]
-  },
-  {
-   "type": "clip",
-   "in": 53.9,
-   "out": 56.2,
-   "frame": "card"
-  },
-  {
-   "type": "vo",
-   "text": "Then she lost her job, got *evicted*… and moved into the cemetery.",
-   "shots": [
     {
      "in": 9.0,
      "frame": "card",
@@ -62,13 +62,6 @@
   },
   {
    "type": "clip",
-   "in": 81.0,
-   "out": 84.2,
-   "frame": "card",
-   "fx": 0.55
-  },
-  {
-   "type": "clip",
    "in": 90.5,
    "out": 97.2,
    "frame": "full",
@@ -77,7 +70,7 @@
   },
   {
    "type": "vo",
-   "text": "A local police officer found her… and started a *fundraiser*.",
+   "text": "A police officer started a fundraiser. *20* days later, she had a home of her own.",
    "shots": [
     {
      "in": 104.5,
@@ -87,26 +80,9 @@
      "in": 116.5,
      "frame": "full",
      "fx": 0.5
-    }
-   ]
-  },
-  {
-   "type": "clip",
-   "in": 109.1,
-   "out": 113.6,
-   "frame": "full",
-   "fx": 0.62
-  },
-  {
-   "type": "vo",
-   "text": "In just *20* days, she went from the cemetery… to a home of her own.",
-   "shots": [
-    {
-     "in": 126.5,
-     "frame": "card"
     },
     {
-     "in": 128.5,
+     "in": 126.5,
      "frame": "card"
     },
     {
@@ -136,17 +112,14 @@
    ]
   },
   {
-   "type": "clip",
-   "in": 145.0,
-   "out": 148.5,
-   "captions": false,
-   "db": -20,
-   "impact": true,
+   "type": "vo",
+   "text": "And the man who found her…",
+   "pre": 0.0,
+   "post": 0.0,
    "shots": [
     {
-     "in": 145.0,
-     "frame": "full",
-     "fx": 0.5
+     "in": 143.5,
+     "frame": "full"
     }
    ]
   }

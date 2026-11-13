@@ -13,8 +13,10 @@ Post **one per day in this order**. Settings are the same as `UPLOAD.md`:
 
 ---
 
-## 1. The Corvette growl (`b3_01_corvette_growl.mp4`, 51s)
-**Thumbnail:** `thumbnails_b3/b3_01_corvette_growl.jpg` (fallback frame **0:00**)
+> **v2 re-cuts (based on YouTube's analytics of the first Short):** every video below now opens on its most emotional moment with bold on-screen hook text, gets to the payoff fast (20–37s instead of 40–56s), and ends on a line that loops back into the opening. Lengths and fallback frames are updated. **Pin the comment right after posting, and reply to the first comments in the first hour.** Targets after 48h: **≥75% stayed to watch** and **≥90% average viewed**.
+
+## 1. The Corvette growl (`b3_01_corvette_growl.mp4`, 33s)
+**Thumbnail:** `thumbnails_b3/b3_01_corvette_growl.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -46,8 +48,8 @@ corvette, c4 corvette, 1990 corvette, late wife, widower, barn find, car restora
 
 ---
 
-## 2. Florence, 97 (`b3_02_florence_97.mp4`, 40s)
-**Thumbnail:** `thumbnails_b3/b3_02_florence_97.jpg` (fallback frame **0:25**)
+## 2. Florence, 97 (`b3_02_florence_97.mp4`, 24s)
+**Thumbnail:** `thumbnails_b3/b3_02_florence_97.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -79,8 +81,8 @@ Subscribe for a true story every day that restores your faith in people. ❤️
 
 ---
 
-## 3. The Navy father (`b3_03_navy_father.mp4`, 56s)
-**Thumbnail:** `thumbnails_b3/b3_03_navy_father.jpg` (fallback frame **0:20**)
+## 3. The Navy father (`b3_03_navy_father.mp4`, 37s)
+**Thumbnail:** `thumbnails_b3/b3_03_navy_father.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -112,8 +114,8 @@ father son reunion, long lost father, amerasian, us navy, subic bay, philippines
 
 ---
 
-## 4. The headstand camera (`b3_04_river_camera360.mp4`, 46s)
-**Thumbnail:** `thumbnails_b3/b3_04_river_camera360.jpg` (fallback frame **0:35**)
+## 4. The headstand camera (`b3_04_river_camera360.mp4`, 32s)
+**Thumbnail:** `thumbnails_b3/b3_04_river_camera360.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -145,8 +147,8 @@ river finds, lost camera, insta360, found underwater, man plus river, underwater
 
 ---
 
-## 5. The Firebird (`b3_05_firebird_dad.mp4`, 48s)
-**Thumbnail:** `thumbnails_b3/b3_05_firebird_dad.jpg` (fallback frame **0:34**)
+## 5. The Firebird (`b3_05_firebird_dad.mp4`, 34s)
+**Thumbnail:** `thumbnails_b3/b3_05_firebird_dad.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -178,8 +180,8 @@ Her reaction when it started 😂❤️ Tag someone whose dad loves his car more
 
 ---
 
-## 6. The door nobody answered (`b3_06_lonely_neighbor.mp4`, 52s)
-**Thumbnail:** `thumbnails_b3/b3_06_lonely_neighbor.jpg` (fallback frame **0:22**)
+## 6. The door nobody answered (`b3_06_lonely_neighbor.mp4`, 36s)
+**Thumbnail:** `thumbnails_b3/b3_06_lonely_neighbor.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -211,8 +213,8 @@ home makeover, house transformation, rudan brothers, free roof, metal roof, lone
 
 ---
 
-## 7. Anna's family (`b3_07_anna_vietnam.mp4`, 51s)
-**Thumbnail:** `thumbnails_b3/b3_07_anna_vietnam.jpg` (fallback frame **0:00**)
+## 7. Anna's family (`b3_07_anna_vietnam.mp4`, 32s)
+**Thumbnail:** `thumbnails_b3/b3_07_anna_vietnam.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -244,8 +246,8 @@ adoption reunion, adoptee, adopted from vietnam, birth family, birth mother, vie
 
 ---
 
-## 8. Papaw's skid steer (`b3_08_papaw_skidsteer.mp4`, 44s)
-**Thumbnail:** `thumbnails_b3/b3_08_papaw_skidsteer.jpg` (fallback frame **0:09**)
+## 8. Papaw's skid steer (`b3_08_papaw_skidsteer.mp4`, 31s)
+**Thumbnail:** `thumbnails_b3/b3_08_papaw_skidsteer.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -277,8 +279,8 @@ veteran surprise, salvation army, grandpa surprise, skid steer, kubota, bobcat, 
 
 ---
 
-## 9. The famous birth dad (`b3_09_mcdonald_dad.mp4`, 43s)
-**Thumbnail:** `thumbnails_b3/b3_09_mcdonald_dad.jpg` (fallback frame **0:05**)
+## 9. The famous birth dad (`b3_09_mcdonald_dad.mp4`, 30s)
+**Thumbnail:** `thumbnails_b3/b3_09_mcdonald_dad.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -310,8 +312,8 @@ Imagine asking your birth dad what he does… and it's THIS. 😳🎸 What would
 
 ---
 
-## 10. The orphan who found his dad (`b3_10_orphan_father.mp4`, 54s)
-**Thumbnail:** `thumbnails_b3/b3_10_orphan_father.jpg` (fallback frame **0:49**)
+## 10. The orphan who found his dad (`b3_10_orphan_father.mp4`, 32s)
+**Thumbnail:** `thumbnails_b3/b3_10_orphan_father.jpg` (fallback frame **0:01**)
 
 **Title**
 ```

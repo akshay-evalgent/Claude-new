@@ -2,17 +2,32 @@
  "title": "Paralyzed Bride SURPRISED Her Groom 😭",
  "source": "YeBHwGq1Zmc",
  "credit": "Credit: Happily",
+ "speed": 1.18,
+ "hook": {
+  "text": "He thought she'd be in a *wheelchair*.",
+  "until": 3.2,
+  "color": "pink"
+ },
  "beats": [
   {
    "type": "clip",
-   "in": 7.5,
-   "out": 11.5,
-   "frame": "full",
-   "fx": 0.5
+   "in": 102.0,
+   "out": 104.2,
+   "captions": false,
+   "impact": true,
+   "auto_tail": false,
+   "db": -15,
+   "shots": [
+    {
+     "frame": "full",
+     "fx": 0.45,
+     "in": 102.0
+    }
+   ]
   },
   {
    "type": "vo",
-   "text": "While she was pregnant, she suddenly *collapsed*… and woke up paralyzed from the hips down.",
+   "text": "While pregnant, she collapsed… and woke up *paralyzed* from the hips down.",
    "shots": [
     {
      "in": 15.0,
@@ -40,7 +55,7 @@
   },
   {
    "type": "vo",
-   "text": "Her wedding was just months away. So she made a *secret* plan… to walk down the aisle.",
+   "text": "But she made a *secret* plan for her wedding… and only four people knew.",
    "shots": [
     {
      "in": 48.5,
@@ -54,22 +69,6 @@
     },
     {
      "in": 76.5,
-     "frame": "full",
-     "fx": 0.5
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "Even the *groom* didn't know. He thought she'd be in her wheelchair.",
-   "shots": [
-    {
-     "in": 80.5,
-     "frame": "full",
-     "fx": 0.5
-    },
-    {
-     "in": 83.5,
      "frame": "full",
      "fx": 0.5
     }
@@ -102,19 +101,15 @@
    ]
   },
   {
-   "type": "clip",
-   "in": 116.85,
-   "out": 124.0,
+   "type": "vo",
+   "text": "And when the groom saw her…",
+   "pre": 0.0,
+   "post": 0.0,
    "shots": [
     {
-     "in": 109.5,
-     "frame": "card",
-     "len": 3.0
-    },
-    {
-     "in": 121.0,
+     "in": 101.0,
      "frame": "full",
-     "fx": 0.5
+     "fx": 0.45
     }
    ]
   }

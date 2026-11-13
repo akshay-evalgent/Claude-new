@@ -2,17 +2,31 @@
  "title": "97 Years Old… She Couldn't Afford To Fix Her Home 😭💔",
  "source": "hVdTiVeYnTU",
  "credit": "Credit: RUDAN Brothers",
- "shot_defaults": {
-  "card": {
-   "zoom": 1.6,
-   "cy": 0.35
-  },
-  "full": {
-   "full_zoom": 1.5,
-   "fy": 0.33
-  }
+ "speed": 1.18,
+ "hook": {
+  "text": "She's *97*… and couldn't afford to fix her home.",
+  "until": 3.2,
+  "color": "red"
  },
  "beats": [
+  {
+   "type": "clip",
+   "in": 3373.9,
+   "out": 3376.0,
+   "captions": false,
+   "impact": true,
+   "auto_tail": false,
+   "db": -14,
+   "shots": [
+    {
+     "in": 3373.9,
+     "frame": "full",
+     "fx": 0.42,
+     "fy": 0.35,
+     "full_zoom": 1.4
+    }
+   ]
+  },
   {
    "type": "clip",
    "in": 0.0,
@@ -29,27 +43,7 @@
   },
   {
    "type": "vo",
-   "text": "She's *97*. She lost three sons during COVID… and lives with the only one she has left.",
-   "shots": [
-    {
-     "in": 37.49,
-     "frame": "full",
-     "fx": 0.62,
-     "fy": 0.42,
-     "full_zoom": 1.8
-    },
-    {
-     "in": 16.3,
-     "frame": "full",
-     "fx": 0.55,
-     "fy": 0.33,
-     "full_zoom": 1.8
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "Their house was falling apart. The city ordered repairs… or they'd send their own contractors, and send them the *bill*.",
+   "text": "The city ordered repairs she couldn't *afford*. So a roofing crew fixed everything… for free.",
    "shots": [
     {
      "in": 22.82,
@@ -58,33 +52,10 @@
      "cy": 0.5
     },
     {
-     "in": 24.45,
-     "frame": "card"
-    },
-    {
      "in": 104.32,
      "frame": "card",
      "zoom": 1.0,
      "cy": 0.5
-    },
-    {
-     "in": 109.21,
-     "frame": "card",
-     "zoom": 1.0,
-     "cy": 0.5
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "There was no way they could afford it. So a roofing crew offered to fix everything… for *free*.",
-   "shots": [
-    {
-     "in": 30.97,
-     "frame": "full",
-     "fx": 0.56,
-     "fy": 0.42,
-     "full_zoom": 1.8
     },
     {
      "in": 52.16,
@@ -101,29 +72,12 @@
    ]
   },
   {
-   "type": "clip",
-   "in": 29.6,
-   "out": 31.2,
-   "shots": [
-    {
-     "in": 32.6,
-     "frame": "full",
-     "fx": 0.6,
-     "fy": 0.5,
-     "full_zoom": 1.6,
-     "len": 1.6
-    }
-   ]
-  },
-  {
    "type": "vo",
-   "text": "Then, on the final day… they showed her the *house*.",
+   "text": "On the final day, they showed her the *house*.",
    "shots": [
     {
      "in": 3311.25,
-     "frame": "card",
-     "zoom": 1.2,
-     "cy": 0.4
+     "frame": "card"
     },
     {
      "in": 3335.9,
@@ -136,7 +90,7 @@
   {
    "type": "clip",
    "in": 3369.8,
-   "out": 3375.5,
+   "out": 3373.9,
    "impact": true,
    "shots": [
     {
@@ -169,5 +123,15 @@
     }
    ]
   }
- ]
+ ],
+ "shot_defaults": {
+  "card": {
+   "zoom": 1.6,
+   "cy": 0.35
+  },
+  "full": {
+   "full_zoom": 1.5,
+   "fy": 0.33
+  }
+ }
 }

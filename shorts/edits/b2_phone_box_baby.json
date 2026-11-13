@@ -2,28 +2,32 @@
  "title": "He Found A Baby In A PHONE BOX 😭💔",
  "source": "1sk670GyxtQ",
  "credit": "Credit: Good Morning Britain (ITV)",
- "shot_defaults": {
-  "card": {
-   "zoom": 1.35,
-   "cy": 0.4
-  },
-  "full": {
-   "full_zoom": 1.35,
-   "fy": 0.38
-  }
+ "speed": 1.18,
+ "hook": {
+  "text": "He found her in a *phone box* in 1994.",
+  "until": 3.2,
+  "color": "red"
  },
  "beats": [
   {
    "type": "clip",
-   "in": 185.1,
-   "out": 186.5,
-   "frame": "full",
-   "fx": 0.6,
-   "text": "I asked, can I *keep* her? No, you can't."
+   "in": 466.5,
+   "out": 468.6,
+   "captions": false,
+   "impact": true,
+   "auto_tail": false,
+   "db": -15,
+   "shots": [
+    {
+     "frame": "full",
+     "fx": 0.6,
+     "in": 466.5
+    }
+   ]
   },
   {
    "type": "vo",
-   "text": "In 1994, he found a newborn baby *abandoned* in a London phone box… her umbilical cord still attached.",
+   "text": "She was a newborn, abandoned. He asked to *keep* her… but they said no.",
    "shots": [
     {
      "in": 13.0,
@@ -44,21 +48,6 @@
    ]
   },
   {
-   "type": "vo",
-   "text": "He wasn't allowed to keep her. But she grew up reading about him.",
-   "shots": [
-    {
-     "in": 72.5,
-     "frame": "full",
-     "fx": 0.45
-    },
-    {
-     "in": 252.5,
-     "frame": "card"
-    }
-   ]
-  },
-  {
    "type": "clip",
    "in": 105.35,
    "out": 110.7,
@@ -67,7 +56,7 @@
   },
   {
    "type": "vo",
-   "text": "22 years later, she launched an appeal to find him… and he came forward within *24 hours*.",
+   "text": "22 years later, she found him… and now she calls him *Dad*.",
    "shots": [
     {
      "in": 30.5,
@@ -87,27 +76,9 @@
   },
   {
    "type": "clip",
-   "in": 303.75,
+   "in": 307.25,
    "out": 311.7,
    "frame": "card"
-  },
-  {
-   "type": "vo",
-   "text": "Now he's a bus driver, working through two *knee* replacements. So she raised 20,000 pounds… to help him retire.",
-   "shots": [
-    {
-     "in": 366.5,
-     "frame": "card"
-    },
-    {
-     "in": 396.5,
-     "frame": "card"
-    },
-    {
-     "in": 420.0,
-     "frame": "card"
-    }
-   ]
   },
   {
    "type": "clip",
@@ -123,7 +94,7 @@
    "out": 466.45,
    "frame": "full",
    "fx": 0.6,
-   "impact": true
+   "impact": false
   },
   {
    "type": "clip",
@@ -131,5 +102,15 @@
    "out": 471.6,
    "frame": "card"
   }
- ]
+ ],
+ "shot_defaults": {
+  "card": {
+   "zoom": 1.35,
+   "cy": 0.4
+  },
+  "full": {
+   "full_zoom": 1.35,
+   "fy": 0.38
+  }
+ }
 }

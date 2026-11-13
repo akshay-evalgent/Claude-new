@@ -2,27 +2,34 @@
  "title": "Their Daughter Died… So Strangers Did THIS 😭💔",
  "source": "pxunUuSogHw",
  "credit": "Credit: RUDAN Brothers",
- "shot_defaults": {
-  "card": {
-   "zoom": 1.25,
-   "cy": 0.42
-  },
-  "full": {
-   "full_zoom": 1.25,
-   "fy": 0.4
-  }
+ "speed": 1.18,
+ "hook": {
+  "text": "Their daughter died *two months* ago…",
+  "until": 3.0,
+  "color": "green"
  },
  "beats": [
   {
    "type": "clip",
-   "in": 4223.95,
-   "out": 4229.1,
-   "frame": "card",
-   "text": "I feel like Catee led you right here just to say thanks for taking care of my *mom* and my brother kind of thing, right?"
+   "in": 4200.6,
+   "out": 4202.6,
+   "captions": false,
+   "impact": true,
+   "auto_tail": false,
+   "db": -15,
+   "shots": [
+    {
+     "frame": "full",
+     "fx": 0.55,
+     "fy": 0.38,
+     "full_zoom": 1.4,
+     "in": 4200.6
+    }
+   ]
   },
   {
    "type": "vo",
-   "text": "This crew offered a stranger free gutters… but in the backyard, she told them *something*.",
+   "text": "A crew offered them free gutters… then, in the backyard, she told them about her *daughter*.",
    "shots": [
     {
      "in": 10.5,
@@ -59,26 +66,7 @@
   },
   {
    "type": "vo",
-   "text": "She died of a heart attack in her sleep… just *two months* earlier.",
-   "shots": [
-    {
-     "in": 4250.5,
-     "frame": "card",
-     "zoom": 1.0,
-     "cy": 0.5
-    },
-    {
-     "in": 165.5,
-     "frame": "full",
-     "fx": 0.45,
-     "fy": 0.45,
-     "full_zoom": 1.7
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "So they didn't just fix the gutters. For *eight* days, they rebuilt the entire house.",
+   "text": "So for *eight* days, they rebuilt their entire house. Then the family turned around…",
    "shots": [
     {
      "in": 544.5,
@@ -99,16 +87,6 @@
     },
     {
      "in": 3239.5,
-     "frame": "card"
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "Then the family turned *around*…",
-   "shots": [
-    {
-     "in": 4157.0,
      "frame": "card"
     },
     {
@@ -133,34 +111,6 @@
   },
   {
    "type": "clip",
-   "in": 4167.2,
-   "out": 4171.0,
-   "mute": true,
-   "captions": false,
-   "shots": [
-    {
-     "in": 4171.0,
-     "frame": "card",
-     "zoom": 1.0,
-     "len": 1.9
-    },
-    {
-     "in": 4189.0,
-     "frame": "card",
-     "zoom": 1.0
-    }
-   ]
-  },
-  {
-   "type": "clip",
-   "in": 4199.7,
-   "out": 4203.0,
-   "frame": "full",
-   "fx": 0.45,
-   "text": "absolutely amazing. I couldn't expect this in my *wildest* dreams."
-  },
-  {
-   "type": "clip",
    "in": 4211.75,
    "out": 4216.5,
    "frame": "card",
@@ -168,18 +118,33 @@
   },
   {
    "type": "clip",
-   "in": 4250.0,
-   "out": 4253.0,
-   "mute": true,
-   "captions": false,
+   "in": 4223.95,
+   "out": 4229.1,
+   "frame": "card",
+   "text": "I feel like Catee led you right here just to say thanks for taking care of my *mom* and my brother kind of thing, right?"
+  },
+  {
+   "type": "vo",
+   "text": "So the second those blindfolds came off…",
+   "pre": 0.0,
+   "post": 0.0,
    "shots": [
     {
-     "in": 4250.0,
+     "in": 4163.5,
      "frame": "card",
-     "zoom": 1.0,
-     "cy": 0.5
+     "zoom": 1.0
     }
    ]
   }
- ]
+ ],
+ "shot_defaults": {
+  "card": {
+   "zoom": 1.25,
+   "cy": 0.42
+  },
+  "full": {
+   "full_zoom": 1.25,
+   "fy": 0.4
+  }
+ }
 }

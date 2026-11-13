@@ -2,28 +2,33 @@
  "title": "Single For 76 YEARS… Then She Threw A Rock 😭",
  "source": "9BVggIvfXnE",
  "credit": "Credit: CBS News / Steve Hartman",
+ "speed": 1.18,
+ "hook": {
+  "text": "Single for *76 years*… then she threw a rock.",
+  "until": 3.2,
+  "color": "yellow"
+ },
  "beats": [
   {
    "type": "clip",
-   "in": 84.0,
-   "out": 89.5,
-   "text": "He was oblivious to her, so she hit him with a *rock*. Literally.",
+   "in": 138.2,
+   "out": 140.4,
+   "captions": false,
+   "impact": true,
+   "auto_tail": false,
+   "db": -15,
    "shots": [
     {
-     "in": 94.5,
-     "frame": "card",
-     "len": 2.6
-    },
-    {
-     "in": 108.3,
      "frame": "full",
-     "fx": 0.5
+     "fx": 0.5,
+     "in": 138.2
     }
-   ]
+   ],
+   "mute": true
   },
   {
    "type": "vo",
-   "text": "He was 65 and had been single his *whole* life. She was 76… and happy alone.",
+   "text": "He was 65 and never married. She was 76. Then they met in *cardiac* rehab.",
    "shots": [
     {
      "in": 10.0,
@@ -37,37 +42,29 @@
      "frame": "card"
     },
     {
-     "in": 40.5,
-     "frame": "card"
-    }
-   ]
-  },
-  {
-   "type": "clip",
-   "in": 15.9,
-   "out": 17.8,
-   "frame": "full",
-   "fx": 0.45,
-   "fy": 0.38,
-   "full_zoom": 1.2
-  },
-  {
-   "type": "clip",
-   "in": 27.75,
-   "out": 31.25,
-   "frame": "full",
-   "fx": 0.5
-  },
-  {
-   "type": "vo",
-   "text": "Then they both ended up in the same *cardiac* rehab… and she noticed his smile.",
-   "shots": [
-    {
      "in": 76.5,
      "frame": "card"
     },
     {
      "in": 74.5,
+     "frame": "full",
+     "fx": 0.5
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "in": 84.0,
+   "out": 89.5,
+   "text": "He was oblivious to her, so she hit him with a *rock*. Literally.",
+   "shots": [
+    {
+     "in": 94.5,
+     "frame": "card",
+     "len": 2.6
+    },
+    {
+     "in": 108.3,
      "frame": "full",
      "fx": 0.5
     }

@@ -2,25 +2,34 @@
  "title": "He Never Knew His Dad… Until This Video Call 😭💔",
  "source": "6YQMq1yxCHY",
  "credit": "Credit: The Leah and Blair Slog",
+ "speed": 1.18,
+ "hook": {
+  "text": "He never knew his *father's* face.",
+  "until": 3.2,
+  "color": "yellow"
+ },
  "beats": [
   {
    "type": "clip",
-   "in": 2487.45,
-   "out": 2495.0,
-   "text": "When my sister told me, I saw my face in you, so I had no doubt that you are my *son*.",
+   "in": 2366.0,
+   "out": 2368.2,
+   "captions": false,
+   "impact": true,
+   "auto_tail": false,
+   "db": -15,
    "shots": [
     {
-     "in": 2487.45,
+     "in": 2366.0,
      "frame": "full",
-     "fx": 0.86,
-     "fy": 0.5,
-     "full_zoom": 1.12
+     "fx": 0.4,
+     "fy": 0.36,
+     "full_zoom": 1.35
     }
    ]
   },
   {
    "type": "vo",
-   "text": "He was born next to a U.S. Navy base in the Philippines… and never knew who his father *was*.",
+   "text": "Born near a U.S. Navy base, he only knew one name: *Chuck*. Then a DNA test found his real dad.",
    "shots": [
     {
      "in": 84.0,
@@ -31,40 +40,11 @@
      "frame": "card"
     },
     {
-     "in": 2362.0,
-     "frame": "full",
-     "fx": 0.4,
-     "fy": 0.36,
-     "full_zoom": 1.35
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "His mom only remembered one name: *Chuck*, an American sailor.",
-   "shots": [
-    {
      "in": 2318.0,
      "frame": "full",
      "fx": 0.55,
      "fy": 0.36,
      "full_zoom": 1.35
-    },
-    {
-     "in": 2296.0,
-     "frame": "card"
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "Then a DNA test found his real father… and his name wasn't Chuck at all.",
-   "shots": [
-    {
-     "in": 2340.0,
-     "frame": "card",
-     "zoom": 1.2,
-     "cy": 0.42
     },
     {
      "in": 2344.0,
@@ -113,8 +93,8 @@
   {
    "type": "clip",
    "in": 2424.45,
-   "out": 2433.85,
-   "impact": true,
+   "out": 2428.0,
+   "impact": false,
    "shots": [
     {
      "in": 2424.45,
@@ -123,28 +103,22 @@
      "zoom": 2.0,
      "fx": 0.2,
      "cy": 0.5,
-     "len": 4.5
-    },
-    {
-     "in": 2429.0,
-     "frame": "full",
-     "fx": 0.86,
-     "fy": 0.5,
-     "full_zoom": 1.12
+     "len": 3.55
     }
    ]
   },
   {
    "type": "clip",
-   "in": 2593.5,
-   "out": 2598.45,
+   "in": 2487.45,
+   "out": 2495.0,
+   "text": "When my sister told me, I saw my face in you, so I had no doubt that you are my *son*.",
    "shots": [
     {
-     "in": 2570.0,
+     "in": 2487.45,
      "frame": "full",
-     "fx": 0.76,
+     "fx": 0.86,
      "fy": 0.5,
-     "len": 4.95
+     "full_zoom": 1.12
     }
    ]
   },
@@ -163,17 +137,6 @@
      "frame": "full",
      "fx": 0.75,
      "fy": 0.5
-    }
-   ]
-  },
-  {
-   "type": "clip",
-   "in": 2949.3,
-   "out": 2950.7,
-   "shots": [
-    {
-     "in": 2950.6,
-     "frame": "card"
     }
    ]
   }

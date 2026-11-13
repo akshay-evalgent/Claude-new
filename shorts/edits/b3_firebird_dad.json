@@ -2,28 +2,33 @@
  "title": "They Said It Wouldn't Start… Then THIS 😭",
  "source": "67BzkY08h6w",
  "credit": "Credit: WD Detailing",
- "shot_defaults": {
-  "card": {
-   "zoom": 1.2,
-   "cy": 0.42
-  }
+ "speed": 1.18,
+ "hook": {
+  "text": "They told him it *wouldn't* start…",
+  "until": 3.0,
+  "color": "yellow"
  },
  "beats": [
   {
    "type": "clip",
-   "in": 2234.2,
-   "out": 2236.1,
+   "in": 2213.0,
+   "out": 2215.2,
+   "captions": false,
+   "impact": true,
+   "auto_tail": false,
+   "db": -15,
    "shots": [
     {
-     "in": 2236.6,
-     "frame": "card",
-     "len": 1.9
+     "in": 2213.0,
+     "frame": "full",
+     "fx": 0.36,
+     "fy": 0.4
     }
    ]
   },
   {
    "type": "vo",
-   "text": "He bought his Firebird brand new in *1986*… but at 83, it had been sitting in his garage for years.",
+   "text": "He bought this Firebird new in 1986. At 83, it hadn't run in *years*.",
    "shots": [
     {
      "in": 33.75,
@@ -45,21 +50,15 @@
   },
   {
    "type": "clip",
-   "in": 89.4,
+   "in": 90.55,
    "out": 98.0,
    "frame": "card",
    "fx": 0.4,
-   "text": "Like, this is his favorite car. He ain't had a smile, like, you know, since he ain't drove it. Like he said, he's 83 years old, so I want to get that *smile* on his face again."
-  },
-  {
-   "type": "clip",
-   "in": 77.1,
-   "out": 79.8,
-   "frame": "card"
+   "text": "He ain't had a smile, like, you know, since he ain't drove it. Like he said, he's 83 years old, so I want to get that *smile* on his face again."
   },
   {
    "type": "vo",
-   "text": "So a detailing crew spent days bringing it back… then told him they couldn't get it *running*.",
+   "text": "So a crew brought it back… then told them they couldn't get it *running*.",
    "shots": [
     {
      "in": 2058.0,
@@ -100,12 +99,13 @@
   },
   {
    "type": "clip",
-   "in": 2226.9,
-   "out": 2230.5,
+   "in": 2234.2,
+   "out": 2236.1,
    "shots": [
     {
-     "in": 2229.4,
-     "frame": "card"
+     "in": 2236.6,
+     "frame": "card",
+     "len": 1.9
     }
    ]
   },
@@ -116,32 +116,30 @@
     {
      "in": 2251.8,
      "frame": "card"
-    }
-   ]
-  },
-  {
-   "type": "clip",
-   "in": 2253.0,
-   "out": 2257.0,
-   "captions": false,
-   "db": -18,
-   "shots": [
+    },
     {
-     "in": 2253.0,
+     "in": 2253.4,
      "frame": "card"
     }
    ]
   },
   {
-   "type": "clip",
-   "in": 2261.2,
-   "out": 2262.8,
+   "type": "vo",
+   "text": "Because the moment that engine started…",
+   "pre": 0.0,
+   "post": 0.0,
    "shots": [
     {
-     "in": 2261.4,
+     "in": 2212.0,
      "frame": "card"
     }
    ]
   }
- ]
+ ],
+ "shot_defaults": {
+  "card": {
+   "zoom": 1.2,
+   "cy": 0.42
+  }
+ }
 }

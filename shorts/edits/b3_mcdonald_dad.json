@@ -2,34 +2,33 @@
  "title": "His Birth Dad Turned Out To Be FAMOUS 😳😭",
  "source": "jxzJk0SRY3I",
  "credit": "Credit: KMOV St. Louis",
- "shot_defaults": {
-  "card": {
-   "zoom": 1.15,
-   "cy": 0.44
-  },
-  "full": {
-   "full_zoom": 1.2,
-   "fy": 0.4
-  }
+ "speed": 1.18,
+ "hook": {
+  "text": "He asked his birth dad *one question*…",
+  "until": 3.0,
+  "color": "yellow"
  },
  "beats": [
   {
    "type": "clip",
    "in": 74.75,
-   "out": 80.7,
+   "out": 77.4,
    "text": "Are you Michael *McDonald*? And he said, yeah, I'm afraid so.",
    "shots": [
     {
      "in": 77.0,
      "frame": "full",
      "fx": 0.62,
-     "len": 5.95
+     "len": 2.65
     }
-   ]
+   ],
+   "captions": false,
+   "impact": true,
+   "auto_tail": false
   },
   {
    "type": "vo",
-   "text": "His birth parents were just *14* when he was born… so he was adopted as a baby.",
+   "text": "His birth parents were *14*, so he was adopted. 58 years later, DNA led him to his father… a musician.",
    "shots": [
     {
      "in": 30.0,
@@ -41,22 +40,7 @@
      "fx": 0.5
     },
     {
-     "in": 32.5,
-     "frame": "full",
-     "fx": 0.5
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "58 years later, a DNA test led him to his birth father… and he asked him what he did for a living.",
-   "shots": [
-    {
      "in": 40.0,
-     "frame": "card"
-    },
-    {
-     "in": 45.0,
      "frame": "card"
     },
     {
@@ -67,20 +51,9 @@
    ]
   },
   {
-   "type": "clip",
-   "in": 54.95,
-   "out": 56.6,
-   "frame": "full",
-   "fx": 0.5
-  },
-  {
    "type": "vo",
-   "text": "His dad was Michael McDonald… of the *Doobie Brothers*. And yes, they share a first name, completely by coincidence.",
+   "text": "Michael McDonald, of the *Doobie Brothers*.",
    "shots": [
-    {
-     "in": 72.5,
-     "frame": "card"
-    },
     {
      "in": 85.0,
      "frame": "full",
@@ -89,11 +62,6 @@
     {
      "in": 87.5,
      "frame": "card"
-    },
-    {
-     "in": 92.5,
-     "frame": "full",
-     "fx": 0.5
     }
    ]
   },
@@ -145,6 +113,28 @@
      "fx": 0.5
     }
    ]
+  },
+  {
+   "type": "vo",
+   "text": "So when he finally asked him…",
+   "pre": 0.0,
+   "post": 0.0,
+   "shots": [
+    {
+     "in": 72.5,
+     "frame": "card"
+    }
+   ]
   }
- ]
+ ],
+ "shot_defaults": {
+  "card": {
+   "zoom": 1.15,
+   "cy": 0.44
+  },
+  "full": {
+   "full_zoom": 1.2,
+   "fy": 0.4
+  }
+ }
 }

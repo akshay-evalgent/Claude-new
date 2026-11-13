@@ -2,28 +2,33 @@
  "title": "He Secretly Built His Mom A House For Her Birthday! 😭❤️",
  "source": "XlIo_XYmhLo",
  "credit": "Credit: @UncleJhonn",
+ "speed": 1.18,
+ "hook": {
+  "text": "She rented for *60 years*… until today.",
+  "until": 3.0,
+  "color": "green"
+ },
  "beats": [
   {
    "type": "clip",
-   "in": 23.45,
-   "out": 26.12,
+   "in": 6.0,
+   "out": 8.0,
+   "captions": false,
+   "impact": true,
+   "auto_tail": false,
+   "db": -15,
    "shots": [
     {
-     "in": 3.0,
+     "in": 6.0,
      "frame": "full",
-     "fx": 0.5,
-     "len": 1.4
-    },
-    {
-     "in": 9.2,
-     "frame": "card",
-     "cy": 0.45
+     "fx": 0.5
     }
-   ]
+   ],
+   "mute": true
   },
   {
    "type": "vo",
-   "text": "So he secretly rebuilt his old house from top to bottom… and his mom had no *idea* it was for her.",
+   "text": "Her son secretly rebuilt his old house… and she thought he was fixing it up to *rent* out.",
    "shots": [
     {
      "in": 13.0,
@@ -45,81 +50,48 @@
    ]
   },
   {
-   "type": "clip",
-   "in": 35.34,
-   "out": 37.85,
-   "frame": "card",
-   "cy": 0.5
-  },
-  {
    "type": "vo",
-   "text": "She raised six kids and rented her whole life. Sixty years, and she had *never* owned a home.",
+   "text": "She raised six kids and never owned a home. So on her *birthday*, he told her to walk inside.",
    "shots": [
     {
      "in": 57.0,
      "frame": "full"
     },
     {
-     "in": 81.0,
-     "frame": "card",
-     "cy": 0.55
-    },
-    {
      "in": 105.5,
      "frame": "full"
     },
-    {
-     "in": 112.5,
-     "frame": "card",
-     "cy": 0.5
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "So on her *birthday*, when she came by just to drop off his kids, he told her to walk through the door.",
-   "shots": [
     {
      "in": 120.6,
      "frame": "full"
     },
     {
-     "in": 128.5,
-     "frame": "card",
-     "cy": 0.5
-    },
-    {
      "in": 142.5,
      "frame": "full"
-    },
-    {
-     "in": 146.5,
-     "frame": "card",
-     "cy": 0.5
     }
    ]
   },
   {
    "type": "clip",
-   "in": 2.9,
+   "in": 4.0,
    "out": 6.0,
    "mute": true,
    "captions": false,
+   "impact": true,
    "shots": [
     {
-     "in": 2.9,
+     "in": 4.0,
      "frame": "full",
      "fx": 0.5
     }
    ],
    "sfx_caps": [
     [
-     0.3,
-     3.0,
+     0.1,
+     1.9,
      "*SHOCKED*"
     ]
-   ],
-   "impact": true
+   ]
   },
   {
    "type": "clip",
@@ -128,16 +100,27 @@
    "text": "I'm able to give my mom a house today, and it's simply because of everything she *taught* me years ago.",
    "shots": [
     {
-     "in": 6.0,
+     "in": 8.0,
      "frame": "full",
      "fx": 0.5,
-     "len": 3.0,
-     "push": 0.1
+     "len": 2.6
     },
     {
      "in": 154.5,
-     "frame": "card",
-     "cy": 0.5
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "And that's the moment she found out…",
+   "pre": 0.0,
+   "post": 0.0,
+   "shots": [
+    {
+     "in": 4.5,
+     "frame": "full",
+     "fx": 0.5
     }
    ]
   }

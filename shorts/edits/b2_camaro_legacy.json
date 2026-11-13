@@ -2,21 +2,33 @@
  "title": "His Grandpa Died Before He Could See It 😭💔",
  "source": "vZKU19CbowI",
  "credit": "Credit: WD Detailing",
+ "speed": 1.18,
+ "hook": {
+  "text": "His grandpa died before he could *see it*.",
+  "until": 3.2,
+  "color": "red"
+ },
  "beats": [
   {
    "type": "clip",
-   "in": 2118.25,
-   "out": 2123.1,
+   "in": 2081.3,
+   "out": 2084.1,
+   "captions": false,
+   "impact": true,
+   "auto_tail": false,
+   "db": -15,
    "shots": [
     {
-     "in": 2118.25,
-     "frame": "card"
+     "in": 80.5,
+     "frame": "card",
+     "len": 2.8,
+     "push": 0.1
     }
    ]
   },
   {
    "type": "vo",
-   "text": "His grandpa had *stage 4* cancer… and the family wanted him to see his Camaro clean one last time.",
+   "text": "His grandpa had stage 4 cancer. The family wanted him to see his Camaro restored… but he *passed away* first.",
    "shots": [
     {
      "in": 6.5,
@@ -34,13 +46,7 @@
     {
      "in": 8.5,
      "frame": "card"
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "But before they could start… he *passed away*.",
-   "shots": [
+    },
     {
      "in": 10.5,
      "frame": "card"
@@ -71,7 +77,7 @@
   },
   {
    "type": "vo",
-   "text": "So the crew restored his car for *free*… every square inch, in his memory.",
+   "text": "So the crew restored it for *free*… in his memory.",
    "shots": [
     {
      "in": 24.5,
@@ -94,19 +100,6 @@
   },
   {
    "type": "clip",
-   "in": 2081.3,
-   "out": 2084.1,
-   "impact": true,
-   "shots": [
-    {
-     "in": 2081.3,
-     "frame": "card",
-     "push": 0.1
-    }
-   ]
-  },
-  {
-   "type": "clip",
    "in": 2138.4,
    "out": 2145.4,
    "shots": [
@@ -118,15 +111,24 @@
   },
   {
    "type": "clip",
-   "in": 2177.2,
-   "out": 2180.0,
-   "mute": true,
-   "captions": false,
+   "in": 2118.25,
+   "out": 2123.1,
    "shots": [
     {
-     "in": 2177.2,
-     "frame": "card",
-     "fx": 0.75
+     "in": 2118.25,
+     "frame": "card"
+    }
+   ]
+  },
+  {
+   "type": "vo",
+   "text": "And when he finally saw it…",
+   "pre": 0.0,
+   "post": 0.0,
+   "shots": [
+    {
+     "in": 2079.5,
+     "frame": "card"
     }
    ]
   }

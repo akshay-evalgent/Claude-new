@@ -2,46 +2,39 @@
  "title": "She'd Never Seen Anyone Who Looked Like Her 😭",
  "source": "c6RQywrfdNQ",
  "credit": "Credit: Kyle Le Dot Net",
+ "speed": 1.18,
+ "hook": {
+  "text": "She'd never seen anyone who *looked* like her.",
+  "until": 3.2,
+  "color": "pink"
+ },
  "beats": [
   {
    "type": "clip",
-   "in": 260.85,
-   "out": 262.75,
+   "in": 653.4,
+   "out": 655.5,
+   "captions": false,
+   "impact": true,
+   "auto_tail": false,
+   "db": -15,
    "shots": [
     {
-     "in": 260.85,
+     "in": 657.0,
      "frame": "card",
      "card_h": 1000,
      "zoom": 2.15,
      "fx": 0.25,
-     "cy": 0.5
+     "cy": 0.5,
+     "len": 2.1
     }
    ]
   },
   {
    "type": "vo",
-   "text": "She was adopted from Vietnam as a baby… and had never met anyone who *looked* like her.",
+   "text": "She was adopted from Vietnam as a baby. Kyle found her birth family… and put them on a *video call*.",
    "shots": [
     {
      "in": 14.5,
-     "frame": "card",
-     "zoom": 1.2,
-     "cy": 0.42
-    },
-    {
-     "in": 29.0,
-     "frame": "card",
-     "zoom": 1.2,
-     "cy": 0.42
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "Her birth certificate named a village. So Kyle went door to door… until he found her *family*.",
-   "shots": [
-    {
-     "in": 43.5,
      "frame": "card",
      "zoom": 1.2,
      "cy": 0.42
@@ -59,20 +52,23 @@
      "cy": 0.42
     },
     {
-     "in": 145.0,
-     "frame": "card",
-     "zoom": 1.2,
-     "cy": 0.42
+     "in": 300.0,
+     "frame": "card"
     }
    ]
   },
   {
-   "type": "vo",
-   "text": "Then he put them on a *video call*.",
+   "type": "clip",
+   "in": 260.85,
+   "out": 262.75,
    "shots": [
     {
-     "in": 300.0,
-     "frame": "card"
+     "in": 260.85,
+     "frame": "card",
+     "card_h": 1000,
+     "zoom": 2.15,
+     "fx": 0.25,
+     "cy": 0.5
     }
    ]
   },
@@ -87,22 +83,6 @@
      "card_h": 610,
      "zoom": 2.0,
      "fx": 0.75,
-     "cy": 0.5
-    }
-   ]
-  },
-  {
-   "type": "clip",
-   "in": 367.0,
-   "out": 370.7,
-   "text": "She says, your mom says, I'm so *emotional* and I miss you so much.",
-   "shots": [
-    {
-     "in": 367.0,
-     "frame": "card",
-     "card_h": 1000,
-     "zoom": 2.15,
-     "fx": 0.8,
      "cy": 0.5
     }
    ]
@@ -134,7 +114,7 @@
   },
   {
    "type": "vo",
-   "text": "Then her mom held up something she had kept… for *25* years.",
+   "text": "Then her mom held up something she'd kept for *25* years.",
    "shots": [
     {
      "in": 638.0,
@@ -176,36 +156,6 @@
      "fx": 0.75,
      "cy": 0.5,
      "len": 3.25
-    }
-   ]
-  },
-  {
-   "type": "clip",
-   "in": 653.4,
-   "out": 654.25,
-   "shots": [
-    {
-     "in": 653.4,
-     "frame": "card",
-     "card_h": 1000,
-     "zoom": 2.15,
-     "fx": 0.25,
-     "cy": 0.5
-    }
-   ]
-  },
-  {
-   "type": "clip",
-   "in": 688.8,
-   "out": 696.6,
-   "shots": [
-    {
-     "in": 688.8,
-     "frame": "card",
-     "card_h": 1000,
-     "zoom": 2.15,
-     "fx": 0.25,
-     "cy": 0.5
     }
    ]
   }

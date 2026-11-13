@@ -181,6 +181,8 @@ Style: Cap,MMCap ExtraBold,{fs},&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,
 Style: Glow,MMCap ExtraBold,{fs},&HFF000000,&HFF000000,&H00000000,&HFF000000,0,0,0,0,100,100,1,0,1,7,0,5,60,60,0,1
 Style: Small,MMCap ExtraBold,30,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,1,0,1,2,1,2,60,60,70,1
 Style: Lower,MMCap Black,40,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,2,0,1,3,1,5,60,60,0,1
+Style: Hook,MMCap Black,74,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,1,0,1,7,3,5,70,70,0,1
+Style: HookGlow,MMCap Black,74,&HFF000000,&HFF000000,&H00000000,&HFF000000,0,0,0,0,100,100,1,0,1,16,0,5,70,70,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -519,6 +521,27 @@ def main():
     extra = []
     if edl.get("credit"):
         extra.append((0.0, total, edl["credit"].upper(), "Small"))
+    hook = edl.get("hook")
+    if hook:
+        # v2: bold on-screen hook sentence over the opening peak moment (YouTube: lock curiosity in 1-2s)
+        col = COLORS[hook.get("color", "yellow")]
+        y = hook.get("y", 470); until = hook.get("until", 3.0)
+        def fmt(txt, glow=False):
+            out = []; on = False
+            for w in txt.upper().split():
+                starts = w.startswith("*"); ends = w.rstrip(".,!?…'\"").endswith("*")
+                hl = on or starts
+                on = (on or starts) and not ends
+                if hl:
+                    core = w.replace("*", "")
+                    out.append((r"{\3c%s\3a&H50&}%s{\3c&H000000&\3a&HFF&}" % (col, core)) if glow
+                               else (r"{\c%s}%s{\c&HFFFFFF&}" % (col, core)))
+                else:
+                    out.append(w if not glow else r"{\3a&HFF&}" + w)
+            return " ".join(out)
+        anim = r"{\an5\pos(%d,%d)\fscx116\fscy116\t(0,170,\fscx100\fscy100)\fad(0,180)}" % (W // 2, y)
+        extra.append((0.0, until, anim + r"{\blur14}" + fmt(hook["text"], glow=True), "HookGlow"))
+        extra.append((0.0, until, anim + fmt(hook["text"]), "Hook"))
     style["extra"] = extra
     build_ass(sorted(cap_events, key=lambda e: e[0]), ass_path, style)
     fonts = os.environ.get("FONTS_DIR", os.path.join(HERE, "fonts"))

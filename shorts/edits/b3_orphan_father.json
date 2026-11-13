@@ -2,47 +2,39 @@
  "title": "Raised In An Orphanage… He Found His Dad At 57 😭💔",
  "source": "UD4lp04bySQ",
  "credit": "Credit: KLTV 7",
- "shot_defaults": {
-  "card": {
-   "zoom": 1.3,
-   "cy": 0.4
-  },
-  "full": {
-   "full_zoom": 1.3,
-   "fy": 0.38
-  }
+ "speed": 1.18,
+ "hook": {
+  "text": "Raised in an orphanage… he never met his *dad*.",
+  "until": 3.2,
+  "color": "red"
  },
  "beats": [
   {
    "type": "clip",
-   "in": 136.35,
-   "out": 139.1,
-   "frame": "full",
-   "fx": 0.55
-  },
-  {
-   "type": "vo",
-   "text": "He grew up in a German orphanage for *19* years… and nobody ever came to pick him up.",
+   "in": 196.3,
+   "out": 199.1,
+   "captions": false,
+   "impact": true,
+   "auto_tail": false,
+   "db": -15,
    "shots": [
     {
-     "in": 40.5,
-     "frame": "card"
-    },
-    {
-     "in": 181.0,
+     "in": 199.8,
      "frame": "full",
-     "fx": 0.5
-    },
-    {
-     "in": 54.0,
-     "frame": "card"
+     "fx": 0.5,
+     "full_zoom": 1.2,
+     "len": 2.8
     }
    ]
   },
   {
    "type": "vo",
-   "text": "Every day, he prayed over a rosary… please, one day, let me meet my *father*.",
+   "text": "He prayed for years to meet his father. Then DNA found a match: a U.S. *veteran*.",
    "shots": [
+    {
+     "in": 40.5,
+     "frame": "card"
+    },
     {
      "in": 162.0,
      "frame": "full",
@@ -52,13 +44,7 @@
      "in": 86.4,
      "frame": "full",
      "fx": 0.5
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "Then a DNA test found a match: a man who served in the military in Germany in *1969*.",
-   "shots": [
+    },
     {
      "in": 64.8,
      "frame": "card"
@@ -71,16 +57,8 @@
    ]
   },
   {
-   "type": "clip",
-   "in": 97.1,
-   "out": 100.85,
-   "frame": "full",
-   "fx": 0.45,
-   "text": "And if I had known that, I would have brought him back to the United States with *me*."
-  },
-  {
    "type": "vo",
-   "text": "So Joshua called him… pretending to be an *insurance* agent.",
+   "text": "So he called him… pretending to sell *insurance*.",
    "shots": [
     {
      "in": 116.1,
@@ -101,8 +79,15 @@
    "frame": "card"
   },
   {
+   "type": "clip",
+   "in": 136.35,
+   "out": 139.1,
+   "frame": "full",
+   "fx": 0.55
+  },
+  {
    "type": "vo",
-   "text": "The DNA test came back *99.9%*.",
+   "text": "The test came back *99.9%*.",
    "shots": [
     {
      "in": 167.4,
@@ -130,7 +115,9 @@
   },
   {
    "type": "vo",
-   "text": "Then his dad walked him into a room… of *60* family members waiting to meet him.",
+   "text": "Then his dad walked him into a room of *60* family members…",
+   "pre": 0.0,
+   "post": 0.0,
    "shots": [
     {
      "in": 70.2,
@@ -146,23 +133,16 @@
      "fx": 0.5
     }
    ]
-  },
-  {
-   "type": "clip",
-   "in": 194.0,
-   "out": 199.6,
-   "shots": [
-    {
-     "in": 194.0,
-     "frame": "full",
-     "fx": 0.4,
-     "len": 3.0
-    },
-    {
-     "in": 199.8,
-     "frame": "card"
-    }
-   ]
   }
- ]
+ ],
+ "shot_defaults": {
+  "card": {
+   "zoom": 1.3,
+   "cy": 0.4
+  },
+  "full": {
+   "full_zoom": 1.3,
+   "fy": 0.38
+  }
+ }
 }

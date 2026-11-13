@@ -2,46 +2,40 @@
  "title": "She Saw Her Late Grandpa's $1,000,000 Ferrari Restored… 😭❤️",
  "source": "cXnXKZQveYA",
  "credit": "Credit: WD Detailing",
+ "speed": 1.18,
+ "hook": {
+  "text": "Her late grandpa's *$1,000,000* Ferrari…",
+  "until": 3.2,
+  "color": "green"
+ },
  "beats": [
   {
    "type": "clip",
-   "in": 60.25,
-   "out": 64.2,
-   "frame": "full",
-   "fx": 0.22
+   "in": 1433.6,
+   "out": 1435.7,
+   "captions": false,
+   "impact": true,
+   "auto_tail": false,
+   "db": -15,
+   "shots": [
+    {
+     "frame": "full",
+     "in": 1433.6
+    }
+   ]
   },
   {
    "type": "vo",
-   "text": "Her grandpa helped *raise* her… and when he passed away, he left behind this Ferrari, worth up to a *million* dollars.",
+   "text": "He helped raise her. After he passed, a crew restored his Ferrari… exactly how he would have *wanted*.",
    "shots": [
     {
      "in": 16.5,
      "frame": "full"
     },
     {
-     "in": 44.5,
-     "frame": "card"
-    },
-    {
      "in": 3.6,
      "frame": "card"
     },
-    {
-     "in": 81.0,
-     "frame": "card"
-    }
-   ]
-  },
-  {
-   "type": "clip",
-   "in": 65.9,
-   "out": 69.05,
-   "frame": "card"
-  },
-  {
-   "type": "vo",
-   "text": "So a detailing crew spent days bringing it back… exactly the way he would have *wanted*.",
-   "shots": [
     {
      "in": 395.0,
      "frame": "full"
@@ -65,13 +59,16 @@
    ]
   },
   {
+   "type": "clip",
+   "in": 60.25,
+   "out": 64.2,
+   "frame": "full",
+   "fx": 0.22
+  },
+  {
    "type": "vo",
-   "text": "But when the garage door finally *opened*…",
+   "text": "Then the garage door *opened*…",
    "shots": [
-    {
-     "in": 1387.5,
-     "frame": "full"
-    },
     {
      "in": 1403.2,
      "frame": "card"
@@ -97,7 +94,7 @@
   {
    "type": "clip",
    "in": 1427.05,
-   "out": 1435.75,
+   "out": 1433.0,
    "shots": [
     {
      "in": 1427.05,
@@ -114,6 +111,18 @@
    "in": 1437.45,
    "out": 1439.1,
    "frame": "full"
+  },
+  {
+   "type": "vo",
+   "text": "And that's when she couldn't hold it in anymore…",
+   "pre": 0.0,
+   "post": 0.0,
+   "shots": [
+    {
+     "in": 1431.0,
+     "frame": "full"
+    }
+   ]
   }
  ]
 }

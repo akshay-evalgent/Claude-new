@@ -16,8 +16,10 @@ Post **one per day in this order**. The settings table in `UPLOAD.md` applies to
 
 ---
 
-## 1. Catee's house (`b2_01_caitie_house.mp4`, 43s)
-**Thumbnail:** `thumbnails_b2/b2_01_caitie_house.jpg` (fallback frame **0:31**)
+> **v2 re-cuts (based on YouTube's analytics of the first Short):** every video below now opens on its most emotional moment with bold on-screen hook text, gets to the payoff fast (20–37s instead of 40–56s), and ends on a line that loops back into the opening. Lengths and fallback frames are updated. **Pin the comment right after posting, and reply to the first comments in the first hour.** Targets after 48h: **≥75% stayed to watch** and **≥90% average viewed**.
+
+## 1. Catee's house (`b2_01_caitie_house.mp4`, 31s)
+**Thumbnail:** `thumbnails_b2/b2_01_caitie_house.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -49,8 +51,8 @@ home makeover, house transformation, rudan brothers, free gutters, roof replacem
 
 ---
 
-## 2. The rock (`b2_02_rock_love.mp4`, 43s)
-**Thumbnail:** `thumbnails_b2/b2_02_rock_love.jpg` (fallback frame **0:40**)
+## 2. The rock (`b2_02_rock_love.mp4`, 34s)
+**Thumbnail:** `thumbnails_b2/b2_02_rock_love.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -82,8 +84,8 @@ love story, never too late, late in life love, senior love, married at 76, cardi
 
 ---
 
-## 3. The river camera (`b2_03_river_camera.mp4`, 39s)
-**Thumbnail:** `thumbnails_b2/b2_03_river_camera.jpg` (fallback frame **0:05**)
+## 3. The river camera (`b2_03_river_camera.mp4`, 23s)
+**Thumbnail:** `thumbnails_b2/b2_03_river_camera.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -115,8 +117,8 @@ lost and found, river finds, found in river, lost camera, kodak camera, sd card 
 
 ---
 
-## 4. Grandpa's Camaro (`b2_04_camaro_legacy.mp4`, 38s)
-**Thumbnail:** `thumbnails_b2/b2_04_camaro_legacy.jpg` (fallback frame **0:17**)
+## 4. Grandpa's Camaro (`b2_04_camaro_legacy.mp4`, 33s)
+**Thumbnail:** `thumbnails_b2/b2_04_camaro_legacy.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -150,8 +152,8 @@ grandpa, grandson, in loving memory, camaro, 2012 camaro ss, bumblebee camaro, c
 
 ---
 
-## 5. The bride walks (`b2_05_bride_walks.mp4`, 41s)
-**Thumbnail:** `thumbnails_b2/b2_05_bride_walks.jpg` (fallback frame **0:30**)
+## 5. The bride walks (`b2_05_bride_walks.mp4`, 27s)
+**Thumbnail:** `thumbnails_b2/b2_05_bride_walks.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -183,8 +185,8 @@ paralyzed bride, bride walks down aisle, wedding surprise, groom cries, groom re
 
 ---
 
-## 6. The brothers (`b2_06_brothers_vietnam.mp4`, 33s)
-**Thumbnail:** `thumbnails_b2/b2_06_brothers_vietnam.jpg` (fallback frame **0:24**)
+## 6. The brothers (`b2_06_brothers_vietnam.mp4`, 25s)
+**Thumbnail:** `thumbnails_b2/b2_06_brothers_vietnam.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -216,7 +218,7 @@ adoption reunion, adopted brothers, birth mother, adopted from vietnam, vietnam,
 
 ---
 
-## 7. The boy who came alone (`b2_07_doctor_adopts.mp4`, 41s)
+## 7. The boy who came alone (`b2_07_doctor_adopts.mp4`, 26s)
 **Thumbnail:** `thumbnails_b2/b2_07_doctor_adopts.jpg` (fallback frame **0:01**)
 
 **Title**
@@ -249,8 +251,8 @@ adoption, doctor adopts patient, foster care, siblings adopted, heart surgery, a
 
 ---
 
-## 8. The widow at the grave (`b2_08_widow_grave.mp4`, 48s)
-**Thumbnail:** `thumbnails_b2/b2_08_widow_grave.jpg` (fallback frame **0:25**)
+## 8. The widow at the grave (`b2_08_widow_grave.mp4`, 29s)
+**Thumbnail:** `thumbnails_b2/b2_08_widow_grave.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -282,8 +284,8 @@ widow, living in a cemetery, husband's grave, homeless, police officer kindness,
 
 ---
 
-## 9. The phone box baby (`b2_09_phone_box_baby.mp4`, 50s)
-**Thumbnail:** `thumbnails_b2/b2_09_phone_box_baby.jpg` (fallback frame **0:46**)
+## 9. The phone box baby (`b2_09_phone_box_baby.mp4`, 29s)
+**Thumbnail:** `thumbnails_b2/b2_09_phone_box_baby.jpg` (fallback frame **0:01**)
 
 **Title**
 ```
@@ -315,8 +317,8 @@ phone box baby, abandoned baby, baby found in phone box, london, reunion, found 
 
 ---
 
-## 10. The mocked truck (`b2_10_mangled_truck.mp4`, 43s)
-**Thumbnail:** `thumbnails_b2/b2_10_mangled_truck.jpg` (fallback frame **0:27**)
+## 10. The mocked truck (`b2_10_mangled_truck.mp4`, 29s)
+**Thumbnail:** `thumbnails_b2/b2_10_mangled_truck.jpg` (fallback frame **0:01**)
 
 **Title**
 ```

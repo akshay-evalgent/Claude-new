@@ -7,23 +7,40 @@ This is the format reverse-engineered from @MomentumMotivation-YT (224 shorts, 2
 Only use a source if it has all of these:
 - **One clear emotional turn caught on camera**: a reveal, a reunion, a confession.
 - **A visible face reaction at the payoff.** Tears, hands over the mouth, a hug.
-- **A story that fits in 45s or less** once narrated.
+- **A story that fits in 35s or less** once narrated, with a peak moment strong enough to open on.
 - **A creator you can credit and ask.** Network/news clips (CBS, BGT, ViralHog) can get Content ID claims.
 
 Their winners are almost all real-life emotional stories: grandpa/late wife, long-lost parent, a stranger's kindness, veterans. Scam/brand explainers stall at about 40–60K views, so stay in one lane.
 
-## 2. Script structure (30–55s)
+## 2. Script structure: v2 (30–38s, rebuilt from YouTube analytics)
+
+The first Short we posted (the late wife's car) got these YouTube analytics:
+- **55.7% stayed to watch:** 45% swiped away in the feed. Shorts that scale need **75–85%+**.
+- **64.6% average viewed:** 36s of a 56s video. A 50s+ Short needs **90–100%+**.
+- **Too slow to the payoff:** it spent about 30s on setup before the reveal at 0:33.
+- **Weak ending:** it trailed off instead of looping.
+- **Little engagement:** 18 likes and 0 shares, so no social proof.
+
+v1 opened on a calm soundbite and spent about 30s on setup. v2 fixes that:
 
 | Time | Beat | Rule |
 |---|---|---|
-| 0–4s | **Cold open**: an original soundbite | The line that raises a question without answering it ("Thank you for saving my life on 9/11, Darla."). No narrator yet. |
-| 4–10s | **VO setup**: who + the wound | One sentence. An anonymous subject ("this grandpa", "she"), a specific number ("52 years", "16 years"). |
-| 10–35s | **Story**: alternate VO and clip | Narrator bridges in 1–2 sentences, the original clip carries the emotion. Each VO line adds exactly one new fact. Start lines with "So…", "Then…", "But…". |
-| ~60% | **Re-hook** | A short VO tease before the payoff: "But when the garage door finally opened…", "Then… after 52 years…". |
-| last 5–10s | **Payoff**: original reaction | Tears/hug/reveal with an impact hit. **End on the strongest line and cut. No outro.** |
-| end→start | **Loop** | Pick a last line that flows back into the cold open, so a replay feels seamless. |
+| 0–2s | **Hook shot**: the emotional peak | Open on the **most intense moment** of the video: tears, the hug, the engine roaring, the scream. Its own audio, no captions, impact hit. |
+| 0–3.5s | **On-screen hook text** | One bold sentence over the hook shot that creates the question: "He thought he'd never hear his late wife's car again." One or two highlighted words. (`"hook": {"text", "until", "color"}`) |
+| 2–14s | **Setup: 12s max** | One or two short VO lines over a **fast montage** (cuts every 0.6–1s: dirty → restored, before → after). Only the facts needed to feel the payoff. |
+| ~14s | **One soundbite** (optional) | A single original line that raises the stakes ("I couldn't move anything"). |
+| ~14–17s | **Re-hook** | A short tease straight into the reveal: "Then the garage door opened…", "But nobody told her he'd landed." |
+| 17–33s | **Payoff** | The reveal and reactions, mostly original audio. Cut every dead second. |
+| last 1–2s | **Loop line** | A VO line (or the person's own words) that leads straight back into the opening shot: "And the first thing he said was…" then the opening shot plays again. No outro, and no gap before the restart. |
 
-**Tone:** third person, past tense, simple words, about 3 words/sec. Never invent facts: every VO claim must be in the source.
+**Targets per Short** (YouTube Studio, after 48h):
+- stayed to watch: **≥75%**
+- average viewed: **≥90%**
+- length: **30–35s** (38s max for dialogue-heavy reunions)
+
+**Narration:** 1.18× speed, third person, past tense, simple words. Every claim must be in the source.
+
+**Engagement:** every upload gets a pinned comment that asks for a personal story ("What's one sound that brings back someone you miss?"). Reply to the first comments in the first hour.
 
 **Title:** see section 6.
 
@@ -53,7 +70,7 @@ Their winners are almost all real-life emotional stories: grandpa/late wife, lon
 
 ## 5. Audio
 
-- **Narrator:** Kokoro TTS, `am_michael`, speed 1.12. Their narrator is also a male voice (about 125 Hz).
+- **Narrator:** Kokoro TTS, `am_michael`, speed 1.18. Their narrator is also a male voice (about 125 Hz).
 - **Levels:**
   - VO normalised to -14 dBFS and dialogue to -13
   - generated piano/pad music bed at -25, ducked about 50% under speech
@@ -132,10 +149,10 @@ The rules below come from all 224 of their Shorts. The samples are small, so tre
 
 ## 9. QA before posting
 
-1. Look at the 1-frame-per-second contact sheet. Check for wrong faces, interviewer shots, burned-in text, blurry transition frames and repeated shots.
-2. Transcribe the output and read it back. That catches TTS mispronunciations (e.g. "9/11" spoken as "9 slash 11") and clipped words.
-3. Check the opening 3 seconds work with the sound off.
-4. Check the length is 30–58s and the last line loops into the first.
+1. **Contact sheet:** check the 1-frame-per-second sheet for wrong faces, interviewer shots, burned-in text, blurry transition frames and repeated shots.
+2. **The first 3 seconds:** the opening must be a peak moment with readable hook text. Never open on a calm talking head. It should also work with the sound off.
+3. **Transcript:** transcribe the output and read it back. That catches TTS mispronunciations (e.g. "9/11" spoken as "9 slash 11") and clipped words.
+4. **Length and loop:** 30–38s, and the last line must lead straight back into the opening shot.
 
 ## 10. Using the pipeline
 

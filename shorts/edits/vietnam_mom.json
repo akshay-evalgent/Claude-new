@@ -2,25 +2,32 @@
  "title": "She Met Her Birth Mom After 24 Years Apart… 😭❤️",
  "source": "mmVtyxX8e9A",
  "credit": "Credit: Kyle Le Dot Net",
+ "speed": 1.18,
+ "hook": {
+  "text": "She hadn't seen her mom in *24 years*.",
+  "until": 3.2,
+  "color": "pink"
+ },
  "beats": [
   {
    "type": "clip",
-   "in": 90.55,
-   "out": 94.2,
-   "text": "I thought I'd never see you again for the rest of my *life*.",
+   "in": 65.0,
+   "out": 67.2,
+   "captions": false,
+   "impact": true,
+   "auto_tail": false,
+   "db": -15,
    "shots": [
     {
-     "in": 100.5,
+     "in": 65.0,
      "frame": "card",
-     "fx": 0.62,
-     "len": 3.65,
-     "push": 0.1
+     "card_h": 1080
     }
    ]
   },
   {
    "type": "vo",
-   "text": "She was adopted from Vietnam at *six months* old… and spent 24 years wondering who her mother was.",
+   "text": "Adopted from Vietnam as a baby, she spent 24 years talking to a mom she'd never *met*.",
    "shots": [
     {
      "in": 14.5,
@@ -30,21 +37,6 @@
      "in": 20.5,
      "frame": "card"
     },
-    {
-     "in": 24.5,
-     "frame": "full",
-     "fx": 0.5
-    },
-    {
-     "in": 10.5,
-     "frame": "card"
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "Whenever life got hard, she recorded voice memos… talking to a mom she had never *met*.",
-   "shots": [
     {
      "in": 136.0,
      "frame": "card"
@@ -63,26 +55,7 @@
   },
   {
    "type": "vo",
-   "text": "Her mom was a single mother living in *poverty*… and gave her up so she could have a better life.",
-   "shots": [
-    {
-     "in": 28.5,
-     "frame": "card"
-    },
-    {
-     "in": 26.0,
-     "frame": "full",
-     "fx": 0.5
-    },
-    {
-     "in": 52.5,
-     "frame": "card"
-    }
-   ]
-  },
-  {
-   "type": "vo",
-   "text": "Then, after *24* years, she flew back to Vietnam to finally meet her.",
+   "text": "So she flew back to Vietnam… to finally *meet* her.",
    "shots": [
     {
      "in": 38.5,
@@ -113,25 +86,18 @@
   },
   {
    "type": "clip",
-   "in": 59.6,
+   "in": 61.8,
    "out": 69.3,
-   "impact": true,
+   "impact": false,
    "captions": false,
    "manual_caps": [
     [
-     7.9,
-     9.6,
+     5.7,
+     7.4,
      "My *daughter*…"
     ]
    ],
    "shots": [
-    {
-     "in": 59.6,
-     "frame": "full",
-     "fy": 0.42,
-     "full_zoom": 1.15,
-     "len": 3.4
-    },
     {
      "in": 63.0,
      "frame": "card",
@@ -168,14 +134,16 @@
   },
   {
    "type": "clip",
-   "in": 124.4,
-   "out": 127.2,
-   "captions": false,
-   "db": -18,
+   "in": 90.55,
+   "out": 94.2,
+   "text": "I thought I'd never see you again for the rest of my *life*.",
    "shots": [
     {
-     "in": 124.4,
-     "frame": "card"
+     "in": 100.5,
+     "frame": "card",
+     "fx": 0.62,
+     "len": 3.65,
+     "push": 0.1
     }
    ]
   }
