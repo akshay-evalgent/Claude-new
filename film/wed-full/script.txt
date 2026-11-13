@@ -93,7 +93,7 @@ A couple counts as married once they start living together. ~0.2 >> hadzaHut {} 
 + That's it. No party. No paperwork. ~0.2 >> hadzaHut {"pair":true} push
 And if it doesn't work out? >> think {"q1":"@work","q2":"NEVER"} push
 + They can separate, just as simply. >> walkAway {"family":true} push
-Divorce is fairly common, especially in the first years, and most Hadza adults marry more than once. >> hadzaHut {"pair":true} [960,700,1.2,1.3]
+Divorce is fairly common, especially in the first years, and most Hadza adults marry more than once. >> hadzaHut {"pair":true} pull
 + And only about four percent of marriages have more than one wife. ~0.25 >> card {"lines":["~4%"],"icon":"ring"} push
 When the anthropologist Frank Marlowe asked Hadza people what they wanted in a husband or wife, >> research {"text":"FRANK MARLOWE"} push
 + the answers were very practical. >> card {"lines":["VERY","PRACTICAL"],"icon":"meat"} push
@@ -196,7 +196,7 @@ The historian Stephanie Coontz found that marriage was usually about property, a
 + She said she was surprised how unanimous people were, until the late seventeen hundreds, that love was not a good reason to marry. ~0.25 >> card {"lines":["LOVE?","NOT A GOOD REASON"],"icon":"heart"} push
 + Land. Money. Connections between families. ~0.2 >> couple {"family":true} push
 The idea that you should marry mainly for love >> couple {"heart":true} push
-+ only became the ideal in Western Europe and North America from the late seventeen hundreds. ~0.25 >> timeBar2 {"step":3,"none":"MARRIAGE FOR FAMILY","yes":"MARRY FOR LOVE"} [1700,640,1.3,1.4]
++ only became the ideal in Western Europe and North America from the late seventeen hundreds. ~0.25 >> timeBar2 {"step":3,"none":"MARRIAGE FOR FAMILY","yes":"MARRY FOR LOVE"} push
 Many wedding traditions are newer than you'd think. >> wedding {} push
 When Queen Victoria married in eighteen forty, she wore white silk and lace, and helped make white wedding dresses fashionable. >> wedding {"dress":true} push
 + She chose English lace on purpose, to help lace makers in Devon. ~0.2 >> wedding {"dress":true} [840,600,1.3,1.4]
