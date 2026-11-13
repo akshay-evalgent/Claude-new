@@ -25,9 +25,9 @@
   "segments": [
    {
     "track": "wedding-harp",
-    "from": "logo",
+    "from": "approved",
     "to": "married",
-    "gain": -19,
+    "gain": -15,
     "fadeIn": 0.6,
     "fadeOut": 0.04
    },
@@ -305,7 +305,7 @@
     "text": "BLOCKED",
     "color": "#ff4d4d",
     "side": "right",
-    "sfx": "dial-tone"
+    "sfx": "dial-tone", "sfxGain": -15, "sfxDur": 1.1
    }
   },
   {

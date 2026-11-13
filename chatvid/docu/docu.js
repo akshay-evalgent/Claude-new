@@ -190,11 +190,11 @@
         cues.push({ t: t + 0.02, s: 'boom', g: -9, duck: true });
       }
       if (b.chapter) cues.push({ t: t + 0.02, s: 'soft-swoosh', g: -12 });
-      if (beat.freeze) cues.push({ t: t + beat.freeze.at, s: beat.freeze.sfx || 'glitch', g: -7, duck: true });
+      if (beat.freeze) cues.push({ t: t + beat.freeze.at, s: beat.freeze.sfx || 'glitch', g: beat.freeze.sfxGain ?? -7, dur: beat.freeze.sfxDur ?? 1.6, duck: true });
       if (b.sfx) cues.push({ t: t + (b.sfxAt ?? lead + p.voiceDur), s: b.sfx, g: b.sfxGain ?? -6, duck: true });
-      if (b.media && b.audio && meta(b.media) && meta(b.media).audio) {
+      if (p.media && b.audio && meta(p.media) && meta(p.media).audio) {
         // in a trailer the film's own dialogue is the joke: it ducks the music like narration does
-        cues.push({ t, s: '@media:' + b.media, g: b.audioGain ?? (TRAILER ? -2 : -10), dur: p.span ? p.span + 0.04 : d, duck: TRAILER });
+        cues.push({ t, s: '@media:' + p.media, g: b.audioGain ?? (TRAILER ? -0.5 : -10), dur: p.span ? p.span + 0.04 : d, duck: TRAILER });
       }
       B.push(beat);
       t += d;
