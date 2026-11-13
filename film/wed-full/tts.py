@@ -60,7 +60,7 @@ SAY = {"Hadza": "[Hadza](/hˈɑdzə/)", "favour": "[favour](/fˈAvəɹ/)", "smar
        "Denny": "[Denny](/dˈɛni/)", "Dyirbal": "[Dyirbal](/ʤˈɜɹbəl/)", "Gurgy": "[Gurgy](/ɡʊɹʒˈi/)", "Hazleton": "[Hazleton](/hˈAzəltən/)",
        "Marlowe": "[Marlowe](/mˈɑɹlO/)", "Mosuo": "[Mosuo](/mˈOswO/)", "Nisa": "[Nisa](/nˈisə/)", "Nyinba": "[Nyinba](/njˈɪnbə/)",
        "Stephanie": "[Stephanie](/stˈɛfəni/)", "Valdaro": "[Valdaro](/vɑldˈɑɹO/)", "bridewealth": "[bridewealth](/bɹˈIdwˌɛlθ/)",
-       "jewellery": "[jewellery](/ʤˈuəlɹi/)", "Keaton": "[Keaton](/kˈitᵊn/)", "Lech": "[Lech](/lˈɛk/)"}
+       "jewellery": "[jewellery](/ʤˈuəlɹi/)", "Keaton": "[Keaton](/kˈitᵊn/)", "Lech": "[Lech](/lˈɛk/)", "poorer": "[poorer](/pˈʊɹəɹ/)"}
 
 script = json.load(open(os.path.join(HERE, "build", "script.json")))
 voice = sys.argv[1] if len(sys.argv) > 1 else script["voice"]
