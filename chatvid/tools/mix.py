@@ -230,8 +230,9 @@ def main(cues_path, out_path):
     for c in spec["cues"]:
         x = riser(c["dur"]) if c["s"] == "@riser" else sample(c["s"])
         x = resample(x, c.get("rate", 1.0))
-        if c.get("dur") and c["s"] != "@riser" and not c["s"].startswith(("@media:", "@voice:")):
-            x = fade_tail(x[: int(c["dur"] * SR)])
+        if c.get("dur") and c["s"] != "@riser" and not c["s"].startswith("@voice:"):
+            # film sound stops with a short fade where the beat (or its line) ends
+            x = fade_tail(x[: int(c["dur"] * SR)], 60 if c["s"].startswith("@media:") else 25)
         x = x * (10 ** (c.get("g", 0) / 20))
         i = int(c["t"] * SR)
         j = min(total, i + len(x))
@@ -242,6 +243,30 @@ def main(cues_path, out_path):
             a, b = max(0, i - int(0.06 * SR)), min(total, j + int(0.15 * SR))
             duck[a:b] = np.minimum(duck[a:b], 10 ** (-9 / 20))
     m = spec.get("music")
+    k = int(0.06 * SR)                                       # smooth the duck envelope (~60 ms)
+    dsm = np.convolve(duck, np.ones(k) / k, mode="same")
+    # music as timed segments (a trailer changes track, or cuts to silence, on a beat):
+    # {"segments": [{"track", "t0", "t1", "gain", "offset", "fadeIn", "fadeOut", "duck"}]}
+    for sg in (m or {}).get("segments", []):
+        hits = glob.glob(os.path.join(ROOT, "assets", "music", sg["track"] + ".*"))
+        if not hits:
+            raise SystemExit(f"missing music '{sg['track']}' - run chatvid/tools/fetch_assets.py")
+        x = _cache.get("music:" + sg["track"])
+        if x is None:
+            x = decode(hits[0])
+            x = _cache["music:" + sg["track"]] = x / (np.abs(x).max() or 1)
+        a, b = int(sg["t0"] * SR), min(total, int(sg["t1"] * SR))
+        if b <= a:
+            continue
+        off = int(sg.get("offset", 0) * SR)
+        reps = int(np.ceil((off + b - a) / len(x))) + 1
+        bed = np.tile(x, (reps, 1))[off: off + b - a] * (10 ** (sg.get("gain", -20) / 20))
+        fi, fo = min(len(bed), int(sg.get("fadeIn", 0.3) * SR)), min(len(bed), int(sg.get("fadeOut", 0.6) * SR))
+        if fi:
+            bed[:fi] *= np.linspace(0, 1, fi)[:, None]
+        if fo:
+            bed[-fo:] *= np.linspace(1, 0, fo)[:, None]
+        out[a:b] += bed * (dsm[a:b, None] if sg.get("duck", True) else 1)
     if m and m.get("tracks"):
         a, b = int(m["start"] * SR), min(total, int(m["end"] * SR))
         need = b - a
@@ -269,10 +294,7 @@ def main(cues_path, out_path):
         fi, fo = int(0.4 * SR), int(0.8 * SR)
         bed[:fi] *= np.linspace(0, 1, fi)[:, None]
         bed[-fo:] *= np.linspace(1, 0, fo)[:, None]
-        # smooth the duck envelope (~60 ms) so it doesn't click
-        k = int(0.06 * SR)
-        d = np.convolve(duck, np.ones(k) / k, mode="same")
-        out[a:b] += bed * d[a:b, None]
+        out[a:b] += bed * dsm[a:b, None]
     out = out[: int(spec["duration"] * SR)]
     out = limit(out)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", "-", out_path],

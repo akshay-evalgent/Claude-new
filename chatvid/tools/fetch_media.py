@@ -13,6 +13,8 @@ An episode lists its media under "media":
 - file:    something you supply yourself, already in chatvid/assets/media/.
 - archive: an Internet Archive film (public domain only), cut to a clip:
            {"archive": "DuckandC1951", "start": 30, "dur": 2.6}
+           Items without a public-domain licence need "pd": "<why it is public domain>";
+           "file" picks a specific file of the item; "clean": true tidies dialogue audio.
 - nasa_video: a NASA video clip (public domain), picture only unless "audio": true
            (NASA productions often carry licensed music; raw footage is safe):
            {"nasa_video": "<nasa_id>", "start": 50, "dur": 3, "audio": true}
@@ -78,19 +80,41 @@ def nasa(nasa_id):
     return pick.replace("http://", "https://"), f"{meta.get('title', nasa_id)}: {who}, public domain", "public domain", f"Image: {who}"
 
 
-def archive_meta(ident):
+def archive_meta(src):
+    """Download URL and credit for an Internet Archive film. Items must carry a public
+    domain / CC0 licence, or the episode must state why the film is public domain
+    ("pd": "reason", e.g. a feature whose copyright was never renewed)."""
+    ident = src["archive"]
     m = json.loads(get(f"https://archive.org/metadata/{urllib.parse.quote(ident)}"))
     md = m.get("metadata", {})
     lic = md.get("licenseurl", "")
-    if "publicdomain" not in lic and "zero" not in lic:
-        raise SystemExit(f"{ident}: licence is '{lic or 'not stated'}', not public domain; use a 'file' entry if you hold rights")
+    if "publicdomain" not in lic and "zero" not in lic and not src.get("pd"):
+        raise SystemExit(f"{ident}: licence is '{lic or 'not stated'}', not public domain; "
+                         "add \"pd\": \"<why it is public domain>\" if it is, or use a 'file' entry if you hold rights")
     files = [f for f in m.get("files", []) if f["name"].lower().endswith(".mp4")]
-    # prefer the 640x480 MPEG4 derivative, then anything bigger than the 512kb one
-    best = next((f for f in files if f["name"] == f"{ident}.mp4"), None) or max(files, key=lambda f: int(f.get("size", 0) or 0))
-    title = re.sub(r"^(.*), (A|An|The)$", r"\2 \1", md.get("title", ident).strip())
-    ym = re.search(r"(1[89]\d\d|20\d\d)", f"{md.get('year', '')} {md.get('date', '')} {ident}")
+    # an explicit file, else the 640x480 MPEG4 derivative, else the biggest mp4
+    best = (next((f for f in files if f["name"] == src.get("file")), None)
+            or next((f for f in files if f["name"] == f"{ident}.mp4"), None)
+            or max(files, key=lambda f: int(f.get("size", 0) or 0)))
+    title = src.get("title") or re.sub(r"^(.*), (A|An|The)$", r"\2 \1", md.get("title", ident).strip())
+    ym = re.search(r"(1[89]\d\d|20\d\d)", f"{src.get('year', '')} {md.get('year', '')} {md.get('date', '')} {ident}")
     year = ym.group(1) if ym else "n.d."
-    return f"https://archive.org/download/{ident}/{best['name']}", f"{title} ({year}): Prelinger Archives, public domain, via Internet Archive", f"Film: {title} ({year}), public domain"
+    coll = md.get("collection", [])
+    coll = coll if isinstance(coll, list) else [coll]
+    where = "Prelinger Archives, public domain, via Internet Archive" if "prelinger" in coll else "public domain, via Internet Archive"
+    url = f"https://archive.org/download/{ident}/{urllib.parse.quote(best['name'])}"
+    # a trailer cuts dozens of clips from one film: keep a local copy of films up to
+    # 400 MB instead of seeking the remote file for every clip
+    size = int(best.get("size", 0) or 0)
+    if src.get("cache", size and size < 400e6):
+        local = os.path.join(ROOT, "assets", "films", f"{ident}__{best['name']}")
+        if not os.path.exists(local):
+            os.makedirs(os.path.dirname(local), exist_ok=True)
+            print(f"  downloading {ident}/{best['name']} ({size / 1e6:.0f} MB) once for cutting")
+            subprocess.run(["curl", "-sSfL", "--retry", "4", "-o", local + ".part", url], check=True)
+            os.replace(local + ".part", local)
+        url = local
+    return url, f"{title} ({year}): {where}", f"Film: {title} ({year}), public domain"
 
 
 def frames(src_args, out_dir, fps, vf, ext):
@@ -128,7 +152,7 @@ def nasa_video(nasa_id):
 
 def clip_source(src):
     if "archive" in src:
-        return archive_meta(src["archive"])
+        return archive_meta(src)
     return nasa_video(src["nasa_video"])
 
 
@@ -136,8 +160,10 @@ def clip_audio(src, out):
     """The clip's original sound, cut with the same -ss/-t as its frames so they stay in sync."""
     url, _, _ = clip_source(src)
     dest = os.path.join(out, "audio.wav")
+    # "clean": dialogue from old prints - cut the rumble and the hiss above the voice band
+    af = ["-af", "highpass=f=90,lowpass=f=7500,afftdn=nr=8:nf=-42"] if src.get("clean") else []
     cmd = ["ffmpeg", "-v", "error", "-y", "-ss", str(src["start"]), "-i", url, "-t", str(src["dur"]),
-           "-vn", "-ac", "2", "-ar", "48000", "-c:a", "pcm_s16le", dest]
+           "-vn", *af, "-ac", "2", "-ar", "48000", "-c:a", "pcm_s16le", dest]
     for attempt in range(4):
         if subprocess.run(cmd).returncode == 0:
             audio_level(out)

@@ -37,6 +37,17 @@ SFX = {
     "glitch": 2595,    # Small electric glitch
     "punch": 2151,     # Soft quick punch
     "rocket": 1714,    # Fast rocket whoosh
+    # movie-trailer kit
+    "scratch": 704,    # Vinyl stop fast scratch
+    "impact": 2908,    # Movie trailer epic impact
+    "impact2": 2909,   # Cool impact movie trailer
+    "braam": 724,      # Cinematic trailer apocalypse horn
+    "trailer-riser": 790,  # Cinematic trailer riser
+    "whoosh-hit": 2918,    # Epic movie trailer whoosh impact
+    "bass-drum": 553,  # Blockbuster trailer bass drum
+    "typing": 1393,    # Smartphone typing
+    "old-ring": 1357,  # Old telephone ring
+    "dial-tone": 1352, # Telephone dial tone
 }
 # name -> Mixkit stock music id
 MUSIC = {
@@ -46,6 +57,23 @@ MUSIC = {
     "vastness": 184,           # Vastness (documentary / ambient)
     "forest-mist": 148,        # Forest Mist Whispers
     "lifes-a-movie": 322,      # Life's a Movie (epic)
+    "wedding-harp": 672,       # Wedding Harp (romantic)
+    "swing-answer": 526,       # Swing is the Answer (1940s swing)
+    "fun-jazz": 647,           # Fun Jazz
+    "epic-drums-1": 676,       # Epical Drums 01 (trailer drums)
+    "epic-drums-5": 680,
+    "epic-drums-3": 678,
+    "classical-vibes-3": 683,
+}
+
+# open-licence display fonts (SIL OFL) from github.com/google/fonts, used by the
+# trailer cards; the engines fall back to Inter if they are missing
+FONTS = {
+    "Anton-Regular.ttf": "ofl/anton/Anton-Regular.ttf",
+    "AlfaSlabOne-Regular.ttf": "ofl/alfaslabone/AlfaSlabOne-Regular.ttf",
+    "PlayfairDisplay[wght].ttf": "ofl/playfairdisplay/PlayfairDisplay%5Bwght%5D.ttf",
+    "PlayfairDisplay-Italic[wght].ttf": "ofl/playfairdisplay/PlayfairDisplay-Italic%5Bwght%5D.ttf",
+    "Oswald[wght].ttf": "ofl/oswald/Oswald%5Bwght%5D.ttf",
 }
 
 # Fluent folder names follow CLDR short names; these differ from Python's
@@ -252,6 +280,10 @@ def main():
     print("music:")
     for name, i in MUSIC.items():
         ok = get(f"https://assets.mixkit.co/music/{i}/{i}.mp3", os.path.join(ASSETS, "music", name + ".mp3"))
+        print(f"  {'ok' if ok else 'FAIL'} {name}")
+    print("fonts:")
+    for name, path in FONTS.items():
+        ok = get("https://raw.githubusercontent.com/google/fonts/main/" + path, os.path.join(ASSETS, "fonts", name))
         print(f"  {'ok' if ok else 'FAIL'} {name}")
     print("emoji:")
     want = episode_emoji() | {g for g in graphemes(a.emoji) if is_emoji(g)}

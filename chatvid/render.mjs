@@ -86,7 +86,7 @@ if (args.includes('--plan')) {
   const items = ep.exchanges || ep.beats;
   plan.exchanges.forEach((t, i) => {
     const x = items[i];
-    console.log(`  ${String(i + 1).padStart(2)}  ${mmss(t)}  ${x.user || x.line || (x.title ? 'TITLE: ' + x.title : '') || (x.chapter ? 'CHAPTER: ' + x.chapter : '')}`);
+    console.log(`  ${String(i + 1).padStart(2)}  ${mmss(t)}  ${x.user || x.line || x.say || (x.title ? 'TITLE: ' + x.title : '') || (x.chapter ? 'CHAPTER: ' + x.chapter : '') || (x.card ? `[${x.card.type}] ` + String(x.card.text || '').replace(/\n/g, ' / ') : '')}`);
   });
   await browser.close();
   process.exit(0);

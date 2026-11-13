@@ -5,7 +5,7 @@ messages, streamed replies, punch-in zooms, screen shake, a patience meter, a
 cold-open hook with a rewind, sound effects and music, mixed to YouTube loudness.
 No screen recording and no editing software needed.
 
-Samples: `samples/ai-is-a-toaster.mp4` (4:48), `samples/last-digit-of-pi.mp4` (4:47), `samples/emojis-only.mp4` (4:49), `samples/elon-vs-grok.mp4` (4:37, parody), `samples/1950s-mode.mp4` (4:39, real archive footage), `samples/year-3000-mode.mp4` (4:34, NASA footage), `samples/planet-human-720p.mp4` (3:40, AI-narrated documentary, 720p preview) and
+Samples: `samples/ai-is-a-toaster.mp4` (4:48), `samples/last-digit-of-pi.mp4` (4:47), `samples/emojis-only.mp4` (4:49), `samples/elon-vs-grok.mp4` (4:37, parody), `samples/1950s-mode.mp4` (4:39, real archive footage), `samples/year-3000-mode.mp4` (4:34, NASA footage), `samples/planet-human-720p.mp4` (3:40, AI-narrated documentary, 720p preview), `samples/rizzless-groom-720p.mp4` (3:41, Gen Z recut trailer of a 1947 short, 720p preview) and
 `samples/count-to-a-billion.mp4` (29 s test). These are compressed previews;
 a fresh render in `out/` is the full-quality file to upload.
 
@@ -208,5 +208,39 @@ new or edited lines are re-voiced and re-cut. Then render as usual (`--plan`,
 | `mark` | Chapter name for the YouTube description when the beat isn't a chapter card. |
 | `audio` | Play the clip's original sound under the narration. |
 
-Thumbnails for documentaries can use a full-bleed frame: `full` (+ `shade`),
-`ring`, `headline` and `botBadge` in `youtube.thumbnails`.
+Thumbnails for documentaries can use a full-bleed frame: `full` (+ `shade`, `zoom`),
+`ring`, `headline` and `botBadge` in `youtube.thumbnails`; trailers can add
+`titleArt` (the gold 3D title) and `texts` (blue text-message bubbles with a status).
+
+### Movie-trailer recuts (`"style": "trailer"`)
+
+The same engine can recut a whole public-domain film into a fake trailer, with the
+film's own dialogue as the jokes. Example: `episodes/rizzless-groom.json`
+("RIZZLESS GROOM (1947) - Official Gen Z Trailer", a Gen Z rom-com trailer cut from
+the Three Stooges short *Brideless Groom*). Prepare and render it like any documentary.
+
+- **Original dialogue:** give the clip as a range, `"brideless_groom@642.65-646.05"`,
+  with `"audio": true`; the beat lasts exactly that long and the film's sound plays
+  (cleaned of rumble and hiss when the episode sets `"cleanDialogue": true`).
+  `say` puts the line on screen and `tr` adds a yellow "TRANSLATED FROM UNC" chip
+  (`trAt` = when it pops; the label is the episode's `trLabel`). To find lines,
+  transcribe the film with Whisper (word timestamps) and look at contact sheets.
+- **Narrator:** `"voice": {"engine": "kokoro", "blend": {"am_michael": 0.4, "am_onyx": 0.6},
+  "speed": 0.88, "fx": "trailer"}` uses Kokoro TTS (Apache 2.0; `pip install kokoro-onnx
+  soundfile`, model files download on first use). `speak` overrides the pronunciation
+  of a line while the subtitle keeps `line`. `lead` sets when the voice starts.
+- **Cards** (`card`, with `dur`, optionally over a `clip`): `approved` (the pink
+  "this preview has been approved for…" card), `logo`, `trailer` (white type on black,
+  with an impact), `bally` (1950s "SEE! / GASP!" poster lettering on a starburst or
+  over the clip), `title` (gold 3D title with a braam), `quotes` (critics with
+  laurels) and `rating` (a parody rating box). They make their own sounds.
+- **Texts:** `"texts": [{"at": 0.4, "text": "u up?", "from": "me"|"them", "status": "Delivered"}]`
+  and `"typing": {"at", "dur"}` show phone messages over the picture.
+- **Extras:** `shake: [{at, dur, amp}]`, `flash: [t, …]`, `cues: [{s, at, g, dur}]`,
+  `voiceGain`, and freeze `text` can span lines (`\n`) and take a `color`.
+- **Music:** `"music": {"segments": [{"track", "from", "to", "gain", "offset", "fadeIn", "fadeOut"}]}`
+  where `from`/`to` are beat `id`s (that beat's start), `"endcard"` or `"end"`.
+- **Films:** `"films": {"brideless_groom": {"pd": "why it is public domain", "title", "year"}}`.
+  Internet Archive items without a public-domain licence are refused unless `pd` says why
+  (for example a 1947 short whose copyright was never renewed). Films under 400 MB are
+  downloaded once to `assets/films/` so dozens of cuts stay fast.

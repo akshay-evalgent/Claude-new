@@ -1,0 +1,859 @@
+{
+ "engine": "docu",
+ "style": "trailer",
+ "title": "RIZZLESS GROOM (1947) - Official Gen Z Trailer",
+ "crf": 19,
+ "cleanDialogue": true,
+ "voice": {
+  "engine": "kokoro",
+  "blend": {
+   "am_michael": 0.4,
+   "am_onyx": 0.6
+  },
+  "speed": 0.88,
+  "fx": "trailer"
+ },
+ "films": {
+  "brideless_groom": {
+   "title": "Brideless Groom",
+   "year": 1947,
+   "pd": "Brideless Groom (1947, Columbia Pictures, a Three Stooges short): its copyright was not renewed, so it is in the US public domain"
+  }
+ },
+ "trLabel": "TRANSLATED FROM UNC",
+ "music": {
+  "segments": [
+   {
+    "track": "wedding-harp",
+    "from": "logo",
+    "to": "married",
+    "gain": -19,
+    "fadeIn": 0.6,
+    "fadeOut": 0.04
+   },
+   {
+    "track": "swing-answer",
+    "from": "numbers",
+    "to": "twist",
+    "gain": -21,
+    "fadeIn": 0.15,
+    "fadeOut": 0.3
+   },
+   {
+    "track": "epic-drums-1",
+    "from": "twist",
+    "to": "title",
+    "gain": -17,
+    "offset": 2.0,
+    "fadeIn": 0.2,
+    "fadeOut": 0.08
+   },
+   {
+    "track": "fun-jazz",
+    "from": "quotes",
+    "to": "stinger",
+    "gain": -21,
+    "offset": 16,
+    "fadeIn": 0.4,
+    "fadeOut": 0.15
+   },
+   {
+    "track": "swing-answer",
+    "from": "endcard",
+    "to": "end",
+    "gain": -20,
+    "offset": 30,
+    "fadeIn": 0.3,
+    "fadeOut": 1.2
+   }
+  ]
+ },
+ "endCard": {
+  "kicker": "COMING EVENTUALLY",
+  "text": "Rizzless Groom 2: Night of the Living Ex",
+  "sub": "Subscribe so we don't ghost you 👻",
+  "dur": 4.2
+ },
+ "beats": [
+  {
+   "id": "approved",
+   "card": {
+    "type": "approved",
+    "text": "All the girlies,\nthe boys who are cooked\nand anyone who got left on read",
+    "bottom": "By the Council of the Group Chat"
+   },
+   "dur": 4.2
+  },
+  {
+   "id": "logo",
+   "card": {
+    "type": "logo",
+    "kicker": "A",
+    "text": "BOT BOTHERED",
+    "sub": "PICTURE"
+   },
+   "dur": 3.0
+  },
+  {
+   "clip": "brideless_groom@24.9",
+   "line": "In a world... before dating apps...",
+   "lead": 0.35,
+   "hold": 0.25
+  },
+  {
+   "clip": "brideless_groom@34.6",
+   "line": "one man... had a gift.",
+   "lead": 0.15,
+   "hold": 0.35
+  },
+  {
+   "clip": "brideless_groom@84.7",
+   "line": "It was not rizz.",
+   "lead": 0.2,
+   "hold": 1.9,
+   "freeze": {
+    "at": "end",
+    "x": 0.33,
+    "y": 0.36,
+    "r": 0.17,
+    "zoom": 1.3,
+    "text": "RIZZ: 0\nAURA: -10,000",
+    "side": "right",
+    "sfx": "boom"
+   }
+  },
+  {
+   "clip": "brideless_groom@191.1-193.15",
+   "audio": true,
+   "say": "“He just died and left you 500,000 bucks.”"
+  },
+  {
+   "clip": "brideless_groom@195.85-197.4",
+   "audio": true,
+   "say": "“500,000 bucks!”",
+   "tr": "we're RICH rich 🤑",
+   "trAt": 0.6
+  },
+  {
+   "clip": "brideless_groom@205.55-208.85",
+   "audio": true,
+   "say": "“But there's one little catch. You get the dough provided you're married.”",
+   "tr": "the bag has terms and conditions 💀",
+   "trAt": 1.6
+  },
+  {
+   "id": "married",
+   "clip": "brideless_groom@209.75-213.65",
+   "audio": true,
+   "say": "“Married?! No! No, fellas! I'm gonna faint!”",
+   "tr": "commitment?? in THIS economy??",
+   "trAt": 1.2,
+   "cues": [
+    {
+     "s": "scratch",
+     "at": 0.02,
+     "g": -7,
+     "dur": 0.75
+    }
+   ],
+   "shake": [
+    {
+     "at": 3.3,
+     "dur": 0.4,
+     "amp": 16
+    }
+   ]
+  },
+  {
+   "clip": "brideless_groom@222.85-224.85",
+   "audio": true,
+   "say": "“You just got seven hours to get yourself a bride.”"
+  },
+  {
+   "clip": "brideless_groom@224.85-226.95",
+   "audio": true,
+   "say": "“It can't be done. No woman is interested in me.”"
+  },
+  {
+   "clip": "brideless_groom@226.95-228.4",
+   "audio": true,
+   "min": 2.3,
+   "say": "“Maybe not, pal.”",
+   "tr": "his own boy said that 💀",
+   "trAt": 1.0,
+   "cues": [
+    {
+     "s": "boom",
+     "at": 1.05,
+     "g": -8
+    }
+   ],
+   "shake": [
+    {
+     "at": 1.05,
+     "dur": 0.3,
+     "amp": 10
+    }
+   ]
+  },
+  {
+   "card": {
+    "type": "trailer",
+    "text": "SEVEN HOURS."
+   },
+   "dur": 1.3
+  },
+  {
+   "card": {
+    "type": "trailer",
+    "text": "ONE MAN."
+   },
+   "dur": 1.3
+  },
+  {
+   "card": {
+    "type": "trailer",
+    "text": "ZERO RIZZ."
+   },
+   "dur": 1.7
+  },
+  {
+   "id": "numbers",
+   "clip": "brideless_groom@235.05-237.5",
+   "audio": true,
+   "say": "“I got a lot of numbers, but I haven't had much luck with them lately.”",
+   "tr": "i'm in my flop era 😔",
+   "trAt": 1.2
+  },
+  {
+   "clip": "brideless_groom@251.2",
+   "line": "So he did what every man with zero rizz does.",
+   "lead": 0.15,
+   "hold": 0.2
+  },
+  {
+   "clip": "brideless_groom@248.15-250.0",
+   "audio": true,
+   "say": "“Here's six nickels. That makes seventeen.”",
+   "tr": "seventeen talking stages 💀",
+   "trAt": 0.9,
+   "min": 2.2
+  },
+  {
+   "clip": "brideless_groom@256.0",
+   "line": "He shot his shot. At all of them.",
+   "lead": 0.2,
+   "min": 4.8,
+   "texts": [
+    {
+     "at": 0.45,
+     "text": "hey stranger 👀"
+    },
+    {
+     "at": 1.05,
+     "text": "u up?"
+    },
+    {
+     "at": 1.65,
+     "text": "long time no talk 😊"
+    },
+    {
+     "at": 2.25,
+     "text": "random question"
+    },
+    {
+     "at": 2.95,
+     "text": "wanna get married? 💍",
+     "status": "Delivered"
+    }
+   ]
+  },
+  {
+   "clip": "brideless_groom@270.2-272.85",
+   "audio": true,
+   "say": "“When Shemp pours on the charm, no dame can resist him.”",
+   "tr": "he got that unspoken rizz (he does not)",
+   "trAt": 1.0
+  },
+  {
+   "clip": "brideless_groom@277.1-278.45",
+   "audio": true,
+   "min": 1.9,
+   "say": "“Well, this is your little snookums.”",
+   "tr": "it's ur man 😏",
+   "trAt": 0.7
+  },
+  {
+   "clip": "brideless_groom@278.45",
+   "line": "No, wyd. No, u up. Straight to...",
+   "speak": "No. W, Y, D. No. You up? Straight to...",
+   "lead": 0.1,
+   "hold": 0.05
+  },
+  {
+   "id": "marry",
+   "clip": "brideless_groom@281.4-283.6",
+   "audio": true,
+   "min": 3.3,
+   "say": "“Will you marry me?”",
+   "freeze": {
+    "at": 2.05,
+    "x": 0.45,
+    "y": 0.4,
+    "r": 0.2,
+    "zoom": 1.15,
+    "text": "BLOCKED",
+    "color": "#ff4d4d",
+    "side": "right",
+    "sfx": "dial-tone"
+   }
+  },
+  {
+   "clip": "brideless_groom@285.3",
+   "line": "Is it a red flag to propose on the first call?",
+   "lead": 0.15,
+   "hold": 0.5
+  },
+  {
+   "clip": "brideless_groom@287.2",
+   "line": "Yes.",
+   "lead": 0.05,
+   "hold": 0.55,
+   "min": 1.1
+  },
+  {
+   "clip": "brideless_groom@288.95-291.05",
+   "audio": true,
+   "say": "“I've got one phone number and one nickel left.”",
+   "tr": "down to my last talking stage 😭",
+   "trAt": 1.0
+  },
+  {
+   "clip": "brideless_groom@393.2",
+   "line": "So his boys started shooting his shot... for him.",
+   "lead": 0.15,
+   "hold": 0.2
+  },
+  {
+   "clip": "brideless_groom@395.4-397.6",
+   "audio": true,
+   "say": "“Say, Miss, would you like to get married?”"
+  },
+  {
+   "clip": "brideless_groom@398.95-402.2",
+   "audio": true,
+   "say": "“Well, I don't know. But you are kind of cute at that.”"
+  },
+  {
+   "clip": "brideless_groom@402.2-404.7",
+   "audio": true,
+   "min": 3.4,
+   "say": "“Oh, it's not me. It's him.”",
+   "cues": [
+    {
+     "s": "boom",
+     "at": 1.38,
+     "g": -7
+    }
+   ],
+   "freeze": {
+    "at": 1.9,
+    "x": 0.5,
+    "y": 0.48,
+    "r": 0.26,
+    "zoom": 1.08,
+    "text": "HIM. 🙂",
+    "side": "right",
+    "sfx": "glitch"
+   }
+  },
+  {
+   "clip": "brideless_groom@418.2",
+   "line": "And then... she walked in.",
+   "lead": 0.3,
+   "hold": 0.4
+  },
+  {
+   "clip": "brideless_groom@426.7-428.65",
+   "audio": true,
+   "say": "“Did you get a load of that? What a dish.”",
+   "tr": "she's bad fr 🔥",
+   "trAt": 1.1
+  },
+  {
+   "clip": "brideless_groom@442.4-445.5",
+   "audio": true,
+   "say": "“You can't propose to a girl looking like that. We've got to give you the works.”",
+   "tr": "bro is NOT shooting his shot looking like that 💀",
+   "trAt": 1.3
+  },
+  {
+   "clip": "brideless_groom@540.3",
+   "line": "Step one. The glow up.",
+   "lead": 0.3,
+   "hold": 0.6,
+   "cues": [
+    {
+     "s": "soft-swoosh",
+     "at": 0.1,
+     "g": -10
+    }
+   ]
+  },
+  {
+   "clip": "brideless_groom@553.3-557.55",
+   "audio": true,
+   "say": "“Oh, there I am. And as pretty as a picture.”"
+  },
+  {
+   "clip": "brideless_groom@556.4",
+   "line": "He was not.",
+   "lead": 0.5,
+   "hold": 0.9,
+   "freeze": {
+    "at": 0.05,
+    "x": 0.33,
+    "y": 0.2,
+    "r": 0.085,
+    "zoom": 1.6,
+    "text": "GLOW UP:\nDENIED",
+    "color": "#ff4d4d",
+    "side": "right",
+    "sfx": "fail"
+   }
+  },
+  {
+   "clip": "brideless_groom@575.7-577.3",
+   "audio": true,
+   "min": 2.2,
+   "say": "“You look great, kid. You're a cinch.”",
+   "tr": "ur literally him 👑 (lie)",
+   "trAt": 1.0
+  },
+  {
+   "clip": "brideless_groom@577.4",
+   "line": "His boys lied to his face. That's what the boys are for.",
+   "lead": 0.15,
+   "hold": 0.35
+  },
+  {
+   "clip": "brideless_groom@595.3",
+   "line": "She opened the door...",
+   "lead": 0.3,
+   "hold": 0.3
+  },
+  {
+   "clip": "brideless_groom@599.6-602.5",
+   "audio": true,
+   "cues": [
+    {
+     "s": "whoosh-hit",
+     "at": 0.35,
+     "g": -12,
+     "dur": 1.0
+    }
+   ],
+   "shake": [
+    {
+     "at": 0.45,
+     "dur": 0.35,
+     "amp": 14
+    }
+   ]
+  },
+  {
+   "clip": "brideless_groom@606.6-609.25",
+   "audio": true,
+   "say": "“I've just been dying to meet you.”",
+   "tr": "she's down bad 😩",
+   "trAt": 1.2
+  },
+  {
+   "clip": "brideless_groom@612.6",
+   "line": "Day one. Love bombing.",
+   "lead": 0.3,
+   "hold": 0.5
+  },
+  {
+   "clip": "brideless_groom@615.35-617.05",
+   "audio": true,
+   "say": "“Oh, boy... success!”",
+   "tr": "W 🏆",
+   "trAt": 0.8
+  },
+  {
+   "clip": "brideless_groom@632.4",
+   "line": "Day one... was also the last day.",
+   "lead": 0.3,
+   "hold": 0.3,
+   "cues": [
+    {
+     "s": "old-ring",
+     "at": 0.2,
+     "g": -15,
+     "dur": 2.4
+    }
+   ]
+  },
+  {
+   "clip": "brideless_groom@639.3-641.0",
+   "audio": true,
+   "say": "“You're cousin Basil?”"
+  },
+  {
+   "clip": "brideless_groom@642.65-646.05",
+   "audio": true,
+   "say": "“How dare you pretend to be my cousin Basil! I'll teach you a thing or two.”",
+   "tr": "you CATFISHED me??",
+   "trAt": 1.5
+  },
+  {
+   "id": "slaps",
+   "clip": "brideless_groom@646.05-652.6",
+   "audio": true,
+   "line": "Caught... in 4K.",
+   "speak": "Caught... in four K.",
+   "lead": 1.4,
+   "voiceGain": -1
+  },
+  {
+   "clip": "brideless_groom@652.8-655.0",
+   "audio": true,
+   "say": "“Boy, the kisses are getting louder.”",
+   "tr": "he's cooking fr (he is being cooked)",
+   "trAt": 1.0,
+   "min": 2.6
+  },
+  {
+   "clip": "brideless_groom@655.0-660.6",
+   "audio": true,
+   "say": "“You, you, you horrible person, you...”",
+   "shake": [
+    {
+     "at": 3.7,
+     "dur": 0.45,
+     "amp": 18
+    }
+   ]
+  },
+  {
+   "clip": "brideless_groom@663.15-665.05",
+   "audio": true,
+   "min": 2.9,
+   "say": "“Can I help it if I ain't cousin Basil?”",
+   "tr": "it's not catfishing if you believe in yourself 💅",
+   "trAt": 1.1
+  },
+  {
+   "id": "twist",
+   "clip": "brideless_groom@502.1-504.15",
+   "audio": true,
+   "say": "“Shemp Howard to inherit a half a million bucks!”"
+  },
+  {
+   "clip": "brideless_groom@721.95-725.3",
+   "audio": true,
+   "say": "“Those dames you phoned this morning found out about the 500 grand in the papers.”",
+   "tr": "the talking stages found out 💀",
+   "trAt": 1.8
+  },
+  {
+   "clip": "brideless_groom@810.0",
+   "line": "Every girl he ever texted found out about the money...",
+   "lead": 0.15,
+   "hold": 0.15
+  },
+  {
+   "clip": "brideless_groom@815.6",
+   "line": "...and about each other.",
+   "lead": 0.1,
+   "hold": 0.45
+  },
+  {
+   "card": {
+    "type": "trailer",
+    "text": "THE GROUP CHAT\nHAS ENTERED THE CHAT"
+   },
+   "dur": 2.3
+  },
+  {
+   "clip": "brideless_groom@821.9-826.2",
+   "audio": true,
+   "shake": [
+    {
+     "at": 0.2,
+     "dur": 0.3,
+     "amp": 10
+    }
+   ]
+  },
+  {
+   "clip": "brideless_groom@829.45-831.0",
+   "audio": true,
+   "min": 2.5,
+   "say": "“Didn't you propose to me?”",
+   "tr": "he said that to all 17 of us 💀",
+   "trAt": 0.9
+  },
+  {
+   "clip": "brideless_groom@836.0",
+   "card": {
+    "type": "bally",
+    "kicker": "SEE!",
+    "text": "A man propose to seventeen women\nfrom one payphone!",
+    "dim": 0.45
+   },
+   "dur": 2.5
+  },
+  {
+   "clip": "brideless_groom@553.6",
+   "card": {
+    "type": "bally",
+    "kicker": "GASP!",
+    "text": "at his glow-up!",
+    "dim": 0.4,
+    "tilt": 5,
+    "tilt2": -2
+   },
+   "dur": 2.1
+  },
+  {
+   "clip": "brideless_groom@873.5",
+   "card": {
+    "type": "bally",
+    "kicker": "THRILL!",
+    "text": "as the talking stages collide!",
+    "dim": 0.45
+   },
+   "dur": 2.3
+  },
+  {
+   "clip": "brideless_groom@753.45-755.95",
+   "audio": true,
+   "say": "“Oh, you want to spoil my looks?” — “Impossible.”",
+   "tr": "no looks to spoil 💀",
+   "trAt": 1.9,
+   "min": 2.9
+  },
+  {
+   "clip": "brideless_groom@871.2-873.05",
+   "audio": true,
+   "say": "“Hold hands, you lovebirds.”"
+  },
+  {
+   "clip": "brideless_groom@900.1-903.4",
+   "audio": true,
+   "shake": [
+    {
+     "at": 1.2,
+     "dur": 0.35,
+     "amp": 14
+    }
+   ]
+  },
+  {
+   "clip": "brideless_groom@837.5",
+   "line": "Seven hours. Seventeen talking stages. Zero... fucking... rizz.",
+   "lead": 0.15,
+   "hold": 0.35
+  },
+  {
+   "card": {
+    "type": "trailer",
+    "text": "BRIDE\nOR DIE."
+   },
+   "line": "Bride... or die.",
+   "noSubs": true,
+   "lead": 0.35,
+   "hold": 0.6,
+   "dur": 2.4
+  },
+  {
+   "id": "title",
+   "card": {
+    "type": "title",
+    "kicker": "Bot Bothered Pictures presents",
+    "text": "RIZZLESS\nGROOM",
+    "sub": "He shot his shot. Seventeen times."
+   },
+   "line": "Rizzless Groom.",
+   "noSubs": true,
+   "lead": 0.9,
+   "hold": 2.6,
+   "dur": 5.2
+  },
+  {
+   "id": "quotes",
+   "card": {
+    "type": "quotes",
+    "quotes": [
+     {
+      "text": "I'm literally screaming, crying, throwing up.",
+      "by": "The Group Chat"
+     },
+     {
+      "text": "He has no rizz. I would know.",
+      "by": "His Mom"
+     },
+     {
+      "text": "A masterpiece of fumbling the bag.",
+      "by": "Bag Weekly"
+     }
+    ]
+   },
+   "dur": 5.2
+  },
+  {
+   "card": {
+    "type": "rating",
+    "head": "Coming soon\nto a group chat near you",
+    "letter": "R",
+    "word": "RIZZLESS",
+    "text": "For strong delulu, seventeen talking stages,\ncatfishing, love bombing, and one man\nwho is not cousin Basil",
+    "foot": "This film has not been rated by anyone with rizz"
+   },
+   "dur": 5.2
+  },
+  {
+   "id": "stinger",
+   "clip": "brideless_groom@906.5-908.5",
+   "audio": true,
+   "min": 2.6,
+   "say": "“Will you marry me?” — “Never.”",
+   "tr": "absolutely not 💀",
+   "trAt": 1.7
+  },
+  {
+   "clip": "brideless_groom@754.6",
+   "line": "He's so fucking cooked.",
+   "lead": 0.45,
+   "hold": 1.2,
+   "freeze": {
+    "at": 0.05,
+    "x": 0.68,
+    "y": 0.36,
+    "r": 0.15,
+    "zoom": 1.25,
+    "text": "COOKED 🍳",
+    "side": "left",
+    "sfx": "boom"
+   }
+  }
+ ],
+ "youtube": {
+  "title": "RIZZLESS GROOM (1947) - Official Gen Z Trailer",
+  "description": [
+   "Seven hours. Seventeen talking stages. Zero rizz.",
+   "",
+   "We recut a 1947 comedy short into a Gen Z rom-com trailer. Every line of dialogue is real, straight from the film; we only added the narrator, the texts and the translations from unc.",
+   "",
+   "Footage:",
+   "{credits}",
+   "(Brideless Groom, Columbia Pictures 1947: its copyright was not renewed, so the film is in the public domain.)",
+   "",
+   "Narration is a synthetic voice (Kokoro text-to-speech, Apache 2.0). Music and sound effects: Mixkit (mixkit.co).",
+   "",
+   "#genz #rizz #trailer #comedy"
+  ],
+  "tags": [
+   "rizzless groom",
+   "gen z trailer",
+   "fake movie trailer",
+   "recut trailer",
+   "three stooges",
+   "brideless groom",
+   "gen z slang",
+   "rizz",
+   "no rizz",
+   "talking stage",
+   "catfish",
+   "gen z comedy",
+   "classic movie recut",
+   "1947 movie",
+   "translated from unc",
+   "bot bothered"
+  ],
+  "thumbnails": [
+   {
+    "full": {
+     "image": "rizzless-groom-6f0bb193/f0060",
+     "pos": "92% 42%",
+     "zoom": 1.38,
+     "shade": "right"
+    },
+    "glow": false,
+    "texts": [
+     {
+      "text": "wanna get married? 💍",
+      "x": 700,
+      "y": 70,
+      "size": 50,
+      "status": "Read 2:14 AM"
+     }
+    ],
+    "headline": {
+     "lines": [
+      "ZERO",
+      "*RIZZ*"
+     ],
+     "x": 800,
+     "y": 300,
+     "size": 150
+    },
+    "tag": "GEN Z TRAILER"
+   },
+   {
+    "full": {
+     "image": "rizzless-groom-f3dc76eb/f0090",
+     "pos": "50% 12%"
+    },
+    "glow": false,
+    "ring": {
+     "x": 588,
+     "y": 400,
+     "r": 100,
+     "text": "HIM",
+     "tx": 700,
+     "ty": 250,
+     "size": 78
+    },
+    "headline": {
+     "lines": [
+      "*17* TALKING",
+      "STAGES"
+     ],
+     "x": 48,
+     "y": 455,
+     "size": 112
+    },
+    "tag": "GEN Z TRAILER"
+   },
+   {
+    "full": {
+     "image": "rizzless-groom-f2801327/f0020",
+     "pos": "50% 35%",
+     "shade": "right"
+    },
+    "glow": false,
+    "titleArt": {
+     "text": "RIZZLESS\nGROOM",
+     "x": 600,
+     "y": 150,
+     "size": 116,
+     "rot": -3
+    },
+    "headline": {
+     "lines": [
+      "*NO RIZZ.*",
+      "7 HOURS."
+     ],
+     "x": 690,
+     "y": 470,
+     "size": 76
+    },
+    "tag": "1947 · GEN Z TRAILER",
+    "tagTop": true
+   }
+  ]
+ }
+}
