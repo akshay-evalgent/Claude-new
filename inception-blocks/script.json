@@ -1,0 +1,19 @@
+{
+  "fps": 30,
+  "lead": 2.6,
+  "tail": 4.2,
+  "scenes": [
+    {"id": "limbo", "sents": ["Dom Cobb is the best dream thief in the game.", "One problem.", "He hasn't logged off in ten years."]},
+    {"id": "offer", "sents": ["Then Mister Saito makes him an offer.", "One last job.", "Don't steal an idea. Plant one."]},
+    {"id": "target", "sents": ["The target: Robert Fischer.", "He's about to inherit the biggest game studio on Earth,", "and he plans to make every game pay to win."]},
+    {"id": "crew", "sents": ["So Cobb builds a crew.", "Arthur, the planner.", "Ariadne, the builder.", "Eames, the master of disguise.", "And Yusuf, who brews the sleepy potion."]},
+    {"id": "level1", "sents": ["Level one. A rainy city,", "where Fischer's guards spawn on every corner."]},
+    {"id": "level2", "sents": ["Level two. A hotel where gravity is broken.", "Arthur fights on the ceiling."]},
+    {"id": "level3", "sents": ["Level three. A snow fortress,", "with the idea locked in a vault."]},
+    {"id": "mal", "sents": ["But Mal, Cobb's lost co-op partner, keeps crashing the server.", "She wants him to stay forever."]},
+    {"id": "goodbye", "sents": ["At the very bottom,", "Cobb finally says goodbye."]},
+    {"id": "vault", "sents": ["Inside the vault, Fischer finds the first little game he built with his dad.", "The idea lands.", "Games should be fun."]},
+    {"id": "kick", "sents": ["The kick hits.", "Everyone wakes up."]},
+    {"id": "home", "sents": ["Cobb goes home to his kids.", "And the spinning top?", "He doesn't check.", "He just logs off."]}
+  ]
+}

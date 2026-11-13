@@ -1,0 +1,28 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Inception, reimagined in blocks</title>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+<style>
+html,body{margin:0;background:#000;overflow:hidden}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter,sans-serif;font-weight:900;color:#fff;text-align:center}
+canvas{position:absolute;inset:0;width:1080px;height:1920px}
+#cap{position:absolute;left:50%;top:1400px;width:980px;font-size:104px;line-height:1.05;text-transform:uppercase;letter-spacing:-1px;-webkit-text-stroke:22px #000;paint-order:stroke fill;text-shadow:0 10px 0 rgba(0,0,0,.55)}
+#title{position:absolute;left:50%;top:300px;width:1080px}
+#title b{display:block;font-size:176px;letter-spacing:6px;-webkit-text-stroke:20px #14161c;paint-order:stroke fill}
+#title span{display:inline-block;margin-top:18px;font-size:60px;background:#ffd24a;color:#14161c;padding:10px 34px;border-radius:18px}
+#slam{position:absolute;left:50%;top:560px;font-size:210px;white-space:nowrap;color:#ffd24a;-webkit-text-stroke:26px #14161c;paint-order:stroke fill}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+#end{position:absolute;left:0;right:0;top:760px;display:none}
+#end b{display:block;font-size:150px;letter-spacing:6px}
+#end span{display:block;margin-top:26px;font-size:54px;color:#ffd24a;letter-spacing:4px}
+#end i{display:block;margin-top:70px;font-style:normal;font-size:40px;color:#8a909c;font-weight:700}
+</style></head><body>
+<div id="stage">
+  <canvas id="c" width="1080" height="1920"></canvas>
+  <div id="flash"></div>
+  <div id="title"><b>INCEPTION</b><span>BUT IT'S A GAME</span></div>
+  <div id="slam"></div>
+  <div id="cap"></div>
+  <div id="end"><b>INCEPTION</b><span>REIMAGINED IN BLOCKS</span><i>did he really log off?</i></div>
+</div>
+<script type="module" src="film.js"></script>
+</body></html>
