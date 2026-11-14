@@ -1,6 +1,6 @@
 # "What Did Ancient Humans Do for Fun Before Phones?"
 
-DURATION, 1920x1080, 25 fps. 157 shots, 1,789 words, 11 chapters.
+11 minutes 18 seconds, 1920x1080, 25 fps. 157 shots, 1,789 words, 11 chapters.
 Thumbnails: `../pilot-fridge/thumbnails/funV2.png` ("NO PHONE?") and `funV2b.png` ("OLDEST JOKE?"), v2 contrast split. Facts and sources: `SOURCES.md`.
 Upload kit: `../upload-kit/fun/`.
 
