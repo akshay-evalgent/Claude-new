@@ -1,0 +1,95 @@
+{
+  "fps": 24,
+  "chapters": [
+    {"id": "p", "card": null, "mood": "mystery", "lead": 1.2, "lines": [
+      {"id": "p1", "v": "N", "amb": "wind", "text": "Doctor Strange looked into fourteen million, six hundred and five futures."},
+      {"id": "p2", "v": "N", "text": "He told Tony Stark they win in exactly one."},
+      {"id": "p3", "v": "N", "text": "He lied.", "boom": [0]},
+      {"id": "p4", "v": "N", "text": "There were two. And he hid the second one for a reason."},
+      {"id": "p5", "v": "N", "text": "This is Avengers: Endgame. With the future Strange never told us about.", "gap": 3.4}
+    ]},
+    {"id": "a", "card": "CHAPTER ONE|THE SNAP", "mood": "sad", "lines": [
+      {"id": "a1", "v": "N", "amb": "wind", "text": "It starts with the worst day in history. Thanos snaps his fingers, and half of all life turns to dust.", "boom": [1]},
+      {"id": "a2", "v": "N", "text": "On a quiet farm, Clint Barton turns around. His family is gone."},
+      {"id": "a3", "v": "N", "amb": "plane", "text": "Tony Stark is adrift in space, out of air, recording a goodbye."},
+      {"id": "a4", "v": "tony", "text": "Part of the journey is the end."},
+      {"id": "a5", "v": "N", "text": "Then a light appears outside the window. Captain Marvel carries the whole ship home."},
+      {"id": "a6", "v": "N", "amb": "wind", "text": "The Avengers find Thanos on a garden planet, and demand the stones. But he has already destroyed them."},
+      {"id": "a7", "v": "thanos", "text": "The work is done. It always will be."},
+      {"id": "a8", "v": "N", "text": "Thor takes his head. And it changes nothing.", "boom": [0], "gap": 0.8}
+    ]},
+    {"id": "b", "card": "CHAPTER TWO|FIVE YEARS LATER", "mood": "sad", "lines": [
+      {"id": "b1", "v": "N", "amb": "city", "text": "Five years pass. The world doesn't move on. It just gets quieter."},
+      {"id": "b2", "v": "N", "amb": "room", "text": "Steve runs a support group. Natasha runs what is left of the Avengers. And Thor stops answering the door."},
+      {"id": "b3", "v": "N", "amb": "wind", "text": "Tony has a cabin, a lake, and a daughter named Morgan."},
+      {"id": "b4", "v": "morgan", "text": "I love you three thousand."},
+      {"id": "b5", "v": "N", "amb": "room", "text": "Then a rat walks across a dashboard in a storage unit, and Scott Lang falls out of the quantum realm."},
+      {"id": "b6", "v": "N", "text": "For him, it wasn't five years. It was five hours. Which means time works differently down there."},
+      {"id": "b7", "v": "N", "text": "Which means, a time machine.", "boom": [0], "gap": 0.5}
+    ]},
+    {"id": "c", "card": "CHAPTER THREE|THE TIME HEIST", "mood": "heist", "lines": [
+      {"id": "c1", "v": "N", "amb": "room", "text": "Tony says no. Then, at midnight, he does the math. And it works."},
+      {"id": "c2", "v": "tony", "text": "I figured it out, by the way."},
+      {"id": "c3", "v": "N", "text": "The plan is a heist. Six stones, three teams, one trip each."},
+      {"id": "c4", "v": "N", "amb": "city", "text": "New York, twenty twelve. Steve has to fight himself, and wins with a whisper."},
+      {"id": "c5", "v": "N", "amb": "room", "text": "Asgard. Thor sees his mother one last time. And his hammer still comes when he calls."},
+      {"id": "c6", "v": "N", "amb": "wind", "text": "Morag. Nebula's memories leak across time. And the Thanos of the past sees everything."},
+      {"id": "c7", "v": "N", "text": "And Vormir. A cliff, a stone, and a price. A soul, for a soul."},
+      {"id": "c8", "v": "N", "text": "Natasha and Clint fight each other for the right to fall. Natasha wins.", "hush": true, "gap": 1.2},
+      {"id": "c9", "v": "N", "amb": "room", "text": "They come home with six stones, and one empty space on the platform.", "gap": 0.6}
+    ]},
+    {"id": "d", "card": "CHAPTER FOUR|THE RETURN", "mood": "action", "lines": [
+      {"id": "d1", "v": "N", "amb": "room", "text": "Bruce puts on the gauntlet. It nearly burns his arm off. But he snaps.", "boom": [2]},
+      {"id": "d2", "v": "N", "text": "Birds return to the trees. Clint's phone rings. It's his wife."},
+      {"id": "d3", "v": "N", "amb": "wind", "text": "Then the sky opens, and a warship from twenty fourteen turns the compound into a crater.", "boom": [0]},
+      {"id": "d4", "v": "N", "text": "Thanos is back. And this time, he isn't here for half."},
+      {"id": "d5", "v": "thanos", "text": "I will shred this universe down to its last atom."},
+      {"id": "d6", "v": "N", "text": "Three Avengers walk out to meet him. Iron Man. Thor. Captain America."},
+      {"id": "d7", "v": "N", "text": "They lose. Thor is pinned. And then the hammer lifts off the ground, and flies into Steve's hand.", "boom": [2]},
+      {"id": "d8", "v": "thor", "text": "I knew it!"},
+      {"id": "d9", "v": "N", "text": "It isn't enough. The shield breaks. And Steve stands alone, against an army.", "hush": true, "gap": 1.0}
+    ]},
+    {"id": "e", "card": "CHAPTER FIVE|ASSEMBLE", "mood": "heroic", "lines": [
+      {"id": "e1", "v": "N", "amb": "wind", "text": "And then, a voice in his ear."},
+      {"id": "e2", "v": "sam", "text": "On your left."},
+      {"id": "e3", "v": "N", "text": "A portal opens. Then another. Then hundreds."},
+      {"id": "e4", "v": "N", "text": "Wakanda. Asgard. The wizards. The Guardians. The kid from Queens. Everyone who turned to dust, walks back."},
+      {"id": "e5", "v": "steve", "text": "Avengers. Assemble.", "boom": [1], "gap": 0.8},
+      {"id": "e6", "v": "N", "text": "The gauntlet crosses the battlefield like a football. Clint. T'Challa. Peter. Carol."},
+      {"id": "e7", "v": "N", "text": "Thanos gets it anyway. Tony looks at Strange. And Strange raises one finger."},
+      {"id": "e8", "v": "N", "text": "You know this part. Tony steals the stones. Says four words. And saves the universe with his life."},
+      {"id": "e9", "v": "tony", "text": "I am Iron Man.", "boom": [0], "hush": true, "gap": 1.6},
+      {"id": "e10", "v": "N", "text": "That is the one future Strange showed us."},
+      {"id": "e11", "v": "N", "text": "Here is the one he didn't.", "gap": 0.8}
+    ]},
+    {"id": "f", "card": "CHAPTER SIX|THE SECOND FUTURE", "mood": "heroic", "lines": [
+      {"id": "f1", "v": "N", "amb": "wind", "text": "In the second future, Strange doesn't raise one finger. He raises his whole hand, open."},
+      {"id": "f2", "v": "N", "text": "And Tony understands. He isn't supposed to carry it alone."},
+      {"id": "f3", "v": "N", "text": "He takes the stones. The power tears through his arm. And before he can snap, Steve grabs his shoulder."},
+      {"id": "f4", "v": "steve", "text": "Together."},
+      {"id": "f5", "v": "N", "text": "Then Thor takes Steve's arm. Carol takes Thor's. Peter. Bruce. Wanda. T'Challa. Hand over hand, across the whole battlefield."},
+      {"id": "f6", "v": "N", "text": "The Guardians did this once, with one stone. This is six stones, and every hero on Earth."},
+      {"id": "f7", "v": "thanos", "text": "I am inevitable."},
+      {"id": "f8", "v": "tony", "text": "And we, are the Avengers."},
+      {"id": "f9", "v": "N", "text": "They snap. Together.", "boom": [1], "hush": true, "gap": 2.0}
+    ]},
+    {"id": "g", "card": "CHAPTER SEVEN|HOME", "mood": "wonder", "lines": [
+      {"id": "g1", "v": "N", "amb": "wind", "text": "Thanos turns to dust. His army turns to dust. And Tony Stark opens his eyes."},
+      {"id": "g2", "v": "N", "text": "He goes home. He walks up the steps of the cabin. And Morgan gets her dad back."},
+      {"id": "g3", "v": "morgan", "text": "I love you three thousand.", "gap": 1.2}
+    ]},
+    {"id": "h", "card": "CHAPTER EIGHT|THE PRICE", "mood": "sad", "lines": [
+      {"id": "h1", "v": "N", "amb": "wind", "text": "But this is why Strange hid it. Power shared, is power spent."},
+      {"id": "h2", "v": "N", "text": "Thor reaches for the lightning, and nothing comes. Carol's light goes out. Peter can't feel the danger anymore. And Steve looks down, at an old man's hands."},
+      {"id": "h3", "v": "N", "text": "They saved everyone. And it cost every one of them the thing that made them Avengers."},
+      {"id": "h4", "v": "N", "text": "Strange saw this future. A world where Tony Stark lives, and nobody is left to answer the call."},
+      {"id": "h5", "v": "N", "text": "And in the dark, far past the edge of the map, something notices.", "boom": [0], "hush": true, "gap": 2.6}
+    ]},
+    {"id": "o", "card": null, "mood": "outro", "lines": [
+      {"id": "o1", "v": "N", "amb": "none", "text": "So. One hero's life, or every hero's power? Comment Tony, or powers."},
+      {"id": "o2", "v": "N", "text": "And tell us what to reimagine next."},
+      {"id": "o3", "v": "N", "text": "Titanic, where the door fits two? The Matrix, where Neo takes the blue pill? Or The Dark Knight, where the Joker tells the truth?"},
+      {"id": "o4", "v": "N", "text": "The top comment gets made. And send this to the friend who still isn't over Tony Stark.", "gap": 2.5}
+    ]}
+  ]
+}
