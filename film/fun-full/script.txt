@@ -1,0 +1,16 @@
+# What Did Ancient Humans Do for Fun Before Phones?
+# Same format as film/fridge-full/script.txt. DRAFT: facts to be checked against SOURCES.md.
+
+= hook open
+Picture your evening. >> phoneCouch {} push
++ The couch. The blanket. The phone. >> phoneCouch {"ping":0.3} [820,600,1.12,1.22]
+Most of us now spend hours a day on our phones. >> screenTime {"label":"HOURS","sub":"EVERY DAY"} push
++ Scrolling. Watching. Swiping. ~0.2 >> phoneCouch {"label":"ONE MORE VIDEO"} push
+Now take the phone away. ~0.2 >> phoneCouch {"gone":"@away"} push
++ No phone. No TV. No internet. >> card {"lines":["NO PHONE."],"icon":"phone"} push
++ For three hundred thousand years. ~0.2 >> rewind {} push
+Now your brain is probably saying, they must have been bored out of their minds. >> boredCave {"dusk":true} push
++ Sitting around. Staring at the fire. Waiting for something to happen. >> boredCave {"dusk":true,"fire":true} [960,700,1.1,1.2]
+At least, that's what we assume. ~0.3 >> think {"q1":"@assume","q2":"NEVER"} push
+But archaeologists keep digging up game boards, toys, flutes, and even a joke that's about four thousand years old. >> card {"lines":["GAMES.","TOYS.","JOKES."],"icon":"laugh"} push
++ So what did our ancestors actually do for fun? ~0.2 >> kidsPlay {} push

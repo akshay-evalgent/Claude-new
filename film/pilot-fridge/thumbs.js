@@ -131,6 +131,32 @@ function v2(o) {
 }
 function marrowBone() { return `<path d="M-120 -20 H120 V20 H-120 Z" fill="#F3EAD4" stroke="#0D0A07" stroke-width="7"/><circle cx="-128" cy="-26" r="26" fill="#F3EAD4" stroke="#0D0A07" stroke-width="7"/><circle cx="-128" cy="26" r="26" fill="#F3EAD4" stroke="#0D0A07" stroke-width="7"/><path d="M110 -34 L150 -10 L140 0 L150 14 L110 34 Z" fill="#F3EAD4" stroke="#0D0A07" stroke-width="7"/><ellipse cx="128" cy="0" rx="12" ry="22" fill="#E05A3A" stroke="#0D0A07" stroke-width="4"/>`; }
 
+function mPhone() {
+  const apps = ['#E05A4E', '#F2C443', '#4F9A4A', '#4A8FE0', '#B58FD0', '#F28CA0', '#E07A1F', '#2EC4B6', '#FFFFFF'];
+  return glowBehind(400, 600, 440) + g('translate(400 640) rotate(-8)', `<rect x="-170" y="-330" width="340" height="640" rx="44" fill="#151A26" stroke="#0D0A07" stroke-width="9"/><rect x="-148" y="-300" width="296" height="580" rx="24" fill="#DFF4FF"/><rect x="-46" y="-318" width="92" height="16" rx="8" fill="#0D0A07"/>` +
+    apps.map((c, i) => `<rect x="${-120 + (i % 3) * 90}" y="${-250 + Math.floor(i / 3) * 100}" width="64" height="64" rx="16" fill="${c}" stroke="#0D0A07" stroke-width="4"/>`).join('') +
+    `<rect x="-120" y="70" width="240" height="160" rx="18" fill="#FFFFFF" stroke="#0D0A07" stroke-width="4"/><path d="M-30 110 L40 150 L-30 190 Z" fill="#E05A4E"/>` +
+    `<circle cx="150" cy="-300" r="58" fill="#FF2A2A" stroke="#0D0A07" stroke-width="7"/><text x="150" y="-282" font-family="Thumb" font-size="52" fill="#FFFFFF" text-anchor="middle">99+</text>`);
+}
+function tUrBoard(s = 1) {
+  const q = 100; let b = `<rect x="-420" y="-170" width="840" height="340" rx="16" fill="#3A2A1E" opacity=".35"/>`;
+  const ros = new Set(['0,0', '2,0', '1,3', '0,6', '2,6']);
+  for (let r = 0; r < 3; r++) for (let k = 0; k < 8; k++) {
+    if (!(r === 1 || k < 4 || k > 5)) continue;
+    const x = -400 + k * q, y = -150 + r * q;
+    b += `<rect x="${x}" y="${y}" width="${q}" height="${q}" fill="${(r + k) % 2 ? '#3B5BA5' : '#F3E6C8'}" stroke="#0D0A07" stroke-width="6"/>`;
+    if (ros.has(`${r},${k}`)) b += `<circle cx="${x + 50}" cy="${y + 50}" r="34" fill="#FFFFFF" stroke="#0D0A07" stroke-width="4"/>` + [...Array(8)].map((_, i) => { const a = i / 8 * Math.PI * 2; return `<circle cx="${f1(x + 50 + Math.cos(a) * 20)}" cy="${f1(y + 50 + Math.sin(a) * 20)}" r="8" fill="#E0302A"/>`; }).join('');
+  }
+  b += [[150, -50, '#FFFFFF'], [350, 50, '#1A1410'], [-150, 50, '#FFFFFF'], [-250, -100, '#1A1410']].map(([x, y, c]) => `<circle cx="${x}" cy="${y}" r="36" fill="${c}" stroke="#0D0A07" stroke-width="6"/>`).join('');
+  return g(`scale(${s})`, b);
+}
+function tTablet(s = 1) {
+  let b = `<rect x="-130" y="-170" width="260" height="340" rx="30" fill="#C9A06A" stroke="#0D0A07" stroke-width="8"/>`;
+  const r = rng(9);
+  for (let i = 0; i < 7; i++) for (let k = 0; k < 5; k++) if (r() > 0.2) b += `<path d="M${-95 + k * 44} ${-130 + i * 42} l18 6 l-18 6 Z" fill="#7A5A36"/>`;
+  return g(`scale(${s})`, b);
+}
+
 const THUMBS = {
   fridgeV2() {
     const right = aSavanna(11) + vulture(1250, 330, 0.9) + vulture(1420, 280, 0.7) + hut(1820, 640, 0.8);
@@ -210,6 +236,17 @@ const THUMBS = {
     const right = aSavanna(77) + hut(1800, 640, 0.8) + [[1050, 'happy', 14, true], [1200, 'laugh', 3, false], [1350, 'laugh', 5, true]].map(([x, f, sd, lg]) => person({ x, y: 980, s: 0.8, t: 1, seed: sd, long: lg, keepHair: lg && sd === 14, hairC: sd === 14 ? '#B9B2A6' : lg ? C.hair2 : C.hair, face: f, bob: 0, la: [-14, -6], ra: [-60, -80] })).join('') + g('translate(1200 560)', heart(0.9));
     const hero = heroBig(Object.assign({ x: 1600, y: 1700, s: 2.8, seed: 21, face: 'think', flip: true, hairC: '#3C2A1E', la: [-14, -6], ra: [150, -150], armsFront: true }, legsOff));
     return v2({ left: mRing(), right, heroSvg: hero, text: 'MARRIED HOW?' });
+  },
+  funV2() {
+    const right = aDusk(83, { sky: ['#6A3E9A', '#F6A85A'], ground: '#C08A50', hills: '#8E6A6E' }) + `<ellipse cx="1250" cy="930" rx="520" ry="140" fill="#F28C28" opacity=".32"/>` + fire(1760, 900, 0.55, 0.6) +
+      [[1010, 'laugh', 9, false], [1250, 'laugh', 12, true]].map(([x, f, sd, lg]) => person({ x, y: 870, s: 0.62, t: 1, seed: sd, long: lg, face: f, bob: 0, hip: 50, ll: [118, 8], rl: [106, -2], la: [40, 80], ra: [-150, -120] })).join('') + g('translate(1170 930) scale(.55)', tUrBoard(1));
+    const hero = heroBig(Object.assign({ x: 1560, y: 1700, s: 2.9, seed: 3, face: 'laugh', flip: true, la: [-14, -6], ra: [-150, -170] }, legsOff));
+    return v2({ left: mPhone(), right, heroSvg: hero, extra: redCircle(1170, 930, 270, 120), text: 'NO PHONE?' });
+  },
+  funV2b() {
+    const right = aSavanna(89) + hut(1820, 640, 0.8) + [[960, 'laugh', 14], [1090, 'laugh', 21]].map(([x, f, sd]) => person({ x, y: 990, s: 0.75, t: 1, seed: sd, face: f, bob: 0, la: [-150, -170], ra: [150, 170] })).join('');
+    const hero = heroBig(Object.assign({ x: 1560, y: 1700, s: 2.9, seed: 9, face: 'laugh', flip: true, la: [-14, -6], ra: [-110, -60] }, legsOff));
+    return v2({ left: mPhone(), right, heroSvg: hero + g('translate(1250 690) rotate(-8) scale(.62)', tTablet(1)), extra: redCircle(1250, 690, 145, 175), text: 'OLDEST JOKE?' });
   },
   wedRef() {
     let bg = thumbNight({ seed: 71, moonX: 1600, moonY: 200, sky: ['#7A6AAE', '#F6B27A'], hills: '#A07A6E', ground: '#C99A5A', stars: 10 });
