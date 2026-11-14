@@ -2,7 +2,7 @@
 import { THREE, SET, SHOT, LINE, mkScene, move, shot, shake, cuts, put, clamp, ease, lerp, hash, rng, M, tex, box, label, makeChar, ground, makeAxe, makeGauntlet, dustFx } from './engine.js';
 
 // ---------------- STRANGE'S FUTURES ----------------
-SET('futures', () => {
+SET('visions', () => {
   const { s, cam } = mkScene(0x04100f, [30, 140], 0x9fffd0, 0.5, [0xa8e8d8, 0x12201c, 1.0], [6, 20, 14]);
   s.userData.bloom = 0.45; s.userData.sun.castShadow = false;
   const fl = new THREE.Mesh(new THREE.CircleGeometry(60, 40), new THREE.MeshPhongMaterial({ color: 0x0a1a18, shininess: 120, specular: 0x2a6a5a })); fl.rotation.x = -Math.PI / 2; s.add(fl);
@@ -20,7 +20,7 @@ SET('futures', () => {
     pre(T) { this.mode = 0; winA.visible = winB.visible = false; tony.g.visible = false; tony.reset(); tony.idle(T); strange.reset(); strange.sit(); strange.g.position.y = 2.2 + Math.sin(T * 1.2) * 0.25; strange.armL.rotation.set(-0.9, 0, 0.5); strange.armR.rotation.set(-0.9, 0, -0.5); rings.forEach((r, i) => { r.rotation.set(T * (0.7 + i * 0.3), T * (0.5 - i * 0.4), i); r.visible = true; }); },
     post(T) { const q = Math.floor(T * 14); for (let i = 0; i < N; i++) { const h = hash(i * 3.7 + Math.floor(q / (1 + (i % 3)))); if (this.mode === 0) col.setHSL(h < 0.5 ? 0.45 : 0.07, 0.7, 0.04 + h * 0.3); else col.setHSL(0.45, 0.4, 0.025); pan.setColorAt(i, col); } pan.instanceColor.needsUpdate = true; } };
 });
-const FUT = (key, fn) => SHOT(key, 'futures', c => { fn(c, c.S); c.S.post(c.T); });
+const FUT = (key, fn) => SHOT(key, 'visions', c => { fn(c, c.S); c.S.post(c.T); });
 FUT('p1', (c, S) => { S.strange.look('sleep', c.T); S.strange.head.rotation.set(0, (hash(Math.floor(c.T * 20)) - 0.5) * 0.9, (hash(Math.floor(c.T * 20) + 5) - 0.5) * 0.5); const a = 0.4 + c.k * 0.9; shot(c.cam, [Math.sin(a) * lerp(19, 12, ease(c.k)), lerp(11, 5.5, ease(c.k)), Math.cos(a) * lerp(19, 12, ease(c.k))], [0, 5, 0], 42); });
 FUT('p2', (c, S) => { S.tony.g.visible = true; S.tony.look('serious', c.T); S.strange.look('serious', c.T); S.strange.head.rotation.y = -0.7; S.strange.armR.rotation.set(-2.5 * ease(c.k * 2.5), 0, 0.15); move(c.cam, [-3, 4.6, 17], [-3, 4.8, 0], [-3, 4.8, 14], [-2.6, 5.0, 0], c.k, 34); });
 FUT('p3', (c, S) => { S.strange.look('serious', c.T); S.strange.armR.rotation.set(-2.5, 0, 0.15); move(c.cam, [1.5, 6.8, 10], [0, 7.0, 0], [1.0, 6.9, 8], [0, 7.05, 0], c.k, 28); if (c.l < 0.25) c.flash(0.6 * (1 - c.l / 0.25)); });
