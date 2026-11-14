@@ -24,7 +24,7 @@ PY
 fi
 # If you re-record the voice, re-time the cues: update words.json and the C = {...} table in src/cat-knock.js.
 
-# 2. Frames (three.js in headless Chromium, 1080x1920 @ 30 fps, 3-4 sub-frames each). About 1 h 50 min on 4 CPU cores.
+# 2. Frames (three.js in headless Chromium, 1080x1920 @ 30 fps, 3-4 sub-frames each). About 1 h 40 min on 4 CPU cores.
 #    Fast draft: PAGE='cat-knock.html?sub=1&fur=0'
 (cd "$HERE/src" && npm install --silent)
 (cd "$HERE/src" && python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 & echo $! > "$WORK/http.pid")

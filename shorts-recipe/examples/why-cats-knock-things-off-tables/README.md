@@ -14,7 +14,7 @@ A 31.6-second vertical short (19 shots, three sets) built to the recipe in `../.
 - `output/mix_master.wav`: the mastered audio track
 - `upload/`: title, description, thumbnails, SRT captions, pinned comment and settings
 
-## Script (100 words, 190 wpm, 31.5 s of voice)
+## Script (100 words, 193 wpm, 31.5 s of voice)
 
 > Your cat looks you dead in the eye and slowly pushes your glass off the table. You see, cats are hunters, and they test things with their paws, tapping them to see if they run. So when the glass falls, that sudden movement fires the same instinct as chasing prey. But there's another reason. The first time it crashed, you gasped and came running, and your cat learned it's the fastest way to get your attention. In one study, half of the cats picked time with a human over food and toys. So the more you react, the more often…
 
@@ -69,4 +69,4 @@ All the code is in `src/cat-knock.js` (one file). The new pieces are also saved 
 
 ## Rebuild
 
-`./build.sh` regenerates the voice, renders 948 frames (about 1 hour 50 minutes on 4 CPU cores with software WebGL; add `?sub=1&fur=0` for a fast draft), mixes and masters the audio, and encodes both versions.
+`./build.sh` regenerates the voice, renders 948 frames (about 1 hour 40 minutes on 4 CPU cores with software WebGL; add `?sub=1&fur=0` for a fast draft), mixes and masters the audio, and encodes both versions.

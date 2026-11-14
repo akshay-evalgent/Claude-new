@@ -52,7 +52,14 @@ why do cats knock things off tables, why do cats push things off tables, cat kno
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-_Thumbnails are added when the render finishes._
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | The stare: half-closed eyes on the lens, one paw resting on the rim of the glass, caption "in the eye" | **Main pick.** Every cat owner knows what happens next |
+| `thumbnail-alt-fall.jpg` | The glass tipping over the edge, the cat peering down after it, caption "off the table" | Action angle |
+| `thumbnail-alt-pupils.jpg` | Extreme close-up, pupils blown wide, caption "movement fires" | Cute/curiosity angle |
+| `thumbnail-alt-hunter.jpg` | The cat stalking through the grass at dusk, caption "cats are hunters" | Science angle |
+| `thumbnail-alt-attention.jpg` | Head scratches, eyes shut in bliss, caption "your attention" | Payoff angle; share prompt not yet on screen |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
