@@ -58,7 +58,7 @@ SHOT('d2:1', 'lab', c => { const S = c.S; S.warm.intensity = 160; S.pl.intensity
 SHOT('d2:2', 'lab', c => { const S = c.S; S.warm.intensity = 160; S.phone.visible = c.k < 0; S.ch.steve.g.visible = false; S.ch.rocket.g.visible = false; const cl = S.ch.clint; cl.reset(); put(cl, 12.6, 0, 1.6, 0.15); cl.look(c.k > 0.45 ? 'joy' : 'surprised', c.T); cl.armR.rotation.x = -2.6; cl.armR.rotation.z = -0.55; cl.head.rotation.z = -0.1; S.pl.intensity = 30; S.pl.position.set(11, 6, 6); move(c.cam, [8.6, 5, 12.5], [12.5, 4.7, 1.6], [9.4, 5, 11], [12.5, 4.75, 1.6], c.k, 30); if (c.k > 0.999) S.phone.visible = true; else S.phone.visible = false; });
 
 // ---------------- COMPOUND EXTERIOR (d3) ----------------
-SET('compound', () => {
+SET('crater', () => {
   const { s, cam } = mkScene(0x9fb8d0, [80, 520], 0xfff0d8, 2.2, [0xffffff, 0x6a8a5a, 1.3], [30, 40, 40], 80);
   s.userData.bloom = 0.5;
   ground(s, 700, '#5f9a52', '#69a65c');
@@ -88,7 +88,7 @@ SET('compound', () => {
       for (let i = 0; i < DN; i++) { const t = hit * (0.7 + hash(i) * 0.6), a = hash(i + 2) * 6.28, sp = 20 + hash(i + 4) * 70, y = 6 + t * (50 + hash(i + 6) * 80) - t * t * 90; dm.position.set(Math.cos(a) * sp * t + (hash(i + 8) - 0.5) * 80, Math.max(0.5, y), -40 + Math.sin(a) * sp * t * 0.8 + 6 * t); dm.rotation.set(t * 5 + i, i, t * 4); dm.scale.setScalar(hit > 0.02 ? 1.5 + hash(i + 9) * 5 : 0.0001); dm.updateMatrix(); deb.setMatrixAt(i, dm.matrix); } deb.instanceMatrix.needsUpdate = true;
     } };
 });
-SHOT('d3', 'compound', c => {
+SHOT('d3', 'crater', c => {
   const S = c.S; S.set(c.k, c.T); const [i, k] = cuts(c.k, [0.34, 0.66]);
   if (i === 0) move(c.cam, [20, 4, 60], [0, 60, -120], [14, 4, 52], [0, 120, -200], k, 46);
   else if (i === 1) { move(c.cam, [-50, 10, 40], [0, 70, -150], [-44, 9, 34], [0, 40, -90], k, 48); shake(c.cam, c.T, 0.15); }
