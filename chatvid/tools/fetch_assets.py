@@ -48,6 +48,27 @@ SFX = {
     "typing": 1393,    # Smartphone typing
     "old-ring": 1357,  # Old telephone ring
     "dial-tone": 1352, # Telephone dial tone
+    # studio-audience kit (panel show)
+    "laugh-small": 423,    # Small man crowd laughing
+    "laugh-mid": 424,      # Crowd laugh
+    "laugh-big": 460,      # Big crowd laughing
+    "laugh-clap": 422,     # Small crowd laugh and applause
+    "laugh-light": 512,    # Light applause with laughter audience
+    "applause": 485,       # Medium size crowd applause
+    "applause-big": 502,   # Auditorium moderate applause and cheering
+    "applause-light": 354, # Audience light applause
+    "applause-end": 478,   # Ending show audience clapping
+    "cheer": 462,          # Huge crowd cheering victory
+    "boo": 463,            # Crowd disappointment long boo
+    "cricket": 1927,       # Cricket chirp
+    "drum-roll": 566,      # Drum Roll
+    "buzzer": 950,         # Game show wrong answer buzz
+    "correct": 952,        # Correct answer reward
+    "win-chimes": 2015,    # Winning chimes
+    "fanfare": 226,        # Medieval show fanfare announcement
+    "gasp-m": 966,         # Male astonished gasp
+    "gasp-f": 964,         # Female astonished gasp
+    "suspense": 667,       # Game show suspense waiting
 }
 # name -> Mixkit stock music id
 MUSIC = {
@@ -122,6 +143,10 @@ EMOJI_NAME_OVERRIDES = {
     "⭐": "Star",
     "🅿": "P button",
     "🆘": "Sos button",
+    "🏍": "Motorcycle",
+    "📧": "E-mail",
+    "🚫": "Prohibited",
+    "🛴": "Kick scooter",
     "🐑": "Ewe",
     "🐻‍❄": "Polar bear",
     "👈": "Backhand index pointing left",

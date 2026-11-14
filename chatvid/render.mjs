@@ -27,11 +27,13 @@ if (opt('interface')) ep.interface = opt('interface');
 const baseSlug = path.basename(epPath, '.json');
 ep.__slug = baseSlug;
 const voiceDir = path.join(HERE, 'assets', 'voice', baseSlug);
-if (ep.engine === 'docu') {
+const PREP = { docu: 'docu_prepare.py', stage: 'stage_prepare.py' }[ep.engine];
+if (PREP) {
   const planFile = path.join(voiceDir, 'plan.json');
-  if (!fs.existsSync(planFile)) { console.error(`run: python3 chatvid/tools/docu_prepare.py ${epPath}`); process.exit(1); }
+  if (!fs.existsSync(planFile)) { console.error(`run: python3 chatvid/tools/${PREP} ${epPath}`); process.exit(1); }
   ep.__plan = JSON.parse(fs.readFileSync(planFile, 'utf8'));
-  ep.media = { ...(ep.media || {}), ...JSON.parse(fs.readFileSync(path.join(voiceDir, 'media.json'), 'utf8')) };
+  const mediaFile = path.join(voiceDir, 'media.json');
+  if (fs.existsSync(mediaFile)) ep.media = { ...(ep.media || {}), ...JSON.parse(fs.readFileSync(mediaFile, 'utf8')) };
 }
 const creditsPath = path.join(HERE, 'assets', 'media', 'credits.json');
 const allCredits = fs.existsSync(creditsPath) ? JSON.parse(fs.readFileSync(creditsPath, 'utf8')) : {};
@@ -54,7 +56,7 @@ const out = opt('out', path.join(outDir, `${slug}.mp4`));
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: scale });
 page.on('pageerror', (e) => console.error('page error:', e.message));
-await page.goto(pathToFileURL(path.join(HERE, ep.engine === 'docu' ? 'docu' : 'engine', 'index.html')).href);
+await page.goto(pathToFileURL(path.join(HERE, PREP ? ep.engine : 'engine', 'index.html')).href);
 const plan = await page.evaluate((e) => window.boot(e), ep);
 console.log(`${slug}: ${plan.duration.toFixed(2)} s, ${plan.cues.length} sound cues, ${Math.ceil(plan.duration * fps)} frames`);
 

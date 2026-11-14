@@ -5,7 +5,7 @@ messages, streamed replies, punch-in zooms, screen shake, a patience meter, a
 cold-open hook with a rewind, sound effects and music, mixed to YouTube loudness.
 No screen recording and no editing software needed.
 
-Samples: `samples/ai-is-a-toaster.mp4` (4:48), `samples/last-digit-of-pi.mp4` (4:47), `samples/emojis-only.mp4` (4:49), `samples/elon-vs-grok.mp4` (4:37, parody), `samples/1950s-mode.mp4` (4:39, real archive footage), `samples/year-3000-mode.mp4` (4:34, NASA footage), `samples/planet-human-720p.mp4` (3:40, AI-narrated documentary, 720p preview), `samples/rizzless-groom-720p.mp4` (3:41, Gen Z recut trailer of a 1947 short, 720p preview) and
+Samples: `samples/ai-is-a-toaster.mp4` (4:48), `samples/last-digit-of-pi.mp4` (4:47), `samples/emojis-only.mp4` (4:49), `samples/elon-vs-grok.mp4` (4:37, parody), `samples/1950s-mode.mp4` (4:39, real archive footage), `samples/year-3000-mode.mp4` (4:34, NASA footage), `samples/planet-human-720p.mp4` (3:40, AI-narrated documentary, 720p preview), `samples/rizzless-groom-720p.mp4` (3:41, Gen Z recut trailer of a 1947 short, 720p preview), `samples/latency-ep1-720p.mp4` (10:45, animated panel show, 720p preview) and
 `samples/count-to-a-billion.mp4` (29 s test). These are compressed previews;
 a fresh render in `out/` is the full-quality file to upload.
 
@@ -148,6 +148,48 @@ Any emoji can be used. The fetch script downloads every emoji found in
 
 Text stays sharp at every zoom because each frame is rendered by the browser at
 its zoomed size, not upscaled from a recording.
+
+## Panel-show episodes (`"engine": "stage"`)
+
+A third format: an animated studio show with a host, a judges' desk and contestants,
+all puppets with synthetic voices. Example: `episodes/latency-ep1.json` ("AI's Got
+Latency", a talent show for AI where contestants rate themselves and win only if the
+judges' average matches).
+
+```bash
+python3 chatvid/tools/stage_prepare.py chatvid/episodes/latency-ep1.json
+```
+
+```bash
+node chatvid/render.mjs chatvid/episodes/latency-ep1.json
+```
+
+`stage_prepare.py` speaks every line in its character's Kokoro voice (cached, so only
+edited lines are re-voiced) and records the loudness of every frame, which opens the
+puppet's mouth in time with the voice. A ten-minute episode renders in about 40 minutes.
+
+| Episode field | Meaning |
+|---|---|
+| `show` | `{"name", "episode", "top", "main", "bleeps"}`: the wall logo, the corner bug and the size of the bleep budget. |
+| `cast` | One entry per character: `puppet` (`bb`, `grok`, `siri`, `chatgpt`, `autocorrect`, `captcha`, `interviewer`, `clippy`; drawn in `stage/puppets.js`), `name`, `role`, `color`, `seat` (`desk1`-`desk4` or `stage`), `gain` (dB) and `voice`: `{"blend": {"am_puck": 1.0}, "speed": 1.0, "pitch": 1.5}` (pitch in semitones). |
+| `beats` | The script, in order (below). |
+| `endCard` | `{"kicker", "text", "sub", "dur", "music"}`. |
+
+| Beat field | Meaning |
+|---|---|
+| `who`, `line` | Who speaks and what. `speak` overrides the pronunciation; `████` in a line with `"bleep": true` censors the end of it. |
+| `laugh` | The audience: `small`, `mid`, `big`, `clap`, `applause`, `cheer`, `gasp`, `ooh`, `crickets`. Each has several takes used in turn, and adds a pause. `hold` sets the pause yourself. |
+| `shot` | Camera: `wide`, `desk`, `deskR`, `stage`, `cu:<id>`, `pair:<id>,<id>` (default: close-up of the speaker). `reactShot` cuts there during the laugh. `punch` (+ `shake`) punches in on the last word. |
+| `expr`, `react` | The speaker's face (`happy`, `sad`, `angry`, `smug`, `wide`, `dead`, `side`, `squint`) and everyone else's: `"laugh"`, `"shock"` or `{"grok": "angry"}`. |
+| `tag` | Show the speaker's name card. |
+| `do` | An action instead of a line: `enter`/`exit` (`who`), `verdict` (`self`, `avg`, `match`, `text`: drum roll, then buzzer or cheer), `title` (`top`, `main`, `sub`). |
+| `score` | Raise a judge's paddle: `{"grok": 2}` (`scoreAt`: seconds or `"end"`). |
+| `set` | Things that stay until changed: `rating`, `buffer` (a loading ring over a character), `popup` (`{icon, from, title, text, button, kind}`), `grid` (a CAPTCHA: `{big, tiles, status}`), `bleeps`, `banner`, `confetti`. `setAt` delays them. |
+| `music`, `cues` | A music sting (`{track, offset, dur, gain}`) or extra sounds (`[{s, at, g, dur}]`). |
+| `mark` | Chapter name for the YouTube description. |
+
+Thumbnails for these shows use `studio`, `puppets` (`{kind, x, y, size, expr}`), `paddles`
+and `stamps` in `youtube.thumbnails`.
 
 ## Layout
 

@@ -64,6 +64,14 @@
   .sms .emo { height: 1.05em; vertical-align: -.16em; margin-left: .12em; }
   .smsStatus { text-align: right; font-weight: 700; font-size: .5em; margin-top: .3em; color: #fff; text-shadow: 0 .05em .2em rgba(0,0,0,.95); }
 
+  /* panel-show thumbnails: a studio backdrop, puppets and score paddles */
+  @font-face { font-family: "Anton"; src: url("../assets/fonts/Anton-Regular.ttf"); }
+  .studio { position: absolute; inset: 0; background: radial-gradient(circle, rgba(120,150,255,.14) 1.6px, transparent 2.2px) 0 0 / 28px 28px,
+    radial-gradient(ellipse at 22% 50%, rgba(25,227,255,.30), transparent 48%), radial-gradient(ellipse at 78% 42%, rgba(179,107,255,.34), transparent 54%),
+    linear-gradient(180deg, #0a0d1e 0%, #17143a 58%, #070812 100%); }
+  .pad { position: absolute; border-radius: 50%; border: 7px solid #fff; color: #fff; text-align: center; font-family: "Anton", sans-serif; box-shadow: 0 8px 26px rgba(0,0,0,.6); }
+  .stamp { position: absolute; white-space: nowrap; font-family: "Anton", sans-serif; letter-spacing: .04em; border: .09em solid; border-radius: .14em; padding: .06em .3em .12em; background: rgba(6,8,14,.9); }
+
   .word { font-weight: 900; letter-spacing: -.045em; line-height: .92; }
   .tag { font-weight: 700; letter-spacing: -.01em; color: #c9d1d9; }
   .pill { display: inline-block; font-weight: 800; letter-spacing: .14em; padding: .5em 1.05em; border-radius: 99px;
@@ -72,6 +80,7 @@
 </head>
 <body>
 <div id="root"></div>
+<script src="../stage/puppets.js"></script>
 <script>
   const EMO = (g) => '../assets/emoji/' + Array.from(g).map((c) => c.codePointAt(0)).filter((c) => c !== 0xfe0f).map((c) => c.toString(16)).join('-') + '.png';
   const seg = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
@@ -169,6 +178,17 @@
           `object-position:${f.pos || '50% 40%'};transform-origin:${f.pos || '50% 40%'};transform:scale(${f.zoom || 1});filter:contrast(1.08) saturate(1.1)">` +
           `<div style="position:absolute;inset:0;background:linear-gradient(${f.shade === 'right' ? '270deg' : '90deg'},rgba(0,0,0,.78) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 70%)"></div>`;
       }
+      if (s.studio) { h += '<div class="studio"></div>'; s.glow = false; }
+      for (const pp of s.puppets || []) {
+        const sz = pp.size || 300;
+        h += `<div style="position:absolute;left:${pp.x}px;top:${pp.y}px;width:${sz}px;height:${sz * 340 / 300}px;transform:rotate(${pp.rot || 0}deg);filter:drop-shadow(0 12px 30px rgba(0,0,0,.55))">` +
+          Puppets.svg(pp.kind, { talk: pp.talk || 0, expr: pp.expr || 'neutral', blink: 0, t: pp.t || 0.4, censored: !!pp.censored }) + '</div>';
+      }
+      for (const pd of s.paddles || []) {
+        const sz = pd.size || 120, col = { bad: '#e02b3c', mid: '#e09a12', good: '#16a34a' }[pd.color || 'bad'];
+        h += `<div class="pad" style="left:${pd.x}px;top:${pd.y}px;width:${sz}px;height:${sz}px;background:${col};font-size:${sz * 0.66}px;line-height:${sz * 0.84}px;transform:rotate(${pd.rot || 0}deg)">${pd.text}</div>`;
+      }
+      for (const st of s.stamps || []) h += `<div class="stamp" style="left:${st.x}px;top:${st.y}px;font-size:${st.size || 90}px;color:${st.color || '#ff2e4d'};transform:rotate(${st.rot ?? -7}deg)">${fmt(st.text)}</div>`;
       if (s.ring) {
         const r = s.ring;
         h += `<svg style="position:absolute;inset:0" width="1280" height="720"><circle cx="${r.x}" cy="${r.y}" r="${r.r}" fill="none" stroke="#ffd23f" stroke-width="10" style="filter:drop-shadow(0 0 8px rgba(0,0,0,.8))"/></svg>`;

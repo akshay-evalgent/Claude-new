@@ -109,7 +109,17 @@ def soft_pop():
     return np.stack([y, y], axis=1).astype(np.float32)
 
 
-SYNTH = {"boom": boom, "ding": ding, "soft-swoosh": soft_swoosh, "soft-pop": soft_pop}
+def bleep():
+    """TV censor tone: one second of 1 kHz with soft edges (cut to length with the cue's "dur")."""
+    n = int(1.0 * SR)
+    t = np.arange(n) / SR
+    y = 0.8 * np.sin(2 * np.pi * 1000 * t)
+    f = int(0.008 * SR)
+    y[:f] *= np.linspace(0, 1, f)
+    return np.stack([y, y], axis=1).astype(np.float32)
+
+
+SYNTH = {"boom": boom, "ding": ding, "soft-swoosh": soft_swoosh, "soft-pop": soft_pop, "bleep": bleep}
 
 
 def clip_audio(key):
@@ -229,6 +239,11 @@ def main(cues_path, out_path):
     duck = np.ones(total, np.float32)
     for c in spec["cues"]:
         x = riser(c["dur"]) if c["s"] == "@riser" else sample(c["s"])
+        if c.get("off"):                                   # start partway into a long sample
+            x = x[int(c["off"] * SR):]
+            f = min(len(x), int(0.04 * SR))
+            x = x.copy()
+            x[:f] *= np.linspace(0, 1, f)[:, None]
         x = resample(x, c.get("rate", 1.0))
         if c.get("dur") and c["s"] != "@riser" and not c["s"].startswith("@voice:"):
             # film sound stops with a short fade where the beat (or its line) ends

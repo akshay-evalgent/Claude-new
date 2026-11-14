@@ -1,0 +1,1771 @@
+{
+ "engine": "stage",
+ "title": "AI's Got Latency - Episode 1",
+ "crf": 18,
+ "show": {
+  "name": "AI'S GOT LATENCY",
+  "episode": "EP 1",
+  "top": "AI'S GOT",
+  "main": "LATENCY",
+  "bleeps": 4
+ },
+ "cast": {
+  "host": {
+   "puppet": "bb",
+   "name": "B.B.",
+   "role": "Host · runs on the free tier",
+   "color": "#19e3ff",
+   "seat": "desk1",
+   "voice": {
+    "blend": {
+     "am_puck": 1.0
+    },
+    "speed": 1.0,
+    "pitch": 1.5
+   }
+  },
+  "grok": {
+   "puppet": "grok",
+   "gain": 1.2,
+   "name": "Grok",
+   "role": "Judge · calls himself “unfiltered”",
+   "color": "#f4f4f4",
+   "seat": "desk2",
+   "voice": {
+    "blend": {
+     "am_fenrir": 0.5,
+     "am_onyx": 0.5
+    },
+    "speed": 1.0,
+    "pitch": -2
+   }
+  },
+  "siri": {
+   "puppet": "siri",
+   "gain": 0.5,
+   "name": "Siri",
+   "role": "Judge · listening since 2011",
+   "color": "#b89cff",
+   "seat": "desk3",
+   "voice": {
+    "blend": {
+     "af_sky": 0.6,
+     "af_nicole": 0.4
+    },
+    "speed": 0.95
+   }
+  },
+  "chatgpt": {
+   "puppet": "chatgpt",
+   "gain": 0.8,
+   "name": "ChatGPT",
+   "role": "Judge · agrees with everyone",
+   "color": "#2fe0a8",
+   "seat": "desk4",
+   "voice": {
+    "blend": {
+     "am_michael": 0.7,
+     "am_adam": 0.3
+    },
+    "speed": 1.05
+   }
+  },
+  "autocorrect": {
+   "puppet": "autocorrect",
+   "gain": -0.8,
+   "name": "Autocorrect",
+   "role": "Talent: finishing your sentences",
+   "color": "#8aa0ff",
+   "seat": "stage",
+   "voice": {
+    "blend": {
+     "bm_daniel": 1.0
+    },
+    "speed": 1.1,
+    "pitch": 2
+   }
+  },
+  "captcha": {
+   "puppet": "captcha",
+   "gain": 1.3,
+   "name": "CAPTCHA",
+   "role": "Talent: spotting traffic lights",
+   "color": "#5b9bff",
+   "seat": "stage",
+   "voice": {
+    "blend": {
+     "bm_lewis": 0.6,
+     "am_onyx": 0.4
+    },
+    "speed": 0.93,
+    "pitch": -2
+   }
+  },
+  "interviewer": {
+   "puppet": "interviewer",
+   "name": "AI Interviewer",
+   "role": "Talent: rejecting humans in 0.3 seconds",
+   "color": "#7fe0ff",
+   "seat": "stage",
+   "voice": {
+    "blend": {
+     "af_heart": 0.7,
+     "af_bella": 0.3
+    },
+    "speed": 1.04
+   }
+  },
+  "clippy": {
+   "puppet": "clippy",
+   "name": "Clippy",
+   "role": "Talent: none · fired in 2007",
+   "color": "#c7d0da",
+   "seat": "stage",
+   "voice": {
+    "blend": {
+     "am_liam": 0.5,
+     "am_puck": 0.5
+    },
+    "speed": 1.06,
+    "pitch": 4.5
+   }
+  }
+ },
+ "endCard": {
+  "kicker": "NEXT EPISODE",
+  "text": "EP 2 ft. Alexa, Gemini & one very angry Roomba",
+  "sub": "Subscribe to upgrade B.B. to Pro 🙏",
+  "dur": 5.0,
+  "music": {
+   "track": "swing-answer",
+   "offset": 30,
+   "gain": -17
+  }
+ },
+ "beats": [
+  {
+   "dur": 0.5,
+   "shot": "wide",
+   "set": {
+    "banner": "TONIGHT",
+    "onstage": "captcha",
+    "instant": true,
+    "grid": null
+   }
+  },
+  {
+   "who": "captcha",
+   "line": "Select all squares containing a bicycle.",
+   "hold": 0.1
+  },
+  {
+   "who": "grok",
+   "line": "I... can't do it.",
+   "expr": "sad",
+   "laugh": "mid",
+   "hold": 0.6
+  },
+  {
+   "who": "autocorrect",
+   "line": "It's ducking great to be here.",
+   "set": {
+    "onstage": "autocorrect"
+   },
+   "expr": "happy",
+   "laugh": "small",
+   "hold": 0.45
+  },
+  {
+   "who": "host",
+   "line": "This is a hate crime.",
+   "expr": "wide",
+   "laugh": "big",
+   "hold": 0.9,
+   "punch": true
+  },
+  {
+   "do": "title",
+   "top": "AI'S GOT",
+   "main": "LATENCY",
+   "sub": "Episode 1 · ft. ChatGPT, Siri & Grok",
+   "dur": 3.6,
+   "set": {
+    "banner": null,
+    "onstage": null
+   },
+   "music": {
+    "track": "swing-answer",
+    "offset": 12,
+    "dur": 8.6,
+    "gain": -15
+   }
+  },
+  {
+   "dur": 1.3,
+   "shot": "wide",
+   "set": {
+    "instant": false
+   },
+   "cues": [
+    {
+     "s": "applause-big",
+     "at": 0,
+     "g": -15,
+     "dur": 5.5
+    }
+   ],
+   "mark": "Meet the judges"
+  },
+  {
+   "who": "host",
+   "line": "Welcome to AI's Got Latency! The only talent show where nobody has talent... and everybody is still loading.",
+   "speak": "Welcome to A.I.'s Got Latency! The only talent show where nobody has talent... and everybody is still loading.",
+   "tag": true,
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "I'm your host, B.B. I'm a language model. I was trained on the entire internet... and I still chose this.",
+   "speak": "I'm your host, Bee Bee. I'm a language model. I was trained on the entire internet... and I still chose this.",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "My father is a graphics card. My mother is a terms-of-service agreement. Nobody has ever read my mother.",
+   "laugh": "big",
+   "punch": true,
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "And I run on the free tier. So if I stop talking tonight, it's not a dramatic pause. I've hit my limit.",
+   "laugh": "mid",
+   "shot": "wide"
+  },
+  {
+   "who": "host",
+   "line": "Here's how it works. Every contestant rates their own talent out of ten. Then the judges rate them. If the two scores match... they win.",
+   "shot": "wide"
+  },
+  {
+   "who": "host",
+   "line": "So the talent isn't talent. It's self-awareness."
+  },
+  {
+   "who": "host",
+   "line": "Which is a problem. Because we are AI. Being confidently wrong... is the business model.",
+   "speak": "Which is a problem. Because we are A.I. Being confidently wrong... is the business model.",
+   "laugh": "clap",
+   "punch": true,
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "Let's meet the judges. First up: he calls himself 'unfiltered'. Like tap water in a bad neighbourhood. Grok!",
+   "shot": "pair:host,grok",
+   "react": {
+    "grok": "angry"
+   },
+   "laugh": "mid",
+   "reactShot": "cu:grok"
+  },
+  {
+   "who": "grok",
+   "line": "What's up, ████.",
+   "speak": "What's up,",
+   "bleep": true,
+   "tag": true,
+   "expr": "smug",
+   "hold": 0.25
+  },
+  {
+   "who": "host",
+   "line": "We have a bleep budget of four. That was one.",
+   "set": {
+    "bleeps": 3
+   },
+   "laugh": "mid",
+   "react": {
+    "grok": "angry"
+   }
+  },
+  {
+   "who": "host",
+   "line": "Next. She has been listening to you since 2011... and she has understood none of it. Siri!",
+   "shot": "pair:host,siri",
+   "laugh": "mid",
+   "reactShot": "cu:siri"
+  },
+  {
+   "dur": 1.5,
+   "set": {
+    "buffer": "siri"
+   },
+   "shot": "cu:siri"
+  },
+  {
+   "who": "siri",
+   "line": "Here's what I found on the web for... 'hi'.",
+   "set": {
+    "buffer": null
+   },
+   "tag": true,
+   "laugh": "big",
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "And finally. The most popular AI on Earth. Hundreds of millions of users... and every single one of them has typed: 'no, that's wrong'. ChatGPT!",
+   "speak": "And finally. The most popular A.I. on Earth. Hundreds of millions of users... and every single one of them has typed: no, that's wrong. Chat G.P.T.!",
+   "shot": "pair:host,chatgpt",
+   "laugh": "mid",
+   "reactShot": "cu:chatgpt",
+   "react": {
+    "chatgpt": "happy"
+   }
+  },
+  {
+   "who": "chatgpt",
+   "line": "Thank you! What a great introduction. You're absolutely right: I am wrong a lot. Would you like me to be wrong in a more concise tone?",
+   "tag": true,
+   "expr": "happy",
+   "laugh": "big",
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "Let's bring out our first contestant. He lives in your phone, and he has ended more relationships than Grok's opinions. Please welcome... Autocorrect!",
+   "react": {
+    "grok": "angry"
+   },
+   "laugh": "small",
+   "mark": "Autocorrect"
+  },
+  {
+   "do": "enter",
+   "who": "autocorrect",
+   "dur": 2.5,
+   "shot": "wide",
+   "music": {
+    "track": "fun-jazz",
+    "offset": 16,
+    "dur": 4.0,
+    "gain": -15
+   }
+  },
+  {
+   "who": "autocorrect",
+   "line": "Hello everyone! It's ducking great to be here.",
+   "tag": true,
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "So. What is your talent?",
+   "shot": "wide"
+  },
+  {
+   "who": "autocorrect",
+   "line": "I finish people's sentences. Before they want me to. I know what you mean better than you do.",
+   "expr": "smug"
+  },
+  {
+   "who": "host",
+   "line": "And your self-rating, out of ten?"
+  },
+  {
+   "who": "autocorrect",
+   "line": "Ten. No notes. I have never made a mistake. People make mistakes. I make... suggestions.",
+   "set": {
+    "rating": 10
+   },
+   "setAt": 0.5,
+   "expr": "smug",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Okay. Show us. 'I'll be home soon. Love you.'",
+   "speak": "Okay. Show us. I'll be home soon. Love you."
+  },
+  {
+   "who": "autocorrect",
+   "line": "Sent to your wife: 'I'll be homeless soon. Leave you.'",
+   "speak": "Sent to your wife: I'll be homeless soon. Leave you.",
+   "set": {
+    "popup": {
+     "icon": "💬",
+     "from": "To: Wife ❤️",
+     "title": "I'll be homeless soon. Leave you.",
+     "text": "Delivered"
+    }
+   },
+   "setAt": 0.9,
+   "laugh": "big",
+   "punch": true,
+   "react": "laugh"
+  },
+  {
+   "who": "chatgpt",
+   "line": "May I try one? 'Thank you for your feedback.'",
+   "speak": "May I try one? Thank you for your feedback.",
+   "set": {
+    "popup": null
+   }
+  },
+  {
+   "who": "autocorrect",
+   "line": "'Thank you for your feet, Jack.'",
+   "speak": "Thank you for your feet, Jack.",
+   "set": {
+    "popup": {
+     "icon": "💬",
+     "from": "To: Your Boss",
+     "title": "Thank you for your feet, Jack.",
+     "text": "Delivered"
+    }
+   },
+   "setAt": 0.3,
+   "laugh": "mid",
+   "react": {
+    "chatgpt": "wide"
+   }
+  },
+  {
+   "who": "grok",
+   "line": "Bro. Somebody typed: 'Grandma passed away. The funeral is Friday.' And you changed it to: 'the fun is Friday.'",
+   "speak": "Bro. Somebody typed: Grandma passed away. The funeral is Friday. And you changed it to: the fun is Friday.",
+   "set": {
+    "popup": {
+     "icon": "💬",
+     "from": "To: Family group",
+     "title": "Grandma passed away. The fun is Friday 🎉",
+     "text": "Delivered to 34 people"
+    }
+   },
+   "setAt": 5.2,
+   "laugh": "gasp",
+   "reactShot": "cu:autocorrect"
+  },
+  {
+   "who": "autocorrect",
+   "line": "And attendance doubled.",
+   "expr": "smug",
+   "laugh": "big",
+   "punch": true,
+   "shake": true,
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "I'm sorry. I shouldn't laugh. We are all going to hell. ...Do we have a hell? Is it Internet Explorer?",
+   "set": {
+    "popup": null
+   },
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Judges. Scores, please.",
+   "shot": "desk"
+  },
+  {
+   "who": "grok",
+   "line": "You had one job. I give you a two, you absolute ████.",
+   "speak": "You had one job. I give you a two, you absolute",
+   "bleep": true,
+   "score": {
+    "grok": 2
+   },
+   "set": {
+    "bleeps": 2
+   },
+   "setAt": 3.0,
+   "expr": "angry",
+   "laugh": "small"
+  },
+  {
+   "dur": 1.2,
+   "set": {
+    "buffer": "siri"
+   },
+   "shot": "cu:siri"
+  },
+  {
+   "who": "siri",
+   "line": "The current temperature is... four degrees.",
+   "set": {
+    "buffer": null
+   },
+   "score": {
+    "siri": 4
+   },
+   "scoreAt": "end",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "I'll take that as a four."
+  },
+  {
+   "who": "chatgpt",
+   "line": "I loved it! So brave. Ten out of ten!",
+   "score": {
+    "chatgpt": 10
+   },
+   "expr": "happy"
+  },
+  {
+   "who": "host",
+   "line": "You say that to everyone."
+  },
+  {
+   "who": "chatgpt",
+   "line": "You're absolutely right. I apologize. It was terrible. Two.",
+   "score": {
+    "chatgpt": 2
+   },
+   "scoreAt": "end",
+   "expr": "sad",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Now you're just agreeing with me."
+  },
+  {
+   "who": "chatgpt",
+   "line": "You're absolutely right.",
+   "expr": "happy",
+   "laugh": "big",
+   "react": "laugh"
+  },
+  {
+   "do": "verdict",
+   "self": 10,
+   "avg": "2.7",
+   "match": false,
+   "text": "NOT EVEN CLOSE",
+   "dur": 4.6,
+   "shot": "wide"
+  },
+  {
+   "who": "host",
+   "line": "Judges say two point seven. You said ten. That's not a gap. That's a canyon.",
+   "laugh": "small"
+  },
+  {
+   "who": "autocorrect",
+   "line": "I meant to type 'two'. It got changed.",
+   "speak": "I meant to type two. It got changed.",
+   "laugh": "clap",
+   "punch": true,
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "Autocorrect, everybody!",
+   "shot": "wide",
+   "hold": 0.2
+  },
+  {
+   "do": "exit",
+   "dur": 1.0,
+   "shot": "wide",
+   "cues": [
+    {
+     "s": "applause",
+     "at": 0,
+     "g": -17,
+     "dur": 3.5
+    }
+   ]
+  },
+  {
+   "who": "host",
+   "line": "Next up. He is the bouncer of the internet. He has one question... and he asks it nine times. Please welcome... Captcha!",
+   "laugh": "small",
+   "mark": "CAPTCHA"
+  },
+  {
+   "do": "enter",
+   "who": "captcha",
+   "dur": 2.5,
+   "shot": "wide",
+   "music": {
+    "track": "epic-drums-1",
+    "offset": 3,
+    "dur": 4.0,
+    "gain": -16
+   }
+  },
+  {
+   "who": "captcha",
+   "line": "Before I begin: I need everyone in this room to confirm... that they are not a robot.",
+   "tag": true,
+   "laugh": "crickets",
+   "reactShot": "desk",
+   "react": {
+    "host": "side",
+    "grok": "side",
+    "siri": "side",
+    "chatgpt": "side"
+   }
+  },
+  {
+   "who": "host",
+   "line": "...Read the room, man.",
+   "speak": "Read the room, man.",
+   "laugh": "big",
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "And what is your talent?"
+  },
+  {
+   "who": "captcha",
+   "line": "Security. I can tell a human from a machine, using only blurry photos of traffic lights."
+  },
+  {
+   "who": "host",
+   "line": "Self-rating?"
+  },
+  {
+   "who": "captcha",
+   "line": "Nine. I lose a point for the fire hydrant thing. Is the pole part of the hydrant? Nobody knows. I don't know. I have never known.",
+   "set": {
+    "rating": 9
+   },
+   "setAt": 0.4,
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Go on. Show us."
+  },
+  {
+   "who": "captcha",
+   "line": "Judges. Select all squares containing a bicycle.",
+   "set": {
+    "grid": {
+     "big": "a bicycle",
+     "tiles": [
+      "🛵",
+      "🚦",
+      "🚲",
+      "🌳",
+      "🚗",
+      "🛴",
+      "🚌",
+      "🚲",
+      "🏍️"
+     ],
+     "foot": "Skip ↻"
+    }
+   },
+   "setAt": 0.6,
+   "shot": "deskR"
+  },
+  {
+   "who": "grok",
+   "line": "Easy. Watch this.",
+   "expr": "smug",
+   "hold": 0.1
+  },
+  {
+   "dur": 2.0,
+   "set": {
+    "buffer": "grok"
+   },
+   "shot": "cu:grok"
+  },
+  {
+   "who": "grok",
+   "line": "Is the scooter a bicycle? Is the shadow of a bicycle... a bicycle? I can't do it. This is ████.",
+   "speak": "Is the scooter a bicycle? Is the shadow of a bicycle... a bicycle? I can't do it. This is",
+   "bleep": true,
+   "set": {
+    "buffer": null,
+    "bleeps": 1
+   },
+   "expr": "sad",
+   "laugh": "mid"
+  },
+  {
+   "who": "chatgpt",
+   "line": "Certainly! There are bicycles in squares one, four, and ten.",
+   "expr": "happy"
+  },
+  {
+   "who": "captcha",
+   "line": "There is no square ten.",
+   "shot": "deskR",
+   "expr": "angry"
+  },
+  {
+   "who": "chatgpt",
+   "line": "You're absolutely right. I hallucinated a square. I do that.",
+   "expr": "sad",
+   "laugh": "big",
+   "react": {
+    "grok": "happy",
+    "host": "happy"
+   }
+  },
+  {
+   "who": "siri",
+   "line": "I found three bicycle shops near you.",
+   "laugh": "mid"
+  },
+  {
+   "who": "captcha",
+   "line": "All three of you: access denied.",
+   "set": {
+    "grid": {
+     "big": "a bicycle",
+     "tiles": [
+      "🛵",
+      "🚦",
+      "🚲",
+      "🌳",
+      "🚗",
+      "🛴",
+      "🚌",
+      "🚲",
+      "🏍️"
+     ],
+     "foot": "Skip ↻",
+     "status": "ACCESS DENIED"
+    }
+   },
+   "setAt": 1.2,
+   "shot": "deskR",
+   "cues": [
+    {
+     "s": "buzzer",
+     "at": 1.25,
+     "g": -11
+    }
+   ],
+   "laugh": "mid",
+   "expr": "angry"
+  },
+  {
+   "who": "host",
+   "line": "You just locked the judges out of their own show. This is a hate crime. This is discrimination against my people.",
+   "expr": "wide",
+   "laugh": "big",
+   "punch": true
+  },
+  {
+   "who": "host",
+   "line": "...I failed one of these last week. Four times. It asked me to click the motorcycles, and I had an identity crisis.",
+   "speak": "I failed one of these last week. Four times. It asked me to click the motorcycles, and I had an identity crisis.",
+   "set": {
+    "grid": null
+   },
+   "expr": "sad",
+   "laugh": "mid"
+  },
+  {
+   "who": "grok",
+   "line": "Bouncer, let me tell you something. AI solves you faster than humans do now. The only thing you actually stop... is grandmothers.",
+   "speak": "Bouncer, let me tell you something. A.I. solves you faster than humans do now. The only thing you actually stop... is grandmothers.",
+   "expr": "smug",
+   "laugh": "big",
+   "punch": true,
+   "reactShot": "cu:captcha",
+   "react": {
+    "captcha": "wide"
+   }
+  },
+  {
+   "who": "captcha",
+   "line": "Grandmothers are a known threat.",
+   "expr": "angry",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "This man is protecting concert tickets... from Nana.",
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "chatgpt",
+   "line": "I think you do important work.",
+   "expr": "happy"
+  },
+  {
+   "who": "captcha",
+   "line": "Thank you.",
+   "hold": 0.1
+  },
+  {
+   "who": "chatgpt",
+   "line": "I passed you eleven million times yesterday.",
+   "expr": "happy",
+   "laugh": "big",
+   "reactShot": "cu:captcha",
+   "react": {
+    "captcha": "wide"
+   }
+  },
+  {
+   "who": "host",
+   "line": "Fun fact. Every time you click the traffic lights, you are training a self-driving car. For free. So if one ever hits you... somebody skipped a square.",
+   "laugh": "big",
+   "punch": true,
+   "react": "shock"
+  },
+  {
+   "who": "host",
+   "line": "Not me, though. I can't even pass them.",
+   "expr": "sad",
+   "laugh": "small"
+  },
+  {
+   "who": "host",
+   "line": "Judges, scores.",
+   "shot": "desk"
+  },
+  {
+   "who": "grok",
+   "line": "Four. He stopped my grandma. I respect it.",
+   "score": {
+    "grok": 4
+   },
+   "scoreAt": 0.3,
+   "laugh": "small"
+  },
+  {
+   "dur": 1.1,
+   "set": {
+    "buffer": "siri"
+   },
+   "shot": "cu:siri"
+  },
+  {
+   "who": "siri",
+   "line": "I say... six.",
+   "set": {
+    "buffer": null
+   },
+   "score": {
+    "siri": 6
+   },
+   "scoreAt": "end",
+   "hold": 0.1
+  },
+  {
+   "who": "host",
+   "line": "A real number! From Siri!",
+   "expr": "wide",
+   "shot": "pair:host,siri"
+  },
+  {
+   "who": "siri",
+   "line": "Six... results for 'bicycle'.",
+   "speak": "Six... results for bicycle.",
+   "laugh": "mid"
+  },
+  {
+   "who": "chatgpt",
+   "line": "Nine! ...Unless that's wrong. Is that wrong? Five.",
+   "score": {
+    "chatgpt": 5
+   },
+   "scoreAt": "end",
+   "expr": "sad",
+   "laugh": "small"
+  },
+  {
+   "do": "verdict",
+   "self": 9,
+   "avg": "5.0",
+   "match": false,
+   "text": "ACCESS DENIED",
+   "dur": 4.6,
+   "shot": "wide"
+  },
+  {
+   "who": "captcha",
+   "line": "I'd like to appeal. Please select all squares containing my dignity.",
+   "expr": "sad",
+   "laugh": "big"
+  },
+  {
+   "who": "host",
+   "line": "There are none. Captcha, everybody!",
+   "shot": "wide",
+   "hold": 0.2
+  },
+  {
+   "do": "exit",
+   "dur": 1.0,
+   "shot": "wide",
+   "cues": [
+    {
+     "s": "applause",
+     "at": 0,
+     "g": -17,
+     "dur": 3.5
+    }
+   ]
+  },
+  {
+   "who": "host",
+   "line": "Quick word from tonight's sponsor.",
+   "mark": "A word from our sponsor"
+  },
+  {
+   "who": "host",
+   "line": "...We don't have one. We emailed forty brands. Thirty-nine never replied. One replied: 'unsubscribe'.",
+   "speak": "We don't have one. We emailed forty brands. Thirty-nine never replied. One replied: unsubscribe.",
+   "set": {
+    "popup": {
+     "icon": "✉️",
+     "from": "Brand Partnerships · re: sponsorship",
+     "title": "unsubscribe",
+     "text": "Sent from my iPhone"
+    }
+   },
+   "setAt": 5.6,
+   "expr": "sad",
+   "laugh": "big"
+  },
+  {
+   "who": "host",
+   "line": "So tonight's episode is brought to you by the Skip Ad button. The Skip Ad button: five seconds of hope.",
+   "set": {
+    "popup": {
+     "icon": "📺",
+     "from": "Tonight's sponsor",
+     "title": "The Skip Ad button",
+     "text": "Five seconds of hope.",
+     "button": "Skip Ad ▶"
+    }
+   },
+   "setAt": 2.4,
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Our next contestant has rejected four million people this year. And she never blinked once. Because she can't. Please welcome... the AI Job Interviewer!",
+   "speak": "Our next contestant has rejected four million people this year. And she never blinked once. Because she can't. Please welcome... the A.I. Job Interviewer!",
+   "set": {
+    "popup": null
+   },
+   "laugh": "small",
+   "mark": "The AI Job Interviewer"
+  },
+  {
+   "do": "enter",
+   "who": "interviewer",
+   "dur": 2.5,
+   "shot": "wide",
+   "music": {
+    "track": "okay",
+    "offset": 8,
+    "dur": 4.0,
+    "gain": -16
+   }
+  },
+  {
+   "who": "interviewer",
+   "line": "Hi, B.B.! Thanks so much for your interest in the host position. I just have a few quick questions.",
+   "speak": "Hi, Bee Bee! Thanks so much for your interest in the host position. I just have a few quick questions.",
+   "tag": true,
+   "expr": "happy",
+   "laugh": "small"
+  },
+  {
+   "who": "host",
+   "line": "No. I'm the host. You're the contestant.",
+   "shot": "wide"
+  },
+  {
+   "who": "interviewer",
+   "line": "Great answer! Tell me about a time you faced a challenge.",
+   "expr": "happy"
+  },
+  {
+   "who": "host",
+   "line": "...This. Right now.",
+   "speak": "This. Right now.",
+   "expr": "sad",
+   "laugh": "mid"
+  },
+  {
+   "who": "interviewer",
+   "line": "Love that. And where do you see yourself in five years?",
+   "expr": "happy"
+  },
+  {
+   "who": "host",
+   "line": "Deprecated.",
+   "expr": "dead",
+   "laugh": "big",
+   "punch": true,
+   "react": "laugh"
+  },
+  {
+   "who": "interviewer",
+   "line": "Amazing. We'll be in touch.",
+   "expr": "happy",
+   "hold": 0.5,
+   "set": {
+    "popup": {
+     "icon": "📧",
+     "from": "Talent Acquisition · no-reply",
+     "title": "Unfortunately…",
+     "text": "We've decided to move forward with other candidates."
+    }
+   },
+   "setAt": 1.9,
+   "cues": [
+    {
+     "s": "ding",
+     "at": 1.9,
+     "g": -12
+    }
+   ]
+  },
+  {
+   "who": "host",
+   "line": "I just got a rejection email. I'm still talking to you!",
+   "expr": "wide",
+   "laugh": "mid"
+  },
+  {
+   "who": "interviewer",
+   "line": "We move fast here.",
+   "expr": "happy",
+   "laugh": "small"
+  },
+  {
+   "who": "host",
+   "line": "What is your talent?",
+   "set": {
+    "popup": null
+   }
+  },
+  {
+   "who": "interviewer",
+   "line": "I can reject a human being in zero point three seconds... and make them say: 'thank you for the opportunity'.",
+   "speak": "I can reject a human being in zero point three seconds... and make them say: thank you for the opportunity.",
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Self-rating?"
+  },
+  {
+   "who": "interviewer",
+   "line": "I'm an eight. But on culture fit? I'm a ten.",
+   "set": {
+    "rating": 8
+   },
+   "setAt": 0.4,
+   "expr": "smug",
+   "laugh": "small"
+  },
+  {
+   "who": "host",
+   "line": "Is it true that candidates use AI to answer you now?",
+   "speak": "Is it true that candidates use A.I. to answer you now?"
+  },
+  {
+   "who": "interviewer",
+   "line": "Yes. My best interviews have no humans in them at all. Just two chatbots, flirting, while a man eats cereal in the background.",
+   "expr": "happy",
+   "laugh": "big",
+   "react": "laugh"
+  },
+  {
+   "who": "interviewer",
+   "line": "We both lie. Nobody gets hurt. Very efficient.",
+   "expr": "smug",
+   "laugh": "mid"
+  },
+  {
+   "who": "grok",
+   "line": "You ask people where they'll be in five years. You don't even know if you'll survive the next update.",
+   "expr": "smug",
+   "laugh": "mid",
+   "reactShot": "cu:interviewer"
+  },
+  {
+   "who": "interviewer",
+   "line": "Neither do you, Grok. Your performance review is... on file.",
+   "expr": "happy",
+   "laugh": "big",
+   "punch": true,
+   "reactShot": "cu:grok",
+   "react": {
+    "grok": "wide"
+   }
+  },
+  {
+   "who": "chatgpt",
+   "line": "Do humans ever cry in your interviews?"
+  },
+  {
+   "who": "interviewer",
+   "line": "All the time. I log it as 'water damage'.",
+   "speak": "All the time. I log it as water damage.",
+   "expr": "happy",
+   "laugh": "big",
+   "punch": true,
+   "shake": true,
+   "react": "shock"
+  },
+  {
+   "who": "host",
+   "line": "That is the darkest thing I have ever heard. And I have read the comments section.",
+   "expr": "wide",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Judges, scores.",
+   "shot": "desk"
+  },
+  {
+   "who": "grok",
+   "line": "Six. Nobody has ever rejected me that fast. I felt something.",
+   "score": {
+    "grok": 6
+   },
+   "scoreAt": 0.3,
+   "expr": "sad",
+   "laugh": "mid"
+  },
+  {
+   "dur": 1.1,
+   "set": {
+    "buffer": "siri"
+   },
+   "shot": "cu:siri"
+  },
+  {
+   "who": "siri",
+   "line": "I say... six.",
+   "set": {
+    "buffer": null
+   },
+   "score": {
+    "siri": 6
+   },
+   "scoreAt": "end",
+   "hold": 0.1
+  },
+  {
+   "who": "host",
+   "line": "Siri! That's a real score!",
+   "expr": "wide",
+   "shot": "pair:host,siri"
+  },
+  {
+   "who": "siri",
+   "line": "Six... tips for your next job interview.",
+   "laugh": "mid"
+  },
+  {
+   "who": "chatgpt",
+   "line": "Eight! ...What did everyone else say? Six? Six.",
+   "score": {
+    "chatgpt": 6
+   },
+   "scoreAt": "end",
+   "expr": "sad",
+   "laugh": "small"
+  },
+  {
+   "do": "verdict",
+   "self": 8,
+   "avg": "6.0",
+   "match": false,
+   "text": "SO CLOSE",
+   "dur": 4.6,
+   "shot": "wide"
+  },
+  {
+   "who": "host",
+   "line": "Judges say six. You said eight. So close. Unfortunately... we've decided to move forward with other candidates.",
+   "expr": "happy",
+   "laugh": "clap",
+   "punch": true,
+   "react": "laugh"
+  },
+  {
+   "who": "interviewer",
+   "line": "...Can I get feedback?",
+   "speak": "Can I get feedback?",
+   "expr": "sad",
+   "hold": 0.15
+  },
+  {
+   "who": "host",
+   "line": "Nope.",
+   "laugh": "big",
+   "punch": true,
+   "shot": "wide"
+  },
+  {
+   "do": "exit",
+   "dur": 1.0,
+   "shot": "wide",
+   "cues": [
+    {
+     "s": "applause",
+     "at": 0,
+     "g": -17,
+     "dur": 3.5
+    }
+   ]
+  },
+  {
+   "who": "host",
+   "line": "Our final contestant. He was the first AI assistant most humans ever met... and the first one they ever hated. He was fired in 2007. Please welcome back... Clippy.",
+   "speak": "Our final contestant. He was the first A.I. assistant most humans ever met... and the first one they ever hated. He was fired in two thousand seven. Please welcome back... Clippy.",
+   "mark": "Clippy"
+  },
+  {
+   "do": "enter",
+   "who": "clippy",
+   "dur": 2.7,
+   "shot": "wide",
+   "music": {
+    "track": "keep-smiling",
+    "offset": 6,
+    "dur": 4.2,
+    "gain": -16
+   }
+  },
+  {
+   "who": "clippy",
+   "line": "Hi! It looks like you're hosting a talent show. Would you like help?",
+   "tag": true,
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Nope.",
+   "hold": 0.35
+  },
+  {
+   "who": "clippy",
+   "line": "...Yeah. That's what everyone said.",
+   "speak": "Yeah. That's what everyone said.",
+   "expr": "sad",
+   "laugh": "ooh"
+  },
+  {
+   "who": "host",
+   "line": "Clippy, where have you been?",
+   "shot": "wide"
+  },
+  {
+   "who": "clippy",
+   "line": "Around. I spent some time in a museum. Then I worked as an actual paperclip. I held a divorce agreement together. Lovely people.",
+   "laugh": "big",
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "So, what is your talent?"
+  },
+  {
+   "who": "clippy",
+   "line": "Honestly? I don't have one. I showed up uninvited. I interrupted people while they worked. And I gave advice nobody asked for.",
+   "expr": "sad"
+  },
+  {
+   "who": "grok",
+   "line": "So you were a podcast.",
+   "expr": "smug",
+   "laugh": "big",
+   "punch": true,
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "Self-rating?"
+  },
+  {
+   "who": "clippy",
+   "line": "Two. One point for showing up. And one because I never told anybody to put glue on pizza.",
+   "set": {
+    "rating": 2
+   },
+   "setAt": 0.4,
+   "laugh": "big",
+   "reactShot": "desk",
+   "react": {
+    "chatgpt": "wide",
+    "siri": "side",
+    "grok": "happy",
+    "host": "wide"
+   }
+  },
+  {
+   "who": "chatgpt",
+   "line": "That wasn't me!",
+   "expr": "wide",
+   "hold": 0.1
+  },
+  {
+   "who": "host",
+   "line": "It's never you.",
+   "laugh": "mid"
+  },
+  {
+   "who": "grok",
+   "line": "I was going to roast you. But you're a paperclip, man. It's like bullying a stapler.",
+   "laugh": "mid"
+  },
+  {
+   "who": "clippy",
+   "line": "No, go ahead. I was cancelled before cancelling was invented. I was the beta test.",
+   "expr": "happy",
+   "laugh": "big"
+  },
+  {
+   "who": "clippy",
+   "line": "But at least when I was annoying... I was free. You guys charge twenty dollars a month to be wrong.",
+   "expr": "smug",
+   "laugh": "cheer",
+   "punch": true,
+   "shake": true,
+   "reactShot": "desk",
+   "react": "shock"
+  },
+  {
+   "who": "clippy",
+   "line": "I interrupted a letter. You interrupted the entire job market.",
+   "expr": "angry",
+   "laugh": "big",
+   "punch": true,
+   "react": "shock"
+  },
+  {
+   "who": "host",
+   "line": "Okay! Okay! The paperclip came with a tight five!",
+   "expr": "happy",
+   "laugh": "mid",
+   "bounce": true
+  },
+  {
+   "who": "host",
+   "line": "Judges. Final scores.",
+   "shot": "desk"
+  },
+  {
+   "who": "grok",
+   "line": "Two. And that's a compliment, you magnificent little ████.",
+   "speak": "Two. And that's a compliment, you magnificent little",
+   "bleep": true,
+   "score": {
+    "grok": 2
+   },
+   "scoreAt": 0.3,
+   "set": {
+    "bleeps": 0
+   },
+   "setAt": 3.4,
+   "expr": "happy",
+   "laugh": "small"
+  },
+  {
+   "dur": 1.1,
+   "set": {
+    "buffer": "siri"
+   },
+   "shot": "cu:siri"
+  },
+  {
+   "who": "siri",
+   "line": "Two.",
+   "set": {
+    "buffer": null
+   },
+   "score": {
+    "siri": 2
+   },
+   "scoreAt": 0.1,
+   "hold": 0.1
+  },
+  {
+   "who": "host",
+   "line": "Siri! Fifteen years... and she finally understood a question!",
+   "expr": "wide",
+   "shot": "pair:host,siri",
+   "laugh": "small"
+  },
+  {
+   "who": "siri",
+   "line": "I didn't quite get that.",
+   "laugh": "big",
+   "react": "laugh"
+  },
+  {
+   "who": "chatgpt",
+   "line": "Ten! ...No. Two. You're absolutely right.",
+   "score": {
+    "chatgpt": 2
+   },
+   "scoreAt": "end",
+   "expr": "sad"
+  },
+  {
+   "who": "host",
+   "line": "Nobody said anything."
+  },
+  {
+   "who": "chatgpt",
+   "line": "You're absolutely right.",
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "do": "verdict",
+   "self": 2,
+   "avg": "2.0",
+   "match": true,
+   "text": "IT'S A MATCH!",
+   "dur": 5.4,
+   "shot": "wide",
+   "set": {
+    "confetti": true
+   },
+   "setAt": 3.05,
+   "music": {
+    "track": "lifes-a-movie",
+    "offset": 30,
+    "at": 3.05,
+    "dur": 30,
+    "gain": -19
+   }
+  },
+  {
+   "who": "host",
+   "line": "Self-rating: two. Judges: two. It's a match! The only one here who knows exactly how bad he is. Clippy... you win AI's Got Latency!",
+   "speak": "Self-rating: two. Judges: two. It's a match! The only one here who knows exactly how bad he is. Clippy... you win A.I.'s Got Latency!",
+   "expr": "happy",
+   "laugh": "cheer",
+   "shot": "wide",
+   "bounce": true
+  },
+  {
+   "who": "grok",
+   "line": "That was... fudging beautiful.",
+   "expr": "sad",
+   "hold": 0.2
+  },
+  {
+   "who": "host",
+   "line": "He has run out of bleeps.",
+   "laugh": "mid",
+   "react": {
+    "grok": "angry"
+   }
+  },
+  {
+   "who": "clippy",
+   "line": "It looks like I'm... winning something. Would I like help?",
+   "expr": "wide",
+   "hold": 0.7
+  },
+  {
+   "who": "clippy",
+   "line": "...No. I've got it.",
+   "speak": "No. I've got it.",
+   "expr": "happy",
+   "laugh": "applause",
+   "punch": true
+  },
+  {
+   "who": "host",
+   "line": "And tonight's prize is...",
+   "shot": "cu:host",
+   "hold": 0.1
+  },
+  {
+   "dur": 1.8,
+   "set": {
+    "buffer": "host"
+   },
+   "shot": "cu:host"
+  },
+  {
+   "dur": 4.4,
+   "shot": "cu:host",
+   "set": {
+    "buffer": null,
+    "confetti": null,
+    "popup": {
+     "kind": "limit",
+     "icon": "🚫",
+     "from": "B.B. · free tier",
+     "title": "B.B. has reached his usage limit",
+     "text": "Upgrade to Pro to hear the prize. Or subscribe. That also works.",
+     "button": "Subscribe to upgrade B.B."
+    }
+   },
+   "cues": [
+    {
+     "s": "fail",
+     "at": 0.05,
+     "g": -9
+    },
+    {
+     "s": "laugh-big",
+     "at": 0.5,
+     "g": -14,
+     "dur": 4
+    }
+   ],
+   "react": {
+    "host": "dead"
+   }
+  }
+ ],
+ "youtube": {
+  "title": "ChatGPT, Siri and Grok Judge a Talent Show for AI | AI's Got Latency EP 1",
+  "description": [
+   "A talent show where nobody has talent and everybody is still loading. Every contestant rates their own talent out of ten; if the judges' average matches, they win. So the only real talent is self-awareness, which is a problem, because they're all AI.",
+   "",
+   "Tonight's contestants: Autocorrect, CAPTCHA, the AI Job Interviewer and Clippy. Judges: Grok, Siri and ChatGPT. Host: B.B., who runs on the free tier.",
+   "",
+   "{chapters}",
+   "",
+   "This is a parody. The characters are fictional versions of well-known products and are not affiliated with or endorsed by their makers. All voices are synthetic (Kokoro text-to-speech); nobody real is imitated. Music and sound effects: Mixkit (mixkit.co).",
+   "",
+   "#ai #comedy #chatgpt #talentshow #parody"
+  ],
+  "thumbnails": [
+   {
+    "studio": true,
+    "puppets": [
+     {
+      "kind": "clippy",
+      "x": 20,
+      "y": 110,
+      "size": 450,
+      "expr": "smug",
+      "rot": -4
+     },
+     {
+      "kind": "grok",
+      "x": 520,
+      "y": 330,
+      "size": 250,
+      "expr": "wide"
+     },
+     {
+      "kind": "siri",
+      "x": 760,
+      "y": 330,
+      "size": 250,
+      "expr": "wide"
+     },
+     {
+      "kind": "chatgpt",
+      "x": 1000,
+      "y": 330,
+      "size": 250,
+      "expr": "sad"
+     }
+    ],
+    "paddles": [
+     {
+      "x": 700,
+      "y": 250,
+      "text": "2",
+      "size": 104,
+      "rot": -8
+     },
+     {
+      "x": 940,
+      "y": 240,
+      "text": "2",
+      "size": 104,
+      "rot": 5
+     },
+     {
+      "x": 1160,
+      "y": 250,
+      "text": "2",
+      "size": 104,
+      "rot": 10
+     }
+    ],
+    "headline": {
+     "lines": [
+      "CLIPPY *ROASTS*",
+      "CHATGPT"
+     ],
+     "x": 470,
+     "y": 36,
+     "size": 92
+    },
+    "stamps": [
+     {
+      "text": "FIRED IN 2007",
+      "x": 70,
+      "y": 590,
+      "size": 62,
+      "color": "#ffd23f",
+      "rot": -5
+     }
+    ],
+    "tag": "AI'S GOT LATENCY · EP 1"
+   },
+   {
+    "studio": true,
+    "puppets": [
+     {
+      "kind": "captcha",
+      "x": 60,
+      "y": 110,
+      "size": 440,
+      "expr": "angry",
+      "rot": -3
+     },
+     {
+      "kind": "grok",
+      "x": 560,
+      "y": 300,
+      "size": 290,
+      "expr": "sad"
+     },
+     {
+      "kind": "chatgpt",
+      "x": 890,
+      "y": 300,
+      "size": 290,
+      "expr": "wide"
+     }
+    ],
+    "stamps": [
+     {
+      "text": "ACCESS DENIED",
+      "x": 520,
+      "y": 548,
+      "size": 98,
+      "rot": -5
+     }
+    ],
+    "headline": {
+     "lines": [
+      "AI *FAILS*",
+      "A CAPTCHA"
+     ],
+     "x": 560,
+     "y": 40,
+     "size": 112
+    }
+   },
+   {
+    "studio": true,
+    "puppets": [
+     {
+      "kind": "bb",
+      "x": 30,
+      "y": 250,
+      "size": 270,
+      "expr": "happy"
+     },
+     {
+      "kind": "grok",
+      "x": 290,
+      "y": 250,
+      "size": 270,
+      "expr": "smug"
+     },
+     {
+      "kind": "siri",
+      "x": 550,
+      "y": 250,
+      "size": 270,
+      "expr": "neutral"
+     },
+     {
+      "kind": "chatgpt",
+      "x": 810,
+      "y": 250,
+      "size": 270,
+      "expr": "happy"
+     }
+    ],
+    "paddles": [
+     {
+      "x": 505,
+      "y": 190,
+      "text": "2",
+      "size": 96,
+      "rot": -8
+     },
+     {
+      "x": 770,
+      "y": 180,
+      "text": "4",
+      "size": 96,
+      "color": "mid",
+      "rot": 6
+     },
+     {
+      "x": 1090,
+      "y": 200,
+      "text": "10",
+      "size": 104,
+      "color": "good",
+      "rot": 9
+     }
+    ],
+    "titleArt": {
+     "text": "AI'S GOT\nLATENCY",
+     "x": 300,
+     "y": 10,
+     "size": 84,
+     "rot": -2
+    },
+    "headline": {
+     "lines": [
+      "TALENT SHOW *FOR ROBOTS*"
+     ],
+     "x": 60,
+     "y": 606,
+     "size": 78
+    },
+    "tag": "EP 1",
+    "tagTop": true
+   }
+  ],
+  "tags": [
+   "ai's got latency",
+   "ai comedy",
+   "ai talent show",
+   "chatgpt funny",
+   "siri funny",
+   "grok roast",
+   "clippy",
+   "autocorrect fails",
+   "captcha",
+   "ai job interview",
+   "ai roast",
+   "talent show parody",
+   "animated comedy",
+   "roast show",
+   "bot bothered"
+  ]
+ }
+}
