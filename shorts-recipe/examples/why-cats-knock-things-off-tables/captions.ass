@@ -1,0 +1,56 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.48,Short,,0,0,0,,Your cat
+Dialogue: 0,0:00:00.48,0:00:01.16,Short,,0,0,0,,looks you dead
+Dialogue: 0,0:00:01.16,0:00:01.80,Short,,0,0,0,,in the eye
+Dialogue: 0,0:00:01.80,0:00:02.44,Short,,0,0,0,,and slowly
+Dialogue: 0,0:00:02.44,0:00:03.56,Short,,0,0,0,,pushes your glass
+Dialogue: 0,0:00:03.56,0:00:04.76,Short,,0,0,0,,off the table
+Dialogue: 0,0:00:04.76,0:00:05.38,Short,,0,0,0,,You see
+Dialogue: 0,0:00:05.38,0:00:06.20,Short,,0,0,0,,cats are hunters
+Dialogue: 0,0:00:06.20,0:00:07.04,Short,,0,0,0,,and they test
+Dialogue: 0,0:00:07.04,0:00:07.64,Short,,0,0,0,,things with
+Dialogue: 0,0:00:07.64,0:00:08.48,Short,,0,0,0,,their paws
+Dialogue: 0,0:00:08.48,0:00:09.00,Short,,0,0,0,,tapping them
+Dialogue: 0,0:00:09.00,0:00:09.40,Short,,0,0,0,,to see
+Dialogue: 0,0:00:09.40,0:00:10.58,Short,,0,0,0,,if they run
+Dialogue: 0,0:00:10.58,0:00:10.92,Short,,0,0,0,,So when
+Dialogue: 0,0:00:10.92,0:00:12.00,Short,,0,0,0,,the glass falls
+Dialogue: 0,0:00:12.00,0:00:12.48,Short,,0,0,0,,that sudden
+Dialogue: 0,0:00:12.48,0:00:13.40,Short,,0,0,0,,movement fires
+Dialogue: 0,0:00:13.40,0:00:14.50,Short,,0,0,0,,the same instinct
+Dialogue: 0,0:00:14.50,0:00:16.10,Short,,0,0,0,,as chasing prey
+Dialogue: 0,0:00:16.10,0:00:16.54,Short,,0,0,0,,But there's
+Dialogue: 0,0:00:16.54,0:00:17.76,Short,,0,0,0,,another reason
+Dialogue: 0,0:00:17.76,0:00:18.38,Short,,0,0,0,,The first time
+Dialogue: 0,0:00:18.38,0:00:19.14,Short,,0,0,0,,it crashed
+Dialogue: 0,0:00:19.14,0:00:19.66,Short,,0,0,0,,you gasped
+Dialogue: 0,0:00:19.66,0:00:20.54,Short,,0,0,0,,and came running
+Dialogue: 0,0:00:20.54,0:00:21.34,Short,,0,0,0,,and your cat
+Dialogue: 0,0:00:21.34,0:00:21.86,Short,,0,0,0,,learned it's
+Dialogue: 0,0:00:21.86,0:00:22.80,Short,,0,0,0,,the fastest way
+Dialogue: 0,0:00:22.80,0:00:23.16,Short,,0,0,0,,to get
+Dialogue: 0,0:00:23.16,0:00:24.32,Short,,0,0,0,,your attention
+Dialogue: 0,0:00:24.32,0:00:25.32,Short,,0,0,0,,In one study
+Dialogue: 0,0:00:25.32,0:00:25.66,Short,,0,0,0,,half of
+Dialogue: 0,0:00:25.66,0:00:26.06,Short,,0,0,0,,the cats
+Dialogue: 0,0:00:26.06,0:00:26.74,Short,,0,0,0,,picked time
+Dialogue: 0,0:00:26.74,0:00:27.38,Short,,0,0,0,,with a human
+Dialogue: 0,0:00:27.38,0:00:28.06,Short,,0,0,0,,over food
+Dialogue: 0,0:00:28.06,0:00:29.04,Short,,0,0,0,,and toys
+Dialogue: 0,0:00:29.04,0:00:29.70,Short,,0,0,0,,So the more
+Dialogue: 0,0:00:29.70,0:00:30.66,Short,,0,0,0,,you react
+Dialogue: 0,0:00:30.66,0:00:31.60,Short,,0,0,0,,the more often
+Dialogue: 1,0:00:24.32,0:00:31.60,Prompt,,0,0,0,,{\fad(300,0)}Send this to someone\Nwhose cat does this
