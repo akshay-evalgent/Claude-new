@@ -40,6 +40,21 @@ if (mode === 'cues') {
     await page.screenshot({ path: path.join(dir, `${t.toFixed(2).padStart(6, '0')}_${id}.png`) });
   }
   console.log('stills', times.length);
+} else if (mode === 'patch') {
+  // node render.mjs patch START END -> build/patch.mp4 with frames [START, END) of the film, for splicing one fixed shot.
+  const a = Math.floor(Number(process.argv[3]) * FPS), b = Math.ceil(Number(process.argv[4]) * FPS);
+  const page = await openPage(browser);
+  const out = path.join(BUILD, 'patch.mp4');
+  const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-',
+    '-c:v', 'libx264', '-preset', 'medium', '-crf', '17', '-pix_fmt', 'yuv420p', '-r', String(FPS), out], { stdio: ['pipe', 'inherit', 'inherit'] });
+  for (let f = a; f < b; f++) {
+    await page.evaluate(t => window.renderAt(t), f / FPS);
+    const buf = await page.screenshot({ type: 'jpeg', quality: 95 });
+    if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
+  }
+  ff.stdin.end();
+  await new Promise(r => ff.on('close', r));
+  console.log(`patch: frames ${a}-${b} (${(a / FPS).toFixed(2)}s-${(b / FPS).toFixed(2)}s)`);
 } else {
   const workers = Number(process.argv[3] || 4);
   const total = Math.ceil(TL.duration * FPS);

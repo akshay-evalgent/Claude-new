@@ -92,8 +92,8 @@ And then there's the Royal Game of Ur. >> map {"region":"ur","label":"UR, IRAQ"}
 Then Irving Finkel, at the British Museum, studied a clay tablet written by a Babylonian scribe. >> research {"text":"IRVING FINKEL"} push
 + On it were the rules. >> finkel {"sub":"THE RULES"} push
 + Now people can play it again. >> urGame {"pieces":true,"dice":true,"label":"PLAYABLE AGAIN"} push
-+ Two players race their pieces across the board, rolling pyramid-shaped dice. >> urGame {"pieces":true,"dice":true} [960,600,1.1,1.2]
-+ Land on a rosette, and you roll again. ~0.2 >> urGame {"pieces":true} [700,500,1.3,1.4]
++ Two players race their pieces across the board, rolling pyramid-shaped dice. >> urGame {"pieces":true,"dice":true,"label":" "} [960,600,1.1,1.2]
++ Land on a rosette, and you roll again. ~0.2 >> urGame {"pieces":true,"label":" "} [700,500,1.3,1.4]
 People kept playing it for well over two thousand years. >> urGame {"pieces":true,"sub":"PLAYED FOR 2,000+ YEARS"} push
 + A version of it was still played in southern India in the nineteen fifties. >> map {"region":"india","label":"KOCHI, INDIA"} push
 + Someone even scratched its board into the stone of a giant palace statue. >> lamassu {} push
