@@ -191,6 +191,29 @@ puppet's mouth in time with the voice. A ten-minute episode renders in about 40 
 Thumbnails for these shows use `studio`, `puppets` (`{kind, x, y, size, expr}`), `paddles`
 and `stamps` in `youtube.thumbnails`.
 
+### Shorts from an episode
+
+An episode can list vertical cut-downs under `shorts`; each is rendered straight from the
+episode's beats and voices at 1080x1920 (not cropped from the wide video), with a hook title
+on top, one character per shot and large word-by-word captions. Text stays out of the top
+200 px and bottom 400 px, which the Shorts player covers.
+
+```bash
+node chatvid/render.mjs chatvid/episodes/latency-ep1.json --short clippy
+```
+
+The file lands in `chatvid/out/latency-ep1.short-clippy.mp4`; `--plan`, `--stills`, `--remix`
+and `--upload` work with `--short` too.
+
+| Short field | Meaning |
+|---|---|
+| `slug`, `title` | The name for `--short` and the YouTube title (2-4 words work best). |
+| `hook` | The headline on screen; `*word*` is highlighted. `hookSub` replaces the show line under it. |
+| `beats` | Ranges of the episode's beat numbers as `--plan` prints them: `[[131, 133], [136, 147]]`. |
+| `start` | The state the Short opens in: `{"onstage": "clippy", "rating": 2, "bleeps": 1}`. |
+| `patch` | Changes to single beats: `{"109": {"set": {"popup": null}}}`. |
+| `caption`, `hashtags` | Go into the description. |
+
 ## Layout
 
 - `engine/`: the chat page, with three themes in `themes.css` and the timeline and camera in `engine.js`.

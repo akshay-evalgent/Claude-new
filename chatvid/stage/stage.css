@@ -131,3 +131,32 @@ html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; 
 #sign span { display: block; font: 500 25px/1.2 "Oswald", sans-serif; letter-spacing: 2px; color: #ffd23f; }
 #sign::before, #sign::after { content: ""; position: absolute; top: -60px; width: 5px; height: 60px; background: #3b4350; }
 #sign::before { left: 90px; } #sign::after { right: 90px; }
+
+/* ---------- vertical frame (1080x1920) for Shorts: "format": "vertical" ----------
+   The top ~200 px and bottom ~400 px are left clear of text: the Shorts player covers them. */
+html.vertical, html.vertical body { width: 1080px; height: 1920px; }
+html.vertical #frame { width: 1080px; height: 1920px; background: linear-gradient(180deg, #0a0d1e 0 50%, #030408 50% 100%); }
+html.vertical #world::before { content: ""; position: absolute; left: 0; right: 0; top: -900px; height: 900px;
+  background: radial-gradient(circle, rgba(120,150,255,.13) 1.6px, transparent 2.2px) 0 0 / 34px 34px, #0a0d1e; }
+html.vertical #world::after { content: ""; position: absolute; left: 0; right: 0; bottom: -900px; height: 900px; background: #030408; }
+html.vertical #wallLogo, html.vertical #sign, html.vertical #bug, html.vertical #badge, html.vertical #third { display: none !important; }
+#hook { position: absolute; left: 0; right: 0; top: 196px; display: none; flex-direction: column; align-items: center; gap: 16px; padding: 0 46px; text-align: center; }
+#hook b { font: 400 96px/1.04 "Anton", sans-serif; letter-spacing: 2px; text-transform: uppercase; color: #fff; -webkit-text-stroke: 12px #05060c; paint-order: stroke fill;
+  text-shadow: 0 8px 26px rgba(0,0,0,.7); text-wrap: balance; }
+#hook b em { font-style: normal; color: #ffd23f; }
+#hook span { font: 600 28px/1 "Oswald", sans-serif; letter-spacing: 4px; text-transform: uppercase; color: #05060c; background: #19e3ff; padding: 7px 16px 9px; border-radius: 8px; }
+html.vertical #hud { left: 40px; right: auto; top: 478px; align-items: flex-start; }
+html.vertical #hud > div { font-size: 30px; }
+html.vertical #subs { bottom: auto; top: 1262px; gap: 10px; }
+html.vertical #subWho { font-size: 32px; padding: 5px 16px 8px; }
+html.vertical #subText { white-space: normal; max-width: 980px; font-size: 84px; line-height: 1.1; padding: 10px 28px 16px; border-radius: 18px; background: rgba(0,0,0,.78); }
+html.vertical #verdict { bottom: 560px; gap: 24px; }
+html.vertical .vbox { width: 330px; } html.vertical .vbox b { font-size: 118px; } html.vertical #vVs { font-size: 50px; }
+html.vertical #vStamp { font-size: 76px; top: -70px; }
+html.vertical #grid { left: 36px; top: 590px; width: 350px; padding: 9px; }
+html.vertical #gridHead { padding: 12px 14px 14px; } html.vertical #gridHead small { font-size: 17px; } html.vertical #gridHead b { font-size: 31px; }
+html.vertical #gridTiles div { font-size: 58px; } html.vertical #gridFoot { font-size: 15px; } html.vertical #gridStamp { font-size: 43px; }
+html.vertical #popup { top: 600px; width: 990px; padding: 22px 26px; } html.vertical #popup > div:last-child { width: 820px; }
+html.vertical #popup b { font-size: 42px; } html.vertical #popup span { font-size: 31px; } html.vertical #popup small { font-size: 24px; }
+html.vertical #endcard { padding: 0 70px; } html.vertical #ecText { font-size: 74px; }
+html.vertical #spinText { top: 306px; font-size: 26px; }

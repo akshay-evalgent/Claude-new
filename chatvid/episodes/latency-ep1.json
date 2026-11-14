@@ -1538,6 +1538,160 @@
    }
   }
  ],
+ "shorts": [
+  {
+   "slug": "clippy",
+   "title": "Clippy's Revenge",
+   "hook": "CLIPPY *ROASTS* CHATGPT",
+   "beats": [
+    [
+     131,
+     133
+    ],
+    [
+     136,
+     147
+    ]
+   ],
+   "start": {
+    "onstage": "clippy",
+    "bleeps": 1
+   },
+   "caption": "Fired in 2007. Back to roast every AI that replaced him."
+  },
+  {
+   "slug": "captcha",
+   "title": "Access Denied",
+   "hook": "AI JUDGES *FAIL* A CAPTCHA",
+   "beats": [
+    [
+     54,
+     55
+    ],
+    [
+     61,
+     70
+    ]
+   ],
+   "start": {
+    "onstage": "captcha",
+    "rating": 9,
+    "bleeps": 2
+   },
+   "caption": "The bouncer of the internet locks ChatGPT, Siri and Grok out of their own show."
+  },
+  {
+   "slug": "autocorrect",
+   "title": "The Fun Is Friday",
+   "hook": "AUTOCORRECT RATES ITSELF *10/10*",
+   "beats": [
+    [
+     29,
+     36
+    ],
+    [
+     47,
+     49
+    ]
+   ],
+   "start": {
+    "onstage": "autocorrect",
+    "bleeps": 3
+   },
+   "caption": "Autocorrect has never made a mistake. It makes suggestions."
+  },
+  {
+   "slug": "interviewer",
+   "title": "Water Damage",
+   "hook": "AI INTERVIEWER *REJECTS* THE HOST",
+   "beats": [
+    [
+     96,
+     104
+    ],
+    [
+     109,
+     111
+    ],
+    [
+     114,
+     116
+    ]
+   ],
+   "start": {
+    "onstage": "interviewer",
+    "bleeps": 1
+   },
+   "patch": {
+    "109": {
+     "set": {
+      "popup": null
+     }
+    }
+   },
+   "caption": "She can reject a human in 0.3 seconds. The host lasted less."
+  },
+  {
+   "slug": "judges",
+   "title": "Bleep Budget",
+   "hook": "MEET THE *AI* JUDGES",
+   "beats": [
+    [
+     15,
+     22
+    ]
+   ],
+   "start": {},
+   "caption": "Grok, Siri and ChatGPT get introduced. None of them enjoys it."
+  },
+  {
+   "slug": "agrees",
+   "title": "You're Absolutely Right",
+   "hook": "CHATGPT *AGREES* WITH EVERYONE",
+   "beats": [
+    [
+     37,
+     46
+    ]
+   ],
+   "start": {
+    "onstage": "autocorrect",
+    "rating": 10,
+    "bleeps": 3
+   },
+   "caption": "ChatGPT gives a ten. Then a two. Then agrees with whoever spoke last."
+  },
+  {
+   "slug": "sponsor",
+   "title": "Skip Ad",
+   "hook": "TONIGHT'S SPONSOR: *NOBODY*",
+   "beats": [
+    [
+     91,
+     93
+    ]
+   ],
+   "start": {},
+   "caption": "We emailed forty brands. One replied."
+  },
+  {
+   "slug": "host",
+   "title": "Nobody Read My Mother",
+   "hook": "AI HOST *ROASTS* HIMSELF",
+   "beats": [
+    [
+     8,
+     11
+    ],
+    [
+     13,
+     14
+    ]
+   ],
+   "start": {},
+   "caption": "B.B. hosts a talent show for AI. He runs on the free tier."
+  }
+ ],
  "youtube": {
   "title": "ChatGPT, Siri and Grok Judge a Talent Show for AI | AI's Got Latency EP 1",
   "description": [

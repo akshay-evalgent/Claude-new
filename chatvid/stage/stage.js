@@ -3,7 +3,8 @@
    {duration, cues, music}; renderAt(T) draws time T. Everything is a pure function of
    time, so frames can be rendered in any order. */
 (() => {
-  const W = 1920, H = 1080, FPS = 30;
+  const WW = 1920, WH = 1080, FPS = 30;   // the studio (world) is always 1920x1080
+  let W = 1920, H = 1080, VERT = false;    // the frame: 1920x1080, or 1080x1920 for "format": "vertical"
   const $ = (id) => document.getElementById(id);
   const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
   const lerp = (a, b, p) => a + (b - a) * p;
@@ -38,11 +39,11 @@
 
   let EP, CAST = {}, B = [], duration = 0, endStart = Infinity, lastKey = '', lastSign = null;
 
-  // subtitle pages: at most ~50 characters (one line), words timed in proportion to their length
-  function pages(line, t0, dur) {
+  // subtitle pages: at most `max` characters, words timed in proportion to their length
+  function pages(line, t0, dur, max) {
     const words = line.split(/\s+/).filter(Boolean), out = []; let cur = [];
     for (const w of words) {
-      if (cur.length && (cur.join(' ') + ' ' + w).length > 50) { out.push(cur); cur = [w]; } else cur.push(w);
+      if (cur.length && (cur.join(' ') + ' ' + w).length > max) { out.push(cur); cur = [w]; } else cur.push(w);
     }
     if (cur.length) out.push(cur);
     const total = words.reduce((a, w) => a + w.length + 1, 0);
@@ -53,8 +54,15 @@
     });
   }
 
-  function shotOf(spec, b) {
-    const s = spec || (b.who ? 'cu:' + b.who : 'wide');
+  function shotOf(spec, b, st) {
+    let s = spec || (b.who ? 'cu:' + b.who : 'wide');
+    if (VERT) {
+      // a tall frame holds one character at a time, or the whole desk as a band across the middle
+      if (s.startsWith('pair:') || ['wide', 'stage', 'deskR'].includes(s)) s = b.who ? 'cu:' + b.who : st.onstage ? 'cu:' + st.onstage : 'desk';
+      if (s === 'desk') return { key: s, x: 1385, y: 540, z: 1.0 };
+      const c = CAST[s.slice(3)], p = SEAT[c.seat];
+      return c.seat === 'stage' ? { key: s, x: p.x + 10, y: 492, z: 1.8, stage: true } : { key: s, x: p.x, y: 536, z: 2.2 };
+    }
     if (s === 'wide') return { key: s, x: 960, y: 540, z: 1 };
     if (s === 'stage') return { key: s, x: 500, y: 500, z: 1.7 };
     if (s === 'desk') return { key: s, x: 1370, y: 520, z: 1.745 };
@@ -72,6 +80,10 @@
 
   window.boot = async (ep) => {
     EP = ep; CAST = ep.cast;
+    VERT = ep.format === 'vertical';
+    if (VERT) { W = 1080; H = 1920; }
+    document.documentElement.classList.toggle('vertical', VERT);
+    $('hook').innerHTML = ep.hook ? `<b>${rich(ep.hook).replace(/\*([^*]+)\*/g, '<em>$1</em>')}</b>${ep.hookSub ? `<span>${rich(ep.hookSub)}</span>` : ''}` : '';
     const plan = ep.__plan.beats, slug = ep.__slug, cues = [], music = [];
     // ---- static scene
     const show = ep.show || {};
@@ -88,7 +100,11 @@
     $('confetti').innerHTML = Array.from({ length: 90 }, (_, i) => `<i style="background:${['#19e3ff', '#ff2e4d', '#ffd23f', '#7cff6b', '#b36bff'][i % 5]}"></i>`).join('');
 
     // ---- timeline
-    let t = 0, st = { onstage: null, scores: {} }, since = {}, shotKey = '', shotT0 = 0;
+    // "initial": the state a cut-down (a Short) starts in, e.g. who is already on stage
+    const init = ep.initial || {};
+    let t = 0, st = { onstage: null, scores: {}, ...init, scores: { ...(init.scores || {}) } }, since = {}, shotKey = '', shotT0 = 0;
+    for (const k of Object.keys(init)) since[k] = -10;
+    for (const k of Object.keys(init.scores || {})) since['score.' + k] = -10;
     ep.beats.forEach((b, i) => {
       const p = plan[i] || {};
       const lead = b.lead ?? (b.line ? 0.06 : 0);
@@ -105,7 +121,7 @@
       const beat = { ...b, i, t0: t, t1: t + d, lead, vd, bleep, env: p.env || '', st, since, pages: [] };
       if (b.line) {
         cues.push({ t: t + lead, s: `@voice:${slug}/${p.voice}`, g: b.voiceGain ?? CAST[b.who].gain ?? 0, duck: true });
-        beat.pages = pages(b.line, t + lead, vd + bleep);
+        beat.pages = pages(b.line, t + lead, vd + bleep, VERT ? 20 : 50);
         if (b.bleep) cues.push({ t: t + lead + vd - 0.02, s: 'bleep', g: -12, dur: bleep });
       }
       if (L) {
@@ -124,13 +140,14 @@
       if (b.do === 'title') { cues.push({ t: t + 0.02, s: 'whoosh-hit', g: -11, dur: 1.6 }); cues.push({ t: t + 0.05, s: 'impact', g: -10, dur: 3 }); }
       if (b.music) music.push({ fadeIn: 0.2, fadeOut: 0.8, gain: -18, ...b.music, t0: t + (b.music.at || 0), t1: t + (b.music.at || 0) + (b.music.dur || d) });
       // camera: a shot keeps its slow push-in across consecutive beats
-      beat.shotA = shotOf(b.shot, b); beat.shotB = b.reactShot ? shotOf(b.reactShot, b) : null;
+      beat.shotA = shotOf(b.shot, b, st); beat.shotB = b.reactShot ? shotOf(b.reactShot, { ...b, who: null }, st) : null;
       if (beat.shotA.key !== shotKey) { shotKey = beat.shotA.key; shotT0 = t; }
       beat.shotT0 = shotT0;
       if (beat.shotB) shotKey = '';
       B.push(beat);
       t += d;
     });
+    if (ep.tail && B.length) { B[B.length - 1].t1 += ep.tail; t += ep.tail; }   // let the last laugh ring out
     if (ep.endCard) {
       endStart = t; t += ep.endCard.dur ?? 5;
       cues.push({ t: endStart, s: 'soft-swoosh', g: -10 });
@@ -163,8 +180,14 @@
       if (b.shake && q >= 0 && q < 2.4) { const a = 12 * Math.pow(1 - q / 2.4, 2); sx = a * Math.sin(f * 2.7); sy = a * Math.cos(f * 3.3); }
     }
     if (b.do === 'verdict' && u >= 3.05 && u < 3.5) { const a = 14 * (1 - (u - 3.05) / 0.45); sx = a * Math.sin(f * 2.7); sy = a * Math.cos(f * 3.3); }
+    if (VERT && cam.key !== 'desk') {
+      // make room for a panel: slide the character aside for a CAPTCHA grid, down for a pop-up
+      if (st.grid && T >= since.grid) { const e = EASE.out(clamp((T - since.grid) / 0.3, 0, 1)); cx -= (cam.stage ? 150 : 95) * e; cy -= 40 * e; z *= 1 - (cam.stage ? 0.2 : 0.1) * e; }
+      else if (st.popup && T >= since.popup) cy -= (cam.stage ? 110 : 70) * EASE.out(clamp((T - since.popup) / 0.3, 0, 1));
+    }
     const hw = W / 2 / z, hh = H / 2 / z;
-    cx = clamp(cx, hw, W - hw); cy = clamp(cy, hh, H - hh);
+    cx = hw * 2 <= WW ? clamp(cx, hw, WW - hw) : WW / 2;
+    if (!VERT) cy = clamp(cy, hh, WH - hh);          // a vertical frame may look past the top and bottom of the studio
     $('world').style.transform = `translate(${(W / 2 - cx * z + sx).toFixed(2)}px, ${(H / 2 - cy * z + sy).toFixed(2)}px) scale(${z.toFixed(4)})`;
 
     // ---- characters
@@ -250,6 +273,7 @@
     $('wlSpin').style.transform = `rotate(${(T * 200) % 360}deg)`;
 
     // ---- on-screen chips
+    show('hook', VERT && !!EP.hook && !ended, 'flex');
     show('bug', !ended && b.do !== 'title' && !['wide', 'deskR'].includes(cam.key), 'flex');   // the wall logo does this job in wide shots
     const selfOn = st.rating != null && st.onstage && T >= since.rating + 0.3 && b.do !== 'verdict';
     show('hudSelf', selfOn); if (selfOn) $('hudSelf').innerHTML = `${esc(CAST[st.onstage].name)} rated self <b>${st.rating}/10</b>`;

@@ -35,6 +35,22 @@ if (PREP) {
   const mediaFile = path.join(voiceDir, 'media.json');
   if (fs.existsSync(mediaFile)) ep.media = { ...(ep.media || {}), ...JSON.parse(fs.readFileSync(mediaFile, 'utf8')) };
 }
+// --short <name>: a vertical cut-down defined in the episode's "shorts" (panel shows). It reuses the
+// episode's beats and voices: {"slug", "title", "hook", "beats": [[first, last], ...] (numbers as
+// printed by --plan), "start": {state it opens in}, "patch": {"<beat number>": {fields to change}}}
+const shortName = opt('short');
+if (shortName) {
+  const sh = (ep.shorts || []).find((x) => x.slug === shortName);
+  if (!sh) { console.error(`no short "${shortName}" in this episode; it has: ${(ep.shorts || []).map((x) => x.slug).join(', ') || 'none'}`); process.exit(1); }
+  const picks = sh.beats.flatMap(([a, b]) => Array.from({ length: b - a + 1 }, (_, k) => a + k));
+  ep.__plan = { ...ep.__plan, beats: picks.map((n) => ep.__plan.beats[n - 1]) };
+  ep.beats = picks.map((n) => ({ ...ep.beats[n - 1], mark: undefined, ...((sh.patch || {})[n] || {}) }));
+  const base = ep.youtube || {};
+  Object.assign(ep, { format: 'vertical', initial: sh.start || {}, hook: sh.hook, hookSub: sh.hookSub ?? (ep.show ? `${ep.show.name} · ${ep.show.episode}` : ''),
+    endCard: sh.endCard || null, tail: sh.tail ?? 0.8,
+    youtube: { title: `${sh.title} #shorts`, tags: base.tags || [],
+      description: [sh.caption || '', '', `From ${ep.title}. Full episode on the channel.`, '', sh.hashtags || '#shorts #ai #comedy'] } });
+}
 const creditsPath = path.join(HERE, 'assets', 'media', 'credits.json');
 const allCredits = fs.existsSync(creditsPath) ? JSON.parse(fs.readFileSync(creditsPath, 'utf8')) : {};
 ep.__credits = Object.fromEntries(Object.keys(ep.media || {}).filter((k) => allCredits[k]).map((k) => [k, allCredits[k]]));
@@ -48,13 +64,13 @@ ep.__mediaMeta = Object.fromEntries(Object.keys(ep.media || {}).map((k) => [k, p
 if (opt('ai-name')) ep.ai = { ...(ep.ai || {}), name: opt('ai-name') };
 const fps = Number(opt('fps', ep.fps || 30));
 const scale = Number(opt('scale', 1));
-const slug = path.basename(epPath, '.json') + (opt('interface') ? '-' + opt('interface') : '');
+const slug = path.basename(epPath, '.json') + (opt('interface') ? '-' + opt('interface') : '') + (shortName ? `.short-${shortName}` : '');
 const outDir = path.join(HERE, 'out');
 fs.mkdirSync(outDir, { recursive: true });
 const out = opt('out', path.join(outDir, `${slug}.mp4`));
 
 const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: scale });
+const page = await browser.newPage({ viewport: ep.format === 'vertical' ? { width: 1080, height: 1920 } : { width: 1920, height: 1080 }, deviceScaleFactor: scale });
 page.on('pageerror', (e) => console.error('page error:', e.message));
 await page.goto(pathToFileURL(path.join(HERE, PREP ? ep.engine : 'engine', 'index.html')).href);
 const plan = await page.evaluate((e) => window.boot(e), ep);
