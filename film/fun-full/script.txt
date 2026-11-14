@@ -1,16 +1,181 @@
 # What Did Ancient Humans Do for Fun Before Phones?
-# Same format as film/fridge-full/script.txt. DRAFT: facts to be checked against SOURCES.md.
+# Same format as film/fridge-full/script.txt. Facts checked 2026-11-14; see SOURCES.md.
 
 = hook open
 Picture your evening. >> phoneCouch {} push
 + The couch. The blanket. The phone. >> phoneCouch {"ping":0.3} [820,600,1.12,1.22]
-Most of us now spend hours a day on our phones. >> screenTime {"label":"HOURS","sub":"EVERY DAY"} push
+Many of us now spend around four hours a day on our phones. >> screenTime {"label":"~4 HOURS","sub":"A DAY"} push
 + Scrolling. Watching. Swiping. ~0.2 >> phoneCouch {"label":"ONE MORE VIDEO"} push
++ Videos, games, messages, music, all in one hand. >> card {"lines":["ALL IN","ONE HAND"],"icon":"phone"} push
+And still, we say it. ~0.2 >> phoneCouch {"face":"tired"} [820,560,1.1,1.2]
++ I'm bored. ~0.3 >> card {"lines":["I'M","BORED."],"icon":"phone"} push
 Now take the phone away. ~0.2 >> phoneCouch {"gone":"@away"} push
 + No phone. No TV. No internet. >> card {"lines":["NO PHONE."],"icon":"phone"} push
-+ For three hundred thousand years. ~0.2 >> rewind {} push
++ For three hundred thousand years. ~0.2 >> rewind {"n":300} push
 Now your brain is probably saying, they must have been bored out of their minds. >> boredCave {"dusk":true} push
 + Sitting around. Staring at the fire. Waiting for something to happen. >> boredCave {"dusk":true,"fire":true} [960,700,1.1,1.2]
 At least, that's what we assume. ~0.3 >> think {"q1":"@assume","q2":"NEVER"} push
-But archaeologists keep digging up game boards, toys, flutes, and even a joke that's about four thousand years old. >> card {"lines":["GAMES.","TOYS.","JOKES."],"icon":"laugh"} push
-+ So what did our ancestors actually do for fun? ~0.2 >> kidsPlay {} push
+But archaeologists keep digging up game boards, toys, flutes, and even a joke that's nearly four thousand years old. >> card {"lines":["GAMES.","TOYS.","JOKES."],"icon":"laugh"} push
++ So what did our ancestors actually do for fun? ~0.3 >> kidsPlay {} push
+
+= play curious
+To find out, start with something surprising. >> card {"lines":["PLAY IS","OLDER"],"icon":"laugh"} push
++ Fun is older than humans. ~0.2 >> card {"lines":["OLDER THAN","HUMANS"],"icon":"laugh"} push
+In the nineteen nineties, a scientist named Jaak Panksepp started tickling young rats. >> research {"text":"JAAK PANKSEPP"} push
++ The rats chirped back, at a pitch far too high for our ears. >> ratTickle {"khz":"@pitch"} push
++ He suspected it was a kind of laughter. >> ratTickle {} [1000,560,1.1,1.2]
+And when he stopped, the rats came running back to his hand, asking for more. ~0.2 >> ratTickle {"chase":true} push
+Apes laugh too. >> apeTickle {"label":"TICKLE"} push
++ Tickle a young chimp, and it pants, ha, ha, ha, a breathless kind of giggle. >> apeTickle {} [1100,700,1.1,1.2]
+In two thousand nine, researchers recorded tickled orangutans, gorillas, chimps, bonobos, and human babies. >> laughTree {} push
++ The sounds lined up like a family tree. ~0.2 >> laughTree {"sub":"~10–16 MILLION YEARS AGO"} push
++ Laughter seems to go back to an ancestor we all share, roughly ten to sixteen million years ago. ~0.2 >> laughTree {"sub":"~10–16 MILLION YEARS AGO"} [960,560,1.0,1.08]
+Young chimps even play pretend. >> stickDoll {} push
+In Kibale, Uganda, young female chimps carry sticks around like dolls. >> map {"region":"kibale","label":"KIBALE, UGANDA"} push
++ They carry them, rest with them, and sometimes even take them to bed. >> stickDoll {"label":"A STICK DOLL"} push
++ And they seem to stop once they have real babies of their own. ~0.2 >> stickDoll {"label":"PLAY-MOTHERING?"} [960,700,1.1,1.2]
+Young animals of many kinds chase, wrestle, and play fight, and nobody has to teach them. >> apeTickle {"label":"PLAY FIGHT"} push
++ So fun didn't start with us. ~0.2 >> card {"lines":["WE","INHERITED IT"],"icon":"heart"} push
++ We inherited it. ~0.3 >> apeTickle {} pull
+
+= time warm
+But did ancient humans even have time for fun? >> think {"q1":"@time","q2":"NEVER"} push
++ Surely they were busy, every hour of the day, just staying alive. >> walkFar {} push
+In the Philippines, a team of scientists tracked the Agta, people who still hunt, fish, and gather. >> map {"region":"philippines","label":"THE AGTA, PHILIPPINES"} push
++ Agta who mostly foraged had around ten more hours of free time every week than Agta who mostly farmed. >> leisure {"note":"ABOUT +10 HOURS A WEEK"} push
++ Ten extra hours. Every week. ~0.2 >> card {"lines":["+10 HOURS"],"icon":"clock"} push
++ Farming brought more food, but it also brought more work. ~0.3 >> leisure {"note":"MORE FOOD, MORE WORK"} pull
+Back in the nineteen sixties, Richard Lee found that Ju'hoansi adults in the Kalahari spent only about two and a half days a week getting food. >> research {"text":"RICHARD LEE"} push
++ Add in cracking nuts, cooking, and making tools, and it came closer to a forty hour week. >> knapping {} push
++ Not endless free time. But not dawn to dusk toil either. ~0.2 >> hadzaCamp {} push
+Now you might be thinking, these are people living today, not ancient humans. >> think {"q1":"@today","q2":"NEVER"} push
++ And you're right. ~0.2 >> card {"lines":["YOU'RE","RIGHT"],"icon":"magnifier"} push
++ But they're the best clue we have to how foragers spent their days. ~0.3 >> worldMap {"pins":["tanzania","kalahari","philippines","aka","arctic","australia"]} push
+So what did people do with their free time? ~0.3 >> think {"q1":"@free","q2":"@time+0.2"} push
+
+= stories warm
+First, they talked. >> fireCircle {"talk":true} push
+In the Kalahari, the anthropologist Polly Wiessner recorded the conversations of Ju'hoansi hunter-gatherers. >> research {"text":"POLLY WIESSNER"} push
++ During the day, people talked about work, food, and complaints. >> talkChart {"step":1} push
++ Stories were less than one in ten. >> talkChart {"step":2} push
+But at night, around the fire, more than eight out of ten long group conversations were stories. >> talkChart {"step":3} push
++ Funny stories. Scary stories. Stories about people far away. >> storyFire {} push
++ Stories about who shared, and who was greedy. Who was brave, and who ran away. >> storyFire {} [960,600,1.1,1.2]
++ The rules of the camp, hidden inside the fun. ~0.2 >> fireCircle {"talk":true} [960,640,1.1,1.2]
+And being a great storyteller paid off. >> campVote {} push
+In two thousand seventeen, the researcher Daniel Smith asked Agta people who they would most like to live with. >> research {"text":"DANIEL SMITH"} push
++ Skilled storytellers were picked nearly twice as often, even ahead of good hunters and fishers. >> campVote {"pick":"BEST STORYTELLER"} push
++ And on average, they had more children who survived. ~0.2 >> campVote {"pick":"BEST STORYTELLER","kids":true} push
++ Many of their stories were about cooperation, sharing, and men and women being equal. >> campVote {"pick":"SHARE"} push
++ The fire was their TV. And the storytellers were the stars. ~0.3 >> storyFire {} [960,620,1.1,1.2]
+
+= games curious
+Then there were games. >> card {"lines":["GAME","NIGHT"],"icon":"bone2"} push
+Among the Hadza of Tanzania, men play a game of chance called lukuchuko. >> map {"region":"tanzania","label":"THE HADZA, TANZANIA"} push
++ They toss discs of bark at a tree, and bet things like arrows. >> gambling {} push
++ Winners are expected to keep playing, so prized things keep moving around the camp, and nobody ends up hoarding them. ~0.2 >> gambling {"spread":true} push
+Other games used bones. >> knucklebones {"sides":true} push
++ Knucklebones are the ankle bones of sheep and goats. >> knucklebones {"sides":true} [960,560,1.0,1.1]
++ Each side lands differently, so they work like dice. >> knucklebones {"play":true,"label":"KNUCKLEBONES"} push
+In Israel, archaeologists found more than six hundred of them in one spot, about two thousand three hundred years old. >> boneCache {} push
++ Some were marked with game words, like, stop! ~0.2 >> boneCache {} [1300,400,1.1,1.25]
++ And in places like Mongolia, people still play with them today. ~0.2 >> knucklebones {"play":true,"label":"STILL PLAYED TODAY"} push
+In southeastern Turkey, archaeologists opened a grave about five thousand years old. >> map {"region":"basur","label":"BAŞUR HÖYÜK, TURKEY"} push
++ Inside were forty nine small carved stones. Pigs. Dogs. Little pyramids. >> basur {} push
++ They might be some of the oldest game pieces ever found. ~0.2 >> basur {"sub":"OLDEST GAME PIECES?"} push
+In Egypt, people were playing a game called Senet more than four thousand five hundred years ago. >> senet {"sub":"4,500+ YEARS"} push
++ Over time, it became linked to the journey of the soul after death. >> senet {} [960,580,1.1,1.2]
++ Tutankhamun was buried with at least four game boxes, so he could keep playing in the afterlife. ~0.2 >> senet {"label":"TUTANKHAMUN'S GAMES"} push
+And then there's the Royal Game of Ur. >> map {"region":"ur","label":"UR, IRAQ"} push
++ It's about four thousand five hundred years old, found in royal graves in what is now Iraq. >> urGame {"sub":"~4,500 YEARS"} push
++ For a long time, nobody knew the rules. ~0.2 >> think {"q1":"@rules","q2":"NEVER"} push
+Then Irving Finkel, at the British Museum, studied a clay tablet written by a Babylonian scribe. >> research {"text":"IRVING FINKEL"} push
++ On it were the rules. >> finkel {"sub":"THE RULES"} push
++ Now people can play it again. >> urGame {"pieces":true,"dice":true,"label":"PLAYABLE AGAIN"} push
++ Two players race their pieces across the board, rolling pyramid-shaped dice. >> urGame {"pieces":true,"dice":true} [960,600,1.1,1.2]
++ Land on a rosette, and you roll again. ~0.2 >> urGame {"pieces":true} [700,500,1.3,1.4]
+People kept playing it for well over two thousand years. >> urGame {"pieces":true,"sub":"PLAYED FOR 2,000+ YEARS"} push
++ A version of it was still played in southern India in the nineteen fifties. >> map {"region":"india","label":"KOCHI, INDIA"} push
++ Someone even scratched its board into the stone of a giant palace statue. >> lamassu {} push
++ Possibly a guard. A bored guard. ~0.3 >> lamassu {"zoom":true,"label":"A GAME BOARD"} push
+So be honest. >> card {"lines":["BE","HONEST"],"icon":"game"} push
++ For one evening in the past, would you play the Royal Game of Ur, or knucklebones? Tell me in the comments. ~0.3 >> commentPrompt {"q":"UR OR KNUCKLEBONES?"} push
+
+= toys wonder
+Kids had toys, too. >> card {"lines":["KIDS","HAD TOYS"],"icon":"heart"} push
+In the Indus Valley, more than four thousand years ago, children may have played with little clay carts and animals on wheels. >> wheeledToy {"label":"TOYS ON WHEELS","sub":"INDUS VALLEY"} push
++ Some animals even had heads that bobbed on a string. ~0.2 >> wheeledToy {} push
+Hunter-gatherer kids today still make their own toys. Little bows, tiny digging sticks, and dolls, copying the grown-ups. ~0.2 >> toyBow {} push
+Much older, in a cave in France, archaeologists found a small bone disc with a hole in the middle. >> spinDisc {"sub":"~14,000 YEARS"} push
++ An animal is carved on each side. Standing on one. Lying down on the other. >> spinDisc {} [960,560,1.1,1.25]
+Some researchers think it hung on a string, and when you spun it, the animal seemed to move. >> spinDisc {"fast":true,"label":"SPIN IT"} push
++ It could also have been a tool. But if it was a toy, it might be one of the oldest animations ever made. ~0.3 >> spinDisc {"fast":true,"label":"A CARTOON?"} pull
+And all over the world, people played with a simple loop of string. >> stringGame {} push
++ Hands, fingers, a few twists, and suddenly, there's a house, a star, or a fishing net. >> stringGame {"sub":"ALL OVER THE WORLD"} push
++ One explorer in the nineteen tens recorded well over a hundred Inuit string figures. ~0.3 >> stringGame {"sub":"THE ARCTIC"} push
+
+= sport open
+Some fun was louder. >> card {"lines":["SOME FUN","WAS LOUDER"],"icon":"ball"} push
+Deep in Egypt's desert, there's a cave covered in painted people, and many of them look like they're swimming. >> map {"region":"gilf","label":"GILF KEBIR, EGYPT"} push
++ Swimming. In a desert. >> swimmers {} push
++ They were painted around seven thousand years ago, when the Sahara was greener, with lakes. >> swimmers {"sub":"~7,000 YEARS"} push
++ Though experts still argue about whether they're really swimming. ~0.3 >> swimmers {"sub":"SWIMMING? OR SOMETHING ELSE?"} push
+In Egypt, about four thousand years ago, a tomb wall was painted with wrestlers. >> wrestlers {"label":"BENI HASAN · ~4,000 YEARS"} push
++ Not two or three. About two hundred pairs, each one in a different hold. ~0.2 >> wrestlers {} [960,600,1.1,1.2]
++ It's like a four thousand year old wrestling manual. ~0.2 >> wrestlers {"label":"A WRESTLING MANUAL?"} push
++ In the same tomb, women are painted juggling. It's the oldest known picture of juggling. ~0.3 >> jugglers {} push
+In Mexico, archaeologists found the oldest rubber balls we know of, about three thousand six hundred years old. >> ballgame {"ball":true} push
++ And they had a recipe for extra bounce. Tree latex, mixed with juice from a morning glory vine. >> ballgame {"ball":true,"label":"A BOUNCE RECIPE","sub":"LATEX + MORNING GLORY"} push
++ The balls were made for a game played with the hips. ~0.2 >> ballgame {"label":"THE BALL GAME"} push
+And in Alaska, Iñupiat communities celebrate a good whaling season by tossing each other high into the air, from a blanket of seal or walrus skins. >> blanketToss {"label":"BLANKET TOSS"} push
++ It's still done today. Along with contests like the one foot high kick. ~0.3 >> highKick {"label":"HIGH KICK"} push
+
+= music warm
+And of course, there was music. >> flute {"play":true} push
++ In caves in Germany, archaeologists found flutes made from bird bone and mammoth ivory, about forty thousand years old. >> flute {"play":true} [960,560,1.1,1.2]
++ One, made from a vulture's wing bone, has five finger holes. Copies of it can still play a tune. >> flute {"play":true} push
+In some Ice Age caves, paintings tend to sit where sound echoes the most. >> echoCave {"sing":true} push
++ Some researchers think that was on purpose, though it's still debated. ~0.2 >> echoCave {"sing":true} [960,560,1.1,1.2]
+Where there's music, there's dancing. >> trance {"clap":true} push
++ Some of the oldest pictures of people dancing come from the first farming villages of the Middle East, about nine thousand years ago. >> dancePot {"sub":"~9,000 YEARS"} push
+And in the forests of Central Africa, the Aka sing in layers. >> map {"region":"aka","label":"THE AKA"} push
++ Every voice a different tune, weaving together. ~0.2 >> polyphony {"label":"AKA SINGING"} push
++ The United Nations now lists it as part of the world's cultural heritage. ~0.3 >> polyphony {} [960,560,1.1,1.2]
+
+= jokes curious
+But here's my favourite. >> card {"lines":["MY","FAVOURITE"],"icon":"laugh"} push
++ Ancient people told jokes. ~0.2 >> card {"lines":["ANCIENT","JOKES"],"icon":"laugh"} push
+The oldest joke we know of comes from Sumer, in what is now Iraq, nearly four thousand years ago. >> map {"region":"sumer","label":"SUMER, ~4,000 YEARS AGO"} push
++ It goes like this. >> jokeTablet {"label":"THE OLDEST JOKE?"} push
++ Something which has never happened since the beginning of time. >> jokeTablet {"label":"THE OLDEST JOKE?","lines":["SOMETHING WHICH HAS NEVER","HAPPENED SINCE THE","BEGINNING OF TIME:"],"t0":0.3} push
++ A young woman did not fart in her husband's embrace. ~0.4 >> jokeTablet {"label":"THE OLDEST JOKE?","lines":["A YOUNG WOMAN","DID NOT FART IN HER","HUSBAND'S EMBRACE."],"t0":0.2,"punch":true,"laugh":0} push
++ Four thousand years later, the fart joke is still undefeated. ~0.3 >> card {"lines":["STILL","UNDEFEATED"],"icon":"laugh"} push
+A Greek joke book called the Philogelos, the Laughter Lover, has more than two hundred and sixty jokes. >> jokeBook {"lines":["HOW SHALL I CUT YOUR HAIR?","IN SILENCE."]} push
++ In one, a chatty barber asks a man, how should I cut your hair? >> barber {"q":"HOW SHOULD I CUT IT?"} push
++ And the man says, in silence. ~0.4 >> barber {"q":"HOW SHOULD I CUT IT?","a":"IN SILENCE.","at":0.5,"silent":true} push
++ That joke was already being told about a king of Macedon, centuries earlier. ~0.2 >> barber {"q":"HOW SHOULD I CUT IT?","a":"IN SILENCE.","at":"DONE","silent":true} [1030,560,1.1,1.2]
+Many of the book's jokes are about a well-meaning fool, an egghead. >> jokeBook {"label":"THE EGGHEAD","lines":["A WELL-MEANING FOOL"]} push
++ One egghead dreamed he stepped on a nail, so in the morning, he bandaged his foot. >> jokeBook {"label":"THE EGGHEAD","lines":["DREAMED HE STEPPED ON A NAIL","BANDAGED HIS FOOT"]} push
++ His friend heard why, and said, no wonder. Why do you sleep without shoes on? ~0.4 >> jokeBook {"label":"THE EGGHEAD","lines":["NO WONDER!","WHY DO YOU SLEEP WITHOUT SHOES?"]} push
+
+= twist wonder
+So were ancient humans ever bored? >> think {"q1":"@bored","q2":"NEVER"} push
++ Of course they were, sometimes. >> boredCave {"fire":true} push
+But here's something strange. >> card {"lines":["SOMETHING","STRANGE"],"icon":"magnifier"} push
++ The English word boredom is surprisingly new. >> boredomBook {} push
++ It only shows up in print in the eighteen twenties, and Charles Dickens helped make it popular in the eighteen fifties. ~0.2 >> boredomBook {"sub":"CHARLES DICKENS, 1850s"} [1180,560,1.1,1.25]
+Today, many of us find doing nothing surprisingly hard. >> phoneCouch {"face":"tired"} push
+In two thousand fourteen, psychologists left people alone in a room for fifteen minutes, with nothing to do but think. >> shockRoom {} push
++ Many of them chose to give themselves a small electric shock, rather than just sit there. ~0.3 >> shockRoom {"zap":"@shock"} push
++ Our ancestors rarely had that problem. They were almost never alone. ~0.3 >> fireCircle {"talk":true} push
+And look at everything we just saw. >> fireVsPhone {"r":"TOGETHER"} push
++ Stories, games, toys, sport, music, jokes. >> card {"lines":["ALL","TOGETHER"],"icon":"heart"} push
++ Almost none of it was done alone. ~0.3 >> fireVsPhone {"l":"ALONE","r":"TOGETHER"} push
+
+= end warm
+Before we go, which ancient fun would you try first? >> commentPrompt {"q":"WHICH WOULD YOU TRY?"} push
++ Firelight stories, the Royal Game of Ur, or the four thousand year old joke? Let me know in the comments. ~0.3 >> commentPrompt {"q":"WHICH WOULD YOU TRY?","list":["FIRELIGHT STORIES","THE ROYAL GAME OF UR","THE OLDEST JOKE"]} push
+Tonight, you'll probably pick up your phone. >> phoneCouch {} push
++ For three hundred thousand years, they picked up a story, a game, a song. >> storyFire {} push
+You scroll alone. >> phoneCouch {"face":"tired"} pull
++ They laughed together. >> fireVsPhone {"l":"YOU","r":"THEM"} [1440,600,1.0,1.2]

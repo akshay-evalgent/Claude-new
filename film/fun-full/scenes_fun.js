@@ -3,7 +3,7 @@
 
 Object.assign(PLACES, {
   kibale: [30.4, 0.5], ur: [46.1, 30.96], gilf: [25.4, 23.4], benihasan: [30.88, 27.93], manati: [-94.67, 17.75],
-  basur: [41.1, 37.9], hohlefels: [9.75, 48.38], laugerie: [1.0, 44.95], alaska: [-156.8, 71.3], lascaux: [1.17, 45.05],
+  basur: [41.1, 37.9], india: [76.27, 9.93], hohlefels: [9.75, 48.38], laugerie: [1.0, 44.95], alaska: [-156.8, 71.3], lascaux: [1.17, 45.05],
 });
 Object.assign(REGIONS, {
   kibale: { center: [31, 1], scale: 2600, hl: ['Uganda'] },
@@ -12,6 +12,7 @@ Object.assign(REGIONS, {
   benihasan: { center: [30, 27], scale: 1900, hl: ['Egypt'] },
   manati: { center: [-96, 18.5], scale: 2600, hl: ['Mexico'] },
   basur: { center: [37, 38.5], scale: 2400, hl: ['Turkey'] },
+  india: { center: [79, 18], scale: 1250, hl: ['India'] },
   hohlefels: { center: [10, 48.6], scale: 4200, hl: ['Germany'] },
   laugerie: { center: [1.5, 46.2], scale: 3000, hl: ['France'] },
   alaska: { center: [-152, 64], scale: 1300, hl: ['United States of America'] },
@@ -82,7 +83,7 @@ function swimmer(x, y, s, t, i) {
 }
 function egyptFig(x, y, s, col, a1, a2, flip = false) {
   // simple profile figure in Egyptian wall-painting colours
-  return g(`translate(${x} ${y}) scale(${flip ? -s : s} ${s})`, `<circle cx="0" cy="-170" r="26" fill="${col}" ${S} stroke-width="3"/><path d="M0 -144 L0 -60" stroke="${col}" stroke-width="30" stroke-linecap="round"/><path d="M-14 -60 L-30 0 M14 -60 L34 0" stroke="${col}" stroke-width="14" stroke-linecap="round"/><path d="M-18 -70 h36 v20 h-36 Z" fill="#F3EBDD" ${S} stroke-width="2"/><path d="M0 -130 L${a1[0]} ${a1[1]} M0 -130 L${a2[0]} ${a2[1]}" stroke="${col}" stroke-width="12" stroke-linecap="round"/>`);
+  return g(`translate(${x} ${y}) scale(${flip ? -s : s} ${s})`, `<circle cx="0" cy="-170" r="26" fill="${col}" ${S} stroke-width="3"/><path d="M-28 -168 Q-30 -200 0 -199 Q30 -200 28 -176 L10 -178 Q-6 -186 -14 -168 L-14 -140 L-28 -144 Z" fill="#1A1410"/><circle cx="14" cy="-170" r="4" fill="#1A1410"/><path d="M0 -144 L0 -60" stroke="${col}" stroke-width="30" stroke-linecap="round"/><path d="M-14 -60 L-30 0 M14 -60 L34 0" stroke="${col}" stroke-width="14" stroke-linecap="round"/><path d="M-18 -70 h36 v20 h-36 Z" fill="#F3EBDD" ${S} stroke-width="2"/><path d="M0 -130 L${a1[0]} ${a1[1]} M0 -130 L${a2[0]} ${a2[1]}" stroke="${col}" stroke-width="12" stroke-linecap="round"/>`);
 }
 function rubberBall(s = 1) { return g(`scale(${s})`, `<circle r="60" fill="#2E2A28" ${S} stroke-width="5"/><path d="M-30 -30 Q-10 -46 16 -40" fill="none" stroke="#6A625C" stroke-width="8" stroke-linecap="round"/>`); }
 function inuit(o) { return person(Object.assign({ kind: 'cave', tunicC: '#C9A97A', hairC: '#2B2118', cloak: false }, o, { front: (L, R) => `<path d="M-62 ${-o.hip - 300} Q0 ${-o.hip - 380} 62 ${-o.hip - 300}" fill="none" stroke="#F3EBDD" stroke-width="22" stroke-linecap="round" opacity=".9"/>` })); }
@@ -156,7 +157,7 @@ SCN.laughTree = (c, o) => {
     s += pop(x, 280, c.t, 1.2 + i * 0.12, hand('HA', 0, 0, 60, 1, DONE, { col: C.accent }));
   });
   s += pop(960, 990, c.t, 1.9, `<circle r="20" fill="${C.accent}" ${S} stroke-width="4"/>`) + hand(o.label || 'ONE LAUGHING ANCESTOR', 960, 140, 80, c.t, 2.0, { col: C.accent });
-  if (o.sub) s += hand(o.sub, 960, 1040, 56, c.t, 2.3);
+  if (o.sub) s += hand(o.sub, 960, 225, 56, c.t, 2.3);
   return s;
 };
 SCN.stickDoll = (c, o) => {
@@ -179,7 +180,7 @@ SCN.leisure = (c, o) => {
     const y = 380 + i * 260, w = 1000 * v * eout(clamp((c.t - 0.4 - i * 0.4) / 0.8));
     s += hand(l, 420, y + 30, 64, c.t, 0.3 + i * 0.4, { anchor: 'end' }) + `<rect x="470" y="${y - 50}" width="${f1(w)}" height="110" rx="14" fill="${col}" ${S} stroke-width="5"/>`;
   });
-  if (o.note) s += hand(o.note, 960, 960, 64, c.t, 1.4, { col: C.accent });
+  if (o.note) s += hand(o.note, 960, 870, 64, c.t, 1.4, { col: C.accent });
   return s;
 };
 SCN.gambling = (c, o) => {
@@ -187,7 +188,7 @@ SCN.gambling = (c, o) => {
   const men = [[640, 0], [960, 1], [1280, 2]];
   men.forEach(([x, i]) => { s += person({ x, y: 960, s: 1.0, t: c.t, seed: 31 + i * 5, face: i === 1 && o.win ? 'laugh' : 'happy', ...sit, la: [40, 60], ra: [i === 1 ? -150 : -30, i === 1 ? -100 : -40], armsFront: true }); });
   const th = (c.t * 0.9) % 1.4;
-  if (th < 0.8) { const p = th / 0.8; s += g(`translate(${f1(1000 + p * 300)} ${f1(700 - Math.sin(Math.PI * p) * 220)}) rotate(${f1(p * 720)})`, `<ellipse rx="40" ry="16" fill="#B98E5A" ${S} stroke-width="4"/>`); }
+  if (th < 0.8) { const p = th / 0.8; s += g(`translate(${f1(1000 + p * 560)} ${f1(700 - Math.sin(Math.PI * p) * 220)}) rotate(${f1(p * 720)})`, `<ellipse rx="40" ry="16" fill="#B98E5A" ${S} stroke-width="4"/>`); }
   else s += g(`translate(1300 990) rotate(10)`, `<ellipse rx="40" ry="16" fill="#B98E5A" ${S} stroke-width="4"/>`);
   const pile = o.spread ? clamp((c.t - 0.5) / 1.6) : 0;
   for (let k = 0; k < 6; k++) { const tx = lerp(960, [640, 1280, 960][k % 3], pile), ty = lerp(1010, 1020, pile); s += g(`translate(${f1(tx + (k - 3) * 12)} ${f1(ty)}) rotate(${-80 + k * 6})`, `<path d="M0 0 L0 -150" ${S} stroke-width="5"/><path d="M-10 -150 L0 -175 L10 -150 Z" fill="#9AA0A6" ${S} stroke-width="3"/>`); }
@@ -204,7 +205,7 @@ SCN.knucklebones = (c, o) => {
   }
   let s = paper();
   s += g(`translate(960 560) rotate(${f1(Math.sin(c.t * 1.2) * 12)})`, astragalus(2.6));
-  s += hand(o.label || 'KNUCKLEBONES', 960, 180, 96, c.t, 0.2) + hand(o.sub || 'A SHEEP ANKLE BONE', 960, 900, 64, c.t, 0.6, { col: C.accent });
+  s += hand(o.label || 'KNUCKLEBONES', 960, 180, 96, c.t, 0.2) + hand(o.sub || 'A SHEEP ANKLE BONE', 960, 870, 64, c.t, 0.6, { col: C.accent });
   if (o.sides) [['1', 520, 420], ['3', 1400, 420], ['4', 520, 720], ['6', 1400, 720]].forEach(([n, x, y], i) => { s += pop(x, y, c.t, 0.8 + i * 0.25, `<circle r="60" fill="#FFFFFF" ${S} stroke-width="5"/>` + hand(n, 0, 26, 76, 1, DONE, { col: C.accent })); });
   return s;
 };
@@ -212,7 +213,7 @@ SCN.urGame = (c, o) => {
   let s = paper();
   s += g('translate(960 560)', urBoard(1.5, c.t, { pieces: !!o.pieces }));
   if (o.dice) s += [0, 1, 2, 3].map(i => pop(1500 + (i % 2) * 120, 880 + Math.floor(i / 2) * 60, c.t, 0.6 + i * 0.12, tetraDie(0.9, i !== 2))).join('');
-  s += hand(o.label || 'THE ROYAL GAME OF UR', 960, 140, 84, c.t, 0.2) + (o.sub ? hand(o.sub, 960, 980, 64, c.t, 0.6, { col: C.accent }) : '');
+  s += hand(o.label || 'THE ROYAL GAME OF UR', 960, 140, 84, c.t, 0.2) + (o.sub ? hand(o.sub, 960, 880, 64, c.t, 0.6, { col: C.accent }) : '');
   return s;
 };
 SCN.finkel = (c, o) => {
@@ -243,7 +244,7 @@ SCN.lamassu = (c, o) => {
 SCN.senet = (c, o) => {
   let s = paper();
   s += g('translate(960 580) scale(1.2)', senetBoard(1, c.t));
-  s += hand(o.label || 'SENET', 960, 170, 96, c.t, 0.2) + (o.sub ? hand(o.sub, 960, 920, 64, c.t, 0.6, { col: C.accent }) : '');
+  s += hand(o.label || 'SENET', 960, 170, 96, c.t, 0.2) + (o.sub ? hand(o.sub, 960, 870, 64, c.t, 0.6, { col: C.accent }) : '');
   return s;
 };
 SCN.basur = (c, o) => {
@@ -254,7 +255,7 @@ SCN.basur = (c, o) => {
     const sh = k === 'pyr' ? `<path d="M0 -70 L60 50 L-60 50 Z" fill="${col}" ${S} stroke-width="5"/>` : k === 'ball' ? `<circle r="55" fill="${col}" ${S} stroke-width="5"/>` : k === 'disc' ? `<ellipse rx="70" ry="30" fill="${col}" ${S} stroke-width="5"/>` : k === 'pig' ? `<ellipse rx="70" ry="44" fill="${col}" ${S} stroke-width="5"/><circle cx="-60" cy="-10" r="22" fill="${col}" ${S} stroke-width="4"/><path d="M-40 40 v20 M40 40 v20" ${S} stroke-width="6"/>` : `<ellipse rx="66" ry="36" fill="${col}" ${S} stroke-width="5"/><circle cx="-60" cy="-36" r="24" fill="${col}" ${S} stroke-width="4"/><path d="M60 -10 l30 -30" ${S} stroke-width="6"/>`;
     s += pop(x, y, c.t, 0.2 + i * 0.12, sh);
   });
-  s += hand(o.label || 'BAŞUR HÖYÜK, TURKEY', 960, 170, 76, c.t, 0.1) + hand(o.sub || '~5,000 YEARS', 960, 930, 64, c.t, 1.0, { col: C.accent });
+  s += hand(o.label || 'BAŞUR HÖYÜK, TURKEY', 960, 170, 76, c.t, 0.1) + hand(o.sub || '~5,000 YEARS', 960, 870, 64, c.t, 1.0, { col: C.accent });
   return s;
 };
 SCN.stringGame = (c, o) => {
@@ -268,7 +269,7 @@ SCN.stringGame = (c, o) => {
   else if (st === 1) d = `M${960 - sp} 470 L960 560 L${960 + sp} 470 M${960 - sp} 650 L960 560 L${960 + sp} 650 M${960 - sp} 520 Q960 600 ${960 + sp} 520 M${960 - sp} 600 Q960 520 ${960 + sp} 600`;
   else d = `M${960 - sp} 470 L${960 - sp / 2} 650 L960 470 L${960 + sp / 2} 650 L${960 + sp} 470 M${960 - sp} 650 L${960 - sp / 2} 470 L960 650 L${960 + sp / 2} 470 L${960 + sp} 650`;
   s += `<path d="${d}" fill="none" stroke="${col}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>`;
-  s += hand(o.label || 'STRING FIGURES', 960, 160, 90, c.t, 0.2) + (o.sub ? hand(o.sub, 960, 920, 64, c.t, 0.6, { col: C.accent }) : '');
+  s += hand(o.label || 'STRING FIGURES', 960, 160, 90, c.t, 0.2) + (o.sub ? hand(o.sub, 960, 860, 64, c.t, 0.6, { col: C.accent }) : '');
   return s;
 };
 
@@ -276,7 +277,7 @@ SCN.stringGame = (c, o) => {
 SCN.swimmers = (c, o) => {
   let s = `<rect width="${W}" height="${H}" fill="#D9A46A"/>` + [...Array(14)].map((_, i) => `<ellipse cx="${(i * 233) % 1920}" cy="${(i * 157) % 1080}" rx="${160 + (i % 4) * 40}" ry="${70 + (i % 3) * 30}" fill="${i % 2 ? '#CF9860' : '#E2B27A'}" opacity=".7"/>`).join('');
   [[600, 420], [900, 380], [1250, 450], [760, 640], [1100, 600], [1420, 680], [520, 760]].forEach(([x, y], i) => { s += swimmer(x, y, 1.0, c.t, i); });
-  s += hand(o.label || 'THE CAVE OF SWIMMERS', 960, 150, 84, c.t, 0.3, { col: '#5C2A1A' }) + (o.sub ? hand(o.sub, 960, 960, 64, c.t, 0.7, { col: '#5C2A1A' }) : '');
+  s += hand(o.label || 'THE CAVE OF SWIMMERS', 960, 150, 84, c.t, 0.3, { col: '#5C2A1A' }) + (o.sub ? hand(o.sub, 960, 880, 64, c.t, 0.7, { col: '#5C2A1A' }) : '');
   return s;
 };
 SCN.ballgame = (c, o) => {
@@ -284,7 +285,7 @@ SCN.ballgame = (c, o) => {
     let s = paper();
     const b = Math.abs(Math.sin(c.t * 4)) * 160;
     s += `<ellipse cx="960" cy="860" rx="${f1(120 - b * 0.3)}" ry="18" fill="${C.ink}" opacity=".15"/>` + g(`translate(960 ${f1(790 - b)})`, rubberBall(1.6));
-    return s + hand(o.label || 'RUBBER BALLS', 960, 170, 96, c.t, 0.2) + hand(o.sub || '~3,600 YEARS', 960, 960, 64, c.t, 0.6, { col: C.accent });
+    return s + hand(o.label || 'RUBBER BALLS', 960, 170, 96, c.t, 0.2) + hand(o.sub || '~3,600 YEARS', 960, 880, 64, c.t, 0.6, { col: C.accent });
   }
   let s = `<rect width="${W}" height="${H}" fill="#BFDDEA"/><rect y="560" width="${W}" height="520" fill="#D9C2A0"/>`;
   s += `<path d="M0 560 L400 560 L520 760 L520 1080 L0 1080 Z M1920 560 L1520 560 L1400 760 L1400 1080 L1920 1080 Z" fill="#C9A97A" ${S} stroke-width="6"/>`;
@@ -309,10 +310,10 @@ SCN.wrestlers = (c, o) => {
 };
 SCN.blanketToss = (c, o) => {
   let s = bgSnow(c.t, {});
-  const p = Math.abs(Math.sin(c.t * 2.0)), y = 520 - p * 300;
-  s += `<path d="M560 720 Q960 ${f1(800 - (1 - p) * 60)} 1360 720 Q960 ${f1(760 - (1 - p) * 20)} 560 720 Z" fill="#B98E5A" ${S} stroke-width="6"/>`;
-  [500, 760, 1160, 1420].forEach((x, i) => { s += inuit({ x, y: 960, s: 0.95, t: c.t, seed: 50 + i * 3, hip: 168, face: 'laugh', la: [i < 2 ? 140 : -140, -60], ra: [i < 2 ? 140 : -140, -60], flip: i >= 2 }); });
-  s += inuit({ x: 960, y: f1(y + 330), s: 0.9, t: c.t, seed: 61, hip: 168, face: p > 0.5 ? 'laugh' : 'surprised', la: [-150, -60], ra: [150, 60] });
+  const p = Math.abs(Math.sin(c.t * 2.0)), sag = (1 - p) * 30;
+  [560, 780, 1140, 1360].forEach((x, i) => { s += inuit({ x, y: 1010, s: 0.95, t: c.t, seed: 50 + i * 3, hip: 168, face: 'laugh', la: [i < 2 ? 120 : -120, -40], ra: [i < 2 ? 120 : -120, -40], flip: i >= 2 }); });
+  s += `<ellipse cx="960" cy="${f1(745 + sag)}" rx="440" ry="${f1(46 + sag)}" fill="#B98E5A" ${S} stroke-width="7"/><ellipse cx="960" cy="${f1(735 + sag)}" rx="380" ry="${f1(28 + sag * 0.6)}" fill="#C9A06A"/>`;
+  s += inuit({ x: 960, y: f1(745 + sag - p * 430), s: 0.85, t: c.t, seed: 61, hip: 168, face: p > 0.4 ? 'laugh' : 'surprised', la: [-150, -150], ra: [150, 150], ll: [-20, -10], rl: [20, 10] });
   if (o.label) s += hand(o.label, 960, 140, 84, c.t, 0.3);
   return s;
 };
@@ -331,14 +332,14 @@ SCN.jokeTablet = (c, o) => {
   s += g('translate(520 560) rotate(-5)', `<rect x="-280" y="-340" width="560" height="680" rx="44" fill="#C9A06A" ${S} stroke-width="6"/>` + cuneiform(60, c.t, 0.1));
   (o.lines || []).forEach((l, i) => { s += hand(l, 1320, 380 + i * 90, 62, c.t, (o.t0 ?? 0.6) + i * 0.6, { col: i === (o.lines.length - 1) && o.punch ? C.accent : C.text }); });
   if (o.label) s += hand(o.label, 960, 130, 76, c.t, 0.2);
-  if (o.laugh != null) s += laughLines(1320, 900, c.t, C.accent) + (c.t > o.laugh ? '' : '');
+  if (o.laugh != null) s += laughLines(1560, 780, c.t, C.accent);
   return s;
 };
 SCN.jokeBook = (c, o) => {
   let s = paper();
   s += g('translate(960 600)', `<rect x="-700" y="-300" width="1400" height="560" rx="20" fill="#F1E3C2" ${S} stroke-width="6"/><circle cx="-700" cy="-20" r="50" fill="#D9C08E" ${S} stroke-width="6"/><circle cx="700" cy="-20" r="50" fill="#D9C08E" ${S} stroke-width="6"/>`);
   s += hand(o.label || 'PHILOGELOS · "LAUGHTER-LOVER"', 960, 170, 70, c.t, 0.1);
-  (o.lines || []).forEach((l, i) => { s += hand(l, 960, 460 + i * 100, 64, c.t, 0.5 + i * 0.9, { col: i % 2 ? C.accent : C.text }); });
+  (o.lines || []).forEach((l, i) => { s += hand(l, 960, 520 + i * 110 - (o.lines.length - 1) * 55, 76, c.t, 0.5 + i * 0.9, { col: i % 2 ? C.accent : C.text }); });
   return s;
 };
 SCN.barber = (c, o) => {
@@ -357,7 +358,7 @@ SCN.boredomBook = (c, o) => {
   for (let i = 0; i < 11; i++) s += `<path d="M${500} ${330 + i * 48} h${380 - (i % 3) * 40} M${1010} ${330 + i * 48} h${400 - (i % 4) * 30}" stroke="#C9BBA6" stroke-width="10" stroke-linecap="round"/>`;
   const hl = eout(clamp((c.t - 0.8) / 0.5));
   s += `<rect x="1050" y="510" width="${f1(260 * hl)}" height="64" fill="#FFE45C" opacity=".8"/>` + hand('BOREDOM', 1180, 560, 56, c.t, 0.9, { col: C.red });
-  s += hand(o.label || 'BLEAK HOUSE', 960, 150, 84, c.t, 0.2) + hand(o.sub || 'CHARLES DICKENS, 1852', 960, 1010, 56, c.t, 0.5, { col: C.accent });
+  s += hand(o.label || 'BLEAK HOUSE', 960, 150, 84, c.t, 0.2) + hand(o.sub || 'CHARLES DICKENS, 1850s', 960, 235, 56, c.t, 0.5, { col: C.accent });
   return s;
 };
 
@@ -369,7 +370,7 @@ SCN.dancePot = (c, o) => {
     const x = 690 + i * 108, b = Math.sin(c.t * 5 + i * 0.9) * 12;
     s += g(`translate(${x} ${f1(620 + b)})`, `<circle cy="-90" r="18" fill="#3A2418"/><path d="M0 -72 V0 M0 0 L-24 60 M0 0 L24 60 M0 -56 L-54 -${f1(80 + b)} M0 -56 L54 -${f1(80 - b)}" stroke="#3A2418" stroke-width="10" stroke-linecap="round"/>`);
   }
-  s += hand(o.label || 'DANCERS ON A POT', 960, 130, 80, c.t, 0.2) + (o.sub ? hand(o.sub, 960, 1000, 60, c.t, 0.6, { col: C.accent }) : '');
+  s += hand(o.label || 'DANCERS ON A POT', 960, 130, 80, c.t, 0.2) + (o.sub ? hand(o.sub, 960, 225, 60, c.t, 0.6, { col: C.accent }) : '');
   return s;
 };
 SCN.polyphony = (c, o) => {
@@ -400,7 +401,7 @@ SCN.spinDisc = (c, o) => {
   const disc = `<circle r="230" fill="#EFE3C8" ${S} stroke-width="7"/><circle r="16" fill="#8E6A3C"/>`;
   if (o.fast) s += g('translate(960 560)', disc + `<g opacity=".55">${animal(true)}</g><g opacity=".55">${animal(false)}</g>`);
   else s += g(`translate(960 560) scale(${f1(Math.max(0.04, Math.abs(cs)))} 1)`, disc + animal(front));
-  s += hand(o.label || 'A SPINNING DISC', 960, 170, 84, c.t, 0.2) + (o.sub ? hand(o.sub, 960, 920, 64, c.t, 0.6, { col: C.accent }) : '');
+  s += hand(o.label || 'A SPINNING DISC', 960, 170, 84, c.t, 0.2) + (o.sub ? hand(o.sub, 960, 870, 64, c.t, 0.6, { col: C.accent }) : '');
   return s;
 };
 SCN.wheeledToy = (c, o) => {
@@ -439,3 +440,37 @@ SCN.fireVsPhone = (c, o) => {
     return ic(name, t);
   };
 })();
+
+// ---------- the "just think" study ----------
+SCN.shockRoom = (c, o) => {
+  let s = `<rect width="${W}" height="${H}" fill="#EEF1F2"/><rect y="860" width="${W}" height="220" fill="#D5DADC"/><path d="M0 860 H1920" ${S} stroke-width="4"/>`;
+  s += `<rect x="760" y="640" width="200" height="30" fill="#9AA3A8" ${S} stroke-width="5"/><path d="M780 670 V860 M940 670 V860" ${S} stroke-width="10"/>`;
+  const zapT = o.zap ?? NEVER, zapping = c.t > zapT && c.t < zapT + 0.6;
+  s += person({ x: 860, y: 860, s: 1.2, kind: 'modern', t: c.t, seed: 4, face: zapping ? 'surprised' : 'tired', shortHair: true, hairC: '#3A2A1E', ...sit, la: [30, 40], ra: [-60, -80], armsFront: true, shake: zapping ? 1 : 0 });
+  s += `<rect x="1080" y="700" width="220" height="160" fill="#C9CFD2" ${S} stroke-width="5"/><rect x="1120" y="650" width="140" height="70" rx="12" fill="#5C6468" ${S} stroke-width="5"/><circle cx="1190" cy="660" r="26" fill="#E0302A" ${S} stroke-width="4"/>`;
+  if (zapping) s += `<path d="M1190 600 l-30 -50 l40 -10 l-30 -60 M1230 610 l30 -40 l-30 -10 l40 -50" fill="none" stroke="#F2C443" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`;
+  s += g('translate(1560 300)', clock(0, 0, 110, 10, 15 + Math.floor(c.t * 3) % 45)) + hand('15 MINUTES', 1560, 480, 64, c.t, 0.3, { col: C.accent });
+  s += hand(o.label || 'JUST THINK', 600, 220, 90, c.t, 0.2);
+  return s;
+};
+
+// ---------- Beni Hasan jugglers ----------
+SCN.jugglers = (c, o) => {
+  let s = `<rect width="${W}" height="${H}" fill="#EADBB8"/><path d="M0 860 H1920" stroke="#8E6A3C" stroke-width="6"/>`;
+  [560, 960, 1360].forEach((x, i) => {
+    s += egyptFig(x, 850, 1.6, i % 2 ? '#E0B98A' : '#C98A5A', [-60, -230], [60, -230], i === 1);
+    for (let k = 0; k < 3; k++) { const ph = (c.t * 1.4 + k / 3 + i * 0.2) % 1, a = ph * Math.PI * 2; s += `<circle cx="${f1(x + Math.cos(a) * 110)}" cy="${f1(470 - Math.abs(Math.sin(a)) * 170)}" r="26" fill="${['#C0392B', '#3B5BA5', '#F2C443'][k]}" ${S} stroke-width="4"/>`; }
+  });
+  s += hand(o.label || 'JUGGLING · ~4,000 YEARS', 960, 140, 80, c.t, 0.3);
+  if (o.sub) s += hand(o.sub, 960, 230, 56, c.t, 0.6, { col: C.accent });
+  return s;
+};
+// ---------- Maresha knucklebone cache ----------
+SCN.boneCache = (c, o) => {
+  let s = paper();
+  const r = rng(17);
+  for (let i = 0; i < 46; i++) s += pop(360 + r() * 1000, 380 + r() * 400, c.t, 0.05 + i * 0.03, g(`rotate(${f1(r() * 360)})`, astragalus(0.45)));
+  s += pop(1420, 300, c.t, 1.4, `<rect x="-200" y="-70" width="400" height="140" rx="20" fill="#FFFFFF" ${S} stroke-width="5"/>` + hand('"STOP!"', 0, 26, 84, 1, DONE, { col: C.red }));
+  s += hand(o.label || '600+ KNUCKLEBONES', 700, 170, 84, c.t, 0.2) + hand(o.sub || 'MARESHA, ISRAEL · ~2,300 YEARS', 700, 250, 50, c.t, 0.6, { col: C.accent });
+  return s;
+};

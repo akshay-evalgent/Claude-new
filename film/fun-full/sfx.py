@@ -236,6 +236,9 @@ for kind in ["wind", "gust", "cold", "hum", "fire", "flies", "night", "water", "
         if kind == "night" and sc == "mosuo" and not opts.get("home"): has = True
         if kind == "wind" and sc in ("chimp", "orangutan", "clayLick", "borneoCave", "crutchKid"): has = False
         if kind == "hum" and sc in ("modernFridge", "fridgeOpen", "fridgeFerments", "apartment"): has = True
+        if kind == "jungle" and sc in ("apeTickle", "stickDoll", "polyphony", "laughTree"): has = sc != "laughTree"
+        if kind == "wind" and sc in ("apeTickle", "stickDoll", "polyphony"): has = False
+        if kind == "hum" and sc in ("phoneCouch", "shockRoom", "screenTime"): has = True
         if has:
             if spans and abs(spans[-1][1] - a["start"]) < 0.05: spans[-1][1] = a["end"]
             else: spans.append([a["start"], a["end"]])
@@ -324,6 +327,32 @@ for s in shots:
         wet = hum.copy()
         for d, g_ in [(0.11, 0.5), (0.23, 0.35), (0.37, 0.22)]: k_ = int(d * SR); wet[k_:] += hum[:-k_] * g_
         fx(t0, fade(wet, 0.3, 0.6), 0.0)
+    elif sc == "phoneCouch" and s["opts"].get("ping") is not None:
+        for k in range(3): fx(t0 + s["opts"]["ping"] + k * 0.35, chime(1318.5, 0.08), 0.4)
+    elif sc == "ratTickle" and not s["opts"].get("chase"):
+        for k in range(int((t1 - t0) / 0.18)):
+            n = int(0.06 * SR); tt = np.arange(n) / SR
+            f = 3200 + 900 * np.sin(2 * np.pi * 9 * tt) + rng.uniform(-300, 300)
+            fx(t0 + 0.2 + k * 0.18 + rng.uniform(0, 0.05), fade(np.sin(2 * np.pi * np.cumsum(f) / SR) * 0.035, 0.005, 0.02), 0.5)
+    elif sc == "urGame" and s["opts"].get("dice"):
+        for k in range(4): fx(t0 + 0.6 + k * 0.12, tick(1800 + k * 200, 0.12), 0.3)
+    elif sc == "ballgame":
+        per = np.pi / 4 if s["opts"].get("ball") else np.pi / 2.2
+        for k in range(int((t1 - t0) / per) + 1): fx(t0 + k * per, thud(140, 0.3), 0.2)
+    elif sc == "shockRoom" and s["opts"].get("zap") is not None:
+        n = int(0.5 * SR); tt = np.arange(n) / SR
+        buzz = np.sign(np.sin(2 * np.pi * 120 * tt)) * 0.04 + bp(rng.standard_normal(n), 2000, 6000) * 0.03
+        z = s["opts"]["zap"]
+        if isinstance(z, str): z = next((s["vs"] - t0 + w["s"] for w in s["words"] if w["w"].lower().strip(".,") == z[1:].lower()), 1.0)
+        fx(t0 + z, fade(buzz, 0.01, 0.1), 0.3)
+    elif sc == "blanketToss":
+        for k in range(int((t1 - t0) / (np.pi / 2))): fx(t0 + k * np.pi / 2, whoosh(0.5, lo=300, hi=2000, amp=0.12), 0.0)
+    elif sc == "gambling":
+        for k in range(int((t1 - t0) / 1.556) + 1): fx(t0 + 0.89 + k * 1.556, thud(180, 0.18), 0.4)
+    elif sc == "polyphony":
+        n = int((t1 - t0) * SR); tt = np.arange(n) / SR
+        v = sum(np.sin(2 * np.pi * f * tt + 0.8 * np.sin(2 * np.pi * (0.5 + k * 0.3) * tt)) * (0.5 + 0.5 * np.sin(2 * np.pi * (0.7 + k * 0.2) * tt + k)) for k, f in enumerate([220, 277.2, 329.6, 440, 392]))
+        fx(t0, fade(lp(v, 1800) * 0.012, 0.4, 0.6), 0.0)
     elif sc == "echoCave" and s["opts"].get("strike"):
         for k in range(int((t1 - t0) / 0.9)):
             n = int(1.2 * SR); tt = np.arange(n) / SR
