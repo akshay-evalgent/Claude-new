@@ -1,0 +1,42 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Inception: What If Mal Was Right?</title>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+<style>
+html,body{margin:0;background:#000;overflow:hidden}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:Inter,sans-serif;font-weight:900;color:#fff}
+#stage>*{position:absolute}
+canvas{inset:0;width:1920px;height:1080px}
+#vig{inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 52%,rgba(0,0,0,.5) 100%)}
+.bar{left:0;right:0;height:92px;background:#000}
+#free{inset:0}
+#dim,#fade{inset:0;background:#000;opacity:0}
+#flash{inset:0;background:#fff;opacity:0}
+#cap{left:50%;bottom:128px;white-space:nowrap;font-size:62px;text-transform:uppercase;letter-spacing:.5px;-webkit-text-stroke:14px rgba(0,0,0,.92);paint-order:stroke fill;transform-origin:50% 100%}
+#dlg{left:50%;bottom:122px;transform:translateX(-50%);white-space:nowrap;font-size:58px;font-weight:700;font-style:italic;background:rgba(8,9,12,.78);padding:14px 34px 16px;border-radius:14px}
+#dlg i{font-style:normal;font-weight:900;font-size:30px;letter-spacing:4px;margin-right:22px;vertical-align:middle}
+#card{left:0;right:0;top:400px;text-align:center}
+#card small{display:block;font-size:34px;letter-spacing:14px;color:#ffd24a;font-weight:700}
+#card b{display:block;font-size:112px;margin-top:14px}
+#card hr{border:0;height:5px;background:#ffd24a;margin:26px auto 0}
+#lower{left:110px;bottom:230px;border-left:10px solid #ffd24a;padding:4px 0 6px 26px}
+#lower b{display:block;font-size:76px;line-height:1}
+#lower span{display:block;font-size:34px;font-weight:700;color:#ffd24a;letter-spacing:5px;margin-top:10px;text-transform:uppercase}
+#title{left:50%;top:50%;text-align:center;white-space:nowrap}
+#title small{display:block;font-size:36px;letter-spacing:18px;color:#c9ced8;font-weight:700}
+#title b{display:block;font-size:200px;letter-spacing:22px;line-height:1.05;margin-left:22px}
+#title span{display:inline-block;margin-top:14px;font-size:58px;letter-spacing:6px;color:#14161c;background:#ffd24a;padding:10px 36px;border-radius:10px}
+</style></head><body>
+<div id="stage">
+  <canvas id="c" width="1920" height="1080"></canvas>
+  <div id="vig"></div>
+  <div id="free"></div>
+  <div id="dim"></div>
+  <div id="lower"></div>
+  <div id="cap"></div><div id="dlg"></div>
+  <div id="card"></div>
+  <div id="title"><small>A REIMAGINING IN BLOCKS</small><b>INCEPTION</b><span>WHAT IF MAL WAS RIGHT?</span></div>
+  <div id="flash"></div><div id="fade"></div>
+  <div class="bar" style="top:0"></div><div class="bar" style="bottom:0"></div>
+</div>
+<script type="module" src="film.js"></script>
+</body></html>

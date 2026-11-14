@@ -1,0 +1,94 @@
+{
+  "fps": 24,
+  "chapters": [
+    {"id": "p", "card": null, "mood": "mystery", "lead": 1.2, "lines": [
+      {"id": "p1", "v": "N", "amb": "room", "text": "For sixteen years, the internet has argued about one question."},
+      {"id": "p2", "v": "N", "text": "Did the top fall?"},
+      {"id": "p3", "v": "N", "text": "It's the wrong question."},
+      {"id": "p4", "v": "N", "text": "Tonight, we retell Inception, with one single change."},
+      {"id": "p5", "v": "N", "text": "What if Mal was right?", "gap": 3.4}
+    ]},
+    {"id": "a", "card": "CHAPTER ONE|THE THIEF", "mood": "heist", "lines": [
+      {"id": "a1", "v": "N", "amb": "sea", "text": "Dom Cobb washes up on a beach, below a castle he has never seen before."},
+      {"id": "a2", "v": "N", "text": "Cobb is a thief. But he doesn't break into buildings. He breaks into dreams."},
+      {"id": "a3", "v": "N", "amb": "room", "text": "Inside, at a long golden table, he is pitching a billionaire named Saito."},
+      {"id": "a4", "v": "cobb", "text": "Your mind is a vault. I can teach you to guard it."},
+      {"id": "a5", "v": "N", "text": "It's a con. While Saito sleeps, Cobb is already cracking the safe inside his head."},
+      {"id": "a6", "v": "N", "text": "But someone keeps showing up to wreck the job. His wife. Mal."},
+      {"id": "a7", "v": "mal", "text": "You know this isn't real, Dom."},
+      {"id": "a8", "v": "N", "amb": "sea", "text": "The dream collapses. The castle floods. And Saito wakes up, impressed."}
+    ]},
+    {"id": "b", "card": "CHAPTER TWO|THE OFFER", "mood": "mystery", "lines": [
+      {"id": "b1", "v": "N", "amb": "wind", "text": "Saito doesn't want revenge. He wants to hire him."},
+      {"id": "b2", "v": "saito", "text": "Don't steal an idea. Plant one. Inception."},
+      {"id": "b3", "v": "N", "amb": "city", "text": "The target is Robert Fischer, heir to an energy empire. The idea: break up your father's company."},
+      {"id": "b4", "v": "N", "amb": "wind", "text": "The payment is the only thing Cobb wants. One phone call, and he can go home to his children."},
+      {"id": "b5", "v": "N", "amb": "room", "text": "Children whose faces he can never quite see. Remember that.", "gap": 0.6}
+    ]},
+    {"id": "c", "card": "CHAPTER THREE|THE CREW", "mood": "heist", "lines": [
+      {"id": "c1", "v": "N", "amb": "city", "text": "So Cobb builds a team."},
+      {"id": "c2", "v": "N", "text": "In Paris, he finds Ariadne, an architect who folds an entire city over their heads on her first try."},
+      {"id": "c3", "v": "N", "amb": "room", "text": "Arthur, the point man, who plans for everything."},
+      {"id": "c4", "v": "N", "amb": "city", "text": "Eames, a forger in Mombasa, who can wear any face."},
+      {"id": "c5", "v": "N", "amb": "room", "text": "And Yusuf, a chemist, whose sedative lets them go three dreams deep."},
+      {"id": "c6", "v": "N", "text": "A dream, inside a dream, inside a dream. And time stretches. Ten hours on a plane becomes a week, then six months, then ten years."}
+    ]},
+    {"id": "d", "card": "CHAPTER FOUR|THE SECRET", "mood": "sad", "lines": [
+      {"id": "d1", "v": "N", "amb": "room", "text": "But Ariadne discovers what Cobb is hiding."},
+      {"id": "d2", "v": "N", "text": "Deep in his mind, there is an elevator. Every floor is a memory of Mal. He visits her every night."},
+      {"id": "d3", "v": "mal", "text": "You promised we would grow old together."},
+      {"id": "d4", "v": "N", "text": "And wherever Cobb goes, she follows."}
+    ]},
+    {"id": "e", "card": "CHAPTER FIVE|THE HEIST", "mood": "action", "lines": [
+      {"id": "e1", "v": "N", "amb": "plane", "text": "The job begins on a ten hour flight. One drink, and Fischer is under."},
+      {"id": "e2", "v": "N", "amb": "rain", "text": "Level one. A rainy city. And immediately, everything goes wrong."},
+      {"id": "e3", "v": "N", "text": "A freight train tears down the middle of the street. Fischer's mind has been trained. His subconscious has an army."},
+      {"id": "e4", "v": "N", "text": "Saito is hit. And under this sedative, dying doesn't wake you up. It drops you into limbo. An endless dream, where decades pass in minutes."},
+      {"id": "e5", "v": "N", "text": "There's no way out but down. Yusuf drives. The rest go deeper."},
+      {"id": "e6", "v": "N", "amb": "room", "text": "Level two. A hotel. Cobb tells Fischer the truth: you are dreaming. Then lies about everything else."},
+      {"id": "e7", "v": "N", "text": "Above them, the van swerves, and gravity goes with it. Arthur fights a guard down a spinning hallway."},
+      {"id": "e8", "v": "N", "amb": "wind", "text": "Level three. A fortress in the snow, with Fischer's father locked in a vault at its heart."},
+      {"id": "e9", "v": "N", "text": "They are seconds from the door, when Mal steps out of the shadows. And Fischer falls."},
+      {"id": "e10", "v": "N", "text": "The job is dead. Unless Cobb follows him. All the way down."}
+    ]},
+    {"id": "f", "card": "CHAPTER SIX|LIMBO", "mood": "sad", "lines": [
+      {"id": "f1", "v": "N", "amb": "sea", "text": "Limbo. An ocean, and a city crumbling into it. Cobb knows this place. He and Mal built it."},
+      {"id": "f2", "v": "N", "text": "They spent fifty years here. They grew old here. And Mal forgot it was a dream."},
+      {"id": "f3", "v": "N", "amb": "room", "text": "So Cobb did something unforgivable. He found the safe in her mind, and planted one small idea."},
+      {"id": "f4", "v": "cobb", "text": "Your world is not real."},
+      {"id": "f5", "v": "N", "amb": "city", "text": "It worked. They woke up. But the idea kept growing. Back in the real world, she still believed she was dreaming. And one night, she took the leap, to wake up."},
+      {"id": "f6", "v": "N", "amb": "sea", "text": "That is the movie you know. In that movie, Cobb lets her go, saves Saito, and walks through an airport to his kids."},
+      {"id": "f7", "v": "N", "text": "Here is where we change it.", "gap": 0.8}
+    ]},
+    {"id": "g", "card": "CHAPTER SEVEN|WHAT IF MAL WAS RIGHT?", "mood": "wonder", "lines": [
+      {"id": "g1", "v": "N", "amb": "sea", "text": "In our version, Mal doesn't fight him. She asks him one question."},
+      {"id": "g2", "v": "mal", "text": "Why can you never see their faces?"},
+      {"id": "g3", "v": "N", "text": "And Cobb has no answer."},
+      {"id": "g4", "v": "mal", "text": "Because you have never seen them this old. I have."},
+      {"id": "g5", "v": "N", "amb": "room", "text": "Mal didn't die that night. She woke up. Cobb is the one who stayed asleep."},
+      {"id": "g6", "v": "N", "text": "For years, she has sat beside him, building dream after dream, trying to reach him."},
+      {"id": "g7", "v": "N", "text": "Saito. The crew. The heist. Every one of them was hers."},
+      {"id": "g8", "v": "N", "amb": "sea", "text": "Fischer was never the target. Cobb was. And the idea she came to plant is the simplest one in the world."},
+      {"id": "g9", "v": "mal", "text": "Come home.", "gap": 1.0}
+    ]},
+    {"id": "h", "card": "CHAPTER EIGHT|THE KICK", "mood": "finale", "lines": [
+      {"id": "h1", "v": "N", "amb": "wind", "text": "The kicks fire. The fortress falls. The hotel drops. The van hits the water."},
+      {"id": "h2", "v": "N", "amb": "plane", "text": "Cobb wakes on the plane. Walks through the airport. Opens his front door."},
+      {"id": "h3", "v": "N", "amb": "room", "text": "The children turn around. And for the first time, he sees their faces."},
+      {"id": "h4", "v": "N", "text": "He spins the top. And in the original, he walks away."},
+      {"id": "h5", "v": "N", "text": "In ours, he stays. He watches. And it does not fall.", "gap": 0.9},
+      {"id": "h6", "v": "N", "text": "So he sits down. Leans back. And lets go.", "gap": 1.4},
+      {"id": "h7", "v": "N", "text": "He opens his eyes in a quiet room. Grey hair. And a hand, holding his."},
+      {"id": "h8", "v": "mal", "text": "Welcome back.", "gap": 0.8},
+      {"id": "h9", "v": "N", "text": "Two grown children are standing in the doorway."},
+      {"id": "h10", "v": "N", "text": "And on the table beside the bed, a small metal top wobbles, and falls.", "gap": 1.3},
+      {"id": "h11", "v": "N", "text": "At least, that one does.", "gap": 2.6}
+    ]},
+    {"id": "o", "card": null, "mood": "outro", "lines": [
+      {"id": "o1", "v": "N", "amb": "none", "text": "So. Was Mal right all along? Comment fall, or spin."},
+      {"id": "o2", "v": "N", "text": "And tell us which movie we should reimagine next."},
+      {"id": "o3", "v": "N", "text": "Titanic, where the door fits two? The Matrix, where Neo takes the blue pill? Or Interstellar, where Cooper never leaves?"},
+      {"id": "o4", "v": "N", "text": "The top comment gets made. And send this to the friend who still swears the top fell.", "gap": 2.5}
+    ]}
+  ]
+}
