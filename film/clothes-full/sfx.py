@@ -403,7 +403,8 @@ for s in shots:
 # music by chapter
 chs = TL["chapters"]
 start_of = {s["id"]: s["start"] for s in shots}
-first_rewind = next(s["start"] for s in shots if s["scene"] == "rewind")
+first_rewind = next((s["start"] for s in shots if s["scene"] == "rewind"), None)
+if first_rewind is None: first_rewind = shots[min(2, len(shots) - 1)]["start"] - 0.5   # no rewind shot: start the music a few seconds in
 bounds = []
 for i, ch in enumerate(chs):
     a = start_of[ch["first"]]

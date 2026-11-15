@@ -1,6 +1,6 @@
 # "Why Did Humans Start Wearing Clothes?"
 
-DURATION, 1920x1080, 25 fps. 132 shots, 1,730 words, 8 chapters.
+10 minutes 46 seconds, 1920x1080, 25 fps. 132 shots, 1,730 words, 8 chapters.
 Thumbnails: `../pilot-fridge/thumbnails/cloV2.png` ("NO CLOTHES?") and `cloV2b.png` ("170,000 YEARS"), v2 contrast split. Facts and sources: `SOURCES.md`.
 Upload kit: `../upload-kit/clothes/`.
 
