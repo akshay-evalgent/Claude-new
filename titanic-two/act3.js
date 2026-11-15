@@ -14,7 +14,7 @@ function EX(S) {
   const N = 900, p = new Float32Array(N * 3); for (let i = 0; i < N; i++) { const a = -0.2 + hash(i) * 3.5, w = (hash(i + 0.3) - 0.5) * 0.28 * (0.4 + hash(i + 0.6)), R = 1150; p.set([Math.cos(a) * Math.cos(0.5 + w) * R, Math.sin(0.5 + w + Math.sin(a) * 0.5) * R * 0.9 + 80, Math.sin(a) * Math.cos(0.5 + w) * R], i * 3); }
   X.milky = new THREE.Points(new THREE.BufferGeometry(), new THREE.PointsMaterial({ color: 0xcfdcff, size: 2.0, sizeAttenuation: false, fog: false, transparent: true, opacity: 0.8 })); X.milky.geometry.setAttribute('position', new THREE.BufferAttribute(p, 3)); X.milky.frustumCulled = false; s.add(X.milky);
   // breath puffs, splashes, bubbles
-  const pm = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.28, depthWrite: false });
+  const pm = new THREE.MeshBasicMaterial({ color: 0xdfe8ff, transparent: true, opacity: 0.16, depthWrite: false });
   X.puffs = Array.from({ length: 10 }, () => { const m = box(0.3, 0.3, 0.3, pm, 0, -50, 0, s); m.castShadow = false; return m; });
   X.splash = Array.from({ length: 16 }, () => { const m = box(0.4, 0.4, 0.4, new THREE.MeshBasicMaterial({ color: 0xdff1ff }), 0, -50, 0, s); m.castShadow = false; return m; });
   // loose lifejacket, the one tied under the door, straps, whistle, plank, sound rings
@@ -45,7 +45,7 @@ function water(S, X, T, o = {}) {
   S.mode('night'); S.ship.visible = false; S.lights = 0; S.debris = o.debris ?? 1; S.swimmers = o.sw ?? 0.3; X.fill.intensity = o.fill ?? 260; X.key.intensity = o.key ?? 90; X.milky.visible = true;
   const bob = Math.sin(T * 1.3) * 0.06; S.door.visible = o.door !== false; S.door.position.set(0, (o.dy ?? 0.25) + bob, 0); S.door.rotation.set(o.tilt || 0, 0, 0); return (o.dy ?? 0.25) + bob + 0.2;   // returns door-top y
 }
-const puff = (X, i, p, T, ph = 0) => { const k = (T * 0.45 + ph) % 1; for (let j = 0; j < 3; j++) { const m = X.puffs[i * 3 + j]; if (!m) return; const kk = (k + j * 0.12) % 1; m.position.set(p[0] + Math.sin(j * 2 + T) * 0.1, p[1] + kk * 0.9, p[2] + kk * 1.0); m.scale.setScalar(0.25 + kk * 0.7); } };
+const puff = (X, i, p, T, ph = 0) => { const k = (T * 0.45 + ph) % 1; for (let j = 0; j < 3; j++) { const m = X.puffs[i * 3 + j]; if (!m) return; const kk = (k + j * 0.12) % 1; m.position.set(p[0] + 0.5 + kk * 0.9 + Math.sin(j * 2 + T) * 0.08, p[1] + 0.9 + kk * 1.1, p[2] - 0.2); m.scale.setScalar(0.12 + kk * 0.4); } };
 function roseLie(S, T, top, vest = true, o = {}) { const r = S.C('rose'); S.put(r, 2.6, top + 0.6 - (o.dip || 0) * 0.5, -0.35 + (o.slide || 0)); r.g.rotation.order = 'YXZ'; r.g.rotation.set(-PI / 2 + (o.roll || 0), PI / 2, 0); if (vest) S.vest(r); r.look(o.expr || 'sad', T); r.armL.rotation.set(0, 0, -0.3); r.head.rotation.z = -0.5; return r; }
 function jackWater(S, T, o = {}) { const j = S.C('jack'); S.put(j, o.x ?? 0.3, (o.y ?? -3.5) + Math.sin(T * 1.3 + 1) * 0.05, o.z ?? 2.45, o.ry ?? PI); const a = o.arms ?? 1; j.armL.rotation.set(-1.52 * a, 0, 0.12); j.armR.rotation.set(-1.52 * a, 0, -0.12); j.look(o.expr || 'sad', T); return j; }
 function sitOn(S, ch, x, top, z, ry) { S.put(ch, x, top - 1.5, z, ry); ch.sit(); return ch; }
@@ -65,7 +65,7 @@ SEA('d1:0', (c, S, X) => {
   S.mode('night'); S.sink(0.34 + c.k * 0.03); S.deckBoats = false;
   const names = ['gentA', 'gentB', 'designer', 'steward'];
   names.forEach((n, i) => { const m = S.C(n); S.board(m, 'fore', 3.4 + (i % 2) * 0.9, 21, 23.5 + i * 2.6, -PI / 2 + (i - 1.5) * 0.14); m.look('serious', c.T); const bw = X.bows[i]; m.armR.add(bw); bw.position.set(0, -2.0, 0.7); bw.rotation.set(0.3, 0, 1.2); m.armR.rotation.set(-1.25 + Math.sin(c.T * 5 + i) * 0.28, 0, -0.5); if (i < 3) { const v = X.inst[i]; m.armL.add(v); v.position.set(0.1, -2.1, 0.6); v.rotation.set(-1.2, 0, 0.5); m.armL.rotation.set(-1.5, 0, 0.55); m.head.rotation.z = 0.22; } else { m.body.add(X.cello); X.cello.position.set(0, 0, 1.1); m.armL.rotation.set(-1.0, 0, 0.2); } m.body.rotation.z = Math.sin(c.T * 1.6 + i) * 0.04; });
-  ['steerA', 'ladyB', 'steerB', 'civD'].forEach((n, i) => { const m = S.C(n); const z = 52 - ((c.l * (7 + i) + i * 9) % 44); S.board(m, 'fore', -4.6 + (i % 2) * 2.2, 21, z, PI); m.walk(c.T * (11 + i) + i, 0.9); S.vest(m); m.look('surprised', c.T); });
+  ['steerA', 'ladyB', 'steerB', 'civD'].forEach((n, i) => { const m = S.C(n); const z = 52 - ((c.l * (7 + i) + i * 9) % 44); S.board(m, 'fore', 6.6 + (i % 2) * 1.6, 21, z, PI); m.walk(c.T * (11 + i) + i, 0.9); S.vest(m); m.look('surprised', c.T); });
   const p0 = world(S, S.fore, -9.0, 24.2, 30), p1 = world(S, S.fore, -7.6, 24.0, 28), l0 = world(S, S.fore, 4, 23.4, 27.2);
   move(c.cam, p0, l0, p1, l0, c.k, 40);
 });
@@ -84,9 +84,9 @@ SEA('d2:2', (c, S) => {
   r.look(c.k > 0.8 ? 'o' in {} ? 'surprised' : 'surprised' : 'surprised', c.T); j.look('serious', c.T); j.head.rotation.y = 0.5; r.head.rotation.y = -0.5 * ease((c.k - 0.5) * 3);
   const P = world(S, S.aft, 0, 15, -121); const [i, kk] = cuts(c.k, [0.5]);
   if (i === 0) { shot(c.cam, [P[0] + 7, P[1] + 5.5, P[2] + 13 - kk * 2], [P[0], P[1] + 3.6, P[2] + 1], 38, 0.06); }
-  else { shot(c.cam, [P[0] - 2, P[1] + 15 - kk * 3, P[2] - 7], [P[0], P[1] - 10, P[2] + 16], 46, -0.05); }
+  else { shot(c.cam, [P[0] + 34 - kk * 6, P[1] - 4 - kk * 4, P[2] + 44 - kk * 8], [P[0], P[1] - 8 - kk * 6, P[2]], 40, -0.05); }
   shake(c.cam, c.T, 0.07); if (c.k > 0.9) c.flash((c.k - 0.9) / 0.1);
-  const X = EX(S); X.key.position.set(P[0] + 5, P[1] + 6, P[2] + 9); X.key.intensity = 500; X.key.distance = 60;
+  const X = EX(S); X.key.position.set(P[0] + 5, P[1] + 6, P[2] + 9); X.key.intensity = i === 0 ? 260 : 0; X.key.distance = 40;
 });
 
 // ================= d3: the surface =================

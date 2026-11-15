@@ -49,8 +49,8 @@ SEA('b2', (c, S, X) => {
   night(S); const R = S.C('roseDinner'), J = S.C('jack'), [i, k] = cuts(c.k, [0.66]);
   S.board(J, 'aft', 2.4, 14, -115.2, Math.PI - 0.25); J.look('smirk', c.T, c.talk); J.armR.rotation.x = -1.2; S.board(R, 'aft', 0.4, 14, -116.9, Math.PI + 2.2); R.look('smirk', c.T); R.armR.rotation.x = -1.2;
   fillAt(X, 7, 19.5, -122, 70);
-  if (i === 0) move(c.cam, [7.6, 18.7, -122.2], [2.4, 18.75, -115.2], [7, 18.7, -121.4], [2.4, 18.75, -115.2], k, 30);
-  else { R.g.rotation.y = Math.PI - 0.7; move(c.cam, [-3.6, 18.6, -124], [0.4, 18.7, -116.9], [-3.2, 18.6, -123.2], [0.4, 18.7, -116.9], k, 30); }
+  if (i === 0) move(c.cam, [4.8, 18.7, -122], [3.2, 18.75, -115.2], [4.5, 18.7, -121.4], [3.2, 18.75, -115.2], k, 30);
+  else { R.g.rotation.y = 0.86 + Math.PI; R.g.rotation.y = 0.86; move(c.cam, [2.0, 18.6, -110.6], [0.4, 18.7, -116.9], [1.8, 18.6, -111.2], [0.4, 18.7, -116.9], k, 30); }
 });
 
 // ---------------- b5 / b6: the bow at sunset ----------------
@@ -66,7 +66,7 @@ SEA('b5', (c, S, X) => {
 SEA('b6', (c, S, X) => {
   S.mode('sunset'); S.speed = 1; S.smoke = 1; const [R] = bowPose(S, c, 1), [i, k] = cuts(c.k, [0.6]); R.armL.rotation.z = -1.5; R.armR.rotation.z = 1.5; R.look('joy', c.T, c.talk); R.head.rotation.x = -0.15;
   if (i === 0) move(c.cam, [2.6, 20, 124.5], [0, 19.85, 116.3], [2, 20, 123.4], [0, 19.9, 116.3], k, 28);
-  else move(c.cam, [30, 34, 40], [0, 20, 116], [22, 30, 56], [-2, 20, 122], k, 34);
+  else move(c.cam, [30, 34, 40], [0, 19, 112], [22, 30, 56], [0, 19, 113], k, 34);
 });
 SEA('b8', (c, S) => { night(S, 0.7); move(c.cam, [-170, 22, 300], [0, 18, 40], [-120, 13, 232], [0, 18, 50], c.k, 38); });
 
@@ -126,7 +126,7 @@ SET('a2_dining', () => {
   // dome
   const dome = new THREE.Mesh(new THREE.SphereGeometry(13, 20, 10, 0, 6.3, 0, 1.2), new THREE.MeshBasicMaterial({ color: 0xfff6dc, side: THREE.BackSide })); dome.position.set(0, 17.5, -16); s.add(dome);
   for (let i = 0; i < 12; i++) { const r = box(0.3, 0.3, 13, 0xd9b24a, 0, 0, 0, s); r.position.set(Math.sin(i * 0.5236) * 6.2, 23.4, -16 + Math.cos(i * 0.5236) * 6.2); r.rotation.y = i * 0.5236; }
-  const dl = new THREE.PointLight(0xfff0d0, 700, 80); dl.position.set(0, 20, -12); s.add(dl);
+  const dl = new THREE.PointLight(0xfff0d0, 380, 80); dl.position.set(0, 20, -12); s.add(dl);
   // staircase
   for (let i = 0; i < 11; i++) box(15, 0.8, 1.6, i % 2 ? 0x8a5f3a : 0x9a6f48, 0, 0.4 + i * 0.8, -8.8 - i * 1.5, s);
   box(15, 0.8, 9, 0x8a5f3a, 0, 8.4, -29.5, s); box(15, 8.8, 9, 0x6a4a2e, 0, 4, -30.5, s);
@@ -137,9 +137,9 @@ SET('a2_dining', () => {
   for (const sx of [-1, 1]) { box(1.6, 6, 1, 0xd9b24a, sx * 3.4, 14.5, -35, s); box(2.4, 2.4, 1, 0xc99a5a, sx * 3.4, 18.6, -35, s); }
   // chandeliers + tables
   for (const [x, z] of [[-16, 12], [16, 12], [-16, -4], [16, -4], [0, 22]]) { box(0.2, 5, 0.2, 0xd9b24a, x, 21.5, z, s); for (let i = 0; i < 6; i++) box(0.7, 0.9, 0.7, basic(0xffe2a0), x + Math.sin(i * 1.05) * 1.6, 18.6, z + Math.cos(i * 1.05) * 1.6, s); const p = new THREE.PointLight(0xffd9a0, 160, 44); p.position.set(x, 17, z); s.add(p); }
-  const tbl = (x, z) => { const t = new THREE.Mesh(new THREE.CylinderGeometry(3.4, 3.4, 0.3, 18), M(0xf6f2ea)); t.position.set(x, 3, z); s.add(t); box(0.8, 3, 0.8, 0x6a4a2e, x, 1.5, z, s); box(0.5, 1.4, 0.5, basic(0xfff0c0), x, 3.9, z, s); };
+  const tbl = (x, z) => { const t = new THREE.Mesh(new THREE.CylinderGeometry(3.4, 3.4, 0.3, 18), M(0xd9d2c2)); t.position.set(x, 3, z); s.add(t); box(0.8, 3, 0.8, 0x6a4a2e, x, 1.5, z, s); box(0.5, 1.4, 0.5, basic(0xfff0c0), x, 3.9, z, s); };
   for (const [x, z] of [[-18, 4], [18, 4], [-20, 22], [20, 22]]) tbl(x, z);
-  box(18, 0.4, 5, 0xf6f2ea, 0, 2.9, 15, s); box(17, 2.6, 4, 0xe6e0d2, 0, 1.4, 15, s);
+  box(18, 0.4, 5, 0xd9d2c2, 0, 2.9, 15, s); box(17, 2.6, 4, 0xe6e0d2, 0, 1.4, 15, s);
   for (let i = 0; i < 7; i++) { box(1.1, 0.1, 1.1, 0xffffff, -7.5 + i * 2.5, 3.16, 14.4, s); box(0.4, 0.7, 0.4, basic(0xffe6a8), -6.3 + i * 2.5, 3.5, 13.6, s); }
   const forks = []; for (let i = 0; i < 8; i++) forks.push(box(0.14, 0.06, 1.3, 0xcfd6de, -4.6 + i * 0.52, 3.16, 16.4, s));
   const C = mkCast(s, ['jack:jackTux', 'rose:roseDinner', 'cal', 'gentA', 'gentB', 'ladyA', 'ladyB', 'steward', 'civD']);
@@ -185,10 +185,10 @@ SET('a2_party', () => {
 });
 const spin = (S, T, sp, r = 1.7) => { const { C } = S, a = T * sp, b = Math.abs(Math.sin(T * 8)) * 0.3; for (const [ch, o] of [[C.jack, 0], [C.rose, Math.PI]]) { P(ch, Math.sin(a + o) * r, b, Math.cos(a + o) * r, a + o + Math.PI); ch.armL.rotation.set(-1.45, 0, 0.3); ch.armR.rotation.set(-1.45, 0, -0.3); ch.legL.rotation.x = Math.sin(T * 16 + o) * 0.6; ch.legR.rotation.x = -Math.sin(T * 16 + o) * 0.6; ch.look('joy', T); } };
 SHOT('b4:0', 'a2_party', c => { const { C } = c.S, d = ease(c.k); P(C.jack, lerp(4, 1.2, d), 0, lerp(15, 4.5, d), Math.PI + 0.2); C.jack.walk(c.T * 9, 0.6); C.jack.look('joy', c.T); C.jack.armL.rotation.set(0.9, 0, -0.3); P(C.rose, lerp(5.6, 2.6, d), 0, lerp(17.6, 7, d), Math.PI + 0.2); C.rose.walk(c.T * 9 + 1, 0.5); C.rose.look('surprised', c.T); C.rose.armR.rotation.set(-1.2, 0, 0.3); move(c.cam, [-6, 4.8, -5], [3, 4.2, 9], [-4.5, 4.6, -3], [2, 4.2, 6], c.k, 38); });
-SHOT('b4:1', 'a2_party', c => { spin(c.S, c.T, 2.4); move(c.cam, [-8.5, 2.2, -4], [-17, 4.6, -11.5], [-9.5, 2.4, -5], [-17, 4.6, -11.5], c.k, 40); });
+SHOT('b4:1', 'a2_party', c => { spin(c.S, c.T, 2.4); move(c.cam, [-7.5, 4.6, -13.5], [-16.5, 4, -11], [-8.5, 4.4, -13.2], [-16.5, 4, -11], c.k, 40); });
 SHOT('b4:2', 'a2_party', c => {
   const [i, k] = cuts(c.k, [0.52]); spin(c.S, c.T, 3.2 + c.k * 3.5);
-  if (i === 0) { const a = c.T * 0.9; shot(c.cam, [Math.sin(a) * 9.5, 4.9, Math.cos(a) * 9.5], [0, 4.5, 0], 34); }
+  if (i === 0) { const a = c.T * 0.9; shot(c.cam, [Math.sin(a) * 7.5, 7.4, Math.cos(a) * 7.5], [0, 3.8, 0], 40); }
   else { move(c.cam, [15, 8.2, 13], [0, 2.6, -1], [12.5, 7.6, 11], [0, 2.8, -1], k, 44); }
   shake(c.cam, c.T, 0.05);
 });
