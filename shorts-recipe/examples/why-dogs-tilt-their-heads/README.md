@@ -16,7 +16,7 @@ As in the cat-meow short, **every sound effect is a real recording** (CC0): real
 - `output/mix_master.wav`: the mastered audio track
 - `upload/`: title, description, thumbnails, SRT captions, pinned comment and settings
 
-## Script (105 words, about 194 wpm, 32.5 s of voice)
+## Script (105 words, 196 wpm, 32.5 s of voice)
 
 > Your dog tilts its head, and it's not just to look cute. In one study, dogs that knew the names of lots of toys tilted their heads almost half the time when their owner said a toy's name. Ordinary dogs barely did it at all. So the tilt may be your dog matching the word to the toy in its memory. Another idea: a long snout blocks part of your face, and tilting helps them see you. And in that study, each dog had a favorite side, like being left- or right-handed. So watch which way yours goes when you ask, who wants a walk?
 

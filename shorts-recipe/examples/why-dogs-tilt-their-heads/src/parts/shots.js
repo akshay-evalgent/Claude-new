@@ -145,9 +145,10 @@ shot(C.ordinary, C.so, (s) => {
     const lick = Math.max(0, Math.sin(Math.PI * seg(t, C.did - 0.05, C.did + 0.3)));
     dogAct(d, t, { look: cp, perk: 0.0, brow: 0.0, lid: 0.32, wag: 0.12, wagSpeed: 1.2, blink: 0, mouth: 0.18 * lick, pant: 0.7 * lick, k: 0.9 });
     u.lid(clamp(0.32 + 0.65 * Math.max(0, 1 - Math.abs(t - (C.barely + 0.15)) / 0.28)));
-    bub.scale.setScalar(Math.max(0.0001, spring(t, C.ordinary + 0.05, 2.0, 6)));
-    ring.scale.setScalar(Math.max(0.0001, spring(t, C.barely + 0.15, 1.8, 6))); ring.userData.set(0.02 * E.out(seg(t, C.barely + 0.2, C.all)));
-    shoot(s.cam, cp, u.eyeW().add(V(0, 0.15, 0)), { fov: 44, t, focus: cp.distanceTo(u.eyeW()) }); pin(s.cam, bub, 0.05, 0.62, 2.2); pin(s.cam, ring, -0.17, 0.3, 1.6);
+    // the question pops in, then shrinks away before the answer: the 2% ring takes the same spot the 43% ring had
+    bub.scale.setScalar(Math.max(0.0001, spring(t, C.ordinary + 0.05, 2.0, 6) * (1 - E.in(seg(t, C.barely - 0.22, C.barely + 0.02)))));
+    ring.scale.setScalar(Math.max(0.0001, spring(t, C.barely + 0.1, 1.8, 6))); ring.userData.set(0.02 * E.out(seg(t, C.barely + 0.15, C.all)));
+    shoot(s.cam, cp, u.eyeW().add(V(0, 0.15, 0)), { fov: 44, t, focus: cp.distanceTo(u.eyeW()) }); pin(s.cam, bub, 0.05, 0.62, 2.2); pin(s.cam, ring, -0.17, 0.42, 1.6);
   };
 });
 // 7) so the tilt may be your dog: close on the eyes as the head turns over

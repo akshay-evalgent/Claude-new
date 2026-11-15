@@ -56,7 +56,14 @@ why do dogs tilt their heads, dog head tilt, dog tilts head when you talk, dog b
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | Your POV from the sofa: the dog looks straight into the lens with its head fully tilted, caption "Your dog tilts" | **Main pick.** It's the exact look every dog owner knows |
+| `thumbnail-alt-43-percent.jpg` | The big tilt with the 43% ring above it, caption "almost half" | Number angle |
+| `thumbnail-alt-blank-stare.jpg` | The black dog's blank stare, the 2% ring above it, caption "at all" | Contrast angle |
+| `thumbnail-alt-duck.jpg` | The thought bubble lands on DUCK ✓ as the dog tilts, caption "to the toy" | Curiosity angle |
+| `thumbnail-alt-walk.jpg` | Ears up on "who wants a walk?" | Comment-trigger angle; matches the pinned comment |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
