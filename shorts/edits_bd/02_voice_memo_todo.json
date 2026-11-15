@@ -1,0 +1,69 @@
+{
+ "series": "Try this on your laptop",
+ "sources": "Tested on a 4-core CPU · faster-whisper (MIT license) · Claude",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -13,
+ "cover_t": 1.0,
+ "title": "Voice Memo to To-Do List, FREE and Offline 🎙️✨",
+ "segments": [
+  {
+   "source": "ai_voice_result_static",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.03,
+   "text": "Your messy voice note becomes *this to-do list.*",
+   "say": "Turn a messy voice note into a clean to-do list. Free, and private."
+  },
+  {
+   "source": "ai_voice_terminal",
+   "in": 0,
+   "dur": 3.5,
+   "push": 1.02,
+   "text": "Step 1: transcribe it *on your laptop* with faster-whisper. Free, open source.",
+   "say": "Step one. Transcribe it on your own laptop with faster-whisper. It's free, and open source."
+  },
+  {
+   "source": "ai_voice_terminal",
+   "in": 4.0,
+   "dur": 2.5,
+   "push": 1.04,
+   "box": [
+    0.04,
+    0.54,
+    0.8,
+    0.61,
+    0.2,
+    3.5
+   ],
+   "text": "23 seconds of audio, transcribed in *7 seconds.* Nothing left the computer.",
+   "say": "Twenty-three seconds of audio, done in seven seconds. Nothing left the computer."
+  },
+  {
+   "source": "ai_voice_prompt",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.03,
+   "text": "Step 2: paste it into Claude with *this prompt.*",
+   "say": "Step two. Paste the text into Claude, with this prompt."
+  },
+  {
+   "source": "ai_voice_result",
+   "in": 0,
+   "dur": 3.5,
+   "push": 1.02,
+   "text": "Grouped, deadlines added, *nothing missed.*",
+   "say": "It groups everything, adds the deadlines you mentioned, and misses nothing."
+  },
+  {
+   "source": "ai_voice_prompt",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.04,
+   "text": "*Save this.* Works with ChatGPT or Gemini too.",
+   "say": "Save this for later. It works with ChatGPT or Gemini too."
+  }
+ ]
+}
