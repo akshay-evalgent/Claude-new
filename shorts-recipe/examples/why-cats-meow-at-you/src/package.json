@@ -1,0 +1,9 @@
+{
+  "name": "why-cats-meow-at-you-short",
+  "private": true,
+  "description": "Procedural three.js scenes for the \"Why Cats Meow At You\" short",
+  "dependencies": {
+    "three": "0.160.0",
+    "@expo-google-fonts/nunito": "0.2.3"
+  }
+}

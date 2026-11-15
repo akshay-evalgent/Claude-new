@@ -289,6 +289,7 @@ nav.toc a:focus-visible, a:focus-visible { outline: 2px solid var(--void); outli
         <li><span><strong>A bed under the voice, never silence:</strong> between words the level drops only 5–13 dB (median 9.6 dB). Several spectrograms show one sustained pad or drone note under the voice rather than a beat, so the voice stays the hero.</span></li>
         <li><span><strong>Foley on actions:</strong> the one short with no narration (air layering, 0.66M) runs on foley only: rustles, cuts, a chime. Put a sound on every on-screen action and a whoosh on every big camera move.</span></li>
         <li><span><strong>Hard stop:</strong> audio ends with the picture, with no fade-out tail, so the loop restarts cleanly.</span></li>
+        <li><span><strong>Real sounds for real things:</strong> every effect is a recording of the thing on screen: a real cat for a meow, real glass for a smash, a real door, a real clock. Use public-domain (CC0) libraries such as BigSoundBank. Only the music is composed. When a character makes the sound, drive its mouth from that recording's loudness curve so they match.</span></li>
       </ul>
     </div>
   </div>
@@ -528,6 +529,7 @@ ffmpeg -i render.mp4 -vf "ass=captions.ass" -c:a copy final.mp4</pre>
       <li><span>Captions 1–3 words, white, at 78% height, no highlights.</span></li>
       <li><span>Voice 160–195 wpm; pauses only for suspense.</span></li>
       <li><span>Bed under the voice, foley on actions, about −11 LUFS master.</span></li>
+      <li><span>Every sound effect is a real recording of that thing (CC0 or licensed), not a synth.</span></li>
       <li><span>Branding inside the scene, not a corner logo.</span></li>
     </ul>
   </div>

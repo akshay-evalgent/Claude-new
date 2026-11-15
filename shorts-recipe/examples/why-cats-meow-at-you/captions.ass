@@ -1,0 +1,53 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.04,0:00:00.92,Short,,0,0,0,,Your cat meows
+Dialogue: 0,0:00:00.92,0:00:01.36,Short,,0,0,0,,at you
+Dialogue: 0,0:00:01.36,0:00:02.22,Short,,0,0,0,,but almost never
+Dialogue: 0,0:00:02.22,0:00:03.58,Short,,0,0,0,,at other cats
+Dialogue: 0,0:00:03.58,0:00:04.44,Short,,0,0,0,,Kittens meow
+Dialogue: 0,0:00:04.44,0:00:05.38,Short,,0,0,0,,when they're cold
+Dialogue: 0,0:00:05.38,0:00:06.08,Short,,0,0,0,,or hungry
+Dialogue: 0,0:00:06.08,0:00:06.74,Short,,0,0,0,,so their mother
+Dialogue: 0,0:00:06.74,0:00:07.70,Short,,0,0,0,,comes running
+Dialogue: 0,0:00:07.98,0:00:08.68,Short,,0,0,0,,Adult cats
+Dialogue: 0,0:00:08.68,0:00:09.46,Short,,0,0,0,,grow out of it
+Dialogue: 0,0:00:09.46,0:00:09.86,Short,,0,0,0,,and talk
+Dialogue: 0,0:00:09.86,0:00:10.44,Short,,0,0,0,,with scent
+Dialogue: 0,0:00:10.44,0:00:11.42,Short,,0,0,0,,and body language
+Dialogue: 0,0:00:11.42,0:00:12.14,Short,,0,0,0,,instead
+Dialogue: 0,0:00:12.39,0:00:13.68,Short,,0,0,0,,Except with us
+Dialogue: 0,0:00:13.68,0:00:14.26,Short,,0,0,0,,Humans kept
+Dialogue: 0,0:00:14.26,0:00:14.74,Short,,0,0,0,,answering
+Dialogue: 0,0:00:14.74,0:00:15.74,Short,,0,0,0,,so cats kept
+Dialogue: 0,0:00:15.74,0:00:16.64,Short,,0,0,0,,the kitten voice
+Dialogue: 0,0:00:16.93,0:00:18.07,Short,,0,0,0,,And they tuned it
+Dialogue: 0,0:00:18.07,0:00:19.03,Short,,0,0,0,,In one study
+Dialogue: 0,0:00:19.03,0:00:19.68,Short,,0,0,0,,cats begging
+Dialogue: 0,0:00:19.68,0:00:20.32,Short,,0,0,0,,for food
+Dialogue: 0,0:00:20.32,0:00:21.02,Short,,0,0,0,,hid a cry
+Dialogue: 0,0:00:21.02,0:00:22.30,Short,,0,0,0,,inside their purr
+Dialogue: 0,0:00:22.30,0:00:22.74,Short,,0,0,0,,near the pitch
+Dialogue: 0,0:00:22.74,0:00:23.80,Short,,0,0,0,,of a crying baby
+Dialogue: 0,0:00:23.80,0:00:24.50,Short,,0,0,0,,and people
+Dialogue: 0,0:00:24.50,0:00:25.22,Short,,0,0,0,,found it hard
+Dialogue: 0,0:00:25.22,0:00:26.06,Short,,0,0,0,,to ignore
+Dialogue: 0,0:00:26.35,0:00:27.30,Short,,0,0,0,,Every cat learns
+Dialogue: 0,0:00:27.30,0:00:28.38,Short,,0,0,0,,which meows work
+Dialogue: 0,0:00:28.38,0:00:29.28,Short,,0,0,0,,on its human
+Dialogue: 0,0:00:29.55,0:00:30.10,Short,,0,0,0,,So at five
+Dialogue: 0,0:00:30.10,0:00:30.66,Short,,0,0,0,,in the morning
+Dialogue: 0,0:00:30.66,0:00:31.30,Short,,0,0,0,,when the bowl
+Dialogue: 0,0:00:31.30,0:00:31.80,Short,,0,0,0,,is empty
+Dialogue: 1,0:00:23.80,0:00:30.62,Prompt,,0,0,0,,{\fad(300,250)}Send this to someone\Nwhose cat yells at 5 a.m.
