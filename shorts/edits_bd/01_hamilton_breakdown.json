@@ -1,0 +1,82 @@
+{
+ "series": "The code that…",
+ "sources": "Sources: NASA (film and mission audio) · MIT News",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.08,
+ "music": "orbit",
+ "music_db": -12,
+ "cover_t": 1.2,
+ "title": "The Code That Saved the Moon Landing 🌕✨",
+ "segments": [
+  {
+   "source": "nasa_apollo11_descent",
+   "in": 7.7,
+   "dur": 3.4,
+   "audio_db": 0,
+   "push": 1.06,
+   "text": "*1201. 1201.* Apollo 11's computer was overloaded.",
+   "say": ""
+  },
+  {
+   "source": "nasa_apollo11_descent",
+   "in": 11.1,
+   "dur": 2.0,
+   "audio_db": -16,
+   "push": 1.05,
+   "text": "Minutes from the Moon. Abort, or land?",
+   "say": "Minutes from the Moon. Abort, or land?"
+  },
+  {
+   "source": "nasa_apollo11_descent",
+   "in": 12.9,
+   "dur": 1.9,
+   "audio_db": 0,
+   "push": 1.04,
+   "text": "Houston: *\"We're go.\"*",
+   "say": ""
+  },
+  {
+   "source": "receipt_mit_hamilton",
+   "in": 1.8,
+   "dur": 3.0,
+   "push": 1.03,
+   "fy": 0.5,
+   "box": [
+    0.02,
+    0.03,
+    0.98,
+    0.3,
+    0.2,
+    2.6
+   ],
+   "text": "The software was built for this: drop the small jobs, *keep what matters.*",
+   "say": "The software was built for exactly this. Drop the less important jobs, and keep only what matters."
+  },
+  {
+   "source": "receipt_mit_hamilton",
+   "in": 5.6,
+   "dur": 3.0,
+   "push": 1.04,
+   "text": "The team behind it was led by *Margaret Hamilton.* She was 32.",
+   "say": "The team behind it was led by Margaret Hamilton. She was thirty-two."
+  },
+  {
+   "source": "nasa_apollo11_descent",
+   "in": 51.0,
+   "dur": 3.0,
+   "audio_db": -10,
+   "push": 1.06,
+   "text": "*They landed.* She died this September, at 90.",
+   "say": "They landed. Hamilton died this September, at ninety."
+  },
+  {
+   "source": "nasa_apollo11_descent",
+   "in": 67.5,
+   "dur": 3.0,
+   "push": 1.05,
+   "text": "*Why it matters:* software that expects failure is now basic engineering. She helped make it a discipline.",
+   "say": "Why it matters: software that expects failure is now basic engineering. She helped make it a discipline."
+  }
+ ]
+}
