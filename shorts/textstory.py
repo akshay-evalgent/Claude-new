@@ -28,6 +28,8 @@ Edit file fields:
               (e.g. -3); omit to mute it
   credit      optional small line under the card, e.g. "Video: Born Free Foundation"
   loop_xfade  seconds of crossfade at the loop point (default 0.35)
+  cover_t     time of the frame saved as <out>_cover.jpg for the thumbnail (default 1.0)
+  title       YouTube title (used by the upload kit only)
 """
 import argparse
 import json
@@ -223,6 +225,10 @@ def render(edl, src_dir, out):
          "-i", wav, "-filter_complex", fg, "-map", "[v]", "-map", "3:a",
          "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-pix_fmt", "yuv420p", "-r", str(FPS),
          "-c:a", "aac", "-b:a", "192k", "-t", f"{D}", "-movflags", "+faststart", out])
+    # cover image for the thumbnail upload: the frame at cover_t (default 1.0 s)
+    cover = os.path.splitext(out)[0] + "_cover.jpg"
+    run(["ffmpeg", "-v", "error", "-y", "-ss", f"{edl.get('cover_t', 1.0):.2f}", "-i", out,
+         "-frames:v", "1", "-q:v", "2", cover])
     words = len(edl["text"].replace("*", "").split())
     print(f"{out}: {D:.1f}s, {words} words (~{words / 3.3:.0f}s to read, {words / 3.3 / D:.1f} loops), "
           f"{n_lines} lines, card {CARD_W}x{card_h} at y={card_top}")

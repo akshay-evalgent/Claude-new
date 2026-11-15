@@ -42,9 +42,19 @@ Reverse-engineered from @The_fatal_second: 171K subscribers and 635 Shorts. Thei
 - The poisoned-at-work story got 28K views. It's dark and about crime and injustice, the clip is a man sitting at a desk, and the call to action invites a debate.
 - The newest one (4K) was only a day old when we measured it, so it's too early to judge.
 
-**Titles:**
-- 2–8 words, poetic or curious, ending in two emojis: "The Neighbors Carried His House — Literally 🏠❤️", "She Just Stayed 🐕❤️", "Soulmate 💙🤝".
-- They don't give away the twist.
+**Titles** (410 established Shorts with a 525K median; the newest 20 and the pre-takeoff early ones are excluded):
+- **Short wins.** Not counting emojis, 30 characters or fewer has a median of 607K views. Over 45 characters has a median of 331K.
+- **Start:** "The ___" does slightly better (574K). Starting with "He", "She", "They", "His" or "Her" does much worse (304K vs 610K).
+- **Avoid:**
+  - quotes: 126K (n=9)
+  - questions: 147K (n=5)
+  - ALL CAPS: 267K (n=6)
+  - dashes: 370K
+  - hashtags: never used
+- **Two emojis at the end.** The best are 🤝 (1.1M median, 60% hit 1M+), ✨ (951K), 😂 (875K), 🏃 (783K), 💪 (759K), 🐕 (694K) and ❤️ (643K). Sports trophies and balls are weak: 🏆 384K and ⚽ 193K.
+- **Topics:** soldiers, police and firefighters lead by far (7.1M median, small sample of 5). Next come funny moments (682K), old people (680K) and dogs (646K). Money stories are weakest (326K).
+- **Don't give away the twist.**
+- **Posting rate:** about 2 Shorts a day. They reached 171K subscribers in about 9 months.
 
 **Description:** the title, then the full story text. No hashtags and no tags (all 15 have empty tags).
 
