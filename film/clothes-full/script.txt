@@ -1,0 +1,53 @@
+# preview
+= hook open
+one two three four five six seven eight nine ten eleven. >> dressCheck {"a":0.3,"b":0.8,"c":1.3,"look":0.2} push
+one two three four five six seven eight nine ten eleven. >> garmentRain {"until":2} push
+one two three four five six seven eight nine ten eleven. >> onlyAnimal {"dog":0.3,"cat":0.6,"chimp":0.9,"bird":1.2,"you":1.6} push
+one two three four five six seven eight nine ten eleven. >> shiverGrab {"grab":1.0} push
+one two three four five six seven eight nine ten eleven. >> rotHide {"years":100000} push
+one two three four five six seven eight nine ten eleven. >> teaseLouse {} push
+one two three four five six seven eight nine ten eleven. >> clueBoard {"a":0.2,"b":0.6,"c":1.0,"active":2,"thread":1.3} push
+one two three four five six seven eight nine ten eleven. >> armHair {"same":1.4} push
+one two three four five six seven eight nine ten eleven. >> follicles {"count":1.0,"fine":1.5} push
+one two three four five six seven eight nine ten eleven. >> furFade {"label":"LOSING FUR"} push
+one two three four five six seven eight nine ten eleven. >> heatRun {"fur":true} push
+one two three four five six seven eight nine ten eleven. >> heatRun {"sweat":true} push
+one two three four five six seven eight nine ten eleven. >> sweatGlands {"sub":"MILLIONS","bars":1.2} push
+one two three four five six seven eight nine ten eleven. >> coolBreeze {"label":"BUILT-IN AIR CONDITIONING"} push
+one two three four five six seven eight nine ten eleven. >> skinSun {"dark":0.8,"label":"DARKER SKIN"} push
+one two three four five six seven eight nine ten eleven. >> mc1r {"date":1.2} push
+one two three four five six seven eight nine ten eleven. >> timelineClo {"fur":0.2,"lice":0.6,"needle":1.0,"span":1.4} push
+one two three four five six seven eight nine ten eleven. >> bushLife {"a":0.3,"b":0.7,"c":1.1} push
+one two three four five six seven eight nine ten eleven. >> louseHero {"size":0.8,"label":"A LOUSE"} push
+one two three four five six seven eight nine ten eleven. >> headLice {"sub":"LIVES IN HAIR"} push
+one two three four five six seven eight nine ten eleven. >> seamLice {"eggs":0.3,"skin":1.0} push
+one two three four five six seven eight nine ten eleven. >> licelogic {"a":0.2,"b":0.8,"no":1.6} push
+one two three four five six seven eight nine ten eleven. >> louseDNA {"label":"COMPARE THE DNA"} push
+one two three four five six seven eight nine ten eleven. >> molClock {} push
+one two three four five six seven eight nine ten eleven. >> louseTree {"split":0.2,"date":1.6} push
+one two three four five six seven eight nine ten eleven. >> lab {"label":"MARK STONEKING","happy":true} push
+one two three four five six seven eight nine ten eleven. >> louseHero {"medal":true,"smile":true,"label":"DETECTIVE LOUSE"} push
+one two three four five six seven eight nine ten eleven. >> iceGlobe {} push
+one two three four five six seven eight nine ten eleven. >> coldNight {"label":"BRUTAL WINTERS"} push
+one two three four five six seven eight nine ten eleven. >> hideSteps {"a":0.2,"b":0.5,"c":0.8,"d":1.1,"stink":1.5} push
+one two three four five six seven eight nine ten eleven. >> boneTools {"scrape":0.6,"sub":"~90,000–120,000 YEARS"} push
+one two three four five six seven eight nine ten eleven. >> furAnimals {"cuts":1.0,"fur":1.5} push
+one two three four five six seven eight nine ten eleven. >> needleHero {"thread":0.8,"sub":"~45,000 YEARS"} push
+one two three four five six seven eight nine ten eleven. >> sewParka {"body":0.2,"sleeves":0.6,"hood":1.0,"trousers":1.4,"stitch":0.3} push
+one two three four five six seven eight nine ten eleven. >> arcticWalk {"label":"THE ARCTIC","sub":"~32,000 YEARS AGO"} push
+one two three four five six seven eight nine ten eleven. >> capeVsParka {"wind":0.8,"cold":true} push
+one two three four five six seven eight nine ten eleven. >> toeBones {"ring":1.2,"label":"YOUR TOES REMEMBER"} push
+one two three four five six seven eight nine ten eleven. >> fibres {"black":0.2,"grey":0.5,"turq":0.8,"pink":1.1} push
+one two three four five six seven eight nine ten eleven. >> capSkirt {"skirt":0.8} push
+one two three four five six seven eight nine ten eleven. >> sungirBeads {"label":"SUNGIR · ~34,000 YEARS"} push
+one two three four five six seven eight nine ten eleven. >> beadHours {"hours":10000} push
+one two three four five six seven eight nine ten eleven. >> shellBeads {"sub":"~150,000 YEARS"} push
+one two three four five six seven eight nine ten eleven. >> tribes {"ring":0.6,"label":"WHO YOU ARE"} push
+one two three four five six seven eight nine ten eleven. >> otziDress {"hat":0.2,"coat":0.4,"legs":0.6,"shoes":0.8,"laces":1.0,"quiver":1.2,"count":1.5} push
+one two three four five six seven eight nine ten eleven. >> oldShoe {"grass":0.6,"size":1.2} push
+one two three four five six seven eight nine ten eleven. >> sandals {} push
+one two three four five six seven eight nine ten eleven. >> recap {"a":0.2,"b":0.6,"c":1.0} push
+one two three four five six seven eight nine ten eleven. >> morning {"timer":1.0} push
+one two three four five six seven eight nine ten eleven. >> series {"label":"EVERYTHING WE CAN'T LIVE WITHOUT"} push
+one two three four five six seven eight nine ten eleven. >> nakedVsDressed {"l":"THEN","r":"NOW"} push
+one two three four five six seven eight nine ten eleven. >> card {"lines":["NO","CLOTHES?"],"icon":"needle"} push

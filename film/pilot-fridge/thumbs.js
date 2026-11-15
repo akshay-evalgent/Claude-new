@@ -157,6 +157,24 @@ function tTablet(s = 1) {
   return g(`scale(${s})`, b);
 }
 
+function mWardrobe() {
+  const cols = ['#E05A4E', '#4A8FE0', '#F2C443', '#4F9A4A', '#B58FD0', '#F28CA0'];
+  return glowBehind(400, 620, 440) + g('translate(400 660)', `<rect x="-250" y="-360" width="500" height="680" rx="18" fill="#C9A06A" stroke="#0D0A07" stroke-width="9"/><rect x="-224" y="-334" width="448" height="628" fill="#FFF6DC"/><path d="M-224 -280 H224" stroke="#8E6A3C" stroke-width="10"/>` +
+    cols.map((c, i) => `<path d="M${-190 + i * 76} -280 v16" stroke="#0D0A07" stroke-width="5"/><path d="M${-218 + i * 76} -250 L${-190 + i * 76} -262 L${-162 + i * 76} -250 L${-162 + i * 76} 30 L${-218 + i * 76} 30 Z" fill="${c}" stroke="#0D0A07" stroke-width="5"/>`).join('') +
+    `<path d="M-200 120 h160 v170 h-160 Z M30 120 h170 v170 h-170 Z" fill="#B98E5A" stroke="#0D0A07" stroke-width="6"/>`);
+}
+function tLouse(s = 1) {
+  let b = '';
+  for (let i = 0; i < 3; i++) for (const k of [-1, 1]) b += `<path d="M${k * 30} ${-14 + i * 22} q${k * 40} -10 ${k * 60} 14" fill="none" stroke="#0D0A07" stroke-width="7"/>`;
+  b += `<ellipse cx="0" cy="34" rx="44" ry="58" fill="#D9B98A" stroke="#0D0A07" stroke-width="6"/><ellipse cx="0" cy="-36" rx="30" ry="26" fill="#D9B98A" stroke="#0D0A07" stroke-width="6"/><path d="M-14 -58 q-20 -30 -40 -30 M14 -58 q20 -30 40 -30" fill="none" stroke="#0D0A07" stroke-width="6"/><circle cx="-12" cy="-40" r="6" fill="#0D0A07"/><circle cx="12" cy="-40" r="6" fill="#0D0A07"/>`;
+  return g(`scale(${s})`, b);
+}
+function tSnow(seed) {
+  let s = thumbNight({ seed, moonX: 1700, moonY: 200, sky: ['#7FA8D8', '#E8F2FA'], hills: '#B8CCE0', ground: '#F4F8FB', stars: 0 });
+  const r = rng(seed); for (let i = 0; i < 70; i++) s += `<circle cx="${f1(800 + r() * 1120)}" cy="${f1(r() * 1080)}" r="${f1(4 + r() * 7)}" fill="#FFFFFF" opacity=".9"/>`;
+  return s;
+}
+
 const THUMBS = {
   fridgeV2() {
     const right = aSavanna(11) + vulture(1250, 330, 0.9) + vulture(1420, 280, 0.7) + hut(1820, 640, 0.8);
@@ -247,6 +265,20 @@ const THUMBS = {
     const right = aSavanna(89) + hut(1820, 640, 0.8) + [[960, 'laugh', 14], [1090, 'laugh', 21]].map(([x, f, sd]) => person({ x, y: 990, s: 0.75, t: 1, seed: sd, face: f, bob: 0, la: [-150, -170], ra: [150, 170] })).join('');
     const hero = heroBig(Object.assign({ x: 1560, y: 1700, s: 2.9, seed: 9, face: 'laugh', flip: true, la: [-14, -6], ra: [-110, -60] }, legsOff));
     return v2({ left: mPhone(), right, heroSvg: hero + g('translate(1250 690) rotate(-8) scale(.62)', tTablet(1)), extra: redCircle(1250, 690, 145, 175), text: 'OLDEST JOKE?' });
+  },
+  cloV2() {
+    const right = tSnow(97);
+    const blanket = `<path d="M-78 -296 Q0 -318 78 -296 L92 -120 Q0 -100 -92 -120 Z" fill="#B98E5A" stroke="#0D0A07" stroke-width="3"/>` + [...Array(10)].map((_, i) => `<path d="M${-60 + (i * 29) % 120} ${-270 + (i * 37) % 130} q3 -6 7 0" fill="none" stroke="#6E4A2E" stroke-width="2"/>`).join('');
+    const hero = heroBig(Object.assign({ x: 1480, y: 1700, s: 3.0, seed: 3, face: 'scared', flip: true, la: [60, 130], ra: [-60, -130], armsFront: true, front: () => blanket }, legsOff));
+    const brrr = `<text x="1040" y="520" font-family="Thumb" font-size="110" fill="#2E7FD8" stroke="#0D0A07" stroke-width="6" paint-order="stroke" transform="rotate(-10 1040 520)">BRRR</text>`;
+    return v2({ left: mWardrobe(), right, heroSvg: hero + g('translate(1330 930) rotate(20)', tLouse(1.0)) + brrr, extra: redCircle(1330, 930, 120, 120), text: 'NO CLOTHES?' });
+  },
+  cloV2b() {
+    const right = tSnow(101);
+    const needle = `<path d="M-170 -14 Q-195 0 -170 14 L170 4 Q195 0 170 -4 Z" fill="#F3EAD4" stroke="#0D0A07" stroke-width="7"/><ellipse cx="-148" cy="0" rx="14" ry="6" fill="#0D0A07"/><path d="M-148 0 Q-260 60 -230 160" fill="none" stroke="#E0302A" stroke-width="8"/>`;
+    const parka = `<path d="M-80 -300 Q0 -322 80 -300 L94 -110 L-94 -110 Z" fill="#B98E5A" stroke="#0D0A07" stroke-width="3"/><path d="M0 -312 V-110 M-88 -200 H88" fill="none" stroke="#F3EBDD" stroke-width="2.5" stroke-dasharray="7 6"/><path d="M-84 -300 Q0 -270 84 -300" fill="none" stroke="#F3EBDD" stroke-width="8"/>`;
+    const hero = heroBig(Object.assign({ x: 1520, y: 1700, s: 3.0, seed: 9, face: 'laugh', flip: true, la: [-14, -6], ra: [-14, -6], front: () => parka }, legsOff));
+    return v2({ left: mWardrobe(), right, heroSvg: hero + g('translate(1150 640) rotate(-30) scale(1.3)', needle), extra: redCircle(1150, 640, 270, 120), text: '170,000 YEARS' });
   },
   wedRef() {
     let bg = thumbNight({ seed: 71, moonX: 1600, moonY: 200, sky: ['#7A6AAE', '#F6B27A'], hills: '#A07A6E', ground: '#C99A5A', stars: 10 });
