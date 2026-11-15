@@ -37,7 +37,7 @@
 
 ## Before you publish
 
-- Watch it once with sound. Names to listen for: Stoneking, Ian Gilligan, Contrebandiers is on screen only, Dzudzuana, Sungir, Venus of Willendorf, Ötzi, Neanderthals. A wrong one is a one-line fix in `film/clothes-full/tts.py` plus a rebuild.
+- Watch it once with sound. Names to listen for: Stoneking, Ian Gilligan, Dzudzuana, Sungir, Venus of Willendorf, Ötzi, Neanderthals. A wrong one is a one-line fix in `film/clothes-full/tts.py` plus a rebuild.
 - Look at both thumbnails at phone size (about 320 px wide) next to other videos in your feed. The louse in the main thumbnail is the curiosity hook; if CTR is low, try the "170,000 YEARS" version.
 - In-video comment prompts: at about 4:23 the narrator asks "Could you survive one winter night with no clothes at all?". At about 10:12, a "COMMENTS" card asks which clue surprised viewers most. The pinned comment asks the same question.
 - Family-friendly: people without clothes are drawn as simple stick figures with a leaf; the lice are cartoons. Nothing else to flag.
