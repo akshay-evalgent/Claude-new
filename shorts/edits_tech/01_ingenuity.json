@@ -1,0 +1,32 @@
+{
+ "source": "nasa_ingenuity_takes_flight",
+ "in": 47.0,
+ "fx": 0.5,
+ "fy": 0.5,
+ "zoom": 1.0,
+ "text": "Mars, April 19, 2021. A 1.8-kg helicopter tried to fly in air *1% as thick as Earth's.* Signals take minutes to reach Earth, so the team could only wait. Then the data came in: it rose 3 meters, hovered and landed. *39 seconds.* The room exploded. On board was a scrap of fabric from the Wright brothers' 1903 plane. Built for 5 flights, *it flew 72.* Send this to an engineer.",
+ "music": "orbit",
+ "clip_db": 0,
+ "music_db": -7,
+ "cover_t": 5.2,
+ "credit": "Video: NASA/JPL-Caltech",
+ "title": "Built for 5 Flights, It Flew 72 🚁✨",
+ "alt_titles": [
+  "39 Seconds That Made History on Mars 🚁✨",
+  "The First Flight on Another Planet 🚁🤝"
+ ],
+ "tags": [
+  "Ingenuity",
+  "Mars helicopter",
+  "NASA",
+  "JPL",
+  "first flight on Mars",
+  "Perseverance",
+  "engineering",
+  "Wright brothers",
+  "technology",
+  "space"
+ ],
+ "pinned": "Which invention will change the next 10 years? 👇",
+ "link": "https://images.nasa.gov/details/Ingenuity_Takes_Flight_UHD_H264"
+}

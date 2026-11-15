@@ -23,7 +23,8 @@ Edit file fields:
   fx, fy      focus point inside the card crop (0-1, default 0.5)
   zoom        extra zoom inside the card (default 1.0)
   text        the story; wrap highlighted phrases in *asterisks*
-  music       "night" | "dawn" | path to a wav (default "night")
+  music       "night" | "dawn" | "orbit" (tech) | path to a wav (default "night")
+  music_db    music level when clip sound is mixed in (default -3)
   clip_db     mix the clip's own sound at this level relative to the music
               (e.g. -3); omit to mute it
   delogo      [[x, y, w, h], ...] boxes in source pixels to paint out a channel logo
@@ -188,7 +189,7 @@ def build_audio(edl, src, has_audio, path):
         lc = meter.integrated_loudness(np.concatenate([c] * 3))
         if np.isfinite(lc):
             c = c * 10 ** ((-14 + edl["clip_db"] - lc) / 20)
-            y = y * 10 ** (-3 / 20) + c
+            y = y * 10 ** (edl.get("music_db", -3) / 20) + c
     y = music.loudnorm(y, -14.0)
     sf.write(path, y, SR)
 

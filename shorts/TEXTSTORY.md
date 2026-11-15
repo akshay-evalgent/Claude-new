@@ -103,3 +103,11 @@ SRC_DIR=/path/to/videos python3 textstory.py edits_ts/<name>.json --out <name>.m
 2. Check every fact against two sources.
 3. Watch it loop three times: there should be no visible jump and no click.
 4. Check that the action is visible in the card.
+
+## 5. Tech niche (experiment)
+
+The format stays the same: 7 seconds, a static story and one moment. Two things change:
+
+- **Music:** the `orbit` preset in `music.py`. It's an original 7-second loop in B minor (Bm–G–D–A). A pulsing synth arpeggio with ping-pong echoes sits over a warm pad, with a ducking sub-bass, a soft pulse and a bell on each chord change. It sounds futuristic but stays emotional, and it loops seamlessly like `night`. When the clip has a key line of real sound (a control-room call), use `"clip_db": 0, "music_db": -7` so the voice leads.
+- **Footage:** NASA and JPL video is **public domain**. Get it from images.nasa.gov (with an `~orig.mp4` or `~large.mp4` download), with no permission needed and no Content ID risk. That makes the space and engineering side of tech the safest version of this format. Credit "NASA/JPL-Caltech", and don't use the NASA logo to suggest endorsement.
+- **Test video:** `edits_tech/01_ingenuity.json`, the Mars helicopter's first flight. The control room hears "Altimeter data confirmed…" and erupts.

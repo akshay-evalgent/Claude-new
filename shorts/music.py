@@ -30,6 +30,11 @@ PRESETS = {
         resolve={},
         melody=[(0, 74), (1, 71), (2, 73), (3, 74), (4, 71), (5, 67), (6, 69), (7, 73)],
         cutoff=2200, bright=1.1, seed=5),
+    # tech/innovation: B minor -> G -> D -> A (vi-IV-I-V in D), pluck arpeggio over a pad
+    "orbit": dict(
+        style="tech", dur=7.0, beats_per_chord=2,
+        chords=[[47, 59, 62, 66], [43, 59, 62, 67], [50, 57, 62, 66], [45, 57, 61, 64]],
+        bells=[78, 74, 78, 76], cutoff=2600, seed=21),
 }
 
 
@@ -103,8 +108,94 @@ def convolve(x, ir):
     return np.stack([fftconvolve(x[:, c], ir[:, c])[: len(x)] for c in range(2)], 1)
 
 
+def pluck(midi, dur, amp, pan, cutoff=3800):
+    """Plucky synth: bright harmonics that die away faster than the fundamental."""
+    n = int(dur * SR); t = np.arange(n) / SR; f0 = hz(midi)
+    y = np.zeros(n)
+    for k in range(1, 12):
+        if k * f0 > cutoff:
+            break
+        y += np.sin(2 * np.pi * k * f0 * t) / k * np.exp(-t * (5 + 2.2 * k))
+    y *= 1 - np.exp(-t * 400)
+    return np.stack([y * (1 - pan), y * pan], 1) * amp
+
+
+def bell(midi, dur, amp):
+    n = int(dur * SR); t = np.arange(n) / SR; f0 = hz(midi)
+    y = sum(a * np.sin(2 * np.pi * f0 * r * t) * np.exp(-t * d)
+            for r, a, d in ((1, 1, 1.6), (2.76, 0.35, 3.5), (5.4, 0.12, 6)))
+    y *= 1 - np.exp(-t * 600)
+    return np.stack([y, y], 1) * amp
+
+
+def sub_pulse(midi, dur, amp, eighth):
+    """Sine sub-bass that ducks on every eighth note (side-chain pump)."""
+    n = int(dur * SR); t = np.arange(n) / SR; f0 = hz(midi)
+    y = np.sin(2 * np.pi * f0 * t) + 0.18 * np.sin(4 * np.pi * f0 * t)
+    ph = (t % eighth)
+    y *= 0.3 + 0.7 * (1 - np.exp(-ph / 0.09))
+    y *= np.minimum(1, t / 0.05) * np.clip((dur - t) / 0.08, 0, 1)
+    return np.stack([y, y], 1) * amp
+
+
+def thump(amp):
+    n = int(0.3 * SR); t = np.arange(n) / SR
+    f = 42 + 80 * np.exp(-t * 25)
+    y = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t * 11)
+    return np.stack([y, y], 1) * amp
+
+
+def tick(amp, rng, pan):
+    n = int(0.05 * SR); t = np.arange(n) / SR
+    y = hp(rng.standard_normal(n), 7000, 2) * np.exp(-t * 90)
+    return np.stack([y * (1 - pan), y * pan], 1) * amp
+
+
+def render_tech(p, cycles=3):
+    """Futuristic loop: 16th-note pluck arpeggio with ping-pong echoes, warm pad,
+    pumping sub-bass, soft pulse and a bell on each chord change."""
+    dur = p["dur"]; nch = len(p["chords"]); beat = dur / (nch * p["beats_per_chord"])
+    six = beat / 4
+    out = np.zeros((int(dur * cycles * SR) + SR * 4, 2))
+
+    def add(sig, at):
+        i = int(round(at * SR))
+        out[i:i + len(sig)] += sig[: len(out) - i]
+
+    for c in range(cycles):
+        rng = np.random.default_rng(p["seed"])
+        base = c * dur
+        for k, ch in enumerate(p["chords"]):
+            t0 = base + k * beat * p["beats_per_chord"]; span = beat * p["beats_per_chord"]
+            bass, *upper = ch
+            for m in upper:
+                add(strings(m, span + 0.15, rng, 0.17, p["cutoff"], attack=0.5, release=0.6), t0)
+            add(sub_pulse(bass - 12, span, 0.15, beat / 2), t0)
+            arp = [u + 12 for u in upper] + [upper[0] + 24]
+            pattern = [0, 1, 2, 3, 2, 1, 3, 2]
+            for s in range(int(round(span / six))):
+                m = arp[pattern[s % len(pattern)]]
+                pan = 0.35 if s % 2 == 0 else 0.65
+                v = 0.16 * (1.0 if s % 4 == 0 else 0.75)
+                add(pluck(m, 0.6, v, pan), t0 + s * six)
+                add(pluck(m, 0.6, v * 0.35, 1 - pan), t0 + s * six + 3 * six)   # ping-pong echo
+            add(bell(p["bells"][k], 2.2, 0.09), t0)
+            for b in range(p["beats_per_chord"]):
+                add(thump(0.13), t0 + b * beat)
+                add(tick(0.03, rng, 0.6), t0 + b * beat + beat / 2)
+    out = hp(out, 30, 2)
+    wet = convolve(out, reverb_ir(1.8, seed=9))
+    mix = 0.85 * out + 0.3 * wet
+    env = np.sqrt(lp(mix.mean(1, keepdims=True) ** 2, 4, 1)).clip(1e-6)
+    mix = mix * np.minimum(1, (env / env.max()) ** -0.25)
+    i0 = int(dur * (cycles // 2) * SR); seg = mix[i0:i0 + int(dur * SR)]
+    return (seg / np.abs(seg).max() * 0.89).astype(np.float32)
+
+
 def render(preset="night", cycles=3):
     p = PRESETS[preset]; rng = np.random.default_rng(p["seed"])
+    if p.get("style") == "tech":
+        return render_tech(p, cycles)
     dur = p["dur"]; nch = len(p["chords"]); beat = dur / (nch * p["beats_per_chord"])
     total = dur * cycles
     out = np.zeros((int(total * SR) + SR * 4, 2))

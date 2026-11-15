@@ -99,6 +99,7 @@ RIGHTS = {
     "inH_GkW02bk": "The Milwaukee County Transit System (MCTS) released this to the public. Ask MCTS, as public agencies usually agree.",
     "zvx0N6m1Oo4": "Vietnam Plus (a state news agency). Ask them.",
     "qm0nlcmB3BU": "This is a re-upload of live TV pool footage from 2010. A claim is possible.",
+    "nasa_ingenuity_takes_flight": "NASA/JPL footage is **public domain**, so you don't need permission and there's no Content ID risk. Keep the NASA/JPL-Caltech credit, and don't use the NASA logo in a way that suggests NASA endorses the channel.",
     "y_01Au-TIi8": "Agencia EFE (a news agency). A claim is possible, so ask for permission.",
     "5pv8V4SXfzY": "ABC News. A claim is possible, so ask for permission.",
     "rl382lAYAdI": "This is a re-upload of Spanish TV footage of the race. A claim is possible.",
