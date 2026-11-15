@@ -58,7 +58,14 @@ why do cats meow, why does my cat meow at me, cat meowing at 5am, cats only meow
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | Your POV in bed: the cat stands over you mid-meow, mouth wide, fangs showing, eyes on the lens, caption "at you" | **Main pick.** Every cat owner has woken up to this |
+| `thumbnail-alt-except-with-us.jpg` | Looking down at the cat as it meows up at you, caption "Except with us" | Relatable angle |
+| `thumbnail-alt-kitten.jpg` | The kitten alone in the basket, mewing, caption "when they're cold" | Cute angle |
+| `thumbnail-alt-shadow.jpg` | The cat meows and its shadow on the wall is a kitten, caption "so cats kept" | Curiosity angle |
+| `thumbnail-alt-5am.jpg` | The alarm clock at 5:00 with the cat's glowing eyes behind it, caption "in the morning" | 5 a.m. angle; share prompt visible |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 

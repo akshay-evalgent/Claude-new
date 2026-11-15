@@ -16,7 +16,7 @@ A 31.8-second vertical short (19 shots) built to the recipe in `../../index.html
 - `output/mix_master.wav`: the mastered audio track
 - `upload/`: title, description, thumbnails, SRT captions, pinned comment and settings
 
-## Script (100 words, about 185 wpm, 31.8 s of voice)
+## Script (100 words, 189 wpm, 31.8 s of voice)
 
 > Your cat meows at you, but almost never at other cats. Kittens meow when they're cold or hungry, so their mother comes running. Adult cats grow out of it and talk with scent and body language instead. Except with us. Humans kept answering, so cats kept the kitten voice. And they tuned it. In one study, cats begging for food hid a cry inside their purr, near the pitch of a crying baby, and people found it hard to ignore. Every cat learns which meows work on its human. So at five in the morning, when the bowl is empty,
 
