@@ -127,7 +127,7 @@ function timeline(c, o, marks) {
   }
   if (o.span != null && c.t >= o.span) {
     const x1 = X(1200000), x2 = X(170000), k = at0(c.t, o.span, 0.9);
-    s += `<rect x="${f1(x1)}" y="560" width="${f1((x2 - x1) * k)}" height="40" rx="10" fill="#4A8FE0" opacity=".35"/>` + hand('NO FUR, NO CLOTHES', (x1 + x2) / 2, 860, 72, c.t, o.span + 0.4, { col: '#4A8FE0' });
+    s += `<rect x="${f1(x1)}" y="560" width="${f1((x2 - x1) * k)}" height="40" rx="10" fill="#4A8FE0" opacity=".35"/>` + hand(o.spanText || 'LITTLE OR NO CLOTHING?', (x1 + x2) / 2, 860, 72, c.t, o.span + 0.4, { col: '#4A8FE0' });
   }
   return s;
 }
@@ -188,7 +188,7 @@ SCN.shiverGrab = (c, o) => {
 };
 SCN.rotHide = (c, o) => {
   let s = `<rect width="${W}" height="${H}" fill="#C9B07E"/><rect y="760" width="${W}" height="320" fill="#9C7A55"/>`;
-  const p = clamp(c.t / Math.max(1.5, c.d * 0.85));
+  const p = clamp(c.t / (o.dur ?? Math.max(1.5, c.d * 0.85)));
   const day = (c.t * 2) % 1; s += `<circle cx="${f1(200 + day * 1520)}" cy="${f1(260 - Math.sin(Math.PI * day) * 120)}" r="50" fill="${day < 0.5 ? '#F6B33C' : '#F3EBDD'}" opacity=".9"/>`;
   const fade = 1 - p;
   s += `<g opacity="${f1(Math.max(0.05, fade))}">` + g(`translate(960 820) scale(${f1(1 - p * 0.3)} ${f1(1 - p * 0.6)})`, `<path d="M-260 -40 Q-120 -100 40 -80 Q220 -90 270 0 Q160 80 0 60 Q-160 80 -260 -40 Z" fill="${HIDE}" ${S} stroke-width="6"/>` + furStrokes(-220, 220, -60, 40, 18, 7, HIDE2)) + `</g>`;
@@ -275,8 +275,8 @@ SCN.sweatGlands = (c, o) => {
   for (let i = 0; i < n; i++) { const x = 300 + r() * 1320, y = 460 + r() * 150; s += `<path d="M${f1(x)} ${f1(y)} q-14 10 0 20 q14 10 0 20 q-14 10 0 18" fill="none" stroke="#4A8FE0" stroke-width="4"/><path d="M${f1(x)} ${f1(y)} V402" stroke="#4A8FE0" stroke-width="3"/>`; const ph = (c.t * 0.8 + i * 0.13) % 1; s += `<path d="M${f1(x)} ${f1(390 - ph * 60)} q-8 12 0 18 q8 -6 0 -18 Z" fill="#7FC3EC" opacity="${f1(1 - ph)}"/>`; }
   s += hand(o.label || 'SWEAT GLANDS', 960, 200, 84, c.t, 0.1) + (o.sub ? hand(o.sub, 960, 290, 60, c.t, o.subT ?? 0.6, { col: C.accent }) : '');
   if (o.bars != null && c.t >= o.bars) {
-    s += hand('CHIMP', 520, 760, 46, c.t, o.bars, { anchor: 'end' }) + `<rect x="560" y="725" width="${f1(110 * at0(c.t, o.bars, 0.6))}" height="50" rx="10" fill="#B9A58A" ${S} stroke-width="4"/>`;
-    s += hand('HUMAN', 520, 850, 46, c.t, o.bars + 0.3, { anchor: 'end' }) + `<rect x="560" y="815" width="${f1(900 * at0(c.t, o.bars + 0.3, 0.9))}" height="50" rx="10" fill="#4A8FE0" ${S} stroke-width="4"/>` + hand('SWEAT GLANDS PER CM²', 1010, 930, 40, c.t, o.bars + 0.6, { col: C.accent });
+    s += hand('CHIMP', 520, 760, 46, c.t, o.bars, { anchor: 'end' }) + `<rect x="560" y="725" width="${f1(90 * at0(c.t, o.bars, 0.6))}" height="50" rx="10" fill="#B9A58A" ${S} stroke-width="4"/>`;
+    s += hand('HUMAN', 520, 850, 46, c.t, o.bars + 0.3, { anchor: 'end' }) + `<rect x="560" y="815" width="${f1(900 * at0(c.t, o.bars + 0.3, 0.9))}" height="50" rx="10" fill="#4A8FE0" ${S} stroke-width="4"/>` + hand('ABOUT 10× MORE PER PATCH OF SKIN', 1010, 930, 44, c.t, o.bars + 0.6, { col: C.accent });
   }
   return s;
 };
@@ -306,15 +306,15 @@ SCN.mc1r = (c, o) => {
   let s = paper();
   s += dnaStrand(260, 540, 1400, c.t, { marks: [{ i: 22, t: o.mark ?? 0.6 }] });
   s += pop(1180, 360, c.t, (o.mark ?? 0.6) + 0.2, `<rect x="-200" y="-50" width="400" height="90" rx="16" fill="#FFFFFF" ${S} stroke-width="5"/>` + hand('SKIN COLOUR GENE', 0, 16, 44, 1, DONE, { col: C.red }));
-  s += hand(o.label || 'THE CHANGE IN OUR DNA', 960, 170, 80, c.t, 0.1) + (o.date != null ? hand('~1.2 MILLION YEARS AGO', 960, 820, 76, c.t, o.date, { col: C.accent }) : '');
+  s += hand(o.label || 'THE CHANGE IN OUR DNA', 960, 170, 80, c.t, 0.1) + (o.date != null ? hand('AT LEAST ~1.2 MILLION YEARS AGO', 960, 820, 72, c.t, o.date, { col: C.accent }) : '');
   return s;
 };
 SCN.timelineClo = (c, o) => {
   let s = paper();
   const marks = [];
   if (o.fur != null) marks.push({ ya: 1200000, label: 'FUR GONE', sub: '~1.2 MILLION', t: o.fur });
-  if (o.lice != null) marks.push({ ya: 170000, label: 'CLOTHES?', sub: '~170,000', t: o.lice, col: C.red });
-  if (o.needle != null) marks.push({ ya: 45000, label: 'NEEDLES', sub: '~45,000', t: o.needle, col: C.green });
+  if (o.lice != null) marks.push({ ya: 170000, label: 'CLOTHES', sub: '83,000–170,000', t: o.lice, col: C.red });
+  if (o.needle != null) marks.push({ ya: 40000, label: 'NEEDLES', sub: '~40,000', t: o.needle, col: C.green });
   s += timeline(c, o, marks);
   if (o.label) s += hand(o.label, 960, 160, 84, c.t, 0.1);
   return s;
@@ -432,6 +432,10 @@ SCN.hideSteps = (c, o) => {
     ['STRETCH & DRY', o.c, `<path d="M-120 -90 H120 V90 H-120 Z" fill="none" stroke="#8E6A3C" stroke-width="10"/><path d="M-100 -70 H100 V70 H-100 Z" fill="#D9B98A" ${S} stroke-width="4"/>` + [[-100, -70], [100, -70], [100, 70], [-100, 70]].map(([x, y]) => `<path d="M${x} ${y} L${x * 1.2} ${y * 1.28}" stroke="${C.ink}" stroke-width="3"/>`).join('')],
     ['SOFTEN IT', o.d, `<path d="M-100 -40 Q0 ${f1(-80 + Math.sin(c.t * 4) * 20)} 100 -40 Q120 40 0 60 Q-120 40 -100 -40 Z" fill="#E3C9A0" ${S} stroke-width="5"/>`],
   ];
+  if ([o.a, o.b, o.c, o.d].every(v => v == null)) {
+    s += g('translate(760 600) scale(2.2)', `<path d="M-90 -20 Q-40 -50 20 -36 Q80 -40 100 0 Q60 40 0 30 Q-60 40 -90 -20 Z" fill="${HIDE}" ${S} stroke-width="4"/>` + furStrokes(-70, 80, -30, 20, 9, 4, HIDE2)) + fliesAround(760, 560, c.t, 4, 220, 120);
+    s += pop(1360, 480, c.t, 0.4, questionMark(240, Math.sin(c.t * 3) * 8));
+  }
   steps.forEach(([n, t0, art], i) => { const x = 300 + i * 440; if (t0 != null) { s += pop(x, 520, c.t, t0, art) + hand(`${i + 1}. ${n}`, x, 720, 48, c.t, t0 + 0.1, { col: C.accent }); if (i) s += arrow(x - 300, 520, x - 150, 520, c.t, t0 - 0.1, 0.3); } });
   if (o.stink != null) s += pop(960, 900, c.t, o.stink, hand('OR IT ROTS AND STINKS', 0, 0, 60, 1, DONE, { col: C.red }));
   s += hand(o.label || 'TURNING SKIN INTO CLOTHES', 960, 170, 76, c.t, 0.1);
@@ -466,7 +470,7 @@ SCN.needleHero = (c, o) => {
   const glow = at0(c.t, o.glow ?? 0.4, 0.8);
   s += g(`translate(960 540) rotate(${f1(-20 + Math.sin(c.t) * 4)})`, needleSvg(2.2, glow));
   if (o.thread != null && c.t >= o.thread) { const k = at0(c.t, o.thread, 1.0); s += `<path d="M${f1(240 + 0 * k)} 900 Q500 ${f1(820 - 200 * k)} 650 ${f1(700 - 40 * k)}" fill="none" stroke="#E05A4E" stroke-width="7" stroke-linecap="round" stroke-dasharray="${f1(900 * k)} 2000"/>`; }
-  s += hand(o.label || 'THE NEEDLE', 960, 170, 110, c.t, o.labelT ?? 0.3, { col: '#FFE9A8' }) + (o.sub ? hand(o.sub, 960, 960, 60, c.t, o.subT ?? 0.8, { col: '#FFFFFF' }) : '');
+  s += hand(o.label || 'THE NEEDLE', 960, 170, 110, c.t, o.labelT ?? 0.3, { col: '#FFE9A8' }) + (o.sub ? hand(o.sub, 960, 880, 60, c.t, o.subT ?? 0.8, { col: '#FFFFFF' }) : '');
   return s;
 };
 SCN.sewParka = (c, o) => {
@@ -510,9 +514,16 @@ SCN.capeVsParka = (c, o) => {
 SCN.toeBones = (c, o) => {
   let s = `<rect width="${W}" height="${H}" fill="#1E2C3E"/>`;
   const foot = (x, thick, label, t0) => {
-    let f = `<path d="M-120 200 Q-160 -40 -80 -180 Q0 -260 80 -180 Q140 -60 120 200 Z" fill="none" stroke="#7FA3C4" stroke-width="5" opacity=".6"/>`;
-    [[-70, -150], [-30, -190], [10, -200], [50, -190], [86, -160]].forEach(([tx, ty], i) => { const w = (i === 0 ? 30 : 18) * (thick || i === 0 ? 1 : 0.55); f += `<rect x="${tx - w / 2}" y="${ty}" width="${w}" height="60" rx="${w / 2}" fill="#EAF2F8" opacity=".9"/><rect x="${tx - w / 2}" y="${ty + 70}" width="${w}" height="70" rx="${w / 2}" fill="#EAF2F8" opacity=".9"/>`; });
-    f += `<path d="M-80 0 L-40 120 M-30 -20 L0 120 M10 -20 L30 120 M50 -20 L60 120 M90 -10 L90 120" stroke="#EAF2F8" stroke-width="22" stroke-linecap="round" opacity=".85"/>`;
+    const B = '#EAF2F8';
+    let f = `<path d="M-60 260 Q-130 200 -120 40 Q-120 -120 -90 -230 Q-40 -290 30 -280 Q120 -260 120 -120 Q130 60 80 220 Q40 290 -60 260 Z" fill="none" stroke="#7FA3C4" stroke-width="5" opacity=".6"/>`;
+    f += `<ellipse cx="-10" cy="190" rx="70" ry="60" fill="${B}" opacity=".9"/><path d="M-60 60 Q-10 20 60 60 L50 130 L-50 130 Z" fill="${B}" opacity=".85"/>`;
+    const toes = [[-62, -140, 26], [-22, -150, 16], [14, -146, 15], [48, -132, 14], [80, -110, 13]];
+    toes.forEach(([tx, ty, w0], i) => {
+      const w = i === 0 ? w0 : w0 * (thick ? 1 : 0.55);
+      f += `<path d="M${tx * 0.6} 50 L${tx} ${ty + 20}" stroke="${B}" stroke-width="${i === 0 ? 22 : 15}" stroke-linecap="round" opacity=".9"/>`;
+      const segs = i === 0 ? 2 : 3;
+      for (let k = 0; k < segs; k++) f += `<rect x="${f1(tx - w / 2)}" y="${f1(ty - 10 - (k + 1) * 34)}" width="${f1(w)}" height="28" rx="${f1(w / 2)}" fill="${B}" opacity=".95"/>`;
+    });
     return pop(x, 560, c.t, t0, f + hand(label, 0, 320, 52, 1, DONE, { col: '#FFFFFF' }));
   };
   s += foot(620, true, 'BAREFOOT', o.a ?? 0.2) + foot(1300, false, 'SHOE WEARER', o.b ?? 0.6);
@@ -540,11 +551,11 @@ SCN.capSkirt = (c, o) => {
 };
 SCN.sungirBeads = (c, o) => {
   let s = `<rect width="${W}" height="${H}" fill="#2B2420"/>`;
-  const n = Math.round(4000 * at0(c.t, o.beads ?? 0.3, Math.max(1.5, c.d * 0.6)));
+  const n = Math.round((o.total || 13400) * at0(c.t, o.beads ?? 0.3, Math.max(1.5, c.d * 0.6)));
   s += fig({ x: 760, y: 990, s: 1.6, t: c.t, seed: 61, outfit: 'beads', face: 'neutral', beard: true, hairC: '#3C2A1E' });
   const r = rng(8);
   for (let i = 0; i < Math.min(220, n / 18); i++) s += `<circle cx="${f1(1180 + r() * 560)}" cy="${f1(320 + r() * 560)}" r="6" fill="#F7F1E3" opacity=".9"/>`;
-  s += `<text x="1460" y="260" font-family="Hand" font-size="110" fill="#FFE9A8" text-anchor="middle">${n.toLocaleString('en-US')}</text>` + hand('IVORY BEADS', 1460, 960, 60, c.t, 0.4, { col: '#FFFFFF' });
+  s += `<text x="1460" y="260" font-family="Hand" font-size="110" fill="#FFE9A8" text-anchor="middle">${n.toLocaleString('en-US')}${n >= (o.total || 13400) ? '+' : ''}</text>` + hand('IVORY BEADS', 1460, 350, 60, c.t, 0.4, { col: '#FFFFFF' });
   if (o.label) s += hand(o.label, 760, 120, 64, c.t, 0.1, { col: '#FFFFFF' });
   return s;
 };
@@ -583,7 +594,7 @@ SCN.otziDress = (c, o) => {
   const has = k => o[k] != null && c.t >= o[k];
   const outfit = has('coat') ? 'otzi' : 'tunic';
   s += fig({ x: 760, y: 990, s: 1.55, t: c.t, seed: 21, outfit: has('coat') || has('legs') ? 'otzi' : 'bare', hat: has('hat') ? 'bear' : null, face: 'neutral', beard: true, hairC: '#3C2A1E' });
-  const tags = [['hat', 'BEAR FUR HAT', 300], ['coat', 'SHEEP & GOAT COAT', 420], ['legs', 'GOATSKIN LEGGINGS', 540], ['shoes', 'BEARSKIN SOLES', 660], ['laces', 'CATTLE-LEATHER LACES', 780], ['quiver', 'DEERSKIN QUIVER', 900]];
+  const tags = [['hat', 'BEARSKIN HAT', 300], ['coat', 'SHEEP & GOAT COAT', 420], ['legs', 'GOATSKIN LEGGINGS', 540], ['laces', 'CATTLE-LEATHER LACES', 660], ['shoes', 'DEERSKIN SHOES', 780], ['grass', 'STUFFED WITH GRASS', 900]];
   tags.forEach(([k, n, y]) => { if (has(k)) s += pop(1400, y, c.t, o[k], `<rect x="-330" y="-46" width="660" height="84" rx="16" fill="#FFFFFF" ${S} stroke-width="4"/>` + hand(n, 0, 16, 46, 1, DONE, { col: C.accent })); });
   if (has('count')) s += pop(1400, 170, c.t, o.count, hand('5+ ANIMALS!', 0, 0, 80, 1, DONE, { col: C.red }));
   if (o.label) s += hand(o.label, 760, 120, 70, c.t, 0.1);
@@ -649,3 +660,79 @@ SCN.nakedVsDressed = (c, o) => {
     return ic(name, t);
   };
 })();
+
+// ---------- extras from the fact-check ----------
+SCN.tarkhan = (c, o) => {
+  let s = paper();
+  const k = at0(c.t, o.unfold ?? 0.3, 1.0);
+  if (o.pile != null && c.t < (o.unfold ?? 0.3)) s += '';
+  // a crumpled bundle that unfolds into a V-neck linen shirt with pleated sleeves
+  s += g(`translate(960 560) scale(${f1(lerp(0.4, 1, k))}) rotate(${f1(lerp(-20, 0, k))})`, `<path d="M-120 -160 L-300 -120 L-360 40 L-250 60 L-200 -40 L-190 220 L190 220 L200 -40 L250 60 L360 40 L300 -120 L120 -160 L40 -60 L0 -10 L-40 -60 Z" fill="#EFE6D0" ${S} stroke-width="6"/>` + [...Array(8)].map((_, i) => `<path d="M${-340 + i * 12} ${-100 + i * 18} l${90 - i * 4} -12 M${340 - i * 12} ${-100 + i * 18} l${-90 + i * 4} -12" stroke="#C9BBA0" stroke-width="4"/>`).join('') + `<path d="M-120 -160 L-40 -60 L0 -10 L40 -60 L120 -160" fill="none" ${S} stroke-width="5"/>`);
+  if (o.dirty != null && c.t >= o.dirty) s += pop(1500, 300, c.t, o.dirty, `<rect x="-250" y="-56" width="500" height="100" rx="16" fill="#FFFFFF" ${S} stroke-width="5"/>` + hand('IN A BAG OF OLD LINEN', 0, 18, 44, 1, DONE, { col: C.red }));
+  s += hand(o.label || 'THE TARKHAN DRESS · EGYPT', 960, 120, 70, c.t, 0.1) + hand(o.sub || '~5,000 YEARS OLD', 960, 900, 60, c.t, o.subT ?? 0.6, { col: C.accent });
+  return s;
+};
+function horse(s = 1, t = 0) {
+  const k = Math.sin(t * 8) * 18;
+  return g(`scale(${s})`, `<path d="M-130 -20 Q-140 -90 -40 -100 L120 -96 Q190 -110 210 -190 L260 -170 Q250 -120 220 -60 Q200 0 120 10 L-110 20 Z" fill="#8E5A3A" ${S} stroke-width="6"/><path d="M200 -190 L210 -230 L236 -186 Z" fill="#8E5A3A" ${S} stroke-width="5"/><circle cx="236" cy="-160" r="6" fill="${C.ink}"/><path d="M-130 -60 Q-200 -40 -190 40" fill="none" stroke="#3A2418" stroke-width="18" stroke-linecap="round"/>` +
+    `<path d="M-90 10 L${f1(-110 + k)} 140 M-50 14 L${f1(-40 - k)} 140 M90 10 L${f1(70 + k)} 140 M130 6 L${f1(140 - k)} 140" ${S} stroke-width="16" stroke-linecap="round"/><path d="M200 -170 Q170 -150 150 -100" fill="none" stroke="#3A2418" stroke-width="14"/>`);
+}
+SCN.trousers = (c, o) => {
+  let s = `<rect width="${W}" height="${H}" fill="#E9D7A8"/><rect y="760" width="${W}" height="320" fill="#C9A86A"/>`;
+  const x = 600 + ((c.t * 200) % 900);
+  s += g(`translate(${f1(x)} 860)`, horse(1.2, c.t));
+  s += g(`translate(${f1(x + 10)} 700)`, `<path d="M-30 -40 L-70 60 L-40 140 M30 -40 L60 60 L30 140" fill="none" stroke="${C.ink}" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/><path d="M-30 -40 L-70 60 L-40 140 M30 -40 L60 60 L30 140" fill="none" stroke="#5E6E8E" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>` +
+    `<path d="M-40 -60 Q0 -76 40 -60 L44 -200 Q0 -216 -44 -200 Z" fill="#B9473A" ${S} stroke-width="5"/><circle cx="0" cy="-268" r="56" fill="${C.head}" ${S} stroke-width="5"/>` + g('translate(0 -268)', hairCave(4, '#3A2A1E', false) + faceSvg('laugh', c.t, 4)));
+  if (o.ring != null && c.t >= o.ring) s += `<ellipse cx="${f1(x + 10)}" cy="760" rx="140" ry="120" fill="none" stroke="${C.red}" stroke-width="8"/>`;
+  s += hand(o.label || 'TROUSERS · ~3,000 YEARS', 960, 140, 76, c.t, 0.1) + (o.sub ? hand(o.sub, 960, 230, 56, c.t, o.subT ?? 0.6, { col: C.accent }) : '');
+  return s;
+};
+SCN.cord = (c, o) => {
+  let s = `<rect width="${W}" height="${H}" fill="#101418"/><circle cx="960" cy="600" r="360" fill="#F4F1E8" ${S} stroke-width="14"/>`;
+  const k = at0(c.t, o.twist ?? 0.3, 1.4);
+  const cols = ['#B98E5A', '#9C7A55', '#C9A06A'];
+  for (let j = 0; j < 3; j++) { let d = ''; for (let i = 0; i <= 50; i++) { const x = 640 + i * 12.8, ph = i * 0.42 * k + j * 2.09, y = 600 + Math.sin(ph) * 40 * k + (1 - k) * (j - 1) * 70; d += (i ? 'L' : 'M') + f1(x) + ' ' + f1(y); } s += `<path d="${d}" fill="none" stroke="${C.ink}" stroke-width="30" stroke-linecap="round"/><path d="${d}" fill="none" stroke="${cols[j]}" stroke-width="22" stroke-linecap="round"/>`; }
+  s += hand(o.label || 'NEANDERTHAL STRING', 960, 100, 70, c.t, 0.2, { col: '#FFFFFF' }) + (o.sub ? hand(o.sub, 960, 185, 56, c.t, o.subT ?? 0.5, { col: '#FFE9A8' }) : '');
+  return s;
+};
+SCN.replicaHike = (c, o) => {
+  let s = `<rect width="${W}" height="${H}" fill="#BFDDEA"/><path d="M0 700 L300 420 L620 640 L980 300 L1360 620 L1700 380 L1920 560 V1080 H0 Z" fill="#A9B8C4" ${S} stroke-width="5"/><path d="M880 400 L980 300 L1080 400 Z M1620 460 L1700 380 L1780 460 Z" fill="#FFFFFF"/><rect y="860" width="${W}" height="220" fill="#8FA45E"/>`;
+  const w = Math.sin(c.t * 7) * 22, x = 400 + ((c.t * 150) % 1000);
+  s += person({ x, y: 960, s: 1.25, kind: 'modern', t: c.t, seed: 77, face: 'happy', shortHair: true, hairC: '#6A6A6A', shirt: '#C9573E', ll: [-w, -w * 0.6], rl: [w, w * 0.6], la: [w * 0.6, 10], ra: [-w * 0.6, -10] });
+  s += pop(1500, 300, c.t, o.ok ?? 1.0, `<rect x="-260" y="-60" width="520" height="110" rx="18" fill="#FFFFFF" ${S} stroke-width="5"/>` + hand('NO BLISTERS!', 0, 22, 64, 1, DONE, { col: C.green }));
+  if (o.label) s += hand(o.label, 700, 160, 70, c.t, 0.2);
+  return s;
+};
+SCN.perPerson = (c, o) => {
+  let s = `<rect width="${W}" height="${H}" fill="#E8DCCB"/><rect y="880" width="${W}" height="200" fill="#B9A58A"/>`;
+  const n = Math.round(69 * at0(c.t, o.count ?? 0.3, 1.6));
+  const cols = ['#E05A4E', '#4A8FE0', '#F2C443', '#4F9A4A', '#B58FD0', '#2B2118', '#F28CA0'];
+  for (let i = 0; i < n; i++) { const x = 1100 + (i % 9) * 60 - Math.floor(i / 9) * 6, y = 860 - Math.floor(i / 9) * 46; s += `<rect x="${x}" y="${y}" width="90" height="40" rx="10" fill="${cols[i % 7]}" ${S} stroke-width="3" transform="rotate(${(i * 23) % 14 - 7} ${x + 45} ${y + 20})"/>`; }
+  s += person({ x: 700, y: 960, s: 1.35, kind: 'modern', t: c.t, seed: 4, face: n > 50 ? 'surprised' : 'happy', shortHair: true, hairC: '#3A2A1E', shirt: '#6F93BC' });
+  s += `<text x="1360" y="300" font-family="Hand" font-size="150" fill="${C.accent}" text-anchor="middle">${n}</text>` + hand(o.sub || 'PER PERSON, PER YEAR (US)', 1360, 380, 50, c.t, 0.4);
+  return s;
+};
+SCN.clayWeave = (c, o) => {
+  let s = paper();
+  s += g('translate(960 560)', `<path d="M-420 -200 Q-300 -280 0 -260 Q340 -270 420 -160 Q460 100 300 220 Q0 280 -320 220 Q-460 60 -420 -200 Z" fill="#B9764A" ${S} stroke-width="7"/>`);
+  const k = at0(c.t, o.press ?? 0.4, 1.0);
+  for (let r = 0; r < 8; r++) for (let q = 0; q < 12; q++) { if ((r * 12 + q) / 96 > k) continue; const x = 660 + q * 52, y = 400 + r * 44; s += `<path d="M${x} ${y} q13 ${r % 2 ? 10 : -10} 26 0 q13 ${r % 2 ? -10 : 10} 26 0" fill="none" stroke="#7A4A2A" stroke-width="7" stroke-linecap="round"/>`; }
+  s += hand(o.label || 'WOVEN PATTERN IN CLAY', 960, 140, 76, c.t, 0.1) + hand(o.sub || 'CZECH REPUBLIC · ~26,000 YEARS', 960, 920, 56, c.t, 0.5, { col: C.accent });
+  return s;
+};
+SCN.blueCloth = (c, o) => {
+  let s = paper();
+  const k = at0(c.t, o.dye ?? 0.4, 1.4);
+  s += g('translate(960 560)', `<path d="M-380 -220 Q0 -260 380 -220 Q400 0 380 220 Q0 260 -380 220 Q-400 0 -380 -220 Z" fill="#F3EBDD" ${S} stroke-width="6"/>` +
+    `<clipPath id="dyec"><rect x="-400" y="-260" width="${f1(800 * k)}" height="520"/></clipPath><path d="M-380 -220 Q0 -260 380 -220 Q400 0 380 220 Q0 260 -380 220 Q-400 0 -380 -220 Z" fill="#2E4FA8" clip-path="url(#dyec)"/>` +
+    [...Array(10)].map((_, i) => `<path d="M-370 ${-200 + i * 44} Q0 ${-216 + i * 44} 370 ${-200 + i * 44}" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".35"/>`).join(''));
+  s += hand(o.label || 'THE OLDEST BLUE DYE', 960, 150, 84, c.t, 0.1) + hand(o.sub || 'INDIGO · PERU · ~6,000 YEARS', 960, 920, 56, c.t, 0.6, { col: C.accent });
+  return s;
+};
+SCN.olderThan = (c, o) => {
+  let s = paper();
+  s += g(`translate(560 560) rotate(${f1(Math.sin(c.t * 2) * 5)})`, `<path d="M-50 -220 H60 V60 Q60 140 150 150 Q230 160 220 220 Q200 260 120 250 Q-50 240 -50 100 Z" fill="#E05A4E" ${S} stroke-width="7"/><path d="M-50 -220 H60 V-170 H-50 Z" fill="#FFFFFF" ${S} stroke-width="5"/><path d="M-50 -130 H60 M-50 -90 H60" stroke="#FFFFFF" stroke-width="10"/>`);
+  const items = [['OLDER THAN FARMING', o.a, 360], ['OLDER THAN WRITING', o.b, 560], ['OLDER THAN CITIES', o.c, 760]];
+  items.forEach(([n, t0, y]) => { if (t0 != null) s += pop(1300, y, c.t, t0, `<rect x="-360" y="-60" width="720" height="110" rx="18" fill="#FFF6D6" ${S} stroke-width="5"/>` + hand(n, 0, 20, 60, 1, DONE, { col: C.accent })); });
+  return s;
+};

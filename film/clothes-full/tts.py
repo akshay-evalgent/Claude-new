@@ -15,7 +15,7 @@ from kokoro import KPipeline
 HERE = os.path.dirname(os.path.abspath(__file__))
 SR = 24000
 # Words missing from Kokoro 0.7.4's dictionary, given an inline pronunciation.
-SAY = {"Hadza": "[Hadza](/hˈɑdzə/)", "Jaak": "[Jaak](/jˈɑk/)", "Panksepp": "[Panksepp](/pˈæŋksɛp/)", "Kibale": "[Kibale](/kɪbˈɑlA/)", "Philogelos": "[Philogelos](/fɪlˈɑɡəlɑs/)", "Senet": "[Senet](/sˈɛnɛt/)", "Ur": "[Ur](/ˈɜɹ/)", "Macedon": "[Macedon](/mˈæsədɑn/)", "Iñupiat": "[Iñupiat](/ɪnˈupiˌæt/)", "lukuchuko": "[lukuchuko](/lˌukuʧˈukO/)", "Maresha": "[Maresha](/məɹˈAʃə/)", "favour": "[favour](/fˈAvəɹ/)", "smartest": "[smartest](/smˈɑɹtəst/)",
+SAY = {"Hadza": "[Hadza](/hˈɑdzə/)", "Jaak": "[Jaak](/jˈɑk/)", "Panksepp": "[Panksepp](/pˈæŋksɛp/)", "Kibale": "[Kibale](/kɪbˈɑlA/)", "Philogelos": "[Philogelos](/fɪlˈɑɡəlɑs/)", "Senet": "[Senet](/sˈɛnɛt/)", "Ur": "[Ur](/ˈɜɹ/)", "Dzudzuana": "[Dzudzuana](/dzˌudzuˈɑnə/)", "Gilligan": "[Gilligan](/ɡˈɪlɪɡən/)", "Grey": "[Grey](/ɡɹˈA/)", "litre": "[litre](/lˈitəɹ/)", "Ian": "[Ian](/ˈiən/)", "Stoneking": "[Stoneking](/stˈOnkɪŋ/)", "coloured": "[coloured](/kˈʌləɹd/)", "Sungir": "[Sungir](/sʊnɡˈɪɹ/)", "Willendorf": "[Willendorf](/vˈɪləndˌɔɹf/)", "Macedon": "[Macedon](/mˈæsədɑn/)", "Iñupiat": "[Iñupiat](/ɪnˈupiˌæt/)", "lukuchuko": "[lukuchuko](/lˌukuʧˈukO/)", "Maresha": "[Maresha](/məɹˈAʃə/)", "favour": "[favour](/fˈAvəɹ/)", "smartest": "[smartest](/smˈɑɹtəst/)",
        "flavour": "[flavour](/flˈAvəɹ/)", "Tel Aviv": "[Tel Aviv](/tˈɛl əvˈiv/)", "Dhra'": "[Dhra'](/dɹˈɑ/)",
        "Kalahari": "[Kalahari](/kˌæləhˈɑɹi/)", "Kharaneh": "[Kharaneh](/kəɹˈɑnɛ/)", "Norje": "[Norje](/nˈɔɹjə/)",
        "Qesem": "[Qesem](/kˈɛsəm/)", "Sunnansund": "[Sunnansund](/sˈʊnənsˌʊnd/)", "Woodburn": "[Woodburn](/wˈʊdbɜɹn/)",

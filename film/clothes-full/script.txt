@@ -6,13 +6,14 @@
 Look down at what you're wearing right now. >> dressCheck {"look":"@down"} push
 + A shirt. Some trousers. Maybe socks. >> dressCheck {"a":"@shirt","b":"@trousers","c":"@socks","look":0} [900,640,1.05,1.12]
 Every day, almost every person on Earth gets dressed. >> worldMap {"pins":["tanzania","kalahari","philippines","aka","arctic","australia","plains","andes"]} push
-+ The world now makes more than a hundred billion new pieces of clothing every year. >> garmentRain {} push
++ The world now buys more than a hundred billion new pieces of clothing every year. About twice as many as in the year two thousand. >> garmentRain {"sub":"NEW CLOTHES SOLD A YEAR"} push
++ In the US, that works out to roughly sixty nine new pieces of clothing per person, every year. ~0.2 >> perPerson {"count":"@sixty"} push
 But here's something strange. You're the only animal that does this. >> onlyAnimal {"you":"@only"} push
 + Dogs don't get dressed. Cats don't. Chimps don't. No other animal on the planet makes clothes. >> onlyAnimal {"dog":"@dogs","cat":"@cats","chimp":"@chimps","bird":"@planet","you":"DONE"} push
 So when did we start? And why? ~0.2 >> think {"q1":"@start","q2":"@why"} push
 Now your brain is probably saying, easy. It got cold, so somebody grabbed an animal skin. Done. >> shiverGrab {"grab":"@grabbed"} push
 At least, that's what we assume. ~0.3 >> think {"q1":"@assume","q2":"NEVER"} push
-Here's the problem. Clothes rot. >> rotHide {} push
+Here's the problem. Clothes rot. >> rotHide {"dur":12} push
 + Leather, fur, grass, string. Give them a few thousand years, and they're gone. >> rotHide {"years":10000} push
 + So how could anyone know when the very first outfit was worn? ~0.2 >> think {"q1":"@first","q2":"@worn"} push
 The answer turned up in the strangest place imaginable. >> teaseLouse {} push
@@ -22,21 +23,25 @@ The answer turned up in the strangest place imaginable. >> teaseLouse {} push
 Clue number one is your own skin. >> clueBoard {"a":"DONE","b":"DONE","c":"DONE","active":1,"label":"CLUE 1"} [480,520,1.0,1.25]
 Look at a chimpanzee's arm. Thick, dark hair, everywhere. >> armHair {"chimp":0.1,"you":"NEVER"} push
 + Now look at yours. >> armHair {"chimp":"DONE","you":"@yours"} push
-But here's the twist. You have about as many hair follicles as a chimp does. >> follicles {"you":"@you","count":"@follicles"} push
-+ Yours just grow tiny, fine hairs that you barely notice. ~0.2 >> follicles {"you":"DONE","count":"DONE","fine":"@tiny"} push
+But here's the twist. Up close, a patch of your skin has about as many hair follicles as a chimp's. >> follicles {"you":"@your","count":"@follicles"} push
++ Most of yours just grow tiny, fine hairs that are hard to see. ~0.2 >> follicles {"you":"DONE","count":"DONE","fine":"@tiny"} push
 So at some point, our ancestors' fur got thinner, and thinner, until it was nearly gone. >> furFade {"from":0.3} push
++ Some scientists think Homo erectus, more than one and a half million years ago, was among the first with bare, sweaty skin. ~0.2 >> furFade {"from":0,"end":0,"dur":0.1,"nodate":true,"label":"HOMO ERECTUS?"} push
 Why would anyone give up a free fur coat? ~0.2 >> think {"q1":"@free","q2":"@coat"} push
 The leading idea is heat. >> heatRun {"fur":true} push
-+ Our ancestors lived in hot, open country, walking and running after food all day. >> heatRun {"fur":true,"label":"HOT AND ON THE MOVE"} [960,600,1.0,1.1]
++ Our ancestors lived in hot, open country, walking and running after food for hours. >> heatRun {"fur":true,"label":"HOT AND ON THE MOVE"} [960,600,1.0,1.1]
 + And fur traps heat. >> heatRun {"fur":true} [960,500,1.15,1.25]
 So instead of fur, we got sweat. ~0.2 >> heatRun {"sweat":true} push
-You have millions of sweat glands, packed far more tightly than a chimp's. >> sweatGlands {"sub":"MILLIONS","subT":"@millions","bars":"@chimp's"} push
-+ Sweat on bare skin, plus a breeze, works like built-in air conditioning. ~0.3 >> coolBreeze {"cool":"@breeze","label":"BUILT-IN AIR CONDITIONING"} push
+We are the sweatiest ape. A patch of your skin has about ten times more sweat glands than the same patch on a chimp. >> sweatGlands {"sub":"MILLIONS OF THEM","subT":"@sweatiest","bars":"@ten"} push
++ On a hot day, you can sweat more than a litre an hour. >> heatRun {"sweat":true,"label":"1+ LITRE AN HOUR"} [960,620,1.1,1.2]
++ Sweat on bare skin, plus a breeze, works like built-in air conditioning. >> coolBreeze {"cool":"@breeze","label":"BUILT-IN AIR CONDITIONING"} push
++ That's the leading idea, at least. It isn't proven. ~0.3 >> think {"q1":"@idea","q2":"@proven"} push
 But bare skin has a new problem. The sun. >> skinSun {"bare":0.2} push
 + So the skin underneath got darker, to protect itself. >> skinSun {"bare":"DONE","dark":"@darker","label":"DARKER SKIN","labelT":"@darker"} push
-Geneticists found that change written in our DNA, at least one point two million years ago. >> mc1r {"mark":"@change","date":"@million"} push
-+ So by then, our ancestors had lost most of their fur. >> timelineClo {"fur":"@fur"} push
-And for a very long time, that's how they stayed. >> bushLife {} push
+Geneticists found that change written in our DNA. A gene for dark, sun-protecting skin. >> mc1r {"mark":"@change"} push
++ It suggests our ancestors had mostly bare skin by at least one point two million years ago. Maybe earlier. >> mc1r {"mark":"DONE","date":"@million"} push
++ So by then, most of their fur was gone. >> timelineClo {"fur":"@fur"} push
+And for a very long time, that's how they lived. >> bushLife {} push
 + No shirts. No shoes. No problem. ~0.3 >> bushLife {"a":"@shirts","b":"@shoes","c":"@problem"} push
 
 = lice curious
@@ -44,83 +49,103 @@ Which brings us to clue number two. >> clueBoard {"a":"DONE","b":"DONE","c":"DON
 + It's tiny. And a little bit gross. ~0.2 >> teaseLouse {} push
 + It's a louse. ~0.3 >> louseHero {"label":"A LOUSE","labelT":"@louse"} push
 Humans can get head lice, which live in the hair on your head. >> headLice {"sub":"LIVES IN HAIR","subT":"@hair"} push
-+ And body lice, which can't survive on bare skin. >> seamLice {"skin":"@bare"} push
-+ They live in clothes. They cling to the fabric and lay their eggs along the seams. >> seamLice {"skin":"DONE","eggs":"@eggs"} push
++ And clothing lice, which can't survive on bare skin for long. >> seamLice {"skin":"@bare","label":"CLOTHING LICE"} push
++ They live in clothes. They cling to the fabric, lay their eggs along the seams, and only crawl onto the skin to feed. >> seamLice {"skin":"DONE","eggs":"@eggs","label":"CLOTHING LICE"} push
 Think about what that means. >> think {"q1":"@means","q2":"NEVER"} push
-+ Body lice could only exist once there were clothes to live in. >> licelogic {"a":"@clothes","arrow":"@clothes+0.3","b":"@clothes+0.7"} push
-+ No clothes, no body lice. ~0.2 >> licelogic {"a":"DONE","arrow":"DONE","b":"DONE","no":"@no"} push
-So if you could find out when body lice first appeared, you'd know roughly when clothes appeared. ~0.3 >> louseTree {"split":"@appeared"} push
++ Clothing lice could only exist once there were clothes to live in. >> licelogic {"a":"@clothes","arrow":"@clothes+0.3","b":"@clothes+0.7"} push
++ No clothes, no clothing lice. ~0.2 >> licelogic {"a":"DONE","arrow":"DONE","b":"DONE","no":"@no"} push
+So if you could find out when clothing lice first appeared, you'd know roughly when clothes appeared. ~0.3 >> louseTree {"split":"@appeared"} push
 In two thousand three, a team led by the geneticist Mark Stoneking set out to do exactly that. >> lab {"label":"MARK STONEKING"} push
-+ They compared the DNA of head lice and body lice. >> louseDNA {"diff":"@body","label":"COMPARE THE DNA"} push
++ They compared the DNA of head lice and clothing lice. >> louseDNA {"diff":"@clothing","label":"COMPARE THE DNA"} push
 DNA picks up small changes over time, at a fairly steady rate. Like a ticking clock. >> molClock {} push
 + Count the differences, and you can work out how long ago two groups split apart. ~0.2 >> louseTree {"split":"@split"} push
-A bigger study in twenty eleven put the split at around a hundred and seventy thousand years ago. >> louseTree {"split":"DONE","date":"@hundred","dateText":"~170,000 YEARS AGO"} push
-+ Maybe as recent as eighty three thousand. But somewhere in that window. ~0.2 >> louseTree {"split":"DONE","date":"DONE","dateText":"83,000–170,000 YEARS AGO"} push
-So humans were probably wearing clothes by around a hundred and seventy thousand years ago. >> timelineClo {"fur":"DONE","lice":"@clothes"} push
+A bigger study in twenty eleven found that clothing lice split from head lice at least eighty three thousand years ago. >> louseTree {"split":"DONE","date":"@eighty","dateText":"AT LEAST 83,000 YEARS AGO"} push
++ And possibly as early as a hundred and seventy thousand. ~0.2 >> louseTree {"split":"DONE","date":"DONE","dateText":"83,000–170,000 YEARS AGO"} push
+So people were probably wearing clothes regularly by then. >> timelineClo {"fur":"DONE","lice":"@clothes"} push
 Think about how wild that is. >> lab {"happy":true} push
 + One of the greatest inventions in human history was dated using lice. ~0.3 >> louseHero {"medal":true,"smile":true,"label":"DETECTIVE LOUSE","labelT":"@lice"} push
 + So next time someone says lice are useless, you'll know better. ~0.3 >> louseHero {"smile":true} pull
 And look at the gap. >> timelineClo {"fur":"DONE","lice":"DONE"} push
-+ Fur mostly gone by one point two million years ago. Clothes, maybe a hundred and seventy thousand. >> timelineClo {"fur":"DONE","lice":"DONE","span":"@clothes"} push
-+ For something like a million years, our ancestors had no fur, and no clothes. ~0.3 >> timelineClo {"fur":"DONE","lice":"DONE","span":"DONE"} [700,620,1.05,1.15]
++ Mostly bare skin by one point two million years ago. Clues to clothing, only in the last couple of hundred thousand. >> timelineClo {"fur":"DONE","lice":"DONE","span":"@clues"} push
++ So people in warm Africa may have managed with little or no clothing for hundreds of thousands of years. Though fur and leather rarely survive, so we can't be sure. ~0.3 >> timelineClo {"fur":"DONE","lice":"DONE","span":"DONE"} [700,620,1.05,1.15]
 So be honest. Could you survive one winter night with no clothes at all? Tell me in the comments. ~0.3 >> commentPrompt {"q":"COULD YOU SURVIVE ONE NIGHT?","list":["YES, EASILY","NO WAY"]} push
 
 = ice cold
-So why did we finally get dressed? >> think {"q1":"@dressed","q2":"NEVER"} push
-+ Look at the timing. >> iceGlobe {"freeze":0.2} push
-Around then, Earth was in the grip of a long, cold glacial period. >> iceGlobe {"freeze":"@grip"} push
-+ Temperatures dropped. Winters got brutal. ~0.2 >> coldNight {"label":"BRUTAL WINTERS"} push
-Some researchers, like the archaeologist Ian Gilligan, think the cold is what finally pushed us into clothes. >> research {"text":"IAN GILLIGAN"} push
-+ But turning an animal into a coat is harder than it sounds. >> hideSteps {} push
+So why did people finally get dressed? >> think {"q1":"@dressed","q2":"NEVER"} push
++ One big idea is the cold. >> iceGlobe {"freeze":0.2} push
+Our planet has swung between warm spells and long, cold glacial periods, again and again. >> iceGlobe {"freeze":"@cold"} push
++ In the cold times, temperatures dropped and winters got brutal. ~0.2 >> coldNight {"label":"BRUTAL WINTERS"} push
+The archaeologist Ian Gilligan argues that clothing began mainly as protection from Ice Age cold. >> research {"text":"IAN GILLIGAN"} push
++ He even suggests that the need for cloth may have helped push people toward farming. Though that idea is debated. ~0.2 >> research {"text":"IAN GILLIGAN"} [1300,560,1.1,1.2]
+But turning an animal into a coat is harder than it sounds. >> hideSteps {} push
 + You have to skin it, scrape it clean, stretch it out to dry, and work it until it's soft. >> hideSteps {"a":"@skin","b":"@scrape","c":"@stretch","d":"@soft"} push
 + Or it rots, and it stinks. ~0.3 >> hideSteps {"a":"DONE","b":"DONE","c":"DONE","d":"DONE","stink":"@stinks"} push
 And that's where clue number three comes in. >> clueBoard {"a":"DONE","b":"DONE","c":"DONE","active":3,"label":"CLUE 3"} [1440,520,1.0,1.25]
 
 = tools wonder
 In a cave in Morocco, archaeologists found sixty two bone tools. >> map {"region":"morocco","label":"CONTREBANDIERS CAVE, MOROCCO"} push
-+ They were shaped and polished for one job: scraping hides and furs. >> boneTools {"tools":0.2,"scrape":"@scraping"} push
++ Shaped and polished for working leather and fur. >> boneTools {"tools":0.2,"scrape":"@leather"} push
 + They're about ninety thousand to a hundred and twenty thousand years old. ~0.2 >> boneTools {"tools":"DONE","scrape":"DONE","sub":"~90,000–120,000 YEARS","subT":"@ninety"} push
 In the same cave were the bones of foxes, jackals, and wildcats. >> furAnimals {"fox":"@foxes","jackal":"@jackals","cat":"@wildcats"} push
-+ With cut marks from skinning. >> furAnimals {"fox":"DONE","jackal":"DONE","cat":"DONE","cuts":"@cut"} push
-+ Nobody hunts a fox for the meat. They wanted the fur. ~0.3 >> furAnimals {"fox":"DONE","jackal":"DONE","cat":"DONE","cuts":"DONE","fur":"@fur"} push
++ With careful cut marks from skinning. >> furAnimals {"fox":"DONE","jackal":"DONE","cat":"DONE","cuts":"@cut"} push
++ There's not much meat on a fox. They probably wanted the fur. ~0.3 >> furAnimals {"fox":"DONE","jackal":"DONE","cat":"DONE","cuts":"DONE","fur":"@fur"} push
+Even Neanderthals twisted string. >> cord {"twist":0.3} push
++ A tiny scrap of three-ply cord, stuck to a stone tool in France, is about forty one to fifty two thousand years old. ~0.2 >> cord {"twist":"DONE","sub":"~41,000–52,000 YEARS","subT":"@forty"} push
 Then came a tiny invention that changed everything. >> needleHero {"glow":"@tiny","label":" "} push
 + The needle. ~0.3 >> needleHero {"glow":"DONE","labelT":"@needle"} push
 + With a needle and thread, you can sew pieces together. >> needleHero {"glow":"DONE","thread":"@thread","labelT":"DONE"} push
 + A body. Sleeves. A hood. Trousers. Clothes that actually fit. >> sewParka {"body":"@body","sleeves":"@sleeves","hood":"@hood","trousers":"@trousers","stitch":0.1} push
-Bone needles with an eye show up in Siberia and China about forty thousand years ago. >> needleHero {"glow":"DONE","labelT":"DONE","sub":"~40,000 YEARS AGO","subT":"@forty"} push
-+ And fitted clothes took people to places no human had lived before. >> arcticWalk {} push
-+ By about thirty two thousand years ago, people were living in the Arctic, in Siberia. >> map {"region":"yana","label":"YANA, ARCTIC SIBERIA"} push
-Neanderthals, our close cousins, probably wore simpler things. Hides, draped over the shoulders. >> capeVsParka {"lt":"@hides","r":" "} push
-+ Some researchers think fitted clothes gave our species an edge in the deep cold. ~0.3 >> capeVsParka {"lt":"DONE","cold":true,"wind":"@cold","rt":"@fitted"} push
+The oldest needles with an eye are about forty thousand years old, from a cave in Siberia. >> needleHero {"glow":"DONE","labelT":"DONE","sub":"~40,000 YEARS · SIBERIA","subT":"@forty"} push
++ Before that, people probably punched holes with pointed bone awls. ~0.2 >> timelineClo {"fur":"DONE","lice":"DONE","needle":"@awls"} push
+In the Czech Republic, people even pressed woven material into clay, about twenty six thousand years ago, leaving its pattern behind. >> clayWeave {"press":"@pressed"} push
+And sewn clothes took people to places no human had lived before. >> arcticWalk {} push
++ By about thirty two thousand years ago, people were living far north of the Arctic Circle, in Siberia. >> map {"region":"yana","label":"YANA, ARCTIC SIBERIA"} push
++ And they left behind nearly two hundred bone needles. ~0.3 >> needleHero {"glow":"DONE","labelT":"DONE","label":"~200 NEEDLES","sub":"YANA · ~32,000 YEARS","subT":"@hundred"} push
+Neanderthals, our close cousins, worked animal hides too. >> capeVsParka {"lt":"@hides","r":" "} push
++ They probably wore draped capes rather than sewn, fitted clothes. But that's educated guesswork. >> capeVsParka {"lt":"DONE","rt":"@fitted"} push
++ One model suggests some Neanderthal groups may have needed to cover up to eighty percent of their bodies in winter. >> capeVsParka {"lt":"DONE","rt":"DONE","l":"UP TO 80% COVERED?"} push
++ Some researchers think fitted clothes gave our species an edge in the deep cold. ~0.3 >> capeVsParka {"lt":"DONE","rt":"DONE","cold":true,"wind":"@cold"} push
 And here's a clue hiding in your own feet. >> toeBones {"a":"@feet","b":"NEVER","label":" "} push
-+ Wearing shoes for years makes the small bones in your toes thinner. >> toeBones {"a":"DONE","b":"@shoes"} push
-+ And the toe bones of people from about forty thousand years ago are already thinner. ~0.2 >> toeBones {"a":"DONE","b":"DONE","ring":"@thinner"} push
++ Shoes rarely survive. But toe bones do. >> toeBones {"a":"DONE","b":"@toe"} push
++ Wearing shoes for years leaves your little toe bones weaker and thinner. >> toeBones {"a":"DONE","b":"DONE","ring":"@thinner"} push
++ And in people from about forty thousand years ago, they're already thinner. ~0.2 >> toeBones {"a":"DONE","b":"DONE","ring":"DONE","label":"~40,000 YEARS AGO"} push
 + Your toes still remember the first shoes. ~0.3 >> toeBones {"a":"DONE","b":"DONE","ring":"DONE","label":"YOUR TOES REMEMBER"} pull
 
 = style warm
 But here's the part most people miss. >> card {"lines":["NOT JUST","WARMTH"],"icon":"shirt"} push
 + Clothes were never only about staying warm. ~0.2 >> nakedVsDressed {"l":"WARMTH","r":"STYLE","rt":"@never"} push
-In a cave in Georgia called Dzudzuana, scientists found flax fibres more than thirty thousand years old. >> map {"region":"georgia2","label":"DZUDZUANA CAVE, GEORGIA"} push
-+ Some of them were dyed. Black. Grey. Turquoise. And pink. ~0.3 >> fibres {"black":"@black","grey":"@grey","turq":"@turquoise","pink":"@pink"} push
-+ More than thirty thousand years ago, someone wanted pink. ~0.3 >> fibres {"black":"DONE","grey":"DONE","turq":"DONE","pink":"DONE"} [1500,650,1.1,1.25]
-Little carved figures show what look like woven caps and string skirts, more than twenty five thousand years ago. >> capSkirt {"cap":"@caps","skirt":"@skirts"} push
-At Sungir, in Russia, about thirty four thousand years ago, a man and two children were buried in clothes covered with thousands of ivory beads. >> sungirBeads {"beads":"@thousands","label":"SUNGIR · ~34,000 YEARS"} push
-+ Every bead was carved by hand. All together, that's thousands of hours of work. >> beadHours {"hours":10000} push
-And beads may be even older than clothes. In Morocco, shell beads have been found from around a hundred and fifty thousand years ago. >> shellBeads {"sub":"~150,000 YEARS","subT":"@hundred"} push
-+ So from the very start, what you wore said something about you. Who you were. Where you belonged. ~0.3 >> tribes {"ring":"@who","label":"WHO YOU ARE"} push
+In a cave in Georgia called Dzudzuana, scientists found flax fibres from more than thirty thousand years ago, some twisted into thread. >> map {"region":"georgia2","label":"DZUDZUANA CAVE, GEORGIA"} push
++ And some seem to have been coloured. Black. Grey. Turquoise. And in a later layer, one pink. ~0.3 >> fibres {"black":"@black","grey":"@grey","turq":"@turquoise","pink":"@pink"} push
++ Tens of thousands of years ago, someone wanted pink. ~0.3 >> fibres {"black":"DONE","grey":"DONE","turq":"DONE","pink":"DONE"} [1500,650,1.1,1.25]
+And the oldest known blue dye on cloth is indigo, on cotton from Peru, about six thousand years old. >> blueCloth {"dye":"@indigo"} push
+Little carved figures, around twenty five to thirty thousand years old, seem to show woven caps, and skirts made of string. >> capSkirt {"cap":"@caps","skirt":"@skirts"} push
++ Some think the famous Venus of Willendorf wears a woven cap. Others see braided hair. ~0.2 >> capSkirt {"cap":"DONE","skirt":"DONE","label":"WOVEN CAP, OR BRAIDS?"} push
+At Sungir, in Russia, about thirty four thousand years ago, a man and two boys were buried in clothes covered with more than thirteen thousand ivory beads. >> sungirBeads {"beads":"@thirteen","label":"SUNGIR · ~34,000 YEARS"} push
++ By one estimate, each bead took about an hour to make. That's nearly ten thousand hours of work. >> beadHours {"hours":10000} push
+And decoration may be even older than our oldest clues to clothing. >> shellBeads {"label":"SHELL BEADS","sub":" "} push
++ Shell beads from Morocco are at least a hundred and forty two thousand years old. >> shellBeads {"sub":"142,000+ YEARS","subT":"@hundred"} push
++ So from very early on, what you wore said something about you. Who you were. Where you belonged. ~0.3 >> tribes {"ring":"@who","label":"WHO YOU ARE"} push
 
 = otzi open
 Here's what a full outfit looked like, about five thousand three hundred years ago. >> map {"region":"alps2","label":"THE ALPS · ~5,300 YEARS AGO"} push
 + Meet Ötzi, a man found frozen in the Alps. >> otziDress {} push
-+ A bearskin hat. A coat of sheep and goat leather. Goatskin leggings. Shoes with bearskin soles, laced with cattle leather. And a quiver of deerskin. >> otziDress {"hat":"@hat","coat":"@coat","legs":"@leggings","shoes":"@soles","laces":"@laced","quiver":"@quiver"} push
-+ At least five different animals in one outfit. ~0.3 >> otziDress {"hat":"DONE","coat":"DONE","legs":"DONE","shoes":"DONE","laces":"DONE","quiver":"DONE","count":"@five"} push
-And in Armenia, archaeologists found a leather shoe about five thousand five hundred years old, stuffed with grass. >> oldShoe {"grass":"@grass"} push
-+ It's about a modern size thirty seven. It would almost fit someone today. ~0.3 >> oldShoe {"grass":"DONE","size":"@size"} push
++ A bearskin hat. A patchwork coat of sheep and goat hide. Goatskin leggings. Laces of cattle leather. And deerskin shoes, stuffed with dry grass to keep his feet warm. >> otziDress {"hat":"@hat","coat":"@coat","legs":"@leggings","laces":"@laces","shoes":"@shoes","grass":"@grass"} push
++ At least five kinds of animal, in one outfit. ~0.3 >> otziDress {"hat":"DONE","coat":"DONE","legs":"DONE","laces":"DONE","shoes":"DONE","grass":"DONE","count":"@five"} push
+One shoemaker made copies of Ötzi's shoes and went hiking in them. >> replicaHike {"ok":"NEVER"} push
++ He said they were better than most modern footwear. Good grip. No blisters. ~0.3 >> replicaHike {"ok":"@blisters"} push
+The oldest known woven garment is a linen shirt from Egypt, with a V-neck and pleated sleeves, about five thousand years old. >> tarkhan {"unfold":"@shirt"} push
++ It was dug up in nineteen thirteen, but nobody noticed it until nineteen seventy seven, in a bag of old, dirty linen. ~0.3 >> tarkhan {"unfold":"DONE","dirty":"@linen"} push
+And trousers? Some of the oldest known pairs are about three thousand years old, from western China. >> trousers {} push
++ They were worn by horse riders. Trousers may have been invented for riding horses. ~0.3 >> trousers {"ring":"@trousers","sub":"MADE FOR RIDING?","subT":"@riding"} push
+And in Armenia, archaeologists found a leather shoe about five thousand five hundred years old, laced up and stuffed with grass. >> oldShoe {"grass":"@grass"} push
++ The grass was probably there to help it keep its shape. It's about a modern size thirty seven. It would almost fit someone today. ~0.3 >> oldShoe {"grass":"DONE","size":"@size"} push
+Even older are sandals woven from sagebrush bark, found in a cave in Oregon. About nine to ten and a half thousand years old. ~0.3 >> sandals {"sub":"~9,000–10,500 YEARS"} push
 
 = end warm
 So why did humans start wearing clothes? >> think {"q1":"@clothes","q2":"NEVER"} push
-+ First, we lost our fur, to stay cool. Then the ice age made us cold. And then clothes became something more. Who we are. >> recap {"a":"@fur","b":"@cold","c":"@more"} push
++ First, we lost our fur, probably to stay cool. Then the cold made clothes worth the effort. And then clothes became something more. Who we are. >> recap {"a":"@fur","b":"@cold","c":"@more"} push
 Before we go, which clue surprised you most? Your hair follicles, the lice, or your toes? Let me know in the comments. ~0.3 >> commentPrompt {"q":"WHICH CLUE SURPRISED YOU?","list":["HAIR FOLLICLES","THE LICE","YOUR TOES"]} push
 Every video on this channel asks one kind of question. How did humans live without the things we can't live without? >> series {"label":"HOW DID HUMANS LIVE WITHOUT...?"} push
+Every time you pull on a sock, you're using an invention older than farming, older than writing, older than cities. ~0.3 >> olderThan {"a":"@farming","b":"@writing","c":"@cities"} push
 Tomorrow morning, you'll get dressed in about two minutes. >> morning {"timer":"@minutes"} push
-+ It took humans more than a million years to figure it out. ~0.3 >> nakedVsDressed {"l":"A MILLION YEARS","r":"2 MINUTES"} push
++ It took humanity hundreds of thousands of years to learn how. ~0.3 >> nakedVsDressed {"l":"THEN","r":"2 MINUTES"} push

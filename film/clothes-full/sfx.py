@@ -239,6 +239,8 @@ for kind in ["wind", "gust", "cold", "hum", "fire", "flies", "night", "water", "
         if kind == "jungle" and sc in ("apeTickle", "stickDoll", "polyphony", "laughTree"): has = sc != "laughTree"
         if kind == "wind" and sc in ("apeTickle", "stickDoll", "polyphony"): has = False
         if kind == "hum" and sc in ("phoneCouch", "shockRoom", "screenTime"): has = True
+        if kind == "hum" and sc in ("dressCheck", "perPerson", "morning", "lab"): has = True
+        if kind == "wind" and sc in ("heatRun", "coolBreeze", "trousers", "replicaHike"): has = True
         if has:
             if spans and abs(spans[-1][1] - a["start"]) < 0.05: spans[-1][1] = a["end"]
             else: spans.append([a["start"], a["end"]])
@@ -327,6 +329,20 @@ for s in shots:
         wet = hum.copy()
         for d, g_ in [(0.11, 0.5), (0.23, 0.35), (0.37, 0.22)]: k_ = int(d * SR); wet[k_:] += hum[:-k_] * g_
         fx(t0, fade(wet, 0.3, 0.6), 0.0)
+    elif sc == "molClock":
+        for k in range(int((t1 - t0) / 0.5)): fx(t0 + 0.2 + k * 0.5, tick(2600 if k % 2 else 2200, 0.09), -0.4)
+    elif sc == "boneTools" and s["opts"].get("scrape") is not None:
+        for k in range(int((t1 - t0) / 0.52)): fx(t0 + 0.4 + k * 0.52, scrape(0.3, 0.1), 0.2)
+    elif sc == "sewParka":
+        for k in range(int((t1 - t0) / 0.5)): fx(t0 + 0.2 + k * 0.5, tick(3400, 0.05), 0.3)
+    elif sc in ("heatRun", "replicaHike", "arcticWalk"):
+        per = 0.285 if sc == "heatRun" else 0.45
+        for k in range(int((t1 - t0) / per)): fx(t0 + 0.1 + k * per, thud(90 if sc != "arcticWalk" else 70, 0.12 if sc == "heatRun" else 0.09), 0.1 if k % 2 else -0.1)
+    elif sc == "trousers":
+        for k in range(int((t1 - t0) / 0.19)): fx(t0 + k * 0.19, thud(120, 0.08 if k % 4 else 0.14), 0.2)
+    elif sc in ("coldNight", "shiverGrab"):
+        for k in range(int((t1 - t0) / 0.6)):
+            for j in range(4): fx(t0 + 0.3 + k * 0.6 + j * 0.045, tick(1600 + j * 120, 0.05), -0.3)
     elif sc == "phoneCouch" and s["opts"].get("ping") is not None:
         for k in range(3): fx(t0 + s["opts"]["ping"] + k * 0.35, chime(1318.5, 0.08), 0.4)
     elif sc == "ratTickle" and not s["opts"].get("chase"):
