@@ -160,3 +160,14 @@ html.vertical #popup { top: 600px; width: 990px; padding: 22px 26px; } html.vert
 html.vertical #popup b { font-size: 42px; } html.vertical #popup span { font-size: 31px; } html.vertical #popup small { font-size: 24px; }
 html.vertical #endcard { padding: 0 70px; } html.vertical #ecText { font-size: 74px; }
 html.vertical #spinText { top: 306px; font-size: 26px; }
+
+#feed { position: absolute; left: 56px; top: 130px; width: 640px; display: none; padding: 18px 18px 8px; border-radius: 22px; background: rgba(14,12,20,.96);
+  border: 3px solid #ff3fa4; box-shadow: 0 24px 70px rgba(0,0,0,.7), 0 0 30px rgba(255,63,164,.35); transform-origin: 20% 30%; }
+.fdHead { font: 700 30px/1.2 "Oswald", sans-serif; letter-spacing: 2px; text-transform: uppercase; color: #ff7ac8; margin: 0 4px 14px; }
+.fdItem { display: flex; gap: 18px; align-items: center; margin-bottom: 14px; }
+.fdThumb { flex: none; width: 176px; height: 99px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 56px;
+  background: linear-gradient(135deg, #3b2a5c, #1b1230); }
+.fdTx b { display: block; font: 800 30px/1.18 "Inter", sans-serif; color: #fff; }
+.fdTx span { display: block; margin-top: 6px; font: 600 23px/1.2 "Inter", sans-serif; color: #b9a8d6; }
+html.vertical #feed { left: 40px; top: 560px; width: 1000px; }
+html.vertical .fdTx b { font-size: 36px; } html.vertical .fdTx span { font-size: 27px; } html.vertical .fdHead { font-size: 34px; }

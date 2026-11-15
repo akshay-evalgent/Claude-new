@@ -167,6 +167,76 @@
         <path d="M112 300 V96 a44 44 0 0 1 88 0 V268 a30 30 0 0 1 -60 0 V132" fill="none" stroke="url(#clip)" stroke-width="19" stroke-linecap="round"/>
         ${ballFace(156, 118, st)}</g>`;
     },
+    // the smart speaker: a fabric cylinder whose light ring glows while she talks
+    alexa(st) {
+      const ring = 0.35 + 0.65 * Math.max(st.talk || 0, 0.25 + 0.25 * Math.sin(st.t * 3));
+      let fab = '';
+      for (let y = 92; y < 300; y += 9) fab += `<path d="M66 ${y} h168" stroke="#3a3f48" stroke-width="2" opacity=".55"/>`;
+      return `<ellipse cx="150" cy="306" rx="86" ry="20" fill="#121418"/>
+        <rect x="64" y="54" width="172" height="252" rx="16" fill="#2b2f36"/>${fab}
+        <path d="M64 70 v220 a86 20 0 0 0 172 0 v-220" fill="none" stroke="#1d2026" stroke-width="3"/>
+        <ellipse cx="150" cy="56" rx="86" ry="22" fill="#3c414a"/><ellipse cx="150" cy="54" rx="72" ry="16" fill="#23262c"/>
+        <ellipse cx="150" cy="54" rx="80" ry="19" fill="none" stroke="#2fd3ff" stroke-width="7" opacity="${F(ring)}" filter="url(#pg)"/>
+        <rect x="88" y="104" width="124" height="128" rx="20" fill="#0c0e12"/>
+        ${ledFace(150, 152, { color: '#7fe6ff', dx: 32, ew: 22, eh: 30, my: 50, mw: 46, mopen: 26 }, st)}`;
+    },
+    // the careful one: a four-point sparkle with a small twin
+    gemini(st) {
+      const tw = 0.8 + 0.2 * Math.sin(st.t * 4);
+      const star = (cx, cy, r) => `M${cx} ${cy - r} C${F(cx + r * 0.08)} ${F(cy - r * 0.32)} ${F(cx + r * 0.32)} ${F(cy - r * 0.08)} ${cx + r} ${cy} C${F(cx + r * 0.32)} ${F(cy + r * 0.08)} ${F(cx + r * 0.08)} ${F(cy + r * 0.32)} ${cx} ${cy + r} C${F(cx - r * 0.08)} ${F(cy + r * 0.32)} ${F(cx - r * 0.32)} ${F(cy + r * 0.08)} ${cx - r} ${cy} C${F(cx - r * 0.32)} ${F(cy - r * 0.08)} ${F(cx - r * 0.08)} ${F(cy - r * 0.32)} ${cx} ${cy - r} Z`;
+      return `<defs><linearGradient id="gem" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f8bff"/><stop offset=".55" stop-color="#9b6bff"/><stop offset="1" stop-color="#ff7aa8"/></linearGradient></defs>
+        <path d="${star(150, 170, 150)}" fill="url(#gem)" filter="url(#pg)"/>
+        <path d="${star(258, 50, 30)}" fill="#cbb8ff" opacity="${F(tw)}"/>
+        <circle cx="150" cy="170" r="62" fill="#160f2e" opacity=".88"/>
+        ${ledFace(150, 160, { color: '#ffffff', dx: 24, ew: 18, eh: 26, my: 32, mw: 34, mopen: 18, glow: false }, st)}`;
+    },
+    // the vacuum: an angry disc with a cat riding on top
+    roomba(st) {
+      const breathe = Math.sin(st.t * 1.1) * 2;
+      return `<ellipse cx="150" cy="300" rx="140" ry="34" fill="#000" opacity=".35"/>
+        <path d="M14 262 v20 a136 50 0 0 0 272 0 v-20" fill="#1b1d22"/>
+        <ellipse cx="150" cy="262" rx="136" ry="50" fill="#2c2f36"/>
+        <ellipse cx="150" cy="258" rx="118" ry="40" fill="#3b3f48"/>
+        <path d="M30 274 a124 44 0 0 0 240 0" fill="none" stroke="#5a606c" stroke-width="5"/>
+        <g transform="translate(64 ${F(150 + breathe)})">
+          <path d="M8 66 q-18 -36 6 -58" fill="none" stroke="#e8893a" stroke-width="10" stroke-linecap="round"/>
+          <ellipse cx="44" cy="60" rx="38" ry="30" fill="#f29a45"/>
+          <circle cx="62" cy="22" r="24" fill="#f29a45"/>
+          <path d="M44 8 l4 -22 l14 16 z M66 2 l14 -18 l6 22 z" fill="#f29a45"/>
+          <path d="M52 22 q4 -4 8 0 M66 22 q4 -4 8 0" stroke="#3a1f0c" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M60 30 l3 3 l3 -3" stroke="#3a1f0c" stroke-width="2.5" fill="none"/>
+          <path d="M30 52 q6 -6 12 0 M48 60 q6 -6 12 0" stroke="#d9772b" stroke-width="4" fill="none"/>
+        </g>
+        ${ledFace(160, 262, { color: '#ff4d4d', dx: 46, ew: 30, eh: 18, my: 26, mw: 50, mopen: 14, tilt: 8 }, st)}`;
+    },
+    // the self-checkout kiosk
+    selfcheckout(st) {
+      const lamp = Math.sin(st.t * 5) > 0 ? '#ff3b3b' : '#5a1414';
+      return `<path d="M232 30 v-22" stroke="#7c8594" stroke-width="5"/><circle cx="232" cy="8" r="9" fill="${lamp}" filter="url(#pg)"/>
+        <rect x="58" y="26" width="184" height="140" rx="12" fill="#0d1b2a" stroke="#c9d1db" stroke-width="7"/>
+        ${ledFace(150, 82, { color: '#ffd23f', dx: 40, ew: 26, eh: 32, my: 44, mw: 50, mopen: 24 }, st)}
+        <rect x="86" y="166" width="128" height="22" fill="#9aa4b2"/>
+        <rect x="66" y="188" width="168" height="40" rx="6" fill="#d7dde5"/><rect x="88" y="196" width="124" height="20" rx="3" fill="#111"/>
+        <path d="M94 206 h112" stroke="#ff2e2e" stroke-width="3" filter="url(#pg)"/>
+        <rect x="236" y="196" width="58" height="14" rx="3" fill="#b8c1cc"/><path d="M246 196 l6 -40 h28 l6 40 z" fill="#f4f1e8" stroke="#c9c2b0" stroke-width="2"/>
+        <rect x="96" y="228" width="108" height="112" fill="#c4ccd6"/><rect x="118" y="246" width="64" height="38" rx="4" fill="#2b3240"/>
+        <text x="150" y="314" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="13" fill="#2b3240" letter-spacing="1">SELF CHECKOUT</text>`;
+    },
+    // the feed: a dark slab that watches you back
+    algorithm(st) {
+      const off = (st.t * 46) % 46;
+      let rows = '';
+      for (let k = -1; k < 4; k++) {
+        const y = 196 + k * 46 + off;
+        if (y < 186 || y > 300) continue;
+        rows += `<rect x="96" y="${F(y)}" width="44" height="30" rx="5" fill="#ff3fa4" opacity=".55"/><rect x="148" y="${F(y + 4)}" width="58" height="8" rx="4" fill="#d7c4ff" opacity=".6"/><rect x="148" y="${F(y + 18)}" width="38" height="7" rx="3.5" fill="#d7c4ff" opacity=".35"/>`;
+      }
+      return `<rect x="72" y="14" width="156" height="314" rx="34" fill="#12061f" stroke="#ff3fa4" stroke-width="6" filter="url(#pg)"/>
+        <rect x="84" y="28" width="132" height="286" rx="24" fill="#07020d"/>
+        <clipPath id="feedclip"><rect x="88" y="184" width="124" height="122" rx="10"/></clipPath><g clip-path="url(#feedclip)">${rows}</g>
+        ${ledFace(150, 92, { color: '#ff7ac8', dx: 30, ew: 22, eh: 30, my: 50, mw: 44, mopen: 24 }, st)}
+        <path d="M134 318 l16 10 l16 -10" fill="none" stroke="#ff3fa4" stroke-width="4" stroke-linecap="round"/>`;
+    },
   };
 
   window.Puppets = {

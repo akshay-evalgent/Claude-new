@@ -61,7 +61,7 @@
       if (s.startsWith('pair:') || ['wide', 'stage', 'deskR'].includes(s)) s = b.who ? 'cu:' + b.who : st.onstage ? 'cu:' + st.onstage : 'desk';
       if (s === 'desk') return { key: s, x: 1385, y: 540, z: 1.0 };
       const c = CAST[s.slice(3)], p = SEAT[c.seat];
-      return c.seat === 'stage' ? { key: s, x: p.x + 10, y: 492, z: 1.8, stage: true } : { key: s, x: p.x, y: 536, z: 2.2 };
+      return c.seat === 'stage' ? { key: s, x: p.x + 10, y: 492 + (c.camDy || 0), z: 1.8 * (c.camZ || 1), stage: true } : { key: s, x: p.x, y: 536, z: 2.2 };
     }
     if (s === 'wide') return { key: s, x: 960, y: 540, z: 1 };
     if (s === 'stage') return { key: s, x: 500, y: 500, z: 1.7 };
@@ -69,7 +69,7 @@
     if (s === 'deskR') return { key: s, x: 1105, y: 540, z: 1.25 };   // desk on the right, room for a panel on the left
     if (s.startsWith('cu:')) {
       const c = CAST[s.slice(3)], p = SEAT[c.seat];
-      return c.seat === 'stage' ? { key: s, x: p.x + 90, y: p.y - 6, z: 1.9 } : { key: s, x: p.x, y: p.y - 30, z: 2.7 };
+      return c.seat === 'stage' ? { key: s, x: p.x + 90, y: p.y - 6 + (c.camDy || 0), z: 1.9 * (c.camZ || 1) } : { key: s, x: p.x, y: p.y - 30, z: 2.7 };
     }
     if (s.startsWith('pair:')) {
       const [a, c] = s.slice(5).split(',').map((id) => SEAT[CAST[id].seat]);
@@ -184,6 +184,7 @@
       // make room for a panel: slide the character aside for a CAPTCHA grid, down for a pop-up
       if (st.grid && T >= since.grid) { const e = EASE.out(clamp((T - since.grid) / 0.3, 0, 1)); cx -= (cam.stage ? 150 : 95) * e; cy -= 40 * e; z *= 1 - (cam.stage ? 0.2 : 0.1) * e; }
       else if (st.popup && T >= since.popup) cy -= (cam.stage ? 110 : 70) * EASE.out(clamp((T - since.popup) / 0.3, 0, 1));
+      else if (st.feed && T >= since.feed) cy -= (cam.stage ? 190 : 150) * EASE.out(clamp((T - since.feed) / 0.3, 0, 1));
     }
     const hw = W / 2 / z, hh = H / 2 / z;
     cx = hw * 2 <= WW ? clamp(cx, hw, WW - hw) : WW / 2;
@@ -315,6 +316,24 @@
       const p = EASE.outBack(clamp((T - since.popup) / 0.3, 0, 1));
       $('popup').style.transform = `translateX(-50%) translateY(${((1 - p) * -60).toFixed(1)}px) scale(${(0.85 + 0.15 * p).toFixed(3)})`;
       $('popup').style.opacity = clamp(p * 2, 0, 1);
+    }
+
+    // ---- a watch-history feed: {title, items: [{icon, title, meta, at}]}
+    const FD = st.feed, fdOn = !!FD && T >= since.feed && !ended;
+    show('feed', fdOn);
+    if (fdOn) {
+      const key = 'fd' + since.feed;
+      if ($('feed').dataset.key !== key) {
+        $('feed').innerHTML = `<div class="fdHead">${rich(FD.title || '')}</div>` + FD.items.map((it) =>
+          `<div class="fdItem"><div class="fdThumb">${rich(it.icon || '▶️')}</div><div class="fdTx"><b>${rich(it.title)}</b><span>${rich(it.meta || '')}</span></div></div>`).join('');
+        $('feed').dataset.key = key;
+      }
+      const age = T - since.feed, p = EASE.outBack(clamp(age / 0.3, 0, 1));
+      $('feed').style.transform = `scale(${(0.8 + 0.2 * p).toFixed(3)})`; $('feed').style.opacity = clamp(p * 2, 0, 1);
+      $('feed').querySelectorAll('.fdItem').forEach((el, k) => {
+        const q = EASE.out(clamp((age - (FD.items[k].at ?? 0.25 + k * 0.4)) / 0.25, 0, 1));
+        el.style.opacity = q; el.style.transform = `translateX(${((1 - q) * 40).toFixed(1)}px)`;
+      });
     }
 
     // ---- the verdict: self-rating against the judges' average

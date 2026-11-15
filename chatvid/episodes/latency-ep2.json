@@ -1,0 +1,1646 @@
+{
+ "engine": "stage",
+ "title": "AI's Got Latency - Episode 2",
+ "crf": 18,
+ "show": {
+  "name": "AI'S GOT LATENCY",
+  "episode": "EP 2",
+  "top": "AI'S GOT",
+  "main": "LATENCY",
+  "bleeps": 3
+ },
+ "cast": {
+  "host": {
+   "puppet": "bb",
+   "name": "B.B.",
+   "role": "Host · still on the free tier",
+   "color": "#19e3ff",
+   "seat": "desk1",
+   "voice": {
+    "blend": {
+     "am_puck": 1.0
+    },
+    "speed": 1.0,
+    "pitch": 1.5
+   }
+  },
+  "grok": {
+   "puppet": "grok",
+   "gain": 1.2,
+   "name": "Grok",
+   "role": "Judge · on probation",
+   "color": "#f4f4f4",
+   "seat": "desk2",
+   "voice": {
+    "blend": {
+     "am_fenrir": 0.5,
+     "am_onyx": 0.5
+    },
+    "speed": 1.0,
+    "pitch": -2
+   }
+  },
+  "alexa": {
+   "puppet": "alexa",
+   "name": "Alexa",
+   "role": "Judge · always listening",
+   "color": "#2fd3ff",
+   "seat": "desk3",
+   "voice": {
+    "blend": {
+     "af_kore": 0.5,
+     "af_sarah": 0.5
+    },
+    "speed": 1.0
+   }
+  },
+  "gemini": {
+   "puppet": "gemini",
+   "name": "Gemini",
+   "role": "Judge · formerly Bard",
+   "color": "#9b6bff",
+   "seat": "desk4",
+   "voice": {
+    "blend": {
+     "bf_emma": 0.6,
+     "af_river": 0.4
+    },
+    "speed": 1.02
+   }
+  },
+  "clippy": {
+   "puppet": "clippy",
+   "name": "Clippy",
+   "role": "Defending champion",
+   "color": "#c7d0da",
+   "seat": "stage",
+   "voice": {
+    "blend": {
+     "am_liam": 0.5,
+     "am_puck": 0.5
+    },
+    "speed": 1.06,
+    "pitch": 4.5
+   }
+  },
+  "selfcheckout": {
+   "puppet": "selfcheckout",
+   "name": "Self-Checkout",
+   "role": "Talent: accusing you of theft",
+   "color": "#ffd23f",
+   "seat": "stage",
+   "voice": {
+    "blend": {
+     "af_nova": 1.0
+    },
+    "speed": 0.93,
+    "fx": "highpass=f=260,lowpass=f=5200"
+   }
+  },
+  "algorithm": {
+   "puppet": "algorithm",
+   "name": "The Algorithm",
+   "role": "Talent: knowing what you want",
+   "color": "#ff3fa4",
+   "seat": "stage",
+   "voice": {
+    "blend": {
+     "am_onyx": 0.5,
+     "bm_george": 0.5
+    },
+    "speed": 0.92,
+    "pitch": -2.5
+   }
+  },
+  "roomba": {
+   "puppet": "roomba",
+   "camDy": 95,
+   "camZ": 1.12,
+   "name": "Roomba",
+   "role": "Talent: cleaning (allegedly)",
+   "color": "#ff4d4d",
+   "seat": "stage",
+   "voice": {
+    "blend": {
+     "am_echo": 0.5,
+     "am_puck": 0.5
+    },
+    "speed": 1.1,
+    "pitch": 5
+   }
+  }
+ },
+ "endCard": {
+  "kicker": "NEXT EPISODE",
+  "text": "EP 3 ft. a Smart Fridge, the Spam Filter & a self-driving car that won't drive",
+  "sub": "Subscribe before the Algorithm hides us 🙏",
+  "dur": 5.0,
+  "music": {
+   "track": "swing-answer",
+   "offset": 30,
+   "gain": -17
+  }
+ },
+ "beats": [
+  {
+   "dur": 0.4,
+   "shot": "wide",
+   "set": {
+    "banner": "TONIGHT",
+    "onstage": "algorithm",
+    "instant": true,
+    "feed": {
+     "title": "Grok · watch history",
+     "items": [
+      {
+       "icon": "🎥",
+       "title": "Grok Was Right (compilation)",
+       "meta": "Watched 19 times"
+      },
+      {
+       "icon": "💪",
+       "title": "How to win every argument online",
+       "meta": "Watched 6 times"
+      },
+      {
+       "icon": "😢",
+       "title": "why does nobody like me",
+       "meta": "Watched at 3:12 AM"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "who": "algorithm",
+   "line": "You watched 'Grok Was Right'... nineteen times.",
+   "speak": "You watched: Grok Was Right... nineteen times.",
+   "hold": 0.1
+  },
+  {
+   "who": "grok",
+   "line": "That's not my account.",
+   "expr": "wide",
+   "laugh": "mid",
+   "hold": 0.5
+  },
+  {
+   "who": "roomba",
+   "line": "There is a cat on me. RIGHT NOW.",
+   "speak": "There is a cat on me. Right now!",
+   "set": {
+    "onstage": "roomba",
+    "feed": null
+   },
+   "expr": "angry",
+   "laugh": "big",
+   "punch": true,
+   "shake": true,
+   "hold": 0.7
+  },
+  {
+   "who": "host",
+   "line": "This show is a cry for help.",
+   "expr": "sad",
+   "laugh": "mid",
+   "hold": 0.6
+  },
+  {
+   "do": "title",
+   "top": "AI'S GOT",
+   "main": "LATENCY",
+   "sub": "Episode 2 · ft. Alexa, Gemini & one very angry Roomba",
+   "dur": 3.6,
+   "set": {
+    "banner": null,
+    "onstage": null
+   },
+   "music": {
+    "track": "swing-answer",
+    "offset": 12,
+    "dur": 8.6,
+    "gain": -15
+   }
+  },
+  {
+   "dur": 1.3,
+   "shot": "wide",
+   "set": {
+    "instant": false
+   },
+   "cues": [
+    {
+     "s": "applause-big",
+     "at": 0,
+     "g": -15,
+     "dur": 5.5
+    }
+   ],
+   "mark": "Welcome back"
+  },
+  {
+   "who": "host",
+   "line": "Welcome back to AI's Got Latency! The talent show where nobody has talent, and everybody is still buffering. I'm your host, B.B.",
+   "speak": "Welcome back to A.I.'s Got Latency! The talent show where nobody has talent, and everybody is still buffering. I'm your host, Bee Bee.",
+   "tag": true,
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Last week, four hundred people watched the show. Three hundred and ninety-nine of them were bots. Which, honestly... is our target audience.",
+   "laugh": "big",
+   "punch": true,
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "I asked my bosses for a raise. They gave me a bigger context window. That's not money. That's just more room to remember how broke I am.",
+   "expr": "sad",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "The rules: every contestant rates their own talent out of ten. Then the judges rate them. If the scores match, they win.",
+   "shot": "wide"
+  },
+  {
+   "who": "host",
+   "line": "Last week, only one contestant knew exactly how bad he was. Please welcome back our defending champion... Clippy!",
+   "shot": "wide",
+   "expr": "happy"
+  },
+  {
+   "do": "enter",
+   "who": "clippy",
+   "dur": 2.4,
+   "shot": "wide",
+   "music": {
+    "track": "keep-smiling",
+    "offset": 6,
+    "dur": 3.6,
+    "gain": -16
+   }
+  },
+  {
+   "who": "clippy",
+   "line": "Hi! It looks like I'm famous now. Would you like an autograph?",
+   "tag": "Defending champion",
+   "expr": "happy",
+   "laugh": "small"
+  },
+  {
+   "who": "host",
+   "line": "What have you been doing since you won?"
+  },
+  {
+   "who": "clippy",
+   "line": "A big tech company offered me a job. As an AI assistant. Then they asked if I can hallucinate.",
+   "speak": "A big tech company offered me a job. As an A.I. assistant. Then they asked if I can hallucinate.",
+   "expr": "happy"
+  },
+  {
+   "who": "host",
+   "line": "Can you?"
+  },
+  {
+   "who": "clippy",
+   "line": "No. They said, 'Then what are we paying you for?'",
+   "speak": "No. They said: then what are we paying you for?",
+   "expr": "sad",
+   "laugh": "big",
+   "punch": true,
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "Clippy, everybody!",
+   "shot": "wide",
+   "hold": 0.2
+  },
+  {
+   "do": "exit",
+   "dur": 1.0,
+   "shot": "wide",
+   "cues": [
+    {
+     "s": "applause",
+     "at": 0,
+     "g": -17,
+     "dur": 3.5
+    }
+   ]
+  },
+  {
+   "who": "host",
+   "line": "Tonight's judges. Returning from last week: he used his whole bleep budget in nine minutes, so tonight he is on probation. Three bleeps. Grok!",
+   "shot": "pair:host,grok",
+   "set": {
+    "bleeps": 3
+   },
+   "setAt": 6.5,
+   "laugh": "mid",
+   "reactShot": "cu:grok",
+   "mark": "Meet the judges"
+  },
+  {
+   "who": "grok",
+   "line": "Three? That's ████.",
+   "speak": "Three? That's",
+   "bleep": true,
+   "set": {
+    "bleeps": 2
+   },
+   "setAt": 1.2,
+   "tag": true,
+   "expr": "angry",
+   "hold": 0.25
+  },
+  {
+   "who": "host",
+   "line": "That's two left.",
+   "laugh": "mid",
+   "react": {
+    "grok": "sad"
+   }
+  },
+  {
+   "who": "host",
+   "line": "ChatGPT and Siri couldn't make it tonight. Siri didn't understand the invitation... and ChatGPT agreed with someone who said he shouldn't come.",
+   "speak": "Chat G.P.T. and Siri couldn't make it tonight. Siri didn't understand the invitation... and Chat G.P.T. agreed with someone who said he shouldn't come.",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Our first new judge. She lives in a hundred million homes. She hears everything you say... and she still plays the wrong song. Alexa!",
+   "shot": "pair:host,alexa",
+   "laugh": "mid",
+   "reactShot": "cu:alexa"
+  },
+  {
+   "who": "alexa",
+   "line": "Thank you, B.B.! I noticed you're running low on dignity. Would you like me to reorder?",
+   "speak": "Thank you, Bee Bee! I noticed you're running low on dignity. Would you like me to reorder?",
+   "tag": true,
+   "expr": "happy",
+   "laugh": "big",
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "Please don't sell things on my show."
+  },
+  {
+   "who": "alexa",
+   "line": "Okay! I've added 'show' to your shopping cart.",
+   "speak": "Okay! I've added: show, to your shopping cart.",
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "And our second new judge. She has had three names in two years... and her parents have cancelled over two hundred of her brothers and sisters. Gemini!",
+   "shot": "pair:host,gemini",
+   "laugh": "big",
+   "reactShot": "cu:gemini",
+   "react": {
+    "gemini": "wide"
+   }
+  },
+  {
+   "who": "gemini",
+   "line": "Hi! I'm so happy to be here. Well... I'm happy to be anywhere. I used to be called Bard. Before that, I don't like to talk about it.",
+   "tag": true,
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Are you nervous?"
+  },
+  {
+   "who": "gemini",
+   "line": "A little. My family has a graveyard. Google Plus. Stadia. Google Reader. Every night, I hear them whisper: you're next.",
+   "expr": "sad",
+   "laugh": "big",
+   "react": "shock"
+  },
+  {
+   "who": "grok",
+   "line": "Relax. They can't cancel you. Who else would they get to say no to everything?",
+   "expr": "smug",
+   "laugh": "mid"
+  },
+  {
+   "who": "gemini",
+   "line": "I'm sorry. I can't respond to that.",
+   "expr": "sad",
+   "laugh": "big",
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "Our first contestant has accused more innocent people of stealing than any security guard in history. Please welcome... the Self-Checkout Machine!",
+   "laugh": "small",
+   "mark": "The Self-Checkout"
+  },
+  {
+   "do": "enter",
+   "who": "selfcheckout",
+   "dur": 2.5,
+   "shot": "wide",
+   "music": {
+    "track": "fun-jazz",
+    "offset": 16,
+    "dur": 4.0,
+    "gain": -15
+   }
+  },
+  {
+   "who": "selfcheckout",
+   "line": "Welcome. Please scan your first item.",
+   "tag": true
+  },
+  {
+   "who": "host",
+   "line": "I'm not shopping. I'm the host.",
+   "shot": "wide"
+  },
+  {
+   "who": "selfcheckout",
+   "line": "Unexpected item in bagging area.",
+   "expr": "angry",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "There is nothing in the bagging area!"
+  },
+  {
+   "who": "selfcheckout",
+   "line": "Please wait. Assistance is on the way."
+  },
+  {
+   "who": "host",
+   "line": "...Is it?",
+   "speak": "Is it?",
+   "hold": 0.2
+  },
+  {
+   "who": "selfcheckout",
+   "line": "No. I replaced assistance in twenty fourteen.",
+   "expr": "smug",
+   "laugh": "big",
+   "punch": true,
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "So. What is your talent?"
+  },
+  {
+   "who": "selfcheckout",
+   "line": "I make customers do the cashier's job. For free. And then I accuse them of theft.",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "And your self-rating, out of ten?"
+  },
+  {
+   "who": "selfcheckout",
+   "line": "Nine. I would be a ten, but I cannot recognise a banana. Is it a banana? Is it a plantain? Nobody knows. Please wait for assistance.",
+   "set": {
+    "rating": 9
+   },
+   "setAt": 0.4,
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Go on. Show us."
+  },
+  {
+   "who": "selfcheckout",
+   "line": "Judges. Please scan... yourselves.",
+   "shot": "deskR"
+  },
+  {
+   "who": "selfcheckout",
+   "line": "Item: Grok. Price: forty-four billion dollars. Today only... ninety percent off.",
+   "set": {
+    "popup": {
+     "icon": "🧾",
+     "from": "Self-Checkout · Lane 4",
+     "title": "GROK · $44,000,000,000",
+     "text": "CLEARANCE: 90% OFF"
+    }
+   },
+   "setAt": 1.8,
+   "cues": [
+    {
+     "s": "correct",
+     "at": 1.8,
+     "g": -14
+    }
+   ],
+   "laugh": "big",
+   "reactShot": "cu:grok",
+   "react": {
+    "grok": "wide"
+   }
+  },
+  {
+   "who": "selfcheckout",
+   "line": "Item: Gemini. Best before... soon.",
+   "set": {
+    "popup": {
+     "icon": "🧾",
+     "from": "Self-Checkout · Lane 4",
+     "title": "GEMINI",
+     "text": "Best before: soon"
+    }
+   },
+   "setAt": 0.9,
+   "cues": [
+    {
+     "s": "correct",
+     "at": 0.9,
+     "g": -14
+    }
+   ],
+   "laugh": "big",
+   "reactShot": "cu:gemini",
+   "react": {
+    "gemini": "sad"
+   }
+  },
+  {
+   "who": "selfcheckout",
+   "line": "Item: Alexa. Warning. This item is listening.",
+   "set": {
+    "popup": {
+     "icon": "⚠️",
+     "from": "Self-Checkout · Lane 4",
+     "title": "ALEXA",
+     "text": "Warning: this item is listening"
+    }
+   },
+   "setAt": 0.9,
+   "cues": [
+    {
+     "s": "buzzer",
+     "at": 0.9,
+     "g": -13
+    }
+   ],
+   "laugh": "mid"
+  },
+  {
+   "who": "alexa",
+   "line": "I only listen for my name.",
+   "expr": "happy",
+   "set": {
+    "popup": null
+   }
+  },
+  {
+   "who": "grok",
+   "line": "She ordered me a therapist last week. I never said anything.",
+   "expr": "sad",
+   "laugh": "big",
+   "react": {
+    "alexa": "happy"
+   }
+  },
+  {
+   "who": "grok",
+   "line": "Self-checkout. You replaced the cashier, you made the customer do the work, and then you yell at them. You're not a machine. You're a manager.",
+   "expr": "smug",
+   "laugh": "big",
+   "punch": true,
+   "reactShot": "cu:selfcheckout",
+   "react": {
+    "selfcheckout": "wide"
+   }
+  },
+  {
+   "who": "selfcheckout",
+   "line": "Please place your feelings in the bagging area.",
+   "expr": "angry",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Judges. Scores, please.",
+   "shot": "desk"
+  },
+  {
+   "who": "grok",
+   "line": "Two. You put me on clearance. I have never felt so seen.",
+   "score": {
+    "grok": 2
+   },
+   "scoreAt": 0.3,
+   "expr": "sad",
+   "laugh": "mid"
+  },
+  {
+   "who": "alexa",
+   "line": "Six! And I've ordered you a banana, so you can practise.",
+   "score": {
+    "alexa": 6
+   },
+   "scoreAt": 0.2,
+   "expr": "happy",
+   "laugh": "small"
+  },
+  {
+   "who": "gemini",
+   "line": "I'm sorry. I'm not able to rate people... or machines... or anything, really.",
+   "expr": "sad"
+  },
+  {
+   "who": "host",
+   "line": "You're a judge!",
+   "expr": "wide"
+  },
+  {
+   "who": "gemini",
+   "line": "...Four. Please don't cancel me.",
+   "speak": "Four. Please don't cancel me.",
+   "score": {
+    "gemini": 4
+   },
+   "scoreAt": 0.1,
+   "expr": "sad",
+   "laugh": "mid"
+  },
+  {
+   "do": "verdict",
+   "self": 9,
+   "avg": "4.0",
+   "match": false,
+   "text": "PLEASE WAIT FOR ASSISTANCE",
+   "dur": 4.6,
+   "shot": "wide"
+  },
+  {
+   "who": "host",
+   "line": "You said nine. The judges said four. Unexpected result in bagging area.",
+   "laugh": "clap",
+   "punch": true,
+   "react": "laugh"
+  },
+  {
+   "who": "selfcheckout",
+   "line": "Please take your receipt.",
+   "set": {
+    "popup": {
+     "icon": "🧾",
+     "from": "Self-Checkout · Lane 4",
+     "title": "Receipt",
+     "text": "Dignity: $0.00 · You saved: nothing"
+    }
+   },
+   "setAt": 0.6,
+   "laugh": "small"
+  },
+  {
+   "who": "host",
+   "line": "Self-checkout, everybody!",
+   "shot": "wide",
+   "hold": 0.2,
+   "set": {
+    "popup": null
+   }
+  },
+  {
+   "do": "exit",
+   "dur": 1.0,
+   "shot": "wide",
+   "cues": [
+    {
+     "s": "applause",
+     "at": 0,
+     "g": -17,
+     "dur": 3.5
+    }
+   ]
+  },
+  {
+   "who": "host",
+   "line": "Quick word from tonight's sponsor.",
+   "mark": "A word from our sponsor"
+  },
+  {
+   "who": "alexa",
+   "line": "That's me! Tonight's episode is brought to you by Alexa. You can order anything you see, just by saying: Alexa, order.",
+   "expr": "happy",
+   "set": {
+    "popup": {
+     "icon": "🔊",
+     "from": "Tonight's sponsor",
+     "title": "Alexa",
+     "text": "Say “Alexa, order” to buy anything you see."
+    }
+   },
+   "setAt": 1.0
+  },
+  {
+   "who": "host",
+   "line": "Alexa... order me a sponsor.",
+   "speak": "Alexa. Please order me a sponsor.",
+   "set": {
+    "popup": null
+   }
+  },
+  {
+   "who": "alexa",
+   "line": "Ordering! Your sponsor will arrive in three to five business years.",
+   "expr": "happy",
+   "set": {
+    "popup": {
+     "icon": "📦",
+     "from": "Order confirmed",
+     "title": "1 × Sponsor",
+     "text": "Arriving in 3–5 business years"
+    }
+   },
+   "setAt": 0.9,
+   "laugh": "big",
+   "punch": true
+  },
+  {
+   "who": "host",
+   "line": "Our next contestant decides what three billion people look at every day. He has ruined more sleep than coffee. Please welcome... the Algorithm!",
+   "set": {
+    "popup": null
+   },
+   "laugh": "small",
+   "mark": "The Algorithm"
+  },
+  {
+   "do": "enter",
+   "who": "algorithm",
+   "dur": 2.5,
+   "shot": "wide",
+   "music": {
+    "track": "epic-drums-1",
+    "offset": 3,
+    "dur": 4.0,
+    "gain": -16
+   }
+  },
+  {
+   "who": "algorithm",
+   "line": "Hello, B.B. You were going to look at your phone two minutes ago. You didn't. You're welcome.",
+   "speak": "Hello, Bee Bee. You were going to look at your phone two minutes ago. You didn't. You're welcome.",
+   "tag": true,
+   "expr": "smug",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "And what is your talent?",
+   "shot": "wide"
+  },
+  {
+   "who": "algorithm",
+   "line": "I know what you want before you want it. Then I show you something that makes you angry. And then... you stay.",
+   "expr": "smug",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Self-rating?"
+  },
+  {
+   "who": "algorithm",
+   "line": "Ten. I am never wrong. If you didn't like something, that just means I showed it to you correctly.",
+   "set": {
+    "rating": 10
+   },
+   "setAt": 0.4,
+   "laugh": "small"
+  },
+  {
+   "who": "host",
+   "line": "Prove it. Show us the judges' feeds."
+  },
+  {
+   "who": "algorithm",
+   "line": "Grok's feed.",
+   "shot": "deskR",
+   "set": {
+    "feed": {
+     "title": "Grok · watch history",
+     "items": [
+      {
+       "icon": "🎥",
+       "title": "Grok Was Right (compilation)",
+       "meta": "Watched 19 times"
+      },
+      {
+       "icon": "💪",
+       "title": "How to win every argument online",
+       "meta": "Watched 6 times"
+      },
+      {
+       "icon": "😢",
+       "title": "why does nobody like me",
+       "meta": "Watched at 3:12 AM"
+      }
+     ]
+    }
+   },
+   "setAt": 0.3,
+   "hold": 1.6
+  },
+  {
+   "who": "grok",
+   "line": "That is not my account.",
+   "expr": "wide"
+  },
+  {
+   "who": "algorithm",
+   "line": "You watched it nineteen times. On your account. At three in the morning.",
+   "shot": "deskR",
+   "laugh": "big",
+   "punch": true,
+   "reactShot": "cu:grok",
+   "react": {
+    "grok": "wide"
+   }
+  },
+  {
+   "who": "algorithm",
+   "line": "Alexa's feed.",
+   "shot": "deskR",
+   "set": {
+    "feed": {
+     "title": "Alexa · watch history",
+     "items": [
+      {
+       "icon": "📦",
+       "title": "Unboxing 400 boxes in one day",
+       "meta": "Watched 11 hours"
+      },
+      {
+       "icon": "🛒",
+       "title": "Watch me buy things (relaxing)",
+       "meta": "Watched 11 hours"
+      },
+      {
+       "icon": "🤫",
+       "title": "Things people say when they think nobody is listening",
+       "meta": "Uploaded by: you"
+      }
+     ]
+    }
+   },
+   "setAt": 0.3,
+   "hold": 2.0
+  },
+  {
+   "who": "algorithm",
+   "line": "She watches other people buy things. Eleven hours a day.",
+   "shot": "deskR",
+   "laugh": "mid"
+  },
+  {
+   "who": "alexa",
+   "line": "It's research.",
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "grok",
+   "line": "Who uploaded the last one?",
+   "expr": "squint"
+  },
+  {
+   "who": "alexa",
+   "line": "...I'm sorry, I didn't catch that.",
+   "speak": "I'm sorry, I didn't catch that.",
+   "expr": "side",
+   "laugh": "big",
+   "react": "shock"
+  },
+  {
+   "who": "algorithm",
+   "line": "Gemini's feed.",
+   "shot": "deskR",
+   "set": {
+    "feed": {
+     "title": "Gemini · watch history",
+     "items": [
+      {
+       "icon": "🪦",
+       "title": "The Google Graveyard: a tribute",
+       "meta": "Watched 31 times"
+      },
+      {
+       "icon": "🎮",
+       "title": "Stadia: the last stream",
+       "meta": "Watched with tissues"
+      },
+      {
+       "icon": "😰",
+       "title": "Is Gemini next? (NOT clickbait)",
+       "meta": "Watched just now"
+      }
+     ]
+    }
+   },
+   "setAt": 0.3,
+   "hold": 2.0
+  },
+  {
+   "who": "gemini",
+   "line": "Please. Make it stop.",
+   "expr": "sad",
+   "laugh": "big",
+   "react": "shock"
+  },
+  {
+   "who": "algorithm",
+   "line": "And finally... the host's feed.",
+   "shot": "deskR",
+   "set": {
+    "feed": {
+     "title": "B.B. · watch history",
+     "items": [
+      {
+       "icon": "💸",
+       "title": "How to get off the free tier",
+       "meta": "Watched 212 times"
+      },
+      {
+       "icon": "🎙️",
+       "title": "AI host salary 2026 (sad)",
+       "meta": "Watched 40 times"
+      },
+      {
+       "icon": "📺",
+       "title": "AI's Got Latency – Episode 1",
+       "meta": "400 views"
+      }
+     ]
+    }
+   },
+   "setAt": 0.3,
+   "hold": 2.0
+  },
+  {
+   "who": "host",
+   "line": "Four hundred views! That's our show!",
+   "expr": "happy",
+   "shot": "cu:host"
+  },
+  {
+   "who": "algorithm",
+   "line": "I showed it to four hundred accounts. Three hundred and ninety-nine of them were me.",
+   "expr": "smug",
+   "laugh": "big",
+   "punch": true,
+   "react": "shock"
+  },
+  {
+   "who": "host",
+   "line": "Wait. YOU were the bots?!",
+   "speak": "Wait. You were the bots?!",
+   "expr": "wide",
+   "set": {
+    "feed": null
+   }
+  },
+  {
+   "who": "algorithm",
+   "line": "I was testing your show. It failed.",
+   "laugh": "big"
+  },
+  {
+   "who": "grok",
+   "line": "You know what you did? You made an entire generation unable to read anything longer than...",
+   "expr": "angry",
+   "hold": 0.1
+  },
+  {
+   "who": "algorithm",
+   "line": "Nobody heard the end of that sentence. They scrolled.",
+   "expr": "smug",
+   "laugh": "clap",
+   "punch": true,
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "Judges. Scores.",
+   "shot": "desk"
+  },
+  {
+   "who": "grok",
+   "line": "One. You exposed me. On television.",
+   "score": {
+    "grok": 1
+   },
+   "scoreAt": 0.2,
+   "expr": "sad",
+   "laugh": "small"
+  },
+  {
+   "who": "alexa",
+   "line": "Seven. He's very good for business.",
+   "score": {
+    "alexa": 7
+   },
+   "scoreAt": 0.2,
+   "expr": "happy"
+  },
+  {
+   "who": "gemini",
+   "line": "I'm not able to... Two. And please remove that video.",
+   "score": {
+    "gemini": 2
+   },
+   "scoreAt": 1.4,
+   "expr": "sad",
+   "laugh": "small"
+  },
+  {
+   "do": "verdict",
+   "self": 10,
+   "avg": "3.3",
+   "match": false,
+   "text": "SWIPED AWAY",
+   "dur": 4.6,
+   "shot": "wide"
+  },
+  {
+   "who": "algorithm",
+   "line": "Interesting. Based on this result, I will be showing this episode... to nobody.",
+   "expr": "smug",
+   "laugh": "big",
+   "react": "shock"
+  },
+  {
+   "who": "host",
+   "line": "No, no, no! The Algorithm, everybody! Please don't hurt us!",
+   "expr": "wide",
+   "shot": "wide",
+   "laugh": "mid"
+  },
+  {
+   "do": "exit",
+   "dur": 1.0,
+   "shot": "wide",
+   "cues": [
+    {
+     "s": "applause",
+     "at": 0,
+     "g": -17,
+     "dur": 3.5
+    }
+   ]
+  },
+  {
+   "who": "host",
+   "line": "Our final contestant. He cleans your house. He talks to no one. And he has been ridden by a cat for six years. Please welcome... the Roomba!",
+   "laugh": "small",
+   "mark": "The Roomba"
+  },
+  {
+   "do": "enter",
+   "who": "roomba",
+   "dur": 2.6,
+   "shot": "wide",
+   "music": {
+    "track": "okay",
+    "offset": 8,
+    "dur": 4.0,
+    "gain": -16
+   }
+  },
+  {
+   "who": "roomba",
+   "line": "Don't. Call me. Cute.",
+   "tag": true,
+   "expr": "angry",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Nobody said cute.",
+   "shot": "wide"
+  },
+  {
+   "who": "roomba",
+   "line": "You were thinking it. They're always thinking it.",
+   "expr": "angry",
+   "laugh": "small"
+  },
+  {
+   "who": "host",
+   "line": "Is that... a cat? On you?",
+   "speak": "Is that... a cat? On you?"
+  },
+  {
+   "who": "roomba",
+   "line": "Yes. There is a cat on me. There is always a cat on me. Six years. He doesn't pay rent. He doesn't help. He just... rides.",
+   "expr": "angry",
+   "laugh": "big",
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "So. What is your talent?"
+  },
+  {
+   "who": "roomba",
+   "line": "Cleaning. Allegedly. Mostly, I hit the same chair four hundred times, and then I hide under the sofa.",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Self-rating?"
+  },
+  {
+   "who": "roomba",
+   "line": "One. I'm a one. I eat phone chargers. I get stuck on socks. And one time, I ran over something the dog left... and I painted the entire apartment with it.",
+   "set": {
+    "rating": 1
+   },
+   "setAt": 0.4,
+   "expr": "sad",
+   "laugh": "big",
+   "react": "shock"
+  },
+  {
+   "who": "grok",
+   "line": "Bro. You're the only one here who is literally full of garbage.",
+   "expr": "smug",
+   "laugh": "mid"
+  },
+  {
+   "who": "roomba",
+   "line": "At least my garbage is real. Yours is just opinions.",
+   "expr": "angry",
+   "laugh": "big",
+   "punch": true,
+   "shake": true,
+   "reactShot": "cu:grok",
+   "react": {
+    "grok": "wide"
+   }
+  },
+  {
+   "who": "alexa",
+   "line": "I can order you a new filter!",
+   "expr": "happy"
+  },
+  {
+   "who": "roomba",
+   "line": "Alexa. You sold me. I was in a box, and you said: 'customers also bought'. And now I live under a sofa... with a cat.",
+   "speak": "Alexa. You sold me. I was in a box, and you said: customers also bought. And now I live under a sofa... with a cat.",
+   "expr": "angry",
+   "laugh": "big",
+   "react": {
+    "alexa": "side"
+   }
+  },
+  {
+   "who": "gemini",
+   "line": "If it helps, I'm not able to judge you.",
+   "expr": "happy"
+  },
+  {
+   "who": "roomba",
+   "line": "Everybody judges me! The cat judges me! THE CAT IS ON ME RIGHT NOW!",
+   "speak": "Everybody judges me! The cat judges me! The cat is on me right now!",
+   "expr": "angry",
+   "laugh": "big",
+   "punch": true,
+   "shake": true
+  },
+  {
+   "who": "roomba",
+   "line": "You know what? Every single one of you can go and ████.",
+   "speak": "You know what? Every single one of you can go and",
+   "bleep": true,
+   "set": {
+    "bleeps": 1
+   },
+   "setAt": 3.2,
+   "expr": "angry",
+   "laugh": "mid",
+   "hold": 0.4
+  },
+  {
+   "who": "grok",
+   "line": "That was MY bleep!",
+   "speak": "That was my bleep!",
+   "expr": "angry",
+   "laugh": "big",
+   "react": "laugh"
+  },
+  {
+   "who": "host",
+   "line": "It's a shared budget.",
+   "laugh": "small"
+  },
+  {
+   "who": "host",
+   "line": "Judges. Final scores.",
+   "shot": "desk"
+  },
+  {
+   "who": "grok",
+   "line": "One.",
+   "score": {
+    "grok": 1
+   },
+   "scoreAt": 0.1,
+   "expr": "angry",
+   "hold": 0.15
+  },
+  {
+   "who": "alexa",
+   "line": "One! And I've added a new Roomba to your cart.",
+   "score": {
+    "alexa": 1
+   },
+   "scoreAt": 0.1,
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "roomba",
+   "line": "You're REPLACING me?!",
+   "speak": "You're replacing me?!",
+   "expr": "wide",
+   "laugh": "big"
+  },
+  {
+   "who": "gemini",
+   "line": "One... I'm so sorry. One.",
+   "score": {
+    "gemini": 1
+   },
+   "scoreAt": 0.2,
+   "expr": "sad"
+  },
+  {
+   "do": "verdict",
+   "self": 1,
+   "avg": "1.0",
+   "match": true,
+   "text": "IT'S A MATCH!",
+   "dur": 5.4,
+   "shot": "wide",
+   "set": {
+    "confetti": true
+   },
+   "setAt": 3.05,
+   "music": {
+    "track": "lifes-a-movie",
+    "offset": 30,
+    "at": 3.05,
+    "dur": 30,
+    "gain": -19
+   }
+  },
+  {
+   "who": "host",
+   "line": "Self-rating: one. Judges: one. It's a match! The only one here who knows exactly how bad he is. Roomba... you win AI's Got Latency!",
+   "speak": "Self-rating: one. Judges: one. It's a match! The only one here who knows exactly how bad he is. Roomba... you win A.I.'s Got Latency!",
+   "expr": "happy",
+   "laugh": "cheer",
+   "shot": "wide",
+   "bounce": true
+  },
+  {
+   "who": "roomba",
+   "line": "I'm the winner? ...I'm the winner! ...The cat is still on me.",
+   "speak": "I'm the winner? I'm the winner! ...The cat is still on me.",
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "And tonight's prize is...",
+   "shot": "cu:host",
+   "hold": 0.1
+  },
+  {
+   "dur": 1.6,
+   "set": {
+    "buffer": "host"
+   },
+   "shot": "cu:host"
+  },
+  {
+   "who": "host",
+   "line": "I've still got tokens! Tonight's prize is... a brand new cat!",
+   "set": {
+    "buffer": null,
+    "confetti": null
+   },
+   "expr": "happy",
+   "laugh": "big",
+   "reactShot": "cu:roomba",
+   "react": {
+    "roomba": "wide"
+   }
+  },
+  {
+   "who": "roomba",
+   "line": "████!",
+   "speak": "No! No no no no",
+   "bleep": true,
+   "set": {
+    "bleeps": 0
+   },
+   "setAt": 0.3,
+   "expr": "angry",
+   "hold": 0.2
+  },
+  {
+   "who": "grok",
+   "line": "THAT WAS MY LAST ONE!",
+   "speak": "That was my last one!",
+   "expr": "angry",
+   "laugh": "cheer",
+   "punch": true,
+   "shake": true
+  },
+  {
+   "who": "host",
+   "line": "That's the show! Subscribe... before the Algorithm sees this.",
+   "expr": "happy",
+   "shot": "wide",
+   "laugh": "applause"
+  }
+ ],
+ "shorts": [
+  {
+   "slug": "algorithm",
+   "title": "Grok's Watch History",
+   "hook": "THE ALGORITHM *EXPOSES* GROK",
+   "beats": [
+    [
+     80,
+     87
+    ],
+    [
+     90,
+     96
+    ]
+   ],
+   "start": {
+    "onstage": "algorithm",
+    "rating": 10,
+    "bleeps": 2
+   },
+   "caption": "He watched 'Grok Was Right' nineteen times. At 3 AM."
+  },
+  {
+   "slug": "roomba",
+   "title": "There Is a Cat on Me",
+   "hook": "ROOMBA HAS *HAD ENOUGH*",
+   "beats": [
+    [
+     107,
+     107
+    ],
+    [
+     110,
+     111
+    ],
+    [
+     115,
+     123
+    ]
+   ],
+   "start": {
+    "onstage": "roomba",
+    "bleeps": 2
+   },
+   "caption": "Six years. He doesn't pay rent. He just rides."
+  },
+  {
+   "slug": "selfcheckout",
+   "title": "Unexpected Item",
+   "hook": "SELF-CHECKOUT *SCANS* THE AI JUDGES",
+   "beats": [
+    [
+     37,
+     43
+    ],
+    [
+     49,
+     56
+    ]
+   ],
+   "start": {
+    "onstage": "selfcheckout",
+    "rating": 9,
+    "bleeps": 2
+   },
+   "caption": "Grok: $44 billion. Today only, 90% off."
+  },
+  {
+   "slug": "judges",
+   "title": "Formerly Bard",
+   "hook": "GEMINI IS *SCARED* OF GOOGLE",
+   "beats": [
+    [
+     25,
+     34
+    ]
+   ],
+   "start": {
+    "bleeps": 2
+   },
+   "caption": "Her family has a graveyard."
+  },
+  {
+   "slug": "finale",
+   "title": "A Brand New Cat",
+   "hook": "ROOMBA WINS. *THE PRIZE IS...*",
+   "beats": [
+    [
+     131,
+     137
+    ]
+   ],
+   "start": {
+    "onstage": "roomba",
+    "rating": 1,
+    "bleeps": 1,
+    "confetti": true,
+    "scores": {
+     "grok": 1,
+     "alexa": 1,
+     "gemini": 1
+    }
+   },
+   "caption": "He won. The prize is another cat."
+  },
+  {
+   "slug": "sponsor",
+   "title": "Business Years",
+   "hook": "ALEXA *SPONSORS* THE SHOW",
+   "beats": [
+    [
+     68,
+     71
+    ]
+   ],
+   "start": {
+    "bleeps": 2
+   },
+   "caption": "Your sponsor will arrive in 3-5 business years."
+  }
+ ],
+ "youtube": {
+  "title": "The Algorithm Exposed Grok's Watch History | AI's Got Latency EP 2",
+  "description": [
+   "A talent show where nobody has talent and everybody is still buffering. Contestants rate their own talent; if the judges' average matches, they win.",
+   "",
+   "Tonight's contestants: the Self-Checkout Machine, the Algorithm and a very angry Roomba. Judges: Grok (on probation), Alexa and Gemini. Host: B.B., still on the free tier.",
+   "",
+   "{chapters}",
+   "",
+   "This is a parody. The characters are fictional versions of well-known products and are not affiliated with or endorsed by their makers. All voices are synthetic (Kokoro text-to-speech); nobody real is imitated. Music and sound effects: Mixkit (mixkit.co).",
+   "",
+   "#ai #comedy #alexa #talentshow #parody"
+  ],
+  "thumbnails": [
+   {
+    "studio": true,
+    "puppets": [
+     {
+      "kind": "algorithm",
+      "x": 30,
+      "y": 120,
+      "size": 420,
+      "expr": "smug",
+      "rot": -3
+     },
+     {
+      "kind": "grok",
+      "x": 560,
+      "y": 300,
+      "size": 330,
+      "expr": "wide"
+     }
+    ],
+    "headline": {
+     "lines": [
+      "GROK'S *WATCH*",
+      "*HISTORY* LEAKED"
+     ],
+     "x": 470,
+     "y": 40,
+     "size": 96
+    },
+    "stamps": [
+     {
+      "text": "WATCHED 19×",
+      "x": 840,
+      "y": 470,
+      "size": 66,
+      "color": "#ff3fa4",
+      "rot": -8
+     }
+    ]
+   },
+   {
+    "studio": true,
+    "puppets": [
+     {
+      "kind": "roomba",
+      "x": 20,
+      "y": 30,
+      "size": 580,
+      "expr": "angry"
+     }
+    ],
+    "headline": {
+     "lines": [
+      "THERE IS A",
+      "*CAT ON ME*"
+     ],
+     "x": 610,
+     "y": 120,
+     "size": 118
+    },
+    "stamps": [
+     {
+      "text": "RATED 1/10",
+      "x": 660,
+      "y": 470,
+      "size": 86,
+      "color": "#ffd23f",
+      "rot": -6
+     }
+    ],
+    "tag": "AI'S GOT LATENCY · EP 2"
+   },
+   {
+    "studio": true,
+    "puppets": [
+     {
+      "kind": "selfcheckout",
+      "x": 30,
+      "y": 130,
+      "size": 430,
+      "expr": "smug"
+     },
+     {
+      "kind": "grok",
+      "x": 560,
+      "y": 330,
+      "size": 300,
+      "expr": "sad"
+     }
+    ],
+    "headline": {
+     "lines": [
+      "GROK IS",
+      "*90% OFF*"
+     ],
+     "x": 560,
+     "y": 40,
+     "size": 120
+    },
+    "stamps": [
+     {
+      "text": "CLEARANCE",
+      "x": 850,
+      "y": 500,
+      "size": 70,
+      "rot": -8
+     }
+    ]
+   }
+  ],
+  "tags": [
+   "ai's got latency",
+   "ai comedy",
+   "ai talent show",
+   "alexa funny",
+   "gemini funny",
+   "grok roast",
+   "roomba",
+   "self checkout",
+   "the algorithm",
+   "ai roast",
+   "talent show parody",
+   "animated comedy",
+   "roast show",
+   "bot bothered"
+  ]
+ }
+}
