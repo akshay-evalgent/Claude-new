@@ -32,3 +32,11 @@ yt-dlp -f "bv*[ext=mp4][height<=1080]+ba[ext=m4a]/b[ext=mp4]/b" --merge-output-f
 ```
 
 `--write-info-json` saves each clip's uploader and date, which goes into the credit line.
+
+## Hanoi replacement clip
+
+The Vietnam Plus clip is a phone filming a security-camera screen, so the catch can't be seen clearly. Download this clearer news clip and put it in **`Fatal batch 1`**:
+
+```bash
+yt-dlp -f "bv*[ext=mp4][height<=1080]+ba[ext=m4a]/b[ext=mp4]/b" --merge-output-format mp4 --write-info-json -o "%(uploader)s - %(title)s [%(id)s].%(ext)s" https://www.youtube.com/watch?v=y_01Au-TIi8
+```

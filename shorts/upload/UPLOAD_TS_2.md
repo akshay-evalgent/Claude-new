@@ -125,7 +125,7 @@ Who's the oldest person who still inspires you? 👇
 ---
 ## 4. The Kids Who Crashed the BBC 😂✨
 **Video:** `17_bbc_kids.mp4` (7s, loops)
-**Cover:** `17_bbc_kids_cover.jpg`, or use the frame picker at **0:04**
+**Cover:** `17_bbc_kids_cover.jpg`, or use the frame picker at **0:02**
 
 **Title:**
 ```
@@ -215,7 +215,7 @@ Tag a dog lover 👇
 ---
 ## 7. The Firefighter and the Thirsty Koala 🐨❤️
 **Video:** `18_koala.mp4` (7s, loops)
-**Cover:** `18_koala_cover.jpg`, or use the frame picker at **0:02**
+**Cover:** `18_koala_cover.jpg`, or use the frame picker at **0:03**
 
 **Title:**
 ```
@@ -305,7 +305,7 @@ Would your team have done this? 👇
 ---
 ## 10. The Officer Who Said I'll Take Her 👮❤️
 **Video:** `20_holets.mp4` (7s, loops)
-**Cover:** `20_holets_cover.jpg`, or use the frame picker at **0:03**
+**Cover:** `20_holets_cover.jpg`, or use the frame picker at **0:01**
 
 **Title:**
 ```

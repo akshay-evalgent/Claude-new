@@ -26,6 +26,7 @@ Edit file fields:
   music       "night" | "dawn" | path to a wav (default "night")
   clip_db     mix the clip's own sound at this level relative to the music
               (e.g. -3); omit to mute it
+  delogo      [[x, y, w, h], ...] boxes in source pixels to paint out a channel logo
   credit      optional small line under the card, e.g. "Video: Born Free Foundation"
   loop_xfade  seconds of crossfade at the loop point (default 0.35)
   cover_t     time of the frame saved as <out>_cover.jpg for the thumbnail (default 1.0)
@@ -210,8 +211,10 @@ def render(edl, src_dir, out):
     cy = int(np.clip(edl.get("fy", 0.5) * vh - card_h / 2, 0, vh - card_h))
     grade = edl.get("grade", "eq=contrast=1.05:saturation=1.12,unsharp=5:5:0.5")
     win = (D + X) * speed
+    # optional logo removal: [[x, y, w, h], ...] in source pixels (box must sit inside the frame)
+    delogo = "".join(f"delogo=x={x}:y={y}:w={w}:h={h}," for x, y, w, h in edl.get("delogo", []))
     fg = (
-        f"[1:v]trim=start={edl['in']:.3f}:duration={win:.3f},setpts=(PTS-STARTPTS)/{speed},fps={FPS},"
+        f"[1:v]trim=start={edl['in']:.3f}:duration={win:.3f},setpts=(PTS-STARTPTS)/{speed},fps={FPS},{delogo}"
         f"scale={vw}:{vh}:flags=lanczos,crop={CARD_W}:{card_h}:{cx}:{cy},{grade},format=yuv420p,split[c1][c2];"
         f"[c1]trim=start={X},setpts=PTS-STARTPTS[a];[c2]trim=end={X + 1 / FPS:.4f},setpts=PTS-STARTPTS[b];"
         f"[a][b]xfade=transition=fade:duration={X}:offset={D - X:.3f},format=rgba[lp];"

@@ -1,6 +1,6 @@
 {
  "source": "lrX1EWMuHhY",
- "in": 12.6,
+ "in": 12.35,
  "fx": 0.5,
  "fy": 0.5,
  "zoom": 1.0,
@@ -27,5 +27,6 @@
  "credit": "Video: AFP",
  "backup_sources": [
   "zkwX6jJQCtA"
- ]
+ ],
+ "speed": 0.9
 }

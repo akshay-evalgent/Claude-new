@@ -63,37 +63,7 @@ Tag someone whose dog would do this 👇
 **Rights:** Guardian News. A claim is possible, so ask for permission.
 
 ---
-## 2. The Catch From the 12th Floor 🙌❤️
-**Video:** `09_hanoi_catch.mp4` (7s, loops)
-**Cover:** `09_hanoi_catch_cover.jpg`, or use the frame picker at **0:03**
-
-**Title:**
-```
-The Catch From the 12th Floor 🙌❤️
-```
-**Alternate titles** (swap one in if it stalls after 48h):
-  - `Twelve Floors Down, Into His Arms 🙌✨`
-  - `The Delivery Driver Who Looked Up 🙌❤️`
-
-**Description:**
-```
-The Catch From the 12th Floor 🙌❤️
-Hanoi, 2021. Delivery driver Nguyen Ngoc Manh was waiting for a customer when residents cried out. A little girl was hanging from a 12th-floor balcony. He climbed onto a low roof and stood under her. Then she fell. "Luckily, the baby fell into my lap," he said. She survived. The Prime Minister honoured him. Hit like for people who don't look away.
-
-🎥 Original video: Vietnam Plus (https://www.youtube.com/watch?v=zvx0N6m1Oo4)
-```
-**Tags:**
-```
-Nguyen Ngoc Manh, Hanoi, hero delivery driver, Vietnam, toddler rescue, everyday heroes, true story
-```
-**Pinned comment:**
-```
-What would you have done? 👇
-```
-**Rights:** Vietnam Plus (a state news agency). Ask them.
-
----
-## 3. The Lion Never Forgot Them 🦁❤️
+## 2. The Lion Never Forgot Them 🦁❤️
 **Video:** `02_christian.mp4` (7s, loops)
 **Cover:** `02_christian_cover.jpg`, or use the frame picker at **0:03**
 
@@ -123,7 +93,7 @@ Do you think animals remember us forever? 👇
 **Rights:** The Born Free Foundation owns the footage. Ask them, as they're often happy with credit for conservation stories.
 
 ---
-## 4. The Race He Refused to Win 🏃🤝
+## 3. The Race He Refused to Win 🏃🤝
 **Video:** `06_anaya.mp4` (7s, loops)
 **Cover:** `06_anaya_cover.jpg`, or use the frame picker at **0:04**
 
@@ -153,7 +123,7 @@ Would you have run past him? Be honest 👇
 **Rights:** This is a re-upload of Spanish TV footage of the race. A claim is possible.
 
 ---
-## 5. The Baby on the Freeway Overpass 🚌❤️
+## 4. The Baby on the Freeway Overpass 🚌❤️
 **Video:** `08_bus_driver.mp4` (7s, loops)
 **Cover:** `08_bus_driver_cover.jpg`, or use the frame picker at **0:04**
 
@@ -183,7 +153,7 @@ Would you have stopped the bus? 👇
 **Rights:** The Milwaukee County Transit System (MCTS) released this to the public. Ask MCTS, as public agencies usually agree.
 
 ---
-## 6. The Penguin Who Keeps Coming Back 🐧❤️
+## 5. The Penguin Who Keeps Coming Back 🐧❤️
 **Video:** `04_dindim.mp4` (7s, loops)
 **Cover:** `04_dindim_cover.jpg`, or use the frame picker at **0:03**
 
@@ -213,7 +183,7 @@ Who always comes back for you? 👇
 **Rights:** ABC News. A claim is possible, so ask for permission.
 
 ---
-## 7. 69 Days Underground, Then His Son 😢❤️
+## 6. 69 Days Underground, Then His Son 😢❤️
 **Video:** `10_chile_miners.mp4` (7s, loops)
 **Cover:** `10_chile_miners_cover.jpg`, or use the frame picker at **0:02**
 
@@ -243,7 +213,7 @@ Who would be waiting for you? 👇
 **Rights:** This is a re-upload of live TV pool footage from 2010. A claim is possible.
 
 ---
-## 8. Two Elephants, 22 Years Apart 🐘❤️
+## 7. Two Elephants, 22 Years Apart 🐘❤️
 **Video:** `03_shirley_jenny.mp4` (7s, loops)
 **Cover:** `03_shirley_jenny_cover.jpg`, or use the frame picker at **0:03**
 
@@ -273,7 +243,7 @@ Who would you still recognize after 22 years? 👇
 **Rights:** This is a re-upload. The footage is from the documentary *The Urban Elephant* (argofilms) and The Elephant Sanctuary in Tennessee, so ask the Sanctuary.
 
 ---
-## 9. Two Friends, One Gold Medal 🤝✨
+## 8. Two Friends, One Gold Medal 🤝✨
 **Video:** `05_two_golds.mp4` (7s, loops)
 **Cover:** `05_two_golds_cover.jpg`, or use the frame picker at **0:05**
 
@@ -303,7 +273,7 @@ Would you share the gold with your best friend? 👇
 **Rights:** Official Olympics footage (IOC). **Expect a Content ID claim or block.** Post it last, or swap the story out.
 
 ---
-## 10. The Father Who Ran Onto the Track 🏃❤️
+## 9. The Father Who Ran Onto the Track 🏃❤️
 **Video:** `01_redmond.mp4` (7s, loops)
 **Cover:** `01_redmond_cover.jpg`, or use the frame picker at **0:04**
 
@@ -331,6 +301,36 @@ Derek Redmond, Jim Redmond, Barcelona 1992, Olympics, father and son, sportsmans
 Who's the person who'd run onto the track for you? 👇
 ```
 **Rights:** Official Olympics footage (IOC). **Expect a Content ID claim or block.** The IOC rarely licenses clips to creators. Post it last, or swap the story out.
+
+---
+## 10. The Catch From the 12th Floor 🙌❤️ (waiting for the replacement clip, see NEXT_TEXTSTORY.md)
+**Video:** `09_hanoi_catch.mp4` (7s, loops)
+**Cover:** `09_hanoi_catch_cover.jpg`, or use the frame picker at **0:03**
+
+**Title:**
+```
+The Catch From the 12th Floor 🙌❤️
+```
+**Alternate titles** (swap one in if it stalls after 48h):
+  - `Twelve Floors Down, Into His Arms 🙌✨`
+  - `The Delivery Driver Who Looked Up 🙌❤️`
+
+**Description:**
+```
+The Catch From the 12th Floor 🙌❤️
+Hanoi, 2021. Delivery driver Nguyen Ngoc Manh was waiting for a customer when residents cried out. A little girl was hanging from a 12th-floor balcony. He climbed onto a low roof and stood under her. Then she fell. "Luckily, the baby fell into my lap," he said. She survived. The Prime Minister honoured him. Hit like for people who don't look away.
+
+🎥 Original video: Agencia EFE (https://www.youtube.com/watch?v=y_01Au-TIi8)
+```
+**Tags:**
+```
+Nguyen Ngoc Manh, Hanoi, hero delivery driver, Vietnam, toddler rescue, everyday heroes, true story
+```
+**Pinned comment:**
+```
+What would you have done? 👇
+```
+**Rights:** Agencia EFE (a news agency). A claim is possible, so ask for permission.
 
 ---
 
