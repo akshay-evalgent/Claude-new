@@ -1,4 +1,4 @@
-# Upload kit: text-story Shorts, tech test (Mars helicopter)
+# Upload kit: text-story Shorts, tech test
 
 Post them **in this order, 1–2 a day, at the same times every day** (they post about 2 a day). Every block below is ready to copy. The rules behind the titles and descriptions are in `TEXTSTORY.md`.
 
@@ -33,7 +33,67 @@ Each video has a cover image (`*_cover.jpg`, 1080×1920). It's the frame with th
 - **Shares:** the "Send this to…" call to action is there to drive these.
 
 ---
-## 1. Built for 5 Flights, It Flew 72 🚁✨
+## 1. The Code That Saved the Moon Landing 🌕✨
+**Video:** `tech_02_hamilton_apollo.mp4` (7s, loops)
+**Cover:** `tech_02_hamilton_apollo_cover.jpg`, or use the frame picker at **0:03**
+
+**Title:**
+```
+The Code That Saved the Moon Landing 🌕✨
+```
+**Alternate titles** (swap one in if it stalls after 48h):
+  - `The Programmer Behind Apollo 11 🌕✨`
+  - `Alarm 1202, Minutes From the Moon 🌕💪`
+
+**Description:**
+```
+The Code That Saved the Moon Landing 🌕✨
+July 20, 1969. Minutes before Apollo 11 touched down on the Moon, its computer started flashing alarms: 1202. Then 1201. It was overloaded. But its software had been built for this: drop the less important jobs, keep only what matters. Houston said: go. They landed. The team behind that software was led by a 32-year-old: Margaret Hamilton. She died this September, at 90. Send this to a programmer.
+
+🎥 Original video: Video and audio: NASA (https://images.nasa.gov/details/KSC-19690716-MH-NAS01-0001-The_Flight_of_Apollo_11_The_Eagle_Has_Landed_HS_from_Film_JSC-DVC_1928)
+```
+**Tags:**
+```
+Margaret Hamilton, Apollo 11, 1202 alarm, software engineering, NASA, moon landing, programmer, women in tech, computer history
+```
+**Pinned comment:**
+```
+Who's the programmer you look up to? 👇
+```
+**Rights:** NASA film and mission audio are **public domain**, so you don't need permission and there's no Content ID risk. Credit NASA.
+
+---
+## 2. The Subscription That Started an App 🧵✨
+**Video:** `tech_03_zigzag.mp4` (7s, loops)
+**Cover:** `tech_03_zigzag_cover.jpg`, or use the frame picker at **0:03**
+
+**Title:**
+```
+The Subscription That Started an App 🧵✨
+```
+**Alternate titles** (swap one in if it stalls after 48h):
+  - `Built in Rust to Skip a Subscription 🧵💪`
+  - `A $300 Machine Wanted a Subscription 🧵😤`
+
+**Description:**
+```
+The Subscription That Started an App 🧵✨
+November 2026. A developer bought a $300 embroidery machine. Then learned it needed a subscription. So they built their own app. In Rust. Free and open source. It turns drawings into stitches, sends them to the machine over Bluetooth, and even lets AI agents design with you. They posted it on Hacker News: 740 upvotes. Save this if you're tired of subscriptions.
+
+🎥 Original video: ZigZag by simpsoka (Apache-2.0) (https://github.com/simpsoka/zigzag)
+```
+**Tags:**
+```
+ZigZag, embroidery, open source, Rust, Hacker News, subscription, Brother Skitch, MCP, indie developer, github
+```
+**Pinned comment:**
+```
+Which subscription would you replace first? 👇
+```
+**Rights:** This is the creator's own demo video from the repo (Apache-2.0). Keep the credit, and it's polite to tell the creator (simpsoka) about the Short.
+
+---
+## 3. Built for 5 Flights, It Flew 72 🚁✨
 **Video:** `tech_01_ingenuity.mp4` (7s, loops)
 **Cover:** `tech_01_ingenuity_cover.jpg`, or use the frame picker at **0:05**
 

@@ -1,0 +1,32 @@
+{
+ "source": "zigzag_demo",
+ "in": 0.3,
+ "fx": 0.5,
+ "fy": 0.42,
+ "zoom": 1.0,
+ "text": "November 2026. A developer bought a $300 embroidery machine. Then learned it *needed a subscription.* So they built their own app. In Rust. *Free and open source.* It turns drawings into stitches, sends them to the machine over Bluetooth, and even lets AI agents design with you. They posted it on Hacker News: *740 upvotes.* Save this if you're tired of subscriptions.",
+ "music": "orbit",
+ "clip_db": -6,
+ "music_db": -2,
+ "cover_t": 3.0,
+ "credit": "Video: ZigZag by simpsoka (Apache-2.0)",
+ "title": "The Subscription That Started an App 🧵✨",
+ "alt_titles": [
+  "Built in Rust to Skip a Subscription 🧵💪",
+  "A $300 Machine Wanted a Subscription 🧵😤"
+ ],
+ "tags": [
+  "ZigZag",
+  "embroidery",
+  "open source",
+  "Rust",
+  "Hacker News",
+  "subscription",
+  "Brother Skitch",
+  "MCP",
+  "indie developer",
+  "github"
+ ],
+ "pinned": "Which subscription would you replace first? 👇",
+ "link": "https://github.com/simpsoka/zigzag"
+}

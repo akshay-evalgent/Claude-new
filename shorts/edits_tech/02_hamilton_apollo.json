@@ -1,0 +1,31 @@
+{
+ "source": "nasa_apollo11_descent",
+ "in": 7.6,
+ "fx": 0.55,
+ "fy": 0.5,
+ "zoom": 1.0,
+ "text": "July 20, 1969. Minutes before Apollo 11 touched down on the Moon, its computer started flashing alarms: *1202. Then 1201.* It was overloaded. But its software had been built for this: drop the less important jobs, keep only what matters. Houston said: go. *They landed.* The team behind that software was led by a 32-year-old: *Margaret Hamilton.* She died this September, at 90. Send this to a programmer.",
+ "music": "orbit",
+ "clip_db": 0,
+ "music_db": -8,
+ "cover_t": 3.0,
+ "credit": "Video and audio: NASA",
+ "title": "The Code That Saved the Moon Landing 🌕✨",
+ "alt_titles": [
+  "The Programmer Behind Apollo 11 🌕✨",
+  "Alarm 1202, Minutes From the Moon 🌕💪"
+ ],
+ "tags": [
+  "Margaret Hamilton",
+  "Apollo 11",
+  "1202 alarm",
+  "software engineering",
+  "NASA",
+  "moon landing",
+  "programmer",
+  "women in tech",
+  "computer history"
+ ],
+ "pinned": "Who's the programmer you look up to? 👇",
+ "link": "https://images.nasa.gov/details/KSC-19690716-MH-NAS01-0001-The_Flight_of_Apollo_11_The_Eagle_Has_Landed_HS_from_Film_JSC-DVC_1928"
+}
