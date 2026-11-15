@@ -121,9 +121,9 @@ function timeline(c, o, marks) {
   let s = `<path d="M200 640 H1720" ${S} stroke-width="10"/><path d="M1720 610 L1760 640 L1720 670" fill="none" ${S} stroke-width="8"/>` + hand('3 MILLION YEARS AGO', 200, 730, 52, c.t, 0.1, { anchor: 'start' }) + hand('TODAY', 1720, 730, 56, c.t, 0.1, { anchor: 'end' });
   for (const m of marks) {
     if (c.t < m.t) continue;
-    const x = X(m.ya), k = at0(c.t, m.t, 0.4);
-    s += `<path d="M${f1(x)} 640 V${f1(640 - 120 * k)}" stroke="${m.col || C.accent}" stroke-width="7"/>` + `<circle cx="${f1(x)}" cy="640" r="14" fill="${m.col || C.accent}" ${S} stroke-width="4"/>` + hand(m.label, x, 640 - 150, 58, c.t, m.t + 0.1, { col: m.col || C.accent });
-    if (m.sub) s += hand(m.sub, x, 640 - 215, 46, c.t, m.t + 0.2);
+    const x = X(m.ya), k = at0(c.t, m.t, 0.4), up = m.up || 0;
+    s += `<path d="M${f1(x)} 640 V${f1(640 - (120 + up) * k)}" stroke="${m.col || C.accent}" stroke-width="7"/>` + `<circle cx="${f1(x)}" cy="640" r="14" fill="${m.col || C.accent}" ${S} stroke-width="4"/>` + hand(m.label, x, 640 - 150 - up, 58, c.t, m.t + 0.1, { col: m.col || C.accent });
+    if (m.sub) s += hand(m.sub, x, 640 - 215 - up, 46, c.t, m.t + 0.2);
   }
   if (o.span != null && c.t >= o.span) {
     const x1 = X(1200000), x2 = X(170000), k = at0(c.t, o.span, 0.9);
@@ -314,7 +314,7 @@ SCN.timelineClo = (c, o) => {
   const marks = [];
   if (o.fur != null) marks.push({ ya: 1200000, label: 'FUR GONE', sub: '~1.2 MILLION', t: o.fur });
   if (o.lice != null) marks.push({ ya: 170000, label: 'CLOTHES', sub: '83,000–170,000', t: o.lice, col: C.red });
-  if (o.needle != null) marks.push({ ya: 40000, label: 'NEEDLES', sub: '~40,000', t: o.needle, col: C.green });
+  if (o.needle != null) marks.push({ ya: 40000, label: 'NEEDLES', sub: '~40,000', t: o.needle, col: C.green, up: 150 });
   s += timeline(c, o, marks);
   if (o.label) s += hand(o.label, 960, 160, 84, c.t, 0.1);
   return s;
@@ -360,15 +360,15 @@ SCN.licelogic = (c, o) => {
   const shirt = `<path d="M-80 -80 L-140 -40 L-110 10 L-80 -4 L-80 110 L80 110 L80 -4 L110 10 L140 -40 L80 -80 Q0 -40 -80 -80 Z" fill="#7FA3C4" ${S} stroke-width="6"/>`;
   s += pop(520, 540, c.t, o.a ?? 0.2, shirt) + hand('CLOTHES', 520, 760, 64, c.t, o.a ?? 0.2);
   s += arrow(720, 540, 1180, 540, c.t, o.arrow ?? 0.7, 0.5);
-  s += pop(1400, 540, c.t, o.b ?? 1.1, louse(1.4, c.t, {})) + hand('BODY LICE', 1400, 760, 64, c.t, o.b ?? 1.1);
-  if (o.no != null && c.t >= o.no) s += xmark(520, 540, 170, c.t, o.no, 0.3) + xmark(1400, 540, 170, c.t, o.no + 0.4, 0.3) + hand('NO CLOTHES = NO BODY LICE', 960, 920, 64, c.t, o.no + 0.6, { col: C.red });
+  s += pop(1400, 540, c.t, o.b ?? 1.1, louse(1.4, c.t, {})) + hand('CLOTHING LICE', 1400, 760, 64, c.t, o.b ?? 1.1);
+  if (o.no != null && c.t >= o.no) s += xmark(520, 540, 170, c.t, o.no, 0.3) + xmark(1400, 540, 170, c.t, o.no + 0.4, 0.3) + hand('NO CLOTHES = NO CLOTHING LICE', 960, 920, 64, c.t, o.no + 0.6, { col: C.red });
   if (o.label) s += hand(o.label, 960, 170, 80, c.t, 0.1);
   return s;
 };
 SCN.louseDNA = (c, o) => {
   let s = paper();
   s += g('translate(300 380)', louse(0.9, c.t, {})) + hand('HEAD LOUSE', 300, 560, 44, c.t, 0.1);
-  s += g('translate(300 780)', louse(0.9, c.t, { col: '#C9A97A' })) + hand('BODY LOUSE', 300, 960, 44, c.t, 0.2);
+  s += g('translate(300 780)', louse(0.9, c.t, { col: '#C9A97A' })) + hand('CLOTHING LOUSE', 300, 960, 44, c.t, 0.2);
   const marks = [5, 12, 19, 27, 33].map((i, k) => ({ i, t: (o.diff ?? 0.8) + k * 0.25 }));
   s += dnaStrand(520, 400, 1200, c.t, {}) + dnaStrand(520, 800, 1200, c.t + 0.3, { marks });
   if (o.label) s += hand(o.label, 1120, 160, 76, c.t, 0.1);
@@ -389,7 +389,7 @@ SCN.louseTree = (c, o) => {
   s += `<path d="M260 560 H${f1(260 + 600 * clamp(k * 2))}" ${S} stroke-width="10"/>`;
   if (k > 0.5) { const q = (k - 0.5) * 2; s += `<path d="M860 560 Q960 560 ${f1(860 + 600 * q)} ${f1(560 - 220 * q)}" fill="none" ${S} stroke-width="10"/><path d="M860 560 Q960 560 ${f1(860 + 600 * q)} ${f1(560 + 220 * q)}" fill="none" stroke="${C.red}" stroke-width="10"/>`; }
   s += pop(1560, 330, c.t, (o.split ?? 0.4) + 1.0, louse(0.7, c.t, {})) + hand('HEAD LICE', 1560, 470, 44, c.t, (o.split ?? 0.4) + 1.0);
-  s += pop(1560, 780, c.t, (o.split ?? 0.4) + 1.1, louse(0.7, c.t, { col: '#C9A97A' })) + hand('BODY LICE', 1560, 920, 44, c.t, (o.split ?? 0.4) + 1.1, { col: C.red });
+  s += pop(1560, 780, c.t, (o.split ?? 0.4) + 1.1, louse(0.7, c.t, { col: '#C9A97A' })) + hand('CLOTHING LICE', 1560, 920, 44, c.t, (o.split ?? 0.4) + 1.1, { col: C.red });
   if (o.date != null) s += pop(860, 760, c.t, o.date, `<circle r="20" fill="${C.red}" ${S} stroke-width="4"/>`) + hand(o.dateText || '~170,000 YEARS AGO', 860, 860, 60, c.t, o.date + 0.1, { col: C.red });
   if (o.label) s += hand(o.label, 960, 160, 80, c.t, 0.1);
   return s;
@@ -551,7 +551,7 @@ SCN.capSkirt = (c, o) => {
 };
 SCN.sungirBeads = (c, o) => {
   let s = `<rect width="${W}" height="${H}" fill="#2B2420"/>`;
-  const n = Math.round((o.total || 13400) * at0(c.t, o.beads ?? 0.3, Math.max(1.5, c.d * 0.6)));
+  const n = Math.round((o.total || 13400) * at0(c.t, o.beads ?? 0.3, o.until != null ? Math.max(0.5, o.until - (o.beads ?? 0.3)) : Math.max(1.5, c.d * 0.6)));
   s += fig({ x: 760, y: 990, s: 1.6, t: c.t, seed: 61, outfit: 'beads', face: 'neutral', beard: true, hairC: '#3C2A1E' });
   const r = rng(8);
   for (let i = 0; i < Math.min(220, n / 18); i++) s += `<circle cx="${f1(1180 + r() * 560)}" cy="${f1(320 + r() * 560)}" r="6" fill="#F7F1E3" opacity=".9"/>`;

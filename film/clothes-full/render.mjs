@@ -44,7 +44,7 @@ if (mode === 'cues') {
   // node render.mjs patch START END -> build/patch.mp4 with frames [START, END) of the film, for splicing one fixed shot.
   const a = Math.floor(Number(process.argv[3]) * FPS), b = Math.ceil(Number(process.argv[4]) * FPS);
   const page = await openPage(browser);
-  const out = path.join(BUILD, 'patch.mp4');
+  const out = path.join(BUILD, process.argv[5] || 'patch.mp4');
   const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-',
     '-c:v', 'libx264', '-preset', 'medium', '-crf', '17', '-pix_fmt', 'yuv420p', '-r', String(FPS), out], { stdio: ['pipe', 'inherit', 'inherit'] });
   for (let f = a; f < b; f++) {

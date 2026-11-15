@@ -120,7 +120,7 @@ In a cave in Georgia called Dzudzuana, scientists found flax fibres from more th
 And the oldest known blue dye on cloth is indigo, on cotton from Peru, about six thousand years old. >> blueCloth {"dye":"@indigo"} push
 Little carved figures, around twenty five to thirty thousand years old, seem to show woven caps, and skirts made of string. >> capSkirt {"cap":"@caps","skirt":"@skirts"} push
 + Some think the famous Venus of Willendorf wears a woven cap. Others see braided hair. ~0.2 >> capSkirt {"cap":"DONE","skirt":"DONE","label":"WOVEN CAP, OR BRAIDS?"} push
-At Sungir, in Russia, about thirty four thousand years ago, a man and two boys were buried in clothes covered with more than thirteen thousand ivory beads. >> sungirBeads {"beads":"@thirteen","label":"SUNGIR · ~34,000 YEARS"} push
+At Sungir, in Russia, about thirty four thousand years ago, a man and two boys were buried in clothes covered with more than thirteen thousand ivory beads. >> sungirBeads {"beads":"@buried","until":"@ivory","label":"SUNGIR · ~34,000 YEARS"} push
 + By one estimate, each bead took about an hour to make. That's nearly ten thousand hours of work. >> beadHours {"hours":10000} push
 And decoration may be even older than our oldest clues to clothing. >> shellBeads {"label":"SHELL BEADS","sub":" "} push
 + Shell beads from Morocco are at least a hundred and forty two thousand years old. >> shellBeads {"sub":"142,000+ YEARS","subT":"@hundred"} push
