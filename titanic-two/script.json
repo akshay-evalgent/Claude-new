@@ -1,0 +1,93 @@
+{
+  "fps": 24,
+  "chapters": [
+    {"id": "p", "card": null, "mood": "mystery", "lead": 1.2, "lines": [
+      {"id": "p1", "v": "N", "amb": "sea", "text": "For almost thirty years, the internet has been furious at a piece of wood."},
+      {"id": "p2", "v": "N", "text": "There was room on that door."},
+      {"id": "p3", "v": "N", "text": "So people tested it. In pools. In labs. On television."},
+      {"id": "p4", "v": "N", "text": "And they all found the same thing. The door fits two. It just can't float two.", "boom": [1]},
+      {"id": "p5", "v": "N", "text": "Unless you change one small thing. This is Titanic. Where Jack lives.", "gap": 3.4}
+    ]},
+    {"id": "a", "card": "CHAPTER ONE|THE SHIP OF DREAMS", "mood": "wonder", "lines": [
+      {"id": "a1", "v": "N", "amb": "sea", "text": "Two and a half miles down, a treasure hunter opens a rusted safe. No diamond. Just a drawing, of a young woman wearing one."},
+      {"id": "a2", "v": "N", "amb": "room", "text": "Then the phone rings. A woman who is one hundred years old."},
+      {"id": "a3", "v": "roseOld", "text": "The woman in the picture is me."},
+      {"id": "a4", "v": "N", "amb": "city", "text": "Southampton, nineteen twelve. The largest moving object ever built is about to leave on its first voyage."},
+      {"id": "a5", "v": "N", "text": "Rose boards in first class, engaged to Cal, a man who treats her like something he bought."},
+      {"id": "a6", "v": "N", "amb": "room", "text": "Jack Dawson boards with five minutes to spare, on a ticket he just won at poker."},
+      {"id": "a7", "v": "N", "amb": "sea", "text": "He has ten dollars, a sketchbook, and the best view on the ship."},
+      {"id": "a8", "v": "jack", "text": "I'm the king of the world!", "gap": 0.8}
+    ]},
+    {"id": "b", "card": "CHAPTER TWO|YOU JUMP, I JUMP", "mood": "wonder", "lines": [
+      {"id": "b1", "v": "N", "amb": "sea", "text": "That night, Rose runs to the very back of the ship, and climbs over the rail. Jack talks her back."},
+      {"id": "b2", "v": "jack", "text": "You jump, I jump."},
+      {"id": "b3", "v": "N", "amb": "room", "text": "As a thank you, he is invited to dinner in first class. He borrows a tuxedo, and survives it."},
+      {"id": "b4", "v": "N", "text": "Then he shows her a real party. Below decks. Fiddles, beer, and dancing until the floor shakes."},
+      {"id": "b5", "v": "N", "amb": "sea", "text": "At sunset, on the bow, she steps up onto the rail, and opens her arms."},
+      {"id": "b6", "v": "rose", "text": "I'm flying, Jack!"},
+      {"id": "b7", "v": "N", "amb": "room", "text": "She asks him to draw her, wearing the Heart of the Ocean. He signs it. April fourteenth."},
+      {"id": "b8", "v": "N", "text": "It is the last calm hour the ship will ever have.", "hush": true, "gap": 0.9}
+    ]},
+    {"id": "c", "card": "CHAPTER THREE|ICEBERG, RIGHT AHEAD", "mood": "action", "lines": [
+      {"id": "c1", "v": "N", "amb": "wind", "text": "Eleven forty at night. Flat sea. No moon. Two lookouts, and no binoculars."},
+      {"id": "c2", "v": "lookout", "text": "Iceberg, right ahead!", "boom": [0]},
+      {"id": "c3", "v": "N", "text": "The ship turns. Not fast enough. The ice opens the hull, like a zipper.", "boom": [2]},
+      {"id": "c4", "v": "N", "amb": "room", "text": "The designer does the math. She can float with four compartments flooded. Not five. She has about two hours."},
+      {"id": "c5", "v": "N", "amb": "wind", "text": "There are more than two thousand people on board. And lifeboats for about half."},
+      {"id": "c6", "v": "N", "amb": "room", "text": "Cal plants the diamond on Jack. Jack is handcuffed to a pipe, deep in the ship, and the water is rising."},
+      {"id": "c7", "v": "N", "text": "Rose has a seat in a lifeboat. She gives it up, finds an axe, and goes back down."},
+      {"id": "c8", "v": "rose", "text": "I'm not leaving without you.", "gap": 0.6}
+    ]},
+    {"id": "d", "card": "CHAPTER FOUR|THE DOOR", "mood": "sad", "lines": [
+      {"id": "d1", "v": "N", "amb": "wind", "text": "The band keeps playing. The lights stay on almost to the end. Then they go out, all at once.", "boom": [2]},
+      {"id": "d2", "v": "N", "text": "The stern rises out of the sea. The ship breaks in two. Jack and Rose ride the last of it down.", "boom": [1]},
+      {"id": "d3", "v": "N", "amb": "sea", "text": "The water is below freezing. Fifteen hundred people are in it. Most have minutes."},
+      {"id": "d4", "v": "N", "text": "Jack finds a carved wooden panel, and gets Rose onto it. He tries to climb on. It tips. So he stays in the water."},
+      {"id": "d5", "v": "N", "text": "In the movie, he makes her promise to survive. And by the time a boat comes back, he is gone.", "hush": true, "gap": 1.2},
+      {"id": "d6", "v": "N", "text": "That is the ending you know."},
+      {"id": "d7", "v": "N", "text": "Here is the one where the door fits two.", "gap": 0.8}
+    ]},
+    {"id": "e", "card": "CHAPTER FIVE|THE DOOR FITS TWO", "mood": "heroic", "lines": [
+      {"id": "e1", "v": "N", "amb": "sea", "text": "The door was never too small. It just sat too low. With two people on it, it sinks under the surface, and they both freeze."},
+      {"id": "e2", "v": "N", "text": "So in our version, Rose stops him. She takes off her lifejacket."},
+      {"id": "e3", "v": "N", "text": "And she ties it underneath the door."},
+      {"id": "e4", "v": "N", "text": "It is the fix that every test agrees on. The door rides higher. It holds. And Jack climbs out of the water."},
+      {"id": "e5", "v": "rose", "text": "You jump, I jump. Remember?"},
+      {"id": "e6", "v": "N", "text": "They hold on to each other. They keep each other talking. They do not fall asleep."},
+      {"id": "e7", "v": "N", "text": "And then, across the dark, a single lifeboat comes back."},
+      {"id": "e8", "v": "officer", "text": "Is anyone alive out there?"},
+      {"id": "e9", "v": "N", "text": "Rose finds a whistle. And blows.", "boom": [1], "hush": true, "gap": 1.6}
+    ]},
+    {"id": "f", "card": "CHAPTER SIX|ROSE AND JACK DAWSON", "mood": "wonder", "lines": [
+      {"id": "f1", "v": "N", "amb": "sea", "text": "At dawn, a rescue ship arrives. Seven hundred survivors. This time, two of them are sharing one blanket."},
+      {"id": "f2", "v": "N", "text": "Cal walks the deck, looking for her. She pulls the blanket over both their heads."},
+      {"id": "f3", "v": "N", "amb": "city", "text": "New York, in the rain. Under the Statue of Liberty, an officer asks for her name."},
+      {"id": "f4", "v": "rose", "text": "Dawson. Rose Dawson."},
+      {"id": "f5", "v": "N", "text": "And the man next to her gives the same one."},
+      {"id": "f6", "v": "N", "text": "In her coat pocket, she finds the diamond. They are free, they are broke, and they are alive.", "gap": 0.8}
+    ]},
+    {"id": "g", "card": "CHAPTER SEVEN|FOUR DAYS", "mood": "sad", "lines": [
+      {"id": "g1", "v": "N", "amb": "room", "text": "But here is the thing nobody says about the door."},
+      {"id": "g2", "v": "N", "text": "Jack dying is what made it a perfect love story. Four days. No rent. No arguments. Frozen forever, at its very best."},
+      {"id": "g3", "v": "N", "text": "Alive, it has to become a real one."},
+      {"id": "g4", "v": "N", "amb": "sea", "text": "They ride the roller coaster in Santa Monica. They ride horses in the surf. Everything he promised."},
+      {"id": "g5", "v": "N", "amb": "room", "text": "Then comes a cold apartment. Burnt dinners. His drawings sell for a nickel. They fight about money."},
+      {"id": "g6", "v": "N", "text": "And every time it gets bad enough, one of them says the same four words."},
+      {"id": "g7", "v": "jack", "text": "You jump, I jump.", "gap": 1.0}
+    ]},
+    {"id": "h", "card": "CHAPTER EIGHT|THE HEART OF THE OCEAN", "mood": "wonder", "lines": [
+      {"id": "h1", "v": "N", "amb": "sea", "text": "Eighty four years later, an old woman walks to the stern of a research ship, holding a diamond."},
+      {"id": "h2", "v": "N", "text": "In the movie, she is alone."},
+      {"id": "h3", "v": "N", "text": "In ours, there are footsteps behind her."},
+      {"id": "h4", "v": "jackOld", "text": "You're going to catch cold, Rose."},
+      {"id": "h5", "v": "N", "text": "They never sold it. They never needed to. They let it go together.", "gap": 1.4},
+      {"id": "h6", "v": "N", "text": "And the door? It is in a museum now. The plaque reads: capacity, two.", "boom": [2], "hush": true, "gap": 2.4}
+    ]},
+    {"id": "o", "card": null, "mood": "outro", "lines": [
+      {"id": "o1", "v": "N", "amb": "none", "text": "So. Would Jack and Rose have lasted? Comment forever, or four days."},
+      {"id": "o2", "v": "N", "text": "And tell us what to reimagine next."},
+      {"id": "o3", "v": "N", "text": "The Matrix, where Neo takes the blue pill? The Dark Knight, where the Joker tells the truth? Or Jurassic Park, where the fences hold?"},
+      {"id": "o4", "v": "N", "text": "The top comment gets made. And send this to the friend who still says there was room.", "gap": 2.5}
+    ]}
+  ]
+}
