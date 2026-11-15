@@ -82,10 +82,10 @@ def prompt(spec, out):
     im = Image.new("RGB", (CW, CH), BG); d = ImageDraw.Draw(im)
     d.rounded_rectangle((30, 30, CW - 30, CH - 30), 30, fill=PANEL, outline=YELLOW, width=4)
     fl = ImageFont.truetype(SANS, 34); d.text((70, 62), spec.get("label", "PROMPT · copy this"), font=fl, fill=YELLOW)
-    f = ImageFont.truetype(MONO, 30); y = 140
+    f = ImageFont.truetype(MONO, 34); y = 140
     for para in spec["text"].split("\n"):
-        for w in (textwrap.wrap(para, 50) or [""]):
-            d.text((70, y), w, font=f, fill=WHITE); y += 44
+        for w in (textwrap.wrap(para, 44) or [""]):
+            d.text((70, y), w, font=f, fill=WHITE); y += 50
     for fr in range(n):
         p.stdin.write(im.tobytes())
     p.stdin.close(); p.wait()

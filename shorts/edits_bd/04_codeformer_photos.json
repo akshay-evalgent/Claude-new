@@ -1,0 +1,69 @@
+{
+ "series": "Repo reveal",
+ "sources": "Examples: CodeFormer (S-Lab, NTU) · github.com/sczhou/CodeFormer",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "cover_t": 2.2,
+ "title": "Old Family Photos, Fixed for FREE 📸✨",
+ "segments": [
+  {
+   "source": "cf_tease",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.02,
+   "text": "This old photo was *ruined.* Watch.",
+   "say": "This old photo was ruined. Watch."
+  },
+  {
+   "source": "cf_blur",
+   "in": 0,
+   "dur": 3.2,
+   "push": 1.02,
+   "text": "A free AI on GitHub rebuilds faces from *blurry photos.*",
+   "say": "A free AI on GitHub rebuilds faces from blurry old photos. The last one is unreal."
+  },
+  {
+   "source": "cf_glasses",
+   "in": 0,
+   "dur": 3.2,
+   "push": 1.02,
+   "text": "Even *pixelated* ones.",
+   "say": "Even pixelated ones."
+  },
+  {
+   "source": "cf_color",
+   "in": 0,
+   "dur": 3.2,
+   "push": 1.02,
+   "text": "It can even *add colour.*",
+   "say": "It can even add colour."
+  },
+  {
+   "source": "cf_how",
+   "in": 0,
+   "dur": 4.5,
+   "push": 1.02,
+   "text": "How: it's called *CodeFormer.* Free online, no install.",
+   "say": "It's called CodeFormer. Search it on Hugging Face, upload your photo, and hit Enhance Image."
+  },
+  {
+   "source": "cf_inpaint",
+   "in": 0,
+   "dur": 4.0,
+   "push": 1.02,
+   "text": "And this: it *rebuilt a scribbled-out face.*",
+   "say": "And this. It rebuilt a face that was scribbled out."
+  },
+  {
+   "source": "cf_tease",
+   "in": 0.8,
+   "dur": 2.6,
+   "push": 1.03,
+   "text": "*Save this* for your family photo album.",
+   "say": "Save this for your family photo album."
+  }
+ ]
+}

@@ -75,7 +75,10 @@ def background(seg_text, series, sources, path):
         for word, hl, ww in line:
             d.text((x, top + i * TEXT_LH), word, font=f, fill=YELLOW if hl else WHITE); x += ww + space
     if sources:
-        f2 = ImageFont.truetype(FONT, 26)
+        sz = 26
+        while sz > 18 and ImageFont.truetype(FONT, sz).getlength(sources) > W - 60:
+            sz -= 1
+        f2 = ImageFont.truetype(FONT, sz)
         d.text(((W - f2.getlength(sources)) / 2, CARD_Y + CARD_H + 18), sources, font=f2, fill=GREY)
     im.save(path)
     if block > CARD_Y - 40 - TEXT_TOP:
@@ -111,7 +114,7 @@ def render_segment(seg, dur, src_dir, work, k, series, sources):
                f"h={int((y1 - y0) * CARD_H)}:color=0xFFE200@0.95:t=8:enable='between(t,{t0},{t1})',")
     # slow push-in (zoompan on a 2x upscale keeps it smooth)
     fg = (
-        f"[1:v]trim=start={seg['in']:.3f}:duration={dur * speed + 0.2:.3f},setpts=(PTS-STARTPTS)/{speed},fps={FPS},{delogo}"
+        f"[1:v]trim=start={seg['in']:.3f}:duration={dur * speed + 0.2:.3f},setpts=(PTS-STARTPTS)/{speed},fps={FPS},tpad=stop_mode=clone:stop_duration={dur + 1:.2f},{delogo}"
         f"scale={vw}:{vh}:flags=lanczos,crop={pw}:{ph}:{px}:{py},scale={CARD_W * 2}:{CARD_H * 2}:flags=lanczos,"
         f"zoompan=z='1+({push}-1)*on/{max(1, n - 1)}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s={CARD_W}x{CARD_H}:fps={FPS},"
         f"eq=contrast=1.05:saturation=1.1,unsharp=5:5:0.4,{box}"

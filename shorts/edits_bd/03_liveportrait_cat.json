@@ -1,0 +1,69 @@
+{
+ "series": "Repo reveal",
+ "sources": "Demo videos: LivePortrait (Kuaishou), MIT license · liveportrait.github.io",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "cover_t": 1.0,
+ "title": "This Cat Is Copying Her Face 😂✨",
+ "segments": [
+  {
+   "source": "lp_cat_pip",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.03,
+   "text": "This cat is copying *her face.*",
+   "say": "This cat is copying her face."
+  },
+  {
+   "source": "lp_grid",
+   "in": 0,
+   "dur": 3.5,
+   "push": 1.02,
+   "text": "Each one is a *still photo.* A free AI on GitHub makes it move.",
+   "say": "Every one of these is a still photo. A free AI on GitHub makes them move."
+  },
+  {
+   "source": "lp_painting",
+   "in": 0,
+   "dur": 3.2,
+   "push": 1.04,
+   "text": "It works on *old paintings*…",
+   "say": "It works on old paintings,"
+  },
+  {
+   "source": "lp_cartoon",
+   "in": 0,
+   "dur": 3.2,
+   "push": 1.04,
+   "text": "…cartoons… and wait for *the panda.*",
+   "say": "cartoons, and wait for the panda."
+  },
+  {
+   "source": "lp_how",
+   "in": 0,
+   "dur": 4.5,
+   "push": 1.02,
+   "text": "How: it's called *LivePortrait.* Free online demo.",
+   "say": "It's called LivePortrait. Try the free demo on Hugging Face: upload a photo, and a short video of your face."
+  },
+  {
+   "source": "lp_panda_pip",
+   "in": 0,
+   "dur": 4.2,
+   "push": 1.03,
+   "text": "The *panda.*",
+   "say": ""
+  },
+  {
+   "source": "lp_dog_pip",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.03,
+   "text": "*Save this.* Send it to someone with a pet.",
+   "say": "Save this, and send it to someone with a pet."
+  }
+ ]
+}

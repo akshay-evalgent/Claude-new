@@ -1,0 +1,53 @@
+{
+ "series": "Repo reveal",
+ "sources": "Posters: MapToPoster (MIT) · map data © OpenStreetMap contributors",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "cover_t": 2.4,
+ "title": "Any City Becomes a Poster, FREE 🗺️✨",
+ "segments": [
+  {
+   "source": "mp_tease",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.0,
+   "text": "This Tokyo poster cost *$0.*",
+   "say": "This Tokyo poster cost zero dollars."
+  },
+  {
+   "source": "mp_flip",
+   "in": 0,
+   "dur": 4.2,
+   "push": 1.0,
+   "text": "A free script on GitHub draws *any city on Earth.*",
+   "say": "A free script on GitHub draws any city on Earth, from real map data. Seventeen styles."
+  },
+  {
+   "source": "mp_how",
+   "in": 0,
+   "dur": 4.5,
+   "push": 1.02,
+   "text": "How: *one command* with your city.",
+   "say": "Clone it, install it, and run one command with your city's name."
+  },
+  {
+   "source": "mp_payoff",
+   "in": 0,
+   "dur": 4.0,
+   "push": 1.0,
+   "text": "Zoom in: *every single street.* Print it big.",
+   "say": "Zoom in, and every single street is there. Print it as big as you want."
+  },
+  {
+   "source": "mp_flip",
+   "in": 3.1,
+   "dur": 2.6,
+   "push": 1.02,
+   "text": "*Save this.* Comment your city.",
+   "say": "Save this, and comment your city."
+  }
+ ]
+}
