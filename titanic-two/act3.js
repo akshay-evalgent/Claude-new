@@ -5,11 +5,11 @@ const PI = Math.PI;
 // ---- extras added to the shared sea set on first use (hidden again every frame by the wrapped pre) ----
 function EX(S) {
   if (S._a3) return S._a3; const s = S.s, X = {};
-  X.fill = new THREE.PointLight(0x9fbcff, 0, 60); X.fill.position.set(-4, 9, -7); s.add(X.fill);
+  X.fill = new THREE.PointLight(0x9fbcff, 0, 0); X.fill.position.set(8, 26, 16); s.add(X.fill);
   X.key = new THREE.PointLight(0xcfe0ff, 0, 40); X.key.position.set(3, 5, 8); s.add(X.key);
   X.warm = new THREE.SpotLight(0xffe2a8, 0, 260, 0.16, 0.6); s.add(X.warm, X.warm.target);
   X.lantern = new THREE.PointLight(0xffd08a, 0, 40); s.add(X.lantern);
-  X.beam = new THREE.Group(); s.add(X.beam); const cone = new THREE.Mesh(new THREE.ConeGeometry(7, 90, 18, 1, true), new THREE.MeshBasicMaterial({ color: 0xffeeb0, transparent: true, opacity: 0.1, side: THREE.DoubleSide, depthWrite: false, fog: false })); cone.rotation.x = -PI / 2; cone.position.z = 45; X.beam.add(cone);
+  X.beam = new THREE.Group(); s.add(X.beam); const cone = new THREE.Mesh(new THREE.ConeGeometry(7, 90, 18, 1, true), new THREE.MeshBasicMaterial({ color: 0xffeeb0, transparent: true, opacity: 0.045, side: THREE.DoubleSide, depthWrite: false, fog: false, blending: THREE.AdditiveBlending })); cone.rotation.x = -PI / 2; cone.position.z = 45; X.beam.add(cone);
   // milky way
   const N = 900, p = new Float32Array(N * 3); for (let i = 0; i < N; i++) { const a = -0.2 + hash(i) * 3.5, w = (hash(i + 0.3) - 0.5) * 0.28 * (0.4 + hash(i + 0.6)), R = 1150; p.set([Math.cos(a) * Math.cos(0.5 + w) * R, Math.sin(0.5 + w + Math.sin(a) * 0.5) * R * 0.9 + 80, Math.sin(a) * Math.cos(0.5 + w) * R], i * 3); }
   X.milky = new THREE.Points(new THREE.BufferGeometry(), new THREE.PointsMaterial({ color: 0xcfdcff, size: 2.0, sizeAttenuation: false, fog: false, transparent: true, opacity: 0.8 })); X.milky.geometry.setAttribute('position', new THREE.BufferAttribute(p, 3)); X.milky.frustumCulled = false; s.add(X.milky);
@@ -42,12 +42,12 @@ const tag = (t, x = 110, y = 130, col = '#ffd24a') => `<div style="position:abso
 
 // ---- the water around the door (ship gone) ----
 function water(S, X, T, o = {}) {
-  S.mode('night'); S.ship.visible = false; S.lights = 0; S.debris = o.debris ?? 1; S.swimmers = o.sw ?? 0.3; X.fill.intensity = o.fill ?? 260; X.key.intensity = o.key ?? 90; X.milky.visible = true;
+  S.mode('night'); S.ship.visible = false; S.lights = 0; S.debris = o.debris ?? 1; S.swimmers = o.sw ?? 0.3; X.fill.intensity = (o.fill ?? 260) * 8; X.key.intensity = o.key ?? 90; X.milky.visible = true;
   const bob = Math.sin(T * 1.3) * 0.06; S.door.visible = o.door !== false; S.door.position.set(0, (o.dy ?? 0.25) + bob, 0); S.door.rotation.set(o.tilt || 0, 0, 0); return (o.dy ?? 0.25) + bob + 0.2;   // returns door-top y
 }
 const puff = (X, i, p, T, ph = 0) => { const k = (T * 0.45 + ph) % 1; for (let j = 0; j < 3; j++) { const m = X.puffs[i * 3 + j]; if (!m) return; const kk = (k + j * 0.12) % 1; m.position.set(p[0] + 0.5 + kk * 0.9 + Math.sin(j * 2 + T) * 0.08, p[1] + 0.9 + kk * 1.1, p[2] - 0.2); m.scale.setScalar(0.12 + kk * 0.4); } };
-function roseLie(S, T, top, vest = true, o = {}) { const r = S.C('rose'); S.put(r, 2.6, top + 0.6 - (o.dip || 0) * 0.5, -0.35 + (o.slide || 0)); r.g.rotation.order = 'YXZ'; r.g.rotation.set(-PI / 2 + (o.roll || 0), PI / 2, 0); if (vest) S.vest(r); r.look(o.expr || 'sad', T); r.armL.rotation.set(0, 0, -0.3); r.head.rotation.z = -0.5; return r; }
-function jackWater(S, T, o = {}) { const j = S.C('jack'); S.put(j, o.x ?? 0.3, (o.y ?? -3.5) + Math.sin(T * 1.3 + 1) * 0.05, o.z ?? 2.45, o.ry ?? PI); const a = o.arms ?? 1; j.armL.rotation.set(-1.52 * a, 0, 0.12); j.armR.rotation.set(-1.52 * a, 0, -0.12); j.look(o.expr || 'sad', T); return j; }
+function roseLie(S, T, top, vest = true, o = {}) { const r = S.C('rose'); S.put(r, -2.5, top + 0.62 - (o.dip || 0) * 0.5, 0.15 + (o.slide || 0)); r.g.rotation.order = 'YXZ'; r.g.rotation.set(-PI / 2 + (o.roll || 0), -PI / 2, 0); if (vest) S.vest(r); r.look(o.expr || 'sad', T); const reach = o.reach ?? 1; r.armR.rotation.set(-0.5 * reach, 0, 1.25 * reach); r.armL.rotation.set(0, 0, -0.15); r.head.rotation.z = 0.35; return r; }
+function jackWater(S, T, o = {}) { const j = S.C('jack'); S.put(j, o.x ?? 3.0, (o.y ?? -3.5) + Math.sin(T * 1.3 + 1) * 0.05, o.z ?? 2.45, o.ry ?? PI); const a = o.arms ?? 1; j.armL.rotation.set(-1.52 * a, 0, 0.12); j.armR.rotation.set(-1.52 * a, 0, -0.12); j.look(o.expr || 'sad', T); return j; }
 function sitOn(S, ch, x, top, z, ry) { S.put(ch, x, top - 1.5, z, ry); ch.sit(); return ch; }
 function frost(S, X, k) { const j = S.C('jack'); if (!X.frost) { X.frost = new THREE.Group(); for (let i = 0; i < 14; i++) box(0.16, 0.12, 0.16, 0xeaf4ff, (hash(i) - 0.5) * 1.3, 1.52 + hash(i + 0.3) * 0.08, (hash(i + 0.6) - 0.5) * 1.2, X.frost); for (let i = 0; i < 5; i++) box(0.12, 0.1, 0.06, 0xeaf4ff, (hash(i + 2) - 0.5) * 0.9, 0.95 + hash(i + 5) * 0.2, 0.67, X.frost); j.head.add(X.frost); } X.frost.visible = k > 0; X.frost.children.forEach((m, i) => m.visible = hash(i + 0.9) < k); }
 function huddle(S, X, T, top, o = {}) {
@@ -97,7 +97,7 @@ SEA('d3:0', (c, S, X) => {
   move(c.cam, [1.5, 1.7, 12], [-0.6, 1.0, 0], [0.5, 1.5, 9.5], [-0.2, 1.0, 0], c.k, 32);
 });
 SEA('d3:1', (c, S, X) => {
-  water(S, X, c.T, { door: false, sw: 0.55, fill: 500 }); X.fill.position.set(0, 60, 0); X.fill.distance = 400;
+  water(S, X, c.T, { door: false, sw: 0.55, fill: 500 }); 
   S.boats.slice(0, 4).forEach((b, i) => { b.visible = true; b.position.set(-190 + i * 120, 0, -200 - (i % 2) * 40); b.rotation.y = i; });
   jackWater(S, c.T, { x: 1.2, z: 0, y: -3.45, ry: 0, arms: 0.3 }); const r = S.C('rose'); S.put(r, -1.6, -3.5, 0.3, 0); S.vest(r);
   move(c.cam, [0, 46, 80], [0, 0, -20], [0, 80, 120], [0, 0, -40], c.k, 44);
@@ -113,27 +113,27 @@ SEA('d3:2', (c, S, X) => {
 SEA('d4:0', (c, S, X) => {
   const top = water(S, X, c.T), [i, k] = cuts(c.k, [0.48]);
   if (i === 0) { const x = -9 + ease(k) * 5.2; jackWater(S, c.T, { x: x + 1.5, z: 1.2, y: -3.45, ry: PI / 2 - 0.3, arms: 0.5, expr: 'serious' }); const r = S.C('rose'); S.put(r, x - 0.6, -3.5, 1.6, PI / 2 - 0.2); S.vest(r); r.look('sad', c.T); move(c.cam, [5, 4.2, 13], [-2, 0.6, 0.5], [3, 3.6, 11], [-1, 0.6, 0.5], k, 34); }
-  else { roseLie(S, c.T, top, true, { expr: 'sad', roll: (1 - ease(k * 2)) * 0.5 }); const j = jackWater(S, c.T, { expr: 'serious' }); j.armL.rotation.x = j.armR.rotation.x = -1.9 + ease(k * 2) * 0.4; move(c.cam, [-6.5, 3.6, -7.5], [0.4, 1.0, 0.6], [-5.2, 3.2, -6.4], [0.4, 1.0, 0.6], k, 34); }
+  else { roseLie(S, c.T, top, true, { expr: 'sad', roll: (1 - ease(k * 2)) * 0.5 }); const j = jackWater(S, c.T, { expr: 'serious' }); j.armL.rotation.x = j.armR.rotation.x = -1.9 + ease(k * 2) * 0.4; move(c.cam, [-1.0, 6.6, -7.4], [1.8, 0.9, 1.2], [-0.4, 6.0, -6.6], [1.9, 0.9, 1.3], k, 34); }
 });
-SEA('d4:1', (c, S, X) => { const a = ease(c.k) * 0.3, top = water(S, X, c.T, { tilt: a, dy: 0.25 - a * 0.6 }); roseLie(S, c.T, top, true, { expr: 'surprised', slide: a * 1.6, dip: a * 0.8 }); const j = jackWater(S, c.T, { y: -3.5 + ease(c.k) * 1.5, z: 2.3 - ease(c.k) * 0.5, expr: 'serious' }); j.body.rotation.x = 0.3 * ease(c.k); move(c.cam, [7.5, 2.6, 5.5], [0, 0.8, 0.6], [6.5, 2.4, 4.6], [0, 0.8, 0.6], c.k, 34); });
+SEA('d4:1', (c, S, X) => { const a = ease(c.k) * 0.3, top = water(S, X, c.T, { tilt: a, dy: 0.25 - a * 0.6 }); roseLie(S, c.T, top, true, { expr: 'surprised', slide: a * 1.6, dip: a * 0.8 }); const j = jackWater(S, c.T, { y: -3.5 + ease(c.k) * 1.5, z: 2.3 - ease(c.k) * 0.5, expr: 'serious' }); j.body.rotation.x = 0.3 * ease(c.k); move(c.cam, [-0.6, 4.2, -7.8], [2.0, 0.9, 1.3], [-0.2, 3.8, -7.0], [2.0, 0.9, 1.3], c.k, 34); });
 SEA('d4:2', (c, S, X) => {
   const a = 0.3 + Math.sin(clamp(c.k * 1.4) * PI) * 0.3, top = water(S, X, c.T, { tilt: a, dy: 0.25 - a * 0.7 }); roseLie(S, c.T, top, true, { expr: 'surprised', slide: a * 1.9, dip: a * 0.9, roll: 0.25 });
   jackWater(S, c.T, { y: -2.0 - c.k * 0.6, z: 1.8, expr: 'surprised' });
   X.splash.forEach((m, i) => { const t = c.l * 1.6 - hash(i) * 0.3; if (t > 0 && t < 1) m.position.set((hash(i + 1) - 0.5) * 6, 0.2 + t * (3 + hash(i + 2) * 3) - t * t * 6, 1.6 + (hash(i + 3) - 0.3) * 2.2 * t); });
-  move(c.cam, [-7, 4.4, 7], [0, 0.6, 0.8], [-6.2, 4.0, 6.2], [0, 0.6, 0.8], c.k, 36); shake(c.cam, c.T, 0.07);
+  move(c.cam, [-3.0, 4.2, -8.6], [1.2, 0.6, 0.9], [-2.4, 3.8, -7.6], [1.2, 0.6, 0.9], c.k, 36); shake(c.cam, c.T, 0.07);
 });
-SEA('d4:3', (c, S, X) => { const top = water(S, X, c.T); roseLie(S, c.T, top, true, { expr: 'sad' }); const j = jackWater(S, c.T, { y: -2.6 - ease(c.k * 1.6) * 0.9, expr: 'sad' }); puff(X, 0, [0.3, 1.1, 1.6], c.T, 0.2); move(c.cam, [-7.2, 3.2, -6.4], [0.5, 1.0, 0.8], [-5.6, 2.8, -5.4], [0.4, 1.0, 0.8], c.k, 32); });
+SEA('d4:3', (c, S, X) => { const top = water(S, X, c.T); roseLie(S, c.T, top, true, { expr: 'sad' }); const j = jackWater(S, c.T, { y: -2.6 - ease(c.k * 1.6) * 0.9, expr: 'sad' }); puff(X, 0, [3.0, 1.1, 1.7], c.T, 0.2); move(c.cam, [-0.8, 6.2, -6.6], [2.3, 0.9, 1.4], [-0.3, 5.6, -5.9], [2.3, 0.9, 1.4], c.k, 32); });
 
 // ================= d5-d7: the ending you know, then the rewind =================
 function origEnd(S, X, T, ph, camK) {     // ph 0 = Jack at the door ... 1 = Rose alone
   const top = water(S, X, T, { sw: 0.25 * (1 - ph * 0.6), fill: 240 }), r = roseLie(S, T, top, true, { expr: ph > 0.75 ? 'sleep' : 'sad' }); r.armL.rotation.set(0, 0, -0.3 - 0.9 * (1 - ph));
-  const gone = ph > 0.72; if (!gone) { const j = jackWater(S, T, { expr: ph > 0.45 ? 'sleep' : 'sad', arms: 1 - ease((ph - 0.5) / 0.22) * 0.75, y: -3.5 - ease((ph - 0.5) / 0.22) * 0.25 }); j.head.rotation.x = 0.35 * ease(ph * 2); frost(S, X, ph * 1.5); puff(X, 0, [0.3, 1.0, 1.6], T, 0.2); }
+  const gone = ph > 0.72; if (!gone) { const j = jackWater(S, T, { expr: ph > 0.45 ? 'sleep' : 'sad', arms: 1 - ease((ph - 0.5) / 0.22) * 0.75, y: -3.5 - ease((ph - 0.5) / 0.22) * 0.25 }); j.head.rotation.x = 0.35 * ease(ph * 2); frost(S, X, ph * 1.5); puff(X, 0, [3.0, 1.0, 1.7], T, 0.2); }
   S.boats[0].visible = ph > 0.6; S.boats[0].position.set(-150 + ph * 20, 0, 120); S.boats[0].rotation.y = 2.2; X.lantern.position.set(-140, 3, 118); X.lantern.intensity = ph > 0.6 ? 400 : 0;
-  puff(X, 1, [-2.2, top + 1.1, -0.2], T, 0.6);
-  if (camK !== undefined) move(S.cam, [-6.4, 3.0, -5.8], [0.4, 1.0, 0.8], [-4.8, 4.6, -8.4], [0.2, 0.7, 0.6], camK, 32);
+  puff(X, 1, [2.1, top + 1.3, 0.2], T, 0.6);
+  if (camK !== undefined) move(S.cam, [-0.6, 6.0, -6.2], [2.0, 0.8, 1.2], [-1.8, 9.6, -9.2], [1.6, 0.6, 1.4], camK, 32);
 }
-SEA('d5:0', (c, S, X) => { origEnd(S, X, c.T, c.k * 0.4); move(c.cam, [-5.6, 2.8, -5.4], [0.4, 1.0, 0.8], [-4.4, 2.4, -4.6], [0.4, 1.05, 0.9], c.k, 30); });
-SEA('d5:1', (c, S, X) => { const [i, k] = cuts(c.k, [0.34]); if (i === 0) { origEnd(S, X, c.T, 0.4 + k * 0.31); move(c.cam, [2.2, 1.9, -6.2], [0.3, 0.9, 1.6], [1.4, 1.7, -5.4], [0.3, 0.9, 1.6], k, 28); } else { origEnd(S, X, c.T, 0.74 + k * 0.26, k); if (k < 0.12) c.fade(1 - k / 0.12); } });
+SEA('d5:0', (c, S, X) => { origEnd(S, X, c.T, c.k * 0.4); move(c.cam, [0.2, 5.4, -6.2], [2.4, 1.0, 1.4], [0.6, 4.8, -5.4], [2.5, 1.0, 1.5], c.k, 30); });
+SEA('d5:1', (c, S, X) => { const [i, k] = cuts(c.k, [0.34]); if (i === 0) { origEnd(S, X, c.T, 0.4 + k * 0.31); move(c.cam, [0.8, 4.0, -5.6], [2.8, 1.1, 2.0], [1.2, 3.7, -4.8], [2.8, 1.1, 2.0], k, 28); } else { origEnd(S, X, c.T, 0.74 + k * 0.26, k); if (k < 0.12) c.fade(1 - k / 0.12); } });
 const frozen = (c, S, X) => { origEnd(S, X, 181.4, 1, 1); };
 SEA('d6', (c, S, X) => {
   frozen(c, S, X); const k = ease(c.l / 0.35);
@@ -141,7 +141,7 @@ SEA('d6', (c, S, X) => {
 });
 SEA('d7', (c, S, X) => {
   const e = LINE.d7.sents[0].end, rk = clamp(c.l / 1.5), ph = 1 - ease(rk) * 0.98; origEnd(S, X, 181.4 - rk * 6, Math.max(0.02, ph)); frost(S, X, ph);
-  move(c.cam, [-4.8, 4.6, -8.4], [0.2, 0.7, 0.6], [-6.6, 3.2, -6.2], [0.4, 1.0, 0.8], rk, 32);
+  move(c.cam, [-1.8, 9.6, -9.2], [1.6, 0.6, 1.4], [-0.6, 6.0, -6.2], [2.0, 0.8, 1.2], rk, 32);
   let h = ''; if (rk < 1) { for (let i = 0; i < 9; i++) { const y = 110 + hash(i + Math.floor(c.T * 24)) * 780; h += `<div style="position:absolute;left:0;right:0;top:${y}px;height:${3 + hash(i) * 5}px;background:rgba(255,255,255,${0.12 + hash(i + 3) * 0.2})"></div>`; } h += tag('◀◀ REWIND', 110, 130, '#fff'); }
   const tk = clamp((c.T - e + 1.3) / 0.35); if (tk > 0) h += `<div style="position:absolute;left:0;right:0;top:330px;text-align:center;font-size:42px;letter-spacing:12px;font-weight:800;color:#fff;opacity:${tk};text-shadow:0 3px 14px #000">BUT</div><div style="position:absolute;left:0;right:0;top:380px;text-align:center;font-size:${150 - 14 * ease(tk)}px;font-weight:900;letter-spacing:2px;color:#ffd24a;opacity:${tk};-webkit-text-stroke:14px #000;paint-order:stroke fill">THE DOOR FITS TWO</div>`;
   c.dom(h); const endk = (c.T - (LINE.d7.slot[1] - 0.45)) / 0.4; if (endk > 0) c.flash(clamp(endk));
@@ -164,33 +164,34 @@ SEA('e1:1', (c, S, X) => { const top = water(S, X, c.T, { sw: 0.2 }); roseLie(S,
 SEA('e1:2', (c, S, X) => { const a = ease(c.k * 1.6), top = water(S, X, c.T, { sw: 0.2 }); roseLie(S, c.T, top, true); jackWater(S, c.T); move(c.cam, [9, 2.8, -8], [0, 0.8, 0.5], [8, 2.6, -7], [0, 0.8, 0.5], c.k, 34); c.dom(DIAG(a > 0.25 ? 2 : 1, 14 + 44 * ease((c.k - 0.2) * 2.2), false, c.k > 0.5 ? 'TWO PEOPLE: UNDER THE SURFACE. BOTH FREEZE.' : 'TWO PEOPLE…', c.k > 0.5 ? '#ff6b7d' : '#ffd24a')); });
 
 // ================= e2-e4: the fix =================
-function roseSit(S, T, top, vest, expr = 'serious') { const r = sitOn(S, S.C('rose'), -0.4, top, -0.7, 0.15); if (vest) S.vest(r); r.look(expr, T); return r; }
+const jackEnd = (S, T, o = {}) => jackWater(S, T, { x: 4.0, z: 0.4, ry: -PI / 2, ...o });
+function roseSit(S, T, top, vest, expr = 'serious') { const r = sitOn(S, S.C('rose'), 0.2, top, 0.1, 1.35); if (vest) S.vest(r); r.look(expr, T); return r; }
 SEA('e2:0', (c, S, X) => {
   const top = water(S, X, c.T), up = ease(c.k / 0.5);
   if (up < 0.5) roseLie(S, c.T, top, true, { expr: 'serious' }); else { const r = roseSit(S, c.T, top, true); r.armR.rotation.set(-1.35, 0, 0.05); r.body.rotation.x = 0.25; }
-  const j = jackWater(S, c.T, { arms: 0.55 + 0.45 * ease((c.k - 0.5) * 2), expr: c.k > 0.55 ? 'surprised' : 'sad' }); frost(S, X, 0.25);
-  move(c.cam, [9.5, 3.4, 4.5], [0, 1.6, 0.8], [8, 3.0, 3.6], [0, 1.7, 0.8], c.k, 32);
+  const j = up < 0.5 ? jackWater(S, c.T, { arms: 0.55, expr: 'sad' }) : jackEnd(S, c.T, { arms: 0.55 + 0.45 * ease((c.k - 0.5) * 2), expr: 'surprised' }); frost(S, X, 0.25);
+  if (up < 0.5) move(c.cam, [-0.6, 5.0, -7.4], [2.0, 1.2, 1.3], [-0.2, 4.6, -6.6], [2.0, 1.2, 1.3], c.k, 32); else move(c.cam, [9.6, 4.6, -4.2], [1.0, 2.4, 0.2], [8.6, 4.4, -3.6], [1.0, 2.5, 0.2], c.k, 32);
 });
 SEA('e2:1', (c, S, X) => {
   const top = water(S, X, c.T), off = ease((c.k - 0.3) / 0.4), r = roseSit(S, c.T, top, off < 0.5, 'serious'); r.armL.rotation.set(-1.2, 0, 0.35 - off * 0.3); r.armR.rotation.set(-1.2, 0, -0.35 + off * 0.3);
-  if (off >= 0.5) { X.vest.visible = true; X.vest.position.set(-0.4, top - 1.5 + 0.2 + (off - 0.5) * 0.6, -0.7 + 1.0 + (off - 0.5) * 1.2); X.vest.rotation.set(-0.5 * (off - 0.5) * 2, 0.15, 0); }
-  jackWater(S, c.T, { expr: 'surprised' }); frost(S, X, 0.25);
-  move(c.cam, [4.6, 3.6, 8.6], [-0.3, 2.6, 0], [3.4, 3.4, 7.4], [-0.3, 2.6, 0], c.k, 30);
+  if (off >= 0.5) { X.vest.visible = true; X.vest.position.set(0.2 + 1.0 + (off - 0.5) * 1.2, top - 1.5 + 0.2 + (off - 0.5) * 0.6, 0.1); X.vest.rotation.set(0, 1.35, -0.5 * (off - 0.5) * 2); }
+  jackEnd(S, c.T, { expr: 'surprised' }); frost(S, X, 0.25);
+  move(c.cam, [8.6, 4.2, -3.4], [0.6, 2.4, 0.4], [7.8, 4.0, -2.8], [0.6, 2.4, 0.4], c.k, 30);
 });
 SEA('e3', (c, S, X) => {
   const top = water(S, X, c.T), k = ease(c.k * 1.5), r = roseSit(S, c.T, top, false, 'serious'); r.body.rotation.x = 0.55; r.armL.rotation.set(-0.6, 0, 0.2); r.armR.rotation.set(-0.6, 0, -0.2);
   X.under.visible = true; X.under.position.set(lerp(-0.4, 0, k), lerp(top + 0.9, top - 0.75, k), lerp(1.6, 0.6, k)); X.under.rotation.set(lerp(-1.2, 0, k), 0, 0);
   X.straps.forEach(g => { g.visible = c.k > 0.6; g.position.set(0, top - 0.2, 0); });
   X.splash.slice(0, 8).forEach((m, i) => { const t = (c.l * 1.1 + hash(i)) % 1; m.position.set((hash(i + 1) - 0.5) * 3.4, 0.1 + t * 0.9, 1.9 + hash(i + 2) * 0.6); m.scale.setScalar(0.5 * (1 - t)); });
-  jackWater(S, c.T, { expr: 'surprised', x: 2.6 }); frost(S, X, 0.25);
-  move(c.cam, [3.6, 5.6, 8.6], [0, 0.4, 1.0], [2.6, 4.8, 7.4], [0, 0.4, 1.2], c.k, 32);
+  jackEnd(S, c.T, { expr: 'surprised' }); frost(S, X, 0.25);
+  move(c.cam, [1.0, 5.4, 9.0], [0.4, 0.6, 1.0], [0.4, 4.6, 7.8], [0.4, 0.6, 1.2], c.k, 32);
 });
-SEA('e4:0', (c, S, X) => { const top = water(S, X, c.T, { dy: 0.25 }); roseSit(S, c.T, top, false, 'smirk'); jackWater(S, c.T, { x: 2.6, expr: 'surprised' }); frost(S, X, 0.25); X.under.visible = true; X.under.position.set(0, top - 0.75, 0.6); move(c.cam, [9, 2.8, -8], [0, 1.2, 0.5], [8, 2.6, -7], [0, 1.2, 0.5], c.k, 34); const a = ease((c.k - 0.25) * 2); c.dom(DIAG(2, 58 - 76 * a, true, a > 0.6 ? 'LIFEJACKET UNDERNEATH: IT FLOATS TWO ✓' : 'ADD THE LIFEJACKET…', a > 0.6 ? '#7dffb0' : '#ffd24a')); });
-SEA('e4:1', (c, S, X) => { const dy = 0.25 + ease(c.k) * 0.45, top = water(S, X, c.T, { dy }); roseSit(S, c.T, top, false, 'smirk'); jackWater(S, c.T, { x: 2.6, expr: 'surprised' }); frost(S, X, 0.25); X.under.visible = true; X.under.position.set(0, top - 0.75, 0.6); X.straps.forEach(g => { g.visible = true; g.position.set(0, top - 0.2, 0); }); move(c.cam, [5.5, 1.3, 9], [0, 0.7, 0.6], [4.4, 1.2, 7.6], [0, 0.8, 0.6], c.k, 30); });
-SEA('e4:2', (c, S, X) => { const top = water(S, X, c.T, { dy: 0.7 }); roseSit(S, c.T, top, false, 'smirk'); const j = jackWater(S, c.T, { x: 2.2, y: -3.3, expr: 'smirk' }); j.armL.rotation.x = j.armR.rotation.x = -1.5 - Math.sin(clamp(c.k) * PI) * 0.25; frost(S, X, 0.25); X.under.visible = true; X.under.position.set(0, top - 0.75, 0.6); X.straps.forEach(g => { g.visible = true; g.position.set(0, top - 0.2, 0); }); move(c.cam, [-6.8, 3.2, -6.0], [0.8, 1.2, 0.8], [-6.0, 3.0, -5.4], [0.8, 1.2, 0.8], c.k, 32); });
+SEA('e4:0', (c, S, X) => { const top = water(S, X, c.T, { dy: 0.25 }); roseSit(S, c.T, top, false, 'smirk'); jackEnd(S, c.T, { expr: 'surprised' }); frost(S, X, 0.25); X.under.visible = true; X.under.position.set(0, top - 0.75, 0.6); move(c.cam, [9, 2.8, -8], [0, 1.2, 0.5], [8, 2.6, -7], [0, 1.2, 0.5], c.k, 34); const a = ease((c.k - 0.25) * 2); c.dom(DIAG(2, 58 - 76 * a, true, a > 0.6 ? 'LIFEJACKET UNDERNEATH: IT FLOATS TWO ✓' : 'ADD THE LIFEJACKET…', a > 0.6 ? '#7dffb0' : '#ffd24a')); });
+SEA('e4:1', (c, S, X) => { const dy = 0.25 + ease(c.k) * 0.45, top = water(S, X, c.T, { dy }); roseSit(S, c.T, top, false, 'smirk'); jackEnd(S, c.T, { expr: 'surprised' }); frost(S, X, 0.25); X.under.visible = true; X.under.position.set(0, top - 0.75, 0.6); X.straps.forEach(g => { g.visible = true; g.position.set(0, top - 0.2, 0); }); move(c.cam, [-2.4, 1.3, 9.2], [0.3, 0.7, 0.3], [-1.8, 1.2, 8.0], [0.3, 0.8, 0.3], c.k, 30); });
+SEA('e4:2', (c, S, X) => { const top = water(S, X, c.T, { dy: 0.7 }); roseSit(S, c.T, top, false, 'smirk'); const j = jackEnd(S, c.T, { y: -3.3, expr: 'smirk' }); j.armL.rotation.x = j.armR.rotation.x = -1.5 - Math.sin(clamp(c.k) * PI) * 0.25; frost(S, X, 0.25); X.under.visible = true; X.under.position.set(0, top - 0.75, 0.6); X.straps.forEach(g => { g.visible = true; g.position.set(0, top - 0.2, 0); }); move(c.cam, [-1.8, 6.4, 4.2], [3.8, 1.3, 0.4], [-1.2, 6.0, 3.8], [3.8, 1.3, 0.4], c.k, 32); });
 SEA('e4:3', (c, S, X) => {
   const top = water(S, X, c.T, { dy: 0.7 }), k = ease(c.k * 1.25);
-  if (k < 0.55) { const kk = k / 0.55; roseSit(S, c.T, top, false, 'smirk').armR.rotation.set(-1.3, 0, -0.4); const j = jackWater(S, c.T, { x: 2.2 - kk * 0.6, y: -3.3 + kk * 2.3, z: 2.45 - kk * 1.6, expr: 'serious' }); j.body.rotation.x = 0.5 * kk; frost(S, X, 0.25); X.under.visible = true; X.under.position.set(0, top - 0.75, 0.6); X.straps.forEach(g => { g.visible = true; g.position.set(0, top - 0.2, 0); }); X.splash.slice(0, 10).forEach((m, i) => { const t = kk * 1.3 - hash(i) * 0.3; if (t > 0 && t < 1) m.position.set(1.6 + (hash(i + 1) - 0.5) * 3, 0.3 + t * 3 - t * t * 4, 2 + hash(i + 3) * 1.4); }); }
+  if (k < 0.55) { const kk = k / 0.55; roseSit(S, c.T, top, false, 'smirk').armR.rotation.set(-1.3, 0, -0.4); const j = jackEnd(S, c.T, { x: 4.0 - kk * 1.2, y: -3.3 + kk * 2.3, expr: 'serious' }); j.body.rotation.x = 0.5 * kk; frost(S, X, 0.25); X.under.visible = true; X.under.position.set(0, top - 0.75, 0.6); X.straps.forEach(g => { g.visible = true; g.position.set(0, top - 0.2, 0); }); X.splash.slice(0, 10).forEach((m, i) => { const t = kk * 1.3 - hash(i) * 0.3; if (t > 0 && t < 1) m.position.set(3.8 + (hash(i + 1) - 0.3) * 2, 0.3 + t * 3 - t * t * 4, 0.4 + (hash(i + 3) - 0.5) * 3); }); }
   else { const [r, j] = huddle(S, X, c.T, top, { re: 'joy', je: 'joy', rub: 0.4 }); frost(S, X, 0.2); }
   move(c.cam, [7.5, 3.6, 7.5], [0.6, 1.8, 0.2], [5.4, 3.6, 8.4], [0, 2.4, -0.4], c.k, 32);
 });
@@ -199,7 +200,7 @@ SEA('e4:3', (c, S, X) => {
 SEA('e5', (c, S, X) => { const top = water(S, X, c.T, { dy: 0.7, sw: 0.15 }), [r, j] = huddle(S, X, c.T, top, { re: 'smirk', rt: c.talk, je: c.si ? 'joy' : 'smirk' }); frost(S, X, 0.15); r.head.rotation.y = 0.45; j.head.rotation.y = -0.45; r.body.position.x = Math.sin(c.T * 31) * 0.03; move(c.cam, [-1.8, top + 3.3, 8.2], [-0.9, top + 3.05, -0.6], [-1.4, top + 3.3, 7.2], [-0.8, top + 3.05, -0.6], c.k, 28); });
 const orbit = (c, top, a0, a1, R = 13, h = 4.2) => { const a = lerp(a0, a1, c.k); shot(c.cam, [Math.sin(a) * R, top + h, Math.cos(a) * R], [0, top + 2.3, -0.5], 32); };
 SEA('e6:0', (c, S, X) => { const top = water(S, X, c.T, { dy: 0.7, sw: 0.15 }); huddle(S, X, c.T, top, { re: 'smirk', je: 'smirk', rub: 1.3 }); orbit(c, top, -0.5, -0.2, 12); });
-SEA('e6:1', (c, S, X) => { const top = water(S, X, c.T, { dy: 0.7, sw: 0.15 }), [r, j] = huddle(S, X, c.T, top, { re: 'joy', je: 'smirk', rub: 0.6 }); r.head.rotation.y = 0.5; j.head.rotation.y = -0.5; j.head.rotation.x = Math.sin(c.T * 5) * 0.06; shot(c.cam, [1.5 - c.k * 2, top + 6 + c.k * 5, 15 + c.k * 9], [0, top + 9 + c.k * 14, -20], 40); });
+SEA('e6:1', (c, S, X) => { const top = water(S, X, c.T, { dy: 0.7, sw: 0.15 }), [r, j] = huddle(S, X, c.T, top, { re: 'joy', je: 'smirk', rub: 0.6 }); r.head.rotation.y = 0.5; j.head.rotation.y = -0.5; j.head.rotation.x = Math.sin(c.T * 5) * 0.06; shot(c.cam, [1.5 - c.k * 2, top + 3 + c.k * 1.5, 14 + c.k * 4], [0, top + 6 + c.k * 4, -20], 40); });
 SEA('e6:2', (c, S, X) => { const top = water(S, X, c.T, { dy: 0.7, sw: 0.15 }), nod = c.k < 0.5, [r, j] = huddle(S, X, c.T, top, { re: nod ? 'serious' : 'smirk', je: nod ? 'sleep' : 'surprised', rub: 0.3 }); j.head.rotation.x = nod ? 0.45 * ease(c.k * 3) : 0; if (!nod) { r.armL.rotation.set(-1.2, 0, 1.0 + Math.sin(c.T * 18) * 0.15); j.body.position.x = Math.sin(c.T * 26) * 0.05; } r.head.rotation.y = 0.6; move(c.cam, [2.8, top + 3.4, 8.6], [0.6, top + 3.0, -0.6], [2.2, top + 3.4, 7.6], [0.5, top + 3.0, -0.6], c.k, 28); });
 
 // ================= e7-e9: the boat comes back =================
@@ -207,15 +208,15 @@ function boat(S, X, T, bx, bz, ry, aim) {
   const b = S.boats[0]; b.visible = true; b.position.set(bx, Math.sin(T * 1.1) * 0.08, bz); b.rotation.y = ry;
   const o = S.C('officer'), fw = [Math.sin(ry), Math.cos(ry)]; S.put(o, bx + fw[0] * 3.2, 1.3, bz + fw[1] * 3.2, ry); o.armR.rotation.set(-1.45, 0, -0.15);
   ['steward', 'lookout'].forEach((n, i) => { const m = S.C(n); S.put(m, bx - fw[0] * (0.5 + i * 3), 1.3 - 1.5, bz - fw[1] * (0.5 + i * 3), ry + PI); m.sit(); const row = Math.sin(T * 2.2 + i * 0.4); m.armL.rotation.x = m.armR.rotation.x = -1.0 + row * 0.35; m.body.rotation.x = row * 0.15; m.look('serious', T); });
-  const tp = [bx + fw[0] * 4.2, 5.2, bz + fw[1] * 4.2]; X.beam.visible = true; X.beam.position.set(...tp); X.beam.lookAt(...aim); X.warm.position.set(...tp); X.warm.target.position.set(...aim); X.warm.intensity = 9000;
+  const tp = [bx + fw[0] * 4.2, 5.2, bz + fw[1] * 4.2]; X.beam.visible = true; X.beam.position.set(...tp); X.beam.lookAt(...aim); X.warm.position.set(...tp); X.warm.target.position.set(...aim); X.warm.intensity = 3500;
   X.lantern.position.set(bx + fw[0] * 5, 3.2, bz + fw[1] * 5); X.lantern.intensity = 260; return o;
 }
 SEA('e7', (c, S, X) => {
   const top = water(S, X, c.T, { dy: 0.7, sw: 0.3 }); const [r, j] = huddle(S, X, c.T, top, { re: 'serious', je: 'serious', rub: 0.3 }); r.g.rotation.y = 2.4; j.g.rotation.y = 2.0;
   const bx = 150 - c.k * 26, bz = -95 + c.k * 16, sw = Math.sin(c.T * 1.1) * 60; const o = boat(S, X, c.T, bx, bz, -1.0, [bx - 70 + sw * 0.3, 0, bz + 50 + sw]); o.look('serious', c.T);
-  const [i, k] = cuts(c.k, [0.45]); if (i === 0) move(c.cam, [-7, top + 4.4, 8.5], [60, 2, -40], [-8, top + 4.0, 9.5], [70, 2, -45], k, 34); else move(c.cam, [bx - 34, 5, bz + 30], [bx, 3.4, bz], [bx - 26, 4.4, bz + 22], [bx, 3.4, bz], k, 30);
+  const [i, k] = cuts(c.k, [0.45]); if (i === 0) move(c.cam, [-6, top + 7.5, 9.5], [60, 0, -40], [-7, top + 7.0, 10.5], [70, 0, -45], k, 34); else move(c.cam, [bx - 34, 5, bz + 30], [bx, 3.4, bz], [bx - 26, 4.4, bz + 22], [bx, 3.4, bz], k, 30);
 });
-SEA('e8', (c, S, X) => { water(S, X, c.T, { door: false, sw: 0.3 }); const bx = 70, bz = -44, sw = Math.sin(c.T * 1.6) * 40; const o = boat(S, X, c.T, bx - c.k * 3, bz + c.k * 2, -1.0, [bx - 60 + sw * 0.4, 0, bz + 40 + sw]); o.look('serious', c.T, c.talk); o.armL.rotation.set(-2.6, 0, 0.5); o.head.rotation.y = Math.sin(c.T * 1.6) * 0.3; const h = [bx - 2.7, 6.1, bz + 1.7]; EX(S).key.position.set(h[0] - 4, 7, h[2] + 5); EX(S).key.intensity = 120; move(c.cam, [h[0] - 7.5, 6.4, h[2] + 6.5], h, [h[0] - 6.2, 6.3, h[2] + 5.4], h, c.k, 30); });
+SEA('e8', (c, S, X) => { water(S, X, c.T, { door: false, sw: 0.3 }); const bx = 70, bz = -44, sw = Math.sin(c.T * 1.6) * 40; const o = boat(S, X, c.T, bx - c.k * 3, bz + c.k * 2, -1.0, [bx - 60 + sw * 0.4, 0, bz + 40 + sw]); o.look('serious', c.T, c.talk); o.armL.rotation.set(-2.6, 0, 0.5); o.head.rotation.y = Math.sin(c.T * 1.6) * 0.3; const h = [bx - 2.7, 6.1, bz + 1.7]; EX(S).key.position.set(h[0] - 4, 7, h[2] + 5); EX(S).key.intensity = 25; X.lantern.intensity = 50; move(c.cam, [h[0] - 7.5, 6.4, h[2] + 6.5], h, [h[0] - 6.2, 6.3, h[2] + 5.4], h, c.k, 30); });
 SEA('e9:0', (c, S, X) => {
   const top = water(S, X, c.T, { dy: 0.7, sw: 0.2 }), k = ease(c.k * 1.3), [r, j] = huddle(S, X, c.T, top, { re: 'surprised', je: 'serious', rub: 0 });
   X.plank.position.set(-4.6, 0.15 + Math.sin(c.T * 1.4) * 0.05, -0.2); X.plank.rotation.y = 0.5;
@@ -227,7 +228,7 @@ SEA('e9:1', (c, S, X) => {
   const top = water(S, X, c.T, { dy: 0.7, sw: 0.2 }), e = LINE.e9.sents[1].start, t = c.T - e, [i] = cuts(clamp(t / 1.5), [0.99]);
   const found = ease((t - 1.9) / 0.8), [r, j] = huddle(S, X, c.T, top, { re: i ? 'joy' : 'serious', je: found > 0.5 ? 'joy' : 'serious', rub: 0 });
   X.whistle.visible = true; X.whistle.position.set(-1.2, top + 2.9, 0.35); r.armR.rotation.set(-2.2, 0, 0.5);
-  X.rings.forEach((m, n) => { const kk = ((t * 1.3 + n / 3) % 1); m.visible = t > 0.15 && t < 3.6; m.position.set(-1.2, top + 2.95, 0.6 + kk * 5); m.scale.setScalar(0.3 + kk * 2.6); m.material.opacity = 0.8 * (1 - kk); });
+  X.rings.forEach((m, n) => { const kk = ((t * 1.3 + n / 3) % 1); m.visible = t > 0.15 && t < 3.6; m.position.set(-1.6 - kk * 4.5, top + 3.0 + kk * 1.6, 0.4); m.rotation.y = PI / 2; m.scale.setScalar(0.25 + kk * 1.5); m.material.opacity = 0.55 * (1 - kk); });
   if (t > 0.15 && t < 0.5) c.flash(0.35 * (1 - (t - 0.15) / 0.35));
   if (i === 0) move(c.cam, [-3.2, top + 3.2, 7.6], [-1.1, top + 3.0, -0.4], [-2.6, top + 3.2, 6.6], [-1.1, top + 3.0, -0.4], clamp(t / 1.5), 28);
   else {

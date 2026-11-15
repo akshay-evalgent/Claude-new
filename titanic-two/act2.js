@@ -14,10 +14,10 @@ function EX(S) {
   // stern deck extension under the overhanging rail (the hull model stops at z = -116)
   const side = M(0x15161a), dk = M(0xc2a070), st = new THREE.Mesh(new THREE.BoxGeometry(9.4, 14, 5), [side, side, dk, side, side, side]); st.position.set(0, 7, -118.2); S.aft.add(st);
   // crow's nest dressing
-  X.bell = box(0.7, 0.8, 0.7, 0xd9b24a, 0, 30.9, 84.3, S.fore); X.binbox = new THREE.Group(); X.binbox.position.set(0.95, 29.35, 86.1); S.fore.add(X.binbox);
+  X.bell = box(0.7, 0.8, 0.7, 0xd9b24a, 1.1, 30.6, 83.2, S.fore); X.binbox = new THREE.Group(); X.binbox.position.set(0.7, 27.0, 85.1); S.fore.add(X.binbox);
   box(1.0, 0.1, 0.7, 0x5a3d26, 0, 0, 0, X.binbox); for (const [x, z, w, d] of [[-0.5, 0, 0.08, 0.7], [0.5, 0, 0.08, 0.7], [0, -0.35, 1.0, 0.08], [0, 0.35, 1.0, 0.08]]) box(w, 0.5, d, 0x5a3d26, x, 0.25, z, X.binbox);
-  X.binlab = label('BINOCULARS', { h: 0.22, bg: '#efe6c8', color: '#3a2a18' }); X.binlab.position.set(0.95, 29.55, 86.6); S.fore.add(X.binlab);
-  X.puffs = [0, 1, 2, 3, 4, 5].map(() => { const m = box(0.3, 0.3, 0.3, new THREE.MeshBasicMaterial({ color: 0xe6eef6, transparent: true, opacity: 0.5 }), 0, 0, 0, S.fore); m.castShadow = false; return m; });
+  X.binlab = label('BINOCULARS', { h: 0.22, bg: '#efe6c8', color: '#3a2a18' }); X.binlab.position.set(0.7, 27.95, 85.3); S.fore.add(X.binlab);
+  X.puffs = [0, 1, 2, 3, 4, 5].map(() => { const m = box(0.3, 0.3, 0.3, new THREE.MeshBasicMaterial({ color: 0xe6eef6, transparent: true, opacity: 0.35 }), 0, 0, 0, S.fore); m.castShadow = false; return m; });
   X.ice = new THREE.InstancedMesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshPhongMaterial({ color: 0xe6f2fa, flatShading: true }), 70); X.ice.frustumCulled = false; s.add(X.ice);
   X.flare = new THREE.InstancedMesh(new THREE.BoxGeometry(0.6, 0.6, 0.6), new THREE.MeshBasicMaterial({ color: 0xffffff, fog: false }), 90); X.flare.frustumCulled = false; s.add(X.flare);
   X.flareL = new THREE.PointLight(0xdfe8ff, 0, 400); s.add(X.flareL);
@@ -50,7 +50,7 @@ SEA('b2', (c, S, X) => {
   S.board(J, 'aft', 2.4, 14, -115.2, Math.PI - 0.25); J.look('smirk', c.T, c.talk); J.armR.rotation.x = -1.2; S.board(R, 'aft', 0.4, 14, -116.9, Math.PI + 2.2); R.look('smirk', c.T); R.armR.rotation.x = -1.2;
   fillAt(X, 7, 19.5, -122, 70);
   if (i === 0) move(c.cam, [4.8, 18.7, -122], [3.2, 18.75, -115.2], [4.5, 18.7, -121.4], [3.2, 18.75, -115.2], k, 30);
-  else { R.g.rotation.y = 0.86 + Math.PI; R.g.rotation.y = 0.86; move(c.cam, [2.0, 18.6, -110.6], [0.4, 18.7, -116.9], [1.8, 18.6, -111.2], [0.4, 18.7, -116.9], k, 30); }
+  else { R.g.rotation.y = 0.86; J.g.position.set(3.8, 14, -113.8); move(c.cam, [3.4, 18.6, -111.2], [0.4, 18.7, -116.9], [3.1, 18.6, -111.6], [0.4, 18.7, -116.9], k, 30); }
 });
 
 // ---------------- b5 / b6: the bow at sunset ----------------
@@ -71,33 +71,33 @@ SEA('b6', (c, S, X) => {
 SEA('b8', (c, S) => { night(S, 0.7); move(c.cam, [-170, 22, 300], [0, 18, 40], [-120, 13, 232], [0, 18, 50], c.k, 38); });
 
 // ---------------- c1 / c2: the crow's nest ----------------
-const nest = (S, c, X) => { const a = S.C('lookout'), b = S.C('steward'); S.board(a, 'fore', -0.85, 27, 84.3, 0.1); S.board(b, 'fore', 0.95, 27, 84.1, -0.15); for (const [j, ch] of [[0, a], [1, b]]) { ch.g.scale.setScalar(0.72); ch.g.position.x += Math.sin(c.T * 41 + j * 2) * 0.03; ch.armL.rotation.set(-0.9, 0, 0.7); ch.armR.rotation.set(-0.9, 0, -0.7); ch.look('serious', c.T + j); } X.puffs.forEach((p, j) => { const kk = (c.T * 0.7 + j * 0.37) % 1; p.visible = true; p.position.set((j % 2 ? 0.95 : -0.85) + kk * 0.3, 30.0 + kk * 0.9, 85.3 + kk * 0.8); p.scale.setScalar(0.5 + kk * 1.6); p.material.opacity = 0.5 * (1 - kk); }); fillAt(X, 2.5, 31, 91, 26, 20); return [a, b]; };
+const nest = (S, c, X) => { const a = S.C('lookout'), b = S.C('steward'); S.board(a, 'fore', 0.3, 27, 83.5, 0.7); S.board(b, 'fore', -0.8, 27, 84.5, 0.35); for (const [j, ch] of [[0, a], [1, b]]) { ch.g.scale.setScalar(0.72); ch.g.position.x += Math.sin(c.T * 41 + j * 2) * 0.03; ch.armL.rotation.set(-0.9, 0, 0.7); ch.armR.rotation.set(-0.9, 0, -0.7); ch.look('serious', c.T + j); } X.puffs.forEach((p, j) => { const kk = (c.T * 0.7 + j * 0.37) % 1; p.visible = true; p.position.set((j % 2 ? 0.75 : -0.35) + kk * 0.5, 30.4 + kk * 0.9, (j % 2 ? 84.0 : 85.0) + kk * 0.6); p.scale.setScalar((0.4 + kk * 1.0) * 0.25); p.material.opacity = 0.35 * (1 - kk); }); fillAt(X, 2.5, 31, 91, 26, 20); return [a, b]; };
 SEA('c1:0', (c, S) => { night(S, 0.8); move(c.cam, [150, 130, -80], [0, 10, 40], [105, 84, -20], [0, 12, 50], c.k, 40); });
 SEA('c1:1', (c, S) => { night(S, 0.8); move(c.cam, [-70, 1.6, 250], [0, 14, 90], [-62, 1.8, 236], [0, 14, 90], c.k, 40); });
 SEA('c1:2', (c, S) => { night(S, 0.8); move(c.cam, [24, 22, 150], [6, 40, 70], [22, 24, 146], [0, 90, 40], c.k, 44); });
 SEA('c1:3', (c, S, X) => {
   night(S, 0.8); nest(S, c, X); const [i, k] = cuts(c.k, [0.58]);
-  if (i === 0) move(c.cam, [4, 30.2, 95], [0, 29.5, 84.3], [2.6, 29.8, 92.5], [0, 29.5, 84.3], k, 30);
-  else { X.binlab.visible = true; X.puffs.forEach(p => p.visible = false); fillAt(X, 1.5, 30.5, 89, 14, 12); move(c.cam, [2.6, 30.4, 89.6], [0.95, 29.5, 86.2], [2.2, 30.2, 89], [0.95, 29.5, 86.2], k, 30); }
+  if (i === 0) move(c.cam, [7.2, 30.9, 86.4], [-0.2, 29.9, 84], [6.4, 30.7, 85.8], [-0.2, 29.9, 84], k, 32);
+  else { X.binlab.visible = true; X.puffs.forEach(p => p.visible = false); fillAt(X, 1, 31, 85, 16, 10); move(c.cam, [0.9, 31.6, 86.6], [0.7, 27.3, 85.0], [0.85, 31.3, 86.5], [0.7, 27.3, 85.0], k, 34); }
 });
 SEA('c2', (c, S, X) => {
   night(S, 0.8); const [a, b] = nest(S, c, X), [i, k] = cuts(c.k, [0.55]); S.berg.visible = true; S.berg.position.set(-8, 0, lerp(330, 250, c.k));
   a.look('surprised', c.T, c.talk); b.look('surprised', c.T); a.armR.rotation.set(-2.9, 0, -0.1 + Math.sin(c.T * 26) * 0.25); X.bell.rotation.z = Math.sin(c.T * 26) * 0.5; b.armL.rotation.set(-1.5, 0, 0.2);
-  if (i === 0) { move(c.cam, [2.8, 30, 91.6], [-0.4, 29.7, 84.3], [2.2, 29.9, 90.6], [-0.4, 29.7, 84.3], k, 30); shake(c.cam, c.T, 0.03); }
+  if (i === 0) { move(c.cam, [6.6, 30.9, 86.6], [0.2, 30.1, 83.6], [6.0, 30.8, 86.2], [0.2, 30.1, 83.6], k, 30); shake(c.cam, c.T, 0.03); }
   else { a.g.visible = b.g.visible = false; X.puffs.forEach(p => p.visible = false); move(c.cam, [0, 30, 90], [-6, 22, 260], [0, 30, 96], [-7, 26, 250], k, 44); }
 });
 SEA('c3:1', (c, S) => { night(S, 0.8); S.berg.visible = true; S.berg.position.set(-44, 0, lerp(215, 160, c.k)); S.ship.rotation.y = 0.11 * ease(c.k); move(c.cam, [70, 44, 280], [-14, 12, 160], [58, 36, 262], [-16, 12, 150], c.k, 40); });
 // ---------------- c5: the boat deck ----------------
 const CROWD = ['gentA', 'ladyA', 'gentB', 'ladyB', 'steerB', 'steerA', 'civB', 'civD', 'steerC', 'civA', 'girl', 'boy'];
 function deck(S, c, X) {
-  night(S, 0); S.sink(0.12); S.lights = 1; const o = S.C('officer');
+  night(S, 0); S.sink(0.12); S.lights = 0.3; const o = S.C('officer');
   CROWD.forEach((n, i) => { const h = S.C(n), x = -5 + (i % 4) * 3.1 + hash(i) * 1.2, z = 22 + Math.floor(i / 4) * 5.2 + hash(i + 3) * 2; S.board(h, 'fore', x, 21, z, -1.2 + hash(i + 5) * 0.8); if (n === 'girl' || n === 'boy') h.g.scale.setScalar(0.62); S.vest(h); h.look(i % 3 ? 'sad' : 'surprised', c.T + i); h.g.position.x += Math.sin(c.T * 2 + i) * 0.15; h.head.rotation.y = Math.sin(c.T * 1.3 + i) * 0.5; });
   S.board(o, 'fore', -7, 21, 30, 1.5); o.look('serious', c.T); o.armR.rotation.set(-2.2 + Math.sin(c.T * 6) * 0.4, 0, -0.3); o.armL.rotation.set(-1.2, 0, 0.3);
   // rockets
   const ph = (c.T * 0.45) % 1, by = 150, bx = 30; X.flare.visible = true; for (let i = 0; i < 90; i++) { const a = hash(i) * 6.283, e = hash(i + 0.4) * 3.14, r = ph < 0.25 ? 0 : (ph - 0.25) * 90 * (0.5 + hash(i + 0.7)); X.dm.position.set(bx + Math.cos(a) * Math.sin(e) * r, (ph < 0.25 ? lerp(30, by, ph / 0.25) : by - (ph - 0.25) * 40) + Math.cos(e) * r, 40 + Math.sin(a) * Math.sin(e) * r); X.dm.rotation.set(0, 0, 0); X.dm.scale.setScalar(ph < 0.25 ? (i < 3 ? 2 : 0.001) : 1.6 * (1 - ph)); X.dm.updateMatrix(); X.flare.setMatrixAt(i, X.dm.matrix); } X.flare.instanceMatrix.needsUpdate = true;
-  X.flareL.position.set(bx, by, 40); X.flareL.intensity = ph > 0.25 ? 9000 * (1 - ph) : 0; fillAt(X, 0, 30, 46, 120, 60);
+  X.flareL.position.set(bx, by, 40); X.flareL.intensity = ph > 0.25 ? 300 * (1 - ph) : 0; fillAt(X, 0, 25, 30, 45, 20);
 }
-SEA('c5:0', (c, S, X) => { deck(S, c, X); const [i, k] = cuts(c.k, [0.5]); if (i === 0) move(c.cam, [-2, 26.5, 56], [0, 23.2, 30], [-1, 25.6, 50], [0, 23.4, 30], k, 40); else move(c.cam, [70, 60, 150], [20, 80, 40], [64, 50, 140], [20, 96, 40], k, 44); });
+SEA('c5:0', (c, S, X) => { deck(S, c, X); const [i, k] = cuts(c.k, [0.5]); if (i === 0) move(c.cam, [-14, 27, 48], [1, 21.5, 28], [-12, 26, 44], [1, 21.6, 28], k, 40); else move(c.cam, [110, 24, 190], [15, 62, 40], [100, 22, 176], [15, 72, 40], k, 50); });
 SEA('c5:1', (c, S, X) => {
   deck(S, c, X); const b = S.boats[0]; b.visible = true; b.position.set(16.2, 17.2 - c.k * 1.2, 33); X.ropes.forEach((r, j) => { r.visible = true; r.position.set(16.2, 21.5, 33 + (j ? 4.4 : -4.4)); r.scale.y = 7; });
   ['ladyB', 'steerB', 'girl'].forEach((n, i) => { const h = S.C(n); S.put(h, 16.2, b.position.y - 0.7, 30 + i * 3, 0.4); if (n === 'girl') h.g.scale.setScalar(0.62); h.sit(); S.vest(h); h.look('sad', c.T + i); h.head.rotation.y = 1.2; h.head.rotation.x = -0.3; });
@@ -108,10 +108,10 @@ SEA('c5:1', (c, S, X) => {
 // ---------------- c7:0 Rose in the lifeboat, then the leap back ----------------
 SEA('c7:0', (c, S, X) => {
   night(S, 0); S.sink(0.2); const b = S.boats[0], y = lerp(15, 9.5, c.k); b.visible = true; b.position.set(17, y, 30); X.ropes.forEach((r, j) => { r.visible = true; r.scale.y = 22 - y; r.position.set(17, (22 + y) / 2 + 1, 30 + (j ? 4.4 : -4.4)); });
-  const R = S.C('rose'); S.put(R, 17, y - 0.7, 30, -1.3); R.sit(); S.vest(R); R.look('sad', c.T); R.head.rotation.x = -0.55; R.head.rotation.y = -0.3;
-  ['ladyA', 'steerB'].forEach((n, i) => { const h = S.C(n); S.put(h, 17, y - 0.7, i ? 33.2 : 26.8, -1.2); h.sit(); S.vest(h); h.look('sad', c.T + i); });
+  const R = S.C('rose'); S.put(R, 17, y - 0.7, 30, 0); R.sit(); S.vest(R); R.look('sad', c.T); R.head.rotation.x = -0.45; R.head.rotation.y = -0.6;
+  ['ladyA', 'steerB'].forEach((n, i) => { const h = S.C(n); S.put(h, 17, y - 0.7, i ? 24 : 27, 0); h.sit(); S.vest(h); h.look('sad', c.T + i); });
   const o = S.C('officer'); S.board(o, 'fore', 8.6, 21, 30, -1.5); o.look('serious', c.T); o.armR.rotation.x = -1.4;
-  fillAt(X, 26, y + 6, 36, 80, 40); move(c.cam, [31, y + 5, 42], [16.5, y + 3, 30], [28, y + 4.6, 39], [16.5, y + 3.2, 30], c.k, 34);
+  fillAt(X, 20, y + 6, 38, 80, 40); move(c.cam, [20.5, y + 4.4, 39.5], [16.6, y + 3.2, 30], [19.8, y + 4.2, 38], [16.6, y + 3.2, 30], c.k, 34);
 });
 // ================= DINING SALOON + GRAND STAIRCASE =================
 SET('a2_dining', () => {
@@ -143,7 +143,7 @@ SET('a2_dining', () => {
   for (let i = 0; i < 7; i++) { box(1.1, 0.1, 1.1, 0xffffff, -7.5 + i * 2.5, 3.16, 14.4, s); box(0.4, 0.7, 0.4, basic(0xffe6a8), -6.3 + i * 2.5, 3.5, 13.6, s); }
   const forks = []; for (let i = 0; i < 8; i++) forks.push(box(0.14, 0.06, 1.3, 0xcfd6de, -4.6 + i * 0.52, 3.16, 16.4, s));
   const C = mkCast(s, ['jack:jackTux', 'rose:roseDinner', 'cal', 'gentA', 'gentB', 'ladyA', 'ladyB', 'steward', 'civD']);
-  return { s, cam, C, forks, pre(T) { C.reset(T); P(C.gentA, -18, 0, 8, 2.6); P(C.ladyA, -15.5, 0, 6.5, -2.2); P(C.gentB, 17, 0, 8.2, -2.6); P(C.ladyB, 19.8, 0, 6.8, 2.4); P(C.steward, 11, 0, 20, -2.4); P(C.civD, -10, 0, -3, 0.8); for (const k of ['gentA', 'ladyA', 'gentB', 'ladyB', 'civD']) { C[k].idle(T); C[k].head.rotation.y = Math.sin(T * 0.8 + C[k].g.position.x) * 0.4; } } };
+  return { s, cam, C, forks, pre(T) { C.reset(T); P(C.gentA, -18, 0, 8, 2.6); P(C.ladyA, -15.5, 0, 6.5, -2.2); P(C.gentB, 17, 0, 8.2, -2.6); P(C.ladyB, 19.8, 0, 6.8, 2.4); P(C.steward, 11, 0, 20, -2.4); P(C.civD, -13, 0, 3, 0.8); for (const k of ['gentA', 'ladyA', 'gentB', 'ladyB', 'civD']) { C[k].idle(T); C[k].head.rotation.y = Math.sin(T * 0.8 + C[k].g.position.x) * 0.4; } } };
 });
 SHOT('b3:0', 'a2_dining', c => {
   const { C } = c.S, [i, k] = cuts(c.k, [0.5]), J = C.jack, R = C.rose, cal = C.cal;
@@ -166,7 +166,7 @@ SET('a2_party', () => {
   const wood = tex(64, 64, c => { c.fillStyle = '#7a5230'; c.fillRect(0, 0, 64, 64); c.fillStyle = '#5a3a20'; for (let x = 0; x < 64; x += 16) c.fillRect(x, 0, 2, 64); }); wood.wrapS = wood.wrapT = THREE.RepeatWrapping; wood.repeat.set(8, 6);
   const fl = new THREE.Mesh(new THREE.PlaneGeometry(46, 34), new THREE.MeshLambertMaterial({ map: wood })); fl.rotation.x = -Math.PI / 2; fl.receiveShadow = true; s.add(fl);
   box(46, 0.4, 34, 0x5a3a20, 0, 9.6, 0, s); box(46, 9.6, 0.4, 0x6a4a2e, 0, 4.8, -17, s); box(0.4, 9.6, 34, 0x6a4a2e, -23, 4.8, 0, s); box(0.4, 9.6, 34, 0x6a4a2e, 23, 4.8, 0, s); box(46, 9.6, 0.4, 0x6a4a2e, 0, 4.8, 17, s);
-  for (let x = -20; x <= 20; x += 8) box(0.8, 0.8, 34, 0x4a3018, x, 9.1, 0, s); for (const [x, z] of [[-12, -8], [12, -8], [-12, 8], [12, 8]]) box(0.9, 9.4, 0.9, 0x4a3018, x, 4.7, z, s);
+  for (let x = -20; x <= 20; x += 8) box(0.8, 0.8, 34, 0x4a3018, x, 9.1, 0, s); for (const [x, z] of [[12, -8], [-12, 8], [12, 8]]) box(0.9, 9.4, 0.9, 0x4a3018, x, 4.7, z, s);
   for (const [x, z] of [[-6, 0], [8, -6], [8, 8], [-16, 6]]) { box(0.5, 0.8, 0.5, basic(0xffd28a), x, 8.3, z, s); const p = new THREE.PointLight(0xffb866, 110, 34); p.position.set(x, 7.4, z); s.add(p); }
   box(9, 0.8, 7, 0x5a3a20, -17.5, 0.4, -11, s);
   const mugs = []; for (const [x, z] of [[14, -11], [15.5, 10], [-3, -13.5]]) { box(5, 0.3, 3, 0x6a4a2e, x, 2.6, z, s); box(0.4, 2.6, 0.4, 0x4a3018, x - 2, 1.3, z, s); box(0.4, 2.6, 0.4, 0x4a3018, x + 2, 1.3, z, s); for (let i = 0; i < 4; i++) mugs.push(box(0.5, 0.7, 0.5, 0xd9b24a, x - 1.6 + i * 1.1, 3.1, z + (i % 2 ? 0.6 : -0.5), s)); }
@@ -185,10 +185,10 @@ SET('a2_party', () => {
 });
 const spin = (S, T, sp, r = 1.7) => { const { C } = S, a = T * sp, b = Math.abs(Math.sin(T * 8)) * 0.3; for (const [ch, o] of [[C.jack, 0], [C.rose, Math.PI]]) { P(ch, Math.sin(a + o) * r, b, Math.cos(a + o) * r, a + o + Math.PI); ch.armL.rotation.set(-1.45, 0, 0.3); ch.armR.rotation.set(-1.45, 0, -0.3); ch.legL.rotation.x = Math.sin(T * 16 + o) * 0.6; ch.legR.rotation.x = -Math.sin(T * 16 + o) * 0.6; ch.look('joy', T); } };
 SHOT('b4:0', 'a2_party', c => { const { C } = c.S, d = ease(c.k); P(C.jack, lerp(4, 1.2, d), 0, lerp(15, 4.5, d), Math.PI + 0.2); C.jack.walk(c.T * 9, 0.6); C.jack.look('joy', c.T); C.jack.armL.rotation.set(0.9, 0, -0.3); P(C.rose, lerp(5.6, 2.6, d), 0, lerp(17.6, 7, d), Math.PI + 0.2); C.rose.walk(c.T * 9 + 1, 0.5); C.rose.look('surprised', c.T); C.rose.armR.rotation.set(-1.2, 0, 0.3); move(c.cam, [-6, 4.8, -5], [3, 4.2, 9], [-4.5, 4.6, -3], [2, 4.2, 6], c.k, 38); });
-SHOT('b4:1', 'a2_party', c => { spin(c.S, c.T, 2.4); move(c.cam, [-7.5, 4.6, -13.5], [-16.5, 4, -11], [-8.5, 4.4, -13.2], [-16.5, 4, -11], c.k, 40); });
+SHOT('b4:1', 'a2_party', c => { spin(c.S, c.T, 2.4); move(c.cam, [-1.5, 6.6, -15.6], [-16, 3.2, -11.2], [-2.5, 6.4, -15.4], [-16, 3.2, -11.2], c.k, 48); });
 SHOT('b4:2', 'a2_party', c => {
   const [i, k] = cuts(c.k, [0.52]); spin(c.S, c.T, 3.2 + c.k * 3.5);
-  if (i === 0) { const a = c.T * 0.9; shot(c.cam, [Math.sin(a) * 7.5, 7.4, Math.cos(a) * 7.5], [0, 3.8, 0], 40); }
+  if (i === 0) { const a = c.T * 0.9; shot(c.cam, [Math.sin(a) * 10, 9.0, Math.cos(a) * 10], [0, 3.0, 0], 40); }
   else { move(c.cam, [15, 8.2, 13], [0, 2.6, -1], [12.5, 7.6, 11], [0, 2.8, -1], k, 44); }
   shake(c.cam, c.T, 0.05);
 });
@@ -254,19 +254,19 @@ SET('a2_bridge', () => {
 SHOT('c3:0', 'a2_bridge', c => {
   const { C } = c.S; c.S.wheel.rotation.z = -c.T * 9; P(C.helm, 0, 0, -0.2, Math.PI); C.helm.look('serious', c.T); C.helm.armL.rotation.set(-1.4 + Math.sin(c.T * 9) * 0.5, 0, 0.2); C.helm.armR.rotation.set(-1.4 - Math.sin(c.T * 9) * 0.5, 0, -0.2); C.helm.body.rotation.z = Math.sin(c.T * 9) * 0.12;
   P(C.officer, 4.6, 0, 0.8, Math.PI - 0.5); C.officer.look('surprised', c.T, 0.9 * Math.abs(Math.sin(c.T * 14))); C.officer.armR.rotation.set(-1.6, 0, -0.9);
-  move(c.cam, [-4.5, 4.6, -11.5], [1.6, 4.6, 0], [-3.4, 4.6, -10.5], [1.8, 4.6, 0], c.k, 36); shake(c.cam, c.T, 0.04);
+  move(c.cam, [-3.6, 5.4, -6.6], [0.8, 4.4, 0], [-2.8, 5.2, -6.2], [1.0, 4.4, 0], c.k, 38); shake(c.cam, c.T, 0.04);
 });
 
 // ================= THE HULL OPENING (seen from inside) =================
 SET('a2_hull', () => {
-  const { s, cam } = mkScene(0x06090c, [30, 110], 0xff6a50, 0.5, [0x6a86a0, 0x10181c, 0.9], [0, 20, 30]);
+  const { s, cam } = mkScene(0x06090c, [30, 110], 0xff6a50, 0.8, [0x8aa6c0, 0x2a3438, 1.5], [0, 20, 30]);
   s.userData.bloom = 0.5; s.userData.sun.castShadow = false;
   const plate = tex(128, 128, c => { c.fillStyle = '#2a3238'; c.fillRect(0, 0, 128, 128); c.strokeStyle = '#151a1e'; c.lineWidth = 4; c.strokeRect(0, 0, 128, 128); c.fillStyle = '#4a565e'; for (let i = 8; i < 128; i += 16) { for (const y of [8, 120]) { c.beginPath(); c.arc(i, y, 3.5, 0, 7); c.fill(); } for (const x of [8, 120]) { c.beginPath(); c.arc(x, i, 3.5, 0, 7); c.fill(); } } }); plate.wrapS = plate.wrapT = THREE.RepeatWrapping; plate.repeat.set(14, 3);
   const wm = new THREE.MeshLambertMaterial({ map: plate }); for (const [y, h] of [[13, 12], [2.2, 4.4]]) { const m = new THREE.Mesh(new THREE.PlaneGeometry(100, h), wm.clone()); m.material.map = plate.clone(); m.material.map.repeat.set(14, h / 5); m.material.map.needsUpdate = true; m.position.set(0, y, 0); s.add(m); }
   box(100, 0.4, 30, 0x1c2226, 0, -0.2, 15, s); for (let x = -45; x <= 45; x += 10) box(1, 19, 1.4, 0x3a444a, x, 9.5, 0.7, s);
   const N = 26, segs = [], jets = []; for (let i = 0; i < N; i++) { const g = box(3.9, 2.7, 0.3, 0x2a3238, -49 + i * 3.84, 5.7, 0.1, s); segs.push(g); const j = box(2.2, 1.6, 1, new THREE.MeshBasicMaterial({ color: 0xbfe6f6, transparent: true, opacity: 0.85 }), -49 + i * 3.84, 5.6, 0, s); j.castShadow = false; jets.push(j); }
   const water = box(100, 1, 30, new THREE.MeshPhongMaterial({ color: 0x2f7a8a, transparent: true, opacity: 0.8 }), 0, -1, 15, s); water.castShadow = false;
-  const red = new THREE.PointLight(0xff4030, 0, 60); red.position.set(0, 12, 14); s.add(red);
+  const red = new THREE.PointLight(0xff4030, 0, 60); red.position.set(0, 12, 14); s.add(red); const wl2 = new THREE.PointLight(0xbfe6ff, 220, 40); wl2.position.set(0, 9, 10); s.add(wl2);
   box(8, 9, 8, 0x3a3a40, -20, 4.5, 20, s); box(8, 9, 8, 0x3a3a40, 12, 4.5, 22, s); box(3, 3, 0.4, basic(0xff7a2a), -20, 3, 15.9, s); box(3, 3, 0.4, basic(0xff7a2a), 12, 3, 17.9, s);
   return { s, cam, segs, jets, water, red };
 });
@@ -279,16 +279,16 @@ const hullShot = c => {
 // ================= THE CHART ROOM =================
 SET('a2_chart', () => {
   const { s, cam } = mkScene(0x14100c, [40, 120], 0xffe2b8, 0.9, [0xfff0d8, 0x5a3a20, 1.2], [4, 16, 12]);
-  s.userData.bloom = 0.4; s.userData.sun.castShadow = false; room(s, 26, 11, 20, 0x7a5230, 0x4a3a2a, 0xe6e0d2);
+  s.userData.bloom = 0.22; s.userData.sun.castShadow = false; room(s, 26, 11, 20, 0x7a5230, 0x4a3a2a, 0xe6e0d2);
   box(14, 0.5, 7, 0x5a3a20, 0, 3.2, 0, s); for (const [x, z] of [[-6, -2.8], [6, -2.8], [-6, 2.8], [6, 2.8]]) box(0.6, 3.2, 0.6, 0x4a3018, x, 1.6, z, s);
   const bp = new THREE.Mesh(new THREE.PlaneGeometry(12, 5.4), new THREE.MeshLambertMaterial({ map: tex(512, 230, c => { c.fillStyle = '#e9e2cc'; c.fillRect(0, 0, 512, 230); c.strokeStyle = '#2a3a6a'; c.lineWidth = 3; c.beginPath(); c.moveTo(20, 120); c.lineTo(50, 170); c.lineTo(470, 170); c.lineTo(496, 110); c.lineTo(20, 120); c.stroke(); for (let i = 1; i < 16; i++) { c.beginPath(); c.moveTo(50 + i * 26.5, 118); c.lineTo(50 + i * 26.5, 170); c.stroke(); } c.strokeRect(120, 90, 260, 28); for (const x of [170, 225, 280, 335]) c.strokeRect(x, 40, 22, 50); c.font = '700 16px Georgia'; c.fillStyle = '#2a3a6a'; c.fillText('R.M.S. TITANIC — WATERTIGHT COMPARTMENTS', 60, 206); }) })); bp.rotation.x = -Math.PI / 2; bp.position.set(0, 3.48, 0); s.add(bp);
-  box(0.8, 0.8, 5.6, 0xe9e2cc, 6.2, 3.8, 0, s); box(1.2, 1.4, 1.2, basic(0xffe2a0), -5, 4.4, -2, s); const p = new THREE.PointLight(0xffd9a0, 130, 34); p.position.set(0, 8.5, 2); s.add(p);
+  box(0.8, 0.8, 5.6, 0xe9e2cc, 6.2, 3.8, 0, s); box(1.2, 1.4, 1.2, basic(0xffe2a0), -5, 4.4, -2, s); const p = new THREE.PointLight(0xffd9a0, 55, 34); p.position.set(0, 8.5, 2); s.add(p);
   for (let i = 0; i < 6; i++) box(0.5, 2.6, 2, [0x6a2a2a, 0x2a4a6a, 0x3a5a3a][i % 3], -12.6, 6 + (i % 2) * 0.2, -6 + i * 2.2, s);
   const C = mkCast(s, ['designer', 'captain', 'officer']);
   return { s, cam, C, bp, pre(T) { C.reset(T); P(C.designer, -1.6, 0, -5, 0.15); P(C.captain, 3, 0, -5, -0.25); C.designer.idle(T); C.captain.idle(T + 1); C.designer.look('serious', T); C.captain.look('serious', T); C.designer.armR.rotation.set(-1.2, 0, -0.2); C.designer.head.rotation.x = 0.3; C.captain.head.rotation.x = 0.25; } };
 });
 const schematic = (filled, bad, note) => { let cells = ''; for (let i = 0; i < 16; i++) { const on = i < filled, red = bad && i === 4; cells += `<div style="flex:1;height:100%;border-right:3px solid #cfe0ff;background:${red ? '#e23b3b' : on ? '#2f8fe0' : 'transparent'};opacity:${on || red ? 0.92 : 1}"></div>`; }
-  return `<div style="position:absolute;left:260px;top:170px;width:1400px;font-family:Inter,sans-serif;color:#fff"><div style="font-size:26px;letter-spacing:8px;font-weight:700;color:#ffd24a">16 WATERTIGHT COMPARTMENTS</div><div style="margin-top:22px;height:170px;border:4px solid #cfe0ff;border-left-width:10px;border-radius:90px 14px 14px 110px / 60px 14px 14px 170px;display:flex;flex-direction:row-reverse;overflow:hidden;background:rgba(10,20,40,.72)">${cells}</div><div style="display:flex;justify-content:space-between;margin-top:10px;font-size:24px;font-weight:700;letter-spacing:4px;opacity:.75"><span>STERN</span><span>BOW</span></div><div style="margin-top:14px;font-size:76px;font-weight:900;text-align:right;color:${bad ? '#ff5a5a' : '#fff'}">${note}</div></div>`; };
+  return `<div style="position:absolute;left:230px;top:150px;width:1400px;padding:24px 30px;border-radius:18px;background:rgba(6,10,20,.82);font-family:Inter,sans-serif;color:#fff"><div style="font-size:26px;letter-spacing:8px;font-weight:700;color:#ffd24a">16 WATERTIGHT COMPARTMENTS</div><div style="margin-top:22px;height:170px;border:4px solid #cfe0ff;border-left-width:10px;border-radius:90px 14px 14px 110px / 60px 14px 14px 170px;display:flex;flex-direction:row-reverse;overflow:hidden;background:rgba(10,20,40,.72)">${cells}</div><div style="display:flex;justify-content:space-between;margin-top:10px;font-size:24px;font-weight:700;letter-spacing:4px;opacity:.75"><span>STERN</span><span>BOW</span></div><div style="margin-top:14px;font-size:76px;font-weight:900;text-align:right;color:${bad ? '#ff5a5a' : '#fff'}">${note}</div></div>`; };
 SHOT('c4:0', 'a2_chart', c => { const S = c.S; S.bp.scale.x = 0.08 + 0.92 * ease(c.k * 1.6); S.bp.position.x = 5.5 * (1 - ease(c.k * 1.6)); S.C.designer.armR.rotation.set(-1.3, 0, 0.6 - ease(c.k * 1.6) * 0.9); move(c.cam, [0, 9, 13], [0.5, 4, -2], [0.5, 7.4, 10], [0.5, 4.2, -3], c.k, 38); });
 SHOT('c4:1', 'a2_chart', c => { move(c.cam, [0, 10.5, 4.5], [0, 3.4, -0.2], [0, 9.6, 4], [0, 3.4, -0.2], c.k, 40); const n = Math.min(4, Math.floor(c.k * 5.2)); c.dom(schematic(n, false, n >= 4 ? 'FOUR: SHE FLOATS' : '&nbsp;')); });
 SHOT('c4:2', 'a2_chart', c => { move(c.cam, [0, 9.6, 4], [0, 3.4, -0.2], [0, 9.2, 3.8], [0, 3.4, -0.2], c.k, 40); c.dom(schematic(5, Math.sin(c.T * 20) > -0.5, 'FIVE: SHE SINKS')); if (c.l < 0.15) c.flash(0.5 * (1 - c.l / 0.15)); });
@@ -311,7 +311,7 @@ SET('a2_below', () => {
   const lampM = basic(0xfff2c8); box(1.6, 0.3, 1.6, lampM, 0, 8.8, 0, s); const lamp = new THREE.PointLight(0xfff0d0, 90, 30); lamp.position.set(0, 7.6, 1); s.add(lamp);
   const wat = new THREE.MeshPhongMaterial({ color: 0x3f9a8a, transparent: true, opacity: 0.72, shininess: 90 });
   const water = box(17.6, 0.2, 12.6, wat, 0, -1, 0, s); water.castShadow = false;
-  const foam = [0, 1, 2, 3, 4, 5, 6, 7].map(() => { const f = box(1, 0.3, 0.6, new THREE.MeshBasicMaterial({ color: 0xe6f6f6, transparent: true, opacity: 0.8 }), 0, 0, 0, s); f.castShadow = false; return f; });
+  const foam = [0, 1, 2, 3, 4, 5, 6, 7].map(() => { const f = box(1, 0.3, 0.6, new THREE.MeshBasicMaterial({ color: 0xa8d4cc, transparent: true, opacity: 0.5 }), 0, 0, 0, s); f.castShadow = false; return f; });
   // corridor at x = 40
   box(7, 0.4, 70, 0x8a8f96, 40, -0.2, 0, s); box(7, 0.4, 70, 0xeef2f6, 40, 9.2, 0, s); box(0.4, 9, 70, W, 36.4, 4.5, 0, s); box(0.4, 9, 70, W, 43.6, 4.5, 0, s); box(7, 9, 0.4, W, 40, 4.5, -35, s);
   for (let z = -30; z <= 30; z += 10) { box(0.2, 6.8, 3, 0x6a4a2e, 36.65, 3.4, z + 4, s); box(0.2, 6.8, 3, 0x6a4a2e, 43.35, 3.4, z - 2, s); }
@@ -332,19 +332,19 @@ const BEL = (key, fn) => SHOT(key, 'a2_below', c => { fn(c, c.S); c.S.post(c.T);
 BEL('c6:1', (c, S) => {
   const [i, k] = cuts(c.k, [0.52]), J = cuffed(S, c.T); S.level = c.k * 1.5; J.look('surprised', c.T, 0.8 * Math.abs(Math.sin(c.T * 11))); J.head.rotation.y = 1.3;
   if (i === 0) move(c.cam, [5.6, 5.4, 5.4], [-1.2, 4.3, -3.4], [4.2, 5, 4.4], [-1.2, 4.4, -3.4], k, 36);
-  else { S.foam.forEach((f, j) => { const kk = (c.T * 1.6 + j * 0.13) % 1; f.visible = true; f.position.set(8.4 - kk * 5, S.level + 0.1, 0.6 + j * 0.42); f.scale.set(1 + kk * 2.5, 1, 1); f.material.opacity = 0.8 * (1 - kk); }); move(c.cam, [1, 1.9 + S.level * 0.4, 6], [8.6, 0.6, 2], [0, 2.4 + S.level * 0.4, 5.6], [6, 1.2, 1], k, 40); }
+  else { move(c.cam, [1, 1.9 + S.level * 0.4, 6], [8.6, 0.6, 2], [0, 2.4 + S.level * 0.4, 5.6], [6, 1.2, 1], k, 40); }
 });
 const belowC7 = (c, S, i, k) => {
   const R = S.C.rose; R.look('serious', c.T);
-  if (i === 1) { const z = lerp(-24, 5, k); P(R, 40, 0, z, 0); R.walk(c.T * 9, 0.55); R.armL.rotation.z = -0.6; R.armR.rotation.z = 0.6; S.foam.forEach((f, j) => { const kk = (c.T * 2 + j * 0.125) % 1; f.visible = true; f.position.set(40 + (j % 2 ? 1 : -1) * (0.8 + kk * 1.6), 1.85, z - 0.5 - kk * 2.5); f.scale.set(0.8 + kk, 1, 1); f.material.opacity = 0.8 * (1 - kk); }); move(c.cam, [41.2, 4.9, 22], [40, 4.1, z], [40.6, 4.6, 19], [40, 4.2, z], k, 38); shake(c.cam, c.T, 0.03); }
-  else { P(R, 39.4, 0, 10.4, -Math.PI / 2 + 0.15); const hit = ease((k - 0.25) / 0.14), got = k > 0.6; R.armR.rotation.set(-1.5 * hit * (got ? 1 : 1), 0, 0); R.armL.rotation.set(-0.4, 0, 0.3); S.glass.visible = k < 0.38; S.axeCase.visible = !got; S.axe.visible = got; if (got) { R.armR.rotation.set(-1.0, 0, 0.2); R.look('menace', c.T); } if (k > 0.38 && k < 0.5) c.flash(0.7 * (1 - (k - 0.38) / 0.12)); move(c.cam, [43, 5, 15.6], [37.6, 4.5, 10.2], [42.6, 4.9, 14.4], [37.6, 4.5, 10.2], k, 34); }
+  if (i === 1) { const z = lerp(-24, 5, k); P(R, 40, 0, z, 0); R.walk(c.T * 9, 0.55); R.armL.rotation.z = -0.6; R.armR.rotation.z = 0.6; S.foam.forEach((f, j) => { const kk = (c.T * 2 + j * 0.125) % 1; f.visible = true; f.position.set(40 + (j % 2 ? 1 : -1) * (0.8 + kk * 1.6), 1.85, z - 0.5 - kk * 2.5); f.scale.set(0.8 + kk, 1, 1); f.material.opacity = 0.5 * (1 - kk); }); move(c.cam, [41.2, 4.9, 22], [40, 4.1, z], [40.6, 4.6, 19], [40, 4.2, z], k, 38); shake(c.cam, c.T, 0.03); }
+  else { P(R, 39.4, 0, 10.4, -Math.PI / 2 + 0.15); const hit = ease((k - 0.25) / 0.14), got = k > 0.6; R.armR.rotation.set(-1.5 * hit * (got ? 1 : 1), 0, 0); R.armL.rotation.set(-0.4, 0, 0.3); S.glass.visible = k < 0.38; S.axeCase.visible = !got; S.axe.visible = got; if (got) { R.armR.rotation.set(-1.0, 0, 0.2); R.look('menace', c.T); } if (k > 0.38 && k < 0.5) c.flash(0.7 * (1 - (k - 0.38) / 0.12)); move(c.cam, [37.0, 5.4, 16.6], [37.8, 4.4, 10.2], [37.1, 5.3, 15.8], [37.8, 4.4, 10.2], k, 40); }
 };
 BEL('c8', (c, S) => {
   const R = S.C.rose, sw = c.k > 0.6, J = cuffed(S, c.T, sw ? 0 : 0.5); S.level = 2.2; S.axe.visible = true;
   if (!sw) { P(R, 4.2, 0, 1.4, -Math.PI / 2 + 0.5); R.look('serious', c.T, c.talk); R.armR.rotation.set(-0.9, 0, 0.2); R.walk(c.T * 5, 0.2); R.armR.rotation.set(-0.9, 0, 0.2); J.look('surprised', c.T); J.head.rotation.y = 1.5; move(c.cam, [-1.5, 5.3, 8.4], [4.2, 4.75, 1.4], [-0.8, 5.2, 7.4], [4.2, 4.75, 1.4], c.k / 0.6, 30); }
   else { const k = (c.k - 0.6) / 0.4, down = ease((k - 0.3) / 0.14), free = k > 0.44; P(R, 0.9, 0, -1.2, -Math.PI / 2 - 0.5); R.look('menace', c.T); R.armR.rotation.set(-2.9 + down * 1.9, 0, 0); R.armL.rotation.set(-2.6 + down * 1.7, 0, 0.3); J.look(free ? 'joy' : 'surprised', c.T); J.head.rotation.y = 0.8;
     if (free) { S.chain.visible = false; J.armL.rotation.set(-0.6, 0, -0.8); J.armR.rotation.set(-0.6, 0, 0.8); J.g.position.x += (k - 0.44) * 3; } if (k > 0.44 && k < 0.6) c.flash(1 - (k - 0.44) / 0.16);
-    move(c.cam, [4.6, 5.6, 5.8], [-1.6, 4.4, -2.6], [3.8, 5.2, 5], [-1.6, 4.4, -2.6], k, 36); shake(c.cam, c.T, 0.05); }
+    move(c.cam, [-4.8, 5.2, 3.2], [0.2, 4.3, -1.8], [-4.4, 5.1, 2.6], [0.2, 4.3, -1.8], k, 40); shake(c.cam, c.T, 0.05); }
 });
 
 // ---- lines that cut between two sets: tiny proxy sets pick the underlying set per sub-cut ----
@@ -362,8 +362,8 @@ SHOT('c3:2', 'a2_c32', c => { if (c.k < C3SPLIT) seaC32(c); else hullShot({ ...c
 const C7A = 0.3, C7B = 0.66;
 proxy('a2_c71', T => getSet(subk(LINE.c7, 1, T) < C7A ? 'sea' : 'a2_below'));
 const seaC71 = c => { const S = c.S.cur, X = EX(S), k = c.k / C7A; night(S, 0); S.sink(0.2); const b = S.boats[0], y = 9.5 - k * 1.5; b.visible = true; b.position.set(17, y, 30); X.ropes.forEach((r, j) => { r.visible = true; r.scale.y = 22 - y; r.position.set(17, (22 + y) / 2 + 1, 30 + (j ? 4.4 : -4.4)); });
-  ['ladyA', 'steerB'].forEach((n, i) => { const h = S.C(n); S.put(h, 17, y - 0.7, i ? 33.2 : 26.8, -1.2); h.sit(); S.vest(h); h.look('surprised', c.T + i); h.head.rotation.y = -1.2; });
+  ['ladyA', 'steerB'].forEach((n, i) => { const h = S.C(n); S.put(h, 17, y - 0.7, i ? 24 : 27, 0); h.sit(); S.vest(h); h.look('surprised', c.T + i); h.head.rotation.y = -0.9; });
   const R = S.C('rose'), j = ease(k * 1.2), jy = Math.sin(clamp(k * 1.2) * Math.PI) * 3.4; S.put(R, lerp(17, 11.8, j), lerp(y + 1.2, 9.6, j) + jy, 30, -1.5); S.vest(R); R.look('serious', c.T); R.armL.rotation.x = R.armR.rotation.x = -2.6; R.legL.rotation.x = -0.6; R.legR.rotation.x = 0.5;
   const g = S.C('gentB'); S.board(g, 'fore', 10.4, 12, 27, -1.6); g.armL.rotation.x = g.armR.rotation.x = -1.5; g.look('surprised', c.T);
-  fillAt(X, 24, 14, 38, 80, 40); move(S.cam, [32, 13, 44], [14, 11.5, 30], [29, 12.5, 41], [13, 11.5, 30], k, 34); S.post(c.T); };
+  fillAt(X, 20, 14, 42, 80, 40); move(S.cam, [19, 12.5, 47], [14.5, 11.5, 30], [17.5, 12.2, 45], [13.5, 11.5, 30], k, 36); S.post(c.T); };
 SHOT('c7:1', 'a2_c71', c => { if (c.k < C7A) return seaC71(c); const S = c.S.cur, i = c.k < C7B ? 1 : 2, k = i === 1 ? (c.k - C7A) / (C7B - C7A) : (c.k - C7B) / (1 - C7B); belowC7({ ...c, S, cam: S.cam }, S, i, k); S.post(c.T); });
