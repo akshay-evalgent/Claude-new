@@ -1,0 +1,34 @@
+<!doctype html><meta charset="utf-8">
+<style>
+html,body{margin:0;background:#000}
+#t{position:relative;width:1280px;height:720px;overflow:hidden;font-family:Inter,sans-serif;font-weight:900;color:#fff;background:#07080c}
+#t>*{position:absolute}
+.ph{top:0;width:640px;height:720px;background-repeat:no-repeat;background-color:#07080c}
+.leo{left:0;background-image:url(src/leo.jpg);background-size:1500px auto;background-position:-419px -129px}
+.kat{left:640px;background-image:url(src/kate2.jpg);background-size:600px auto;background-position:20px -12px}
+.tint{top:0;width:640px;height:720px;mix-blend-mode:multiply}
+.seam{left:490px;top:0;width:300px;height:720px;background:linear-gradient(90deg,rgba(7,8,12,0),rgba(7,8,12,.96) 42%,rgba(7,8,12,.96) 58%,rgba(7,8,12,0))}
+.vig{inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 45%,rgba(0,0,0,.7) 100%)}
+.bot{left:0;right:0;bottom:0;height:330px;background:linear-gradient(0deg,rgba(0,0,0,.94),rgba(0,0,0,0))}
+.big{left:0;right:0;text-align:center;line-height:.95;letter-spacing:-2px;-webkit-text-stroke:16px #000;paint-order:stroke fill;text-transform:uppercase}
+.y{color:#ffd400}.r{color:#ff3b47}.b{color:#7fd0ff}
+.tag{font-size:44px;padding:8px 22px;border-radius:10px;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+svg{overflow:visible}
+</style>
+<div id="t"></div>
+<script>
+const v = +new URLSearchParams(location.search).get('v') || 1, t = document.getElementById('t');
+const door = (x, y, s = 1, rot = 0) => `<svg style="left:${x}px;top:${y}px;transform:rotate(${rot}deg) scale(${s});transform-origin:50% 50%;filter:drop-shadow(0 14px 22px rgba(0,0,0,.85))" width="230" height="130" viewBox="0 0 230 130"><rect x="4" y="4" width="222" height="122" rx="6" fill="#7a5230" stroke="#000" stroke-width="8"/><rect x="18" y="18" width="90" height="94" fill="none" stroke="#4a2e18" stroke-width="6"/><rect x="122" y="18" width="90" height="94" fill="none" stroke="#4a2e18" stroke-width="6"/><ellipse cx="63" cy="65" rx="28" ry="22" fill="none" stroke="#c99a5a" stroke-width="4"/><ellipse cx="167" cy="65" rx="28" ry="22" fill="none" stroke="#c99a5a" stroke-width="4"/></svg>`;
+const faces = (lf, rf, lt, rt) => `<div class="ph leo" style="filter:${lf}"></div><div class="ph kat" style="filter:${rf}"></div><div class="tint" style="left:0;background:${lt}"></div><div class="tint" style="left:640px;background:${rt}"></div><div class="seam"></div><div class="vig"></div><div class="bot"></div>`;
+const G = 'contrast(1.15) saturate(.85) brightness(1.15)';
+const arrow = (x, y, rot, col = '#ffd400') => `<svg style="left:${x}px;top:${y}px;transform:rotate(${rot}deg)" width="150" height="90" viewBox="0 0 150 90"><path d="M5 45 H105 M75 12 L112 45 L75 78" stroke="#000" stroke-width="30" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 45 H105 M75 12 L112 45 L75 78" stroke="${col}" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const V = {
+  1: () => faces(G, G, '#c4d8ff', '#ffd6c8') + door(525, 210, 1.0, -8) + `<div class="tag" style="left:50%;top:150px;transform:translateX(-50%) rotate(-4deg);background:#19a85a;font-size:46px">2 ✓</div><div class="big" style="bottom:36px;font-size:146px">It fits <span class="y">two.</span></div>`,
+  2: () => faces(G, G, '#c4d8ff', '#ffd6c8') + `<div style="left:470px;top:110px;width:340px;height:340px;border-radius:50%;overflow:hidden;border:10px solid #ffd400;background:url(src/huddle.jpg) -288px -116px/1100px auto;box-shadow:0 20px 50px #000"></div><div class="big" style="bottom:36px;font-size:138px">Jack <span class="y">lives.</span></div>`,
+  3: () => faces('grayscale(1) contrast(1.25) brightness(1.15)', 'grayscale(1) contrast(1.25) brightness(1.05)', '#ffffff', '#ffffff') + door(525, 230, 1.0, 0) + `<div class="tag" style="left:50%;top:40px;transform:translateX(-50%) rotate(-3deg);background:#ffd400;color:#000;font-size:50px">There was room</div><div class="big" style="bottom:36px;font-size:128px">They were <span class="r">right</span></div>`,
+  4: () => faces(G, G, '#b9d2ff', '#ffc6b6') + `<div class="tag" style="left:40px;top:34px;background:#1f6fff">Forever</div><div class="tag" style="right:40px;top:34px;background:#ff3b47">Four days</div>` + arrow(70, 130, 40, '#1f6fff') + arrow(1060, 130, 140, '#ff3b47') + `<div class="big" style="bottom:40px;font-size:118px">Would they <span class="y">last?</span></div>`,
+  5: () => faces('contrast(1.2) saturate(.75) brightness(1.1)', 'contrast(1.2) saturate(.95) brightness(1.1)', '#a9c4ff', '#ffd0bc') + `<div style="left:470px;top:150px;width:340px;height:176px;border-radius:14px;overflow:hidden;border:8px solid #d9b24a;background:url(src/plaque.jpg) -78px -52px/495px auto;box-shadow:0 20px 50px #000"></div><div class="big" style="bottom:150px;font-size:76px;letter-spacing:6px;-webkit-text-stroke:12px #000">Titanic</div><div class="big" style="bottom:30px;font-size:118px"><span class="y">the other ending</span></div>`,
+};
+t.innerHTML = V[v]();
+document.fonts.load('900 100px Inter').then(() => window.READY = true);
+</script>
