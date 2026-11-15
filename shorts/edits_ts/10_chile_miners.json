@@ -1,7 +1,7 @@
 {
  "source": "qm0nlcmB3BU",
- "in": null,
- "fx": 0.5,
+ "in": 59.35,
+ "fx": 0.18,
  "fy": 0.5,
  "zoom": 1.0,
  "text": "Chile, 2010. A mine collapsed. *33 men were trapped* about 700 meters underground. For 17 days, nobody knew if they were alive. Then a drill came up with a note: \"We are fine in the shelter, the 33.\" On day 69, the first man rose up in a tiny capsule. Florencio Ávalos. *His 7-year-old son was waiting.* The boy couldn't stop crying. Send this to your dad.",
@@ -21,6 +21,7 @@
   "true story"
  ],
  "pinned": "Who would be waiting for you? 👇",
- "cover_t": 4.0,
- "link": "https://www.youtube.com/watch?v=qm0nlcmB3BU"
+ "cover_t": 2.0,
+ "link": "https://www.youtube.com/watch?v=qm0nlcmB3BU",
+ "speed": 0.8
 }

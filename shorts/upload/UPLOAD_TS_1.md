@@ -35,7 +35,7 @@ Each video has a cover image (`*_cover.jpg`, 1080×1920). It's the frame with th
 ---
 ## 1. Six Days at the Hospital Door 🐕❤️
 **Video:** `07_boncuk.mp4` (7s, loops)
-**Cover:** `07_boncuk_cover.jpg`, or use the frame picker at **0:03**
+**Cover:** `07_boncuk_cover.jpg`, or use the frame picker at **0:02**
 
 **Title:**
 ```
@@ -125,7 +125,7 @@ Do you think animals remember us forever? 👇
 ---
 ## 4. The Race He Refused to Win 🏃🤝
 **Video:** `06_anaya.mp4` (7s, loops)
-**Cover:** `06_anaya_cover.jpg`, or use the frame picker at **0:03**
+**Cover:** `06_anaya_cover.jpg`, or use the frame picker at **0:04**
 
 **Title:**
 ```
@@ -140,7 +140,7 @@ The Race He Refused to Win 🏃🤝
 The Race He Refused to Win 🏃🤝
 Spain, 2012. A cross-country race. Kenyan Olympic medalist Abel Mutai was in the lead — then he stopped. He thought he had already finished. The line was still a few meters away, and he didn't understand the Spanish shouts. Right behind him was Iván Fernández Anaya. He could have run past and won. Instead, he guided him to the line. Later he said: "I didn't deserve to win it." Like if you agree.
 
-🎥 Original video: https://www.youtube.com/watch?v=XuAHZyqsvhI
+🎥 Original video: Digitalschool (https://www.youtube.com/watch?v=rl382lAYAdI)
 ```
 **Tags:**
 ```
@@ -150,12 +150,12 @@ Ivan Fernandez Anaya, Abel Mutai, sportsmanship, honesty, cross country, running
 ```
 Would you have run past him? Be honest 👇
 ```
-**Rights:** This is a re-upload of Spanish TV race footage. A claim is possible.
+**Rights:** This is a re-upload of Spanish TV footage of the race. A claim is possible.
 
 ---
 ## 5. The Baby on the Freeway Overpass 🚌❤️
 **Video:** `08_bus_driver.mp4` (7s, loops)
-**Cover:** `08_bus_driver_cover.jpg`, or use the frame picker at **0:03**
+**Cover:** `08_bus_driver_cover.jpg`, or use the frame picker at **0:04**
 
 **Title:**
 ```
@@ -200,7 +200,7 @@ The Penguin Who Keeps Coming Back 🐧❤️
 The Penguin Who Keeps Coming Back 🐧❤️
 Brazil, 2011. A retired bricklayer found a penguin on the rocks, covered in oil and close to death. He cleaned him, fed him sardines and set him free. The penguin didn't leave. Months later he finally swam away. Everyone said: that's it. The next year, he came back. To the same island. To the same man. Year after year. His name is Dindim. Send this to someone who always comes back.
 
-🎥 Original video: https://www.youtube.com/watch?v=lexz6cg_W04
+🎥 Original video: ABC News (https://www.youtube.com/watch?v=5pv8V4SXfzY)
 ```
 **Tags:**
 ```
@@ -210,12 +210,12 @@ Dindim, penguin, Joao Pereira de Souza, Brazil, penguin friendship, animal loyal
 ```
 Who always comes back for you? 👇
 ```
-**Rights:** This is a re-upload of Brazilian TV news (TV Globo). Credit the uploader. A claim is possible.
+**Rights:** ABC News. A claim is possible, so ask for permission.
 
 ---
 ## 7. 69 Days Underground, Then His Son 😢❤️
 **Video:** `10_chile_miners.mp4` (7s, loops)
-**Cover:** `10_chile_miners_cover.jpg`, or use the frame picker at **0:04**
+**Cover:** `10_chile_miners_cover.jpg`, or use the frame picker at **0:02**
 
 **Title:**
 ```
@@ -275,7 +275,7 @@ Who would you still recognize after 22 years? 👇
 ---
 ## 9. Two Friends, One Gold Medal 🤝✨
 **Video:** `05_two_golds.mp4` (7s, loops)
-**Cover:** `05_two_golds_cover.jpg`, or use the frame picker at **0:03**
+**Cover:** `05_two_golds_cover.jpg`, or use the frame picker at **0:05**
 
 **Title:**
 ```

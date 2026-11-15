@@ -35,7 +35,7 @@ Each video has a cover image (`*_cover.jpg`, 1080×1920). It's the frame with th
 ---
 ## 1. Strangers Lifted a Burning Car 🔥🤝
 **Video:** `11_utah_car_lift.mp4` (7s, loops)
-**Cover:** `11_utah_car_lift_cover.jpg`, or use the frame picker at **0:03**
+**Cover:** `11_utah_car_lift_cover.jpg`, or use the frame picker at **0:02**
 
 **Title:**
 ```
@@ -65,7 +65,7 @@ Would you have run toward the fire? 👇
 ---
 ## 2. The Dog Who Ran Into Traffic 🐕❤️
 **Video:** `14_chile_dog.mp4` (7s, loops)
-**Cover:** `14_chile_dog_cover.jpg`, or use the frame picker at **0:03**
+**Cover:** `14_chile_dog_cover.jpg`, or use the frame picker at **0:02**
 
 **Title:**
 ```
@@ -110,7 +110,7 @@ Dogs are better than people sometimes. Agree? 👇
 100 Laps at 99 Years Old 💪❤️
 England, April 2020. Lockdown. A 99-year-old war veteran set a goal: 100 laps of his garden, with his walker, before his 100th birthday. He hoped to raise £1,000 for the NHS. People started donating. Then the whole world did. Over £32 million. He finished early and kept walking. The Queen knighted him. Captain Tom never stopped. Send this to someone who inspires you.
 
-🎥 Original video: The Sun (https://www.youtube.com/watch?v=OrKfFZEfElc)
+🎥 Original video: Sky Star News (https://www.youtube.com/watch?v=9rGmxlMI_1g)
 ```
 **Tags:**
 ```
@@ -120,12 +120,12 @@ Captain Tom Moore, Sir Tom Moore, 100 laps, NHS, war veteran, lockdown, true sto
 ```
 Who's the oldest person who still inspires you? 👇
 ```
-**Rights:** The Sun. A claim is possible, so ask for permission.
+**Rights:** This is a re-upload of Sky News footage. **Claims are likely.** The Sun clip is the backup.
 
 ---
 ## 4. The Kids Who Crashed the BBC 😂✨
 **Video:** `17_bbc_kids.mp4` (7s, loops)
-**Cover:** `17_bbc_kids_cover.jpg`, or use the frame picker at **0:03**
+**Cover:** `17_bbc_kids_cover.jpg`, or use the frame picker at **0:04**
 
 **Title:**
 ```
@@ -185,7 +185,7 @@ Would you have stopped? 👇
 ---
 ## 6. The Dog Who Gave Her Face for Two Girls 🐕❤️
 **Video:** `19_kabang.mp4` (7s, loops)
-**Cover:** `19_kabang_cover.jpg`, or use the frame picker at **0:03**
+**Cover:** `19_kabang_cover.jpg`, or use the frame picker at **0:05**
 
 **Title:**
 ```
@@ -215,7 +215,7 @@ Tag a dog lover 👇
 ---
 ## 7. The Firefighter and the Thirsty Koala 🐨❤️
 **Video:** `18_koala.mp4` (7s, loops)
-**Cover:** `18_koala_cover.jpg`, or use the frame picker at **0:03**
+**Cover:** `18_koala_cover.jpg`, or use the frame picker at **0:02**
 
 **Title:**
 ```
@@ -260,7 +260,7 @@ The Paratrooper Jumped Again at 97 🪂💪
 The Paratrooper Jumped Again at 97 🪂💪
 June 6, 1944. Paratrooper Tom Rice jumped into Normandy in the dark. A bullet hit his parachute. He survived the war. 75 years later he went back to France, at 97 years old, and jumped again over Carentan, near where he landed in 1944. This time strapped to a partner, in daylight, with a crowd cheering below. He landed smiling: "Perfect jump." Hit like for the ones who came back.
 
-🎥 Original video: NBC News (https://www.youtube.com/watch?v=zkwX6jJQCtA)
+🎥 Original video: AFP (https://www.youtube.com/watch?v=lrX1EWMuHhY)
 ```
 **Tags:**
 ```
@@ -270,7 +270,7 @@ Tom Rice, D-Day, Normandy, paratrooper, 101st Airborne, veteran, World War II, t
 ```
 Thank a veteran in the comments 👇
 ```
-**Rights:** NBC News. **Claims are likely.** The AFP clip is the backup.
+**Rights:** AFP. **AFP claims are common.** Ask AFP, or swap the story out if it gets blocked.
 
 ---
 ## 9. Carried Around the Bases by Rivals 🤝❤️
