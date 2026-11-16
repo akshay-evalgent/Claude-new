@@ -1,0 +1,9 @@
+{
+  "name": "why-cats-knead-you-short",
+  "private": true,
+  "description": "Procedural three.js scenes for the \"Why Cats Knead You\" short",
+  "dependencies": {
+    "three": "0.160.0",
+    "@expo-google-fonts/nunito": "0.2.3"
+  }
+}
