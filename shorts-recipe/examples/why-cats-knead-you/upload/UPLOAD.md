@@ -54,7 +54,14 @@ why do cats knead, cat making biscuits, why does my cat knead me, cat kneading e
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | The tabby sitting back on your lap, looking straight at you, the CLAIMED stamp across its chest, caption "You've been claimed" | **Main pick.** Funny and instantly curious: claimed how? |
+| `thumbnail-alt-pov.jpg` | Your POV: the cat kneading your lap, eyes half closed, caption "making biscuits" | Relatable angle |
+| `thumbnail-alt-drool.jpg` | Close on the face, eyes shut, a drop of drool on the chin, caption "and sometimes drool" | Cat-owner in-joke angle |
+| `thumbnail-alt-kittens.jpg` | Newborn kittens kneading their mother's belly, caption "knead their mother's belly" | Cute angle |
+| `thumbnail-alt-toe-glands.jpg` | A huge paw with glowing golden glands between the toes, caption "between their toes" | Surprise angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
