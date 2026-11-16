@@ -56,7 +56,14 @@ why can't you tickle yourself, tickle yourself, tickling science, brain predicti
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | You on the sofa, tickling your own palm, utterly unimpressed, caption "You can't tickle yourself" | **Main pick.** A challenge every viewer wants to test |
+| `thumbnail-alt-laugh.jpg` | The volunteer bursting out laughing as the TICKLE meter shoots up, caption "came back" | Big-reaction angle |
+| `thumbnail-alt-xray.jpg` | An x-ray of your head, the brain glowing and a signal running down to your hand, caption "sees it coming" | Science angle |
+| `thumbnail-alt-knob.jpg` | A brain above a TICKLE knob turned right down, caption "the feeling down" | Curiosity angle |
+| `thumbnail-alt-poke-war.jpg` | Two kids on the sofa mid-poke, caption "starts poke wars" | Sibling angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
