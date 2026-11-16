@@ -1,0 +1,69 @@
+{
+ "series": "Repo reveal",
+ "sources": "Demo videos: FramePack (Lvmin Zhang et al.), Apache-2.0 · lllyasviel.github.io/frame_pack_gitpage",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "cover_t": 1.2,
+ "title": "This Painting Is Eating a Burger 🍔",
+ "segments": [
+  {
+   "source": "fp_burger",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.02,
+   "text": "This painting is *eating a burger.*",
+   "say": "This painting is eating a burger."
+  },
+  {
+   "source": "fp_statue",
+   "in": 0,
+   "dur": 3.4,
+   "push": 1.02,
+   "text": "Every one of these was *one still image.*",
+   "say": "Every one of these started as one still image."
+  },
+  {
+   "source": "fp_penguin",
+   "in": 0,
+   "dur": 3.6,
+   "push": 1.02,
+   "text": "A free AI on GitHub makes it move, on a *6 GB laptop GPU.*",
+   "say": "A free AI on GitHub makes it move, on a laptop GPU with just six gigabytes."
+  },
+  {
+   "source": "fp_baby",
+   "in": 0,
+   "dur": 3.4,
+   "push": 1.02,
+   "text": "And it doesn't stop at 5 seconds. Wait for *the full minute.*",
+   "say": "And it doesn't stop at five seconds. Wait for the full minute."
+  },
+  {
+   "source": "fp_how",
+   "in": 0,
+   "dur": 6.0,
+   "push": 1.02,
+   "text": "How: it's called *FramePack.* Free one-click installer.",
+   "say": "It's called FramePack. Get the free one-click package, upload a photo, describe the motion, and hit start."
+  },
+  {
+   "source": "fp_minute",
+   "in": 0,
+   "dur": 5.0,
+   "push": 1.0,
+   "text": "*One photo. One full minute.*",
+   "say": ""
+  },
+  {
+   "source": "fp_dj",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.02,
+   "text": "*Save this.* Comment the photo you'd bring to life.",
+   "say": "Save this, and comment the photo you'd bring to life."
+  }
+ ]
+}

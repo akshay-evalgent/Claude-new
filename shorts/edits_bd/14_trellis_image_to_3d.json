@@ -1,0 +1,77 @@
+{
+ "series": "Repo reveal",
+ "sources": "Demos: Microsoft TRELLIS & TRELLIS.2 (MIT) · microsoft.github.io/TRELLIS",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "cover_t": 1.6,
+ "title": "One Picture → 3D Model, FREE 🐉",
+ "segments": [
+  {
+   "source": "tr_dragon",
+   "in": 0,
+   "dur": 2.8,
+   "push": 1.0,
+   "text": "This dragon was *one flat picture.*",
+   "say": "This dragon was one flat picture."
+  },
+  {
+   "source": "tr_mushroom",
+   "in": 0,
+   "dur": 4.6,
+   "push": 1.0,
+   "text": "Microsoft's free AI turns *one image* into a 3D model.",
+   "say": "Microsoft's free AI turns one image into a full 3D model."
+  },
+  {
+   "source": "tr_ship",
+   "in": 0,
+   "dur": 2.4,
+   "push": 1.0,
+   "text": "Pirate ships…",
+   "say": "Pirate ships,"
+  },
+  {
+   "source": "tr_monkey",
+   "in": 0,
+   "dur": 3.2,
+   "push": 1.0,
+   "text": "…astronaut monkeys… and wait for *the new version.*",
+   "say": "astronaut monkeys, and wait for the new version."
+  },
+  {
+   "source": "tr_how",
+   "in": 0,
+   "dur": 6.0,
+   "push": 1.02,
+   "text": "How: it's called *TRELLIS.* Free online demo.",
+   "say": "It's called TRELLIS. Upload an image to the free demo on Hugging Face, and download your 3D model."
+  },
+  {
+   "source": "tr2_mermaid",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.04,
+   "text": "*TRELLIS.2:* full textures…",
+   "say": ""
+  },
+  {
+   "source": "tr2_grid",
+   "in": 0,
+   "dur": 2.8,
+   "push": 1.0,
+   "text": "…*hundreds of models.* All generated.",
+   "say": ""
+  },
+  {
+   "source": "tr_dragon",
+   "in": 1.0,
+   "dur": 2.8,
+   "push": 1.0,
+   "text": "*Save this.* Send it to someone with a 3D printer.",
+   "say": "Save this, and send it to someone with a 3D printer."
+  }
+ ]
+}

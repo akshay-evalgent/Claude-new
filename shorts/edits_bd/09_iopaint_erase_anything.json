@@ -1,0 +1,69 @@
+{
+ "series": "Repo reveal",
+ "sources": "Examples: IOPaint (Apache-2.0) · github.com/Sanster/IOPaint",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "cover_t": 0.5,
+ "title": "Where Did She Go? 🤯",
+ "segments": [
+  {
+   "source": "iop_person",
+   "in": 0,
+   "dur": 3.2,
+   "push": 1.02,
+   "text": "Watch *the lady in the back.*",
+   "say": "Watch the lady in the back."
+  },
+  {
+   "source": "iop_object",
+   "in": 0,
+   "dur": 3.6,
+   "push": 1.02,
+   "text": "A free AI on GitHub erases *anything* from a photo. On your own laptop.",
+   "say": "This free AI on GitHub erases anything from a photo, and it runs on your own laptop."
+  },
+  {
+   "source": "iop_old",
+   "in": 0,
+   "dur": 2.8,
+   "push": 1.02,
+   "text": "Cracks on *old photos*…",
+   "say": "Cracks on old photos, gone."
+  },
+  {
+   "source": "iop_manga",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.02,
+   "text": "…text on comics… and wait for *the dog.*",
+   "say": "Text on comics, gone. And wait for the dog."
+  },
+  {
+   "source": "iop_how",
+   "in": 0,
+   "dur": 6.0,
+   "push": 1.02,
+   "text": "How: it's called *IOPaint.* One command.",
+   "say": "It's called IOPaint. Install it with one command, start it, and brush over anything you want gone."
+  },
+  {
+   "source": "iop_dog",
+   "in": 0,
+   "dur": 3.8,
+   "push": 1.0,
+   "text": "It can *replace* things too.",
+   "say": "With a diffusion model, it can even replace things."
+  },
+  {
+   "source": "iop_person",
+   "in": 1.0,
+   "dur": 2.6,
+   "push": 1.02,
+   "text": "*Save this.* Send it to the friend who always photobombs.",
+   "say": "Save this, and send it to the friend who always photobombs."
+  }
+ ]
+}

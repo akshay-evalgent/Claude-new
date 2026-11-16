@@ -1,0 +1,69 @@
+{
+ "series": "Repo reveal",
+ "sources": "Real-ESRGAN (BSD-3) · test images from the repo, upscaled by us",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "cover_t": 2.4,
+ "title": "Tiny Blurry Photo → 4x Sharper, FREE 🔍",
+ "segments": [
+  {
+   "source": "esr_eyes",
+   "in": 0,
+   "dur": 2.8,
+   "push": 1.02,
+   "text": "Look at *the eyes.*",
+   "say": "Look at the eyes."
+  },
+  {
+   "source": "esr_wolf",
+   "in": 0,
+   "dur": 4.0,
+   "push": 1.02,
+   "text": "This was a *236-pixel* picture. A free AI made it 4x bigger.",
+   "say": "This was a tiny, low-res picture. A free AI on GitHub made it four times bigger."
+  },
+  {
+   "source": "esr_anime",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.02,
+   "text": "Anime…",
+   "say": "It works on anime,"
+  },
+  {
+   "source": "esr_beach",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.02,
+   "text": "…photos… and wait for *the tiny cartoon.*",
+   "say": "on photos, and wait for the tiny cartoon."
+  },
+  {
+   "source": "esr_how",
+   "in": 0,
+   "dur": 6.0,
+   "push": 1.02,
+   "text": "How: it's called *Real-ESRGAN.* Free portable app.",
+   "say": "It's called Real E-S-R-GAN. Download the free portable app for Windows, Mac or Linux, and run one command."
+  },
+  {
+   "source": "esr_cartoon",
+   "in": 0,
+   "dur": 4.2,
+   "push": 1.0,
+   "text": "*179 pixels* became this.",
+   "say": ""
+  },
+  {
+   "source": "esr_wolf",
+   "in": 3.0,
+   "dur": 3.0,
+   "push": 1.02,
+   "text": "*Save this.* Send it to whoever has the blurry family photos.",
+   "say": "Save this, and send it to whoever has the blurry family photos."
+  }
+ ]
+}

@@ -128,6 +128,16 @@ def render_segment(seg, dur, src_dir, work, k, series, sources):
     return out
 
 
+def limit(x, ceil=0.89):
+    """Peak limiter (-1 dBFS): hold each gain dip for 10 ms, then smooth it, so it never overshoots."""
+    from scipy.ndimage import maximum_filter1d, minimum_filter1d, uniform_filter1d
+    w = int(0.01 * SR)
+    pk = maximum_filter1d(np.abs(x).max(1), size=w)
+    g = np.minimum(1.0, ceil / np.maximum(pk, 1e-9))
+    g = uniform_filter1d(minimum_filter1d(g, size=2 * w), size=w)
+    return (x * g[:, None]).clip(-ceil, ceil).astype(np.float32)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("edl"); ap.add_argument("--out", required=True)
@@ -194,10 +204,15 @@ def main():
         voice[: min(n, len(v))] += v[:n]
     if np.abs(voice).max() > 0:
         voice = voice / (np.sqrt(np.mean(voice[np.abs(voice).max(1) > 0.01] ** 2)) + 1e-9) * 0.1
-    env = np.convolve(np.abs(voice).max(1), np.ones(int(0.25 * SR)) / int(0.25 * SR), "same")
+    # duck the music under narration and under any clip sound we keep (e.g. a voice sample or radio audio)
+    lead = np.abs(voice).max(1) + np.abs(clip).max(1) * (0.1 / (np.sqrt(np.mean(clip[np.abs(clip).max(1) > 0.01] ** 2)) + 1e-9) if np.abs(clip).max() > 0 else 0)
+    k = int(0.25 * SR)                                  # 0.25 s moving average (cumsum, O(n))
+    cs = np.concatenate([[0.0], np.cumsum(lead, dtype=np.float64)])
+    lo = np.clip(np.arange(len(lead)) - k // 2, 0, len(lead)); hi = np.clip(lo + k, 0, len(lead))
+    env = (cs[hi] - cs[lo]) / k
     duck = 10 ** ((edl.get("music_db", -12) * np.clip(env / (env.max() + 1e-9) * 3, 0, 1)) / 20)
     mix = bed * duck[:, None] * 0.6 + voice + clip + fx
-    mix = music.loudnorm(mix.astype(np.float32), -14.0)
+    mix = limit(music.loudnorm_gain(mix.astype(np.float32), -14.0))
     wav = os.path.join(work, "a.wav"); sf.write(wav, mix, SR)
     ts.run(["ffmpeg", "-v", "error", "-y", "-i", vid, "-i", wav, "-map", "0:v", "-map", "1:a", "-c:v", "copy",
             "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", a.out])

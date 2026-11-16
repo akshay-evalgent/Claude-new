@@ -1,0 +1,64 @@
+{
+ "series": "Repo reveal",
+ "sources": "Footage & audio: NASA (public domain) · subtitles: faster-whisper (MIT), run by us",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "cover_t": 1.5,
+ "title": "1969 Moon Radio, Subtitled by AI 🌕",
+ "segments": [
+  {
+   "source": "fw_open",
+   "in": 0,
+   "dur": 4.0,
+   "push": 1.0,
+   "text": "Crackly 1969 radio. *Subtitled by a free AI.*",
+   "say": "",
+   "audio_db": 0
+  },
+  {
+   "source": "fw_term",
+   "in": 0,
+   "dur": 5.0,
+   "push": 1.02,
+   "text": "75 seconds of radio, subtitled in *22 seconds.* Offline, on a CPU.",
+   "say": "Seventy five seconds of Apollo radio, subtitled in twenty two seconds. Offline, on a normal CPU."
+  },
+  {
+   "source": "fw_alarm",
+   "in": 0,
+   "dur": 5.4,
+   "push": 1.0,
+   "text": "It even catches *the 1201 alarm.* Wait for the landing.",
+   "say": "",
+   "audio_db": 0
+  },
+  {
+   "source": "fw_how",
+   "in": 0,
+   "dur": 6.5,
+   "push": 1.02,
+   "text": "How: it's called *faster-whisper.* 4 lines of Python.",
+   "say": "It's called faster-whisper. Install it, and a few lines of Python turn any video into subtitles."
+  },
+  {
+   "source": "fw_landing",
+   "in": 1.8,
+   "dur": 8.8,
+   "push": 1.0,
+   "text": "*\"The Eagle has landed.\"*",
+   "say": "",
+   "audio_db": 0
+  },
+  {
+   "source": "fw_term",
+   "in": 4.0,
+   "dur": 3.0,
+   "push": 1.02,
+   "text": "*Save this.* Send it to someone who edits videos.",
+   "say": "Save this, and send it to someone who edits videos."
+  }
+ ]
+}

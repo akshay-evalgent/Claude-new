@@ -1,0 +1,69 @@
+{
+ "series": "Repo reveal",
+ "sources": "Demo videos: Meta AI, Segment Anything 2 (Apache-2.0) · ai.meta.com/sam2",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "cover_t": 1.0,
+ "title": "Click Once. It Tracks Anything. 🎯",
+ "segments": [
+  {
+   "source": "sam_juggle",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.02,
+   "text": "It never loses *a single ball.*",
+   "say": "It never loses a single ball."
+  },
+  {
+   "source": "sam_coffee",
+   "in": 0,
+   "dur": 5.0,
+   "push": 1.02,
+   "text": "Click once on anything in a video, and Meta's *free AI* follows it, every frame.",
+   "say": "Click once on anything in a video, and Meta's free AI follows it through every single frame."
+  },
+  {
+   "source": "sam_bird",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.02,
+   "text": "Cut it out… put text *behind* it…",
+   "say": "Cut it out, put text behind it,"
+  },
+  {
+   "source": "sam_bird2",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.02,
+   "text": "…and wait for *the skateboarder.*",
+   "say": "and wait for the skateboarder."
+  },
+  {
+   "source": "sam_how",
+   "in": 0,
+   "dur": 6.0,
+   "push": 1.02,
+   "text": "How: it's called *SAM 2.* Free, in your browser.",
+   "say": "It's called SAM 2. Open the free demo, upload a clip, click the thing you want, and hit track."
+  },
+  {
+   "source": "sam_skate",
+   "in": 1.6,
+   "dur": 6.0,
+   "push": 1.0,
+   "text": "*The skateboarder.*",
+   "say": ""
+  },
+  {
+   "source": "sam_juggle",
+   "in": 2.4,
+   "dur": 2.6,
+   "push": 1.02,
+   "text": "*Save this.* Send it to someone who edits videos.",
+   "say": "Save this, and send it to someone who edits videos."
+  }
+ ]
+}

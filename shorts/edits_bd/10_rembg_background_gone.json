@@ -1,0 +1,69 @@
+{
+ "series": "Repo reveal",
+ "sources": "Examples: rembg (MIT) · Earthrise: NASA (public domain)",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "cover_t": 2.0,
+ "title": "Background Gone. One Command. ✂️",
+ "segments": [
+  {
+   "source": "rb_lion",
+   "in": 0,
+   "dur": 2.4,
+   "push": 1.02,
+   "text": "Background: *gone.*",
+   "say": "Background, gone."
+  },
+  {
+   "source": "rb_car",
+   "in": 0,
+   "dur": 4.0,
+   "push": 1.02,
+   "text": "No Photoshop. No website. A free tool on GitHub does it *offline.*",
+   "say": "No Photoshop, no website. A free tool on GitHub does it offline, with one command."
+  },
+  {
+   "source": "rb_anime",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.02,
+   "text": "Anime…",
+   "say": "Anime,"
+  },
+  {
+   "source": "rb_food",
+   "in": 0,
+   "dur": 2.8,
+   "push": 1.02,
+   "text": "…food… and wait for *the whole folder.*",
+   "say": "food, and wait for the whole folder."
+  },
+  {
+   "source": "rb_how",
+   "in": 0,
+   "dur": 6.0,
+   "push": 1.02,
+   "text": "How: it's called *rembg.* Free, offline.",
+   "say": "It's called rem bee gee. Install it, and one command clears a photo, or a whole folder."
+  },
+  {
+   "source": "rb_grid",
+   "in": 0,
+   "dur": 4.2,
+   "push": 1.0,
+   "text": "*The whole folder.* Every photo.",
+   "say": ""
+  },
+  {
+   "source": "rb_moon",
+   "in": 0,
+   "dur": 3.6,
+   "push": 1.0,
+   "text": "*Save this.* Send it to someone who sells online.",
+   "say": "Save this, and send it to someone who sells online."
+  }
+ ]
+}

@@ -234,6 +234,13 @@ def render(preset="night", cycles=3):
     return (seg / np.abs(seg).max() * 0.89).astype(np.float32)
 
 
+def loudnorm_gain(y, target=-14.0):
+    """Gain to the target loudness, no clipping (follow with a limiter)."""
+    import pyloudnorm as pyln
+    meter = pyln.Meter(SR)
+    return (y * 10 ** ((target - meter.integrated_loudness(np.concatenate([y] * 3))) / 20)).astype(np.float32)
+
+
 def loudnorm(y, target=-14.0):
     import pyloudnorm as pyln
     meter = pyln.Meter(SR)

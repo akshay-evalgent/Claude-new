@@ -1,0 +1,61 @@
+{
+ "series": "Repo reveal",
+ "sources": "textarea.my by Anton Medvedev (MIT) · screen recording by us",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "cover_t": 1.0,
+ "title": "This Link IS the Note 🔗",
+ "segments": [
+  {
+   "source": "ta_tease",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.0,
+   "text": "This link *is* the note.",
+   "say": "This link is the note."
+  },
+  {
+   "source": "ta_type",
+   "in": 0,
+   "dur": 5.6,
+   "push": 1.0,
+   "text": "Watch the address bar: everything you type is *packed into the link.*",
+   "say": "Watch the address bar. Everything you type gets compressed into the link itself."
+  },
+  {
+   "source": "ta_decode",
+   "in": 0,
+   "dur": 5.0,
+   "push": 1.02,
+   "text": "No account. No server. *No database.* Wait till I open it somewhere else.",
+   "say": "No account, no server, no database. And wait till I open it somewhere else."
+  },
+  {
+   "source": "ta_how",
+   "in": 0,
+   "dur": 7.0,
+   "push": 1.02,
+   "text": "How: open *textarea.my*. Free, no sign-up.",
+   "say": "Open text area dot my, type, and copy the link. That's it. Just don't put passwords in it: anyone with the link can read it."
+  },
+  {
+   "source": "ta_reopen",
+   "in": 0,
+   "dur": 3.6,
+   "push": 1.0,
+   "text": "A *brand-new browser.* Same note.",
+   "say": "Here it is in a brand new browser. Same note."
+  },
+  {
+   "source": "ta_reopen",
+   "in": 0.5,
+   "dur": 2.8,
+   "push": 1.0,
+   "text": "*Save this.* Send someone a note — as a link.",
+   "say": "Save this, and send someone a note as a link."
+  }
+ ]
+}

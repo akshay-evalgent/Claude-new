@@ -1,0 +1,77 @@
+{
+ "series": "Repo reveal",
+ "sources": "Depth Anything V2 (Apache-2.0, Small model, run by us) · photos: project page, NASA (public domain)",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "cover_t": 2.0,
+ "title": "This Room Is Lying to You 👀",
+ "segments": [
+  {
+   "source": "da_room",
+   "in": 0,
+   "dur": 3.2,
+   "push": 1.02,
+   "text": "This room is *lying to you.*",
+   "say": "This room is lying to you."
+  },
+  {
+   "source": "da_cats",
+   "in": 0,
+   "dur": 4.0,
+   "push": 1.02,
+   "text": "A free AI sees its *real 3D shape* from one photo. No depth camera.",
+   "say": "A free AI sees its real 3D shape from one single photo. No depth camera."
+  },
+  {
+   "source": "da_painting",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.02,
+   "text": "It works on *paintings*…",
+   "say": "It works on paintings,"
+  },
+  {
+   "source": "da_sketch",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.02,
+   "text": "…on a sketch… and wait for *the Moon.*",
+   "say": "on a simple sketch, and wait for the Moon."
+  },
+  {
+   "source": "da_how",
+   "in": 0,
+   "dur": 5.5,
+   "push": 1.02,
+   "text": "How: it's called *Depth Anything V2.* Free online demo.",
+   "say": "It's called Depth Anything V2. Upload any photo to the free demo, and download its depth map."
+  },
+  {
+   "source": "da_apollo_w",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.02,
+   "text": "The *1969* Moon photo…",
+   "say": "I gave it the nineteen sixty nine Moon photo,"
+  },
+  {
+   "source": "da_apollo",
+   "in": 0,
+   "dur": 5.0,
+   "push": 1.0,
+   "text": "…turned into a *3D shot.*",
+   "say": "and turned its depth map into a 3D shot."
+  },
+  {
+   "source": "da_cats3d",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.0,
+   "text": "*Save this.* Comment the photo you'd make 3D.",
+   "say": "Save this, and comment the photo you'd make 3D."
+  }
+ ]
+}
