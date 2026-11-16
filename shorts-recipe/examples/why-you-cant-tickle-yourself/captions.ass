@@ -1,0 +1,53 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.03,0:00:01.67,Short,,0,0,0,,You can't tickle yourself
+Dialogue: 0,0:00:01.67,0:00:02.18,Short,,0,0,0,,Your brain
+Dialogue: 0,0:00:02.18,0:00:03.46,Short,,0,0,0,,sees it coming
+Dialogue: 0,0:00:03.46,0:00:04.50,Short,,0,0,0,,Every time you move
+Dialogue: 0,0:00:04.50,0:00:05.02,Short,,0,0,0,,it predicts
+Dialogue: 0,0:00:05.02,0:00:05.72,Short,,0,0,0,,what the touch
+Dialogue: 0,0:00:05.72,0:00:06.50,Short,,0,0,0,,will feel like
+Dialogue: 0,0:00:06.50,0:00:07.06,Short,,0,0,0,,and turns
+Dialogue: 0,0:00:07.06,0:00:08.16,Short,,0,0,0,,the feeling down
+Dialogue: 0,0:00:08.43,0:00:09.28,Short,,0,0,0,,In one experiment
+Dialogue: 0,0:00:09.28,0:00:10.20,Short,,0,0,0,,people tickled
+Dialogue: 0,0:00:10.20,0:00:10.94,Short,,0,0,0,,their own hand
+Dialogue: 0,0:00:10.94,0:00:12.29,Short,,0,0,0,,through a robot
+Dialogue: 0,0:00:12.29,0:00:12.98,Short,,0,0,0,,When it copied them
+Dialogue: 0,0:00:12.98,0:00:13.52,Short,,0,0,0,,instantly
+Dialogue: 0,0:00:13.52,0:00:14.96,Short,,0,0,0,,it barely tickled
+Dialogue: 0,0:00:15.21,0:00:15.76,Short,,0,0,0,,Add a delay
+Dialogue: 0,0:00:15.76,0:00:16.44,Short,,0,0,0,,of a fraction
+Dialogue: 0,0:00:16.44,0:00:17.12,Short,,0,0,0,,of a second
+Dialogue: 0,0:00:17.12,0:00:17.80,Short,,0,0,0,,and the tickle
+Dialogue: 0,0:00:17.80,0:00:18.87,Short,,0,0,0,,came back
+Dialogue: 0,0:00:18.87,0:00:19.58,Short,,0,0,0,,The same trick
+Dialogue: 0,0:00:19.58,0:00:20.90,Short,,0,0,0,,starts poke wars
+Dialogue: 0,0:00:21.21,0:00:21.98,Short,,0,0,0,,In another study
+Dialogue: 0,0:00:21.98,0:00:22.64,Short,,0,0,0,,two people
+Dialogue: 0,0:00:22.64,0:00:23.48,Short,,0,0,0,,took turns
+Dialogue: 0,0:00:23.48,0:00:23.70,Short,,0,0,0,,pressing
+Dialogue: 0,0:00:23.70,0:00:24.54,Short,,0,0,0,,each other's finger
+Dialogue: 0,0:00:24.54,0:00:25.28,Short,,0,0,0,,trying to match
+Dialogue: 0,0:00:25.28,0:00:26.08,Short,,0,0,0,,what they felt
+Dialogue: 0,0:00:26.08,0:00:27.28,Short,,0,0,0,,Their own press
+Dialogue: 0,0:00:27.28,0:00:28.52,Short,,0,0,0,,always felt softer
+Dialogue: 0,0:00:28.52,0:00:29.36,Short,,0,0,0,,so every turn
+Dialogue: 0,0:00:29.36,0:00:30.28,Short,,0,0,0,,got harder
+Dialogue: 0,0:00:30.28,0:00:30.98,Short,,0,0,0,,So go ahead
+Dialogue: 0,0:00:30.98,0:00:32.27,Short,,0,0,0,,try it right now
+Dialogue: 0,0:00:32.27,0:00:32.90,Short,,0,0,0,,It won't work
+Dialogue: 0,0:00:32.90,0:00:33.27,Short,,0,0,0,,because
+Dialogue: 1,0:00:24.54,0:00:32.10,Prompt,,0,0,0,,{\fad(300,250)}Send this to the sibling\Nwho always starts the poke war

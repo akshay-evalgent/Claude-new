@@ -1,0 +1,9 @@
+{
+  "name": "why-you-cant-tickle-yourself-short",
+  "private": true,
+  "description": "Procedural three.js scenes for the \"Why You Can't Tickle Yourself\" short",
+  "dependencies": {
+    "three": "0.160.0",
+    "@expo-google-fonts/nunito": "0.2.3"
+  }
+}

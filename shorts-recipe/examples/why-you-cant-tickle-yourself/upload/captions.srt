@@ -1,0 +1,63 @@
+1
+00:00:00,030 --> 00:00:01,390
+You can't tickle yourself.
+
+2
+00:00:01,670 --> 00:00:03,230
+Your brain sees it coming.
+
+3
+00:00:03,460 --> 00:00:06,500
+Every time you move, it predicts what the touch will feel like,
+
+4
+00:00:06,500 --> 00:00:08,110
+and turns the feeling down.
+
+5
+00:00:08,430 --> 00:00:11,990
+In one experiment, people tickled their own hand through a robot.
+
+6
+00:00:12,290 --> 00:00:13,520
+When it copied them instantly,
+
+7
+00:00:13,520 --> 00:00:14,910
+it barely tickled.
+
+8
+00:00:15,210 --> 00:00:17,120
+Add a delay of a fraction of a second,
+
+9
+00:00:17,120 --> 00:00:18,570
+and the tickle came back.
+
+10
+00:00:18,870 --> 00:00:20,850
+The same trick starts poke wars.
+
+11
+00:00:21,210 --> 00:00:24,540
+In another study, two people took turns pressing each other's finger,
+
+12
+00:00:24,540 --> 00:00:26,080
+trying to match what they felt.
+
+13
+00:00:26,080 --> 00:00:28,520
+Their own press always felt softer,
+
+14
+00:00:28,520 --> 00:00:30,110
+so every turn got harder.
+
+15
+00:00:30,280 --> 00:00:32,150
+So go ahead, try it right now.
+
+16
+00:00:32,270 --> 00:00:33,270
+It won't work, because
