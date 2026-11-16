@@ -1,0 +1,19 @@
+{
+ "premise": "Botley vibe-codes an app",
+ "cover_t": 1.2,
+ "voices": {
+  "botley": {"voice": "am_puck", "speed": 1.05, "robot": true},
+  "coworker": {"voice": "af_nicole", "speed": 1.0}
+ },
+ "shots": [
+  {"kind": "bot", "expr": "flames", "typing": true, "line": ["botley", "Built my whole app in one weekend. No engineers!"], "sfx": [["type", 0.1], ["type", 1.1]]},
+  {"kind": "app", "mode": "passports", "line": ["coworker", "Why can I see everyone's passport?"], "delay": 0.5, "pad": 0.4},
+  {"kind": "bot", "expr": "frozen", "line": ["botley", "That's... the social feature."], "delay": 0.4, "pad": 0.4},
+  {"kind": "app", "mode": "messages", "line": ["coworker", "And everyone's private messages?"], "delay": 0.4, "pad": 0.4},
+  {"kind": "bot", "expr": "nervous", "line": ["botley", "...Community."], "delay": 0.4, "pad": 0.4},
+  {"kind": "news", "source": "Sifted", "date": "Nov 3, 2026", "dur": 3.4,
+   "headline": "Lovable apps expose sensitive user data, researchers find", "highlight": "sensitive user data,",
+   "caption": "Researchers scanned 159,041 vibe-coded apps.", "sfx": [["whoosh", 0.0], ["sting", 0.5]]},
+  {"kind": "bot", "expr": "happy", "zoom": 0.08, "line": ["botley", "Version two adds a login page!", "Version two adds a log in page!"], "delay": 0.3, "pad": 0.7}
+ ]
+}

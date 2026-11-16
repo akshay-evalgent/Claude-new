@@ -1,0 +1,173 @@
+{
+ "premise": "Botley's first job interview",
+ "cover_t": 4.0,
+ "voices": {
+  "botley": {
+   "voice": "am_puck",
+   "speed": 1.05,
+   "robot": true
+  },
+  "recruiter": {
+   "voice": "af_bella",
+   "speed": 1.08
+  },
+  "manager": {
+   "voice": "am_onyx",
+   "speed": 0.95
+  }
+ },
+ "shots": [
+  {
+   "kind": "call",
+   "line": [
+    "recruiter",
+    "Love your profile! Quick assignment for you. Just download this file."
+   ],
+   "call": {
+    "chat": [
+     "Here's your assignment!",
+     "assignment.zip"
+    ],
+    "cursor": [
+     [
+      760,
+      1760
+     ],
+     [
+      330,
+      1340
+     ],
+     2.6
+    ]
+   },
+   "pad": 0.3
+  },
+  {
+   "kind": "bot",
+   "expr": "hearts",
+   "lean": 1.0,
+   "typing": true,
+   "line": [
+    "botley",
+    "Ooh, homework! Downloading!"
+   ],
+   "sfx": [
+    [
+     "type",
+     0.2
+    ]
+   ]
+  },
+  {
+   "kind": "call",
+   "line": [
+    "botley",
+    "Is it supposed to ask for admin access?"
+   ],
+   "delay": 1.5,
+   "call": {
+    "chat": [
+     "Here's your assignment!",
+     "assignment.zip"
+    ],
+    "progress": [
+     0.0,
+     1.2
+    ],
+    "popup": [
+     "assignment.zip",
+     "wants full admin access\nto this computer"
+    ],
+    "popup_at": 1.2
+   },
+   "sfx": [
+    [
+     "ding",
+     1.2
+    ]
+   ],
+   "pad": 0.4
+  },
+  {
+   "kind": "call",
+   "line": [
+    "recruiter",
+    "Totally normal. Culture fit!"
+   ],
+   "delay": 0.1,
+   "call": {
+    "chat": [
+     "Here's your assignment!",
+     "assignment.zip"
+    ],
+    "popup": [
+     "assignment.zip",
+     "wants full admin access\nto this computer"
+    ],
+    "cursor": [
+     [
+      600,
+      1500
+     ],
+     [
+      770,
+      1110
+     ],
+     1.3
+    ]
+   },
+   "sfx": [
+    [
+     "click",
+     1.4
+    ]
+   ],
+   "dur": 1.9
+  },
+  {
+   "kind": "news",
+   "source": "Fortune",
+   "date": "Nov 3, 2026",
+   "dur": 3.0,
+   "headline": "North Korea used LinkedIn, fake job interviews to trick Binance engineer in $6.3 billion hack",
+   "highlight": "$6.3 billion",
+   "caption": "This really happened.",
+   "sfx": [
+    [
+     "whoosh",
+     0.0
+    ],
+    [
+     "sting",
+     0.5
+    ]
+   ]
+  },
+  {
+   "kind": "bot",
+   "expr": "dots",
+   "silhouette": [
+    770,
+    500,
+    1.35
+   ],
+   "line": [
+    "manager",
+    "Botley. Why is six point three billion dollars missing?"
+   ],
+   "delay": 0.3
+  },
+  {
+   "kind": "bot",
+   "expr": "nervous",
+   "tilt": 7,
+   "zoom": 0.08,
+   "line": [
+    "botley",
+    "...Did I get the job?"
+   ],
+   "delay": 0.5,
+   "pad": 0.7
+  }
+ ]
+}

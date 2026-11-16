@@ -1,0 +1,145 @@
+{
+ "premise": "Botley's live demo",
+ "cover_t": 7.0,
+ "voices": {
+  "botley": {
+   "voice": "am_puck",
+   "speed": 1.05,
+   "robot": true
+  },
+  "presenter": {
+   "voice": "af_sarah",
+   "speed": 1.05
+  }
+ },
+ "shots": [
+  {
+   "kind": "bot",
+   "bg": "room",
+   "front": "desk",
+   "expr": "happy",
+   "line": [
+    "botley",
+    "Caught you up on user testing. I also did your taxes!"
+   ],
+   "pad": 0.4,
+   "laptop": false,
+   "tag": "REHEARSAL"
+  },
+  {
+   "kind": "bot",
+   "bg": "stage",
+   "front": "podium",
+   "expr": "normal",
+   "line": [
+    "presenter",
+    "Botley, catch me up on last night's user testing."
+   ],
+   "delay": 0.6,
+   "pad": 0.2,
+   "tag": "ON STAGE \u00b7 3,000 PEOPLE"
+  },
+  {
+   "kind": "bot",
+   "bg": "stage",
+   "front": "podium",
+   "expr": "spinner",
+   "line": [
+    "botley",
+    "Checking that now."
+   ],
+   "pad": 0.2,
+   "tag": "ON STAGE \u00b7 3,000 PEOPLE"
+  },
+  {
+   "kind": "bot",
+   "bg": "stage",
+   "front": "podium",
+   "expr": "spinner",
+   "dur": 2.6,
+   "caption": "...",
+   "sfx": [
+    [
+     "crickets",
+     0.0
+    ]
+   ],
+   "tag": "ON STAGE \u00b7 3,000 PEOPLE"
+  },
+  {
+   "kind": "bot",
+   "bg": "stage",
+   "front": "podium",
+   "expr": "spinner",
+   "line": [
+    "presenter",
+    "How's it going?"
+   ],
+   "pad": 0.2,
+   "tag": "ON STAGE \u00b7 3,000 PEOPLE"
+  },
+  {
+   "kind": "bot",
+   "bg": "stage",
+   "front": "podium",
+   "expr": "frozen",
+   "line": [
+    "botley",
+    "...Still checking."
+   ],
+   "pad": 0.3,
+   "tag": "ON STAGE \u00b7 3,000 PEOPLE"
+  },
+  {
+   "kind": "bot",
+   "bg": "stage",
+   "front": "podium",
+   "expr": "frozen",
+   "silhouette": [
+    880,
+    560,
+    1.2
+   ],
+   "line": [
+    "presenter",
+    "I guess Botley's having a slow morning."
+   ],
+   "pad": 0.3,
+   "tag": "ON STAGE \u00b7 3,000 PEOPLE"
+  },
+  {
+   "kind": "news",
+   "source": "Futurism",
+   "date": "Sep 30, 2026",
+   "dur": 3.0,
+   "headline": "New OpenAI Product Fails Spectacularly During Live On-Stage Demo",
+   "highlight": "Fails Spectacularly",
+   "caption": "This really happened.",
+   "sfx": [
+    [
+     "whoosh",
+     0.0
+    ],
+    [
+     "sting",
+     0.5
+    ]
+   ]
+  },
+  {
+   "kind": "bot",
+   "bg": "stage",
+   "front": "podium",
+   "expr": "nervous",
+   "zoom": 0.1,
+   "line": [
+    "botley",
+    "(whispering) I'm nervous.",
+    "I'm nervous."
+   ],
+   "delay": 0.4,
+   "pad": 0.7,
+   "tag": "ON STAGE \u00b7 3,000 PEOPLE"
+  }
+ ]
+}
