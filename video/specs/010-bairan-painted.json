@@ -1,0 +1,201 @@
+{
+ "template": "painted-story.html",
+ "audio": "none",
+ "duration": 60,
+ "markStart": 56.5,
+ "shots": [
+  {
+   "image": "art/bairan-painted/s01.jpg",
+   "depth": "art/bairan-painted/s01-depth.png",
+   "start": 0,
+   "zoom": [
+    1.05,
+    1.2
+   ],
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "fx": "petals",
+   "parallax": 0.03,
+   "drift": 1
+  },
+  {
+   "image": "art/bairan-painted/s02.jpg",
+   "depth": "art/bairan-painted/s02-depth.png",
+   "start": 5,
+   "zoom": [
+    1.2,
+    1.06
+   ],
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "fx": "petals",
+   "parallax": 0.03,
+   "drift": -1
+  },
+  {
+   "image": "art/bairan-painted/s03.jpg",
+   "depth": "art/bairan-painted/s03-depth.png",
+   "start": 10,
+   "zoom": [
+    1.05,
+    1.2
+   ],
+   "focus": [
+    0.5,
+    0.7
+   ],
+   "fx": "dust",
+   "parallax": 0.03,
+   "drift": 1
+  },
+  {
+   "image": "art/bairan-painted/s04.jpg",
+   "depth": "art/bairan-painted/s04-depth.png",
+   "start": 15,
+   "zoom": [
+    1.2,
+    1.06
+   ],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "fx": "dust",
+   "parallax": 0.03,
+   "drift": -1
+  },
+  {
+   "image": "art/bairan-painted/s05.jpg",
+   "depth": "art/bairan-painted/s05-depth.png",
+   "start": 20,
+   "zoom": [
+    1.05,
+    1.2
+   ],
+   "focus": [
+    0.6,
+    0.55
+   ],
+   "fx": "fireflies",
+   "parallax": 0.03,
+   "drift": 1
+  },
+  {
+   "image": "art/bairan-painted/s06.jpg",
+   "depth": "art/bairan-painted/s06-depth.png",
+   "start": 25,
+   "zoom": [
+    1.2,
+    1.06
+   ],
+   "focus": [
+    0.75,
+    0.6
+   ],
+   "fx": "rain",
+   "parallax": 0.03,
+   "drift": -1
+  },
+  {
+   "image": "art/bairan-painted/s07.jpg",
+   "depth": "art/bairan-painted/s07-depth.png",
+   "start": 30,
+   "zoom": [
+    1.05,
+    1.2
+   ],
+   "focus": [
+    0.45,
+    0.6
+   ],
+   "fx": "stars",
+   "parallax": 0.03,
+   "drift": 1
+  },
+  {
+   "image": "art/bairan-painted/s08.jpg",
+   "depth": "art/bairan-painted/s08-depth.png",
+   "start": 35,
+   "zoom": [
+    1.2,
+    1.06
+   ],
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "fx": "fireflies",
+   "parallax": 0.03,
+   "drift": -1
+  },
+  {
+   "image": "art/bairan-painted/s09.jpg",
+   "depth": "art/bairan-painted/s09-depth.png",
+   "start": 40,
+   "zoom": [
+    1.05,
+    1.2
+   ],
+   "focus": [
+    0.6,
+    0.75
+   ],
+   "fx": "stars",
+   "parallax": 0.03,
+   "drift": 1
+  },
+  {
+   "image": "art/bairan-painted/s10.jpg",
+   "depth": "art/bairan-painted/s10-depth.png",
+   "start": 45,
+   "zoom": [
+    1.2,
+    1.06
+   ],
+   "focus": [
+    0.5,
+    0.6
+   ],
+   "fx": "dust",
+   "parallax": 0.03,
+   "drift": -1
+  },
+  {
+   "image": "art/bairan-painted/s11.jpg",
+   "depth": "art/bairan-painted/s11-depth.png",
+   "start": 50,
+   "zoom": [
+    1.05,
+    1.2
+   ],
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "fx": "rain",
+   "parallax": 0.03,
+   "drift": 1
+  },
+  {
+   "image": "art/bairan-painted/s12.jpg",
+   "depth": "art/bairan-painted/s12-depth.png",
+   "start": 55,
+   "zoom": [
+    1.2,
+    1.06
+   ],
+   "focus": [
+    0.5,
+    0.65
+   ],
+   "fx": "fireflies",
+   "parallax": 0.03,
+   "drift": -1
+  }
+ ],
+ "lines": []
+}
