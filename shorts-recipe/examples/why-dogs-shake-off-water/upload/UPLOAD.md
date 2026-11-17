@@ -56,7 +56,14 @@ why do dogs shake off water, wet dog shake, dog shaking water slow motion, how d
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | The Labrador mid-shake, head blurred, ears flying, mouth open, droplets everywhere, caption "flinging the water off" | **Main pick.** Pure motion and instantly familiar |
+| `thumbnail-alt-soaked.jpg` | Close on the soaked face in the bath, droopy eyes, caption "A soaked Labrador" | Funny, sad-dog angle |
+| `thumbnail-alt-70-percent.jpg` | The dog after the shake, next to the card "GONE 70% 3.2 s", caption "is gone" | Surprising-stat angle |
+| `thumbnail-alt-loose-skin.jpg` | From behind: the SKIN arc swinging wider than the BODY arc, droplets flying, caption "Its loose skin" | Science angle |
+| `thumbnail-alt-slow-mo.jpg` | The hook frame: the slow-motion shake, droplets hanging in the air, caption "That wet dog shake" | Calm, slow-mo angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
