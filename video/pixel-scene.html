@@ -1,0 +1,92 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0}body{width:1080px;height:1920px;overflow:hidden;background:#000}
+#c{position:absolute;left:0;top:0;width:1080px;height:1920px;image-rendering:pixelated}
+#qMark{position:absolute;left:0;right:0;top:300px;text-align:center;font:bold 30px "DejaVu Sans Mono",monospace;letter-spacing:12px;color:#ffe9d6;text-shadow:3px 3px 0 #1a1030}
+#qFade{position:absolute;inset:0;background:#0b0820}
+</style></head><body><canvas id="c" width="180" height="320"></canvas><canvas id="f" width="180" height="320" style="display:none"></canvas>
+<div id="qMark">CALM A SUTRA</div><div id="qFade"></div><script>
+// Pixel-art terrace at sunset: every pixel is computed in code on a 180x320 grid and scaled up 6x.
+const W=180,H=320,HZ=216,cl=x=>Math.max(0,Math.min(1,x)),ease=x=>{x=cl(x);return x*x*(3-2*x)},ramp=(t,a,b)=>ease((t-a)/(b-a));
+const cx=c.getContext('2d'),fc=f.getContext('2d',{willReadFrequently:true}),img=cx.createImageData(W,H),px=img.data;
+const hash=(x,y)=>{let n=Math.sin(x*127.1+y*311.7)*43758.5453;return n-Math.floor(n)};
+const vn=(x,y)=>{const xi=Math.floor(x),yi=Math.floor(y),xf=x-xi,yf=y-yi,u=xf*xf*(3-2*xf),v=yf*yf*(3-2*yf);
+ return (hash(xi,yi)*(1-u)+hash(xi+1,yi)*u)*(1-v)+(hash(xi,yi+1)*(1-u)+hash(xi+1,yi+1)*u)*v};
+const fbm=(x,y)=>vn(x,y)*.5+vn(x*2.1,y*2.1)*.27+vn(x*4.3,y*4.3)*.15+vn(x*8.7,y*8.7)*.08;
+const BAYER=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5].map(v=>v/16);
+const PAL={ // three times of day
+ top:[[86,110,196],[92,118,150],[26,28,78]],mid:[[152,122,204],[172,122,132],[66,48,118]],hor:[[248,152,184],[252,142,92],[186,96,138]],
+ cs:[[146,96,172],[150,82,96],[46,38,98]],cm:[[226,122,174],[236,112,84],[104,66,138]],ch:[[255,180,176],[255,176,112],[204,112,152]],
+ sun:[[255,246,236],[255,236,192],[255,198,170]],hill:[[122,84,154],[112,72,98],[48,38,88]],town:[[62,42,98],[56,36,62],[26,20,58]],
+ fg:[[30,22,60],[28,19,40],[12,10,30]],rim:[[214,132,196],[240,140,96],[124,84,156]]};
+let K=0;const col=n=>{const p=PAL[n],a=K<.5?p[0]:p[1],b=K<.5?p[1]:p[2],k=K<.5?K*2:K*2-1;return [a[0]+(b[0]-a[0])*k,a[1]+(b[1]-a[1])*k,a[2]+(b[2]-a[2])*k]};
+const mix=(a,b,k)=>[a[0]+(b[0]-a[0])*k,a[1]+(b[1]-a[1])*k,a[2]+(b[2]-a[2])*k];
+const set=(x,y,cc)=>{x|=0;y|=0;if(x<0||y<0||x>=W||y>=H)return;const i=(y*W+x)*4;px[i]=cc[0];px[i+1]=cc[1];px[i+2]=cc[2];px[i+3]=255};
+const line=(x0,y0,x1,y1,cc)=>{x0=Math.round(x0);y0=Math.round(y0);x1=Math.round(x1);y1=Math.round(y1);let dx=Math.abs(x1-x0),dy=-Math.abs(y1-y0),sx=x0<x1?1:-1,sy=y0<y1?1:-1,e=dx+dy;
+ for(;;){set(x0,y0,cc);if(x0===x1&&y0===y1)break;const e2=2*e;if(e2>=dy){e+=dy;x0+=sx}if(e2<=dx){e+=dx;y0+=sy}}};
+let s=3;const R=()=>(s=(s*16807)%2147483647)/2147483647;
+const stars=[...Array(46)].map(()=>({x:R()*W|0,y:R()*150|0,p:R()*6.28,th:R()}));
+const hillL=[...Array(60)].map(()=>{const y=172+R()*44;return{x:(180-(y-164)*1.55*R())|0,y:y|0,p:R()*6.28,th:R()}});
+const blds=[];{let x=-4;while(x<W){const w=14+R()*20|0,h=10+R()*26|0;blds.push({x,w,h,tank:R()<.45,dish:R()<.3,win:[...Array(4)].map(()=>({dx:2+R()*(w-5)|0,dy:4+R()*(h-6)|0,th:R(),p:R()*6.28}))});x+=w+(R()*3|0)}}
+const birds=[...Array(5)].map((_,i)=>({o:i*9+R()*4,y:R()*10,p:R()*6.28}));
+const poly=(p)=>{fc.beginPath();p.forEach(([x,y],i)=>i?fc.lineTo(x,y):fc.moveTo(x,y));fc.closePath();fc.fill()};
+const circ=(x,y,r,rx)=>{fc.beginPath();fc.ellipse(x,y,rx||r,r,0,0,7);fc.fill()};
+const limb=(x0,y0,x1,y1,w)=>{fc.lineWidth=w;fc.lineCap='round';fc.beginPath();fc.moveTo(x0,y0);fc.lineTo(x1,y1);fc.stroke()};
+let D,T;window.init=d=>{D=d;T=d.duration};
+window.setT=t=>{K=ramp(t,T*.08,T*.92);
+ const top=col('top'),mid=col('mid'),hor=col('hor'),cs=col('cs'),cm=col('cm'),ch=col('ch'),sun=col('sun'),hill=col('hill'),town=col('town'),fg=col('fg'),rim=col('rim');
+ const scy=197+15*K,scx=62,dr=t*.9;
+ // --- sky, clouds, sun
+ for(let y=0;y<HZ;y++)for(let x=0;x<W;x++){
+  let g=y/HZ+(BAYER[(y&3)*4+(x&3)]-.5)*.09;g=Math.floor(cl(g)*16)/16;
+  let cc=g<.55?mix(top,mid,g/.55):mix(mid,hor,(g-.55)/.45);
+  const dx=x-scx,dy=y-scy;if(dx*dx+dy*dy<17*17&&!(dy>3&&((y+((t*1.5)|0))%5)===0))cc=sun;
+  const u=(x+y*.95+dr)*.017,v=(y-x*.38)*.055,n=fbm(u,v),th=.50+.11*(y/HZ)+.05*Math.sin(x*.01);
+  if(n>th){const nb=fbm((x+(y+4)*.95+dr)*.017,((y+4)-x*.38)*.055);cc=nb<th+.015?ch:(n>th+.075?cm:cs);if(n<th+.02&&BAYER[(y&3)*4+(x&3)]>.5)cc=mix(cc,cs,.5)}
+  set(x,y,cc)}
+ for(const o of stars)if((.25+K*.9)*(.5+.5*Math.sin(o.p+t*2))>.35+o.th*.4)set(o.x,o.y,[255,244,230]);
+ // --- far hill with a temple spire and lights
+ for(let y=164;y<HZ+50;y++){const x0=180-(y-164)*1.55;for(let x=Math.max(0,x0|0);x<W;x++)set(x,y,(x-x0<1.5)?mix(hill,rim,.5):hill)}
+ for(const [dx,h] of [[0,9],[-1,6],[1,6],[-2,3],[2,3]])for(let i=0;i<h;i++)set(168+dx,166-i,hill);
+ for(const o of hillL)if(o.x>180-(o.y-164)*1.55+2&&K+.25>o.th&&Math.sin(o.p+t*1.3)>-.6)set(o.x,o.y,[255,214,150]);
+ // --- town rooftops
+ for(let y=HZ;y<H;y++)for(let x=0;x<W;x++)set(x,y,town);
+ for(const b of blds){const ty=HZ+26-b.h;for(let y=ty;y<HZ+30;y++)for(let x=b.x;x<b.x+b.w;x++)set(x,y,y===ty?mix(town,rim,.45):town);
+  if(b.tank){for(let y=ty-5;y<ty;y++)for(let x=b.x+2;x<b.x+7;x++)set(x,y,town);set(b.x+2,ty-5,mix(town,rim,.45))}
+  if(b.dish){line(b.x+b.w-4,ty,b.x+b.w-4,ty-4,town);line(b.x+b.w-7,ty-6,b.x+b.w-3,ty-3,town)}
+  for(const w of b.win)if(K*1.15+.12>w.th){const wc=Math.sin(w.p+t*.8)>-.85?[255,206,120]:[220,160,90];set(b.x+w.dx,ty+w.dy,wc);set(b.x+w.dx+1,ty+w.dy,wc);set(b.x+w.dx,ty+w.dy+1,wc)}}
+ // --- birds
+ const bx=-20+((t*7)%230);for(const b of birds){const x=bx-b.o,y=118+b.y+Math.sin(t*.7+b.p)*2,fl=Math.sin(t*7+b.p)>0?1:0;set(x,y,fg);set(x-1,y-fl,fg);set(x+1,y-fl,fg);set(x-2,y-1+fl,fg);set(x+2,y-1+fl,fg)}
+ // --- foreground silhouettes (drawn as shapes, then snapped to hard pixels)
+ fc.clearRect(0,0,W,H);fc.fillStyle=fc.strokeStyle='#000';
+ fc.fillRect(0,263,W,57);fc.fillRect(0,260,134,3);               // terrace wall + coping
+ fc.fillRect(132,222,48,98);fc.fillRect(129,219,51,4);            // stair room
+ fc.fillRect(150,196,2,24);                                       // antenna mast
+ fc.fillRect(10,232,2,30);                                        // clothesline pole
+ // girl sitting on the wall flying a kite, cat beside her
+ const tug=Math.sin(t*1.7)*.6+Math.sin(t*4.1)*.3,SC=1.6,ax=71-tug*1.2,ay=236-tug,hx=(ax-70)*SC+70,hy=(ay-261)*SC+261;
+ fc.save();fc.translate(70,261);fc.scale(SC,SC);fc.translate(-70,-261);
+ poly([[80,243],[90,243],[93,261],[80,261]]);                     // torso
+ limb(83,258,69,252,5);limb(69,252,66,260,4.4);                   // thigh, shin
+ circ(86,236.5,5);poly([[88,232],[95,236],[93,247],[88,243]]);    // head, hair
+ limb(83,245,76,243,3.4);limb(76,243,ax,ay,3);                    // arm holding the string
+ const tl=Math.sin(t*2.2)*4;circ(50,255,6.5,5.2);circ(46.5,246.5,3.6);poly([[43,244],[44,240],[46.5,243.5]]);poly([[47,243.5],[49.5,240],[50,244.5]]);
+ fc.lineWidth=2;fc.beginPath();fc.moveTo(54,259);fc.quadraticCurveTo(60,259,61+tl*.5,254-Math.abs(tl)*.4);fc.stroke();fc.restore();
+ // clothes on the line
+ const sag=(x)=>236+ (1-Math.pow((x-71)/61,2))*7;
+ for(const [x,w,h] of [[15,6,10],[114,7,9],[123,6,12]]){const sw=Math.sin(t*1.4+x)*1.3;poly([[x,sag(x)],[x+w,sag(x+w)],[x+w+sw,sag(x+w)+h],[x+sw,sag(x)+h]])}
+ const fd=fc.getImageData(0,0,W,H).data,solid=(x,y)=>x>=0&&y>=0&&x<W&&y<H&&fd[(y*W+x)*4+3]>110;
+ for(let y=190;y<H;y++)for(let x=0;x<W;x++)if(solid(x,y))set(x,y,(!solid(x-1,y)||!solid(x,y-1))&&y<264?mix(fg,rim,.75):fg);
+ // thin lines: clothesline, antenna, kite string
+ for(let x=11;x<132;x++)set(x,sag(x),fg);
+ for(const y of [199,203,207])line(144,y,158,y-2,fg);
+ const bhop=((t%6)>5.6)?1:0;set(155,195-bhop,fg);set(156,194-bhop,fg);set(156,195-bhop,fg);set(157,195-bhop,fg);set(157,193-bhop,fg);set(158,193-bhop,fg);
+ const kx=34+Math.sin(t*.6)*9+tug*2,ky=74+Math.sin(t*.9+1)*6-tug*2;
+ for(let i=0;i<=40;i++){const q=i/40,x=hx+(kx-hx)*q,y=hy+(ky-hy)*q+Math.sin(q*3.14)*9;set(x,y,mix(fg,rim,.35))}
+ for(let dy=-5;dy<=6;dy++){const w=dy<0?5+dy:Math.max(0,(6-dy)*.8);for(let dx=-w;dx<=w;dx++)set(kx+dx,ky+dy,dx<0?[250,206,90]:[236,96,96])}
+ for(let i=1;i<9;i++)set(kx+Math.sin(t*3+i*.8)*2,ky+6+i,[250,206,90]);
+ // lit window and door of the stair room
+ const wl=[255,214,140],wd=[236,170,96];for(let y=236;y<248;y++)for(let x=142;x<154;x++)set(x,y,(x===147||x===148||y===241)?fg:(Math.sin(t*.9+x)>-.9?wl:wd));
+ cx.putImageData(img,0,0);
+ qMark.style.opacity=ramp(t,T-4.5,T-3.3);qFade.style.opacity=Math.max(1-ramp(t,0,.8),ramp(t,T-.7,T));
+};
+</script></body></html>
