@@ -4,13 +4,14 @@ const {chromium}=require('playwright'),fs=require('fs'),path=require('path'),{ex
 (async()=>{const spec=JSON.parse(fs.readFileSync(process.argv[2])),out=process.argv[3],fps=30,T=spec.duration;
 const stills=process.argv[4]&&process.argv[4].split(',').map(Number);
 const tmp=fs.mkdtempSync(path.join(require('os').tmpdir(),'frames-'));
-const b=await chromium.launch({args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});const p=await b.newPage({viewport:{width:1080,height:1920}});
-await p.goto('file://'+path.join(__dirname,spec.template||'template.html'));await p.evaluate(()=>document.fonts.ready);
+const b=await chromium.launch({args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});
 const uri=f=>{const x=path.extname(f).slice(1);return 'data:image/'+(x==='jpg'?'jpeg':x)+';base64,'+fs.readFileSync(path.join(__dirname,f)).toString('base64')};
 for(const s of spec.shots||[]){s.image=uri(s.image);s.depth=uri(s.depth)}
-await p.evaluate(d=>init(d),spec);
 const times=stills||[...Array(Math.round(T*fps))].map((_,i)=>i/fps);
-for(let i=0;i<times.length;i++){await p.evaluate(t=>setT(t),times[i]);await p.screenshot({path:path.join(tmp,String(i).padStart(5,'0')+'.png')})}
+const W=stills?1:+(process.env.WORKERS||4); // parallel browser pages
+await Promise.all([...Array(W)].map(async(_,w)=>{const p=await b.newPage({viewport:{width:1080,height:1920}});
+ await p.goto('file://'+path.join(__dirname,spec.template||'template.html'));await p.evaluate(()=>document.fonts.ready);await p.evaluate(d=>init(d),spec);
+ for(let i=w;i<times.length;i+=W){await p.evaluate(t=>setT(t),times[i]);await p.screenshot({path:path.join(tmp,String(i).padStart(5,'0')+'.png')})}}));
 await b.close();const src=path.join(tmp,'%05d.png');
 if(stills){execFileSync('ffmpeg',['-y','-loglevel','error','-i',src,'-vf',`scale=270:-1,tile=${times.length}x1`,'-frames:v','1',out])}
 else{const v=['-c:v','libx264','-pix_fmt','yuv420p','-crf','17','-preset','medium','-r',fps,'-movflags','+faststart','-t',T,out];

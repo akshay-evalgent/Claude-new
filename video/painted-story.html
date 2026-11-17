@@ -24,7 +24,7 @@ void main(){vec2 u=(v-o)/z+o;float d=texture2D(dep,u).r;
  gl_FragColor=texture2D(img,clamp(u2,0.,1.));}`;
 const load=src=>new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.src=src});
 let D,S=[],L=[],T;const fx=document.getElementById('fx').getContext('2d');
-const P=[...Array(90)].map(()=>({x:R(),y:R(),p:R()*6.28,f:.2+R()*.5,r:.5+R(),th:R()}));
+const P=[...Array(120)].map(()=>({x:R(),y:R(),p:R()*6.28,f:.2+R()*.5,r:.5+R(),th:R()}));
 window.init=async d=>{D=d;T=d.duration;
  for(const [i,s] of d.shots.entries()){const c=document.createElement('canvas');c.width=1080;c.height=1920;shots.appendChild(c);
   const gl=c.getContext('webgl',{preserveDrawingBuffer:true});const pr=gl.createProgram();
@@ -49,6 +49,8 @@ window.setT=t=>{const X=.6;fx.clearRect(0,0,1080,1920);
   for(const o of P){const tw=.5+.5*Math.sin(o.p+t*o.f*4);
    if(s.fx==='fireflies'){const x=(o.x*1080+Math.sin(o.p+t*o.f)*70),y=((o.y*1920-t*22*o.r)%1920+1920)%1920;if(o.th<.6)dot(x,y,10+16*o.r,on*(.25+.55*tw),'255,205,120')}
    else if(s.fx==='stars'){if(o.y<.55)dot(o.x*1080,o.y*1920,3+5*o.r,on*(.2+.8*tw),'255,244,220');else if(o.th<.35)dot(o.x*1080+Math.sin(o.p+t*o.f)*60,o.y*1920-t*14,9+12*o.r,on*(.2+.5*tw),'255,205,120')}
+   else if(s.fx==='rain'){const y=((o.y*1920+t*(1500+500*o.r))%2100)-90,x=((o.x*1300-t*160)%1300+1300)%1300-110;fx.strokeStyle=`rgba(215,230,245,${on*(.18+.25*o.th)})`;fx.lineWidth=1.5+o.r;fx.beginPath();fx.moveTo(x,y);fx.lineTo(x-9,y+70+40*o.r);fx.stroke()}
+   else if(s.fx==='petals'){if(o.th<.5){const x=((o.x*1080+t*45*o.r+Math.sin(o.p+t*o.f*2)*50)%1140+1140)%1140-30,y=((o.y*1920+t*60*o.r)%1980)-30;fx.save();fx.translate(x,y);fx.rotate(o.p+t*o.f*3);fx.fillStyle=`rgba(250,212,70,${on*.8})`;fx.beginPath();fx.ellipse(0,0,7+5*o.r,3.5+2*o.r,0,0,7);fx.fill();fx.restore()}}
    else if(s.fx==='dust'){const x=((o.x*1080-t*38*o.r)%1080+1080)%1080,y=o.y*1920+Math.sin(o.p+t*o.f)*40+t*10;dot(x,y,4+6*o.r,on*(.12+.2*tw),'200,220,235')}}});
  L.forEach(({l,e,end})=>{const a=ramp(t,l.start+.2,l.start+1.2);e.style.opacity=a*(1-ramp(t,end-.6,end-.05));e.style.transform=`translateY(${(1-a)*20}px)`;e.style.filter=`blur(${(1-a)*6}px)`});
  qMark.style.opacity=.75*ramp(t,D.markStart,D.markStart+1.2);
