@@ -30,29 +30,31 @@ STYLE = (
     "Photorealistic cinematic film still from a prestige crime drama series. "
     "Shot on an ARRI Alexa with anamorphic lenses, natural skin texture, motivated "
     "practical lighting, deep shadows, shallow depth of field, gentle film grain, "
-    "restrained colour grade with true whites. No text, no subtitles, no captions, "
-    "no logos, no watermark."
+    "restrained colour grade with true whites, plain unmarked surfaces."
 )
 
 # Locked descriptions, repeated word for word in every shot of that era so the
 # face and clothes stay as close as the model allows. Generic faces, never a
-# likeness of the real person.
-_FACE = ("a round soft face, a slightly heavy build, short black hair receding at "
-         "the temples and untidy on top, thin rimless rectangular glasses, clean-shaven")
+# likeness of the real person. This model tends to add anything a prompt
+# names, even after "no", so descriptions say only what should be there.
+_FACE = ("a youthful round soft face, a slightly heavy build, short black hair "
+         "receding at the temples and untidy on top, delicate frameless glasses "
+         "with thin silver arms, clean-shaven")
 CHARACTERS = {
     "XU_YOUNG": "Xu, a slim Chinese teenage boy of about sixteen with a round face, "
-                "short untidy black hair and no glasses, wearing a faded blue "
+                "short untidy black hair and bright bare eyes, wearing a faded blue "
                 "early-1990s school tracksuit jacket",
     "XU_20S": "Xu, a slim Chinese man of about twenty with a round face, short "
-              "untidy black hair and no glasses, wearing a plain dark-grey 1990s "
+              "untidy black hair and bright bare eyes, wearing a plain dark-grey 1990s "
               "zip jacket over a white shirt",
-    "XU_ADULT": f"Xu, a 38-year-old Chinese man with {_FACE}, wearing a plain black "
+    "XU_ADULT": f"Xu, a Chinese man in his late thirties with {_FACE}, wearing a plain black "
                 "zip-up tracksuit top",
-    "XU_COAT": f"Xu, a 38-year-old Chinese man with {_FACE}, wearing a long bright "
+    "XU_COAT": f"Xu, a Chinese man in his late thirties with {_FACE}, wearing a long bright "
                "white tailored overcoat over a grey button-down shirt",
 }
 
-ERA_90S = "early-1990s China, period-accurate clothes and interiors, no computers, no modern screens"
+ERA_90S = ("early-1990s China, everyone in padded cotton jackets, cardigans and flat caps, "
+           "wooden fittings, chalk and paper, everything analogue")
 
 # --- images to generate ------------------------------------------------------
 # (image_id, character or "", framing, scene)
@@ -75,13 +77,13 @@ IMAGES = [
     ("xu_tracksuit_desk", "XU_ADULT", "Medium shot in profile",
      "sitting at a desk with four monitors at the back of a trading floor, intent, screen light reflected in his glasses, colleagues out of focus behind him"),
     ("two_phones", "", "Macro close-up, low angle on a table top",
-     "two smartphones side by side on a dark meeting table, both screens glowing as plain bright panels with no readable content, a cup of green tea beside them"),
+     "two smartphones side by side on a dark meeting table, both screens glowing as plain bright blank panels, a cup of green tea beside them"),
     ("meeting_table", "XU_ADULT", "Medium-wide shot from the end of a conference table",
      "several men in suits talk and gesture across the table while Xu, at the far end, looks down at two phones and ignores them"),
     ("traders_whisper", "", "Medium shot through a glass partition",
      "a group of Chinese stockbrokers in suits huddled by an office window at night, whispering and glancing across the room"),
     ("regulator_building_night", "", "Wide shot, low angle",
-     "a large stern grey government office building in Beijing at night, rows of lit windows, a wide empty plaza, no signs"),
+     "a large stern grey government office building in Beijing at night, rows of lit windows, a blank stone facade, a wide empty plaza"),
     # origin
     ("shanghai_1990_exchange", "", "Wide shot along a pavement",
      "a long queue of ordinary people in winter coats outside a modest old building waiting to buy their first shares, bicycles, Shanghai street, " + ERA_90S),
@@ -96,7 +98,7 @@ IMAGES = [
     ("exam_hall_empty_desk", "", "Wide symmetrical shot",
      "a large exam hall with rows of students bent over papers, one desk in the middle row empty with its chair pushed in, morning light, " + ERA_90S),
     ("hands_cash", "", "Extreme close-up on a kitchen table",
-     "an older person's work-worn hands passing a thick bundle of banknotes tied with string to a young person's hands, notes with no readable markings, " + ERA_90S),
+     "an older person's work-worn hands passing a thick bundle of banknotes tied with string to a young person's hands, plain unmarked notes, " + ERA_90S),
     ("galaxy_street_exterior", "XU_20S", "Wide shot from across the street",
      "walking towards the entrance of a grey eight-storey office building beside a small pharmacy on a busy Ningbo street, bicycles, overcast, " + ERA_90S),
     # the hall
@@ -164,7 +166,7 @@ IMAGES = [
     ("arrested_exec", "", "Wide shot",
      "two plain-clothes officers escorting a man in a business suit across a marble office lobby, all faces turned away from camera, onlookers watching"),
     ("passport_desk", "", "Close-up on a desk",
-     "a dark red passport book with no readable markings lying closed under a desk lamp, a rubber stamp beside it"),
+     "a plain dark red passport book lying closed under a desk lamp, a rubber stamp beside it"),
     # the bridge
     ("grandma_apartment_ext", "", "Wide shot",
      "an old 1980s apartment block in a quiet working-class Chinese neighbourhood on a Sunday morning, laundry on balconies, bicycles, a small shop"),
@@ -187,7 +189,7 @@ IMAGES = [
     ("arrest_phone", "", "Medium close-up",
      "two ordinary people on a sofa at night staring at a smartphone, its screen turned away from camera, their faces lit by it, shocked"),
     ("cuff_closeup", "", "Extreme close-up, harsh camera flash",
-     "a hand pulling back the sleeve of a bright white overcoat to reveal a metal handcuff on a wrist, no face in frame, plain wall behind"),
+     "a hand pulling back the sleeve of a bright white overcoat to reveal a metal handcuff on a wrist, only the wrist and sleeve in frame, plain wall behind"),
     # the answer, reckoning, epilogue
     ("sealed_doors", "", "Medium shot",
      "glass office doors sealed with crossed paper strips bearing red official stamps, an empty dark office beyond"),
