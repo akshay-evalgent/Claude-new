@@ -1,0 +1,8 @@
+{"template":"paper-story.html","audio":"none","duration":60,"slide":1.1,"lyricsFile":"lyrics/jo-tum-mere-ho.txt",
+ "scenes":[
+  {"image":"art/jtmh-paper/p1.webp","depth":"art/jtmh-paper/p1-depth.png","start":0,"zoom":[1.04,1.16],"focus":[0.55,0.55],"parallax":0.05,"fx":"star","skyTo":0.32,"count":22,"colors":["#f6e6b8","#f2d48a","#fff3d6"]},
+  {"image":"art/jtmh-paper/p2.webp","depth":"art/jtmh-paper/p2-depth.png","start":10,"zoom":[1.14,1.04],"focus":[0.5,0.5],"parallax":0.045,"dir":-1,"fx":"heart","count":20,"colors":["#e8574a","#f28b9b","#d93a4f","#f6b3b8"]},
+  {"image":"art/jtmh-paper/p3.webp","depth":"art/jtmh-paper/p3-depth.png","start":20,"zoom":[1.04,1.17],"focus":[0.55,0.45],"parallax":0.04,"fx":"drop","count":60,"colors":["#dfe9f2","#c3d6e6","#f4f8fb"]},
+  {"image":"art/jtmh-paper/p4.webp","depth":"art/jtmh-paper/p4-depth.png","start":30,"zoom":[1.02,1.18],"focus":[0.5,0.72],"parallax":0.06,"fx":"dot","count":26,"colors":["#ffd98a","#ffe7b0"]},
+  {"image":"art/jtmh-paper/p5.webp","depth":"art/jtmh-paper/p5-depth.png","start":40,"zoom":[1.16,1.04],"focus":[0.5,0.45],"parallax":0.05,"dir":-1,"fx":"star","skyTo":0.3,"count":18,"colors":["#fff6d0","#f6e6b8"]},
+  {"image":"art/jtmh-paper/p6.webp","depth":"art/jtmh-paper/p6-depth.png","start":50,"zoom":[1.03,1.14],"focus":[0.45,0.7],"parallax":0.045,"fx":"leaf","count":26,"colors":["#d9622b","#e8892f","#c4481f","#f0b13c"]}]}

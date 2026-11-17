@@ -1,0 +1,70 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:C;src:url(fonts/Cormorant-Medium.ttf);font-weight:500}
+@font-face{font-family:Dev;src:url(fonts/NotoSerifDevanagari-Medium.ttf)}
+*{margin:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;background:#1a1512}
+.card{position:absolute;left:0;top:0;width:1080px;height:1920px;box-shadow:0 -18px 40px rgba(0,0,0,.45)}
+#fx,#grain{position:absolute;left:0;top:0;z-index:50}
+#vig,#lyrics,#qMark,#qFade{z-index:60}#lyrics{position:absolute;inset:0}
+#grain{mix-blend-mode:multiply;opacity:.16}
+#vig{position:absolute;inset:0;z-index:55;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 55%,rgba(20,12,6,.45) 100%)}
+.ly{position:absolute;left:60px;right:60px;top:1230px;text-align:center;font:76px/1.35 Dev,C,serif;color:#fff8ec;text-shadow:0 4px 0 rgba(60,30,10,.55),0 0 24px rgba(0,0,0,.5)}
+#qMark{position:absolute;left:0;right:0;top:300px;text-align:center;font:500 44px C,serif;letter-spacing:10px;text-transform:uppercase;color:#fff8ec;text-shadow:0 3px 0 rgba(60,30,10,.5)}
+#qFade{position:absolute;inset:0;background:#1a1512}
+</style></head><body><div id="cards"></div><canvas id="fx" width="1080" height="1920"></canvas><canvas id="grain" width="1080" height="1920"></canvas><div id="vig"></div>
+<div id="lyrics"></div><div id="qMark">Calm A Sutra</div><div id="qFade"></div><script>
+// Paper-cut story: depth is cut into flat "paper sheets" that slide (parallax) and bob separately,
+// particles are cut-paper shapes with drop shadows, and each scene slides in like a new card.
+const cl=x=>Math.max(0,Math.min(1,x)),ease=x=>{x=cl(x);return x*x*(3-2*x)},lerp=(a,b,k)=>a+(b-a)*k,ramp=(t,a,b)=>ease((t-a)/(b-a));
+const VS=`attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;v.y=1.-v.y;gl_Position=vec4(p,0,1);}`;
+const FS=`precision highp float;varying vec2 v;uniform sampler2D img,dep;uniform vec2 o,off;uniform float z,L,tm,bob;
+void main(){vec2 u=(v-o)/z+o;float d=texture2D(dep,u).r;float q=floor(d*L+.5)/L;
+ vec2 s=(q-.5)*off+vec2(0.,sin(tm*.9+q*7.)*bob*q);vec2 u2=u+s;float q2=floor(texture2D(dep,u2).r*L+.5)/L;
+ if(q2<q-.01)u2=u+(q2-.5)*off+vec2(0.,sin(tm*.9+q2*7.)*bob*q2);   // keep each sheet's edge crisp
+ gl_FragColor=texture2D(img,clamp(u2,0.,1.));}`;
+const load=src=>new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.src=src});
+let D,T,S=[],LY=[];const fx=document.getElementById('fx').getContext('2d');let sd=3;const R=()=>(sd=(sd*16807)%2147483647)/2147483647;
+const shapes={
+ heart:(g,s)=>{g.beginPath();g.moveTo(0,s*.35);g.bezierCurveTo(-s*1.1,-s*.35,-s*.45,-s*1.05,0,-s*.45);g.bezierCurveTo(s*.45,-s*1.05,s*1.1,-s*.35,0,s*.35);g.fill()},
+ leaf:(g,s)=>{g.beginPath();g.moveTo(-s,0);g.quadraticCurveTo(0,-s*.75,s,0);g.quadraticCurveTo(0,s*.75,-s,0);g.fill()},
+ petal:(g,s)=>{g.beginPath();g.ellipse(0,0,s*.75,s*.42,0,0,7);g.fill()},
+ drop:(g,s)=>{g.beginPath();g.moveTo(0,-s*1.3);g.quadraticCurveTo(s*.7,0,0,s*.6);g.quadraticCurveTo(-s*.7,0,0,-s*1.3);g.fill()},
+ star:(g,s)=>{g.beginPath();for(let i=0;i<10;i++){const r=i%2?s*.42:s,a=i*Math.PI/5-Math.PI/2;g.lineTo(Math.cos(a)*r,Math.sin(a)*r)}g.closePath();g.fill()},
+ dot:(g,s)=>{g.beginPath();g.arc(0,0,s*.5,0,7);g.fill()}};
+window.init=async d=>{D=d;T=d.duration;
+ const sec=v=>v.includes(':')?(+v.split(':')[0])*60+(+v.split(':')[1]):+v;
+ LY=(d.lyricsText||'').split('\n').map(l=>l.trim()).filter(l=>l&&!l.startsWith('#')&&l.includes('|')).map(l=>{const [tm,tx]=l.split('|');const [a,b]=tm.trim().split('-');return{a:sec(a),b:sec(b),tx:tx.trim()}});
+ lyrics.innerHTML=LY.map((l,i)=>`<div class="ly" id="ly${i}">${l.tx}</div>`).join('');
+ // paper fibre grain
+ const g=grain.getContext('2d'),gi=g.createImageData(1080,1920);for(let i=0;i<gi.data.length;i+=4){const v=200+Math.random()*55;gi.data[i]=gi.data[i+1]=gi.data[i+2]=v;gi.data[i+3]=255}g.putImageData(gi,0,0);
+ g.globalAlpha=.25;for(let i=0;i<2500;i++){g.strokeStyle=Math.random()<.5?'#bbb':'#fff';g.beginPath();const x=Math.random()*1080,y=Math.random()*1920,a=Math.random()*6.28,l=4+Math.random()*16;g.moveTo(x,y);g.lineTo(x+Math.cos(a)*l,y+Math.sin(a)*l);g.stroke()}
+ for(const [i,s] of d.scenes.entries()){const c=document.createElement('canvas');c.width=1080;c.height=1920;c.className='card';cards.appendChild(c);
+  const gl=c.getContext('webgl',{preserveDrawingBuffer:true}),pr=gl.createProgram();
+  for(const [ty,src] of [[gl.VERTEX_SHADER,VS],[gl.FRAGMENT_SHADER,FS]]){const sh=gl.createShader(ty);gl.shaderSource(sh,src);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(sh);gl.attachShader(pr,sh)}
+  gl.linkProgram(pr);gl.useProgram(pr);gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+  const a=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
+  for(const [n,k,u] of [[s.image,'img',0],[s.depth,'dep',1]]){const im=await load(n);gl.activeTexture(gl.TEXTURE0+u);gl.bindTexture(gl.TEXTURE_2D,gl.createTexture());
+   gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,im);for(const q of [gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T])gl.texParameteri(gl.TEXTURE_2D,q,gl.CLAMP_TO_EDGE);
+   gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,u?gl.NEAREST:gl.LINEAR);gl.uniform1i(gl.getUniformLocation(pr,k),u)}
+  const P=[...Array(s.count||28)].map(()=>({x:R(),y:R(),p:R()*6.28,f:.5+R(),r:R(),c:(s.colors||['#e8574a'])[Math.floor(R()*(s.colors||['#e8574a']).length)]}));
+  S.push({s,c,gl,P,U:n=>gl.getUniformLocation(pr,n),end:i+1<d.scenes.length?d.scenes[i+1].start:T})}};
+function particles(sc,lt,vis){const {s,P}=sc;if(!s.fx)return;fx.save();fx.globalAlpha=vis;fx.shadowColor='rgba(40,20,10,.45)';fx.shadowOffsetX=4;fx.shadowOffsetY=7;fx.shadowBlur=8;
+ for(const o of P){let x,y,rot,sz;const sh=shapes[s.fx]||shapes.dot;
+  if(s.fx==='heart'||s.fx==='star'&&s.rise){y=1920+60-((o.y*2000+lt*(70+60*o.r))%2050);x=o.x*1080+Math.sin(o.p+lt*o.f)*50;rot=Math.sin(o.p+lt*1.2)*.3;sz=18+22*o.r}
+  else if(s.fx==='drop'){y=((o.y*2100+lt*(520+200*o.r))%2100)-90;x=o.x*1080-y*.08;rot=.08;sz=9+8*o.r}
+  else if(s.fx==='star'){x=o.x*1080;y=o.y*1920*(s.skyTo||.4);rot=o.p;sz=(8+12*o.r)*(.75+.25*Math.sin(o.p+lt*2*o.f))}
+  else if(s.fx==='dot'){x=o.x*1080+Math.sin(o.p+lt*o.f*.7)*60;y=700+o.y*1000+Math.cos(o.p+lt*o.f*.5)*40;rot=0;sz=8+8*o.r;fx.globalAlpha=vis*(.45+.55*Math.sin(o.p*3+lt*1.8));fx.shadowColor='rgba(255,210,120,.9)';fx.shadowOffsetX=0;fx.shadowOffsetY=0;fx.shadowBlur=18}
+  else{y=((o.y*2000+lt*(90+70*o.r))%2050)-60;x=o.x*1080+Math.sin(o.p+lt*o.f)*80+lt*20;rot=o.p+lt*o.f*1.5;sz=20+18*o.r}
+  fx.save();fx.translate(x,y);fx.rotate(rot);fx.fillStyle=o.c;sh(fx,sz);fx.restore()}
+ fx.restore()}
+window.setT=t=>{const X=D.slide||1.1;fx.clearRect(0,0,1080,1920);
+ S.forEach((h,i)=>{const {s,gl}=h,st=s.start,on=t>=st-X&&t<=h.end+X+.1&&!(i+1<S.length&&t>S[i+1].s.start+.05);h.c.style.display=on?'block':'none';if(!on)return;
+  const slide=i?1-ease((t-(st-X))/X):0;h.c.style.transform=`translateY(${slide*1920}px) rotate(${slide*-2}deg)`;h.c.style.zIndex=i;
+  const k=cl((t-(st-X))/(h.end-st+X));gl.uniform2f(h.U('o'),s.focus[0],s.focus[1]);gl.uniform1f(h.U('z'),lerp(s.zoom[0],s.zoom[1],ease(k)));
+  gl.uniform1f(h.U('L'),s.layers||6);gl.uniform1f(h.U('tm'),t);gl.uniform1f(h.U('bob'),s.bob||.006);
+  const pa=s.parallax||.05;gl.uniform2f(h.U('off'),pa*(k-.5)*2*(s.dir||1),pa*.25*Math.sin(t*.4+i));gl.drawArrays(gl.TRIANGLE_STRIP,0,4)});
+ let i=0;while(i+1<S.length&&t>=S[i+1].s.start)i++;particles(S[i],t-S[i].s.start,1);
+ if(i+1<S.length&&t>S[i+1].s.start-D.slide*1){} 
+ LY.forEach((l,j)=>{const e=document.getElementById('ly'+j),k=ramp(t,l.a,l.a+.35)*(1-ramp(t,l.b-.3,l.b));e.style.opacity=k;e.style.transform=`translateY(${(1-ramp(t,l.a,l.a+.35))*12}px)`});
+ qMark.style.opacity=ramp(t,T-4.5,T-3.3);qFade.style.opacity=Math.max(1-ramp(t,0,1),ramp(t,T-.9,T));};
+</script></body></html>
