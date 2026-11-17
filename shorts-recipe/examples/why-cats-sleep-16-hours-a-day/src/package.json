@@ -1,0 +1,9 @@
+{
+  "name": "why-cats-sleep-16-hours-a-day-short",
+  "private": true,
+  "description": "Procedural three.js scenes for the \"Why Cats Sleep 16 Hours A Day\" short",
+  "dependencies": {
+    "three": "0.160.0",
+    "@expo-google-fonts/nunito": "0.2.3"
+  }
+}
