@@ -9,6 +9,7 @@ const uri=f=>{const x=path.extname(f).slice(1);return 'data:image/'+(x==='jpg'?'
 for(const s of spec.shots||[]){s.image=uri(s.image);s.depth=uri(s.depth)}
 for(const s of spec.scenes||[]){s.image=uri(s.image);s.depth=uri(s.depth)}
 for(const k in spec.images||{})spec.images[k]=uri(spec.images[k]);
+if(spec.lyricsFile&&fs.existsSync(path.join(__dirname,spec.lyricsFile)))spec.lyricsText=fs.readFileSync(path.join(__dirname,spec.lyricsFile),'utf8');
 if(spec.dataFile)spec.data=JSON.parse(fs.readFileSync(path.join(__dirname,spec.dataFile)));
 const times=stills||[...Array(Math.round(T*fps))].map((_,i)=>i/fps);
 const W=stills?1:+(process.env.WORKERS||4); // parallel browser pages

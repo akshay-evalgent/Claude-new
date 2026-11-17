@@ -1,0 +1,5 @@
+# Bairan lyrics for the 60-second Instagram segment.
+# One line per row:  start-end | lyric      (times in seconds from the start of the video, or m:ss)
+# Example rows (the two lines visible in the official video; timing is a placeholder):
+2-6 | छाती के लगाई मनै
+6.5-10 | तेरी याद खड़ी पाई मनै

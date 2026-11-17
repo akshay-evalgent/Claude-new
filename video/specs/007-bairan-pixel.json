@@ -1,4 +1,4 @@
-{"template":"pixel-story.html","audio":"none","duration":60,"dissolve":0.8,
+{"template":"pixel-story.html","audio":"none","duration":60,"lyricsFile":"lyrics/bairan.txt","dissolve":0.8,
  "scenes":[
   {"image":"art/bairan/s1-px.png","depth":"art/bairan/s1-pxdepth.png","start":0,"pan":[0,24,18,6],"parallax":5,"sway":0.55,"fx":["petals","pollen"],"lights":"flicker"},
   {"image":"art/bairan/s2-px.png","depth":"art/bairan/s2-pxdepth.png","start":10,"pan":[18,0,6,20],"parallax":4,"leaves":0.42,"fx":["leaves","fireflies"],"seed":3},
