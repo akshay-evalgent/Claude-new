@@ -5,7 +5,7 @@ messages, streamed replies, punch-in zooms, screen shake, a patience meter, a
 cold-open hook with a rewind, sound effects and music, mixed to YouTube loudness.
 No screen recording and no editing software needed.
 
-Samples: `samples/ai-is-a-toaster.mp4` (4:48), `samples/last-digit-of-pi.mp4` (4:47), `samples/emojis-only.mp4` (4:49), `samples/elon-vs-grok.mp4` (4:37, parody), `samples/1950s-mode.mp4` (4:39, real archive footage), `samples/year-3000-mode.mp4` (4:34, NASA footage), `samples/planet-human-720p.mp4` (3:40, AI-narrated documentary, 720p preview), `samples/rizzless-groom-720p.mp4` (3:41, Gen Z recut trailer of a 1947 short, 720p preview), `samples/latency-ep1-720p.mp4` (10:45, animated panel show, 720p preview), `samples/latency-ep2-720p.mp4` (9:17, its second episode) and
+Samples: `samples/ai-is-a-toaster.mp4` (4:48), `samples/last-digit-of-pi.mp4` (4:47), `samples/emojis-only.mp4` (4:49), `samples/elon-vs-grok.mp4` (4:37, parody), `samples/1950s-mode.mp4` (4:39, real archive footage), `samples/year-3000-mode.mp4` (4:34, NASA footage), `samples/planet-human-720p.mp4` (3:40, AI-narrated documentary, 720p preview), `samples/rizzless-groom-720p.mp4` (3:41, Gen Z recut trailer of a 1947 short, 720p preview), `samples/latency-ep1-720p.mp4` (10:45, animated panel show, 720p preview), `samples/latency-ep2-720p.mp4` (9:17, its second episode), `samples/dm-tesla-720p.mp4` (2:40, chat story) and
 `samples/count-to-a-billion.mp4` (29 s test). These are compressed previews;
 a fresh render in `out/` is the full-quality file to upload.
 
@@ -213,6 +213,39 @@ and `--upload` work with `--short` too.
 | `start` | The state the Short opens in: `{"onstage": "clippy", "rating": 2, "bleeps": 1}`. |
 | `patch` | Changes to single beats: `{"109": {"set": {"popup": null}}}`. |
 | `caption`, `hashtags` | Go into the description. |
+
+## Chat stories (`"engine": "dm"`)
+
+A fourth format: a story told through a group chat, one message group at a time on black,
+zoomed in, with cutaways and no voices. The recipe and the recurring cast are described in
+`research/chat-story-recipe.md`. Example: `episodes/dm-tesla.json`. No preparation step:
+
+```bash
+python3 chatvid/tools/fetch_media.py chatvid/episodes/dm-tesla.json
+```
+
+```bash
+node chatvid/render.mjs chatvid/episodes/dm-tesla.json
+```
+
+A 2:40 story renders in about four minutes.
+
+| Episode field | Meaning |
+|---|---|
+| `cast` | `{"name", "color", "avatar": {"emoji": "🤖", "bg": "#1e88a8"} or {"media": "<photo key>", "pos"}, "real": true, "badge"}`. `real` puts a PARODY label on screen while they appear. |
+| `clock`, `clockEvery` | The time in message headers ("9:41 PM"), moving on a minute every N groups. |
+| `musicGain` | Level of the music beds (dB). |
+
+| Beat | Meaning |
+|---|---|
+| `{"who", "lines": [...]}` | A message group. A line is text, or `{"t", "hold", "punch", "shake", "big", "bigDur", "sfx", "caps", "edited", "stop", "music"}`. `big` repeats the line full-screen; emoji-only lines are shown large; `@name` is highlighted; `\|\|text\|\|` is a spoiler bar. |
+| `{"cut": "notif", "app", "icon", "title", "text"}` | A phone notification. |
+| `{"cut": "inbox", "from", "subjects", "rows", "rate"}` | An inbox filling up. |
+| `{"cut": "members", "groups": [{"title", "members": [{"who", "status"}]}], "focus"}` | The member list, zooming into `focus`. |
+| `{"cut": "avatar", "who"}`, `{"cut": "call", "who", "text"}`, `{"cut": "image", "media", "caption"}`, `{"cut": "card", "title", "sub"}` | A giant profile picture, an incoming call, a picture, a title card. |
+| `music`, `stop` (any beat or line) | Start a music bed (`{"track", "offset", "gain"}`), or cut to silence. |
+
+Thumbnails can use `msgs` (chat cards) next to `photo`.
 
 ## Layout
 

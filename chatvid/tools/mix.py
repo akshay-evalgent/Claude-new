@@ -119,7 +119,34 @@ def bleep():
     return np.stack([y, y], axis=1).astype(np.float32)
 
 
-SYNTH = {"boom": boom, "ding": ding, "soft-swoosh": soft_swoosh, "soft-pop": soft_pop, "bleep": bleep}
+def blip():
+    """New chat line: a soft, short two-partial blip (not any app's real sound)."""
+    n = int(0.12 * SR)
+    t = np.arange(n) / SR
+    f = 740 + 160 * np.exp(-t / 0.02)
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    env = np.minimum(1, t / 0.003) * np.exp(-t / 0.035)
+    y = (np.sin(ph) + 0.25 * np.sin(2 * ph)) * env
+    y[-int(0.02 * SR):] *= np.linspace(1, 0, int(0.02 * SR))
+    y /= np.abs(y).max() or 1
+    return np.stack([y, y], axis=1).astype(np.float32)
+
+
+def notify():
+    """Phone notification: two quick rising glassy tones."""
+    out = np.zeros(int(0.42 * SR))
+    for at, f0 in ((0.0, 1046.5), (0.11, 1568.0)):
+        n = int(0.3 * SR)
+        t = np.arange(n) / SR
+        env = np.minimum(1, t / 0.002) * np.exp(-t / 0.09)
+        y = (np.sin(2 * np.pi * f0 * t) + 0.3 * np.sin(2 * np.pi * f0 * 2.01 * t)) * env
+        i = int(at * SR)
+        out[i:i + n] += y[: len(out) - i]
+    out /= np.abs(out).max() or 1
+    return np.stack([out, out], axis=1).astype(np.float32)
+
+
+SYNTH = {"boom": boom, "ding": ding, "soft-swoosh": soft_swoosh, "soft-pop": soft_pop, "bleep": bleep, "blip": blip, "notify": notify}
 
 
 def clip_audio(key):

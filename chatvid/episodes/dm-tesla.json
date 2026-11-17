@@ -1,0 +1,910 @@
+{
+ "engine": "dm",
+ "title": "NEVER Share Your Tesla With Your Friends...",
+ "crf": 18,
+ "fps": 30,
+ "clock": "9:41 PM",
+ "clockEvery": 4,
+ "parodyTag": true,
+ "musicGain": -15,
+ "media": {
+  "elon-face-serious": {
+   "commons": "File:SpaceX_CEO_Elon_Musk_visits_N&NC_and_AFSPC_(190416-F-ZZ999-006)_(cropped).jpg",
+   "crop": [
+    0.33,
+    0.05,
+    0.37,
+    0.254
+   ],
+   "credit": "Elon Musk visits N&NC and AFSPC (2019): U.S. Air Force photo, public domain, via Wikimedia Commons",
+   "short": "Photo: U.S. Air Force / public domain"
+  },
+  "trump-portrait": {
+   "file": "trump-src.jpg",
+   "crop": [
+    0.12,
+    0.05,
+    0.72,
+    0.568
+   ],
+   "credit": "Official portrait of Donald Trump (2017): Shealah Craighead, The White House, public domain, via Wikimedia Commons",
+   "short": "Photo: The White House / public domain"
+  }
+ },
+ "cast": {
+  "glitch": {
+   "name": "Glitch",
+   "color": "#f2f3f5",
+   "avatar": {
+    "emoji": "🤖",
+    "bg": "#1e88a8"
+   }
+  },
+  "nugget": {
+   "name": "nugget",
+   "color": "#f2f3f5",
+   "avatar": {
+    "emoji": "🐹",
+    "bg": "#f0a24a"
+   }
+  },
+  "elon": {
+   "name": "Elon Musk",
+   "real": true,
+   "color": "#f23f43",
+   "avatar": {
+    "media": "elon-face-serious",
+    "pos": "50% 35%"
+   }
+  },
+  "trump": {
+   "name": "Donald Trump",
+   "real": true,
+   "color": "#f0b232",
+   "avatar": {
+    "media": "trump-portrait",
+    "pos": "50% 40%"
+   }
+  }
+ },
+ "beats": [
+  {
+   "who": "nugget",
+   "lines": [
+    {
+     "t": "@Glitch"
+    }
+   ],
+   "music": {
+    "track": "kidding-around",
+    "offset": 0
+   }
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "sup"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "can i borrow your car tonight",
+    "mine is in the shop 😭"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "no"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "but"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "i let you copy",
+    "my homework",
+    "for 4 years"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "and?"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "i gave you my wifi",
+    "my netflix",
+    "and my mom's credit card"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "idk what ur talking about"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "please",
+    "help a brother out",
+    "i have a date"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "with who"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "a girl"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "from where"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    {
+     "t": "...minecraft",
+     "hold": 1.2
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "😐"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "sorry man",
+    "but",
+    {
+     "t": "my car is a tesla"
+    },
+    {
+     "t": "it tells elon everything",
+     "big": "it tells elon everything",
+     "stop": true
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "lol who cares"
+   ],
+   "music": {
+    "track": "fun-and-games",
+    "offset": 4
+   }
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "elon does"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    {
+     "t": "he knows",
+     "punch": 0.3
+    }
+   ],
+   "zoom": 1.15
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "he doesnt"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "he knows",
+    "he always knows",
+    "trust me"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "how do u know??"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "i drove to taco bell",
+    "at 3am once",
+    "next morning",
+    "i got an email"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    {
+     "t": "'we noticed you're sad'",
+     "hold": 1.6
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "no offense",
+    "but",
+    "i think",
+    "u need to go outside more"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    {
+     "t": "NO",
+     "punch": 0.35,
+     "caps": true
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "???"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "thats how",
+    "they track you"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "😐"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "\"the car belongs to the people\"",
+    {
+     "t": "- donald trump",
+     "hold": 1.4
+    }
+   ],
+   "stop": true
+  },
+  {
+   "who": "trump",
+   "lines": [
+    "I never said that."
+   ],
+   "music": {
+    "track": "the-snail",
+    "offset": 6
+   }
+  },
+  {
+   "who": "trump",
+   "lines": [
+    "Many people are saying",
+    "I never said that.",
+    {
+     "t": "Great people. The best.",
+     "hold": 1.4
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "\"many people are saying i never said that\"",
+    "- donald trump"
+   ]
+  },
+  {
+   "who": "trump",
+   "lines": [
+    {
+     "t": "Tremendous quote. I said that.",
+     "hold": 1.6
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "see??",
+    {
+     "t": "@Glitch"
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "fine",
+    "ill give u the keys"
+   ],
+   "music": {
+    "track": "jumping-around",
+    "offset": 2
+   }
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    {
+     "t": "YESSS",
+     "punch": 0.3,
+     "caps": true
+    }
+   ],
+   "zoom": 1.1
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "just promise",
+    "you wont share it",
+    "with anyone else",
+    "ok?"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "i promise🤞"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "the key is under the mat",
+    "pin: ||4269||"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "thanks!!!"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "no problem"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    {
+     "t": "@everyone",
+     "sfx": "notify"
+    },
+    "FREE TESLA 👇👇👇",
+    {
+     "t": "pin: ||4269||",
+     "hold": 1.6,
+     "stop": true
+    }
+   ]
+  },
+  {
+   "cut": "notif",
+   "app": "Tesla",
+   "icon": "🚗",
+   "title": "Your car has been unlocked",
+   "text": "Model 3 · Front door · Unknown phone",
+   "dur": 2.3
+  },
+  {
+   "cut": "inbox",
+   "dur": 2.2,
+   "rows": 14,
+   "rate": 0.12,
+   "chip": "NEW",
+   "subjects": [
+    "Your car has been unlocked",
+    "Your car is moving",
+    "Your car is in Ohio",
+    "Your car has been unlocked",
+    "Someone honked 211 times",
+    "Your car is at Wendy's",
+    "Your car is at Wendy's (again)",
+    "Your car is in a different Ohio"
+   ],
+   "from": "Tesla"
+  },
+  {
+   "cut": "members",
+   "dur": 3.6,
+   "focus": "elon",
+   "groups": [
+    {
+     "title": "CEO OF EVERYTHING — 1",
+     "members": [
+      {
+       "who": "elon",
+       "status": "dnd"
+      }
+     ]
+    },
+    {
+     "title": "ONLINE — 3",
+     "members": [
+      {
+       "who": "trump"
+      },
+      {
+       "who": "glitch"
+      },
+      {
+       "who": "nugget",
+       "status": "idle"
+      }
+     ]
+    }
+   ],
+   "music": {
+    "track": "dark-shadows",
+    "offset": 0
+   }
+  },
+  {
+   "who": "elon",
+   "lines": [
+    {
+     "t": "@Glitch"
+    },
+    "Interesting."
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "im sorry",
+    "but",
+    "who are u?"
+   ]
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "I'm Elon.",
+    {
+     "t": "(CEO of your car)",
+     "hold": 1.4
+    }
+   ]
+  },
+  {
+   "cut": "avatar",
+   "who": "elon",
+   "dur": 1.7
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "no one asked"
+   ]
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "We noticed something...",
+    "about your car."
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "i noticed something",
+    "about your rockets"
+   ]
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "They're called",
+    {
+     "t": "rapid unscheduled disassemblies.",
+     "hold": 1.7
+    }
+   ]
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "We suspect you might be...",
+    "ahem",
+    {
+     "t": "sharing your car.",
+     "hold": 1.4
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "whaaat",
+    "no",
+    "i would never"
+   ]
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "Your car",
+    "is currently being driven",
+    {
+     "t": "by 147 people.",
+     "hold": 1.4
+    }
+   ],
+   "music": {
+    "track": "bruh",
+    "offset": 0
+   }
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "i have",
+    "147 friends"
+   ]
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "Your car is in",
+    {
+     "t": "23 different countries.",
+     "hold": 1.3
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "i travel",
+    "a lot"
+   ]
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "23??!????"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "24 actually"
+   ]
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "In the past minute-",
+    "your car went to Wendy's",
+    {
+     "t": "312 times.",
+     "hold": 1.3
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "i like",
+    "wendys",
+    "at 999999x speed"
+   ]
+  },
+  {
+   "who": "elon",
+   "lines": [
+    {
+     "t": "Be honest.",
+     "hold": 1.0
+    }
+   ],
+   "stop": true
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "Be honest.",
+    {
+     "t": "Did you share your car?",
+     "big": "Did you share your car?",
+     "bigDur": 2.0
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "definitely not"
+   ],
+   "music": {
+    "track": "playground-fun",
+    "offset": 10
+   }
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "Ok.",
+    "I believe you 😊"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "phew"
+   ]
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "Btw-",
+    "how did you like the song?"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "what song?"
+   ]
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "The one your car played.",
+    "400 times.",
+    {
+     "t": "In Ohio.",
+     "hold": 1.2
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "ohh",
+    "THAT song"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "yea",
+    "i totally heard it"
+   ]
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "You did?"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "of course :)",
+    "it was",
+    "my favorite song"
+   ]
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "Same 😊"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "i cried",
+    "when it ended",
+    "RIP song"
+   ]
+  },
+  {
+   "who": "elon",
+   "lines": [
+    {
+     "t": "Your car's speakers have been broken since 2024.",
+     "hold": 1.8
+    }
+   ],
+   "stop": true
+  },
+  {
+   "who": "elon",
+   "lines": [
+    "The only sound it makes...",
+    {
+     "t": "is the horn.",
+     "hold": 1.6,
+     "sfx": "boom",
+     "sfxGain": -9,
+     "punch": 0.25
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "WAIT",
+    {
+     "t": "I CAN EXPLAIN-",
+     "hold": 0.8
+    }
+   ]
+  },
+  {
+   "cut": "call",
+   "who": "elon",
+   "text": "Incoming video call…",
+   "dur": 3.2
+  },
+  {
+   "cut": "card",
+   "title": "to be continued…",
+   "sub": "Glitch & Nugget will return",
+   "dur": 2.4,
+   "music": {
+    "track": "kidding-around",
+    "offset": 40,
+    "gain": -18
+   }
+  }
+ ],
+ "youtube": {
+  "title": "NEVER Share Your Tesla With Your Friends...",
+  "description": [
+   "Nugget just wanted to borrow the car. Elon had questions.",
+   "",
+   "This is a parody. Elon Musk and Donald Trump appear as fictional characters in a made-up chat; nothing here was said or written by them, and nothing is affiliated with or endorsed by them or their companies. No voices; all messages are written for comedy.",
+   "",
+   "Photos:",
+   "{credits}",
+   "Music and sound effects: Mixkit (mixkit.co).",
+   "",
+   "#comedy #elonmusk #tesla #groupchat"
+  ],
+  "tags": [
+   "elon musk",
+   "tesla",
+   "donald trump",
+   "group chat",
+   "discord",
+   "texting story",
+   "funny chat",
+   "parody",
+   "glitch and nugget",
+   "bot bothered"
+  ],
+  "thumbnails": [
+   {
+    "photo": {
+     "image": "elon-face-serious",
+     "x": 840,
+     "y": 40,
+     "size": 400,
+     "color": "red",
+     "pos": "50% 35%"
+    },
+    "glow": false,
+    "msgs": [
+     {
+      "x": 0,
+      "y": 120,
+      "w": 900,
+      "size": 1.45,
+      "name": "Elon Musk",
+      "color": "#f23f43",
+      "media": "elon-face-serious",
+      "lines": [
+       "Did you share",
+       "your *car?*"
+      ]
+     },
+     {
+      "x": 40,
+      "y": 470,
+      "w": 620,
+      "size": 1.25,
+      "name": "Glitch",
+      "emoji": "🤖",
+      "bg": "#1e88a8",
+      "time": "9:57 PM",
+      "lines": [
+       "definitely not"
+      ],
+      "rot": -2
+     }
+    ],
+    "tag": "PARODY",
+    "tagTop": true
+   },
+   {
+    "photo": {
+     "image": "trump-portrait",
+     "x": 870,
+     "y": 60,
+     "size": 360,
+     "color": "yellow",
+     "pos": "50% 40%"
+    },
+    "glow": false,
+    "msgs": [
+     {
+      "x": 0,
+      "y": 70,
+      "w": 860,
+      "size": 1.3,
+      "name": "nugget",
+      "emoji": "🐹",
+      "bg": "#f0a24a",
+      "time": "9:47 PM",
+      "lines": [
+       "“the car belongs",
+       "to the people”",
+       "- donald trump"
+      ]
+     },
+     {
+      "x": 120,
+      "y": 470,
+      "w": 900,
+      "size": 1.35,
+      "name": "Donald Trump",
+      "color": "#f0b232",
+      "media": "trump-portrait",
+      "pos": "50% 40%",
+      "time": "9:48 PM",
+      "lines": [
+       "I never *said that.*"
+      ],
+      "rot": -1.5
+     }
+    ],
+    "tag": "PARODY",
+    "tagTop": true
+   }
+  ]
+ }
+}

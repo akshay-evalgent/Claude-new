@@ -69,6 +69,7 @@ SFX = {
     "gasp-m": 966,         # Male astonished gasp
     "gasp-f": 964,         # Female astonished gasp
     "suspense": 667,       # Game show suspense waiting
+    "ringtone": 1359,      # Marimba ringtone
 }
 # name -> Mixkit stock music id
 MUSIC = {
@@ -85,6 +86,16 @@ MUSIC = {
     "epic-drums-5": 680,
     "epic-drums-3": 678,
     "classical-vibes-3": 683,
+    # chat-story beds (light, bouncy; cut hard between acts)
+    "kidding-around": 9,
+    "just-kidding": 11,
+    "fun-and-games": 6,
+    "playground-fun": 12,
+    "jumping-around": 8,
+    "the-snail": 602,
+    "bruh": 1089,
+    "dark-shadows": 64,
+    "party-robot": 1254,
 }
 
 # open-licence display fonts (SIL OFL) from github.com/google/fonts, used by the
@@ -150,6 +161,9 @@ EMOJI_NAME_OVERRIDES = {
     "⚠": "Warning",
     "🔊": "Speaker high volume",
     "🛒": "Shopping cart",
+    "🐹": "Hamster",
+    "👇": "Backhand index pointing down",
+    "🤞": "Crossed fingers",
     "🐑": "Ewe",
     "🐻‍❄": "Polar bear",
     "👈": "Backhand index pointing left",

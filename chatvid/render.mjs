@@ -72,7 +72,7 @@ const out = opt('out', path.join(outDir, `${slug}.mp4`));
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: ep.format === 'vertical' ? { width: 1080, height: 1920 } : { width: 1920, height: 1080 }, deviceScaleFactor: scale });
 page.on('pageerror', (e) => console.error('page error:', e.message));
-await page.goto(pathToFileURL(path.join(HERE, PREP ? ep.engine : 'engine', 'index.html')).href);
+await page.goto(pathToFileURL(path.join(HERE, PREP || ep.engine === 'dm' ? ep.engine : 'engine', 'index.html')).href);
 const plan = await page.evaluate((e) => window.boot(e), ep);
 console.log(`${slug}: ${plan.duration.toFixed(2)} s, ${plan.cues.length} sound cues, ${Math.ceil(plan.duration * fps)} frames`);
 
@@ -104,7 +104,7 @@ if (args.includes('--plan')) {
   const items = ep.exchanges || ep.beats;
   plan.exchanges.forEach((t, i) => {
     const x = items[i];
-    console.log(`  ${String(i + 1).padStart(2)}  ${mmss(t)}  ${x.user || x.line || x.say || (x.title ? 'TITLE: ' + x.title : '') || (x.chapter ? 'CHAPTER: ' + x.chapter : '') || (x.card ? `[${x.card.type}] ` + String(x.card.text || '').replace(/\n/g, ' / ') : '')}`);
+    console.log(`  ${String(i + 1).padStart(2)}  ${mmss(t)}  ${x.user || x.line || x.say || (x.lines ? `${x.who}: ` + x.lines.map((l) => (typeof l === 'string' ? l : l.t || '[img]')).join(' / ') : '') || (x.cut ? `[${x.cut}]` : '') || (x.title ? 'TITLE: ' + x.title : '') || (x.chapter ? 'CHAPTER: ' + x.chapter : '') || (x.card ? `[${x.card.type}] ` + String(x.card.text || '').replace(/\n/g, ' / ') : '')}`);
   });
   await browser.close();
   process.exit(0);
