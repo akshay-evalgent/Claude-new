@@ -54,7 +54,14 @@ why do cats sleep so much, how many hours do cats sleep, cat sleeping 16 hours, 
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | Close on the "sleeping" tabby, one green eye cracked open, caption "and it's not being lazy" | **Main pick.** The side-eye every owner has seen |
+| `thumbnail-alt-16h.jpg` | The tabby asleep on the bed under a "16h" clock dial, caption "a day" | The number up front |
+| `thumbnail-alt-zoomies.jpg` | The cat leaping across your bed while you sleep, caption "gets the zoomies" | Relatable 4 a.m. angle |
+| `thumbnail-alt-hunter.jpg` | Huge green eyes low in the grass at night, caption "Cats are ambush hunters" | Predator angle |
+| `thumbnail-alt-battery.jpg` | The cat mid-pounce with a nearly empty battery, caption "a lot of energy" | Science angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
