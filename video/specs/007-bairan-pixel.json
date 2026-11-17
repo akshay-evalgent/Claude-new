@@ -1,0 +1,10 @@
+{"template":"pixel-story.html","audio":"none","duration":60,"dissolve":0.8,
+ "scenes":[
+  {"image":"art/bairan/s1-px.png","depth":"art/bairan/s1-pxdepth.png","start":0,"pan":[0,24,18,6],"parallax":5,"sway":0.55,"fx":["petals","pollen"],"lights":"flicker"},
+  {"image":"art/bairan/s2-px.png","depth":"art/bairan/s2-pxdepth.png","start":10,"pan":[18,0,6,20],"parallax":4,"leaves":0.42,"fx":["leaves","fireflies"],"seed":3},
+  {"image":"art/bairan/s3-px.png","depth":"art/bairan/s3-pxdepth.png","start":20,"pan":[4,4,14,26],"parallax":5,"fx":["rain"],"lights":"flicker","count":170,"seed":5},
+  {"image":"art/bairan/s4-px.png","depth":"art/bairan/s4-pxdepth.png","start":30,"pan":[16,0,4,22],"parallax":4,"fx":["fireflies"],"lights":"twinkle","lightContrast":22,"seed":9},
+  {"image":"art/bairan/s5-px.png","depth":"art/bairan/s5-pxdepth.png","start":40,"pan":[9,0,9,30],"parallax":5,"lights":"flicker",
+   "fireworks":[{"t":1.0,"x":150,"y":40,"r":62,"c":[255,120,150]},{"t":3.2,"x":95,"y":70,"r":52,"c":[255,214,110]},{"t":5.0,"x":185,"y":55,"r":70,"c":[140,210,255]},{"t":7.2,"x":125,"y":32,"r":58,"c":[255,170,90]}]},
+  {"image":"art/bairan/s6-px.png","depth":"art/bairan/s6-pxdepth.png","start":50,"pan":[18,6,4,14],"parallax":4,"fx":["stars"],"skyTo":0.35,"lights":"flicker","seed":11,
+   "meteors":[{"t":3.0,"x":230,"y":30,"dx":-90,"dy":40,"d":0.8}]}]}

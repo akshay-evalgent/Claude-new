@@ -1,0 +1,4 @@
+{"template":"pixel-story.html","audio":"none","duration":20,"dissolve":0.8,
+ "images":{},"scenes":[
+  {"image":"art/bairan/s1-px.png","depth":"art/bairan/s1-pxdepth.png","start":0,"pan":[0,24,18,8],"parallax":5,"sway":0.55,"fx":["petals","pollen"],"lights":"flicker","lightPct":0.02},
+  {"image":"art/bairan/s2-px.png","depth":"art/bairan/s2-pxdepth.png","start":10,"pan":[18,0,6,20],"parallax":4,"leaves":0.42,"fx":["leaves","fireflies"],"lights":"twinkle","lightPct":0.02,"seed":3}]}

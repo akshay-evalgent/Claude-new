@@ -7,6 +7,7 @@ const tmp=fs.mkdtempSync(path.join(require('os').tmpdir(),'frames-'));
 const b=await chromium.launch({args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});
 const uri=f=>{const x=path.extname(f).slice(1);return 'data:image/'+(x==='jpg'?'jpeg':x)+';base64,'+fs.readFileSync(path.join(__dirname,f)).toString('base64')};
 for(const s of spec.shots||[]){s.image=uri(s.image);s.depth=uri(s.depth)}
+for(const s of spec.scenes||[]){s.image=uri(s.image);s.depth=uri(s.depth)}
 for(const k in spec.images||{})spec.images[k]=uri(spec.images[k]);
 if(spec.dataFile)spec.data=JSON.parse(fs.readFileSync(path.join(__dirname,spec.dataFile)));
 const times=stills||[...Array(Math.round(T*fps))].map((_,i)=>i/fps);
