@@ -2741,24 +2741,36 @@ shot(C.and3, C.cold, (s) => {
   const Z = cookScene(s, { golden: true }); const tag = textPlane('TEAR-FREE', 0.5, '#ffe27a', '#5a3a00'); tag.userData.noDof = true; tag.material.depthTest = false; tag.renderOrder = 16; s.scene.add(tag); s.ap = 3; s.exposure = 1.06; s.bloom = 0.45;
   s.update = (t) => {
     const u = Z.pose(t, { chop: 1, cry: 0 }); u.smile(0.8); u.lid(0.1, t, 2); u.head.rotation.x -= 0.1;
-    const h = headW(Z.O), c = E.io(seg(t, C.and3 - 0.2, C.cold + 0.3)), cp = V(CX - 1.15, 2.4, -1.7).add(V(0.05 * c, 0, 0.05 * c));
-    shoot(s.cam, cp, lv(h, BOARD, 0.45).add(V(0, 0.12, 0)), { fov: 46, t, focus: cp.distanceTo(h) });
+    const h = headW(Z.O), c = E.io(seg(t, C.and3 - 0.2, C.cold + 0.3)), tg = lv(h, BOARD, 0.45).add(V(0, 0.12, 0));
+    const cp = tg.clone().add(V(CX - 1.15, 2.4, -1.7).sub(tg).multiplyScalar(lerp(1.16, 0.95, c))).add(V(lerp(-0.12, 0.1, c), 0, lerp(0.1, -0.05, c)));
+    shoot(s.cam, cp, tg, { fov: 46, t, focus: cp.distanceTo(h) });
     pin(s.cam, tag, 0.02, -0.17, 1.6); tag.scale.setScalar(Math.max(1e-4, spring(t, C.barely - 0.1, 2, 6)));
   };
 });
 
 // 10) cold slows the gas down: the onion in the fridge, frosty blue light; the haze barely moves ---------------
 shot(C.cold, C.and4, (s) => {
-  const sc = s.scene; const R = kitchen(sc); const on = onion(0.3); sc.add(on); const g = gasCloud(sc, 18, 3); s.ap = 2.6; s.exposure = 0.95; s.bloom = 0.4;
-  const shelf = new THREE.Mesh(new THREE.BoxGeometry(1.3, 0.03, 1.1), new THREE.MeshPhysicalMaterial({ color: 0xeaf6ff, roughness: 0.05, transparent: true, opacity: 0.5 })); R.fridge.add(shelf); shelf.position.set(0, 2.05, 0);
-  const inner = new THREE.Mesh(new THREE.BoxGeometry(1.32, 2.4, 1.2), new THREE.MeshStandardMaterial({ color: 0xdcecff, side: THREE.BackSide, roughness: 0.3, emissive: new THREE.Color(0x6a98d8), emissiveIntensity: 0.12 })); R.fridge.add(inner); inner.position.set(0, 2.6, 0.08);
+  const sc = s.scene; const R = kitchen(sc); const on = onion(0.3); sc.add(on); const g = gasCloud(sc, 18, 3); s.ap = 1.1; s.exposure = 0.76; s.bloom = 0.25;
+  const F = R.fridge, add = (m, x, y, z) => { m.position.set(x, y, z); m.castShadow = m.receiveShadow = true; F.add(m); return m; };
+  // a cold blue-grey interior with glass shelves, a light strip, and a few things a fridge holds
+  add(new THREE.Mesh(new THREE.BoxGeometry(1.32, 2.4, 1.2), new THREE.MeshStandardMaterial({ color: 0x8eaed0, side: THREE.BackSide, roughness: 0.35, emissive: new THREE.Color(0x2c5a96), emissiveIntensity: 0.45 })), 0, 2.6, 0.08).castShadow = false;
+  const glass = new THREE.MeshPhysicalMaterial({ color: 0xd6ecff, roughness: 0.05, transparent: true, opacity: 0.45, clearcoat: 1 }), edge = new THREE.MeshStandardMaterial({ color: 0xe8f2fb, roughness: 0.3 });
+  [2.05, 3.0].forEach(y => { add(new THREE.Mesh(new THREE.BoxGeometry(1.3, 0.025, 1.1), glass), 0, y, 0); add(new THREE.Mesh(new THREE.BoxGeometry(1.3, 0.05, 0.04), edge), 0, y, 0.55); });
+  add(new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.04, 0.05), new THREE.MeshBasicMaterial({ color: 0xdff0ff })), 0, 3.78, 0.35).castShadow = false;
+  const white = new THREE.MeshStandardMaterial({ color: 0xf4f6f8, roughness: 0.4 }), blue = new THREE.MeshStandardMaterial({ color: 0x2f6fc0, roughness: 0.4 });
+  add(new THREE.Mesh(new RoundedBoxGeometry(0.22, 0.4, 0.22, 2, 0.02), white), -0.38, 3.215, -0.1); add(new THREE.Mesh(new THREE.BoxGeometry(0.225, 0.1, 0.225), blue), -0.38, 3.25, -0.1);
+  add(new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.26, 24), new THREE.MeshPhysicalMaterial({ color: 0xd84a3a, roughness: 0.2, transparent: true, opacity: 0.85, clearcoat: 1 })), 0.32, 3.143, -0.05); add(new THREE.Mesh(new THREE.CylinderGeometry(0.125, 0.125, 0.05, 24), new THREE.MeshStandardMaterial({ color: 0xc9a23a, metalness: 0.6, roughness: 0.3 })), 0.32, 3.3, -0.05);
+  const egg = new THREE.MeshStandardMaterial({ color: 0xf3e6d2, roughness: 0.55 }); for (let i = 0; i < 4; i++) { const e = add(new THREE.Mesh(new THREE.SphereGeometry(0.055, 16, 12), egg), 0.18 + (i % 2) * 0.13, 1.4 + 0.07, 0.05 + Math.floor(i / 2) * 0.13); e.scale.set(1, 1.3, 1); }
+  add(new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.08, 0.36, 20), new THREE.MeshPhysicalMaterial({ color: 0x3f8a4a, roughness: 0.1, transparent: true, opacity: 0.8, clearcoat: 1 })), -0.4, 1.32 + 0.18, 0.1);
+  const tag = textPlane('4°C', 0.42, '#cfeeff', '#0a2a4a'); tag.userData.noDof = true; tag.material.depthTest = false; tag.renderOrder = 16; sc.add(tag);
   s.update = (t) => {
-    R.door.rotation.y = 2.2; R.coldL.intensity = 3.5;
-    R.fridge.updateMatrixWorld(true); on.position.copy(R.fridge.localToWorld(V(0, 2.07, 0.15))); on.rotation.set(0, t * 0.1, 0);
+    R.door.rotation.y = 2.2; R.coldL.intensity = 1.6; R.coldL.color.set(0x9fd0ff); R.coldL.position.set(0, 3.5, 0.45);
+    F.updateMatrixWorld(true); on.position.copy(F.localToWorld(V(0, 2.07, 0.15))); on.rotation.set(0, t * 0.1, 0);
     on.children[0].material.color.setRGB(0.85, 0.92, 1.05);
-    const c = E.io(seg(t, C.cold - 0.2, C.and4 + 0.3)), tg = on.position.clone().add(V(0, 0.3, 0)), cp = tg.clone().add(V(lerp(-0.35, -0.3, c), 0.3, lerp(2.3, 2.0, c)));
-    shoot(s.cam, cp, tg, { fov: 38, t, focus: cp.distanceTo(tg) });
+    const c = E.io(seg(t, C.cold - 0.15, C.and4 + 0.2)), tg = on.position.clone().add(V(0, 0.32, 0)), cp = tg.clone().add(V(lerp(-0.3, -0.12, c), lerp(0.3, 0.12, c), lerp(3.1, 2.15, c)));
+    shoot(s.cam, cp, tg, { fov: 40, t, focus: cp.distanceTo(tg) });
     g(t * 0.25, s.cam, on.position.clone().add(V(0, 0.45, 0)), on.position.clone().add(V(0.05, 0.9, 0.1)), 0.6);
+    pin(s.cam, tag, 0.0, 0.31, 1.6); tag.scale.setScalar(Math.max(1e-4, spring(t, C.slows - 0.1, 2, 6)));
   };
 });
 
@@ -2770,7 +2782,7 @@ shot(C.and4, C.so2, (s) => {
   const lA = textPlane('DULL', 0.4, '#ff8a7a', '#3a0a0a'), lB = textPlane('SHARP', 0.4, '#9af0b8', '#0a3a1a'); [lA, lB].forEach(l => { l.userData.noDof = true; l.material.depthTest = false; l.renderOrder = 16; sc.add(l); });
   s.ap = 0.01; s.exposure = 1.05; s.bloom = 0.5;
   s.update = (t) => {
-    setCam(s.cam, V(0, 0, 3.2), V(0, 0, 0), 0, 40); s.cam.userData.focus = 3.2;
+    const cz = E.io(seg(t, C.and4 - 0.2, C.so2 + 0.2)); setCam(s.cam, V(lerp(0.1, -0.06, cz), lerp(0.04, -0.02, cz), lerp(3.45, 3.0, cz)), V(lerp(0.04, -0.03, cz), 0, 0), 0, 40); s.cam.userData.focus = 3.2;
     const k = E.io(seg(t, C.a2, C.crushes + 0.3));
     kA.position.set(0.0, 0.62 + lerp(1.0, -0.05, k), 0.25); kA.rotation.set(0, 0, -0.04); kB.position.set(0.0, -0.62 + lerp(1.0, -0.05, k), 0.25); kB.rotation.set(0, 0, -0.04);
     kA.position.x = -0.6; kB.position.x = -0.6;

@@ -34,7 +34,7 @@ A 36-second vertical short (13 shots) built to the recipe in `../../index.html`,
 | 18.18 | It's how the onion defends itself from hungry animals. | A mouse bites an onion, gets a face full of gas and backs off | A crunch (1598), a real mouse (0459) |
 | 21.63 | In 2002, scientists found the exact enzyme that makes the gas, | A lab: the enzyme turns in a green glow; "2002", "THE TEAR ENZYME" | |
 | 25.94 | and later grew onions that barely make it. | Chopping a golden onion, dry-eyed and smiling; "TEAR-FREE" | Chopping |
-| 28.86 | Cold slows the gas down, | The onion in the open fridge, in cold blue light; the haze barely moves | The fridge door (1158), its hum (1157) |
+| 28.86 | Cold slows the gas down, | The onion on a fridge shelf between the milk, a jar and the eggs, in cold blue light; "4°C"; the haze barely moves | The fridge door (1158), its hum (1157) |
 | 30.58 | and a sharp knife crushes fewer cells. | Two rows of cells: a DULL blade crushes many, a SHARP one only a few | A crunch (1598), a clean slice (2574) |
 | 33.23 | So next time you chop one, chill it first, because | You start chopping; your eyes begin to water (loop) | Chopping, a sniff |
 

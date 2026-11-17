@@ -48,6 +48,6 @@ python3 -c "import soundfile as sf, numpy as np; a, sr = sf.read('$WORK/mix_mast
 
 # 4. Encode: captions + share prompt burned in, and a clean version
 cp "$HERE/src/node_modules/@expo-google-fonts/nunito/Nunito_800ExtraBold.ttf" "$WORK/fonts/"
-ffmpeg -y -framerate 30 -i "$WORK/frames/f_%05d.jpg" -i "$WORK/mix_master.wav" -vf "ass=$HERE/captions.ass:fontsdir=$WORK/fonts,format=yuv420p" -c:v libx264 -preset slow -crf 20 -profile:v high -c:a aac -b:a 192k -shortest -movflags +faststart "$WORK/why-onions-make-you-cry.mp4"
-ffmpeg -y -framerate 30 -i "$WORK/frames/f_%05d.jpg" -i "$WORK/mix_master.wav" -vf "format=yuv420p" -c:v libx264 -preset slow -crf 20 -profile:v high -c:a aac -b:a 192k -shortest -movflags +faststart "$WORK/why-onions-make-you-cry-no-captions.mp4"
+ffmpeg -y -framerate 30 -i "$WORK/frames/f_%05d.jpg" -i "$WORK/mix_master.wav" -vf "ass=$HERE/captions.ass:fontsdir=$WORK/fonts,format=yuv420p" -c:v libx264 -preset slow -crf 20 -profile:v high -c:a aac -b:a 192k -af "apad=whole_dur=35.8" -frames:v 1074 -t 35.8 -movflags +faststart "$WORK/why-onions-make-you-cry.mp4"
+ffmpeg -y -framerate 30 -i "$WORK/frames/f_%05d.jpg" -i "$WORK/mix_master.wav" -vf "format=yuv420p" -c:v libx264 -preset slow -crf 20 -profile:v high -c:a aac -b:a 192k -af "apad=whole_dur=35.8" -frames:v 1074 -t 35.8 -movflags +faststart "$WORK/why-onions-make-you-cry-no-captions.mp4"
 echo "done: $WORK/why-onions-make-you-cry.mp4"
