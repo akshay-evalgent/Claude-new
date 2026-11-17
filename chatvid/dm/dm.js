@@ -34,9 +34,9 @@
     if (L.img) return { html: `<div class="ln img"><img class="pic" src="../assets/media/${L.img}.jpg"></div>`, ment: false };
     const t = L.t;
     if (emojiOnly(t)) return { html: `<div class="ln emoji">${Array.from(seg.segment(t.trim()), (x) => x.segment).filter((g) => g.trim()).map((g) => emo(g, '')).join('')}</div>`, ment: false };
-    let h = rich(t).replace(/@([\p{L}\p{N}_.]+)/gu, '<span class="at">@$1</span>').replace(/\|\|(.+?)\|\|/g, '<span class="sp">$1</span>');
+    let h = rich(t).replace(/(^|\s)@([\p{L}\p{N}_.]+)/gu, '$1<span class="at">@$2</span>').replace(/\|\|(.+?)\|\|/g, '<span class="sp">$1</span>');
     if (L.edited) h += '<span class="ed">(edited)</span>';
-    const ment = /@[\p{L}\p{N}_]/u.test(t);
+    const ment = /(^|\s)@[\p{L}\p{N}_]/u.test(t.replace(/\|\|.+?\|\|/g, ''));   // an @ inside an e-mail address is not a mention
     return { html: `<div class="ln${ment ? ' ment' : ''}${L.caps ? ' caps' : ''}"><span class="tx">${h}</span></div>`, ment };
   }
 
@@ -214,7 +214,7 @@
     if (!root) return;
     if (c.cut === 'notif') {
       const p = EASE.outBack(clamp(u / 0.32, 0, 1));
-      root.style.transform = `translateX(-50%) translateY(${((1 - p) * -260).toFixed(1)}px) scale(${(1 + 0.05 * (u / d)).toFixed(4)})`;
+      root.style.transform = `translateX(-50%) translateY(${((1 - p) * -260).toFixed(1)}px) scale(${((VERT ? 0.82 : 1.25) * (1 + 0.05 * (u / d))).toFixed(4)})`;
       root.style.top = (VERT ? 520 : 300) + 'px';
     } else if (c.cut === 'inbox') {
       const rows = root.querySelectorAll('.row'), n = rows.length, shown = Math.min(n, Math.floor((u - 0.15) / (c.rate || 0.11)) + 1);

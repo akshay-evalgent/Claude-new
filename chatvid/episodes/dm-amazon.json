@@ -1,0 +1,1005 @@
+{
+ "engine": "dm",
+ "title": "NEVER Share Your Amazon Password...",
+ "crf": 18,
+ "fps": 30,
+ "clock": "11:02 PM",
+ "clockEvery": 4,
+ "parodyTag": true,
+ "musicGain": -15,
+ "media": {
+  "elon-face-serious": {
+   "commons": "File:SpaceX_CEO_Elon_Musk_visits_N&NC_and_AFSPC_(190416-F-ZZ999-006)_(cropped).jpg",
+   "crop": [
+    0.33,
+    0.05,
+    0.37,
+    0.254
+   ],
+   "credit": "Elon Musk visits N&NC and AFSPC (2019): U.S. Air Force photo, public domain, via Wikimedia Commons",
+   "short": "Photo: U.S. Air Force / public domain"
+  },
+  "bezos-face": {
+   "file": "bezos-src.jpg",
+   "crop": [
+    0.17,
+    0.0,
+    0.64,
+    0.44
+   ],
+   "credit": "Jeff Bezos at Amazon Spheres Grand Opening in Seattle (2018): Seattle City Council, CC BY 2.0, via Wikimedia Commons",
+   "short": "Photo: Seattle City Council / CC BY 2.0"
+  },
+  "zuck-face": {
+   "file": "zuck-src.jpg",
+   "crop": [
+    0.18,
+    0.02,
+    0.5,
+    0.375
+   ],
+   "credit": "Mark Zuckerberg F8 2019 Keynote: Anthony Quintano, CC BY 2.0, via Wikimedia Commons",
+   "short": "Photo: Anthony Quintano / CC BY 2.0"
+  }
+ },
+ "cast": {
+  "glitch": {
+   "name": "Glitch",
+   "color": "#f2f3f5",
+   "avatar": {
+    "emoji": "🤖",
+    "bg": "#1e88a8"
+   }
+  },
+  "nugget": {
+   "name": "nugget",
+   "color": "#f2f3f5",
+   "avatar": {
+    "emoji": "🐹",
+    "bg": "#f0a24a"
+   }
+  },
+  "bezos": {
+   "name": "Jeff Bezos",
+   "real": true,
+   "color": "#ff9900",
+   "avatar": {
+    "media": "bezos-face",
+    "pos": "50% 40%"
+   }
+  },
+  "zuck": {
+   "name": "Mark Zuckerberg",
+   "real": true,
+   "color": "#4f8cff",
+   "avatar": {
+    "media": "zuck-face",
+    "pos": "50% 40%"
+   }
+  },
+  "elon": {
+   "name": "Elon Musk",
+   "real": true,
+   "color": "#f23f43",
+   "avatar": {
+    "media": "elon-face-serious",
+    "pos": "50% 35%"
+   }
+  }
+ },
+ "beats": [
+  {
+   "who": "nugget",
+   "lines": [
+    {
+     "t": "@Glitch"
+    }
+   ],
+   "music": {
+    "track": "jumping-around",
+    "offset": 0
+   }
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "no"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "i didnt even ask anything"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "the answer is still no"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "can i use your amazon prime",
+    "just once",
+    "for free shipping 🙏"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "no"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "last time i lent you something",
+    "i was on the phone with elon",
+    {
+     "t": "for 3 hours",
+     "hold": 1.3
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "and?"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "he made me rate the call",
+    {
+     "t": "5 stars",
+     "hold": 1.2
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "please",
+    "its for my girlfriend"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "the minecraft one?"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    {
+     "t": "we're official now",
+     "hold": 1.2
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "she lives in a dirt house",
+    "i wanna get her",
+    "something nice"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "😐"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "sorry man",
+    "but",
+    "my account is linked to my real name",
+    {
+     "t": "my real address",
+     "hold": 0.9
+    },
+    {
+     "t": "and my real mom",
+     "big": "and my real mom",
+     "stop": true
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "so?"
+   ],
+   "music": {
+    "track": "fun-and-games",
+    "offset": 20
+   }
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "so",
+    "if you order something weird",
+    "it shows up",
+    {
+     "t": "in my recommendations",
+     "hold": 1.2
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    {
+     "t": "FOREVER",
+     "punch": 0.35,
+     "caps": true
+    }
+   ],
+   "zoom": 1.15
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "like what"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "i searched 'rubber duck' once",
+    "for a school project"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "now amazon thinks",
+    {
+     "t": "im a duck farmer",
+     "hold": 1.4
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "lol"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "they sent me a coupon",
+    {
+     "t": "for duck insurance",
+     "hold": 1.4
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "😐"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "\"sharing is caring\"",
+    {
+     "t": "- mark zuckerberg",
+     "hold": 1.4
+    }
+   ],
+   "stop": true
+  },
+  {
+   "who": "zuck",
+   "lines": [
+    "I never said that."
+   ],
+   "music": {
+    "track": "the-snail",
+    "offset": 30
+   }
+  },
+  {
+   "who": "zuck",
+   "lines": [
+    "We don't share.",
+    {
+     "t": "We collect.",
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "\"we don't share, we collect\"",
+    "- mark zuckerberg"
+   ]
+  },
+  {
+   "who": "zuck",
+   "lines": [
+    {
+     "t": "That one's fine.",
+     "hold": 1.5
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "see??",
+    {
+     "t": "@Glitch"
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "i dont see how that helped",
+    {
+     "t": "at all",
+     "hold": 1.1
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "please",
+    "i'll never ask for anything",
+    {
+     "t": "ever again",
+     "hold": 1.0
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "you said that",
+    {
+     "t": "about the tesla",
+     "hold": 1.2
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "this time i mean it 🤞"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "fine"
+   ],
+   "music": {
+    "track": "kidding-around",
+    "offset": 30
+   }
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    {
+     "t": "YESSS",
+     "punch": 0.3,
+     "caps": true
+    }
+   ],
+   "zoom": 1.1
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "one gift",
+    "nothing weird",
+    "and DON'T share the password",
+    "ok?"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "i promise"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "email: ||glitch.bot@mail.com||",
+    "password: ||nuggetisdumb1||"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "...",
+    {
+     "t": "rude",
+     "hold": 1.0
+    }
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    "but thanks!!!"
+   ]
+  },
+  {
+   "who": "nugget",
+   "lines": [
+    {
+     "t": "@everyone",
+     "sfx": "notify"
+    },
+    "FREE PRIME 👇👇👇",
+    "email: ||glitch.bot@mail.com||",
+    {
+     "t": "password: ||nuggetisdumb1||",
+     "hold": 1.6,
+     "stop": true
+    }
+   ]
+  },
+  {
+   "cut": "notif",
+   "app": "Amazon",
+   "icon": "📦",
+   "title": "Your order has shipped",
+   "text": "1 × Life-size cardboard Elon Musk",
+   "dur": 2.4
+  },
+  {
+   "cut": "inbox",
+   "dur": 2.4,
+   "rows": 15,
+   "rate": 0.12,
+   "chip": "ORDER",
+   "subjects": [
+    "Your order: 4,000 rubber ducks",
+    "Your order has shipped",
+    "Your order: 1 tonne of glitter",
+    "Delivered: 1 × trampoline (to the roof)",
+    "Your order: 300 Minecraft dirt blocks (real)",
+    "Your order: duck insurance",
+    "Your order has shipped",
+    "Your order: 1 × used submarine"
+   ],
+   "from": "Amazon"
+  },
+  {
+   "cut": "members",
+   "dur": 3.6,
+   "focus": "bezos",
+   "groups": [
+    {
+     "title": "OWNS THE INTERNET — 1",
+     "members": [
+      {
+       "who": "bezos",
+       "status": "dnd"
+      }
+     ]
+    },
+    {
+     "title": "ONLINE — 3",
+     "members": [
+      {
+       "who": "zuck"
+      },
+      {
+       "who": "glitch"
+      },
+      {
+       "who": "nugget",
+       "status": "idle"
+      }
+     ]
+    }
+   ],
+   "music": {
+    "track": "dark-shadows",
+    "offset": 0
+   }
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    {
+     "t": "@Glitch"
+    },
+    "Hello."
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "who are you"
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "I'm Jeff.",
+    {
+     "t": "(I delivered your mom's birthday present)",
+     "hold": 1.6
+    }
+   ]
+  },
+  {
+   "cut": "avatar",
+   "who": "bezos",
+   "dur": 1.7
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "it arrived late"
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    {
+     "t": "...",
+     "hold": 1.0
+    }
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "We noticed something...",
+    "about your account."
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "i noticed something",
+    {
+     "t": "about your rocket",
+     "hold": 1.0
+    }
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "It's not what it looks like.",
+    {
+     "t": "Everybody says that.",
+     "hold": 1.6
+    }
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "Your account",
+    "ordered 4,000 rubber ducks",
+    {
+     "t": "in the last hour.",
+     "hold": 1.3
+    }
+   ],
+   "music": {
+    "track": "bruh",
+    "offset": 0
+   }
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "im",
+    {
+     "t": "a duck farmer",
+     "hold": 1.1
+    }
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "From 31 different houses."
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "i have",
+    {
+     "t": "31 houses",
+     "hold": 1.0
+    }
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "31???!?!"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "32 actually"
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "One of the packages",
+    "was delivered",
+    {
+     "t": "to the Moon.",
+     "hold": 1.3
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "my cousin",
+    "lives there"
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "We don't deliver to the Moon."
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    {
+     "t": "then how did it get there",
+     "hold": 1.3
+    }
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    {
+     "t": "...",
+     "hold": 1.2
+    }
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    {
+     "t": "Be honest.",
+     "hold": 1.0
+    }
+   ],
+   "stop": true
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "Be honest.",
+    {
+     "t": "Did you share your password?",
+     "big": "Did you share your password?",
+     "bigDur": 2.0
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "absolutely not"
+   ],
+   "music": {
+    "track": "playground-fun",
+    "offset": 30
+   }
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "Ok.",
+    "I believe you 😊"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "phew"
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "Btw-",
+    "how do you like your new toaster?"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "toaster?"
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "The one your account ordered.",
+    {
+     "t": "At 3 AM.",
+     "hold": 1.2
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "ohh",
+    "THAT toaster"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "yea",
+    "i use it every day"
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "You do?"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "of course :)",
+    "best toast",
+    "of my life"
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "Same 😊"
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "i even made toast",
+    {
+     "t": "this morning",
+     "hold": 1.1
+    }
+   ]
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    {
+     "t": "Your toaster hasn't been delivered yet.",
+     "hold": 1.9
+    }
+   ],
+   "stop": true
+  },
+  {
+   "who": "bezos",
+   "lines": [
+    "It's out for delivery.",
+    "To a dirt house.",
+    {
+     "t": "In Minecraft.",
+     "hold": 1.6,
+     "sfx": "boom",
+     "sfxGain": -9,
+     "punch": 0.25
+    }
+   ]
+  },
+  {
+   "who": "glitch",
+   "lines": [
+    "WAIT",
+    {
+     "t": "I CAN EXPLAIN-",
+     "hold": 0.8
+    }
+   ]
+  },
+  {
+   "cut": "call",
+   "who": "bezos",
+   "text": "Incoming video call…",
+   "dur": 2.6
+  },
+  {
+   "who": "elon",
+   "lines": [
+    {
+     "t": "@Glitch",
+     "sfx": "notify"
+    },
+    "you still haven't",
+    {
+     "t": "called me back",
+     "hold": 1.8
+    }
+   ],
+   "music": {
+    "track": "kidding-around",
+    "offset": 40,
+    "gain": -18
+   }
+  },
+  {
+   "cut": "card",
+   "title": "to be continued…",
+   "sub": "Glitch & nugget will return",
+   "dur": 2.4
+  }
+ ],
+ "youtube": {
+  "title": "NEVER Share Your Amazon Password...",
+  "description": [
+   "Nugget just wanted free shipping. Jeff had questions.",
+   "",
+   "Glitch & nugget return every week. Last week: Elon. This week: Amazon. Subscribe so you don't miss what Glitch has to explain next.",
+   "",
+   "This is a parody. Jeff Bezos, Mark Zuckerberg and Elon Musk appear as fictional characters in a made-up chat; nothing here was said or written by them, and nothing is affiliated with or endorsed by them or their companies. All messages are written for comedy.",
+   "",
+   "Photos:",
+   "{credits}",
+   "Music and sound effects: Mixkit (mixkit.co)",
+   "",
+   "#jeffbezos #amazon #groupchat"
+  ],
+  "tags": [
+   "jeff bezos",
+   "jeff bezos funny",
+   "amazon",
+   "amazon prime",
+   "mark zuckerberg",
+   "zuckerberg funny",
+   "elon musk",
+   "group chat",
+   "group chat funny",
+   "texting story",
+   "text story",
+   "funny texts",
+   "discord chat",
+   "discord story",
+   "chat story",
+   "never share your password",
+   "amazon password",
+   "best friend texts",
+   "funny chat",
+   "parody",
+   "comedy",
+   "comedy skit",
+   "glitch and nugget",
+   "beluga style",
+   "rubber ducks",
+   "minecraft girlfriend",
+   "i can explain",
+   "story time",
+   "memes",
+   "bot bothered"
+  ],
+  "thumbnails": [
+   {
+    "photo": {
+     "image": "bezos-face",
+     "x": 840,
+     "y": 40,
+     "size": 400,
+     "color": "yellow",
+     "pos": "50% 40%"
+    },
+    "glow": false,
+    "msgs": [
+     {
+      "x": 0,
+      "y": 110,
+      "w": 900,
+      "size": 1.45,
+      "name": "Jeff Bezos",
+      "color": "#ff9900",
+      "media": "bezos-face",
+      "pos": "50% 40%",
+      "time": "11:14 PM",
+      "lines": [
+       "Your account ordered",
+       "*4,000 rubber ducks*"
+      ]
+     },
+     {
+      "x": 40,
+      "y": 470,
+      "w": 560,
+      "size": 1.25,
+      "name": "Glitch",
+      "emoji": "🤖",
+      "bg": "#1e88a8",
+      "time": "11:14 PM",
+      "lines": [
+       "im a duck farmer"
+      ],
+      "rot": -2
+     }
+    ],
+    "tag": "PARODY",
+    "tagTop": true
+   },
+   {
+    "photo": {
+     "image": "zuck-face",
+     "x": 870,
+     "y": 60,
+     "size": 360,
+     "color": "cyan",
+     "pos": "50% 40%"
+    },
+    "glow": false,
+    "msgs": [
+     {
+      "x": 0,
+      "y": 80,
+      "w": 860,
+      "size": 1.35,
+      "name": "nugget",
+      "emoji": "🐹",
+      "bg": "#f0a24a",
+      "time": "11:07 PM",
+      "lines": [
+       "“sharing is caring”",
+       "- mark zuckerberg"
+      ]
+     },
+     {
+      "x": 100,
+      "y": 440,
+      "w": 900,
+      "size": 1.4,
+      "name": "Mark Zuckerberg",
+      "color": "#4f8cff",
+      "media": "zuck-face",
+      "pos": "50% 40%",
+      "time": "11:07 PM",
+      "lines": [
+       "We don't share.",
+       "*We collect.*"
+      ],
+      "rot": -1.5
+     }
+    ],
+    "tag": "PARODY",
+    "tagTop": true
+   }
+  ]
+ }
+}
