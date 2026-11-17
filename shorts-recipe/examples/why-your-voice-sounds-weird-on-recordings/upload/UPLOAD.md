@@ -56,7 +56,14 @@ why does my voice sound different on recordings, why do I hate my voice, recorde
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | You holding your phone at arm's length, eyes squeezed shut, teeth gritted, caption "on the recording" | **Main pick.** The cringe everyone knows |
+| `thumbnail-alt-five-stars.jpg` | A listener in headphones, eyes wide, mouth open, the ratings card showing "YOU! ★★★★★", caption "they didn't recognize it" | Twist angle |
+| `thumbnail-alt-two-ways.jpg` | The see-through head with two glowing sound paths into the ear, "2 WAYS", caption "two ways" | Science angle |
+| `thumbnail-alt-spectrum.jpg` | You side-eyeing the phone over an "ON A RECORDING" spectrum with the bass missing, caption "in your head" | Explainer angle |
+| `thumbnail-alt-friend.jpg` | Your friend on the sofa hearing you through the air, caption "everyone else hears it" | Relatable angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
