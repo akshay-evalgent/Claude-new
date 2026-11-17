@@ -1,0 +1,9 @@
+{
+  "name": "why-onions-make-you-cry-short",
+  "private": true,
+  "description": "Procedural three.js scenes for the \"Why Onions Make You Cry\" short",
+  "dependencies": {
+    "three": "0.160.0",
+    "@expo-google-fonts/nunito": "0.2.3"
+  }
+}

@@ -1,0 +1,48 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.03,0:00:01.28,Short,,0,0,0,,Onions make you cry
+Dialogue: 0,0:00:01.28,0:00:02.22,Short,,0,0,0,,on purpose
+Dialogue: 0,0:00:03.00,0:00:04.42,Short,,0,0,0,,Inside every onion cell
+Dialogue: 0,0:00:04.42,0:00:05.08,Short,,0,0,0,,two chemicals
+Dialogue: 0,0:00:05.08,0:00:06.26,Short,,0,0,0,,are kept apart
+Dialogue: 0,0:00:06.56,0:00:07.23,Short,,0,0,0,,When your knife
+Dialogue: 0,0:00:07.23,0:00:08.24,Short,,0,0,0,,breaks the cells
+Dialogue: 0,0:00:08.24,0:00:08.71,Short,,0,0,0,,they mix
+Dialogue: 0,0:00:08.71,0:00:09.62,Short,,0,0,0,,and an enzyme
+Dialogue: 0,0:00:09.62,0:00:11.26,Short,,0,0,0,,turns them into a gas
+Dialogue: 0,0:00:11.59,0:00:12.70,Short,,0,0,0,,That gas floats up
+Dialogue: 0,0:00:12.70,0:00:13.44,Short,,0,0,0,,into your eyes
+Dialogue: 0,0:00:13.44,0:00:14.28,Short,,0,0,0,,and irritates
+Dialogue: 0,0:00:14.28,0:00:15.08,Short,,0,0,0,,the nerves there
+Dialogue: 0,0:00:15.08,0:00:15.84,Short,,0,0,0,,so your eyes
+Dialogue: 0,0:00:15.84,0:00:16.72,Short,,0,0,0,,flood with tears
+Dialogue: 0,0:00:16.72,0:00:18.18,Short,,0,0,0,,to wash it out
+Dialogue: 0,0:00:18.18,0:00:19.04,Short,,0,0,0,,It's how the onion
+Dialogue: 0,0:00:19.04,0:00:19.84,Short,,0,0,0,,defends itself
+Dialogue: 0,0:00:19.84,0:00:21.24,Short,,0,0,0,,from hungry animals
+Dialogue: 0,0:00:21.63,0:00:22.96,Short,,0,0,0,,In 2002
+Dialogue: 0,0:00:22.96,0:00:23.82,Short,,0,0,0,,scientists found
+Dialogue: 0,0:00:23.82,0:00:24.96,Short,,0,0,0,,the exact enzyme
+Dialogue: 0,0:00:24.96,0:00:25.94,Short,,0,0,0,,that makes the gas
+Dialogue: 0,0:00:25.94,0:00:27.10,Short,,0,0,0,,and later grew onions
+Dialogue: 0,0:00:27.10,0:00:28.86,Short,,0,0,0,,that barely make it
+Dialogue: 0,0:00:28.86,0:00:30.58,Short,,0,0,0,,Cold slows the gas down
+Dialogue: 0,0:00:30.58,0:00:31.62,Short,,0,0,0,,and a sharp knife
+Dialogue: 0,0:00:31.62,0:00:32.96,Short,,0,0,0,,crushes fewer cells
+Dialogue: 0,0:00:33.23,0:00:33.86,Short,,0,0,0,,So next time
+Dialogue: 0,0:00:33.86,0:00:34.72,Short,,0,0,0,,you chop one
+Dialogue: 0,0:00:34.72,0:00:35.34,Short,,0,0,0,,chill it first
+Dialogue: 0,0:00:35.34,0:00:35.80,Short,,0,0,0,,because
+Dialogue: 1,0:00:26.85,0:00:32.95,Prompt,,0,0,0,,{\fad(300,250)}Send this to someone\Nwho cries over onions
