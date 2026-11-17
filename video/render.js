@@ -1,7 +1,7 @@
 // usage: node render.js spec.json out.mp4          -> full video
 //        node render.js spec.json sheet.png 1,5,9  -> contact sheet of stills at those seconds
 const {chromium}=require('playwright'),fs=require('fs'),path=require('path'),{execFileSync}=require('child_process');
-(async()=>{const spec=JSON.parse(fs.readFileSync(process.argv[2])),out=process.argv[3],fps=30,T=spec.duration;
+(async()=>{const spec=JSON.parse(fs.readFileSync(process.argv[2])),out=process.argv[3],fps=spec.fps||30,T=spec.duration;
 const stills=process.argv[4]&&process.argv[4].split(',').map(Number);
 const tmp=fs.mkdtempSync(path.join(require('os').tmpdir(),'frames-'));
 const b=await chromium.launch({args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});
@@ -20,6 +20,7 @@ await b.close();const src=path.join(tmp,'%05d.png');
 if(stills){execFileSync('ffmpeg',['-y','-loglevel','error','-i',src,'-vf',`scale=270:-1,tile=${times.length}x1`,'-frames:v','1',out])}
 else{const v=['-c:v','libx264','-pix_fmt','yuv420p','-crf','17','-preset','medium','-r',fps,'-movflags','+faststart','-t',T,out];
  if(spec.audio==='none')execFileSync('ffmpeg',['-y','-loglevel','error','-framerate',fps,'-i',src,...v]);
+ else if(spec.audioFile)execFileSync('ffmpeg',['-y','-loglevel','error','-framerate',fps,'-i',src,'-i',path.join(__dirname,spec.audioFile),'-map','0:v','-map','1:a','-c:a','aac','-b:a','192k',...v]);
  else{ // placeholder ambient pad (synthesised, royalty-free)
   const pad=[110,164.81,220,277.18,329.63].map((f,i)=>`sine=f=${f}:d=${T},volume=${[.5,.35,.3,.18,.14][i]},tremolo=f=${.11+i*.05}:d=.6[a${i}]`).join(';');
   execFileSync('ffmpeg',['-y','-loglevel','error','-framerate',fps,'-i',src,'-filter_complex',
