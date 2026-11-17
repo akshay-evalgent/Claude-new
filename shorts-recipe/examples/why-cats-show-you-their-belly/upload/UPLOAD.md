@@ -54,7 +54,14 @@ why do cats show their belly, cat belly trap, cat belly rub, why does my cat att
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | The ginger tabby flat on its back, paws up, fluffy belly on show, big green eyes on you, caption "and shows you its belly" | **Main pick.** The exact moment every owner knows |
+| `thumbnail-alt-reflex.jpg` | Your hand reaching for the belly, a red alert ring flashing, caption "kicks in" | Suspense angle: don't do it |
+| `thumbnail-alt-rabbit-kick.jpg` | The cat wrapped around your forearm, back legs kicking, fur flying, caption "kick like a rabbit" | Action angle |
+| `thumbnail-alt-four-paws.jpg` | Belly up with all four paws ringed and counted, caption "with all four paws" | Funny, it's-armed angle |
+| `thumbnail-alt-x-ray.jpg` | The x-ray cat, organs glowing under the belly, caption "important organs" | Science angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
