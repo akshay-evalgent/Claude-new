@@ -56,7 +56,14 @@ why do onions make you cry, onion tears, cutting onions crying, how to cut onion
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | You at the chopping board mid-chop, eyes squeezed shut, tears streaming down, caption "Onions make you cry" | **Main pick.** The exact moment everyone knows |
+| `thumbnail-alt-tears.jpg` | Close on your face, tears pouring, caption "flood with tears" | Funny, over-the-top angle |
+| `thumbnail-alt-eye.jpg` | A giant eye, the green gas reaching it and the nerve endings flaring, caption "the nerves there" | Science angle |
+| `thumbnail-alt-mouse.jpg` | A mouse backing away from an onion in a cloud of green gas, caption "from hungry animals" | The onion fights back |
+| `thumbnail-alt-tear-enzyme.jpg` | The glowing enzyme under "2002" and "THE TEAR ENZYME", caption "the exact enzyme" | Discovery angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
