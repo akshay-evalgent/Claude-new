@@ -1,0 +1,5 @@
+{"template":"pixel-photo.html","audio":"none","duration":20,"pan":26,
+ "images":{"sky":"art/stargazer/sky.png","fg":"art/stargazer/fg.png"},"dataFile":"art/stargazer/stars.json",
+ "meteors":[{"t":3.6,"d":0.8,"x":215,"y":40,"dx":-95,"dy":58,"len":22},
+            {"t":10.2,"d":0.7,"x":120,"y":250,"dx":-80,"dy":44,"len":18},
+            {"t":15.4,"d":0.9,"x":250,"y":150,"dx":-120,"dy":70,"len":26}]}
