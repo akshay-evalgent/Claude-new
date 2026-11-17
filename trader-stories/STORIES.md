@@ -1,43 +1,48 @@
 # Story shortlist
 
-Written from memory as a starting list. Every figure below must be checked
+Coverage was checked on 17 Nov 2026 by searching YouTube for each name and
+reading the top 5 to 8 results. That shows whether a video with a real
+audience exists; it cannot prove no small video exists anywhere.
+
+The story details are written from memory. Every figure must be checked
 against primary sources before it reaches a script.
 
-Scored on four things: how little it has been covered in English, whether it
-has one great trade to build beat 7 around, how well it is documented, and
-whether the hero has a clear personality.
+## Open: no English video with an audience
 
-## First picks
+| Trader | Where, when | The story | What YouTube has |
+|---|---|---|---|
+| **Xu Xiang** | Ningbo and Shanghai, 1990s-2019 | Skipped university to trade with family savings, led the feared "Ningbo death squad" of limit-up traders, built China's best-performing fund, was arrested on a highway bridge in Nov 2015 and photographed in a white designer coat. Prison, an 11 billion yuan fine. | Three English videos, best one 62 views |
+| **Ginzo Korekawa** | Osaka and Tokyo, 1897-1992 | "The last speculator." Went broke more than once, taught himself economics in a library for three years, and in his eighties made a fortune on Sumitomo Metal Mining after reading a gold-discovery report nobody else acted on. Became Japan's top taxpayer. | Japanese only (two videos, 80K and 100K views, both mid-2026). Nothing in English |
+| **Liu Qibing** | Shanghai and London, 2005 | A state trader who shorted about 200,000 tonnes of copper into a rising market, then vanished. Beijing at first denied he existed. | Nothing found |
+| **Juan Pablo Dávila** | Santiago, 1994 | A Codelco copper trader typed buy instead of sell, then lost about $200M trying to win it back. Chile got a new verb, "davilar". | Nothing found beyond a mention in a list video |
+| **Chen Jiulin** | Singapore, 2004 | Ran China Aviation Oil, the "most transparent company" in Singapore, while hiding $550M of oil-option losses. | One English video, 90 views |
+| **Toshihide Iguchi** | New York, 1984-1995 | Hid $1.1B of bond losses at Daiwa Bank for 11 years, then confessed by letter. | Several small videos, none above 500 views |
+| **Yasuo Hamanaka** | Tokyo, 1986-1996 | "Mr. Copper." Controlled a large share of the world copper market and lost about $2.6B. | Several small videos, none above 700 views |
+| **Peter Young** | London, 1996 | Morgan Grenfell star fund manager whose hidden holdings cost the bank about £400M. | Nothing found |
+| **Evan Dooley** | Memphis, 2008 | Lost $141M in wheat futures in one night from his home computer. | Nothing found |
 
-| Trader | Where, when | The hook | The Trade | Sourcing |
-|---|---|---|---|---|
-| **Navinder Singh Sarao** | London, 2009-2015 | Traded from a bedroom in his parents' house, never spent the money | Accused of helping trigger the 2010 Flash Crash; made about $40M, then lost most of it to people who defrauded him | Strong: court records, a full book (*Flash Crash*, Liam Vaughan) |
-| **Xu Xiang** | Ningbo and Shanghai, 1990s-2015 | Dropped out of school to trade, became China's most feared fund manager | His fund gained through the 2015 crash; arrested on a highway bridge that November | Good: Bloomberg, FT, Caixin |
-| **Andy Krieger** | New York, 1987 | A 32-year-old at Bankers Trust took on a whole currency | Shorted the New Zealand dollar in a size said to rival the country's money supply; quit over his bonus | Good: contemporary press, his own book |
-| **CIS** | Japan, 2000s-present | A gamer who treated the market as a video game; BNF's peer | The same J-Com morning, played the opposite way | Fair: a long Bloomberg profile, his own book in Japanese |
+## Taken: already has a well-watched video
 
-## Strong second films
-
-| Trader | The hook | Note |
-|---|---|---|
-| Yasuo Hamanaka, "Mr. Copper" | Controlled a large share of the world copper market from a desk at Sumitomo, and hid losses for a decade | A fall story; about $2.6B lost |
-| Victor Niederhoffer | The man whose documentary inspired BNF; blew up his fund twice | Natural sequel to a BNF-style film |
-| Thomas Peterffy | Hungarian immigrant who brought computers onto the trading floor when they were banned | A builder's story more than a single trade |
-| Radhakishan Damani | The quiet trader in white who bet against Harshad Mehta, then left markets to found DMart | Under-covered outside India |
-| Brian Hunter | Made a fortune in natural gas after Hurricane Katrina, then lost $6B the next year at Amaranth | Rise and fall inside 18 months |
-| Paul Rotter, "the Flipper" | One man who was a meaningful share of daily volume in German bond futures | Thin sourcing, mostly interviews |
-| Steve Perkins | An oil broker who bought 7 million barrels overnight while drunk | Short and funny; a good 10-minute film |
-| Munehisa Homma | The 18th-century rice trader behind candlestick charts | Much of it is legend, and must be told as legend |
-| Bill Hwang | Lost about $20B in two days in 2021 | Well covered already |
-| Hetty Green | The richest woman in America, who lent New York City money in the 1907 panic | Rich visual period |
+| Trader | Existing video |
+|---|---|
+| Navinder Sarao | Covered (dropped from the list) |
+| CIS | Billionaire Bears, 1.1M views; two more above 300K |
+| Andy Krieger | 425K and 95K views |
+| Paul Rotter | Many, up to 72K |
+| Steve Perkins | 2.2M views |
+| Naji Nahas | Portuguese only, 717K views. Open in English |
+| Souk al-Manakh, Kuwait 1982 | 556K views (on the bubble, not on one trader) |
+| Nui Onoue, the "toad lady" | Several recent videos; view counts not retrieved |
 
 ## Recommendation for the pilot
 
-Navinder Sarao. He is the closest match to the reference's hero (a bedroom, a
-private obsession, indifference to money) so the script template can be tested
-directly, and he is the best documented, which matters most for a first film.
-His story ends in a fall rather than a win, which also tests the alternate
-ending.
+**Xu Xiang.** It is the largest untold story on the list: no English video
+has more than 62 views, the English-language press record is solid
+(Bloomberg, FT, Reuters, Caixin), and it has ready-made images for every beat,
+from the teenage trader in Ningbo to the arrest on the bridge. It is a rise
+and fall, so it uses the alternate ending in the script template.
 
-If the priority is a story almost nobody in the English-speaking audience
-knows, choose Xu Xiang instead.
+**Ginzo Korekawa** is the second choice, and the better one if the pilot
+should end on a win like the reference does. He is the nearest thing to an
+earlier BNF. The risk is sourcing: most material is in Japanese, including
+his autobiography.
