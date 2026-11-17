@@ -1,17 +1,17 @@
-# Format: full-length illustrated trader stories
+# Format: full-length trader stories, shot like a drama
 
 One film, one trader, 20 to 25 minutes. True stories most viewers have never
 heard, told like a thriller, drawn rather than borrowed.
 
 The scripting approach comes from the study in `SCRIPT-STYLE.md`. The picture
-is our own: generated illustration plus motion graphics, no lifted film or TV
+is our own: generated photographic drama stills plus motion graphics, no lifted film or TV
 footage.
 
 ## What makes it different
 
 | | Typical finance-story channel | This format |
 |---|---|---|
-| Picture | Stock footage, re-voiced drama clips | Original illustration in one house style |
+| Picture | Stock footage, re-voiced drama clips | Original generated drama stills in one house look, labelled DRAMATISED |
 | Facts | Mixed with invention, unlabelled | Every number sourced; acted scenes labelled "dramatised" |
 | Charts | Screenshots | Redrawn from real price data, animated |
 | Takeaway | Story only | Story plus the trader's actual method |
@@ -58,7 +58,7 @@ Five shot families, mixed so no family runs longer than about 20 s.
 
 | Family | Share | What it is | How it is made |
 |---|---|---|---|
-| Scene | 40 % | The hero in a place: the room, the trading floor, the street | Generated illustration, cut into layers, slow push or parallax |
+| Scene | 40 % | The hero in a place: the room, the trading floor, the street | Generated photographic still, cut into layers, slow push or parallax |
 | Chart | 20 % | The actual price move, drawn on as the narrator speaks | Real price data, animated in code |
 | Number | 15 % | The scoreboard, big figures, the trade ticket | Type animation |
 | Document | 15 % | Headlines, forum posts, court filings, quotes | Real text reset in house type, with the source named |
@@ -68,14 +68,19 @@ Constant elements:
 
 - **The scoreboard.** A small readout of year, age and account size that stays
   through the film and ticks at every act break. This is the format's signature.
-- **One art style per channel**, not per film. Stylised illustration (ink and
-  flat colour, or graphic-novel) rather than photoreal. It hides generation
-  flaws, stays consistent across films, and avoids realistic fake images of
-  real people.
+- **One look per channel**, not per film: photographic drama stills, as if
+  from a prestige crime series (anamorphic lenses, practical light, shallow
+  focus, restrained grade). People lead the frame, as in the reference video.
+  Prompts open with the framing, then a locked character description, then
+  the scene, then the house style (see `xu-xiang/build_shotlist.py`).
+- **DRAMATISED tag.** Because the stills look real, every shot showing the
+  hero, or reconstructing a real moment with real people, carries a
+  DRAMATISED tag on screen. Real documents and press photos are never
+  recreated as images; show people reacting to them, or a detail with no face.
 - **A two-colour rule.** One colour for gains and one for losses, used nowhere else.
 
 A 24-minute film at 4 to 6 s per shot is 250 to 300 shots, so roughly 100 to
-120 generated illustrations. Reusing locations (the room appears twenty times)
+120 generated images. Reusing locations (the room appears twenty times)
 brings unique images closer to 60 or 70.
 
 ## Production pipeline
@@ -114,13 +119,18 @@ brings unique images closer to 60 or 70.
 
 ## Risks to settle before film one
 
-- **Real people.** Many of these traders are alive and some are private. Keep
-  the art stylised, do not invent dialogue without a label, and keep to
-  sourced facts on anything that reads as an accusation.
-- **YouTube disclosure.** Realistic altered or synthetic content must be
-  flagged at upload. Stylised illustration generally does not need it, but
-  cloned or realistic synthetic voices of real people do.
+- **Real people.** Many of these traders are alive and some are private. Use
+  generic faces, never a likeness; tag reconstructions DRAMATISED; do not
+  invent dialogue without a label; keep to sourced facts on anything that
+  reads as an accusation.
+- **YouTube disclosure.** The photographic look counts as realistic altered or
+  synthetic content, so tick the disclosure box at every upload. Cloned or
+  realistic synthetic voices of real people also need it.
 - **Monetisation.** YouTube demonetises mass-produced, repetitive AI content.
   Original research, a consistent human voice and custom animation are what
   keep a channel on the right side of that.
 - **Model licences.** Confirm commercial use on each model card.
+- **Character consistency.** FLUX.1-schnell has no reference-image input, so
+  the same character can drift between shots. Locked prompt descriptions
+  help; a small character LoRA trained on approved frames is the next step if
+  drift is visible in the edit.

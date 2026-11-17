@@ -22,111 +22,196 @@ PAUSE_PER_SENTENCE = 0.35        # breath at each full stop, seconds
 PAUSE_PER_SECTION = 1.5          # beat between sections, seconds
 
 # --- house style, characters ------------------------------------------------
+# Photographic drama look. Every prompt is built as:
+#   "<framing>. <character>, <scene>. <STYLE>"
+# Framing goes first because the model weighs the start of a prompt most.
 
 STYLE = (
-    "Graphic novel illustration with bold ink linework and flat muted colour "
-    "washes. Palette of ink black, slate grey and warm off-white paper with "
-    "touches of dull ochre. Low-key cinematic lighting, visible paper grain, "
-    "wide 16:9 film composition. No text, no lettering, no readable signs, "
+    "Photorealistic cinematic film still from a prestige crime drama series. "
+    "Shot on an ARRI Alexa with anamorphic lenses, natural skin texture, motivated "
+    "practical lighting, deep shadows, shallow depth of field, gentle film grain, "
+    "restrained colour grade with true whites. No text, no subtitles, no captions, "
     "no logos, no watermark."
 )
 
-# Generic descriptions, never a likeness of the real person.
+# Locked descriptions, repeated word for word in every shot of that era so the
+# face and clothes stay as close as the model allows. Generic faces, never a
+# likeness of the real person.
+_FACE = ("a round soft face, a slightly heavy build, short black hair receding at "
+         "the temples and untidy on top, thin rimless rectangular glasses, clean-shaven")
 CHARACTERS = {
-    "XU_YOUNG": "a slim Chinese teenage boy of about fifteen with short untidy "
-                "black hair, wearing plain early-1990s school clothes",
-    "XU_20S": "a slim young Chinese man in his early twenties with short untidy "
-              "black hair and a plain dark 1990s jacket",
-    "XU_ADULT": "a Chinese man in his late thirties with a round face, rimless "
-                "glasses and receding untidy black hair, wearing a plain dark "
-                "tracksuit",
-    "XU_COAT": "a Chinese man in his late thirties with a round face, rimless "
-               "glasses and receding untidy black hair, wearing a long white "
-               "coat over a grey button-down shirt",
+    "XU_YOUNG": "Xu, a slim Chinese teenage boy of about sixteen with a round face, "
+                "short untidy black hair and no glasses, wearing a faded blue "
+                "early-1990s school tracksuit jacket",
+    "XU_20S": "Xu, a slim Chinese man of about twenty with a round face, short "
+              "untidy black hair and no glasses, wearing a plain dark-grey 1990s "
+              "zip jacket over a white shirt",
+    "XU_ADULT": f"Xu, a 38-year-old Chinese man with {_FACE}, wearing a plain black "
+                "zip-up tracksuit top",
+    "XU_COAT": f"Xu, a 38-year-old Chinese man with {_FACE}, wearing a long bright "
+               "white tailored overcoat over a grey button-down shirt",
 }
 
-# --- illustrations to generate ------------------------------------------------
-# (image_id, character or "", scene prompt)
+ERA_90S = "early-1990s China, period-accurate clothes and interiors, no computers, no modern screens"
+
+# --- images to generate ------------------------------------------------------
+# (image_id, character or "", framing, scene)
 
 IMAGES = [
     # cold open, bridge, epilogue
-    ("bridge_aerial", "", "aerial view from high above a very long sea bridge crossing grey open water, the bridge a thin line running to the horizon, overcast sky, sea haze"),
-    ("bridge_fog", "", "a very long sea bridge disappearing into thick fog at dusk, seen from road level, empty lanes, streetlights fading into the mist"),
-    ("car_expressway", "", "a single dark saloon car on an empty six-lane expressway seen from behind, grey morning, flat coastal land, power lines"),
-    ("car_interior_coat", "XU_COAT", "close view inside a car, a man's hands on the steering wheel and the sleeve of a long white coat, his face out of frame, grey light through the windscreen"),
-    ("xu_coat_silhouette", "XU_COAT", "seen from behind, standing alone in a dark room before a wall of glowing market screens, his silhouette sharp against the light"),
+    ("bridge_aerial", "", "Extreme wide aerial shot from high above",
+     "a very long low cable-stayed sea bridge on hundreds of concrete piers crossing grey open water, running to the horizon, overcast sky, sea haze"),
+    ("bridge_fog", "", "Wide shot at road level",
+     "a very long low sea bridge disappearing into thick fog at dusk, empty lanes, streetlights fading into the mist"),
+    ("car_expressway", "", "Wide shot from behind and above",
+     "a single dark saloon car alone on an empty six-lane coastal expressway, grey Sunday morning, flat land, power lines"),
+    ("car_interior_coat", "XU_COAT", "Close-up through the windscreen, from the passenger side",
+     "gripping the steering wheel, jaw tight, eyes fixed on the road ahead, the white coat bright against the dark car interior, rain on the glass, grey morning light"),
+    ("xu_coat_silhouette", "XU_COAT", "Wide shot from behind, figure small in the frame",
+     "standing alone in a dark room facing a wall of glowing market screens, his silhouette and the white coat sharp against the light"),
     # the legend
-    ("zexi_floor_front", "XU_ADULT", "a modern open-plan trading floor in a Shanghai office, rows of desks with several monitors each, traders working; at the very back of the room one man sits apart, small in the frame"),
-    ("xu_tracksuit_desk", "XU_ADULT", "sitting at a desk with four monitors at the back of a trading floor, seen from the side, intent, his glasses lit by screen light"),
-    ("two_phones", "", "two smartphones lying side by side on a dark meeting table, both screens glowing as blank panels, a cup of tea beside them, shallow depth of field"),
-    ("meeting_table", "XU_ADULT", "a meeting room, several men in suits talking and gesturing across a table; at the far end he looks down at two phones, ignoring them"),
-    ("traders_whisper", "", "a group of Chinese stockbrokers in suits huddled by an office window at night, whispering, glancing across the room"),
-    ("regulator_building_night", "", "a large stern government office building in Beijing at night, grey stone facade, rows of lit windows, a wide empty plaza"),
+    ("zexi_floor_front", "XU_ADULT", "Wide shot down the length of a room, eye level",
+     "a modern open-plan Shanghai trading floor, rows of traders at multi-monitor desks in the foreground, and at the very back of the room Xu sits apart at his own desk, small and in sharp focus"),
+    ("xu_tracksuit_desk", "XU_ADULT", "Medium shot in profile",
+     "sitting at a desk with four monitors at the back of a trading floor, intent, screen light reflected in his glasses, colleagues out of focus behind him"),
+    ("two_phones", "", "Macro close-up, low angle on a table top",
+     "two smartphones side by side on a dark meeting table, both screens glowing as plain bright panels with no readable content, a cup of green tea beside them"),
+    ("meeting_table", "XU_ADULT", "Medium-wide shot from the end of a conference table",
+     "several men in suits talk and gesture across the table while Xu, at the far end, looks down at two phones and ignores them"),
+    ("traders_whisper", "", "Medium shot through a glass partition",
+     "a group of Chinese stockbrokers in suits huddled by an office window at night, whispering and glancing across the room"),
+    ("regulator_building_night", "", "Wide shot, low angle",
+     "a large stern grey government office building in Beijing at night, rows of lit windows, a wide empty plaza, no signs"),
     # origin
-    ("shanghai_1990_exchange", "", "Shanghai in 1990, a long crowd of people in winter coats queuing on a pavement outside a modest old building to buy their first shares, bicycles, period street"),
-    ("ningbo_home_1990", "XU_YOUNG", "a small 1990s Chinese apartment, a father in a factory work jacket and a mother at the kitchen counter, the boy at the table, warm lamp light, modest furniture"),
-    ("boy_newspaper", "XU_YOUNG", "at a school desk at night studying a newspaper folded open to dense tables of share prices, pencil in hand, desk lamp"),
-    ("boy_books", "XU_YOUNG", "surrounded by stacks of second-hand books, reading by lamplight in a cramped bedroom"),
-    ("lecture_backrow", "XU_YOUNG", "a lecture hall seen from the back row, adults listening to a speaker at a blackboard, the boy sitting alone at the back taking notes"),
-    ("exam_hall_empty_desk", "", "a large exam hall filled with rows of students bent over papers, one desk in the middle row empty with its chair pushed in, morning light"),
-    ("hands_cash", "", "close view of an older person's hands passing a thick bundle of banknotes tied with string to a young person's hands across a kitchen table, banknotes with no readable markings"),
-    ("galaxy_street_exterior", "XU_20S", "a grey eight-storey 1990s office building beside a small pharmacy on a busy Ningbo street, the young man walking towards the entrance, bicycles, overcast"),
+    ("shanghai_1990_exchange", "", "Wide shot along a pavement",
+     "a long queue of ordinary people in winter coats outside a modest old building waiting to buy their first shares, bicycles, Shanghai street, " + ERA_90S),
+    ("ningbo_home_1990", "XU_YOUNG", "Medium-wide shot from a doorway",
+     "a small apartment, his father in a blue factory work jacket and his mother at the kitchen counter, Xu at the table, warm lamp light, " + ERA_90S),
+    ("boy_newspaper", "XU_YOUNG", "Close-up over his shoulder",
+     "at a desk at night studying a newspaper folded open to dense tables of share prices, pencil in hand, desk lamp, " + ERA_90S),
+    ("boy_books", "XU_YOUNG", "Medium shot",
+     "sitting on a bed surrounded by stacks of worn second-hand books, reading by lamplight in a cramped bedroom, " + ERA_90S),
+    ("lecture_backrow", "XU_YOUNG", "Wide shot from the back row",
+     "adults in a lecture hall listen to a speaker at a blackboard while Xu sits alone in the last row taking notes, " + ERA_90S),
+    ("exam_hall_empty_desk", "", "Wide symmetrical shot",
+     "a large exam hall with rows of students bent over papers, one desk in the middle row empty with its chair pushed in, morning light, " + ERA_90S),
+    ("hands_cash", "", "Extreme close-up on a kitchen table",
+     "an older person's work-worn hands passing a thick bundle of banknotes tied with string to a young person's hands, notes with no readable markings, " + ERA_90S),
+    ("galaxy_street_exterior", "XU_20S", "Wide shot from across the street",
+     "walking towards the entrance of a grey eight-storey office building beside a small pharmacy on a busy Ningbo street, bicycles, overcast, " + ERA_90S),
     # the hall
-    ("hall_staircase", "", "a wide worn concrete staircase leading up to a second floor, cigarette butts and sunflower seed shells on the steps, people climbing, 1990s"),
-    ("hall_blackboard_crowd", "", "a crowded 1990s stock trading hall, dozens of people in jackets standing facing a huge blackboard covered in chalk columns of prices, a clerk on a ladder with chalk, cigarette smoke"),
-    ("hall_thinning", "", "a 1990s stock trading hall almost empty, a few people slumped on benches, torn order slips scattered on the floor, a half-wiped blackboard"),
-    ("chives_board", "", "a bunch of muted green chives on a wooden chopping board, a cleaver beside them, some chives cut, dramatic side light, dark background"),
-    ("xu_20s_hall", "XU_20S", "standing perfectly still in a crowded 1990s trading hall, looking up at a chalk blackboard, the crowd around him blurred in motion"),
-    ("gangsters_table", "", "two men in dark suits seated facing each other across a table in a smoky private room, faces hidden in shadow, a third figure standing between them, 1990s Shanghai"),
-    ("xu_20s_window", "XU_20S", "standing at an apartment window at night looking out over the lights of a 1990s Chinese port city, seen from behind"),
+    ("hall_staircase", "", "Low-angle shot looking up a staircase",
+     "a wide worn concrete staircase to a second floor, cigarette butts and sunflower seed shells on the steps, people climbing, " + ERA_90S),
+    ("hall_blackboard_crowd", "", "Wide shot from behind the crowd",
+     "a packed stock trading hall, dozens of people in jackets facing a huge black chalkboard filled with handwritten white chalk numbers only, a clerk on a wooden ladder writing with chalk, cigarette smoke in window light, " + ERA_90S),
+    ("hall_thinning", "", "Wide shot",
+     "the same trading hall almost empty, a few people slumped on wooden benches, torn paper order slips on the floor, a half-wiped chalkboard, " + ERA_90S),
+    ("chives_board", "", "Overhead close-up",
+     "a bunch of green chives on a wooden chopping board, a cleaver beside them, some chives cut, hard side light, dark background"),
+    ("xu_20s_hall", "XU_20S", "Medium close-up, slightly low angle",
+     "standing perfectly still in a packed trading hall, looking up at a huge black chalkboard of handwritten white chalk numbers, the crowd around him blurred in motion, smoke in shafts of window light, " + ERA_90S),
+    ("gangsters_table", "", "Medium-wide shot",
+     "two men in dark suits facing each other across a table in a smoky private room, faces lost in shadow, a third man standing between them, 1990s Shanghai"),
+    ("xu_20s_window", "XU_20S", "Medium shot from behind",
+     "standing at an apartment window at night, looking out over the lights of a port city, his reflection faint in the glass, " + ERA_90S),
     # the method
-    ("squad_desk", "XU_20S", "five young men crowded around a single desk in a 1990s trading hall, he sits in the centre writing an order slip, the others leaning in, chalk board behind"),
-    ("hall_crowd_turns", "", "a crowded 1990s trading hall where everyone has turned to look towards one desk at the side, heads turning, a moment of attention"),
-    ("sports_cars", "", "a row of shiny new sports cars parked outside a shabby grey 1990s office building, one empty parking space, passers-by staring"),
-    ("xu_20s_ticket", "XU_20S", "at a brokerage counter in the 1990s handing a paper order slip to a clerk through a window, close view"),
-    ("seminar_books", "", "a crowded hotel conference room, an audience of hopeful investors listening to a speaker on a stage, stacks of books on a table at the side, early 2000s"),
-    ("investigator_arrives", "", "a man in a dark suit carrying a briefcase climbing a worn concrete staircase towards a trading hall, seen from below, serious"),
-    ("meeting_room_tea", "", "a plain meeting room with a long table and teacups set out, several men in jackets seated stiffly, a man in a suit at the head of the table, early 2000s"),
-    ("hall_empty", "", "a 1990s stock trading hall completely empty, chairs stacked, a blank blackboard, dust in shafts of window light"),
+    ("squad_desk", "XU_20S", "Medium shot, eye level",
+     "five young men crowded around one desk in a smoky trading hall, Xu in the centre writing on a paper order slip while the others lean in, chalkboard of numbers behind, " + ERA_90S),
+    ("hall_crowd_turns", "", "Wide shot",
+     "a packed trading hall where everyone has turned to look towards one desk at the side, heads turning, a sudden hush, " + ERA_90S),
+    ("sports_cars", "", "Wide shot at kerb level",
+     "a row of shiny new sports cars parked outside a shabby grey office building, one empty parking space, passers-by staring, late 1990s China"),
+    ("xu_20s_ticket", "XU_20S", "Close-up at a counter",
+     "handing a paper order slip to a clerk through a brokerage counter window, only his hand and half his face in frame, " + ERA_90S),
+    ("seminar_books", "", "Wide shot from the back of the room",
+     "a crowded hotel conference room, an audience of hopeful investors facing a speaker on a stage, stacks of books on a table at the side, early-2000s China"),
+    ("investigator_arrives", "", "Low-angle shot from the bottom of a staircase",
+     "a serious man in a dark suit carrying a briefcase climbs a worn concrete staircase towards a trading hall, early-2000s China"),
+    ("meeting_room_tea", "", "Medium-wide shot",
+     "a plain meeting room with a long table and glass teacups, several men in jackets seated stiffly, a man in a suit at the head of the table, early-2000s China"),
+    ("hall_empty", "", "Wide shot",
+     "a trading hall completely empty, chairs stacked, a blank black chalkboard, dust in shafts of window light, " + ERA_90S),
     # Zexi
-    ("shanghai_skyline_2005", "", "the Shanghai skyline in 2005 seen from across the river, towers under construction, cranes, hazy evening"),
-    ("sunshine_office", "", "a modern glass office, bright sunlight falling through blinds across empty desks, long shadows"),
-    ("zexi_office_morning", "XU_ADULT", "a sleek modern office early in the morning, he arrives alone at his desk at the back of an empty trading floor, a large wall clock"),
-    ("zexi_office_night", "XU_ADULT", "a trading floor at two in the morning, every desk dark and empty, he is still working at the back, lit only by his monitors"),
-    ("researchers_waiting", "", "young analysts in an office holding thick printed reports, waiting outside a glass-walled room, uncertain"),
-    ("xu_alone_screens", "XU_ADULT", "alone in a dark room surrounded by monitors showing charts, seen over his shoulder, his reflection faint in the screens"),
-    ("xu_screens_cold", "XU_ADULT", "seen from behind in a dark room, monitors casting a cold blue glow, the rest of the room black, unsettling"),
-    ("boardroom_chair", "", "a corporate boardroom table, a hand pulling out an empty leather chair, other board members seated, overhead light"),
-    ("empty_chair_power", "", "an empty high-backed chair at the head of a long dark table, a single teacup steaming in front of it, heavy curtains, a sense of power"),
-    ("beijing_office_window", "XU_ADULT", "standing at a tall office window in Beijing at dusk, seen from behind, looking at a large stern government building across the street"),
+    ("shanghai_skyline_2005", "", "Wide shot across the river",
+     "the Shanghai skyline in 2005, towers under construction, cranes, hazy evening light"),
+    ("sunshine_office", "", "Wide shot",
+     "an empty modern glass office, bright morning sunlight falling through blinds across desks, long shadows"),
+    ("zexi_office_morning", "XU_ADULT", "Wide shot down an empty trading floor",
+     "arriving alone at his desk at the far end of a sleek empty trading floor early in the morning, small in the frame, a large wall clock, cool daylight"),
+    ("zexi_office_night", "XU_ADULT", "Wide shot down a dark trading floor",
+     "every desk dark and empty except one at the far end, where Xu is still working, small in the frame, lit only by his monitors, two in the morning"),
+    ("researchers_waiting", "", "Medium shot",
+     "young analysts holding thick printed reports wait outside a glass-walled office, uncertain"),
+    ("xu_alone_screens", "XU_ADULT", "Over-the-shoulder shot from behind him",
+     "alone in a dark room facing a curved bank of monitors showing price charts, his face reflected faintly in the screens"),
+    ("xu_screens_cold", "XU_ADULT", "Wide shot from behind, figure small in the frame",
+     "sitting in a dark room, monitors casting a cold blue glow over him, the rest of the room black"),
+    ("boardroom_chair", "", "Close-up on a boardroom table",
+     "a hand pulling out an empty leather chair at a corporate board table, other board members seated and out of focus, overhead light"),
+    ("empty_chair_power", "", "Wide symmetrical shot",
+     "an empty high-backed chair at the head of a long dark table, a single cup of tea steaming in front of it, heavy curtains"),
+    ("beijing_office_window", "XU_ADULT", "Medium-wide shot from behind",
+     "standing at a tall office window in Beijing at dusk, looking out at a stern grey government building across the street"),
     # the crash
-    ("retail_crowd_phones", "", "a sea of ordinary people in a public square, all looking down at glowing smartphones, faces lit from below, anxious, 2015"),
-    ("national_team", "", "a vast state trading room with long rows of identical desks and terminals, traders in white shirts, fluorescent light, rigid order"),
-    ("ny_floor", "", "a New York stock exchange trading floor at the opening bell, traders in jackets looking up at screens in shock"),
-    ("beijing_corridor", "", "a long government corridor at night, rows of closed wooden office doors, one door ajar with light spilling out, polished floor"),
-    ("arrested_exec", "", "two plain-clothes officers escorting a man in a business suit across a marble office lobby, all faces turned away, onlookers watching"),
-    ("passport_desk", "", "a dark red passport book with no readable markings lying closed on a desk under a lamp, a rubber stamp beside it"),
+    ("retail_crowd_phones", "", "Wide shot",
+     "a crowd of ordinary Chinese people in a public square, all looking down at glowing smartphones, faces lit from below, anxious, 2015"),
+    ("national_team", "", "Wide symmetrical shot",
+     "a vast trading room with long rows of identical desks and terminals, traders in white shirts, fluorescent light, rigid order"),
+    ("ny_floor", "", "Medium-wide shot",
+     "traders in jackets on a New York stock exchange floor at the opening bell, looking up at screens in shock"),
+    ("beijing_corridor", "", "Wide shot down a corridor",
+     "a long government corridor at night, closed wooden office doors, one door ajar with light spilling out, polished floor"),
+    ("arrested_exec", "", "Wide shot",
+     "two plain-clothes officers escorting a man in a business suit across a marble office lobby, all faces turned away from camera, onlookers watching"),
+    ("passport_desk", "", "Close-up on a desk",
+     "a dark red passport book with no readable markings lying closed under a desk lamp, a rubber stamp beside it"),
     # the bridge
-    ("grandma_apartment_ext", "", "an old 1980s apartment block in a quiet working-class Chinese neighbourhood on a Sunday morning, laundry on balconies, bicycles, a small shop"),
-    ("grandma_party_table", "", "a small family birthday party in a modest apartment, a round table of dishes and a tray of peach-shaped longevity buns, a very old woman at the head of the table smiling, relatives around her"),
-    ("white_coat_chair", "", "a long white coat hanging on the back of a wooden chair at a family dinner table, warm light"),
-    ("phone_lights_up", "", "a smartphone lying face down on a dinner table between dishes, light spilling from under its edges as it buzzes"),
-    ("stairwell_rush", "XU_COAT", "a blurred figure hurrying down a narrow concrete stairwell, motion blur, seen from above"),
-    ("car_ningbo_blocks", "", "a dark saloon car seen from above driving between grey apartment blocks with smog-stained walls and barred windows, overcast"),
-    ("car_river_bridge", "", "a dark saloon car crossing a city river bridge, a wide river below, a grey industrial city"),
-    ("car_bay", "", "a dark saloon car on a coastal expressway, a wide grey bay opening out on the left, flat light"),
-    ("blue_lights", "", "close view of brake lights glowing on a wet road, blue police lights reflected in the rear window of a car, blurred figures approaching"),
-    ("arrest_photo_redraw", "XU_COAT", "portrait, looking straight at the viewer, someone's hand pulling back his sleeve to reveal a handcuff, harsh camera flash, plain wall behind"),
+    ("grandma_apartment_ext", "", "Wide shot",
+     "an old 1980s apartment block in a quiet working-class Chinese neighbourhood on a Sunday morning, laundry on balconies, bicycles, a small shop"),
+    ("grandma_party_table", "", "Medium-wide shot",
+     "a small family birthday party in a modest apartment, a round table of dishes and a plate of peach-shaped longevity buns, a very old woman smiling at the head of the table, relatives around her"),
+    ("white_coat_chair", "", "Close-up",
+     "a long bright white overcoat hanging on the back of a wooden chair at a family dinner table, warm light"),
+    ("phone_lights_up", "", "Macro close-up",
+     "a smartphone lying face down on a dinner table between dishes, light spilling from under its edges as it buzzes"),
+    ("stairwell_rush", "XU_COAT", "High-angle shot down a stairwell, motion blur",
+     "hurrying down a narrow concrete stairwell, the white coat a blur"),
+    ("car_ningbo_blocks", "", "Top-down aerial shot",
+     "a dark saloon car driving between grey apartment blocks with smog-stained walls and barred windows, overcast"),
+    ("car_river_bridge", "", "Wide aerial shot",
+     "a dark saloon car crossing a city river bridge, a wide river below, a grey industrial city"),
+    ("car_bay", "", "Wide tracking shot",
+     "a dark saloon car on a coastal expressway, a wide grey bay opening out on the left, flat light"),
+    ("blue_lights", "", "Close-up on the back of a car",
+     "brake lights glowing on a wet road, blue police lights reflected in the rear window, blurred figures approaching"),
+    ("arrest_phone", "", "Medium close-up",
+     "two ordinary people on a sofa at night staring at a smartphone, its screen turned away from camera, their faces lit by it, shocked"),
+    ("cuff_closeup", "", "Extreme close-up, harsh camera flash",
+     "a hand pulling back the sleeve of a bright white overcoat to reveal a metal handcuff on a wrist, no face in frame, plain wall behind"),
     # the answer, reckoning, epilogue
-    ("sealed_doors", "", "glass office doors sealed with crossed paper strips bearing official stamps, an empty dark office beyond"),
-    ("zexi_floor_empty", "", "a modern trading floor abandoned, monitors off, chairs pushed back, papers left on desks, grey daylight"),
-    ("courthouse_ext", "", "a large modern Chinese courthouse with wide steps and columns on a grey winter day, flag poles"),
-    ("courtroom_back", "", "a courtroom seen from the back of the public gallery, a defendant standing alone in the dock seen from behind, the judges' bench far away"),
-    ("crowd_one_face", "", "a large crowd of traders in a trading hall, all in shadow, one man in the middle lit by a single spotlight"),
-    ("photo_frame_down", "", "a framed family photograph lying face down on a wooden sideboard, dust, a legal document beside it"),
-    ("two_phones_dark", "", "two smartphones on a dark table, both screens black, a cold cup of tea"),
-    ("prison_gate", "", "a high grey prison wall with a steel gate, a lone man in plain clothes walking out, small in the frame, early morning summer light, long shadow"),
+    ("sealed_doors", "", "Medium shot",
+     "glass office doors sealed with crossed paper strips bearing red official stamps, an empty dark office beyond"),
+    ("zexi_floor_empty", "", "Wide shot",
+     "a modern trading floor abandoned, monitors off, chairs pushed back, papers left on desks, grey daylight"),
+    ("courthouse_ext", "", "Wide low-angle shot",
+     "a large modern Chinese courthouse with wide steps and columns on a grey winter day, flag poles"),
+    ("courtroom_back", "", "Wide shot from the back of the public gallery",
+     "a courtroom, a defendant standing alone in the dock seen only from behind, the judges' bench far away"),
+    ("crowd_one_face", "", "Wide shot",
+     "a crowd of traders in a trading hall, all in shadow, one man in the middle lit by a single shaft of light, face turned away"),
+    ("photo_frame_down", "", "Close-up",
+     "a framed family photograph lying face down on a wooden sideboard, dust, a legal document beside it"),
+    ("two_phones_dark", "", "Macro close-up",
+     "two smartphones on a dark table, both screens black, a cold cup of tea"),
+    ("prison_gate", "", "Extreme wide shot",
+     "a high grey prison wall with a steel gate, a lone man in plain clothes walking out, small in the frame, early summer morning light, long shadow"),
 ]
+
+# Scenes that reconstruct a real moment with real people, even without Xu in
+# frame. These, and every shot showing Xu, carry a DRAMATISED tag on screen.
+RECONSTRUCTED = {"grandma_party_table", "arrested_exec", "investigator_arrives", "meeting_room_tea",
+                 "courtroom_back", "prison_gate", "cuff_closeup", "arrest_phone", "sports_cars"}
+TAG_WORDS = {"RUMOUR", "UNPROVEN", "ALLEGATION"}
 
 # --- shots --------------------------------------------------------------------
 # Families: SCENE (generated image + camera move), CHART, NUMBER, DOC, MAP,
@@ -281,8 +366,8 @@ SHOTS = [
     S(8, "SCENE", "bridge_aerial", "A few minutes late.", "", "slow push"),
     S(8, "SCENE", "blue_lights", "They stop him there.", "", "blue light flicker"),
     S(8, "BLACK", "", "", "", "silence", hold=4),
-    S(8, "SCENE", "arrest_photo_redraw", "That evening, a photograph", "", "slow push", "Illustration only; never trace or show the press photo"),
-    S(8, "SCENE", "arrest_photo_redraw", "Someone's hand is pulling back", "", "push to the cuff"),
+    S(8, "SCENE", "arrest_phone", "That evening, a photograph", "", "slow push", "Never recreate or show the press photo; we show people reacting to it"),
+    S(8, "SCENE", "cuff_closeup", "Someone's hand is pulling back", "", "push to the cuff", "No face"),
     S(8, "DOC", "", "The internet does what it does.", "", "comment bubbles stack over the image", "Paraphrased jokes; no real usernames"),
     S(8, "SCENE", "retail_crowd_phones", "Two hundred million people", "", "slow push"),
     # 9. The answer
@@ -392,9 +477,16 @@ def build():
             span = full[located[i]:nxt]
             dur = len(span.split()) / WORDS_PER_SECOND + PAUSE_PER_SENTENCE * len(re.findall(r"[.?!]", span))
             dur += shot["hold"]
+        tag = ""
+        if shot["family"] == "SCENE":
+            char = next(img[1] for img in IMAGES if img[0] == shot["image_id"])
+            if shot["on_screen"] in TAG_WORDS:
+                tag = shot["on_screen"]
+            elif char or shot["image_id"] in RECONSTRUCTED:
+                tag = "DRAMATISED"
         rows.append(dict(shot_id=sid, section=sec, start=fmt(t), seconds=round(dur, 1),
                          family=shot["family"], image_id=shot["image_id"], cue=shot["cue"],
-                         on_screen=shot["on_screen"], motion=shot["motion"], notes=shot["notes"]))
+                         on_screen=shot["on_screen"], tag=tag, motion=shot["motion"], notes=shot["notes"]))
         t += dur
 
     unused = image_ids - used
@@ -413,9 +505,12 @@ def build():
         for r in rows:
             if r["image_id"]:
                 uses[r["image_id"]] = uses.get(r["image_id"], 0) + 1
-        for image_id, char, scene in IMAGES:
+        for image_id, char, framing, scene in IMAGES:
             subject = CHARACTERS[char] + ", " if char else ""
-            w.writerow([image_id, char, uses[image_id], f"{subject}{scene}. {STYLE}"])
+            prompt = f"{framing}. {subject}{scene}. {STYLE}"
+            if len(prompt.split()) > 175:
+                raise SystemExit(f"{image_id}: prompt is {len(prompt.split())} words; keep it under 175 (token limit)")
+            w.writerow([image_id, char, uses[image_id], prompt])
 
     families = {}
     for r in rows:
@@ -425,7 +520,7 @@ def build():
           "Generated by `build_shotlist.py` from `SCRIPT.md`. Do not edit by hand.", "",
           f"- {len(rows)} shots, about {fmt(t)} at {round(WORDS_PER_SECOND * 60)} words a minute "
           f"with a {PAUSE_PER_SENTENCE}s breath per sentence.",
-          f"- {len(IMAGES)} illustrations to generate (`images.csv`), used in "
+          f"- {len(IMAGES)} images to generate (`images.csv`), used in "
           f"{families.get('SCENE', 0)} SCENE shots.",
           "- Built in motion graphics: " + ", ".join(f"{k} {v}" for k, v in sorted(families.items()) if k != "SCENE") + ".",
           "- Times are estimates from word counts. The recorded voice sets the real timing.", ""]
@@ -437,11 +532,11 @@ def build():
         if r["section"] != cur:
             cur = r["section"]
             md += ["", f"## {cur}. {names[cur]}", "",
-                   "| Shot | Start | Sec | Type | Picture | Starts on | On screen | Notes |",
-                   "|---|---|---|---|---|---|---|---|"]
+                   "| Shot | Start | Sec | Type | Picture | Starts on | On screen | Tag | Notes |",
+                   "|---|---|---|---|---|---|---|---|---|"]
         pic = f"`{r['image_id']}`, {r['motion']}" if r["image_id"] else r["motion"]
         cells = [r["shot_id"], r["start"], str(r["seconds"]), r["family"], pic,
-                 r["cue"] or "(no narration)", r["on_screen"], r["notes"]]
+                 r["cue"] or "(no narration)", r["on_screen"] if r["on_screen"] not in TAG_WORDS else "", r["tag"], r["notes"]]
         md.append("| " + " | ".join(c.replace("|", "/") for c in cells) + " |")
     (HERE / "SHOTLIST.md").write_text("\n".join(md) + "\n")
     print(f"{len(rows)} shots, {fmt(t)}, {len(IMAGES)} images, families {families}")

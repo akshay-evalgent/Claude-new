@@ -1,6 +1,7 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { C, font, prog, SAFE } from "../theme";
+import { Tag } from "./Cards";
 
 // Lower-right caption (the scoreboard owns lower-left) for a scene shot (a place, a time, a figure). Render with alpha.
 export type CaptionOverlayProps = { text: string; at?: number };
@@ -16,3 +17,12 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({ text, at = 0.4 }
     </AbsoluteFill>
   );
 };
+
+// Everything that sits on an illustrated shot: a tag (DRAMATISED, RUMOUR...) and/or a caption.
+export type SceneOverlayProps = { tag?: string; caption?: string };
+export const SceneOverlay: React.FC<SceneOverlayProps> = ({ tag, caption }) => (
+  <AbsoluteFill>
+    {tag ? <Tag text={tag} /> : null}
+    {caption ? <CaptionOverlay text={caption} /> : null}
+  </AbsoluteFill>
+);

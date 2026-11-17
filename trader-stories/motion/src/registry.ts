@@ -5,12 +5,12 @@ import { CompareBars, LineChart, RankList } from "./components/Charts";
 import { MapCard, PinDistance } from "./components/Maps";
 import { Scoreboard } from "./components/Scoreboard";
 import { SceneMove } from "./components/SceneMove";
-import { CaptionOverlay } from "./components/CaptionOverlay";
+import { CaptionOverlay, SceneOverlay } from "./components/CaptionOverlay";
 import { LimitDiagram, NodeWeb, OrderQueue, StepFlow } from "./diagrams/Diagrams";
 
 // Every template, by name. Film files refer to templates by these names.
 export const TEMPLATES = {
-  TitleCard, NumberCard, QuoteCard, DocCard, TagOverlay, CaptionOverlay,
+  TitleCard, NumberCard, QuoteCard, DocCard, TagOverlay, CaptionOverlay, SceneOverlay,
   LineChart, CompareBars, RankList, MapCard, PinDistance,
   LimitDiagram, OrderQueue, StepFlow, NodeWeb, Scoreboard, SceneMove,
 } as const;

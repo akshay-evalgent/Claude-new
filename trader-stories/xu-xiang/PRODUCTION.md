@@ -13,7 +13,7 @@ From `SHOTLIST.md`: 175 shots, about 15½ minutes at the narration pace. Music-o
 
 | Work | Count | Made by |
 |---|---|---|
-| Illustrated scenes | 93 shots from 68 images (204 generated, 3 per image) | Kaggle notebook, then camera moves in the edit |
+| Drama stills | 93 shots from 69 images (207 generated, 3 per image), 41 tagged DRAMATISED or RUMOUR | Kaggle notebook, then camera moves in the edit |
 | Diagrams | 23 shots | Motion graphics |
 | Number cards and scoreboard | 17 | Motion graphics template |
 | Animated charts | 13 | Motion graphics, from Shanghai Composite daily data |

@@ -9,7 +9,7 @@ import type { Point } from "../../components/Charts";
 import { BRIDGE, CITIES } from "../../components/Maps";
 import { rand } from "../../theme";
 
-export type ShotInfo = { id: string; section: number; family: string; seconds: number; start: number; image: string; onScreen: string };
+export type ShotInfo = { id: string; section: number; family: string; seconds: number; start: number; image: string; onScreen: string; tag: string };
 export const SHOTS = shotsJson as ShotInfo[];
 const startOf = (id: string) => SHOTS.find((s) => s.id === id)!.start;
 
@@ -238,10 +238,10 @@ export const SCOREBOARD: ScoreEntry[] = [
 ];
 export const FILM_SECONDS = SHOTS.reduce((a, s) => a + s.seconds, 0);
 
-// ---- overlays for illustrated shots: a tag or a caption, from shots.csv -------
+// ---- overlays for generated shots: tag (DRAMATISED, RUMOUR...) and caption, from shots.csv
 const TAGS = new Set(["RUMOUR", "UNPROVEN", "ALLEGATION"]);
 export const OVERLAYS: Record<string, ShotSpec> = Object.fromEntries(
-  SHOTS.filter((s) => s.family === "SCENE" && s.onScreen).map((s) => [
-    s.id, TAGS.has(s.onScreen) ? { t: "TagOverlay", props: { text: s.onScreen } } : { t: "CaptionOverlay", props: { text: s.onScreen } },
+  SHOTS.filter((s) => s.family === "SCENE" && (s.onScreen || s.tag)).map((s) => [
+    s.id, { t: "SceneOverlay", props: { tag: s.tag || undefined, caption: s.onScreen && !TAGS.has(s.onScreen) ? s.onScreen : undefined } },
   ]),
 );

@@ -92,7 +92,7 @@ for (const film of ["xu-xiang"]) {
   const shots = body.filter((r) => r.length === head.length).map((r) => Object.fromEntries(head.map((h, i) => [h, r[i]])));
   let t = 0;
   const timed = shots.map((s) => {
-    const o = { id: s.shot_id, section: +s.section, family: s.family, seconds: +s.seconds, start: Math.round(t * 10) / 10, image: s.image_id, onScreen: s.on_screen };
+    const o = { id: s.shot_id, section: +s.section, family: s.family, seconds: +s.seconds, start: Math.round(t * 10) / 10, image: s.image_id, onScreen: s.on_screen, tag: s.tag ?? "" };
     t += +s.seconds;
     return o;
   });
