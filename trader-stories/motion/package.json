@@ -1,0 +1,32 @@
+{
+  "name": "trader-stories-motion",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Motion graphics templates for the trader-stories films",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "fonts": "node scripts/fetch-fonts.mjs",
+    "data": "node scripts/build-data.mjs",
+    "render": "node scripts/render.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.544",
+    "@remotion/cli": "^4.0.544",
+    "@remotion/fonts": "^4.0.544",
+    "@remotion/renderer": "^4.0.544",
+    "d3-geo": "^3.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.544",
+    "topojson-client": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/d3-geo": "^3.1.0",
+    "@types/react": "^18.3.12",
+    "@types/topojson-client": "^3.1.5",
+    "typescript": "^5.6.3",
+    "world-atlas": "^2.0.2"
+  }
+}

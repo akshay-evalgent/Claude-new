@@ -299,7 +299,7 @@ SHOTS = [
     S(9, "DIAGRAM", "", "Then Xu and the executives", "4 · SELL", "step"),
     S(9, "NUMBER", "", "He knew first because", "", "line sets in type"),
     S(9, "DIAGRAM", "", "Look at it again.", "1990s · 2010s", "the two diagrams side by side"),
-    S(9, "DIAGRAM", "", "The only thing that changed", "×1,000", "the 1990s diagram scales up to fill the frame"),
+    S(9, "NUMBER", "", "The only thing that changed", "SAME TRICK. BIGGER SIZE.", "two lines land"),
     S(9, "NUMBER", "", "On the twenty-third of January 2017", "5½ YEARS", "date card, then the sentence"),
     S(9, "NUMBER", "", "And a fine reported at", "¥11,000,000,000 ≈ $1.6 BILLION", "figures land one at a time; scoreboard updates", "Reported, not published by the court"),
     S(9, "SCENE", "courtroom_back", "He does not appeal.", "", "slow pull back"),

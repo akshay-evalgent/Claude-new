@@ -1,5 +1,12 @@
 # Xu Xiang: production plan and time estimate
 
+## Status
+
+- Steps 7 and 8 (graphics templates, and this film's graphics shots): built in
+  `trader-stories/motion`. All 82 graphics shots, the scoreboard and 24
+  overlays are wired and render. What is left there is review and polish once
+  the voice is recorded and the real timings are known.
+
 ## What the film needs
 
 From `SHOTLIST.md`: 175 shots, about 15½ minutes at the narration pace. Music-only stretches and the editor's pacing will push it towards 17-18.
