@@ -1,0 +1,9 @@
+{"template":"painted-story.html","audio":"none","duration":20,"markStart":17.2,
+ "shots":[
+  {"image":"art/jtmh-2.webp","depth":"art/jtmh-2-depth.png","start":0,"zoom":[1.06,1.30],"focus":[0.62,0.54],"fx":"stars","parallax":0.035},
+  {"image":"art/jtmh-3.webp","depth":"art/jtmh-3-depth.png","start":10,"zoom":[1.32,1.07],"focus":[0.5,0.72],"fx":"dust","parallax":0.03,"drift":-1},
+  {"image":"art/jtmh-4.webp","depth":"art/jtmh-4-depth.png","start":15,"zoom":[1.06,1.18],"focus":[0.55,0.3],"fx":"fireflies","parallax":0.025}],
+ "lines":[{"start":0.6,"title":"Jo tum mere ho","sub":"if you are mine"},
+          {"start":5,"sub":"the world can keep everything else"},
+          {"start":10,"sub":"and without you","top":1100},
+          {"start":15,"sub":"there is no world at all"}]}

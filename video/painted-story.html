@@ -1,0 +1,57 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:C;src:url(fonts/Cormorant-Medium.ttf);font-weight:500}
+@font-face{font-family:C;src:url(fonts/Cormorant-Italic.ttf);font-style:italic}
+@font-face{font-family:D;src:url(fonts/NotoSerifDevanagari-Medium.ttf)}
+*{margin:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;background:#05070f;font-family:C,D,serif;color:#fbf3e0}
+canvas{position:absolute;left:0;top:0}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 45%,rgba(3,5,14,.62) 100%),linear-gradient(to bottom,rgba(3,5,14,0) 58%,rgba(3,5,14,.5) 82%,rgba(3,5,14,.78) 100%)}
+.line{position:absolute;left:70px;right:70px;top:1270px;text-align:center;text-shadow:0 3px 18px rgba(0,0,0,.85),0 0 4px rgba(0,0,0,.6)}
+.line .a{font-size:92px;font-weight:500;line-height:1.15}
+.line .b{font-size:54px;font-style:italic;color:#f1d59b;line-height:1.3}
+#qMark{position:absolute;left:0;right:0;top:1500px;text-align:center;font-size:30px;letter-spacing:14px;text-transform:uppercase;text-shadow:0 2px 10px #000}
+#qFade{position:absolute;inset:0;background:#05070f}
+</style></head><body><div id="shots"></div><canvas id="fx" width="1080" height="1920"></canvas><div id="vig"></div>
+<div id="lines"></div><div id="qMark">Calm A Sutra</div><div id="qFade"></div>
+<script>
+const cl=x=>Math.max(0,Math.min(1,x)),ease=x=>{x=cl(x);return x*x*(3-2*x)},lerp=(a,b,k)=>a+(b-a)*k,ramp=(t,a,b)=>ease((t-a)/(b-a));
+let sd=5;const R=()=>(sd=(sd*16807)%2147483647)/2147483647;
+const VS=`attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;v.y=1.-v.y;gl_Position=vec4(p,0,1);}`;
+const FS=`precision highp float;varying vec2 v;uniform sampler2D img,dep;uniform vec2 o,off;uniform float z;
+void main(){vec2 u=(v-o)/z+o;float d=texture2D(dep,u).r;
+ // two-step lookup keeps edges cleaner when the camera shifts
+ vec2 u1=u+(d-.5)*off;float d1=texture2D(dep,u1).r;vec2 u2=u+(mix(d,d1,.5)-.5)*off;
+ gl_FragColor=texture2D(img,clamp(u2,0.,1.));}`;
+const load=src=>new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.src=src});
+let D,S=[],L=[],T;const fx=document.getElementById('fx').getContext('2d');
+const P=[...Array(90)].map(()=>({x:R(),y:R(),p:R()*6.28,f:.2+R()*.5,r:.5+R(),th:R()}));
+window.init=async d=>{D=d;T=d.duration;
+ for(const [i,s] of d.shots.entries()){const c=document.createElement('canvas');c.width=1080;c.height=1920;shots.appendChild(c);
+  const gl=c.getContext('webgl',{preserveDrawingBuffer:true});const pr=gl.createProgram();
+  for(const [ty,src] of [[gl.VERTEX_SHADER,VS],[gl.FRAGMENT_SHADER,FS]]){const sh=gl.createShader(ty);gl.shaderSource(sh,src);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(sh);gl.attachShader(pr,sh)}
+  gl.linkProgram(pr);gl.useProgram(pr);
+  gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+  const a=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
+  for(const [n,k,u] of [[s.image,'img',0],[s.depth,'dep',1]]){const im=await load(n);gl.activeTexture(gl.TEXTURE0+u);gl.bindTexture(gl.TEXTURE_2D,gl.createTexture());
+   gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,im);for(const q of [gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T])gl.texParameteri(gl.TEXTURE_2D,q,gl.CLAMP_TO_EDGE);
+   gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.uniform1i(gl.getUniformLocation(pr,k),u)}
+  S.push({s,c,gl,U:n=>gl.getUniformLocation(pr,n),end:i+1<d.shots.length?d.shots[i+1].start:T})}
+ lines.innerHTML=d.lines.map((l,i)=>`<div class="line" id="ln${i}" style="${l.top?`top:${l.top}px`:""}">${l.title?`<div class="a">${l.title}</div>`:''}${l.sub?`<div class="b">${l.sub}</div>`:''}</div>`).join('');
+ L=d.lines.map((l,i)=>({l,e:document.getElementById('ln'+i),end:i+1<d.lines.length?d.lines[i+1].start:T-.9}))};
+function dot(x,y,r,a,col){const g=fx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,`rgba(${col},${a})`);g.addColorStop(1,`rgba(${col},0)`);fx.fillStyle=g;fx.fillRect(x-r,y-r,2*r,2*r)}
+window.setT=t=>{const X=.6;fx.clearRect(0,0,1080,1920);
+ S.forEach((h,i)=>{const {s,gl}=h,vis=(i?ramp(t,s.start-X,s.start+X):1);h.c.style.opacity=vis;h.c.style.display=(t<s.start-X-.05||t>h.end+X+.05)?'none':'block';
+  if(h.c.style.display==='none')return;const k=cl((t-(s.start-X))/(h.end-s.start+2*X)),st=s.parallax||.03;
+  gl.uniform2f(h.U('o'),s.focus[0],s.focus[1]);gl.uniform1f(h.U('z'),lerp(s.zoom[0],s.zoom[1],ease(k)*.6+k*.4));
+  gl.uniform2f(h.U('off'),st*(Math.sin(t*.55+i)+ (k-.5)*1.6*(s.drift||1)),st*.6*Math.cos(t*.4+i*2));gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+  h.c.style.filter=`brightness(${1+.035*Math.sin(t*1.9+i)})`;
+  const on=vis*(1-ramp(t,h.end-X,h.end+X)*(i+1<S.length?1:0));if(on<.01)return;
+  for(const o of P){const tw=.5+.5*Math.sin(o.p+t*o.f*4);
+   if(s.fx==='fireflies'){const x=(o.x*1080+Math.sin(o.p+t*o.f)*70),y=((o.y*1920-t*22*o.r)%1920+1920)%1920;if(o.th<.6)dot(x,y,10+16*o.r,on*(.25+.55*tw),'255,205,120')}
+   else if(s.fx==='stars'){if(o.y<.55)dot(o.x*1080,o.y*1920,3+5*o.r,on*(.2+.8*tw),'255,244,220');else if(o.th<.35)dot(o.x*1080+Math.sin(o.p+t*o.f)*60,o.y*1920-t*14,9+12*o.r,on*(.2+.5*tw),'255,205,120')}
+   else if(s.fx==='dust'){const x=((o.x*1080-t*38*o.r)%1080+1080)%1080,y=o.y*1920+Math.sin(o.p+t*o.f)*40+t*10;dot(x,y,4+6*o.r,on*(.12+.2*tw),'200,220,235')}}});
+ L.forEach(({l,e,end})=>{const a=ramp(t,l.start+.2,l.start+1.2);e.style.opacity=a*(1-ramp(t,end-.6,end-.05));e.style.transform=`translateY(${(1-a)*20}px)`;e.style.filter=`blur(${(1-a)*6}px)`});
+ qMark.style.opacity=.75*ramp(t,D.markStart,D.markStart+1.2);
+ qFade.style.opacity=Math.max(1-ramp(t,0,1.1),ramp(t,T-.9,T));
+};
+</script></body></html>
