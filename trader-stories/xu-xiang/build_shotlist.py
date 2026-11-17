@@ -42,8 +42,8 @@ STYLE_WIDE = (STYLE.replace("natural skin texture, ", "")
 # likeness of the real person. This model tends to add anything a prompt
 # names, even after "no", so descriptions say only what should be there.
 _FACE = ("a round soft face with faint lines at the eyes, a slightly heavy build, short black hair "
-         "receding at the temples and untidy on top, delicate frameless glasses "
-         "with thin silver arms, clean-shaven")
+         "receding at the temples and untidy on top, thin black-framed glasses, "
+         "clean-shaven")
 CHARACTERS = {
     "XU_YOUNG": "Xu, a slim Chinese teenage boy of about sixteen with a round face, "
                 "short untidy black hair and bright bare eyes, wearing a faded blue "
@@ -62,7 +62,7 @@ CHARACTERS = {
 FAR = {
     "XU_YOUNG": "a teenage boy in a faded blue school jacket",
     "XU_20S": "a slim young man in a dark-grey jacket",
-    "XU_ADULT": "a lone heavy-set man with glasses in a black tracksuit",
+    "XU_ADULT": "a lone heavy-set man with black-framed glasses in a black tracksuit",
     "XU_COAT": "a lone man in a long bright white overcoat",
 }
 
