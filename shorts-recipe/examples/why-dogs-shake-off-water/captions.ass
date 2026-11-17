@@ -1,0 +1,55 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.02,0:00:01.16,Short,,0,0,0,,That wet dog shake
+Dialogue: 0,0:00:01.16,0:00:02.46,Short,,0,0,0,,is a feat of physics
+Dialogue: 0,0:00:02.84,0:00:03.78,Short,,0,0,0,,A soaked Labrador
+Dialogue: 0,0:00:03.78,0:00:04.42,Short,,0,0,0,,can carry
+Dialogue: 0,0:00:04.42,0:00:05.50,Short,,0,0,0,,about a pound of water
+Dialogue: 0,0:00:05.50,0:00:06.42,Short,,0,0,0,,in its fur
+Dialogue: 0,0:00:06.70,0:00:07.34,Short,,0,0,0,,Drying that
+Dialogue: 0,0:00:07.34,0:00:08.20,Short,,0,0,0,,with body heat
+Dialogue: 0,0:00:08.20,0:00:08.74,Short,,0,0,0,,would burn
+Dialogue: 0,0:00:08.74,0:00:09.38,Short,,0,0,0,,about a fifth
+Dialogue: 0,0:00:09.38,0:00:10.85,Short,,0,0,0,,of its daily food
+Dialogue: 0,0:00:10.85,0:00:11.54,Short,,0,0,0,,So instead
+Dialogue: 0,0:00:11.54,0:00:12.38,Short,,0,0,0,,it shakes
+Dialogue: 0,0:00:12.81,0:00:13.26,Short,,0,0,0,,It twists
+Dialogue: 0,0:00:13.26,0:00:14.12,Short,,0,0,0,,back and forth
+Dialogue: 0,0:00:14.12,0:00:15.22,Short,,0,0,0,,about four times
+Dialogue: 0,0:00:15.22,0:00:15.70,Short,,0,0,0,,a second
+Dialogue: 0,0:00:15.70,0:00:16.66,Short,,0,0,0,,starting at the head
+Dialogue: 0,0:00:16.66,0:00:17.46,Short,,0,0,0,,and rippling down
+Dialogue: 0,0:00:17.46,0:00:18.26,Short,,0,0,0,,to the tail
+Dialogue: 0,0:00:18.53,0:00:19.40,Short,,0,0,0,,Its loose skin
+Dialogue: 0,0:00:19.40,0:00:20.10,Short,,0,0,0,,whips around
+Dialogue: 0,0:00:20.10,0:00:20.90,Short,,0,0,0,,even further
+Dialogue: 0,0:00:20.90,0:00:22.08,Short,,0,0,0,,flinging the water off
+Dialogue: 0,0:00:22.08,0:00:22.84,Short,,0,0,0,,faster
+Dialogue: 0,0:00:23.16,0:00:24.58,Short,,0,0,0,,In about four seconds
+Dialogue: 0,0:00:24.58,0:00:25.10,Short,,0,0,0,,seventy percent
+Dialogue: 0,0:00:25.10,0:00:25.78,Short,,0,0,0,,of the water
+Dialogue: 0,0:00:25.78,0:00:26.71,Short,,0,0,0,,is gone
+Dialogue: 0,0:00:26.71,0:00:27.62,Short,,0,0,0,,Smaller animals
+Dialogue: 0,0:00:27.62,0:00:28.88,Short,,0,0,0,,have to shake faster
+Dialogue: 0,0:00:28.88,0:00:29.76,Short,,0,0,0,,A mouse
+Dialogue: 0,0:00:29.76,0:00:30.23,Short,,0,0,0,,does it
+Dialogue: 0,0:00:30.23,0:00:30.94,Short,,0,0,0,,thirty times
+Dialogue: 0,0:00:30.94,0:00:31.80,Short,,0,0,0,,a second
+Dialogue: 0,0:00:31.80,0:00:32.56,Short,,0,0,0,,So when your dog
+Dialogue: 0,0:00:32.56,0:00:33.18,Short,,0,0,0,,climbs out
+Dialogue: 0,0:00:33.18,0:00:33.84,Short,,0,0,0,,of the bath
+Dialogue: 0,0:00:33.84,0:00:34.66,Short,,0,0,0,,grab a towel
+Dialogue: 0,0:00:34.66,0:00:35.03,Short,,0,0,0,,because
+Dialogue: 1,0:00:26.71,0:00:31.55,Prompt,,0,0,0,,{\fad(300,250)}Send this to someone\Nwho's been soaked by a wet dog
