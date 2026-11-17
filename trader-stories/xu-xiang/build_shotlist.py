@@ -33,11 +33,15 @@ STYLE = (
     "restrained colour grade with true whites, plain unmarked surfaces."
 )
 
+# Wide shots drop the close-up cues (skin texture, shallow focus).
+STYLE_WIDE = (STYLE.replace("natural skin texture, ", "")
+              .replace("shallow depth of field", "deep focus, small figures in a big space"))
+
 # Locked descriptions, repeated word for word in every shot of that era so the
 # face and clothes stay as close as the model allows. Generic faces, never a
 # likeness of the real person. This model tends to add anything a prompt
 # names, even after "no", so descriptions say only what should be there.
-_FACE = ("a youthful round soft face, a slightly heavy build, short black hair "
+_FACE = ("a round soft face with faint lines at the eyes, a slightly heavy build, short black hair "
          "receding at the temples and untidy on top, delicate frameless glasses "
          "with thin silver arms, clean-shaven")
 CHARACTERS = {
@@ -51,6 +55,15 @@ CHARACTERS = {
                 "zip-up tracksuit top",
     "XU_COAT": f"Xu, a Chinese man in his late thirties with {_FACE}, wearing a long bright "
                "white tailored overcoat over a grey button-down shirt",
+}
+
+# Wide shots: the full description pulls the model into a close-up, so a scene
+# marks where Xu goes with {who} and gets this short version instead.
+FAR = {
+    "XU_YOUNG": "a teenage boy in a faded blue school jacket",
+    "XU_20S": "a slim young man in a dark-grey jacket",
+    "XU_ADULT": "a lone heavy-set man with glasses in a black tracksuit",
+    "XU_COAT": "a lone man in a long bright white overcoat",
 }
 
 ERA_90S = ("early-1990s China, everyone in padded cotton jackets, cardigans and flat caps, "
@@ -69,11 +82,11 @@ IMAGES = [
      "a single dark saloon car alone on an empty six-lane coastal expressway, grey Sunday morning, flat land, power lines"),
     ("car_interior_coat", "XU_COAT", "Close-up through the windscreen, from the passenger side",
      "gripping the steering wheel, jaw tight, eyes fixed on the road ahead, the white coat bright against the dark car interior, rain on the glass, grey morning light"),
-    ("xu_coat_silhouette", "XU_COAT", "Wide shot from behind, figure small in the frame",
-     "standing alone in a dark room facing a wall of glowing market screens, his silhouette and the white coat sharp against the light"),
+    ("xu_coat_silhouette", "XU_COAT", "Extreme wide shot from behind",
+     "a dark room with a whole wall of glowing market screens, and in front of it {who} stands alone, a small silhouette against the light"),
     # the legend
-    ("zexi_floor_front", "XU_ADULT", "Wide shot down the length of a room, eye level",
-     "a modern open-plan Shanghai trading floor, rows of traders at multi-monitor desks in the foreground, and at the very back of the room Xu sits apart at his own desk, small and in sharp focus"),
+    ("zexi_floor_front", "XU_ADULT", "Extreme wide shot down the length of a long room, eye level, deep focus",
+     "a modern open-plan Shanghai trading floor, rows of traders at multi-monitor desks filling the foreground, and far away at the very back of the room {who} sits apart at his own desk, tiny in the frame"),
     ("xu_tracksuit_desk", "XU_ADULT", "Medium shot in profile",
      "sitting at a desk with four monitors at the back of a trading floor, intent, screen light reflected in his glasses, colleagues out of focus behind him"),
     ("two_phones", "", "Macro close-up, low angle on a table top",
@@ -93,14 +106,14 @@ IMAGES = [
      "at a desk at night studying a newspaper folded open to dense tables of share prices, pencil in hand, desk lamp, " + ERA_90S),
     ("boy_books", "XU_YOUNG", "Medium shot",
      "sitting on a bed surrounded by stacks of worn second-hand books, reading by lamplight in a cramped bedroom, " + ERA_90S),
-    ("lecture_backrow", "XU_YOUNG", "Wide shot from the back row",
-     "adults in a lecture hall listen to a speaker at a blackboard while Xu sits alone in the last row taking notes, " + ERA_90S),
+    ("lecture_backrow", "XU_YOUNG", "Wide shot from the side of a lecture hall",
+     "rows of adults listening to a speaker at a blackboard, and alone in the last row {who} takes notes, " + ERA_90S),
     ("exam_hall_empty_desk", "", "Wide symmetrical shot",
      "a large exam hall with rows of students bent over papers, one desk in the middle row empty with its chair pushed in, morning light, " + ERA_90S),
     ("hands_cash", "", "Extreme close-up on a kitchen table",
      "an older person's work-worn hands passing a thick bundle of banknotes tied with string to a young person's hands, plain unmarked notes, " + ERA_90S),
-    ("galaxy_street_exterior", "XU_20S", "Wide shot from across the street",
-     "walking towards the entrance of a grey eight-storey office building beside a small pharmacy on a busy Ningbo street, bicycles, overcast, " + ERA_90S),
+    ("galaxy_street_exterior", "XU_20S", "Extreme wide shot from across the street",
+     "a grey eight-storey office building beside a small pharmacy on a busy Ningbo street, bicycles, overcast, and {who} walking towards the entrance, small in the frame, " + ERA_90S),
     # the hall
     ("hall_staircase", "", "Low-angle shot looking up a staircase",
      "a wide worn concrete staircase to a second floor, cigarette butts and sunflower seed shells on the steps, people climbing, " + ERA_90S),
@@ -138,22 +151,22 @@ IMAGES = [
      "the Shanghai skyline in 2005, towers under construction, cranes, hazy evening light"),
     ("sunshine_office", "", "Wide shot",
      "an empty modern glass office, bright morning sunlight falling through blinds across desks, long shadows"),
-    ("zexi_office_morning", "XU_ADULT", "Wide shot down an empty trading floor",
-     "arriving alone at his desk at the far end of a sleek empty trading floor early in the morning, small in the frame, a large wall clock, cool daylight"),
-    ("zexi_office_night", "XU_ADULT", "Wide shot down a dark trading floor",
-     "every desk dark and empty except one at the far end, where Xu is still working, small in the frame, lit only by his monitors, two in the morning"),
+    ("zexi_office_morning", "XU_ADULT", "Extreme wide shot down an empty trading floor, deep focus",
+     "a sleek empty trading floor early in the morning, rows of empty desks receding into the distance, a large wall clock, cool daylight, and at the far end {who} arriving at his desk, tiny in the frame"),
+    ("zexi_office_night", "XU_ADULT", "Extreme wide shot down a dark trading floor, deep focus",
+     "rows of dark empty desks receding into the distance at two in the morning, and at the far end one desk still lit, where {who} sits working, tiny in the frame, lit only by his monitors"),
     ("researchers_waiting", "", "Medium shot",
      "young analysts holding thick printed reports wait outside a glass-walled office, uncertain"),
     ("xu_alone_screens", "XU_ADULT", "Over-the-shoulder shot from behind him",
      "alone in a dark room facing a curved bank of monitors showing price charts, his face reflected faintly in the screens"),
-    ("xu_screens_cold", "XU_ADULT", "Wide shot from behind, figure small in the frame",
-     "sitting in a dark room, monitors casting a cold blue glow over him, the rest of the room black"),
+    ("xu_screens_cold", "XU_ADULT", "Wide shot from behind",
+     "a pitch-dark room, a bank of monitors casting a cold blue glow, and in front of them {who}, a small silhouette seen from behind"),
     ("boardroom_chair", "", "Close-up on a boardroom table",
      "a hand pulling out an empty leather chair at a corporate board table, other board members seated and out of focus, overhead light"),
     ("empty_chair_power", "", "Wide symmetrical shot",
      "an empty high-backed chair at the head of a long dark table, a single cup of tea steaming in front of it, heavy curtains"),
     ("beijing_office_window", "XU_ADULT", "Medium-wide shot from behind",
-     "standing at a tall office window in Beijing at dusk, looking out at a stern grey government building across the street"),
+     "a tall office window in Beijing at dusk looking out at a stern grey government building across the street, and {who} standing at it, seen from behind"),
     # the crash
     ("retail_crowd_phones", "", "Wide shot",
      "a crowd of ordinary Chinese people in a public square, all looking down at glowing smartphones, faces lit from below, anxious, 2015"),
@@ -177,7 +190,7 @@ IMAGES = [
     ("phone_lights_up", "", "Macro close-up",
      "a smartphone lying face down on a dinner table between dishes, light spilling from under its edges as it buzzes"),
     ("stairwell_rush", "XU_COAT", "High-angle shot down a stairwell, motion blur",
-     "hurrying down a narrow concrete stairwell, the white coat a blur"),
+     "{who} hurrying down a narrow concrete stairwell, the white coat a blur"),
     ("car_ningbo_blocks", "", "Top-down aerial shot",
      "a dark saloon car driving between grey apartment blocks with smog-stained walls and barred windows, overcast"),
     ("car_river_bridge", "", "Wide aerial shot",
@@ -508,8 +521,11 @@ def build():
             if r["image_id"]:
                 uses[r["image_id"]] = uses.get(r["image_id"], 0) + 1
         for image_id, char, framing, scene in IMAGES:
-            subject = CHARACTERS[char] + ", " if char else ""
-            prompt = f"{framing}. {subject}{scene}. {STYLE}"
+            if "{who}" in scene:
+                prompt = f"{framing}. {scene.replace('{who}', FAR[char])}. {STYLE_WIDE}"
+            else:
+                subject = CHARACTERS[char] + ", " if char else ""
+                prompt = f"{framing}. {subject}{scene}. {STYLE}"
             if len(prompt.split()) > 175:
                 raise SystemExit(f"{image_id}: prompt is {len(prompt.split())} words; keep it under 175 (token limit)")
             w.writerow([image_id, char, uses[image_id], prompt])
