@@ -53,6 +53,8 @@ function fx(sc,lt,dur,mask){const {s,P}=sc;const ok=(x,y)=>!mask||mask(x|0,y|0);
   if(e==='fireflies'&&o.k<.45){const x=o.x*W+Math.sin(o.p+lt*o.f*.8)*14,y=H*.35+o.y*H*.5+Math.cos(o.p+lt*o.f*.6)*10,a=.5+.5*Math.sin(o.p*5+lt*1.6);
    if(ok(x,y)&&a>.25){addp(x,y,255*a,220*a,110*a);const q=.35*a;addp(x+1,y,255*q,210*q,100*q);addp(x-1,y,255*q,210*q,100*q);addp(x,y+1,255*q,210*q,100*q);addp(x,y-1,255*q,210*q,100*q)}}
   if(e==='leaves'&&o.k<.25){const x=((o.x*W+lt*(8+6*o.r)+Math.sin(o.p+lt*1.3)*10)%W+W)%W,y=(o.y*H*.6+lt*(14+10*o.r))%H;if(ok(x,y)){put(x,y,92,128,60,1);put(x+(Math.sin(lt*4+o.p)>0?1:-1),y,70,104,48,1)}}
+  if(e==='wind'&&o.k<.35){const len=6+10*o.r,x=((o.x*W*1.4-lt*(160+120*o.r))%(W+40)+W+40)%(W+40)-20,y=o.y*H*.85,a=.18+.22*o.r;
+   for(let k=0;k<len;k++)if(ok(x+k,y))put(x+k,y,255,240,220,a*(1-k/len))}
   if(e==='rain'){for(let r=0;r<3;r++){const q=hash(o.p*10+r,o.k*7),x=((q*W*1.3-lt*40-o.r*30)%(W+60)+W+60)%(W+60)-30,y=((o.y*H+lt*(380+120*o.r)+r*170)%(H+40))-20,a=.28+.25*o.r;
     for(let k=0;k<5+3*o.r;k++)if(ok(x-k*.3,y+k))put(x-k*.3,y+k,200,215,235,a)}
    if(o.k<.3){const sx=(o.x*W)|0,sy=(H*.82+o.y*H*.17)|0,ph=(lt*2.5+o.p)%1;if(ph<.25&&ok(sx,sy)){put(sx-1,sy,210,225,240,.5);put(sx+1,sy,210,225,240,.5);put(sx,sy-1,210,225,240,.4)}}}

@@ -1,0 +1,9 @@
+{"template":"pixel-story.html","audio":"none","duration":60,"dissolve":0.8,"lyricsFile":"lyrics/jo-tum-mere-ho.txt",
+ "scenes":[
+  {"image":"art/jtmh-px/j1-px.png","depth":"art/jtmh-px/j1-pxdepth.png","start":0,"pan":[18,10,4,22],"parallax":4,"fx":["pollen"],"lights":"flicker","seed":2},
+  {"image":"art/jtmh-px/j2-px.png","depth":"art/jtmh-px/j2-pxdepth.png","start":10,"pan":[0,16,18,16],"parallax":3,"fx":["wind"],"lights":"twinkle","seed":4,"count":160},
+  {"image":"art/jtmh-px/j3-px.png","depth":"art/jtmh-px/j3-pxdepth.png","start":20,"pan":[6,0,12,24],"parallax":4,"fx":["stars"],"skyTo":0.3,"lights":"twinkle","lightContrast":22,"seed":6},
+  {"image":"art/jtmh-px/j4-px.png","depth":"art/jtmh-px/j4-pxdepth.png","start":30,"pan":[9,26,9,4],"parallax":5,"fx":["rain"],"lights":"flicker","count":170,"seed":8},
+  {"image":"art/jtmh-px/j5-px.png","depth":"art/jtmh-px/j5-pxdepth.png","start":40,"pan":[14,24,4,6],"parallax":4,"fx":["fireflies"],"lights":"twinkle","lightContrast":22,"seed":10},
+  {"image":"art/jtmh-px/j6-px.png","depth":"art/jtmh-px/j6-pxdepth.png","start":50,"pan":[4,0,14,18],"parallax":4,"fx":["stars","fireflies"],"skyTo":0.5,"seed":12,
+   "meteors":[{"t":2.2,"x":240,"y":20,"dx":-110,"dy":60,"d":0.9},{"t":6.0,"x":180,"y":60,"dx":-80,"dy":45,"d":0.7}]}]}

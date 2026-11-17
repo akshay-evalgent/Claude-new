@@ -1,0 +1,2 @@
+# Jo Tum Mere Ho lyrics for the 60-second Instagram segment.
+# One line per row:  start-end | lyric   (seconds from the start of the video, or m:ss). Empty = no subtitles.
