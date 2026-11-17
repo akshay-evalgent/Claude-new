@@ -1,0 +1,51 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:C;src:url(fonts/Cormorant-Regular.ttf);font-weight:400}
+@font-face{font-family:C;src:url(fonts/Cormorant-Medium.ttf);font-weight:500}
+@font-face{font-family:C;src:url(fonts/Cormorant-Italic.ttf);font-style:italic}
+*{margin:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;background:#0b1226;font-family:C,serif;color:#f3e9d2}
+#stage{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 28%,#22356a 0%,#141f44 38%,#0a1024 80%)}
+canvas,svg{position:absolute;left:0;top:0}
+#moonglow{position:absolute;left:540px;top:470px;width:900px;height:900px;margin:-450px;border-radius:50%;background:radial-gradient(circle,rgba(243,233,210,.20),rgba(243,233,210,0) 62%)}
+.mist{position:absolute;width:1700px;height:260px;border-radius:50%;background:rgba(160,180,230,.10);filter:blur(70px)}
+#qText{position:absolute;left:90px;right:90px;top:870px;text-align:center;font-size:104px;line-height:1.22;font-weight:500;letter-spacing:.5px}
+.w{display:inline-block;white-space:pre}
+#qOrigin{position:absolute;left:0;right:0;text-align:center;font-style:italic;font-size:46px;color:#d9b56a;letter-spacing:3px}
+#qRule{position:absolute;left:50%;height:2px;background:#d9b56a;opacity:.7}
+#qMark{position:absolute;left:0;right:0;top:1500px;text-align:center;font-size:32px;letter-spacing:14px;text-transform:uppercase;color:#f3e9d2}
+#qFade{position:absolute;inset:0;background:#0a1024}
+</style></head><body><div id="stage">
+<canvas id="c" width="1080" height="1920"></canvas>
+<div id="moonglow"></div>
+<svg width="1080" height="1920" id="moon"><defs><mask id="m"><rect width="1080" height="1920" fill="#fff"/><circle cx="592" cy="434" r="140" fill="#000"/></mask></defs>
+<circle cx="540" cy="470" r="165" fill="#f3e9d2" mask="url(#m)"/></svg>
+<div class="mist" id="m1" style="top:620px"></div><div class="mist" id="m2" style="top:1560px"></div>
+<svg width="1080" height="1920"><path d="M0,1720 C180,1640 330,1700 520,1660 C740,1610 880,1690 1080,1630 L1080,1920 L0,1920Z" fill="#0c1430"/>
+<path d="M0,1800 C220,1730 420,1800 640,1760 C820,1730 960,1790 1080,1750 L1080,1920 L0,1920Z" fill="#070c1c"/></svg>
+<div id="qText"></div><div id="qRule"></div><div id="qOrigin"></div><div id="qMark">Calm A Sutra</div><div id="qFade"></div>
+</div><script>
+const cl=(x)=>Math.max(0,Math.min(1,x)),ease=x=>{x=cl(x);return x*x*(3-2*x)};
+let s=7;const R=()=>(s=(s*16807)%2147483647)/2147483647;
+const stars=[...Array(110)].map(()=>({x:R()*1080,y:R()*1500,r:.6+R()*1.9,p:R()*6.28,f:.4+R()*1.2}));
+const flies=[...Array(9)].map(()=>({x:R()*1080,y:1150+R()*600,p:R()*6.28,f:.15+R()*.25,a:30+R()*60}));
+const ctx=c.getContext('2d');let D,words=[],T;
+window.init=d=>{D=d;T=d.duration;let k=0,h='';
+ d.lines.forEach((l,i)=>{l.split(' ').forEach(w=>{h+=`<span class="w" data-t="${(d.lineStart[i]+k*0).toFixed(2)}" data-i="${i}">${w} </span>`});h+='<br>'});
+ qText.innerHTML=h;const per=.34;let cur=-1,n=0;
+ words=[...document.querySelectorAll('.w')].map(e=>{const i=+e.dataset.i;if(i!==cur){cur=i;n=0}return{e,t:d.lineStart[i]+per*n++}});
+ const b=qText.getBoundingClientRect();const off=(1080-b.height/2)-b.top-60;qText.style.top=(870+off)+'px';
+ const bb=qText.getBoundingClientRect();qRule.style.top=(bb.bottom+48)+'px';qOrigin.style.top=(bb.bottom+84)+'px';qOrigin.textContent=d.origin;};
+window.setT=t=>{
+ ctx.clearRect(0,0,1080,1920);
+ for(const o of stars){ctx.globalAlpha=.25+.65*(.5+.5*Math.sin(o.p+t*o.f*1.6));ctx.fillStyle='#f3e9d2';ctx.beginPath();ctx.arc(o.x,o.y+t*1.5,o.r,0,7);ctx.fill()}
+ for(const o of flies){const x=o.x+Math.sin(o.p+t*o.f)*o.a,y=o.y-t*9+Math.cos(o.p+t*o.f*1.3)*20,a=.35+.45*Math.sin(o.p*3+t*1.1);
+  const g=ctx.createRadialGradient(x,y,0,x,y,16);g.addColorStop(0,`rgba(232,196,120,${cl(a)})`);g.addColorStop(1,'rgba(232,196,120,0)');ctx.globalAlpha=1;ctx.fillStyle=g;ctx.fillRect(x-16,y-16,32,32)}
+ m1.style.left=(-500+t*14)+'px';m2.style.left=(-100-t*10)+'px';
+ moon.style.transform=moonglow.style.transform=`translateY(${-t*2.2}px)`;
+ moonglow.style.opacity=.8+.2*Math.sin(t*.7);
+ for(const w of words){const k=ease((t-w.t)/.9);w.e.style.opacity=k;w.e.style.transform=`translateY(${(1-k)*22}px)`;w.e.style.filter=`blur(${(1-k)*8}px)`}
+ const ko=ease((t-D.originStart)/1.2);qOrigin.style.opacity=ko;const rw=ko*150;qRule.style.width=rw+'px';qRule.style.marginLeft=(-rw/2)+'px';
+ qMark.style.opacity=.75*ease((t-D.markStart)/1.2);
+ qFade.style.opacity=Math.max(1-ease(t/1.4),ease((t-(T-1))/1));
+};
+</script></body></html>
