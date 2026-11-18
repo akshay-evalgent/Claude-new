@@ -255,3 +255,4 @@ Stack:
 | Templates, courses and ebooks | `TEMPLATES-COURSES-EBOOKS-PLAYBOOK.md` |
 | Newsletters and paid communities | `NEWSLETTERS-COMMUNITIES-PLAYBOOK.md` |
 | LinkedIn, Instagram, TikTok and YouTube, organic and ads | `PAID-AND-SOCIAL-CHANNELS-PLAYBOOK.md` |
+| Competitor landscape: repos, startups, tools and services | `COMPETITOR-LANDSCAPE.md` |
