@@ -1,0 +1,755 @@
+1
+00:00:00,080 --> 00:00:02,630
+London. November 2005.
+
+2
+00:00:02,913 --> 00:00:06,813
+The price of copper is at a record
+high, and it keeps climbing.
+
+3
+00:00:07,113 --> 00:00:11,597
+On the trading floors of the London
+Metal Exchange, a rumour is spreading.
+
+4
+00:00:11,597 --> 00:00:13,112
+Somewhere in this market,
+
+5
+00:00:13,112 --> 00:00:17,596
+a trader working for the Chinese
+government has bet that copper will fall.
+
+6
+00:00:17,596 --> 00:00:18,396
+A huge bet.
+
+7
+00:00:18,580 --> 00:00:22,371
+Well over a hundred thousand
+tonnes of copper he does not own,
+
+8
+00:00:22,371 --> 00:00:24,755
+promised for delivery before Christmas.
+
+9
+00:00:25,047 --> 00:00:27,147
+And the trader has vanished.
+
+10
+00:00:27,447 --> 00:00:30,584
+When reporters ask the
+Chinese government about him,
+
+11
+00:00:30,584 --> 00:00:33,722
+the first answer is that it
+does not know who he is.
+
+12
+00:00:39,013 --> 00:00:44,363
+His name was Liu Qibing. Inside China's
+copper world, he was not unknown at all.
+
+13
+00:00:44,647 --> 00:00:47,709
+He was the star trader of
+the State Reserve Bureau,
+
+14
+00:00:47,709 --> 00:00:51,672
+the agency that keeps the country's
+emergency stockpiles of metal.
+
+15
+00:00:51,980 --> 00:00:55,283
+Chinese newspapers would
+later call him China's Leeson,
+
+16
+00:00:55,283 --> 00:00:58,105
+after the trader who
+brought down Barings Bank.
+
+17
+00:00:58,413 --> 00:01:02,863
+His losses on paper would reach six
+hundred and six million dollars.
+
+18
+00:01:03,180 --> 00:01:07,458
+So how does a state employee end up
+betting against the entire market?
+
+19
+00:01:07,458 --> 00:01:09,780
+And when the bet goes wrong, who pays?
+
+20
+00:01:11,080 --> 00:01:13,823
+Liu studied economics at Wuhan University,
+
+21
+00:01:13,823 --> 00:01:17,480
+then joined the trading arm
+of the State Reserve Bureau.
+
+22
+00:01:17,780 --> 00:01:19,596
+The bureau's job was simple.
+
+23
+00:01:19,596 --> 00:01:24,005
+Keep stockpiles of strategic metals
+like copper, aluminium and zinc.
+
+24
+00:01:24,313 --> 00:01:29,763
+Buy when prices are low. Release metal when
+prices spike. Keep the country supplied.
+
+25
+00:01:30,080 --> 00:01:35,642
+In 1995, the bureau sent Liu to London for
+six months, to the London Metal Exchange.
+
+26
+00:01:35,642 --> 00:01:41,005
+He helped build the computer link between
+the exchange and his bureau in Beijing.
+
+27
+00:01:41,313 --> 00:01:46,413
+He was, in a very literal sense, the
+bureau's wire to the world's metal market.
+
+28
+00:01:46,713 --> 00:01:50,224
+The LME is where the world
+sets the price of copper.
+
+29
+00:01:50,224 --> 00:01:53,938
+Miners, smelters, factories
+and speculators meet there.
+
+30
+00:01:54,247 --> 00:01:58,935
+And in 1998, Liu's centre began
+trading on it with its own money.
+
+31
+00:01:58,935 --> 00:02:00,522
+Liu placed the trades.
+
+32
+00:02:01,813 --> 00:02:06,538
+Then China began to build. Roads,
+towers, power lines, whole new cities.
+
+33
+00:02:06,538 --> 00:02:08,638
+Every one of them needed copper.
+
+34
+00:02:08,947 --> 00:02:14,096
+In 2003, copper was trading at around
+sixteen hundred dollars a tonne.
+
+35
+00:02:14,096 --> 00:02:17,847
+By the end of 2004, it was
+close to three thousand.
+
+36
+00:02:18,147 --> 00:02:20,147
+Liu had bet on the rise.
+
+37
+00:02:20,447 --> 00:02:22,621
+According to a later academic study,
+
+38
+00:02:22,621 --> 00:02:26,548
+his trades earned the state around
+three hundred million dollars.
+
+39
+00:02:26,548 --> 00:02:28,722
+He became the centre's chief trader.
+
+40
+00:02:29,013 --> 00:02:33,976
+He also ran a quieter trade. Copper traded
+in two places, Shanghai and London,
+
+41
+00:02:33,976 --> 00:02:36,521
+and the two prices did not always agree.
+
+42
+00:02:36,521 --> 00:02:41,038
+Foreign investors could not trade in
+Shanghai. Liu could trade in both.
+
+43
+00:02:41,347 --> 00:02:44,197
+So from around 2003, by
+that academic account,
+
+44
+00:02:44,197 --> 00:02:48,782
+he would typically buy in Shanghai and
+sell in London, and pocket the gap.
+
+45
+00:02:48,782 --> 00:02:52,624
+It meant that selling copper in
+London was nothing new to him.
+
+46
+00:02:52,624 --> 00:02:54,297
+It was part of his routine.
+
+47
+00:02:54,613 --> 00:02:56,925
+And here is the detail that matters.
+
+48
+00:02:56,925 --> 00:03:01,421
+By the middle of 2004, he was the
+only authorised trader in his group.
+
+49
+00:03:01,421 --> 00:03:05,788
+For more than a year, nobody else
+in the room traded what he traded.
+
+50
+00:03:07,080 --> 00:03:11,262
+As copper neared three thousand
+dollars, Liu came to a conclusion.
+
+51
+00:03:11,262 --> 00:03:16,330
+The boom had gone too far. Prices had run
+ahead of reality, and they would fall.
+
+52
+00:03:16,647 --> 00:03:20,572
+So he turned around. He started
+betting that copper would drop.
+
+53
+00:03:20,880 --> 00:03:25,855
+According to the Economic Observer,
+people advised him to stop. He did not.
+
+54
+00:03:26,147 --> 00:03:29,883
+In October 2004, copper fell
+ten percent in a single day.
+
+55
+00:03:29,883 --> 00:03:33,881
+To Liu, it looked like the turn
+had arrived. He went further,
+
+56
+00:03:33,881 --> 00:03:38,797
+selling large numbers of call options,
+beyond what he was authorised to do.
+
+57
+00:03:39,113 --> 00:03:43,775
+Here is what that means. Selling a call
+option is collecting a small fee now,
+
+58
+00:03:43,775 --> 00:03:47,407
+for promising to sell someone
+copper later at a fixed price.
+
+59
+00:03:47,407 --> 00:03:49,648
+If prices stay put, you keep the fee.
+
+60
+00:03:49,648 --> 00:03:53,038
+If prices soar, you still have
+to sell at the old price.
+
+61
+00:03:53,347 --> 00:03:56,197
+There is no ceiling on
+how much you can lose.
+
+62
+00:03:57,513 --> 00:04:01,073
+On the LME, a bet that copper
+will fall works like a promise.
+
+63
+00:04:01,073 --> 00:04:05,100
+You agree today to deliver copper
+on a future date, at today's price.
+
+64
+00:04:05,100 --> 00:04:09,652
+If the price falls before then, you buy
+cheap and deliver at the higher price.
+
+65
+00:04:09,652 --> 00:04:13,562
+If it rises, you have to buy
+expensive copper to keep your promise,
+
+66
+00:04:13,562 --> 00:04:14,613
+or pay to get out.
+
+67
+00:04:14,913 --> 00:04:18,038
+Through 2005, Liu's promise grew.
+
+68
+00:04:18,347 --> 00:04:22,924
+By the summer, reports put it at around
+a hundred and thirty thousand tonnes,
+
+69
+00:04:22,924 --> 00:04:25,718
+most of it due on the
+twenty-first of December.
+
+70
+00:04:25,718 --> 00:04:29,522
+By some reports it later reached
+more than two hundred thousand.
+
+71
+00:04:29,813 --> 00:04:31,376
+To put that in perspective,
+
+72
+00:04:31,376 --> 00:04:36,182
+all the copper sitting in the exchange's
+warehouses at the time was about a hundred
+
+73
+00:04:36,182 --> 00:04:37,688
+and forty thousand tonnes.
+
+74
+00:04:37,980 --> 00:04:42,205
+He had promised to deliver more copper
+than the whole market had in stock.
+
+75
+00:04:43,513 --> 00:04:47,404
+In a market like the LME, a
+position that big is hard to hide.
+
+76
+00:04:47,404 --> 00:04:52,363
+Traders started to notice the selling.
+And then they started asking a question.
+
+77
+00:04:52,680 --> 00:04:55,905
+Does the bureau actually
+have the copper to deliver?
+
+78
+00:04:56,213 --> 00:04:59,700
+If it didn't, every trader who
+bought against Liu would win.
+
+79
+00:04:59,700 --> 00:05:03,827
+Because when December came, he would
+have to buy copper back from them,
+
+80
+00:05:03,827 --> 00:05:05,513
+at whatever price they asked.
+
+81
+00:05:05,813 --> 00:05:09,125
+So, reportedly, they bought.
+And copper kept climbing.
+
+82
+00:05:09,125 --> 00:05:14,155
+Three thousand four hundred in January.
+Three thousand eight hundred in September.
+
+83
+00:05:14,155 --> 00:05:15,688
+Four thousand in October.
+
+84
+00:05:15,980 --> 00:05:19,177
+Each step up cost Liu tens
+of millions of dollars.
+
+85
+00:05:19,177 --> 00:05:24,357
+Reports later said his supervisors pressed
+him to double up rather than admit the
+
+86
+00:05:24,357 --> 00:05:25,157
+losses.
+
+87
+00:05:25,113 --> 00:05:30,188
+By October, his loss on paper had reached
+six hundred and six million dollars.
+
+88
+00:05:30,480 --> 00:05:35,580
+And in October 2005, Liu Qibing left
+a farewell note, and disappeared.
+
+89
+00:05:36,880 --> 00:05:39,005
+He did not stay gone for long.
+
+90
+00:05:39,313 --> 00:05:43,713
+In October, he was detained in
+Yunnan, in China's far south-west.
+
+91
+00:05:44,013 --> 00:05:49,223
+But the market did not know that. For weeks,
+the position just sat there. Unmanaged.
+
+92
+00:05:49,223 --> 00:05:52,138
+With the delivery date
+coming closer every day.
+
+93
+00:05:52,447 --> 00:05:56,674
+In the middle of November, the story
+broke in the international press.
+
+94
+00:05:56,674 --> 00:06:01,022
+A Chinese state trader was missing,
+and his short position was enormous.
+
+95
+00:06:02,313 --> 00:06:04,963
+Then came the strangest part of the story.
+
+96
+00:06:05,247 --> 00:06:08,801
+At first, the State Reserve
+Bureau said it did not know him.
+
+97
+00:06:08,801 --> 00:06:10,518
+Then it said he was on leave.
+
+98
+00:06:10,518 --> 00:06:15,197
+Then it said he had acted alone, and that
+any losses were his, not the state's.
+
+99
+00:06:15,513 --> 00:06:19,842
+The bureau said it held one point three
+million tonnes of copper in reserve.
+
+100
+00:06:19,842 --> 00:06:24,513
+Market analysts thought the real figure
+was nearer two hundred and fifty thousand.
+
+101
+00:06:24,813 --> 00:06:29,613
+It began auctioning copper from the
+stockpile, twenty thousand tonnes at a time.
+
+102
+00:06:29,913 --> 00:06:34,224
+When one report said the bureau would
+export two hundred thousand tonnes,
+
+103
+00:06:34,224 --> 00:06:36,763
+copper fell ninety
+dollars in five minutes.
+
+104
+00:06:37,047 --> 00:06:38,036
+It did not hold.
+
+105
+00:06:38,036 --> 00:06:42,547
+Copper hit a record of four thousand
+two hundred and forty-three dollars.
+
+106
+00:06:42,847 --> 00:06:44,884
+Some in London had a darker theory.
+
+107
+00:06:44,884 --> 00:06:49,599
+An analyst at a French bank suggested the
+whole thing might be the greatest bluff
+
+108
+00:06:49,599 --> 00:06:50,399
+of all time.
+
+109
+00:06:50,613 --> 00:06:53,237
+Perhaps the short position
+was a smoke screen.
+
+110
+00:06:53,237 --> 00:06:57,856
+Perhaps China wanted prices pushed up, so
+it could sell its stockpile at the top.
+
+111
+00:06:57,856 --> 00:06:59,567
+He admitted he might be wrong.
+
+112
+00:06:59,567 --> 00:07:03,788
+But the theory showed how little anyone
+trusted what they were being told.
+
+113
+00:07:04,080 --> 00:07:05,663
+There was a bigger worry too.
+
+114
+00:07:05,663 --> 00:07:10,032
+Britain's financial regulator warned the
+exchange that if Liu had traded without
+
+115
+00:07:10,032 --> 00:07:13,636
+permission, the bureau might not
+have to honour his trades at all.
+
+116
+00:07:13,636 --> 00:07:15,820
+The exchange answered that if it didn't,
+
+117
+00:07:15,820 --> 00:07:19,205
+the brokers who had cleared those
+trades would be on the hook.
+
+118
+00:07:19,513 --> 00:07:20,446
+In other words,
+
+119
+00:07:20,446 --> 00:07:24,738
+a missing man in China might leave
+London's brokers holding the bill.
+
+120
+00:07:25,047 --> 00:07:27,928
+As one London broker
+told the New York Times,
+
+121
+00:07:27,928 --> 00:07:32,859
+most of us don't know the full details,
+or the size of any Chinese positions,
+
+122
+00:07:32,859 --> 00:07:34,972
+or if the positions exist at all.
+
+123
+00:07:36,280 --> 00:07:40,593
+In the end, the bureau did the only
+thing it could. It found the metal.
+
+124
+00:07:40,593 --> 00:07:42,112
+Around the delivery date,
+
+125
+00:07:42,112 --> 00:07:47,033
+about fifty thousand tonnes of copper
+turned up in LME warehouses in South Korea,
+
+126
+00:07:47,033 --> 00:07:48,855
+most of it shipped from China.
+
+127
+00:07:49,147 --> 00:07:53,890
+The rest of the position was
+rolled forward into 2006 and 2007,
+
+128
+00:07:53,890 --> 00:07:55,847
+and closed piece by piece.
+
+129
+00:07:56,147 --> 00:07:57,977
+And copper kept going up.
+
+130
+00:07:57,977 --> 00:08:02,297
+By May 2006, it was close to
+nine thousand dollars a tonne.
+
+131
+00:08:02,613 --> 00:08:05,705
+Even so, with physical
+delivery, auctions and time,
+
+132
+00:08:05,705 --> 00:08:10,736
+the bureau cut the loss from more than six
+hundred million dollars to a hundred and
+
+133
+00:08:10,736 --> 00:08:11,888
+forty-four million.
+
+134
+00:08:12,180 --> 00:08:14,381
+Counting an earlier profit at home,
+
+135
+00:08:14,381 --> 00:08:18,155
+the final bill came to nine
+hundred and twenty million yuan.
+
+136
+00:08:19,447 --> 00:08:22,284
+In 2008, Liu Qibing went
+on trial in Beijing.
+
+137
+00:08:22,284 --> 00:08:27,327
+The court found that he had used state
+money for speculative trading abroad that
+
+138
+00:08:27,327 --> 00:08:31,172
+was not hedging, against the
+rules for state-owned companies.
+
+139
+00:08:31,480 --> 00:08:35,405
+He was sentenced to seven years
+in prison for abuse of power.
+
+140
+00:08:35,713 --> 00:08:40,048
+His direct boss got six years. The
+court found he had approved the trades,
+
+141
+00:08:40,048 --> 00:08:43,388
+knowing the rules, and hidden
+them when he left his post.
+
+142
+00:08:43,680 --> 00:08:45,645
+There was a precedent. In 1997,
+
+143
+00:08:45,645 --> 00:08:50,905
+staff at a state smelter in Zhuzhou had
+also bet on falling metal prices in London,
+
+144
+00:08:50,905 --> 00:08:54,835
+shorting zinc. They lost close
+to one and a half billion yuan.
+
+145
+00:08:54,835 --> 00:08:58,638
+The official responsible got
+sixteen years. By that measure,
+
+146
+00:08:58,638 --> 00:09:03,455
+an expert told the Economic Observer,
+seven years was not especially severe.
+
+147
+00:09:03,747 --> 00:09:08,735
+Some Chinese commentators said Liu was a
+scapegoat for a system that had let one
+
+148
+00:09:08,735 --> 00:09:10,419
+man trade alone for a year.
+
+149
+00:09:10,419 --> 00:09:14,347
+Others said he was a rogue who
+gambled with the nation's money.
+
+150
+00:09:14,647 --> 00:09:18,397
+The bureau's trading arm was
+barred from speculating again.
+
+151
+00:09:19,713 --> 00:09:24,025
+And here is the final twist. Liu Qibing
+believed copper was in a bubble.
+
+152
+00:09:24,025 --> 00:09:25,462
+By one academic account,
+
+153
+00:09:25,462 --> 00:09:30,133
+he had sold at an average of around three
+and a half thousand dollars a tonne.
+
+154
+00:09:30,133 --> 00:09:34,026
+In late 2008, as the global
+financial crisis hit, copper crashed.
+
+155
+00:09:34,026 --> 00:09:39,057
+By Christmas, it was trading at around two
+thousand seven hundred and fifty dollars.
+
+156
+00:09:39,057 --> 00:09:40,913
+Below the price he had sold at.
+
+157
+00:09:41,213 --> 00:09:44,763
+He was right about copper. He
+was just three years early.
+
+158
+00:09:45,047 --> 00:09:48,885
+In markets, being early and being
+wrong look exactly the same,
+
+159
+00:09:48,885 --> 00:09:51,547
+right up until the day
+you run out of time.
+
+160
+00:09:51,847 --> 00:09:55,772
+Liu Qibing ran out of
+time in October 2005.
+

@@ -49,6 +49,10 @@ export const Root: React.FC = () => (
     <Composition id="xx-thumb-b" component={Thumbnail} durationInFrames={1} fps={FPS} width={1280} height={720}
       defaultProps={{ image: "zexi_office_night", kicker: "HE ALWAYS", big: "KNEW", bigTone: "paper", sub: "FIRST.", focusX: 50 }} />
 
+    <Composition id="lq-thumb-a" component={Thumbnail} durationInFrames={1} fps={FPS} width={1280} height={720}
+      defaultProps={{ image: "liu-qibing/liu_alone_night", kicker: "CHINA'S SECRET TRADER", big: "−$606M", bigTone: "loss", sub: "THEN HE VANISHED", focusX: 70, shift: 10 }} />
+    <Composition id="lq-thumb-b" component={Thumbnail} durationInFrames={1} fps={FPS} width={1280} height={720}
+      defaultProps={{ image: "liu-qibing/farewell_note", kicker: "RIGHT ABOUT COPPER.", big: "3 YRS", bigTone: "paper", sub: "TOO EARLY.", focusX: 70, shift: 10 }} />
     <Composition id="lq-film" component={LqFilm} durationInFrames={LQ_FRAMES} fps={FPS} width={W} height={H} />
     {Object.entries(LQ_GRAPHICS).map(([id, spec]) => (
       <Composition key={`lq${id}`} id={cid("lq", id)} component={Shot} defaultProps={{ spec }}
