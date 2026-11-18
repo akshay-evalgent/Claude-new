@@ -60,11 +60,18 @@ CHARACTERS = {
 # Wide shots: the full description pulls the model into a close-up, so a scene
 # marks where Xu goes with {who} and gets this short version instead.
 FAR = {
-    "XU_YOUNG": "a teenage boy in a faded blue school jacket",
-    "XU_20S": "a slim young man in a dark-grey jacket",
+    "XU_YOUNG": "a Chinese teenage boy in a faded blue school jacket",
+    "XU_20S": "a slim young Chinese man in a dark-grey jacket",
     "XU_ADULT": "a lone heavy-set man with black-framed glasses in a black tracksuit",
     "XU_COAT": "a lone man in a long bright white overcoat",
 }
+
+# Without this the model fills scenes with Western faces and rooms. Added to
+# every scene except those listed in ABROAD.
+CHINA = "Set in mainland China, every person in frame is Chinese"
+ABROAD = {"ny_floor"}
+# One car for every driving shot.
+CAR = "a single modern black executive saloon car from the 2010s, the only vehicle on the road"
 
 ERA_90S = ("early-1990s China, everyone in padded cotton jackets, cardigans and flat caps, "
            "wooden fittings, chalk and paper, everything analogue")
@@ -79,14 +86,14 @@ IMAGES = [
     ("bridge_fog", "", "Wide shot at road level",
      "a very long low sea bridge disappearing into thick fog at dusk, empty lanes, streetlights fading into the mist"),
     ("car_expressway", "", "Wide shot from behind and above",
-     "a single dark saloon car alone on an empty six-lane coastal expressway, grey Sunday morning, flat land, power lines"),
+     CAR + ", alone on an empty six-lane coastal expressway, grey Sunday morning, flat land, power lines"),
     ("car_interior_coat", "XU_COAT", "Close-up through the windscreen, from the passenger side",
      "gripping the steering wheel, jaw tight, eyes fixed on the road ahead, the white coat bright against the dark car interior, rain on the glass, grey morning light"),
     ("xu_coat_silhouette", "XU_COAT", "Extreme wide shot from behind",
-     "a dark room with a whole wall of glowing market screens, and in front of it {who} stands alone, a small silhouette against the light"),
+     "a dark room with a whole wall of glowing market screens, and in front of it {who} stands alone, the bright white coat catching the light, a small figure against the screens"),
     # the legend
     ("zexi_floor_front", "XU_ADULT", "Extreme wide shot down the length of a long room, eye level, deep focus",
-     "a modern open-plan Shanghai trading floor, rows of traders at multi-monitor desks filling the foreground, and far away at the very back of the room {who} sits apart at his own desk, tiny in the frame"),
+     "seen over the heads of rows of traders at multi-monitor desks filling the foreground, a long open-plan Shanghai trading floor, and far away against the back wall {who} sits alone at a desk facing the room, tiny in the frame"),
     ("xu_tracksuit_desk", "XU_ADULT", "Medium shot in profile",
      "sitting at a desk with four monitors at the back of a trading floor, intent, screen light reflected in his glasses, colleagues out of focus behind him"),
     ("two_phones", "", "Macro close-up, low angle on a table top",
@@ -156,13 +163,13 @@ IMAGES = [
     ("zexi_office_night", "XU_ADULT", "Extreme wide shot down a dark trading floor, deep focus",
      "rows of dark empty desks receding into the distance at two in the morning, and at the far end one desk still lit, where {who} sits working, tiny in the frame, lit only by his monitors"),
     ("researchers_waiting", "", "Medium shot",
-     "young analysts holding thick printed reports wait outside a glass-walled office, uncertain"),
+     "young Chinese analysts in white shirts holding thick printed reports wait outside a glass-walled office, uncertain"),
     ("xu_alone_screens", "XU_ADULT", "Over-the-shoulder shot from behind him",
      "alone in a dark room facing a curved bank of monitors showing price charts, his face reflected faintly in the screens"),
     ("xu_screens_cold", "XU_ADULT", "Wide shot from behind",
      "a pitch-dark room, a bank of monitors casting a cold blue glow, and in front of them {who}, a small silhouette seen from behind"),
     ("boardroom_chair", "", "Close-up on a boardroom table",
-     "a hand pulling out an empty leather chair at a corporate board table, other board members seated and out of focus, overhead light"),
+     "a hand pulling out an empty leather chair at a corporate board table, Chinese board members in dark suits seated and out of focus, Chinese ink landscape paintings on the walls, overhead light"),
     ("empty_chair_power", "", "Wide symmetrical shot",
      "an empty high-backed chair at the head of a long dark table, a single cup of tea steaming in front of it, heavy curtains"),
     ("beijing_office_window", "XU_ADULT", "Medium-wide shot from behind",
@@ -173,7 +180,7 @@ IMAGES = [
     ("national_team", "", "Wide symmetrical shot",
      "a vast trading room with long rows of identical desks and terminals, traders in white shirts, fluorescent light, rigid order"),
     ("ny_floor", "", "Medium-wide shot",
-     "traders in jackets on a New York stock exchange floor at the opening bell, looking up at screens in shock"),
+     "traders in jackets on a New York trading floor at the opening bell, looking up in shock, the screens above them reduced to a soft blur of coloured light"),
     ("beijing_corridor", "", "Wide shot down a corridor",
      "a long government corridor at night, closed wooden office doors, one door ajar with light spilling out, polished floor"),
     ("arrested_exec", "", "Wide shot",
@@ -192,17 +199,17 @@ IMAGES = [
     ("stairwell_rush", "XU_COAT", "High-angle shot down a stairwell, motion blur",
      "{who} hurrying down a narrow concrete stairwell, the white coat a blur"),
     ("car_ningbo_blocks", "", "Top-down aerial shot",
-     "a dark saloon car driving between grey apartment blocks with smog-stained walls and barred windows, overcast"),
+     CAR + ", driving between grey apartment blocks with smog-stained walls and barred windows, overcast"),
     ("car_river_bridge", "", "Wide aerial shot",
-     "a dark saloon car crossing a city river bridge, a wide river below, a grey industrial city"),
+     CAR + ", crossing a city river bridge, a wide river below, a grey industrial city"),
     ("car_bay", "", "Wide tracking shot",
-     "a dark saloon car on a coastal expressway, a wide grey bay opening out on the left, flat light"),
+     CAR + ", on a coastal expressway, a wide grey bay opening out on the left, flat light"),
     ("blue_lights", "", "Close-up on the back of a car",
      "brake lights glowing on a wet road, blue police lights reflected in the rear window, blurred figures approaching"),
     ("arrest_phone", "", "Medium close-up",
-     "two ordinary people on a sofa at night staring at a smartphone, its screen turned away from camera, their faces lit by it, shocked"),
+     "an ordinary Chinese couple in their fifties on a sofa in a small apartment at night, staring at a smartphone held towards them, its back to camera, their faces lit by its glow, shocked"),
     ("cuff_closeup", "", "Extreme close-up, harsh camera flash",
-     "a hand pulling back the sleeve of a bright white overcoat to reveal a metal handcuff on a wrist, only the wrist and sleeve in frame, plain wall behind"),
+     "a hand pulling back the sleeve of a bright white overcoat to reveal a pair of steel police handcuffs locked around the wrist, the chain visible, only the wrist and sleeve in frame, plain wall behind"),
     # the answer, reckoning, epilogue
     ("sealed_doors", "", "Medium shot",
      "glass office doors sealed with crossed paper strips bearing red official stamps, an empty dark office beyond"),
@@ -211,11 +218,11 @@ IMAGES = [
     ("courthouse_ext", "", "Wide low-angle shot",
      "a large modern Chinese courthouse with wide steps and columns on a grey winter day, flag poles"),
     ("courtroom_back", "", "Wide shot from the back of the public gallery",
-     "a courtroom, a defendant standing alone in the dock seen only from behind, the judges' bench far away"),
+     "a Chinese courtroom with a raised judges' bench against a deep red wall, three judges in black robes far away, a defendant standing alone in a wooden dock seen only from behind"),
     ("crowd_one_face", "", "Wide shot",
      "a crowd of traders in a trading hall, all in shadow, one man in the middle lit by a single shaft of light, face turned away"),
     ("photo_frame_down", "", "Close-up",
-     "a framed family photograph lying face down on a wooden sideboard, dust, a legal document beside it"),
+     "a picture frame lying face down on a wooden sideboard so only its brown cardboard back and fold-out stand show, dust, a folded sheet of paper beside it"),
     ("two_phones_dark", "", "Macro close-up",
      "two smartphones on a dark table, both screens black, a cold cup of tea"),
     ("prison_gate", "", "Extreme wide shot",
@@ -521,6 +528,8 @@ def build():
             if r["image_id"]:
                 uses[r["image_id"]] = uses.get(r["image_id"], 0) + 1
         for image_id, char, framing, scene in IMAGES:
+            if image_id not in ABROAD:
+                scene = f"{scene}. {CHINA}"
             if "{who}" in scene:
                 prompt = f"{framing}. {scene.replace('{who}', FAR[char])}. {STYLE_WIDE}"
             else:
