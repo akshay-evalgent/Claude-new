@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>What If World War 3 Happens</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  #stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; background: #000; transform-origin: 0 0;
+    color: #f2f5f8; font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; --amber: #ffb43a; --hot: #ff5a36; --cyan: #7fe3ff; }
+  #gl, #stage > div { position: absolute; }
+  #gl { inset: 0; }
+  .full { inset: 0; pointer-events: none; }
+  #vig { background: radial-gradient(ellipse at center, rgba(0,0,0,0) 52%, rgba(0,0,0,0.62) 100%); }
+  #grain { opacity: 0.07; mix-blend-mode: overlay; background-size: 256px 256px; }
+  #tint { background: #000; opacity: 0; }
+  #flash { background: #fff; opacity: 0; }
+  .bar { left: 0; right: 0; height: 138px; background: #000; }
+  #barT { top: 0; } #barB { bottom: 0; }
+  .ctr { left: 0; right: 0; text-align: center; }
+  .anton { font-family: 'Anton', 'Impact', sans-serif; font-weight: 400; text-transform: uppercase; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .shadow { text-shadow: 0 2px 22px rgba(0,0,0,0.85), 0 0 3px rgba(0,0,0,0.6); }
+
+  #hkLabel { top: 300px; font-weight: 600; font-size: 54px; letter-spacing: 0.42em; padding-left: 0.42em; color: #aab6c4; }
+  #hkBig { top: 370px; font-size: 300px; line-height: 1; letter-spacing: 0.01em; }
+  #hkSub { top: 720px; font-weight: 500; font-size: 50px; letter-spacing: 0.04em; color: #d5dde6; }
+
+  #title { top: 236px; }
+  #title .a { font-weight: 600; font-size: 60px; letter-spacing: 0.6em; padding-left: 0.6em; color: var(--amber); }
+  #title .b { font-size: 236px; line-height: 1.06; letter-spacing: 0.015em; }
+  #title .c { font-weight: 600; font-size: 60px; letter-spacing: 0.6em; padding-left: 0.6em; }
+  #title .d { margin-top: 26px; font-weight: 500; font-size: 30px; letter-spacing: 0.12em; color: #aab6c4; text-transform: uppercase; }
+
+  #stats { left: 150px; top: 232px; width: 900px; }
+  .stat { position: relative; height: 206px; }
+  .stat .n { font-size: 132px; line-height: 1; letter-spacing: 0.01em; font-variant-numeric: tabular-nums; }
+  .stat .l { font-weight: 600; font-size: 40px; letter-spacing: 0.2em; color: #aab6c4; text-transform: uppercase; margin-top: 2px; }
+  .stat .l b { color: var(--amber); font-weight: 600; }
+
+  #cap { bottom: 176px; font-weight: 600; font-size: 60px; letter-spacing: 0.012em; }
+  #hudTL, #hudTR { top: 166px; font-size: 24px; font-weight: 500; letter-spacing: 0.12em; }
+  #hudTL { left: 64px; color: var(--cyan); }
+  #hudTL i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--cyan); margin-right: 14px; }
+  #hudTR { right: 64px; text-align: right; color: #e6edf4; }
+  #alarm { top: 196px; }
+  #alarm span { display: inline-block; font-size: 40px; font-weight: 700; letter-spacing: 0.3em; padding: 12px 34px 12px 46px; color: var(--hot); border: 3px solid var(--hot); background: rgba(40,6,2,0.55); }
+  #count { top: 168px; }
+  #count .l { font-size: 24px; font-weight: 500; letter-spacing: 0.34em; padding-left: 0.34em; color: var(--amber); }
+  #count .n { font-size: 150px; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+  #five { top: 300px; }
+  #five .a { font-weight: 600; font-size: 54px; letter-spacing: 0.5em; padding-left: 0.5em; color: #d5dde6; }
+  #five .b { font-size: 250px; line-height: 1.04; color: #f6efe6; }
+  #five .c { font-weight: 600; font-size: 54px; letter-spacing: 0.06em; }
+  #src { left: 64px; bottom: 156px; font-size: 20px; letter-spacing: 0.08em; color: #9aa7b6; }
+  #rew { top: 166px; right: 64px; font-size: 40px; font-weight: 700; letter-spacing: 0.2em; color: #fff; }
+  .gl { left: 0; right: 0; background: rgba(255,255,255,0.14); mix-blend-mode: screen; }
+  #end1 { top: 250px; }
+  #end1 .a { font-weight: 600; font-size: 84px; letter-spacing: 0.02em; }
+  #end1 .b { margin-top: 26px; font-weight: 500; font-size: 46px; letter-spacing: 0.03em; color: #dfe7ee; }
+  #end1 .b b { color: var(--amber); font-weight: 700; }
+  #end2 { top: 170px; }
+  #end2 .a { font-size: 150px; line-height: 1.08; letter-spacing: 0.015em; }
+  #end2 .b { margin-top: 30px; font-weight: 600; font-size: 56px; letter-spacing: 0.05em; color: var(--amber); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="gl" width="1920" height="1080"></canvas>
+  <div id="vig" class="full"></div>
+  <div id="tint" class="full"></div>
+
+  <div id="hkLabel" class="ctr shadow"></div>
+  <div id="hkBig" class="ctr anton shadow"></div>
+  <div id="hkSub" class="ctr shadow">is all the first strike would need.</div>
+
+  <div id="title" class="ctr shadow"><div class="a">WHAT IF</div><div class="b anton">World War 3</div><div class="c">HAPPENS?</div><div class="d">A hypothetical scenario, built on published research</div></div>
+
+  <div id="stats" class="shadow">
+    <div class="stat"><div class="n anton" id="s1n">0</div><div class="l">billion <b>people</b></div></div>
+    <div class="stat"><div class="n anton" id="s2n">0</div><div class="l">nuclear-armed <b>states</b></div></div>
+    <div class="stat"><div class="n anton" id="s3n">0</div><div class="l">nuclear <b>warheads</b></div></div>
+  </div>
+
+  <div id="hudTL" class="mono shadow"><i></i>HYPOTHETICAL SCENARIO</div>
+  <div id="hudTR" class="mono shadow"></div>
+  <div id="alarm" class="ctr mono"><span>LAUNCH DETECTED</span></div>
+  <div id="count" class="ctr mono shadow"><div class="l">TIME TO FIRST IMPACT</div><div class="n" id="countN">30:00</div></div>
+  <div id="five" class="ctr shadow"><div class="a">UP TO</div><div class="b anton">5 billion</div><div class="c">people could starve within two years.</div></div>
+  <div id="cap" class="ctr shadow"></div>
+  <div id="src" class="mono shadow"></div>
+  <div id="end1" class="ctr shadow"><div class="a">None of this has happened.</div><div class="b">But the Doomsday Clock now reads <b>85 seconds to midnight</b>, the closest it has ever been.</div></div>
+  <div id="end2" class="ctr shadow"><div class="a anton">World War 3<br>has no winners</div><div class="b">It can't be won. It can only be prevented.</div></div>
+
+  <div id="g0" class="gl"></div><div id="g1" class="gl"></div><div id="g2" class="gl"></div><div id="g3" class="gl"></div>
+  <div id="rew" class="mono shadow">&#9664;&#9664; REWIND</div>
+  <div id="flash" class="full"></div>
+  <div id="barT" class="bar"></div><div id="barB" class="bar"></div>
+  <div id="grain" class="full"></div>
+</div>
+
+<script src="assets/three.min.js"></script>
+<script>
+'use strict';
+var DUR = 60, DEG = Math.PI / 180, R = 10;
+var clamp01 = function (x) { return Math.max(0, Math.min(1, x)); };
+var seg = function (t, a, b) { return clamp01((t - a) / (b - a)); };
+var eio = function (x) { return x * x * (3 - 2 * x); };
+var eo = function (x) { return 1 - Math.pow(1 - x, 3); };
+var eox = function (x) { return 1 - Math.pow(1 - x, 5); };
+var lerp = function (a, b, k) { return a + (b - a) * k; };
+var win = function (t, a, b, fi, fo) { return Math.min(seg(t, a, a + (fi === undefined ? 0.35 : fi)), 1 - seg(t, b - (fo === undefined ? 0.35 : fo), b)); };
+function rng(seed) { var s = seed >>> 0; return function () { s = (s + 0x6D2B79F5) | 0; var r = Math.imul(s ^ (s >>> 15), 1 | s); r = (r + Math.imul(r ^ (r >>> 7), 61 | r)) ^ r; return ((r ^ (r >>> 14)) >>> 0) / 4294967296; }; }
+var hash = function (n) { var x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+function vnoise(x) { var i = Math.floor(x), f = x - i; f = f * f * (3 - 2 * f); return lerp(hash(i), hash(i + 1), f) * 2 - 1; }
+function geo(lat, lon, r) { var phi = (90 - lat) * DEG, th = (lon + 180) * DEG; r = r || 1; return new THREE.Vector3(-r * Math.sin(phi) * Math.cos(th), r * Math.cos(phi), r * Math.sin(phi) * Math.sin(th)); }
+var $ = function (id) { return document.getElementById(id); };
+
+var renderer = new THREE.WebGLRenderer({ canvas: $('gl'), antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(1920, 1080, false); renderer.setClearColor(0x000000, 1);
+var camera = new THREE.PerspectiveCamera(35, 16 / 9, 0.05, 20000);
+var SUN = new THREE.Vector3(1, 0, 0);
+
+// ---------- camera-facing particles (glows, flames, smoke) ----------
+function Particles(n, additive, smoke, depthTest) {
+  var base = new THREE.PlaneGeometry(1, 1), g = new THREE.InstancedBufferGeometry();
+  g.index = base.index; g.setAttribute('position', base.attributes.position); g.setAttribute('uv', base.attributes.uv);
+  var off = new Float32Array(n * 4), colr = new Float32Array(n * 4);
+  g.setAttribute('aOff', new THREE.InstancedBufferAttribute(off, 4)); g.setAttribute('aCol', new THREE.InstancedBufferAttribute(colr, 4));
+  g.instanceCount = n;
+  var m = new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false, depthTest: depthTest !== false, blending: additive ? THREE.AdditiveBlending : THREE.NormalBlending,
+    vertexShader: 'attribute vec4 aOff; attribute vec4 aCol; varying vec2 vUv; varying vec4 vCol; varying float vSeed; void main(){ vUv = uv; vCol = aCol; vSeed = aOff.x * 3.1 + aOff.y * 1.7; vec4 mv = modelViewMatrix * vec4(aOff.xyz, 1.0); mv.xy += position.xy * aOff.w; gl_Position = projectionMatrix * mv; }',
+    fragmentShader: smoke
+      ? 'varying vec2 vUv; varying vec4 vCol; varying float vSeed; void main(){ vec2 p = vUv - 0.5; float r = length(p) * 2.0; float w = 0.8 + 0.2 * sin(p.x * 11.0 + vSeed) * sin(p.y * 9.0 + vSeed * 1.7); float a = smoothstep(1.0, 0.25, r / w); float sh = 0.72 + 0.5 * (p.y + 0.25); gl_FragColor = vec4(vCol.rgb * sh, vCol.a * a); }'
+      : 'varying vec2 vUv; varying vec4 vCol; void main(){ float r = length(vUv - 0.5) * 2.0; float a = max(0.0, 1.0 - r); a = a * a * (0.35 + 0.65 * a * a); gl_FragColor = vec4(vCol.rgb, vCol.a * a); }'
+  });
+  var mesh = new THREE.Mesh(g, m); mesh.frustumCulled = false;
+  return {
+    mesh: mesh, n: n,
+    set: function (i, x, y, z, size, r, gg, b, a) { var k = i * 4; off[k] = x; off[k + 1] = y; off[k + 2] = z; off[k + 3] = size; colr[k] = r; colr[k + 1] = gg; colr[k + 2] = b; colr[k + 3] = a; },
+    hide: function (i) { off[i * 4 + 3] = 0; colr[i * 4 + 3] = 0; },
+    commit: function () { g.attributes.aOff.needsUpdate = true; g.attributes.aCol.needsUpdate = true; }
+  };
+}
+
+// =====================================================================
+//  SPACE: the Earth from orbit
+// =====================================================================
+var space = new THREE.Scene(); space.add(camera);
+var GLSL_NOISE = [
+  'float h3(vec3 p){ p = fract(p * 0.3183099 + 0.1); p *= 17.0; return fract(p.x * p.y * p.z * (p.x + p.y + p.z)); }',
+  'float n3(vec3 x){ vec3 i = floor(x), f = fract(x); f = f * f * (3.0 - 2.0 * f);',
+  ' return mix(mix(mix(h3(i), h3(i + vec3(1,0,0)), f.x), mix(h3(i + vec3(0,1,0)), h3(i + vec3(1,1,0)), f.x), f.y),',
+  '            mix(mix(h3(i + vec3(0,0,1)), h3(i + vec3(1,0,1)), f.x), mix(h3(i + vec3(0,1,1)), h3(i + vec3(1,1,1)), f.x), f.y), f.z); }',
+  'float fbm(vec3 p){ float a = 0.5, s = 0.0; for (int i = 0; i < 5; i++) { s += a * n3(p); p = p * 2.03 + 7.1; a *= 0.5; } return s; }'
+].join('\n');
+
+var BLK = [[50, 5, 12, 20.0], [45, 22, 11, 20.55], [56, 38, 13, 21.1], [30, 31, 9, 21.6], [40, 50, 12, 22.0], [24, 78, 17, 22.4], [35, 112, 19, 22.75], [38, -88, 24, 23.1]];
+var earthU = {
+  dayMap: { value: null }, nightMap: { value: null }, specMap: { value: null }, sunDir: { value: SUN },
+  lightsOn: { value: 1 }, soot: { value: 0 },
+  blk: { value: BLK.map(function (b) { var v = geo(b[0], b[1]); return new THREE.Vector4(v.x, v.y, v.z, Math.cos(b[2] * DEG)); }) },
+  blkA: { value: BLK.map(function () { return 0; }) }
+};
+var earth = new THREE.Mesh(new THREE.SphereGeometry(R, 128, 96), new THREE.ShaderMaterial({
+  uniforms: earthU,
+  vertexShader: 'varying vec3 vN; varying vec3 vO; varying vec3 vP; varying vec2 vUv; void main(){ vUv = uv; vO = normalize(position); vN = normalize(mat3(modelMatrix) * normal); vec4 w = modelMatrix * vec4(position, 1.0); vP = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }',
+  fragmentShader: [
+    'uniform sampler2D dayMap, nightMap, specMap; uniform vec3 sunDir; uniform float lightsOn, soot; uniform vec4 blk[8]; uniform float blkA[8];',
+    'varying vec3 vN; varying vec3 vO; varying vec3 vP; varying vec2 vUv;',
+    'float hh(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }',
+    'void main(){ vec3 n = normalize(vN); float nd = dot(n, sunDir); float day = smoothstep(-0.14, 0.26, nd);',
+    ' vec3 dc = texture2D(dayMap, vUv).rgb; float sm = texture2D(specMap, vUv).r;',
+    ' vec3 v = normalize(cameraPosition - vP); vec3 h = normalize(v + sunDir);',
+    ' float sp = pow(max(dot(n, h), 0.0), 220.0) * sm * 0.5 * (1.0 - soot);',
+    ' vec3 lit = dc * (0.03 + max(nd, 0.0) * 1.12) + vec3(1.0, 0.9, 0.75) * sp;',
+    ' lit += vec3(1.0, 0.38, 0.12) * dc * 0.5 * smoothstep(0.3, 0.0, abs(nd - 0.06));',     // warm band along the terminator
+    ' vec3 nl = texture2D(nightMap, vUv).rgb; float bo = 0.0;',
+    ' for (int i = 0; i < 8; i++) bo = max(bo, blkA[i] * smoothstep(blk[i].w - 0.012, blk[i].w + 0.012, dot(normalize(vO), blk[i].xyz)));',
+    ' float tw = 0.55 + 0.9 * hh(floor(vUv * vec2(8192.0, 4096.0)));',
+    ' vec3 night = pow(nl, vec3(1.5)) * vec3(1.0, 0.76, 0.46) * 3.4 * tw * (1.0 - day) * lightsOn * (1.0 - bo);',
+    ' vec3 c = lit * day + dc * vec3(0.012, 0.02, 0.04) * (1.0 - day) + night;',
+    ' c = mix(c, vec3(dot(c, vec3(0.33))) * vec3(0.5, 0.46, 0.42), soot * 0.85);',
+    ' float fr = pow(1.0 - max(dot(n, v), 0.0), 3.0);',
+    ' c += mix(vec3(0.22, 0.48, 1.0), vec3(0.5, 0.42, 0.36), soot) * fr * (0.05 + 0.95 * day) * 0.75;',
+    ' gl_FragColor = vec4(c, 1.0); }'
+  ].join('\n')
+}));
+space.add(earth);
+
+var cloudU = { map: { value: null }, sunDir: { value: SUN }, soot: { value: 0 }, time: { value: 0 } };
+var clouds = new THREE.Mesh(new THREE.SphereGeometry(R * 1.007, 96, 72), new THREE.ShaderMaterial({
+  uniforms: cloudU, transparent: true, depthWrite: false,
+  vertexShader: 'varying vec3 vN; varying vec3 vO; varying vec2 vUv; void main(){ vUv = uv; vO = position; vN = normalize(mat3(modelMatrix) * normal); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+  fragmentShader: GLSL_NOISE + [
+    'uniform sampler2D map; uniform vec3 sunDir; uniform float soot, time; varying vec3 vN; varying vec3 vO; varying vec2 vUv;',
+    'void main(){ vec4 tx = texture2D(map, vUv); float c = tx.r * tx.a; float nd = dot(normalize(vN), sunDir); float day = smoothstep(-0.15, 0.3, nd);',
+    ' vec3 col = mix(vec3(0.02, 0.03, 0.055), vec3(1.0), day) + vec3(1.0, 0.45, 0.15) * 0.35 * smoothstep(0.3, 0.0, abs(nd - 0.05));',
+    ' float f = fbm(vO * 0.33 + vec3(time * 0.05, 0.0, time * 0.03)); float f2 = fbm(vO * 1.4 + 3.0);',
+    ' float e0 = mix(1.05, -0.22, soot); float cover = smoothstep(e0, e0 + 0.22, f) * smoothstep(0.0, 0.08, soot);',
+    ' vec3 sootCol = mix(vec3(0.012, 0.012, 0.016), vec3(0.37, 0.32, 0.28), day) * (0.7 + 0.6 * f2);',
+    ' gl_FragColor = vec4(mix(col, sootCol, cover), mix(c * 0.92, 0.97, cover)); }'
+  ].join('\n')
+}));
+space.add(clouds);
+
+var atmoU = { sunDir: { value: SUN }, soot: { value: 0 } };
+var atmo = new THREE.Mesh(new THREE.SphereGeometry(R * 1.13, 96, 72), new THREE.ShaderMaterial({
+  uniforms: atmoU, side: THREE.BackSide, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+  vertexShader: 'varying vec3 vNv; varying vec3 vNw; varying vec3 vP; void main(){ vNv = normalize(normalMatrix * normal); vNw = normalize(mat3(modelMatrix) * normal); vec4 w = modelMatrix * vec4(position, 1.0); vP = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }',
+  fragmentShader: [
+    'uniform vec3 sunDir; uniform float soot; varying vec3 vNv; varying vec3 vNw; varying vec3 vP;',
+    'void main(){ vec3 vd = normalize(vP - cameraPosition); float k = clamp(dot(normalize(vNw), vd) / 0.47, 0.0, 1.0); float i = pow(k, 3.2);',
+    ' float dayf = smoothstep(-0.45, 0.35, dot(normalize(vNw), sunDir)); float fwd = pow(max(dot(vd, sunDir), 0.0), 10.0);',
+    ' vec3 c = mix(vec3(0.26, 0.55, 1.0), vec3(0.55, 0.42, 0.33), soot) * i * (0.03 + 1.25 * dayf) + vec3(1.0, 0.5, 0.2) * i * fwd * dayf * 2.2;',
+    ' gl_FragColor = vec4(c, 1.0); }'
+  ].join('\n')
+}));
+space.add(atmo);
+
+// stars and sun
+(function () {
+  var r = rng(11), N = 5200, pos = [], colr = [];
+  for (var i = 0; i < N; i++) { var z = r() * 2 - 1, a = r() * Math.PI * 2, s = Math.sqrt(1 - z * z), b = Math.pow(r(), 3.2) * 0.9 + 0.12, w = r(); pos.push(6000 * s * Math.cos(a), 6000 * z, 6000 * s * Math.sin(a)); colr.push(b * (0.85 + 0.15 * w), b * 0.92, b * (1 - 0.15 * w)); }
+  var g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setAttribute('color', new THREE.Float32BufferAttribute(colr, 3));
+  space.add(new THREE.Points(g, new THREE.PointsMaterial({ size: 2.1, sizeAttenuation: false, vertexColors: true, transparent: true, depthWrite: false })));
+})();
+var sunP = Particles(3, true, false, true); space.add(sunP.mesh);
+var streak = (function () {
+  var c = document.createElement('canvas'); c.width = 512; c.height = 32; var g = c.getContext('2d'), gr = g.createLinearGradient(0, 0, 512, 0);
+  gr.addColorStop(0, 'rgba(120,170,255,0)'); gr.addColorStop(0.5, 'rgba(255,240,220,1)'); gr.addColorStop(1, 'rgba(120,170,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 512, 32);
+  var gv = g.createLinearGradient(0, 0, 0, 32); gv.addColorStop(0, 'rgba(0,0,0,1)'); gv.addColorStop(0.5, 'rgba(0,0,0,0)'); gv.addColorStop(1, 'rgba(0,0,0,1)'); g.globalCompositeOperation = 'destination-out'; g.fillStyle = gv; g.fillRect(0, 0, 512, 32);
+  var s = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true })); s.scale.set(5200, 46, 1); space.add(s); return s;
+})();
+
+// ---------- a communications satellite ----------
+var sat = new THREE.Group(); space.add(sat);
+var satLight = new THREE.DirectionalLight(0xfff4e0, 1.5), satFill = new THREE.HemisphereLight(0x4b6fb8, 0x0a0c12, 0.8); space.add(satLight, satFill);
+var satLamp;
+(function () {
+  var foil = new THREE.MeshStandardMaterial({ color: 0xc79a34, roughness: 0.42, metalness: 0.35 });
+  var white = new THREE.MeshStandardMaterial({ color: 0xdfe3e8, roughness: 0.5, metalness: 0.1, side: THREE.DoubleSide });
+  var dark = new THREE.MeshStandardMaterial({ color: 0x2a2d33, roughness: 0.6, metalness: 0.4 });
+  var pc = document.createElement('canvas'); pc.width = 512; pc.height = 128; var g = pc.getContext('2d');
+  g.fillStyle = '#0b1a44'; g.fillRect(0, 0, 512, 128);
+  for (var x = 0; x < 16; x++) for (var y = 0; y < 4; y++) { g.fillStyle = (x + y) % 2 ? '#142a66' : '#10235a'; g.fillRect(x * 32 + 2, y * 32 + 2, 28, 28); }
+  g.strokeStyle = '#8fa3c8'; g.lineWidth = 2; for (var k = 1; k < 4; k++) { g.beginPath(); g.moveTo(k * 128, 0); g.lineTo(k * 128, 128); g.stroke(); }
+  var panelMat = new THREE.MeshStandardMaterial({ map: new THREE.CanvasTexture(pc), roughness: 0.25, metalness: 0.5 });
+  var bus = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.36, 0.3), foil); sat.add(bus);
+  var top = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.06, 0.22), dark); top.position.y = 0.21; sat.add(top);
+  [1, -1].forEach(function (s) {
+    var yoke = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.16, 8).rotateZ(Math.PI / 2), dark); yoke.position.x = s * 0.23; sat.add(yoke);
+    var p = new THREE.Mesh(new THREE.BoxGeometry(0.92, 0.012, 0.26), [dark, dark, panelMat, white, dark, dark]); p.position.x = s * 0.77; p.rotation.x = 0.5; sat.add(p);
+  });
+  var pts = []; for (var i = 0; i <= 12; i++) { var rr = 0.17 * i / 12; pts.push(new THREE.Vector2(rr + 0.001, rr * rr * 1.9)); }
+  var dish = new THREE.Mesh(new THREE.LatheGeometry(pts, 28), white); dish.position.set(0, -0.2, 0.06); dish.rotation.x = Math.PI - 0.35; sat.add(dish);
+  var feed = new THREE.Mesh(new THREE.CylinderGeometry(0.006, 0.006, 0.13, 6), dark); feed.position.set(0, -0.27, 0.085); feed.rotation.x = -0.35; sat.add(feed);
+  var rod = new THREE.Mesh(new THREE.CylinderGeometry(0.005, 0.005, 0.3, 6), dark); rod.position.set(0.1, 0.36, -0.1); sat.add(rod);
+  satLamp = new THREE.Mesh(new THREE.SphereGeometry(0.014, 8, 8), new THREE.MeshBasicMaterial({ color: 0x55ff99 })); satLamp.position.set(-0.1, 0.25, 0.1); sat.add(satLamp);
+})();
+var satFx = Particles(40, true, false, false); space.add(satFx.mesh);
+var swarm = Particles(46, true, false, false); space.add(swarm.mesh);
+var swarmDef = (function () { var r = rng(5), a = []; for (var i = 0; i < 46; i++) { var n = new THREE.Vector3(r() * 2 - 1, r() * 2 - 1, r() * 2 - 1).normalize(), u = new THREE.Vector3().crossVectors(n, new THREE.Vector3(0.3, 1, 0.2)).normalize(), v = new THREE.Vector3().crossVectors(n, u); a.push({ u: u, v: v, r: R * (1.12 + r() * 0.5), w: 0.05 + r() * 0.07, ph: r() * 6.28, die: 18.3 + r() * 3.6 }); } return a; })();
+
+// ---------- trajectories ----------
+var SITES = { // [lat, lon]
+  w: [[47.5, -111], [48, -101], [41, -104.8], [38.9, -77], [40.7, -74], [34, -118.2], [41.9, -87.6], [29.8, -95.4], [47.6, -122.3], [33.7, -84.4], [37.8, -122.4], [51.5, -0.1], [48.9, 2.35], [52.5, 13.4], [50.8, 4.4], [41.9, 12.5]],
+  ws: [[60, -30], [36, -150], [57, 3]],
+  e: [[55.75, 37.6], [59.9, 30.3], [56.8, 60.6], [55, 82.9], [51.7, 46], [53, 158.6], [43.1, 131.9], [56, 92.9], [69, 33], [48.7, 44.5], [54.9, 73.4]],
+  es: [[74, 42], [52, 150]],
+  s1: [[28.6, 77.2], [19, 72.9], [22.6, 88.4]], s2: [[24.9, 67], [33.7, 73], [31.5, 74.3]]
+};
+var arcs = [], arcGroup = new THREE.Group(); space.add(arcGroup);
+var ARC_VS = 'varying float vU; void main(){ vU = uv.x; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }';
+var ARC_FS = 'uniform float head, fade; varying float vU; void main(){ float d = head - vU; if (d < 0.0) discard; float a = (0.13 + 0.87 * exp(-d * 6.0)) * fade; vec3 c = mix(vec3(1.0, 0.33, 0.07), vec3(1.0, 0.95, 0.82), exp(-d * 26.0)); gl_FragColor = vec4(c, a); }';
+(function () {
+  var r = rng(1945);
+  function pick(list) { var s = list[Math.floor(r() * list.length)]; return [s[0] + (r() * 2 - 1) * 1.7, s[1] + (r() * 2 - 1) * 2.4]; }
+  function add(from, to, first) {
+    var A = geo(from[0], from[1]), B = geo(to[0], to[1]), ang = A.angleTo(B), pts = [], h = 0.035 + 0.19 * Math.min(1, ang / 1.9);
+    for (var i = 0; i <= 40; i++) { var u = i / 40, p = A.clone().multiplyScalar(Math.sin((1 - u) * ang) / Math.sin(ang)).add(B.clone().multiplyScalar(Math.sin(u * ang) / Math.sin(ang))); pts.push(p.normalize().multiplyScalar(R * (1.004 + h * Math.pow(Math.sin(Math.PI * u), 0.75)))); }
+    var curve = new THREE.CatmullRomCurve3(pts), u2 = { head: { value: -1 }, fade: { value: 1 } };
+    var mesh = new THREE.Mesh(new THREE.TubeGeometry(curve, 72, 0.024, 5, false), new THREE.ShaderMaterial({ uniforms: u2, vertexShader: ARC_VS, fragmentShader: ARC_FS, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
+    mesh.frustumCulled = false; arcGroup.add(mesh);
+    var launch = first ? 31.0 + r() * 0.5 : 31.3 + r() * 5.2, arrive = first ? 40.3 + r() * 0.25 : 40.45 + r() * 3.3;
+    arcs.push({ A: A.multiplyScalar(R * 1.005), B: B.multiplyScalar(R * 1.006), curve: curve, u: u2, launch: launch, arrive: arrive, mesh: mesh, size: 0.75 + r() * 0.7 });
+  }
+  var n;
+  for (n = 0; n < 40; n++) add(pick(r() < 0.72 ? SITES.w.slice(0, n < 28 ? 11 : 16) : SITES.ws), pick(SITES.e), n < 5);
+  for (n = 0; n < 40; n++) add(pick(r() < 0.75 ? SITES.e : SITES.es), pick(SITES.w), n < 5);
+  for (n = 0; n < 4; n++) { add(pick(SITES.s1), pick(SITES.s2)); add(pick(SITES.s2), pick(SITES.s1)); }
+})();
+var glow = Particles(arcs.length * 4, true, false, false); space.add(glow.mesh);
+var rings = arcs.map(function (a) {
+  var m = new THREE.Mesh(new THREE.RingGeometry(0.9, 1, 48), new THREE.MeshBasicMaterial({ color: 0xffd9a8, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide }));
+  m.position.copy(a.B).multiplyScalar(1.004); m.lookAt(a.B.clone().multiplyScalar(2)); space.add(m); return m;
+});
+
+// re-entry vehicles, riding with the camera
+var rvGroup = new THREE.Group(); camera.add(rvGroup);
+var rvFx = Particles(7 * 16, true, false, false); rvGroup.add(rvFx.mesh);
+var rvs = (function () {
+  var r = rng(77), list = [], g = new THREE.ConeGeometry(0.07, 0.34, 20).rotateX(-Math.PI / 2), m = new THREE.MeshBasicMaterial({ color: 0x4a3526 });
+  for (var i = 0; i < 7; i++) { var c = new THREE.Mesh(g, m); rvGroup.add(c); list.push({ mesh: c, x0: -1.25 + r() * 2.5, y0: 0.5 + r() * 0.45, x1: -1.6 + i * 0.55 + r() * 0.3, y1: -1.75 - r() * 0.55, z0: -1.5 - r() * 0.9, z1: -10 - r() * 3, t0: 36.3 + i * 0.13 + r() * 0.2 }); }
+  return list;
+})();
+
+function occl(P) { // 0 when the point is hidden behind the planet
+  var c = camera.position, dx = P.x - c.x, dy = P.y - c.y, dz = P.z - c.z, t = -(c.x * dx + c.y * dy + c.z * dz) / (dx * dx + dy * dy + dz * dz);
+  t = clamp01(t); var x = c.x + dx * t, y = c.y + dy * t, z = c.z + dz * t; return seg(Math.sqrt(x * x + y * y + z * z), R * 0.985, R * 1.0);
+}
+
+// =====================================================================
+//  GROUND: a missile field before dawn
+// =====================================================================
+var ground = new THREE.Scene(); ground.fog = new THREE.FogExp2(0x241a26, 0.00034);
+var gcam = new THREE.PerspectiveCamera(34, 16 / 9, 0.5, 30000);
+ground.add(new THREE.Mesh(new THREE.SphereGeometry(15000, 32, 16), new THREE.ShaderMaterial({
+  side: THREE.BackSide, depthWrite: false, fog: false,
+  vertexShader: 'varying vec3 vD; void main(){ vD = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+  fragmentShader: 'varying vec3 vD; float hh(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); } void main(){ vec3 d = normalize(vD); float h = clamp(d.y, 0.0, 1.0); float az = max(dot(normalize(d.xz), vec2(0.0, -1.0)), 0.0); vec3 c = vec3(0.012, 0.024, 0.075) + vec3(0.30, 0.17, 0.36) * exp(-h * 3.2) * (0.3 + 0.7 * az) + vec3(1.0, 0.42, 0.11) * exp(-h * 8.5) * (0.22 + 0.78 * az * az); vec2 g = floor(d.xz / (0.35 + d.y) * 330.0); float st = step(0.9965, hh(g)) * smoothstep(0.1, 0.5, h) * hh(g + 3.0); gl_FragColor = vec4(c + st, 1.0); }'
+})));
+ground.add(new THREE.HemisphereLight(0x34447f, 0x08080d, 0.75));
+var dawn = new THREE.DirectionalLight(0xff8a3c, 0.85); dawn.position.set(-0.15, 0.14, -1); ground.add(dawn);
+var POLES = [[-16, 15], [17, 16], [-18, -17], [19, -15]];
+var plumeLight = new THREE.PointLight(0xffa550, 0, 900, 1.6); ground.add(plumeLight);
+(function () {
+  var fb = function (x, y) { return vnoise(x * 0.004 + y * 0.0031) * 0.6 + vnoise(x * 0.011 - y * 0.009 + 40) * 0.3 + vnoise(x * 0.03 + y * 0.027 + 90) * 0.1; };
+  var g = new THREE.PlaneGeometry(12000, 12000, 140, 140); g.rotateX(-Math.PI / 2); var p = g.attributes.position;
+  for (var i = 0; i < p.count; i++) { var x = p.getX(i), z = p.getZ(i), d = Math.sqrt(x * x + z * z); p.setY(i, fb(x, z) * 9 * seg(d, 120, 700)); }
+  g.computeVertexNormals(); ground.add(new THREE.Mesh(g, new THREE.MeshStandardMaterial({ color: 0x232733, roughness: 1 })));
+  var pos = [], idx = [], N = 260; // a far mountain range against the dawn
+  for (var k = 0; k <= N; k++) { var a = k / N * Math.PI * 2, hgt = 170 + 420 * Math.abs(vnoise(a * 7.3 + 5)) + 130 * vnoise(a * 31), rr = 5200; pos.push(Math.cos(a) * rr, -20, Math.sin(a) * rr, Math.cos(a) * rr, hgt, Math.sin(a) * rr); if (k < N) idx.push(k * 2, k * 2 + 1, k * 2 + 2, k * 2 + 1, k * 2 + 3, k * 2 + 2); }
+  var mg = new THREE.BufferGeometry(); mg.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); mg.setIndex(idx);
+  ground.add(new THREE.Mesh(mg, new THREE.MeshBasicMaterial({ color: 0x120f1b, side: THREE.DoubleSide, fog: false })));
+  var concrete = new THREE.MeshStandardMaterial({ color: 0x6b6f76, roughness: 0.9 });
+  var pad = new THREE.Mesh(new THREE.CylinderGeometry(11, 11, 0.5, 48), concrete); pad.position.y = 0.2; ground.add(pad);
+  var mouth = new THREE.Mesh(new THREE.CylinderGeometry(2.3, 2.3, 0.56, 32), new THREE.MeshBasicMaterial({ color: 0x050505 })); mouth.position.y = 0.2; ground.add(mouth);
+  var lid = new THREE.Mesh(new THREE.BoxGeometry(6.4, 1.1, 6.4), concrete); lid.position.set(-7.6, 1.0, 0); ground.add(lid);
+  var rail = new THREE.Mesh(new THREE.BoxGeometry(13, 0.3, 0.5), new THREE.MeshStandardMaterial({ color: 0x33363c, roughness: 0.7, metalness: 0.5 }));
+  [2.6, -2.6].forEach(function (z) { var q = rail.clone(); q.position.set(-6, 0.55, z); ground.add(q); });
+  var hut = new THREE.Mesh(new THREE.BoxGeometry(7, 3.2, 5), new THREE.MeshStandardMaterial({ color: 0x3c4048, roughness: 0.9 })); hut.position.set(24, 1.6, -14); ground.add(hut);
+  var poleM = new THREE.MeshStandardMaterial({ color: 0x2a2c30, roughness: 0.7 });
+  POLES.forEach(function (q) { var pl = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.16, 10, 8), poleM); pl.position.set(q[0], 5, q[1]); ground.add(pl); var lamp = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.3, 0.5), new THREE.MeshBasicMaterial({ color: 0xfff1d0 })); lamp.position.set(q[0], 10, q[1]); ground.add(lamp); });
+  for (var f = 0; f < 60; f++) { var fa = f / 60 * Math.PI * 2, post = new THREE.Mesh(new THREE.BoxGeometry(0.12, 2.0, 0.12), poleM); post.position.set(Math.cos(fa) * 84, 1.0, Math.sin(fa) * 84); ground.add(post); }
+})();
+
+function buildMissile() { // a three-stage, solid-fuel intercontinental ballistic missile, about 18 m tall
+  var g = new THREE.Group();
+  var skin = new THREE.MeshStandardMaterial({ color: 0xd9dcdf, roughness: 0.45, metalness: 0.25 });
+  var band = new THREE.MeshStandardMaterial({ color: 0x23262b, roughness: 0.5, metalness: 0.4 });
+  var olive = new THREE.MeshStandardMaterial({ color: 0x4a5340, roughness: 0.6, metalness: 0.2 });
+  var prof = [[0.55, 0], [0.86, 0.9], [0.86, 7.4], [0.84, 7.5], [0.7, 8.3], [0.7, 12.3], [0.68, 12.4], [0.6, 13.0], [0.6, 15.3], [0.57, 15.5], [0.5, 16.3], [0.36, 17.2], [0.18, 17.8], [0.001, 18.05]];
+  g.add(new THREE.Mesh(new THREE.LatheGeometry(prof.map(function (p) { return new THREE.Vector2(p[0], p[1]); }), 40), skin));
+  [[0.875, 0.9, 0.5], [0.875, 7.0, 0.45], [0.715, 8.3, 0.4], [0.715, 12.0, 0.35], [0.615, 13.0, 0.3]].forEach(function (b) { var m = new THREE.Mesh(new THREE.CylinderGeometry(b[0], b[0], b[2], 40, 1, true), band); m.position.y = b[1] + b[2] / 2; g.add(m); });
+  var nose = new THREE.Mesh(new THREE.LatheGeometry([[0.575, 15.5], [0.505, 16.3], [0.365, 17.2], [0.185, 17.8], [0.004, 18.06]].map(function (p) { return new THREE.Vector2(p[0], p[1]); }), 40), olive); g.add(nose);
+  var race = new THREE.Mesh(new THREE.BoxGeometry(0.12, 11, 0.2), band); race.position.set(0.86, 6.4, 0); g.add(race);
+  var noz = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.6, 0.9, 24, 1, true), band); noz.position.y = -0.35; g.add(noz);
+  return g;
+}
+// each missile: where, when it lights, how hard it pulls
+var MISS = [{ x: 0, z: 0, t0: 24.75, a: 15, lean: 0.0 }, { x: -1250, z: -900, t0: 22.4, a: 17, lean: 0.05 }, { x: 980, z: -1500, t0: 23.3, a: 16, lean: -0.04 }, { x: 2300, z: -700, t0: 21.2, a: 16, lean: -0.06 }, { x: -2600, z: -2100, t0: 20.6, a: 15, lean: 0.07 }];
+MISS.forEach(function (m, i) { m.mesh = buildMissile(); ground.add(m.mesh); m.seed = i * 97; });
+var PUFFS = 150, smoke = Particles(MISS.length * PUFFS, false, true, true), fire = Particles(MISS.length * 16 + 8, true, false, true);
+ground.add(smoke.mesh, fire.mesh);
+function missileY(m, tau) { return -19 + 0.5 * m.a * tau * tau; }
+
+// =====================================================================
+//  One frame, as a pure function of time
+// =====================================================================
+var CAPS = [
+  [17.0, 19.4, 'It would not begin with an explosion.'],
+  [19.8, 23.8, 'First the satellites go blind. Then the lights go out.'],
+  [28.5, 30.9, 'Leaders have minutes to decide. There is no time to be sure.'],
+  [31.3, 33.8, 'Missiles cross the Arctic at around 24,000 km/h.'],
+  [34.0, 36.4, 'Once launched, they cannot be recalled.'],
+  [42.1, 44.3, 'Within an hour, hundreds of cities are gone.'],
+  [44.7, 47.0, 'Smoke blocks the sun. Temperatures drop. Harvests fail.']
+];
+var SRC = [[13.6, 16.9, 'SOURCE: SIPRI YEARBOOK 2026'], [47.2, 49.4, 'SOURCE: XIA ET AL., NATURE FOOD, 2022'], [53.9, 55.9, 'SOURCE: BULLETIN OF THE ATOMIC SCIENTISTS, 2026']];
+var grains = (function () { var out = [], r = rng(3); for (var k = 0; k < 6; k++) { var c = document.createElement('canvas'); c.width = c.height = 256; var g = c.getContext('2d'), d = g.createImageData(256, 256); for (var i = 0; i < d.data.length; i += 4) { var v = r() * 255; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; } g.putImageData(d, 0, 0); out.push('url(' + c.toDataURL() + ')'); } return out; })();
+var el = {}; ['hkLabel', 'hkBig', 'hkSub', 'title', 'stats', 's1n', 's2n', 's3n', 'cap', 'hudTL', 'hudTR', 'alarm', 'count', 'countN', 'five', 'src', 'rew', 'end1', 'end2', 'flash', 'tint', 'barT', 'barB', 'grain', 'g0', 'g1', 'g2', 'g3'].forEach(function (k) { el[k] = $(k); });
+var statEls = Array.prototype.slice.call(document.querySelectorAll('.stat'));
+var v3 = new THREE.Vector3(), v3b = new THREE.Vector3(), UPV = new THREE.Vector3(0, 1, 0);
+function show(e, o, tf) { e.style.opacity = o.toFixed(3); e.style.visibility = o > 0.004 ? 'visible' : 'hidden'; if (tf !== undefined) e.style.transform = tf; }
+function camGeo(lat, lon, dist, yaw, pitch, roll) { camera.position.copy(geo(lat, lon, dist)); camera.up.set(0, 1, 0); camera.lookAt(0, 0, 0); if (yaw) camera.rotateY(yaw); if (pitch) camera.rotateX(pitch); if (roll) camera.rotateZ(roll); }
+function sunLimb(eps) { var p = v3.copy(camera.position).normalize(), u = v3b.copy(UPV).addScaledVector(p, -UPV.dot(p)).normalize(); SUN.copy(p).multiplyScalar(-Math.cos(eps)).addScaledVector(u, Math.sin(eps)).normalize(); }
+function pad2(n) { return (n < 10 ? '0' : '') + n; }
+
+function frame(t) {
+  var fi = Math.round(t * 30), i, k;
+  // story time: runs with the film, then is wound back to before the war
+  var s = t < 49.5 ? t : t < 52 ? lerp(49.5, 12, eio(seg(t, 49.5, 51.9))) : 12;
+  var rewinding = t >= 49.5 && t < 52;
+
+  if (t >= 24 && t < 31) drawGround(t); else drawSpace(t, s, rewinding);
+
+  // ----- motion graphics -----
+  el.grain.style.backgroundImage = grains[fi % 6];
+  el.grain.style.backgroundPosition = ((fi * 37) % 256) + 'px ' + ((fi * 91) % 256) + 'px';
+  var open = eio(seg(t, 52.0, 54.2)), barH = 138 * (1 - open);
+  el.barT.style.height = el.barB.style.height = barH.toFixed(1) + 'px';
+  show(el.flash, t >= 40 ? Math.max(0, 1 - seg(t, 40.28, 41.5)) * (t < 40.3 ? 1 : 0.9) : seg(t, 39.9, 40.0) * 0.0);
+  show(el.tint, Math.max(1 - seg(t, 3.3, 5.2), win(t, 46.9, 49.6, 0.5, 0.2) * 0.45, win(t, 55.4, 60, 0.9, 0.01) * 0.2, seg(t, 59.5, 60) ));
+
+  // hook
+  var hk = t < 1.8 ? ['WORLD WAR I', '4 YEARS', 0.2] : t < 3.4 ? ['WORLD WAR II', '6 YEARS', 1.85] : ['WORLD WAR III', '30 MINUTES', 3.45];
+  var hOut = t < 1.8 ? 1 - seg(t, 1.62, 1.78) : t < 3.4 ? 1 - seg(t, 3.22, 3.38) : 1 - seg(t, 6.1, 6.45);
+  el.hkLabel.textContent = hk[0]; show(el.hkLabel, seg(t, hk[2], hk[2] + 0.25) * hOut);
+  var bigAt = hk[2] + (t < 3.4 ? 0.38 : 0.95), bk = seg(t, bigAt, bigAt + 0.32);
+  el.hkBig.textContent = hk[1]; el.hkBig.style.color = t < 3.4 ? '#f2f5f8' : '#ff5a36';
+  show(el.hkBig, seg(t, bigAt, bigAt + 0.1) * hOut, 'scale(' + (1 + 0.55 * (1 - eox(bk)) + 0.03 * seg(t, bigAt, bigAt + 3)).toFixed(4) + ')');
+  show(el.hkSub, win(t, 5.0, 6.4, 0.4, 0.3), 'translateY(' + (18 * (1 - eo(seg(t, 5.0, 5.5)))).toFixed(1) + 'px)');
+
+  // title
+  show(el.title, win(t, 6.75, 10.0, 0.7, 0.3), 'scale(' + (0.94 + 0.06 * seg(t, 6.7, 10)).toFixed(4) + ')');
+
+  // the numbers
+  show(el.stats, win(t, 10.3, 16.9, 0.2, 0.4));
+  [[10.6, 8.2, 1], [12.25, 9, 0], [13.9, 12187, 0]].forEach(function (d, j) {
+    var kk = eo(seg(t, d[0], d[0] + 0.85)), val = d[1] * kk;
+    el['s' + (j + 1) + 'n'].textContent = d[2] ? val.toFixed(1) : Math.round(val).toLocaleString('en-US');
+    show(statEls[j], seg(t, d[0] - 0.15, d[0] + 0.2), 'translateX(' + (-40 * (1 - eo(seg(t, d[0] - 0.15, d[0] + 0.35)))).toFixed(1) + 'px)');
+  });
+
+  // captions and sources
+  var cap = null; for (i = 0; i < CAPS.length; i++) if (t >= CAPS[i][0] && t < CAPS[i][1]) cap = CAPS[i];
+  if (cap) { el.cap.textContent = cap[2]; show(el.cap, win(t, cap[0], cap[1], 0.3, 0.3), 'translateY(' + (14 * (1 - eo(seg(t, cap[0], cap[0] + 0.45)))).toFixed(1) + 'px)'); } else show(el.cap, 0);
+  var sr = null; for (i = 0; i < SRC.length; i++) if (t >= SRC[i][0] && t < SRC[i][1]) sr = SRC[i];
+  if (sr) { el.src.textContent = sr[2]; el.src.style.bottom = (18 + barH) + 'px'; show(el.src, win(t, sr[0], sr[1], 0.3, 0.3)); } else show(el.src, 0);
+
+  // head-up display
+  show(el.hudTL, win(t, 10.3, 49.4, 0.4, 0.3) * (t >= 24 && t < 28.2 ? 0 : 1));
+  var clock = '';
+  if (t >= 19.6 && t < 24) clock = 'T+ 00:00:' + pad2(Math.min(59, Math.floor((t - 19.6) * 13)));
+  else if (t >= 24 && t < 31) clock = 'T+ 00:0' + (1 + Math.floor((t - 24) / 2.4)) + ':' + pad2(Math.floor(((t - 24) * 25) % 60));
+  else if (t >= 31 && t < 40) { var mm = 4 + 30 * seg(t, 31, 40); clock = 'T+ 00:' + pad2(Math.floor(mm)) + ':' + pad2(Math.floor((mm % 1) * 60)); }
+  else if (t >= 40.3 && t < 44.5) { var m2 = 34 + 40 * seg(t, 40.3, 44.5); clock = 'T+ ' + pad2(Math.floor(m2 / 60)) + ':' + pad2(Math.floor(m2 % 60)) + ':00'; }
+  else if (t >= 44.5 && t < 49.5) clock = t < 45.6 ? 'T+ 10 DAYS' : t < 46.7 ? 'T+ 3 MONTHS' : t < 47.8 ? 'T+ 1 YEAR' : 'T+ 2 YEARS';
+  el.hudTR.textContent = clock; show(el.hudTR, clock ? 1 : 0);
+  show(el.alarm, win(t, 24.15, 28.1, 0.1, 0.15) * (0.55 + 0.45 * (Math.sin((t - 24.15) * Math.PI * 2 * 1.25) > -0.2 ? 1 : 0)));
+  var rem = Math.max(0, 1800 * (1 - seg(t, 31, 40))), cz = t < 36.5 ? 1 : 1 + 0.45 * eio(seg(t, 36.5, 37.3));
+  el.countN.textContent = pad2(Math.floor(rem / 60)) + ':' + pad2(Math.floor(rem % 60));
+  el.countN.style.color = rem < 300 ? '#ff5a36' : '#f2f5f8';
+  show(el.count, win(t, 31.0, 40.02, 0.35, 0.02), 'translateY(' + ((cz - 1) * 250).toFixed(1) + 'px) scale(' + cz.toFixed(4) + ')');
+  show(el.five, win(t, 47.1, 49.5, 0.3, 0.15), 'scale(' + (1 + 0.45 * (1 - eox(seg(t, 47.1, 47.5))) + 0.03 * seg(t, 47.1, 49.5)).toFixed(4) + ')');
+
+  // rewind
+  show(el.rew, rewinding ? 0.6 + 0.4 * (Math.sin(t * Math.PI * 2 * 1.4) > 0 ? 1 : 0) : 0);
+  for (i = 0; i < 4; i++) { var ge = el['g' + i]; if (rewinding) { var hy = hash(fi * 13 + i * 7), hh2 = hash(fi * 5 + i * 31); ge.style.top = (140 + hy * 780) + 'px'; ge.style.height = (3 + hh2 * 26) + 'px'; show(ge, 0.35 + 0.5 * hash(fi + i)); } else show(ge, 0); }
+
+  // payoff
+  show(el.end1, win(t, 52.4, 55.7, 0.6, 0.35), 'translateY(' + (20 * (1 - eo(seg(t, 52.4, 53.2)))).toFixed(1) + 'px)');
+  el.end1.children[1].style.opacity = seg(t, 53.7, 54.3).toFixed(3);
+  show(el.end2, win(t, 56.0, 60.5, 0.7, 0.3), 'scale(' + (0.95 + 0.05 * seg(t, 56, 60)).toFixed(4) + ')');
+  el.end2.children[1].style.opacity = seg(t, 57.2, 57.9).toFixed(3);
+}
+
+function drawSpace(t, s, rewinding) {
+  var i, a, shake = 0;
+  // ----- camera and sun, shot by shot -----
+  camera.fov = 35;
+  if (t < 10) { // dawn over the limb
+    camGeo(15, 78 - t * 0.5, 26.5 - t * 0.2, 0, lerp(0.66, 0.49, eio(seg(t, 3.0, 8.5))));
+    sunLimb(lerp(0.33, 0.475, eio(seg(t, 5.6, 10))));
+  } else if (t < 17) { // the world at night
+    camGeo(27, 54 - (t - 10) * 1.3, 35 - (t - 10) * 0.25, 0.185, -0.01);
+    SUN.copy(geo(8, 54 + 104));
+  } else if (t < 19.6) { // one satellite
+    a = geo(31, 24, R * 1.62);
+    camera.position.copy(a).add(v3.set(1.15, 0.5, 0.75).normalize().multiplyScalar(3.5 - (t - 17) * 0.12)); camera.up.set(0.15, 1, 0).normalize(); camera.lookAt(a); camera.rotateY(-0.1);
+    SUN.copy(geo(5, 24 + 118));
+  } else if (t < 24) { // the lights go out
+    camGeo(41, 12 + (t - 19.6) * 3.6, 21.5 + (t - 19.6) * 0.3, 0, 0.02);
+    SUN.copy(geo(-10, 30 + 172));
+  } else if (t < 36.5) { // over the pole
+    camGeo(63 + (t - 31) * 2.0, -38 + (t - 31) * 5.5, 35 - (t - 31) * 0.65, 0, -0.035);
+    SUN.copy(geo(18, -150));
+  } else if (t < 40.3) { // riding down with the warheads
+    camGeo(52, 2 + (t - 36.5) * 1.6, 19.6 - (t - 36.5) * 0.75, 0, 0.5, 0.06); shake = 0.012 + 0.03 * seg(t, 38.5, 40);
+    SUN.copy(geo(-5, 20 + 178));
+  } else if (t < 44.5) { // impact
+    camGeo(49, 14 + (t - 40.3) * 2.2, 23 + 13 * eo(seg(t, 40.3, 44.5)), 0, 0); shake = 0.05 * Math.exp(-(t - 40.3) * 1.3);
+    SUN.copy(geo(-8, 25 + 163));
+  } else if (t < 52) { // the long winter, then the rewind
+    camGeo(24, -44 + (t - 44.5) * 2.1, 34 + (t - 44.5) * 0.3, 0, -0.02);
+    SUN.copy(geo(12, -78));
+  } else { // dawn again
+    camGeo(16, 80 - (t - 52) * 0.7, 26 + (t - 52) * 0.35, 0, lerp(0.53, 0.49, eio(seg(t, 52, 60))));
+    sunLimb(lerp(0.4, 0.452, eo(seg(t, 52, 59))));
+  }
+  if (shake) { camera.rotateX(shake * (vnoise(t * 23) + 0.5 * vnoise(t * 61 + 9))); camera.rotateY(shake * (vnoise(t * 19 + 4) + 0.5 * vnoise(t * 57 + 2))); }
+  camera.updateProjectionMatrix(); camera.updateMatrixWorld(true);
+
+  // ----- planet state -----
+  var soot = eio(seg(s, 41.6, 49.3));
+  earthU.soot.value = soot; cloudU.soot.value = soot; atmoU.soot.value = soot; cloudU.time.value = s;
+  earthU.lightsOn.value = 1 - 0.94 * seg(s, 40.3, 44.2);
+  for (i = 0; i < BLK.length; i++) { var bt = BLK[i][3], kk = seg(s, bt, bt + 0.45); earthU.blkA.value[i] = kk >= 1 ? 1 : kk > 0 ? (hash(Math.floor(s * 30) + i * 13) > 0.45 ? kk : 1) * 0.9 + 0.1 * kk : 0; }
+  clouds.rotation.y = s * 0.0025;
+
+  // sun glare
+  v3.copy(SUN).multiplyScalar(9000);
+  sunP.set(0, v3.x, v3.y, v3.z, 620, 1.0, 0.95, 0.85, 1); sunP.set(1, v3.x, v3.y, v3.z, 2400, 1.0, 0.72, 0.42, 0.55); sunP.set(2, v3.x, v3.y, v3.z, 7000, 0.45, 0.6, 1.0, 0.22); sunP.commit();
+  streak.position.copy(v3); streak.material.opacity = 0.75 * occl(v3);
+
+  // ----- satellite -----
+  var satOn = t >= 10 && t < 19.6; sat.visible = satOn;
+  var dead = seg(t, 18.25, 18.4);
+  if (satOn) {
+    if (t < 17) { sat.position.copy(geo(22 + (t - 10) * 0.5, 18 + (t - 10) * 2.6, R * 1.95)); sat.rotation.set(0.5, 0.9 + t * 0.05, 0.25); }
+    else { sat.position.copy(geo(31, 24, R * 1.62)); var tum = Math.max(0, t - 18.3); sat.rotation.set(0.35 + tum * tum * 0.5, 0.75 + (t - 17) * 0.05 + tum * 0.35, 0.2 + tum * tum * 0.22); }
+    satLamp.visible = dead < 1 && (t < 18.0 || Math.sin(t * 60) > 0);
+    if (t < 17) satLight.position.copy(SUN).multiplyScalar(100); else satLight.position.copy(camera.position).add(v3.set(6, 9, 2)); satLight.intensity = 1.5 * (1 - 0.82 * dead);
+  }
+  var sp = sat.position;
+  for (i = 0; i < 40; i++) {
+    var st = t - 18.25 - hash(i * 3.3) * 0.22;
+    if (satOn && st > 0 && st < 0.9) { var dx = hash(i) - 0.5, dy = hash(i + 50) - 0.5, dz = hash(i + 90) - 0.5, d = st * (0.5 + hash(i + 7) * 1.4), fa = Math.pow(1 - st / 0.9, 2); satFx.set(i, sp.x + dx * d, sp.y + dy * d, sp.z + dz * d, i < 3 ? 0.7 * fa + 0.05 : 0.035, 0.7, 0.9, 1.0, i < 3 ? fa * 0.9 : fa); } else satFx.hide(i);
+  }
+  satFx.commit();
+  for (i = 0; i < swarmDef.length; i++) {
+    var w = swarmDef[i], ang = w.ph + s * w.w; v3.copy(w.u).multiplyScalar(Math.cos(ang) * w.r).addScaledVector(w.v, Math.sin(ang) * w.r);
+    var alive = s < w.die ? 1 : s < w.die + 0.25 ? (Math.sin(s * 70) > 0 ? 1.8 : 0) : 0, on = (t >= 10 && t < 17) || (t >= 19.6 && t < 24) || t >= 44.5;
+    if (on && alive && s < 40) swarm.set(i, v3.x, v3.y, v3.z, 0.16, 0.85, 0.92, 1, 0.9 * alive * occl(v3)); else swarm.hide(i);
+  }
+  swarm.commit();
+
+  // ----- missiles in flight, and what follows -----
+  var arcsOn = (t >= 31 && t < 36.5) || t >= 40.3; arcGroup.visible = arcsOn && s > 30.9;
+  for (i = 0; i < arcs.length; i++) {
+    var A = arcs[i], head = (s - A.launch) / (A.arrive - A.launch), dt = s - A.arrive, g4 = i * 4;
+    A.u.head.value = head; A.u.fade.value = (1 - 0.9 * seg(s, A.arrive, A.arrive + 2.2)) * (1 - seg(s, 44, 46));
+    // launch flare and travelling head
+    var lf = s - A.launch;
+    if (arcsOn && lf > 0 && lf < 1.2) glow.set(g4, A.A.x, A.A.y, A.A.z, 0.9 * (1 - lf / 1.2) + 0.2, 1, 0.75, 0.4, (1 - lf / 1.2) * occl(A.A)); else glow.hide(g4);
+    if (arcsOn && head > 0 && head < 1) { A.curve.getPoint(head, v3); glow.set(g4 + 1, v3.x, v3.y, v3.z, 0.42, 1, 0.9, 0.7, occl(v3)); } else glow.hide(g4 + 1);
+    // detonation: flash, fireball, ember
+    var ring = rings[i];
+    if (t >= 40.3 && dt > 0 && s < 49.6) {
+      var oc = occl(A.B), fl = Math.exp(-dt * 3.2), em = Math.exp(-dt * 0.45) * (1 - seg(s, 45, 48.5));
+      glow.set(g4 + 2, A.B.x, A.B.y, A.B.z, A.size * (1.2 + 7.5 * fl * (1 - Math.exp(-dt * 30))), 1, 0.96, 0.88, fl * oc);
+      glow.set(g4 + 3, A.B.x, A.B.y, A.B.z, A.size * (0.5 + 1.5 * (1 - Math.exp(-dt * 1.4))), 1, 0.42, 0.1, 0.85 * em * oc);
+      ring.visible = dt < 3.2; ring.scale.setScalar(A.size * (0.12 + 1.05 * Math.sqrt(dt))); ring.material.opacity = 0.45 * Math.exp(-dt * 1.5);
+    } else { glow.hide(g4 + 2); glow.hide(g4 + 3); ring.visible = false; }
+  }
+  glow.commit();
+
+  // ----- re-entry vehicles -----
+  var rvOn = t >= 36.5 && t < 40.3; rvGroup.visible = rvOn;
+  if (rvOn) for (i = 0; i < rvs.length; i++) {
+    var rv = rvs[i], k = seg(t, rv.t0, rv.t0 + 3.9), ke = Math.pow(k, 0.75), x = lerp(rv.x0, rv.x1, ke), y = lerp(rv.y0, rv.y1, ke), z = lerp(rv.z0, rv.z1, ke);
+    var k2 = Math.pow(Math.max(0, k - 0.02), 0.75), bx = x - lerp(rv.x0, rv.x1, k2), by = y - lerp(rv.y0, rv.y1, k2), bz = z - lerp(rv.z0, rv.z1, k2), bl = Math.sqrt(bx * bx + by * by + bz * bz) || 1;
+    rv.mesh.visible = k > 0 && k < 1; rv.mesh.position.set(x, y, z); rv.mesh.lookAt(x + bx, y + by, z + bz);
+    for (var p = 0; p < 16; p++) {
+      var q = p / 15, back = q * (1.3 + 3.2 * k), heat = 0.45 + 0.55 * seg(k, 0.1, 0.6), fl2 = 0.85 + 0.15 * vnoise(t * 40 + p + i * 9);
+      if (k > 0 && k < 1) rvFx.set(i * 16 + p, x - bx / bl * back, y - by / bl * back, z - bz / bl * back, (p === 0 ? 0.75 : 0.36 * (1 - q * 0.7)) * fl2, 1, lerp(0.85, 0.35, q), lerp(0.6, 0.08, q), heat * (p === 0 ? 0.95 : 0.6 * (1 - q)));
+      else rvFx.hide(i * 16 + p);
+    }
+  }
+  rvFx.commit();
+
+  renderer.render(space, camera);
+}
+
+function drawGround(t) {
+  var wide = t >= 28.2, i, m = MISS[0], tau0 = t - m.t0, y0 = missileY(m, Math.max(0, tau0));
+  // ----- camera -----
+  if (!wide) {
+    var lookY = Math.max(7, y0 + 9) * 0.86, amp = 0.35 * seg(tau0, -0.1, 0.5) * (1 - 0.6 * seg(tau0, 2, 4));
+    gcam.fov = 40; gcam.position.set(22 + 4 * seg(t, 24, 28.2), 1.7, 66 - 5 * seg(t, 24, 28.2));
+    gcam.position.x += amp * vnoise(t * 31); gcam.position.y += amp * 0.7 * vnoise(t * 37 + 5);
+    gcam.up.set(0, 1, 0); gcam.lookAt(1.5, lookY, 0);
+  } else {
+    gcam.fov = 30; gcam.position.set(-260 + (t - 28.2) * 12, 7, 1000); gcam.up.set(0, 1, 0); gcam.lookAt(150, 300 + (t - 28.2) * 60, -900);
+  }
+  gcam.updateProjectionMatrix(); gcam.updateMatrixWorld(true);
+
+  // ----- missiles, flame, smoke -----
+  var fI = 0;
+  for (var mi = 0; mi < MISS.length; mi++) {
+    m = MISS[mi]; var tau = t - m.t0, y = missileY(m, Math.max(0, tau)), lit = tau > 0, drift = m.lean * Math.max(0, y) * Math.max(0, y) * 0.004;
+    m.mesh.position.set(m.x + drift, y, m.z); m.mesh.rotation.z = -m.lean * Math.max(0, y) * 0.0016; m.mesh.visible = y < 4000;
+    var far = wide || mi > 0, fs = far ? 2.6 : 1;
+    for (i = 0; i < 16; i++) {
+      if (!lit || (far && i > 5)) { fire.hide(fI++); continue; }
+      var q = i / 15, fl = 0.8 + 0.2 * vnoise(t * 45 + i * 3 + mi * 11), fy = y - 0.6 - q * (far ? 22 : 15) * fl;
+      if (fy < 0.3 && y < 0) { fy = 0.6 + q * 5; }
+      fire.set(fI++, m.x + drift + 0.25 * vnoise(t * 60 + i), fy, m.z, (i === 0 ? (wide ? 110 : far ? 46 : 20) : (3.6 - q * 2.4) * fs * 1.6) * fl, 1, lerp(0.95, 0.5, q), lerp(0.8, 0.12, q), i === 0 ? (far ? 0.75 : 0.3) : 0.95 * (1 - q * 0.75));
+    }
+    for (i = 0; i < PUFFS; i++) {
+      var te = i * 0.075, age = tau - te, idx = mi * PUFFS + i;
+      if (age <= 0) { smoke.hide(idx); continue; }
+      var ye = missileY(m, te), h1 = hash(m.seed + i), h2 = hash(m.seed + i + 500), h3 = hash(m.seed + i + 900);
+      var px, py, pz, size, alpha, low = ye < 6;
+      if (low) { var ra = h1 * Math.PI * 2, rd = (9 + 34 * h2) * (1 - Math.exp(-age * 0.9)); px = m.x + Math.cos(ra) * rd; pz = m.z + Math.sin(ra) * rd * 0.8; py = 1 + (2.5 + 9 * h3) * (1 - Math.exp(-age * 0.55)); size = (5 + 15 * (1 - Math.exp(-age * 0.5))) * (0.8 + 0.6 * h3); alpha = 0.6; }
+      else { var dr = m.lean * ye * ye * 0.004; px = m.x + dr + (h1 - 0.5) * 2.5 + age * (1.6 + h2 * 1.2); pz = m.z + (h2 - 0.5) * 2.5; py = ye - 2 + (h3 - 0.5) * 2 + age * 0.4; size = (3.5 + 10 * (1 - Math.exp(-age * 0.42))) * (0.8 + 0.5 * h3); alpha = 0.62; }
+      alpha *= Math.min(1, age * 5) * Math.exp(-age * 0.07);
+      var hot = Math.exp(-age * 2.6) * (lit ? 1 : 0), hgt = seg(py, 0, 500), sh = 0.30 + 0.25 * h1 + 0.25 * hgt;
+      smoke.set(idx, px, py, pz, size * (wide ? 2.4 : 1), lerp(sh * 1.05 + 0.1 * hgt, 1.0, hot), lerp(sh * 0.95, 0.62, hot), lerp(sh * 1.02, 0.25, hot), alpha);
+    }
+  }
+  // floodlights
+  for (i = 0; i < 4; i++) fire.set(fI++, POLES[i][0], 10, POLES[i][1], 5.5, 1, 0.93, 0.78, wide ? 0 : 0.8);
+  for (; fI < fire.n; fI++) fire.hide(fI);
+  fire.commit(); smoke.commit();
+  var ign = seg(tau0, 0, 0.35);
+  plumeLight.position.set(0, Math.max(3, y0 - 2), 0); plumeLight.intensity = ign * (2.6 + 0.6 * vnoise(t * 40)) * (wide ? 0.5 : 1);
+  renderer.render(ground, gcam);
+}
+
+// ---------- loading and playback ----------
+var loader = new THREE.TextureLoader();
+function tex(url) { return new Promise(function (res, rej) { loader.load(url, function (tx) { tx.anisotropy = 8; tx.minFilter = THREE.LinearMipmapLinearFilter; res(tx); }, undefined, rej); }); }
+window.ready = Promise.all([tex('assets/earth_atmos_2048.jpg'), tex('assets/earth_lights_2048.png'), tex('assets/earth_specular_2048.jpg'), tex('assets/earth_clouds_1024.png'), document.fonts.load('400 40px Anton'), document.fonts.load('600 40px "Barlow Condensed"'), document.fonts.load('500 40px "Barlow Condensed"'), document.fonts.load('700 40px "Barlow Condensed"'), document.fonts.load('500 40px "JetBrains Mono"'), document.fonts.load('700 40px "JetBrains Mono"')]).then(function (r) {
+  earthU.dayMap.value = r[0]; earthU.nightMap.value = r[1]; earthU.specMap.value = r[2]; cloudU.map.value = r[3]; r[3].wrapS = THREE.RepeatWrapping;
+  frame(0); return true;
+});
+window.renderFrame = frame;
+
+if (!/capture/.test(location.search)) { // live preview: space bar plays and pauses, arrow keys step
+  var stage = $('stage'), T = 0, playing = true, last = 0;
+  var fit = function () { var k = Math.min(innerWidth / 1920, innerHeight / 1080); stage.style.transform = 'translate(' + ((innerWidth - 1920 * k) / 2) + 'px,' + ((innerHeight - 1080 * k) / 2) + 'px) scale(' + k + ')'; };
+  addEventListener('resize', fit); fit();
+  addEventListener('keydown', function (e) { if (e.code === 'Space') playing = !playing; if (e.code === 'ArrowRight') { T = Math.min(DUR, T + 1); frame(T); } if (e.code === 'ArrowLeft') { T = Math.max(0, T - 1); frame(T); } });
+  window.ready.then(function () { requestAnimationFrame(function loop(now) { if (playing) { T += Math.min(0.1, (now - last) / 1000 || 0); if (T >= DUR) T = 0; frame(T); } last = now; requestAnimationFrame(loop); }); });
+}
+</script>
+</body>
+</html>
