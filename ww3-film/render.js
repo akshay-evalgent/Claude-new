@@ -3,7 +3,7 @@
 //   node render.js frames <from> <to> <dir> -> JPEG frames [from, to) at 30 fps
 const { chromium } = require('playwright');
 const http = require('http'), fs = require('fs'), path = require('path');
-const ROOT = __dirname, FPS = 30;
+const ROOT = __dirname, FPS = 30, VERT = !!process.env.VERT; // VERT=1 renders the 9:16 cut
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.jpg': 'image/jpeg', '.png': 'image/png', '.woff2': 'font/woff2' };
 
 (async () => {
@@ -14,10 +14,10 @@ const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/cs
   });
   await new Promise(r => server.listen(0, '127.0.0.1', r));
   const browser = await chromium.launch({ args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
-  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
+  const page = await browser.newPage({ viewport: VERT ? { width: 1080, height: 1920 } : { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
   page.on('console', m => { if (m.type() === 'error') console.log('ERR', m.text()); });
   page.on('pageerror', e => console.log('PAGEERR', e.message));
-  await page.goto(`http://127.0.0.1:${server.address().port}/film.html?capture`);
+  await page.goto(`http://127.0.0.1:${server.address().port}/film.html?capture${VERT ? '&v' : ''}`);
   await page.evaluate(() => window.ready);
 
   const [mode, ...rest] = process.argv.slice(2);

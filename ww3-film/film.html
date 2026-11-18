@@ -62,11 +62,28 @@
   #end2 { top: 170px; }
   #end2 .a { font-size: 150px; line-height: 1.08; letter-spacing: 0.015em; }
   #end2 .b { margin-top: 30px; font-weight: 600; font-size: 56px; letter-spacing: 0.05em; color: var(--amber); }
+
+  /* vertical 9:16 cut: text stays inside the Shorts safe area */
+  .vb { display: none; } .v .vb { display: block; }
+  .v .bar { display: none; }
+  .v #hkLabel { top: 640px; font-size: 46px; } .v #hkBig { top: 710px; font-size: 198px; } .v #hkSub { top: 1010px; font-size: 44px; }
+  .v #title { top: 330px; } .v #title .a, .v #title .c { font-size: 52px; } .v #title .b { font-size: 310px; line-height: 1.0; margin: 8px 0 14px; }
+  .v #title .d { font-size: 25px; padding: 0 110px; line-height: 1.4; }
+  .v #stats { left: 90px; top: 300px; width: 900px; } .v .stat { height: 212px; } .v .stat .n { font-size: 140px; } .v .stat .l { font-size: 36px; }
+  .v #cap { left: 80px; right: 80px; bottom: 480px; font-size: 58px; line-height: 1.16; text-wrap: balance; }
+  .v #hudTL, .v #hudTR, .v #rew { top: 262px; } .v #hudTL, .v #hudTR { font-size: 21px; } .v #hudTL { left: 56px; } .v #hudTR, .v #rew { right: 56px; }
+  .v #rew { font-size: 34px; }
+  .v #alarm { top: 330px; } .v #alarm span { font-size: 36px; }
+  .v #count { top: 330px; } .v #count .n { font-size: 170px; }
+  .v #five { top: 560px; } .v #five .a { font-size: 50px; } .v #five .b { font-size: 262px; } .v #five .c { font-size: 50px; padding: 0 90px; line-height: 1.2; }
+  .v #src { left: 56px; font-size: 18px; }
+  .v #end1 { top: 400px; padding: 0 80px; } .v #end1 .a { font-size: 82px; line-height: 1.1; } .v #end1 .b { font-size: 46px; line-height: 1.3; text-wrap: balance; }
+  .v #end2 { top: 370px; } .v #end2 .a { font-size: 158px; } .v #end2 .b { font-size: 50px; padding: 0 90px; line-height: 1.25; text-wrap: balance; }
 </style>
 </head>
 <body>
 <div id="stage">
-  <canvas id="gl" width="1920" height="1080"></canvas>
+  <canvas id="gl"></canvas>
   <div id="vig" class="full"></div>
   <div id="tint" class="full"></div>
 
@@ -74,7 +91,7 @@
   <div id="hkBig" class="ctr anton shadow"></div>
   <div id="hkSub" class="ctr shadow">is all the first strike would need.</div>
 
-  <div id="title" class="ctr shadow"><div class="a">WHAT IF</div><div class="b anton">World War 3</div><div class="c">HAPPENS?</div><div class="d">A hypothetical scenario, built on published research</div></div>
+  <div id="title" class="ctr shadow"><div class="a">WHAT IF</div><div class="b anton">World<span class="vb"></span> War 3</div><div class="c">HAPPENS?</div><div class="d">A hypothetical scenario, built on published research</div></div>
 
   <div id="stats" class="shadow">
     <div class="stat"><div class="n anton" id="s1n">0</div><div class="l">billion <b>people</b></div></div>
@@ -115,10 +132,12 @@ var hash = function (n) { var x = Math.sin(n * 127.1 + 311.7) * 43758.5453; retu
 function vnoise(x) { var i = Math.floor(x), f = x - i; f = f * f * (3 - 2 * f); return lerp(hash(i), hash(i + 1), f) * 2 - 1; }
 function geo(lat, lon, r) { var phi = (90 - lat) * DEG, th = (lon + 180) * DEG; r = r || 1; return new THREE.Vector3(-r * Math.sin(phi) * Math.cos(th), r * Math.cos(phi), r * Math.sin(phi) * Math.sin(th)); }
 var $ = function (id) { return document.getElementById(id); };
+var VERT = /[?&]v\b/.test(location.search), W = VERT ? 1080 : 1920, H = VERT ? 1920 : 1080;
+$('stage').style.width = W + 'px'; $('stage').style.height = H + 'px'; if (VERT) $('stage').className = 'v';
 
 var renderer = new THREE.WebGLRenderer({ canvas: $('gl'), antialias: true, preserveDrawingBuffer: true });
-renderer.setPixelRatio(1); renderer.setSize(1920, 1080, false); renderer.setClearColor(0x000000, 1);
-var camera = new THREE.PerspectiveCamera(35, 16 / 9, 0.05, 20000);
+renderer.setPixelRatio(1); renderer.setSize(W, H, false); renderer.setClearColor(0x000000, 1);
+var camera = new THREE.PerspectiveCamera(35, W / H, 0.05, 20000);
 var SUN = new THREE.Vector3(1, 0, 0);
 
 // ---------- camera-facing particles (glows, flames, smoke) ----------
@@ -302,7 +321,7 @@ var rvGroup = new THREE.Group(); camera.add(rvGroup);
 var rvFx = Particles(7 * 16, true, false, false); rvGroup.add(rvFx.mesh);
 var rvs = (function () {
   var r = rng(77), list = [], g = new THREE.ConeGeometry(0.07, 0.34, 20).rotateX(-Math.PI / 2), m = new THREE.MeshBasicMaterial({ color: 0x4a3526 });
-  for (var i = 0; i < 7; i++) { var c = new THREE.Mesh(g, m); rvGroup.add(c); list.push({ mesh: c, x0: -1.25 + r() * 2.5, y0: 0.5 + r() * 0.45, x1: -1.6 + i * 0.55 + r() * 0.3, y1: -1.75 - r() * 0.55, z0: -1.5 - r() * 0.9, z1: -10 - r() * 3, t0: 36.3 + i * 0.13 + r() * 0.2 }); }
+  for (var i = 0; i < 7; i++) { var c = new THREE.Mesh(g, m); rvGroup.add(c); list.push({ mesh: c, x0: (-1.25 + r() * 2.5) * (VERT ? 0.4 : 1), y0: (0.5 + r() * 0.45) * (VERT ? 1.35 : 1), x1: -1.6 + i * 0.55 + r() * 0.3, y1: (-1.75 - r() * 0.55) * (VERT ? 1.9 : 1), z0: -1.5 - r() * 0.9, z1: -10 - r() * 3, t0: 36.3 + i * 0.13 + r() * 0.2 }); }
   return list;
 })();
 
@@ -315,7 +334,7 @@ function occl(P) { // 0 when the point is hidden behind the planet
 //  GROUND: a missile field before dawn
 // =====================================================================
 var ground = new THREE.Scene(); ground.fog = new THREE.FogExp2(0x241a26, 0.00034);
-var gcam = new THREE.PerspectiveCamera(34, 16 / 9, 0.5, 30000);
+var gcam = new THREE.PerspectiveCamera(34, W / H, 0.5, 30000);
 ground.add(new THREE.Mesh(new THREE.SphereGeometry(15000, 32, 16), new THREE.ShaderMaterial({
   side: THREE.BackSide, depthWrite: false, fog: false,
   vertexShader: 'varying vec3 vD; void main(){ vD = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
@@ -399,7 +418,7 @@ function frame(t) {
   // ----- motion graphics -----
   el.grain.style.backgroundImage = grains[fi % 6];
   el.grain.style.backgroundPosition = ((fi * 37) % 256) + 'px ' + ((fi * 91) % 256) + 'px';
-  var open = eio(seg(t, 52.0, 54.2)), barH = 138 * (1 - open);
+  var open = eio(seg(t, 52.0, 54.2)), barH = VERT ? 0 : 138 * (1 - open);
   el.barT.style.height = el.barB.style.height = barH.toFixed(1) + 'px';
   show(el.flash, t >= 40 ? Math.max(0, 1 - seg(t, 40.28, 41.5)) * (t < 40.3 ? 1 : 0.9) : seg(t, 39.9, 40.0) * 0.0);
   show(el.tint, Math.max(1 - seg(t, 3.3, 5.2), win(t, 46.9, 49.6, 0.5, 0.2) * 0.45, win(t, 55.4, 60, 0.9, 0.01) * 0.2, seg(t, 59.5, 60) ));
@@ -428,7 +447,7 @@ function frame(t) {
   var cap = null; for (i = 0; i < CAPS.length; i++) if (t >= CAPS[i][0] && t < CAPS[i][1]) cap = CAPS[i];
   if (cap) { el.cap.textContent = cap[2]; show(el.cap, win(t, cap[0], cap[1], 0.3, 0.3), 'translateY(' + (14 * (1 - eo(seg(t, cap[0], cap[0] + 0.45)))).toFixed(1) + 'px)'); } else show(el.cap, 0);
   var sr = null; for (i = 0; i < SRC.length; i++) if (t >= SRC[i][0] && t < SRC[i][1]) sr = SRC[i];
-  if (sr) { el.src.textContent = sr[2]; el.src.style.bottom = (18 + barH) + 'px'; show(el.src, win(t, sr[0], sr[1], 0.3, 0.3)); } else show(el.src, 0);
+  if (sr) { el.src.textContent = sr[2]; el.src.style.bottom = (VERT ? 440 : 18 + barH) + 'px'; show(el.src, win(t, sr[0], sr[1], 0.3, 0.3)); } else show(el.src, 0);
 
   // head-up display
   show(el.hudTL, win(t, 10.3, 49.4, 0.4, 0.3) * (t >= 24 && t < 28.2 ? 0 : 1));
@@ -448,7 +467,7 @@ function frame(t) {
 
   // rewind
   show(el.rew, rewinding ? 0.6 + 0.4 * (Math.sin(t * Math.PI * 2 * 1.4) > 0 ? 1 : 0) : 0);
-  for (i = 0; i < 4; i++) { var ge = el['g' + i]; if (rewinding) { var hy = hash(fi * 13 + i * 7), hh2 = hash(fi * 5 + i * 31); ge.style.top = (140 + hy * 780) + 'px'; ge.style.height = (3 + hh2 * 26) + 'px'; show(ge, 0.35 + 0.5 * hash(fi + i)); } else show(ge, 0); }
+  for (i = 0; i < 4; i++) { var ge = el['g' + i]; if (rewinding) { var hy = hash(fi * 13 + i * 7), hh2 = hash(fi * 5 + i * 31); ge.style.top = (VERT ? 260 + hy * 1300 : 140 + hy * 780) + 'px'; ge.style.height = (3 + hh2 * 26) + 'px'; show(ge, 0.35 + 0.5 * hash(fi + i)); } else show(ge, 0); }
 
   // payoff
   show(el.end1, win(t, 52.4, 55.7, 0.6, 0.35), 'translateY(' + (20 * (1 - eo(seg(t, 52.4, 53.2)))).toFixed(1) + 'px)');
@@ -460,25 +479,25 @@ function frame(t) {
 function drawSpace(t, s, rewinding) {
   var i, a, shake = 0;
   // ----- camera and sun, shot by shot -----
-  camera.fov = 35;
+  camera.fov = VERT ? 63 : 35;
   if (t < 10) { // dawn over the limb
-    camGeo(15, 78 - t * 0.5, 26.5 - t * 0.2, 0, lerp(0.66, 0.49, eio(seg(t, 3.0, 8.5))));
+    camGeo(15, 78 - t * 0.5, 26.5 - t * 0.2, 0, lerp(0.66, 0.49, eio(seg(t, 3.0, 8.5))) + (VERT ? 0.17 : 0));
     sunLimb(lerp(0.33, 0.475, eio(seg(t, 5.6, 10))));
   } else if (t < 17) { // the world at night
-    camGeo(27, 54 - (t - 10) * 1.3, 35 - (t - 10) * 0.25, 0.185, -0.01);
+    camGeo(27, 54 - (t - 10) * 1.3, (VERT ? 37 : 35) - (t - 10) * 0.25, VERT ? 0 : 0.185, VERT ? 0.24 : -0.01);
     SUN.copy(geo(8, 54 + 104));
   } else if (t < 19.6) { // one satellite
     a = geo(31, 24, R * 1.62);
     camera.position.copy(a).add(v3.set(1.15, 0.5, 0.75).normalize().multiplyScalar(3.5 - (t - 17) * 0.12)); camera.up.set(0.15, 1, 0).normalize(); camera.lookAt(a); camera.rotateY(-0.1);
     SUN.copy(geo(5, 24 + 118));
   } else if (t < 24) { // the lights go out
-    camGeo(41, 12 + (t - 19.6) * 3.6, 21.5 + (t - 19.6) * 0.3, 0, 0.02);
+    camGeo(41, 12 + (t - 19.6) * 3.6, (VERT ? 26 : 21.5) + (t - 19.6) * 0.3, 0, 0.02);
     SUN.copy(geo(-10, 30 + 172));
   } else if (t < 36.5) { // over the pole
-    camGeo(63 + (t - 31) * 2.0, -38 + (t - 31) * 5.5, 35 - (t - 31) * 0.65, 0, -0.035);
+    camGeo(63 + (t - 31) * 2.0, -38 + (t - 31) * 5.5, 35 - (t - 31) * 0.65, 0, VERT ? 0.07 : -0.035);
     SUN.copy(geo(18, -150));
   } else if (t < 40.3) { // riding down with the warheads
-    camGeo(52, 2 + (t - 36.5) * 1.6, 19.6 - (t - 36.5) * 0.75, 0, 0.5, 0.06); shake = 0.012 + 0.03 * seg(t, 38.5, 40);
+    camGeo(52, 2 + (t - 36.5) * 1.6, 19.6 - (t - 36.5) * 0.75, 0, VERT ? 0.36 : 0.5, 0.06); shake = 0.012 + 0.03 * seg(t, 38.5, 40);
     SUN.copy(geo(-5, 20 + 178));
   } else if (t < 44.5) { // impact
     camGeo(49, 14 + (t - 40.3) * 2.2, 23 + 13 * eo(seg(t, 40.3, 44.5)), 0, 0); shake = 0.05 * Math.exp(-(t - 40.3) * 1.3);
@@ -487,7 +506,7 @@ function drawSpace(t, s, rewinding) {
     camGeo(24, -44 + (t - 44.5) * 2.1, 34 + (t - 44.5) * 0.3, 0, -0.02);
     SUN.copy(geo(12, -78));
   } else { // dawn again
-    camGeo(16, 80 - (t - 52) * 0.7, 26 + (t - 52) * 0.35, 0, lerp(0.53, 0.49, eio(seg(t, 52, 60))));
+    camGeo(16, 80 - (t - 52) * 0.7, 26 + (t - 52) * 0.35, 0, lerp(0.53, 0.49, eio(seg(t, 52, 60))) + (VERT ? 0.16 : 0));
     sunLimb(lerp(0.4, 0.452, eo(seg(t, 52, 59))));
   }
   if (shake) { camera.rotateX(shake * (vnoise(t * 23) + 0.5 * vnoise(t * 61 + 9))); camera.rotateY(shake * (vnoise(t * 19 + 4) + 0.5 * vnoise(t * 57 + 2))); }
@@ -569,11 +588,13 @@ function drawGround(t) {
   // ----- camera -----
   if (!wide) {
     var lookY = Math.max(7, y0 + 9) * 0.86, amp = 0.35 * seg(tau0, -0.1, 0.5) * (1 - 0.6 * seg(tau0, 2, 4));
-    gcam.fov = 40; gcam.position.set(22 + 4 * seg(t, 24, 28.2), 1.7, 66 - 5 * seg(t, 24, 28.2));
+    gcam.fov = VERT ? 47 : 40; gcam.position.set(22 + 4 * seg(t, 24, 28.2), 1.7, 66 - 5 * seg(t, 24, 28.2));
     gcam.position.x += amp * vnoise(t * 31); gcam.position.y += amp * 0.7 * vnoise(t * 37 + 5);
     gcam.up.set(0, 1, 0); gcam.lookAt(1.5, lookY, 0);
   } else {
-    gcam.fov = 30; gcam.position.set(-260 + (t - 28.2) * 12, 7, 1000); gcam.up.set(0, 1, 0); gcam.lookAt(150, 300 + (t - 28.2) * 60, -900);
+    gcam.fov = VERT ? 50 : 30; gcam.up.set(0, 1, 0);
+    if (VERT) { gcam.position.set(-70 + (t - 28.2) * 6, 5, 540); gcam.lookAt(10, 120 + (t - 28.2) * 42, 0); }
+    else { gcam.position.set(-260 + (t - 28.2) * 12, 7, 1000); gcam.lookAt(150, 300 + (t - 28.2) * 60, -900); }
   }
   gcam.updateProjectionMatrix(); gcam.updateMatrixWorld(true);
 
@@ -587,7 +608,7 @@ function drawGround(t) {
       if (!lit || (far && i > 5)) { fire.hide(fI++); continue; }
       var q = i / 15, fl = 0.8 + 0.2 * vnoise(t * 45 + i * 3 + mi * 11), fy = y - 0.6 - q * (far ? 22 : 15) * fl;
       if (fy < 0.3 && y < 0) { fy = 0.6 + q * 5; }
-      fire.set(fI++, m.x + drift + 0.25 * vnoise(t * 60 + i), fy, m.z, (i === 0 ? (wide ? 110 : far ? 46 : 20) : (3.6 - q * 2.4) * fs * 1.6) * fl, 1, lerp(0.95, 0.5, q), lerp(0.8, 0.12, q), i === 0 ? (far ? 0.75 : 0.3) : 0.95 * (1 - q * 0.75));
+      fire.set(fI++, m.x + drift + 0.25 * vnoise(t * 60 + i), fy, m.z, (i === 0 ? (wide ? (VERT ? 60 : 110) : far ? 46 : 20) : (3.6 - q * 2.4) * fs * 1.6) * fl, 1, lerp(0.95, 0.5, q), lerp(0.8, 0.12, q), i === 0 ? (far ? 0.75 : 0.3) : 0.95 * (1 - q * 0.75));
     }
     for (i = 0; i < PUFFS; i++) {
       var te = i * 0.075, age = tau - te, idx = mi * PUFFS + i;
@@ -598,7 +619,7 @@ function drawGround(t) {
       else { var dr = m.lean * ye * ye * 0.004; px = m.x + dr + (h1 - 0.5) * 2.5 + age * (1.6 + h2 * 1.2); pz = m.z + (h2 - 0.5) * 2.5; py = ye - 2 + (h3 - 0.5) * 2 + age * 0.4; size = (3.5 + 10 * (1 - Math.exp(-age * 0.42))) * (0.8 + 0.5 * h3); alpha = 0.62; }
       alpha *= Math.min(1, age * 5) * Math.exp(-age * 0.07);
       var hot = Math.exp(-age * 2.6) * (lit ? 1 : 0), hgt = seg(py, 0, 500), sh = 0.30 + 0.25 * h1 + 0.25 * hgt;
-      smoke.set(idx, px, py, pz, size * (wide ? 2.4 : 1), lerp(sh * 1.05 + 0.1 * hgt, 1.0, hot), lerp(sh * 0.95, 0.62, hot), lerp(sh * 1.02, 0.25, hot), alpha);
+      smoke.set(idx, px, py, pz, size * (wide ? (VERT ? 1.5 : 2.4) : 1), lerp(sh * 1.05 + 0.1 * hgt, 1.0, hot), lerp(sh * 0.95, 0.62, hot), lerp(sh * 1.02, 0.25, hot), alpha);
     }
   }
   // floodlights
@@ -621,7 +642,7 @@ window.renderFrame = frame;
 
 if (!/capture/.test(location.search)) { // live preview: space bar plays and pauses, arrow keys step
   var stage = $('stage'), T = 0, playing = true, last = 0;
-  var fit = function () { var k = Math.min(innerWidth / 1920, innerHeight / 1080); stage.style.transform = 'translate(' + ((innerWidth - 1920 * k) / 2) + 'px,' + ((innerHeight - 1080 * k) / 2) + 'px) scale(' + k + ')'; };
+  var fit = function () { var k = Math.min(innerWidth / W, innerHeight / H); stage.style.transform = 'translate(' + ((innerWidth - W * k) / 2) + 'px,' + ((innerHeight - H * k) / 2) + 'px) scale(' + k + ')'; };
   addEventListener('resize', fit); fit();
   addEventListener('keydown', function (e) { if (e.code === 'Space') playing = !playing; if (e.code === 'ArrowRight') { T = Math.min(DUR, T + 1); frame(T); } if (e.code === 'ArrowLeft') { T = Math.max(0, T - 1); frame(T); } });
   window.ready.then(function () { requestAnimationFrame(function loop(now) { if (playing) { T += Math.min(0.1, (now - last) / 1000 || 0); if (T >= DUR) T = 0; frame(T); } last = now; requestAnimationFrame(loop); }); });
