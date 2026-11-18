@@ -1,2 +1,5 @@
 film/input/
 __pycache__/
+
+# Prospect lists hold contact details; never commit them
+prospects/
