@@ -1,0 +1,31 @@
+image_id,version,note
+coast_road,v1,
+corridor_walk,v2,seen from behind as scripted
+office_two_men,v1,
+chuqui_pit,v2,
+copper_bar,v1,v2 has garbled stamp text
+santiago_andes,v1,
+jp_desk,v1,v2 has garbled text card
+coffee_colleagues,v1,
+typed_minute,v2,body text softened (garbled type)
+empty_meeting_room,v1,
+beige_pc,v2,grid visible on screen
+fax_dark,v1,
+boxed_computer,v1,
+jp_hand_close,v2,v1 has malformed hand
+jp_still,v2,
+london_screens,v2,
+ny_pit,v2,
+beach_house,v1,
+corridor_execs,v1,
+boss_instructs,v2,v1 duplicates the character
+hamburg_broker,v2,
+weekend_crisis,v2,
+press_conf,v1,
+kiosk,v2,headline text softened (garbled)
+jp_window,v2,
+bank_statements,v1,
+lawyer_steps,v2,
+santiago_court,v2,
+prison_gate,v2,v1 has garbled wall text
+jp_court_back,v1,v2 has a US flag
