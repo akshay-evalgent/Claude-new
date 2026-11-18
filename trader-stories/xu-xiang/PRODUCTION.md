@@ -13,7 +13,7 @@ From `SHOTLIST.md`: 175 shots, about 15½ minutes at the narration pace. Music-o
 
 | Work | Count | Made by |
 |---|---|---|
-| Drama stills | 93 shots from 69 images (207 generated, 3 per image), 41 tagged DRAMATISED or RUMOUR | Kaggle notebook, then camera moves in the edit |
+| Drama stills | 93 shots from 69 images (138 generated, 2 per image), 41 tagged DRAMATISED or RUMOUR | Kaggle notebook, then camera moves in the edit |
 | Diagrams | 23 shots | Motion graphics |
 | Number cards and scoreboard | 17 | Motion graphics template |
 | Animated charts | 13 | Motion graphics, from Shanghai Composite daily data |
@@ -34,8 +34,8 @@ graphics templates.
 | 1 | Close the fact-check list in `RESEARCH.md` | 1 day | 8 open items; read the blocked SCMP, Bloomberg and AP pieces |
 | 2 | Lock the script | ½ day | Read aloud, trim, rebuild the shot list (`python3 build_shotlist.py`) |
 | 3 | Kaggle setup and check run | 1-2 hours | Hugging Face licence, token, dataset upload, `RUN_MODE = "check"` |
-| 4 | Full image run | 1½-3 hours of GPU, unattended | Estimate, not measured: 204 images at roughly 40-70 s each across two T4s, plus about 20 min of downloading and loading. The check run prints the real figure |
-| 5 | Pick images, redo the misses | 1 day | Expect 20-30 % to need a new seed or a prompt fix, so 2-3 short reruns |
+| 4 | Full image run | 1-1½ hours of GPU, unattended | Estimate, not measured: 138 images at roughly 30-60 s each across two T4s, plus about 20 min of downloading and loading. Later runs load the saved model and start in a few minutes. The check run prints the real figure |
+| 5 | Pick images, redo the misses | ½-1 day | Expect 20-30 % to need a new seed or a prompt fix, so 2-3 short reruns |
 | 6 | Record and clean the narration | 1 day | About 2 h recording, 3 h editing. A synthetic voice would take about 2 h |
 | 7 | Build the graphics templates | 3 days | One-time: scoreboard, chart animator, number, quote and document cards, map style, diagram kit |
 | 8 | Make this film's 82 graphics shots | 4 days | Diagrams take the longest (23 of them) |
