@@ -6,6 +6,8 @@ import { component, ShotSpec } from "./registry";
 import { Scoreboard } from "./components/Scoreboard";
 import { SceneMove } from "./components/SceneMove";
 import { FILM_SECONDS, GRAPHICS, OVERLAYS, SCOREBOARD, SHOTS } from "./films/xu-xiang/film";
+import { Film, FILM_FRAMES } from "./films/xu-xiang/Film";
+import { Thumbnail } from "./films/xu-xiang/Thumbnail";
 
 loadHouseFonts();
 
@@ -35,6 +37,13 @@ export const Root: React.FC = () => (
         <Series.Sequence durationInFrames={sec(4)}><SceneMove src="test/still.jpg" move="pan-left" caption="SOUTH LIBERATION ROAD, NINGBO" /></Series.Sequence>
       </Series>
     )} durationInFrames={sec(8)} fps={FPS} width={W} height={H} />
+
+    <Composition id="xx-film" component={Film} durationInFrames={FILM_FRAMES} fps={FPS} width={W} height={H} />
+
+    <Composition id="xx-thumb-a" component={Thumbnail} durationInFrames={1} fps={FPS} width={1280} height={720}
+      defaultProps={{ image: "car_interior_coat", kicker: "HE MADE", big: "+357%", bigTone: "gain", sub: "IN A CRASH", focusX: 75, shift: 22 }} />
+    <Composition id="xx-thumb-b" component={Thumbnail} durationInFrames={1} fps={FPS} width={1280} height={720}
+      defaultProps={{ image: "zexi_office_night", kicker: "HE ALWAYS", big: "KNEW", bigTone: "paper", sub: "FIRST.", focusX: 50 }} />
 
     <Composition id="xx-scoreboard" component={Scoreboard} defaultProps={{ entries: SCOREBOARD }}
       durationInFrames={Math.round(FILM_SECONDS * FPS)} fps={FPS} width={W} height={H} />

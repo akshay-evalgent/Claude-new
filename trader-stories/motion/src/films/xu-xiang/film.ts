@@ -9,7 +9,7 @@ import type { Point } from "../../components/Charts";
 import { BRIDGE, CITIES } from "../../components/Maps";
 import { rand } from "../../theme";
 
-export type ShotInfo = { id: string; section: number; family: string; seconds: number; start: number; image: string; onScreen: string; tag: string };
+export type ShotInfo = { id: string; section: number; family: string; seconds: number; start: number; image: string; onScreen: string; tag: string; motion: string; voice: boolean };
 export const SHOTS = shotsJson as ShotInfo[];
 const startOf = (id: string) => SHOTS.find((s) => s.id === id)!.start;
 

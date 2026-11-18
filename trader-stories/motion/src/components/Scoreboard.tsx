@@ -81,14 +81,14 @@ export const Scoreboard: React.FC<ScoreboardProps> = ({ entries }) => {
     <AbsoluteFill>
       <div style={{ position: "absolute", left: SAFE.x - 60, bottom: SAFE.y - 30, opacity: vis, display: "flex", gap: 20 }}>
         <div style={{ width: 4, background: C.ochre }} />
-        <div style={{ display: "flex", flexDirection: "column", gap: 4, background: "rgba(14,15,17,0.55)", padding: "12px 20px 12px 6px" }}>
-          <Odometer from={before.year ?? ""} to={shown.year ?? ""} p={pp} size={30} color={C.paper} />
+        <div style={{ display: "flex", flexDirection: "column", gap: 4, background: "rgba(14,15,17,0.55)", padding: "12px 20px 12px 6px", minWidth: 380 }}>
+          <Odometer from={pp < 1 ? before.year ?? "" : shown.year ?? ""} to={shown.year ?? ""} p={pp} size={30} color={C.paper} />
           <div style={{ fontFamily: font("mono"), fontSize: 16, letterSpacing: 3, color: C.muted, height: 22, position: "relative" }}>
-            <span style={{ position: "absolute", opacity: pp }}>{shown.label}</span>
-            {pp < 1 ? <span style={{ position: "absolute", opacity: 1 - pp }}>{before.label}</span> : null}
+            <span style={{ position: "absolute", opacity: pp, whiteSpace: "nowrap" }}>{shown.label}</span>
+            {pp < 1 ? <span style={{ position: "absolute", opacity: 1 - pp, whiteSpace: "nowrap" }}>{before.label}</span> : null}
           </div>
           {roll ? (
-            <Odometer from={before.value!} to={shown.value!} p={pp} size={34} color={color} />
+            <Odometer from={pp < 1 ? before.value! : shown.value!} to={shown.value!} p={pp} size={34} color={color} />
           ) : (
             <div style={{ position: "relative", height: 40, minWidth: 420, fontFamily: font("mono"), fontWeight: 600, fontSize: 34, color }}>
               <span style={{ position: "absolute", opacity: pp, whiteSpace: "nowrap" }}>{shown.value}</span>

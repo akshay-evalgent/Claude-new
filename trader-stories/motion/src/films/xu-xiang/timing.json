@@ -1,0 +1,1699 @@
+{
+ "meta": {
+  "voice": "af_heart",
+  "speed": 1.12,
+  "engine": "Kokoro-82M (hexgrad, Apache 2.0)"
+ },
+ "shots": {
+  "01.01": {
+   "audio": 4.75,
+   "segments": [
+    [
+     0.0,
+     4.75,
+     "Sunday. The first of November, 2015. Ten thirty-three in the morning."
+    ]
+   ]
+  },
+  "01.02": {
+   "audio": 5.725,
+   "segments": [
+    [
+     0.0,
+     5.725,
+     "In the city of Ningbo, the highway police post a short notice online. Sudden traffic control."
+    ]
+   ]
+  },
+  "01.03": {
+   "audio": 3.1,
+   "segments": [
+    [
+     0.0,
+     3.1,
+     "The entrances to the Hangzhou Bay Bridge are closed."
+    ]
+   ]
+  },
+  "01.04": {
+   "audio": 4.175,
+   "segments": [
+    [
+     0.0,
+     4.175,
+     "The bridge is thirty-five kilometres long. It crosses open sea."
+    ]
+   ]
+  },
+  "01.05": {
+   "audio": 3.65,
+   "segments": [
+    [
+     0.0,
+     3.65,
+     "And on the road towards it, there is one car that does not know."
+    ]
+   ]
+  },
+  "01.06": {
+   "audio": 7.575,
+   "segments": [
+    [
+     0.0,
+     7.575,
+     "The man inside left his grandmother's hundredth birthday party a few minutes ago. He left in a hurry. He is wearing a white coat."
+    ]
+   ]
+  },
+  "01.07": {
+   "audio": 6.775,
+   "segments": [
+    [
+     0.0,
+     6.775,
+     "He controls more money than any hedge fund manager in China. This year, the market lost five trillion dollars."
+    ]
+   ]
+  },
+  "01.08": {
+   "audio": 3.55,
+   "segments": [
+    [
+     0.0,
+     3.55,
+     "His best fund is up three hundred and fifty-seven percent."
+    ]
+   ]
+  },
+  "01.09": {
+   "audio": 3.175,
+   "segments": [
+    [
+     0.0,
+     3.175,
+     "For twenty-two years, he has known everything first."
+    ]
+   ]
+  },
+  "01.10": {
+   "audio": 1.4,
+   "segments": [
+    [
+     0.0,
+     1.4,
+     "Not today."
+    ]
+   ]
+  },
+  "02.01": {
+   "audio": 3.525,
+   "segments": [
+    [
+     0.0,
+     3.525,
+     "His name is Xu Xiang. You have probably never heard it."
+    ]
+   ]
+  },
+  "02.02": {
+   "audio": 3.225,
+   "segments": [
+    [
+     0.0,
+     3.225,
+     "In China, they called him Hedge Fund Brother Number One."
+    ]
+   ]
+  },
+  "02.03": {
+   "audio": 2.175,
+   "segments": [
+    [
+     0.0,
+     2.175,
+     "He gave almost no interviews."
+    ]
+   ]
+  },
+  "02.04": {
+   "audio": 4.5,
+   "segments": [
+    [
+     0.0,
+     4.5,
+     "He came to work in a tracksuit. He sat at the back of his own trading floor."
+    ]
+   ]
+  },
+  "02.05": {
+   "audio": 4.25,
+   "segments": [
+    [
+     0.0,
+     4.25,
+     "In meetings he watched two phones. One for prices. One for news."
+    ]
+   ]
+  },
+  "02.06": {
+   "audio": 1.85,
+   "segments": [
+    [
+     0.0,
+     1.85,
+     "He let everyone else talk."
+    ]
+   ]
+  },
+  "02.07": {
+   "audio": 6.225,
+   "segments": [
+    [
+     0.0,
+     6.225,
+     "A friend put it like this. \"Xu Xiang is always trading. If he's not trading, he's thinking about trading.\""
+    ]
+   ]
+  },
+  "02.08": {
+   "audio": 8.7,
+   "segments": [
+    [
+     0.0,
+     8.7,
+     "His first fund went up three thousand two hundred and seventy percent in five and a half years. Over the same years, the Shanghai index rose eleven."
+    ]
+   ]
+  },
+  "02.09": {
+   "audio": 3.375,
+   "segments": [
+    [
+     0.0,
+     3.375,
+     "Nobody could explain it. Plenty of people had a theory."
+    ]
+   ]
+  },
+  "02.10": {
+   "audio": 3.975,
+   "segments": [
+    [
+     0.0,
+     3.975,
+     "And in the summer of 2015, somebody decided to find out."
+    ]
+   ]
+  },
+  "03.01": {
+   "audio": 1.975,
+   "segments": [
+    [
+     0.0,
+     1.975,
+     "Go back to 1990."
+    ]
+   ]
+  },
+  "03.02": {
+   "audio": 5.975,
+   "segments": [
+    [
+     0.0,
+     5.975,
+     "Shanghai opens a stock exchange. A whole country starts learning what a share is, all at the same time."
+    ]
+   ]
+  },
+  "03.03": {
+   "audio": 4.875,
+   "segments": [
+    [
+     0.0,
+     4.875,
+     "Xu Xiang is in his first year of high school, in Ningbo, a port city down the coast."
+    ]
+   ]
+  },
+  "03.04": {
+   "audio": 6.075,
+   "segments": [
+    [
+     0.0,
+     6.075,
+     "His father works in a factory. His mother keeps the house. Nobody in the family has ever owned a share."
+    ]
+   ]
+  },
+  "03.05": {
+   "audio": 3.05,
+   "segments": [
+    [
+     0.0,
+     3.05,
+     "He starts trading anyway, while he is still at school."
+    ]
+   ]
+  },
+  "03.06": {
+   "audio": 2.425,
+   "segments": [
+    [
+     0.0,
+     2.425,
+     "There is no teacher. He reads books."
+    ]
+   ]
+  },
+  "03.07": {
+   "audio": 4.725,
+   "segments": [
+    [
+     0.0,
+     4.725,
+     "He sits in on lectures. He copies whatever he can find about how foreigners do it."
+    ]
+   ]
+  },
+  "03.08": {
+   "audio": 5.35,
+   "segments": [
+    [
+     0.0,
+     5.35,
+     "Then comes the university entrance exam. In China, that exam decides your life."
+    ]
+   ]
+  },
+  "03.09": {
+   "audio": 1.55,
+   "segments": [
+    [
+     0.0,
+     1.55,
+     "He doesn't take it."
+    ]
+   ]
+  },
+  "03.10": {
+   "audio": 5.2,
+   "segments": [
+    [
+     0.0,
+     5.2,
+     "Instead, he asks his parents for thirty thousand yuan. About five thousand dollars."
+    ]
+   ]
+  },
+  "03.11": {
+   "audio": 3.7,
+   "segments": [
+    [
+     0.0,
+     3.7,
+     "And he carries it to a trading hall on South Liberation Road."
+    ]
+   ]
+  },
+  "03.12": {
+   "audio": 4.625,
+   "segments": [
+    [
+     0.0,
+     4.625,
+     "Years later, he would say that 1993 was the year he was born."
+    ]
+   ]
+  },
+  "04.01": {
+   "audio": 5.25,
+   "segments": [
+    [
+     0.0,
+     5.25,
+     "The hall belongs to Galaxy Securities. Second floor, up a concrete staircase."
+    ]
+   ]
+  },
+  "04.02": {
+   "audio": 2.975,
+   "segments": [
+    [
+     0.0,
+     2.975,
+     "The prices are written on blackboards, in chalk."
+    ]
+   ]
+  },
+  "04.03": {
+   "audio": 4.05,
+   "segments": [
+    [
+     0.0,
+     4.05,
+     "The rules change so often that nobody is sure what they are this month."
+    ]
+   ]
+  },
+  "04.04": {
+   "audio": 13.1,
+   "segments": [
+    [
+     0.0,
+     13.1,
+     "And he has picked a terrible moment. In 1992, the Shanghai index rose a hundred and sixty-seven percent. Between April 1993 and the summer of 1994, it falls by three quarters."
+    ]
+   ]
+  },
+  "04.05": {
+   "audio": 4.55,
+   "segments": [
+    [
+     0.0,
+     4.55,
+     "Most of the people in that hall are finished. In China there is a word for them."
+    ]
+   ]
+  },
+  "04.06": {
+   "audio": 3.2,
+   "segments": [
+    [
+     0.0,
+     3.2,
+     "Chives. You cut them. They grow back. You cut them again."
+    ]
+   ]
+  },
+  "04.07": {
+   "audio": 1.95,
+   "segments": [
+    [
+     0.0,
+     1.95,
+     "Xu Xiang does not get cut."
+    ]
+   ]
+  },
+  "04.08": {
+   "audio": 5.075,
+   "segments": [
+    [
+     0.0,
+     5.075,
+     "He builds a style, and he never changes it. Buy fast. Sell fast. Always go big."
+    ]
+   ]
+  },
+  "04.09": {
+   "audio": 10.925,
+   "segments": [
+    [
+     0.0,
+     10.925,
+     "By 1995 he is nineteen, and people in Ningbo are telling a story about him. Two Shanghai gangsters, they say, fell out over which of them would get him as a personal trader."
+    ]
+   ]
+  },
+  "04.10": {
+   "audio": 2.2,
+   "segments": [
+    [
+     0.0,
+     2.2,
+     "A triad boss had to settle it."
+    ]
+   ]
+  },
+  "04.11": {
+   "audio": 3.875,
+   "segments": [
+    [
+     0.0,
+     3.875,
+     "Nobody has ever proved that story. But people believed it."
+    ]
+   ]
+  },
+  "04.12": {
+   "audio": 5.575,
+   "segments": [
+    [
+     0.0,
+     5.575,
+     "At nineteen, he was already someone you could believe that about. Then the market did something that"
+    ]
+   ]
+  },
+  "05.01": {
+   "audio": 2.2,
+   "segments": [
+    [
+     0.0,
+     2.2,
+     "made his whole career possible."
+    ]
+   ]
+  },
+  "05.02": {
+   "audio": 8.475,
+   "segments": [
+    [
+     0.0,
+     8.475,
+     "In December 1996, Chinese shares get a ceiling. A stock can rise ten percent in a day. Then it stops. That is the limit."
+    ]
+   ]
+  },
+  "05.03": {
+   "audio": 4.3,
+   "segments": [
+    [
+     0.0,
+     4.3,
+     "The rule is there to calm things down. Now think about what it really does."
+    ]
+   ]
+  },
+  "05.04": {
+   "audio": 7.05,
+   "segments": [
+    [
+     0.0,
+     7.05,
+     "A stock that hits the ceiling still has buyers. They wanted in. They couldn't get in. So tomorrow morning, they try again."
+    ]
+   ]
+  },
+  "05.05": {
+   "audio": 4.1,
+   "segments": [
+    [
+     0.0,
+     4.1,
+     "The limit does not stop a rush. It makes the rush wait in line."
+    ]
+   ]
+  },
+  "05.06": {
+   "audio": 4.35,
+   "segments": [
+    [
+     0.0,
+     4.35,
+     "Xu and a handful of traders at Galaxy work out how to start that line."
+    ]
+   ]
+  },
+  "05.07": {
+   "audio": 2.625,
+   "segments": [
+    [
+     0.0,
+     2.625,
+     "Pick a cheap stock that nobody is watching."
+    ]
+   ]
+  },
+  "05.08": {
+   "audio": 3.225,
+   "segments": [
+    [
+     0.0,
+     3.225,
+     "Hit it with one enormous buy order, out of nowhere."
+    ]
+   ]
+  },
+  "05.09": {
+   "audio": 3.325,
+   "segments": [
+    [
+     0.0,
+     3.325,
+     "Other traders see the size and pile in. Limit up."
+    ]
+   ]
+  },
+  "05.10": {
+   "audio": 3.75,
+   "segments": [
+    [
+     0.0,
+     3.75,
+     "Next morning, the buyers who missed out push it to the limit again."
+    ]
+   ]
+  },
+  "05.11": {
+   "audio": 3.9,
+   "segments": [
+    [
+     0.0,
+     3.9,
+     "A few days later, sell everything to the people still arriving."
+    ]
+   ]
+  },
+  "05.12": {
+   "audio": 3.0,
+   "segments": [
+    [
+     0.0,
+     3.0,
+     "Then the price falls. But you are already gone."
+    ]
+   ]
+  },
+  "05.13": {
+   "audio": 3.25,
+   "segments": [
+    [
+     0.0,
+     3.25,
+     "The press gives them a name. The Limit-Up Death Squad."
+    ]
+   ]
+  },
+  "05.14": {
+   "audio": 3.175,
+   "segments": [
+    [
+     0.0,
+     3.175,
+     "Xu Xiang, in his early twenties, is the captain."
+    ]
+   ]
+  },
+  "05.15": {
+   "audio": 7.1,
+   "segments": [
+    [
+     0.0,
+     7.1,
+     "Soon they barely need the trick. Traders across the country watch which stocks the Ningbo hall is buying, and buy the same ones."
+    ]
+   ]
+  },
+  "05.16": {
+   "audio": 2.225,
+   "segments": [
+    [
+     0.0,
+     2.225,
+     "Their order has become the news."
+    ]
+   ]
+  },
+  "05.17": {
+   "audio": 3.6,
+   "segments": [
+    [
+     0.0,
+     3.6,
+     "The others buy sports cars and park them outside the hall."
+    ]
+   ]
+  },
+  "05.18": {
+   "audio": 2.4,
+   "segments": [
+    [
+     0.0,
+     2.4,
+     "Xu doesn't. He buys more stock."
+    ]
+   ]
+  },
+  "05.19": {
+   "audio": 4.825,
+   "segments": [
+    [
+     0.0,
+     4.825,
+     "There are books about them. Travelling seminars. Copycat squads in other cities."
+    ]
+   ]
+  },
+  "05.20": {
+   "audio": 5.525,
+   "segments": [
+    [
+     0.0,
+     5.525,
+     "And in 2003, a newspaper asks the obvious question. Is any of this allowed?"
+    ]
+   ]
+  },
+  "05.21": {
+   "audio": 3.25,
+   "segments": [
+    [
+     0.0,
+     3.25,
+     "The regulator sends an investigator to Ningbo."
+    ]
+   ]
+  },
+  "05.22": {
+   "audio": 5.25,
+   "segments": [
+    [
+     0.0,
+     5.25,
+     "He calls in the big local traders for what is described as an informal discussion."
+    ]
+   ]
+  },
+  "05.23": {
+   "audio": 1.85,
+   "segments": [
+    [
+     0.0,
+     1.85,
+     "The Death Squad vanishes."
+    ]
+   ]
+  },
+  "05.24": {
+   "audio": 1.425,
+   "segments": [
+    [
+     0.0,
+     1.425,
+     "For one week."
+    ]
+   ]
+  },
+  "05.25": {
+   "audio": 5.0,
+   "segments": [
+    [
+     0.0,
+     5.0,
+     "Then the investigator announces that he has found no wrongdoing. And they come back."
+    ]
+   ]
+  },
+  "05.26": {
+   "audio": 2.6,
+   "segments": [
+    [
+     0.0,
+     2.6,
+     "Remember that week. It matters later."
+    ]
+   ]
+  },
+  "05.27": {
+   "audio": 4.95,
+   "segments": [
+    [
+     0.0,
+     4.95,
+     "By 2005, the boy with thirty thousand yuan has hundreds of millions."
+    ]
+   ]
+  },
+  "06.01": {
+   "audio": 4.55,
+   "segments": [
+    [
+     0.0,
+     4.55,
+     "Ningbo is now too small. He moves to Shanghai, and his timing is perfect."
+    ]
+   ]
+  },
+  "06.02": {
+   "audio": 7.75,
+   "segments": [
+    [
+     0.0,
+     7.75,
+     "That same year, a change in the law lets private funds step out of the shadows and operate in the open. They call them sunshine funds."
+    ]
+   ]
+  },
+  "06.03": {
+   "audio": 3.75,
+   "segments": [
+    [
+     0.0,
+     3.75,
+     "In December 2009, he registers his own firm."
+    ]
+   ]
+  },
+  "06.04": {
+   "audio": 6.875,
+   "segments": [
+    [
+     0.0,
+     6.875,
+     "He calls it Zexi. Ze, from Mao Zedong. Xi, from Kangxi, the longest-reigning emperor in Chinese history."
+    ]
+   ]
+  },
+  "06.05": {
+   "audio": 1.75,
+   "segments": [
+    [
+     0.0,
+     1.75,
+     "Modest, he was not."
+    ]
+   ]
+  },
+  "06.06": {
+   "audio": 6.975,
+   "segments": [
+    [
+     0.0,
+     6.975,
+     "In March 2010 he opens his first fund with one billion yuan. It has fewer than two hundred investors."
+    ]
+   ]
+  },
+  "06.07": {
+   "audio": 4.525,
+   "segments": [
+    [
+     0.0,
+     4.525,
+     "Under the rules, that means he never has to say who they are. Remember that, too."
+    ]
+   ]
+  },
+  "06.08": {
+   "audio": 3.15,
+   "segments": [
+    [
+     0.0,
+     3.15,
+     "He is at his desk at eight forty-five every morning."
+    ]
+   ]
+  },
+  "06.09": {
+   "audio": 2.875,
+   "segments": [
+    [
+     0.0,
+     2.875,
+     "He is often still there at two the next morning."
+    ]
+   ]
+  },
+  "06.10": {
+   "audio": 6.15,
+   "segments": [
+    [
+     0.0,
+     6.15,
+     "His own researchers only find out whether he took their advice at the end of the year, when the results come in."
+    ]
+   ]
+  },
+  "06.11": {
+   "audio": 4.3,
+   "segments": [
+    [
+     0.0,
+     4.3,
+     "Friends say he has no hobbies. There is the market. That is all there is."
+    ]
+   ]
+  },
+  "06.12": {
+   "audio": 6.7,
+   "segments": [
+    [
+     0.0,
+     6.7,
+     "The method has grown up with him. He no longer just hits a stock and runs. He buys a real stake in a small company."
+    ]
+   ]
+  },
+  "06.13": {
+   "audio": 2.125,
+   "segments": [
+    [
+     0.0,
+     2.125,
+     "He gets allies onto the board."
+    ]
+   ]
+  },
+  "06.14": {
+   "audio": 5.075,
+   "segments": [
+    [
+     0.0,
+     5.075,
+     "The company pays out cash. He uses the cash to buy more, and sells into the rise."
+    ]
+   ]
+  },
+  "06.15": {
+   "audio": 4.85,
+   "segments": [
+    [
+     0.0,
+     4.85,
+     "Between 2010 and 2014 he does this with forty-five companies."
+    ]
+   ]
+  },
+  "06.16": {
+   "audio": 4.85,
+   "segments": [
+    [
+     0.0,
+     4.85,
+     "His own parents sit as executives and shareholders across the web of firms."
+    ]
+   ]
+  },
+  "06.17": {
+   "audio": 6.025,
+   "segments": [
+    [
+     0.0,
+     6.025,
+     "And the results are absurd. One fund returns five hundred and thirty-six percent in four years."
+    ]
+   ]
+  },
+  "06.18": {
+   "audio": 6.85,
+   "segments": [
+    [
+     0.0,
+     6.85,
+     "By 2015 he is the hundred and eighty-eighth richest person in China, worth two point two billion dollars."
+    ]
+   ]
+  },
+  "06.19": {
+   "audio": 6.975,
+   "segments": [
+    [
+     0.0,
+     6.975,
+     "So who were the two hundred? It was said, and never proven, that some of them were the children of very senior officials."
+    ]
+   ]
+  },
+  "06.20": {
+   "audio": 7.125,
+   "segments": [
+    [
+     0.0,
+     7.125,
+     "A man who had worked in the industry told a reporter that when a powerful client hands you money, it is difficult to say no."
+    ]
+   ]
+  },
+  "06.21": {
+   "audio": 8.6,
+   "segments": [
+    [
+     0.0,
+     8.6,
+     "In November 2014, Xu opens an office in Beijing. It is less than half a mile from the headquarters of the stock market regulator."
+    ]
+   ]
+  },
+  "06.22": {
+   "audio": 6.275,
+   "segments": [
+    [
+     0.0,
+     6.275,
+     "His colleagues later said that was the start of a year spent trying to protect himself. He could feel something coming."
+    ]
+   ]
+  },
+  "06.23": {
+   "audio": 2.8,
+   "segments": [
+    [
+     0.0,
+     2.8,
+     "He was right. Then the market did something that"
+    ]
+   ]
+  },
+  "07.01": {
+   "audio": 2.4,
+   "segments": [
+    [
+     0.0,
+     2.4,
+     "made his whole career impossible."
+    ]
+   ]
+  },
+  "07.02": {
+   "audio": 5.25,
+   "segments": [
+    [
+     0.0,
+     5.25,
+     "Friday, the twelfth of June, 2015. The Chinese market peaks. Then it falls."
+    ]
+   ]
+  },
+  "07.03": {
+   "audio": 3.025,
+   "segments": [
+    [
+     0.0,
+     3.025,
+     "In three weeks, a third of its value is gone."
+    ]
+   ]
+  },
+  "07.04": {
+   "audio": 7.225,
+   "segments": [
+    [
+     0.0,
+     7.225,
+     "Remember who is in this market. Two hundred million ordinary people. They make about eighty-five percent of the trades."
+    ]
+   ]
+  },
+  "07.05": {
+   "audio": 2.05,
+   "segments": [
+    [
+     0.0,
+     2.05,
+     "Chives, as far as you can see."
+    ]
+   ]
+  },
+  "07.06": {
+   "audio": 8.35,
+   "segments": [
+    [
+     0.0,
+     8.35,
+     "The government throws everything at it. Big shareholders are banned from selling. New listings are frozen. State firms are ordered to buy."
+    ]
+   ]
+  },
+  "07.07": {
+   "audio": 4.625,
+   "segments": [
+    [
+     0.0,
+     4.625,
+     "They call it the national team, and it has up to three trillion yuan behind it."
+    ]
+   ]
+  },
+  "07.08": {
+   "audio": 1.625,
+   "segments": [
+    [
+     0.0,
+     1.625,
+     "It does not hold."
+    ]
+   ]
+  },
+  "07.09": {
+   "audio": 2.825,
+   "segments": [
+    [
+     0.0,
+     2.825,
+     "The twenty-seventh of July. Another plunge."
+    ]
+   ]
+  },
+  "07.10": {
+   "audio": 5.725,
+   "segments": [
+    [
+     0.0,
+     5.725,
+     "The twenty-fourth of August. Shanghai falls eight and a half percent, its worst day in eight years."
+    ]
+   ]
+  },
+  "07.11": {
+   "audio": 6.0,
+   "segments": [
+    [
+     0.0,
+     6.0,
+     "In New York, the Dow drops a thousand points at the open. The state newspaper calls it Black Monday."
+    ]
+   ]
+  },
+  "07.12": {
+   "audio": 2.825,
+   "segments": [
+    [
+     0.0,
+     2.825,
+     "Five trillion dollars, gone in ten weeks."
+    ]
+   ]
+  },
+  "07.13": {
+   "audio": 1.375,
+   "segments": [
+    [
+     0.0,
+     1.375,
+     "And Zexi?"
+    ]
+   ]
+  },
+  "07.14": {
+   "audio": 6.675,
+   "segments": [
+    [
+     0.0,
+     6.675,
+     "In the worst three weeks of the crash, all five of his public funds go up. Every one, by at least twenty percent."
+    ]
+   ]
+  },
+  "07.15": {
+   "audio": 7.725,
+   "segments": [
+    [
+     0.0,
+     7.725,
+     "His best fund is up three hundred and fifty-seven percent for the year. First place, out of one thousand six hundred and forty-nine."
+    ]
+   ]
+  },
+  "07.16": {
+   "audio": 3.8,
+   "segments": [
+    [
+     0.0,
+     3.8,
+     "His money seemed to step out of the market just before each fall."
+    ]
+   ]
+  },
+  "07.17": {
+   "audio": 2.65,
+   "segments": [
+    [
+     0.0,
+     2.65,
+     "In a normal year, that makes you a genius."
+    ]
+   ]
+  },
+  "07.18": {
+   "audio": 3.425,
+   "segments": [
+    [
+     0.0,
+     3.425,
+     "In a year when the state itself lost, what does it make you?"
+    ]
+   ]
+  },
+  "07.19": {
+   "audio": 8.275,
+   "segments": [
+    [
+     0.0,
+     8.275,
+     "Meanwhile, in Beijing, people need an answer. The Party's own inspectors have begun going through the stock regulator from top to bottom."
+    ]
+   ]
+  },
+  "07.20": {
+   "audio": 5.475,
+   "segments": [
+    [
+     0.0,
+     5.475,
+     "Brokerage executives are being arrested. Everyone in finance is asking the same thing."
+    ]
+   ]
+  },
+  "07.21": {
+   "audio": 1.525,
+   "segments": [
+    [
+     0.0,
+     1.525,
+     "Who is next?"
+    ]
+   ]
+  },
+  "07.22": {
+   "audio": 11.25,
+   "segments": [
+    [
+     0.0,
+     11.25,
+     "In September, an anonymous post goes viral. It claims that during the rescue, Zexi worked with a state-owned brokerage to point the government's own buying at a stock Zexi wanted lifted."
+    ]
+   ]
+  },
+  "07.23": {
+   "audio": 3.1,
+   "segments": [
+    [
+     0.0,
+     3.1,
+     "Zexi denied it. No court ever ruled on it."
+    ]
+   ]
+  },
+  "07.24": {
+   "audio": 4.975,
+   "segments": [
+    [
+     0.0,
+     4.975,
+     "But the regulator is now looking. And Xu Xiang is told he may not leave the country."
+    ]
+   ]
+  },
+  "07.25": {
+   "audio": 3.475,
+   "segments": [
+    [
+     0.0,
+     3.475,
+     "Nine days later, his grandmother turns one hundred."
+    ]
+   ]
+  },
+  "08.04": {
+   "audio": 4.6,
+   "segments": [
+    [
+     0.0,
+     4.6,
+     "The party is small. His grandmother still lives in the neighbourhood where he grew up."
+    ]
+   ]
+  },
+  "08.05": {
+   "audio": 5.75,
+   "segments": [
+    [
+     0.0,
+     5.75,
+     "Shortly before ten thirty, according to people who knew him, a warning reaches him. They are coming."
+    ]
+   ]
+  },
+  "08.06": {
+   "audio": 1.6,
+   "segments": [
+    [
+     0.0,
+     1.6,
+     "He leaves at once."
+    ]
+   ]
+  },
+  "08.07": {
+   "audio": 3.7,
+   "segments": [
+    [
+     0.0,
+     3.7,
+     "He drives north, towards Shanghai. Past the concrete blocks."
+    ]
+   ]
+  },
+  "08.08": {
+   "audio": 2.55,
+   "segments": [
+    [
+     0.0,
+     2.55,
+     "Over the river that cuts Ningbo in half."
+    ]
+   ]
+  },
+  "08.09": {
+   "audio": 1.65,
+   "segments": [
+    [
+     0.0,
+     1.65,
+     "Out along the bay."
+    ]
+   ]
+  },
+  "08.10": {
+   "audio": 2.7,
+   "segments": [
+    [
+     0.0,
+     2.7,
+     "The fast road to Shanghai has one bridge."
+    ]
+   ]
+  },
+  "08.11": {
+   "audio": 5.75,
+   "segments": [
+    [
+     0.0,
+     5.75,
+     "For twenty-two years, his whole edge had been knowing before everyone else. This morning he knew, too."
+    ]
+   ]
+  },
+  "08.12": {
+   "audio": 2.75,
+   "segments": [
+    [
+     0.0,
+     2.75,
+     "A few minutes late. And not about the bridge."
+    ]
+   ]
+  },
+  "08.13": {
+   "audio": 1.575,
+   "segments": [
+    [
+     0.0,
+     1.575,
+     "They stop him there."
+    ]
+   ]
+  },
+  "08.15": {
+   "audio": 4.675,
+   "segments": [
+    [
+     0.0,
+     4.675,
+     "That evening, a photograph appears online. White coat. Rimless glasses."
+    ]
+   ]
+  },
+  "08.16": {
+   "audio": 5.8,
+   "segments": [
+    [
+     0.0,
+     5.8,
+     "Someone's hand is pulling back his sleeve, and you can see the cuff. He is looking straight into the camera."
+    ]
+   ]
+  },
+  "08.17": {
+   "audio": 7.825,
+   "segments": [
+    [
+     0.0,
+     7.825,
+     "The internet does what it does. The coat, people said, looked like a doctor's. Had he been arrested for practising medicine without a licence?"
+    ]
+   ]
+  },
+  "08.18": {
+   "audio": 4.6,
+   "segments": [
+    [
+     0.0,
+     4.6,
+     "Two hundred million people had just been cut. Now they had someone to look at."
+    ]
+   ]
+  },
+  "09.01": {
+   "audio": 6.475,
+   "segments": [
+    [
+     0.0,
+     6.475,
+     "Then, nothing. When reporters reach Zexi's offices in Shanghai and Beijing, the doors are already sealed."
+    ]
+   ]
+  },
+  "09.02": {
+   "audio": 4.275,
+   "segments": [
+    [
+     0.0,
+     4.275,
+     "There is a word for what has happened to him. Shilian. Lost contact."
+    ]
+   ]
+  },
+  "09.03": {
+   "audio": 4.5,
+   "segments": [
+    [
+     0.0,
+     4.5,
+     "The firm does not survive it. As one profile put it: Xu was Zexi."
+    ]
+   ]
+  },
+  "09.04": {
+   "audio": 3.725,
+   "segments": [
+    [
+     0.0,
+     3.725,
+     "Thirteen months later, he appears in a courtroom in Qingdao."
+    ]
+   ]
+  },
+  "09.05": {
+   "audio": 1.775,
+   "segments": [
+    [
+     0.0,
+     1.775,
+     "And he pleads guilty."
+    ]
+   ]
+  },
+  "09.06": {
+   "audio": 2.975,
+   "segments": [
+    [
+     0.0,
+     2.975,
+     "Now we get the answer. How did he always know?"
+    ]
+   ]
+  },
+  "09.07": {
+   "audio": 6.65,
+   "segments": [
+    [
+     0.0,
+     6.65,
+     "From 2010 to 2015, the court found, Xu worked with executives at thirteen listed companies."
+    ]
+   ]
+  },
+  "09.08": {
+   "audio": 2.15,
+   "segments": [
+    [
+     0.0,
+     2.15,
+     "The company would put out good news."
+    ]
+   ]
+  },
+  "09.09": {
+   "audio": 2.95,
+   "segments": [
+    [
+     0.0,
+     2.95,
+     "Xu would buy heavily, and the price would climb."
+    ]
+   ]
+  },
+  "09.10": {
+   "audio": 2.95,
+   "segments": [
+    [
+     0.0,
+     2.95,
+     "Ordinary investors would see it and rush in."
+    ]
+   ]
+  },
+  "09.11": {
+   "audio": 3.0,
+   "segments": [
+    [
+     0.0,
+     3.0,
+     "Then Xu and the executives would sell to them."
+    ]
+   ]
+  },
+  "09.12": {
+   "audio": 3.3,
+   "segments": [
+    [
+     0.0,
+     3.3,
+     "He knew first because he had arranged what there was to know."
+    ]
+   ]
+  },
+  "09.13": {
+   "audio": 6.25,
+   "segments": [
+    [
+     0.0,
+     6.25,
+     "Look at it again. It is the same trick as the chalk hall. Start the line. Sell to the people at the back of it."
+    ]
+   ]
+  },
+  "09.14": {
+   "audio": 3.3,
+   "segments": [
+    [
+     0.0,
+     3.3,
+     "The only thing that changed in twenty years was the size."
+    ]
+   ]
+  },
+  "09.15": {
+   "audio": 5.2,
+   "segments": [
+    [
+     0.0,
+     5.2,
+     "On the twenty-third of January 2017, the sentence. Five and a half years."
+    ]
+   ]
+  },
+  "09.16": {
+   "audio": 9.475,
+   "segments": [
+    [
+     0.0,
+     9.475,
+     "And a fine reported at eleven billion yuan. One point six billion dollars. The largest ever handed to one person for a financial crime in China."
+    ]
+   ]
+  },
+  "09.17": {
+   "audio": 1.6,
+   "segments": [
+    [
+     0.0,
+     1.6,
+     "He does not appeal."
+    ]
+   ]
+  },
+  "10.01": {
+   "audio": 2.925,
+   "segments": [
+    [
+     0.0,
+     2.925,
+     "So here is the question this story leaves you with."
+    ]
+   ]
+  },
+  "10.02": {
+   "audio": 5.175,
+   "segments": [
+    [
+     0.0,
+     5.175,
+     "In 2003, an investigator looked at the Death Squad and found nothing wrong."
+    ]
+   ]
+  },
+  "10.03": {
+   "audio": 5.3,
+   "segments": [
+    [
+     0.0,
+     5.3,
+     "In 2017, a court looked at the grown-up version and sent its captain to prison."
+    ]
+   ]
+  },
+  "10.04": {
+   "audio": 7.8,
+   "segments": [
+    [
+     0.0,
+     7.8,
+     "Was he a criminal who finally got caught? Or one player in a game that everybody was playing, picked out because the country needed a face?"
+    ]
+   ]
+  },
+  "10.05": {
+   "audio": 5.275,
+   "segments": [
+    [
+     0.0,
+     5.275,
+     "One fund manager said that many others could have been detained for exactly the same reasons."
+    ]
+   ]
+  },
+  "10.06": {
+   "audio": 4.3,
+   "segments": [
+    [
+     0.0,
+     4.3,
+     "The court's answer is simpler. He broke the law. He said so himself."
+    ]
+   ]
+  },
+  "10.07": {
+   "audio": 1.925,
+   "segments": [
+    [
+     0.0,
+     1.925,
+     "Both of those can be true."
+    ]
+   ]
+  },
+  "10.08": {
+   "audio": 6.675,
+   "segments": [
+    [
+     0.0,
+     6.675,
+     "It cost him more than money. In March 2019, with Xu still in prison, his wife filed for divorce."
+    ]
+   ]
+  },
+  "10.09": {
+   "audio": 4.425,
+   "segments": [
+    [
+     0.0,
+     4.425,
+     "They had met in 1998, when he was still the kid from the chalk hall."
+    ]
+   ]
+  },
+  "10.10": {
+   "audio": 3.275,
+   "segments": [
+    [
+     0.0,
+     3.275,
+     "Around twenty billion yuan of assets sat frozen."
+    ]
+   ]
+  },
+  "10.11": {
+   "audio": 3.0,
+   "segments": [
+    [
+     0.0,
+     3.0,
+     "And the industry he had ruled banned him from it."
+    ]
+   ]
+  },
+  "11.01": {
+   "audio": 2.375,
+   "segments": [
+    [
+     0.0,
+     2.375,
+     "His gift was never picking stocks."
+    ]
+   ]
+  },
+  "11.02": {
+   "audio": 4.625,
+   "segments": [
+    [
+     0.0,
+     4.625,
+     "It was knowing first. He built a life on it, and for twenty-two years it worked."
+    ]
+   ]
+  },
+  "11.03": {
+   "audio": 6.325,
+   "segments": [
+    [
+     0.0,
+     6.325,
+     "But a man who lives by knowing first has exactly one weakness. The day somebody else knows before he does."
+    ]
+   ]
+  },
+  "12.01": {
+   "audio": 5.45,
+   "segments": [
+    [
+     0.0,
+     5.45,
+     "On the ninth of July 2021, Xu Xiang walked out of prison. He was forty-four."
+    ]
+   ]
+  },
+  "12.02": {
+   "audio": 3.5,
+   "segments": [
+    [
+     0.0,
+     3.5,
+     "The fine, by the last reports, had still not been paid."
+    ]
+   ]
+  },
+  "12.03": {
+   "audio": 7.8,
+   "segments": [
+    [
+     0.0,
+     7.8,
+     "A fund manager in Beijing once summed up the whole business in one sentence. \"In China, the losing side doesn't get to sleep at night.\""
+    ]
+   ]
+  },
+  "12.04": {
+   "audio": 4.025,
+   "segments": [
+    [
+     0.0,
+     4.025,
+     "As for the bridge. It reopened after a little more than half an hour."
+    ]
+   ]
+  },
+  "12.05": {
+   "audio": 1.75,
+   "segments": [
+    [
+     0.0,
+     1.75,
+     "The traffic moved on."
+    ]
+   ]
+  }
+ }
+}

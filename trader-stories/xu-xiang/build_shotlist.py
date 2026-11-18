@@ -488,6 +488,7 @@ def build():
             if shot["image_id"] not in image_ids:
                 raise SystemExit(f"{sid}: unknown image {shot['image_id']}")
             used.add(shot["image_id"])
+        span = ""
         if located[i] is None:
             dur = shot["hold"]
         else:
@@ -504,7 +505,8 @@ def build():
                 tag = "DRAMATISED"
         rows.append(dict(shot_id=sid, section=sec, start=fmt(t), seconds=round(dur, 1),
                          family=shot["family"], image_id=shot["image_id"], cue=shot["cue"],
-                         on_screen=shot["on_screen"], tag=tag, motion=shot["motion"], notes=shot["notes"]))
+                         on_screen=shot["on_screen"], tag=tag, motion=shot["motion"], notes=shot["notes"],
+                         hold=shot["hold"], narration=span.strip()))
         t += dur
 
     unused = image_ids - used

@@ -90,11 +90,26 @@ for (const film of ["xu-xiang"]) {
   }
   const [head, ...body] = rows;
   const shots = body.filter((r) => r.length === head.length).map((r) => Object.fromEntries(head.map((h, i) => [h, r[i]])));
+  // With a recorded voice (timing.json), each shot lasts its narration plus a breath,
+  // with an extra beat at the end of each section. Otherwise use the word-count estimate.
+  const timingPath = path.join(root, "src/films", film, "timing.json");
+  const vo = fs.existsSync(timingPath) ? JSON.parse(fs.readFileSync(timingPath, "utf8")).shots : null;
+  const BREATH = 0.3, SECTION_BEAT = 1.0, MIN_SHOT = 1.2;
   let t = 0;
-  const timed = shots.map((s) => {
-    const o = { id: s.shot_id, section: +s.section, family: s.family, seconds: +s.seconds, start: Math.round(t * 10) / 10, image: s.image_id, onScreen: s.on_screen, tag: s.tag ?? "" };
-    t += +s.seconds;
+  const timed = shots.map((s, i) => {
+    let seconds = +s.seconds;
+    if (vo) {
+      const hold = +(s.hold || 0);
+      seconds = vo[s.shot_id] ? vo[s.shot_id].audio + BREATH + hold : hold || seconds;
+      const next = shots[i + 1];
+      if (!next || next.section !== s.section) seconds += SECTION_BEAT;
+      seconds = Math.max(MIN_SHOT, Math.round(seconds * 30) / 30);
+    }
+    const o = { id: s.shot_id, section: +s.section, family: s.family, seconds, start: Math.round(t * 1000) / 1000,
+      image: s.image_id, onScreen: s.on_screen, tag: s.tag ?? "", motion: s.motion, voice: !!(vo && vo[s.shot_id]) };
+    t += seconds;
     return o;
   });
+  console.log(`${film}: ${timed.length} shots, ${(t / 60).toFixed(2)} min${vo ? " (timed to the recorded voice)" : ""}`);
   out(`src/films/${film}/shots.json`, timed);
 }
