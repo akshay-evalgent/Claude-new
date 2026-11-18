@@ -61,6 +61,10 @@ export const Root: React.FC = () => (
         durationInFrames={Math.max(sec(1), Math.round(LQ_SHOTS.find((s) => s.id === id)!.seconds * FPS))} fps={FPS} width={W} height={H} />
     ))}
 
+    <Composition id="jp-thumb-a" component={Thumbnail} durationInFrames={1} fps={FPS} width={1280} height={720}
+      defaultProps={{ image: "davila/jp_still", kicker: "ONE WRONG KEY?", big: "−$206M", bigTone: "loss", sub: "CHILE'S COPPER MONEY", focusX: 70, shift: 10 }} />
+    <Composition id="jp-thumb-b" component={Thumbnail} durationInFrames={1} fps={FPS} width={1280} height={720}
+      defaultProps={{ image: "davila/jp_hand_close", kicker: "HE SAID HE TYPED", big: "BUY", bigTone: "loss", sub: "INSTEAD OF SELL.", focusX: 70, shift: 10 }} />
     <Composition id="jp-film" component={JpFilm} durationInFrames={JP_FRAMES} fps={FPS} width={W} height={H} />
     {Object.entries(JP_GRAPHICS).map(([id, spec]) => (
       <Composition key={`jp${id}`} id={cid("jp", id)} component={Shot} defaultProps={{ spec }}
