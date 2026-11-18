@@ -4,7 +4,7 @@ Everything needed to publish the film. Copy each block into YouTube Studio.
 
 | File | Use |
 |---|---|
-| `xu-xiang-film.mp4` | The film: 1080p, 30 fps, 14:12, stereo, mixed to −14 LUFS for YouTube. Too large for git; sent separately |
+| `xu-xiang-film.mp4` | The film: 1080p, 30 fps, 14:39, stereo, mixed to −14 LUFS for YouTube. Too large for git; sent separately |
 | `thumbnail-a.jpg` | Main thumbnail (face, "+357% IN A CRASH") |
 | `thumbnail-b.jpg` | Second thumbnail for Test & Compare ("HE ALWAYS KNEW FIRST") |
 | `xu-xiang.en.srt` | English subtitles, timed to the narration |
@@ -33,17 +33,17 @@ This is the true story of Xu Xiang: a boy who skipped university to trade with h
 
 CHAPTERS
 0:00 Sunday, 10:33 a.m.
-0:51 Hedge Fund Brother No. 1
-1:37 A boy with ¥30,000
-2:31 The chalk hall
-3:39 The Limit-Up Death Squad
-5:35 Zexi
-7:43 The $5 trillion crash
-9:48 The bridge
-11:12 How he always knew
-12:29 Criminal or scapegoat?
-13:23 Knowing first
-13:39 After prison
+0:53 Hedge Fund Brother No. 1
+1:41 A boy with ¥30,000
+2:38 The chalk hall
+3:47 The Limit-Up Death Squad
+5:46 Zexi
+7:59 The $5 trillion crash
+10:06 The bridge
+11:33 How he always knew
+12:53 Criminal or scapegoat?
+13:49 Knowing first
+14:05 After prison
 
 SOURCES
 • Alex W. Palmer, "The Fall of China's Hedge-Fund King", The New York Times Magazine, 2016
@@ -55,7 +55,7 @@ SOURCES
 Scenes marked RUMOUR, UNPROVEN or ALLEGATION were reported but never proven. The court's findings are stated as findings.
 
 HOW THIS VIDEO WAS MADE
-All people and places shown are dramatised reconstructions generated with AI (FLUX.1-schnell); they are not photographs and do not show the real people's faces. The narration is a synthetic voice (Kokoro). The music is original. Charts use real market data; lines marked ILLUSTRATIVE are not.
+All people and places shown are dramatised reconstructions generated with AI (FLUX.1-schnell); they are not photographs and do not show the real people's faces. The narration is a synthetic male voice (Kokoro). The music is original. Charts use real market data; lines marked ILLUSTRATIVE are not.
 
 This video is for education and entertainment. It is not financial advice.
 

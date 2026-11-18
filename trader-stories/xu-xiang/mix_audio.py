@@ -110,7 +110,7 @@ for a_id, b_id in (("01.01", "01.10"), ("08.01", "08.04"), ("12.01", "12.06")):
         music[i0:i0 + len(b)] += (0.18 * b)[: max(0, N - i0), None]; k += 4.8; j += 1
 
 music /= np.abs(music).max() + 1e-9
-gain = (0.30 - 0.255 * duck).astype(np.float32)
+gain = (0.30 - 0.262 * duck).astype(np.float32)
 music *= gain[:, None]
 
 # silence after the arrest, and fades at the start and end

@@ -1,1048 +1,1048 @@
 1
-00:00:00,080 --> 00:00:04,830
+00:00:00,080 --> 00:00:05,005
 Sunday. The first of November, 2015.
 Ten thirty-three in the morning.
 
 2
-00:00:05,147 --> 00:00:09,441
+00:00:05,313 --> 00:00:09,832
 In the city of Ningbo, the highway
 police post a short notice online.
 
 3
-00:00:09,441 --> 00:00:10,872
+00:00:09,832 --> 00:00:11,338
 Sudden traffic control.
 
 4
-00:00:11,180 --> 00:00:14,280
+00:00:11,647 --> 00:00:14,897
 The entrances to the Hangzhou
 Bay Bridge are closed.
 
 5
-00:00:14,580 --> 00:00:18,755
+00:00:15,213 --> 00:00:19,513
 The bridge is thirty-five kilometres
 long. It crosses open sea.
 
 6
-00:00:19,047 --> 00:00:22,697
+00:00:19,813 --> 00:00:23,813
 And on the road towards it, there
 is one car that does not know.
 
 7
-00:00:22,980 --> 00:00:27,774
+00:00:24,113 --> 00:00:28,986
 The man inside left his grandmother's
 hundredth birthday party a few minutes ago.
 
 8
-00:00:27,774 --> 00:00:30,555
+00:00:28,986 --> 00:00:31,813
 He left in a hurry. He
 is wearing a white coat.
 
 9
-00:00:30,847 --> 00:00:34,576
+00:00:32,113 --> 00:00:35,966
 He controls more money than any
 hedge fund manager in China.
 
 10
-00:00:34,576 --> 00:00:37,622
+00:00:35,966 --> 00:00:39,113
 This year, the market lost
 five trillion dollars.
 
 11
-00:00:37,913 --> 00:00:41,463
+00:00:39,413 --> 00:00:43,113
 His best fund is up three
 hundred and fifty-seven percent.
 
 12
-00:00:41,747 --> 00:00:44,922
+00:00:43,413 --> 00:00:46,838
 For twenty-two years, he
 has known everything first.
 
 13
-00:00:45,213 --> 00:00:46,613
+00:00:47,147 --> 00:00:48,497
 Not today.
 
 14
-00:00:51,913 --> 00:00:55,438
+00:00:53,813 --> 00:00:57,588
 His name is Xu Xiang. You
 have probably never heard it.
 
 15
-00:00:55,747 --> 00:00:58,972
+00:00:57,880 --> 00:01:01,305
 In China, they called him
 Hedge Fund Brother Number One.
 
 16
-00:00:59,280 --> 00:01:01,455
+00:01:01,613 --> 00:01:03,963
 He gave almost no interviews.
 
 17
-00:01:01,747 --> 00:01:06,247
+00:01:04,280 --> 00:01:08,955
 He came to work in a tracksuit. He sat
 at the back of his own trading floor.
 
 18
-00:01:06,547 --> 00:01:10,797
+00:01:09,247 --> 00:01:13,672
 In meetings he watched two phones.
 One for prices. One for news.
 
 19
-00:01:11,113 --> 00:01:12,963
+00:01:13,980 --> 00:01:15,955
 He let everyone else talk.
 
 20
-00:01:13,280 --> 00:01:16,541
+00:01:16,247 --> 00:01:19,560
 A friend put it like this.
 "Xu Xiang is always trading.
 
 21
-00:01:16,541 --> 00:01:19,505
+00:01:19,560 --> 00:01:22,572
 If he's not trading, he's
 thinking about trading."
 
 22
-00:01:19,813 --> 00:01:24,725
+00:01:22,880 --> 00:01:27,905
 His first fund went up three thousand two
 hundred and seventy percent in five and a
 
 23
-00:01:24,725 --> 00:01:28,513
+00:01:27,905 --> 00:01:31,780
 half years. Over the same years,
 the Shanghai index rose eleven.
 
 24
-00:01:28,813 --> 00:01:32,188
+00:01:32,080 --> 00:01:35,605
 Nobody could explain it.
 Plenty of people had a theory.
 
 25
-00:01:32,480 --> 00:01:36,455
+00:01:35,913 --> 00:01:40,113
 And in the summer of 2015,
 somebody decided to find out.
 
 26
-00:01:37,747 --> 00:01:39,722
+00:01:41,413 --> 00:01:43,563
 Go back to 1990.
 
 27
-00:01:40,013 --> 00:01:41,888
+00:01:43,847 --> 00:01:45,784
 Shanghai opens a stock exchange.
 
 28
-00:01:41,888 --> 00:01:45,988
+00:01:45,784 --> 00:01:50,022
 A whole country starts learning what
 a share is, all at the same time.
 
 29
-00:01:46,280 --> 00:01:51,155
+00:01:50,313 --> 00:01:55,463
 Xu Xiang is in his first year of high school,
 in Ningbo, a port city down the coast.
 
 30
-00:01:51,447 --> 00:01:54,901
+00:01:55,780 --> 00:01:59,476
 His father works in a factory.
 His mother keeps the house.
 
 31
-00:01:54,901 --> 00:01:57,522
+00:01:59,476 --> 00:02:02,280
 Nobody in the family
 has ever owned a share.
 
 32
-00:01:57,813 --> 00:02:00,863
+00:02:02,580 --> 00:02:05,805
 He starts trading anyway,
 while he is still at school.
 
 33
-00:02:01,147 --> 00:02:03,572
+00:02:06,113 --> 00:02:08,613
 There is no teacher. He reads books.
 
 34
-00:02:03,880 --> 00:02:08,605
+00:02:08,913 --> 00:02:13,963
 He sits in on lectures. He copies whatever
 he can find about how foreigners do it.
 
 35
-00:02:08,913 --> 00:02:14,263
+00:02:14,280 --> 00:02:19,805
 Then comes the university entrance exam.
 In China, that exam decides your life.
 
 36
-00:02:14,547 --> 00:02:16,097
+00:02:20,113 --> 00:02:21,738
 He doesn't take it.
 
 37
-00:02:16,413 --> 00:02:21,613
+00:02:22,047 --> 00:02:27,472
 Instead, he asks his parents for thirty
 thousand yuan. About five thousand dollars.
 
 38
-00:02:21,913 --> 00:02:25,613
+00:02:27,780 --> 00:02:31,630
 And he carries it to a trading
 hall on South Liberation Road.
 
 39
-00:02:25,913 --> 00:02:30,538
+00:02:31,947 --> 00:02:36,872
 Years later, he would say that
 1993 was the year he was born.
 
 40
-00:02:31,847 --> 00:02:37,097
+00:02:38,180 --> 00:02:43,605
 The hall belongs to Galaxy Securities.
 Second floor, up a concrete staircase.
 
 41
-00:02:37,413 --> 00:02:40,388
+00:02:43,913 --> 00:02:46,988
 The prices are written on
 blackboards, in chalk.
 
 42
-00:02:40,680 --> 00:02:44,730
+00:02:47,280 --> 00:02:51,280
 The rules change so often that nobody
 is sure what they are this month.
 
 43
-00:02:45,047 --> 00:02:47,773
+00:02:51,580 --> 00:02:54,301
 And he has picked a terrible moment.
 
 44
-00:02:47,773 --> 00:02:52,846
+00:02:54,301 --> 00:02:59,365
 In 1992, the Shanghai index rose
 a hundred and sixty-seven percent.
 
 45
-00:02:52,846 --> 00:02:58,147
+00:02:59,365 --> 00:03:04,655
 Between April 1993 and the summer of
 1994, it falls by three quarters.
 
 46
-00:02:58,447 --> 00:03:02,997
+00:03:04,947 --> 00:03:09,697
 Most of the people in that hall are
 finished. In China there is a word for them.
 
 47
-00:03:03,313 --> 00:03:06,513
+00:03:10,013 --> 00:03:13,413
 Chives. You cut them. They
 grow back. You cut them again.
 
 48
-00:03:06,813 --> 00:03:08,763
+00:03:13,713 --> 00:03:15,888
 Xu Xiang does not get cut.
 
 49
-00:03:09,080 --> 00:03:14,155
+00:03:16,180 --> 00:03:21,430
 He builds a style, and he never changes
 it. Buy fast. Sell fast. Always go big.
 
 50
-00:03:14,447 --> 00:03:19,239
+00:03:21,747 --> 00:03:26,593
 By 1995 he is nineteen, and people in
 Ningbo are telling a story about him.
 
 51
-00:03:19,239 --> 00:03:21,347
+00:03:26,593 --> 00:03:28,726
 Two Shanghai gangsters, they say,
 
 52
-00:03:21,347 --> 00:03:25,372
+00:03:28,726 --> 00:03:32,797
 fell out over which of them would
 get him as a personal trader.
 
 53
-00:03:25,680 --> 00:03:27,880
+00:03:33,113 --> 00:03:35,538
 A triad boss had to settle it.
 
 54
-00:03:28,180 --> 00:03:32,055
+00:03:35,847 --> 00:03:39,797
 Nobody has ever proved that
 story. But people believed it.
 
 55
-00:03:32,347 --> 00:03:36,007
+00:03:40,113 --> 00:03:43,937
 At nineteen, he was already someone
 you could believe that about.
 
 56
-00:03:36,007 --> 00:03:37,922
+00:03:43,937 --> 00:03:45,938
 Then the market did something that
 
 57
-00:03:39,213 --> 00:03:41,413
+00:03:47,247 --> 00:03:49,497
 made his whole career possible.
 
 58
-00:03:41,713 --> 00:03:45,060
+00:03:49,813 --> 00:03:53,101
 In December 1996, Chinese
 shares get a ceiling.
 
 59
-00:03:45,060 --> 00:03:50,188
+00:03:53,101 --> 00:03:58,138
 A stock can rise ten percent in a day.
 Then it stops. That is the limit.
 
 60
-00:03:50,480 --> 00:03:54,780
+00:03:58,447 --> 00:04:02,972
 The rule is there to calm things down.
 Now think about what it really does.
 
 61
-00:03:55,080 --> 00:03:58,751
+00:04:03,280 --> 00:04:06,951
 A stock that hits the ceiling
 still has buyers. They wanted in.
 
 62
-00:03:58,751 --> 00:04:02,130
+00:04:06,951 --> 00:04:10,330
 They couldn't get in. So tomorrow
 morning, they try again.
 
 63
-00:04:02,447 --> 00:04:06,547
+00:04:10,647 --> 00:04:14,797
 The limit does not stop a rush.
 It makes the rush wait in line.
 
 64
-00:04:06,847 --> 00:04:11,197
+00:04:15,113 --> 00:04:19,838
 Xu and a handful of traders at Galaxy
 work out how to start that line.
 
 65
-00:04:11,480 --> 00:04:14,105
+00:04:20,147 --> 00:04:22,897
 Pick a cheap stock that
 nobody is watching.
 
 66
-00:04:14,413 --> 00:04:17,638
+00:04:23,213 --> 00:04:26,563
 Hit it with one enormous
 buy order, out of nowhere.
 
 67
-00:04:17,947 --> 00:04:21,272
+00:04:26,880 --> 00:04:30,355
 Other traders see the size
 and pile in. Limit up.
 
 68
-00:04:21,580 --> 00:04:25,330
+00:04:30,647 --> 00:04:34,522
 Next morning, the buyers who missed
 out push it to the limit again.
 
 69
-00:04:25,647 --> 00:04:29,547
+00:04:34,813 --> 00:04:38,938
 A few days later, sell everything
 to the people still arriving.
 
 70
-00:04:29,847 --> 00:04:32,847
+00:04:39,247 --> 00:04:42,322
 Then the price falls.
 But you are already gone.
 
 71
-00:04:33,147 --> 00:04:36,397
+00:04:42,613 --> 00:04:46,038
 The press gives them a name.
 The Limit-Up Death Squad.
 
 72
-00:04:36,713 --> 00:04:39,888
+00:04:46,347 --> 00:04:49,622
 Xu Xiang, in his early
 twenties, is the captain.
 
 73
-00:04:40,180 --> 00:04:41,983
+00:04:49,913 --> 00:04:51,786
 Soon they barely need the trick.
 
 74
-00:04:41,983 --> 00:04:46,040
+00:04:51,786 --> 00:04:56,000
 Traders across the country watch which
 stocks the Ningbo hall is buying,
 
 75
-00:04:46,040 --> 00:04:47,280
+00:04:56,000 --> 00:04:57,288
 and buy the same ones.
 
 76
-00:04:47,580 --> 00:04:49,805
+00:04:57,580 --> 00:04:59,980
 Their order has become the news.
 
 77
-00:04:50,113 --> 00:04:53,713
+00:05:00,280 --> 00:05:04,105
 The others buy sports cars and
 park them outside the hall.
 
 78
-00:04:54,013 --> 00:04:56,413
+00:05:04,413 --> 00:05:06,888
 Xu doesn't. He buys more stock.
 
 79
-00:04:56,713 --> 00:05:01,538
+00:05:07,180 --> 00:05:12,130
 There are books about them. Travelling
 seminars. Copycat squads in other cities.
 
 80
-00:05:01,847 --> 00:05:07,372
+00:05:12,447 --> 00:05:18,047
 And in 2003, a newspaper asks the
 obvious question. Is any of this allowed?
 
 81
-00:05:07,680 --> 00:05:10,930
+00:05:18,347 --> 00:05:21,747
 The regulator sends an
 investigator to Ningbo.
 
 82
-00:05:11,247 --> 00:05:16,497
+00:05:22,047 --> 00:05:27,447
 He calls in the big local traders for what
 is described as an informal discussion.
 
 83
-00:05:16,813 --> 00:05:18,663
+00:05:27,747 --> 00:05:29,797
 The Death Squad vanishes.
 
 84
-00:05:18,980 --> 00:05:20,405
+00:05:30,080 --> 00:05:31,530
 For one week.
 
 85
-00:05:20,713 --> 00:05:25,713
+00:05:31,847 --> 00:05:37,022
 Then the investigator announces that he has
 found no wrongdoing. And they come back.
 
 86
-00:05:26,013 --> 00:05:28,613
+00:05:37,313 --> 00:05:40,188
 Remember that week. It matters later.
 
 87
-00:05:28,913 --> 00:05:33,863
+00:05:40,480 --> 00:05:45,680
 By 2005, the boy with thirty thousand
 yuan has hundreds of millions.
 
 88
-00:05:35,180 --> 00:05:39,730
+00:05:46,980 --> 00:05:51,805
 Ningbo is now too small. He moves to
 Shanghai, and his timing is perfect.
 
 89
-00:05:40,047 --> 00:05:40,928
+00:05:52,113 --> 00:05:53,011
 That same year,
 
 90
-00:05:40,928 --> 00:05:45,683
+00:05:53,011 --> 00:05:57,858
 a change in the law lets private funds
 step out of the shadows and operate in the
 
 91
-00:05:45,683 --> 00:05:47,797
+00:05:57,858 --> 00:06:00,013
 open. They call them sunshine funds.
 
 92
-00:05:48,113 --> 00:05:51,863
+00:06:00,313 --> 00:06:04,338
 In December 2009, he
 registers his own firm.
 
 93
-00:05:52,180 --> 00:05:54,716
+00:06:04,647 --> 00:06:07,174
 He calls it Zexi. Ze, from Mao Zedong.
 
 94
-00:05:54,716 --> 00:05:59,055
+00:06:07,174 --> 00:06:11,497
 Xi, from Kangxi, the longest-reigning
 emperor in Chinese history.
 
 95
-00:05:59,347 --> 00:06:01,097
+00:06:11,780 --> 00:06:13,505
 Modest, he was not.
 
 96
-00:06:01,380 --> 00:06:05,565
+00:06:13,813 --> 00:06:18,028
 In March 2010 he opens his first
 fund with one billion yuan.
 
 97
-00:06:05,565 --> 00:06:08,355
+00:06:18,028 --> 00:06:20,838
 It has fewer than two hundred investors.
 
 98
-00:06:08,647 --> 00:06:13,172
+00:06:21,147 --> 00:06:25,897
 Under the rules, that means he never has
 to say who they are. Remember that, too.
 
 99
-00:06:13,480 --> 00:06:16,630
+00:06:26,213 --> 00:06:29,513
 He is at his desk at eight
 forty-five every morning.
 
 100
-00:06:16,913 --> 00:06:19,788
+00:06:29,813 --> 00:06:32,813
 He is often still there
 at two the next morning.
 
 101
-00:06:20,080 --> 00:06:24,512
+00:06:33,113 --> 00:06:37,744
 His own researchers only find out whether
 he took their advice at the end of the
 
 102
-00:06:24,512 --> 00:06:26,230
+00:06:37,744 --> 00:06:39,538
 year, when the results come in.
 
 103
-00:06:26,547 --> 00:06:30,847
+00:06:39,847 --> 00:06:44,247
 Friends say he has no hobbies. There
 is the market. That is all there is.
 
 104
-00:06:31,147 --> 00:06:35,496
+00:06:44,547 --> 00:06:49,140
 The method has grown up with him. He
 no longer just hits a stock and runs.
 
 105
-00:06:35,496 --> 00:06:37,847
+00:06:49,140 --> 00:06:51,622
 He buys a real stake in a small company.
 
 106
-00:06:38,147 --> 00:06:40,272
+00:06:51,913 --> 00:06:54,213
 He gets allies onto the board.
 
 107
-00:06:40,580 --> 00:06:45,655
+00:06:54,513 --> 00:06:59,688
 The company pays out cash. He uses the
 cash to buy more, and sells into the rise.
 
 108
-00:06:45,947 --> 00:06:50,797
+00:06:59,980 --> 00:07:04,930
 Between 2010 and 2014 he does
 this with forty-five companies.
 
 109
-00:06:51,080 --> 00:06:55,930
+00:07:05,247 --> 00:07:10,322
 His own parents sit as executives and
 shareholders across the web of firms.
 
 110
-00:06:56,213 --> 00:06:57,944
+00:07:10,613 --> 00:07:12,401
 And the results are absurd.
 
 111
-00:06:57,944 --> 00:07:02,238
+00:07:12,401 --> 00:07:16,838
 One fund returns five hundred and
 thirty-six percent in four years.
 
 112
-00:07:02,547 --> 00:07:07,026
+00:07:17,147 --> 00:07:21,740
 By 2015 he is the hundred and
 eighty-eighth richest person in China,
 
 113
-00:07:07,026 --> 00:07:09,397
+00:07:21,740 --> 00:07:24,172
 worth two point two billion dollars.
 
 114
-00:07:09,680 --> 00:07:13,109
+00:07:24,480 --> 00:07:27,959
 So who were the two hundred?
 It was said, and never proven,
 
 115
-00:07:13,109 --> 00:07:16,655
+00:07:27,959 --> 00:07:31,555
 that some of them were the
 children of very senior officials.
 
 116
-00:07:16,947 --> 00:07:21,581
+00:07:31,847 --> 00:07:36,497
 A man who had worked in the industry told
 a reporter that when a powerful client
 
 117
-00:07:21,581 --> 00:07:24,072
+00:07:36,497 --> 00:07:38,997
 hands you money, it is
 difficult to say no.
 
 118
-00:07:24,380 --> 00:07:27,605
+00:07:39,313 --> 00:07:42,604
 In November 2014, Xu opens
 an office in Beijing.
 
 119
-00:07:27,605 --> 00:07:32,980
+00:07:42,604 --> 00:07:48,088
 It is less than half a mile from the
 headquarters of the stock market regulator.
 
 120
-00:07:33,280 --> 00:07:37,428
+00:07:48,380 --> 00:07:52,743
 His colleagues later said that was the
 start of a year spent trying to protect
 
 121
-00:07:37,428 --> 00:07:39,555
+00:07:52,743 --> 00:07:54,980
 himself. He could feel something coming.
 
 122
-00:07:39,847 --> 00:07:42,647
+00:07:55,280 --> 00:07:58,330
 He was right. Then the
 market did something that
 
 123
-00:07:43,947 --> 00:07:46,347
+00:07:59,647 --> 00:08:02,047
 made his whole career impossible.
 
 124
-00:07:46,647 --> 00:07:51,897
+00:08:02,347 --> 00:08:07,847
 Friday, the twelfth of June, 2015. The
 Chinese market peaks. Then it falls.
 
 125
-00:07:52,213 --> 00:07:55,238
+00:08:08,147 --> 00:08:11,272
 In three weeks, a third
 of its value is gone.
 
 126
-00:07:55,547 --> 00:07:59,711
+00:08:11,580 --> 00:08:15,816
 Remember who is in this market. Two
 hundred million ordinary people.
 
 127
-00:07:59,711 --> 00:08:02,772
+00:08:15,816 --> 00:08:18,930
 They make about eighty-five
 percent of the trades.
 
 128
-00:08:03,080 --> 00:08:05,130
+00:08:19,213 --> 00:08:21,388
 Chives, as far as you can see.
 
 129
-00:08:05,413 --> 00:08:10,350
+00:08:21,680 --> 00:08:26,676
 The government throws everything at it.
 Big shareholders are banned from selling.
 
 130
-00:08:10,350 --> 00:08:13,763
+00:08:26,676 --> 00:08:30,130
 New listings are frozen. State
 firms are ordered to buy.
 
 131
-00:08:14,080 --> 00:08:18,705
+00:08:30,447 --> 00:08:35,297
 They call it the national team, and it
 has up to three trillion yuan behind it.
 
 132
-00:08:19,013 --> 00:08:20,638
+00:08:35,580 --> 00:08:37,255
 It does not hold.
 
 133
-00:08:20,947 --> 00:08:23,772
+00:08:37,547 --> 00:08:40,547
 The twenty-seventh of
 July. Another plunge.
 
 134
-00:08:24,080 --> 00:08:25,716
+00:08:40,847 --> 00:08:42,518
 The twenty-fourth of August.
 
 135
-00:08:25,716 --> 00:08:29,805
+00:08:42,518 --> 00:08:46,697
 Shanghai falls eight and a half
 percent, its worst day in eight years.
 
 136
-00:08:30,113 --> 00:08:33,568
+00:08:46,980 --> 00:08:50,507
 In New York, the Dow drops a
 thousand points at the open.
 
 137
-00:08:33,568 --> 00:08:36,113
+00:08:50,507 --> 00:08:53,105
 The state newspaper calls it Black Monday.
 
 138
-00:08:36,413 --> 00:08:39,238
+00:08:53,413 --> 00:08:56,313
 Five trillion dollars, gone in ten weeks.
 
 139
-00:08:39,547 --> 00:08:40,922
+00:08:56,613 --> 00:08:57,963
 And Zexi?
 
 140
-00:08:41,213 --> 00:08:45,623
+00:08:58,280 --> 00:09:02,789
 In the worst three weeks of the crash,
 all five of his public funds go up.
 
 141
-00:08:45,623 --> 00:08:47,888
+00:09:02,789 --> 00:09:05,105
 Every one, by at least twenty percent.
 
 142
-00:08:48,180 --> 00:08:52,367
+00:09:05,413 --> 00:09:09,640
 His best fund is up three hundred
 and fifty-seven percent for the year.
 
 143
-00:08:52,367 --> 00:08:55,905
+00:09:09,640 --> 00:09:13,213
 First place, out of one thousand
 six hundred and forty-nine.
 
 144
-00:08:56,213 --> 00:09:00,013
+00:09:13,513 --> 00:09:17,338
 His money seemed to step out of
 the market just before each fall.
 
 145
-00:09:00,313 --> 00:09:02,963
+00:09:17,647 --> 00:09:20,547
 In a normal year, that makes you a genius.
 
 146
-00:09:03,247 --> 00:09:06,672
+00:09:20,847 --> 00:09:24,522
 In a year when the state itself
 lost, what does it make you?
 
 147
-00:09:06,980 --> 00:09:09,738
+00:09:24,813 --> 00:09:27,546
 Meanwhile, in Beijing,
 people need an answer.
 
 148
-00:09:09,738 --> 00:09:14,826
+00:09:27,546 --> 00:09:32,588
 The Party's own inspectors have begun going
 through the stock regulator from top to
 
 149
-00:09:14,826 --> 00:09:15,626
+00:09:32,588 --> 00:09:33,388
 bottom.
 
 150
-00:09:15,547 --> 00:09:18,123
+00:09:33,313 --> 00:09:35,925
 Brokerage executives are being arrested.
 
 151
-00:09:18,123 --> 00:09:21,022
+00:09:35,925 --> 00:09:38,863
 Everyone in finance is
 asking the same thing.
 
 152
-00:09:21,313 --> 00:09:22,838
+00:09:39,180 --> 00:09:40,630
 Who is next?
 
 153
-00:09:23,147 --> 00:09:27,855
+00:09:40,947 --> 00:09:45,718
 In September, an anonymous post goes
 viral. It claims that during the rescue,
 
 154
-00:09:27,855 --> 00:09:32,868
+00:09:45,718 --> 00:09:50,798
 Zexi worked with a state-owned brokerage
 to point the government's own buying at a
 
 155
-00:09:32,868 --> 00:09:34,397
+00:09:50,798 --> 00:09:52,347
 stock Zexi wanted lifted.
 
 156
-00:09:34,713 --> 00:09:37,813
+00:09:52,647 --> 00:09:55,897
 Zexi denied it. No court ever ruled on it.
 
 157
-00:09:38,113 --> 00:09:43,088
+00:09:56,213 --> 00:10:01,438
 But the regulator is now looking. And Xu
 Xiang is told he may not leave the country.
 
 158
-00:09:43,380 --> 00:09:46,855
+00:10:01,747 --> 00:10:05,497
 Nine days later, his
 grandmother turns one hundred.
 
 159
-00:10:08,147 --> 00:10:09,175
+00:10:26,813 --> 00:10:27,908
 The party is small.
 
 160
-00:10:09,175 --> 00:10:12,747
+00:10:27,908 --> 00:10:31,713
 His grandmother still lives in the
 neighbourhood where he grew up.
 
 161
-00:10:13,047 --> 00:10:17,868
+00:10:32,013 --> 00:10:36,939
 Shortly before ten thirty, according to
 people who knew him, a warning reaches him.
 
 162
-00:10:17,868 --> 00:10:18,797
+00:10:36,939 --> 00:10:37,888
 They are coming.
 
 163
-00:10:19,113 --> 00:10:20,713
+00:10:38,180 --> 00:10:39,880
 He leaves at once.
 
 164
-00:10:21,013 --> 00:10:24,713
+00:10:40,180 --> 00:10:43,980
 He drives north, towards Shanghai.
 Past the concrete blocks.
 
 165
-00:10:25,013 --> 00:10:27,563
+00:10:44,280 --> 00:10:46,980
 Over the river that cuts Ningbo in half.
 
 166
-00:10:27,847 --> 00:10:29,497
+00:10:47,280 --> 00:10:48,955
 Out along the bay.
 
 167
-00:10:29,813 --> 00:10:32,513
+00:10:49,247 --> 00:10:52,047
 The fast road to Shanghai has one bridge.
 
 168
-00:10:32,813 --> 00:10:37,083
+00:10:52,347 --> 00:10:56,802
 For twenty-two years, his whole edge
 had been knowing before everyone else.
 
 169
-00:10:37,083 --> 00:10:38,563
+00:10:56,802 --> 00:10:58,347
 This morning he knew, too.
 
 170
-00:10:38,880 --> 00:10:41,630
+00:10:58,647 --> 00:11:01,647
 A few minutes late. And
 not about the bridge.
 
 171
-00:10:41,947 --> 00:10:43,522
+00:11:01,947 --> 00:11:03,622
 They stop him there.
 
 172
-00:10:47,813 --> 00:10:52,488
+00:11:07,913 --> 00:11:12,688
 That evening, a photograph appears
 online. White coat. Rimless glasses.
 
 173
-00:10:52,780 --> 00:10:56,466
+00:11:12,980 --> 00:11:16,888
 Someone's hand is pulling back his
 sleeve, and you can see the cuff.
 
 174
-00:10:56,466 --> 00:10:58,580
+00:11:16,888 --> 00:11:19,130
 He is looking straight into the camera.
 
 175
-00:10:58,880 --> 00:11:03,209
+00:11:19,447 --> 00:11:23,886
 The internet does what it does. The coat,
 people said, looked like a doctor's.
 
 176
-00:11:03,209 --> 00:11:06,705
+00:11:23,886 --> 00:11:27,472
 Had he been arrested for practising
 medicine without a licence?
 
 177
-00:11:07,013 --> 00:11:11,613
+00:11:27,780 --> 00:11:32,430
 Two hundred million people had just been
 cut. Now they had someone to look at.
 
 178
-00:11:12,913 --> 00:11:17,582
+00:11:33,747 --> 00:11:38,543
 Then, nothing. When reporters reach
 Zexi's offices in Shanghai and Beijing,
 
 179
-00:11:17,582 --> 00:11:19,388
+00:11:38,543 --> 00:11:40,397
 the doors are already sealed.
 
 180
-00:11:19,680 --> 00:11:23,955
+00:11:40,713 --> 00:11:45,013
 There is a word for what has happened
 to him. Shilian. Lost contact.
 
 181
-00:11:24,247 --> 00:11:28,747
+00:11:45,313 --> 00:11:49,963
 The firm does not survive it. As
 one profile put it: Xu was Zexi.
 
 182
-00:11:29,047 --> 00:11:32,772
+00:11:50,280 --> 00:11:54,205
 Thirteen months later, he appears
 in a courtroom in Qingdao.
 
 183
-00:11:33,080 --> 00:11:34,855
+00:11:54,513 --> 00:11:56,388
 And he pleads guilty.
 
 184
-00:11:35,147 --> 00:11:38,122
+00:11:56,680 --> 00:11:59,880
 Now we get the answer.
 How did he always know?
 
 185
-00:11:38,413 --> 00:11:40,999
+00:12:00,180 --> 00:12:02,902
 From 2010 to 2015, the court found,
 
 186
-00:11:40,999 --> 00:11:45,063
+00:12:02,902 --> 00:12:07,180
 Xu worked with executives at
 thirteen listed companies.
 
 187
-00:11:45,380 --> 00:11:47,530
+00:12:07,480 --> 00:12:09,805
 The company would put out good news.
 
 188
-00:11:47,813 --> 00:11:50,763
+00:12:10,113 --> 00:12:13,163
 Xu would buy heavily, and
 the price would climb.
 
 189
-00:11:51,080 --> 00:11:54,030
+00:12:13,447 --> 00:12:16,572
 Ordinary investors would
 see it and rush in.
 
 190
-00:11:54,347 --> 00:11:57,347
+00:12:16,880 --> 00:12:19,980
 Then Xu and the executives
 would sell to them.
 
 191
-00:11:57,647 --> 00:12:00,947
+00:12:20,280 --> 00:12:23,955
 He knew first because he had
 arranged what there was to know.
 
 192
-00:12:01,247 --> 00:12:05,395
+00:12:24,247 --> 00:12:28,544
 Look at it again. It is the same trick
 as the chalk hall. Start the line.
 
 193
-00:12:05,395 --> 00:12:07,497
+00:12:28,544 --> 00:12:30,722
 Sell to the people at the back of it.
 
 194
-00:12:07,813 --> 00:12:11,113
+00:12:31,013 --> 00:12:34,538
 The only thing that changed
 in twenty years was the size.
 
 195
-00:12:11,413 --> 00:12:16,613
+00:12:34,847 --> 00:12:40,322
 On the twenty-third of January 2017,
 the sentence. Five and a half years.
 
 196
-00:12:16,913 --> 00:12:21,816
+00:12:40,613 --> 00:12:45,633
 And a fine reported at eleven billion
 yuan. One point six billion dollars.
 
 197
-00:12:21,816 --> 00:12:26,388
+00:12:45,633 --> 00:12:50,313
 The largest ever handed to one person
 for a financial crime in China.
 
 198
-00:12:26,680 --> 00:12:28,280
+00:12:50,613 --> 00:12:52,313
 He does not appeal.
 
 199
-00:12:29,580 --> 00:12:32,505
+00:12:53,613 --> 00:12:56,688
 So here is the question
 this story leaves you with.
 
 200
-00:12:32,813 --> 00:12:37,988
+00:12:56,980 --> 00:13:02,255
 In 2003, an investigator looked at the
 Death Squad and found nothing wrong.
 
 201
-00:12:38,280 --> 00:12:43,580
+00:13:02,547 --> 00:13:08,072
 In 2017, a court looked at the grown-up
 version and sent its captain to prison.
 
 202
-00:12:43,880 --> 00:12:46,214
+00:13:08,380 --> 00:13:10,797
 Was he a criminal who finally got caught?
 
 203
-00:12:46,214 --> 00:12:49,118
+00:13:10,797 --> 00:13:13,803
 Or one player in a game
 that everybody was playing,
 
 204
-00:12:49,118 --> 00:12:51,680
+00:13:13,803 --> 00:13:16,455
 picked out because the
 country needed a face?
 
 205
-00:12:51,980 --> 00:12:56,510
+00:13:16,747 --> 00:13:21,620
 One fund manager said that many others
 could have been detained for exactly the
 
 206
-00:12:56,510 --> 00:12:57,310
+00:13:21,620 --> 00:13:22,422
 same reasons.
 
 207
-00:12:57,547 --> 00:13:01,847
+00:13:22,713 --> 00:13:27,363
 The court's answer is simpler. He
 broke the law. He said so himself.
 
 208
-00:13:02,147 --> 00:13:04,072
+00:13:27,680 --> 00:13:29,755
 Both of those can be true.
 
 209
-00:13:04,380 --> 00:13:06,347
+00:13:30,047 --> 00:13:32,036
 It cost him more than money.
 
 210
-00:13:06,347 --> 00:13:11,055
+00:13:32,036 --> 00:13:36,797
 In March 2019, with Xu still in
 prison, his wife filed for divorce.
 
 211
-00:13:11,347 --> 00:13:15,772
+00:13:37,113 --> 00:13:41,663
 They had met in 1998, when he was
 still the kid from the chalk hall.
 
 212
-00:13:16,080 --> 00:13:19,355
+00:13:41,980 --> 00:13:45,280
 Around twenty billion yuan
 of assets sat frozen.
 
 213
-00:13:19,647 --> 00:13:22,647
+00:13:45,580 --> 00:13:48,655
 And the industry he had
 ruled banned him from it.
 
 214
-00:13:23,947 --> 00:13:26,322
+00:13:49,947 --> 00:13:52,422
 His gift was never picking stocks.
 
 215
-00:13:26,613 --> 00:13:31,238
+00:13:52,713 --> 00:13:57,413
 It was knowing first. He built a life on
 it, and for twenty-two years it worked.
 
 216
-00:13:31,547 --> 00:13:35,282
+00:13:57,713 --> 00:14:01,581
 But a man who lives by knowing
 first has exactly one weakness.
 
 217
-00:13:35,282 --> 00:13:37,872
+00:14:01,581 --> 00:14:04,263
 The day somebody else
 knows before he does.
 
 218
-00:13:39,180 --> 00:13:44,630
+00:14:05,580 --> 00:14:11,205
 On the ninth of July 2021, Xu Xiang
 walked out of prison. He was forty-four.
 
 219
-00:13:44,947 --> 00:13:48,447
+00:14:11,513 --> 00:14:15,213
 The fine, by the last reports,
 had still not been paid.
 
 220
-00:13:48,747 --> 00:13:53,171
+00:14:15,513 --> 00:14:20,064
 A fund manager in Beijing once summed
 up the whole business in one sentence.
 
 221
-00:13:53,171 --> 00:13:56,547
+00:14:20,064 --> 00:14:23,538
 "In China, the losing side
 doesn't get to sleep at night."
 
 222
-00:13:56,847 --> 00:14:00,872
+00:14:23,847 --> 00:14:28,047
 As for the bridge. It reopened after
 a little more than half an hour.
 
 223
-00:14:01,180 --> 00:14:02,930
+00:14:28,347 --> 00:14:30,172
 The traffic moved on.
 
