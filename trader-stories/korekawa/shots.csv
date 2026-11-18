@@ -1,0 +1,111 @@
+shot_id,section,start,seconds,family,image_id,cue,on_screen,tag,motion,notes,hold,narration
+01.01,1,0:00,2.8,NUMBER,,Osaka.,OSAKA · 18 SEPTEMBER 1981,,date types on,,0,"Osaka. The eighteenth of September, 1981."
+01.02,1,0:03,6.7,SCENE,newspaper_breakfast,An old man opens the morning paper.,,,slow push to the circled item,,0,An old man opens the morning paper. Somewhere on an inside page there is a short report.
+01.03,1,0:10,5.6,SCENE,old_hands_paper,Gold has been found,,DRAMATISED,drift,,0,"Gold has been found in the far south of Japan, under a hill in Kagoshima."
+01.04,1,0:15,4.9,SCENE,newspaper_breakfast,Millions of people read that paper.,,,pull,,0,Millions of people read that paper. Most of them turn the page.
+01.05,1,0:20,13.8,SCENE,old_hands_paper,He is eighty-four years old.,,DRAMATISED,slow push,,0,"He is eighty-four years old. He has been rich more than once. He has lost everything more than once. And he reads the article again, slowly, the way he has read everything for fifty years."
+01.06,1,0:34,4.9,SCENE,train_window,"Within days,",,,pan,,0,"Within days, he is on his way to see the hill for himself."
+01.07,1,0:39,7.8,SCENE,kagoshima_hills_rain,"Within months,",,,slow push,,0,"Within months, he will make one of the biggest single profits any individual has ever made on the Japanese stock market."
+01.08,1,0:47,3.5,BLACK,,"And within ten years,",,,cut to black,,0,"And within ten years, it will all be gone."
+01.09,1,0:50,4,CARD,,,THE LAST SPECULATOR,,title,,4,
+02.01,2,0:56,2.1,SCENE,osaka_street_bag,His name was,是川銀蔵 GINZŌ KOREKAWA,DRAMATISED,slow push,,0,His name was Ginzō Korekawa.
+02.02,2,0:58,3.2,NUMBER,,In Japan they called him,最後の相場師 THE LAST SPECULATOR,,type card,,0,In Japan they called him the last speculator.
+02.03,2,1:01,4.2,SCENE,osaka_street_bag,His schooling ended,,DRAMATISED,"push, tighter",,0,His schooling ended with elementary school. He did not drink.
+02.04,2,1:05,3.2,SCENE,old_bag,He carried the same worn bag,,,slow push,,0,He carried the same worn bag for years.
+02.05,2,1:08,9.5,CHART,,"And in 1983, at eighty-five,",No. 1 TAXPAYER,,rank climbs to first,,0,"And in 1983, at eighty-five, he topped the national list of Japan's highest-income taxpayers. Above the heads of the great companies' founders. Above everyone."
+02.06,2,1:18,6.7,SCENE,small_flat,"But when he died,",,,slow push,,0,"But when he died, he left almost nothing. A small flat that he shared with his wife."
+02.07,2,1:24,6.3,NUMBER,,So how does a man,A FORTUNE AT 84. GONE BY 94.,,two lines land,,0,"So how does a man make a fortune at eighty-four, and lose it again before he dies?"
+02.08,2,1:31,8.5,NUMBER,,"To understand that trade,",1897,,rewind to 1897,,0,"To understand that trade, you have to go back almost a century. Because he had been preparing for it his whole life."
+03.01,3,1:41,9.9,SCENE,ako_village,"He was born in 1897,","AKŌ, HYŌGO",,pan,,0,"He was born in 1897, in Akō, a fishing town on Japan's Inland Sea. He was the youngest of seven brothers. The family was poor."
+03.02,3,1:51,8.8,SCENE,kobe_apprentice,At fourteen he went to work,"KOBE, 1911",DRAMATISED,slow push,,0,"At fourteen he went to work as an apprentice at a trading firm in Kobe. A few years later, the firm went bankrupt."
+03.03,3,1:59,10.2,SCENE,bankrupt_firm,He watched the men,,,drift,,0,He watched the men who worked there lose everything because of decisions they had never made. He decided he would never again depend on someone else's business.
+03.04,3,2:10,4.2,SCENE,ship_rail,"At seventeen, according to his biographer,",BIOGRAPHY,BIOGRAPHY,slow push,,0,"At seventeen, according to his biographer, he set out for London."
+03.05,3,2:14,8.1,MAP,,"He got as far as Dalian,",Kobe → Dalian,,route draws across the sea,,0,"He got as far as Dalian, in China. Then the First World War broke out, and the road to Europe closed."
+03.06,3,2:22,8.5,SCENE,qingdao_army,So he followed the Japanese army,BIOGRAPHY,BIOGRAPHY,pan,,0,"So he followed the Japanese army instead. He walked behind it to Qingdao, running so short of money that he nearly starved."
+03.07,3,2:31,4.9,SCENE,army_supply,Then he talked his way,BIOGRAPHY,BIOGRAPHY,slow push,,0,"Then he talked his way into supplying it, with food and with timber."
+03.08,3,2:35,10.9,SCENE,coins_scale,His biographer tells one story,BIOGRAPHY,BIOGRAPHY,slow push,,0,"His biographer tells one story that explains the rest of his life. In Qingdao, the small old coins people used every day were made of copper, zinc and lead."
+03.09,3,2:46,10.2,CHART,,He worked out that the metal,METAL > 2× FACE VALUE,,two bars,,0,"He worked out that the metal in them was worth more than double the money stamped on them. So he bought coins, and sold them as metal."
+03.10,3,2:57,5.3,SCENE,coins_scale,Everyone else saw small change.,,,push in,,0,Everyone else saw small change. He saw what it was actually made of.
+03.11,3,3:02,7.4,SCENE,market_panic_1916,"By nineteen, he was rich.",BIOGRAPHY,BIOGRAPHY,drift,,0,"By nineteen, he was rich. Then, in December 1916, a sudden market crash took his business down with it."
+03.12,3,3:09,4.9,SCENE,pier_return,He went home with nothing.,,DRAMATISED,slow pull,,0,He went home with nothing. It would not be the last time.
+04.01,4,3:16,3.5,SCENE,osaka_workshop,In Osaka he started again.,"OSAKA, 1919",,pan,,0,In Osaka he started again. He traded iron.
+04.02,4,3:19,8.1,SCENE,factory_owner,He ran a factory,,DRAMATISED,slow push,,0,"He ran a factory that coated steel wire in zinc, and by his biographer's account it employed two hundred and sixty people."
+04.03,4,3:27,9.2,SCENE,tin_roofs_1923,"In 1923, an earthquake",1923,,pan,,0,"In 1923, an earthquake flattened Tokyo. A city of millions needed roofs and nails overnight, and he supplied them. He made a fortune."
+04.04,4,3:37,8.5,SCENE,donation_office,"According to his biographer, he then gave",BIOGRAPHY,BIOGRAPHY,slow push,,0,"According to his biographer, he then gave half of it to the Osaka government, saying it was money made from other people's misfortune."
+04.05,4,3:45,9.5,SCENE,bank_run_1927,"Then, in 1927, panic",1927,,drift,,0,"Then, in 1927, panic swept through Japan's banks. Customers queued around the block to take their money out, and bank after bank closed its doors."
+04.06,4,3:55,4.6,SCENE,bank_run_1927,One of them was his.,,,push to the notice,,0,One of them was his. His company went down with it.
+04.07,4,3:59,4.6,SCENE,closed_factory,He was thirty.,,,static,,0,"He was thirty. For the second time, he had lost everything."
+04.08,4,4:04,7.0,SCENE,library_reading,Most men would have looked,,DRAMATISED,very slow push,,0,Most men would have looked for a job. He went to the library instead. And he stayed.
+04.09,4,4:11,6.7,SCENE,library_closeup,"For about three years, he read.",,DRAMATISED,drift,,0,"For about three years, he read. Economics, history, the world's markets, the papers of the great economists."
+04.10,4,4:17,16.2,DIAGRAM,,He came out with one idea,BOOM · BUST · BOOM,,wave draws,,0,"He came out with one idea that he never let go of. Depressions are not the end of the world. They are part of a cycle. Booms follow busts, and busts follow booms. Capitalism would not collapse. It would breathe."
+04.11,4,4:34,6.3,SCENE,pencil_wave,"If you understood the cycle,",,,slow push,,0,"If you understood the cycle, you did not have to guess. You could wait for it."
+05.01,5,4:42,4.6,SCENE,coins_70yen,"In 1931, at the bottom",,,slow push,,0,"In 1931, at the bottom of the worst depression the world had seen,"
+05.02,5,4:46,3.9,SCENE,osaka_exchange_1930s,he walked into the Osaka stock exchange,,,pan,,0,he walked into the Osaka stock exchange with seventy yen.
+05.03,5,4:50,8.1,NUMBER,,"By the end of the year,","¥70 → ¥7,000",,counter,,0,"By the end of the year, he had seven thousand. A hundredfold, in a year when almost everyone else was losing."
+05.04,5,4:58,11.6,SCENE,research_office,"Two years later,",1933,,slow push,,0,"Two years later, he opened his own economic research institute. Not a brokerage. A research institute. He wanted to know where the economy was going before he bought anything."
+05.05,5,5:10,15.2,SCENE,military_questioning,"In the 1930s, his biographer says,",BIOGRAPHY,BIOGRAPHY,slow push,,0,"In the 1930s, his biographer says, he forecast that Britain, America and the Soviet Union would rearm in Asia, and he said so publicly. The military police took him in for questioning. A government official had to vouch for him."
+05.06,5,5:25,10.9,NUMBER,,Later writers summed up,THREE RULES,,rules land one at a time,,0,"Later writers summed up his method in three rules. Choose your own stocks, never on a tip. Forecast the economy years ahead. And never chase a price."
+05.07,5,5:36,6.7,NUMBER,,In Japan they are known,亀の三原則 THE TURTLE'S THREE RULES,,type card,,0,In Japan they are known as the turtle's three rules. Slow. Patient. Hard to kill.
+05.08,5,5:43,10.9,SCENE,cotton_warehouse,He did not always follow,BIOGRAPHY,BIOGRAPHY,slow push,,0,"He did not always follow his own rules. In 1935, his biographer says, he was locked in a battle in the cotton futures market against a powerful cotton merchant."
+05.09,5,5:53,7.4,DIAGRAM,,"In a fight like that,",SETTLE OR FIGHT ON,,steps,,0,"In a fight like that, the two sides can agree to settle and walk away, the winner taking his gains."
+05.10,5,6:01,7.8,SCENE,futures_battle,He was three million yen ahead.,BIOGRAPHY,BIOGRAPHY,slow push,,0,He was three million yen ahead. His opponent offered to settle. He refused. He wanted to win completely.
+05.11,5,6:09,5.6,NUMBER,,The market turned.,"+¥3,000,000 → LOSS",,lines land,,0,"The market turned. The gains vanished, and he ended the battle with a loss."
+05.12,5,6:14,5.6,SCENE,futures_battle,He never forgot it.,,,pull,,0,He never forgot it. Later writers quote his rule: selling is harder than buying.
+06.01,6,6:21,4.6,MAP,,"In 1938, he went into mining",Osaka → Korea,,route draws,,0,"In 1938, he went into mining in Korea, then a Japanese colony."
+06.02,6,6:26,3.5,SCENE,korea_mine,The mines fed ironworks.,BIOGRAPHY,BIOGRAPHY,pan,,0,The mines fed ironworks. The war fed demand.
+06.03,6,6:30,8.8,SCENE,ironworks_korea,"By the war years,",BIOGRAPHY,BIOGRAPHY,slow push,,0,"By the war years, his biographer says, Korekawa Steel employed about ten thousand people. It was one of the biggest businesses in Korea."
+06.04,6,6:38,8.5,SCENE,factory_gate_rain,"Then, in August 1945,",AUGUST 1945,,static,,0,"Then, in August 1945, Japan surrendered. Everything he had built in Korea was confiscated. He was arrested and thrown into prison."
+06.05,6,6:47,2.1,SCENE,prison_cell,He expected to be executed.,,DRAMATISED,very slow push,,0,He expected to be executed.
+06.06,6,6:49,9.2,SCENE,workers_petition,"Instead, his Korean colleagues",,DRAMATISED,drift,,0,"Instead, his Korean colleagues and workers petitioned for his release. He had never treated them as lesser people, they said. He was freed."
+06.07,6,6:58,7.4,SCENE,repatriation_ship,He sailed back,,,pan,,0,"He sailed back to a defeated, hungry Japan. He was forty-eight. For the third time, he had nothing."
+07.01,7,7:07,11.3,SCENE,rice_field,He did not go back to the market,1946,DRAMATISED,slow push,,0,"He did not go back to the market straight away. The country was starving, so he studied farming, ways to grow two crops of rice a year instead of one."
+07.02,7,7:18,7.4,SCENE,osaka_land,Then he bought land,,,pan,,0,"Then he bought land on the edge of Osaka, where he was sure the city would spread. It did."
+07.03,7,7:26,6.7,NUMBER,,"When he sold,","¥300,000,000",,counter,,0,"When he sold, he had three hundred million yen. And at sixty-eight, he went back to stocks."
+07.04,7,7:32,4.9,SCENE,cement_works,"In 1976, aged seventy-nine,",NIHON CEMENT · 1976,,slow push,,0,"In 1976, aged seventy-nine, he put three hundred million yen into Nihon Cement."
+07.05,7,7:37,10.9,SCENE,construction_1977,Japan had just come through,,,tilt up,,0,"Japan had just come through the oil shock and a long slump. He had studied the cycle, and he was sure the country was about to start building again."
+07.06,7,7:48,7.0,CHART,,He was right.,¥300M IN · ¥3BN GAIN,,two bars,,0,He was right. The gain was about three billion yen. Ten times what he had put in.
+07.07,7,7:55,11.3,SCENE,classroom,"Two years later,",1979,,drift,,0,"Two years later, he put more than a billion yen of his own money into a foundation to pay for the education of children from poor families. He was eighty-two."
+07.08,7,8:07,1.8,SCENE,old_desk,He was not finished.,,DRAMATISED,slow push,,0,He was not finished.
+08.01,8,8:10,5.6,SCENE,newspaper_breakfast,Which brings us back,,,push,,0,"Which brings us back to that morning in 1981, and the small article about gold."
+08.02,8,8:16,3.9,MAP,,"The gold was at Hishikari,",Osaka → Hishikari,,"route south, pin",,0,"The gold was at Hishikari, in the hills of Kagoshima."
+08.03,8,8:19,6.3,SCENE,quartz_vein,"Earlier that year,",,,slow push,,0,"Earlier that year, a government survey had drilled into a vein of quartz that was astonishingly rich."
+08.04,8,8:26,9.5,NUMBER,,A typical gold mine,A FEW GRAMS vs ~40,,two lines,,0,A typical gold mine might get a few grams of gold from a tonne of rock. Hishikari's ore would turn out to hold around forty.
+08.05,8,8:35,4.6,NUMBER,,And the mining rights belonged,SUMITOMO METAL MINING,,type card,,0,And the mining rights belonged to one company. Sumitomo Metal Mining.
+08.06,8,8:40,9.2,DIAGRAM,,Here is why that mattered.,,,steps,,0,Here is why that mattered. A big discovery can change what a whole mining company is worth. But the market had barely reacted.
+08.07,8,8:49,5.3,NUMBER,,Sumitomo's shares were trading,¥226,,price card,,0,"Sumitomo's shares were trading at around two hundred yen, as if nothing had happened."
+08.08,8,8:54,2.8,SCENE,hillside_drill,Korekawa went to see the site himself.,BIOGRAPHY,BIOGRAPHY,slow push,,0,Korekawa went to see the site himself.
+08.09,8,8:57,7.8,SCENE,quartz_vein,Only one question mattered.,,,push in,,0,"Only one question mattered. Was this a lucky pocket of gold, or a seam that ran on under the hills?"
+08.10,8,9:05,4.6,SCENE,mine_office,The local mine office,,DRAMATISED,drift,,0,The local mine office told him further digging was unlikely to pay.
+08.11,8,9:09,10.6,SCENE,claim_map,He ignored them.,,,slow push,,0,"He ignored them. He was sure the vein ran on under the land next door. So he bought the mining rights to the land next door, too."
+08.12,8,9:20,3.2,SCENE,trading_floor_1981,And he bought Sumitomo shares.,,,pan,,0,And he bought Sumitomo shares. Then more.
+08.13,8,9:23,2.1,SCENE,buy_ticket,Then more with borrowed money.,,,push,,0,Then more with borrowed money.
+08.14,8,9:25,10.9,NUMBER,,"At eighty-four, he was betting on margin.",MARGIN,,two lines,,0,"At eighty-four, he was betting on margin. If the price fell far enough, his broker would sell him out, and he would lose far more than he started with."
+08.15,8,9:36,4.2,NUMBER,,"By the spring,",ONE OF THE LARGEST SHAREHOLDERS,,line lands,,0,"By the spring, he was one of the company's largest shareholders."
+08.16,8,9:41,9.9,CHART,,Other traders noticed,LIMIT UP · ¥705,,price line climbs,,0,"Other traders noticed what he was doing. Then everyone noticed. Around New Year, the stock hit its daily limit at seven hundred and five yen."
+08.17,8,9:50,7.8,DOC,,"In March 1982,",,,register card,,0,"In March 1982, Sumitomo announced it would develop the land next to its mine. Land it had acquired from him."
+08.18,8,9:58,9.5,CHART,,"In April, the shares reached","¥1,230",,line reaches the peak,,0,"In April, the shares reached one thousand two hundred and thirty yen. More than five times the price on the morning he read the paper."
+08.19,8,10:08,3.9,SCENE,old_man_window_phone,"And unlike in 1935,",,DRAMATISED,slow push,,0,"And unlike in 1935, this time he took the money."
+08.20,8,10:12,6.3,NUMBER,,The gain was reported,"¥20,000,000,000",,counter,,0,The gain was reported at about twenty billion yen. Around eighty million dollars at the time.
+08.21,8,10:18,8.1,SCENE,old_man_window_phone,"Made in a little over six months,",,DRAMATISED,pull,,0,"Made in a little over six months, by a man in his mid-eighties, from a short article everyone else had read too."
+09.01,9,10:28,7.4,CHART,,"Every year, Japan published",No. 1,,rank climbs,,0,"Every year, Japan published a list of its biggest taxpayers. The next list put him first in the country."
+09.02,9,10:35,7.1,SCENE,newsstand_1983,The press loved him.,,,pan,,0,The press loved him. The eighty-five-year-old with an elementary school education who had out-read every analyst in Tokyo.
+09.03,9,10:42,8.1,SCENE,train_bag,He changed nothing.,,DRAMATISED,slow push,,0,He changed nothing. The same bag. The same habits. He had never wanted to live like a rich man.
+09.04,9,10:50,3.9,SCENE,old_bag,The money was not the point.,,,push in,,0,The money was not the point. Being right was.
+09.05,9,10:54,9.2,NUMBER,,A director of a Japanese investors' association,,,two lines,,0,"A director of a Japanese investors' association later said Korekawa studied every day for about thirty years, and only stopped losing money at around eighty."
+09.06,9,11:03,10.9,SCENE,library_empty,Think about that.,,,very slow push,,0,"Think about that. The greatest trade of his life came after five decades of study, three lost fortunes, and a battle he lost by not knowing when to stop."
+10.01,10,11:16,2.5,BLACK,,But a turtle does not stop.,,,black,,0,But a turtle does not stop.
+10.02,10,11:18,3.5,SCENE,hospital_corridor,"In 1985, his son,",1985,,slow push,,0,"In 1985, his son, a geologist, died at fifty-seven."
+10.03,10,11:22,1.4,SCENE,old_desk,Korekawa kept trading.,,DRAMATISED,drift,,0,Korekawa kept trading.
+10.04,10,11:23,8.1,NUMBER,,"According to his biographer, he took a large position",HEAVY LOSSES,,line lands,,0,"According to his biographer, he took a large position in a pharmaceutical company, and the shares fell. The losses were heavy."
+10.05,10,11:31,3.5,SCENE,tax_envelope,And the tax office,,,slow push,,0,And the tax office had not finished with him.
+10.06,10,11:35,6.7,NUMBER,,"In 1991, at ninety-four,","−¥680,000,000",,counter,,0,"In 1991, at ninety-four, he was reported to owe six hundred and eighty million yen in income tax."
+10.07,10,11:41,3.5,DOC,,The tax office seized,,,register card,,0,The tax office seized the royalties from his autobiography.
+10.08,10,11:45,5.6,CARD,,"In that book,",,,quote types on,,0,"In that book, he wrote that not a single sen of his stock profits remained."
+11.01,11,11:52,9.5,SCENE,library_empty,His great trade did not come from luck,,,slow push,,0,His great trade did not come from luck at eighty-four. It came from three years in a library and fifty years of reading the cycle.
+11.02,11,12:01,6.3,SCENE,newspaper_breakfast,Everyone could read that article.,,,push to the circle,,0,Everyone could read that article. Only one man had spent his life getting ready for it.
+11.03,11,12:08,11.6,SCENE,old_desk,But the same patience,,DRAMATISED,very slow push,,0,But the same patience that let him wait for the cycle kept bringing him back for one more. He could wait for years to buy. He never learned to stop.
+12.01,12,12:21,7.0,SCENE,osaka_flats_dusk,Ginzō Korekawa died,12 SEPTEMBER 1992,,slow push,,0,Ginzō Korekawa died on the twelfth of September 1992. He was ninety-five. He left a small flat.
+12.02,12,12:28,3.2,SCENE,school_gate,His foundation still pays,,,drift,,0,His foundation still pays for children's education today.
+12.03,12,12:31,4.2,SCENE,hishikari_dawn,And the hill he went to see,,,slow push,,0,And the hill he went to see is still producing gold.
+12.04,12,12:35,4.9,SCENE,hishikari_dawn,Hishikari became,,,"long pull back, fade",,0,"Hishikari became Japan's most productive gold mine, long after his profits were gone."
+12.05,12,12:40,8,CARD,,,Sources,,sources card,,8,
