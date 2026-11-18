@@ -4,10 +4,10 @@ import path from "node:path";
 import { bundle } from "@remotion/bundler";
 import { selectComposition, renderMedia } from "@remotion/renderer";
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
-const out = process.argv[2] || path.join(root, "out/xx-film-video.mp4");
+const out = process.argv[2] || path.join(root, process.env.FILM_OUT || "out/xx-film-video.mp4");
 const browserExecutable = process.env.REMOTION_BROWSER || null;
 const serveUrl = await bundle({ entryPoint: path.join(root, "src/index.ts") });
-const composition = await selectComposition({ serveUrl, id: "xx-film", browserExecutable });
+const composition = await selectComposition({ serveUrl, id: process.env.FILM_ID || "xx-film", browserExecutable });
 const t0 = Date.now(); let last = -1;
 await renderMedia({
   composition, serveUrl, browserExecutable, outputLocation: out, codec: "h264", crf: 18, muted: true,

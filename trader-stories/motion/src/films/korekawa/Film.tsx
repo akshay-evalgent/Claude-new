@@ -4,7 +4,7 @@ import { C, FPS } from "../../theme";
 import { component, ShotSpec } from "../../registry";
 import { SceneMove, Preset } from "../../components/SceneMove";
 import { Scoreboard } from "../../components/Scoreboard";
-import { GRAPHICS, OVERLAYS, SCOREBOARD, SHOTS } from "./film";
+import { ARCHIVE, GRAPHICS, OVERLAYS, SCOREBOARD, SHOTS } from "./film";
 import type { ShotInfo } from "../xu-xiang/film";
 
 // The whole film, shot by shot, timed to the recorded narration (shots.json).
@@ -52,8 +52,10 @@ export const Film: React.FC = () => {
               <Series.Sequence key={s.id} durationInFrames={frames(s)} name={s.id}>
                 {scene ? (
                   <>
-                    <SceneMove src={`frames/korekawa/${s.image}.jpg`} move={presetFor(s, i)} />
-                    {OVERLAYS[s.id] ? <Spec spec={OVERLAYS[s.id]} /> : null}
+                    <SceneMove src={`frames/korekawa/${ARCHIVE[s.id] ? ARCHIVE[s.id].image : s.image}.jpg`} move={presetFor(s, i)} />
+                    {ARCHIVE[s.id]
+                      ? <Spec spec={{ t: "SceneOverlay", props: { tag: "ARCHIVE PHOTO", caption: ARCHIVE[s.id].credit, captionSize: 22 } }} />
+                      : OVERLAYS[s.id] ? <Spec spec={OVERLAYS[s.id]} /> : null}
                     {/* the scoreboard rides on illustrated shots; graphics have the frame to themselves */}
                     <Sequence from={-at} layout="none"><Scoreboard entries={SCOREBOARD} /></Sequence>
                   </>

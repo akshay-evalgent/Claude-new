@@ -6,6 +6,7 @@
 | `thumbnail-a.jpg` | Main thumbnail |
 | `thumbnail-b.jpg` | Second thumbnail for Test & Compare |
 | `korekawa.en.srt` | English subtitles, timed to the narration |
+| `../archive_credits.json` | Licence and source page for each archive photo |
 
 ---
 
@@ -47,10 +48,15 @@ SOURCES
 • Yamafuji Shōichirō, NEWS Post Seven / Weekly Post, July 2013
 • Kinoshita Atsushi, Saigo no Sōbashi Korekawa Ginzō (2011); Ginzō Korekawa, Jiden: Haran o Ikiru (Kodansha, 1991), as cited in Japanese reference works
 • Geological Survey of Japan, reports on the Hishikari deposit
+ARCHIVE PHOTOS (public domain, via Wikimedia Commons)
+• Bank run, Tokyo Nakano Bank, 1927 · Asahi Shimbun · Public domain: https://commons.wikimedia.org/wiki/File:Bank_run_at_T%C5%8Dky%C5%8D_Nakano_Bank_in_Sh%C5%8Dwa_financial_crisis_-_1927_-_Asahi_Shinbun.png
+• Tokyo after the earthquake, 1923 · Agence Rol · Public domain: https://commons.wikimedia.org/wiki/File:Faubourg_deTokio_(i.e._Tokyo,_apr%C3%A8s_le_tremblement_de_terre_du_1er_septembre_1923)_-_btv1b53119959d.jpg
+• Japanese troops enter Tsingtao, 1914 · Public domain: https://commons.wikimedia.org/wiki/File:Japanese_imperial_troops_enter_Tsingtao,_Kiautschou_Bay_Leased_Territory(1).jpg
+
 Scenes marked BIOGRAPHY rest on a single biography. The Sumitomo share-price line is illustrative and passes only through the reported prices.
 
 HOW THIS VIDEO WAS MADE
-All people and places shown are dramatised reconstructions generated with AI (FLUX.1-schnell); they are not photographs and do not show the real people's faces. The narration is a synthetic male voice (Kokoro). The music is original.
+Apart from the three archive photos credited above, all people and places shown are dramatised reconstructions generated with AI (FLUX.1-schnell); they are not photographs and do not show the real people's faces. The narration is a synthetic male voice (Kokoro). The music is original.
 
 This video is for education and entertainment. It is not financial advice.
 

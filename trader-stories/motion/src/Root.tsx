@@ -47,6 +47,10 @@ export const Root: React.FC = () => (
     <Composition id="xx-thumb-b" component={Thumbnail} durationInFrames={1} fps={FPS} width={1280} height={720}
       defaultProps={{ image: "zexi_office_night", kicker: "HE ALWAYS", big: "KNEW", bigTone: "paper", sub: "FIRST.", focusX: 50 }} />
 
+    <Composition id="kg-thumb-a" component={Thumbnail} durationInFrames={1} fps={FPS} width={1280} height={720}
+      defaultProps={{ image: "korekawa/old_hands_paper", kicker: "AT 84 HE MADE", big: "¥20B", bigTone: "gain", sub: "FROM ONE ARTICLE", focusX: 70, shift: 10 }} />
+    <Composition id="kg-thumb-b" component={Thumbnail} durationInFrames={1} fps={FPS} width={1280} height={720}
+      defaultProps={{ image: "korekawa/hillside_drill", kicker: "BROKE", big: "4×", bigTone: "loss", sub: "RICH AT 84.", focusX: 70, shift: 18 }} />
     <Composition id="kg-film" component={KgFilm} durationInFrames={KG_FRAMES} fps={FPS} width={W} height={H} />
     {Object.entries(KG_GRAPHICS).map(([id, spec]) => (
       <Composition key={`kg${id}`} id={cid("kg", id)} component={Shot} defaultProps={{ spec }}

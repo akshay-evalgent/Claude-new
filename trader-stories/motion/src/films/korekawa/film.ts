@@ -95,13 +95,14 @@ export const GRAPHICS: Record<string, ShotSpec> = {
   "10.08": { t: "QuoteCard", props: { quote: "Not a single sen of my stock profits remains.", attribution: "Ginzō Korekawa, autobiography, 1991 (translated)" } },
   "12.05": { t: "NumberCard", props: { align: "left", stagger: 0.25, lines: [
     { text: "SOURCES", size: 48, tone: "ochre" },
-    ...["Korekawa Scholarship Foundation, biography and timeline", "20th Century Japanese Biographical Dictionary · Nihon Jinmei Daijiten (via Kotobank)", "NEWS Post Seven / Weekly Post, July 2013", "Kinoshita Atsushi, Saigo no Sōbashi Korekawa Ginzō (2011) · Korekawa, Jiden: Haran o Ikiru (1991)", "Geological Survey of Japan on the Hishikari deposit", "Images: FLUX.1-schnell · Voice: Kokoro · Music: original"].map((t) => ({ text: t, size: 32, tone: "paper" as const })),
+    ...["Korekawa Scholarship Foundation, biography and timeline", "20th Century Japanese Biographical Dictionary · Nihon Jinmei Daijiten (via Kotobank)", "NEWS Post Seven / Weekly Post, July 2013", "Kinoshita Atsushi, Saigo no Sōbashi Korekawa Ginzō (2011) · Korekawa, Jiden: Haran o Ikiru (1991)", "Geological Survey of Japan on the Hishikari deposit", "Archive photos: Wikimedia Commons, public domain", "Other images: FLUX.1-schnell · Voice: Kokoro · Music: original"].map((t) => ({ text: t, size: 32, tone: "paper" as const })),
   ] } },
 };
 
 export const SCOREBOARD: ScoreEntry[] = [
   { t: startOf("02.01"), year: "1983 · AGE 85", value: "No. 1 TAXPAYER", label: "JAPAN'S TOP TAXPAYER LIST" },
   { t: startOf("03.02"), year: "1911 · AGE 14", value: "¥0", label: "HIS MONEY" },
+  { t: startOf("03.06"), year: "1915 · AGE 18", value: "ARMY SUPPLIER", label: "QINGDAO" },
   { t: startOf("03.11"), year: "1916 · AGE 19", value: "A FORTUNE", label: "MADE IN CHINA" },
   { t: startOf("03.12"), year: "1916 · AGE 19", value: "¥0", label: "AFTER THE CRASH" },
   { t: startOf("04.01"), year: "1919 · AGE 22", value: "A FACTORY", label: "HIS BUSINESS, OSAKA" },
@@ -127,3 +128,11 @@ export const OVERLAYS: Record<string, ShotSpec> = Object.fromEntries(
     s.id, { t: "SceneOverlay", props: { tag: s.tag || undefined, caption: s.onScreen && !TAGS.has(s.onScreen) ? s.onScreen : undefined } },
   ]),
 );
+
+// ---- real archive photos (public domain, via Wikimedia Commons) replacing generated scenes
+// Sources and licences: ../korekawa/archive_credits.json
+export const ARCHIVE: Record<string, { image: string; credit: string }> = {
+  "03.06": { image: "archive_tsingtao_1914", credit: "Japanese troops enter Tsingtao, 1914 · Public domain" },
+  "04.03": { image: "archive_tokyo_1923", credit: "Tokyo after the earthquake, 1923 · Agence Rol · Public domain" },
+  "04.05": { image: "archive_bankrun_1927", credit: "Bank run, Tokyo Nakano Bank, 1927 · Asahi Shimbun · Public domain" },
+};
