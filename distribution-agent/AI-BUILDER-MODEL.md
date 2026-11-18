@@ -1,6 +1,6 @@
 # Model: premium distribution for founders who build with AI
 
-Written 18 November 2026. A service and product model for people who made a product with AI tools and do not know how distribution works. It sits alongside `STRATEGY.md` as the premium line.
+Written 18 November 2026. A service and product model for people who made a product with AI tools and do not know how distribution works. It is the main line of the business; `STRATEGY.md` is the top-level summary.
 
 ## How far to trust this
 
@@ -43,7 +43,7 @@ Qualifying questions before any paid step:
 3. Can a stranger sign up, pay and get a useful result today?
 4. Can you give 45 minutes a day for 45 days?
 
-Founders who fail question 2 are offered the $199 sprint in `STRATEGY.md` instead.
+Founders who fail question 2 are offered the 14-day sprint in `STRATEGY.md` instead.
 
 ## 3. Why this segment will pay more
 

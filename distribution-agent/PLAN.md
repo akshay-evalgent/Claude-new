@@ -18,8 +18,8 @@ Researched 11 November 2026. A free agent that gets first users and first revenu
 | Does it post for the user? | Never in communities. Only to the user's own surfaces through official APIs | Reddit, X, Hacker News and Product Hunt all restrict or ban automated or AI-written posts |
 | Who pays for the model? | The user's own Claude or ChatGPT plan | Free hosted inference is too small for more than a demo |
 | What do we host? | One small MCP server on Cloudflare's free plan | Supplies search, tracking and rule data to the user's model |
-| First segment | International makers selling online (decided 18 November 2026; see `STRATEGY.md`) | Open price point between $99 tools and $2,500 agencies; `gtm-cofounder` already serves AI-agent makers |
-| How it makes money | Free open core; one flat paid tier later, no credits | Credit metering is the most repeated complaint about competitors |
+| First segment | Founders outside India who built a product with AI tools and have an income and a trade (decided 18 November 2026; see `STRATEGY.md`) | They can pay a premium and hold a network they do not use |
+| How it makes money | Services first: $300 audit, $1,500 Launch Programme, $2,500 a month partner. The tool is free for clients and $49 a month flat for others | Human-run work is the gap; credit metering is the most repeated complaint about tools |
 
 ## 2. Who it is for and what hurts
 
@@ -195,7 +195,7 @@ Measures:
 
 ## 12. Open decisions
 
-1. First segment: decided, international makers first. See `STRATEGY.md`.
+1. First segment: decided, founders who build with AI, premium line first. See `STRATEGY.md`.
 2. Name.
 3. Whether to submit to the Claude directory, which needs a paid plan.
 
