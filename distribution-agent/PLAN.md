@@ -257,3 +257,4 @@ Stack:
 | LinkedIn, Instagram, TikTok and YouTube, organic and ads | `PAID-AND-SOCIAL-CHANNELS-PLAYBOOK.md` |
 | Competitor landscape: repos, startups, tools and services | `COMPETITOR-LANDSCAPE.md` |
 | Positioning, business model, pricing and first clients | `STRATEGY.md` |
+| Premium model for founders who build with AI | `AI-BUILDER-MODEL.md` |
