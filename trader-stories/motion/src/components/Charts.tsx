@@ -33,7 +33,7 @@ export const LineChart: React.FC<LineChartProps> = (p) => {
   const { durationInFrames } = useVideoConfig();
   const chalk = p.style === "chalk";
   const hasBracket = (p.annotations ?? []).some((a) => a.kind === "bracket");
-  const box = { x: SAFE.x + 110, y: SAFE.y + 120, w: 1920 - 2 * SAFE.x - 170 - (hasBracket ? 230 : 0), h: 1080 - 2 * SAFE.y - 230 };
+  const box = { x: SAFE.x + 110, y: SAFE.y + 170, w: 1920 - 2 * SAFE.x - 170 - (hasBracket ? 230 : 0), h: 1080 - 2 * SAFE.y - 280 };
   const t0 = t(p.from), t1 = t(p.to);
 
   const allVals = p.series.flatMap((s) => s.points.filter(([d]) => t(d) >= t0 && t(d) <= t1).map(([, v]) => v));
@@ -64,6 +64,10 @@ export const LineChart: React.FC<LineChartProps> = (p) => {
   const d0 = new Date(t0);
   if (spanDays > 900) {
     for (let y = d0.getUTCFullYear() + 1; t(`${y}-01-01`) <= t1; y++) ticks.push({ ms: t(`${y}-01-01`), label: String(y) });
+  } else if (spanDays > 420) {
+    const Q = ["JAN", "APR", "JUL", "OCT"];
+    for (let m = new Date(Date.UTC(d0.getUTCFullYear(), Math.floor(d0.getUTCMonth() / 3) * 3 + 3, 1)); m.getTime() <= t1; m.setUTCMonth(m.getUTCMonth() + 3))
+      ticks.push({ ms: m.getTime(), label: m.getUTCMonth() === 0 ? String(m.getUTCFullYear()) : Q[m.getUTCMonth() / 3] });
   } else {
     const M = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
     for (let m = new Date(Date.UTC(d0.getUTCFullYear(), d0.getUTCMonth() + 1, 1)); m.getTime() <= t1; m.setUTCMonth(m.getUTCMonth() + 1))
@@ -110,7 +114,7 @@ export const LineChart: React.FC<LineChartProps> = (p) => {
         {(p.annotations ?? []).filter((a) => a.kind === "level").map((a, i) => a.kind === "level" && (
           <g key={`l${i}`} opacity={prog(frame, sec(0.6), 20)}>
             <line x1={box.x} x2={box.x + box.w} y1={fy(a.value)} y2={fy(a.value)} stroke={tone(a.tone, C.ochre)} strokeWidth={3} strokeDasharray="14 10" />
-            <text x={box.x + box.w} y={fy(a.value) - 16} textAnchor="end" fill={tone(a.tone, C.ochre)} fontFamily={font("mono")} fontWeight={600} fontSize={24}>{a.label}</text>
+            <text x={box.x + 12} y={fy(a.value) - 16} textAnchor="start" fill={tone(a.tone, C.ochre)} fontFamily={font("mono")} fontWeight={600} fontSize={24}>{a.label}</text>
           </g>
         ))}
         {p.series.map((s, si) => {

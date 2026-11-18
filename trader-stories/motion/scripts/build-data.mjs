@@ -72,7 +72,7 @@ out("src/data/east-asia-land.json", {
 });
 
 // 3. Shot timings for each film that has a shots.csv
-for (const film of ["xu-xiang", "korekawa"]) {
+for (const film of ["xu-xiang", "korekawa", "liu-qibing"]) {
   const csvPath = path.join(root, "..", film, "shots.csv");
   const text = fs.readFileSync(csvPath, "utf8");
   const rows = [];

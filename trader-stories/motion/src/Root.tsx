@@ -10,6 +10,8 @@ import { Film, FILM_FRAMES } from "./films/xu-xiang/Film";
 import { Thumbnail } from "./films/xu-xiang/Thumbnail";
 import { Film as KgFilm, FILM_FRAMES as KG_FRAMES } from "./films/korekawa/Film";
 import { GRAPHICS as KG_GRAPHICS, SHOTS as KG_SHOTS } from "./films/korekawa/film";
+import { Film as LqFilm, FILM_FRAMES as LQ_FRAMES } from "./films/liu-qibing/Film";
+import { GRAPHICS as LQ_GRAPHICS, SHOTS as LQ_SHOTS } from "./films/liu-qibing/film";
 
 loadHouseFonts();
 
@@ -46,6 +48,12 @@ export const Root: React.FC = () => (
       defaultProps={{ image: "car_interior_coat", kicker: "HE MADE", big: "+357%", bigTone: "gain", sub: "IN A CRASH", focusX: 75, shift: 22 }} />
     <Composition id="xx-thumb-b" component={Thumbnail} durationInFrames={1} fps={FPS} width={1280} height={720}
       defaultProps={{ image: "zexi_office_night", kicker: "HE ALWAYS", big: "KNEW", bigTone: "paper", sub: "FIRST.", focusX: 50 }} />
+
+    <Composition id="lq-film" component={LqFilm} durationInFrames={LQ_FRAMES} fps={FPS} width={W} height={H} />
+    {Object.entries(LQ_GRAPHICS).map(([id, spec]) => (
+      <Composition key={`lq${id}`} id={cid("lq", id)} component={Shot} defaultProps={{ spec }}
+        durationInFrames={Math.max(sec(1), Math.round(LQ_SHOTS.find((s) => s.id === id)!.seconds * FPS))} fps={FPS} width={W} height={H} />
+    ))}
 
     <Composition id="kg-thumb-a" component={Thumbnail} durationInFrames={1} fps={FPS} width={1280} height={720}
       defaultProps={{ image: "korekawa/old_hands_paper", kicker: "AT 84 HE MADE", big: "¥20B", bigTone: "gain", sub: "FROM ONE ARTICLE", focusX: 70, shift: 10 }} />
