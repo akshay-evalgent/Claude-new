@@ -2,7 +2,8 @@
 
 A 60-second, 1080p, 30 fps short film made with three.js.
 
-- `what-if-world-war-3.mp4`: the finished video, with soundtrack.
+- `what-if-world-war-3.mp4`: the finished 16:9 video, with soundtrack.
+- `what-if-world-war-3-vertical.mp4`: the 9:16 cut for YouTube Shorts (1080x1920).
 - `film.html`: the film itself. Every frame is a pure function of time. Serve this folder over HTTP and open it for a live preview (space bar plays and pauses, arrow keys step one second).
 - `render.js`: renders the film frame by frame in headless Chromium (Playwright).
 - `audio.py`: synthesizes the soundtrack with NumPy.
@@ -14,6 +15,8 @@ node render.js frames 0 60 out/frames
 python3 audio.py
 ffmpeg -framerate 30 -i out/frames/f%05d.jpg -i out/score.wav -c:v libx264 -preset slow -crf 22 -pix_fmt yuv420p -c:a aac -b:a 256k -movflags +faststart -shortest what-if-world-war-3.mp4
 ```
+
+For the vertical cut, set `VERT=1` on the render step (for example `VERT=1 node render.js frames 0 60 out/vframes`) and encode from that folder.
 
 ## Sources for the figures on screen
 
