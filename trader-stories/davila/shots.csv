@@ -1,0 +1,68 @@
+shot_id,section,start,seconds,family,image_id,cue,on_screen,tag,motion,notes,hold,narration
+01.01,1,0:00,2.5,NUMBER,,"Friday, the twenty-first",SANTIAGO · FRIDAY 21 JANUARY 1994,,date types on,,0,"Friday, the twenty-first of January, 1994."
+01.02,1,0:02,4.6,SCENE,coast_road,A man cuts his beach holiday,,,slow pan,,0,A man cuts his beach holiday short and heads back to Santiago.
+01.03,1,0:07,4.2,SCENE,corridor_walk,He asks to see his boss.,,DRAMATISED,follow push,,0,He asks to see his boss. He says it's urgent.
+01.04,1,0:11,11.3,DIAGRAM,,"That afternoon, he explains.",SELL → BUY,,ticket flips,,0,"That afternoon, he explains. A few months ago, he says, he made a mistake on his computer. He entered a sale as a purchase. Buy instead of sell."
+01.05,1,0:23,2.5,NUMBER,,The mistake cost thirty million dollars.,"−$30,000,000",,counter,,0,The mistake cost thirty million dollars.
+01.06,1,0:25,4.2,SCENE,office_two_men,"And instead of reporting it,",,DRAMATISED,very slow push,,0,"And instead of reporting it, he tried to win it back."
+01.07,1,0:29,4,CARD,,,THE WRONG KEY,,title,,4,
+02.01,2,0:35,6.3,SCENE,chuqui_pit,"The money belonged to Codelco,",CHUQUICAMATA,,slow push,,0,"The money belonged to Codelco, Chile's state copper company. The biggest copper company in the world."
+02.02,2,0:41,8.1,NUMBER,,Codelco mined about a tenth,10% OF THE WORLD'S COPPER,,counter,,0,Codelco mined about a tenth of all the world's copper. Its sales brought in about a fifth of Chile's export earnings.
+02.03,2,0:49,6.7,SCENE,copper_bar,Chile had nationalised,,,slow pull,,0,"Chile had nationalised its copper mines in 1971. President Salvador Allende called copper ""the salary of Chile""."
+02.04,2,0:56,4.6,SCENE,santiago_andes,Codelco was not just a company.,SANTIAGO,,drift,,0,Codelco was not just a company. It was the country's wallet.
+02.05,2,1:01,7.4,SCENE,jp_desk,The man who lost the money,JUAN PABLO DÁVILA,DRAMATISED,slow push,,0,The man who lost the money was its head of futures trading. Juan Pablo Dávila. He was thirty-four.
+02.06,2,1:08,9.9,SCENE,jp_desk,He was an accountant.,,DRAMATISED,push tighter,,0,"He was an accountant. He had joined Codelco in 1986 as a trainee, on a salary of eight thousand six hundred and eighty dollars a year."
+02.07,2,1:18,4.9,SCENE,coffee_colleagues,Colleagues sometimes called him,,DRAMATISED,pan,,0,Colleagues sometimes called him J.P. As in J.P. Morgan.
+03.01,3,1:24,10.9,DIAGRAM,,Codelco had used the futures market,,,steps,,0,"Codelco had used the futures market since 1983, for one main job. Protection. A miner sells its future copper at today's price, so a crash can't hurt it."
+03.02,3,1:35,11.3,SCENE,typed_minute,"In 1990, the company allowed",,DRAMATISED,slow push,,0,"In 1990, the company allowed something more. A small amount of real trading, just to make money. No more than ten thousand tonnes. And a strict loss limit."
+03.03,3,1:46,16.9,DIAGRAM,,"In August 1992,",,,rules list,,0,"In August 1992, a committee set the rules. An open position of no more than twenty thousand tonnes. No more than a million dollars at risk on any day. And an automatic stop-loss order on every trade, to close it if it went wrong."
+03.04,3,2:03,4.6,SCENE,empty_meeting_room,"According to the state auditors,",,,very slow push,,0,"According to the state auditors, it was the committee's last recorded meeting."
+04.01,4,2:09,10.6,SCENE,beige_pc,Here is how it worked in practice.,,,slow push,,0,Here is how it worked in practice. Dávila made the trades by phone. The brokers confirmed them by fax. And Dávila typed them into a spreadsheet.
+04.02,4,2:20,4.9,DIAGRAM,,That spreadsheet was the company's record.,,,nodes,,0,That spreadsheet was the company's record. The accounts were built from it.
+04.03,4,2:25,8.8,SCENE,fax_dark,"He kept it on his office computer,",,,slow push,,0,"He kept it on his office computer, and on his own personal computer. He used his own fax, and his own phone line."
+04.04,4,2:34,11.3,SCENE,boxed_computer,"In 1991, Codelco had bought",,,pan,,0,"In 1991, Codelco had bought a proper system to control the trading. By April 1993 it was working. It was never used, because nobody typed in the old trades."
+04.05,4,2:45,6.3,SCENE,beige_pc,So the only person who knew,,,push tighter,,0,So the only person who knew what the trading desk was doing was the man running it.
+05.01,5,2:53,4.6,CHART,,"By September 1993,",,,line falls,,0,"By September 1993, copper had been falling for more than a year."
+05.02,5,2:57,9.2,SCENE,jp_hand_close,"That month, by Dávila's own account,",,DRAMATISED,very slow push,,0,"That month, by Dávila's own account, he recorded a sale as a purchase. When he found the error, it had cost thirty million dollars."
+05.03,5,3:07,8.8,SCENE,jp_still,Thirty times the most,,DRAMATISED,very slow push,,0,Thirty times the most he was allowed to risk in a single day. One phone call to his boss would have ended it.
+05.04,5,3:15,2.1,NUMBER,,He didn't make the call.,HE DIDN'T MAKE THE CALL.,,type card,,0,He didn't make the call.
+05.05,5,3:18,6.3,SCENE,jp_still,"Instead, he decided",,DRAMATISED,slow pull,,0,"Instead, he decided to trade his way out. Quietly. Betting that copper would keep falling."
+06.01,6,3:25,8.8,DIAGRAM,,His bets were short positions.,,,steps,,0,"His bets were short positions. Sell now, buy back later. If the price falls, you profit. If it rises, you lose."
+06.02,6,3:34,7.4,SCENE,london_screens,Over the next four months,LONDON,,pan,,0,"Over the next four months he made more than five thousand trades, with twenty-three brokers in London and New York."
+06.03,6,3:42,6.7,SCENE,ny_pit,"Copper, and then gold",NEW YORK,,slow push,,0,"Copper, and then gold and silver too. When one broker's credit ran out, he moved to another."
+06.04,6,3:48,10.2,SCENE,beach_house,"Some of it, investigators later said,",REPORTED,REPORTED,slow push,,0,"Some of it, investigators later said, he ran from his beach house in Reñaca. He had the brokers send the paperwork to him, not to the office."
+06.05,6,3:59,8.1,CHART,,"In November, copper hit",,,line turns up,,0,"In November, copper hit its lowest price in years. Sixteen hundred and thirty dollars a tonne. And then it turned."
+07.01,7,4:08,8.5,SCENE,corridor_execs,"That same November,",,DRAMATISED,slow push,,0,"That same November, two of his bosses heard that the desk was carrying positions for 1994 with losses of around ten million dollars."
+07.02,7,4:17,6.0,SCENE,boss_instructs,"According to the auditors,",,DRAMATISED,slow push,,0,"According to the auditors, they told him, verbally, to book the loss in that year's accounts."
+07.03,7,4:23,2.5,NUMBER,,He didn't. And nobody checked.,NOBODY CHECKED.,,stamp,,0,He didn't. And nobody checked.
+07.04,7,4:25,11.3,SCENE,hamburg_broker,"On the other side of the trades,",HAMBURG,,slow push,,0,"On the other side of the trades, one broker was getting nervous. Wolfgang Becker, of Merrill Lynch, was one of Dávila's main brokers. Dávila was asking for more credit."
+07.05,7,4:36,5.6,QUOTE,,Becker later told,,,quote,,0,"Becker later told the Wall Street Journal, I had the impression something was not right."
+08.01,8,4:44,2.8,SCENE,coast_road,Which brings us back,,,slow pan,,0,Which brings us back to that Friday.
+08.02,8,4:46,9.5,SCENE,office_two_men,"Dávila told the sales manager,",,DRAMATISED,slow push,,0,"Dávila told the sales manager, Owen Guerrini, everything. The wrong key. The thirty million. The cover-up. The trades to win it back."
+08.03,8,4:56,4.2,SCENE,office_two_men,He thought the loss,,DRAMATISED,push tighter,,0,He thought the loss was now around a hundred million dollars.
+08.04,8,5:00,8.5,SCENE,weekend_crisis,Guerrini went straight up,,DRAMATISED,pan,,0,Guerrini went straight up the chain. Emergency meetings ran all weekend. Codelco's heads in London and New York were flown home.
+08.05,8,5:09,9.5,DIAGRAM,,"On Monday, the company filed",,,steps,,0,"On Monday, the company filed a criminal complaint. Auditors from Price Waterhouse were called in. And Merrill Lynch's Becker helped Codelco unwind the positions."
+08.06,8,5:18,8.8,NUMBER,,It was worse than a hundred million.,"−$206,000,000",,counter,,0,"It was worse than a hundred million. When Codelco closed the positions, the bill came to about two hundred and six million dollars."
+08.07,8,5:27,3.5,NUMBER,,Forty-four percent,44% OF CODELCO'S 1993 PROFIT,,counter,,0,Forty-four percent of the company's entire profit for 1993.
+09.01,9,5:32,9.5,SCENE,press_conf,"On the twenty-sixth of January,",26 JANUARY 1994,,slow push,,0,"On the twenty-sixth of January, Codelco told the country. The executives above Dávila resigned. Ten days later, so did the head of the company."
+09.02,9,5:41,8.5,SCENE,kiosk,The press called it Coppergate.,,,pan,,0,The press called it Coppergate. The opposition threatened to impeach two ministers. Business groups said it proved Codelco should be sold.
+09.03,9,5:50,9.9,QUOTE,,One Codelco director,,,quote,,0,One Codelco director said it was hard to believe one person could do all this without anyone else knowing. He would have to be a genius.
+09.04,9,6:00,8.1,SCENE,jp_window,"Dávila said, I don't believe",,DRAMATISED,slow push,,0,"Dávila said, I don't believe I've committed any crime. I made a mistake, and I am going to assume the responsibility."
+09.05,9,6:08,14.1,DIAGRAM,,And Chile got a new word.,,,dictionary card,,0,"And Chile got a new word. Davilar. To botch things up miserably, as the Wall Street Journal translated it. When you get something catastrophically wrong in Chile, you don't just make a mistake. You davilar."
+10.01,10,6:24,3.9,SCENE,bank_statements,But investigators did not believe,,,slow push,,0,But investigators did not believe it was just a mistake.
+10.02,10,6:27,10.9,DIAGRAM,,Codelco went through his bank accounts.,,,money flow,ALLEGATION,0,"Codelco went through his bank accounts. It said that from 1990, large deposits had appeared in them, at least three point two million dollars by 1993, mostly in cash."
+10.03,10,6:38,15.2,CHART,,"Some of the money, Codelco said,",,,bars,,0,"Some of the money, Codelco said, came from accounts linked to the representatives of one London broker, Sogemin Metals. In 1990, its business with Codelco had been under two hundred thousand tonnes. In 1993, it was two point three million."
+10.04,10,6:54,12.0,DIAGRAM,,"Codelco also said that in 1990,",,,map line,ALLEGATION,0,"Codelco also said that in 1990, one and a half million dollars had moved from a subsidiary of the German metals giant Metallgesellschaft into an account in the Cayman Islands controlled by Dávila."
+10.05,10,7:06,7.4,SCENE,bank_statements,"In lawsuits, Codelco alleged",ALLEGATION,ALLEGATION,push tighter,,0,"In lawsuits, Codelco alleged he had made losing trades for Codelco and winning trades for brokers, and shared the money."
+10.06,10,7:13,6.0,SCENE,lawyer_steps,Dávila denied it.,,,slow push,,0,"Dávila denied it. His lawyer said the deposits were loans, and called him a scapegoat."
+10.07,10,7:19,13.4,QUOTE,,The judge who investigated,,,quote,,0,"The judge who investigated the case, José Benquis, put it more bluntly. The story of the slip of the finger, he said, was so hard to swallow that he suspected at once there was something hidden."
+11.01,11,7:34,6.3,SCENE,santiago_court,In March 1994 he was charged.,SANTIAGO,,tilt up,,0,In March 1994 he was charged. He would spend the next twelve years in Chile's courts.
+11.02,11,7:40,13.4,DIAGRAM,,First he served a separate sentence,,,timeline,,0,"First he served a separate sentence for false tax returns. In 1999, a judge sentenced him to eight years for the losses. On appeal, it was cut. In 2006, the Supreme Court settled it."
+11.03,11,7:54,15.2,SCENE,jp_court_back,Guilty of fraud against the state.,,DRAMATISED,slow push,,0,"Guilty of fraud against the state. And guilty of dealing with brokers where he had a conflict of interest. Three years, plus two terms of eight hundred days. And a hundred and eighty-six million dollars in damages to Codelco."
+11.04,11,8:09,5.6,SCENE,prison_gate,"In January 2007,",SAN CARLOS · JANUARY 2007,,slow push,,0,"In January 2007, he handed himself in at a prison in the south of Chile."
+11.05,11,8:14,8.1,NUMBER,,"By then, Codelco had sued",,,two numbers,,0,"By then, Codelco had sued and settled with brokers in London and the United States, and recovered about a hundred million dollars."
+12.01,12,8:24,17.3,CHART,,And here is the last twist.,,,line 1992-1994,,0,"And here is the last twist. Codelco later said that if copper had fallen, his trades would have made money. It didn't. Through 1994 it climbed to three thousand dollars a tonne. If he had held on, the losses would have been far bigger."
+12.02,12,8:41,10.2,SCENE,beige_pc,"Was it a slip of the little finger,",,,very slow push,,0,"Was it a slip of the little finger, followed by panic? Or a cover story for something else? A court decided. Chile never quite agreed."
+12.03,12,8:51,14.8,SCENE,empty_meeting_room,But the auditors found something,,,very slow push,,0,"But the auditors found something that didn't depend on the answer. One man made the trades, recorded the trades and checked the trades. The committee had stopped meeting. The system that could have caught him sat switched off."
+12.04,12,9:06,5.3,DIAGRAM,,The wrong key cost thirty million dollars.,BUY,,ticket,,0,The wrong key cost thirty million dollars. Everything after that was a choice.
+12.05,12,9:12,8,CARD,,,Sources,,sources card,,8,

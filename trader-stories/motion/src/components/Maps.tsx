@@ -3,17 +3,18 @@ import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remo
 import { geoMercator, geoPath } from "d3-geo";
 import type { Feature, MultiPolygon } from "geojson";
 import landJson from "../data/east-asia-land.json";
+import americasJson from "../data/americas-land.json";
 import { C, easeInOut, font, prog, rand, sec, SAFE, tone, Tone } from "../theme";
 import { Frame } from "./Frame";
 
 // Coastline only. The maps never draw national or provincial borders.
-const land = landJson as unknown as Feature<MultiPolygon>;
+const LANDS = { "east-asia": landJson, americas: americasJson } as unknown as Record<string, Feature<MultiPolygon>>;
 
 export type LonLat = [number, number];
 export type View = { center: LonLat; scale: number }; // scale: d3 mercator scale (2000 = whole east coast)
 export type Pin = { name: string; cjk?: string; at: LonLat; t?: number; tone?: Tone; side?: "left" | "right"; small?: boolean };
 export type Route = { path: LonLat[]; t?: number; dur?: number; tone?: Tone; width?: number; dashed?: boolean; label?: string };
-export type MapProps = { view: View; zoomTo?: View; zoomAt?: number; zoomFor?: number; pins?: Pin[]; routes?: Route[]; caption?: string; note?: string };
+export type MapProps = { land?: "east-asia" | "americas"; view: View; zoomTo?: View; zoomAt?: number; zoomFor?: number; pins?: Pin[]; routes?: Route[]; caption?: string; note?: string };
 
 export const CITIES: Record<string, LonLat> = {
   Beijing: [116.40, 39.90], Shanghai: [121.47, 31.23], Ningbo: [121.55, 29.87], Hangzhou: [120.16, 30.27],
@@ -30,12 +31,12 @@ const lerpView = (a: View, b: View, k: number): View => ({
   scale: a.scale * Math.pow(b.scale / a.scale, k),
 });
 
-export const MapCard: React.FC<MapProps> = ({ view, zoomTo, zoomAt = 0.5, zoomFor = 2.5, pins = [], routes = [], caption, note }) => {
+export const MapCard: React.FC<MapProps> = ({ land: landName = "east-asia", view, zoomTo, zoomAt = 0.5, zoomFor = 2.5, pins = [], routes = [], caption, note }) => {
   const frame = useCurrentFrame();
   const k = zoomTo ? interpolate(frame, [sec(zoomAt), sec(zoomAt + zoomFor)], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: easeInOut }) : 0;
   const v = zoomTo ? lerpView(view, zoomTo, k) : view;
   const proj = useMemo(() => geoMercator().center(v.center).scale(v.scale).translate([960, 560]), [v.center[0], v.center[1], v.scale]);
-  const d = useMemo(() => geoPath(proj)(land) ?? "", [proj]);
+  const d = useMemo(() => geoPath(proj)(LANDS[landName]) ?? "", [proj, landName]);
 
   return (
     <Frame>

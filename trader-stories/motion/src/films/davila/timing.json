@@ -1,0 +1,659 @@
+{
+ "meta": {
+  "voice": "am_michael",
+  "speed": 1.22,
+  "engine": "Kokoro-82M (hexgrad, Apache 2.0)"
+ },
+ "shots": {
+  "01.01": {
+   "audio": 3.9,
+   "segments": [
+    [
+     0.0,
+     3.9,
+     "Friday, the twenty-first of January, 1994."
+    ]
+   ]
+  },
+  "01.02": {
+   "audio": 4.375,
+   "segments": [
+    [
+     0.0,
+     4.375,
+     "A man cuts his beach holiday short and heads back to Santiago."
+    ]
+   ]
+  },
+  "01.03": {
+   "audio": 3.175,
+   "segments": [
+    [
+     0.0,
+     3.175,
+     "He asks to see his boss. He says it's urgent."
+    ]
+   ]
+  },
+  "01.04": {
+   "audio": 8.65,
+   "segments": [
+    [
+     0.0,
+     8.65,
+     "That afternoon, he explains. A few months ago, he says, he made a mistake on his computer. He entered a sale as a purchase. Buy instead of sell."
+    ]
+   ]
+  },
+  "01.05": {
+   "audio": 2.725,
+   "segments": [
+    [
+     0.0,
+     2.725,
+     "The mistake cost thirty million dollars."
+    ]
+   ]
+  },
+  "01.06": {
+   "audio": 3.2,
+   "segments": [
+    [
+     0.0,
+     3.2,
+     "And instead of reporting it, he tried to win it back."
+    ]
+   ]
+  },
+  "02.01": {
+   "audio": 6.225,
+   "segments": [
+    [
+     0.0,
+     6.225,
+     "The money belonged to Codelco, Chile's state copper company. The biggest copper company in the world."
+    ]
+   ]
+  },
+  "02.02": {
+   "audio": 7.025,
+   "segments": [
+    [
+     0.0,
+     7.025,
+     "Codelco mined about a tenth of all the world's copper. Its sales brought in about a fifth of Chile's export earnings."
+    ]
+   ]
+  },
+  "02.03": {
+   "audio": 8.25,
+   "segments": [
+    [
+     0.0,
+     8.25,
+     "Chile had nationalised its copper mines in 1971. President Salvador Allende called copper \"the salary of Chile\"."
+    ]
+   ]
+  },
+  "02.04": {
+   "audio": 4.0,
+   "segments": [
+    [
+     0.0,
+     4.0,
+     "Codelco was not just a company. It was the country's wallet."
+    ]
+   ]
+  },
+  "02.05": {
+   "audio": 6.075,
+   "segments": [
+    [
+     0.0,
+     6.075,
+     "The man who lost the money was its head of futures trading. Juan Pablo Dávila. He was thirty-four."
+    ]
+   ]
+  },
+  "02.06": {
+   "audio": 8.85,
+   "segments": [
+    [
+     0.0,
+     8.85,
+     "He was an accountant. He had joined Codelco in 1986 as a trainee, on a salary of eight thousand six hundred and eighty dollars a year."
+    ]
+   ]
+  },
+  "02.07": {
+   "audio": 3.9,
+   "segments": [
+    [
+     0.0,
+     3.9,
+     "Colleagues sometimes called him J.P. As in J.P. Morgan."
+    ]
+   ]
+  },
+  "03.01": {
+   "audio": 10.65,
+   "segments": [
+    [
+     0.0,
+     10.65,
+     "Codelco had used the futures market since 1983, for one main job. Protection. A miner sells its future copper at today's price, so a crash can't hurt it."
+    ]
+   ]
+  },
+  "03.02": {
+   "audio": 9.9,
+   "segments": [
+    [
+     0.0,
+     9.9,
+     "In 1990, the company allowed something more. A small amount of real trading, just to make money. No more than ten thousand tonnes. And a strict loss limit."
+    ]
+   ]
+  },
+  "03.03": {
+   "audio": 14.825,
+   "segments": [
+    [
+     0.0,
+     14.825,
+     "In August 1992, a committee set the rules. An open position of no more than twenty thousand tonnes. No more than a million dollars at risk on any day. And an automatic stop-loss order on every trade, to close it if it went wrong."
+    ]
+   ]
+  },
+  "03.04": {
+   "audio": 4.5,
+   "segments": [
+    [
+     0.0,
+     4.5,
+     "According to the state auditors, it was the committee's last recorded meeting."
+    ]
+   ]
+  },
+  "04.01": {
+   "audio": 8.725,
+   "segments": [
+    [
+     0.0,
+     8.725,
+     "Here is how it worked in practice. Dávila made the trades by phone. The brokers confirmed them by fax. And Dávila typed them into a spreadsheet."
+    ]
+   ]
+  },
+  "04.02": {
+   "audio": 4.25,
+   "segments": [
+    [
+     0.0,
+     4.25,
+     "That spreadsheet was the company's record. The accounts were built from it."
+    ]
+   ]
+  },
+  "04.03": {
+   "audio": 7.2,
+   "segments": [
+    [
+     0.0,
+     7.2,
+     "He kept it on his office computer, and on his own personal computer. He used his own fax, and his own phone line."
+    ]
+   ]
+  },
+  "04.04": {
+   "audio": 11.525,
+   "segments": [
+    [
+     0.0,
+     11.525,
+     "In 1991, Codelco had bought a proper system to control the trading. By April 1993 it was working. It was never used, because nobody typed in the old trades."
+    ]
+   ]
+  },
+  "04.05": {
+   "audio": 5.075,
+   "segments": [
+    [
+     0.0,
+     5.075,
+     "So the only person who knew what the trading desk was doing was the man running it."
+    ]
+   ]
+  },
+  "05.01": {
+   "audio": 4.625,
+   "segments": [
+    [
+     0.0,
+     4.625,
+     "By September 1993, copper had been falling for more than a year."
+    ]
+   ]
+  },
+  "05.02": {
+   "audio": 7.8,
+   "segments": [
+    [
+     0.0,
+     7.8,
+     "That month, by Dávila's own account, he recorded a sale as a purchase. When he found the error, it had cost thirty million dollars."
+    ]
+   ]
+  },
+  "05.03": {
+   "audio": 6.35,
+   "segments": [
+    [
+     0.0,
+     6.35,
+     "Thirty times the most he was allowed to risk in a single day. One phone call to his boss would have ended it."
+    ]
+   ]
+  },
+  "05.04": {
+   "audio": 1.75,
+   "segments": [
+    [
+     0.0,
+     1.75,
+     "He didn't make the call."
+    ]
+   ]
+  },
+  "05.05": {
+   "audio": 5.575,
+   "segments": [
+    [
+     0.0,
+     5.575,
+     "Instead, he decided to trade his way out. Quietly. Betting that copper would keep falling."
+    ]
+   ]
+  },
+  "06.01": {
+   "audio": 7.1,
+   "segments": [
+    [
+     0.0,
+     7.1,
+     "His bets were short positions. Sell now, buy back later. If the price falls, you profit. If it rises, you lose."
+    ]
+   ]
+  },
+  "06.02": {
+   "audio": 6.75,
+   "segments": [
+    [
+     0.0,
+     6.75,
+     "Over the next four months he made more than five thousand trades, with twenty-three brokers in London and New York."
+    ]
+   ]
+  },
+  "06.03": {
+   "audio": 5.925,
+   "segments": [
+    [
+     0.0,
+     5.925,
+     "Copper, and then gold and silver too. When one broker's credit ran out, he moved to another."
+    ]
+   ]
+  },
+  "06.04": {
+   "audio": 8.8,
+   "segments": [
+    [
+     0.0,
+     8.8,
+     "Some of it, investigators later said, he ran from his beach house in Reñaca. He had the brokers send the paperwork to him, not to the office."
+    ]
+   ]
+  },
+  "06.05": {
+   "audio": 7.1,
+   "segments": [
+    [
+     0.0,
+     7.1,
+     "In November, copper hit its lowest price in years. Sixteen hundred and thirty dollars a tonne. And then it turned."
+    ]
+   ]
+  },
+  "07.01": {
+   "audio": 8.8,
+   "segments": [
+    [
+     0.0,
+     8.8,
+     "That same November, two of his bosses heard that the desk was carrying positions for 1994 with losses of around ten million dollars."
+    ]
+   ]
+  },
+  "07.02": {
+   "audio": 5.4,
+   "segments": [
+    [
+     0.0,
+     5.4,
+     "According to the auditors, they told him, verbally, to book the loss in that year's accounts."
+    ]
+   ]
+  },
+  "07.03": {
+   "audio": 2.175,
+   "segments": [
+    [
+     0.0,
+     2.175,
+     "He didn't. And nobody checked."
+    ]
+   ]
+  },
+  "07.04": {
+   "audio": 10.1,
+   "segments": [
+    [
+     0.0,
+     10.1,
+     "On the other side of the trades, one broker was getting nervous. Wolfgang Becker, of Merrill Lynch, was one of Dávila's main brokers. Dávila was asking for more credit."
+    ]
+   ]
+  },
+  "07.05": {
+   "audio": 5.2,
+   "segments": [
+    [
+     0.0,
+     5.2,
+     "Becker later told the Wall Street Journal, I had the impression something was not right."
+    ]
+   ]
+  },
+  "08.01": {
+   "audio": 2.425,
+   "segments": [
+    [
+     0.0,
+     2.425,
+     "Which brings us back to that Friday."
+    ]
+   ]
+  },
+  "08.02": {
+   "audio": 8.075,
+   "segments": [
+    [
+     0.0,
+     8.075,
+     "Dávila told the sales manager, Owen Guerrini, everything. The wrong key. The thirty million. The cover-up. The trades to win it back."
+    ]
+   ]
+  },
+  "08.03": {
+   "audio": 3.825,
+   "segments": [
+    [
+     0.0,
+     3.825,
+     "He thought the loss was now around a hundred million dollars."
+    ]
+   ]
+  },
+  "08.04": {
+   "audio": 7.925,
+   "segments": [
+    [
+     0.0,
+     7.925,
+     "Guerrini went straight up the chain. Emergency meetings ran all weekend. Codelco's heads in London and New York were flown home."
+    ]
+   ]
+  },
+  "08.05": {
+   "audio": 9.85,
+   "segments": [
+    [
+     0.0,
+     9.85,
+     "On Monday, the company filed a criminal complaint. Auditors from Price Waterhouse were called in. And Merrill Lynch's Becker helped Codelco unwind the positions."
+    ]
+   ]
+  },
+  "08.06": {
+   "audio": 8.075,
+   "segments": [
+    [
+     0.0,
+     8.075,
+     "It was worse than a hundred million. When Codelco closed the positions, the bill came to about two hundred and six million dollars."
+    ]
+   ]
+  },
+  "08.07": {
+   "audio": 4.875,
+   "segments": [
+    [
+     0.0,
+     4.875,
+     "Forty-four percent of the company's entire profit for 1993."
+    ]
+   ]
+  },
+  "09.01": {
+   "audio": 9.1,
+   "segments": [
+    [
+     0.0,
+     9.1,
+     "On the twenty-sixth of January, Codelco told the country. The executives above Dávila resigned. Ten days later, so did the head of the company."
+    ]
+   ]
+  },
+  "09.02": {
+   "audio": 7.85,
+   "segments": [
+    [
+     0.0,
+     7.85,
+     "The press called it Coppergate. The opposition threatened to impeach two ministers. Business groups said it proved Codelco should be sold."
+    ]
+   ]
+  },
+  "09.03": {
+   "audio": 7.975,
+   "segments": [
+    [
+     0.0,
+     7.975,
+     "One Codelco director said it was hard to believe one person could do all this without anyone else knowing. He would have to be a genius."
+    ]
+   ]
+  },
+  "09.04": {
+   "audio": 7.075,
+   "segments": [
+    [
+     0.0,
+     7.075,
+     "Dávila said, I don't believe I've committed any crime. I made a mistake, and I am going to assume the responsibility."
+    ]
+   ]
+  },
+  "09.05": {
+   "audio": 12.2,
+   "segments": [
+    [
+     0.0,
+     12.2,
+     "And Chile got a new word. Davilar. To botch things up miserably, as the Wall Street Journal translated it. When you get something catastrophically wrong in Chile, you don't just make a mistake. You davilar."
+    ]
+   ]
+  },
+  "10.01": {
+   "audio": 3.725,
+   "segments": [
+    [
+     0.0,
+     3.725,
+     "But investigators did not believe it was just a mistake."
+    ]
+   ]
+  },
+  "10.02": {
+   "audio": 11.25,
+   "segments": [
+    [
+     0.0,
+     11.25,
+     "Codelco went through his bank accounts. It said that from 1990, large deposits had appeared in them, at least three point two million dollars by 1993, mostly in cash."
+    ]
+   ]
+  },
+  "10.03": {
+   "audio": 15.65,
+   "segments": [
+    [
+     0.0,
+     15.65,
+     "Some of the money, Codelco said, came from accounts linked to the representatives of one London broker, Sogemin Metals. In 1990, its business with Codelco had been under two hundred thousand tonnes. In 1993, it was two point three million."
+    ]
+   ]
+  },
+  "10.04": {
+   "audio": 12.325,
+   "segments": [
+    [
+     0.0,
+     12.325,
+     "Codelco also said that in 1990, one and a half million dollars had moved from a subsidiary of the German metals giant Metallgesellschaft into an account in the Cayman Islands controlled by Dávila."
+    ]
+   ]
+  },
+  "10.05": {
+   "audio": 7.375,
+   "segments": [
+    [
+     0.0,
+     7.375,
+     "In lawsuits, Codelco alleged he had made losing trades for Codelco and winning trades for brokers, and shared the money."
+    ]
+   ]
+  },
+  "10.06": {
+   "audio": 5.175,
+   "segments": [
+    [
+     0.0,
+     5.175,
+     "Dávila denied it. His lawyer said the deposits were loans, and called him a scapegoat."
+    ]
+   ]
+  },
+  "10.07": {
+   "audio": 11.175,
+   "segments": [
+    [
+     0.0,
+     11.175,
+     "The judge who investigated the case, José Benquis, put it more bluntly. The story of the slip of the finger, he said, was so hard to swallow that he suspected at once there was something hidden."
+    ]
+   ]
+  },
+  "11.01": {
+   "audio": 5.875,
+   "segments": [
+    [
+     0.0,
+     5.875,
+     "In March 1994 he was charged. He would spend the next twelve years in Chile's courts."
+    ]
+   ]
+  },
+  "11.02": {
+   "audio": 12.7,
+   "segments": [
+    [
+     0.0,
+     12.7,
+     "First he served a separate sentence for false tax returns. In 1999, a judge sentenced him to eight years for the losses. On appeal, it was cut. In 2006, the Supreme Court settled it."
+    ]
+   ]
+  },
+  "11.03": {
+   "audio": 13.6,
+   "segments": [
+    [
+     0.0,
+     13.6,
+     "Guilty of fraud against the state. And guilty of dealing with brokers where he had a conflict of interest. Three years, plus two terms of eight hundred days. And a hundred and eighty-six million dollars in damages to Codelco."
+    ]
+   ]
+  },
+  "11.04": {
+   "audio": 5.425,
+   "segments": [
+    [
+     0.0,
+     5.425,
+     "In January 2007, he handed himself in at a prison in the south of Chile."
+    ]
+   ]
+  },
+  "11.05": {
+   "audio": 8.15,
+   "segments": [
+    [
+     0.0,
+     8.15,
+     "By then, Codelco had sued and settled with brokers in London and the United States, and recovered about a hundred million dollars."
+    ]
+   ]
+  },
+  "12.01": {
+   "audio": 14.05,
+   "segments": [
+    [
+     0.0,
+     14.05,
+     "And here is the last twist. Codelco later said that if copper had fallen, his trades would have made money. It didn't. Through 1994 it climbed to three thousand dollars a tonne. If he had held on, the losses would have been far bigger."
+    ]
+   ]
+  },
+  "12.02": {
+   "audio": 8.0,
+   "segments": [
+    [
+     0.0,
+     8.0,
+     "Was it a slip of the little finger, followed by panic? Or a cover story for something else? A court decided. Chile never quite agreed."
+    ]
+   ]
+  },
+  "12.03": {
+   "audio": 11.95,
+   "segments": [
+    [
+     0.0,
+     11.95,
+     "But the auditors found something that didn't depend on the answer. One man made the trades, recorded the trades and checked the trades. The committee had stopped meeting. The system that could have caught him sat switched off."
+    ]
+   ]
+  },
+  "12.04": {
+   "audio": 4.775,
+   "segments": [
+    [
+     0.0,
+     4.775,
+     "The wrong key cost thirty million dollars. Everything after that was a choice."
+    ]
+   ]
+  }
+ }
+}

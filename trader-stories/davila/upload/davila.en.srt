@@ -1,0 +1,648 @@
+1
+00:00:00,080 --> 00:00:03,980
+Friday, the twenty-first of January, 1994.
+
+2
+00:00:04,280 --> 00:00:08,655
+A man cuts his beach holiday
+short and heads back to Santiago.
+
+3
+00:00:08,947 --> 00:00:12,122
+He asks to see his boss.
+He says it's urgent.
+
+4
+00:00:12,413 --> 00:00:14,119
+That afternoon, he explains.
+
+5
+00:00:14,119 --> 00:00:17,834
+A few months ago, he says, he
+made a mistake on his computer.
+
+6
+00:00:17,834 --> 00:00:21,063
+He entered a sale as a
+purchase. Buy instead of sell.
+
+7
+00:00:21,380 --> 00:00:24,105
+The mistake cost thirty million dollars.
+
+8
+00:00:24,413 --> 00:00:27,613
+And instead of reporting
+it, he tried to win it back.
+
+9
+00:00:32,913 --> 00:00:36,648
+The money belonged to Codelco,
+Chile's state copper company.
+
+10
+00:00:36,648 --> 00:00:39,138
+The biggest copper company in the world.
+
+11
+00:00:39,447 --> 00:00:42,717
+Codelco mined about a tenth
+of all the world's copper.
+
+12
+00:00:42,717 --> 00:00:46,472
+Its sales brought in about a
+fifth of Chile's export earnings.
+
+13
+00:00:46,780 --> 00:00:50,348
+Chile had nationalised
+its copper mines in 1971.
+
+14
+00:00:50,348 --> 00:00:55,030
+President Salvador Allende called
+copper "the salary of Chile".
+
+15
+00:00:55,347 --> 00:00:59,347
+Codelco was not just a company.
+It was the country's wallet.
+
+16
+00:00:59,647 --> 00:01:04,532
+The man who lost the money was its head
+of futures trading. Juan Pablo Dávila.
+
+17
+00:01:04,532 --> 00:01:05,722
+He was thirty-four.
+
+18
+00:01:06,013 --> 00:01:10,338
+He was an accountant. He had joined
+Codelco in 1986 as a trainee,
+
+19
+00:01:10,338 --> 00:01:14,863
+on a salary of eight thousand six
+hundred and eighty dollars a year.
+
+20
+00:01:15,180 --> 00:01:19,080
+Colleagues sometimes called
+him J.P. As in J.P. Morgan.
+
+21
+00:01:20,380 --> 00:01:25,775
+Codelco had used the futures market
+since 1983, for one main job. Protection.
+
+22
+00:01:25,775 --> 00:01:31,030
+A miner sells its future copper at
+today's price, so a crash can't hurt it.
+
+23
+00:01:31,347 --> 00:01:34,194
+In 1990, the company
+allowed something more.
+
+24
+00:01:34,194 --> 00:01:37,494
+A small amount of real
+trading, just to make money.
+
+25
+00:01:37,494 --> 00:01:41,247
+No more than ten thousand
+tonnes. And a strict loss limit.
+
+26
+00:01:41,547 --> 00:01:44,302
+In August 1992, a committee set the rules.
+
+27
+00:01:44,302 --> 00:01:47,976
+An open position of no more
+than twenty thousand tonnes.
+
+28
+00:01:47,976 --> 00:01:51,255
+No more than a million
+dollars at risk on any day.
+
+29
+00:01:51,255 --> 00:01:56,372
+And an automatic stop-loss order on every
+trade, to close it if it went wrong.
+
+30
+00:01:56,680 --> 00:02:01,180
+According to the state auditors, it was
+the committee's last recorded meeting.
+
+31
+00:02:02,480 --> 00:02:06,568
+Here is how it worked in practice.
+Dávila made the trades by phone.
+
+32
+00:02:06,568 --> 00:02:11,205
+The brokers confirmed them by fax. And
+Dávila typed them into a spreadsheet.
+
+33
+00:02:11,513 --> 00:02:15,763
+That spreadsheet was the company's
+record. The accounts were built from it.
+
+34
+00:02:16,080 --> 00:02:20,451
+He kept it on his office computer,
+and on his own personal computer.
+
+35
+00:02:20,451 --> 00:02:23,280
+He used his own fax,
+and his own phone line.
+
+36
+00:02:23,580 --> 00:02:28,594
+In 1991, Codelco had bought a proper
+system to control the trading.
+
+37
+00:02:28,594 --> 00:02:30,764
+By April 1993 it was working.
+
+38
+00:02:30,764 --> 00:02:35,105
+It was never used, because
+nobody typed in the old trades.
+
+39
+00:02:35,413 --> 00:02:40,488
+So the only person who knew what the trading
+desk was doing was the man running it.
+
+40
+00:02:41,780 --> 00:02:46,405
+By September 1993, copper had been
+falling for more than a year.
+
+41
+00:02:46,713 --> 00:02:50,913
+That month, by Dávila's own account,
+he recorded a sale as a purchase.
+
+42
+00:02:50,913 --> 00:02:54,513
+When he found the error, it had
+cost thirty million dollars.
+
+43
+00:02:54,813 --> 00:02:58,400
+Thirty times the most he was
+allowed to risk in a single day.
+
+44
+00:02:58,400 --> 00:03:01,163
+One phone call to his
+boss would have ended it.
+
+45
+00:03:01,447 --> 00:03:03,197
+He didn't make the call.
+
+46
+00:03:03,480 --> 00:03:06,612
+Instead, he decided to
+trade his way out. Quietly.
+
+47
+00:03:06,612 --> 00:03:09,055
+Betting that copper would keep falling.
+
+48
+00:03:10,347 --> 00:03:13,962
+His bets were short positions.
+Sell now, buy back later.
+
+49
+00:03:13,962 --> 00:03:17,447
+If the price falls, you
+profit. If it rises, you lose.
+
+50
+00:03:17,747 --> 00:03:21,596
+Over the next four months he made
+more than five thousand trades,
+
+51
+00:03:21,596 --> 00:03:24,497
+with twenty-three brokers
+in London and New York.
+
+52
+00:03:24,813 --> 00:03:27,222
+Copper, and then gold and silver too.
+
+53
+00:03:27,222 --> 00:03:30,738
+When one broker's credit ran
+out, he moved to another.
+
+54
+00:03:31,047 --> 00:03:35,824
+Some of it, investigators later said,
+he ran from his beach house in Reñaca.
+
+55
+00:03:35,824 --> 00:03:39,847
+He had the brokers send the
+paperwork to him, not to the office.
+
+56
+00:03:40,147 --> 00:03:43,289
+In November, copper hit
+its lowest price in years.
+
+57
+00:03:43,289 --> 00:03:47,247
+Sixteen hundred and thirty dollars
+a tonne. And then it turned.
+
+58
+00:03:48,547 --> 00:03:49,833
+That same November,
+
+59
+00:03:49,833 --> 00:03:55,316
+two of his bosses heard that the desk was
+carrying positions for 1994 with losses
+
+60
+00:03:55,316 --> 00:03:57,347
+of around ten million dollars.
+
+61
+00:03:57,647 --> 00:04:00,640
+According to the auditors,
+they told him, verbally,
+
+62
+00:04:00,640 --> 00:04:03,047
+to book the loss in that year's accounts.
+
+63
+00:04:03,347 --> 00:04:05,522
+He didn't. And nobody checked.
+
+64
+00:04:05,813 --> 00:04:09,707
+On the other side of the trades,
+one broker was getting nervous.
+
+65
+00:04:09,707 --> 00:04:13,844
+Wolfgang Becker, of Merrill Lynch,
+was one of Dávila's main brokers.
+
+66
+00:04:13,844 --> 00:04:15,913
+Dávila was asking for more credit.
+
+67
+00:04:16,213 --> 00:04:18,723
+Becker later told the Wall Street Journal,
+
+68
+00:04:18,723 --> 00:04:21,413
+I had the impression
+something was not right.
+
+69
+00:04:22,713 --> 00:04:25,138
+Which brings us back to that Friday.
+
+70
+00:04:25,447 --> 00:04:29,852
+Dávila told the sales manager, Owen
+Guerrini, everything. The wrong key.
+
+71
+00:04:29,852 --> 00:04:33,522
+The thirty million. The cover-up.
+The trades to win it back.
+
+72
+00:04:33,813 --> 00:04:37,638
+He thought the loss was now
+around a hundred million dollars.
+
+73
+00:04:37,947 --> 00:04:42,440
+Guerrini went straight up the chain.
+Emergency meetings ran all weekend.
+
+74
+00:04:42,440 --> 00:04:45,872
+Codelco's heads in London
+and New York were flown home.
+
+75
+00:04:46,180 --> 00:04:49,277
+On Monday, the company
+filed a criminal complaint.
+
+76
+00:04:49,277 --> 00:04:52,127
+Auditors from Price
+Waterhouse were called in.
+
+77
+00:04:52,127 --> 00:04:56,030
+And Merrill Lynch's Becker helped
+Codelco unwind the positions.
+
+78
+00:04:56,347 --> 00:05:00,757
+It was worse than a hundred million.
+When Codelco closed the positions,
+
+79
+00:05:00,757 --> 00:05:04,422
+the bill came to about two
+hundred and six million dollars.
+
+80
+00:05:04,713 --> 00:05:09,588
+Forty-four percent of the
+company's entire profit for 1993.
+
+81
+00:05:10,880 --> 00:05:14,559
+On the twenty-sixth of January,
+Codelco told the country.
+
+82
+00:05:14,559 --> 00:05:16,947
+The executives above Dávila resigned.
+
+83
+00:05:16,947 --> 00:05:19,980
+Ten days later, so did
+the head of the company.
+
+84
+00:05:20,280 --> 00:05:25,036
+The press called it Coppergate. The opposition
+threatened to impeach two ministers.
+
+85
+00:05:25,036 --> 00:05:28,130
+Business groups said it proved
+Codelco should be sold.
+
+86
+00:05:28,447 --> 00:05:32,996
+One Codelco director said it was hard
+to believe one person could do all this
+
+87
+00:05:32,996 --> 00:05:36,422
+without anyone else knowing.
+He would have to be a genius.
+
+88
+00:05:36,713 --> 00:05:40,007
+Dávila said, I don't believe
+I've committed any crime.
+
+89
+00:05:40,007 --> 00:05:43,788
+I made a mistake, and I am going
+to assume the responsibility.
+
+90
+00:05:44,080 --> 00:05:46,123
+And Chile got a new word. Davilar.
+
+91
+00:05:46,123 --> 00:05:50,390
+To botch things up miserably, as the
+Wall Street Journal translated it.
+
+92
+00:05:50,390 --> 00:05:53,696
+When you get something
+catastrophically wrong in Chile,
+
+93
+00:05:53,696 --> 00:05:56,280
+you don't just make a
+mistake. You davilar.
+
+94
+00:05:57,580 --> 00:06:01,305
+But investigators did not
+believe it was just a mistake.
+
+95
+00:06:01,613 --> 00:06:05,935
+Codelco went through his bank
+accounts. It said that from 1990,
+
+96
+00:06:05,935 --> 00:06:08,404
+large deposits had appeared in them,
+
+97
+00:06:08,404 --> 00:06:12,863
+at least three point two million
+dollars by 1993, mostly in cash.
+
+98
+00:06:13,180 --> 00:06:15,311
+Some of the money, Codelco said,
+
+99
+00:06:15,311 --> 00:06:19,973
+came from accounts linked to the
+representatives of one London broker,
+
+100
+00:06:19,973 --> 00:06:20,972
+Sogemin Metals.
+
+101
+00:06:20,972 --> 00:06:26,166
+In 1990, its business with Codelco had
+been under two hundred thousand tonnes.
+
+102
+00:06:26,166 --> 00:06:28,830
+In 1993, it was two point three million.
+
+103
+00:06:29,147 --> 00:06:31,116
+Codelco also said that in 1990,
+
+104
+00:06:31,116 --> 00:06:36,135
+one and a half million dollars had moved
+from a subsidiary of the German metals
+
+105
+00:06:36,135 --> 00:06:41,472
+giant Metallgesellschaft into an account in
+the Cayman Islands controlled by Dávila.
+
+106
+00:06:41,780 --> 00:06:42,580
+In lawsuits,
+
+107
+00:06:42,530 --> 00:06:47,280
+Codelco alleged he had made losing trades
+for Codelco and winning trades for
+
+108
+00:06:47,280 --> 00:06:49,155
+brokers, and shared the money.
+
+109
+00:06:49,447 --> 00:06:50,482
+Dávila denied it.
+
+110
+00:06:50,482 --> 00:06:54,622
+His lawyer said the deposits were
+loans, and called him a scapegoat.
+
+111
+00:06:54,913 --> 00:06:59,045
+The judge who investigated the case,
+José Benquis, put it more bluntly.
+
+112
+00:06:59,045 --> 00:07:01,665
+The story of the slip
+of the finger, he said,
+
+113
+00:07:01,665 --> 00:07:06,088
+was so hard to swallow that he suspected
+at once there was something hidden.
+
+114
+00:07:07,380 --> 00:07:09,408
+In March 1994 he was charged.
+
+115
+00:07:09,408 --> 00:07:13,255
+He would spend the next twelve
+years in Chile's courts.
+
+116
+00:07:13,547 --> 00:07:17,639
+First he served a separate
+sentence for false tax returns.
+
+117
+00:07:17,639 --> 00:07:23,566
+In 1999, a judge sentenced him to eight
+years for the losses. On appeal, it was cut.
+
+118
+00:07:23,566 --> 00:07:26,247
+In 2006, the Supreme Court settled it.
+
+119
+00:07:26,547 --> 00:07:28,630
+Guilty of fraud against the state.
+
+120
+00:07:28,630 --> 00:07:32,979
+And guilty of dealing with brokers
+where he had a conflict of interest.
+
+121
+00:07:32,979 --> 00:07:36,042
+Three years, plus two terms
+of eight hundred days.
+
+122
+00:07:36,042 --> 00:07:40,147
+And a hundred and eighty-six million
+dollars in damages to Codelco.
+
+123
+00:07:40,447 --> 00:07:45,872
+In January 2007, he handed himself in
+at a prison in the south of Chile.
+
+124
+00:07:46,180 --> 00:07:51,424
+By then, Codelco had sued and settled with
+brokers in London and the United States,
+
+125
+00:07:51,424 --> 00:07:54,330
+and recovered about a
+hundred million dollars.
+
+126
+00:07:55,647 --> 00:07:57,282
+And here is the last twist.
+
+127
+00:07:57,282 --> 00:08:02,066
+Codelco later said that if copper had
+fallen, his trades would have made money.
+
+128
+00:08:02,066 --> 00:08:06,245
+It didn't. Through 1994 it climbed
+to three thousand dollars a tonne.
+
+129
+00:08:06,245 --> 00:08:09,697
+If he had held on, the losses
+would have been far bigger.
+
+130
+00:08:10,013 --> 00:08:13,261
+Was it a slip of the little
+finger, followed by panic?
+
+131
+00:08:13,261 --> 00:08:18,013
+Or a cover story for something else? A
+court decided. Chile never quite agreed.
+
+132
+00:08:18,313 --> 00:08:21,850
+But the auditors found something
+that didn't depend on the answer.
+
+133
+00:08:21,850 --> 00:08:25,494
+One man made the trades, recorded
+the trades and checked the trades.
+
+134
+00:08:25,494 --> 00:08:27,316
+The committee had stopped meeting.
+
+135
+00:08:27,316 --> 00:08:30,263
+The system that could have
+caught him sat switched off.
+
+136
+00:08:30,580 --> 00:08:35,355
+The wrong key cost thirty million dollars.
+Everything after that was a choice.
+

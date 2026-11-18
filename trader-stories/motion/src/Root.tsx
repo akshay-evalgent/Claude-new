@@ -12,6 +12,8 @@ import { Film as KgFilm, FILM_FRAMES as KG_FRAMES } from "./films/korekawa/Film"
 import { GRAPHICS as KG_GRAPHICS, SHOTS as KG_SHOTS } from "./films/korekawa/film";
 import { Film as LqFilm, FILM_FRAMES as LQ_FRAMES } from "./films/liu-qibing/Film";
 import { GRAPHICS as LQ_GRAPHICS, SHOTS as LQ_SHOTS } from "./films/liu-qibing/film";
+import { Film as JpFilm, FILM_FRAMES as JP_FRAMES } from "./films/davila/Film";
+import { GRAPHICS as JP_GRAPHICS, SHOTS as JP_SHOTS } from "./films/davila/film";
 
 loadHouseFonts();
 
@@ -57,6 +59,12 @@ export const Root: React.FC = () => (
     {Object.entries(LQ_GRAPHICS).map(([id, spec]) => (
       <Composition key={`lq${id}`} id={cid("lq", id)} component={Shot} defaultProps={{ spec }}
         durationInFrames={Math.max(sec(1), Math.round(LQ_SHOTS.find((s) => s.id === id)!.seconds * FPS))} fps={FPS} width={W} height={H} />
+    ))}
+
+    <Composition id="jp-film" component={JpFilm} durationInFrames={JP_FRAMES} fps={FPS} width={W} height={H} />
+    {Object.entries(JP_GRAPHICS).map(([id, spec]) => (
+      <Composition key={`jp${id}`} id={cid("jp", id)} component={Shot} defaultProps={{ spec }}
+        durationInFrames={Math.max(sec(1), Math.round(JP_SHOTS.find((s) => s.id === id)!.seconds * FPS))} fps={FPS} width={W} height={H} />
     ))}
 
     <Composition id="kg-thumb-a" component={Thumbnail} durationInFrames={1} fps={FPS} width={1280} height={720}

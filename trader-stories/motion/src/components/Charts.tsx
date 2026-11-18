@@ -206,7 +206,7 @@ export const CompareBars: React.FC<CompareBarsProps> = ({ bars, fit, title, subt
   const x0 = SAFE.x + 20;
   const full = 1920 - x0 - SAFE.x - 260;
   const offAt = (v: number) => v / fit > (1920 - x0 + 40) / full;
-  const grow = Math.max(sec(1.5), durationInFrames - sec(1.6));
+  const grow = Math.min(sec(4), Math.max(sec(1.5), durationInFrames - sec(1.6)));  // land early, then hold the real numbers
   return (
     <Frame>
       {title ? (

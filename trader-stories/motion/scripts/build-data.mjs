@@ -1,6 +1,8 @@
 // Builds the data files the templates read. Run: npm run data
 //   src/data/shc.json            Shanghai Composite daily closes, 1990-12-19 to 2017-12-29 (Sina Finance)
 //   src/data/east-asia-land.json  coastline for maps, clipped from Natural Earth 1:10m (world-atlas)
+//   src/data/americas-land.json   the same, clipped around the Americas
+//   src/data/copper_wb_monthly_usd_t.json  monthly LME copper 1990-1996 (World Bank Pink Sheet), written once by hand
 //   src/films/xu-xiang/shots.json shot timings, from ../xu-xiang/shots.csv
 import fs from "node:fs";
 import path from "node:path";
@@ -28,7 +30,7 @@ if (!skipIndex) {
 }
 
 // 2. Coastline, clipped to a box around eastern China (no political borders)
-const BOX = { w: 95, e: 140, s: 15, n: 50 };
+let BOX = { w: 95, e: 140, s: 15, n: 50 };
 const topo = require("world-atlas/land-10m.json");
 const land = feature(topo, topo.objects.land);
 function clipRing(ring) {
@@ -56,23 +58,31 @@ function clipRing(ring) {
   pts.push(pts[0]);
   return pts.length > 3 ? pts.map(([x, y]) => [Math.round(x * 1e4) / 1e4, Math.round(y * 1e4) / 1e4]) : null;
 }
-const polys = [];
-for (const f of land.features) {
-  const list = f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates;
-  for (const poly of list) {
-    // d3-geo winding: keep the outer ring only; lakes are not needed at this scale
-    const ring = clipRing(poly[0].slice(0, -1));
-    if (ring) polys.push([ring]);
+function clipLand(box, file) {
+  BOX = box;
+  const polys = [];
+  for (const f of land.features) {
+    const list = f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates;
+    for (const poly of list) {
+      // d3-geo winding: keep the outer ring only; lakes are not needed at this scale
+      const ring = clipRing(poly[0].slice(0, -1));
+      // drop slivers left when a ring from outside the box is cut along its edges
+      const lons = ring ? ring.map((q) => q[0]) : [], lats = ring ? ring.map((q) => q[1]) : [];
+      const sliver = ring && Math.max(...lons) - Math.min(...lons) > (box.e - box.w) * 0.98 && Math.max(...lats) - Math.min(...lats) < 1;
+      if (ring && !sliver) polys.push([ring]);
+    }
   }
+  out(file, {
+    type: "Feature",
+    properties: { source: "Natural Earth 1:10m land via world-atlas, clipped" },
+    geometry: { type: "MultiPolygon", coordinates: polys },
+  });
 }
-out("src/data/east-asia-land.json", {
-  type: "Feature",
-  properties: { source: "Natural Earth 1:10m land via world-atlas, clipped" },
-  geometry: { type: "MultiPolygon", coordinates: polys },
-});
+clipLand({ w: 95, e: 140, s: 15, n: 50 }, "src/data/east-asia-land.json");
+clipLand({ w: -125, e: -25, s: -58, n: 42 }, "src/data/americas-land.json");
 
 // 3. Shot timings for each film that has a shots.csv
-for (const film of ["xu-xiang", "korekawa", "liu-qibing"]) {
+for (const film of ["xu-xiang", "korekawa", "liu-qibing", "davila"]) {
   const csvPath = path.join(root, "..", film, "shots.csv");
   const text = fs.readFileSync(csvPath, "utf8");
   const rows = [];
