@@ -255,7 +255,7 @@ SHOTS = [
     S(10, "SCENE", "old_desk", "Korekawa kept trading.", "", "drift"),
     S(10, "NUMBER", "", "According to his biographer, he took a large position", "HEAVY LOSSES", "line lands"),
     S(10, "SCENE", "tax_envelope", "And the tax office", "", "slow push"),
-    S(10, "NUMBER", "", "In 1991, at ninety-four,", "−¥680,000,000", "counter"),
+    S(10, "NUMBER", "", "In 1991, at ninety-three,", "−¥680,000,000", "counter"),
     S(10, "DOC", "", "The tax office seized", "", "register card"),
     S(10, "CARD", "", "In that book,", "", "quote types on"),
     # 11. The lesson

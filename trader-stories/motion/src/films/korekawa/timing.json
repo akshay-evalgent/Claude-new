@@ -1,0 +1,1089 @@
+{
+ "meta": {
+  "voice": "am_michael",
+  "speed": 1.22,
+  "engine": "Kokoro-82M (hexgrad, Apache 2.0)"
+ },
+ "shots": {
+  "01.01": {
+   "audio": 3.775,
+   "segments": [
+    [
+     0.0,
+     3.775,
+     "Osaka. The eighteenth of September, 1981."
+    ]
+   ]
+  },
+  "01.02": {
+   "audio": 6.025,
+   "segments": [
+    [
+     0.0,
+     6.025,
+     "An old man opens the morning paper. Somewhere on an inside page there is a short report."
+    ]
+   ]
+  },
+  "01.03": {
+   "audio": 4.975,
+   "segments": [
+    [
+     0.0,
+     4.975,
+     "Gold has been found in the far south of Japan, under a hill in Kagoshima."
+    ]
+   ]
+  },
+  "01.04": {
+   "audio": 4.05,
+   "segments": [
+    [
+     0.0,
+     4.05,
+     "Millions of people read that paper. Most of them turn the page."
+    ]
+   ]
+  },
+  "01.05": {
+   "audio": 11.35,
+   "segments": [
+    [
+     0.0,
+     11.35,
+     "He is eighty-four years old. He has been rich more than once. He has lost everything more than once. And he reads the article again, slowly, the way he has read everything for fifty years."
+    ]
+   ]
+  },
+  "01.06": {
+   "audio": 3.775,
+   "segments": [
+    [
+     0.0,
+     3.775,
+     "Within days, he is on his way to see the hill for himself."
+    ]
+   ]
+  },
+  "01.07": {
+   "audio": 7.25,
+   "segments": [
+    [
+     0.0,
+     7.25,
+     "Within months, he will make one of the biggest single profits any individual has ever made on the Japanese stock market."
+    ]
+   ]
+  },
+  "01.08": {
+   "audio": 2.925,
+   "segments": [
+    [
+     0.0,
+     2.925,
+     "And within ten years, it will all be gone."
+    ]
+   ]
+  },
+  "02.01": {
+   "audio": 2.425,
+   "segments": [
+    [
+     0.0,
+     2.425,
+     "His name was Ginzō Korekawa."
+    ]
+   ]
+  },
+  "02.02": {
+   "audio": 3.025,
+   "segments": [
+    [
+     0.0,
+     3.025,
+     "In Japan they called him the last speculator."
+    ]
+   ]
+  },
+  "02.03": {
+   "audio": 4.0,
+   "segments": [
+    [
+     0.0,
+     4.0,
+     "His schooling ended with elementary school. He did not drink."
+    ]
+   ]
+  },
+  "02.04": {
+   "audio": 2.725,
+   "segments": [
+    [
+     0.0,
+     2.725,
+     "He carried the same worn bag for years."
+    ]
+   ]
+  },
+  "02.05": {
+   "audio": 10.225,
+   "segments": [
+    [
+     0.0,
+     10.225,
+     "And in 1983, at eighty-five, he topped the national list of Japan's highest-income taxpayers. Above the heads of the great companies' founders. Above everyone."
+    ]
+   ]
+  },
+  "02.06": {
+   "audio": 5.05,
+   "segments": [
+    [
+     0.0,
+     5.05,
+     "But when he died, he left almost nothing. A small flat that he shared with his wife."
+    ]
+   ]
+  },
+  "02.07": {
+   "audio": 4.8,
+   "segments": [
+    [
+     0.0,
+     4.8,
+     "So how does a man make a fortune at eighty-four, and lose it again before he dies?"
+    ]
+   ]
+  },
+  "02.08": {
+   "audio": 6.8,
+   "segments": [
+    [
+     0.0,
+     6.8,
+     "To understand that trade, you have to go back almost a century. Because he had been preparing for it his whole life."
+    ]
+   ]
+  },
+  "03.01": {
+   "audio": 8.95,
+   "segments": [
+    [
+     0.0,
+     8.95,
+     "He was born in 1897, in Akō, a fishing town on Japan's Inland Sea. He was the youngest of seven brothers. The family was poor."
+    ]
+   ]
+  },
+  "03.02": {
+   "audio": 7.025,
+   "segments": [
+    [
+     0.0,
+     7.025,
+     "At fourteen he went to work as an apprentice at a trading firm in Kobe. A few years later, the firm went bankrupt."
+    ]
+   ]
+  },
+  "03.03": {
+   "audio": 9.15,
+   "segments": [
+    [
+     0.0,
+     9.15,
+     "He watched the men who worked there lose everything because of decisions they had never made. He decided he would never again depend on someone else's business."
+    ]
+   ]
+  },
+  "03.04": {
+   "audio": 4.25,
+   "segments": [
+    [
+     0.0,
+     4.25,
+     "At seventeen, according to his biographer, he set out for London."
+    ]
+   ]
+  },
+  "03.05": {
+   "audio": 6.475,
+   "segments": [
+    [
+     0.0,
+     6.475,
+     "He got as far as Dalian, in China. Then the First World War broke out, and the road to Europe closed."
+    ]
+   ]
+  },
+  "03.06": {
+   "audio": 7.525,
+   "segments": [
+    [
+     0.0,
+     7.525,
+     "So he followed the Japanese army instead. He walked behind it to Qingdao, running so short of money that he nearly starved."
+    ]
+   ]
+  },
+  "03.07": {
+   "audio": 4.1,
+   "segments": [
+    [
+     0.0,
+     4.1,
+     "Then he talked his way into supplying it, with food and with timber."
+    ]
+   ]
+  },
+  "03.08": {
+   "audio": 10.175,
+   "segments": [
+    [
+     0.0,
+     10.175,
+     "His biographer tells one story that explains the rest of his life. In Qingdao, the small old coins people used every day were made of copper, zinc and lead."
+    ]
+   ]
+  },
+  "03.09": {
+   "audio": 7.5,
+   "segments": [
+    [
+     0.0,
+     7.5,
+     "He worked out that the metal in them was worth more than double the money stamped on them. So he bought coins, and sold them as metal."
+    ]
+   ]
+  },
+  "03.10": {
+   "audio": 4.4,
+   "segments": [
+    [
+     0.0,
+     4.4,
+     "Everyone else saw small change. He saw what it was actually made of."
+    ]
+   ]
+  },
+  "03.11": {
+   "audio": 7.225,
+   "segments": [
+    [
+     0.0,
+     7.225,
+     "By nineteen, he was rich. Then, in December 1916, a sudden market crash took his business down with it."
+    ]
+   ]
+  },
+  "03.12": {
+   "audio": 3.575,
+   "segments": [
+    [
+     0.0,
+     3.575,
+     "He went home with nothing. It would not be the last time."
+    ]
+   ]
+  },
+  "04.01": {
+   "audio": 3.425,
+   "segments": [
+    [
+     0.0,
+     3.425,
+     "In Osaka he started again. He traded iron."
+    ]
+   ]
+  },
+  "04.02": {
+   "audio": 7.625,
+   "segments": [
+    [
+     0.0,
+     7.625,
+     "He ran a factory that coated steel wire in zinc, and by his biographer's account it employed two hundred and sixty people."
+    ]
+   ]
+  },
+  "04.03": {
+   "audio": 9.075,
+   "segments": [
+    [
+     0.0,
+     9.075,
+     "In 1923, an earthquake flattened Tokyo. A city of millions needed roofs and nails overnight, and he supplied them. He made a fortune."
+    ]
+   ]
+  },
+  "04.04": {
+   "audio": 7.95,
+   "segments": [
+    [
+     0.0,
+     7.95,
+     "According to his biographer, he then gave half of it to the Osaka government, saying it was money made from other people's misfortune."
+    ]
+   ]
+  },
+  "04.05": {
+   "audio": 9.775,
+   "segments": [
+    [
+     0.0,
+     9.775,
+     "Then, in 1927, panic swept through Japan's banks. Customers queued around the block to take their money out, and bank after bank closed its doors."
+    ]
+   ]
+  },
+  "04.06": {
+   "audio": 3.5,
+   "segments": [
+    [
+     0.0,
+     3.5,
+     "One of them was his. His company went down with it."
+    ]
+   ]
+  },
+  "04.07": {
+   "audio": 3.775,
+   "segments": [
+    [
+     0.0,
+     3.775,
+     "He was thirty. For the second time, he had lost everything."
+    ]
+   ]
+  },
+  "04.08": {
+   "audio": 5.125,
+   "segments": [
+    [
+     0.0,
+     5.125,
+     "Most men would have looked for a job. He went to the library instead. And he stayed."
+    ]
+   ]
+  },
+  "04.09": {
+   "audio": 6.45,
+   "segments": [
+    [
+     0.0,
+     6.45,
+     "For about three years, he read. Economics, history, the world's markets, the papers of the great economists."
+    ]
+   ]
+  },
+  "04.10": {
+   "audio": 12.8,
+   "segments": [
+    [
+     0.0,
+     12.8,
+     "He came out with one idea that he never let go of. Depressions are not the end of the world. They are part of a cycle. Booms follow busts, and busts follow booms. Capitalism would not collapse. It would breathe."
+    ]
+   ]
+  },
+  "04.11": {
+   "audio": 4.5,
+   "segments": [
+    [
+     0.0,
+     4.5,
+     "If you understood the cycle, you did not have to guess. You could wait for it."
+    ]
+   ]
+  },
+  "05.01": {
+   "audio": 4.875,
+   "segments": [
+    [
+     0.0,
+     4.875,
+     "In 1931, at the bottom of the worst depression the world had seen,"
+    ]
+   ]
+  },
+  "05.02": {
+   "audio": 3.725,
+   "segments": [
+    [
+     0.0,
+     3.725,
+     "he walked into the Osaka stock exchange with seventy yen."
+    ]
+   ]
+  },
+  "05.03": {
+   "audio": 6.9,
+   "segments": [
+    [
+     0.0,
+     6.9,
+     "By the end of the year, he had seven thousand. A hundredfold, in a year when almost everyone else was losing."
+    ]
+   ]
+  },
+  "05.04": {
+   "audio": 10.55,
+   "segments": [
+    [
+     0.0,
+     10.55,
+     "Two years later, he opened his own economic research institute. Not a brokerage. A research institute. He wanted to know where the economy was going before he bought anything."
+    ]
+   ]
+  },
+  "05.05": {
+   "audio": 14.225,
+   "segments": [
+    [
+     0.0,
+     14.225,
+     "In the 1930s, his biographer says, he forecast that Britain, America and the Soviet Union would rearm in Asia, and he said so publicly. The military police took him in for questioning. A government official had to vouch for him."
+    ]
+   ]
+  },
+  "05.06": {
+   "audio": 9.6,
+   "segments": [
+    [
+     0.0,
+     9.6,
+     "Later writers summed up his method in three rules. Choose your own stocks, never on a tip. Forecast the economy years ahead. And never chase a price."
+    ]
+   ]
+  },
+  "05.07": {
+   "audio": 5.3,
+   "segments": [
+    [
+     0.0,
+     5.3,
+     "In Japan they are known as the turtle's three rules. Slow. Patient. Hard to kill."
+    ]
+   ]
+  },
+  "05.08": {
+   "audio": 10.625,
+   "segments": [
+    [
+     0.0,
+     10.625,
+     "He did not always follow his own rules. In 1935, his biographer says, he was locked in a battle in the cotton futures market against a powerful cotton merchant."
+    ]
+   ]
+  },
+  "05.09": {
+   "audio": 5.925,
+   "segments": [
+    [
+     0.0,
+     5.925,
+     "In a fight like that, the two sides can agree to settle and walk away, the winner taking his gains."
+    ]
+   ]
+  },
+  "05.10": {
+   "audio": 6.7,
+   "segments": [
+    [
+     0.0,
+     6.7,
+     "He was three million yen ahead. His opponent offered to settle. He refused. He wanted to win completely."
+    ]
+   ]
+  },
+  "05.11": {
+   "audio": 4.5,
+   "segments": [
+    [
+     0.0,
+     4.5,
+     "The market turned. The gains vanished, and he ended the battle with a loss."
+    ]
+   ]
+  },
+  "05.12": {
+   "audio": 5.125,
+   "segments": [
+    [
+     0.0,
+     5.125,
+     "He never forgot it. Later writers quote his rule: selling is harder than buying."
+    ]
+   ]
+  },
+  "06.01": {
+   "audio": 5.075,
+   "segments": [
+    [
+     0.0,
+     5.075,
+     "In 1938, he went into mining in Korea, then a Japanese colony."
+    ]
+   ]
+  },
+  "06.02": {
+   "audio": 3.375,
+   "segments": [
+    [
+     0.0,
+     3.375,
+     "The mines fed ironworks. The war fed demand."
+    ]
+   ]
+  },
+  "06.03": {
+   "audio": 8.5,
+   "segments": [
+    [
+     0.0,
+     8.5,
+     "By the war years, his biographer says, Korekawa Steel employed about ten thousand people. It was one of the biggest businesses in Korea."
+    ]
+   ]
+  },
+  "06.04": {
+   "audio": 9.325,
+   "segments": [
+    [
+     0.0,
+     9.325,
+     "Then, in August 1945, Japan surrendered. Everything he had built in Korea was confiscated. He was arrested and thrown into prison."
+    ]
+   ]
+  },
+  "06.05": {
+   "audio": 2.275,
+   "segments": [
+    [
+     0.0,
+     2.275,
+     "He expected to be executed."
+    ]
+   ]
+  },
+  "06.06": {
+   "audio": 8.05,
+   "segments": [
+    [
+     0.0,
+     8.05,
+     "Instead, his Korean colleagues and workers petitioned for his release. He had never treated them as lesser people, they said. He was freed."
+    ]
+   ]
+  },
+  "06.07": {
+   "audio": 6.1,
+   "segments": [
+    [
+     0.0,
+     6.1,
+     "He sailed back to a defeated, hungry Japan. He was forty-eight. For the third time, he had nothing."
+    ]
+   ]
+  },
+  "07.01": {
+   "audio": 8.925,
+   "segments": [
+    [
+     0.0,
+     8.925,
+     "He did not go back to the market straight away. The country was starving, so he studied farming, ways to grow two crops of rice a year instead of one."
+    ]
+   ]
+  },
+  "07.02": {
+   "audio": 5.35,
+   "segments": [
+    [
+     0.0,
+     5.35,
+     "Then he bought land on the edge of Osaka, where he was sure the city would spread. It did."
+    ]
+   ]
+  },
+  "07.03": {
+   "audio": 5.475,
+   "segments": [
+    [
+     0.0,
+     5.475,
+     "When he sold, he had three hundred million yen. And at sixty-eight, he went back to stocks."
+    ]
+   ]
+  },
+  "07.04": {
+   "audio": 6.325,
+   "segments": [
+    [
+     0.0,
+     6.325,
+     "In 1976, aged seventy-nine, he put three hundred million yen into Nihon Cement."
+    ]
+   ]
+  },
+  "07.05": {
+   "audio": 8.0,
+   "segments": [
+    [
+     0.0,
+     8.0,
+     "Japan had just come through the oil shock and a long slump. He had studied the cycle, and he was sure the country was about to start building again."
+    ]
+   ]
+  },
+  "07.06": {
+   "audio": 5.275,
+   "segments": [
+    [
+     0.0,
+     5.275,
+     "He was right. The gain was about three billion yen. Ten times what he had put in."
+    ]
+   ]
+  },
+  "07.07": {
+   "audio": 9.525,
+   "segments": [
+    [
+     0.0,
+     9.525,
+     "Two years later, he put more than a billion yen of his own money into a foundation to pay for the education of children from poor families. He was eighty-two."
+    ]
+   ]
+  },
+  "07.08": {
+   "audio": 1.775,
+   "segments": [
+    [
+     0.0,
+     1.775,
+     "He was not finished."
+    ]
+   ]
+  },
+  "08.01": {
+   "audio": 5.625,
+   "segments": [
+    [
+     0.0,
+     5.625,
+     "Which brings us back to that morning in 1981, and the small article about gold."
+    ]
+   ]
+  },
+  "08.02": {
+   "audio": 3.725,
+   "segments": [
+    [
+     0.0,
+     3.725,
+     "The gold was at Hishikari, in the hills of Kagoshima."
+    ]
+   ]
+  },
+  "08.03": {
+   "audio": 6.175,
+   "segments": [
+    [
+     0.0,
+     6.175,
+     "Earlier that year, a government survey had drilled into a vein of quartz that was astonishingly rich."
+    ]
+   ]
+  },
+  "08.04": {
+   "audio": 7.45,
+   "segments": [
+    [
+     0.0,
+     7.45,
+     "A typical gold mine might get a few grams of gold from a tonne of rock. Hishikari's ore would turn out to hold around forty."
+    ]
+   ]
+  },
+  "08.05": {
+   "audio": 4.625,
+   "segments": [
+    [
+     0.0,
+     4.625,
+     "And the mining rights belonged to one company. Sumitomo Metal Mining."
+    ]
+   ]
+  },
+  "08.06": {
+   "audio": 7.75,
+   "segments": [
+    [
+     0.0,
+     7.75,
+     "Here is why that mattered. A big discovery can change what a whole mining company is worth. But the market had barely reacted."
+    ]
+   ]
+  },
+  "08.07": {
+   "audio": 5.175,
+   "segments": [
+    [
+     0.0,
+     5.175,
+     "Sumitomo's shares were trading at around two hundred yen, as if nothing had happened."
+    ]
+   ]
+  },
+  "08.08": {
+   "audio": 2.7,
+   "segments": [
+    [
+     0.0,
+     2.7,
+     "Korekawa went to see the site himself."
+    ]
+   ]
+  },
+  "08.09": {
+   "audio": 6.425,
+   "segments": [
+    [
+     0.0,
+     6.425,
+     "Only one question mattered. Was this a lucky pocket of gold, or a seam that ran on under the hills?"
+    ]
+   ]
+  },
+  "08.10": {
+   "audio": 4.45,
+   "segments": [
+    [
+     0.0,
+     4.45,
+     "The local mine office told him further digging was unlikely to pay."
+    ]
+   ]
+  },
+  "08.11": {
+   "audio": 7.625,
+   "segments": [
+    [
+     0.0,
+     7.625,
+     "He ignored them. He was sure the vein ran on under the land next door. So he bought the mining rights to the land next door, too."
+    ]
+   ]
+  },
+  "08.12": {
+   "audio": 3.0,
+   "segments": [
+    [
+     0.0,
+     3.0,
+     "And he bought Sumitomo shares. Then more."
+    ]
+   ]
+  },
+  "08.13": {
+   "audio": 2.075,
+   "segments": [
+    [
+     0.0,
+     2.075,
+     "Then more with borrowed money."
+    ]
+   ]
+  },
+  "08.14": {
+   "audio": 8.525,
+   "segments": [
+    [
+     0.0,
+     8.525,
+     "At eighty-four, he was betting on margin. If the price fell far enough, his broker would sell him out, and he would lose far more than he started with."
+    ]
+   ]
+  },
+  "08.15": {
+   "audio": 4.0,
+   "segments": [
+    [
+     0.0,
+     4.0,
+     "By the spring, he was one of the company's largest shareholders."
+    ]
+   ]
+  },
+  "08.16": {
+   "audio": 8.7,
+   "segments": [
+    [
+     0.0,
+     8.7,
+     "Other traders noticed what he was doing. Then everyone noticed. Around New Year, the stock hit its daily limit at seven hundred and five yen."
+    ]
+   ]
+  },
+  "08.17": {
+   "audio": 7.35,
+   "segments": [
+    [
+     0.0,
+     7.35,
+     "In March 1982, Sumitomo announced it would develop the land next to its mine. Land it had acquired from him."
+    ]
+   ]
+  },
+  "08.18": {
+   "audio": 7.825,
+   "segments": [
+    [
+     0.0,
+     7.825,
+     "In April, the shares reached one thousand two hundred and thirty yen. More than five times the price on the morning he read the paper."
+    ]
+   ]
+  },
+  "08.19": {
+   "audio": 4.15,
+   "segments": [
+    [
+     0.0,
+     4.15,
+     "And unlike in 1935, this time he took the money."
+    ]
+   ]
+  },
+  "08.20": {
+   "audio": 5.775,
+   "segments": [
+    [
+     0.0,
+     5.775,
+     "The gain was reported at about twenty billion yen. Around eighty million dollars at the time."
+    ]
+   ]
+  },
+  "08.21": {
+   "audio": 6.725,
+   "segments": [
+    [
+     0.0,
+     6.725,
+     "Made in a little over six months, by a man in his mid-eighties, from a short article everyone else had read too."
+    ]
+   ]
+  },
+  "09.01": {
+   "audio": 6.275,
+   "segments": [
+    [
+     0.0,
+     6.275,
+     "Every year, Japan published a list of its biggest taxpayers. The next list put him first in the country."
+    ]
+   ]
+  },
+  "09.02": {
+   "audio": 7.4,
+   "segments": [
+    [
+     0.0,
+     7.4,
+     "The press loved him. The eighty-five-year-old with an elementary school education who had out-read every analyst in Tokyo."
+    ]
+   ]
+  },
+  "09.03": {
+   "audio": 5.975,
+   "segments": [
+    [
+     0.0,
+     5.975,
+     "He changed nothing. The same bag. The same habits. He had never wanted to live like a rich man."
+    ]
+   ]
+  },
+  "09.04": {
+   "audio": 3.025,
+   "segments": [
+    [
+     0.0,
+     3.025,
+     "The money was not the point. Being right was."
+    ]
+   ]
+  },
+  "09.05": {
+   "audio": 10.15,
+   "segments": [
+    [
+     0.0,
+     10.15,
+     "A director of a Japanese investors' association later said Korekawa studied every day for about thirty years, and only stopped losing money at around eighty."
+    ]
+   ]
+  },
+  "09.06": {
+   "audio": 9.2,
+   "segments": [
+    [
+     0.0,
+     9.2,
+     "Think about that. The greatest trade of his life came after five decades of study, three lost fortunes, and a battle he lost by not knowing when to stop."
+    ]
+   ]
+  },
+  "10.01": {
+   "audio": 2.125,
+   "segments": [
+    [
+     0.0,
+     2.125,
+     "But a turtle does not stop."
+    ]
+   ]
+  },
+  "10.02": {
+   "audio": 4.55,
+   "segments": [
+    [
+     0.0,
+     4.55,
+     "In 1985, his son, a geologist, died at fifty-seven."
+    ]
+   ]
+  },
+  "10.03": {
+   "audio": 2.075,
+   "segments": [
+    [
+     0.0,
+     2.075,
+     "Korekawa kept trading."
+    ]
+   ]
+  },
+  "10.04": {
+   "audio": 7.725,
+   "segments": [
+    [
+     0.0,
+     7.725,
+     "According to his biographer, he took a large position in a pharmaceutical company, and the shares fell. The losses were heavy."
+    ]
+   ]
+  },
+  "10.05": {
+   "audio": 2.775,
+   "segments": [
+    [
+     0.0,
+     2.775,
+     "And the tax office had not finished with him."
+    ]
+   ]
+  },
+  "10.06": {
+   "audio": 7.3,
+   "segments": [
+    [
+     0.0,
+     7.3,
+     "In 1991, at ninety-three, he was reported to owe six hundred and eighty million yen in income tax."
+    ]
+   ]
+  },
+  "10.07": {
+   "audio": 3.7,
+   "segments": [
+    [
+     0.0,
+     3.7,
+     "The tax office seized the royalties from his autobiography."
+    ]
+   ]
+  },
+  "10.08": {
+   "audio": 4.525,
+   "segments": [
+    [
+     0.0,
+     4.525,
+     "In that book, he wrote that not a single sen of his stock profits remained."
+    ]
+   ]
+  },
+  "11.01": {
+   "audio": 7.65,
+   "segments": [
+    [
+     0.0,
+     7.65,
+     "His great trade did not come from luck at eighty-four. It came from three years in a library and fifty years of reading the cycle."
+    ]
+   ]
+  },
+  "11.02": {
+   "audio": 5.35,
+   "segments": [
+    [
+     0.0,
+     5.35,
+     "Everyone could read that article. Only one man had spent his life getting ready for it."
+    ]
+   ]
+  },
+  "11.03": {
+   "audio": 8.25,
+   "segments": [
+    [
+     0.0,
+     8.25,
+     "But the same patience that let him wait for the cycle kept bringing him back for one more. He could wait for years to buy. He never learned to stop."
+    ]
+   ]
+  },
+  "12.01": {
+   "audio": 7.125,
+   "segments": [
+    [
+     0.0,
+     7.125,
+     "Ginzō Korekawa died on the twelfth of September 1992. He was ninety-five. He left a small flat."
+    ]
+   ]
+  },
+  "12.02": {
+   "audio": 3.775,
+   "segments": [
+    [
+     0.0,
+     3.775,
+     "His foundation still pays for children's education today."
+    ]
+   ]
+  },
+  "12.03": {
+   "audio": 3.35,
+   "segments": [
+    [
+     0.0,
+     3.35,
+     "And the hill he went to see is still producing gold."
+    ]
+   ]
+  },
+  "12.04": {
+   "audio": 5.7,
+   "segments": [
+    [
+     0.0,
+     5.7,
+     "Hishikari became Japan's most productive gold mine, long after his profits were gone."
+    ]
+   ]
+  }
+ }
+}

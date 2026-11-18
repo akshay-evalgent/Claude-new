@@ -306,7 +306,7 @@ And the tax office had not finished with him.
 
 SCORE: 1991 · AGE 94 / −¥680,000,000 tax owed
 
-In 1991, at ninety-four, he was reported to owe six hundred and eighty million yen in income tax. The tax office seized the royalties from his autobiography.
+In 1991, at ninety-three, he was reported to owe six hundred and eighty million yen in income tax. The tax office seized the royalties from his autobiography.
 
 PICTURE: Quote card: his own line from the autobiography.
 

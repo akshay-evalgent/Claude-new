@@ -6,13 +6,13 @@ import { MapCard, PinDistance } from "./components/Maps";
 import { Scoreboard } from "./components/Scoreboard";
 import { SceneMove } from "./components/SceneMove";
 import { CaptionOverlay, SceneOverlay } from "./components/CaptionOverlay";
-import { LimitDiagram, NodeWeb, OrderQueue, StepFlow } from "./diagrams/Diagrams";
+import { CycleWave, LimitDiagram, NodeWeb, OrderQueue, StepFlow } from "./diagrams/Diagrams";
 
 // Every template, by name. Film files refer to templates by these names.
 export const TEMPLATES = {
   TitleCard, NumberCard, QuoteCard, DocCard, TagOverlay, CaptionOverlay, SceneOverlay,
   LineChart, CompareBars, RankList, MapCard, PinDistance,
-  LimitDiagram, OrderQueue, StepFlow, NodeWeb, Scoreboard, SceneMove,
+  LimitDiagram, OrderQueue, StepFlow, NodeWeb, CycleWave, Scoreboard, SceneMove,
 } as const;
 export type TemplateName = keyof typeof TEMPLATES;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

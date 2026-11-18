@@ -8,6 +8,8 @@ import { SceneMove } from "./components/SceneMove";
 import { FILM_SECONDS, GRAPHICS, OVERLAYS, SCOREBOARD, SHOTS } from "./films/xu-xiang/film";
 import { Film, FILM_FRAMES } from "./films/xu-xiang/Film";
 import { Thumbnail } from "./films/xu-xiang/Thumbnail";
+import { Film as KgFilm, FILM_FRAMES as KG_FRAMES } from "./films/korekawa/Film";
+import { GRAPHICS as KG_GRAPHICS, SHOTS as KG_SHOTS } from "./films/korekawa/film";
 
 loadHouseFonts();
 
@@ -44,6 +46,12 @@ export const Root: React.FC = () => (
       defaultProps={{ image: "car_interior_coat", kicker: "HE MADE", big: "+357%", bigTone: "gain", sub: "IN A CRASH", focusX: 75, shift: 22 }} />
     <Composition id="xx-thumb-b" component={Thumbnail} durationInFrames={1} fps={FPS} width={1280} height={720}
       defaultProps={{ image: "zexi_office_night", kicker: "HE ALWAYS", big: "KNEW", bigTone: "paper", sub: "FIRST.", focusX: 50 }} />
+
+    <Composition id="kg-film" component={KgFilm} durationInFrames={KG_FRAMES} fps={FPS} width={W} height={H} />
+    {Object.entries(KG_GRAPHICS).map(([id, spec]) => (
+      <Composition key={`kg${id}`} id={cid("kg", id)} component={Shot} defaultProps={{ spec }}
+        durationInFrames={Math.max(sec(1), Math.round(KG_SHOTS.find((s) => s.id === id)!.seconds * FPS))} fps={FPS} width={W} height={H} />
+    ))}
 
     <Composition id="xx-scoreboard" component={Scoreboard} defaultProps={{ entries: SCOREBOARD }}
       durationInFrames={Math.round(FILM_SECONDS * FPS)} fps={FPS} width={W} height={H} />

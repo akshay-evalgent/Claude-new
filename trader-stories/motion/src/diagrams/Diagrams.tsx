@@ -293,3 +293,43 @@ export const NodeWeb: React.FC<NodeWebProps> = ({ count, centre, counterLabel, h
     </Frame>
   );
 };
+
+// ---------------------------------------------------------------- Cycle wave
+// The business cycle as a drawn wave, peaks labelled BOOM and troughs BUST.
+export type CycleWaveProps = { title?: string; cycles?: number; drawFor?: number };
+export const CycleWave: React.FC<CycleWaveProps> = ({ title, cycles = 2.5, drawFor }) => {
+  const frame = useCurrentFrame();
+  const { durationInFrames } = useVideoConfig();
+  const x0 = SAFE.x + 40, x1 = 1920 - SAFE.x - 40, mid = 600, amp = 190;
+  const total = drawFor ? sec(drawFor) : Math.max(sec(1.5), durationInFrames - sec(1.2));
+  const pr = interpolate(frame, [sec(0.3), sec(0.3) + total], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: easeInOut });
+  const N = 400;
+  const pts = Array.from({ length: N + 1 }, (_, i) => {
+    const k = i / N;
+    return [x0 + (x1 - x0) * k, mid - amp * Math.sin(k * cycles * Math.PI * 2)] as const;
+  });
+  const shown = pts.slice(0, Math.max(2, Math.floor(N * pr) + 1));
+  const d = "M" + shown.map((p) => `${p[0].toFixed(1)},${p[1].toFixed(1)}`).join("L");
+  const extremes: { k: number; boom: boolean }[] = [];
+  for (let j = 0; j < cycles * 2; j++) extremes.push({ k: (j + 0.5) / (cycles * 2), boom: j % 2 === 0 });
+  const head = shown[shown.length - 1];
+  return (
+    <Frame>
+      <Title text={title} />
+      <svg width={1920} height={1080} style={{ position: "absolute" }}>
+        <line x1={x0} x2={x1} y1={mid} y2={mid} stroke={C.line} strokeWidth={1.5} strokeDasharray="4 10" />
+        <path d={d} fill="none" stroke={C.paper} strokeWidth={5} strokeLinecap="round" />
+        <circle cx={head[0]} cy={head[1]} r={9} fill={C.paper} />
+        {extremes.filter((e) => e.k <= pr).map((e, i) => {
+          const x = x0 + (x1 - x0) * e.k, y = mid - amp * (e.boom ? 1 : -1);
+          return (
+            <text key={i} x={x} y={y + (e.boom ? -36 : 64)} textAnchor="middle" fill={e.boom ? C.gain : C.loss}
+              fontFamily={font("display")} fontWeight={700} fontSize={48} letterSpacing={4} opacity={Math.min(1, (pr - e.k) * 12)}>
+              {e.boom ? "BOOM" : "BUST"}
+            </text>
+          );
+        })}
+      </svg>
+    </Frame>
+  );
+};
