@@ -162,6 +162,7 @@ export const GRAPHICS: Record<string, ShotSpec> = {
   "07.10": { t: "LineChart", props: { ...crash, holdFrom: "2015-07-28", drawTo: "2015-08-26", drawFor: 2.5, annotations: [
     { kind: "marker", date: "2015-07-27", label: "27 JULY · −8.5%", tone: "loss" }, { kind: "marker", date: "2015-08-24", label: "24 AUGUST · −8.5%", tone: "loss" }] } },
   "07.06": { t: "NumberCard", props: { lines: [{ text: "SELLING BANNED", mode: "stamp", size: 100, at: 2.4 }, { text: "LISTINGS FROZEN", mode: "stamp", size: 100, at: 4.0 }, { text: "STATE FIRMS: BUY", mode: "stamp", size: 100, at: 5.4 }] } },
+  "07.11": { t: "NumberCard", props: { lines: [{ text: "NEW YORK", size: 60, tone: "muted", mode: "type", at: 0.2 }, { text: "DOW −1,000", size: 170, tone: "loss", at: 1.0 }, { text: "AT THE OPEN", size: 50, tone: "muted", at: 1.8 }] } },
   "07.12": { t: "NumberCard", props: { lines: [{ count: { from: 0, to: 5e12, prefix: "−$" }, size: 128, tone: "loss" }], caption: "LOST IN ABOUT TEN WEEKS" } },
   "07.13": black,
   "07.14": { t: "LineChart", props: {

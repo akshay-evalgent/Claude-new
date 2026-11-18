@@ -104,7 +104,7 @@ shot_id,section,start,seconds,family,image_id,cue,on_screen,tag,motion,notes
 07.08,7,9:10,1.8,CHART,,It does not hold.,,,index resumes falling,
 07.09,7,9:12,2.8,CHART,,The twenty-seventh of July.,27 JULY,,second cliff,
 07.10,7,9:15,6.7,CHART,,The twenty-fourth of August.,24 AUGUST · −8.5%,,third cliff,
-07.11,7,9:22,7.4,SCENE,ny_floor,"In New York, the Dow","DOW −1,000",,slow push,
+07.11,7,9:22,7.4,NUMBER,,"In New York, the Dow","NEW YORK · DOW −1,000 AT THE OPEN",,type card,Was a generated scene; every version carried garbled or real exchange logos
 07.12,7,9:29,2.8,NUMBER,,Five trillion dollars,"−$5,000,000,000,000",,scoreboard swaps to the market total,
 07.13,7,9:32,1.1,BLACK,,And Zexi?,,,beat of black,
 07.14,7,9:33,8.8,CHART,,In the worst three weeks,5 FUNDS · ALL ≥ +20%,,five green lines rise through the red,Shapes illustrative; label so
@@ -134,7 +134,7 @@ shot_id,section,start,seconds,family,image_id,cue,on_screen,tag,motion,notes
 08.13,8,11:43,1.8,SCENE,blue_lights,They stop him there.,,,blue light flicker,
 08.14,8,11:45,4,BLACK,,,,,silence,
 08.15,8,11:49,4.6,SCENE,arrest_phone,"That evening, a photograph",,DRAMATISED,slow push,Never recreate or show the press photo; we show people reacting to it
-08.16,8,11:53,7.8,SCENE,cuff_closeup,Someone's hand is pulling back,,DRAMATISED,push to the cuff,No face
+08.16,8,11:53,7.8,SCENE,arrest_phone,Someone's hand is pulling back,,DRAMATISED,continue the push into their faces,The model would not draw handcuffs; we stay on the reaction
 08.17,8,12:01,9.5,DOC,,The internet does what it does.,,,comment bubbles stack over the image,Paraphrased jokes; no real usernames
 08.18,8,12:11,6.0,SCENE,retail_crowd_phones,Two hundred million people,,,slow push,
 09.01,9,12:18,6.3,SCENE,sealed_doors,"Then, nothing.",,,slow push,

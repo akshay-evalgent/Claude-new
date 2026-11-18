@@ -179,8 +179,6 @@ IMAGES = [
      "a crowd of ordinary Chinese people in a public square, all looking down at glowing smartphones, faces lit from below, anxious, 2015"),
     ("national_team", "", "Wide symmetrical shot",
      "a vast trading room with long rows of identical desks and terminals, traders in white shirts, fluorescent light, rigid order"),
-    ("ny_floor", "", "Medium-wide shot",
-     "traders in jackets on a New York trading floor at the opening bell, looking up in shock, the screens above them reduced to a soft blur of coloured light"),
     ("beijing_corridor", "", "Wide shot down a corridor",
      "a long government corridor at night, closed wooden office doors, one door ajar with light spilling out, polished floor"),
     ("arrested_exec", "", "Wide shot",
@@ -208,8 +206,6 @@ IMAGES = [
      "brake lights glowing on a wet road, blue police lights reflected in the rear window, blurred figures approaching"),
     ("arrest_phone", "", "Medium close-up",
      "an ordinary Chinese couple in their fifties on a sofa in a small apartment at night, staring at a smartphone held towards them, its back to camera, their faces lit by its glow, shocked"),
-    ("cuff_closeup", "", "Extreme close-up, harsh camera flash",
-     "a hand pulling back the sleeve of a bright white overcoat to reveal a pair of steel police handcuffs locked around the wrist, the chain visible, only the wrist and sleeve in frame, plain wall behind"),
     # the answer, reckoning, epilogue
     ("sealed_doors", "", "Medium shot",
      "glass office doors sealed with crossed paper strips bearing red official stamps, an empty dark office beyond"),
@@ -232,7 +228,7 @@ IMAGES = [
 # Scenes that reconstruct a real moment with real people, even without Xu in
 # frame. These, and every shot showing Xu, carry a DRAMATISED tag on screen.
 RECONSTRUCTED = {"grandma_party_table", "arrested_exec", "investigator_arrives", "meeting_room_tea",
-                 "courtroom_back", "prison_gate", "cuff_closeup", "arrest_phone", "sports_cars"}
+                 "courtroom_back", "prison_gate", "arrest_phone", "sports_cars"}
 TAG_WORDS = {"RUMOUR", "UNPROVEN", "ALLEGATION"}
 
 # --- shots --------------------------------------------------------------------
@@ -358,7 +354,7 @@ SHOTS = [
     S(7, "CHART", "", "It does not hold.", "", "index resumes falling"),
     S(7, "CHART", "", "The twenty-seventh of July.", "27 JULY", "second cliff"),
     S(7, "CHART", "", "The twenty-fourth of August.", "24 AUGUST · −8.5%", "third cliff"),
-    S(7, "SCENE", "ny_floor", "In New York, the Dow", "DOW −1,000", "slow push"),
+    S(7, "NUMBER", "", "In New York, the Dow", "NEW YORK · DOW −1,000 AT THE OPEN", "type card", "Was a generated scene; every version carried garbled or real exchange logos"),
     S(7, "NUMBER", "", "Five trillion dollars", "−$5,000,000,000,000", "scoreboard swaps to the market total"),
     S(7, "BLACK", "", "And Zexi?", "", "beat of black"),
     S(7, "CHART", "", "In the worst three weeks", "5 FUNDS · ALL ≥ +20%", "five green lines rise through the red", "Shapes illustrative; label so"),
@@ -389,7 +385,7 @@ SHOTS = [
     S(8, "SCENE", "blue_lights", "They stop him there.", "", "blue light flicker"),
     S(8, "BLACK", "", "", "", "silence", hold=4),
     S(8, "SCENE", "arrest_phone", "That evening, a photograph", "", "slow push", "Never recreate or show the press photo; we show people reacting to it"),
-    S(8, "SCENE", "cuff_closeup", "Someone's hand is pulling back", "", "push to the cuff", "No face"),
+    S(8, "SCENE", "arrest_phone", "Someone's hand is pulling back", "", "continue the push into their faces", "The model would not draw handcuffs; we stay on the reaction"),
     S(8, "DOC", "", "The internet does what it does.", "", "comment bubbles stack over the image", "Paraphrased jokes; no real usernames"),
     S(8, "SCENE", "retail_crowd_phones", "Two hundred million people", "", "slow push"),
     # 9. The answer

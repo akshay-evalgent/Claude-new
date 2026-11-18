@@ -1,0 +1,68 @@
+image_id,version,source_run,file,note
+bridge_aerial,2,full,motion/public/frames/bridge_aerial.jpg,
+bridge_fog,2,full,motion/public/frames/bridge_fog.jpg,
+car_expressway,1,redo,motion/public/frames/car_expressway.jpg,Second run
+car_interior_coat,2,full,motion/public/frames/car_interior_coat.jpg,
+xu_coat_silhouette,2,redo,motion/public/frames/xu_coat_silhouette.jpg,Screens carry garbled characters; coat reads light. Second run
+zexi_floor_front,1,full,motion/public/frames/zexi_floor_front.jpg,"Known miss: Xu is mid-room, not small at the back. First-run version kept"
+xu_tracksuit_desk,2,full,motion/public/frames/xu_tracksuit_desk.jpg,
+two_phones,1,full,motion/public/frames/two_phones.jpg,
+meeting_table,1,full,motion/public/frames/meeting_table.jpg,
+traders_whisper,1,full,motion/public/frames/traders_whisper.jpg,
+regulator_building_night,2,full,motion/public/frames/regulator_building_night.jpg,
+shanghai_1990_exchange,2,full,motion/public/frames/shanghai_1990_exchange.jpg,
+ningbo_home_1990,1,full,motion/public/frames/ningbo_home_1990.jpg,
+boy_newspaper,2,full,motion/public/frames/boy_newspaper.jpg,
+boy_books,2,full,motion/public/frames/boy_books.jpg,
+lecture_backrow,1,full,motion/public/frames/lecture_backrow.jpg,
+exam_hall_empty_desk,2,full,motion/public/frames/exam_hall_empty_desk.jpg,
+hands_cash,1,full,motion/public/frames/hands_cash.jpg,
+galaxy_street_exterior,1,redo,motion/public/frames/galaxy_street_exterior.jpg,Second run
+hall_staircase,1,full,motion/public/frames/hall_staircase.jpg,
+hall_blackboard_crowd,2,full,motion/public/frames/hall_blackboard_crowd.jpg,Mostly numbers; some garbled characters on the board
+hall_thinning,1,full,motion/public/frames/hall_thinning.jpg,
+chives_board,2,full,motion/public/frames/chives_board.jpg,
+xu_20s_hall,2,full,motion/public/frames/xu_20s_hall.jpg,
+gangsters_table,2,full,motion/public/frames/gangsters_table.jpg,
+xu_20s_window,1,full,motion/public/frames/xu_20s_window.jpg,
+squad_desk,2,full,motion/public/frames/squad_desk.jpg,
+hall_crowd_turns,1,full,motion/public/frames/hall_crowd_turns.jpg,
+sports_cars,2,full,motion/public/frames/sports_cars.jpg,
+xu_20s_ticket,1,full,motion/public/frames/xu_20s_ticket.jpg,
+seminar_books,1,full,motion/public/frames/seminar_books.jpg,
+investigator_arrives,2,full,motion/public/frames/investigator_arrives.jpg,
+meeting_room_tea,2,full,motion/public/frames/meeting_room_tea.jpg,
+hall_empty,1,full,motion/public/frames/hall_empty.jpg,
+shanghai_skyline_2005,1,full,motion/public/frames/shanghai_skyline_2005.jpg,Skyline includes towers built after 2005
+sunshine_office,2,full,motion/public/frames/sunshine_office.jpg,
+zexi_office_morning,1,full,motion/public/frames/zexi_office_morning.jpg,
+zexi_office_night,1,full,motion/public/frames/zexi_office_night.jpg,
+researchers_waiting,1,redo,motion/public/frames/researchers_waiting.jpg,Second run
+xu_alone_screens,1,full,motion/public/frames/xu_alone_screens.jpg,
+xu_screens_cold,1,full,motion/public/frames/xu_screens_cold.jpg,
+boardroom_chair,1,redo,motion/public/frames/boardroom_chair.jpg,Second run
+empty_chair_power,2,full,motion/public/frames/empty_chair_power.jpg,
+beijing_office_window,1,full,motion/public/frames/beijing_office_window.jpg,
+retail_crowd_phones,1,full,motion/public/frames/retail_crowd_phones.jpg,
+national_team,1,full,motion/public/frames/national_team.jpg,
+beijing_corridor,2,full,motion/public/frames/beijing_corridor.jpg,
+arrested_exec,1,full,motion/public/frames/arrested_exec.jpg,
+passport_desk,1,full,motion/public/frames/passport_desk.jpg,
+grandma_apartment_ext,2,full,motion/public/frames/grandma_apartment_ext.jpg,
+grandma_party_table,1,full,motion/public/frames/grandma_party_table.jpg,
+white_coat_chair,2,full,motion/public/frames/white_coat_chair.jpg,
+phone_lights_up,2,full,motion/public/frames/phone_lights_up.jpg,
+stairwell_rush,2,full,motion/public/frames/stairwell_rush.jpg,
+car_ningbo_blocks,1,redo,motion/public/frames/car_ningbo_blocks.jpg,Second run
+car_river_bridge,2,redo,motion/public/frames/car_river_bridge.jpg,Second run
+car_bay,1,redo,motion/public/frames/car_bay.jpg,Second run
+blue_lights,2,full,motion/public/frames/blue_lights.jpg,
+arrest_phone,1,redo,motion/public/frames/arrest_phone.jpg,Second run; also used for shot 08.16
+sealed_doors,2,full,motion/public/frames/sealed_doors.jpg,
+zexi_floor_empty,2,full,motion/public/frames/zexi_floor_empty.jpg,
+courthouse_ext,1,full,motion/public/frames/courthouse_ext.jpg,
+courtroom_back,2,redo,motion/public/frames/courtroom_back.jpg,Second run
+crowd_one_face,2,full,motion/public/frames/crowd_one_face.jpg,
+photo_frame_down,2,redo,motion/public/frames/photo_frame_down.jpg,Second run
+two_phones_dark,1,full,motion/public/frames/two_phones_dark.jpg,
+prison_gate,1,full,motion/public/frames/prison_gate.jpg,
