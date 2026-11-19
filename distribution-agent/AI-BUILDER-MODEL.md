@@ -219,7 +219,8 @@ Pitch by what the founder already has:
 |---|---|
 | Not set up | "Nobody in your trade has seen this yet. Here are the first people to show it to." |
 | Set up but quiet | "You are listed in the right places and still have no reviews. Here is what I think is missing." |
-| Actively marketed | Usually not a fit; the partner step only if they ask |
+| Busy but unseen | "You have published a lot and almost nobody has seen it. Here is where your buyers actually are." |
+| Has a customer or a marketing lead | Lower priority; lead with one specific fix we noticed |
 
 ## 11. Against competitors
 

@@ -6,7 +6,7 @@ Updated 19 November 2026. Decisions taken: the premium line for founders who bui
 
 - Nothing here is tested. Prices, reply rates and client counts are starting points to check against the first clients.
 - No research was done on what this segment will pay. The premium case rests on judgement and on prices of comparable human services.
-- The programme was reweighted on a small signal: two of the first prospects checked by hand already had listings and social accounts and still showed no customers. That is two cases, though it matches the earlier research on where first customers come from.
+- The programme was reweighted after a check of 21 prospects on 19 November 2026. It found 7 not set up, 4 set up but quiet, 7 publishing heavily to almost no audience with no customers, and 3 with a first customer or a marketing lead. One had over 100 videos and 2 subscribers. That is a small sample, though it matches the earlier research on where first customers come from.
 - Prospecting on 18 November 2026 confirmed AI building for only 4 of 20 shortlisted founders. In practice we qualify on trade background, a live product and no customers. The "built with AI" line is used only where the build is confirmed.
 - Reply and conversion estimates come from datasets of founders who succeeded and wrote about it.
 - No account was found of an India-based agency winning foreign clients through LinkedIn or YouTube. US prospects replied least (6%) in one outreach study.
@@ -56,7 +56,8 @@ The answer to question 5 sets the pitch:
 |---|---|---|
 | Not set up: few or no listings, accounts or content | Buyers cannot find or try the product | "Nobody in your trade has seen this yet. Here are the first people to show it to." |
 | Set up but quiet: listed and posting, no sign of customers | Presence is not the problem; conversations and conversion are | "You are listed in the right places and still have no reviews. Here is what I think is missing." |
-| Actively marketed: regular posting, press, a marketing person, visible customers | Usually not a fit | Only the partner step, and only if they ask |
+| Busy but unseen: frequent posts, videos or articles with almost no audience and no customers | More output will not help; they need buyers, not content | "You have published a lot and almost nobody has seen it. Here is where your buyers actually are." |
+| Has a customer or a marketing lead | Lower priority | Lead with one specific fix we noticed; the partner step if they ask |
 
 Not served:
 
@@ -205,7 +206,7 @@ The first four produced the first prospect list. The last three need checking by
 ### The outreach
 
 1. Pick 10 founders a day by hand and run the five qualifying questions against what is public.
-2. Sort each into "not set up", "set up but quiet" or "actively marketed".
+2. Sort each into "not set up", "set up but quiet", "busy but unseen" or "has a customer or a marketing lead".
 3. Build each one's report, with real posts from buyers in their trade.
 4. Send the opening message for their group where they already are: a public reply where allowed, otherwise a direct message or an email.
 5. Offer a call to those who reply, and the programme on the call.
