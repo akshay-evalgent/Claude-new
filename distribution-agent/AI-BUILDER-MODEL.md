@@ -1,10 +1,12 @@
 # Model: premium distribution for founders who build with AI
 
-Updated 18 November 2026. The service and product model for people who made a product with AI tools and do not know how distribution works. It is the main line of the business; `STRATEGY.md` is the top-level summary.
+Updated 19 November 2026. The service and product model for people who made a product with AI tools and do not know how distribution works. It is the main line of the business; `STRATEGY.md` is the top-level summary.
 
 ## How far to trust this
 
 - Nothing here is tested. Every price is a starting point.
+- The programme was reweighted towards conversations on a small signal: two early prospects already had listings and social accounts and still showed no customers.
+- Prospecting on 18 November 2026 confirmed AI building for only 4 of 20 shortlisted founders. We qualify on trade background, a live product and no customers.
 - No research was done on what this segment will pay. The premium case rests on judgement and on prices of comparable human services.
 - The Lovable figures (about 80% of users want to make money, about 35% do) come from a secondary report of a Wired article.
 - The places listed for finding these founders need checking by hand.
@@ -16,13 +18,13 @@ Updated 18 November 2026. The service and product model for people who made a pr
 | Step | Offer | Price | Role |
 |---|---|---|---|
 | 1 | First 10 Conversations report | Free | Starts the conversation |
-| 2 | Distribution Setup, 30 days, one-time | $1,000: $500 to start, $500 on delivery | Main product |
+| 2 | First Customers Programme, 30 days, one-time | $1,000: $500 to start, $500 on delivery | Main product |
 | 3a | Distribution Partner, flat | $2,500 a month, no minimum term | Ongoing revenue |
 | 3b | Distribution Partner, growth | $1,500 a month plus 10% of new revenue | Ongoing revenue with upside |
 | — | Self-serve tool | Free for clients; $49 a month flat for others | Lead source and delivery engine |
 | — | Add-ons | $149–299 each | Extra listings, payment and tracking setup |
 
-Founding terms: the first three setup clients pay $500 in exchange for published results.
+Founding terms: the first three programme clients pay $500 in exchange for published results.
 
 ## 2. Who we target
 
@@ -43,6 +45,7 @@ Qualifying questions before any paid step:
 2. Does a customer pay at least $300 a year?
 3. Can a stranger sign up, pay and get a useful result today?
 4. Can you give 30–45 minutes a day for 30 days?
+5. What is already in place: listings, social accounts, content, press?
 
 Founders who fail question 2 are offered the 14-day sprint in `STRATEGY.md` instead.
 
@@ -60,14 +63,24 @@ Founders who fail question 2 are offered the 14-day sprint in `STRATEGY.md` inst
 
 The one customer, 10–20 live posts, the one channel, and an opening line per post.
 
-### Distribution Setup: $1,000
+### First Customers Programme: $1,000
+
+The programme is built around buyer conversations and conversion. Listings and posts are added only where they are missing.
 
 | Week | We deliver | Founder does |
 |---|---|---|
-| 1 | Verdict: go, change or stop, with the evidence. Positioning in one sentence. Readiness check | Answer the intake |
-| 2 | Offer page rewritten. Price and trial set. Tracking. One main and one support channel chosen, with reasons, and set up | Approve the page; grant channel roles |
-| 3 | 12 posts written and scheduled for approval. Two listings. 50 named people from their own network and 30 public conversations, each with an opening message | Approve posts; submit listings; start sending |
-| 4 | Daily reply coaching. Scorecard. 90-day plan | Send, reply, ask for payment |
+| 1 | Verdict: go, change or stop, with the evidence. Positioning in one sentence. Readiness check. Review of what is already in place and what it has produced | Answer the intake |
+| 2 | Offer page rewritten. Price and trial set. Tracking. 50 named people from their own network and trade, each with a message | Approve the page; start sending |
+| 3 | 30 public conversations with opening lines. Daily reply coaching. Gaps filled where missing | Send, reply |
+| 4 | Daily reply coaching. Paid pilot offer. Notes on why non-buyers said no. Scorecard. 90-day plan | Take calls; ask for payment |
+
+Filling gaps in week 3:
+
+| If the client lacks | We add |
+|---|---|
+| A main channel | One channel set up, with up to 12 posts written and scheduled for approval |
+| Listings | Up to two store or directory listings |
+| Neither | 20 more conversations in place of the setup work |
 
 Payment and refunds:
 
@@ -108,7 +121,7 @@ Growth option terms:
 | How long | While the partner step runs, plus three months after |
 | Paperwork | A short written agreement, checked by a lawyer |
 
-We offer the partner step only when the setup has produced a channel that is getting replies.
+We offer the partner step only when the programme has produced a channel that is getting replies.
 
 ### Add-ons
 
@@ -141,7 +154,7 @@ Why the split:
 | What it reads | The product URL, and the codebase when the founder shares it |
 | How it is built | On existing MIT-licensed GTM skill packs |
 | Price | Free for clients; $49 a month flat for self-serve users; no credits |
-| Why it exists | It makes each report and setup faster for us, and brings in service leads |
+| Why it exists | It makes each report and programme faster for us, and brings in service leads |
 
 The service is the business. The tool is how we deliver it at this price.
 
@@ -186,16 +199,27 @@ Outreach: a report built for each founder and sent by a person, in lists under 5
 
 ## 10. Positioning
 
-**Headline:** You built it with AI. We build the distribution.
+**Headline:** Your product is live. We line up its first customers with you.
 
-**Supporting line:** In 30 days we fix your offer, set up your channels, and line up the first 80 conversations with people who have the problem. You pay half to start and half on delivery.
+**Supporting line:** In 30 days we tell you what is blocking the sale, fix your offer, and put you in at least 80 conversations with people who have the problem, starting with people you already know. You pay half to start and half on delivery.
+
+Where the build is confirmed, the headline may open with "You built it with AI."
 
 Proof we show:
 
 - The free report on their own product.
 - A week-1 verdict, with $700 back if we advise stopping.
+- The conversations themselves: named people and real posts, each with a message.
 - Published scorecards from earlier clients.
 - Nothing posted by a bot or from a rented account.
+
+Pitch by what the founder already has:
+
+| What they have | Opening angle |
+|---|---|
+| Not set up | "Nobody in your trade has seen this yet. Here are the first people to show it to." |
+| Set up but quiet | "You are listed in the right places and still have no reviews. Here is what I think is missing." |
+| Actively marketed | Usually not a fit; the partner step only if they ask |
 
 ## 11. Against competitors
 
@@ -209,13 +233,13 @@ Proof we show:
 | The GTM Co-Founder | Free skills plus paid help | Needs a coding agent; developer tools only |
 | Polsia | $49 a month plus 20% of all revenue | Our share is optional, on growth only, capped and time-limited |
 
-Nobody found sells a fixed-price setup for AI-built products with published results.
+Nobody found sells a fixed-price first-customers programme for founder-built products with published results. Listings and posts are the easy part, which founders and tools already do.
 
 ## 12. Economics
 
 | Mix in a month | Revenue |
 |---|---|
-| 4 setups at $1,000 | $4,000 |
+| 4 programmes at $1,000 | $4,000 |
 | 1 flat partner | $2,500 |
 | 1 growth partner | $1,500 plus any share |
 | Total | $8,000 plus any share |
@@ -224,9 +248,9 @@ Nobody found sells a fixed-price setup for AI-built products with published resu
 
 | Week | Actions |
 |---|---|
-| 1 | Build the report and readiness-check workflow. Write the setup templates. Find 50 qualified founders |
+| 1 | Build the report and readiness-check workflow. Write the programme templates. Sort the first prospect list by what each already has in place |
 | 2 | Send 10 reports a day. Hold calls with everyone who replies |
-| 3 | Sell the setup at the $500 founding price. Start week 1 for each |
+| 3 | Sell the programme at the $500 founding price. Start week 1 for each |
 | 4 | Deliver verdicts and week 2. Publish the first verdict as a case study with permission |
 
 ## 14. Risks
@@ -237,9 +261,10 @@ Nobody found sells a fixed-price setup for AI-built products with published resu
 | The product is broken or insecure | Readiness check; written note that we do not review security |
 | Premium price with no proof | Three founding clients at half price |
 | The segment will not pay | Test with 50 reports before building more |
+| The founder is already listed and posting | Lead with conversations; swap setup work for 20 more conversations |
 | Few clients move to the partner step | Offer it only when a channel is getting replies; give the growth option |
 | Clients refuse dashboard access | They take the flat option |
 | Revenue share disputes | Growth only, capped, time-limited, in writing |
 | Building platforms add marketing features | Stay on the human work they will not do: networks, calls, interviews |
-| Human hours | Cap setups a month; two channels per client; the tool shortens each report |
+| Human hours | Cap programmes a month; two channels per client; the tool shortens each report |
 | Payment from foreign clients | Still the open item in `STRATEGY.md` |

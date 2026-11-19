@@ -19,7 +19,7 @@ Researched 11 November 2026. A free agent that gets first users and first revenu
 | Who pays for the model? | The user's own Claude or ChatGPT plan | Free hosted inference is too small for more than a demo |
 | What do we host? | One small MCP server on Cloudflare's free plan | Supplies search, tracking and rule data to the user's model |
 | First segment | Founders outside India who built a product with AI tools and have an income and a trade (decided 18 November 2026; see `STRATEGY.md`) | They can pay a premium and hold a network they do not use |
-| How it makes money | Services first: $1,000 Distribution Setup, then a partner retainer at $2,500 a month flat or $1,500 plus 10% of new revenue. The tool is free for clients and $49 a month flat for others | Human-run work is the gap; credit metering is the most repeated complaint about tools |
+| How it makes money | Services first: $1,000 First Customers Programme, built around buyer conversations, then a partner retainer at $2,500 a month flat or $1,500 plus 10% of new revenue. The tool is free for clients and $49 a month flat for others | Human-run work is the gap; credit metering is the most repeated complaint about tools |
 
 ## 2. Who it is for and what hurts
 
