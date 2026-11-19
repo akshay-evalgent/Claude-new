@@ -49,6 +49,8 @@ Qualifying questions before any paid step:
 
 Founders who fail question 2 are offered the 14-day sprint in `STRATEGY.md` instead.
 
+Question 5 sorts founders into four groups. Three are targets: not set up, set up but quiet, and busy but unseen. "Busy but unseen" founders publish heavily to almost no audience; they already give daily time to distribution, so the programme redirects that time to conversations. `STRATEGY.md` section 2 describes the group and how to recognise it.
+
 ## 3. Why this segment will pay more
 
 - They already pay for building tools and have put in weeks of work.
@@ -81,6 +83,7 @@ Filling gaps in week 3:
 | A main channel | One channel set up, with up to 12 posts written and scheduled for approval |
 | Listings | Up to two store or directory listings |
 | Neither | 20 more conversations in place of the setup work |
+| An audience, despite heavy publishing | Their publishing time redirected to conversations for 30 days; their best three pieces reused as proof |
 
 Payment and refunds:
 

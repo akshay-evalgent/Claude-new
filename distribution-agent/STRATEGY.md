@@ -20,6 +20,7 @@ Updated 19 November 2026. Decisions taken: the premium line for founders who bui
 |---|---|
 | Main focus | Premium distribution for founders who built a product with AI tools |
 | First segment | Professionals outside India with an income and a trade, whose customers are worth $300 a year or more |
+| Target groups | Founders who are not set up, set up but quiet, or busy but unseen. Those with a customer or a marketing lead come last |
 | Entry | A free "First 10 Conversations" report, built and sent unasked |
 | Main offer | First Customers Programme: 30 days, one-time, $1,000 |
 | What the programme is built around | Buyer conversations and conversion. Listings and posts only where they are missing |
@@ -58,6 +59,18 @@ The answer to question 5 sets the pitch:
 | Set up but quiet: listed and posting, no sign of customers | Presence is not the problem; conversations and conversion are | "You are listed in the right places and still have no reviews. Here is what I think is missing." |
 | Busy but unseen: frequent posts, videos or articles with almost no audience and no customers | More output will not help; they need buyers, not content | "You have published a lot and almost nobody has seen it. Here is where your buyers actually are." |
 | Has a customer or a marketing lead | Lower priority | Lead with one specific fix we noticed; the partner step if they ask |
+
+### Busy but unseen: a target group in its own right
+
+These founders publish heavily and reach almost nobody. In the first check, 6 of 20 prospects fell here.
+
+| Question | Answer |
+|---|---|
+| How to recognise them | Many videos, articles or listings against single-digit subscribers, installs or reviews |
+| Why they are good clients | They already give time or money to distribution every day, so the programme asks for no new effort, only a change of direction |
+| Why they feel the problem | They can see the numbers: months of output and nothing back |
+| What we change for them | Pause new publishing for 30 days, spend that time on conversations, and reuse their best three pieces as proof |
+| The risk | They may believe the answer is more content, or use tools that make content cheap to produce |
 
 Not served:
 
@@ -124,6 +137,7 @@ Filling gaps in week 3:
 | A main channel | One channel set up, with up to 12 posts written and scheduled for approval |
 | Listings | Up to two store or directory listings |
 | Neither | 20 more conversations in place of the setup work |
+| An audience, despite heavy publishing | Their publishing time redirected to conversations for 30 days; their best three pieces reused as proof |
 
 A "stop" verdict in week 1 ends the work: we keep $300 and refund $700.
 
@@ -203,6 +217,17 @@ Illustration of a month: 4 programmes, 1 flat partner and 1 growth partner come 
 
 The first four produced the first prospect list. The last three need checking by hand.
 
+Signals of a busy-but-unseen founder, all visible without logging in:
+
+| Where to look | Signal |
+|---|---|
+| YouTube or TikTok linked from the site | Dozens of videos, fewer than 20 subscribers or followers |
+| The site's sitemap | Hundreds of pages or articles published in weeks |
+| Software directories and app stores | Listed in several, with zero reviews or single-digit installs |
+| Launch boards | Posted on many, with a handful of votes on each |
+| Press pages | A press release sent on several wires and no customer named |
+| Founding offers | "20 of 20 spots left" or a first-customers price still open months later |
+
 ### The outreach
 
 1. Pick 10 founders a day by hand and run the five qualifying questions against what is public.
@@ -237,6 +262,7 @@ Rules:
 |---|---|
 | "I do not know you" | The free report is real work on their own product |
 | "I am already listed and posting" | That is why we start with conversations, not setup |
+| "I am already doing a lot of marketing" | We use the same daily time, pointed at named buyers; nothing extra is asked |
 | "$1,000 is a lot" | Half to start, half on delivery; $700 back if we advise stopping |
 | "Will you spam from my account?" | We publish only to their own channels, with approval; they send everything personal |
 | "What if it does not work?" | Refund for missed deliverables; public scorecards |
@@ -258,7 +284,7 @@ Rules:
 |---|---|
 | Payment route for a service business in India billing foreign clients | Direct Stripe is invite-only. Merchant-of-record platforms may not allow human services. PayPal costs about 7–8% all-in; Razorpay charges up to 3% plus GST on international cards |
 | Whether this segment pays $1,000 | Untested. Send 50 reports before building more |
-| Whether "set up but quiet" founders buy | They have shown they will spend on distribution, but may think they have it covered |
+| Whether "set up but quiet" and "busy but unseen" founders buy | They have shown they will spend on distribution, but may think they have it covered or that more content is the answer |
 | Revenue-share agreement | Needs a lawyer's check, and clients must agree to dashboard access |
 | Email rules for the UK and Canada | Not researched; several early prospects are there |
 | Each platform's rules for third-party page roles and schedulers | Sets what we can publish for a client |
@@ -269,6 +295,7 @@ Rules:
 ## 10. What we do not do
 
 - Sell channel setup as the product.
+- Produce more content for a client whose content nobody sees.
 - Autonomous posting or rented accounts.
 - Logging in to a client's personal accounts.
 - More than two channels per client.
