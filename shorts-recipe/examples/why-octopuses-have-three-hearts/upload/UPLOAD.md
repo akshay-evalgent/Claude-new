@@ -56,7 +56,13 @@ octopus three hearts, octopus blue blood, octopus facts, why do octopuses have t
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | The octopus turned to glass: three red hearts and blue blood inside, caption "and blue blood" | **Main pick.** The hearts answer the title at a glance |
+| `thumbnail-alt-octopus.jpg` | The octopus resting on the seabed, looking at you, caption "An octopus" | Animal angle |
+| `thumbnail-alt-eye.jpg` | The golden eye with its horizontal pupil, caption "But here's the catch" | Close-up angle |
+| `thumbnail-alt-copper-iron.jpg` | Two test tubes: blue "COPPER", red "IRON", caption "not iron like ours" | Science angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
