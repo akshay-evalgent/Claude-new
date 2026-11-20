@@ -34,7 +34,7 @@ Median views by topic hashtag; hashtags with at least 8 Shorts only.
 
 **They re-make their winners.** The snow Short we studied (AgV7DewK5do, 46K so far, one of their newest) is a new version of their 1.7M snow Short (Yf83JZKU73k), and pool and construction premises come back again and again. A winner is a template, not a one-off.
 
-**Rule:** Dad plus his house or yard. Pools, lawns, paint, roofs and driveways all work. Mom, girlfriend and boss mostly flop.
+**Rule:** a home or yard job going wrong. Pools, lawns, paint, decks and driveways all work. Mom and girlfriend pranks flop; a boss works only when the prank is a building job (their #1 Short is a boss and a pool).
 
 ## 3. Their top Shorts
 | Views | Title (as posted) | What happens |
@@ -62,19 +62,74 @@ Median views by topic hashtag; hashtags with at least 8 Shorts only.
 
 Keep the hook caption on screen ("texted my dad the snow guy brought…"). The title teases the reaction; the caption explains the prank.
 
-## 5. The video itself
-Studied frame by frame on the snow Short (75 s); see `research/prank-text-recipe.md`.
-1. **Hook (0-3 s):** the most absurd AI shot full screen, with a one-line caption.
-2. **Tool (3-6 s):** the AI app generating the footage. For them this is the paid slot; for us it is the "how it's made" moment, and a sponsor slot later.
-3. **The texts (6-75 s):**
-   - Three clip drops, each bigger than the last.
-   - Dad goes from calm to ALL CAPS after the second drop.
-   - The sender stays deadpan and lowercase.
-   - It ends on Dad's loudest line, with no reveal.
+## 5. The video, from their 8 biggest Shorts
+We studied the 8 biggest Shorts frame by frame (8.0M down to 2.0M views; all posted 12 Oct-15 Nov 2026). Their info files show:
+- empty descriptions
+- no tags
+- category "People & Blogs"
+- likes at 1-2% of views
+- 290-2,000 comments each
 
-The engine does all of this: `chatvid/imsg/` with `episodes/prank-*.json`.
+### The template (every one of the 8 follows it)
+| Time | What | Details |
+|---|---|---|
+| 0-4 s | **Hook** | The AI stages cut quickly from normal to absurd (each 0.6-1 s, sometimes a morph). Caption: `Pranking my dad the <worker> went TOO far💀😭` or `the deck guy brought a "few helpers"` / `the painters are "LITTLE"`. One word in CAPS or in quotes. |
+| 4-7 s | **AI app** | The *source photo* full screen. A **short edit prompt** is typed live: "Add a huge waterslide", "Make it a roundabout", "Add 15 workers", "Make him a kid". Then "Writing script… → Rendering scene…" with the app logo. About 3 s. |
+| 7-60 s | **The texts** | iMessage in light mode, the red recording clock, keyboard always up, live typing, typing dots, clips picked from Photos. |
+| 56-60 s | **Cut** | Mid-rant, on Dad's loudest line, or with the sender's comeback **typed but not sent**. There is never a reveal. |
 
-## 6. Our idea bank
+**Length: 56-60 s** (one is 73 s). Ours are 99-102 s, so **cut to about 60**.
+
+### Pacing
+**About 30 messages in 53 s: a new message every 1.5-2 s.** Dad's replies land 1-2 s apart. In a rant he stacks 2-5 caps lines about 1 s apart. Nothing is left still.
+
+### The clips
+- **2-4 drops**, nearly always 3. **They are the hook's stages, reused in order.**
+- **The top 2 Shorts (8.0M, 6.4M) use still images, not video.** A frame from a Flow clip, or an edited photo, is enough.
+- **Drop 1 is believable and Dad approves:** "that's perfect, that's exactly what I wanted", "looks good, should take 5 days right?", "look about right, tell them to start plumbing". This is the rug Dad stands on before it is pulled.
+- **The clip answers Dad's question.** It is sent right after "what do you mean?", "how much bigger?", "don't tell me you agreed", "HOW'S THAT NOT FINISHED??". The picture is the punchline, with no caption.
+
+### Dad
+- **He is a character before the prank starts.**
+  - Joke contact names with a photo avatar of a real-looking man: "Papa with 4 ex wives😕", "Male biological sponsor💦", "Bossman🙉👷".
+  - 2-4 old messages that make him petty or unhinged: a feud with the neighbour's dog, roasting the kid ("your unemployed", "everyday is sunny for you").
+- **He sets a precise, reasonable ask that the prank blows up:** "widen it by 3 feet", "6 feet for the deep end", "a small slide for the kids", "make sure the WiFi reaches my bedroom".
+- **His own words come back at him:** "I ASKED FOR THREE FEET" / "they gave you 360 degrees"; "small" → "I JUST WANTED A SMALL SLIDE".
+- **Caps arrive with drop 2 and never leave.** His caps lines are **comparisons**: "IT'S A DECK NOT A SKYSCRAPER", "I ASKED FOR BETTER WIFI NOT A SPACE PROGRAM", "WE'RE BUILDING A POOL NOT A … MINESHAFT", "WHY IS THE GRAND CANYON IN THEIR BACKYARD", "WHAT IN THE CIRQUE DU SOLEIL IS THIS". Two stock outbursts recur: "SWEET NEPTUNE" and "HOLY …".
+- **They swear a lot** ("WHAT THE F—", "HOLY S—"), and two go further: misogyny ("whale of a mother") and a fake bomb threat. **We skip those two.** They risk age limits, limited ads and strikes, and they aren't what makes the joke work.
+
+### The sender
+- Lowercase and deadpan. Every line is **a contractor's excuse passed on calmly**: "he said he wants it deep enough", "apparently reversing is outdated", "they said it'll be more exciting", "he said he wants to finish today so he can go to Taco Bell", "no signal down there😭".
+- **Understatement right before a drop:** "SMALL issue", "more help🤷‍♂️", "more or less".
+- **Fake relief before the last drop:** "I think he just showed up" → "oh thank God" → the clip shows another kid pilot.
+- One small personal jab per video: "im guessing your dad bod?".
+
+### Sound (measured, not heard)
+- **A soft music bed under the whole video**; there is never silence.
+- A **bass "boom" on each clip drop and most caps replies**.
+- Keyboard clicks while typing.
+- The app segment dips quieter.
+- The hook is loud, with a hit on each cut.
+
+### Not just Dad
+The #1 Short (8.0M) pranks **"Bossman"** about a pool dug too deep, and #3 is Halloween trick-or-treaters. The template matters more than the relative. Dad is the default; a boss works when the ask is a job.
+
+### What their tool tells us
+The photo sheet in two of the 8 shows a tile reading **"Upload your AI result"**. Their chats come from a prank-chat template (the app they promote), not from real phones. Ours is the same idea, built in code.
+
+## 6. The checklist for each of our Shorts
+1. **Premise:** Dad (or the boss) asks for one precise, reasonable thing at home.
+2. **Footage:** 3 stages in Flow from one start frame: believable → too much → absurd. Use stills or 2-3 s of each.
+3. **Hook (3.5 s):** the 3 stages cut fast plus `Pranking my dad the ___ went TOO far💀😭`.
+4. **App (3 s):** the start photo, a 3-5 word edit prompt, then "generating".
+5. **History:** a joke contact name and a photo avatar, plus 2-4 old lines that make Dad petty.
+6. **Beats:** Dad's precise ask → the sender's vague answer → drop 1 (Dad approves) → contractor excuse → drop 2 (Dad's caps start) → caps comparisons, each set off by a calm line from the sender → fake relief or "they said they weren't finished" → drop 3 → a 2-4 line caps rant → cut at about 58 s, optionally on an unsent comeback.
+7. **Size:** 28-32 messages, 55-60 s.
+8. **Sound:** a soft bed, a boom on each drop and caps line, keyboard clicks.
+9. **Swearing:** keep it to Dad's caps lines and skip slurs.
+10. **Title:** a reaction teaser with one CAPS word, plus 4-5 hashtags.
+
+## 7. Our idea bank
 These are our own premises in their winning topics. We don't remake their videos.
 
 | # | Premise | Clip A → B → C | Dad's peak line (draft) |
@@ -90,11 +145,6 @@ These are our own premises in their winning topics. We don't remake their videos
 
 **Order:** start with pool (#1), landscaper (#2) and painter (#3); those topics have the highest medians.
 
-## 7. For a deeper study
-Their 8 biggest Shorts are worth studying frame by frame (pacing, caption style, Dad's lines, how much each clip escalates). YouTube blocks downloads from our server, so download them on your computer.
-
-```bash
-yt-dlp -f "bv*[height<=1920]+ba/b" --merge-output-format mp4 --write-info-json -o "%(view_count)s_%(id)s.%(ext)s" https://www.youtube.com/shorts/4AO5CkaDRLg https://www.youtube.com/shorts/KZVxwT4rJBk https://www.youtube.com/shorts/y9n_4uhqCXI https://www.youtube.com/shorts/y3fMhO7Ybv8 https://www.youtube.com/shorts/JWy0N7c6jDc https://www.youtube.com/shorts/oTgAg6igTK8 https://www.youtube.com/shorts/YrpBEQ8oN9w https://www.youtube.com/shorts/Y3cBAF3OhQ8
-```
-
-Then upload the `.mp4` files, plus the `.info.json` files, which hold the upload date, length, likes and description.
+## 8. Sources
+- **Channel data:** `research/data/halo-chad-shorts-2026-11-20.tsv`.
+- **The 8 Shorts studied:** 4AO5CkaDRLg, KZVxwT4rJBk, y9n_4uhqCXI, y3fMhO7Ybv8, JWy0N7c6jDc, oTgAg6igTK8, YrpBEQ8oN9w, Y3cBAF3OhQ8. They were downloaded by you and read frame by frame; only notes are kept here, not their footage.
