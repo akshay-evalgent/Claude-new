@@ -56,7 +56,14 @@ why does my stomach growl, stomach growling, stomach rumbling, borborygmi, migra
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | The whole gut in a dark studio, the stomach mid-squeeze, caption "cleaning house" | **Main pick.** The anatomy reads at a glance, and the caption hints at the twist |
+| `thumbnail-alt-glass.jpg` | The glass of water rippling on the exam desk, caption "That growl" | Relatable angle: the silent exam |
+| `thumbnail-alt-bubble.jpg` | A big gas bubble forcing through a narrow ring of intestine, caption "squeeze through" | Science angle |
+| `thumbnail-alt-borborygmi.jpg` | The stethoscope on a belly under "BORBORYGMI (bor · bo · RIG · mee)" | Word angle: the name nobody knows |
+| `thumbnail-alt-old-pipes.jpg` | Old cast-iron pipes with a red valve wheel, caption "in old pipes" | Curiosity angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
