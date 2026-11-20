@@ -1,0 +1,49 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.03,0:00:00.80,Short,,0,0,0,,A cow eats
+Dialogue: 0,0:00:00.80,0:00:02.10,Short,,0,0,0,,every meal twice
+Dialogue: 0,0:00:02.41,0:00:03.00,Short,,0,0,0,,It doesn't have
+Dialogue: 0,0:00:03.00,0:00:04.17,Short,,0,0,0,,four stomachs
+Dialogue: 0,0:00:04.17,0:00:04.80,Short,,0,0,0,,It has one
+Dialogue: 0,0:00:04.80,0:00:06.04,Short,,0,0,0,,with four rooms
+Dialogue: 0,0:00:06.50,0:00:07.38,Short,,0,0,0,,Grass goes into
+Dialogue: 0,0:00:07.38,0:00:08.12,Short,,0,0,0,,the first
+Dialogue: 0,0:00:08.12,0:00:08.76,Short,,0,0,0,,the rumen
+Dialogue: 0,0:00:08.76,0:00:09.52,Short,,0,0,0,,a vat as big
+Dialogue: 0,0:00:09.52,0:00:10.51,Short,,0,0,0,,as a bathtub
+Dialogue: 0,0:00:10.51,0:00:11.38,Short,,0,0,0,,packed with trillions
+Dialogue: 0,0:00:11.38,0:00:12.20,Short,,0,0,0,,of microbes
+Dialogue: 0,0:00:12.20,0:00:13.10,Short,,0,0,0,,that break down
+Dialogue: 0,0:00:13.10,0:00:14.55,Short,,0,0,0,,tough plant fiber
+Dialogue: 0,0:00:14.55,0:00:15.12,Short,,0,0,0,,Then the cow
+Dialogue: 0,0:00:15.12,0:00:15.99,Short,,0,0,0,,burps the mush
+Dialogue: 0,0:00:15.99,0:00:16.47,Short,,0,0,0,,back up
+Dialogue: 0,0:00:16.47,0:00:17.50,Short,,0,0,0,,and chews it again
+Dialogue: 0,0:00:17.79,0:00:18.86,Short,,0,0,0,,That's chewing the cud
+Dialogue: 0,0:00:18.86,0:00:19.34,Short,,0,0,0,,up to
+Dialogue: 0,0:00:19.34,0:00:20.58,Short,,0,0,0,,eight hours a day
+Dialogue: 0,0:00:20.91,0:00:21.76,Short,,0,0,0,,The honeycomb room
+Dialogue: 0,0:00:21.76,0:00:22.54,Short,,0,0,0,,sorts it
+Dialogue: 0,0:00:22.54,0:00:22.98,Short,,0,0,0,,the third
+Dialogue: 0,0:00:22.98,0:00:24.34,Short,,0,0,0,,squeezes out the water
+Dialogue: 0,0:00:24.34,0:00:25.21,Short,,0,0,0,,and the fourth
+Dialogue: 0,0:00:25.21,0:00:26.58,Short,,0,0,0,,digests with acid
+Dialogue: 0,0:00:26.58,0:00:27.58,Short,,0,0,0,,just like yours
+Dialogue: 0,0:00:27.58,0:00:28.90,Short,,0,0,0,,So when a cow
+Dialogue: 0,0:00:28.90,0:00:29.78,Short,,0,0,0,,just stands there
+Dialogue: 0,0:00:29.78,0:00:30.38,Short,,0,0,0,,chewing
+Dialogue: 0,0:00:30.38,0:00:31.18,Short,,0,0,0,,it's not bored
+Dialogue: 0,0:00:31.18,0:00:31.63,Short,,0,0,0,,because
+Dialogue: 1,0:00:23.90,0:00:27.40,Prompt,,0,0,0,,{\fad(300,250)}Send this to someone\Nwho chews too loud

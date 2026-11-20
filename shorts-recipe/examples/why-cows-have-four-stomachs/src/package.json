@@ -1,0 +1,9 @@
+{
+  "name": "why-cows-have-four-stomachs-short",
+  "private": true,
+  "description": "three.js scenes for the photoreal \"Why Cows Have Four Stomachs\" short",
+  "dependencies": {
+    "three": "0.160.0",
+    "@expo-google-fonts/nunito": "0.2.3"
+  }
+}
