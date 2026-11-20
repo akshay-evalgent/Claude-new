@@ -29,7 +29,7 @@
   "🌮"
  ],
  "hook": {
-  "media": "flow-dog-b",
+  "media": "flow-dog-c",
   "caption": "texted my dad the dog walker took Max \"and a few others\" 😭",
   "dur": 3.4
  },
@@ -38,7 +38,8 @@
   "media": "flow-dog-a",
   "typeSpeed": 52,
   "generate": 1.1,
-  "show": 1.3
+  "show": 1.3,
+  "audioGain": -12
  },
  "history": [
   {
@@ -56,22 +57,20 @@
  ],
  "media": {
   "flow-dog-a": {
-   "file": "placeholder-dog-a.mp4",
+   "file": "flow-dog-a.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)",
-   "level": -28
+   "level": -18
   },
   "flow-dog-b": {
-   "file": "placeholder-dog-b.mp4",
+   "file": "flow-dog-b.mp4",
    "credit": "AI video generated with Google Flow for this channel",
-   "short": "AI video (Google Flow)",
-   "level": -28
+   "short": "AI video (Google Flow)"
   },
   "flow-dog-c": {
-   "file": "placeholder-dog-c.mp4",
+   "file": "flow-dog-c.mp4",
    "credit": "AI video generated with Google Flow for this channel",
-   "short": "AI video (Google Flow)",
-   "level": -28
+   "short": "AI video (Google Flow)"
   }
  },
  "beats": [
@@ -101,7 +100,8 @@
   },
   {
    "media": "flow-dog-a",
-   "hold": 3.8
+   "hold": 3.8,
+   "audioGain": -18
   },
   {
    "them": "Why does she have other dogs"
@@ -123,21 +123,22 @@
   },
   {
    "media": "flow-dog-b",
-   "hold": 4.0
+   "hold": 4.0,
+   "audioGain": 6
   },
   {
-   "them": "WHERE IS MAX"
+   "them": "THAT IS NOT A FEW"
   },
   {
-   "them": "I CANT FIND MAX IN THERE",
+   "them": "WHOSE DOGS ARE THOSE",
    "wait": 0.15,
    "typing": 0.6
   },
   {
-   "me": "he's in the middle"
+   "me": "max's friends"
   },
   {
-   "me": "he's making friends"
+   "me": "he's very popular"
   },
   {
    "them": "HE DOESNT NEED FRIENDS HE HAS ME"
@@ -158,7 +159,7 @@
    "me": "all of them"
   },
   {
-   "me": "she said max invited them"
+   "me": "she said max invited a few more"
   },
   {
    "media": "flow-dog-c",
