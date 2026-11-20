@@ -1,0 +1,9 @@
+{
+  "name": "how-owls-turn-their-heads-short",
+  "private": true,
+  "description": "three.js scenes for the photoreal \"How Owls Turn Their Heads\" short",
+  "dependencies": {
+    "three": "0.160.0",
+    "@expo-google-fonts/nunito": "0.2.3"
+  }
+}

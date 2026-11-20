@@ -1,0 +1,49 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.03,0:00:01.34,Short,,0,0,0,,An owl can turn its head
+Dialogue: 0,0:00:01.34,0:00:02.14,Short,,0,0,0,,almost all
+Dialogue: 0,0:00:02.14,0:00:03.12,Short,,0,0,0,,the way around
+Dialogue: 0,0:00:03.38,0:00:04.06,Short,,0,0,0,,It has to
+Dialogue: 0,0:00:04.06,0:00:05.04,Short,,0,0,0,,because its eyes
+Dialogue: 0,0:00:05.04,0:00:06.78,Short,,0,0,0,,aren't balls like ours
+Dialogue: 0,0:00:07.20,0:00:08.20,Short,,0,0,0,,They're long tubes
+Dialogue: 0,0:00:08.20,0:00:09.10,Short,,0,0,0,,locked in place
+Dialogue: 0,0:00:09.10,0:00:09.70,Short,,0,0,0,,so the head
+Dialogue: 0,0:00:09.70,0:00:10.88,Short,,0,0,0,,does the looking
+Dialogue: 0,0:00:10.88,0:00:11.38,Short,,0,0,0,,That twist
+Dialogue: 0,0:00:11.38,0:00:11.92,Short,,0,0,0,,would tear
+Dialogue: 0,0:00:11.92,0:00:12.72,Short,,0,0,0,,the blood vessels
+Dialogue: 0,0:00:12.72,0:00:13.86,Short,,0,0,0,,in your neck
+Dialogue: 0,0:00:13.86,0:00:14.76,Short,,0,0,0,,But an owl has
+Dialogue: 0,0:00:14.76,0:00:16.10,Short,,0,0,0,,fourteen neck bones
+Dialogue: 0,0:00:16.10,0:00:17.71,Short,,0,0,0,,twice as many as you
+Dialogue: 0,0:00:17.71,0:00:18.28,Short,,0,0,0,,Its arteries
+Dialogue: 0,0:00:18.28,0:00:19.34,Short,,0,0,0,,run through holes
+Dialogue: 0,0:00:19.34,0:00:20.54,Short,,0,0,0,,ten times wider
+Dialogue: 0,0:00:20.54,0:00:21.41,Short,,0,0,0,,than they are
+Dialogue: 0,0:00:21.41,0:00:22.32,Short,,0,0,0,,cushioned with air
+Dialogue: 0,0:00:22.32,0:00:23.04,Short,,0,0,0,,so they never
+Dialogue: 0,0:00:23.04,0:00:24.21,Short,,0,0,0,,get pinched
+Dialogue: 0,0:00:24.21,0:00:24.98,Short,,0,0,0,,And under the jaw
+Dialogue: 0,0:00:24.98,0:00:25.68,Short,,0,0,0,,they swell
+Dialogue: 0,0:00:25.68,0:00:26.58,Short,,0,0,0,,into little pools
+Dialogue: 0,0:00:26.58,0:00:27.14,Short,,0,0,0,,of blood
+Dialogue: 0,0:00:27.14,0:00:28.46,Short,,0,0,0,,that keep the brain fed
+Dialogue: 0,0:00:28.46,0:00:29.72,Short,,0,0,0,,while the head turns
+Dialogue: 0,0:00:30.01,0:00:31.10,Short,,0,0,0,,So if one ever stares
+Dialogue: 0,0:00:31.10,0:00:32.22,Short,,0,0,0,,straight behind it
+Dialogue: 0,0:00:32.22,0:00:33.09,Short,,0,0,0,,don't panic
+Dialogue: 0,0:00:33.09,0:00:33.33,Short,,0,0,0,,because
+Dialogue: 1,0:00:25.00,0:00:29.80,Prompt,,0,0,0,,{\fad(300,250)}Send this to someone\Nwith a stiff neck
