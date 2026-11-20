@@ -1,0 +1,9 @@
+{
+  "name": "how-geckos-walk-on-ceilings-short",
+  "private": true,
+  "description": "three.js scenes for the photoreal \"How Geckos Walk on Ceilings\" short",
+  "dependencies": {
+    "three": "0.160.0",
+    "@expo-google-fonts/nunito": "0.2.3"
+  }
+}

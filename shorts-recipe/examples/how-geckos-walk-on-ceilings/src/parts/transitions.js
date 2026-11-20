@@ -1,0 +1,1 @@
+const TR = { 2: [C.theyre - 0.08, C.theyre + 0.14, 4], 3: [C.covered - 0.12, C.covered + 0.18, 3], 4: [C.each - 0.1, C.each + 0.15, 2], 5: [C.theyre2 - 0.12, C.theyre2 + 0.18, 3], 6: [C.for - 0.1, C.for + 0.15, 2], 7: [C.a2 - 0.08, C.a2 + 0.14, 4], 8: [C.to2 - 0.1, C.to2 + 0.15, 2], 9: [C.up - 0.08, C.up + 0.14, 4], 10: [C.so2 - 0.08, C.so2 + 0.14, 4] };

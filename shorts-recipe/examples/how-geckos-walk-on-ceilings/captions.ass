@@ -1,0 +1,47 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.03,0:00:01.00,Short,,0,0,0,,A gecko could hang
+Dialogue: 0,0:00:01.00,0:00:01.74,Short,,0,0,0,,from your ceiling
+Dialogue: 0,0:00:01.74,0:00:02.46,Short,,0,0,0,,all day
+Dialogue: 0,0:00:02.46,0:00:04.01,Short,,0,0,0,,with no glue at all
+Dialogue: 0,0:00:04.01,0:00:05.62,Short,,0,0,0,,Look closer at its toes
+Dialogue: 0,0:00:06.15,0:00:06.58,Short,,0,0,0,,They're lined
+Dialogue: 0,0:00:06.58,0:00:07.50,Short,,0,0,0,,with ridges
+Dialogue: 0,0:00:07.50,0:00:08.36,Short,,0,0,0,,covered in about
+Dialogue: 0,0:00:08.36,0:00:10.08,Short,,0,0,0,,two million tiny hairs
+Dialogue: 0,0:00:10.40,0:00:11.54,Short,,0,0,0,,Each hair splits into
+Dialogue: 0,0:00:11.54,0:00:12.12,Short,,0,0,0,,hundreds of
+Dialogue: 0,0:00:12.12,0:00:13.44,Short,,0,0,0,,even tinier tips
+Dialogue: 0,0:00:13.70,0:00:14.60,Short,,0,0,0,,They're so small
+Dialogue: 0,0:00:14.60,0:00:15.58,Short,,0,0,0,,they get close enough
+Dialogue: 0,0:00:15.58,0:00:16.40,Short,,0,0,0,,for the molecules
+Dialogue: 0,0:00:16.40,0:00:17.00,Short,,0,0,0,,themselves
+Dialogue: 0,0:00:17.00,0:00:18.16,Short,,0,0,0,,to pull together
+Dialogue: 0,0:00:18.43,0:00:19.22,Short,,0,0,0,,A patch of hairs
+Dialogue: 0,0:00:19.22,0:00:20.52,Short,,0,0,0,,the size of a coin
+Dialogue: 0,0:00:20.52,0:00:21.04,Short,,0,0,0,,could lift
+Dialogue: 0,0:00:21.04,0:00:22.26,Short,,0,0,0,,a small child
+Dialogue: 0,0:00:22.62,0:00:23.62,Short,,0,0,0,,To let go
+Dialogue: 0,0:00:23.62,0:00:24.58,Short,,0,0,0,,a gecko simply
+Dialogue: 0,0:00:24.58,0:00:25.98,Short,,0,0,0,,peels its toes back
+Dialogue: 0,0:00:25.98,0:00:26.71,Short,,0,0,0,,like tape
+Dialogue: 0,0:00:26.71,0:00:27.68,Short,,0,0,0,,up to fifteen
+Dialogue: 0,0:00:27.68,0:00:29.09,Short,,0,0,0,,times a second
+Dialogue: 0,0:00:29.09,0:00:30.10,Short,,0,0,0,,So if one ever lands
+Dialogue: 0,0:00:30.10,0:00:30.90,Short,,0,0,0,,on your ceiling
+Dialogue: 0,0:00:30.90,0:00:31.52,Short,,0,0,0,,don't wait
+Dialogue: 0,0:00:31.52,0:00:32.32,Short,,0,0,0,,for it to fall
+Dialogue: 0,0:00:32.32,0:00:32.77,Short,,0,0,0,,because
+Dialogue: 1,0:00:24.60,0:00:28.90,Prompt,,0,0,0,,{\fad(300,250)}Send this to someone\Nwho's scared of lizards
