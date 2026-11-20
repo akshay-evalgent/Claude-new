@@ -1,7 +1,8 @@
 /* Texting-app engine: a phone screen recording of a text conversation. The sender types each
    message live on the keyboard (key pop-ups, caret), the other person shows a typing
    indicator, videos are picked from a photo sheet and play inline. A hook can open the video:
-   the "footage" full screen with a caption.
+   the "footage" full screen with a caption, and a "tool" segment can follow it: the AI video
+   app where the prompt is typed and the clip is generated.
    boot(episode) returns {duration, cues}; renderAt(T) draws time T. */
 (() => {
   const W = 1080, H = 1920, FPS = 30;
@@ -16,7 +17,8 @@
   const rich = (s) => Array.from(seg.segment(String(s)), (x) => x.segment).map((g) => (isEmoji(g) ? `<img class="e" src="../assets/emoji/${ekey(g)}.png">` : esc(g))).join('');
   const hash = (s, i) => { let h = 2166136261; for (const c of s + i) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return ((h >>> 0) % 1000) / 1000; };
 
-  let EP, MSGS = [], EV = [], duration = 0, HEIGHTS = [], KEYS = {}, hookEnd = 0, lastCount = -1, lastPicker = '';
+  let EP, MSGS = [], EV = [], duration = 0, HEIGHTS = [], KEYS = {}, hookEnd = 0, chatStart = 0, lastCount = -1, lastPicker = '';
+  let TOOL = null;   // {t0, keys: [{t, n}], go, gen0, gen1, end}
   const meta = (k) => (EP.__mediaMeta && EP.__mediaMeta[k]) || null;
   const frameSrc = (k, i) => { const m = meta(k); return `../assets/media/${k}/f${String((i % m.count) + 1).padStart(4, '0')}.${m.ext}`; };
 
@@ -48,6 +50,7 @@
     $('cAv').innerHTML = a.media ? `<img src="../assets/media/${a.media}.jpg">` : `<img src="../assets/emoji/${ekey(a.emoji || '🙂')}.png">`;
     $('cName').innerHTML = rich(c.name || 'Dad');
     $('unread').textContent = ep.unread || '';
+    $('tKb').innerHTML = keyboardHTML();
     $('kb').innerHTML = keyboardHTML() + `<div id="kbBottom"><span class="g"><svg viewBox="0 0 62 62"><circle cx="31" cy="31" r="26" fill="none" stroke="#3a3a3c" stroke-width="4"/><ellipse cx="31" cy="31" rx="11" ry="26" fill="none" stroke="#3a3a3c" stroke-width="4"/><path d="M6 31h50M10 18h42M10 44h42" stroke="#3a3a3c" stroke-width="4"/></svg></span><span class="mc"><svg viewBox="0 0 30 48"><rect x="8" y="2" width="14" height="26" rx="7" fill="none" stroke="#3a3a3c" stroke-width="4"/><path d="M3 22a12 12 0 0 0 24 0M15 34v10" fill="none" stroke="#3a3a3c" stroke-width="4" stroke-linecap="round"/></svg></span></div>`;
     $('mic').innerHTML = '<svg viewBox="0 0 30 48"><rect x="8" y="2" width="14" height="26" rx="7" fill="none" stroke="#8e8e93" stroke-width="4"/><path d="M3 22a12 12 0 0 0 24 0M15 34v10" fill="none" stroke="#8e8e93" stroke-width="4" stroke-linecap="round"/></svg>';
     // where each key sits, for the pop-up balloon
@@ -64,12 +67,40 @@
     if (ep.hook) {
       hookEnd = ep.hook.dur ?? 3.5;
       ev({ type: 'hook', on: true, t: 0 });
-      cues.push({ t: 0, s: 'wind', g: -16, dur: hookEnd });
+      const hm = meta(ep.hook.media);
+      if (hm && hm.audio) cues.push({ t: 0, s: '@media:' + ep.hook.media, g: ep.hook.audioGain ?? -3, dur: hookEnd });
+      else cues.push({ t: 0, s: 'wind', g: -16, dur: hookEnd });
       t = hookEnd;
       ev({ type: 'hook', on: false });
       cues.push({ t, s: 'soft-swoosh', g: -14 });
+      t += ep.tool ? 0 : 0.35;
+    }
+    if (ep.tool) {
+      // the AI app: the prompt is typed fast, "generate" is tapped, the clip appears
+      const tl = ep.tool, chars = [...tl.prompt], tcps = tl.typeSpeed || 34;
+      TOOL = { t0: t, keys: [] };
+      ev({ type: 'tool', on: true });
+      let u = t + (tl.lead ?? 0.3);
+      chars.forEach((ch, k) => {
+        TOOL.keys.push({ t: u, n: k + 1, ch: ch.toLowerCase() });
+        if (ch !== ' ') cues.push({ t: u, s: ['key1', 'key2', 'key3'][k % 3], g: -30 + 3 * hash(tl.prompt, k), rate: 1.0 + 0.1 * hash(tl.prompt, k + 3) });
+        u += (1 / tcps) * (0.6 + 0.9 * hash(tl.prompt, k)) * (ch === ' ' ? 0.7 : 1);
+      });
+      TOOL.go = u + 0.25;
+      cues.push({ t: TOOL.go, s: 'soft-pop', g: -14, rate: 1.2 });
+      TOOL.gen0 = TOOL.go + 0.15;
+      TOOL.gen1 = TOOL.gen0 + (tl.generate ?? 1.4);
+      cues.push({ t: TOOL.gen0, s: '@riser', g: -26, dur: TOOL.gen1 - TOOL.gen0 });
+      cues.push({ t: TOOL.gen1, s: 'ding', g: -18 });
+      const tm = meta(tl.media);
+      if (tm && tm.audio) cues.push({ t: TOOL.gen1, s: '@media:' + tl.media, g: tl.audioGain ?? -5, dur: tl.show ?? 1.4 });
+      TOOL.end = TOOL.gen1 + (tl.show ?? 1.4);
+      t = TOOL.end;
+      ev({ type: 'tool', on: false });
+      cues.push({ t, s: 'soft-swoosh', g: -14 });
       t += 0.35;
     }
+    chatStart = t;
     const cps = ep.typeSpeed || 13;
     let lastFrom = null;
     for (const b of ep.beats) {
@@ -105,7 +136,9 @@
         MSGS.push({ from: 'me', media: b.media });
         ev({ type: 'add', n: MSGS.length });
         cues.push({ t, s: 'send', g: -12 });
-        if (b.sound !== false) cues.push({ t: t + 0.2, s: 'wind', g: -22, dur: b.hold ?? 3.4 });
+        const mm = meta(b.media);
+        if (b.sound !== false && mm && mm.audio) cues.push({ t, s: '@media:' + b.media, g: b.audioGain ?? -6, dur: b.hold ?? 3.4 });
+        else if (b.sound !== false) cues.push({ t: t + 0.2, s: 'wind', g: -22, dur: b.hold ?? 3.4 });
         t += b.hold ?? 3.4;
       } else {
         // the other person types (dots), then the message lands
@@ -157,8 +190,54 @@
       else if (e.type === 'key') { s.key = e.ch; s.keyT = e.t; }
       else if (e.type === 'picker') { s.picker = e.open ? e : null; if (e.open && !e.sel) s.pickerOpenT = e.t; }
       else if (e.type === 'hook') s.hook = e.on;
+      else if (e.type === 'tool') s.tool = e.on;
     }
     return s;
+  }
+
+  // the AI video app at time T
+  function renderTool(T, f) {
+    const tl = EP.tool, tk = TOOL;
+    const [hh, mm] = (tl.clock || EP.toolClock || EP.clock || '11:24').split(':').map(Number);
+    $('tClock').textContent = `${hh}:${String(mm).padStart(2, '0')}`;
+    let n = 0, key = null, keyT = -9;
+    for (const k of tk.keys) { if (k.t > T) break; n = k.n; key = k.ch; keyT = k.t; }
+    const typed = [...tl.prompt].slice(0, n).join('');
+    show('tPh', !typed, 'inline'); $('tTyped').textContent = typed;
+    const gone = clamp((T - tk.go) / 0.3, 0, 1), ge = EASE.out(gone);
+    $('tCaret').style.display = T < tk.go ? 'inline-block' : 'none';
+    $('tCaret').style.opacity = Math.floor(T * 2.2) % 2 === 0 || T - keyT < 0.5 ? 1 : 0;
+    // keyboard drops away once "generate" is tapped
+    $('tKb').style.transform = `translateY(${(ge * 800).toFixed(1)}px)`;
+    document.querySelectorAll('#tKb .k.down').forEach((k) => k.classList.remove('down'));
+    const kd = KEYS[key], pressed = kd && T - keyT < 0.07 && T < tk.go;
+    show('tPop', pressed && key !== ' ');
+    if (pressed) {
+      const el = document.querySelector(`#tKb .k[data-k="${CSS.escape(key)}"]`); if (el) el.classList.add('down');
+      if (key !== ' ') { $('tPop').textContent = key; $('tPop').style.left = `${kd.x + kd.w / 2 - 75}px`; $('tPop').style.top = `${kd.y + kd.h - 240}px`; }
+    }
+    const tap = T >= tk.go && T < tk.go + 0.14;
+    $('tGo').style.transform = `scale(${tap ? 0.86 : 1})`;
+    // the prompt box sits on the keyboard, then slides to the bottom; the card grows into the space
+    const boxTop = lerp(H - 780 - 30 - 170, H - 60 - 170, ge);
+    $('tBox').style.top = `${boxTop.toFixed(1)}px`;
+    const top = 270, bottom = boxTop - 30, ch = bottom - top, cw = ch * 9 / 16;
+    Object.assign($('tCard').style, { top: `${top}px`, height: `${ch.toFixed(1)}px`, width: `${cw.toFixed(1)}px`, left: `${((W - cw) / 2).toFixed(1)}px` });
+    // generating: shimmer and a percentage, then the clip plays
+    const generating = T >= tk.gen0 && T < tk.gen1, done = T >= tk.gen1;
+    show('tShim', !done); show('tGen', generating); show('tBadge', done); show('tImg', done);
+    $('tShim').style.backgroundPosition = `${((T * 90) % 300).toFixed(1)}% 0`;
+    $('tShim').style.opacity = T < tk.go ? 0.35 : 1;
+    if (generating) {
+      const p = clamp((T - tk.gen0) / (tk.gen1 - tk.gen0), 0, 1), pct = Math.min(99, Math.floor(100 * (1 - Math.pow(1 - p, 1.6))));
+      $('tPct').textContent = `Generating… ${pct}%`;
+      $('tBar').firstElementChild.style.width = `${pct}%`;
+    }
+    if (done) {
+      const src = frameSrc(tl.media, Math.floor((T - tk.gen1) * FPS)), img = $('tImg');
+      if (img.dataset.src !== src) { img.src = src; img.dataset.src = src; }
+    }
+    $('tFlash').style.opacity = done ? (0.8 * clamp(1 - (T - tk.gen1) / 0.25, 0, 1)).toFixed(3) : 0;
   }
 
   const show = (id, on, mode) => { $(id).style.display = on ? mode || 'block' : 'none'; };
@@ -173,8 +252,10 @@
       $('hookCap').innerHTML = rich(EP.hook.caption || '');
     }
     // clock: a minute passes every ~40 seconds of video
-    const [hh, mm] = (EP.clock || '11:24').split(':').map(Number), add = Math.floor(Math.max(0, T - hookEnd) / (EP.minuteEvery || 40));
+    const [hh, mm] = (EP.clock || '11:24').split(':').map(Number), add = Math.floor(Math.max(0, T - chatStart) / (EP.minuteEvery || 40));
     $('clock').textContent = `${hh}:${String(mm + add).padStart(2, '0')}`;
+    show('tool', !!s.tool);
+    if (s.tool) renderTool(T, f);
 
     // thread
     const key = `${s.n}|${s.dots}`;
@@ -218,7 +299,7 @@
     if (pickerOpen) {
       const pk = s.picker, pkKey = pk.media + pk.sel;
       if (pkKey !== lastPicker) {
-        const sent = MSGS.filter((m) => m.media).map((m) => m.media);
+        const sent = MSGS.slice(0, s.n).filter((m) => m.media).map((m) => m.media);   // only clips already sent
         const tiles = [pk.media, ...sent.filter((x) => x !== pk.media).reverse()].slice(0, 3);
         const fill = EP.cameraRoll || ['🍕', '🐶', '🎂', '🌅', '🏀', '🍩', '🎄', '🚗', '🐱'];
         $('pkGrid').innerHTML = tiles.map((k, i) => `<div class="${i === 0 && pk.sel ? 'sel' : ''}"><img src="${frameSrc(k, 30)}"></div>`).join('') +
@@ -229,7 +310,8 @@
       $('picker').style.transform = `translateY(${((1 - p) * 1080).toFixed(1)}px)`;
     } else lastPicker = '';
 
-    const fl = s.hook ? 0 : clamp(1 - (T - hookEnd) / 0.15, 0, 1) * (EP.hook ? 1 : 0);
+    const fl = s.hook ? 0 : Math.max(clamp(1 - (T - hookEnd) / 0.15, 0, 1) * (EP.hook ? 1 : 0),
+      TOOL ? clamp(1 - Math.abs(T - TOOL.end) / 0.12, 0, 1) * (T >= TOOL.end ? 1 : 0) : 0);
     $('flash').style.opacity = (0.5 * fl).toFixed(3);
     const imgs = Array.from(document.images).filter((im) => !im.complete).map((im) => im.decode().catch(() => {}));
     if (imgs.length) await Promise.all(imgs);

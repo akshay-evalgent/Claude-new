@@ -43,6 +43,26 @@ node chatvid/render.mjs chatvid/episodes/prank-snow.json
 
 A 90 s Short renders in about 2.5 minutes; each 4 s clip takes about 50 s.
 
+### With real AI clips (Google Flow)
+The episode now uses three Flow clips instead of the 3D renders. Put the videos in `chatvid/assets/media/` and list them as `file` media; `fetch_media.py` turns them into frames plus their own sound:
+
+```json
+"flow-snow-b": {"file": "flow-snow-b.mp4", "credit": "AI video generated with Google Flow for this channel", "level": -28}
+```
+
+The `tool` block plays the original's beat 2, between the hook and the texts: the prompt is typed into an AI video app, "Generating… %" runs, and the clip appears.
+
+```json
+"tool": {"prompt": "snow guy in hi-vis vest shoveling my dad's driveway, filmed from upstairs window", "media": "flow-snow-a", "typeSpeed": 46, "generate": 1.1, "show": 1.3}
+```
+
+The app screen is our own unbranded mock-up. Playing a real screen recording of Flow in its place is not built yet.
+
+**Flow tips:**
+- Make clip A first, then make B and C with Frames to Video from a frame of A, so the house and angle match.
+- Ask for "no music, no speech"; the clips' wind and shovel sounds play in the bubbles.
+- Quiet clips can be lowered per drop with `"audioGain"` on the media beat.
+
 ### Writing checklist
 - **Hook caption:** `texted my <relative> that <absurd thing> 😭`, with the key words in quotes.
 - **Old history:** 3-4 old messages that set up their relationship (the trash is "resting").

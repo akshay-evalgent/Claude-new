@@ -10,7 +10,10 @@ An episode lists its media under "media":
 
 - commons: Wikimedia Commons file; licence and author are read from its file page.
 - nasa:    NASA Image and Video Library id (public domain, credit NASA/centre).
-- file:    something you supply yourself, already in chatvid/assets/media/.
+- file:    something you supply yourself, already in chatvid/assets/media/. An image becomes
+           <key>.jpg; a video (.mp4/.mov/.webm) becomes a frame sequence with its own sound:
+           {"file": "flow-b.mp4", "credit": "...", "start": 0, "dur": 5, "level": -24}
+           ("level" lifts quiet ambience to that loudness in LUFS before the mixer sees it).
 - archive: an Internet Archive film (public domain only), cut to a clip:
            {"archive": "DuckandC1951", "start": 30, "dur": 2.6}
            Items without a public-domain licence need "pd": "<why it is public domain>";
@@ -152,7 +155,19 @@ def nasa_video(nasa_id):
     return url, f"{meta.get('title', nasa_id)}: {who}, public domain", f"Video: {who}"
 
 
+VIDEO_EXT = (".mp4", ".mov", ".webm", ".m4v", ".mkv")
+
+
+def is_video_file(src):
+    return "file" in src and src["file"].lower().endswith(VIDEO_EXT)
+
+
 def clip_source(src):
+    if is_video_file(src):
+        path = os.path.join(MEDIA, src["file"])
+        if not os.path.exists(path):
+            raise SystemExit(f"put {src['file']} in {MEDIA} first")
+        return path, src.get("credit", ""), src.get("short", src.get("credit", ""))
     if "archive" in src:
         return archive_meta(src)
     return nasa_video(src["nasa_video"])
@@ -163,8 +178,12 @@ def clip_audio(src, out):
     url, _, _ = clip_source(src)
     dest = os.path.join(out, "audio.wav")
     # "clean": dialogue from old prints - cut the rumble and the hiss above the voice band
-    af = ["-af", "highpass=f=90,lowpass=f=7500,afftdn=nr=8:nf=-42"] if src.get("clean") else []
-    cmd = ["ffmpeg", "-v", "error", "-y", "-ss", str(src["start"]), "-i", url, "-t", str(src["dur"]),
+    filters = ["highpass=f=90,lowpass=f=7500,afftdn=nr=8:nf=-42"] if src.get("clean") else []
+    if src.get("level") is not None:                  # quiet ambience (wind, distant shovels): lift it
+        filters.append(f"loudnorm=I={src['level']}:TP=-2:LRA=11")
+    af = ["-af", ",".join(filters)] if filters else []
+    cut = (["-ss", str(src.get("start", 0))], ["-t", str(src["dur"])] if src.get("dur") else [])
+    cmd = ["ffmpeg", "-v", "error", "-y", *cut[0], "-i", url, *cut[1],
            "-vn", *af, "-ac", "2", "-ar", "48000", "-c:a", "pcm_s16le", dest]
     for attempt in range(4):
         if subprocess.run(cmd).returncode == 0:
@@ -187,7 +206,8 @@ def audio_level(out):
 
 
 def sequence(key, src, credits):
-    """Video clips (Internet Archive) and animated emoji (Google Noto) become frame sequences."""
+    """Video clips (Internet Archive, NASA, your own files) and animated emoji (Google Noto)
+    become frame sequences."""
     out = os.path.join(MEDIA, key)
     mp = os.path.join(out, "meta.json")
     if os.path.exists(mp) and json.load(open(mp)).get("src", src) != src:
@@ -199,7 +219,14 @@ def sequence(key, src, credits):
         else:
             print(f"  ok   {key} (cached)")
         return
-    if "archive" in src or "nasa_video" in src:
+    if is_video_file(src):                           # your own footage (e.g. AI clips you generated)
+        url, credit, short = clip_source(src)
+        cut = ["-ss", str(src.get("start", 0)), "-i", url] + (["-t", str(src["dur"])] if src.get("dur") else [])
+        n = frames(cut, out, 30, "scale='trunc(iw*sar/2)*2':ih,setsar=1,scale=-2:'min(1920,ih)':flags=lanczos", "jpg")
+        lic = "supplied"
+        if src.get("audio", True):
+            clip_audio(src, out)
+    elif "archive" in src or "nasa_video" in src:
         url, credit, short = clip_source(src)
         grade = ",eq=contrast=1.06" if "archive" in src else ""
         n = frames(["-ss", str(src["start"]), "-i", url, "-t", str(src["dur"])], out, 30,
@@ -247,7 +274,7 @@ def main(ep_path):
                                 "--dur", str(src.get("dur", 4))], check=True)
             credits = json.load(open(cpath)) if os.path.exists(cpath) else credits
             continue
-        if "archive" in src or "nasa_video" in src or "noto" in src:
+        if "archive" in src or "nasa_video" in src or "noto" in src or is_video_file(src):
             sequence(key, src, credits)
             json.dump(credits, open(cpath, "w"), indent=1, ensure_ascii=False)
             continue
