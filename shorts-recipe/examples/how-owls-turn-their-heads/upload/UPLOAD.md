@@ -56,7 +56,13 @@ how do owls turn their heads, owl head turn, owl 270 degrees, owl neck, owl fact
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | The owl seen from behind, its face turned all the way round to stare at you, caption "An owl can turn its head" | **Main pick.** The impossible pose is the hook |
+| `thumbnail-alt-eyes.jpg` | Face to face with the big orange eyes, caption "because its eyes" | Close-up angle |
+| `thumbnail-alt-neck-bones.jpg` | Your 7 neck bones beside the owl's 14, caption "twice as many as you" | Comparison angle |
+| `thumbnail-alt-xray.jpg` | X-ray of the head and neck: the arteries swell into pools under the jaw | Science angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
