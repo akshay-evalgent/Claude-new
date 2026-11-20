@@ -41,10 +41,10 @@ Be honest: would you let one live on your ceiling? 🦎
 A follow-up to reply with once comments start:
 
 ```
-Fun extra: the trick doesn't work on Teflon. That's about the only surface a gecko can't climb 🍳
+Fun extra: gecko feet clean themselves. Dirt rubs off the hairs as they walk, so they stay sticky without washing 🧼
 ```
 
-Sources, if someone asks: Autumn et al., Nature (2000) and PNAS (2002); UC Berkeley's 2000 news release.
+Sources, if someone asks: Autumn et al., Nature (2000) and PNAS (2002); UC Berkeley's 2000 news release. Self-cleaning: Hansen and Autumn, PNAS (2005).
 
 ## Tags (optional, Studio → Show more)
 
@@ -77,4 +77,3 @@ Set it in the YouTube app: after selecting the video, tap the pencil icon on the
 
 - Watch it a few times through on loop with sound. The mix and the loop seam were checked by measurement and transcription, not by ear.
 - Every sound effect is a real recording (CC0). The music is the only synthesized sound.
-- Check "Fun extra": geckos do struggle on Teflon (PTFE), but wording on social posts gets fact-checked hard. Drop it if you'd rather not defend it.
