@@ -65,7 +65,7 @@ shot(C.about, C.a3, (s) => {
     const p = V(lerp(0.32, 0.2, k), lerp(2.18, 2.22, k), lerp(1.25, 0.98, k)), tg = V(0, 2.25, 0);
     shoot(s.cam, p, tg, { fov: 34, t, hand: 0.4, focus: p.distanceTo(tg) });
     const mm = Math.round(m), hh = Math.floor(mm / 60);
-    lab.userData.set([[`+${hh} h ${String(mm % 60).padStart(2, '0')} min`, 130, 0.5, '#2e2924', 800]]); pin(s.cam, lab, 0, -0.1, 0.6);
+    lab.userData.set([[`+${hh} h ${String(mm % 60).padStart(2, '0')} min`, 130, 0.5, '#2e2924', 800]]); pin(s.cam, lab, 0, 0.112, 0.6);
   };
 });
 
@@ -203,7 +203,7 @@ shot(C.it3, C.and5, (s) => {
 // 12) And hunger hormones can set the wave off early: glowing hormone particles stream to the stomach; a squeeze starts
 shot(C.and5, C.so2, (s) => {
   const sc = s.scene; anatomyStudio(sc); const G = makeGut(sc); s.ap = 1.6; s.exposure = 0.95; s.bloom = 0.3;
-  const lab = liveLabel(0.24, 0.25); sc.add(lab); lab.userData.set([['HUNGER HORMONES', 96, 0.5, '#d9ffb0', 900]]);
+  const lab = liveLabel(0.24, 0.25); sc.add(lab); lab.userData.set([['HUNGER HORMONES', 80, 0.5, '#d9ffb0', 900, 3]]);
   const N = 46, R = rng(12), parts = [];
   const pm = new THREE.MeshBasicMaterial({ color: 0xc8ff7a, toneMapped: false }), hm = new THREE.MeshBasicMaterial({ color: 0x9aff5a, transparent: true, opacity: 0.25, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false });
   for (let i = 0; i < N; i++) { const g = new THREE.Group(); const c = new THREE.Mesh(new THREE.IcosahedronGeometry(0.0045, 1), pm), h = new THREE.Mesh(new THREE.SphereGeometry(0.016, 12, 8), hm); h.userData.noDof = true; c.userData.noDof = true; g.add(c, h); sc.add(g); parts.push({ g, off: R(), lane: V((R() - 0.5) * 0.05, (R() - 0.5) * 0.05, (R() - 0.5) * 0.05), sp: 0.5 + R() * 0.3 }); }
@@ -214,7 +214,7 @@ shot(C.and5, C.so2, (s) => {
     parts.forEach((q) => { const f = ((t - C.and5) * q.sp * 0.55 + q.off) % 1.0; const P = stream.getPointAt(f).add(q.lane.clone().multiplyScalar(1 - f)); q.g.position.copy(P); q.g.scale.setScalar(Math.max(1e-4, smooth(0, 0.08, f) * (1 - smooth(0.85, 1, f)))); });
     const tg = V(-0.05, -0.08, 0), p = tg.clone().add(V(lerp(0.08, 0.14, k), 0.06, lerp(0.85, 0.75, k)));
     shoot(s.cam, p, tg, { fov: 36, t, hand: 0.5, focus: p.distanceTo(V(-0.07, 0.0, 0.05)) });
-    pin(s.cam, lab, 0, 0.19, 0.75); lab.scale.setScalar(Math.max(1e-4, spring(t, C.hunger - 0.05, 2, 6)));
+    pin(s.cam, lab, 0, 0.2065, 0.75); lab.scale.setScalar(Math.max(1e-4, spring(t, C.hunger - 0.05, 2, 6)));
   };
 });
 
