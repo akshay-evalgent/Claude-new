@@ -1,0 +1,52 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.02,0:00:00.48,Short,,0,0,0,,That pigeon
+Dialogue: 0,0:00:00.48,0:00:01.83,Short,,0,0,0,,isn't bobbing its head
+Dialogue: 0,0:00:01.83,0:00:02.32,Short,,0,0,0,,Watch
+Dialogue: 0,0:00:02.69,0:00:03.41,Short,,0,0,0,,With every step
+Dialogue: 0,0:00:03.41,0:00:04.60,Short,,0,0,0,,its head locks in place
+Dialogue: 0,0:00:04.60,0:00:05.70,Short,,0,0,0,,frozen in the air
+Dialogue: 0,0:00:05.70,0:00:06.30,Short,,0,0,0,,while its body
+Dialogue: 0,0:00:06.30,0:00:06.92,Short,,0,0,0,,walks forward
+Dialogue: 0,0:00:06.92,0:00:07.58,Short,,0,0,0,,underneath
+Dialogue: 0,0:00:07.85,0:00:08.20,Short,,0,0,0,,Then the head
+Dialogue: 0,0:00:08.20,0:00:08.86,Short,,0,0,0,,snaps ahead
+Dialogue: 0,0:00:08.86,0:00:09.42,Short,,0,0,0,,to catch up
+Dialogue: 0,0:00:09.42,0:00:10.40,Short,,0,0,0,,and locks again
+Dialogue: 0,0:00:10.65,0:00:11.55,Short,,0,0,0,,Hold, snap
+Dialogue: 0,0:00:11.55,0:00:12.55,Short,,0,0,0,,Hold, snap
+Dialogue: 0,0:00:12.55,0:00:13.21,Short,,0,0,0,,Why?
+Dialogue: 0,0:00:13.21,0:00:14.14,Short,,0,0,0,,A pigeon can barely
+Dialogue: 0,0:00:14.14,0:00:14.92,Short,,0,0,0,,move its eyes
+Dialogue: 0,0:00:14.92,0:00:15.74,Short,,0,0,0,,so it steadies
+Dialogue: 0,0:00:15.74,0:00:16.84,Short,,0,0,0,,its whole head instead
+Dialogue: 0,0:00:16.84,0:00:17.52,Short,,0,0,0,,like a camera
+Dialogue: 0,0:00:17.52,0:00:18.52,Short,,0,0,0,,on a tripod
+Dialogue: 0,0:00:18.90,0:00:19.94,Short,,0,0,0,,Every hold gives it
+Dialogue: 0,0:00:19.94,0:00:21.32,Short,,0,0,0,,a sharp, still picture
+Dialogue: 0,0:00:21.32,0:00:22.38,Short,,0,0,0,,to spot seeds
+Dialogue: 0,0:00:22.38,0:00:23.46,Short,,0,0,0,,and hawks
+Dialogue: 0,0:00:23.76,0:00:24.98,Short,,0,0,0,,Scientists showed it
+Dialogue: 0,0:00:24.98,0:00:25.66,Short,,0,0,0,,with a treadmill
+Dialogue: 0,0:00:25.66,0:00:26.60,Short,,0,0,0,,When the world
+Dialogue: 0,0:00:26.60,0:00:27.16,Short,,0,0,0,,around the
+Dialogue: 0,0:00:27.16,0:00:27.88,Short,,0,0,0,,walking pigeon
+Dialogue: 0,0:00:27.88,0:00:28.76,Short,,0,0,0,,stopped moving
+Dialogue: 0,0:00:28.76,0:00:30.22,Short,,0,0,0,,so did the bobbing
+Dialogue: 0,0:00:30.22,0:00:30.88,Short,,0,0,0,,So next time
+Dialogue: 0,0:00:30.88,0:00:32.14,Short,,0,0,0,,one struts past you
+Dialogue: 0,0:00:32.14,0:00:32.80,Short,,0,0,0,,look closely
+Dialogue: 0,0:00:32.80,0:00:33.50,Short,,0,0,0,,because
+Dialogue: 1,0:00:25.66,0:00:29.95,Prompt,,0,0,0,,{\fad(300,250)}Send this to someone\Nwho walks like a pigeon
