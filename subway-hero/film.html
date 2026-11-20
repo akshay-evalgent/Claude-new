@@ -363,7 +363,7 @@ function setPlate(name, t) {
   const P = PLATES[name], f = Math.max(1, Math.min(P.n, Math.round((t - P.a) * FPS) + 1));
   const src = `out/plates/${name}/f${String(f).padStart(4, '0')}.png`;
   if (src === plateKey) return Promise.resolve();
-  plateKey = src; el.plate.src = src;
+  plateKey = src; el.plate.src = src; el.plate.style.filter = name === 'B3' ? 'brightness(1.45) contrast(1.06)' : 'none';
   return el.plate.decode().catch(() => {});
 }
 
