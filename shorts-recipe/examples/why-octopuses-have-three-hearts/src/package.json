@@ -1,0 +1,9 @@
+{
+  "name": "why-octopuses-have-three-hearts-short",
+  "private": true,
+  "description": "three.js scenes for the photoreal \"Why Octopuses Have Three Hearts\" short",
+  "dependencies": {
+    "three": "0.160.0",
+    "@expo-google-fonts/nunito": "0.2.3"
+  }
+}

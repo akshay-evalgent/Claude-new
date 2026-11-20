@@ -1,0 +1,45 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.03,0:00:00.70,Short,,0,0,0,,An octopus
+Dialogue: 0,0:00:00.70,0:00:01.68,Short,,0,0,0,,has three hearts
+Dialogue: 0,0:00:01.68,0:00:03.06,Short,,0,0,0,,and blue blood
+Dialogue: 0,0:00:03.06,0:00:03.76,Short,,0,0,0,,Two of the hearts
+Dialogue: 0,0:00:03.76,0:00:05.12,Short,,0,0,0,,sit by the gills
+Dialogue: 0,0:00:05.12,0:00:05.78,Short,,0,0,0,,pumping blood
+Dialogue: 0,0:00:05.78,0:00:06.32,Short,,0,0,0,,through them
+Dialogue: 0,0:00:06.32,0:00:07.50,Short,,0,0,0,,to pick up oxygen
+Dialogue: 0,0:00:08.04,0:00:08.72,Short,,0,0,0,,The third
+Dialogue: 0,0:00:08.72,0:00:09.30,Short,,0,0,0,,the biggest
+Dialogue: 0,0:00:09.30,0:00:10.93,Short,,0,0,0,,sends it around the body
+Dialogue: 0,0:00:10.93,0:00:12.18,Short,,0,0,0,,And that blood is blue
+Dialogue: 0,0:00:12.18,0:00:13.02,Short,,0,0,0,,because it carries
+Dialogue: 0,0:00:13.02,0:00:14.23,Short,,0,0,0,,oxygen on copper
+Dialogue: 0,0:00:14.23,0:00:16.12,Short,,0,0,0,,not iron like ours
+Dialogue: 0,0:00:16.50,0:00:17.80,Short,,0,0,0,,But here's the catch
+Dialogue: 0,0:00:17.80,0:00:18.38,Short,,0,0,0,,every time
+Dialogue: 0,0:00:18.38,0:00:19.56,Short,,0,0,0,,an octopus jets
+Dialogue: 0,0:00:19.56,0:00:20.36,Short,,0,0,0,,through the water
+Dialogue: 0,0:00:20.36,0:00:22.06,Short,,0,0,0,,that main heart pauses
+Dialogue: 0,0:00:22.43,0:00:22.84,Short,,0,0,0,,That's why
+Dialogue: 0,0:00:22.84,0:00:23.80,Short,,0,0,0,,they'd rather crawl
+Dialogue: 0,0:00:23.80,0:00:24.91,Short,,0,0,0,,than swim
+Dialogue: 0,0:00:24.91,0:00:25.34,Short,,0,0,0,,Swimming
+Dialogue: 0,0:00:25.34,0:00:26.42,Short,,0,0,0,,wears them out fast
+Dialogue: 0,0:00:26.42,0:00:27.58,Short,,0,0,0,,So next time
+Dialogue: 0,0:00:27.58,0:00:28.26,Short,,0,0,0,,you see one
+Dialogue: 0,0:00:28.26,0:00:29.25,Short,,0,0,0,,zooming away
+Dialogue: 0,0:00:29.25,0:00:30.16,Short,,0,0,0,,cut it some slack
+Dialogue: 0,0:00:30.16,0:00:30.53,Short,,0,0,0,,because
+Dialogue: 1,0:00:22.43,0:00:26.20,Prompt,,0,0,0,,{\fad(300,250)}Send this to someone\Nwho hates swimming
