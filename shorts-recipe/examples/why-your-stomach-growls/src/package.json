@@ -1,0 +1,9 @@
+{
+  "name": "why-your-stomach-growls-short",
+  "private": true,
+  "description": "three.js scenes for the photoreal \"Why Your Stomach Growls\" short",
+  "dependencies": {
+    "three": "0.160.0",
+    "@expo-google-fonts/nunito": "0.2.3"
+  }
+}

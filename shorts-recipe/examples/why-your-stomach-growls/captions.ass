@@ -1,0 +1,54 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.02,0:00:00.70,Short,,0,0,0,,That growl
+Dialogue: 0,0:00:00.70,0:00:01.62,Short,,0,0,0,,isn't your stomach
+Dialogue: 0,0:00:01.62,0:00:03.06,Short,,0,0,0,,begging for food
+Dialogue: 0,0:00:03.06,0:00:03.72,Short,,0,0,0,,It's your gut
+Dialogue: 0,0:00:03.72,0:00:04.70,Short,,0,0,0,,cleaning house
+Dialogue: 0,0:00:05.08,0:00:05.87,Short,,0,0,0,,When your stomach's
+Dialogue: 0,0:00:05.87,0:00:07.32,Short,,0,0,0,,been empty for a while
+Dialogue: 0,0:00:07.32,0:00:07.84,Short,,0,0,0,,about every
+Dialogue: 0,0:00:07.84,0:00:08.86,Short,,0,0,0,,hour and a half
+Dialogue: 0,0:00:08.86,0:00:09.78,Short,,0,0,0,,a powerful wave
+Dialogue: 0,0:00:09.78,0:00:10.34,Short,,0,0,0,,of muscle
+Dialogue: 0,0:00:10.34,0:00:11.46,Short,,0,0,0,,squeezes through it
+Dialogue: 0,0:00:11.46,0:00:11.98,Short,,0,0,0,,and down
+Dialogue: 0,0:00:11.98,0:00:13.22,Short,,0,0,0,,your intestines
+Dialogue: 0,0:00:13.22,0:00:13.80,Short,,0,0,0,,sweeping out
+Dialogue: 0,0:00:13.80,0:00:15.06,Short,,0,0,0,,leftover scraps
+Dialogue: 0,0:00:15.61,0:00:16.82,Short,,0,0,0,,With no food inside
+Dialogue: 0,0:00:16.82,0:00:17.58,Short,,0,0,0,,that wave pushes
+Dialogue: 0,0:00:17.58,0:00:18.92,Short,,0,0,0,,only gas and liquid
+Dialogue: 0,0:00:18.92,0:00:19.54,Short,,0,0,0,,so the bubbles
+Dialogue: 0,0:00:19.54,0:00:20.24,Short,,0,0,0,,squeeze through
+Dialogue: 0,0:00:20.24,0:00:20.72,Short,,0,0,0,,the tubes
+Dialogue: 0,0:00:20.72,0:00:21.28,Short,,0,0,0,,and echo
+Dialogue: 0,0:00:21.28,0:00:21.96,Short,,0,0,0,,like water
+Dialogue: 0,0:00:21.96,0:00:22.88,Short,,0,0,0,,in old pipes
+Dialogue: 0,0:00:23.30,0:00:24.16,Short,,0,0,0,,Doctors call it
+Dialogue: 0,0:00:24.16,0:00:25.23,Short,,0,0,0,,borborygmi
+Dialogue: 0,0:00:25.23,0:00:25.60,Short,,0,0,0,,It happens
+Dialogue: 0,0:00:25.60,0:00:26.56,Short,,0,0,0,,after meals too
+Dialogue: 0,0:00:26.56,0:00:27.12,Short,,0,0,0,,but food
+Dialogue: 0,0:00:27.12,0:00:28.50,Short,,0,0,0,,muffles the sound
+Dialogue: 0,0:00:28.50,0:00:29.34,Short,,0,0,0,,And hunger hormones
+Dialogue: 0,0:00:29.34,0:00:30.20,Short,,0,0,0,,can set the wave
+Dialogue: 0,0:00:30.20,0:00:31.18,Short,,0,0,0,,off early
+Dialogue: 0,0:00:31.18,0:00:31.80,Short,,0,0,0,,So next time
+Dialogue: 0,0:00:31.80,0:00:32.42,Short,,0,0,0,,it roars
+Dialogue: 0,0:00:32.42,0:00:33.34,Short,,0,0,0,,in a silent room
+Dialogue: 0,0:00:33.34,0:00:33.92,Short,,0,0,0,,relax
+Dialogue: 0,0:00:33.92,0:00:34.30,Short,,0,0,0,,because
+Dialogue: 1,0:00:25.80,0:00:30.95,Prompt,,0,0,0,,{\fad(300,250)}Send this to someone\Nwhose stomach growls in exams
