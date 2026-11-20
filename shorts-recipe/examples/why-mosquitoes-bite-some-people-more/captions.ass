@@ -1,0 +1,48 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.03,0:00:01.16,Short,,0,0,0,,Some people really are
+Dialogue: 0,0:00:01.16,0:00:02.62,Short,,0,0,0,,mosquito magnets
+Dialogue: 0,0:00:02.62,0:00:03.98,Short,,0,0,0,,Only females bite
+Dialogue: 0,0:00:04.23,0:00:04.82,Short,,0,0,0,,They need blood
+Dialogue: 0,0:00:04.82,0:00:05.78,Short,,0,0,0,,to make eggs
+Dialogue: 0,0:00:06.07,0:00:06.94,Short,,0,0,0,,First, she follows
+Dialogue: 0,0:00:06.94,0:00:07.72,Short,,0,0,0,,your breath
+Dialogue: 0,0:00:07.72,0:00:08.90,Short,,0,0,0,,the carbon dioxide
+Dialogue: 0,0:00:08.90,0:00:09.52,Short,,0,0,0,,from up to
+Dialogue: 0,0:00:09.52,0:00:10.54,Short,,0,0,0,,thirty feet away
+Dialogue: 0,0:00:10.83,0:00:11.42,Short,,0,0,0,,Up close
+Dialogue: 0,0:00:11.42,0:00:12.78,Short,,0,0,0,,she smells your skin
+Dialogue: 0,0:00:13.06,0:00:14.28,Short,,0,0,0,,Your skin makes oils
+Dialogue: 0,0:00:14.28,0:00:14.92,Short,,0,0,0,,and bacteria
+Dialogue: 0,0:00:14.92,0:00:15.86,Short,,0,0,0,,turn them into
+Dialogue: 0,0:00:15.86,0:00:17.26,Short,,0,0,0,,your own personal scent
+Dialogue: 0,0:00:17.55,0:00:18.43,Short,,0,0,0,,In one study
+Dialogue: 0,0:00:18.43,0:00:19.02,Short,,0,0,0,,people wore
+Dialogue: 0,0:00:19.02,0:00:20.10,Short,,0,0,0,,nylon stockings
+Dialogue: 0,0:00:20.10,0:00:20.84,Short,,0,0,0,,on their arms
+Dialogue: 0,0:00:20.84,0:00:21.68,Short,,0,0,0,,and the mosquitoes
+Dialogue: 0,0:00:21.68,0:00:22.76,Short,,0,0,0,,picked one person
+Dialogue: 0,0:00:22.76,0:00:23.90,Short,,0,0,0,,a hundred times more
+Dialogue: 0,0:00:23.90,0:00:24.60,Short,,0,0,0,,than another
+Dialogue: 0,0:00:25.04,0:00:26.04,Short,,0,0,0,,That person's skin
+Dialogue: 0,0:00:26.04,0:00:26.98,Short,,0,0,0,,made far more
+Dialogue: 0,0:00:26.98,0:00:28.02,Short,,0,0,0,,of certain acids
+Dialogue: 0,0:00:28.02,0:00:29.12,Short,,0,0,0,,and it stayed that way
+Dialogue: 0,0:00:29.12,0:00:29.88,Short,,0,0,0,,for years
+Dialogue: 0,0:00:30.29,0:00:31.02,Short,,0,0,0,,So if you always
+Dialogue: 0,0:00:31.02,0:00:32.10,Short,,0,0,0,,get bitten first
+Dialogue: 0,0:00:32.10,0:00:33.24,Short,,0,0,0,,it's not bad luck
+Dialogue: 0,0:00:33.49,0:00:33.97,Short,,0,0,0,,It's because
+Dialogue: 1,0:00:25.50,0:00:30.05,Prompt,,0,0,0,,{\fad(300,250)}Send this to someone\Nwho always gets bitten

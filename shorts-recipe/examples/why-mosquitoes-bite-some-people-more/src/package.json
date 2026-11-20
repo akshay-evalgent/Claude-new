@@ -1,0 +1,9 @@
+{
+  "name": "why-mosquitoes-bite-some-people-more-short",
+  "private": true,
+  "description": "three.js scenes for the photoreal \"Why Mosquitoes Bite Some People More\" short",
+  "dependencies": {
+    "three": "0.160.0",
+    "@expo-google-fonts/nunito": "0.2.3"
+  }
+}
