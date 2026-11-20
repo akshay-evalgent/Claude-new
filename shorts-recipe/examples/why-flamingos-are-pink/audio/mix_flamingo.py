@@ -113,7 +113,7 @@ place(fx, rec('fs181107', 3.42, 3.95, 0.002, 0.12), c('carrots') + 0.05, -6, 0.1
 place(fx, rec('fs693959', 0.08, 0.5, 0.002, 0.1), c('orange') + 0.25, -11, -0.1)
 # 6-10) back on the lagoon: calls, a splash; the flock
 place(fx, rec('fs535778', 3.5, 5.6, 0.02, 0.3), c('body') + 0.1, -13, -0.3)
-place(fx, rec('fs342932', 8.0, 9.2, 0.03, 0.3), c('legs') - 0.05, -14, 0.2)
+place(fx, rec('fs342932', 8.0, 8.72, 0.03, 0.2), c('legs') - 0.05, -14, 0.2)   # ends before "beak"
 place(fx, rec('fs852645', 10.2, 12.4, 0.02, 0.3), c('pale') - 0.3, -13, 0.25)
 # 11) the zoo: pellets poured, a splash
 place(fx, rec('fs593610', 3.6, 6.6, 0.02, 0.3), c('zoos') + 0.12, -5, 0.1)
@@ -171,6 +171,10 @@ if vo.ndim > 1: vo = vo.mean(1)
 vo = signal.resample_poly(vo, SR, vsr); vo = vo[:N]; vo = np.pad(vo, (0, N - len(vo)))
 vo = hp(vo, 80); vo = vo / np.max(np.abs(vo))
 env = np.sqrt(np.maximum(lp(vo ** 2, 15), 0)); env = np.maximum(env, 1e-4); gain = np.minimum(1, (0.25 / env) ** 0.4); vo = vo * gain; vo /= np.max(np.abs(vo))
+# keep "beak" clear: the lagoon bed's lapping masks the short word (heard as "feet")
+w_ = [x for x in json.load(open(words_path)) if x['w'].lower().startswith('beak')][0]
+t_ = np.arange(N) / SR; dip_ = np.interp(t_, [w_['s'] - 0.25, w_['s'] - 0.12, w_['e'] + 0.12, w_['e'] + 0.3], [1, 10 ** (-12 / 20), 10 ** (-12 / 20), 1])
+fx *= dip_; amb *= dip_
 voice = np.stack([vo, vo])
 def rms_db(x): return 20 * np.log10(np.sqrt(np.mean(x ** 2)) + 1e-9)
 speech = np.abs(vo) > 0.02

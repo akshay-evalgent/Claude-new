@@ -48,7 +48,7 @@ kill "$(cat "$WORK/http.pid")" || true
 #    No fade at the end, only 3 ms micro-fades at both edges so the loop seam doesn't click.
 mkdir -p "$WORK/stems"
 python3 "$HERE/audio/mix_flamingo.py" "$WORK/vo.wav" "$WORK/sounds" "$HERE/words.json" "$WORK/mix_raw.wav" "$WORK/stems"
-ffmpeg -y -i "$WORK/mix_raw.wav" -af "volume=7dB,alimiter=limit=0.85:attack=3:release=60:level=false,loudnorm=I=-11:TP=-1.0:LRA=6:linear=true:measured_I=-11.42:measured_TP=-1.41:measured_LRA=2.60:measured_thresh=-21.44,volume=-0.5dB" -ar 48000 -c:a pcm_s24le "$WORK/mix_master.wav"
+ffmpeg -y -i "$WORK/mix_raw.wav" -af "volume=7dB,alimiter=limit=0.85:attack=3:release=60:level=false,loudnorm=I=-11:TP=-1.0:LRA=6:linear=true:measured_I=-11.41:measured_TP=-1.41:measured_LRA=2.60:measured_thresh=-21.46,volume=-0.5dB" -ar 48000 -c:a pcm_s24le "$WORK/mix_master.wav"
 python3 -c "import soundfile as sf, numpy as np; a, sr = sf.read('$WORK/mix_master.wav'); f = int(0.003 * sr); r = np.linspace(0, 1, f)[:, None]; a[:f] *= r; a[-f:] *= r[::-1]; sf.write('$WORK/mix_master.wav', a, sr, subtype='PCM_24')"
 
 # 4. Encode: captions + share prompt burned in, and a clean version (exactly 1040 frames, 34.667 s)

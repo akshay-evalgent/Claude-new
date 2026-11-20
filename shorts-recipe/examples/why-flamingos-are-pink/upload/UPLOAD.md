@@ -59,7 +59,12 @@ why are flamingos pink, flamingo, flamingos, pink flamingo, flamingo chick, caro
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | A pink flamingo wading in a still lagoon at sunrise, one leg raised, caption "Flamingos" | **Main pick.** Clear subject, instantly recognisable |
+| `thumbnail-alt-chick.jpg` | A grey downy chick on its mud nest under a parent's pink legs, caption "fluffy and grey" | Curiosity angle: a flamingo that isn't pink |
+| `thumbnail-alt-flock.jpg` | The flock marching in step for mating season, caption "And in mating season" | Spectacle angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
