@@ -75,7 +75,18 @@
       cues.push({ t, s: 'soft-swoosh', g: -14 });
       t += ep.tool ? 0 : 0.35;
     }
-    if (ep.tool) {
+    if (ep.tool && ep.tool.recording) {
+      // a real screen recording of the AI app (your own file, already trimmed/sped up), full screen
+      const rm = meta(ep.tool.recording);
+      TOOL = { t0: t, recording: ep.tool.recording };
+      TOOL.end = t + (ep.tool.dur ?? (rm ? rm.count / FPS : 3));
+      ev({ type: 'tool', on: true });
+      if (rm && rm.audio) cues.push({ t, s: '@media:' + ep.tool.recording, g: ep.tool.audioGain ?? -8, dur: TOOL.end - t });
+      t = TOOL.end;
+      ev({ type: 'tool', on: false });
+      cues.push({ t, s: 'soft-swoosh', g: -14 });
+      t += 0.35;
+    } else if (ep.tool) {
       // the AI app: the prompt is typed fast, "generate" is tapped, the clip appears
       const tl = ep.tool, chars = [...tl.prompt], tcps = tl.typeSpeed || 34;
       TOOL = { t0: t, keys: [] };
@@ -245,8 +256,13 @@
   window.renderAt = async (T) => {
     const s = stateAt(T), f = Math.floor(T * FPS);
     // hook
-    show('hook', s.hook);
-    if (s.hook) {
+    const rec = s.tool && TOOL.recording;
+    show('hook', s.hook || rec);
+    if (rec) {
+      const img = $('hookImg'), src = frameSrc(TOOL.recording, Math.min(meta(TOOL.recording).count - 1, Math.floor((T - TOOL.t0) * FPS)));
+      if (img.dataset.src !== src) { img.src = src; img.dataset.src = src; }
+      $('hookCap').innerHTML = '';
+    } else if (s.hook) {
       const k = EP.hook.media, img = $('hookImg'), src = frameSrc(k, f);
       if (img.dataset.src !== src) { img.src = src; img.dataset.src = src; }
       $('hookCap').innerHTML = rich(EP.hook.caption || '');
@@ -254,8 +270,8 @@
     // clock: a minute passes every ~40 seconds of video
     const [hh, mm] = (EP.clock || '11:24').split(':').map(Number), add = Math.floor(Math.max(0, T - chatStart) / (EP.minuteEvery || 40));
     $('clock').textContent = `${hh}:${String(mm + add).padStart(2, '0')}`;
-    show('tool', !!s.tool);
-    if (s.tool) renderTool(T, f);
+    show('tool', !!s.tool && !rec);
+    if (s.tool && !rec) renderTool(T, f);
 
     // thread
     const key = `${s.n}|${s.dots}`;

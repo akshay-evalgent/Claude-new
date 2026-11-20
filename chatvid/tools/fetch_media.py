@@ -13,7 +13,8 @@ An episode lists its media under "media":
 - file:    something you supply yourself, already in chatvid/assets/media/. An image becomes
            <key>.jpg; a video (.mp4/.mov/.webm) becomes a frame sequence with its own sound:
            {"file": "flow-b.mp4", "credit": "...", "start": 0, "dur": 5, "level": -24}
-           ("level" lifts quiet ambience to that loudness in LUFS before the mixer sees it).
+           ("level" lifts quiet ambience to that loudness in LUFS before the mixer sees it;
+           "speed": 3 plays a long screen recording three times faster).
 - archive: an Internet Archive film (public domain only), cut to a clip:
            {"archive": "DuckandC1951", "start": 30, "dur": 2.6}
            Items without a public-domain licence need "pd": "<why it is public domain>";
@@ -177,13 +178,21 @@ def clip_audio(src, out):
     """The clip's original sound, cut with the same -ss/-t as its frames so they stay in sync."""
     url, _, _ = clip_source(src)
     dest = os.path.join(out, "audio.wav")
+    if is_video_file(src):                           # a local file with no sound track: nothing to cut
+        probe = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "a", "-show_entries", "stream=index",
+                                "-of", "csv=p=0", url], capture_output=True, text=True).stdout.strip()
+        if not probe:
+            print(f"  -    {os.path.basename(out)} has no sound track (it will play with the wind effect)")
+            return
     # "clean": dialogue from old prints - cut the rumble and the hiss above the voice band
     filters = ["highpass=f=90,lowpass=f=7500,afftdn=nr=8:nf=-42"] if src.get("clean") else []
+    if src.get("speed"):
+        filters.append(f"atempo={min(2.0, src['speed'])}" + (f",atempo={src['speed'] / 2.0}" if src["speed"] > 2 else ""))
     if src.get("level") is not None:                  # quiet ambience (wind, distant shovels): lift it
         filters.append(f"loudnorm=I={src['level']}:TP=-2:LRA=11")
     af = ["-af", ",".join(filters)] if filters else []
-    cut = (["-ss", str(src.get("start", 0))], ["-t", str(src["dur"])] if src.get("dur") else [])
-    cmd = ["ffmpeg", "-v", "error", "-y", *cut[0], "-i", url, *cut[1],
+    cut = ["-ss", str(src.get("start", 0)), *(["-t", str(src["dur"])] if src.get("dur") else [])]
+    cmd = ["ffmpeg", "-v", "error", "-y", *cut, "-i", url,
            "-vn", *af, "-ac", "2", "-ar", "48000", "-c:a", "pcm_s16le", dest]
     for attempt in range(4):
         if subprocess.run(cmd).returncode == 0:
@@ -221,8 +230,9 @@ def sequence(key, src, credits):
         return
     if is_video_file(src):                           # your own footage (e.g. AI clips you generated)
         url, credit, short = clip_source(src)
-        cut = ["-ss", str(src.get("start", 0)), "-i", url] + (["-t", str(src["dur"])] if src.get("dur") else [])
-        n = frames(cut, out, 30, "scale='trunc(iw*sar/2)*2':ih,setsar=1,scale=-2:'min(1920,ih)':flags=lanczos", "jpg")
+        cut = ["-ss", str(src.get("start", 0)), *(["-t", str(src["dur"])] if src.get("dur") else []), "-i", url]
+        speed = f"setpts=PTS/{src['speed']}," if src.get("speed") else ""
+        n = frames(cut, out, 30, speed + "scale='trunc(iw*sar/2)*2':ih,setsar=1,scale=-2:'min(1920,ih)':flags=lanczos", "jpg")
         lic = "supplied"
         if src.get("audio", True):
             clip_audio(src, out)
