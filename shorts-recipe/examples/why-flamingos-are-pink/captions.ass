@@ -1,0 +1,52 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.01,0:00:00.56,Short,,0,0,0,,Flamingos
+Dialogue: 0,0:00:00.56,0:00:01.92,Short,,0,0,0,,aren't born pink
+Dialogue: 0,0:00:01.92,0:00:02.64,Short,,0,0,0,,Their chicks hatch
+Dialogue: 0,0:00:02.64,0:00:03.90,Short,,0,0,0,,fluffy and grey
+Dialogue: 0,0:00:04.24,0:00:04.61,Short,,0,0,0,,The pink
+Dialogue: 0,0:00:04.61,0:00:05.93,Short,,0,0,0,,comes from their food
+Dialogue: 0,0:00:05.93,0:00:06.64,Short,,0,0,0,,tiny shrimp
+Dialogue: 0,0:00:06.64,0:00:07.22,Short,,0,0,0,,and algae
+Dialogue: 0,0:00:07.22,0:00:07.90,Short,,0,0,0,,full of
+Dialogue: 0,0:00:07.90,0:00:08.96,Short,,0,0,0,,orange-red pigments
+Dialogue: 0,0:00:08.96,0:00:10.22,Short,,0,0,0,,called carotenoids
+Dialogue: 0,0:00:10.22,0:00:10.92,Short,,0,0,0,,the same kind
+Dialogue: 0,0:00:10.92,0:00:11.38,Short,,0,0,0,,that make
+Dialogue: 0,0:00:11.38,0:00:12.34,Short,,0,0,0,,carrots orange
+Dialogue: 0,0:00:12.79,0:00:13.76,Short,,0,0,0,,A flamingo's body
+Dialogue: 0,0:00:13.76,0:00:15.08,Short,,0,0,0,,pulls out those pigments
+Dialogue: 0,0:00:15.08,0:00:15.80,Short,,0,0,0,,and packs them
+Dialogue: 0,0:00:15.80,0:00:16.58,Short,,0,0,0,,into its growing
+Dialogue: 0,0:00:16.58,0:00:17.28,Short,,0,0,0,,feathers
+Dialogue: 0,0:00:17.28,0:00:18.64,Short,,0,0,0,,legs and beak
+Dialogue: 0,0:00:18.64,0:00:19.40,Short,,0,0,0,,Take them away
+Dialogue: 0,0:00:19.40,0:00:20.36,Short,,0,0,0,,and new feathers
+Dialogue: 0,0:00:20.36,0:00:21.38,Short,,0,0,0,,grow in pale
+Dialogue: 0,0:00:21.79,0:00:22.74,Short,,0,0,0,,That's why zoos
+Dialogue: 0,0:00:22.74,0:00:23.52,Short,,0,0,0,,add pigment
+Dialogue: 0,0:00:23.52,0:00:24.70,Short,,0,0,0,,to their food
+Dialogue: 0,0:00:24.70,0:00:26.02,Short,,0,0,0,,And in mating season
+Dialogue: 0,0:00:26.02,0:00:26.56,Short,,0,0,0,,flamingos
+Dialogue: 0,0:00:26.56,0:00:27.86,Short,,0,0,0,,even wear makeup
+Dialogue: 0,0:00:27.86,0:00:28.96,Short,,0,0,0,,rubbing pink oil
+Dialogue: 0,0:00:28.96,0:00:29.68,Short,,0,0,0,,from a gland
+Dialogue: 0,0:00:29.68,0:00:30.73,Short,,0,0,0,,near their tail
+Dialogue: 0,0:00:30.73,0:00:31.92,Short,,0,0,0,,all over their feathers
+Dialogue: 0,0:00:32.30,0:00:32.94,Short,,0,0,0,,So that pink
+Dialogue: 0,0:00:32.94,0:00:33.74,Short,,0,0,0,,isn't really theirs
+Dialogue: 0,0:00:33.74,0:00:34.26,Short,,0,0,0,,at all
+Dialogue: 0,0:00:34.26,0:00:34.67,Short,,0,0,0,,because
+Dialogue: 1,0:00:26.02,0:00:32.00,Prompt,,0,0,0,,{\fad(300,250)}Send this to someone\Nwho loves flamingos
