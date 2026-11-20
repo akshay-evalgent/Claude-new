@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Subway Hero</title>
+<style>
+  @font-face { font-family: 'Anton'; src: url(assets/anton.woff2) format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 600; src: url(assets/barlow600.woff2) format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 700; src: url(assets/barlow700.woff2) format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 100 800; src: url(assets/jbmono.woff2) format('woff2'); }
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  #stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; transform-origin: 0 0; color: #fff; font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; }
+  #stage > * { position: absolute; }
+  #gl, #plate { left: 0; top: 0; width: 1080px; height: 1920px; }
+  .full { inset: 0; pointer-events: none; }
+  #vig { background: radial-gradient(ellipse 80% 62% at 50% 48%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.5) 100%); }
+  #grain { opacity: 0.06; mix-blend-mode: overlay; background-size: 256px 256px; }
+  #fade { background: #000; }
+  #flash { background: #fff; }
+  #cap { left: 60px; right: 60px; top: 1130px; text-align: center; font-weight: 700; font-size: 84px; line-height: 1.02; text-transform: uppercase; letter-spacing: 0.01em;
+    -webkit-text-stroke: 14px #000; paint-order: stroke fill; text-shadow: 0 6px 18px rgba(0,0,0,0.55); }
+  #cap span { display: inline-block; margin: 0 0.12em; }
+  #cap span.on { color: #ffd54a; }
+  #place { left: 0; right: 0; top: 300px; text-align: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 34px; letter-spacing: 0.14em; color: #fff; text-shadow: 0 2px 12px #000; }
+  #place b { display: block; font-size: 26px; color: #d7dde4; margin-top: 10px; letter-spacing: 0.2em; }
+  #end { left: 0; right: 0; top: 330px; text-align: center; text-shadow: 0 4px 20px rgba(0,0,0,0.8); }
+  #end .a { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 30px; letter-spacing: 0.24em; color: #ffd54a; }
+  #end .b { font-family: 'Anton', sans-serif; font-size: 150px; line-height: 1.02; text-transform: uppercase; margin-top: 10px; }
+  #end .c { font-weight: 600; font-size: 40px; letter-spacing: 0.04em; color: #e7ecf1; margin-top: 18px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="gl"></canvas>
+  <img id="plate" alt="">
+  <div id="vig" class="full"></div>
+  <div id="grain" class="full"></div>
+  <div id="place">HARLEM, NEW YORK<b>JANUARY 2, 2007 &middot; 137 ST&ndash;CITY COLLEGE</b></div>
+  <div id="end"><div class="a">WESLEY AUTREY</div><div class="b">Hero of<br>Harlem</div><div class="c">Awarded the Bronze Medallion,<br>New York City's highest civic honor</div></div>
+  <div id="cap"></div>
+  <div id="fade" class="full"></div>
+  <div id="flash" class="full"></div>
+</div>
+
+<script src="assets/three.min.js"></script>
+<script>
+'use strict';
+const W = 1080, H = 1920, PI = Math.PI, FPS = 30;
+const clamp01 = x => Math.max(0, Math.min(1, x));
+const seg = (t, a, b) => clamp01((t - a) / (b - a));
+const eio = x => x * x * (3 - 2 * x);
+const eo = x => 1 - Math.pow(1 - x, 3);
+const ei = x => x * x * x;
+const lerp = (a, b, k) => a + (b - a) * k;
+const win = (t, a, b, fi = 0.3, fo = 0.3) => Math.min(seg(t, a, a + fi), 1 - seg(t, b - fo, b));
+function rng(seed) { let s = seed >>> 0; return () => { s = (s + 0x6D2B79F5) | 0; let r = Math.imul(s ^ (s >>> 15), 1 | s); r = (r + Math.imul(r ^ (r >>> 7), 61 | r)) ^ r; return ((r ^ (r >>> 14)) >>> 0) / 4294967296; }; }
+const hash = n => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+function vnoise(x) { const i = Math.floor(x); let f = x - i; f = f * f * (3 - 2 * f); return lerp(hash(i), hash(i + 1), f) * 2 - 1; }
+const $ = id => document.getElementById(id);
+const V = (x = 0, y = 0, z = 0) => new THREE.Vector3(x, y, z);
+
+const renderer = new THREE.WebGLRenderer({ canvas: $('gl'), antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+renderer.outputEncoding = THREE.sRGBEncoding; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+const camera = new THREE.PerspectiveCamera(42, W / H, 0.02, 400);
+
+// ---------- geometry helpers ----------
+function canvasTex(w, h, draw, repeat) { const c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h); const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; t.anisotropy = 8; if (repeat) { t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(repeat[0], repeat[1]); } return t; }
+function noiseFill(g, w, h, base, amp, seed) { const r = rng(seed), d = g.createImageData(w, h); for (let i = 0; i < w * h; i++) { const v = (r() - 0.5) * amp; d.data[i * 4] = base[0] + v; d.data[i * 4 + 1] = base[1] + v; d.data[i * 4 + 2] = base[2] + v; d.data[i * 4 + 3] = 255; } g.putImageData(d, 0, 0); }
+const lathe = (pts, n) => new THREE.LatheGeometry(pts.map(p => new THREE.Vector2(Math.max(p[0], 1e-4), p[1])), n || 32);
+const scaleGeo = (g, x, y, z) => { g.scale(x, y, z); g.computeVertexNormals(); return g; };
+function limbGeo(r0, r1, len) { const P = []; for (let i = 0; i <= 6; i++) { const a = -PI / 2 + i / 6 * PI / 2; P.push([Math.cos(a) * r1, -len + Math.sin(a) * r1]); } for (let i = 1; i < 12; i++) { const f = i / 12; P.push([lerp(r1, r0, f), -len + len * f]); } for (let i = 0; i <= 6; i++) { const a = i / 6 * PI / 2; P.push([Math.cos(a) * r0, Math.sin(a) * r0]); } return lathe(P, 20); }
+function mesh(geo, mat, x = 0, y = 0, z = 0, shadow = true) { const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); m.castShadow = m.receiveShadow = shadow; return m; }
+const STD = (c, r = 0.8, m = 0, extra) => new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: r, metalness: m }, extra || {}));
+function Particles(n, additive) {
+  const base = new THREE.PlaneGeometry(1, 1), g = new THREE.InstancedBufferGeometry();
+  g.index = base.index; g.setAttribute('position', base.attributes.position); g.setAttribute('uv', base.attributes.uv);
+  const off = new Float32Array(n * 4), col = new Float32Array(n * 4);
+  g.setAttribute('aOff', new THREE.InstancedBufferAttribute(off, 4)); g.setAttribute('aCol', new THREE.InstancedBufferAttribute(col, 4)); g.instanceCount = n;
+  const m = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: additive ? THREE.AdditiveBlending : THREE.NormalBlending,
+    vertexShader: 'attribute vec4 aOff; attribute vec4 aCol; varying vec2 vUv; varying vec4 vCol; void main(){ vUv = uv; vCol = aCol; vec4 mv = modelViewMatrix * vec4(aOff.xyz, 1.0); mv.xy += position.xy * aOff.w; gl_Position = projectionMatrix * mv; }',
+    fragmentShader: 'varying vec2 vUv; varying vec4 vCol; void main(){ float r = length(vUv - 0.5) * 2.0; float a = smoothstep(1.0, 0.0, r); a *= a; gl_FragColor = vec4(vCol.rgb, vCol.a * a); }' });
+  const pm = new THREE.Mesh(g, m); pm.frustumCulled = false; pm.renderOrder = 10;
+  return { mesh: pm, n, set(i, p, s, r, gg, b, a) { const k = i * 4; off[k] = p.x; off[k + 1] = p.y; off[k + 2] = p.z; off[k + 3] = s; col[k] = r; col[k + 1] = gg; col[k + 2] = b; col[k + 3] = a; }, hide(i) { off[i * 4 + 3] = 0; col[i * 4 + 3] = 0; }, commit() { g.attributes.aOff.needsUpdate = true; g.attributes.aCol.needsUpdate = true; } };
+}
+
+// =====================================================================
+//  the station: platform on the left (x < -1.65), track along z, tunnel toward -z
+// =====================================================================
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0x050608); scene.fog = new THREE.FogExp2(0x07090b, 0.035);
+const PLAT = 1.25, RAIL_TOP = 0.32, RX = 0.7525;
+scene.add(new THREE.HemisphereLight(0xd9e6f2, 0x2a2622, 0.55));
+const key = new THREE.DirectionalLight(0xeaf3ff, 0.9); key.position.set(-6, 9, 4); key.castShadow = true; key.shadow.mapSize.set(2048, 2048);
+Object.assign(key.shadow.camera, { left: -9, right: 9, top: 9, bottom: -9, near: 1, far: 30 }); key.shadow.bias = -0.0005; scene.add(key, key.target);
+const ceilLights = [];
+for (let z = -14; z <= 14; z += 7) { const l = new THREE.PointLight(0xe8f2ff, 0.7, 12, 2); l.position.set(-2.4, 4.4, z); scene.add(l); ceilLights.push(l); }
+const concreteTex = canvasTex(256, 256, (g, w, h) => noiseFill(g, w, h, [128, 126, 122], 40, 5), [6, 18]);
+const tileTex = canvasTex(256, 256, (g, w, h) => { g.fillStyle = '#e9e6dc'; g.fillRect(0, 0, w, h); g.strokeStyle = '#b9b5a8'; g.lineWidth = 3; for (let k = 0; k <= 8; k++) { g.beginPath(); g.moveTo(0, k * 32); g.lineTo(w, k * 32); g.stroke(); } for (let r = 0; r < 8; r++) for (let k = 0; k <= 4; k++) { const x = k * 64 + (r % 2) * 32; g.beginPath(); g.moveTo(x, r * 32); g.lineTo(x, r * 32 + 32); g.stroke(); } }, [10, 4]);
+const tablet = canvasTex(1024, 256, (g, w, h) => { g.fillStyle = '#5c2f1f'; g.fillRect(0, 0, w, h); g.fillStyle = '#c9a25a'; g.fillRect(10, 10, w - 20, h - 20); g.fillStyle = '#1e3d63'; g.fillRect(26, 26, w - 52, h - 52); for (let i = 0; i < 60; i++) { g.fillStyle = i % 2 ? '#d8c08a' : '#b98d4c'; g.fillRect(26 + i * 16.2, 26, 8, 8); g.fillRect(26 + i * 16.2, h - 34, 8, 8); } g.fillStyle = '#f2ead6'; g.font = 'bold 92px Barlow Condensed, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('137 ST · CITY COLLEGE', w / 2, h / 2 + 4); });
+const platMat = STD(0x8a8780, 0.9, 0, { map: concreteTex });
+scene.add(mesh(new THREE.BoxGeometry(5.2, 0.3, 60), platMat, -4.25, PLAT - 0.15, 0));
+scene.add(mesh(new THREE.BoxGeometry(0.6, 0.02, 60), STD(0xd9a21c, 0.6), -1.95, PLAT + 0.01, 0));
+scene.add(mesh(new THREE.BoxGeometry(0.3, PLAT + 0.4, 60), STD(0x55524b, 0.9, 0, { map: concreteTex }), -1.8, (PLAT - 0.4) / 2, 0));
+const wallM = STD(0xffffff, 0.35, 0, { map: tileTex });
+scene.add(mesh(new THREE.BoxGeometry(0.2, 4.5, 60), wallM, -6.9, PLAT + 2.25, 0));
+for (const z of [-9, 5]) scene.add(mesh(new THREE.PlaneGeometry(4.2, 1.05), STD(0xffffff, 0.5, 0, { map: tablet }), -6.79, PLAT + 1.9, z).rotateY(PI / 2));
+scene.add(mesh(new THREE.BoxGeometry(14, 0.3, 60), STD(0x15171a, 0.9), -1, 5.0, 0));
+for (let z = -21; z <= 21; z += 7) { scene.add(mesh(new THREE.BoxGeometry(0.14, 0.05, 2.8), new THREE.MeshBasicMaterial({ color: 0xf2f8ff }), -2.4, 4.83, z, false)); scene.add(mesh(new THREE.BoxGeometry(0.14, 0.05, 2.8), new THREE.MeshBasicMaterial({ color: 0xf2f8ff }), -4.8, 4.83, z, false)); }
+for (let z = -25; z <= 25; z += 4.6) scene.add(mesh(new THREE.BoxGeometry(0.24, 5, 0.24), STD(0x1d4a35, 0.5, 0.3), 2.45, 2.5, z));
+for (let z = -12; z <= 12; z += 6) { const b = new THREE.Group(); b.position.set(-6.3, PLAT, z); b.add(mesh(new THREE.BoxGeometry(0.45, 0.06, 1.8), STD(0x6b4a2b, 0.7), 0, 0.45, 0)); b.add(mesh(new THREE.BoxGeometry(0.06, 0.45, 1.8), STD(0x6b4a2b, 0.7), -0.2, 0.7, 0)); for (const k of [-0.75, 0.75]) b.add(mesh(new THREE.BoxGeometry(0.4, 0.45, 0.05), STD(0x2b2b2b, 0.5, 0.5), 0, 0.22, k)); scene.add(b); }
+// track bed, trough, ties, rails, third rail
+const bedM = STD(0x3b3833, 0.95, 0, { map: concreteTex });
+scene.add(mesh(new THREE.BoxGeometry(1.25, 0.3, 120), bedM, -1.0, -0.15, -20)); scene.add(mesh(new THREE.BoxGeometry(2.5, 0.3, 120), bedM, 1.6, -0.15, -20));
+scene.add(mesh(new THREE.BoxGeometry(0.7, 0.1, 120), STD(0x1c1a17, 0.9), 0, -0.38, -20));
+const tieGeo = new THREE.BoxGeometry(0.6, 0.14, 0.22), tieM = STD(0x3a2a1c, 0.9);
+const ties = new THREE.InstancedMesh(tieGeo, tieM, 2 * 160); let ti = 0; const tm = new THREE.Matrix4();
+for (let z = -80; z < 40; z += 0.76) for (const s of [-1, 1]) { tm.makeTranslation(s * RX, 0.07, z); ties.setMatrixAt(ti++, tm); }
+ties.count = ti; ties.receiveShadow = true; scene.add(ties);
+const railM = STD(0x5a3f2c, 0.6, 0.6), railTop = STD(0xd0d2d4, 0.25, 1.0);
+for (const s of [-1, 1]) { scene.add(mesh(new THREE.BoxGeometry(0.07, 0.17, 120), railM, s * RX, 0.235, -20)); scene.add(mesh(new THREE.BoxGeometry(0.06, 0.012, 120), railTop, s * RX, RAIL_TOP + 0.002, -20)); }
+scene.add(mesh(new THREE.BoxGeometry(0.08, 0.1, 120), railM, 1.42, 0.33, -20)); scene.add(mesh(new THREE.BoxGeometry(0.32, 0.04, 120), STD(0x4a3a26, 0.85), 1.47, 0.47, -20));
+// the tunnel beyond the station
+scene.add(mesh(new THREE.BoxGeometry(0.4, 5, 60), STD(0x121314, 0.95), -2.3, 2.2, -55)); scene.add(mesh(new THREE.BoxGeometry(0.4, 5, 60), STD(0x121314, 0.95), 2.9, 2.2, -55));
+scene.add(mesh(new THREE.BoxGeometry(14, 3, 0.4), STD(0x121314, 0.95), -1, 6.2, -25));
+
+// ---------- the train ----------
+const train = new THREE.Group(); scene.add(train);
+const CAR_L = 15.6, FLOOR = RAIL_TOP + 0.95, ROOF = RAIL_TOP + 3.6;
+const steelTex = canvasTex(256, 256, (g, w, h) => { noiseFill(g, w, h, [185, 188, 190], 18, 9); g.fillStyle = 'rgba(0,0,0,0.12)'; for (let x = 0; x < w; x += 6) g.fillRect(x, 0, 2, h); }, [4, 1]);
+const steelM = STD(0xffffff, 0.35, 0.85, { map: steelTex }), underM = STD(0x1a1917, 0.75, 0.4), winM = new THREE.MeshBasicMaterial({ color: 0xffe8c4 });
+const headM = new THREE.MeshBasicMaterial({ color: 0xffffff });
+for (let k = 0; k < 4; k++) {
+  const c = new THREE.Group(); c.position.z = -k * (CAR_L + 0.7) - CAR_L / 2; train.add(c);
+  c.add(mesh(new THREE.BoxGeometry(2.68, ROOF - FLOOR, CAR_L), steelM, 0, (FLOOR + ROOF) / 2, 0));
+  for (const s of [-1, 1]) for (let j = 0; j < 5; j++) c.add(mesh(new THREE.BoxGeometry(0.02, 0.75, 1.6), winM, s * 1.345, FLOOR + 1.85, -6 + j * 3, false));
+  c.add(mesh(new THREE.BoxGeometry(2.3, 0.45, CAR_L - 2), underM, 0, FLOOR - 0.3, 0));
+  for (const tz of [-5.3, 5.3]) { c.add(mesh(new THREE.BoxGeometry(2.1, 0.32, 2.6), underM, 0, RAIL_TOP + 0.55, tz)); for (const wz of [-1.05, 1.05]) for (const s of [-1, 1]) c.add(mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.13, 24).rotateZ(PI / 2), STD(0x3a3532, 0.4, 0.9), s * RX, RAIL_TOP + 0.42, tz + wz)); }
+  if (k === 0) {
+    const f = CAR_L / 2 + 0.01;
+    c.add(mesh(new THREE.BoxGeometry(2.68, ROOF - FLOOR, 0.04), STD(0x111214, 0.4, 0.3), 0, (FLOOR + ROOF) / 2, f));
+    c.add(mesh(new THREE.BoxGeometry(0.9, 0.85, 0.02), new THREE.MeshBasicMaterial({ color: 0x3b4046 }), -0.55, FLOOR + 1.85, f + 0.03, false));
+    for (const s of [-1, 1]) { c.add(mesh(new THREE.CircleGeometry(0.12, 24), headM, s * 0.85, FLOOR + 0.45, f + 0.03, false)); c.add(mesh(new THREE.CircleGeometry(0.05, 16), new THREE.MeshBasicMaterial({ color: 0xff2a14 }), s * 1.1, FLOOR + 2.85, f + 0.03, false)); }
+    c.add(mesh(new THREE.CircleGeometry(0.22, 32), new THREE.MeshBasicMaterial({ color: 0xe0281e }), 0, FLOOR + 2.75, f + 0.03, false));
+  }
+}
+const headSpot = new THREE.SpotLight(0xfff2dc, 0, 70, 0.55, 0.6, 1.4); headSpot.position.set(0, FLOOR + 0.45, 0); train.add(headSpot); train.add(headSpot.target); headSpot.target.position.set(0, 0.2, 30);
+const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: canvasTex(128, 128, g => { const gr = g.createRadialGradient(64, 64, 0, 64, 64, 64); gr.addColorStop(0, 'rgba(255,250,235,1)'); gr.addColorStop(0.25, 'rgba(255,235,200,0.5)'); gr.addColorStop(1, 'rgba(255,220,180,0)'); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); }), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true }));
+glow.position.set(0, FLOOR + 0.45, CAR_L / 2 + 0.3); glow.scale.set(3.5, 3.5, 1); train.add(glow);
+const sparks = Particles(220, true); scene.add(sparks.mesh);
+const underLight = new THREE.PointLight(0xffc890, 0, 5, 2); underLight.position.set(-1.1, 0.6, -0.2); scene.add(underLight);
+
+// =====================================================================
+//  people
+// =====================================================================
+function buildPerson(o) {
+  const P = { root: new THREE.Group(), j: {}, o };
+  const skin = STD(o.skin, 0.62), top = STD(o.top, 0.85), pants = STD(o.pants, 0.85), shoe = STD(o.shoes || 0x1d1b19, 0.6), hair = STD(o.hair || 0x16110d, 0.9);
+  const pelvis = new THREE.Group(); pelvis.position.y = 0.93; P.root.add(pelvis); P.j.pelvis = pelvis;
+  pelvis.add(mesh(scaleGeo(new THREE.SphereGeometry(0.17, 20, 14), 1.0, 0.72, 0.72), pants));
+  const waist = new THREE.Group(); waist.position.y = 0.04; pelvis.add(waist); P.j.waist = waist;
+  const torsoLen = o.coat ? 1.0 : 1.0;
+  waist.add(mesh(scaleGeo(lathe([[0, -0.02], [0.155, 0.0], [0.165, 0.16], [0.19, 0.33], [0.215, 0.43], [0.2, 0.5], [0.12, 0.555], [0, 0.565]], 28), o.wide || 1, 1, 0.62), top));
+  if (o.coat) waist.add(mesh(new THREE.CylinderGeometry(0.17, 0.24, 0.55, 24, 1, true), top, 0, -0.22, 0));
+  if (o.backpack) waist.add(mesh(new THREE.BoxGeometry(0.3, 0.42, 0.16), STD(o.backpack, 0.8), 0, 0.3, -0.17));
+  waist.add(mesh(new THREE.CylinderGeometry(0.048, 0.055, 0.12, 14), skin, 0, 0.6, 0.0));
+  const head = new THREE.Group(); head.position.y = 0.64; waist.add(head); P.j.head = head;
+  head.add(mesh(scaleGeo(new THREE.SphereGeometry(0.1, 28, 20), 0.86, 1.1, 0.96), skin, 0, 0.1, 0));
+  head.add(mesh(scaleGeo(new THREE.SphereGeometry(0.07, 20, 14), 0.9, 0.7, 0.85), skin, 0, 0.045, 0.02));      // jaw
+  const dark = STD(0x120d0a, 0.4);
+  for (const s of [-1, 1]) {
+    head.add(mesh(new THREE.SphereGeometry(0.011, 10, 8), dark, s * 0.032, 0.115, 0.086, false));
+    head.add(mesh(new THREE.BoxGeometry(0.03, 0.007, 0.008), hair, s * 0.033, 0.137, 0.088, false));
+    head.add(mesh(scaleGeo(new THREE.SphereGeometry(0.022, 10, 8), 0.5, 1, 0.8), skin, s * 0.088, 0.1, 0.0));
+  }
+  head.add(mesh(scaleGeo(new THREE.SphereGeometry(0.017, 10, 8), 0.8, 1.0, 1.1), skin, 0, 0.09, 0.098, false));
+  head.add(mesh(new THREE.BoxGeometry(0.034, 0.006, 0.006), STD(0x5a2a22, 0.6), 0, 0.052, 0.088, false));
+  if (o.hat) { head.add(mesh(scaleGeo(new THREE.SphereGeometry(0.104, 24, 14, 0, 2 * PI, 0, PI / 2), 0.9, 1.25, 1.0), STD(o.hat, 0.95), 0, 0.12, -0.003)); head.add(mesh(scaleGeo(new THREE.TorusGeometry(0.093, 0.018, 8, 24).rotateX(PI / 2), 0.92, 1, 1.02), STD(o.hat, 0.95), 0, 0.125, -0.003)); }
+  else if (o.hairStyle !== 'bald') {
+    head.add(mesh(scaleGeo(new THREE.SphereGeometry(0.106, 24, 14, 0, 2 * PI, 0, PI / 2), 0.9, 1.0, 1.0), hair, 0, 0.12, -0.008));
+    if (o.hairStyle === 'long') head.add(mesh(new THREE.BoxGeometry(0.19, 0.22, 0.08), hair, 0, 0.04, -0.06));
+    if (o.hairStyle === 'puffs') for (const s of [-1, 1]) head.add(mesh(new THREE.SphereGeometry(0.05, 14, 10), hair, s * 0.085, 0.2, -0.02));
+  }
+  for (const s of [1, -1]) {
+    const k = s > 0 ? 'L' : 'R';
+    const sh = new THREE.Group(); sh.position.set(0.205 * s * (o.wide || 1), 0.48, 0); waist.add(sh);
+    sh.add(mesh(limbGeo(0.058, 0.05, 0.29), top));
+    const el = new THREE.Group(); el.position.y = -0.29; sh.add(el); el.add(mesh(limbGeo(0.05, 0.043, 0.26), top));
+    const wr = new THREE.Group(); wr.position.y = -0.26; el.add(wr); wr.add(mesh(scaleGeo(new THREE.SphereGeometry(1, 14, 10), 0.038, 0.06, 0.024), skin, 0, -0.06, 0));
+    wr.add(mesh(scaleGeo(new THREE.SphereGeometry(1, 10, 8), 0.013, 0.03, 0.013), skin, 0.03 * s, -0.035, 0.012));
+    const hp = new THREE.Group(); hp.position.set(0.09 * s, -0.04, 0); pelvis.add(hp); hp.add(mesh(limbGeo(0.078, 0.064, 0.44), pants));
+    const kn = new THREE.Group(); kn.position.y = -0.44; hp.add(kn); kn.add(mesh(limbGeo(0.062, 0.05, 0.44), pants));
+    const an = new THREE.Group(); an.position.y = -0.44; kn.add(an); an.add(mesh(scaleGeo(new THREE.SphereGeometry(1, 14, 10), 0.055, 0.04, 0.13), shoe, 0, -0.02, 0.05));
+    Object.assign(P.j, { ['sh' + k]: sh, ['el' + k]: el, ['wr' + k]: wr, ['hip' + k]: hp, ['kn' + k]: kn, ['an' + k]: an });
+  }
+  P.root.scale.setScalar(o.scale || 1);
+  P.root.traverse(m => { if (m.isMesh) m.castShadow = m.receiveShadow = true; });
+  return P;
+}
+// poses: L is the person's left (+x); arm forward is negative x; knees bend positive x
+const POSE = {
+  stand:  { waist: [0, 0, 0], head: [0, 0, 0], shL: [0.05, 0, 0.1], elL: [-0.15, 0, 0], shR: [0.05, 0, -0.1], elR: [-0.15, 0, 0], hipL: [0, 0, 0.02], knL: [0, 0, 0], anL: [0, 0, 0], hipR: [0, 0, -0.02], knR: [0, 0, 0], anR: [0, 0, 0] },
+  holdL:  { waist: [0, 0, 0], head: [0, 0, 0], shL: [-0.15, 0, 0.32], elL: [-0.25, 0, 0], shR: [0.05, 0, -0.1], elR: [-0.15, 0, 0], hipL: [0, 0, 0.02], knL: [0, 0, 0], anL: [0, 0, 0], hipR: [0, 0, -0.02], knR: [0, 0, 0], anR: [0, 0, 0] },
+  holdBoth: { waist: [0, 0, 0], head: [0.1, 0, 0], shL: [-0.15, 0, 0.32], elL: [-0.25, 0, 0], shR: [-0.15, 0, -0.32], elR: [-0.25, 0, 0], hipL: [0, 0, 0.02], knL: [0, 0, 0], anL: [0, 0, 0], hipR: [0, 0, -0.02], knR: [0, 0, 0], anR: [0, 0, 0] },
+  holdUp: { waist: [0, 0, 0], head: [0, 0, 0], shL: [0.05, 0, 0.12], elL: [-0.1, 0, 0], shR: [-1.6, 0, -0.1], elR: [-0.6, 0, 0], hipL: [0, 0, 0.02], knL: [0, 0, 0], anL: [0, 0, 0], hipR: [0, 0, -0.02], knR: [0, 0, 0], anR: [0, 0, 0] },
+  seize:  { waist: [-0.2, 0, 0.15], head: [-0.5, 0.3, 0.2], shL: [-0.4, 0, 0.7], elL: [-1.6, 0, 0], shR: [-0.7, 0, -0.6], elR: [-1.7, 0, 0], hipL: [-0.2, 0, 0.12], knL: [0.4, 0, 0], anL: [0, 0, 0], hipR: [0.1, 0, -0.1], knR: [0.2, 0, 0], anR: [0, 0, 0] },
+  topple: { waist: [0.3, 0, 0.25], head: [0.4, 0.3, 0.3], shL: [-1.4, 0, 0.8], elL: [-0.4, 0, 0], shR: [-1.2, 0, -0.9], elR: [-0.3, 0, 0], hipL: [-0.5, 0, 0.2], knL: [0.6, 0, 0], anL: [0, 0, 0], hipR: [0.1, 0, -0.1], knR: [0.4, 0, 0], anR: [0, 0, 0] },
+  sprawl: { waist: [0, 0.2, 0.1], head: [0.1, 0.9, 0], shL: [-2.6, 0, 0.3], elL: [-0.4, 0, 0], shR: [0.3, 0, -0.5], elR: [-0.6, 0, 0], hipL: [-0.2, 0, 0.15], knL: [0.5, 0, 0], anL: [0, 0, 0], hipR: [0.15, 0, -0.1], knR: [0.2, 0, 0], anR: [0, 0, 0] },
+  run:    { waist: [0.25, 0, 0], head: [-0.15, 0, 0], shL: [0.6, 0, 0.15], elL: [-1.4, 0, 0], shR: [-0.9, 0, -0.15], elR: [-1.3, 0, 0], hipL: [-0.9, 0, 0.05], knL: [1.1, 0, 0], anL: [0, 0, 0], hipR: [0.4, 0, -0.05], knR: [0.7, 0, 0], anR: [0, 0, 0] },
+  jump:   { waist: [0.2, 0, 0], head: [-0.1, 0, 0], shL: [-0.9, 0, 0.6], elL: [-0.5, 0, 0], shR: [-0.9, 0, -0.6], elR: [-0.5, 0, 0], hipL: [-0.9, 0, 0.1], knL: [1.3, 0, 0], anL: [0, 0, 0], hipR: [-0.6, 0, -0.1], knR: [1.1, 0, 0], anR: [0, 0, 0] },
+  crouchLift: { waist: [0.95, 0, 0], head: [-0.5, 0, 0], shL: [-1.2, 0, 0.15], elL: [-0.6, 0, 0], shR: [-1.2, 0, -0.15], elR: [-0.6, 0, 0], hipL: [-1.5, 0, 0.18], knL: [2.0, 0, 0], anL: [-0.4, 0, 0], hipR: [-1.4, 0, -0.18], knR: [1.9, 0, 0], anR: [-0.4, 0, 0] },
+  strain: { waist: [0.7, 0, 0], head: [-0.8, 0, 0], shL: [-0.9, 0, 0.2], elL: [-0.4, 0, 0], shR: [-0.9, 0, -0.2], elR: [-0.4, 0, 0], hipL: [-1.1, 0, 0.2], knL: [1.4, 0, 0], anL: [-0.3, 0, 0], hipR: [-1.0, 0, -0.2], knR: [1.3, 0, 0], anR: [-0.3, 0, 0] },
+  prone:  { waist: [0, 0, 0], head: [-0.9, 0, 0], shL: [-2.7, 0, 0.35], elL: [-0.9, 0, 0], shR: [-2.7, 0, -0.35], elR: [-0.9, 0, 0], hipL: [0.05, 0, 0.08], knL: [0.15, 0, 0], anL: [1.0, 0, 0], hipR: [0.05, 0, -0.08], knR: [0.15, 0, 0], anR: [1.0, 0, 0] },
+  proneWrap: { waist: [0, 0, 0], head: [-1.0, 0.35, 0], shL: [-0.5, 0, 1.25], elL: [-1.3, 0, 0], shR: [-0.5, 0, -1.25], elR: [-1.3, 0, 0], hipL: [0.05, 0, 0.1], knL: [0.1, 0, 0], anL: [1.0, 0, 0], hipR: [0.05, 0, -0.1], knR: [0.1, 0, 0], anR: [1.0, 0, 0] },
+  lookUp: { waist: [0, 0, 0], head: [-1.35, 0, 0], shL: [-0.6, 0, 1.2], elL: [-1.2, 0, 0], shR: [-0.6, 0, -1.2], elR: [-1.2, 0, 0], hipL: [0.05, 0, 0.1], knL: [0.1, 0, 0], anL: [1.0, 0, 0], hipR: [0.05, 0, -0.1], knR: [0.1, 0, 0], anR: [1.0, 0, 0] },
+  shock:  { waist: [-0.1, 0, 0], head: [0.25, 0, 0], shL: [-2.3, 0, 0.5], elL: [-1.9, 0, 0], shR: [-2.3, 0, -0.5], elR: [-1.9, 0, 0], hipL: [0, 0, 0.04], knL: [0.1, 0, 0], anL: [0, 0, 0], hipR: [0, 0, -0.04], knR: [0.1, 0, 0], anR: [0, 0, 0] },
+  reach:  { waist: [0.35, 0, 0], head: [0.3, 0, 0], shL: [-1.4, 0, 0.1], elL: [-0.2, 0, 0], shR: [-1.5, 0, -0.1], elR: [-0.2, 0, 0], hipL: [-0.3, 0, 0.05], knL: [0.4, 0, 0], anL: [0, 0, 0], hipR: [-0.1, 0, -0.05], knR: [0.2, 0, 0], anR: [0, 0, 0] },
+  hug:    { waist: [0.45, 0, 0], head: [0.2, 0, 0], shL: [-1.3, 0.3, 0.2], elL: [-1.5, 0, 0], shR: [-1.3, -0.3, -0.2], elR: [-1.5, 0, 0], hipL: [-1.2, 0, 0.2], knL: [1.9, 0, 0], anL: [-0.3, 0, 0], hipR: [-0.4, 0, -0.2], knR: [1.6, 0, 0], anR: [0.6, 0, 0] },
+  armsUp: { waist: [0, 0, 0], head: [-0.15, 0, 0], shL: [-2.8, 0, 0.3], elL: [-0.3, 0, 0], shR: [-2.8, 0, -0.3], elR: [-0.3, 0, 0], hipL: [0, 0, 0.04], knL: [0, 0, 0], anL: [0, 0, 0], hipR: [0, 0, -0.04], knR: [0, 0, 0], anR: [0, 0, 0] },
+  clap:   { waist: [0, 0, 0], head: [0, 0, 0], shL: [-1.1, 0.5, 0.1], elL: [-1.0, 0, 0], shR: [-1.1, -0.5, -0.1], elR: [-1.0, 0, 0], hipL: [0, 0, 0.04], knL: [0, 0, 0], anL: [0, 0, 0], hipR: [0, 0, -0.04], knR: [0, 0, 0], anR: [0, 0, 0] }
+};
+function mixPose(a, b, k) { const o = {}; for (const key in a) o[key] = a[key].map((v, i) => lerp(v, b[key][i], k)); return o; }
+function applyPose(P, p, jitter, t, seed) {
+  for (const key in p) { const j = P.j[key]; if (!j) continue; let [x, y, z] = p[key]; if (jitter) { x += jitter * vnoise(t * 19 + seed + key.length * 3.1); z += jitter * vnoise(t * 23 + seed * 2 + key.charCodeAt(0)); } j.rotation.set(x, y, z); }
+}
+function walk(P, phase, amt) { const s = Math.sin(phase), c = Math.cos(phase);
+  applyPose(P, { waist: [0.04 * amt, 0, 0], head: [0, 0, 0], shL: [0.35 * s * amt, 0, 0.08], elL: [-0.35, 0, 0], shR: [-0.35 * s * amt, 0, -0.08], elR: [-0.35, 0, 0], hipL: [-0.45 * s * amt, 0, 0.02], knL: [Math.max(0, 0.7 * c) * amt, 0, 0], anL: [0, 0, 0], hipR: [0.45 * s * amt, 0, -0.02], knR: [Math.max(0, -0.7 * c) * amt, 0, 0], anR: [0, 0, 0] }); }
+
+const SKIN_D = 0x6b4630, SKIN_M = 0x8d5a3b, SKIN_L = 0xd9a984, SKIN_T = 0xb07a55;
+const wes = buildPerson({ skin: SKIN_D, top: 0x2b2f36, pants: 0x3b3f47, hat: 0x6f7fd6, shoes: 0x2a2a2a });   // periwinkle beanie, dark jacket
+const girl1 = buildPerson({ skin: SKIN_M, top: 0xc9518c, pants: 0x34356e, hairStyle: 'puffs', scale: 0.62 });
+const girl2 = buildPerson({ skin: SKIN_M, top: 0xe8b43a, pants: 0x2f3a4f, hairStyle: 'puffs', scale: 0.55 });
+const student = buildPerson({ skin: SKIN_L, top: 0x5d6b52, pants: 0x2e3440, hair: 0x6b4a2b, backpack: 0x7a2a26 });
+const woman = buildPerson({ skin: SKIN_T, top: 0x8a3b2c, pants: 0x262626, hairStyle: 'long', coat: true, hair: 0x1c1410 });
+const extras = [
+  buildPerson({ skin: SKIN_L, top: 0x31415a, pants: 0x22252b, coat: true }), buildPerson({ skin: SKIN_M, top: 0x6a6e73, pants: 0x1f2a3a, hair: 0x0f0c0a }),
+  buildPerson({ skin: SKIN_T, top: 0x2e5a4a, pants: 0x2b2b2b, hairStyle: 'long', coat: true }), buildPerson({ skin: SKIN_D, top: 0x8c6a3c, pants: 0x2b2b2b, hat: 0x2b2b2b }),
+  buildPerson({ skin: SKIN_L, top: 0x5a2a3a, pants: 0x30303a, hairStyle: 'long', hair: 0x8a6a3a })
+];
+[wes, girl1, girl2, student, woman, ...extras].forEach(p => scene.add(p.root));
+const EXTRA_POS = [[-4.6, 3.4], [-5.4, -2.6], [-3.6, -5.8], [-5.9, 6.4], [-4.9, -9.2]];
+
+// =====================================================================
+//  timeline: who is where, doing what
+// =====================================================================
+const Z_W = 1.2;            // Wesley's spot along the platform
+const Z_S = -1.4;           // the student's spot
+function placePeople(t) {
+  // commuters stand around; from 17.5 s they rush toward the edge in shock
+  extras.forEach((p, i) => { const [x, z] = EXTRA_POS[i]; const k = eio(seg(t, 17.4 + i * 0.15, 18.6 + i * 0.15)); p.root.position.set(lerp(x, -2.9 - (i % 2) * 0.5, k * (t < 41 ? 1 : 0.6)), PLAT, z); p.root.rotation.y = lerp(i % 2 ? 0.7 : 1.9, PI / 2, k);
+    if (t < 17.4) applyPose(p, POSE.stand); else if (t < 44.6) applyPose(p, POSE.shock, 0.04, t, i * 7); else applyPose(p, POSE.clap, 0.0, t, i); if (t >= 44.6) { const c = Math.sin(t * 9 + i) > 0 ? 1 : 0; p.j.elL.rotation.x = -1.0 - 0.25 * c; p.j.elR.rotation.x = -1.0 - 0.25 * c; } });
+  // Wesley and his daughters
+  const W0 = V(-3.4, PLAT, Z_W);
+  let wp = W0.clone(), wr = PI / 2, wpose = POSE.holdBoth, jit = 0;
+  if (t >= 13.8 && t < 22.5) { wpose = POSE.holdBoth; wr = lerp(PI / 2, PI * 0.8, eio(seg(t, 14.6, 15.4))); }
+  if (t >= 22.45 && t < 24.0) { wpose = mixPose(POSE.holdBoth, POSE.stand, eio(seg(t, 22.5, 23.4))); wr = lerp(PI * 0.8, PI * 1.5, eio(seg(t, 22.6, 23.6))); }
+  if (t >= 24.0 && t < 25.0) { const k = eio(seg(t, 24.0, 24.95)); wp = V(lerp(-3.4, -2.0, k), PLAT, lerp(Z_W, Z_S + 0.6, k)); wr = PI * 0.75; wpose = POSE.run; }
+  if (t >= 25.0 && t < 25.96) { const k = seg(t, 25.0, 25.75); wp = V(lerp(-2.0, -0.7, k), PLAT + 0.35 * Math.sin(PI * k) - (PLAT - 0.0) * ei(k), lerp(Z_S + 0.6, Z_S + 0.3, k)); wr = PI * 0.6; wpose = POSE.jump; }
+  if (t >= 25.96 && t < 41.45) {   // down on the tracks
+    wp = V(-0.55, 0, Z_S + 0.3); wr = PI / 2;
+    if (t < 27.4) { wpose = mixPose(POSE.crouchLift, POSE.strain, 0.5 + 0.5 * Math.sin(t * 6)); jit = 0.03; }
+    else if (t < 30.0) { const k = eio(seg(t, 27.9, 29.4)); wpose = mixPose(POSE.strain, POSE.reach, k); wp = V(lerp(-0.55, -0.42, k), 0, Z_S + 0.3); wr = PI / 2; }
+    else { const k = eio(seg(t, 30.6, 31.7)); wpose = mixPose(POSE.reach, POSE.proneWrap, k); wp = V(lerp(-0.42, 0.0, k), lerp(0, -0.12, k), Z_S + 0.25); wr = lerp(PI / 2, 0, k); }
+  }
+  if (t >= 41.45 && t < 44.7) { wp = V(0.0, -0.12, Z_S + 0.25); wr = 0; wpose = mixPose(POSE.proneWrap, POSE.lookUp, eio(seg(t, 42.2, 43.2))); }
+  if (t >= 44.7) { wp = V(-3.3, PLAT, 0.8); wr = PI / 2 + 0.3; wpose = POSE.hug; }
+  wes.root.position.copy(wp); wes.root.rotation.set(0, wr, 0);
+  // lying flat: tip the whole body forward around the feet
+  wes.root.rotation.x = 0;
+  if (t >= 30.0 && t < 44.7) { const k = t < 41.45 ? eio(seg(t, 30.6, 31.7)) : 1; wes.root.rotation.set(k * PI / 2, wr, 0, 'YXZ'); wes.root.position.y = wp.y + 0.16 * k; wes.root.position.z = wp.z - 0.95 * k; }
+  applyPose(wes, wpose, jit, t, 3);
+  // the girls: hand in hand with Dad, then held back by the woman
+  const g1 = V(-3.4, PLAT, Z_W + 0.55), g2 = V(-3.4, PLAT, Z_W - 0.55);
+  girl1.root.position.copy(g1); girl2.root.position.copy(g2); girl1.root.rotation.set(0, PI / 2, 0); girl2.root.rotation.set(0, PI / 2, 0);
+  applyPose(girl1, POSE.holdL); applyPose(girl2, POSE.holdUp);
+  if (t >= 22.6 && t < 44.7) { const k = eio(seg(t, 22.7, 23.8)); girl1.root.position.set(lerp(g1.x, -4.0, k), PLAT, lerp(g1.z, Z_W + 0.35, k)); girl2.root.position.set(lerp(g2.x, -4.0, k), PLAT, lerp(g2.z, Z_W - 0.35, k)); applyPose(girl1, POSE.stand); applyPose(girl2, POSE.stand); }
+  if (t >= 44.7) { girl1.root.position.set(-2.75, PLAT, 0.95); girl2.root.position.set(-2.8, PLAT, 0.45); girl1.root.rotation.y = -PI / 2 - 0.3; girl2.root.rotation.y = -PI / 2 + 0.2; applyPose(girl1, POSE.armsUp); applyPose(girl2, POSE.armsUp); girl1.j.shL.rotation.set(-1.6, 0.4, 0.2); girl1.j.shR.rotation.set(-1.6, -0.4, -0.2); girl2.j.shL.rotation.set(-1.5, 0.4, 0.2); girl2.j.shR.rotation.set(-1.5, -0.4, -0.2); }
+  // the woman: steps in to hold the girls back from the edge
+  woman.root.position.set(-4.6, PLAT, Z_W + 0.0); woman.root.rotation.y = PI / 2; applyPose(woman, POSE.stand);
+  if (t >= 13.5) { const k = eio(seg(t, 22.5, 23.6)); woman.root.position.set(lerp(-4.6, -4.55, k), PLAT, Z_W); applyPose(woman, t < 22.5 ? POSE.stand : mixPose(POSE.stand, POSE.holdBoth, k)); if (t > 17.5 && t < 22.5) applyPose(woman, POSE.shock, 0.03, t, 11); }
+  if (t >= 44.7) { woman.root.position.set(-4.2, PLAT, 2.2); woman.root.rotation.y = PI * 0.75; applyPose(woman, POSE.clap); }
+  // the student: waits near the edge, seizes, staggers, falls onto the track; ends up under Wesley in the trough
+  let sp = V(-2.75, PLAT, Z_S), sr = PI * 0.6, spose = POSE.stand, sj = 0;
+  if (t >= 15.4 && t < 16.6) { spose = mixPose(POSE.stand, POSE.seize, eio(seg(t, 15.4, 15.9))); sj = 0.18; }
+  if (t >= 16.6 && t < 17.9) { const k = eio(seg(t, 16.6, 17.9)); sp = V(lerp(-2.75, -1.75, k), PLAT, Z_S + 0.1 * Math.sin(k * 6)); spose = mixPose(POSE.seize, POSE.topple, k); sj = 0.12; sr = PI / 2; }
+  if (t >= 17.9 && t < 25.96) { const k = seg(t, 17.9, 18.55); spose = POSE.sprawl; sr = PI / 2; sp = V(lerp(-1.75, -0.35, k), lerp(PLAT, 0.0, ei(k)), Z_S); }
+  student.root.position.copy(sp); student.root.rotation.set(0, sr, 0);
+  if (t >= 17.9 && t < 25.96) { const k = eio(seg(t, 17.9, 18.55)); student.root.rotation.set(0, sr, -k * PI / 2 * 0.98, 'YXZ'); student.root.position.y = sp.y + 0.12 * k; }
+  if (t >= 25.96) {   // being moved into the trough, then lying face-down in it
+    const into = eio(seg(t, 27.9, 29.4));
+    student.root.rotation.set(PI / 2, 0, lerp(0.4, 0, into), 'YXZ'); student.root.position.set(lerp(-0.35, 0.0, into), lerp(0.1, -0.22, into), Z_S - 0.75);
+    spose = POSE.prone;
+  }
+  if (t >= 44.7) { student.root.position.set(-5.6, PLAT, -2.5); student.root.rotation.set(0, PI * 0.65, 0); spose = POSE.stand; }
+  applyPose(student, spose, sj, t, 17);
+  [wes, girl1, girl2, student, woman, ...extras].forEach(p => p.root.updateMatrixWorld(true));
+}
+function trainAt(t) {
+  // the front of the train, in metres along z (the station is near z = 0; the train comes from -z)
+  let z = -90, braking = 0;
+  if (t >= 25.96 && t < 32.15) z = lerp(-120, -60, seg(t, 25.96, 32.15));
+  if (t >= 32.15 && t < 35.55) { z = lerp(-26, -4, eo(seg(t, 32.15, 35.55))); braking = 1; }
+  if (t >= 41.45) z = Z_S + 2 * (15.6 + 0.7) + 6;   // stopped: two cars past the men
+  train.position.z = z; train.visible = t >= 25.96;
+  headSpot.intensity = t < 41.45 ? 6 : 1.5; glow.visible = t < 41.45;
+  return braking;
+}
+function sparkFx(t, on) {
+  for (let i = 0; i < sparks.n; i++) {
+    if (!on) { sparks.hide(i); continue; }
+    const per = 0.35, ph = hash(i) * per, age = ((t + ph) % per) / per, wheel = i % 8, car = 0;
+    const wz = train.position.z + CAR_L / 2 - 5.3 + (wheel < 4 ? 0 : -10.6) + (wheel % 2 ? 1.05 : -1.05) - 7.8, sx = (wheel % 4 < 2 ? -1 : 1) * RX;
+    const p = V(sx + (hash(i + 3) - 0.5) * 0.6 * age, RAIL_TOP + 0.05 + 0.5 * age * (hash(i + 5)) - 0.9 * age * age, wz + CAR_L / 2 + 3.2 * age * hash(i + 7));
+    sparks.set(i, p, 0.03 + 0.03 * (1 - age), 1, 0.65, 0.25, (1 - age) * 0.9);
+  }
+  sparks.commit();
+}
+
+// =====================================================================
+//  shots
+// =====================================================================
+function look(p, q, fov, roll) { camera.fov = fov || 42; camera.position.copy(p); camera.up.set(0, 1, 0); camera.lookAt(q); if (roll) camera.rotateZ(roll); camera.updateProjectionMatrix(); }
+function shake(amp, t) { if (amp > 0) { camera.rotateX(amp * vnoise(t * 17)); camera.rotateY(amp * vnoise(t * 21 + 5)); } }
+const wpos = (P, part, x = 0, y = 0, z = 0) => P.j[part].localToWorld(V(x, y, z));
+const PLATES = { B1: { a: 0, n: 192 }, B2: { a: 19.25, n: 93 }, B3: { a: 35.55, n: 123 }, B4: { a: 39.65, n: 54 } };
+const SHOTS = [
+  [0, 6.4, 'B1'],
+  [6.4, 12.55, t => { const k = eio(seg(t, 6.4, 12.55)); look(V(lerp(0.6, 0.2, k), lerp(1.75, 1.85, k), lerp(5.6, 4.9, k)), V(-3.5, PLAT + 0.9, lerp(0.4, 0.7, k)), 44); }],
+  [12.55, 16.5, t => { const k = seg(t, 12.55, 16.5); look(V(-0.9, PLAT + 1.3, lerp(-4.6, -4.2, k)), V(-2.9, PLAT + 1.0, lerp(-0.6, -0.9, k)), 40); shake(t > 15.5 ? 0.004 : 0, t); }],
+  [16.5, 19.25, t => { const k = seg(t, 16.5, 19.25); look(V(0.9, 0.55, lerp(-3.4, -3.6, k)), V(-1.2, lerp(1.8, 0.7, eio(seg(t, 17.6, 18.6))), -1.2), 44); shake(t > 18.4 && t < 18.9 ? 0.02 * Math.exp(-(t - 18.4) * 6) : 0, t); }],
+  [19.25, 22.35, 'B2'],
+  [22.35, 25.96, t => { const k = eio(seg(t, 22.35, 25.96)); look(V(lerp(0.4, 0.6, k), lerp(2.6, 2.3, k), lerp(4.6, 3.6, k)), V(lerp(-3.4, -1.4, k), PLAT + 0.6, lerp(1.0, -0.6, k)), 46); }],
+  [25.96, 32.15, t => { const k = eio(seg(t, 25.96, 32.15)); look(V(lerp(1.5, 1.1, k), lerp(3.1, 2.7, k), lerp(-1.0, -1.2, k) + 2.6), V(-0.15, 0.0, Z_S - 0.6), 48); shake(0.004 * seg(t, 30, 32), t); }],
+  [32.15, 35.55, t => { const k = seg(t, 32.15, 35.55); look(V(-2.6, PLAT + 1.6, lerp(6.5, 6.0, k)), V(-0.6, 1.0, -8), 50); shake(0.008 + 0.01 * k, t); }],
+  [35.55, 39.65, 'B3'],
+  [39.65, 41.45, 'B4'],
+  [41.45, 44.7, t => { const k = seg(t, 41.45, 44.7); look(V(0.42, 0.32, lerp(Z_S + 2.9, Z_S + 2.6, k)), V(-0.05, 0.42, Z_S - 1.2), 62); underLight.intensity = 1.4; }],
+  [44.7, 52.3, t => { const k = eio(seg(t, 44.7, 52.3)); look(V(lerp(-0.8, 0.4, k), lerp(2.3, 2.9, k), lerp(3.3, 5.4, k)), V(-3.2, PLAT + 0.7, 0.9), 44); }]
+];
+
+// =====================================================================
+//  overlays
+// =====================================================================
+const el = {}; ['gl', 'plate', 'vig', 'grain', 'fade', 'flash', 'cap', 'place', 'end'].forEach(k => el[k] = $(k));
+function show(e, o, tf) { e.style.opacity = o.toFixed(3); e.style.visibility = o > 0.004 ? 'visible' : 'hidden'; if (tf !== undefined) e.style.transform = tf; }
+const grains = (() => { const out = [], r = rng(3); for (let k = 0; k < 6; k++) { const c = document.createElement('canvas'); c.width = c.height = 256; const g = c.getContext('2d'), d = g.createImageData(256, 256); for (let i = 0; i < d.data.length; i += 4) { const v = r() * 255; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; } g.putImageData(d, 0, 0); out.push('url(' + c.toDataURL() + ')'); } return out; })();
+let TL = null, CHUNKS = [];
+function buildChunks() {
+  const words = []; TL.lines.forEach(l => l.words.forEach((w, wi) => words.push({ w: w[0], a: w[1], b: w[2], end: wi === l.words.length - 1, lineEnd: l.end })));
+  let cur = [];
+  words.forEach((w, i) => { cur.push(w); if (cur.length === 3 || /[.,?!]$/.test(w.w) || w.end || (words[i + 1] && words[i + 1].w.length > 9 && cur.length >= 2)) { CHUNKS.push(cur); cur = []; } });
+  if (cur.length) CHUNKS.push(cur);
+  CHUNKS.forEach((c, i) => { c.a = c[0].a - 0.04; const nx = CHUNKS[i + 1]; c.b = c[c.length - 1].end ? c[c.length - 1].lineEnd + 0.2 : (nx ? nx[0].a - 0.04 : 99); if (nx && c.b > nx[0].a - 0.04) c.b = nx[0].a - 0.04; });
+}
+function captions(t) {
+  const c = CHUNKS.find(c => t >= c.a && t < c.b);
+  if (!c || t > 50.9) { show(el.cap, 0); return; }
+  el.cap.innerHTML = c.map((w, i) => `<span class="${t >= w.a - 0.03 && (i === c.length - 1 || t < c[i + 1].a - 0.03) ? 'on' : ''}">${w.w.replace(/[,.]$/, '').replace(/</g, '')}</span>`).join(' ');
+  show(el.cap, 1, `scale(${(0.86 + 0.14 * eo(seg(t, c.a, c.a + 0.12))).toFixed(3)})`);
+}
+let plateKey = '';
+function setPlate(name, t) {
+  const P = PLATES[name], f = Math.max(1, Math.min(P.n, Math.round((t - P.a) * FPS) + 1));
+  const src = `out/plates/${name}/f${String(f).padStart(4, '0')}.png`;
+  if (src === plateKey) return Promise.resolve();
+  plateKey = src; el.plate.src = src;
+  return el.plate.decode().catch(() => {});
+}
+
+// =====================================================================
+//  one frame
+// =====================================================================
+function frame(t) {
+  const fi = Math.round(t * FPS);
+  const shot = SHOTS.find(s => t >= s[0] && t < s[1]) || SHOTS[SHOTS.length - 1];
+  let wait = Promise.resolve();
+  underLight.intensity = 0;
+  if (typeof shot[2] === 'string') { show(el.gl, 0); show(el.plate, 1); wait = setPlate(shot[2], t); }
+  else {
+    show(el.plate, 0); show(el.gl, 1);
+    placePeople(t); const br = trainAt(t); sparkFx(t, br > 0 || (t >= 25.96 && t < 32.15 && false));
+    shot[2](t); renderer.render(scene, camera);
+  }
+  el.grain.style.backgroundImage = grains[fi % 6]; el.grain.style.backgroundPosition = ((fi * 37) % 256) + 'px ' + ((fi * 91) % 256) + 'px';
+  show(el.fade, Math.max(1 - seg(t, 0, 0.15), seg(t, 51.6, 52.15)));
+  show(el.flash, 0);
+  show(el.place, win(t, 6.7, 10.6, 0.4, 0.4), `translateY(${(12 * (1 - eo(seg(t, 6.7, 7.2)))).toFixed(1)}px)`);
+  show(el.end, win(t, 46.0, 52.2, 0.6, 0.5), `scale(${(0.96 + 0.04 * seg(t, 46, 52)).toFixed(3)})`);
+  captions(t);
+  return wait;
+}
+
+const loader = new THREE.TextureLoader();
+window.ready = Promise.all([fetch('vo/timeline.json').then(r => r.json()), document.fonts.load('700 40px "Barlow Condensed"'), document.fonts.load('600 40px "Barlow Condensed"'), document.fonts.load('700 40px "JetBrains Mono"'), document.fonts.load('40px Anton')]).then(r => { TL = r[0]; buildChunks(); return frame(0); }).then(() => true);
+window.renderFrame = frame;
+window.DURATION = 52.2;
+if (!/capture/.test(location.search)) {
+  const stage = $('stage'); let T = 0, playing = true, last = 0;
+  const fit = () => { const k = Math.min(innerWidth / W, innerHeight / H); stage.style.transform = `translate(${(innerWidth - W * k) / 2}px,${(innerHeight - H * k) / 2}px) scale(${k})`; };
+  addEventListener('resize', fit); fit();
+  addEventListener('keydown', e => { if (e.code === 'Space') playing = !playing; });
+  window.ready.then(() => requestAnimationFrame(function loop(now) { if (playing) { T += Math.min(0.1, (now - last) / 1000 || 0); if (T >= 52.2) T = 0; frame(T); } last = now; requestAnimationFrame(loop); }));
+}
+</script>
+</body>
+</html>
