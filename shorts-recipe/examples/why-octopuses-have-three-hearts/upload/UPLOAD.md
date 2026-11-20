@@ -56,14 +56,7 @@ octopus three hearts, octopus blue blood, octopus facts, why do octopuses have t
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-| File | Frame | Use |
-|---|---|---|
-| `thumbnail-vertical.jpg` | A pigeon with a red laser line through its eye in the Piazza San Marco, caption "its head locks in place" | **Main pick.** The line makes people look twice |
-| `thumbnail-alt-strut.jpg` | The pigeon strutting at pigeon height, caption "That pigeon" | Relatable angle: the bird everyone has seen |
-| `thumbnail-alt-tripod.jpg` | The pigeon beside a vintage camera on a little tripod, caption "like a camera" | Curiosity angle |
-| `thumbnail-alt-hawk.jpg` | A hawk gliding over the square, seen from below, caption "and hawks" | Drama angle |
-| `thumbnail-alt-eye.jpg` | Close on the head and the orange eye, caption "Why?" | Question angle |
-| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
+THUMB_TABLE
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
