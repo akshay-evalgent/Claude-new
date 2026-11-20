@@ -56,7 +56,13 @@ cow four stomachs, cow stomach, rumen, chewing the cud, ruminant digestion, how 
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | The cow turned to glass, the stomach glowing inside, caption "four stomachs" | **Main pick.** The x-ray is the reveal |
+| `thumbnail-alt-four-rooms.jpg` | The stomach alone, its rooms numbered, caption "with four rooms" | Anatomy angle |
+| `thumbnail-alt-honeycomb.jpg` | Inside the honeycomb room, caption "The honeycomb room" | Curiosity angle |
+| `thumbnail-alt-pasture.jpg` | The Holstein in an Alpine meadow, caption "A cow eats" | Animal angle (the cow is the most stylized element, so the x-ray picks are stronger) |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
