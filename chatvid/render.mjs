@@ -72,7 +72,7 @@ const out = opt('out', path.join(outDir, `${slug}.mp4`));
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: ep.format === 'vertical' ? { width: 1080, height: 1920 } : { width: 1920, height: 1080 }, deviceScaleFactor: scale });
 page.on('pageerror', (e) => console.error('page error:', e.message));
-await page.goto(pathToFileURL(path.join(HERE, PREP || ep.engine === 'dm' ? ep.engine : 'engine', 'index.html')).href);
+await page.goto(pathToFileURL(path.join(HERE, PREP || ['dm', 'imsg'].includes(ep.engine) ? ep.engine : 'engine', 'index.html')).href);
 const plan = await page.evaluate((e) => window.boot(e), ep);
 console.log(`${slug}: ${plan.duration.toFixed(2)} s, ${plan.cues.length} sound cues, ${Math.ceil(plan.duration * fps)} frames`);
 

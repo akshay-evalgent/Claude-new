@@ -164,6 +164,7 @@ EMOJI_NAME_OVERRIDES = {
     "🐹": "Hamster",
     "👇": "Backhand index pointing down",
     "🤞": "Crossed fingers",
+    "🧔‍♂️": "Man beard",
     "🐑": "Ewe",
     "🐻‍❄": "Polar bear",
     "👈": "Backhand index pointing left",

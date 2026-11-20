@@ -5,7 +5,7 @@ messages, streamed replies, punch-in zooms, screen shake, a patience meter, a
 cold-open hook with a rewind, sound effects and music, mixed to YouTube loudness.
 No screen recording and no editing software needed.
 
-Samples: `samples/ai-is-a-toaster.mp4` (4:48), `samples/last-digit-of-pi.mp4` (4:47), `samples/emojis-only.mp4` (4:49), `samples/elon-vs-grok.mp4` (4:37, parody), `samples/1950s-mode.mp4` (4:39, real archive footage), `samples/year-3000-mode.mp4` (4:34, NASA footage), `samples/planet-human-720p.mp4` (3:40, AI-narrated documentary, 720p preview), `samples/rizzless-groom-720p.mp4` (3:41, Gen Z recut trailer of a 1947 short, 720p preview), `samples/latency-ep1-720p.mp4` (10:45, animated panel show, 720p preview), `samples/latency-ep2-720p.mp4` (9:17, its second episode), `samples/dm-tesla-720p.mp4` (2:40, chat story), `samples/dm-amazon-720p.mp4` (2:49, the next one) and
+Samples: `samples/ai-is-a-toaster.mp4` (4:48), `samples/last-digit-of-pi.mp4` (4:47), `samples/emojis-only.mp4` (4:49), `samples/elon-vs-grok.mp4` (4:37, parody), `samples/1950s-mode.mp4` (4:39, real archive footage), `samples/year-3000-mode.mp4` (4:34, NASA footage), `samples/planet-human-720p.mp4` (3:40, AI-narrated documentary, 720p preview), `samples/rizzless-groom-720p.mp4` (3:41, Gen Z recut trailer of a 1947 short, 720p preview), `samples/latency-ep1-720p.mp4` (10:45, animated panel show, 720p preview), `samples/latency-ep2-720p.mp4` (9:17, its second episode), `samples/dm-tesla-720p.mp4` (2:40, chat story), `samples/dm-amazon-720p.mp4` (2:49, the next one), `samples/prank-snow-720p.mp4` (1:32, prank-text Short with 3D footage) and
 `samples/count-to-a-billion.mp4` (29 s test). These are compressed previews;
 a fresh render in `out/` is the full-quality file to upload.
 
@@ -246,6 +246,35 @@ A 2:40 story renders in about four minutes.
 | `music`, `stop` (any beat or line) | Start a music bed (`{"track", "offset", "gain"}`), or cut to silence. |
 
 Thumbnails can use `msgs` (chat cards) next to `photo`.
+
+## Prank-text Shorts (`"engine": "imsg"`) and 3D footage
+
+A vertical phone screen recording of a text conversation: each message is typed live on the
+keyboard, the other side shows a typing indicator, and clips are picked from a photo sheet
+and play inline. A hook can show the "footage" first with a caption. The footage is rendered
+with Three.js from `three/<scene>.html` (MIT, vendored in `three/vendor`). The recipe is in
+`research/prank-text-recipe.md`; the example is `episodes/prank-snow.json`.
+
+```bash
+python3 chatvid/tools/fetch_media.py chatvid/episodes/prank-snow.json
+```
+
+```bash
+node chatvid/render.mjs chatvid/episodes/prank-snow.json
+```
+
+The first command renders any 3D clips listed in `media` as `{"three": "snow", ...}` that are
+not cached yet (or run `node chatvid/tools/three_clip.mjs <scene> <key> '<params>' --dur 4`,
+with `--still t` to look at one frame).
+
+| Episode field | Meaning |
+|---|---|
+| `contact` | `{"name", "avatar": {"emoji", "bg"} or {"media"}}` in the header. |
+| `hook` | `{"media", "caption", "dur"}`: the footage full screen before the recording. |
+| `history` | Old messages above "Today": `[{"them": "..."}, {"me": "..."}]`. |
+| `clock`, `minuteEvery`, `unread` | The red time pill, how often it ticks, the unread count. |
+| `typeSpeed`, `readMul`, `tail` | Characters typed per second, how long replies stay before the next, end hold. |
+| `beats` | `{"me": "text"}` (typed live), `{"them": "text", "typing", "wait", "hold"}`, `{"media": "<clip key>", "hold"}`, `{"pause": s}`. |
 
 ## Layout
 

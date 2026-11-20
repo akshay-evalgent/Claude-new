@@ -146,7 +146,22 @@ def notify():
     return np.stack([out, out], axis=1).astype(np.float32)
 
 
-SYNTH = {"boom": boom, "ding": ding, "soft-swoosh": soft_swoosh, "soft-pop": soft_pop, "bleep": bleep, "blip": blip, "notify": notify}
+def wind():
+    """Outdoor air for phone-camera footage: soft low-passed noise that swells and falls."""
+    n = int(6.0 * SR)
+    t = np.arange(n) / SR
+    rnd = np.random.default_rng(31)
+    x = rnd.standard_normal((n, 2))
+    k = 120
+    x = np.stack([np.convolve(x[:, c], np.ones(k) / k, mode="same") for c in (0, 1)], axis=1)
+    x *= (0.6 + 0.4 * np.sin(2 * np.pi * 0.23 * t) * np.sin(2 * np.pi * 0.07 * t + 1))[:, None]
+    f = int(0.3 * SR)
+    x[:f] *= np.linspace(0, 1, f)[:, None]
+    x[-f:] *= np.linspace(1, 0, f)[:, None]
+    return (x / (np.abs(x).max() or 1)).astype(np.float32)
+
+
+SYNTH = {"wind": wind, "boom": boom, "ding": ding, "soft-swoosh": soft_swoosh, "soft-pop": soft_pop, "bleep": bleep, "blip": blip, "notify": notify}
 
 
 def clip_audio(key):

@@ -1,0 +1,197 @@
+{
+ "engine": "imsg",
+ "format": "vertical",
+ "title": "texted my dad the snow guy brought a couple friends",
+ "crf": 18,
+ "fps": 30,
+ "clock": "11:24",
+ "minuteEvery": 40,
+ "unread": "4,211",
+ "typeSpeed": 21,
+ "readMul": 0.72,
+ "tail": 1.4,
+ "contact": {
+  "name": "Dad 🛠️",
+  "avatar": {
+   "emoji": "🧔‍♂️",
+   "bg": "#c7d3e0"
+  }
+ },
+ "hook": {
+  "media": "snow-hook",
+  "caption": "texted my dad the snow guy brought \"a couple friends\" 😭",
+  "dur": 3.4
+ },
+ "history": [
+  {
+   "them": "Did you take the trash out"
+  },
+  {
+   "me": "yes"
+  },
+  {
+   "them": "The trash is still here"
+  },
+  {
+   "me": "its resting"
+  }
+ ],
+ "media": {
+  "snow-hook": {
+   "three": "snow",
+   "workers": 14,
+   "pile": 1.3,
+   "seed": 11,
+   "dur": 4.5
+  },
+  "snow-a": {
+   "three": "snow",
+   "workers": 2,
+   "pile": 0.35,
+   "seed": 3,
+   "dur": 4
+  },
+  "snow-b": {
+   "three": "snow",
+   "workers": 10,
+   "pile": 1.0,
+   "seed": 5,
+   "dur": 4
+  },
+  "snow-c": {
+   "three": "snow",
+   "workers": 24,
+   "pile": 3.0,
+   "seed": 9,
+   "pileWorkers": 6,
+   "dur": 4
+  }
+ },
+ "beats": [
+  {
+   "me": "dad the snow guy is here"
+  },
+  {
+   "them": "You paid someone? It's 3 inches. I have a shovel AND two sons"
+  },
+  {
+   "me": "you have one son"
+  },
+  {
+   "them": "I know what I said"
+  },
+  {
+   "me": "anyway he says it's a big job"
+  },
+  {
+   "them": "It's a driveway not a highway"
+  },
+  {
+   "me": "he called his cousin to help"
+  },
+  {
+   "them": "Why"
+  },
+  {
+   "media": "snow-a",
+   "hold": 3.2
+  },
+  {
+   "them": "Fine. Tell them no salt on the grass"
+  },
+  {
+   "me": "ok"
+  },
+  {
+   "me": "they called more cousins"
+  },
+  {
+   "them": "How many cousins does one man have"
+  },
+  {
+   "media": "snow-b",
+   "hold": 3.4
+  },
+  {
+   "them": "WHY ARE THERE TEN MEN ON MY DRIVEWAY"
+  },
+  {
+   "them": "IS THIS A FAMILY REUNION",
+   "wait": 0.15,
+   "typing": 0.6
+  },
+  {
+   "me": "they said it's team building"
+  },
+  {
+   "them": "THEY DONT WORK FOR ME"
+  },
+  {
+   "me": "they do now"
+  },
+  {
+   "them": "WHO IS PAYING THEM"
+  },
+  {
+   "me": "they said you'd ask that"
+  },
+  {
+   "me": "they take venmo"
+  },
+  {
+   "them": "WHERE IS ALL THE SNOW EVEN GOING"
+  },
+  {
+   "me": "the lawn"
+  },
+  {
+   "media": "snow-c",
+   "hold": 3.6
+  },
+  {
+   "them": "WHAT IS THAT"
+  },
+  {
+   "them": "THAT IS NOT A PILE THATS A GEOGRAPHIC FEATURE",
+   "wait": 0.15,
+   "typing": 0.9
+  },
+  {
+   "me": "the driveway looks great tho 😭"
+  },
+  {
+   "them": "I CANT SEE THE NEIGHBORS HOUSE ANYMORE"
+  },
+  {
+   "me": "the neighbors said thank you"
+  },
+  {
+   "them": "PUT THE COUSIN ON THE PHONE"
+  },
+  {
+   "me": "which one",
+   "hold": 1.6
+  }
+ ],
+ "youtube": {
+  "title": "texted my dad the snow guy brought \"a couple friends\" 😭",
+  "description": [
+   "he had one question. then he had a lot of questions.",
+   "",
+   "The \"footage\" is a 3D animation made for this video; the conversation is a skit.",
+   "",
+   "#shorts #prank #texting"
+  ],
+  "tags": [
+   "prank texting",
+   "texting my dad",
+   "prank my dad",
+   "snow prank",
+   "funny texts",
+   "dad texts",
+   "text prank",
+   "snow removal",
+   "shorts"
+  ]
+ }
+}

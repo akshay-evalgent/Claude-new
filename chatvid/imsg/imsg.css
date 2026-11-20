@@ -1,0 +1,85 @@
+/* Texting-app engine: a phone screen recording of a text conversation (light theme), drawn in
+   HTML at 1080x1920: status bar, contact header, bubbles, the keyboard typing live. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+#frame { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #000; font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; }
+#phone { position: absolute; inset: 0; background: #fff; overflow: hidden; }
+
+/* status bar: the red time pill is what a screen recording looks like */
+#status { position: absolute; left: 0; right: 0; top: 0; height: 120px; z-index: 5; }
+#clock { position: absolute; left: 92px; top: 38px; padding: 8px 22px 10px; border-radius: 40px; background: #ff3b30; color: #fff; font: 600 40px/1 "Inter", sans-serif; letter-spacing: -.5px; }
+#icons { position: absolute; right: 70px; top: 48px; display: flex; gap: 18px; align-items: center; }
+#icons i { display: block; }
+.sig { width: 44px; height: 28px; background: linear-gradient(90deg, #000 0 18%, transparent 18% 27%, #000 27% 45%, transparent 45% 54%, #000 54% 72%, transparent 72% 81%, #000 81%);
+  clip-path: polygon(0 75%, 18% 75%, 18% 100%, 0 100%, 27% 52%, 45% 52%, 45% 100%, 27% 100%, 54% 26%, 72% 26%, 72% 100%, 54% 100%, 81% 0, 100% 0, 100% 100%, 81% 100%); }
+.wifi { width: 40px; height: 30px; background: #000; clip-path: polygon(50% 100%, 0 30%, 15% 12%, 50% 0, 85% 12%, 100% 30%); }
+.bat { width: 58px; height: 28px; border-radius: 8px; border: 3px solid rgba(0,0,0,.4); position: relative; }
+.bat::after { content: ""; position: absolute; left: 3px; top: 3px; bottom: 3px; width: 70%; border-radius: 4px; background: #000; }
+
+#head { position: absolute; left: 0; right: 0; top: 120px; height: 250px; z-index: 4; background: rgba(250,250,252,.94); border-bottom: 1px solid #e3e3e8; }
+#back { position: absolute; left: 34px; top: 48px; display: flex; align-items: center; gap: 4px; padding: 6px 22px 8px 14px; border-radius: 40px; background: #eceef2; }
+.chev { width: 22px; height: 22px; border-left: 5px solid #111; border-bottom: 5px solid #111; transform: rotate(45deg); margin: 0 8px 0 8px; }
+#unread { font: 600 34px/1 "Inter", sans-serif; color: #111; }
+#cAv { position: absolute; left: 50%; top: 18px; width: 128px; height: 128px; margin-left: -64px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+#cAv img { width: 100%; height: 100%; object-fit: cover; }
+#cAv.emo img { width: 66%; height: 66%; object-fit: contain; }
+#cName { position: absolute; left: 0; right: 0; top: 162px; text-align: center; font: 600 30px/1.2 "Inter", sans-serif; color: #111; }
+#cName::after { content: " ›"; color: #8e8e93; }
+#cName img { height: 1.1em; vertical-align: -.2em; }
+#vid { position: absolute; right: 52px; top: 62px; width: 56px; height: 38px; border: 5px solid #111; border-radius: 9px; }
+#vid::after { content: ""; position: absolute; right: -22px; top: 6px; border: 11px solid transparent; border-right: 14px solid #111; }
+
+#thread { position: absolute; left: 0; right: 0; top: 370px; bottom: 0; overflow: hidden; }
+#msgs { position: absolute; left: 0; right: 0; top: 0; padding: 0 30px; }
+.m { display: flex; margin-top: 8px; }
+.m.me { justify-content: flex-end; }
+.m.gap { margin-top: 28px; }
+.b { max-width: 690px; padding: 18px 30px 20px; border-radius: 44px; font: 400 42px/1.24 "Inter", sans-serif; letter-spacing: -.2px; position: relative; word-wrap: break-word; }
+.me .b { background: #1d8cf8; color: #fff; }
+.them .b { background: #e9e9eb; color: #000; }
+.me.tail .b { border-bottom-right-radius: 12px; }
+.them.tail .b { border-bottom-left-radius: 12px; }
+.b img.e { height: 1.15em; vertical-align: -.22em; }
+.media { width: 440px; height: 560px; border-radius: 36px; overflow: hidden; background: #ccc; position: relative; }
+.media img { width: 100%; height: 100%; object-fit: cover; }
+.media::after { content: ""; position: absolute; left: 22px; bottom: 20px; width: 0; height: 0; border-left: 26px solid rgba(255,255,255,.9); border-top: 16px solid transparent; border-bottom: 16px solid transparent; opacity: .0; }
+.sep { text-align: center; font: 600 28px/1 "Inter", sans-serif; color: #8e8e93; margin: 34px 0 14px; }
+.deliv { text-align: right; font: 500 26px/1 "Inter", sans-serif; color: #8e8e93; margin: 8px 12px 0 0; }
+.dots { display: flex; gap: 10px; padding: 26px 32px; }
+.dots i { width: 20px; height: 20px; border-radius: 50%; background: #9a9aa0; display: block; }
+
+/* the text field and the keyboard */
+#bar { position: absolute; left: 0; right: 0; height: 120px; z-index: 6; background: #fff; display: flex; align-items: center; gap: 22px; padding: 0 30px; }
+#plus { width: 76px; height: 76px; border-radius: 50%; background: #eceef2; color: #555; font: 300 60px/72px "Inter", sans-serif; text-align: center; }
+#field { flex: 1; min-height: 80px; border: 2px solid #d9d9de; border-radius: 42px; padding: 14px 120px 16px 30px; font: 400 40px/1.25 "Inter", sans-serif; color: #000; position: relative; }
+#ph { color: #b0b0b6; }
+#caret { display: inline-block; width: 4px; height: 46px; background: #1d8cf8; vertical-align: -9px; margin-left: 2px; }
+#mic { position: absolute; right: 26px; top: 16px; width: 30px; height: 48px; }
+#mic svg, #kbBottom svg { width: 100%; height: 100%; }
+#sendBtn { position: absolute; right: 10px; top: 8px; width: 64px; height: 64px; border-radius: 50%; background: #1d8cf8; color: #fff; font: 700 42px/62px "Inter", sans-serif; text-align: center; display: none; }
+#kb { position: absolute; left: 0; right: 0; bottom: 0; height: 780px; z-index: 6; background: #d3d5db; padding: 22px 8px 0; }
+.row { display: flex; justify-content: center; gap: 13px; margin-bottom: 26px; }
+.k { width: 92px; height: 128px; border-radius: 14px; background: #fff; box-shadow: 0 3px 0 #8a8d93; display: flex; align-items: center; justify-content: center; font: 400 56px/1 "Inter", sans-serif; color: #000; }
+.k.sp { background: #adb1b9; font-size: 36px; }
+.k.down { background: #c9ccd2; }
+#pop { position: absolute; z-index: 9; width: 150px; height: 240px; display: none; border-radius: 22px 22px 30px 30px; background: #fff; box-shadow: 0 6px 22px rgba(0,0,0,.3);
+  font: 400 92px/150px "Inter", sans-serif; text-align: center; color: #000; }
+
+#picker { position: absolute; left: 0; right: 0; bottom: 0; height: 1080px; z-index: 8; background: #f2f2f7; border-radius: 40px 40px 0 0; box-shadow: 0 -10px 40px rgba(0,0,0,.18); display: none; }
+#pkHead { height: 120px; text-align: center; font: 700 40px/120px "Inter", sans-serif; color: #000; position: relative; }
+#pkX { position: absolute; left: 36px; top: 30px; width: 60px; height: 60px; border-radius: 50%; background: #e2e2e7; font: 600 30px/60px "Inter", sans-serif; color: #444; }
+#pkGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+#pkGrid div { aspect-ratio: 1; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; font-size: 150px; }
+#pkGrid img { width: 100%; height: 100%; object-fit: cover; }
+#pkGrid .sel::after { content: "✓"; position: absolute; right: 18px; bottom: 18px; width: 64px; height: 64px; border-radius: 50%; background: #1d8cf8; border: 5px solid #fff; color: #fff; font: 700 38px/56px "Inter", sans-serif; text-align: center; }
+
+/* the hook: the "footage" full screen with a caption, before the screen recording starts */
+#hook { position: absolute; inset: 0; z-index: 20; display: none; background: #000; }
+#hookImg { width: 100%; height: 100%; object-fit: cover; }
+#hookCap { position: absolute; left: 60px; right: 60px; top: 46%; text-align: center; font: 800 66px/1.15 "Inter", sans-serif; color: #fff;
+  -webkit-text-stroke: 12px #000; paint-order: stroke fill; text-wrap: balance; }
+#hookCap img { height: 1.05em; vertical-align: -.18em; }
+#flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 30; }
+#kbBottom { position: absolute; left: 0; right: 0; bottom: 34px; height: 70px; }
+#kbBottom .g { position: absolute; left: 66px; top: 4px; width: 62px; height: 62px; }
+#kbBottom .mc { position: absolute; right: 70px; top: 4px; width: 40px; height: 62px; }

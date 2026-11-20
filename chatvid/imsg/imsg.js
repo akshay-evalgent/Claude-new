@@ -1,0 +1,237 @@
+/* Texting-app engine: a phone screen recording of a text conversation. The sender types each
+   message live on the keyboard (key pop-ups, caret), the other person shows a typing
+   indicator, videos are picked from a photo sheet and play inline. A hook can open the video:
+   the "footage" full screen with a caption.
+   boot(episode) returns {duration, cues}; renderAt(T) draws time T. */
+(() => {
+  const W = 1080, H = 1920, FPS = 30;
+  const $ = (id) => document.getElementById(id);
+  const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+  const lerp = (a, b, p) => a + (b - a) * p;
+  const EASE = { out: (p) => 1 - Math.pow(1 - p, 3), outBack: (p) => { const c1 = 1.7, c3 = c1 + 1; return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2); } };
+  const seg = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
+  const isEmoji = (g) => /\p{Extended_Pictographic}/u.test(g);
+  const ekey = (g) => Array.from(g).map((c) => c.codePointAt(0)).filter((c) => c !== 0xfe0f).map((c) => c.toString(16)).join('-');
+  const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  const rich = (s) => Array.from(seg.segment(String(s)), (x) => x.segment).map((g) => (isEmoji(g) ? `<img class="e" src="../assets/emoji/${ekey(g)}.png">` : esc(g))).join('');
+  const hash = (s, i) => { let h = 2166136261; for (const c of s + i) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return ((h >>> 0) % 1000) / 1000; };
+
+  let EP, MSGS = [], EV = [], duration = 0, HEIGHTS = [], KEYS = {}, hookEnd = 0, lastCount = -1, lastPicker = '';
+  const meta = (k) => (EP.__mediaMeta && EP.__mediaMeta[k]) || null;
+  const frameSrc = (k, i) => { const m = meta(k); return `../assets/media/${k}/f${String((i % m.count) + 1).padStart(4, '0')}.${m.ext}`; };
+
+  const ROWS = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
+  function keyboardHTML() {
+    return `<div class="row">${[...ROWS[0]].map((c) => `<div class="k" data-k="${c}">${c}</div>`).join('')}</div>` +
+      `<div class="row">${[...ROWS[1]].map((c) => `<div class="k" data-k="${c}">${c}</div>`).join('')}</div>` +
+      `<div class="row"><div class="k sp" style="width:130px">⇧</div>${[...ROWS[2]].map((c) => `<div class="k" data-k="${c}">${c}</div>`).join('')}<div class="k sp" style="width:130px">⌫</div></div>` +
+      `<div class="row"><div class="k sp" style="width:110px">123</div><div class="k sp" style="width:110px">☺︎</div><div class="k" data-k=" " style="width:520px;font-size:38px">space</div><div class="k sp" style="width:210px">return</div></div>`;
+  }
+
+  function msgHTML(m, i, list) {
+    const next = list[i + 1], prev = list[i - 1];
+    const tail = !next || next.from !== m.from || next.sep;
+    const gap = prev && prev.from !== m.from ? ' gap' : '';
+    let h = m.sep ? `<div class="sep">${esc(m.sep)}</div>` : '';
+    if (m.media) h += `<div class="m ${m.from}${gap}" data-i="${i}"><div class="media"><img data-media="${m.media}" src="${frameSrc(m.media, 0)}"></div></div>`;
+    else h += `<div class="m ${m.from}${tail ? ' tail' : ''}${gap}" data-i="${i}"><div class="b">${rich(m.text)}</div></div>`;
+    return h;
+  }
+
+  window.boot = async (ep) => {
+    EP = ep;
+    const cues = [];
+    // contact header
+    const c = ep.contact || {}, a = c.avatar || {};
+    $('cAv').className = a.media ? '' : 'emo';
+    $('cAv').style.background = a.bg || '#c7c7cc';
+    $('cAv').innerHTML = a.media ? `<img src="../assets/media/${a.media}.jpg">` : `<img src="../assets/emoji/${ekey(a.emoji || '🙂')}.png">`;
+    $('cName').innerHTML = rich(c.name || 'Dad');
+    $('unread').textContent = ep.unread || '';
+    $('kb').innerHTML = keyboardHTML() + `<div id="kbBottom"><span class="g"><svg viewBox="0 0 62 62"><circle cx="31" cy="31" r="26" fill="none" stroke="#3a3a3c" stroke-width="4"/><ellipse cx="31" cy="31" rx="11" ry="26" fill="none" stroke="#3a3a3c" stroke-width="4"/><path d="M6 31h50M10 18h42M10 44h42" stroke="#3a3a3c" stroke-width="4"/></svg></span><span class="mc"><svg viewBox="0 0 30 48"><rect x="8" y="2" width="14" height="26" rx="7" fill="none" stroke="#3a3a3c" stroke-width="4"/><path d="M3 22a12 12 0 0 0 24 0M15 34v10" fill="none" stroke="#3a3a3c" stroke-width="4" stroke-linecap="round"/></svg></span></div>`;
+    $('mic').innerHTML = '<svg viewBox="0 0 30 48"><rect x="8" y="2" width="14" height="26" rx="7" fill="none" stroke="#8e8e93" stroke-width="4"/><path d="M3 22a12 12 0 0 0 24 0M15 34v10" fill="none" stroke="#8e8e93" stroke-width="4" stroke-linecap="round"/></svg>';
+    // where each key sits, for the pop-up balloon
+    await document.fonts.ready;
+    $('bar').style.top = `${H - 780 - 120}px`;
+    document.querySelectorAll('#kb .k[data-k]').forEach((k) => { const r = k.getBoundingClientRect(); KEYS[k.dataset.k] = { x: r.left, y: r.top, w: r.width, h: r.height, el: k }; });
+
+    // the conversation before "Today"
+    for (const hm of ep.history || []) MSGS.push({ from: hm.me != null ? 'me' : 'them', text: hm.me ?? hm.them, hist: true });
+    const firstTodayIdx = MSGS.length;
+
+    let t = 0;
+    const ev = (e) => EV.push({ ...e, t: e.t ?? t });
+    if (ep.hook) {
+      hookEnd = ep.hook.dur ?? 3.5;
+      ev({ type: 'hook', on: true, t: 0 });
+      cues.push({ t: 0, s: 'wind', g: -16, dur: hookEnd });
+      t = hookEnd;
+      ev({ type: 'hook', on: false });
+      cues.push({ t, s: 'soft-swoosh', g: -14 });
+      t += 0.35;
+    }
+    const cps = ep.typeSpeed || 13;
+    let lastFrom = null;
+    for (const b of ep.beats) {
+      if (b.pause) { t += b.pause; continue; }
+      const from = b.me != null || b.media ? 'me' : 'them';
+      const text = b.me ?? b.them;
+      if (from === 'me' && !b.media) {
+        // think, then type it out character by character
+        t += b.wait ?? (lastFrom === 'me' ? 0.25 : 0.55);
+        const chars = [...text];
+        ev({ type: 'input', text: '' });
+        chars.forEach((ch, k) => {
+          ev({ type: 'input', text: chars.slice(0, k + 1).join('') });
+          ev({ type: 'key', ch: ch.toLowerCase() });
+          if (ch !== ' ') cues.push({ t, s: ['key1', 'key2', 'key3'][k % 3], g: -27 + 3 * hash(text, k), rate: 0.96 + 0.08 * hash(text, k + 7) });
+          t += (1 / cps) * (0.6 + 0.9 * hash(text, k)) * (ch === ' ' ? 0.7 : 1);
+        });
+        t += 0.12;
+        MSGS.push({ from, text });
+        ev({ type: 'add', n: MSGS.length }); ev({ type: 'input', text: '' });
+        cues.push({ t, s: 'send', g: -13 });
+        t += b.hold ?? 0.35 + 0.012 * text.length;
+      } else if (b.media) {
+        // open the photo sheet, pick the clip, send it, let it play
+        t += b.wait ?? 0.4;
+        ev({ type: 'picker', open: true, media: b.media, sel: false });
+        cues.push({ t, s: 'soft-pop', g: -20 });
+        t += 0.75;
+        ev({ type: 'picker', open: true, media: b.media, sel: true });
+        cues.push({ t, s: 'soft-pop', g: -16, rate: 1.3 });
+        t += 0.4;
+        ev({ type: 'picker', open: false });
+        MSGS.push({ from: 'me', media: b.media });
+        ev({ type: 'add', n: MSGS.length });
+        cues.push({ t, s: 'send', g: -12 });
+        if (b.sound !== false) cues.push({ t: t + 0.2, s: 'wind', g: -22, dur: b.hold ?? 3.4 });
+        t += b.hold ?? 3.4;
+      } else {
+        // the other person types (dots), then the message lands
+        t += b.wait ?? 0.35;
+        const typing = b.typing ?? clamp(0.6 + 0.018 * text.length, 0.7, 1.7);
+        ev({ type: 'dots', on: true });
+        t += typing;
+        ev({ type: 'dots', on: false });
+        MSGS.push({ from, text });
+        ev({ type: 'add', n: MSGS.length });
+        cues.push({ t, s: 'reply', g: -11 });
+        t += b.hold ?? clamp(0.7 + 0.04 * text.length, 0.9, 3.2) * (ep.readMul || 1);
+      }
+      lastFrom = from;
+    }
+    t += ep.tail ?? 1.2;
+    duration = t;
+    EV.sort((x, y) => x.t - y.t);
+    // a separator before the first message of today, and "Delivered" under the last one I sent
+    if (firstTodayIdx > 0 && MSGS[firstTodayIdx]) MSGS[firstTodayIdx].sep = ep.todayLabel || 'Today';
+
+    // measure the thread at every length so the scroll can glide between them
+    const box = $('msgs');
+    const counts = [...new Set([firstTodayIdx, ...EV.filter((e) => e.type === 'add').map((e) => e.n)])];   // every length the thread has
+    for (const n of counts) for (const dots of [false, true]) {
+      box.innerHTML = threadHTML(n, dots);
+      HEIGHTS[n * 2 + (dots ? 1 : 0)] = box.offsetHeight;
+    }
+    return { duration, cues: cues.sort((x, y) => x.t - y.t), music: null, mainStart: 0, exchanges: [0] };
+  };
+
+  function threadHTML(n, dots) {
+    const list = MSGS.slice(0, n);
+    let h = list.map((m, i) => msgHTML(m, i, list)).join('');
+    const lastMe = [...list].reverse().find((m) => m.from === 'me');
+    if (lastMe && list[list.length - 1] === lastMe && !dots) h += '<div class="deliv">Delivered</div>';
+    if (dots) h += `<div class="m them gap"><div class="b dots"><i></i><i></i><i></i></div></div>`;
+    return h + '<div style="height:28px"></div>';
+  }
+
+  // the state at time T: replay the events up to it
+  function stateAt(T) {
+    const s = { n: MSGS.filter((m) => m.hist).length, nT: 0, dots: false, dotsT: 0, input: '', key: null, keyT: -9, picker: null, pickerT: 0, hook: false, addT: -9 };
+    for (const e of EV) {
+      if (e.t > T) break;
+      if (e.type === 'add') { s.prevN = s.n; s.n = e.n; s.addT = e.t; }
+      else if (e.type === 'dots') { s.dots = e.on; s.dotsT = e.t; }
+      else if (e.type === 'input') s.input = e.text;
+      else if (e.type === 'key') { s.key = e.ch; s.keyT = e.t; }
+      else if (e.type === 'picker') { s.picker = e.open ? e : null; if (e.open && !e.sel) s.pickerOpenT = e.t; }
+      else if (e.type === 'hook') s.hook = e.on;
+    }
+    return s;
+  }
+
+  const show = (id, on, mode) => { $(id).style.display = on ? mode || 'block' : 'none'; };
+
+  window.renderAt = async (T) => {
+    const s = stateAt(T), f = Math.floor(T * FPS);
+    // hook
+    show('hook', s.hook);
+    if (s.hook) {
+      const k = EP.hook.media, img = $('hookImg'), src = frameSrc(k, f);
+      if (img.dataset.src !== src) { img.src = src; img.dataset.src = src; }
+      $('hookCap').innerHTML = rich(EP.hook.caption || '');
+    }
+    // clock: a minute passes every ~40 seconds of video
+    const [hh, mm] = (EP.clock || '11:24').split(':').map(Number), add = Math.floor(Math.max(0, T - hookEnd) / (EP.minuteEvery || 40));
+    $('clock').textContent = `${hh}:${String(mm + add).padStart(2, '0')}`;
+
+    // thread
+    const key = `${s.n}|${s.dots}`;
+    if (key !== lastCount) { $('msgs').innerHTML = threadHTML(s.n, s.dots); lastCount = key; }
+    // "floor" is the top of the text field, which sits right on the keyboard (or the photo sheet)
+    const pickerOpen = !!s.picker;
+    const floor = (pickerOpen ? H - 1080 : H - 780) - 120;
+    const hNow = HEIGHTS[s.n * 2 + (s.dots ? 1 : 0)] ?? $('msgs').offsetHeight;
+    const hPrev = HEIGHTS[(s.prevN ?? s.n) * 2] ?? hNow;
+    const since = Math.min(T - s.addT, s.dots ? T - s.dotsT : 9);
+    const pg = EASE.out(clamp(since / 0.22, 0, 1));
+    const h = lerp(Math.min(hPrev, hNow), hNow, pg);
+    const visible = floor - 370 - 12;
+    $('msgs').style.transform = `translateY(${(Math.min(0, visible - h)).toFixed(1)}px)`;
+    // the newest bubble pops in
+    const last = T - s.addT < 0.4 ? $('msgs').querySelector(`.m[data-i="${s.n - 1}"]`) : null;
+    if (last) { const p = EASE.outBack(clamp((T - s.addT) / 0.22, 0, 1)); last.style.transform = `scale(${(0.88 + 0.12 * p).toFixed(3)})`; last.style.transformOrigin = last.classList.contains('me') ? '100% 100%' : '0 100%'; }
+    // dots pulse
+    $('msgs').querySelectorAll('.dots i').forEach((d, k) => { d.style.opacity = (0.35 + 0.65 * Math.max(0, Math.sin(T * 7 - k * 0.9))).toFixed(2); });
+    // videos play from the moment they were sent
+    $('msgs').querySelectorAll('img[data-media]').forEach((im) => {
+      const k = im.dataset.media, i = MSGS.findIndex((m) => m.media === k), addEv = EV.find((e) => e.type === 'add' && e.n === i + 1);
+      const src = frameSrc(k, Math.max(0, Math.floor((T - (addEv ? addEv.t : 0)) * FPS)));
+      if (im.dataset.src !== src) { im.src = src; im.dataset.src = src; }
+    });
+
+    // input field + keyboard
+    $('bar').style.top = `${floor}px`;
+    show('ph', !s.input, 'inline'); $('typed').textContent = s.input; show('sendBtn', !!s.input);
+    $('caret').style.opacity = Math.floor(T * 2.2) % 2 === 0 || T - s.keyT < 0.5 ? 1 : 0;
+    show('kb', !pickerOpen);
+    document.querySelectorAll('#kb .k.down').forEach((k) => k.classList.remove('down'));
+    const kd = KEYS[s.key], pressed = kd && T - s.keyT < 0.09 && !pickerOpen;
+    show('pop', pressed && s.key !== ' ');
+    if (pressed) {
+      kd.el.classList.add('down');
+      if (s.key !== ' ') { $('pop').textContent = s.key; $('pop').style.left = `${kd.x + kd.w / 2 - 75}px`; $('pop').style.top = `${kd.y + kd.h - 240}px`; }
+    }
+    // photo picker
+    show('picker', pickerOpen);
+    if (pickerOpen) {
+      const pk = s.picker, pkKey = pk.media + pk.sel;
+      if (pkKey !== lastPicker) {
+        const sent = MSGS.filter((m) => m.media).map((m) => m.media);
+        const tiles = [pk.media, ...sent.filter((x) => x !== pk.media).reverse()].slice(0, 3);
+        const fill = EP.cameraRoll || ['🍕', '🐶', '🎂', '🌅', '🏀', '🍩', '🎄', '🚗', '🐱'];
+        $('pkGrid').innerHTML = tiles.map((k, i) => `<div class="${i === 0 && pk.sel ? 'sel' : ''}"><img src="${frameSrc(k, 30)}"></div>`).join('') +
+          fill.slice(0, 9 - tiles.length).map((e, i) => `<div style="background:hsl(${(i * 47 + 20) % 360} 45% 78%)"><img class="e" style="width:52%;height:52%;object-fit:contain" src="../assets/emoji/${ekey(e)}.png"></div>`).join('');
+        lastPicker = pkKey;
+      }
+      const p = EASE.out(clamp((T - (s.pickerOpenT ?? T)) / 0.3, 0, 1));
+      $('picker').style.transform = `translateY(${((1 - p) * 1080).toFixed(1)}px)`;
+    } else lastPicker = '';
+
+    const fl = s.hook ? 0 : clamp(1 - (T - hookEnd) / 0.15, 0, 1) * (EP.hook ? 1 : 0);
+    $('flash').style.opacity = (0.5 * fl).toFixed(3);
+    const imgs = Array.from(document.images).filter((im) => !im.complete).map((im) => im.decode().catch(() => {}));
+    if (imgs.length) await Promise.all(imgs);
+  };
+})();
