@@ -1,5 +1,5 @@
 import os
-"""Clip specs for The Spike Files #001-#003 (data: public view counts pulled Nov 21 2026)."""
+"""Clip specs for the first three Spike Files (v1 card style) (data: public view counts pulled Nov 21 2026)."""
 import json, os, re, glob, subprocess, sys
 from concurrent.futures import ThreadPoolExecutor
 S = os.environ.get("SPIKE_WORK", ".")
@@ -14,7 +14,7 @@ def th(name, i):
 C = []
 def clip(kind, n, **spec): C.append((kind, n, spec))
 
-# ---- #001 Fusion Bricks
+# ---- Fusion Bricks
 N = "Fusion Bricks"; es, v = hist(N)
 clip("chart", "fb_chart_flat", views=v[:162], grow=[30, 162], dur=5.0, hold=1.2, highlight=[161], callouts=[{"i": 161, "text": "31M"}], title="FUSION BRICKS · EVERY SHORT")
 pre = [1, 15, 29, 43, 57, 71, 85, 99, 113, 127, 134, 141, 148, 155, 158, 159, 160, 161]
@@ -29,9 +29,9 @@ clip("wall", "fb_wall_after", items=[{"img": th(N, i), "views": v[i - 1]} for i 
 clip("chart", "fb_chart_after", views=v, grow=[162, len(v)], dur=4.5, hold=0.8, highlight=[i for i in range(161, len(v)) if v[i] >= 1e6],
      callouts=[{"i": 250, "text": "53M"}], title="EVERY SHORT SINCE #162")
 clip("rule", "fb_rule", lines=["1. Put a problem in the very first frame.", "2. Solve it with your hands, on camera.", "3. Title = the question, not the answer."], dur=6)
-clip("logo", "fb_logo", line="FILE #002 · NEXT", dur=3)
+clip("logo", "fb_logo", line="COMMENT A CHANNEL", dur=3)
 
-# ---- #002 Shano Ghibli
+# ---- Shano Ghibli
 N = "Shano Ghibli"; es, v = hist(N)
 clip("versus", "sg_versus_tease", left={"img": th(N, 1), "views": v[0], "title": "Crispy Thread Chicken", "tag": "FOOD"},
      right={"img": th(N, 30), "views": v[29], "title": "Nana Nani's Long-Awaited Train Journey", "tag": "FEELINGS"}, dur=3.4, right_at=0.9)
@@ -45,9 +45,9 @@ clip("stat", "sg_stat", title="TITLES · BEFORE #24 VS AFTER", rows=[{"label": "
      {"label": "are about family and feelings", "a": 30, "b": 92}], dur=4.5)
 clip("wall", "sg_wall_after", items=[{"img": th(N, i), "views": v[i - 1]} for i in range(24, 36)], cols=4, rows=3, dur=3.5, dim=False, stagger=0.06)
 clip("rule", "sg_rule", lines=["1. People don't share food. They share grandma.", "2. A face and a feeling in the first frame.", "3. Title = the moment: \"When Grandma…\""], dur=6)
-clip("logo", "sg_logo", line="FILE #003 · NEXT", dur=3)
+clip("logo", "sg_logo", line="COMMENT A CHANNEL", dur=3)
 
-# ---- #003 OddVibe
+# ---- OddVibe
 N = "OddVibe"; es, v = hist(N)
 clip("versus", "ov_versus_tease", left={"img": th(N, 13), "views": v[12], "title": "Top 10 Letters to Use as a Mustache", "tag": "SHORT #13"},
      right={"img": th(N, 17), "views": v[16], "title": "Top 10 Letters to Hide a Body", "tag": "SHORT #17"}, dur=3.6, right_at=1.0)
@@ -58,7 +58,7 @@ clip("wall", "ov_wall", items=[{"img": th(N, i), "views": v[i - 1]} for i in ran
 clip("wall", "ov_wall_after", items=[{"img": th(N, i), "views": v[i - 1]} for i in [17, 18, 44, 47, 60, 68, 70, 78]], cols=4, rows=2, dur=3.5, dim=False, stagger=0.08)
 clip("stat", "ov_stat", title="UPLOADS · BEFORE #17 VS AFTER", rows=[{"label": "are a \"Top 10 Letters / Languages\" ranking", "a": 25, "b": 71}], dur=3.5)
 clip("rule", "ov_rule", lines=["1. One idea got a flicker? Don't switch ideas.", "2. Switch the premise until one hits.", "3. Then make it the whole channel."], dur=6)
-clip("logo", "ov_logo", line="FILE #004 · NEXT", dur=3)
+clip("logo", "ov_logo", line="COMMENT A CHANNEL", dur=3)
 
 only = set(sys.argv[1:])
 def go(c):

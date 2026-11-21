@@ -1,5 +1,5 @@
 {
- "series": "The Spike Files · #003",
+ "series": "The Spike Files",
  "sources": "Data: public YouTube view counts, Nov 21 2026 · channel: @OddVibe1",
  "voiceover": "tts",
  "voice": "am_michael",
@@ -67,8 +67,8 @@
    "in": 0,
    "dur": 2.6,
    "push": 1.0,
-   "text": "Comment a channel for *File #004.*",
-   "say": "Comment a channel for file four."
+   "text": "Comment a channel to *investigate next.*",
+   "say": "Comment a channel to investigate next."
   }
  ]
 }

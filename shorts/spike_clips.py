@@ -16,7 +16,7 @@ Specs:
   versus: {"left": {"img", "views", "title", "tag"}, "right": {...}, "dur", "right_at": 0.8}
   stat:   {"title", "rows": [{"label", "a", "b"}], "dur"}
   rule:   {"title": "STEAL THIS", "lines": [...], "dur"}
-  logo:   {"line": "FILE #002 · NEXT", "dur"}
+  logo:   {"line": "COMMENT A CHANNEL", "dur"}
 All numbers shown come from public view counts; nothing is estimated.
 """
 import json

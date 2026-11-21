@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Spike Files v2</title>
+<style>
+@font-face { font-family: MB; src: url(/fonts/Montserrat-Black.ttf); }
+@font-face { font-family: ME; src: url(/fonts/Montserrat-ExtraBold.ttf); }
+@font-face { font-family: OB; src: url(/fonts/OpenSans-Bold.ttf); }
+@font-face { font-family: OX; src: url(/fonts/OpenSans-ExtraBold.ttf); }
+:root { --g: #3DFF88; --r: #FF3B3B; --bg: #0C0C10; }
+html, body { margin: 0; background: #000; overflow: hidden; }
+#stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); font-family: MB; color: #fff; }
+.layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+.scene { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; display: none; transform-origin: 50% 50%; }
+canvas { position: absolute; left: 0; top: 0; display: block; }
+/* captions */
+.cap { position: absolute; left: 60px; width: 960px; text-align: center; text-transform: uppercase; line-height: 1.04; letter-spacing: -1px;
+  -webkit-text-stroke: 18px #000; paint-order: stroke fill; filter: drop-shadow(0 10px 0 rgba(0,0,0,.6)); display: none; }
+.cap span { display: inline-block; margin: 0 .13em; transform-origin: 50% 85%; }
+/* hud */
+#brand { position: absolute; left: 44px; top: 44px; display: flex; align-items: flex-end; gap: 14px; font-size: 28px; letter-spacing: 5px; filter: drop-shadow(0 3px 6px rgba(0,0,0,.8)); }
+#brand .ico { display: flex; align-items: flex-end; gap: 4px; height: 44px; }
+#brand .ico i { display: block; width: 7px; border-radius: 3px; background: #777783; }
+#credit { position: absolute; left: 46px; top: 98px; font-family: OB; font-size: 21px; color: rgba(255,255,255,.72); text-shadow: 0 2px 6px #000; }
+#prog { position: absolute; left: 0; top: 0; height: 8px; background: var(--g); box-shadow: 0 0 14px var(--g); }
+#vig { background: radial-gradient(ellipse at 50% 46%, rgba(0,0,0,0) 52%, rgba(0,0,0,.5) 100%); pointer-events: none; }
+#flash { background: #fff; opacity: 0; }
+#grain { opacity: .05; mix-blend-mode: overlay; }
+.pill { position: absolute; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 30px; letter-spacing: 3px; padding: 12px 26px; border-radius: 40px; background: rgba(0,0,0,.72); border: 3px solid rgba(255,255,255,.22); }
+/* hook */
+.hooknum { position: absolute; left: 50%; top: 520px; font-size: 158px; letter-spacing: -4px; white-space: nowrap; -webkit-text-stroke: 20px #000; paint-order: stroke fill; filter: drop-shadow(0 12px 0 rgba(0,0,0,.6)); }
+.hooklab { position: absolute; left: 50%; top: 650px; font-size: 76px; letter-spacing: 16px; -webkit-text-stroke: 14px #000; paint-order: stroke fill; }
+.stamp { position: absolute; left: 50%; top: 760px; font-size: 150px; white-space: nowrap; color: var(--r); border: 14px solid var(--r); border-radius: 26px; padding: 6px 36px; background: rgba(0,0,0,.55); }
+.flopn { position: absolute; left: 0; width: 1080px; top: 960px; text-align: center; font-size: 84px; -webkit-text-stroke: 14px #000; paint-order: stroke fill; }
+.hitborder { position: absolute; left: 0; top: 0; width: 1052px; height: 1892px; border: 14px solid var(--g); box-shadow: inset 0 0 90px rgba(61,255,136,.55); opacity: 0; }
+/* phone */
+.phonewrap { perspective: 2400px; perspective-origin: 50% 40%; }
+.phone { position: absolute; left: 170px; top: 222px; width: 740px; height: 1644px; border-radius: 64px; overflow: hidden; border: 12px solid #23232b; background: #fff;
+  box-shadow: 0 60px 140px rgba(0,0,0,.85), 0 0 0 3px #3a3a46; transform-origin: 50% 45%; }
+.vc { position: absolute; font-size: 54px; line-height: 1; padding: 8px 18px 10px; border-radius: 14px; color: #fff; transform-origin: 0 100%; white-space: nowrap; box-shadow: 0 8px 22px rgba(0,0,0,.55); display: none; }
+/* chart */
+.chud { position: absolute; left: 0; width: 1080px; text-align: center; }
+.cnum { top: 250px; font-size: 150px; -webkit-text-stroke: 18px #000; paint-order: stroke fill; letter-spacing: -3px; }
+.clab { top: 420px; font-size: 44px; letter-spacing: 8px; -webkit-text-stroke: 10px #000; paint-order: stroke fill; }
+.stat { position: absolute; left: 0; width: 1080px; text-align: center; }
+.stat b { display: block; font-size: 150px; font-weight: normal; color: var(--g); letter-spacing: -5px; -webkit-text-stroke: 20px #000; paint-order: stroke fill; line-height: 1; }
+.stat span { display: block; font-size: 42px; letter-spacing: 7px; -webkit-text-stroke: 12px #000; paint-order: stroke fill; margin-top: 4px; }
+.tlab { position: absolute; font-size: 54px; color: #000; background: var(--g); padding: 2px 16px 4px; border-radius: 12px; white-space: nowrap; transform-origin: 50% 100%; box-shadow: 0 6px 18px rgba(0,0,0,.6); display: none; }
+/* compare */
+.pmeta { position: absolute; font-family: OX; font-size: 28px; letter-spacing: 2px; white-space: nowrap; padding: 10px 20px; border-radius: 30px; background: #000; border: 3px solid var(--g); color: var(--g); }
+.pcard { position: absolute; width: 500px; height: 889px; border-radius: 40px; overflow: hidden; border: 8px solid #c9c9d2; background: #15151b; transform-origin: 50% 0; box-shadow: 0 30px 80px rgba(0,0,0,.7); }
+.pq { position: absolute; left: 0; width: 500px; top: 220px; text-align: center; font-size: 380px; color: #2a2a34; }
+.ptag { position: absolute; top: 168px; font-size: 30px; letter-spacing: 3px; padding: 8px 18px; border-radius: 12px; background: #000; border: 4px solid; white-space: nowrap; }
+.pviews { position: absolute; top: 226px; width: 500px; font-size: 92px; line-height: 1; -webkit-text-stroke: 14px #000; paint-order: stroke fill; }
+.half { position: absolute; left: 0; width: 1080px; height: 956px; overflow: hidden; }
+.tagbox { position: absolute; left: 36px; display: flex; align-items: center; gap: 16px; }
+.tagbox .t { font-size: 32px; letter-spacing: 3px; padding: 10px 20px; border-radius: 12px; background: #000; }
+.tagbox .v { font-size: 92px; -webkit-text-stroke: 14px #000; paint-order: stroke fill; line-height: 1; }
+.note { position: absolute; font-size: 46px; letter-spacing: 1px; padding: 10px 22px; border-radius: 14px; white-space: nowrap; }
+.ytt { position: absolute; left: 60px; width: 880px; background: #fff; color: #0f0f0f; font-family: 'Liberation Sans', Arial, sans-serif; font-weight: 700; font-size: 44px; line-height: 1.22;
+  padding: 26px 40px 28px; border-radius: 26px; box-shadow: 0 20px 60px rgba(0,0,0,.65); }
+.ytt small { display: block; font-family: OX; font-size: 22px; letter-spacing: 3px; color: #888; margin-bottom: 8px; }
+.ytt mark { background: var(--g); color: #000; padding: 0 8px; border-radius: 8px; }
+.ytt.old { background: #c9c9cf; color: #44444c; }
+.strike { position: absolute; left: 30px; top: 58%; height: 10px; background: var(--r); border-radius: 5px; }
+/* montage */
+.mnum { position: absolute; left: 0; width: 1080px; top: 300px; text-align: center; font-size: 250px; color: var(--g); letter-spacing: -6px; -webkit-text-stroke: 24px #000; paint-order: stroke fill; line-height: 1; filter: drop-shadow(0 14px 0 rgba(0,0,0,.55)); }
+.mlab { position: absolute; left: 0; width: 1080px; top: 560px; text-align: center; font-size: 62px; letter-spacing: 16px; -webkit-text-stroke: 12px #000; paint-order: stroke fill; }
+/* title wall */
+.col { position: absolute; top: 640px; width: 500px; height: 1300px; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 80%, transparent 100%); }
+.chip { position: absolute; left: 0; width: 458px; height: 70px; line-height: 70px; padding: 0 18px; border-radius: 16px; font-family: OB; font-size: 29px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: #1b1b22; color: #8c8c98; border: 3px solid #26262e; }
+.chip.on { background: #10291b; color: #fff; border-color: var(--g); box-shadow: 0 0 18px rgba(61,255,136,.35); }
+.chip.on em { font-style: normal; color: var(--g); font-family: OX; }
+.pct { position: absolute; top: 330px; width: 500px; text-align: center; font-size: 190px; letter-spacing: -6px; line-height: 1; -webkit-text-stroke: 18px #000; paint-order: stroke fill; }
+.colh { position: absolute; top: 540px; width: 500px; text-align: center; font-size: 34px; letter-spacing: 4px; color: #b9b9c4; }
+.wlab { position: absolute; left: 0; width: 1080px; top: 190px; text-align: center; font-size: 46px; letter-spacing: 2px; line-height: 1.15; -webkit-text-stroke: 10px #000; paint-order: stroke fill; }
+/* steal */
+.card { position: absolute; left: 60px; top: 380px; width: 934px; height: 1010px; border-radius: 56px; border: 10px solid var(--g); background: rgba(8,8,12,.86); box-shadow: 0 0 80px rgba(61,255,136,.35), 0 40px 100px rgba(0,0,0,.7); }
+.card h1 { position: absolute; left: 50%; top: -70px; margin: 0; font-size: 92px; font-weight: normal; color: #000; background: var(--g); padding: 14px 54px; border-radius: 30px; white-space: nowrap; }
+.line { position: absolute; left: 70px; width: 800px; display: flex; align-items: center; gap: 34px; font-family: ME; font-size: 74px; line-height: 1.1; }
+.line .n { flex: none; width: 110px; height: 110px; border-radius: 50%; background: var(--g); color: #000; font-family: MB; font-size: 70px; display: flex; align-items: center; justify-content: center; }
+.shot { position: absolute; left: 0; width: 934px; bottom: 44px; text-align: center; font-size: 34px; letter-spacing: 6px; color: #a9a9b6; }
+/* cta */
+.logo { position: absolute; left: 0; width: 1080px; top: 420px; display: flex; justify-content: center; align-items: flex-end; gap: 22px; height: 420px; }
+.logo i { display: block; width: 46px; border-radius: 14px; background: #70707c; }
+.logot { position: absolute; left: 0; width: 1080px; top: 880px; text-align: center; font-size: 92px; letter-spacing: 4px; -webkit-text-stroke: 14px #000; paint-order: stroke fill; }
+.cbox { position: absolute; left: 110px; top: 1560px; width: 800px; height: 110px; border-radius: 55px; background: #fff; color: #111; font-family: 'Liberation Sans', Arial, sans-serif; font-size: 44px; line-height: 110px; padding-left: 50px; box-shadow: 0 20px 50px rgba(0,0,0,.6); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="world" class="layer"><div id="scenes" class="layer"></div><div id="caps" class="layer"></div></div>
+  <div id="vig" class="layer"></div>
+  <canvas id="grain" width="540" height="960" style="width:1080px;height:1920px"></canvas>
+  <div id="hud" class="layer"><div id="brand"><div class="ico"></div><div>THE SPIKE FILES</div></div><div id="credit"></div><div id="prog"></div></div>
+  <div id="flash" class="layer"></div>
+</div>
+<script type="importmap">{ "imports": { "three": "/vendor/three.module.min.js" } }</script>
+<script type="module" src="main.js"></script>
+</body>
+</html>

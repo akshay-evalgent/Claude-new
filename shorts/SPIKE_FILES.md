@@ -13,7 +13,7 @@ Viewers are people who want to grow a channel (a huge audience), so every video 
 | **Signature visual** | A flat row of grey bars, then one green spike (the logo, and the first shot of most videos) |
 | **Colours** | Near-black `#0C0C10`, spike green `#3DFF88`, white text |
 | **Fonts** | Montserrat Black (numbers, logo), Open Sans ExtraBold (captions) |
-| **Numbering** | Every video is a case: **File #001, #002…** so people binge them in order |
+| **Naming** | No episode numbers. Every video stands alone, so formats and styles can be tested freely |
 | **Avatar / banner** | `spike_avatar.png` (800×800) and `spike_banner.png` (2560×1440, text inside the safe area), made by `spike_clips.py avatar/banner` |
 
 **About text:**
@@ -46,7 +46,7 @@ One channel's flat history, the spike, what visibly changed, proof it wasn't luc
 | 13–17s | The measured change | "17% → 80%" stat card (titles, topics, format) |
 | 17–22s | Proof it's not luck | Chart of everything since, all the green bars |
 | 22–27s | **Steal this** | 3-line card people screenshot |
-| 27–30s | CTA | Logo: "Comment a channel for File #00X" |
+| 27–30s | CTA | Logo: "Who do we investigate next? Comment it" |
 
 ### 2. Tiny Channel, Giant Hit
 The mismatch is the hook: "3,000 subscribers. 5.3 million views." Then: what's in that one video?
@@ -80,9 +80,9 @@ A live-style race chart between 5 rising channels. Needs daily subscriber loggin
 
 ## Launch order
 
-1. **File #001: Fusion Bricks** ("161 flops, then 31 million"). Biggest numbers, underdog story, LEGO appeals to everyone. This is the one with viral potential, so it goes first.
-2. File #002: Shano Ghibli ("Food got 7K. Feelings got 16 million.")
-3. File #003: OddVibe ("Letters as a mustache: 15K. Letters to hide a body: 2.6M.")
+1. **Fusion Bricks** ("31 million views, after 161 flops"). Biggest numbers, underdog story, LEGO appeals to everyone. This is the one with viral potential, so it goes first.
+2. Shano Ghibli ("Food got 7K. Feelings got 16 million.")
+3. OddVibe ("Letters as a mustache: 15K. Letters to hide a body: 2.6M.")
 4. Same Idea, Different Views #1: "the hot summer night" (4 uploads, 123K to 6.3M)
 5. Tiny Channel, Giant Hit #1: Nothing Like Cars
 6. Guess the Views #1
@@ -91,13 +91,35 @@ A live-style race chart between 5 rising channels. Needs daily subscriber loggin
 
 **What to measure (48h after each upload):** views, stayed to watch %, average % viewed, comments asking for a channel, and subscribers per video. A series wins if **stayed to watch is above 70%** and comments request more.
 
+## The look (v2): what makes it feel edited
+
+Built after the first samples looked too plain. Every scene is full-screen and something changes every 1–2 seconds:
+
+| Element | What it is |
+|---|---|
+| **Real frames of the Shorts** | YouTube serves four full-resolution frames of every Short (the cover and three moments). They're cut fast, like stop-motion. With downloaded files they become real moving clips (see below) |
+| **The real channel page** | Screen captures of the channel's own Shorts tab, sorted Oldest and Most popular, scrolling inside a tilted 3D phone. The view counts pop out as big labels |
+| **3D chart city** (three.js) | Every Short is a block, with its real view count as the height. The camera flies over the flat flops, the breakout tower shoots up, then the camera cranes over everything since |
+| **Word-by-word captions** | Each word pops in as it's spoken, key words in green |
+| **Counters and stamps** | Numbers race up to the real value; flops get red view-count stamps |
+| **Before / after** | Whole real frames side by side, a hand-drawn ring on what changed, the real titles typed out |
+| **Title wall** | The channel's real titles scrolling in two columns, cliffhangers lit up, with the measured percentages |
+| **Sound design** | Impacts, risers, counter ticks, whooshes, and a beat that drops out before the reveal |
+
+**Hook rule (first 3 seconds):** the most striking real frame of the hit, a counter racing to its view count, then a rapid cut through the flops. No intro, no logo.
+
+**Real clips:** YouTube blocks video downloads from the render machine, so the user downloads the few Shorts an edit names (the kit lists the command) and `spike_v2/clips.py` cuts excerpts of 3 seconds or less. Each excerpt is shown with our own analysis on top and the channel credited.
+
 ## How each video is made
 
 1. **Scan** (`tools/spike/bo_search.py`, `bo_hist.py`, `bo_rank.py`): about 75 niche searches for this week's/month's most-viewed Shorts, then every candidate channel's full Shorts history (public view counts, in upload order). The scan flags channels whose median jumped 5x+ after one hit and stayed there.
 2. **Pick**: you choose from the shortlist. Skip reupload/compilation channels and kids-focused channels.
-3. **Investigate** (`bo_show.py`): before/after medians, title patterns (measured, not guessed), thumbnails.
-4. **Build** (`spike_clips.py` via `tools/spike/build_spike.py`): chart, wall, versus, stat and steal-this clips.
-5. **Assemble** (`breakdown.py edits_spike/NNN.json`): captions, narration, music, -14 LUFS.
+3. **Investigate** (`tools/spike/bo_show.py`): before/after medians, title patterns (measured, not guessed).
+4. **Collect** (`spike_v2/fetch_assets.py`, `spike_v2/yt_ui.js`): the four real frames per Short, and captures of the channel's Shorts tab (Oldest / Popular) with the position of every view count.
+5. **Script** (`edits_spike/<channel>.json`): scenes with caption chunks; each chunk is voiced on its own so captions land exactly.
+6. **Render** (`spike_v2/make.py`): narration timeline → every frame drawn in a headless browser (`spike_v2/web`) → sound mix at -14 LUFS.
+
+The first card-style versions are kept as `edits_spike/v1_*.json` (`spike_clips.py` + `breakdown.py`).
 
 ## Rules (keep the channel safe and trusted)
 
