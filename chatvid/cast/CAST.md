@@ -16,11 +16,11 @@ The recurring characters for the prank-text Shorts. An episode picks one with `"
 | `gf` | Maya 💕 | Maya, Girlfriend | ✅ |
 | `bestie` | Jaden (do NOT lend money) | Jaden, Best friend | ✅ |
 | `friend` | Priya (roommate) 🧋 | Priya, Roommate / friend | ✅ |
-| `boss` | Gary (Boss) 👔 | Gary, Boss | needed |
-| `doctor` | Dr. Hart 🩺 | Dr. Hart, Doctor | needed |
-| `agent` | Agent Miller 🕶️ | Agent Miller, "My FBI agent" (the webcam meme) | needed |
-| `permit` | City Permit Office 🏛️ | Ms. Alvarez, City permit office | needed |
-| `landlord` | Mr. Doyle (Landlord) 🔑 | Mr. Doyle, Landlord | needed |
+| `boss` | Gary (Boss) 👔 | Gary, Boss | ✅ |
+| `doctor` | Dr. Hart 🩺 | Dr. Hart, Doctor | ✅ |
+| `agent` | Agent Miller 🕶️ | Agent Miller, "My FBI agent" (the webcam meme) | ✅ |
+| `permit` | City Permit Office 🏛️ | Ms. Alvarez, City permit office | ✅ |
+| `landlord` | Mr. Doyle (Landlord) 🔑 | Mr. Doyle, Landlord | ✅ |
 | `grandma` | Grandma Rosa 👵 | Grandma Rosa, Grandma | ✅ |
 | `neighbor` | Steve Next Door 🙄 | Steve, Next-door neighbour (Dad's rival) | ✅ |
 
