@@ -130,7 +130,7 @@ def build_terrain():
     L.new(big.outputs['Fac'], var.inputs['Factor']); L.new(flat.outputs['Result'], var.inputs['A']); L.new(var.outputs['Result'], b.inputs['Base Color'])
     b.inputs['Roughness'].default_value = 0.92
     nm = N.new('ShaderNodeNormalMap'); L.new(nor.outputs['Color'], nm.inputs['Color'])
-    nk = N.new('ShaderNodeMapRange'); nk.inputs['From Min'].default_value = 7.0; nk.inputs['From Max'].default_value = 32.0; nk.inputs['To Min'].default_value = 0.8; nk.inputs['To Max'].default_value = 0.0
+    nk = N.new('ShaderNodeMapRange'); nk.inputs['From Min'].default_value = 7.0; nk.inputs['From Max'].default_value = 32.0; nk.inputs['To Min'].default_value = 0.0 if SHOT in ('D2', 'P2') else 0.8;      # under a very low sun the tiled normal map shows its edges nk.inputs['To Max'].default_value = 0.0
     L.new(cd.outputs['View Z Depth'], nk.inputs['Value']); L.new(nk.outputs[0], nm.inputs['Strength'])
     wv = N.new('ShaderNodeTexWave'); wv.wave_type = 'BANDS'; wv.bands_direction = 'X'; wv.inputs['Scale'].default_value = 0.9; wv.inputs['Distortion'].default_value = 5.0; wv.inputs['Detail'].default_value = 2; wv.inputs['Detail Scale'].default_value = 0.6
     wm = N.new('ShaderNodeMapping'); wm.inputs['Rotation'].default_value[2] = 0.6; L.new(g.outputs['Position'], wm.inputs['Vector']); L.new(wm.outputs[0], wv.inputs['Vector'])
