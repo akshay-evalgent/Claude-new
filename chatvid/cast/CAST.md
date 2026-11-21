@@ -17,10 +17,10 @@ The recurring characters for the prank-text Shorts. An episode picks one with `"
 | `bestie` | Jaden (do NOT lend money) | Jaden, Best friend | ✅ |
 | `friend` | Priya (roommate) 🧋 | Priya, Roommate / friend | ✅ |
 | `boss` | Gary (Boss) 👔 | Gary, Boss | needed |
-| `doctor` | Dr. Okafor 🩺 | Dr. Okafor, Doctor | needed |
+| `doctor` | Dr. Hart 🩺 | Dr. Hart, Doctor | needed |
 | `agent` | Agent Miller 🕶️ | Agent Miller, "My FBI agent" (the webcam meme) | needed |
 | `permit` | City Permit Office 🏛️ | Ms. Alvarez, City permit office | needed |
-| `landlord` | Mr. Kim (Landlord) 🔑 | Mr. Kim, Landlord | needed |
+| `landlord` | Mr. Doyle (Landlord) 🔑 | Mr. Doyle, Landlord | needed |
 | `grandma` | Grandma Rosa 👵 | Grandma Rosa, Grandma | needed |
 | `neighbor` | Steve Next Door 🙄 | Steve, Next-door neighbour (Dad's rival) | needed |
 
@@ -117,8 +117,8 @@ Casual smartphone photo of a made-up person (not a real or famous person), woman
 Casual smartphone photo of a made-up person (not a real or famous person), office manager in his late 40s, receding hairline, tie and short-sleeve dress shirt, in an office hallway, forced smile. Natural light, realistic, slightly imperfect framing.
 ```
 
-## Dr. Okafor 🩺  (`doctor`)
-**Dr. Okafor, Doctor.**
+## Dr. Hart 🩺  (`doctor`)
+**Dr. Hart, Doctor.**
 
 - **How they text:** Calm, clinical, full sentences, medical jargon. Gets less clinical with each drop.
 - **How they lose it:** Drops the jargon: THAT IS NOT IN ANY TEXTBOOK
@@ -165,8 +165,8 @@ Casual smartphone photo of a made-up person (not a real or famous person), man i
 Casual smartphone photo of a made-up person (not a real or famous person), municipal clerk in her 50s, reading glasses on a chain, blazer, sitting behind a service counter with stacks of paper, unimpressed. Natural light, realistic, slightly imperfect framing.
 ```
 
-## Mr. Kim (Landlord) 🔑  (`landlord`)
-**Mr. Kim, Landlord.**
+## Mr. Doyle (Landlord) 🔑  (`landlord`)
+**Mr. Doyle, Landlord.**
 
 - **How they text:** Short and suspicious, cares about the deposit: "no nails", "deposit".
 - **How they lose it:** THE DEPOSIT, typed over and over

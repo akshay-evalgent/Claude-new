@@ -120,9 +120,9 @@
   "photo": "Casual smartphone photo of a made-up person (not a real or famous person), office manager in his late 40s, receding hairline, tie and short-sleeve dress shirt, in an office hallway, forced smile."
  },
  "doctor": {
-  "name": "Dr. Okafor",
+  "name": "Dr. Hart",
   "role": "Doctor",
-  "contact": "Dr. Okafor 🩺",
+  "contact": "Dr. Hart 🩺",
   "emoji": "🩺",
   "bg": "#d6eef0",
   "style": "Calm, clinical, full sentences, medical jargon. Gets less clinical with each drop.",
@@ -180,9 +180,9 @@
   "note": "A made-up town office, never a real government body."
  },
  "landlord": {
-  "name": "Mr. Kim",
+  "name": "Mr. Doyle",
   "role": "Landlord",
-  "contact": "Mr. Kim (Landlord) 🔑",
+  "contact": "Mr. Doyle (Landlord) 🔑",
   "emoji": "🔑",
   "bg": "#e8e1d0",
   "style": "Short and suspicious, cares about the deposit: \"no nails\", \"deposit\".",
