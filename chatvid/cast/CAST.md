@@ -12,10 +12,10 @@ The recurring characters for the prank-text Shorts. An episode picks one with `"
 | id | Contact name | Who | Photo |
 |---|---|---|---|
 | `dad` | Dad (Driveway Police)🚨 | Greg, Dad | ✅ |
-| `mom` | Mom 🌷 (read receipts ON) | Linda, Mom | needed |
-| `gf` | Maya 💕 | Maya, Girlfriend | needed |
-| `bestie` | Jaden (do NOT lend money) | Jaden, Best friend | needed |
-| `friend` | Priya (roommate) 🧋 | Priya, Roommate / friend | needed |
+| `mom` | Mom 🌷 (read receipts ON) | Linda, Mom | ✅ |
+| `gf` | Maya 💕 | Maya, Girlfriend | ✅ |
+| `bestie` | Jaden (do NOT lend money) | Jaden, Best friend | ✅ |
+| `friend` | Priya (roommate) 🧋 | Priya, Roommate / friend | ✅ |
 | `boss` | Gary (Boss) 👔 | Gary, Boss | needed |
 | `doctor` | Dr. Okafor 🩺 | Dr. Okafor, Doctor | needed |
 | `agent` | Agent Miller 🕶️ | Agent Miller, "My FBI agent" (the webcam meme) | needed |
@@ -211,6 +211,6 @@ Casual smartphone photo of a made-up person (not a real or famous person), subur
 ```
 
 ## Using a character
-- Put the photo in `chatvid/cast/photos/<id>.jpg`, square, at least 400 px. The renderer copies it into place.
+- Put the photo in `chatvid/cast/photos/<id>.jpg`, square, at least 400 px. The renderer copies it into place. The full uncropped images are kept in `cast/photos/full/`; `dad-alt.jpg` is a second Dad we are not using, so the face stays the same across the series.
 - In the episode, set `"contact": "mom"`. You can still give a full object to make a one-off character.
 - **Crossovers** (Steve or the permit office reacting to Dad's projects) are a cheap way to make the series feel like one world.
