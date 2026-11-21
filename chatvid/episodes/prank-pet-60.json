@@ -32,15 +32,15 @@
   "stages": [
    {
     "media": "flow-pet-a",
-    "at": 2.5
+    "at": 3.0
    },
    {
     "media": "flow-pet-b",
-    "at": 2.5
+    "at": 1.7
    },
    {
     "media": "flow-pet-c",
-    "at": 3.5
+    "at": 2.5
    }
   ],
   "caption": "Pranking my girlfriend i got us a \"small\" pet💀😭",
@@ -54,7 +54,7 @@
   },
   "result": {
    "media": "flow-pet-c",
-   "at": 3.5
+   "at": 2.5
   },
   "prompt": "Add a giraffe",
   "project": "Apartment 1 of 1"
@@ -72,17 +72,17 @@
  ],
  "media": {
   "flow-pet-a": {
-   "file": "placeholder-pet-a.mp4",
+   "file": "flow-pet-a.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   },
   "flow-pet-b": {
-   "file": "placeholder-pet-b.mp4",
+   "file": "flow-pet-b.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   },
   "flow-pet-c": {
-   "file": "placeholder-pet-c.mp4",
+   "file": "flow-pet-c.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   }
@@ -105,7 +105,7 @@
   },
   {
    "media": "flow-pet-a",
-   "at": 2.5
+   "at": 3.0
   },
   {
    "them": "omg wait hes so cute"
@@ -124,7 +124,7 @@
   },
   {
    "media": "flow-pet-b",
-   "at": 2.5
+   "at": 1.7
   },
   {
    "them": "JORDAN"
@@ -161,7 +161,7 @@
   },
   {
    "media": "flow-pet-c",
-   "at": 3.5
+   "at": 2.5
   },
   {
    "them": "JORDAN. ANSWER. ME."
