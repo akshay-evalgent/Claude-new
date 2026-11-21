@@ -56,7 +56,13 @@ why mosquitoes bite some people more, mosquito magnet, why do mosquitoes bite me
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | A mosquito landed on an arm at dusk, caption "mosquito magnets" | **Main pick.** The subject big, with the title phrase |
+| `thumbnail-alt-blood-meal.jpg` | The same mosquito, its abdomen glowing red with blood, caption "to make eggs" | Gross-out angle |
+| `thumbnail-alt-100x.jpg` | The two-box experiment, "100× SUBJECT 33", caption "a hundred times more" | Curiosity angle |
+| `thumbnail-alt-female-male.jpg` | The female and male side by side, labelled "bites" and "sips nectar" | Fact angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
