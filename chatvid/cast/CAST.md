@@ -21,8 +21,8 @@ The recurring characters for the prank-text Shorts. An episode picks one with `"
 | `agent` | Agent Miller 🕶️ | Agent Miller, "My FBI agent" (the webcam meme) | needed |
 | `permit` | City Permit Office 🏛️ | Ms. Alvarez, City permit office | needed |
 | `landlord` | Mr. Doyle (Landlord) 🔑 | Mr. Doyle, Landlord | needed |
-| `grandma` | Grandma Rosa 👵 | Grandma Rosa, Grandma | needed |
-| `neighbor` | Steve Next Door 🙄 | Steve, Next-door neighbour (Dad's rival) | needed |
+| `grandma` | Grandma Rosa 👵 | Grandma Rosa, Grandma | ✅ |
+| `neighbor` | Steve Next Door 🙄 | Steve, Next-door neighbour (Dad's rival) | ✅ |
 
 ## Dad (Driveway Police)🚨  (`dad`)
 **Greg, Dad.**
