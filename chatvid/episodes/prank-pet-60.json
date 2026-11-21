@@ -1,0 +1,191 @@
+{
+ "engine": "imsg",
+ "format": "vertical",
+ "crf": 18,
+ "fps": 30,
+ "minuteEvery": 40,
+ "typeSpeed": 28,
+ "readMul": 0.7,
+ "pace": 0.62,
+ "tail": 0.9,
+ "booms": true,
+ "music": {
+  "track": "kidding-around",
+  "gain": -27
+ },
+ "contact": "gf",
+ "title": "Pranking my girlfriend i got us a small pet",
+ "clock": "2:36",
+ "unread": "3",
+ "cameraRoll": [
+  "🐶",
+  "🍕",
+  "🌮",
+  "☕",
+  "🌿",
+  "🎮",
+  "🍪",
+  "📚",
+  "🧋"
+ ],
+ "hook": {
+  "stages": [
+   {
+    "media": "flow-pet-a",
+    "at": 2.5
+   },
+   {
+    "media": "flow-pet-b",
+    "at": 2.5
+   },
+   {
+    "media": "flow-pet-c",
+    "at": 3.5
+   }
+  ],
+  "caption": "Pranking my girlfriend i got us a \"small\" pet💀😭",
+  "dur": 3.6
+ },
+ "tool": {
+  "style": "edit",
+  "photo": {
+   "media": "flow-pet-a",
+   "at": 0.3
+  },
+  "result": {
+   "media": "flow-pet-c",
+   "at": 3.5
+  },
+  "prompt": "Add a giraffe",
+  "project": "Apartment 1 of 1"
+ },
+ "history": [
+  {
+   "them": "did you eat my leftovers"
+  },
+  {
+   "me": "define eat"
+  },
+  {
+   "them": "im not doing this today"
+  }
+ ],
+ "media": {
+  "flow-pet-a": {
+   "file": "placeholder-pet-a.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-pet-b": {
+   "file": "placeholder-pet-b.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-pet-c": {
+   "file": "placeholder-pet-c.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  }
+ },
+ "beats": [
+  {
+   "me": "babe i got us a small pet"
+  },
+  {
+   "them": "jordan we talked about this"
+  },
+  {
+   "them": "the lease says no pets"
+  },
+  {
+   "me": "its tiny the landlord wont even notice"
+  },
+  {
+   "them": "what is it"
+  },
+  {
+   "media": "flow-pet-a",
+   "at": 2.5
+  },
+  {
+   "them": "omg wait hes so cute"
+  },
+  {
+   "them": "ok he can stay"
+  },
+  {
+   "me": "perfect bc i got him a friend"
+  },
+  {
+   "them": "a hamster friend?"
+  },
+  {
+   "me": "kind of"
+  },
+  {
+   "media": "flow-pet-b",
+   "at": 2.5
+  },
+  {
+   "them": "JORDAN"
+  },
+  {
+   "them": "WHY IS THERE AN ALPACA ON OUR COUCH"
+  },
+  {
+   "me": "he was lonely"
+  },
+  {
+   "them": "THE HAMSTER WAS LONELY??"
+  },
+  {
+   "me": "they're best friends now 😭"
+  },
+  {
+   "them": "WE LIVE ON THE 4TH FLOOR HOW DID IT GET UP THERE"
+  },
+  {
+   "me": "elevator"
+  },
+  {
+   "them": "SEND IT BACK. RIGHT NOW"
+  },
+  {
+   "me": "ok ok i returned the alpaca"
+  },
+  {
+   "them": "thank god"
+  },
+  {
+   "me": "they gave me store credit tho"
+  },
+  {
+   "media": "flow-pet-c",
+   "at": 3.5
+  },
+  {
+   "them": "JORDAN. ANSWER. ME."
+  },
+  {
+   "them": "IS THAT A GIRAFFE ON OUR BALCONY"
+  },
+  {
+   "me": "hes very tall for his age"
+  },
+  {
+   "them": "THIS IS AN APARTMENT NOT A ZOO"
+  },
+  {
+   "them": "MR DOYLE IS GOING TO EVICT US"
+  },
+  {
+   "me": "mr doyle said he can stay if we pay pet rent",
+   "unsent": true
+  }
+ ],
+ "youtube": {
+  "title": "She did NOT see that coming😭 #prank #girlfriend #pets #funnyvideo #comedyshorts",
+  "description": [],
+  "tags": []
+ }
+}

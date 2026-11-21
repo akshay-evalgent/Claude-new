@@ -1,5 +1,7 @@
 # Channel kit: "sorry dad" (AI prank texts)
 
+> **Replaced by `brand/jp/CHANNEL-KIT.md` ("jordan's phone").** This kit was for a Dad-only channel. Its monetization checklist below still applies.
+
 Modelled on **Halo Chad (@Chad.halo12)**, the channel behind the snow-prank Short we studied: 897 Shorts, 68.2M views, 37.9K subscribers. We copy how the channel works, not its name, photos or wording. Those belong to them, and copying them would get our channel flagged for impersonation.
 
 ## What Halo Chad's branding does
