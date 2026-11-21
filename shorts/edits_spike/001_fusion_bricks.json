@@ -1,0 +1,82 @@
+{
+ "series": "The Spike Files · #001",
+ "sources": "Data: public YouTube view counts, Nov 21 2026 · channel: @fusion_bricks",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "accent": [
+  61,
+  255,
+  136
+ ],
+ "cover_t": 4.6,
+ "title": "161 Videos Flopped. #162 Got 31 Million.",
+ "segments": [
+  {
+   "source": "fb_chart_flat",
+   "in": 0,
+   "dur": 4.6,
+   "push": 1.0,
+   "text": "161 LEGO Shorts flopped. Then *31 million.*",
+   "say": "A hundred sixty one LEGO Shorts. Nobody watched. Then one got thirty one million."
+  },
+  {
+   "source": "fb_wall",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.0,
+   "text": "Same LEGO. *So what changed?*",
+   "say": "Same LEGO. So what changed?"
+  },
+  {
+   "source": "fb_versus",
+   "in": 0,
+   "dur": 4.0,
+   "push": 1.0,
+   "text": "Before: *showing* LEGO. After: *fixing* it.",
+   "say": "Before, showing LEGO. Then, fixing a LEGO problem, hands in frame."
+  },
+  {
+   "source": "fb_stat",
+   "in": 0,
+   "dur": 3.6,
+   "push": 1.0,
+   "text": "Then the titles became *questions.*",
+   "say": "And the titles became questions. Eighty percent."
+  },
+  {
+   "source": "fb_wall_after",
+   "in": 0,
+   "dur": 2.8,
+   "push": 1.0,
+   "text": "Stuck heads. Weird holes. *53 million.*",
+   "say": "Fifty three million."
+  },
+  {
+   "source": "fb_chart_after",
+   "in": 0,
+   "dur": 4.0,
+   "push": 1.0,
+   "text": "Not luck: *223 Shorts* over 1M. *1.16B* views.",
+   "say": "Not luck. Two hundred twenty three Shorts over a million."
+  },
+  {
+   "source": "fb_rule",
+   "in": 0,
+   "dur": 5.0,
+   "push": 1.0,
+   "text": "*Steal this.* Screenshot it.",
+   "say": "Steal this. A problem in frame one. Fix it on camera. Title it as a question."
+  },
+  {
+   "source": "fb_logo",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.0,
+   "text": "Comment a channel for *File #002.*",
+   "say": "Comment a channel for file two."
+  }
+ ]
+}

@@ -18,6 +18,7 @@ Edit file:
   "voiceover": "tts" | "path/to/your_voice.wav" | null,
   "voice": "am_michael", "speed": 1.08,
   "music": "orbit", "music_db": -12,        music level under narration
+  "accent": [61, 255, 136],                 optional brand colour (default yellow)
   "segments": [
     {"source": "<file in SRC_DIR without .mp4>", "in": 7.6, "dur": 4.5,
      "fx": 0.5, "fy": 0.5, "zoom": 1.0, "push": 1.06, "speed": 1.0,
@@ -144,6 +145,8 @@ def main():
     ap.add_argument("--src-dir", default=os.environ.get("SRC_DIR", "."))
     a = ap.parse_args()
     edl = json.load(open(a.edl))
+    global YELLOW
+    YELLOW = tuple(edl.get("accent", YELLOW))      # brand colour for the label and *highlights*
     work = tempfile.mkdtemp(prefix="bd_")
     segs = edl["segments"]
     # 1. narration per segment

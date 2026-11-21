@@ -1,0 +1,82 @@
+{
+ "series": "The Spike Files · #002",
+ "sources": "Data: public YouTube view counts, Nov 21 2026 · channel: @ShanoGhibli",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "accent": [
+  61,
+  255,
+  136
+ ],
+ "cover_t": 2.4,
+ "title": "Food Got 7K Views. Feelings Got 16 Million.",
+ "segments": [
+  {
+   "source": "sg_versus_tease",
+   "in": 0,
+   "dur": 3.4,
+   "push": 1.0,
+   "text": "Food: *7K views.* Feelings: *16 million.*",
+   "say": "Food got seven thousand views. Feelings got sixteen million."
+  },
+  {
+   "source": "sg_chart",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.0,
+   "text": "One small channel. *35 Shorts.*",
+   "say": "One small channel. Thirty five Shorts."
+  },
+  {
+   "source": "sg_wall",
+   "in": 0,
+   "dur": 4.2,
+   "push": 1.0,
+   "text": "12 food Shorts: *~6K each.* Then #14 tried *a story.*",
+   "say": "Twelve food Shorts, six thousand views each. Then one tried a story."
+  },
+  {
+   "source": "sg_versus",
+   "in": 0,
+   "dur": 4.2,
+   "push": 1.0,
+   "text": "A recipe: *24K.* Daughters coming home: *10 million.*",
+   "say": "A recipe: twenty four thousand. Daughters coming home: ten million."
+  },
+  {
+   "source": "sg_stat",
+   "in": 0,
+   "dur": 3.8,
+   "push": 1.0,
+   "text": "Food became *the side dish.*",
+   "say": "Food became the side dish. Family took ninety two percent of titles."
+  },
+  {
+   "source": "sg_wall_after",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.0,
+   "text": "Grandparents. Reunions. *Half went over 1M.*",
+   "say": "Half of everything since passed a million."
+  },
+  {
+   "source": "sg_rule",
+   "in": 0,
+   "dur": 4.6,
+   "push": 1.0,
+   "text": "*Steal this.* Screenshot it.",
+   "say": "Steal this. People don't share food. They share grandma."
+  },
+  {
+   "source": "sg_logo",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.0,
+   "text": "Comment a channel for *File #003.*",
+   "say": "Comment a channel for file three."
+  }
+ ]
+}

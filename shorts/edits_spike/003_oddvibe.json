@@ -1,0 +1,74 @@
+{
+ "series": "The Spike Files · #003",
+ "sources": "Data: public YouTube view counts, Nov 21 2026 · channel: @OddVibe1",
+ "voiceover": "tts",
+ "voice": "am_michael",
+ "speed": 1.1,
+ "music": "orbit",
+ "music_db": -12,
+ "accent": [
+  61,
+  255,
+  136
+ ],
+ "cover_t": 2.6,
+ "title": "Same Idea, 5th Try: 2.6 Million Views",
+ "segments": [
+  {
+   "source": "ov_versus_tease",
+   "in": 0,
+   "dur": 5.0,
+   "push": 1.0,
+   "text": "Letters as a mustache: *15K.* Letters to hide a body: *2.6M.*",
+   "say": "Letters as a mustache: fifteen thousand. Letters to hide a body: two point six million."
+  },
+  {
+   "source": "ov_wall",
+   "in": 0,
+   "dur": 3.4,
+   "push": 1.0,
+   "text": "16 flops. *4 of them, this exact idea.*",
+   "say": "Sixteen flops. Four of them, this exact idea."
+  },
+  {
+   "source": "ov_chart",
+   "in": 0,
+   "dur": 3.6,
+   "push": 1.0,
+   "text": "Try #5: *2.6M.* Then *13 Shorts* over 1M.",
+   "say": "Try five hit. Then thirteen Shorts over a million."
+  },
+  {
+   "source": "ov_wall_after",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.0,
+   "text": "Letters as a car. Languages as a pool. *Acid rain: 11M.*",
+   "say": "Acid rain: eleven million."
+  },
+  {
+   "source": "ov_stat",
+   "in": 0,
+   "dur": 3.0,
+   "push": 1.0,
+   "text": "Rankings: *25%* to *71%* of uploads.",
+   "say": "Now it's seventy one percent of the channel."
+  },
+  {
+   "source": "ov_rule",
+   "in": 0,
+   "dur": 4.8,
+   "push": 1.0,
+   "text": "*Steal this.* Screenshot it.",
+   "say": "Steal this. Don't switch ideas. Switch premises, until one hits."
+  },
+  {
+   "source": "ov_logo",
+   "in": 0,
+   "dur": 2.6,
+   "push": 1.0,
+   "text": "Comment a channel for *File #004.*",
+   "say": "Comment a channel for file four."
+  }
+ ]
+}
