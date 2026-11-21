@@ -60,6 +60,20 @@ prank, ai prank, texting my dad, prank texts, funny texts, dad reacts, dad texts
 - **Altered or synthetic content:** **Yes** on every upload. The footage is AI-generated and looks real.
 - **Comments:** on, with "Hold potentially inappropriate comments" selected.
 
+## Monetization checklist (every upload)
+YouTube's "inauthentic content" rule demonetizes channels that look templated or mass-produced, and it is judged across the whole channel. Using AI is allowed; low-effort repetition is not.
+- [ ] **A new premise, a new script and new footage.** No clips reused from another video, and no old script with the nouns swapped.
+- [ ] **Steady pace:** 1-2 a day, never a dump of near-identical Shorts.
+- [ ] **Working files kept** (the episode JSON, Flow project, prompts). If a reviewer flags the channel, they show the human work.
+- [ ] **Altered or synthetic content: Yes.**
+- [ ] **No swearing in the title or the first seconds.** Dad's caps lines mid-video are fine.
+- [ ] **Nothing from Halo Chad or any other channel uploaded:** footage, scripts or art. We keep only notes.
+- [ ] **Flow footage made on a plan whose terms allow commercial use.** Check the Flow terms before the channel applies for monetization.
+- [ ] **Music and sound effects only from our library** (Mixkit licence). If a claim ever appears, dispute it with the licence.
+- [ ] **From video 21:** tick "includes paid promotion" on every video that promotes our repos.
+
+**To join the Partner Program:** 1,000 subscribers, plus either 10M Shorts views in 90 days or 4,000 watch hours. News reports say these rise for new applicants in 2027; check YouTube's Help page before planning around them.
+
 ## Playlists
 1. **Dad vs the House**: snow, pool, roof, lawn, paint
 2. **Dad vs Max**: dog walker, the next dog pranks

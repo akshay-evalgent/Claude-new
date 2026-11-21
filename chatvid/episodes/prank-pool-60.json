@@ -1,0 +1,197 @@
+{
+ "engine": "imsg",
+ "format": "vertical",
+ "crf": 18,
+ "fps": 30,
+ "minuteEvery": 40,
+ "typeSpeed": 28,
+ "readMul": 0.7,
+ "pace": 0.62,
+ "tail": 0.9,
+ "booms": true,
+ "music": {
+  "track": "kidding-around",
+  "gain": -27
+ },
+ "contact": {
+  "name": "Dad (Driveway Police)🚨",
+  "avatar": {
+   "emoji": "🧔‍♂️",
+   "bg": "#c7d3e0"
+  }
+ },
+ "title": "Pranking my dad the hot tub guys made it a little bigger",
+ "clock": "5:47",
+ "unread": "4,216",
+ "cameraRoll": [
+  "🐶",
+  "🍕",
+  "🍦",
+  "☕",
+  "🐱",
+  "🚗",
+  "🍪",
+  "🎮",
+  "🌮"
+ ],
+ "hook": {
+  "stages": [
+   {
+    "media": "flow-pool-a",
+    "at": 2.5
+   },
+   {
+    "media": "flow-pool-b",
+    "at": 2.5
+   },
+   {
+    "media": "flow-pool-c",
+    "at": 3.5
+   }
+  ],
+  "caption": "Pranking my dad the hot tub guys made it \"a little\" bigger💀😭",
+  "dur": 3.6
+ },
+ "tool": {
+  "style": "edit",
+  "photo": {
+   "media": "flow-pool-a",
+   "at": 0.3
+  },
+  "result": {
+   "media": "flow-pool-c",
+   "at": 3.5
+  },
+  "prompt": "Add a lazy river",
+  "project": "Backyard 1 of 1"
+ },
+ "history": [
+  {
+   "them": "did you touch my thermostat"
+  },
+  {
+   "me": "no"
+  },
+  {
+   "them": "it moved 1 degree. i know what i saw"
+  }
+ ],
+ "media": {
+  "flow-pool-a": {
+   "file": "placeholder-pool-a.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-pool-b": {
+   "file": "placeholder-pool-b.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-pool-c": {
+   "file": "placeholder-pool-c.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  }
+ },
+ "beats": [
+  {
+   "me": "dad the hot tub guys are here"
+  },
+  {
+   "them": "finally. 6 person. on the patio. not on the grass"
+  },
+  {
+   "me": "they said the patio is too small"
+  },
+  {
+   "them": "its a hot tub not a cruise ship"
+  },
+  {
+   "me": "they made it work"
+  },
+  {
+   "media": "flow-pool-a",
+   "at": 2.5
+  },
+  {
+   "them": "ok perfect"
+  },
+  {
+   "them": "thats exactly what i paid for"
+  },
+  {
+   "me": "they said its a little shallow tho"
+  },
+  {
+   "them": "its a hot tub its supposed to be shallow"
+  },
+  {
+   "me": "they're fixing it"
+  },
+  {
+   "them": "fixing what"
+  },
+  {
+   "media": "flow-pool-b",
+   "at": 2.5
+  },
+  {
+   "them": "WHAT THE HELL"
+  },
+  {
+   "them": "WHERE DID MY LAWN GO"
+  },
+  {
+   "me": "he said grass is outdated"
+  },
+  {
+   "them": "I ASKED FOR A HOT TUB NOT A QUARRY"
+  },
+  {
+   "them": "WHO TOLD THEM TO DIG"
+  },
+  {
+   "me": "the hot tub did"
+  },
+  {
+   "them": "WHAT"
+  },
+  {
+   "me": "dw they said they're done digging"
+  },
+  {
+   "them": "thank god"
+  },
+  {
+   "me": "now they're just connecting it"
+  },
+  {
+   "them": "connecting it to what"
+  },
+  {
+   "media": "flow-pool-c",
+   "at": 3.5
+  },
+  {
+   "them": "HOLY SHIT"
+  },
+  {
+   "them": "THERE IS A RIVER AROUND MY HOUSE"
+  },
+  {
+   "me": "the neighbors are floating past rn 😭"
+  },
+  {
+   "them": "WHY IS THERE A LIFEGUARD"
+  },
+  {
+   "me": "he said you need a wristband to get in",
+   "unsent": true
+  }
+ ],
+ "youtube": {
+  "title": "He just wanted a HOT TUB😭 #prank #pool #dad #funnyvideo #comedyshorts",
+  "description": [],
+  "tags": []
+ }
+}
