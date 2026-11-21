@@ -121,9 +121,17 @@ def build_terrain():
     L.new(dif.outputs['Color'], hs.inputs['Color']); L.new(hs.outputs[0], tint.inputs['A'])
     big = N.new('ShaderNodeTexNoise'); big.inputs['Scale'].default_value = 0.03; big.inputs['Detail'].default_value = 4; L.new(g.outputs['Position'], big.inputs['Vector'])
     var = N.new('ShaderNodeMix'); var.data_type = 'RGBA'; var.blend_type = 'MULTIPLY'; var.inputs['B'].default_value = (0.78, 0.74, 0.7, 1)
-    L.new(big.outputs['Fac'], var.inputs['Factor']); L.new(tint.outputs['Result'], var.inputs['A']); L.new(var.outputs['Result'], b.inputs['Base Color'])
+    # far from the camera the 2 m texture tile would show as a grid, so it fades to its own average colour there
+    import numpy as np
+    px = np.array(dif.image.pixels[:], dtype=np.float32).reshape(-1, 4)[::97, :3].mean(0) ** 2.2      # stored sRGB -> linear
+    avg = (min(1.0, px[0] * 1.9) * 1.0, min(1.0, px[1] * 1.9) * 0.72, min(1.0, px[2] * 1.9) * 0.42, 1)
+    cd = N.new('ShaderNodeCameraData'); far_k = N.new('ShaderNodeMapRange'); far_k.inputs['From Min'].default_value = 7.0; far_k.inputs['From Max'].default_value = 32.0; L.new(cd.outputs['View Z Depth'], far_k.inputs['Value'])
+    flat = N.new('ShaderNodeMix'); flat.data_type = 'RGBA'; flat.inputs['B'].default_value = avg; L.new(far_k.outputs[0], flat.inputs['Factor']); L.new(tint.outputs['Result'], flat.inputs['A'])
+    L.new(big.outputs['Fac'], var.inputs['Factor']); L.new(flat.outputs['Result'], var.inputs['A']); L.new(var.outputs['Result'], b.inputs['Base Color'])
     b.inputs['Roughness'].default_value = 0.92
-    nm = N.new('ShaderNodeNormalMap'); nm.inputs['Strength'].default_value = 0.8; L.new(nor.outputs['Color'], nm.inputs['Color'])
+    nm = N.new('ShaderNodeNormalMap'); L.new(nor.outputs['Color'], nm.inputs['Color'])
+    nk = N.new('ShaderNodeMapRange'); nk.inputs['From Min'].default_value = 7.0; nk.inputs['From Max'].default_value = 32.0; nk.inputs['To Min'].default_value = 0.8; nk.inputs['To Max'].default_value = 0.0
+    L.new(cd.outputs['View Z Depth'], nk.inputs['Value']); L.new(nk.outputs[0], nm.inputs['Strength'])
     wv = N.new('ShaderNodeTexWave'); wv.wave_type = 'BANDS'; wv.bands_direction = 'X'; wv.inputs['Scale'].default_value = 0.9; wv.inputs['Distortion'].default_value = 5.0; wv.inputs['Detail'].default_value = 2; wv.inputs['Detail Scale'].default_value = 0.6
     wm = N.new('ShaderNodeMapping'); wm.inputs['Rotation'].default_value[2] = 0.6; L.new(g.outputs['Position'], wm.inputs['Vector']); L.new(wm.outputs[0], wv.inputs['Vector'])
     bm_ = N.new('ShaderNodeBump'); bm_.inputs['Strength'].default_value = 0.55; bm_.inputs['Distance'].default_value = 0.06
@@ -143,6 +151,12 @@ def runner(spec, extras=True):
         bv = pack.modifiers.new('bevel', 'BEVEL'); bv.width = 0.05; bv.segments = 4
         for strap_x in (-0.11, 0.11): parts = box('Strap', (0.04, 0.3, 0.03), (sp.x + strap_x, sp.y + 0.03, sp.z + 0.09), pbr('Strap', (0.1, 0.1, 0.1), 0.8)); attach(parts, rig, 'Spine1')
         attach(pack, rig, 'Spine'); attach(bib, rig, 'Spine1')
+    if 'cortu_cargo_pants' in spec['clothes']:      # long trousers: hide the leg skin under them so it can't poke through
+        base = h['base']; legs = {g.index for g in base.vertex_groups if g.name in ('LeftUpLeg', 'RightUpLeg', 'LeftLeg', 'RightLeg')}
+        print('LEG GROUPS', len(legs), [g.name for g in base.vertex_groups if 'eg' in g.name][:8])
+        hide = base.vertex_groups.new(name='under_trousers')
+        hide.add([v.index for v in base.data.vertices if sum(g.weight for g in v.groups if g.group in legs) > 0.55], 1.0, 'REPLACE')
+        m = base.modifiers.new('under_trousers', 'MASK'); m.vertex_group = 'under_trousers'; m.invert_vertex_group = True
     return h
 def attach(o, rig, bone):
     """Rigidly binds a prop to one bone: a vertex group named after the bone plus an armature modifier."""
@@ -150,12 +164,12 @@ def attach(o, rig, bone):
     vg = o.vertex_groups.new(name=bone); vg.add(list(range(len(o.data.vertices))), 1.0, 'REPLACE')
     mw = o.matrix_world.copy(); o.parent = rig; o.matrix_parent_inverse = rig.matrix_world.inverted(); o.matrix_world = mw
     m = o.modifiers.new('rig', 'ARMATURE'); m.object = rig
-HERO = {'gender': 1.0, 'age': 0.62, 'muscle': 0.7, 'weight': 0.42, 'height': 0.45, 'race': 'caucasian', 'skin': 'middleage_caucasian_male',
-        'clothes': ['elvs_crude_t-shirt_male', 'cortu_jeans_shorts', 'shoes02']}
+HERO = {'gender': 1.0, 'age': 0.62, 'muscle': 0.78, 'weight': 0.52, 'height': 0.45, 'race': 'caucasian', 'skin': 'middleage_caucasian_male',
+        'clothes': ['elvs_crude_t-shirt_male', 'cortu_cargo_pants', 'shoes02']}
 OTHERS = [
     {'gender': 1.0, 'age': 0.55, 'muscle': 0.6, 'weight': 0.5, 'height': 0.55, 'race': 'african', 'skin': 'young_african_male', 'clothes': ['namuhekam_male_polo_shirt', 'cortu_jeans_shorts', 'shoes04'], 'pack': (0.1, 0.25, 0.6)},
     {'gender': 0.0, 'age': 0.5, 'muscle': 0.6, 'weight': 0.4, 'height': 0.5, 'race': 'caucasian', 'skin': 'young_caucasian_female', 'hair': 'ponytail01', 'clothes': ['female_sportsuit01', 'shoes03'], 'pack': (0.85, 0.6, 0.1)},
-    {'gender': 1.0, 'age': 0.6, 'muscle': 0.55, 'weight': 0.55, 'height': 0.4, 'race': 'asian', 'skin': 'young_asian_male', 'clothes': ['elvs_crude_t-shirt_male', 'cortu_cargo_pants', 'shoes02'], 'pack': (0.15, 0.45, 0.2)},
+    {'gender': 1.0, 'age': 0.6, 'muscle': 0.55, 'weight': 0.55, 'height': 0.4, 'race': 'asian', 'skin': 'young_asian_male', 'clothes': ['namuhekam_male_polo_shirt', 'cortu_cargo_pants', 'shoes02'], 'pack': (0.15, 0.45, 0.2)},
 ]
 def act(h, clip, **kw):
     human.retarget_bvh(h['rig'], MOCAP(clip), frames=NF, fps=FPS, **kw); return h['rig']
@@ -246,7 +260,7 @@ UP = lambda z: Vector((0, 0, z))
 if SHOT in ('H1', 'H2'):
     hero = act(runner(HERO), '91_09', src_start=6.0 + (3.6 if SHOT == 'H2' else 0), origin=(0, 13 if SHOT == 'H1' else 4, 0), heading_deg=0)
     if SHOT == 'H1': shoot(lambda f, k: ((0.5, -3.5, 0.75), hip(hero, f) + UP(0.3), 135, 2.8, hip(hero, f)))
-    else: shoot(lambda f, k: (lerp((34, -46, 30), (38, -52, 36), k), hip(hero, f), 30, 8, None))
+    else: shoot(lambda f, k: (lerp((7, -10, 6.5), (10.5, -14.5, 10), ease(k)), hip(hero, f) + Vector((0.5, -1.6, 0)), 30, 8, None))
 elif SHOT == 'H3':
     shoot(lambda f, k: (lerp((0.7, -0.9, 1.9), (0.45, -0.5, 2.25), ease(k)), lerp((0, 0.3, 3.0), (-0.2, 0.5, 3.0), k), 30, 2.0, (0, 0.2, 2.95)))
 elif SHOT in ('R1', 'P1'):
@@ -273,8 +287,9 @@ elif SHOT == 'W1':
     h = runner(HERO); hero = h['rig']
     bpy.context.view_layer.update(); hand = hero.matrix_world @ hero.data.bones['RightHand'].tail_local
     bottle = obj('Bottle', bpy.ops.mesh.primitive_cylinder_add, pbr('BottlePlastic', (0.75, 0.85, 0.9), 0.15), (hand.x, hand.y - 0.03, hand.z - 0.02), (math.radians(60), 0, math.radians(30)), radius=0.03, depth=0.19, vertices=20, smooth=True)
-    cap = obj('BottleCap', bpy.ops.mesh.primitive_cylinder_add, pbr('Cap', (0.1, 0.3, 0.7), 0.4), (0, 0, 0), radius=0.016, depth=0.03, vertices=12); cap.parent = bottle; cap.location = (0, 0, 0.11)
-    attach(bottle, hero, 'RightHand')
+    cap = obj('BottleCap', bpy.ops.mesh.primitive_cylinder_add, pbr('Cap', (0.1, 0.3, 0.7), 0.4), (0, 0, 0), radius=0.016, depth=0.03, vertices=12)
+    bpy.context.view_layer.update(); cap.rotation_euler = bottle.rotation_euler; cap.location = bottle.matrix_world @ Vector((0, 0, 0.11))
+    attach(bottle, hero, 'RightHand'); attach(cap, hero, 'RightHand')
     act(h, '13_09', src_start=2.3, origin=(0, 0, 0), heading_deg=20)
     shoot(lambda f, k: (lerp((1.5, -3.6, 1.35), (1.1, -3.1, 1.4), ease(k)), (hero.matrix_world @ hero.pose.bones['Neck'].head) if not scene.frame_set(f) else 0, 60, 2.8, None))
 elif SHOT == 'M1':
