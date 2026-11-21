@@ -108,8 +108,8 @@ place(fx, rec('fs458446', 2.4, 3.9, 0.02, 0.3), c('peels') - 0.1, -8, -0.1)
 place(fx, rec('fs369915', 2.1, 2.7, 0.005, 0.2), c('tape') - 0.05, -10, 0.1)
 # 9) the dash: claws scrabbling, sped up
 place(fx, rec('fs830466', 2.9, 5.6, 0.02, 0.2, rate=1.35), c('up') + 0.05, -11, 0.2)
-# 10) it dashes in and stops by the bulb; a house gecko chirps
-place(fx, rec('fs830466', 6.3, 9.0, 0.05, 0.25, rate=1.3), c('so', 1) + 0.6, -12, -0.2)
+# 10) it walks in from the bottom of frame and stops by the bulb; a house gecko chirps
+place(fx, rec('fs830466', 6.3, 9.1, 0.05, 0.3), c('so', 1) + 0.3, -13, -0.2)
 place(fx, rec('fs400573', 0.0, 1.0, 0.005, 0.2), c('ceiling', 1) + 0.15, -14, 0.25)
 
 # ---------------- music: warm and curious at night; a slow pulse under the microscope ----------------

@@ -14,7 +14,8 @@ const hookAt = (h) => { const mid = h.W(restPath(DD - 10).p); return { p: mid.cl
 const restPose = (t) => ({ t: t + 30, d: DD, path: restPath, headYaw: 0.16 * Math.sin(t * 0.8) + 0.05 * Math.sin(t * 2.1) });
 // the final dash: full speed until 1.1 s before the loop point, braking to a stop 0.55 s before it
 const dashSpeed = (tau) => smooth(-0.55, -1.1, tau);
-function dashD(tau, v = 44) { if (tau >= -0.55) return DD; let d = 0; const n = 60, a = tau, b = -0.55; for (let i = 0; i < n; i++) { const x = a + (b - a) * (i + 0.5) / n; d += dashSpeed(x) * v * (b - a) / n; } return DD - d; }
+const DV = 24; // walk-in speed for the loop shot: slow enough that it's on screen from the cut
+function dashD(tau, v = DV) { if (tau >= -0.55) return DD; let d = 0; const n = 60, a = tau, b = -0.55; for (let i = 0; i < n; i++) { const x = a + (b - a) * (i + 0.5) / n; d += dashSpeed(x) * v * (b - a) / n; } return DD - d; }
 
 // 0) A gecko could hang from your ceiling all day, with no glue at all. — upside down on the ceiling by the bulb
 shot(0, C.look, (s) => { const h = ceilSet(s); s.ap = 9; s.maxR = 16; s.exposure = 1.0; s.bloom = 0.4;
@@ -78,7 +79,7 @@ shot(C.to2, C.up, (s) => { const h = ceilSet(s); s.ap = 14; s.maxR = 16; s.expos
 shot(C.up, C.so2, (s) => { const h = ceilSet(s); s.ap = 7; s.maxR = 14; s.exposure = 1.0; s.bloom = 0.4; const lab = liveLabel(0.9, 0.26); OV(s, lab); lab.userData.set([['15× A SECOND', 130, 0.5, '#ffffff', 900, 3]]);
   const path = (d) => ({ p: V(-90 + d, 0, 40 - 0.25 * d), h: 0.245 });
   s.update = (t) => { const u = t - C.up, d = 30 + u * 62; h.gk.userData.pose({ t, d, path, speed: 1 }); const c = h.W(path(d - 10).p);
-    shootC(s.cam, c.clone().add(V(0, -60, 0)).addScaledVector(h.sideW, 8), c, V(0, 0, -1), { fov: 32, t, hand: 0.15 }); pinF(s.cam, lab, 0, 0.36, 3, spring(t, C.fifteen, 2, 6)); }; });
+    shootC(s.cam, c.clone().add(V(0, -60, 0)).addScaledVector(h.sideW, 8), c, V(0, 0, -1), { fov: 32, t, hand: 0.15 }); pinF(s.cam, lab, 0, 0.36, 3, 0.8 * spring(t, C.fifteen, 2, 6)); }; });
 
 // 10) So if one ever lands on your ceiling, don't wait for it to fall, because — it dashes in and stops by the bulb (the loop)
 shot(C.so2, END + 1, (s) => { const h = ceilSet(s); s.ap = 9; s.maxR = 16; s.exposure = 1.0; s.bloom = 0.4;

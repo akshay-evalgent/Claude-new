@@ -12,7 +12,7 @@ A 33-second vertical short (11 shots):
 It follows the playbook's engagement section:
 
 - **Hook.** Frame one is a tokay hanging upside down on the ceiling by a bare bulb, with the caption "A gecko could hang from your ceiling all day".
-- **Seamless loop.** The script ends on a word that the first line completes: "…don't wait for it to fall, because → a gecko could hang from your ceiling all day." In the last shot the gecko dashes in and stops on exactly the frame the video opens on. The music is exactly 16 bars, and the room's night bed wraps around the loop point.
+- **Seamless loop.** The script ends on a word that the first line completes: "…don't wait for it to fall, because → a gecko could hang from your ceiling all day." In the last shot the gecko walks in from the bottom of the frame and stops on exactly the frame the video opens on. The music is exactly 16 bars, and the room's night bed wraps around the loop point.
 - **Share prompt on screen** in the last quarter: "Send this to someone who's scared of lizards". It fades out before the final shot, so the loop frame stays clean.
 - **Comment trigger** in the pinned comment: "Be honest: would you let one live on your ceiling?" (see `upload/UPLOAD.md`).
 
@@ -22,7 +22,7 @@ It follows the playbook's engagement section:
 - magnets snapping onto a fridge (the molecules pulling together)
 - a creaking rope and a dropped bag (the weight)
 - gaffer and Scotch tape peeling (the toes letting go)
-- claws scrabbling on wood (the dash)
+- claws scrabbling on wood (the dash and the walk-in)
 
 Only the music is synthesized.
 
@@ -51,7 +51,7 @@ Only the music is synthesized.
 | 18.43 | A patch of hairs the size of a coin could lift a small child. | A coin-sized patch on the ceiling, then down the rope to a cement bag; "≈ 20 KG · 45 LB" | A dropped bag (382642), a creaking rope (862995) |
 | 22.62 | To let go, a gecko simply peels its toes back, like tape, | At ceiling level: the toes curl back from their tips | Gaffer tape peeled slowly (458446), Scotch tape (369915) |
 | 26.71 | up to fifteen times a second. | The gecko dashes across the ceiling; "15× A SECOND" | Claws scrabbling (830466) |
-| 29.09 | So if one ever lands on your ceiling, don't wait for it to fall, because | It dashes in and stops by the bulb (loop) | Claws, a house gecko's chirp (400573) |
+| 29.09 | So if one ever lands on your ceiling, don't wait for it to fall, because | It walks in from the bottom of frame and stops by the bulb (loop) | Claws, a house gecko's chirp (400573) |
 
 ## Sources to check before publishing
 
