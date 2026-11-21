@@ -56,7 +56,13 @@ how do geckos walk on ceilings, gecko feet, gecko setae, van der waals force, ge
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | The gecko upside down on the ceiling by the bulb, caption "A gecko could hang" | **Main pick.** The subject big, in the pose the video opens and loops on |
+| `thumbnail-alt-two-million-hairs.jpg` | A forest of toe hairs, "≈ 2,000,000 HAIRS" | Curiosity angle |
+| `thumbnail-alt-small-child.jpg` | A cement bag hanging from a coin-sized patch, "≈ 20 KG · 45 LB", caption "a small child" | Strength angle |
+| `thumbnail-alt-molecules.jpg` | Two layers of atoms pulling together, "VAN DER WAALS FORCE" | Science angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
