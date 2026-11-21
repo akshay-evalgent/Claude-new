@@ -129,6 +129,25 @@ The photo sheet in two of the 8 shows a tile reading **"Upload your AI result"**
 9. **Swearing:** keep it to Dad's caps lines and skip slurs.
 10. **Title:** a reaction teaser with one CAPS word, plus 4-5 hashtags.
 
+## 6b. Channel plan
+- **Videos 1-20: copy Halo's format exactly.** The 3-second app segment shows an AI edit tool, as theirs does. Ours is an unbranded mock-up ("reimagine"), never Cantina's look.
+- **From video 21: the same 3-second slot promotes our own repos and apps,** shown the same way: the prompt typed into our tool, then "generating", then the result. It is the sponsor slot, so tick "includes paid promotion" whenever the promoted thing is ours or paid for.
+
+### Building one in the engine (`episodes/prank-snow-60.json` is the reference)
+```json
+"pace": 0.62, "typeSpeed": 28, "booms": true, "music": {"track": "kidding-around", "gain": -27},
+"hook": {"stages": [{"media": "flow-snow-a", "at": 2.6}, {"media": "flow-snow-b", "at": 2.5}, {"media": "flow-snow-c", "at": 4.5}],
+         "caption": "Pranking my dad the snow guy called his \"cousins\"💀😭", "dur": 3.6},
+"tool": {"style": "edit", "photo": {"media": "flow-snow-a", "at": 0.3}, "result": {"media": "flow-snow-c", "at": 4.5},
+         "prompt": "Add a snow mountain", "project": "Driveway 1 of 1", "logo": "reimagine"},
+"beats": [ ..., {"media": "flow-snow-b", "at": 2.5}, ..., {"me": "they said they'll be back next snow", "unsent": true} ]
+```
+- **`at` on a drop:** sends a still frame at that time instead of the playing clip.
+- **`booms`:** adds a hit on every drop and every all-caps line.
+- **`unsent`:** types the last line without sending it.
+- **`pace`:** shrinks every default wait.
+- **For video 21 on,** set `logo` and `project` to the repo's name.
+
 ## 7. Our idea bank
 These are our own premises in their winning topics. We don't remake their videos.
 

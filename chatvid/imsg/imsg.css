@@ -114,3 +114,23 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; 
 #tKb .k.down { background: #8a8b90; }
 #tPop { position: absolute; z-index: 9; width: 150px; height: 240px; display: none; border-radius: 22px 22px 30px 30px; background: #6a6b70; box-shadow: 0 6px 22px rgba(0,0,0,.5);
   font: 400 92px/150px "Inter", sans-serif; text-align: center; color: #fff; }
+
+/* edit style: like the AI photo/video editors, the picture is the whole screen */
+#tDim { position: absolute; inset: 0; background: #000; opacity: 0; }
+#tPill, #tGenCard { display: none; }
+#tool.edit #tPill { display: flex; position: absolute; left: 50%; top: 150px; transform: translateX(-50%); align-items: center; gap: 16px; padding: 14px 32px 16px 26px; border-radius: 40px; background: rgba(30,30,36,.62); backdrop-filter: blur(10px); font: 600 32px/1 "Inter", sans-serif; color: #fff; }
+.tBack2 { width: 18px; height: 18px; border-left: 5px solid #fff; border-bottom: 5px solid #fff; transform: rotate(45deg); margin-right: 4px; }
+#tool.edit #tStatus { z-index: 3; }
+#tool.edit #tHead { display: none; }
+#tool.edit #tBox { background: rgba(28,30,38,.78); border-color: rgba(255,255,255,.18); backdrop-filter: blur(12px); min-height: 130px; }
+#tool.edit #tPrompt { padding: 30px 150px 30px 34px; font-size: 40px; }
+#tool.edit #tGo { width: 90px; height: 90px; line-height: 90px; bottom: 20px; }
+#tool.edit #tGenCard { position: absolute; left: 110px; right: 110px; top: 760px; padding: 70px 50px 44px; border-radius: 44px; background: rgba(24,25,32,.9); text-align: center; color: #fff; z-index: 4; }
+#tool.edit #tGenCard { display: none; }
+#tLogo { position: absolute; left: 50%; top: -86px; margin-left: -230px; width: 460px; padding: 18px 0 24px; border-radius: 30px; background: linear-gradient(135deg, #8a6bff, #4fc3ff); border: 8px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  font: 900 70px/1 "Inter", sans-serif; letter-spacing: -2px; color: #fff; }
+.gTitle { font: 700 46px/1.2 "Inter", sans-serif; margin-top: 30px; }
+#tStep { font: 500 34px/1.3 "Inter", sans-serif; color: #b9bccb; margin-top: 14px; }
+#tGenBar { margin: 34px auto 0; width: 86%; height: 14px; border-radius: 7px; background: rgba(255,255,255,.16); overflow: hidden; }
+#tGenBar i { display: block; height: 100%; width: 0; border-radius: 7px; background: linear-gradient(90deg, #8a6bff, #4fc3ff); }
+.gCancel { margin-top: 34px; font: 600 34px/1 "Inter", sans-serif; color: #ff6b6b; }

@@ -1,0 +1,195 @@
+{
+ "engine": "imsg",
+ "format": "vertical",
+ "crf": 18,
+ "fps": 30,
+ "minuteEvery": 40,
+ "typeSpeed": 28,
+ "readMul": 0.7,
+ "pace": 0.62,
+ "tail": 0.9,
+ "booms": true,
+ "music": {
+  "track": "kidding-around",
+  "gain": -27
+ },
+ "contact": {
+  "name": "Dad (Driveway Police)🚨",
+  "avatar": {
+   "emoji": "🧔‍♂️",
+   "bg": "#c7d3e0"
+  }
+ },
+ "title": "Pranking my dad the dog walker took a few dogs",
+ "clock": "4:12",
+ "unread": "4,213",
+ "cameraRoll": [
+  "🐶",
+  "🍕",
+  "🎃",
+  "☕",
+  "🐱",
+  "🚗",
+  "🍪",
+  "🎮",
+  "🌮"
+ ],
+ "hook": {
+  "stages": [
+   {
+    "media": "flow-dog-a",
+    "at": 2.5
+   },
+   {
+    "media": "flow-dog-b",
+    "at": 3.5
+   },
+   {
+    "media": "flow-dog-c",
+    "at": 3.5
+   }
+  ],
+  "caption": "Pranking my dad the dog walker took \"a few\" dogs💀😭",
+  "dur": 3.6
+ },
+ "tool": {
+  "style": "edit",
+  "photo": {
+   "media": "flow-dog-a",
+   "at": 0.4
+  },
+  "result": {
+   "media": "flow-dog-c",
+   "at": 3.5
+  },
+  "prompt": "Add 40 more dogs",
+  "project": "Max 1 of 1"
+ },
+ "history": [
+  {
+   "them": "why is there a sock in the dishwasher"
+  },
+  {
+   "me": "max"
+  },
+  {
+   "them": "max doesnt have thumbs"
+  }
+ ],
+ "media": {
+  "flow-dog-a": {
+   "file": "flow-dog-a.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)",
+   "level": -18
+  },
+  "flow-dog-b": {
+   "file": "flow-dog-b.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-dog-c": {
+   "file": "flow-dog-c.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  }
+ },
+ "beats": [
+  {
+   "me": "dad the dog walker is here for max"
+  },
+  {
+   "them": "one walk. around the block. 20 minutes"
+  },
+  {
+   "me": "she brought a couple other dogs"
+  },
+  {
+   "them": "max doesnt like other dogs"
+  },
+  {
+   "media": "flow-dog-a",
+   "at": 2.5
+  },
+  {
+   "them": "ok thats actually cute"
+  },
+  {
+   "them": "make sure max is in front"
+  },
+  {
+   "me": "he is"
+  },
+  {
+   "me": "she's picking up a few more on the way"
+  },
+  {
+   "them": "how many is a few"
+  },
+  {
+   "media": "flow-dog-b",
+   "at": 3.5
+  },
+  {
+   "them": "THAT IS NOT A FEW"
+  },
+  {
+   "them": "WHOSE DOGS ARE THOSE"
+  },
+  {
+   "me": "max's friends"
+  },
+  {
+   "them": "MAX DOESNT HAVE FRIENDS HE HAS ME"
+  },
+  {
+   "me": "not anymore"
+  },
+  {
+   "them": "WHO IS PAYING FOR THIS"
+  },
+  {
+   "me": "she charges per dog"
+  },
+  {
+   "them": "PER WHICH DOG"
+  },
+  {
+   "me": "dw she said that was the last stop"
+  },
+  {
+   "them": "good"
+  },
+  {
+   "me": "the last stop was the shelter"
+  },
+  {
+   "media": "flow-dog-c",
+   "at": 3.5
+  },
+  {
+   "them": "HOLY SHIT"
+  },
+  {
+   "them": "I ASKED FOR A WALK NOT A MIGRATION"
+  },
+  {
+   "me": "max is leading tho 😭"
+  },
+  {
+   "them": "THATS NOT A DOG WALK THATS A PARADE"
+  },
+  {
+   "them": "BRING MY DOG BACK"
+  },
+  {
+   "me": "which one",
+   "unsent": true
+  }
+ ],
+ "youtube": {
+  "title": "He just wanted his dog BACK😭 #prank #dog #dad #funnyvideo #comedyshorts",
+  "description": [],
+  "tags": []
+ }
+}

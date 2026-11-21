@@ -18,7 +18,8 @@
   const hash = (s, i) => { let h = 2166136261; for (const c of s + i) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return ((h >>> 0) % 1000) / 1000; };
 
   let EP, MSGS = [], EV = [], duration = 0, HEIGHTS = [], KEYS = {}, hookEnd = 0, chatStart = 0, lastCount = -1, lastPicker = '';
-  let TOOL = null;   // {t0, keys: [{t, n}], go, gen0, gen1, end}
+  let TOOL = null, HOOKCUTS = null, STILL = {};
+  const isCaps = (x) => { const l = String(x).replace(/[^\p{L}]/gu, ''); return l.length >= 4 && l === l.toUpperCase(); };   // {t0, keys: [{t, n}], go, gen0, gen1, end}
   const meta = (k) => (EP.__mediaMeta && EP.__mediaMeta[k]) || null;
   const frameSrc = (k, i) => { const m = meta(k); return `../assets/media/${k}/f${String((i % m.count) + 1).padStart(4, '0')}.${m.ext}`; };
 
@@ -35,7 +36,7 @@
     const tail = !next || next.from !== m.from || next.sep;
     const gap = prev && prev.from !== m.from ? ' gap' : '';
     let h = m.sep ? `<div class="sep">${esc(m.sep)}</div>` : '';
-    if (m.media) h += `<div class="m ${m.from}${gap}" data-i="${i}"><div class="media"><img data-media="${m.media}" src="${frameSrc(m.media, 0)}"></div></div>`;
+    if (m.media) h += `<div class="m ${m.from}${gap}" data-i="${i}"><div class="media"><img data-media="${m.media}"${m.at != null ? ' data-still="1"' : ''} src="${frameSrc(m.media, m.at != null ? Math.round(m.at * FPS) : 0)}"></div></div>`;
     else h += `<div class="m ${m.from}${tail ? ' tail' : ''}${gap}" data-i="${i}"><div class="b">${rich(m.text)}</div></div>`;
     return h;
   }
@@ -67,8 +68,14 @@
     if (ep.hook) {
       hookEnd = ep.hook.dur ?? 3.5;
       ev({ type: 'hook', on: true, t: 0 });
-      const hm = meta(ep.hook.media);
-      if (hm && hm.audio) cues.push({ t: 0, s: '@media:' + ep.hook.media, g: ep.hook.audioGain ?? -3, dur: hookEnd });
+      const hm = ep.hook.media ? meta(ep.hook.media) : null;
+      if (ep.hook.stages) {
+        // the AI stages cut from normal to absurd, with a hit on every cut
+        const st = ep.hook.stages, each = hookEnd / st.length;
+        let u = 0;
+        HOOKCUTS = st.map((x) => { const c = { ...x, t0: u }; u += x.dur ?? each; if (x.at != null) STILL[x.media] = x.at; return c; });
+        HOOKCUTS.forEach((c, i) => cues.push({ t: c.t0, s: 'boom', g: i === HOOKCUTS.length - 1 ? -8 : -12 }));
+      } else if (hm && hm.audio) cues.push({ t: 0, s: '@media:' + ep.hook.media, g: ep.hook.audioGain ?? -3, dur: hookEnd });
       else cues.push({ t: 0, s: 'wind', g: -16, dur: hookEnd });
       t = hookEnd;
       ev({ type: 'hook', on: false });
@@ -88,30 +95,32 @@
       t += 0.35;
     } else if (ep.tool) {
       // the AI app: the prompt is typed fast, "generate" is tapped, the clip appears
-      const tl = ep.tool, chars = [...tl.prompt], tcps = tl.typeSpeed || 34;
+      const tl = ep.tool, chars = [...tl.prompt], tcps = tl.typeSpeed || (tl.style === 'edit' ? 22 : 34);
       TOOL = { t0: t, keys: [] };
       ev({ type: 'tool', on: true });
-      let u = t + (tl.lead ?? 0.3);
+      let u = t + (tl.lead ?? (tl.style === 'edit' ? 0.2 : 0.3));
       chars.forEach((ch, k) => {
         TOOL.keys.push({ t: u, n: k + 1, ch: ch.toLowerCase() });
         if (ch !== ' ') cues.push({ t: u, s: ['key1', 'key2', 'key3'][k % 3], g: -30 + 3 * hash(tl.prompt, k), rate: 1.0 + 0.1 * hash(tl.prompt, k + 3) });
         u += (1 / tcps) * (0.6 + 0.9 * hash(tl.prompt, k)) * (ch === ' ' ? 0.7 : 1);
       });
-      TOOL.go = u + 0.25;
+      TOOL.go = u + (tl.style === 'edit' ? 0.15 : 0.25);
       cues.push({ t: TOOL.go, s: 'soft-pop', g: -14, rate: 1.2 });
       TOOL.gen0 = TOOL.go + 0.15;
-      TOOL.gen1 = TOOL.gen0 + (tl.generate ?? 1.4);
+      TOOL.gen1 = TOOL.gen0 + (tl.generate ?? (tl.style === 'edit' ? 1.3 : 1.4));
       cues.push({ t: TOOL.gen0, s: '@riser', g: -26, dur: TOOL.gen1 - TOOL.gen0 });
       cues.push({ t: TOOL.gen1, s: 'ding', g: -18 });
       const tm = meta(tl.media);
-      if (tm && tm.audio) cues.push({ t: TOOL.gen1, s: '@media:' + tl.media, g: tl.audioGain ?? -5, dur: tl.show ?? 1.4 });
-      TOOL.end = TOOL.gen1 + (tl.show ?? 1.4);
+      if (tl.style !== 'edit' && tm && tm.audio) cues.push({ t: TOOL.gen1, s: '@media:' + tl.media, g: tl.audioGain ?? -5, dur: tl.show ?? 1.4 });
+      TOOL.end = TOOL.gen1 + (tl.show ?? (tl.style === 'edit' ? 0.5 : 1.4));
       t = TOOL.end;
       ev({ type: 'tool', on: false });
       cues.push({ t, s: 'soft-swoosh', g: -14 });
-      t += 0.35;
+      t += tl.style === 'edit' ? 0.15 : 0.35;
     }
     chatStart = t;
+    const P = ep.pace ?? 1;                                   // < 1 = snappier: every default wait and hold shrinks
+    for (const b of ep.beats) if (b.media && b.at != null) STILL[b.media] = STILL[b.media] ?? b.at;
     const cps = ep.typeSpeed || 13;
     let lastFrom = null;
     for (const b of ep.beats) {
@@ -120,7 +129,7 @@
       const text = b.me ?? b.them;
       if (from === 'me' && !b.media) {
         // think, then type it out character by character
-        t += b.wait ?? (lastFrom === 'me' ? 0.25 : 0.55);
+        t += b.wait ?? (lastFrom === 'me' ? 0.25 : 0.55) * P;
         const chars = [...text];
         ev({ type: 'input', text: '' });
         chars.forEach((ch, k) => {
@@ -130,38 +139,42 @@
           t += (1 / cps) * (0.6 + 0.9 * hash(text, k)) * (ch === ' ' ? 0.7 : 1);
         });
         t += 0.12;
+        if (b.unsent) { t += b.hold ?? 0.6; lastFrom = from; continue; }   // typed, never sent: the video cuts on it
         MSGS.push({ from, text });
         ev({ type: 'add', n: MSGS.length }); ev({ type: 'input', text: '' });
         cues.push({ t, s: 'send', g: -13 });
-        t += b.hold ?? 0.35 + 0.012 * text.length;
+        t += b.hold ?? (0.35 + 0.012 * text.length) * P;
       } else if (b.media) {
         // open the photo sheet, pick the clip, send it, let it play
-        t += b.wait ?? 0.4;
+        t += b.wait ?? 0.4 * P;
         ev({ type: 'picker', open: true, media: b.media, sel: false });
         cues.push({ t, s: 'soft-pop', g: -20 });
-        t += 0.75;
+        t += 0.75 * Math.max(P, 0.75);
         ev({ type: 'picker', open: true, media: b.media, sel: true });
         cues.push({ t, s: 'soft-pop', g: -16, rate: 1.3 });
         t += 0.4;
         ev({ type: 'picker', open: false });
-        MSGS.push({ from: 'me', media: b.media });
+        MSGS.push({ from: 'me', media: b.media, at: b.at });
         ev({ type: 'add', n: MSGS.length });
         cues.push({ t, s: 'send', g: -12 });
+        if (ep.booms) cues.push({ t: t + 0.05, s: 'boom', g: ep.boomGain ?? -10 });
         const mm = meta(b.media);
-        if (b.sound !== false && mm && mm.audio) cues.push({ t, s: '@media:' + b.media, g: b.audioGain ?? -6, dur: b.hold ?? 3.4 });
+        if (b.at != null) { /* a still picture: no clip sound */ }
+        else if (b.sound !== false && mm && mm.audio) cues.push({ t, s: '@media:' + b.media, g: b.audioGain ?? -6, dur: b.hold ?? 3.4 });
         else if (b.sound !== false) cues.push({ t: t + 0.2, s: 'wind', g: -22, dur: b.hold ?? 3.4 });
-        t += b.hold ?? 3.4;
+        t += b.hold ?? (b.at != null ? 1.4 : 3.4);
       } else {
         // the other person types (dots), then the message lands
-        t += b.wait ?? 0.35;
-        const typing = b.typing ?? clamp(0.6 + 0.018 * text.length, 0.7, 1.7);
+        t += b.wait ?? 0.35 * P;
+        const typing = b.typing ?? clamp(0.6 + 0.018 * text.length, 0.7, 1.7) * P;
         ev({ type: 'dots', on: true });
         t += typing;
         ev({ type: 'dots', on: false });
         MSGS.push({ from, text });
         ev({ type: 'add', n: MSGS.length });
         cues.push({ t, s: 'reply', g: -11 });
-        t += b.hold ?? clamp(0.7 + 0.04 * text.length, 0.9, 3.2) * (ep.readMul || 1);
+        if (ep.booms && isCaps(text) && b.boom !== false) cues.push({ t, s: 'boom', g: ep.boomGain ?? -12 });
+        t += b.hold ?? clamp(0.7 + 0.04 * text.length, 0.9, 3.2) * (ep.readMul || 1) * P;
       }
       lastFrom = from;
     }
@@ -178,7 +191,9 @@
       box.innerHTML = threadHTML(n, dots);
       HEIGHTS[n * 2 + (dots ? 1 : 0)] = box.offsetHeight;
     }
-    return { duration, cues: cues.sort((x, y) => x.t - y.t), music: null, mainStart: 0, exchanges: [0] };
+    const mu = ep.music;
+    const music = mu ? { segments: [{ track: mu.track, t0: mu.from ?? 0, t1: duration, gain: mu.gain ?? -24, offset: mu.offset ?? 0, fadeIn: 0.2, fadeOut: 0.8, duck: false }] } : null;
+    return { duration, cues: cues.sort((x, y) => x.t - y.t), music, mainStart: 0, exchanges: [0] };
   };
 
   function threadHTML(n, dots) {
@@ -209,6 +224,8 @@
   // the AI video app at time T
   function renderTool(T, f) {
     const tl = EP.tool, tk = TOOL;
+    document.getElementById('tool').classList.toggle('edit', tl.style === 'edit');
+    if (tl.style === 'edit') return renderToolEdit(T);
     const [hh, mm] = (tl.clock || EP.toolClock || EP.clock || '11:24').split(':').map(Number);
     $('tClock').textContent = `${hh}:${String(mm).padStart(2, '0')}`;
     let n = 0, key = null, keyT = -9;
@@ -251,6 +268,49 @@
     $('tFlash').style.opacity = done ? (0.8 * clamp(1 - (T - tk.gen1) / 0.25, 0, 1)).toFixed(3) : 0;
   }
 
+  // the "edit" style: your start photo full screen, a short edit prompt, "Writing script… Rendering scene…", the result
+  const stillSrc = (x) => frameSrc(x.media, Math.round((x.at ?? 0) * FPS));
+  function renderToolEdit(T) {
+    const tl = EP.tool, tk = TOOL;
+    const [ch, cm] = (tl.clock || EP.toolClock || EP.clock || '11:24').split(':').map(Number);
+    $('tClock').textContent = `${ch}:${String(cm).padStart(2, '0')}`;
+    let n = 0, key = null, keyT = -9;
+    for (const k of tk.keys) { if (k.t > T) break; n = k.n; key = k.ch; keyT = k.t; }
+    const typed = [...tl.prompt].slice(0, n).join('');
+    show('tPh', !typed, 'inline'); $('tPh').textContent = tl.placeholder || 'Describe a video...'; $('tTyped').textContent = typed;
+    $('tCaret').style.display = T < tk.go ? 'inline-block' : 'none';
+    $('tCaret').style.opacity = Math.floor(T * 2.2) % 2 === 0 || T - keyT < 0.5 ? 1 : 0;
+    const ge = EASE.out(clamp((T - tk.go) / 0.25, 0, 1));
+    $('tKb').style.transform = `translateY(${(ge * 800).toFixed(1)}px)`;
+    document.querySelectorAll('#tKb .k.down').forEach((k) => k.classList.remove('down'));
+    const kd = KEYS[key], pressed = kd && T - keyT < 0.07 && T < tk.go;
+    show('tPop', pressed && key !== ' ');
+    if (pressed) {
+      const el = document.querySelector(`#tKb .k[data-k="${CSS.escape(key)}"]`); if (el) el.classList.add('down');
+      if (key !== ' ') { $('tPop').textContent = key; $('tPop').style.left = `${kd.x + kd.w / 2 - 75}px`; $('tPop').style.top = `${kd.y + kd.h - 240}px`; }
+    }
+    $('tGo').style.transform = `scale(${T >= tk.go && T < tk.go + 0.14 ? 0.86 : 1})`;
+    $('tBox').style.top = `${lerp(H - 780 - 30 - 150, H - 60 - 150, ge).toFixed(1)}px`;
+    $('tBox').style.opacity = (1 - clamp((T - tk.gen0) / 0.2, 0, 1)).toFixed(2);
+    // the picture fills the screen: the start photo, then the result
+    Object.assign($('tCard').style, { top: '0px', left: '0px', width: `${W}px`, height: `${H}px`, borderRadius: '0px' });
+    const done = T >= tk.gen1, img = $('tImg'), src = stillSrc(done ? tl.result : tl.photo);
+    show('tImg', true); show('tShim', false); show('tGen', false); show('tBadge', false);
+    if (img.dataset.src !== src) { img.src = src; img.dataset.src = src; }
+    $('tPillTxt').textContent = tl.project || 'Untitled 1 of 1';
+    const generating = T >= tk.gen0 && T < tk.gen1;
+    show('tGenCard', generating);
+    $('tDim').style.opacity = generating ? 0.45 : 0;
+    if (generating) {
+      const p = clamp((T - tk.gen0) / (tk.gen1 - tk.gen0), 0, 1);
+      $('tStep').textContent = p < 0.5 ? 'Writing script...' : 'Rendering scene...';
+      $('tGenBar').firstElementChild.style.width = `${(100 * (1 - Math.pow(1 - p, 1.5))).toFixed(1)}%`;
+      $('tLogo').textContent = tl.logo || 'reimagine';
+      $('tLogo').style.transform = `rotate(-6deg) scale(${(1 + 0.04 * Math.sin(T * 9)).toFixed(3)})`;
+    }
+    $('tFlash').style.opacity = done ? (0.8 * clamp(1 - (T - tk.gen1) / 0.25, 0, 1)).toFixed(3) : 0;
+  }
+
   const show = (id, on, mode) => { $(id).style.display = on ? mode || 'block' : 'none'; };
 
   window.renderAt = async (T) => {
@@ -262,6 +322,13 @@
       const img = $('hookImg'), src = frameSrc(TOOL.recording, Math.min(meta(TOOL.recording).count - 1, Math.floor((T - TOOL.t0) * FPS)));
       if (img.dataset.src !== src) { img.src = src; img.dataset.src = src; }
       $('hookCap').innerHTML = '';
+    } else if (s.hook && HOOKCUTS) {
+      let c = HOOKCUTS[0];
+      for (const x of HOOKCUTS) if (T >= x.t0) c = x;
+      const img = $('hookImg'), src = c.at != null ? frameSrc(c.media, Math.round(c.at * FPS)) : frameSrc(c.media, Math.floor((T - c.t0) * FPS));
+      if (img.dataset.src !== src) { img.src = src; img.dataset.src = src; }
+      img.style.transform = `scale(${(1 + 0.06 * clamp(1 - (T - c.t0) / 0.25, 0, 1)).toFixed(3)})`;
+      $('hookCap').innerHTML = rich(EP.hook.caption || '');
     } else if (s.hook) {
       const k = EP.hook.media, img = $('hookImg'), src = frameSrc(k, f);
       if (img.dataset.src !== src) { img.src = src; img.dataset.src = src; }
@@ -292,7 +359,7 @@
     // dots pulse
     $('msgs').querySelectorAll('.dots i').forEach((d, k) => { d.style.opacity = (0.35 + 0.65 * Math.max(0, Math.sin(T * 7 - k * 0.9))).toFixed(2); });
     // videos play from the moment they were sent
-    $('msgs').querySelectorAll('img[data-media]').forEach((im) => {
+    $('msgs').querySelectorAll('img[data-media]:not([data-still])').forEach((im) => {
       const k = im.dataset.media, i = MSGS.findIndex((m) => m.media === k), addEv = EV.find((e) => e.type === 'add' && e.n === i + 1);
       const src = frameSrc(k, Math.max(0, Math.floor((T - (addEv ? addEv.t : 0)) * FPS)));
       if (im.dataset.src !== src) { im.src = src; im.dataset.src = src; }
@@ -318,7 +385,7 @@
         const sent = MSGS.slice(0, s.n).filter((m) => m.media).map((m) => m.media);   // only clips already sent
         const tiles = [pk.media, ...sent.filter((x) => x !== pk.media).reverse()].slice(0, 3);
         const fill = EP.cameraRoll || ['🍕', '🐶', '🎂', '🌅', '🏀', '🍩', '🎄', '🚗', '🐱'];
-        $('pkGrid').innerHTML = tiles.map((k, i) => `<div class="${i === 0 && pk.sel ? 'sel' : ''}"><img src="${frameSrc(k, 30)}"></div>`).join('') +
+        $('pkGrid').innerHTML = tiles.map((k, i) => `<div class="${i === 0 && pk.sel ? 'sel' : ''}"><img src="${frameSrc(k, STILL[k] != null ? Math.round(STILL[k] * FPS) : 30)}"></div>`).join('') +
           fill.slice(0, 9 - tiles.length).map((e, i) => `<div style="background:hsl(${(i * 47 + 20) % 360} 45% 78%)"><img class="e" style="width:52%;height:52%;object-fit:contain" src="../assets/emoji/${ekey(e)}.png"></div>`).join('');
         lastPicker = pkKey;
       }

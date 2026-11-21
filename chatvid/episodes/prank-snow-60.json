@@ -1,0 +1,197 @@
+{
+ "engine": "imsg",
+ "format": "vertical",
+ "crf": 18,
+ "fps": 30,
+ "minuteEvery": 40,
+ "typeSpeed": 28,
+ "readMul": 0.7,
+ "pace": 0.62,
+ "tail": 0.9,
+ "booms": true,
+ "music": {
+  "track": "kidding-around",
+  "gain": -27
+ },
+ "contact": {
+  "name": "Dad (Driveway Police)🚨",
+  "avatar": {
+   "emoji": "🧔‍♂️",
+   "bg": "#c7d3e0"
+  }
+ },
+ "title": "Pranking my dad the snow guy called his cousins",
+ "clock": "11:24",
+ "unread": "4,211",
+ "cameraRoll": [
+  "🐶",
+  "🍕",
+  "🎄",
+  "☕",
+  "⛄",
+  "🚗",
+  "🍪",
+  "🐱",
+  "🎮"
+ ],
+ "hook": {
+  "stages": [
+   {
+    "media": "flow-snow-a",
+    "at": 2.6
+   },
+   {
+    "media": "flow-snow-b",
+    "at": 2.5
+   },
+   {
+    "media": "flow-snow-c",
+    "at": 4.5
+   }
+  ],
+  "caption": "Pranking my dad the snow guy called his \"cousins\"💀😭",
+  "dur": 3.6
+ },
+ "tool": {
+  "style": "edit",
+  "photo": {
+   "media": "flow-snow-a",
+   "at": 0.3
+  },
+  "result": {
+   "media": "flow-snow-c",
+   "at": 4.5
+  },
+  "prompt": "Add a snow mountain",
+  "project": "Driveway 1 of 1"
+ },
+ "history": [
+  {
+   "them": "someone walked on my lawn again"
+  },
+  {
+   "me": "it was the mailman"
+  },
+  {
+   "them": "i want his name"
+  }
+ ],
+ "media": {
+  "flow-snow-a": {
+   "file": "flow-snow-a.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)",
+   "level": -28
+  },
+  "flow-snow-b": {
+   "file": "flow-snow-b.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)",
+   "level": -28
+  },
+  "flow-snow-c": {
+   "file": "flow-snow-c.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)",
+   "level": -28
+  }
+ },
+ "beats": [
+  {
+   "me": "dad the snow guy is here"
+  },
+  {
+   "them": "good. driveway AND walkway"
+  },
+  {
+   "them": "its 3 inches he should be done in an hour"
+  },
+  {
+   "me": "he says its a 2 man job"
+  },
+  {
+   "them": "for 3 inches??"
+  },
+  {
+   "media": "flow-snow-a",
+   "at": 2.6
+  },
+  {
+   "them": "ok thats fine"
+  },
+  {
+   "them": "tell them no salt on the grass"
+  },
+  {
+   "me": "ok"
+  },
+  {
+   "me": "they called a few more guys"
+  },
+  {
+   "them": "how many is a few"
+  },
+  {
+   "media": "flow-snow-b",
+   "at": 2.5
+  },
+  {
+   "them": "WHAT THE HELL"
+  },
+  {
+   "them": "WHY ARE THERE TEN MEN ON MY DRIVEWAY"
+  },
+  {
+   "me": "he said its team building"
+  },
+  {
+   "them": "ITS A DRIVEWAY NOT A COMPANY RETREAT"
+  },
+  {
+   "them": "WHO IS PAYING THEM"
+  },
+  {
+   "me": "they take venmo"
+  },
+  {
+   "them": "WHERE IS ALL THE SNOW EVEN GOING"
+  },
+  {
+   "me": "dw they're almost done"
+  },
+  {
+   "them": "thank god"
+  },
+  {
+   "me": "they just needed somewhere to put it"
+  },
+  {
+   "media": "flow-snow-c",
+   "at": 4.5
+  },
+  {
+   "them": "HOLY SHIT"
+  },
+  {
+   "them": "THATS NOT A PILE THATS A GEOGRAPHIC FEATURE"
+  },
+  {
+   "me": "the neighbors kids are sledding on it 😭"
+  },
+  {
+   "them": "I CANT SEE THE NEIGHBORS HOUSE"
+  },
+  {
+   "them": "I ASKED FOR A SHOVELED DRIVEWAY NOT A SKI RESORT"
+  },
+  {
+   "me": "they said they'll be back next snow",
+   "unsent": true
+  }
+ ],
+ "youtube": {
+  "title": "He did NOT take this well😭 #prank #snow #dad #funnyvideo #comedyshorts",
+  "description": [],
+  "tags": []
+ }
+}
