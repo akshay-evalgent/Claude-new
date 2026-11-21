@@ -16,8 +16,7 @@
  "contact": {
   "name": "Dad (Driveway Police)🚨",
   "avatar": {
-   "emoji": "🧔‍♂️",
-   "bg": "#c7d3e0"
+   "media": "dad"
   }
  },
  "title": "Pranking my dad the hot tub guys made it a little bigger",
@@ -38,7 +37,7 @@
   "stages": [
    {
     "media": "flow-pool-a",
-    "at": 2.5
+    "at": 4.2
    },
    {
     "media": "flow-pool-b",
@@ -78,17 +77,17 @@
  ],
  "media": {
   "flow-pool-a": {
-   "file": "placeholder-pool-a.mp4",
+   "file": "flow-pool-a.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   },
   "flow-pool-b": {
-   "file": "placeholder-pool-b.mp4",
+   "file": "flow-pool-b.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   },
   "flow-pool-c": {
-   "file": "placeholder-pool-c.mp4",
+   "file": "flow-pool-c.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   }
@@ -111,7 +110,7 @@
   },
   {
    "media": "flow-pool-a",
-   "at": 2.5
+   "at": 4.2
   },
   {
    "them": "ok perfect"
@@ -139,7 +138,7 @@
    "them": "WHAT THE HELL"
   },
   {
-   "them": "WHERE DID MY LAWN GO"
+   "them": "WHERE DID HALF MY LAWN GO"
   },
   {
    "me": "he said grass is outdated"
@@ -176,7 +175,7 @@
    "them": "HOLY SHIT"
   },
   {
-   "them": "THERE IS A RIVER AROUND MY HOUSE"
+   "them": "THERE IS A RIVER IN MY BACKYARD"
   },
   {
    "me": "the neighbors are floating past rn 😭"

@@ -88,3 +88,9 @@ A question that invites the "is this real??" argument gives people a reason to c
 ## Posting
 - **1 Short a day, same time.** Start with late afternoon in the US (21:00-23:00 UTC), then move it to the peak hour YouTube Analytics shows after two weeks.
 - Halo Chad's numbers show that **volume plus one locked format** is what broke through. See `research/halo-chad-recipe.md`.
+
+## Dad (the recurring contact)
+- **Contact name:** "Dad (Driveway Police)🚨".
+- **Photo:** a made-up man generated in Flow. The full image is `brand/prank/dad-full.jpg` and the square crop is `brand/prank/dad-avatar.jpg`.
+- **Using him in an episode:** copy the crop to `chatvid/assets/media/dad.jpg` and set `"contact": {"name": "Dad (Driveway Police)🚨", "avatar": {"media": "dad"}}`.
+- **Keep him the same in every video.** Viewers recognise the character, and that consistency is part of what makes the series feel real.
