@@ -72,9 +72,92 @@ Each excerpt is 3 seconds or less, always with our analysis on screen and the ch
 
 ---
 
-## Shano Ghibli and OddVibe
+## Shano Ghibli: "Food got 7K views. Feelings got 16 million."
+**Video:** `spike_shano_ghibli.mp4` (37s) · **Cover:** `spike_shano_ghibli_cover.jpg`
 
-The first versions of these two were made in the earlier, plainer card style. They'll be remade in the new style (real frames, page captures, 3D chart) once the Fusion Bricks look is approved. Their numbers and lessons:
+**Title:**
+```
+Food Got 7K Views. Feelings Got 16 Million.
+```
+Alternates: `This Small Channel Stopped Posting Food` · `People Don't Share Food. They Share Grandma.`
 
-- **Shano Ghibli** (@ShanoGhibli): "Food got 7K views. Feelings got 16 million." Titles about family went 30% → 92%. Lesson: people don't share food, they share grandma.
-- **OddVibe** (@OddVibe1): "Letters as a mustache: 15K. Letters to hide a body: 2.6M." Four rankings flopped, the fifth hit. Lesson: don't switch ideas, switch the premise.
+**Description:**
+```
+Shano Ghibli's first 12 Shorts were cozy food animations at about 6K views each. Then one Short told a story, a daughter coming home: about 227K, 27 times the views of the food Short two uploads earlier (#12, 8.3K). They kept going. Short #24, "A Mother's Happiness When Her Daughters Come Home": about 10M. A grandparents' train journey: about 16M.
+
+What visibly changed (titles, before #24 → after):
+• About family: 30% → 92%
+• 6 of their last 12 Shorts passed 1M
+
+Steal this: lead with a person, put the feeling in the title, keep your craft in the background.
+
+Channel: @ShanoGhibli (go watch them)
+Data: public YouTube view counts, Nov 21 2026 (YouTube rounds big numbers). Short excerpts and page captures shown for commentary.
+
+#shorts #youtubegrowth #animation #storytelling #thespikefiles
+```
+**Tags:**
+```
+youtube growth, how to go viral, storytelling, animated shorts, ghibli style, small youtuber, channel growth, viral shorts, content strategy, the spike files
+```
+**Pinned comment:**
+```
+What makes YOU share a video: funny, useful or emotional? 👇
+```
+
+**Real moving clips (optional, put in `Spike raw`):**
+```bash
+yt-dlp -f "bv*[ext=mp4][height<=1920]+ba[ext=m4a]/b[ext=mp4]/b" --merge-output-format mp4 -o "%(id)s.%(ext)s" https://www.youtube.com/shorts/imFqvMAT2Hs https://www.youtube.com/shorts/gOOdISMmoFo https://www.youtube.com/shorts/dtqa0yTdrgc https://www.youtube.com/shorts/NCE1LJNjI9g https://www.youtube.com/shorts/Eoh-RAM7fQU
+```
+
+---
+
+## OddVibe: "Which one got 2.6 million views?"
+**Video:** `spike_oddvibe.mp4` (40s) · **Cover:** `spike_oddvibe_cover.jpg`
+
+**Title:**
+```
+Which One Got 2.6 Million Views?
+```
+Alternates: `Same Idea, 5th Try: 2.6 Million Views` · `Don't Switch Ideas. Switch the Premise.`
+
+**Description:**
+```
+OddVibe's first 16 Shorts all stayed at 15K views or less. But their letter rankings did a bit better than the rest (about 14K against 8K). So they kept the format and changed the premise. Try five, "Top 10 Letters to Hide a Body", hit about 2.6M.
+
+They kept going: letters as a car (3.6M), languages as a pool (9M), languages to survive acid rain (11M). Rankings went from 25% of their uploads to 70%. 13 Shorts have now passed 1M, about 66M views in total.
+
+Steal this: spot the small win, keep the format, swap the premise until it hits.
+
+Channel: @OddVibe1 (go watch them)
+Data: public YouTube view counts, Nov 21 2026. Short excerpts and page captures shown for commentary.
+
+#shorts #youtubegrowth #animation #contentcreator #thespikefiles
+```
+**Tags:**
+```
+youtube growth, how to go viral, youtube shorts tips, animation, top 10, small youtuber, channel growth, viral shorts, content strategy, the spike files
+```
+**Pinned comment:**
+```
+Did you guess right? A or B 👇
+```
+
+**Note on ads:** this channel's real titles ("Hide a Body", "Torture a Body") appear on screen. It's cartoon humour, but if you want the safest start for ad suitability, post this one last.
+
+**Real moving clips (optional, put in `Spike raw`):**
+```bash
+yt-dlp -f "bv*[ext=mp4][height<=1920]+ba[ext=m4a]/b[ext=mp4]/b" --merge-output-format mp4 -o "%(id)s.%(ext)s" https://www.youtube.com/shorts/DCgX0PIWs1M https://www.youtube.com/shorts/r_fwFIkixlA https://www.youtube.com/shorts/2kKpnVT35No https://www.youtube.com/shorts/yzX2rCCfDsg https://www.youtube.com/shorts/gtZIoDZ4-fM https://www.youtube.com/shorts/Eg-swWyET6M https://www.youtube.com/shorts/amaig9VFMj8 https://www.youtube.com/shorts/PrxkpR4l3fA
+```
+
+---
+
+## What to compare after 48 hours
+
+| Video | Hook type | Watch for |
+|---|---|---|
+| Fusion Bricks | Big number first, then the flops | Stayed to watch %, average % viewed |
+| Shano Ghibli | Low number first, then the smash cut | Shares (it's the emotional one) |
+| OddVibe | A question: "which one got 2.6M?" | Comments (people answer A or B) |
+
+The hook with the best "stayed to watch" becomes the default for the next batch.

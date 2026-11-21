@@ -1,0 +1,520 @@
+{
+ "asof": "Nov 21, 2026",
+ "voice": "am_michael",
+ "speed": 1.22,
+ "gap": 0.04,
+ "grid": 0.12096774193548387,
+ "bpm": 124,
+ "slug": "oddvibe",
+ "channel": "OddVibe",
+ "handle": "@OddVibe1",
+ "views": [
+  7100,
+  9000,
+  5900,
+  5500,
+  8100,
+  7300,
+  5800,
+  13000,
+  8100,
+  8600,
+  10000,
+  10000,
+  15000,
+  12000,
+  15000,
+  14000,
+  2600000,
+  5900000,
+  342000,
+  31000,
+  40000,
+  2900000,
+  36000,
+  41000,
+  31000,
+  25000,
+  33000,
+  37000,
+  58000,
+  251000,
+  524000,
+  48000,
+  29000,
+  52000,
+  45000,
+  37000,
+  335000,
+  33000,
+  199000,
+  587000,
+  48000,
+  46000,
+  385000,
+  3300000,
+  3100000,
+  122000,
+  3600000,
+  1700000,
+  158000,
+  360000,
+  69000,
+  92000,
+  700000,
+  75000,
+  1200000,
+  697000,
+  229000,
+  284000,
+  278000,
+  4100000,
+  124000,
+  72000,
+  884000,
+  324000,
+  138000,
+  142000,
+  600000,
+  4000000,
+  189000,
+  9000000,
+  931000,
+  973000,
+  1600000,
+  166000,
+  103000,
+  380000,
+  162000,
+  11000000,
+  181000,
+  373000,
+  189000,
+  54000
+ ],
+ "cover_t": 1.0,
+ "scenes": [
+  {
+   "type": "hookguess",
+   "question": "WHICH GOT <b>2.6M VIEWS?</b>",
+   "a": {
+    "n": 13,
+    "id": "DCgX0PIWs1M",
+    "frames": [
+     "frames/ov_013_oar1.jpg"
+    ],
+    "views": 15000,
+    "title": "Top 10 Letters to Use as a Mustache",
+    "oy": 82
+   },
+   "b": {
+    "n": 17,
+    "id": "r_fwFIkixlA",
+    "frames": [
+     "frames/ov_017_oardefault.jpg",
+     "frames/ov_017_oar1.jpg",
+     "frames/ov_017_oar3.jpg"
+    ],
+    "views": 2600000,
+    "title": "Top 10 Letters to Hide a Body"
+   },
+   "say": [
+    {
+     "show": "q",
+     "say": "Which one got two point six million views?",
+     "hide": true
+    },
+    {
+     "pause": 0.3
+    },
+    {
+     "show": "b",
+     "say": "Hide a body.",
+     "hide": true
+    },
+    {
+     "show": "a",
+     "say": "The mustache: fifteen thousand.",
+     "hide": true
+    },
+    [
+     "SAME CHANNEL. *SAME IDEA.*",
+     "Same channel. Same idea."
+    ]
+   ]
+  },
+  {
+   "type": "uiscroll",
+   "seq": "ui/OddVibe1/oldest",
+   "tag": "THEIR CHANNEL · OLDEST FIRST",
+   "tone": "red",
+   "say": [
+    [
+     "THEIR FIRST 16 SHORTS: *NONE PASSED 15K*",
+     "Their first sixteen Shorts: none passed fifteen thousand."
+    ],
+    [
+     "LETTER RANKINGS DID *A BIT BETTER*",
+     "But letter rankings did a bit better."
+    ]
+   ]
+  },
+  {
+   "type": "montage",
+   "noTitle": true,
+   "numTop": 175,
+   "capY": 1480,
+   "items": [
+    {
+     "n": 13,
+     "id": "DCgX0PIWs1M",
+     "frames": [
+      "frames/ov_013_oar1.jpg"
+     ],
+     "views": 15000,
+     "title": "Top 10 Letters to Use as a Mustache",
+     "oy": 35,
+     "zoom": 1.2,
+     "tone": "red"
+    },
+    {
+     "n": 14,
+     "id": "2kKpnVT35No",
+     "frames": [
+      "frames/ov_014_oar2.jpg",
+      "frames/ov_014_oar3.jpg"
+     ],
+     "views": 12000,
+     "title": "Top 10 Letters to Use as a Mustache",
+     "oy": 35,
+     "zoom": 1.2,
+     "tone": "red"
+    },
+    {
+     "n": 15,
+     "id": "yzX2rCCfDsg",
+     "frames": [
+      "frames/ov_015_oar1.jpg",
+      "frames/ov_015_oar2.jpg",
+      "frames/ov_015_oar3.jpg"
+     ],
+     "views": 15000,
+     "title": "Top 10 Letters to Use as a Body Shape",
+     "oy": 171,
+     "zoom": 1.2,
+     "tone": "red"
+    },
+    {
+     "n": 16,
+     "id": "gtZIoDZ4-fM",
+     "frames": [
+      "frames/ov_016_oar1.jpg",
+      "frames/ov_016_oar3.jpg",
+      "frames/ov_016_oar2.jpg"
+     ],
+     "views": 14000,
+     "title": "Top Letters to Torture a Body",
+     "oy": 129,
+     "zoom": 1.2,
+     "tone": "red"
+    },
+    {
+     "n": 17,
+     "id": "r_fwFIkixlA",
+     "frames": [
+      "frames/ov_017_oardefault.jpg",
+      "frames/ov_017_oar1.jpg",
+      "frames/ov_017_oar3.jpg"
+     ],
+     "views": 2600000,
+     "title": "Top 10 Letters to Hide a Body",
+     "zoom": 1.2,
+     "big": true,
+     "oy": -90
+    }
+   ],
+   "say": [
+    [
+     "*TRY 1*",
+     "Try one: fifteen thousand."
+    ],
+    [
+     "*TRY 2*",
+     "Two: twelve."
+    ],
+    [
+     "*TRY 3*",
+     "Three: fifteen."
+    ],
+    [
+     "*TRY 4*",
+     "Four: fourteen."
+    ],
+    {
+     "pause": 0.35
+    },
+    [
+     "*TRY 5…*",
+     "Try five: two point six million."
+    ]
+   ],
+   "numSize": 200,
+   "noLabel": true
+  },
+  {
+   "type": "montage",
+   "noTitle": true,
+   "numTop": 175,
+   "capY": 1470,
+   "capStart": 1,
+   "items": [
+    {
+     "n": 47,
+     "id": "Eg-swWyET6M",
+     "frames": [
+      "frames/ov_047_oardefault.jpg",
+      "frames/ov_047_oar1.jpg",
+      "frames/ov_047_oar3.jpg"
+     ],
+     "views": 3600000,
+     "title": "Top 10 Letters to Use as a Car",
+     "zoom": 1.1,
+     "oy": -60
+    },
+    {
+     "n": 70,
+     "id": "amaig9VFMj8",
+     "frames": [
+      "frames/ov_070_oardefault.jpg",
+      "frames/ov_070_oar1.jpg",
+      "frames/ov_070_oar3.jpg"
+     ],
+     "views": 9000000,
+     "title": "Top 10 Languages to Use as a Pool",
+     "zoom": 1.1,
+     "oy": 0
+    },
+    {
+     "n": 78,
+     "id": "PrxkpR4l3fA",
+     "frames": [
+      "frames/ov_078_oardefault.jpg",
+      "frames/ov_078_oar1.jpg",
+      "frames/ov_078_oar3.jpg"
+     ],
+     "views": 11000000,
+     "title": "Top 10 Languages to Survive Acid Rain",
+     "zoom": 1.1,
+     "big": true,
+     "oy": 0
+    }
+   ],
+   "say": [
+    [
+     "SAME FORMAT. *NEW PREMISE.*",
+     "Same format. New premise."
+    ],
+    [
+     "LETTERS AS *A CAR*",
+     "As a car: three point six million."
+    ],
+    [
+     "LANGUAGES AS *A POOL*",
+     "As a pool: nine million."
+    ],
+    [
+     "SURVIVING *ACID RAIN*",
+     "Acid rain: eleven million."
+    ]
+   ],
+   "numSize": 200,
+   "noLabel": true
+  },
+  {
+   "type": "titlewall",
+   "before": [
+    "How To Create Perfect Utopia!",
+    "How to Manage a Hotel with Infinite Room?",
+    "Every Time Travel Theory In 2 Minutes!",
+    "Every Historical Method of Timekeeping",
+    "You are not You!!",
+    "Scaphism! The Worst Punishments in Human History!",
+    "The breaking wheel | The Worst Execution Methods in History",
+    "Why is Bad Smell always GREEN?",
+    "The Cruelest Murder in History (The Burke and Hare Murders)",
+    "One Sip, 26 Hours to Live.",
+    "I Created Uppercase Numbers",
+    "I Created Uppercase Numbers!",
+    "Top 10 Letters to Use as a Mustache",
+    "Top 10 Letters to Use as a Mustache",
+    "Top 10 Letters to Use as a Body Shape",
+    "Top Letters to Torture a Body"
+   ],
+   "after": [
+    "Top 10 Letters to Hide a Body",
+    "Top 10 Lowercase Letters to Hide a Body",
+    "Top 10 Letters to Use as a Rocket",
+    "The 27th Letter in The Alphabet!!",
+    "Top 10 Letters to Survive a Disaster",
+    "Top 10 Letters to Use as a Bridge",
+    "I Built a Car With Only 3 Letters !",
+    "When I'm in my room..",
+    "Choose one of these 2 letters to hide a body!",
+    "I Created New Numbers",
+    "Would You Take This Superpower? (Teleportation)",
+    "Top 5 Numbers to Hide a Body",
+    "Top Letters to Use as a Leg",
+    "William Afton Ranks Letters to Hide Bodies",
+    "Top 10 Letters to Cross The River",
+    "Top 10 Letters to Use as a Boat",
+    "\"Me\" and MrBeast are Ruling The World !",
+    "Top 10 Logos to Hide a Body",
+    "My subscribers want to kill me...",
+    "Letters to Hide a Body Tier List!!",
+    "Top Symbols to Hide a Body",
+    "Take the glasses please..",
+    "Top 5 Letters to Stand on Lava",
+    "Top 5 Letters to Survive in Space",
+    "What if Letters were Monsters",
+    "I Designed Lowercase Numbers in 1 Minute",
+    "Top 10 Letters to Use as a Fountain",
+    "Top 10 Lowercase Letters to Use as a Bridge",
+    "Top 5 Letters to Use as a Pen",
+    "I Made Symbols for Each Month",
+    "Top 10 Letters to Use as a Car",
+    "Top 10 Letters to Survive Acid Rain",
+    "Top 10 Letters as a World Cup Trophy",
+    "Top 10 Logos to Hide a Body",
+    "I Choose a Color for Every Subject of School",
+    "Top 5 Letters to Dig a Grave",
+    "Top 10 Letters to Survive Earthquakes",
+    "Top 10 Letters to Hide a Body",
+    "Top 5 Lowercase Letters to Use as a Pen",
+    "Top 10 Letters to Use as a Minecraft House",
+    "Top 5 Letters to Use as a Straw",
+    "Top 5 Letters to Destroy Earth",
+    "Top 8 Planets to Take a Shower On",
+    "Top 10 Lowercase Letters to Survive Acid Rain",
+    "Worst 5 Letters to Fall On",
+    "I killed so many....",
+    "Top 10 Lowercase Letters to Use as a Fountain",
+    "Top 10 Letters to Use as a Scarecrow",
+    "Top 5 Letters to Survive Fire",
+    "Top 5 Letters to Survive Lava",
+    "Top 10 Letters to Stop a Train",
+    "Top 10 Languages to Hide a Body",
+    "Top 10 Letters to Use as a Building",
+    "Top 10 Languages to Use as a Pool",
+    "Top 10 Languages to Use as a Bridge",
+    "Top 12 Zodiac Signs to Hide a Body",
+    "Top 10 Letters as a Ladder",
+    "Top 10 Countries to Hide a Body",
+    "Top 10 Letters as a Weapon",
+    "Ranking ALL Letters By How Easily You Can Break Them",
+    "Top 12 Zodiac Signs to Live In",
+    "Top 10 Languages to Survive Acid Rain",
+    "Top 10 Brands as a Fountain",
+    "Top 10 Letters to Survive a Tornado",
+    "Top 10 Languages as a Company Building",
+    "Top 10 Languages to Climb On"
+   ],
+   "pattern": "letters|languages",
+   "flags": "i",
+   "mark": "letters|languages",
+   "a": 25,
+   "b": 70,
+   "label": "UPLOADS THAT ARE LETTER OR LANGUAGE RANKINGS",
+   "beforeHead": "FIRST 16",
+   "afterHead": "SINCE",
+   "lead": 0.3,
+   "say": [
+    {
+     "show": "x",
+     "say": "Rankings: a quarter of their uploads, to seventy percent.",
+     "hide": true
+    }
+   ]
+  },
+  {
+   "type": "chart",
+   "mode": "after",
+   "spike": 16,
+   "cols": 8,
+   "rad": 70,
+   "lookY": 30,
+   "camY": 34,
+   "stats": [
+    {
+     "to": 13,
+     "label": "SHORTS OVER 1M"
+    },
+    {
+     "to": 66,
+     "suffix": "M",
+     "label": "TOTAL VIEWS"
+    }
+   ],
+   "say": [
+    {
+     "show": "13",
+     "say": "Thirteen Shorts over a million.",
+     "hide": true
+    },
+    {
+     "show": "66M",
+     "say": "Sixty-six million views.",
+     "hide": true
+    }
+   ],
+   "labelMinY": 720
+  },
+  {
+   "type": "steal",
+   "bg": "frames/ov_078_oardefault.jpg",
+   "lines": [
+    "Spot the small win",
+    "Keep the format",
+    "Swap the premise"
+   ],
+   "say": [
+    {
+     "show": "STEAL THIS",
+     "say": "Steal this.",
+     "hide": true
+    },
+    {
+     "show": "",
+     "say": "Spot the small win.",
+     "hide": true
+    },
+    {
+     "show": "",
+     "say": "Keep the format.",
+     "hide": true
+    },
+    {
+     "show": "",
+     "say": "Swap the premise, until it hits.",
+     "hide": true
+    }
+   ]
+  },
+  {
+   "type": "cta",
+   "bg": "frames/ov_017_oardefault.jpg",
+   "loopFrame": "frames/ov_017_oardefault.jpg",
+   "loopZoom": 1.2,
+   "say": [
+    [
+     "WHO DO WE *INVESTIGATE* NEXT?",
+     "Who should we investigate next?"
+    ],
+    [
+     "*COMMENT* IT",
+     "Comment it."
+    ]
+   ],
+   "tail": 0.35
+  }
+ ]
+}

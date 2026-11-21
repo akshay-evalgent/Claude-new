@@ -30,11 +30,11 @@ const brk = (a, b) => window.BREAKS.push([+a.toFixed(3), +b.toFixed(3)]);
 class Media {                                   // real frames, drawn cover-fit with zoom / pan / rotation
   constructor(parent, srcs, w = W, h = H) {
     this.c = el('canvas', '', parent); this.c.width = w; this.c.height = h; this.x = this.c.getContext('2d');
-    this.x.imageSmoothingQuality = 'high'; this.im = srcs.map(img); this.w = w; this.h = h;
+    this.x.imageSmoothingQuality = 'high'; this.im = srcs.map(img); this.w = w; this.h = h; this.bz = 1; this.boy = 0;
   }
   draw(i, { zoom = 1, ox = 0, oy = 0, rot = 0 } = {}) {
     const im = this.im[((i % this.im.length) + this.im.length) % this.im.length], x = this.x;
-    const s = Math.max(this.w / im.naturalWidth, this.h / im.naturalHeight) * zoom;
+    const s = Math.max(this.w / im.naturalWidth, this.h / im.naturalHeight) * zoom * this.bz; oy += this.boy;
     x.setTransform(1, 0, 0, 1, 0, 0); x.clearRect(0, 0, this.w, this.h);
     x.translate(this.w / 2 + ox, this.h / 2 + oy); x.rotate(rot);
     x.drawImage(im, -im.naturalWidth * s / 2, -im.naturalHeight * s / 2, im.naturalWidth * s, im.naturalHeight * s);
@@ -91,6 +91,79 @@ BUILD.hook = (sc, root) => {
   };
 };
 
+BUILD.hookflip = (sc, root) => {
+  // low number first, then the smash cut to the big one, then both: "same channel"
+  const lo = new Media(root, sc.lo.frames), hi = new Media(root, sc.hi.frames); lo.c.style.filter = 'saturate(.8) brightness(.9)'; grad(root, TOPBOT);
+  const big = el('div', 'flabel', root), stamp = el('div', 'stamp', root), num = el('div', 'hooknum', root), lab = el('div', 'hooklab', root, 'VIEWS');
+  const sp = el('div', 'layer', root), hA = el('div', 'half', sp), hB = el('div', 'half', sp); hB.style.top = '964px';
+  const mA = new Media(hA, [sc.lo.frames[0]], W, 956), mB = new Media(hB, [sc.hi.frames[0]], W, 956); mA.c.style.filter = 'saturate(.55) brightness(.7)';
+  [[hA, sc.lo, R], [hB, sc.hi, G]].forEach(([h, o, c]) => { grad(h, 'linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 45%)'); el('div', 'splitt', h, o.label); const v = el('div', 'splitv', h, fmt(o.views)); v.style.color = c; });
+  const [, c1, c2] = sc.caps, T0 = sc.t0, ts = T0 + 0.2, tc = 0.7;
+  sfx(ts, 'stamp', { gain: 1.3 }); shake(ts, 16, 0.25);
+  sfx(c1.t0 - 0.1, 'whoosh'); flash(c1.t0, 0.2, 0.8); sfx(c1.t0 + 0.02, 'ticks', { dur: tc, count: 22 }); sfx(c1.t0 + tc, 'impact'); shake(c1.t0 + tc, 30, 0.5); flash(c1.t0 + tc, 0.2, 0.6);
+  sfx(c2.t0 - 0.08, 'whoosh'); sfx(c2.t0, 'impact', { gain: 0.9 }); shake(c2.t0, 20, 0.4);
+  return t => {
+    const inLo = t < c1.t0, inHi = t >= c1.t0 && t < c2.t0, inSp = t >= c2.t0;
+    lo.c.style.display = inLo ? 'block' : 'none'; hi.c.style.display = inHi ? 'block' : 'none'; sp.style.display = inSp ? 'block' : 'none';
+    big.style.display = inSp ? 'none' : 'block'; stamp.style.display = inLo && t >= ts ? 'block' : 'none'; num.style.display = lab.style.display = inHi ? 'block' : 'none';
+    if (inLo) {
+      const tl = t - T0; lo.draw(Math.floor(tl / 0.4), { zoom: 1.08 + 0.06 * tl }); big.textContent = sc.lo.label; big.style.color = '#fff';
+      stamp.textContent = fmt(sc.lo.views) + ' VIEWS'; stamp.style.transform = `translate(-50%,-50%) rotate(-7deg) scale(${1.6 - 0.6 * P(t, ts, 0.09)})`;
+    } else if (inHi) {
+      const tl = t - c1.t0, kc = clamp((tl + 0.04) / tc); hi.draw(Math.floor(tl / 0.42), { zoom: 1.26 - 0.16 * P(tl, 0, 0.3) + 0.05 * tl });
+      big.textContent = sc.hi.label; big.style.color = G; num.textContent = Math.round(sc.hi.views * ease.out5(kc)).toLocaleString('en-US'); num.style.color = kc >= 1 ? G : '#fff';
+      num.style.transform = `translate(-50%,-50%) scale(${kc >= 1 ? 1 + 0.24 * (1 - P(tl, tc, 0.32)) : 0.9 + 0.1 * kc})`; lab.style.transform = 'translate(-50%,-50%)';
+    } else {
+      const k = P(t, c2.t0, 0.3, ease.out5), z = 1.05 + 0.03 * (t - c2.t0);
+      hA.style.transform = `translateX(${(k - 1) * 1080}px)`; hB.style.transform = `translateX(${(1 - k) * 1080}px)`; mA.draw(0, { zoom: z }); mB.draw(0, { zoom: z });
+    }
+  };
+};
+
+BUILD.hookguess = (sc, root) => {
+  // a question in the first second: two real frames, which one got the views? Then the reveal.
+  root.style.background = 'radial-gradient(ellipse at 50% 40%, #1d2430 0%, #0c0c10 72%)';
+  const CW = 960, CH = 711, YS = [250, 1010];
+  const mk = (it, y, win, letter) => {
+    const c = el('div', 'gcard', root); c.style.top = y + 'px'; const m = new Media(c, it.frames, CW, CH); m.boy = it.oy || 0;
+    el('div', 'gletter', c, letter); return { c, m, q: el('div', 'gq', c, '?'), v: el('div', 'gv', c), it, win };
+  };
+  const A = mk(sc.a, YS[0], false, 'A'), B = mk(sc.b, YS[1], true, 'B'), head = el('div', 'ghead', root); head.innerHTML = sc.question;
+  const [, c1, c2] = sc.caps, T0 = sc.t0, tr = c1.t0 - 0.2;          // reveal lands just before the line, so the words stay clear
+  sfx(T0, 'whoosh'); sfx(T0 + 0.1, 'pop'); sfx(T0 + 0.22, 'pop', { f0: 640 });
+  for (let x = T0 + 0.5; x < tr - 0.15; x += 0.25) sfx(x, 'pop', { f0: 900, gain: 0.45 });
+  brk(Math.max(T0, tr - 0.9), c1.t1 + 0.1); sfx(tr - 0.8, 'riser', { dur: 0.8, gain: 0.55 });   // drums stay out until the answer has been said
+  sfx(tr, 'impact', { gain: 0.45 }); shake(tr, 28, 0.5); flash(tr, 0.22, 0.7); sfx(c2.t0 + 0.15, 'stamp', { gain: 1.0 });
+  return t => {
+    const tl = t - T0, rev = t >= tr;
+    [A, B].forEach((o, j) => {
+      const kin = P(tl + 0.4, 0.03 + j * 0.06, 0.38, ease.back), win = o.win;       // already on screen in frame 0
+      o.m.draw(Math.floor(tl / 0.55), { zoom: 1 + 0.012 * tl });
+      const s = rev ? (win ? lerp(1.0, 1.04, P(t, tr, 0.3, ease.back)) : 0.95) : 1 + 0.01 * Math.sin(tl * 6 + j * 3);
+      o.c.style.transform = `translateX(${lerp(j ? 1100 : -1100, 0, kin)}px) rotate(${j ? 1 : -1}deg) scale(${s})`;
+      o.c.style.borderColor = rev ? (win ? G : '#55555f') : '#c9c9d2';
+      o.c.style.boxShadow = rev && win ? '0 0 90px rgba(61,255,136,.65), 0 30px 80px rgba(0,0,0,.7)' : '0 30px 80px rgba(0,0,0,.7)';
+      o.m.c.style.filter = rev && !win ? 'saturate(.3) brightness(.5)' : '';
+      o.q.style.display = rev ? 'none' : 'block'; o.q.style.transform = `scale(${1 + 0.14 * Math.abs(Math.sin(tl * 5 + j))})`;
+      if (win) {
+        o.v.style.display = rev ? 'block' : 'none'; o.v.style.color = G; o.v.textContent = fmt(o.it.views * P(t, tr, 0.6, ease.out5)) + ' VIEWS';
+        o.v.style.transform = `rotate(-4deg) scale(${1 + 0.25 * (1 - P(t, tr + 0.6, 0.25)) * (t >= tr + 0.6 ? 1 : 0)})`;
+      } else {
+        const ts = c2.t0 + 0.15; o.v.style.display = t >= ts ? 'block' : 'none'; o.v.style.color = R; o.v.textContent = fmt(o.it.views) + ' VIEWS';
+        o.v.style.transform = `rotate(5deg) scale(${1.5 - 0.5 * P(t, ts, 0.09)})`;
+      }
+    });
+    head.style.transform = `translateX(-50%) scale(${P(tl + 0.22, 0, 0.3, ease.back)})`;
+  };
+};
+
+BUILD.beat = (sc, root) => {                       // one line over full-screen real frames
+  const m = new Media(root, sc.frames); m.bz = sc.zoom || 1; m.boy = sc.oy || 0; grad(root, TOPBOT);
+  sfx(sc.t0, 'whoosh'); sfx(sc.t0 + 0.04, 'impact', { gain: 0.6 }); shake(sc.t0 + 0.04, 12, 0.3);
+  const cut = sc.caps.length > 1 ? sc.caps[1].t0 - 0.04 : 1e9; if (sc.caps.length > 1) { sfx(cut, 'impact', { gain: 0.8 }); shake(cut, 18, 0.35); flash(cut, 0.15, 0.5); }
+  return t => { const k = t >= cut ? 1 : 0, lt = t - (k ? cut : sc.t0); m.draw(k, { zoom: 1.16 - 0.08 * P(lt, 0, 0.35, ease.out5) + 0.035 * lt }); };
+};
+
 BUILD.uiscroll = async (sc, root) => {
   const seq = await (await fetch(`/${sc.seq}/boxes.json`)).json(); const N = seq.n, PW = 740, PH = 1644, sx = PW / 412;
   root.style.background = 'radial-gradient(ellipse at 50% 40%, #1d2430 0%, #0c0c10 70%)';
@@ -104,7 +177,7 @@ BUILD.uiscroll = async (sc, root) => {
   sfx(T0 + tPop, 'pop'); sfx(T0 + tPop + 0.09, 'pop', { f0: 640 }); sfx(T0 + tPop + 0.18, 'pop', { f0: 760 });
   return t => {
     const tl = t - T0, k = P(tl, 0, 0.5, ease.back), z = P(tl, dur * 0.5, 0.7, ease.io);
-    const fi = quick ? Math.round(lerp(0, 26, ease.out(clamp(tl / dur)))) : Math.round(lerp(0, N - 1, ease.io(clamp((tl - 0.3) / (dur - 0.3)))));
+    const fi = quick ? Math.round(lerp(0, 26, ease.out(clamp(tl / dur)))) : Math.round(lerp(0, sc.maxFrame ?? N - 1, ease.io(clamp((tl - 0.3) / (dur - 0.3)))));
     cv.draw(fi);
     phone.style.transform = `translateY(${lerp(1300, lerp(0, -40, z), k)}px) rotateX(${lerp(30, lerp(8, 2, z), k)}deg) rotateY(${lerp(-26, lerp(-11, -3, z), k)}deg) rotateZ(${lerp(7, lerp(2, 0, z), k)}deg) scale(${lerp(1, 1.1, z)})`;
     const bs = seq.boxes[fi].filter(b => b.y > 300 && b.y < 800), pk = P(tl, tPop, 0.22, ease.back);
@@ -118,9 +191,10 @@ BUILD.uiscroll = async (sc, root) => {
 };
 
 BUILD.chart = (sc, root) => {
-  const ch = new Chart3D(root, TL.views), S = sc.spike, N = TL.views.length, T0 = sc.t0;
+  const ch = new Chart3D(root, TL.views, sc.cols ? { cols: sc.cols } : {}), S = sc.spike, N = TL.views.length, T0 = sc.t0;
+  const hotT = Math.max(...TL.views) * 0.185, lvl = v => v >= hotT ? 2 : v >= 1e6 ? 1 : 0;
   grad(root, 'linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 28%)');
-  const [sx0, sz0] = ch.pos(S), HS = ch.height(S);
+  const [sx0, sz0] = ch.pos(S), HS = ch.height(S), q = HS / 23.4, zc = -(Math.ceil(N / ch.o.cols) - 1) * ch.o.sp / 2;
   if (sc.mode === 'reveal') {
     const cnum = el('div', 'chud cnum', root), clab = el('div', 'chud clab', root);
     const [c0, c1] = sc.caps, tr = c1.t1 + 0.3, tEnd = c1.t0 + 0.1;
@@ -136,7 +210,7 @@ BUILD.chart = (sc, root) => {
       ch.commit(); ch.marker(S, t >= tEnd && t < tr ? 0.35 + 0.65 * Math.abs(Math.sin((t - tEnd) * 9)) : 0);
       const [, pz] = ch.pos(Math.floor(play)); const sway = Math.sin((t - T0) * 1.3) * 1.2, creep = Math.max(0, t - tEnd) * 2.2;
       const p0 = [sway, 2.3 + creep * 0.25, pz + 8.5 - creep], l0 = [0, 0.4, pz - 6];
-      const orb = Math.max(0, t - tr) * 2.2, p1 = [10 - orb * 2.4, 3.2 + orb * 0.5, sz0 + 31 - orb], l1 = [sx0, HS * 0.47, sz0];
+      const orb = Math.max(0, t - tr) * 2.2, p1 = [(10 - orb * 2.4) * q, 3.2 + orb * 0.5, sz0 + (31 - orb) * q], l1 = [sx0, HS * 0.47, sz0];
       ch.cam(p0.map((v, i) => lerp(v, p1[i], kc)), l0.map((v, i) => lerp(v, l1[i], kc)), lerp(64, 58, kc)); ch.render();
       if (t < tr) {
         const i = Math.floor(play); cnum.textContent = fmt(TL.views[i]); cnum.style.color = '#fff'; cnum.style.transform = 'scale(.8)';
@@ -158,17 +232,17 @@ BUILD.chart = (sc, root) => {
   return t => {
     const tl = t - T0;
     for (let i = 0; i < N; i++) {
-      const lv = TL.views[i] >= 1e7 ? 2 : TL.views[i] >= 1e6 ? 1 : 0;
+      const lv = lvl(TL.views[i]);
       if (i <= S) ch.set(i, ch.height(i), lv);
       else { const k = P(tl, 0.15 + (i - S) / (N - S) * 1.4, 0.35, ease.back); ch.set(i, Math.max(0.03, ch.height(i) * k), lv); }
     }
     ch.commit();
-    const kc = P(tl, 0, 2.0, ease.io), ang = -0.55 + tl * 0.16, rad = 78;        // crane up, then keep circling the city
-    const p0 = [10, 3.2, sz0 + 31], l0 = [sx0, HS * 0.47, sz0], l1 = [0, 26, -17], p1 = [Math.sin(ang) * rad, 36 - tl * 1.0, -17 + Math.cos(ang) * rad];
+    const kc = P(tl, 0, 2.0, ease.io), ang = -0.55 + tl * 0.16, rad = sc.rad || 78;        // crane up, then keep circling the city
+    const p0 = [10 * q, 3.2, sz0 + 31 * q], l0 = [sx0, HS * 0.47, sz0], l1 = [0, sc.lookY ?? 26, zc], p1 = [Math.sin(ang) * rad, (sc.camY ?? 36) - tl * 1.0, zc + Math.cos(ang) * rad];
     ch.cam(p0.map((v, i) => lerp(v, p1[i], kc)), l0.map((v, i) => lerp(v, l1[i], kc)), lerp(58, 52, kc)); ch.render();
     tops.forEach(o => {
       const k = P(tl, 0.15 + (o.i - S) / (N - S) * 1.4 + 0.3, 0.25, ease.back), [x, y, z] = ch.project(o.i, ch.height(o.i));
-      o.d.style.display = k > 0 && z < 1 && y > 640 ? 'block' : 'none'; o.d.style.left = x + 'px'; o.d.style.top = (y - 64) + 'px'; o.d.style.transform = `translateX(-50%) scale(${k})`;
+      o.d.style.display = k > 0 && z < 1 && y > (sc.labelMinY ?? 640) ? 'block' : 'none'; o.d.style.left = x + 'px'; o.d.style.top = (y - 64) + 'px'; o.d.style.transform = `translateX(-50%) scale(${k})`;
     });
     stats.forEach((d, i) => {
       const s = sc.stats[i], c = sc.caps[i] || sc.caps[sc.caps.length - 1], k = P(t, c.t0, 0.6, ease.out5);
@@ -185,7 +259,7 @@ BUILD.compare = (sc, root) => {
   const CW = 500, CH = 889, Y0 = 330, XS = [28, 552];
   const mk = (it, x, color, tagText, cls) => {
     const c = el('div', 'pcard ' + cls, root); c.style.left = x + 'px'; c.style.top = Y0 + 'px'; c.style.borderColor = color;
-    const m = new Media(c, framesOf(it), CW, CH);
+    const m = new Media(c, framesOf(it), CW, CH); m.bz = it.zoom || 1; m.boy = it.oy || 0;
     const tg = el('div', 'ptag', root, tagText); tg.style.left = x + 'px'; tg.style.color = color; tg.style.borderColor = color;
     const v = el('div', 'pviews', root); v.style.left = x + 'px'; v.style.color = color;
     return { c, m, v, tg, it };
@@ -196,7 +270,7 @@ BUILD.compare = (sc, root) => {
   const nA = el('div', 'note', root, sc.beforeTag || ''); nA.style.cssText += `left:${XS[0] + 40}px;top:${Y0 + CH - 150}px;background:#000;color:#d0d0d8;border:4px solid #d0d0d8`;
   const nB = el('div', 'note', root, sc.afterTag || ''); nB.style.cssText += `left:${XS[1] + 120}px;top:${Y0 + 40}px;background:${G};color:#000`;
   const rg = sc.ring || [820, 690, 190, 170];               // cx, cy, rx, ry on the stage
-  const ring = stroke(root, `M ${rg[0] - rg[2]} ${rg[1]} a ${rg[2]} ${rg[3]} 0 1 1 ${2 * rg[2]} 0 a ${rg[2]} ${rg[3]} 0 1 1 ${-2 * rg[2]} 12`, G, 16);
+  const ring = sc.ring === false ? { set() {} } : stroke(root, `M ${rg[0] - rg[2]} ${rg[1]} a ${rg[2]} ${rg[3]} 0 1 1 ${2 * rg[2]} 0 a ${rg[2]} ${rg[3]} 0 1 1 ${-2 * rg[2]} 12`, G, 16);
   const hl = (title, words) => title.split(' ').map(w => words.includes(w.replace(/[^\w]/g, '')) ? `<mark>${w}</mark>` : w).join(' ');
   const t1 = el('div', 'ytt old', root); t1.style.top = '1010px'; t1.innerHTML = `<small>TITLE · BEFORE</small>${sc.before.title}`; const st = el('div', 'strike', t1);
   const t2 = el('div', 'ytt', root); t2.style.top = '1235px'; el('small', '', t2, 'TITLE · AFTER'); const t2b = el('span', '', t2);
@@ -222,45 +296,53 @@ BUILD.compare = (sc, root) => {
     meta.style.transform = `translateX(-50%) scale(${sc.afterMeta ? P(t, c1.t0 + 0.8, 0.25, ease.back) * (t < c2.t0 - 0.1 ? 1 : 0) : 0})`;
     const k1 = P(t, c2.t0 - 0.05, 0.3, ease.back), k2 = P(t, c2.t0 + 0.3, 0.3, ease.back);
     t1.style.transform = `translateX(${lerp(-1100, 0, k1)}px) rotate(-2deg)`; st.style.width = (P(t, c2.t0 + 0.25, 0.25) * 860) + 'px';
-    t2.style.transform = `translateX(${lerp(1100, 80, k2)}px) rotate(1.5deg)`;
+    t2.style.transform = `translateX(${lerp(1100, 30, k2)}px) rotate(1.5deg)`;
     const nch = Math.round(full.length * clamp((t - c2.t0 - 0.4) / 1.0));
     t2b.innerHTML = nch >= full.length ? hl(full, sc.hlAfter || []) : full.slice(0, nch) + (nch > 0 ? '▍' : '');
   };
 };
 
 BUILD.montage = (sc, root) => {
+  const c0 = sc.capStart || 0;                       // captions before this index are a lead-in over the first item
   const its = sc.items.map((it, i) => {
-    const l = el('div', 'layer', root), m = new Media(l, framesOf(it)); grad(l, TOPBOT);
-    const n = el('div', 'mnum', l), lb = el('div', 'mlab', l, 'VIEWS');
+    const l = el('div', 'layer', root), m = new Media(l, framesOf(it)); m.bz = it.zoom || 1; m.boy = it.oy || 0; grad(l, TOPBOT);
+    const red = it.tone === 'red', n = el('div', 'mnum', l), lb = el('div', 'mlab', l, 'VIEWS'); if (red) n.style.color = R;
+    if (sc.numTop != null) { n.style.top = sc.numTop + 'px'; lb.style.top = (sc.numTop + 255) + 'px'; }
+    if (sc.numSize) n.style.fontSize = sc.numSize + 'px'; if (sc.noLabel) lb.style.display = 'none';
+    if (it.tag) { const tg = el('div', 'pill', l, it.tag); tg.style.top = '150px'; tg.style.borderColor = red ? R : G; tg.style.fontSize = '40px'; }
     const tt = el('div', 'ytt', l); tt.style.top = '1420px'; tt.style.left = '70px'; tt.innerHTML = `<small>SHORT #${it.n} · REAL TITLE</small>${it.title}`;
-    const c = sc.caps[i]; sfx(c.t0 - 0.08, 'whoosh'); sfx(c.t0 + 0.05, 'ticks', { dur: 0.55, count: 16 }); sfx(c.t0 + 0.6, 'impact', { gain: 0.7 }); shake(c.t0 + 0.6, 16, 0.3);
-    return { l, m, n, tt, it, c };
+    if (sc.noTitle) tt.style.display = 'none';
+    const c = sc.caps[c0 + i]; sfx(c.t0 - 0.08, 'whoosh', { gain: red ? 0.6 : 1 }); sfx(c.t0 + 0.05, 'ticks', { dur: red ? 0.3 : 0.55, count: red ? 8 : 16 });
+    if (red) sfx(c.t0 + 0.36, 'stamp'); else { sfx(c.t0 + 0.6, 'impact', { gain: it.big ? 1.1 : 0.7 }); shake(c.t0 + 0.6, it.big ? 28 : 16, 0.35); if (it.big) flash(c.t0 + 0.6, 0.2, 0.6); }
+    return { l, m, n, lb, tt, it, c, red };
   });
   return t => its.forEach((o, i) => {
     const a = i === 0 ? sc.t0 : o.c.t0 - 0.06, b = i + 1 < its.length ? its[i + 1].c.t0 - 0.06 : sc.t1, on = t >= a && t < b;
     o.l.style.display = on ? 'block' : 'none'; if (!on) return;
-    const lt = t - a; o.m.draw(fidx(o.it, lt, 0.34), { zoom: 1.2 - 0.14 * P(lt, 0, 0.3) + 0.04 * lt, rot: (i % 2 ? 1 : -1) * 0.012 * (1 - P(lt, 0, 0.3)) });
-    const k = P(lt, 0.06, 0.55, ease.out5); o.n.textContent = fmt(o.it.views * k);
-    o.n.style.transform = `scale(${k >= 1 ? 1 + 0.2 * (1 - P(lt, 0.61, 0.25)) : 0.85})`;
-    o.tt.style.transform = `translateY(${lerp(500, 0, P(lt, 0.2, 0.35, ease.back))}px) rotate(${i % 2 ? 1.5 : -1.5}deg)`;
+    const lt = t - a, ct = t - (o.c.t0 - 0.06), dk = o.red ? 0.3 : 0.55;
+    o.m.draw(fidx(o.it, lt, 0.34), { zoom: 1.2 - 0.14 * P(lt, 0, 0.3) + 0.04 * lt, rot: (i % 2 ? 1 : -1) * 0.012 * (1 - P(lt, 0, 0.3)) });
+    const k = P(ct, 0.06, dk, ease.out5); o.n.textContent = ct < 0 ? '' : fmt(o.it.views * k); o.lb.style.opacity = ct < 0 ? 0 : 1;
+    o.n.style.transform = `scale(${(o.red ? 0.72 : 1) * (k >= 1 ? 1 + 0.2 * (1 - P(ct, 0.06 + dk, 0.25)) : 0.85)})`;
+    o.tt.style.transform = `translateY(${lerp(500, 0, P(ct, 0.2, 0.35, ease.back))}px) rotate(${i % 2 ? 1.5 : -1.5}deg)`;
   });
 };
 
 BUILD.titlewall = (sc, root) => {
   root.style.background = 'radial-gradient(ellipse at 50% 30%, #18202a 0%, #0c0c10 70%)';
-  const re = new RegExp(sc.pattern), esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const re = new RegExp(sc.pattern, sc.flags || ''), hre = new RegExp('(' + (sc.mark || '\\?|…|\\.\\.\\.') + ')', 'g' + (sc.flags || '')), esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
   el('div', 'wlab', root, sc.label || '');
   const mk = (titles, x, head, color) => {
     const pc = el('div', 'pct', root); pc.style.left = x + 'px'; pc.style.color = color;
     const hd = el('div', 'colh', root, head); hd.style.left = x + 'px';
     const c = el('div', 'col', root); c.style.left = x + 'px';
-    const chips = titles.map((tt, i) => {
+    const list = []; while (list.length < 34) list.push(...titles);
+    const chips = list.map((tt, i) => {
       const d = el('div', 'chip' + (re.test(tt) ? ' on' : ''), c); d.style.top = (i * 86) + 'px'; d.style.left = '0px';
-      d.innerHTML = esc(tt).replace(/(\?|…|\.\.\.)/g, '<em>$1</em>'); return d;
+      d.innerHTML = esc(tt).replace(hre, '<em>$1</em>'); return d;
     });
     return { pc, c, inner: chips, n: titles.length };
   };
-  const A = mk(sc.before, 30, `BEFORE #${TL.scenes.find(s => s.type === 'chart').spike + 1}`, '#c9c9d2'), B = mk(sc.after, 550, 'AFTER', G);
+  const A = mk(sc.before, 30, sc.beforeHead || 'BEFORE', '#c9c9d2'), B = mk(sc.after, 550, sc.afterHead || 'AFTER', G);
   const T0 = sc.t0; sfx(T0, 'whoosh', { gain: 0.5 }); sfx(T0 + 0.2, 'ticks', { dur: 0.7, count: 14, gain: 0.6 }); sfx(T0 + 1.05, 'ticks', { dur: 0.7, count: 20, gain: 0.6 }); sfx(T0 + 1.8, 'impact', { gain: 0.6 }); shake(T0 + 1.8, 14, 0.3);
   return t => {
     const tl = t - T0;
@@ -289,7 +371,7 @@ BUILD.steal = (sc, root) => {
 
 BUILD.cta = (sc, root) => {
   const bg = new Media(root, [sc.bg]); bg.c.style.filter = 'blur(18px) brightness(.3)'; bg.c.style.transform = 'scale(1.12)';
-  const loop = new Media(root, [TL.scenes[0].hit.frames[0]]); grad(root, 'rgba(0,0,0,0)');
+  const loop = new Media(root, [sc.loopFrame || TL.scenes[0].hit.frames[0]]); loop.bz = sc.loopZoom || 1; grad(root, 'rgba(0,0,0,0)');
   const logo = el('div', 'logo', root), hs = [0.16, 0.22, 0.14, 0.2, 0.18, 1.0, 0.62];
   const bars = hs.map((h, i) => { const b = el('i', '', logo); if (i >= 5) { b.style.background = G; b.style.boxShadow = '0 0 50px rgba(61,255,136,.7)'; } return b; });
   const lt = el('div', 'logot', root, 'THE SPIKE FILES'), box = el('div', 'cbox', root);
@@ -301,14 +383,14 @@ BUILD.cta = (sc, root) => {
     lt.style.transform = `scale(${P(tl, 0.15, 0.3, ease.back)})`;
     const c = sc.caps[sc.caps.length - 1], n = Math.round(typed.length * clamp((t - c.t0) / 0.6));
     box.style.transform = `translateY(${lerp(500, 0, P(t, c.t0 - 0.2, 0.3, ease.back))}px)`; box.textContent = typed.slice(0, n) + (Math.floor(t * 4) % 2 ? '|' : '');
-    const on = t >= tLoop; loop.c.style.display = on ? 'block' : 'none'; if (on) loop.draw(0, { zoom: 1.06 });
+    const on = t >= tLoop; loop.c.style.display = on ? 'block' : 'none'; if (on) loop.draw(0, { zoom: sc.loopZoomTo || 1.06 });
     [logo, lt, box].forEach(e => { e.style.visibility = on ? 'hidden' : 'visible'; });
   };
 };
 
 // ------------------------------------------------------------------ build
 const scenesEl = document.getElementById('scenes'), capsEl = document.getElementById('caps');
-const CAPY = { hook: 1330, uiscroll: 1330, chart: 1380, compare: [1400, 1400, 1560], montage: 1130, titlewall: 1500, steal: 1500, cta: 1200 };
+const CAPY = { beat: 1280, hookflip: 962, hookguess: 985, hook: 1330, uiscroll: 1330, chart: 1380, compare: [1400, 1400, 1560], montage: 1130, titlewall: 1500, steal: 1500, cta: 1200 };
 const scenes = [], caps = [];
 for (const [si, sc] of TL.scenes.entries()) {
   const root = el('div', 'scene', scenesEl);
@@ -335,7 +417,7 @@ window.setFrame = f => {
   const t = f / FPS;
   for (const s of scenes) {
     const on = t >= s.sc.t0 && t < s.sc.t1; s.root.style.display = on ? 'block' : 'none';
-    if (on) { s.update(t); const k = P(t, s.sc.t0, 0.28, ease.out5); s.root.style.transform = s.sc.type === 'hook' ? '' : `scale(${1.08 - 0.08 * k})`; }
+    if (on) { s.update(t); const k = P(t, s.sc.t0, 0.28, ease.out5); s.root.style.transform = s.sc.type.startsWith('hook') ? '' : `scale(${1.08 - 0.08 * k})`; }
   }
   for (const c of caps) {
     const on = t >= c.c.t0 - 0.02 && t < c.end; c.d.style.display = on ? 'block' : 'none'; if (!on) continue;

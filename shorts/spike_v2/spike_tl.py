@@ -38,7 +38,7 @@ def main():
             show, say, hide = (ch.get("show", ""), ch["say"], ch.get("hide", False)) if isinstance(ch, dict) else (ch[0], ch[1], False)
             a, path = rd.tts(say, voice, speed, cache)
             i0 = int(t * SR); track[i0:i0 + len(a)] += a; dur = len(a) / SR
-            words = []; toks = show.split()
+            words = []; toks = [w for w in show.split(" ") if w]      # a non-breaking space keeps two words in one pop
             lens = [max(1, len(re.sub(r"\W", "", w))) for w in toks]; cum = np.cumsum([0] + lens) / max(1, sum(lens))
             for w, c in zip(toks, cum):
                 words.append({"w": w.replace("*", ""), "hl": "*" in w or False, "t0": round(t + c * dur * 0.9, 3)})

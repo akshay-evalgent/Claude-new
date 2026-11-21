@@ -1,0 +1,340 @@
+{
+ "asof": "Nov 21, 2026",
+ "voice": "am_michael",
+ "speed": 1.22,
+ "gap": 0.04,
+ "grid": 0.12096774193548387,
+ "bpm": 124,
+ "slug": "shano_ghibli",
+ "channel": "Shano Ghibli",
+ "handle": "@ShanoGhibli",
+ "views": [
+  6600,
+  6100,
+  5700,
+  7100,
+  5300,
+  5400,
+  5500,
+  6000,
+  6300,
+  6300,
+  6900,
+  8300,
+  9800,
+  227000,
+  274000,
+  29000,
+  13000,
+  15000,
+  46000,
+  131000,
+  24000,
+  83000,
+  51000,
+  10000000,
+  193000,
+  1700000,
+  4600000,
+  989000,
+  1500000,
+  16000000,
+  531000,
+  334000,
+  1400000,
+  311000,
+  146000
+ ],
+ "cover_t": 2.9,
+ "scenes": [
+  {
+   "type": "hookflip",
+   "lo": {
+    "n": 4,
+    "id": "imFqvMAT2Hs",
+    "frames": [
+     "frames/sg_004_oar3.jpg",
+     "frames/sg_004_oar2.jpg",
+     "frames/sg_004_oar1.jpg"
+    ],
+    "views": 7100,
+    "title": "Cheesy Mozzarella Sticks |Crispy, Stretchy & Seriously Addictive!",
+    "label": "FOOD"
+   },
+   "hi": {
+    "n": 30,
+    "id": "gOOdISMmoFo",
+    "frames": [
+     "frames/sg_030_oardefault.jpg",
+     "frames/sg_030_oar1.jpg",
+     "frames/sg_030_oar3.jpg"
+    ],
+    "views": 16000000,
+    "title": "Nana Nani’s Long-Awaited Train Journey to Meet Their Grandchildren | 1990s Reunion story",
+    "label": "FEELINGS"
+   },
+   "say": [
+    {
+     "show": "FOOD",
+     "say": "Food got seven thousand views.",
+     "hide": true
+    },
+    {
+     "show": "FEELINGS",
+     "say": "Feelings got sixteen million.",
+     "hide": true
+    },
+    [
+     "*SAME* CHANNEL.",
+     "Same channel."
+    ]
+   ]
+  },
+  {
+   "type": "uiscroll",
+   "seq": "ui/ShanoGhibli/oldest",
+   "tag": "THEIR CHANNEL · OLDEST FIRST",
+   "tone": "red",
+   "say": [
+    [
+     "THEY STARTED WITH *FOOD*",
+     "They started with food."
+    ],
+    [
+     "12 SHORTS. *~6K* EACH.",
+     "Twelve Shorts. About six thousand views each."
+    ]
+   ],
+   "maxFrame": 56
+  },
+  {
+   "type": "compare",
+   "before": {
+    "n": 12,
+    "id": "dtqa0yTdrgc",
+    "frames": [
+     "frames/sg_012_oar3.jpg",
+     "frames/sg_012_oardefault.jpg",
+     "frames/sg_012_oar2.jpg"
+    ],
+    "views": 8300,
+    "title": "Crispy Loaded Chicken Fries with a Dreamy Cheese Pull!"
+   },
+   "after": {
+    "n": 14,
+    "id": "NCE1LJNjI9g",
+    "frames": [
+     "frames/sg_014_oardefault.jpg",
+     "frames/sg_014_oar1.jpg",
+     "frames/sg_014_oar3.jpg",
+     "frames/sg_014_oar2.jpg"
+    ],
+    "views": 227000,
+    "title": "Daughter Returns Home in the 1990s | Grandma’s Chicken Biryani & Village Life"
+   },
+   "beforeTag": "A DISH",
+   "afterTag": "A FAMILY",
+   "ring": false,
+   "hlAfter": [
+    "Daughter",
+    "Returns",
+    "Home"
+   ],
+   "say": [
+    [
+     "THEN ONE TOLD *A STORY*",
+     "Then one Short told a story."
+    ],
+    [
+     "A DAUGHTER COMES HOME: *227K*",
+     "A daughter comes home: two hundred twenty-seven thousand."
+    ],
+    [
+     "*27X* THE VIEWS",
+     "Twenty-seven times the views."
+    ]
+   ]
+  },
+  {
+   "type": "chart",
+   "mode": "reveal",
+   "spike": 23,
+   "cols": 7,
+   "say": [
+    [
+     "SO THEY *KEPT GOING*",
+     "So they kept going."
+    ],
+    [
+     "THEN *#24…*",
+     "Then, Short twenty-four."
+    ],
+    {
+     "pause": 1.1
+    }
+   ]
+  },
+  {
+   "type": "montage",
+   "items": [
+    {
+     "n": 24,
+     "id": "Eoh-RAM7fQU",
+     "frames": [
+      "frames/sg_024_oar3.jpg",
+      "frames/sg_024_oar1.jpg",
+      "frames/sg_024_oardefault.jpg",
+      "frames/sg_024_oar2.jpg"
+     ],
+     "views": 10000000,
+     "title": "A Mother’s Happiness When Her Daughters Come Home"
+    },
+    {
+     "n": 30,
+     "id": "gOOdISMmoFo",
+     "frames": [
+      "frames/sg_030_oardefault.jpg",
+      "frames/sg_030_oar1.jpg",
+      "frames/sg_030_oar3.jpg"
+     ],
+     "views": 16000000,
+     "title": "Nana Nani’s Long-Awaited Train Journey to Meet Their Grandchildren",
+     "big": true
+    }
+   ],
+   "say": [
+    [
+     "HER DAUGHTERS *COME HOME*",
+     "Her daughters come home: ten million."
+    ],
+    [
+     "GRANDPARENTS *ON A TRAIN*",
+     "Grandparents on a train: sixteen million."
+    ]
+   ]
+  },
+  {
+   "type": "titlewall",
+   "before": [
+    "Crispy Thread Chicken | Instant Cravings!",
+    "Rose Falooda & Chocolate Falooda | The Ultimate Dessert Duo",
+    "Kiwi Fruit Cake for Her Husband’s Birthday | His Reaction Was Everything!",
+    "Cheesy Mozzarella Sticks |Crispy, Stretchy & Seriously Addictive!",
+    "Chicken Malai Tikka |Creamy, Smoky & Irresistibly Juicy!",
+    "Golden Potato Bites |Crispy Outside,Soft Inside",
+    "Cheesy Paneer Melty Buns & Rainy Vibes | Cozy Rainy Evening",
+    "Cozy Thursday Chicken Barra|Authentic Desi Cooking Asmr!",
+    "She Came Home From the Mall… Then Made Crispy Fillet-O-Fish",
+    "Strawberry Nutella Crêpes & Iced Matcha Latte|A Cafe Style Breakfast",
+    "A Creamy Pasta Bowl Made for Cozy Cravings!",
+    "Crispy Loaded Chicken Fries with a Dreamy Cheese Pull!",
+    "Paneer Handi | A Taste of Love, Rain & Village Life in the 90s",
+    "Daughter Returns Home in the 1990s | Grandma’s Chicken Biryani & Village Life",
+    "This Bring Back Childhood Memories | Cozy Village Vibes",
+    "A Rainy Coastal Village Story | Homemade Fish Curry | Ghibli Style ASMR",
+    "A Couple’s Dreamy Village Food Stall | Ghibli Street Food",
+    "The Kind of Life We All Dream Of | Peaceful South Indian Village Vibes",
+    "A 1990s Village Wife Made Her Husband’s Favorite Dessert | The Beauty of Village Life",
+    "Mango Mirchi Barfi Recipe | Traditional Village Sweet with a Spicy Twist | Ghibli Style",
+    "Nadru Yakhni Recipe | Traditional Kashmiri Lakeside Feast | Ghibli Style",
+    "Golden Ghewar in a Cozy Rajasthani Village | Traditional Family Cooking & Sweet Monsoon Memories",
+    "Those 90s Nights When the Whole Village Felt Like Family"
+   ],
+   "after": [
+    "A Mother’s Happiness When Her Daughters Come Home | 1990s Village Siri Paya Story",
+    "It was a hot summer night… Until the power cut",
+    "A Mother’s Brave Journey to Save Her Daughter in the Flood |1990s Bihari Champaran Mutton",
+    "When Grandma Fell Sick, Grandpa’s Love Made Her Day Special | 1990s Village Dum Aloo",
+    "Grandma Gave Up Her Dream, But Grandpa Had a Surprise She Never Expected | 1990s Village",
+    "Grandma’s Kind Heart Feeds a Poor Hungry Family on a Rainy Night |1990s Paneer Butter Masala",
+    "Nana Nani’s Long-Awaited Train Journey to Meet Their Grandchildren | 1990s Reunion story",
+    "Grandma Gave a Lonely Orphan Boy A Birthday He Always Dreamed Of |1990s Black Forest Cake",
+    "When His Pregnant Wife Needed Him Most, His Love and Care Said Everything | 1990s Fish Fry",
+    "Nana Nani’s First Aeroplane Journey | From Village to the Sky | 1990s Nostalgic Story",
+    "Nana Nani's BIG Surprise for The Little Princesses!| A Magical Zoo Adventure | 1990s Vibes",
+    "The 1990s We Wish We Could Relive | Nana Nani, Granddaughters & A Beautiful Mela Adventure"
+   ],
+   "pattern": "\\b(mother|mom|grandma|grandpa|grandchildren|granddaughters?|nana|nani|daughters?|sons?|family|love|reunion|father|husband|wife|couple|orphan|brave|happiness)\\b",
+   "flags": "i",
+   "mark": "(mother|mom|grandma|grandpa|grandchildren|granddaughters?|nana|nani|daughters?|sons?|family|love|reunion|father|husband|wife|couple|orphan|brave|happiness)",
+   "a": 30,
+   "b": 92,
+   "label": "TITLES ABOUT FAMILY",
+   "beforeHead": "BEFORE #24",
+   "afterHead": "AFTER",
+   "lead": 0.3,
+   "say": [
+    {
+     "show": "x",
+     "say": "Titles about family: thirty percent, to ninety-two.",
+     "hide": true
+    }
+   ]
+  },
+  {
+   "type": "beat",
+   "frames": [
+    "frames/sg_012_oardefault.jpg",
+    "frames/sg_024_oar1.jpg"
+   ],
+   "say": [
+    [
+     "PEOPLE DON'T SHARE *FOOD.*",
+     "People don't share food."
+    ],
+    [
+     "THEY SHARE *GRANDMA.*",
+     "They share grandma."
+    ]
+   ]
+  },
+  {
+   "type": "steal",
+   "bg": "frames/sg_030_oar1.jpg",
+   "lines": [
+    "Lead with a person",
+    "Put the feeling in the title",
+    "Craft in the background"
+   ],
+   "say": [
+    {
+     "show": "STEAL THIS",
+     "say": "Steal this.",
+     "hide": true
+    },
+    {
+     "show": "",
+     "say": "Lead with a person.",
+     "hide": true
+    },
+    {
+     "show": "",
+     "say": "Put the feeling in the title.",
+     "hide": true
+    },
+    {
+     "show": "",
+     "say": "Keep the craft in the background.",
+     "hide": true
+    }
+   ]
+  },
+  {
+   "type": "cta",
+   "bg": "frames/sg_030_oardefault.jpg",
+   "loopFrame": "frames/sg_004_oar3.jpg",
+   "loopZoomTo": 1.08,
+   "say": [
+    [
+     "WHO DO WE *INVESTIGATE* NEXT?",
+     "Who should we investigate next?"
+    ],
+    [
+     "*COMMENT* IT",
+     "Comment it."
+    ]
+   ],
+   "tail": 0.35
+  }
+ ]
+}

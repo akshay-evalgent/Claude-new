@@ -108,6 +108,14 @@ Built after the first samples looked too plain. Every scene is full-screen and s
 
 **Hook rule (first 3 seconds):** the most striking real frame of the hit, a counter racing to its view count, then a rapid cut through the flops. No intro, no logo.
 
+**Three hook types so far** (each video uses a different one, so we can compare them):
+
+| Hook | How it opens | Used in |
+|---|---|---|
+| **Big number first** | The hit's frame, a counter racing to its views, then the flops | Fusion Bricks |
+| **Flip** | The flop with a red stamp, a smash cut to the hit and its counter, then both: "same channel" | Shano Ghibli |
+| **Guess** | Two real frames and a question ("Which got 2.6M views?"), then the reveal | OddVibe |
+
 **Real clips:** YouTube blocks video downloads from the render machine, so the user downloads the few Shorts an edit names (the kit lists the command) and `spike_v2/clips.py` cuts excerpts of 3 seconds or less. Each excerpt is shown with our own analysis on top and the channel credited.
 
 ## How each video is made
