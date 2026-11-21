@@ -111,6 +111,12 @@ FONTS = {
 # Fluent folder names follow CLDR short names; these differ from Python's
 # unicodedata names and need spelling out.
 EMOJI_NAME_OVERRIDES = {
+    "🏀": "Basketball",
+    "👵": "Old woman",
+    "🕵️": "Detective",
+    "🕶️": "Sunglasses",
+    "🧔": "Person beard",
+    "🧶": "Yarn",
     "🚨": "Police car light",
     "😤": "Face with steam from nose",
     "🤨": "Face with raised eyebrow",
