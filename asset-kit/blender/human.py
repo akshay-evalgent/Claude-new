@@ -41,7 +41,7 @@ def build(spec):
     base = HumanService.create_human(macro_detail_dict=macro)
     rig = HumanService.add_builtin_rig(base, spec.get('rig', 'cmu_mb'))   # rig first, so every asset binds to it
     if spec.get('skin'):
-        HumanService.set_character_skin(_asset('skins', spec['skin'], 'mhmat'), base, skin_type='ENHANCED_SSS')
+        HumanService.set_character_skin(_asset('skins', spec['skin'], 'mhmat'), base, skin_type=spec.get('skin_type', 'ENHANCED_SSS'))
     HumanService.add_mhclo_asset(os.path.join(DATA, 'eyes', 'high-poly', 'high-poly.mhclo'), base, asset_type='Eyes', material_type='PROCEDURAL_EYES')
     iris = spec.get('iris', (0.09, 0.045, 0.02))                       # dark brown unless asked otherwise
     for o in bpy.data.objects:
@@ -69,7 +69,7 @@ def _bone_dir(arm, bone):
 
 
 def retarget_bvh(rig, bvh_path, *, frame_start=1, frames=96, fps=24, src_start=0.2, speed=1.0,
-                 origin=(0, 0, 0), heading_deg=0.0, keep_source=False, ground_lock=True):
+                 origin=(0, 0, 0), heading_deg=0.0, keep_source=False, ground_lock=True, hand_twist=15.0, finger_curl=22.0, loop=False):
     """Bakes a CMU-style BVH clip onto an MPFB 'cmu_mb' rig.
 
     Each bone takes the clip's world rotation *change* from its rest. Arms and legs are first swung into the clip's
@@ -85,7 +85,16 @@ def retarget_bvh(rig, bvh_path, *, frame_start=1, frames=96, fps=24, src_start=0
     act = src.animation_data.action
     f0, f1 = act.frame_range
     src_fps = 120.0                                                    # CMU clips are captured at 120 fps
-    names = [b.name for b in rig.data.bones if b.name in src.data.bones]
+    # CMU hand and finger data is noisy (markers on the back of the hand only), which twists the wrists.
+    # Hands and fingers follow the forearm instead, in a relaxed pose.
+    SKIP = {'LeftHand', 'RightHand', 'LThumb', 'RThumb', 'LeftFingerBase', 'RightFingerBase', 'LeftHandFinger1', 'RightHandFinger1',
+            'LeftHandIndex1', 'RightHandIndex1'}
+    names = [b.name for b in rig.data.bones if b.name in src.data.bones and b.name not in SKIP]
+    tw, curl = math.radians(hand_twist), math.radians(finger_curl)
+    RELAX = {'LeftHand': Quaternion((0, 1, 0), tw), 'RightHand': Quaternion((0, 1, 0), -tw),
+             'LeftFingerBase': Quaternion((1, 0, 0), curl), 'RightFingerBase': Quaternion((1, 0, 0), curl),
+             'LeftHandFinger1': Quaternion((1, 0, 0), curl), 'RightHandFinger1': Quaternion((1, 0, 0), curl),
+             'LThumb': Quaternion((1, 0, 0), curl * 0.5), 'RThumb': Quaternion((1, 0, 0), curl * 0.5)}
     # rest data
     S_rest = {n: (src.matrix_world @ src.data.bones[n].matrix_local).to_quaternion() for n in names}
     T_rest = {b.name: (rig.matrix_world @ b.matrix_local).to_quaternion() for b in rig.data.bones}
@@ -101,10 +110,22 @@ def retarget_bvh(rig, bvh_path, *, frame_start=1, frames=96, fps=24, src_start=0
     hip_dst_rest = (rig.matrix_world @ rig.data.bones['Hips'].head_local)
     leg = lambda arm: (arm.matrix_world @ arm.data.bones['LeftUpLeg'].head_local - arm.matrix_world @ arm.data.bones['LeftFoot'].head_local).length
     scale = leg(rig) / leg(src)
+    # loop=True repeats one stride of a cyclic clip (a run or walk) for as long as needed: the period is the lag at
+    # which hands and feet return closest to where they were, and the hips advance by one stride per cycle
+    P, stride = None, Vector((0, 0, 0))
+    if loop:
+        def sig(ts):
+            sf_ = f0 + ts * src_fps; scene.frame_set(int(sf_), subframe=sf_ - int(sf_)); hp = src.pose.bones['Hips'].head
+            return [src.pose.bones[n].head - hp for n in ('LeftFoot', 'RightFoot', 'LeftHand', 'RightHand')], (src.matrix_world @ hp).copy()
+        s0, h0 = sig(src_start); best = None; clip_len = (f1 - f0) / src_fps
+        for k in range(int(0.45 * src_fps), int(min(1.3, clip_len - src_start - 0.02) * src_fps)):
+            s1, h1 = sig(src_start + k / src_fps); err = sum((a - b).length for a, b in zip(s0, s1))
+            if best is None or err < best[0]: best = (err, k / src_fps, h1 - h0)
+        P, stride = best[1], best[2]; stride.z = 0
     # face every clip the same way: heading 0 means walking toward -Y, whatever direction the actor walked
     scene.frame_set(int(f0 + src_start * src_fps)); a_ = src.matrix_world @ src.pose.bones['Hips'].head
     scene.frame_set(int(min(f1, f0 + (src_start + frames / fps * speed) * src_fps))); b_ = src.matrix_world @ src.pose.bones['Hips'].head
-    travel = math.atan2(b_.y - a_.y, b_.x - a_.x)
+    travel = math.atan2(stride.y, stride.x) if loop else math.atan2(b_.y - a_.y, b_.x - a_.x)
     H = Quaternion((0, 0, 1), math.radians(heading_deg)) @ Quaternion((0, 0, 1), -math.pi / 2 - travel)
     rig_q = rig.matrix_world.to_quaternion().inverted()
     for pb in rig.pose.bones:
@@ -113,9 +134,10 @@ def retarget_bvh(rig, bvh_path, *, frame_start=1, frames=96, fps=24, src_start=0
     first_hip = None
     order = [b for b in rig.data.bones]                                # parents come before children
     for i in range(frames):
-        sf = f0 + (src_start + i / fps * speed) * src_fps
+        tau = i / fps * speed; ncyc = int(tau // P) if loop else 0
+        sf = min(f1 - 1, f0 + (src_start + tau - ncyc * (P or 0)) * src_fps)
         scene.frame_set(int(sf), subframe=sf - int(sf))
-        hip_w = src.matrix_world @ src.pose.bones['Hips'].head
+        hip_w = src.matrix_world @ src.pose.bones['Hips'].head + stride * ncyc
         if first_hip is None: first_hip = hip_w.copy()
         M = {}
         for b in order:
@@ -130,7 +152,7 @@ def retarget_bvh(rig, bvh_path, *, frame_start=1, frames=96, fps=24, src_start=0
                 T_w = H @ (S_w @ S_rest[b.name].inverted()) @ T_tpose[b.name]
                 rot = (rig_q @ T_w).to_matrix().to_4x4()
             else:
-                rot = base_m.to_quaternion().to_matrix().to_4x4()
+                rot = (base_m.to_quaternion() @ RELAX.get(b.name, Quaternion())).to_matrix().to_4x4()
             if b.parent:
                 m = rot.copy(); m.translation = base_m.translation
             else:
@@ -177,8 +199,8 @@ def retarget_bvh(rig, bvh_path, *, frame_start=1, frames=96, fps=24, src_start=0
         for i in range(frames):
             scene.frame_set(frame_start + i)
             heights.append(min((rig.matrix_world @ rig.pose.bones[n].head).z for n in ('LeftFoot', 'RightFoot', 'LeftToeBase', 'RightToeBase') if n in rig.pose.bones))
-        rest_low = min(heights[:max(1, min(frames, fps))])               # the planted height in the first second is correct
-        k = max(1, fps // 3)
+        rest_low = min(heights[:max(1, min(frames, int(fps)))])               # the planted height in the first second is correct
+        k = max(1, int(fps) // 3)
         smooth = [min(heights[max(0, i - k):i + k + 1]) for i in range(frames)]   # lowest point nearby = the planted foot
         hips = rig.pose.bones['Hips']
         for i in range(frames):

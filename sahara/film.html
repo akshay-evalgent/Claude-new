@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lost in the Sahara</title>
+<style>
+  @font-face { font-family: 'Anton'; src: url(assets/anton.woff2) format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 600; src: url(assets/barlow600.woff2) format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 700; src: url(assets/barlow700.woff2) format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 100 800; src: url(assets/jbmono.woff2) format('woff2'); }
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  #stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; transform-origin: 0 0; color: #fff; font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; }
+  #stage > * { position: absolute; }
+  #plate, #map, #fx { left: 0; top: 0; width: 1080px; height: 1920px; }
+  .full { inset: 0; pointer-events: none; }
+  #vig { background: radial-gradient(ellipse 85% 65% at 50% 48%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.38) 100%); }
+  #fade { background: #000; }
+  #cap { left: 60px; right: 60px; top: 1150px; text-align: center; font-weight: 700; font-size: 86px; line-height: 1.02; text-transform: uppercase; letter-spacing: 0.01em;
+    -webkit-text-stroke: 14px #000; paint-order: stroke fill; text-shadow: 0 6px 18px rgba(0,0,0,0.55); }
+  #cap span { display: inline-block; margin: 0 0.12em; }
+  #cap span.on { color: #ffd54a; }
+  #chip { left: 0; right: 0; top: 290px; text-align: center; }
+  #chip div { display: inline-block; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 34px; letter-spacing: 0.14em; padding: 14px 26px; border-radius: 12px; background: rgba(12,8,4,0.62); }
+  #big { left: 0; right: 0; top: 380px; text-align: center; font-family: 'Anton', sans-serif; font-size: 230px; line-height: 1; text-shadow: 0 6px 30px rgba(0,0,0,0.6); }
+  #end { left: 70px; right: 70px; top: 330px; text-align: center; text-shadow: 0 4px 22px rgba(0,0,0,0.75); }
+  #end .a { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 30px; letter-spacing: 0.24em; color: #ffd54a; }
+  #end .b { font-family: 'Anton', sans-serif; font-size: 128px; line-height: 1.04; text-transform: uppercase; margin-top: 12px; }
+  #end .c { font-weight: 600; font-size: 44px; line-height: 1.25; color: #fff; margin-top: 22px; }
+  #end .d { font-family: 'JetBrains Mono', monospace; font-size: 22px; letter-spacing: 0.08em; color: #f1e6d6; margin-top: 26px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <img id="plate" alt="">
+  <canvas id="map" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+  <div id="vig" class="full"></div>
+  <div id="chip"><div id="chipT"></div></div>
+  <div id="big"></div>
+  <div id="end"><div class="a">MAURO PROSPERI</div><div class="b">He went<br>back</div><div class="c">Nine days lost. Almost 300 km off course.</div><div class="d">BASED ON HIS OWN ACCOUNT</div></div>
+  <div id="cap"></div>
+  <div id="fade" class="full"></div>
+</div>
+<script>
+'use strict';
+const W = 1080, H = 1920, FPS = 24, PI = Math.PI;
+const clamp01 = x => Math.max(0, Math.min(1, x)), seg = (t, a, b) => clamp01((t - a) / (b - a));
+const eio = x => x * x * (3 - 2 * x), eo = x => 1 - Math.pow(1 - x, 3), lerp = (a, b, k) => a + (b - a) * k;
+const win = (t, a, b, fi = 0.25, fo = 0.25) => Math.min(seg(t, a, a + fi), 1 - seg(t, b - fo, b));
+const hash = n => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+const $ = id => document.getElementById(id);
+
+// the cut: shot name and length in frames; MAP shots are drawn here, the rest are Blender plates
+const SEQ = [['H1', 86], ['H2', 38], ['H3', 41], ['R1', 82], ['R2', 74], ['MAP1', 87], ['S1', 48], ['S2', 43], ['A1', 43], ['MAP2', 36], ['W1', 74], ['M1', 58], ['M2', 58], ['M3', 70],
+  ['D1', 50], ['D2', 50], ['N1', 84], ['MAP3', 102], ['K1', 106], ['P1', 86], ['P2', 89]];
+let acc = 0; const CUT = {}; SEQ.forEach(s => { s.push(acc); CUT[s[0]] = [acc / FPS, (acc + s[1]) / FPS]; acc += s[1]; });
+const TOTAL = acc; window.DURATION = TOTAL / FPS; window.FRAMES = TOTAL;
+const T = n => CUT[n];
+
+// ---------- maps ----------
+const mc = $('map').getContext('2d'), fc = $('fx').getContext('2d');
+function mapBase(zoom, cx, cy) {
+  mc.setTransform(1, 0, 0, 1, 0, 0);
+  const g = mc.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#d9b077'); g.addColorStop(1, '#b98a52'); mc.fillStyle = g; mc.fillRect(0, 0, W, H);
+  mc.setTransform(zoom, 0, 0, zoom, W / 2 - cx * zoom, H * 0.43 - cy * zoom);
+  mc.strokeStyle = 'rgba(90,60,25,0.16)'; mc.lineWidth = 2 / zoom;
+  for (let k = -3000; k <= 3000; k += 120) { mc.beginPath(); mc.moveTo(k, -3000); mc.lineTo(k, 3000); mc.stroke(); mc.beginPath(); mc.moveTo(-3000, k); mc.lineTo(3000, k); mc.stroke(); }
+  for (let i = 0; i < 260; i++) { const x = (hash(i) - 0.5) * 3600, y = (hash(i + 500) - 0.5) * 3600, r = 30 + hash(i + 900) * 110; mc.strokeStyle = 'rgba(120,80,35,0.13)'; mc.lineWidth = 5 / zoom; mc.beginPath(); mc.arc(x, y, r, PI * 1.1, PI * 1.75); mc.stroke(); }
+}
+// the race route (schematic), in map units of about 1 km
+const ROUTE = [[0, 0], [38, 22], [70, 6], [104, 30], [128, 70], [160, 58], [186, 96], [214, 84], [236, 118]];
+const LOST = [[104, 30], [118, 74], [100, 128], [128, 176], [112, 232], [146, 270], [140, 318]];      // drifting south-east, over the border
+function path(pts, k) { // draws the first fraction k of a polyline; returns its end point
+  let len = 0; const L = []; for (let i = 1; i < pts.length; i++) { const d = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); L.push(d); len += d; }
+  let rem = len * k; mc.beginPath(); mc.moveTo(pts[0][0], pts[0][1]); let end = pts[0];
+  for (let i = 1; i < pts.length && rem > 0; i++) { const f = Math.min(1, rem / L[i - 1]); end = [lerp(pts[i - 1][0], pts[i][0], f), lerp(pts[i - 1][1], pts[i][1], f)]; mc.lineTo(end[0], end[1]); rem -= L[i - 1]; }
+  mc.stroke(); return end;
+}
+function label(txt, x, y, size, color, align, zoom) { mc.font = `700 ${size / zoom}px 'JetBrains Mono', monospace`; mc.textAlign = align || 'left'; mc.fillStyle = color; mc.fillText(txt, x, y); }
+function dot(p, r, color) { mc.fillStyle = color; mc.beginPath(); mc.arc(p[0], p[1], r, 0, 7); mc.fill(); }
+function drawMap(name, t) {
+  const [a, b] = T(name), k = seg(t, a, b);
+  if (name === 'MAP1') {
+    const z = lerp(3.4, 3.0, k); mapBase(z, 118, 60);
+    mc.setLineDash([10 / z * 3, 8 / z * 3]); mc.lineWidth = 5; mc.strokeStyle = '#fff'; mc.lineCap = 'round'; const e = path(ROUTE, eo(seg(k, 0.08, 0.8))); mc.setLineDash([]);
+    dot(ROUTE[0], 5, '#fff'); dot(e, 6, '#ffd54a');
+    label('START', -6, -12, 30, '#fff', 'left', z);
+    label('MOROCCO', 150, -18, 44, 'rgba(70,40,10,0.5)', 'center', z);
+    for (let i = 1; i < 7; i++) { const p = ROUTE[i + 1]; if (seg(k, 0.08, 0.8) > (i + 0.6) / 8) { dot(p, 3.4, '#3a2410'); label('DAY ' + i, p[0] + 6, p[1] + 4, 20, '#3a2410', 'left', z); } }
+  } else if (name === 'MAP2') {
+    const z = 4.2; mapBase(z, 112, 62);
+    mc.setLineDash([9, 7]); mc.lineWidth = 4; mc.strokeStyle = 'rgba(255,255,255,0.9)'; path(ROUTE, 1); mc.setLineDash([]);
+    mc.lineWidth = 6; mc.strokeStyle = '#ff3b2f'; mc.lineCap = 'round'; const e = path(LOST.slice(0, 3), eo(k)); dot(e, 6, '#ff3b2f');
+    dot(ROUTE[3], 5, '#fff'); label('STORM', ROUTE[3][0] + 8, ROUTE[3][1] - 6, 26, '#fff', 'left', z);
+    label('RACE ROUTE', 170, 52, 22, 'rgba(255,255,255,0.9)', 'left', z);
+  } else {
+    const z = lerp(4.0, 2.3, eio(seg(k, 0, 0.5))); mapBase(z, lerp(112, 128, eio(seg(k, 0, 0.5))), lerp(70, 165, eio(seg(k, 0, 0.5))));
+    mc.setLineDash([9, 7]); mc.lineWidth = 3.5; mc.strokeStyle = 'rgba(255,255,255,0.9)'; path(ROUTE, 1); mc.setLineDash([]);
+    mc.strokeStyle = 'rgba(60,35,10,0.75)'; mc.lineWidth = 3; mc.setLineDash([18, 6, 4, 6]); mc.beginPath(); mc.moveTo(-200, 150); mc.bezierCurveTo(20, 190, 150, 205, 420, 250); mc.stroke(); mc.setLineDash([]);
+    label('MOROCCO', 10, 120, 40, 'rgba(70,40,10,0.55)', 'left', z); label('ALGERIA', 10, 262, 40, 'rgba(70,40,10,0.55)', 'left', z);
+    const kk = eo(seg(k, 0.05, 0.62)); mc.lineWidth = 6; mc.strokeStyle = '#ff3b2f'; mc.lineCap = 'round'; const e = path(LOST, kk); dot(e, 7, '#ff3b2f');
+    if (kk >= 0.999) { label('FOUND HERE', e[0] + 12, e[1] + 6, 26, '#fff', 'left', z); }
+    dot(ROUTE[8], 5, '#fff'); label('FINISH', ROUTE[8][0] + 8, ROUTE[8][1] + 4, 22, '#fff', 'left', z);
+    mc.setTransform(1, 0, 0, 1, 0, 0);
+    const km = Math.round(291 * kk);
+    mc.textAlign = 'center'; mc.font = "400 250px 'Anton', sans-serif"; mc.lineWidth = 18; mc.strokeStyle = '#000'; mc.lineJoin = 'round'; mc.strokeText(km + ' KM', W / 2, 560); mc.fillStyle = '#fff'; mc.fillText(km + ' KM', W / 2, 560);
+    mc.font = "700 44px 'JetBrains Mono', monospace"; mc.strokeText('OFF COURSE', W / 2, 640); mc.fillStyle = '#ffd54a'; mc.fillText('OFF COURSE', W / 2, 640);
+  }
+  mc.setTransform(1, 0, 0, 1, 0, 0);
+}
+function storm(t) { // blowing sand over the storm shots
+  fc.clearRect(0, 0, W, H);
+  const k = Math.max(seg(t, T('S1')[0] + 0.6, T('S1')[1]) * 0.55, t >= T('S2')[0] && t < T('S2')[1] ? 1 : 0) * (t < T('S2')[1] ? 1 : 0);
+  if (k <= 0) return;
+  fc.fillStyle = `rgba(205,150,85,${0.16 * k})`; fc.fillRect(0, 0, W, H);
+  fc.lineCap = 'round';
+  for (let i = 0; i < 420; i++) {
+    const sp = 2600 + hash(i) * 2600, y0 = hash(i + 100) * (H + 600) - 300, len = 60 + hash(i + 200) * 260;
+    const x = ((hash(i + 300) * (W + 900) + t * sp) % (W + 900)) - 450, y = y0 + (x / W) * 170 + 40 * Math.sin(t * 3 + i);
+    fc.strokeStyle = `rgba(${225 + hash(i + 7) * 30 | 0},${180 + hash(i + 9) * 30 | 0},${120 + hash(i + 11) * 30 | 0},${(0.1 + 0.3 * hash(i + 400)) * k})`; fc.lineWidth = 2 + hash(i + 500) * 7;
+    fc.beginPath(); fc.moveTo(x, y); fc.lineTo(x + len, y + len * 0.16); fc.stroke();
+  }
+}
+
+// ---------- captions ----------
+const el = {}; ['plate', 'map', 'fx', 'cap', 'chip', 'chipT', 'big', 'end', 'fade'].forEach(k => el[k] = $(k));
+function show(e, o, tf) { e.style.opacity = o.toFixed(3); e.style.visibility = o > 0.004 ? 'visible' : 'hidden'; if (tf !== undefined) e.style.transform = tf; }
+let TL = null, CHUNKS = [];
+function buildChunks() {
+  const words = []; TL.lines.forEach(l => l.words.forEach((w, wi) => words.push({ w: w[0], a: w[1], b: w[2], end: wi === l.words.length - 1, lineEnd: l.end })));
+  let cur = [];
+  words.forEach((w, i) => { cur.push(w); if (cur.length === 3 || /[.,?!]$/.test(w.w) || w.end || (words[i + 1] && words[i + 1].w.length > 9 && cur.length >= 2)) { CHUNKS.push(cur); cur = []; } });
+  if (cur.length) CHUNKS.push(cur);
+  CHUNKS.forEach((c, i) => { c.a = c[0].a - 0.04; const nx = CHUNKS[i + 1]; c.b = c[c.length - 1].end ? c[c.length - 1].lineEnd + 0.2 : (nx ? nx[0].a - 0.04 : 99); if (nx && c.b > nx[0].a - 0.04) c.b = nx[0].a - 0.04; });
+}
+function captions(t) {
+  const c = CHUNKS.find(c => t >= c.a && t < c.b);
+  if (!c) { show(el.cap, 0); return; }
+  el.cap.innerHTML = c.map((w, i) => `<span class="${t >= w.a - 0.03 && (i === c.length - 1 || t < c[i + 1].a - 0.03) ? 'on' : ''}">${w.w.replace(/[,.]$/, '').replace(/</g, '')}</span>`).join(' ');
+  show(el.cap, 1, `scale(${(0.86 + 0.14 * eo(seg(t, c.a, c.a + 0.12))).toFixed(3)})`);
+}
+const CHIPS = [['R1', 'MOROCCO · APRIL 1994'], ['R2', 'MAURO PROSPERI · POLICE OFFICER'], ['S1', 'DAY 4'], ['A1', 'ALONE'], ['M1', 'AN ABANDONED SHRINE'], ['D1', 'DAY 6'], ['D2', 'DAY 8'], ['N1', 'DAY 9'], ['K1', '16 KG LIGHTER']];
+
+let plateKey = '';
+function frame(t) {
+  const f = Math.min(TOTAL - 1, Math.round(t * FPS)), s = SEQ.find(s => f >= s[2] && f < s[2] + s[1]) || SEQ[SEQ.length - 1];
+  let wait = Promise.resolve();
+  if (s[0].startsWith('MAP')) { show(el.plate, 0); show(el.map, 1); drawMap(s[0], t); }
+  else {
+    show(el.map, 0); show(el.plate, 1);
+    const src = `out/plates/${s[0]}/f${String(f - s[2] + 1).padStart(4, '0')}.png`;
+    if (src !== plateKey) { plateKey = src; el.plate.src = src; wait = el.plate.decode().catch(() => {}); }
+  }
+  storm(t);
+  const chip = CHIPS.find(c => t >= T(c[0])[0] + 0.15 && t < T(c[0])[1] - 0.05);
+  if (chip) { el.chipT.textContent = chip[1]; show(el.chip, win(t, T(chip[0])[0] + 0.15, T(chip[0])[1] - 0.05, 0.2, 0.2), `translateY(${(-14 * (1 - eo(seg(t, T(chip[0])[0] + 0.15, T(chip[0])[0] + 0.5)))).toFixed(1)}px)`); } else show(el.chip, 0);
+  const p1 = T('P1'); el.big.textContent = '1998'; show(el.big, win(t, p1[0] + 0.1, p1[0] + 2.4, 0.12, 0.3), `scale(${(1 + 0.5 * (1 - eo(seg(t, p1[0] + 0.1, p1[0] + 0.45)))).toFixed(3)})`);
+  const p2 = T('P2'); show(el.end, seg(t, p2[0] + 0.9, p2[0] + 1.5));
+  show(el.fade, Math.max(1 - seg(t, 0, 0.12), seg(t, window.DURATION - 0.55, window.DURATION - 0.05)));
+  captions(Math.min(t, 55.0));
+  return wait;
+}
+window.ready = Promise.all([fetch('vo/timeline.json').then(r => r.json()), document.fonts.load('700 40px "Barlow Condensed"'), document.fonts.load('600 40px "Barlow Condensed"'), document.fonts.load('700 40px "JetBrains Mono"'), document.fonts.load('40px Anton')]).then(r => { TL = r[0]; buildChunks(); return frame(0); }).then(() => true);
+window.renderFrame = frame;
+if (!/capture/.test(location.search)) {
+  const stage = $('stage'); let TT = 0, last = 0;
+  const fit = () => { const k = Math.min(innerWidth / W, innerHeight / H); stage.style.transform = `translate(${(innerWidth - W * k) / 2}px,${(innerHeight - H * k) / 2}px) scale(${k})`; };
+  addEventListener('resize', fit); fit();
+  window.ready.then(() => requestAnimationFrame(function loop(now) { TT += Math.min(0.1, (now - last) / 1000 || 0); if (TT >= window.DURATION) TT = 0; frame(TT); last = now; requestAnimationFrame(loop); }));
+}
+</script>
+</body>
+</html>
