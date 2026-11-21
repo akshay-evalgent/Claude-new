@@ -25,6 +25,7 @@ Then assemble with ffmpeg (see the commit history for the exact command): the fr
 
 ## Known limits
 
-- The retargeter matches bone directions and world rotations; it has no foot IK, so feet can slide a little.
+- The retargeter transfers motion changes, solves the legs with IK and locks the lowest foot to the ground; feet can still slide a little because there's no per-step foot pinning.
+- Cameras must sit at the HDRI's capture height (about 1.6 m here) or the person looks the wrong size in the street; and they may only pan, since a photograph has no parallax.
 - MakeHuman faces are good at a distance and in motion, less so in tight close-ups.
 - CPU rendering is slow: about 20 s per 648x1152 frame here. A GPU is 10-30x faster.

@@ -19,10 +19,11 @@ while i < len(args):
     else: opt[k] = True; i += 1
 SHOT = opt.get('shot', 'S1')
 FPS = 24
-SHOTS = {   # clip, frames, where he starts, which way he walks (degrees; 0 = toward -Y)
-    'S1': dict(clip='07_05', frames=96, origin=(0.35, 9.0, 0), heading=0),
-    'S2': dict(clip='07_05', frames=96, origin=(-3.2, 2.2, 0), heading=90),
-    'S3': dict(clip='07_05', frames=72, origin=(-1.4, 0.0, 0), heading=90),
+SHOTS = {   # clip, frames, where he starts, which way he walks (degrees; 0 = toward -Y, the camera's side of the street)
+    'S1': dict(clip='35_01', frames=62, origin=(0.3, 13.0, 0), heading=0),      # toward camera down the street, sun behind him
+    'S2': dict(clip='35_01', frames=62, origin=(-2.6, 2.4, 0), heading=90),     # crossing in front of the low sun
+    'S3': dict(clip='39_02', frames=72, origin=(0.2, 1.2, 0), heading=180),     # walking away into the sun
+    'S4': dict(clip='39_02', frames=72, origin=(0.5, 8.5, 0), heading=0),       # waist-up, closer, rim-lit
 }[SHOT]
 
 bpy.ops.wm.read_factory_settings(use_empty=True)
@@ -51,8 +52,8 @@ bg.inputs['Strength'].default_value = 1.0
 bpy.ops.mesh.primitive_plane_add(size=80, location=(0, 0, 0)); ground = bpy.context.object; ground.is_shadow_catcher = True
 
 # ---------- the character
-h = human.build({'gender': 1.0, 'age': 0.58, 'muscle': 0.62, 'weight': 0.52, 'height': 0.6, 'race': 'african', 'skin': 'middleage_african_male',
-                 'hair': 'short02', 'clothes': ['male_casualsuit04', 'shoes02']})
+h = human.build({'gender': 1.0, 'age': 0.58, 'muscle': 0.62, 'weight': 0.52, 'height': 0.45, 'race': 'african', 'skin': 'middleage_african_male',
+                 'hair': 'short01', 'clothes': ['male_casualsuit05', 'shoes02']})
 human.retarget_bvh(h['rig'], os.path.join(KIT, 'mocap', SHOTS['clip'] + '.bvh'), frames=SHOTS['frames'], fps=FPS,
                    origin=SHOTS['origin'], heading_deg=SHOTS['heading'])
 rig = h['rig']
@@ -65,24 +66,21 @@ def head(f):
 cam_data = bpy.data.cameras.new('Cam'); cam_data.sensor_width = 36; cam_data.clip_start = 0.05; cam_data.clip_end = 500
 cam = bpy.data.objects.new('Cam', cam_data); scene.collection.objects.link(cam); scene.camera = cam
 cam_data.dof.use_dof = True
-if SHOT == 'S1':      # straight down the street, low, the sun behind him
-    cam.location = (0.0, 0.0, 1.05); cam_data.lens = 55; cam_data.dof.aperture_fstop = 2.0
-    for f in range(1, SHOTS['frames'] + 1, 4):
-        p = hip(f); tgt = p + Vector((0, 0, 0.15))
-        cam.rotation_euler = (tgt - cam.location).to_track_quat('-Z', 'Y').to_euler(); cam.keyframe_insert('rotation_euler', frame=f)
-        cam_data.dof.focus_distance = (p - cam.location).length; cam_data.dof.keyframe_insert('focus_distance', frame=f)
-elif SHOT == 'S2':    # from the kerb, panning as he crosses in front of the low sun
-    cam.location = (0.6, -2.4, 1.45); cam_data.lens = 40; cam_data.dof.aperture_fstop = 2.8
-    for f in range(1, SHOTS['frames'] + 1, 4):
-        p = hip(f); tgt = p + Vector((0.0, 0, 0.3))
-        cam.rotation_euler = (tgt - cam.location).to_track_quat('-Z', 'Y').to_euler(); cam.keyframe_insert('rotation_euler', frame=f)
-        cam_data.dof.focus_distance = (p - cam.location).length; cam_data.dof.keyframe_insert('focus_distance', frame=f)
-else:                 # at ground level: his shoes step past, shadows long on the asphalt
-    cam.location = (0.2, -1.6, 0.12); cam_data.lens = 35; cam_data.dof.aperture_fstop = 2.0
-    for f in range(1, SHOTS['frames'] + 1, 4):
-        p = hip(f); tgt = Vector((p.x, p.y, 0.25))
-        cam.rotation_euler = (tgt - cam.location).to_track_quat('-Z', 'Y').to_euler(); cam.keyframe_insert('rotation_euler', frame=f)
-        cam_data.dof.focus_distance = (tgt - cam.location).length; cam_data.dof.keyframe_insert('focus_distance', frame=f)
+# Every camera sits at 1.6 m, the height the street photo was taken from, so the horizon and the photographed
+# ground agree with the 3D ground and he stands at the right size in the street.
+EYE = 1.6
+CAMS = {   # position, lens, f-stop, aim offset from his hips
+    'S1': ((0.0, 0.0, EYE), 100, 2.0, (0, 0, 0.25)),
+    'S2': ((0.6, -2.6, EYE), 40, 2.8, (0, 0, 0.3)),
+    'S3': ((0.0, -1.2, EYE), 35, 2.8, (0, 0, 0.1)),
+    'S4': ((1.9, 1.6, EYE), 70, 2.0, (0, 0, 0.35)),
+}
+pos, lens, fstop, aim = CAMS[SHOT]
+cam.location = pos; cam_data.lens = lens; cam_data.dof.aperture_fstop = fstop
+for f in range(1, SHOTS['frames'] + 1, 3):
+    p = hip(f); tgt = p + Vector(aim)
+    cam.rotation_euler = (tgt - cam.location).to_track_quat('-Z', 'Y').to_euler(); cam.keyframe_insert('rotation_euler', frame=f)
+    cam_data.dof.focus_distance = (p + Vector((0, 0, 0.3)) - cam.location).length; cam_data.dof.keyframe_insert('focus_distance', frame=f)
 for o in (cam, cam_data):
     for fc in o.animation_data.action.fcurves:
         for kp in fc.keyframe_points: kp.interpolation = 'BEZIER'

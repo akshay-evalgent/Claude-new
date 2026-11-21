@@ -43,6 +43,14 @@ def build(spec):
     if spec.get('skin'):
         HumanService.set_character_skin(_asset('skins', spec['skin'], 'mhmat'), base, skin_type='ENHANCED_SSS')
     HumanService.add_mhclo_asset(os.path.join(DATA, 'eyes', 'high-poly', 'high-poly.mhclo'), base, asset_type='Eyes', material_type='PROCEDURAL_EYES')
+    iris = spec.get('iris', (0.09, 0.045, 0.02))                       # dark brown unless asked otherwise
+    for o in bpy.data.objects:
+        if o.type == 'MESH' and o.name.endswith('high-poly'):
+            for m in o.data.materials:
+                for n in (m.node_tree.nodes if m and m.use_nodes else []):
+                    for inp in n.inputs:
+                        if 'iris' in inp.name.lower() and 'color' in inp.name.lower() and inp.type == 'RGBA':
+                            inp.default_value = (*iris, 1)
     for kind, key, default in (('eyebrows', 'eyebrows', 'eyebrow001'), ('eyelashes', 'eyelashes', 'eyelashes01')):
         if spec.get(key, default):
             HumanService.add_mhclo_asset(_asset(kind, spec.get(key, default), 'mhclo'), base, asset_type=kind.capitalize())
@@ -64,9 +72,12 @@ def retarget_bvh(rig, bvh_path, *, frame_start=1, frames=96, fps=24, src_start=0
                  origin=(0, 0, 0), heading_deg=0.0, keep_source=False, ground_lock=True):
     """Bakes a CMU-style BVH clip onto an MPFB 'cmu_mb' rig.
 
-    Each bone's world rotation change from the clip's T-pose rest is applied to the target bone after first
-    swinging the target into the same T-pose, so arm and leg angles match even though MakeHuman rests in an A-pose.
-    The hips travel with the clip, scaled to the character's leg length, turned by heading_deg and moved to origin."""
+    Each bone takes the clip's world rotation *change* from its rest. Arms and legs are first swung into the clip's
+    T-pose (MakeHuman rests in an A-pose); spine, collarbones, neck, head and feet keep their own anatomy. The legs are
+    then solved with two-bone IK so each ankle lands where the actor's did relative to his pelvis, scaled to this body,
+    which stops the feet crossing when the actor's hips are wider. The hips travel with the clip, scaled to the
+    character's leg length, turned so heading_deg=0 walks toward -Y, moved to origin, and kept on the ground.
+    Pick clips with relaxed arms: CMU 35_01 and 39_02 walk naturally; some subjects hold their arms oddly."""
     before = set(bpy.data.objects)
     bpy.ops.import_anim.bvh(filepath=bvh_path, global_scale=1.0, update_scene_fps=False, update_scene_duration=False)
     src = [o for o in bpy.data.objects if o not in before and o.type == 'ARMATURE'][0]
@@ -78,15 +89,23 @@ def retarget_bvh(rig, bvh_path, *, frame_start=1, frames=96, fps=24, src_start=0
     # rest data
     S_rest = {n: (src.matrix_world @ src.data.bones[n].matrix_local).to_quaternion() for n in names}
     T_rest = {b.name: (rig.matrix_world @ b.matrix_local).to_quaternion() for b in rig.data.bones}
+    # Only the limbs differ by *pose* (MakeHuman rests in an A-pose, the clip in a T-pose), so only they are swung
+    # to the clip's rest direction. Spine, collarbones, neck, head and feet differ by *anatomy*: forcing those to the
+    # actor's directions hunches the shoulders and tips the torso back, so they take the motion as a change only.
+    LIMBS = {f'{s}{b}' for s in ('Left', 'Right') for b in ('Arm', 'ForeArm', 'Hand', 'UpLeg', 'Leg')}
     T_tpose = {}
     for n in names:
-        swing = _bone_dir(rig, rig.data.bones[n]).rotation_difference(_bone_dir(src, src.data.bones[n]))
+        swing = _bone_dir(rig, rig.data.bones[n]).rotation_difference(_bone_dir(src, src.data.bones[n])) if n in LIMBS else Quaternion()
         T_tpose[n] = swing @ T_rest[n]
     hip_src_rest = (src.matrix_world @ src.data.bones['Hips'].head_local)
     hip_dst_rest = (rig.matrix_world @ rig.data.bones['Hips'].head_local)
     leg = lambda arm: (arm.matrix_world @ arm.data.bones['LeftUpLeg'].head_local - arm.matrix_world @ arm.data.bones['LeftFoot'].head_local).length
     scale = leg(rig) / leg(src)
-    H = Quaternion((0, 0, 1), math.radians(heading_deg))
+    # face every clip the same way: heading 0 means walking toward -Y, whatever direction the actor walked
+    scene.frame_set(int(f0 + src_start * src_fps)); a_ = src.matrix_world @ src.pose.bones['Hips'].head
+    scene.frame_set(int(min(f1, f0 + (src_start + frames / fps * speed) * src_fps))); b_ = src.matrix_world @ src.pose.bones['Hips'].head
+    travel = math.atan2(b_.y - a_.y, b_.x - a_.x)
+    H = Quaternion((0, 0, 1), math.radians(heading_deg)) @ Quaternion((0, 0, 1), -math.pi / 2 - travel)
     rig_q = rig.matrix_world.to_quaternion().inverted()
     for pb in rig.pose.bones:
         pb.rotation_mode = 'QUATERNION'
@@ -120,7 +139,34 @@ def retarget_bvh(rig, bvh_path, *, frame_start=1, frames=96, fps=24, src_start=0
                 loc_w = Vector(origin) + Vector((d.x, d.y, 0)) + Vector((0, 0, hip_dst_rest.z + d.z))
                 m = rot.copy(); m.translation = rig.matrix_world.inverted() @ loc_w
             M[b.name] = m
-            local = (rest_rel.inverted() @ M[b.parent.name].inverted() @ m) if b.parent else (R_b.inverted() @ m)
+        # Legs: put each ankle where the actor's ankle is relative to his pelvis (scaled to this body), with the knee
+        # bending toward the actor's knee. Copying thigh angles alone crosses the feet, because the actor's hips are wider.
+        S_pelvis = src.matrix_world.to_quaternion() @ src.pose.bones['Hips'].matrix.to_quaternion()
+        T_pelvis = M['Hips'].to_quaternion()
+        to_t = lambda v: T_pelvis @ (rig_q @ H @ S_pelvis @ (S_rest['Hips'].inverted() @ T_rest['Hips']).inverted() @ S_pelvis.inverted()).inverted() @ v if False else (rig_q @ H) @ v
+        p_s = src.matrix_world @ src.pose.bones['Hips'].head
+        for side in ('Left', 'Right'):
+            up, lo, ft = side + 'UpLeg', side + 'Leg', side + 'Foot'
+            if up not in M or ft not in M: continue
+            hip_s = src.matrix_world @ src.pose.bones[up].head; knee_s = src.matrix_world @ src.pose.bones[lo].head; ank_s = src.matrix_world @ src.pose.bones[ft].head
+            hip_t = M[up].translation
+            ank_t = M['Hips'].translation + to_t(ank_s - p_s) * scale
+            a = rig.data.bones[up].length; bl = rig.data.bones[lo].length
+            v = ank_t - hip_t; d = max(abs(a - bl) + 1e-4, min(a + bl - 1e-4, v.length)); axis = v.normalized()
+            pole = to_t(knee_s - hip_s); pole = (pole - axis * pole.dot(axis)).normalized()
+            x = (a * a - bl * bl + d * d) / (2 * d); hgt = math.sqrt(max(0.0, a * a - x * x))
+            knee_t = hip_t + axis * x + pole * hgt; ank_t = hip_t + axis * d
+            for name, start, end in ((up, hip_t, knee_t), (lo, knee_t, ank_t)):
+                cur = M[name].to_3x3().col[1].normalized()
+                q = cur.rotation_difference((end - start).normalized()) @ M[name].to_quaternion()
+                m = q.to_matrix().to_4x4(); m.translation = start; M[name] = m
+            m = M[ft].to_quaternion().to_matrix().to_4x4(); m.translation = ank_t; M[ft] = m
+            for child in rig.data.bones[ft].children_recursive:          # toes follow the moved foot
+                rr = child.parent.matrix_local.inverted() @ child.matrix_local
+                m = M[child.name].to_quaternion().to_matrix().to_4x4(); m.translation = (M[child.parent.name] @ rr).translation; M[child.name] = m
+        for b in order:
+            R_b = b.matrix_local
+            local = ((b.parent.matrix_local.inverted() @ R_b).inverted() @ M[b.parent.name].inverted() @ M[b.name]) if b.parent else (R_b.inverted() @ M[b.name])
             pb = rig.pose.bones[b.name]
             pb.rotation_quaternion = local.to_quaternion()
             pb.keyframe_insert('rotation_quaternion', frame=frame_start + i)

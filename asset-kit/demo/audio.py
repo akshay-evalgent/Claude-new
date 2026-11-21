@@ -3,7 +3,7 @@ import numpy as np, wave, json, os, soundfile as sf
 
 HERE = os.path.dirname(os.path.abspath(__file__)); KIT = os.path.dirname(HERE)
 SR, DUR = 48000, 13.5
-SHOTS = [('S1', 0.0, 4.0, 0.35), ('S2', 4.0, 4.0, 0.55), ('S3', 8.0, 3.0, 1.0)]   # name, start, length, footstep loudness
+SHOTS = [('S1', 0.0, 62 / 24, 0.3), ('S2', 62 / 24, 62 / 24, 0.6), ('S3', 124 / 24, 3.0, 0.5), ('S4', 124 / 24 + 3.0, 3.0, 0.7)]   # name, start, length, footstep loudness
 N = int(SR * DUR); t = np.arange(N) / SR; mix = np.zeros((N, 2)); rs = np.random.RandomState(4)
 
 
