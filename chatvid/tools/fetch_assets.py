@@ -305,7 +305,7 @@ def episode_emoji():
             for x in v.values():
                 walk(x)
 
-    for p in glob.glob(os.path.join(ROOT, "episodes", "*.json")):
+    for p in glob.glob(os.path.join(ROOT, "episodes", "*.json")) + glob.glob(os.path.join(ROOT, "cast", "*.json")):
         walk(json.load(open(p, encoding="utf-8")))
     return found
 

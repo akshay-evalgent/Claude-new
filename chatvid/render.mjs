@@ -22,6 +22,22 @@ const opt = (k, d) => { const i = args.indexOf('--' + k); return i >= 0 ? args[i
 const epPath = args.find((a) => a.endsWith('.json'));
 if (!epPath) { console.error('usage: node chatvid/render.mjs <episode.json> [--out file.mp4] [--fps 30] [--scale 1] [--stills t1,t2]'); process.exit(1); }
 const ep = JSON.parse(fs.readFileSync(epPath, 'utf8'));
+// "contact": "mom" picks a recurring character from cast/cast.json; a photo in cast/photos/<id>.jpg
+// is used as the avatar (copied next to the other media), otherwise the character's emoji
+if (typeof ep.contact === 'string') {
+  const cast = JSON.parse(fs.readFileSync(path.join(HERE, 'cast', 'cast.json'), 'utf8'));
+  const c = cast[ep.contact];
+  if (!c) { console.error(`unknown cast member "${ep.contact}" (see chatvid/cast/cast.json)`); process.exit(1); }
+  const photo = path.join(HERE, 'cast', 'photos', `${ep.contact}.jpg`);
+  let avatar = { emoji: c.emoji, bg: c.bg };
+  if (fs.existsSync(photo)) {
+    const dest = path.join(HERE, 'assets', 'media', `cast-${ep.contact}.jpg`);
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+    fs.copyFileSync(photo, dest);
+    avatar = { media: `cast-${ep.contact}` };
+  }
+  ep.contact = { name: c.contact, avatar };
+}
 if (opt('interface')) ep.interface = opt('interface');
 // documentary episodes: clips and narration timings come from tools/docu_prepare.py
 const baseSlug = path.basename(epPath, '.json');

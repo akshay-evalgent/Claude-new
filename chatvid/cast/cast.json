@@ -1,0 +1,239 @@
+{
+ "dad": {
+  "name": "Greg",
+  "role": "Dad",
+  "contact": "Dad (Driveway Police)🚨",
+  "emoji": "🧔‍♂️",
+  "bg": "#c7d3e0",
+  "style": "lowercase, no punctuation, short. Petty about the house, lawn and money.",
+  "peak": "ALL CAPS comparisons: I ASKED FOR A ___ NOT A ___",
+  "lines": [
+   "i know what i saw",
+   "who is paying for this",
+   "ITS A ___ NOT A ___"
+  ],
+  "premises": [
+   "house and yard jobs that grow (snow, dog walker, hot tub, hedge maze, painter, roof)"
+  ],
+  "photo": "Casual smartphone photo of a made-up person (not a real or famous person), American dad in his mid 50s, short gray hair, gray mustache, red flannel shirt, holding a coffee mug in his driveway, slightly grumpy."
+ },
+ "mom": {
+  "name": "Linda",
+  "role": "Mom",
+  "contact": "Mom 🌷 (read receipts ON)",
+  "emoji": "👩",
+  "bg": "#f3d6e0",
+  "style": "Perfect punctuation and capitals. Signs off \"- Mom\". Uses 👍 and 🙂 passive-aggressively. Replies \"K.\" when upset.",
+  "peak": "One huge caps line after calm ones: WHO RAISED YOU. Then she answers herself: I did. I'm calling your father.",
+  "lines": [
+   "Please call me.",
+   "K.",
+   "I'm not mad. I'm disappointed. 🙂"
+  ],
+  "premises": [
+   "the kitchen backsplash guy (backsplash → whole kitchen → indoor waterfall)",
+   "her garden gnome order (1 gnome → 40 → a gnome village with a mayor)",
+   "the house cleaner (\"deep clean\" → everything pressure-washed, including the couch)"
+  ],
+  "photo": "Casual smartphone photo of a made-up person (not a real or famous person), friendly American mom in her early 50s, shoulder-length auburn hair, cardigan, standing in a bright kitchen holding a mug, warm smile."
+ },
+ "gf": {
+  "name": "Maya",
+  "role": "Girlfriend",
+  "contact": "Maya 💕",
+  "emoji": "💕",
+  "bg": "#ffd9c2",
+  "style": "Fast double texts, \"babe\", \"??\", \"😐\", voice-note threats (\"im calling you\").",
+  "peak": "CAPS with your full name: JORDAN. ANSWER. ME.",
+  "lines": [
+   "babe",
+   "??",
+   "we are not doing this again",
+   "send a pic rn"
+  ],
+  "premises": [
+   "\"i got us a small pet\" (hamster → alpaca → giraffe on the balcony)",
+   "her birthday \"small dinner\" (table for 2 → a mariachi band → a parade)",
+   "\"a few plants for the apartment\" (one fern → a jungle → a tree through the ceiling)"
+  ],
+  "photo": "Casual smartphone photo of a made-up person (not a real or famous person), woman in her mid 20s, curly dark hair, oversized hoodie, selfie in a cozy apartment, unimpressed expression."
+ },
+ "bestie": {
+  "name": "Jaden",
+  "role": "Best friend",
+  "contact": "Jaden (do NOT lend money)",
+  "emoji": "🧑🏾",
+  "bg": "#d4e6c3",
+  "style": "All lowercase slang: \"bro\", \"nah\", \"💀\", \"ong\".",
+  "peak": "Repeating one word in caps: BRO BRO BRO, NAHHH, WHAT DID YOU DO TO MY CAR",
+  "lines": [
+   "bro",
+   "nah 💀",
+   "on god",
+   "im outside"
+  ],
+  "premises": [
+   "you borrowed his car for a car wash (wash → wrap → monster truck)",
+   "his birthday \"a few people\" (10 friends → a crowd → a festival stage)",
+   "you're watching his cat (1 cat → the neighbours' cats → a cat café)"
+  ],
+  "photo": "Casual smartphone photo of a made-up person (not a real or famous person), young man in his early 20s, short twists, streetwear, standing next to an old silver hatchback in a parking lot, big grin."
+ },
+ "friend": {
+  "name": "Priya",
+  "role": "Roommate / friend",
+  "contact": "Priya (roommate) 🧋",
+  "emoji": "👩🏽",
+  "bg": "#e6dcf5",
+  "style": "Organised and polite, bullet-point texts, the chore chart, \"no worries!!\" until there are worries.",
+  "peak": "Splits the bill out loud: I AM NOT SPLITTING A ___ WITH YOU",
+  "lines": [
+   "no worries!!",
+   "did you check the chore chart",
+   "adding this to the group chat"
+  ],
+  "premises": [
+   "the plumber fixing \"a small leak\" (a wrench → a pipe wall → an indoor pool)",
+   "\"I hired someone to clean the fridge\" (1 cleaner → a hazmat team → a decontamination tent)"
+  ],
+  "photo": "Casual smartphone photo of a made-up person (not a real or famous person), woman in her mid 20s, long dark hair in a claw clip, glasses, sitting at a kitchen table with a laptop and bubble tea, friendly but tired."
+ },
+ "boss": {
+  "name": "Gary",
+  "role": "Boss",
+  "contact": "Gary (Boss) 👔",
+  "emoji": "👔",
+  "bg": "#d9dde3",
+  "style": "Corporate speak: \"per my last message\", \"let's circle back\", \"quick question\", full stops.",
+  "peak": "Switches to HR language in caps: THIS IS NOW AN HR MATTER",
+  "lines": [
+   "Quick question.",
+   "Per my last message.",
+   "Let's circle back.",
+   "Who approved this"
+  ],
+  "premises": [
+   "the job site (Halo's #1 shape: a pool dug too deep → mineshaft)",
+   "\"I ordered lunch for the team\" (pizzas → a food truck → a full buffet with an ice sculpture of Gary)",
+   "\"facilities upgraded the coffee machine\" (espresso machine → a café counter → a barista team)"
+  ],
+  "photo": "Casual smartphone photo of a made-up person (not a real or famous person), office manager in his late 40s, receding hairline, tie and short-sleeve dress shirt, in an office hallway, forced smile."
+ },
+ "doctor": {
+  "name": "Dr. Okafor",
+  "role": "Doctor",
+  "contact": "Dr. Okafor 🩺",
+  "emoji": "👩🏿‍⚕️",
+  "bg": "#d6eef0",
+  "style": "Calm, clinical, full sentences, medical jargon. Gets less clinical with each drop.",
+  "peak": "Drops the jargon: THAT IS NOT IN ANY TEXTBOOK",
+  "lines": [
+   "Please don't do that.",
+   "That is not medically advised.",
+   "Who is your emergency contact"
+  ],
+  "premises": [
+   "the nurse \"adjusting\" your arm cast (small cast → full body → a cast you can live in)",
+   "the waiting room's \"therapy dog\" (a dog → a pony → a petting zoo)"
+  ],
+  "photo": "Casual smartphone photo of a made-up person (not a real or famous person), doctor in her 40s, short natural hair, white coat and stethoscope, standing in a clinic corridor, calm professional expression.",
+  "note": "Keep it physically absurd, never real medical advice or real conditions."
+ },
+ "agent": {
+  "name": "Agent Miller",
+  "role": "\"My FBI agent\" (the webcam meme)",
+  "contact": "Agent Miller 🕶️",
+  "emoji": "🕵️",
+  "bg": "#cfd4da",
+  "style": "Terse and official, then quietly invested in your life (\"eat something\").",
+  "peak": "Panics about his job: I AM GOING TO HAVE TO EXPLAIN THIS TO MY SUPERVISOR",
+  "lines": [
+   "I can see that.",
+   "Go to bed.",
+   "This is going in the report."
+  ],
+  "premises": [
+   "your garage \"science project\" (cardboard robot → giant robot → it waves at his van)",
+   "you're \"just organising\" the basement (shelves → a maze → a bowling alley)"
+  ],
+  "photo": "Casual smartphone photo of a made-up person (not a real or famous person), man in his 40s, plain dark suit and tie, earpiece, sunglasses pushed up, sitting in the front seat of a parked van with a coffee, tired expression, no badges or logos.",
+  "note": "Always fictional: no real agency logos, badges, seals or real cases, and no weapons, bombs or threats. The joke is the bored watcher, not the agency."
+ },
+ "permit": {
+  "name": "Ms. Alvarez",
+  "role": "City permit office",
+  "contact": "City Permit Office 🏛️",
+  "emoji": "🏛️",
+  "bg": "#e3dccb",
+  "style": "Form numbers and polite bureaucracy: \"Form 27-B\", \"within 10 business days\".",
+  "peak": "Loses the form voice: THERE IS NO FORM FOR THIS",
+  "lines": [
+   "Do you have a permit for that?",
+   "Please submit Form 27-B.",
+   "Is that load-bearing"
+  ],
+  "premises": [
+   "crossover: she follows up on Dad's lazy river and snow mountain",
+   "\"a small shed\" (shed → a two-story shed → a shed with its own address)"
+  ],
+  "photo": "Casual smartphone photo of a made-up person (not a real or famous person), municipal clerk in her 50s, reading glasses on a chain, blazer, sitting behind a service counter with stacks of paper, unimpressed.",
+  "note": "A made-up town office, never a real government body."
+ },
+ "landlord": {
+  "name": "Mr. Kim",
+  "role": "Landlord",
+  "contact": "Mr. Kim (Landlord) 🔑",
+  "emoji": "🔑",
+  "bg": "#e8e1d0",
+  "style": "Short and suspicious, cares about the deposit: \"no nails\", \"deposit\".",
+  "peak": "THE DEPOSIT, typed over and over",
+  "lines": [
+   "No nails.",
+   "Remember the deposit.",
+   "Who is that"
+  ],
+  "premises": [
+   "\"i hung one small picture\" (a frame → a mural → a climbing wall)",
+   "\"the AC guy is here\" (window unit → a rooftop tower → snow indoors)"
+  ],
+  "photo": "Casual smartphone photo of a made-up person (not a real or famous person), landlord in his 60s, neat gray hair, zip-up windbreaker, holding a ring of keys in an apartment hallway, suspicious squint."
+ },
+ "grandma": {
+  "name": "Grandma Rosa",
+  "role": "Grandma",
+  "contact": "Grandma Rosa 👵",
+  "emoji": "👵",
+  "bg": "#f1e3c8",
+  "style": "TYPES IN ALL CAPS BY ACCIDENT FROM THE START and signs off \"LOVE GRANDMA\". She LOVES every escalation.",
+  "peak": "The reverse: she gets more excited, not angry. CAN I RIDE IT. BRING IT TO CHURCH",
+  "lines": [
+   "WHO IS THIS",
+   "LOVE GRANDMA",
+   "IS THIS THE FACEBOOK"
+  ],
+  "premises": [
+   "anything that makes Dad or Mom angry, sent to Grandma instead: she wants in",
+   "\"we're fixing your porch\" (a step → a porch → a porch with a stage for her bingo)"
+  ],
+  "photo": "Casual smartphone photo of a made-up person (not a real or famous person), grandmother in her late 70s, short white curls, floral blouse and pearls, sitting in a armchair holding a phone very close to her face."
+ },
+ "neighbor": {
+  "name": "Steve",
+  "role": "Next-door neighbour (Dad's rival)",
+  "contact": "Steve Next Door 🙄",
+  "emoji": "🧔",
+  "bg": "#dfe6d8",
+  "style": "Smug and petty, the HOA rulebook, \"just a friendly reminder\".",
+  "peak": "CAPS about property lines: THAT IS ON MY SIDE OF THE FENCE",
+  "lines": [
+   "Just a friendly reminder.",
+   "Tell your father.",
+   "I'm calling the HOA."
+  ],
+  "premises": [
+   "crossover: the snow mountain blocks his house (\"I CANT SEE OUT OF MY WINDOWS\")",
+   "\"we're building a small fence\" (fence → a wall → a castle with a moat)"
+  ],
+  "photo": "Casual smartphone photo of a made-up person (not a real or famous person), suburban man in his 40s, polo shirt tucked into khakis, sunglasses on his head, standing at a fence holding a hedge trimmer, smug smile."
+ }
+}
