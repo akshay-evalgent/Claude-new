@@ -8,7 +8,7 @@ const st = (fill: string, w = LW) => ({ fill, stroke: OUT, strokeWidth: w, strok
 export type PropName =
   | "phone" | "cash" | "cashStack" | "coin" | "moneyBag" | "sign" | "briefcase" | "laptop" | "cup" | "ticket"
   | "paper" | "chart" | "magnifier" | "gamepad" | "lemon" | "trophy" | "calculator" | "pen" | "bell" | "megaphone"
-  | "rocket" | "houseIcon" | "piggy" | "card" | "receipt" | "key";
+  | "rocket" | "houseIcon" | "piggy" | "card" | "receipt" | "key" | "goldBar" | "shield" | "vault" | "car";
 
 export const Prop: React.FC<{ name: PropName; label?: string; color?: string }> = ({ name, label, color }) => {
   switch (name) {
@@ -62,6 +62,14 @@ export const Prop: React.FC<{ name: PropName; label?: string; color?: string }> 
       return <g transform="rotate(-10)"><rect x={-56} y={-76} width={112} height={72} rx={9} {...st(color ?? K.navy)} /><rect x={-44} y={-62} width={22} height={16} rx={3} fill={K.gold} /><path d="M -44 -24 L 30 -24" stroke={K.white} strokeWidth={5} strokeLinecap="round" opacity={0.7} /></g>;
     case "receipt":
       return <g><path d="M -36 -130 L 36 -130 L 36 0 L 28 -8 L 20 0 L 12 -8 L 4 0 L -4 -8 L -12 0 L -20 -8 L -28 0 L -36 -8 Z" {...st(K.white)} />{[0, 1, 2, 3].map((i) => <path key={i} d={`M -24 ${-110 + i * 20} L 24 ${-110 + i * 20}`} stroke="#9AA0A8" strokeWidth={4} />)}</g>;
+    case "goldBar":
+      return <g><path d="M -60 -10 L -44 -50 L 44 -50 L 60 -10 Z" {...st(K.gold)} /><path d="M -44 -50 L -36 -40 L 36 -40 L 44 -50" fill="none" stroke={OUT} strokeWidth={3} opacity={0.5} /><path d="M -60 -10 L 60 -10 L 60 0 L -60 0 Z" {...st("#C8952F")} /></g>;
+    case "shield":
+      return <g><path d="M 0 -200 L 120 -160 C 120 -60, 80 -20, 0 0 C -80 -20, -120 -60, -120 -160 Z" {...st(color ?? K.blue)} /><path d="M 0 -176 L 96 -144 C 96 -66, 64 -34, 0 -18 C -64 -34, -96 -66, -96 -144 Z" fill="none" stroke={K.white} strokeWidth={6} opacity={0.6} />{label && <text x={0} y={-90} textAnchor="middle" fontFamily={CF.caption} fontWeight={900} fontSize={label.length > 6 ? 34 : 48} fill={K.white}>{label}</text>}</g>;
+    case "vault":
+      return <g><rect x={-110} y={-220} width={220} height={220} rx={16} {...st("#8C939C")} /><circle cx={0} cy={-110} r={70} {...st("#B4BBC4")} /><circle cx={0} cy={-110} r={14} fill={OUT} />{[0, 1, 2, 3, 4, 5].map((i) => <path key={i} d={`M 0 -110 L ${Math.cos(i * 1.047) * 60} ${-110 + Math.sin(i * 1.047) * 60}`} stroke={OUT} strokeWidth={6} />)}</g>;
+    case "car":
+      return <g><path d="M -110 -30 L -100 -70 L -50 -76 L -24 -116 L 50 -116 L 80 -76 L 110 -66 L 116 -30 Z" {...st(color ?? K.red)} /><path d="M -16 -106 L 40 -106 L 62 -78 L -36 -78 Z" fill="#CFEFFF" stroke={OUT} strokeWidth={4} /><circle cx={-62} cy={-26} r={24} {...st(OUT)} /><circle cx={66} cy={-26} r={24} {...st(OUT)} /><circle cx={-62} cy={-26} r={9} fill={K.grey} /><circle cx={66} cy={-26} r={9} fill={K.grey} /></g>;
     case "key":
       return <g><circle cx={0} cy={-80} r={24} {...st(K.gold)} /><circle cx={0} cy={-80} r={9} fill={K.paper} stroke={OUT} strokeWidth={3} /><path d="M 0 -56 L 0 0 M 0 -20 L 16 -20 M 0 -6 L 12 -6" stroke={OUT} strokeWidth={9} strokeLinecap="round" /></g>;
   }

@@ -14,7 +14,7 @@ export const PopText: React.FC<{
   const t = interpolate(f, [at, at + 12], [0, 1], { ...clamp, easing: pop });
   const o = until === undefined ? 1 : interpolate(f, [until, until + 8], [1, 0], clamp);
   if (t <= 0 || o <= 0) return null;
-  const w = text.length * size * (font === "caption" ? 0.7 : 0.6) + size * 0.9;
+  const w = text.length * size * (font === "caption" ? 0.7 : font === "hand" ? 0.5 : 0.63) + size * 0.9;
   const ro = rot + (wiggle ? Math.sin(f / 6) * 2 : 0);
   return (
     <g transform={`translate(${x} ${y}) rotate(${ro}) scale(${t})`} opacity={o}>

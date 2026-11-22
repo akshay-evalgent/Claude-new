@@ -1,0 +1,105 @@
+{
+ "title": "How You Can Lose More Than 100%",
+ "voice": "am_michael",
+ "speed": 1.22,
+ "fps": 30,
+ "music": [
+  {
+   "track": "Thinking Music",
+   "db": -22,
+   "fadeIn": 0.1,
+   "fadeOut": 0.3
+  }
+ ],
+ "duckDb": -8,
+ "beats": [
+  {
+   "id": "b001",
+   "shot": "s01",
+   "text": "You think the most you can lose on a trade is a hundred percent. Not if you short.",
+   "pad": 0.1,
+   "sfx": [
+    [
+     0.1,
+     "kenney-interface/click_002",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b002",
+   "shot": "s02",
+   "text": "Buy a share at ten dollars, and the worst case is it goes to zero. You lose ten dollars.",
+   "pad": 0.1
+  },
+  {
+   "id": "b003",
+   "shot": "s03",
+   "text": "Shorting is the opposite. You borrow a share, sell it for ten dollars, and promise to buy it back later.",
+   "pad": 0.1
+  },
+  {
+   "id": "b004",
+   "shot": "s03",
+   "text": "If it falls to two, you win eight. But there's no ceiling on how high it can go.",
+   "pad": 0.1,
+   "sfx": [
+    [
+     3.0,
+     "synth/riser",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b005",
+   "shot": "s04",
+   "text": "Twenty dollars? You've lost a hundred percent. Fifty? Four hundred percent.",
+   "pad": 0.1,
+   "sfx": [
+    [
+     1.3,
+     "synth/thud",
+     0.5
+    ],
+    [
+     3.3,
+     "synth/thud",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b006",
+   "shot": "s05",
+   "text": "In January twenty twenty-one, GameStop went from about twenty dollars to four hundred and eighty-three in under three weeks.",
+   "pad": 0.1,
+   "sfx": [
+    [
+     4.5,
+     "synth/boom",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b007",
+   "shot": "s05",
+   "text": "Short at twenty, buy back at four eighty-three? That's a loss of more than two thousand three hundred percent.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     4.0,
+     "cc0-100/slam_02",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b008",
+   "shot": "s06",
+   "text": "Buy, and the most you can lose is everything. Short, and you can lose everything, and keep going. So if you think",
+   "pad": 0.0
+  }
+ ]
+}

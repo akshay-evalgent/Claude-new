@@ -1,0 +1,34 @@
+{
+ "format": "3 \u00b7 'If you don't understand X' (long)",
+ "title": "If You Don't Understand How Banks Create Money, You Don't Understand Money",
+ "alts": [
+  "Banks Don't Lend Your Savings. They Type New Money.",
+  "Where Does Your Money Go When You Put It in the Bank?"
+ ],
+ "hook": "When a bank gives someone a loan, it doesn't hand over anybody's savings. It creates new money, in the borrower's account, with a few keystrokes. That's not a conspiracy theory: it's what the Bank of England explained in 2014. Here's how it works, what limits it, and why it makes booms bigger and bank runs possible.",
+ "open": "Where does your money go?",
+ "chapters": {
+  "s06": "The story we're told",
+  "s11": "What really happens",
+  "s17": "How much money is this?",
+  "s20": "The goldsmiths",
+  "s21": "So what stops them?",
+  "s27": "Why booms get so big",
+  "s30": "When everyone wants it back",
+  "s35": "The answer"
+ },
+ "sources": [
+  "Bank of England, 'Money creation in the modern economy', Quarterly Bulletin 2014 Q1 (McLeay, Radia, Thomas)",
+  "Federal Reserve, Reserve Requirements (ratios reduced to 0% effective March 26, 2020)",
+  "Federal Reserve, Review of the Supervision and Regulation of Silicon Valley Bank (April 2023)",
+  "FDIC, Understanding Deposit Insurance",
+  "Northern Rock 2007 bank run: widely reported as the UK's first in 150 years"
+ ],
+ "tags": "how banks create money, money creation, bank of england, fractional reserve, money multiplier, bank run, SVB, Northern Rock, economics explained, finance explained",
+ "pinned": "Did you learn the 'money multiplier' at school? The Bank of England says it's not how money is created. What surprised you most?",
+ "hashtags": "#Economics #Banking #Explained",
+ "notes": [
+  "The 97% deposits / 3% cash split is the Bank of England's UK figure from 2014; the film says so.",
+  "SVB figure is the Fed's 'over $40 billion' on March 9, 2023 (not the often-quoted $42bn)."
+ ]
+}

@@ -1,0 +1,482 @@
+{
+ "title": "The Lottery That Lost Money to a Shopkeeper",
+ "voice": "am_michael",
+ "speed": 1.2,
+ "fps": 30,
+ "music": [
+  {
+   "track": "Sneaky Snitch",
+   "from": "b001",
+   "to": "b020",
+   "db": -22,
+   "fadeIn": 0.4,
+   "fadeOut": 2
+  },
+  {
+   "track": "Spy Glass",
+   "from": "b020",
+   "to": "b041",
+   "db": -23,
+   "fadeIn": 1.5,
+   "fadeOut": 2
+  },
+  {
+   "track": "Comfortable Mystery",
+   "from": "b041",
+   "db": -23,
+   "fadeIn": 1.5,
+   "fadeOut": 3
+  }
+ ],
+ "duckDb": -8,
+ "beats": [
+  {
+   "id": "b001",
+   "shot": "s01",
+   "text": "They say the lottery is a tax on people who can't do maths.",
+   "pad": 0.2,
+   "sfx": [
+    [
+     0.2,
+     "kenney-casino/chips-collide-2",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b002",
+   "shot": "s02",
+   "text": "In two thousand three, a retired shopkeeper in a small Michigan town did the maths. And he found a lottery that was losing money to him.",
+   "pad": 0.2
+  },
+  {
+   "id": "b003",
+   "shot": "s03",
+   "text": "Over the next nine years, he and his wife won almost twenty-seven million dollars in prizes. Legally.",
+   "pad": 0.2,
+   "sfx": [
+    [
+     3.6,
+     "synth/boom",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b004",
+   "shot": "s04",
+   "text": "This is the story of Jerry and Marge Selbee.",
+   "pad": 0.3
+  },
+  {
+   "id": "b005",
+   "shot": "s05",
+   "text": "",
+   "pad": 0,
+   "hold": 3.0,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_2",
+     0.7
+    ],
+    [
+     0.3,
+     "synth/boom",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b006",
+   "shot": "s06",
+   "text": "Evart, Michigan. A small town, a long way from anywhere.",
+   "pad": 0.15
+  },
+  {
+   "id": "b007",
+   "shot": "s06",
+   "text": "For seventeen years, Jerry and Marge ran the convenience store there. Milk, bread, coffee, and lottery tickets.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     0.5,
+     "cc0-100/bell_02",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b008",
+   "shot": "s07",
+   "text": "Jerry had studied mathematics at college. He liked puzzles. Patterns. Numbers that didn't quite add up.",
+   "pad": 0.15
+  },
+  {
+   "id": "b009",
+   "shot": "s07",
+   "text": "In two thousand three, already retired, he picked up a brochure for a new lottery game called Winfall.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     1.0,
+     "kenney-rpg/bookFlip1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b010",
+   "shot": "s08",
+   "text": "Most lotteries work the same way. If nobody wins the jackpot, it grows. And grows.",
+   "pad": 0.15
+  },
+  {
+   "id": "b011",
+   "shot": "s08",
+   "text": "Winfall had a twist. If the jackpot passed five million dollars and nobody matched all six numbers, it didn't keep growing. It rolled down.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     6.2,
+     "synth/whoosh_3",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b012",
+   "shot": "s09",
+   "text": "All that money was shared out among the smaller prizes. The people who matched five numbers, or four, or three.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     1.5,
+     "kenney-casino/chips-handle-4",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b013",
+   "shot": "s09",
+   "text": "Jerry read the rules and, by one account, saw the flaw in less than two minutes.",
+   "pad": 0.25
+  },
+  {
+   "id": "b014",
+   "shot": "s10",
+   "text": "On a roll-down week, the small prizes grew so big that, on average, a ticket was worth more than the dollar it cost.",
+   "pad": 0.15
+  },
+  {
+   "id": "b015",
+   "shot": "s10",
+   "text": "Buy enough tickets, and the maths was on your side.",
+   "pad": 0.35,
+   "sfx": [
+    [
+     1.8,
+     "synth/ding_1",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b016",
+   "shot": "s10b",
+   "text": "Think of it like this. Normally, a lottery pays out less in prizes than it takes in. That gap is the lottery's profit, and it's why players lose over time.",
+   "pad": 0.15
+  },
+  {
+   "id": "b017",
+   "shot": "s10b",
+   "text": "Imagine a raffle with a hundred tickets at a dollar each, and a prize of fifty dollars. Buy every ticket, and you spend a hundred dollars to win fifty.",
+   "pad": 0.15
+  },
+  {
+   "id": "b018",
+   "shot": "s10b",
+   "text": "Now imagine one week where the prize suddenly jumps to a hundred and fifty. Buy every ticket, and you spend a hundred to win a hundred and fifty.",
+   "pad": 0.25,
+   "sfx": [
+    [
+     5.5,
+     "synth/cash",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b019",
+   "shot": "s10b",
+   "text": "That was a roll-down week. The trick was buying so many tickets that luck evened out, and the averages took over.",
+   "pad": 0.3
+  },
+  {
+   "id": "b020",
+   "shot": "s11",
+   "text": "",
+   "pad": 0,
+   "hold": 1.4,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b021",
+   "shot": "s12",
+   "text": "Jerry didn't tell Marge at first. He drove to a store in the next town, and bought two thousand two hundred dollars' worth of tickets.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     4.5,
+     "kenney-casino/card-slide-3",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b022",
+   "shot": "s12",
+   "text": "He checked them by hand at the kitchen table. They'd won two thousand one hundred and fifty. A small loss.",
+   "pad": 0.15
+  },
+  {
+   "id": "b023",
+   "shot": "s12",
+   "text": "He hadn't bought enough to beat the luck. So next time, he bought more. And then more again.",
+   "pad": 0.15
+  },
+  {
+   "id": "b024",
+   "shot": "s12",
+   "text": "He bet eight thousand dollars, and won fifteen thousand seven hundred.",
+   "pad": 0.25,
+   "sfx": [
+    [
+     2.6,
+     "synth/cash",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b025",
+   "shot": "s13",
+   "text": "Then he told Marge.",
+   "pad": 0.4
+  },
+  {
+   "id": "b026",
+   "shot": "s14",
+   "text": "Marge didn't tell him to stop. She was good at keeping track of things.",
+   "pad": 0.15
+  },
+  {
+   "id": "b027",
+   "shot": "s14",
+   "text": "They set up a company, G. S. Investment Strategies, and sold shares at five hundred dollars each. First to their children. Then to friends in Evart.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     5.0,
+     "kenney-rpg/handleCoins",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b028",
+   "shot": "s15",
+   "text": "On roll-down weeks, they bought tickets by the thousand. Then every one of them had to be checked, by hand, for hours on end.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     0.8,
+     "kenney-casino/card-shuffle",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b029",
+   "shot": "s16",
+   "text": "",
+   "pad": 0,
+   "hold": 1.4,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b030",
+   "shot": "s17",
+   "text": "In May two thousand five, Michigan shut Winfall down, with no warning.",
+   "pad": 0.25,
+   "sfx": [
+    [
+     2.6,
+     "cc0-100/slam_03",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b031",
+   "shot": "s17",
+   "text": "But Jerry had heard of a similar game in Massachusetts, called Cash WinFall. It rolled down even sooner, at two million dollars.",
+   "pad": 0.15
+  },
+  {
+   "id": "b032",
+   "shot": "s18",
+   "text": "So whenever a roll-down was coming, Jerry and Marge drove from Michigan to Massachusetts. Hundreds of miles. Then they bought more tickets.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     0.4,
+     "synth/whoosh_2",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b033",
+   "shot": "s19",
+   "text": "",
+   "pad": 0,
+   "hold": 1.4,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b034",
+   "shot": "s20",
+   "text": "They weren't the only ones who had noticed.",
+   "pad": 0.15
+  },
+  {
+   "id": "b035",
+   "shot": "s20",
+   "text": "A group of students from the Massachusetts Institute of Technology had spotted the same flaw. Led by a student called James Harvey, they formed their own group, called Random Strategies.",
+   "pad": 0.15
+  },
+  {
+   "id": "b036",
+   "shot": "s20",
+   "text": "In one roll-down, the M. I. T. group reportedly bet seventeen million dollars in just seven hours.",
+   "pad": 0.35,
+   "sfx": [
+    [
+     3.2,
+     "synth/riser",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b037",
+   "shot": "s21",
+   "text": "",
+   "pad": 0,
+   "hold": 1.4,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b038",
+   "shot": "s22",
+   "text": "In twenty eleven, journalists noticed that a handful of groups were winning a huge share of the prizes.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     0.5,
+     "kenney-rpg/bookFlip3",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b039",
+   "shot": "s22",
+   "text": "The state's inspector general investigated. The Selbees were never charged with anything. They had simply played by the rules.",
+   "pad": 0.15
+  },
+  {
+   "id": "b040",
+   "shot": "s22",
+   "text": "Cash WinFall ended in January twenty twelve.",
+   "pad": 0.35,
+   "sfx": [
+    [
+     1.0,
+     "cc0-100/slam_04",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b041",
+   "shot": "s23",
+   "text": "Over nine years, the Selbees' group won almost twenty-seven million dollars in prizes.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     1.4,
+     "synth/cash",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b042",
+   "shot": "s23",
+   "text": "After paying for all those tickets, the profit was about seven point seven five million dollars, shared among everyone who'd bought in.",
+   "pad": 0.2
+  },
+  {
+   "id": "b043",
+   "shot": "s24",
+   "text": "Jerry and Marge stayed in Evart. In twenty twenty-two, their story became a Hollywood film, Jerry and Marge Go Large.",
+   "pad": 0.35
+  },
+  {
+   "id": "b044",
+   "shot": "s25",
+   "text": "They didn't beat the lottery. They read the rules more carefully than the people who wrote them.",
+   "pad": 0.2
+  },
+  {
+   "id": "b045",
+   "shot": "s25",
+   "text": "Most weeks, the lottery still wins. But for a few days at a time, the lottery was beating itself. And a retired shopkeeper with a pencil noticed first.",
+   "pad": 1.6,
+   "sfx": [
+    [
+     6.0,
+     "synth/ding_2",
+     0.4
+    ]
+   ]
+  }
+ ]
+}

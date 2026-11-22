@@ -1,0 +1,521 @@
+{
+ "title": "The GameStop Squeeze Explained Like You're 5",
+ "voice": "am_michael",
+ "speed": 1.2,
+ "fps": 30,
+ "music": [
+  {
+   "track": "Thinking Music",
+   "from": "b001",
+   "to": "b016",
+   "db": -23,
+   "fadeIn": 0.4,
+   "fadeOut": 1.5
+  },
+  {
+   "track": "Gearhead",
+   "from": "b016",
+   "to": "b034",
+   "db": -23,
+   "fadeIn": 1,
+   "fadeOut": 1.5
+  },
+  {
+   "track": "Backbay Lounge",
+   "from": "b034",
+   "db": -23,
+   "fadeIn": 1.5,
+   "fadeOut": 3
+  }
+ ],
+ "duckDb": -8,
+ "beats": [
+  {
+   "id": "b001",
+   "shot": "s01",
+   "text": "In January twenty twenty-one, some of the most powerful investors on Wall Street bet that a struggling video game shop would collapse.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     0.2,
+     "kenney-interface/click_002",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b002",
+   "shot": "s02",
+   "text": "A man on the internet in a red headband had bet about fifty-three thousand dollars that they were wrong.",
+   "pad": 0.15
+  },
+  {
+   "id": "b003",
+   "shot": "s02",
+   "text": "Within weeks, his position was worth nearly forty-eight million dollars. And one of the funds betting against him needed billions to keep going.",
+   "pad": 0.2,
+   "sfx": [
+    [
+     2.4,
+     "synth/cash",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b004",
+   "shot": "s03",
+   "text": "This is the GameStop story, explained like you're five.",
+   "pad": 0.3
+  },
+  {
+   "id": "b005",
+   "shot": "s04",
+   "text": "",
+   "pad": 0,
+   "hold": 3.0,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_2",
+     0.7
+    ],
+    [
+     0.3,
+     "synth/ding_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b006",
+   "shot": "s05",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b007",
+   "shot": "s06",
+   "text": "GameStop sold video games in shopping malls. But people had started downloading games instead of buying discs.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     2.0,
+     "kenney-interface/glitch_001",
+     0.3
+    ]
+   ]
+  },
+  {
+   "id": "b008",
+   "shot": "s06",
+   "text": "Then the pandemic shut the malls. So a lot of big investors looked at GameStop and saw a business that was dying.",
+   "pad": 0.3
+  },
+  {
+   "id": "b009",
+   "shot": "s07",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b010",
+   "shot": "s08",
+   "text": "When big investors think a company will fail, they can bet on it. It's called short selling.",
+   "pad": 0.15
+  },
+  {
+   "id": "b011",
+   "shot": "s09",
+   "text": "Imagine you borrow your friend's toy car. It's worth ten dollars. You sell it straight away, for ten dollars.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     4.5,
+     "synth/cash",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b012",
+   "shot": "s09",
+   "text": "Next week, toy cars drop to two dollars. You buy one back for two, give it to your friend, and keep eight dollars.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     2.8,
+     "synth/pop_2",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b013",
+   "shot": "s09",
+   "text": "That's a short. You win when the price falls.",
+   "pad": 0.25
+  },
+  {
+   "id": "b014",
+   "shot": "s10",
+   "text": "But here's the catch. What if the price goes up instead? You still owe your friend a toy car. You have to buy one back, whatever it costs.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     3.0,
+     "synth/riser",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b015",
+   "shot": "s10",
+   "text": "When you buy something, the most you can lose is what you paid. When you short something, there's no limit.",
+   "pad": 0.35,
+   "sfx": [
+    [
+     5.2,
+     "synth/thud",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b016",
+   "shot": "s11",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b017",
+   "shot": "s12",
+   "text": "With GameStop, so many funds were shorting that something strange happened.",
+   "pad": 0.15
+  },
+  {
+   "id": "b018",
+   "shot": "s12",
+   "text": "More shares had been sold short than were actually available to trade. America's market regulator later put short interest at nearly a hundred and twenty-three percent of the shares available.",
+   "pad": 0.15
+  },
+  {
+   "id": "b019",
+   "shot": "s12",
+   "text": "It's like borrowing and selling more toy cars than there are in the whole playground.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     1.0,
+     "kenney-interface/error_003",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b020",
+   "shot": "s13",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b021",
+   "shot": "s14",
+   "text": "One person had looked at the same company and seen something different.",
+   "pad": 0.15
+  },
+  {
+   "id": "b022",
+   "shot": "s14",
+   "text": "Keith Gill, known online as Roaring Kitty, believed GameStop was worth far more than its price.",
+   "pad": 0.15
+  },
+  {
+   "id": "b023",
+   "shot": "s14",
+   "text": "In twenty nineteen, he posted his position online. About fifty-three thousand dollars. And he kept posting updates, month after month, and making videos explaining why.",
+   "pad": 0.15
+  },
+  {
+   "id": "b024",
+   "shot": "s14",
+   "text": "And people started to notice the trap the short sellers had built for themselves.",
+   "pad": 0.3
+  },
+  {
+   "id": "b025",
+   "shot": "s15",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b026",
+   "shot": "s16",
+   "text": "If the price started rising, the short sellers would have to buy shares back to stop their losses. And buying pushes the price up even more.",
+   "pad": 0.15
+  },
+  {
+   "id": "b027",
+   "shot": "s16",
+   "text": "Which forces more short sellers to buy. Which pushes the price higher still. That's a short squeeze.",
+   "pad": 0.25,
+   "sfx": [
+    [
+     1.0,
+     "synth/riser",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b028",
+   "shot": "s17",
+   "text": "In January twenty twenty-one, huge numbers of ordinary people, many from an online forum called WallStreetBets, piled in.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     1.0,
+     "kenney-interface/click_001",
+     0.3
+    ],
+    [
+     1.4,
+     "kenney-interface/click_003",
+     0.3
+    ],
+    [
+     1.8,
+     "kenney-interface/click_001",
+     0.3
+    ]
+   ]
+  },
+  {
+   "id": "b029",
+   "shot": "s18",
+   "text": "On January eleventh, a GameStop share closed at about twenty dollars. By January twenty-seventh, it closed at three hundred and forty-seven.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     2.0,
+     "synth/whoosh_2",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b030",
+   "shot": "s18",
+   "text": "The next morning, it touched four hundred and eighty-three dollars.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     1.6,
+     "synth/boom",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b031",
+   "shot": "s19",
+   "text": "One of the funds caught on the wrong side was called Melvin Capital.",
+   "pad": 0.15
+  },
+  {
+   "id": "b032",
+   "shot": "s19",
+   "text": "Melvin lost more than half its money in January. It took two point seven five billion dollars from two other firms, Citadel and Point72, to keep going.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     6.0,
+     "cc0-100/slam_02",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b033",
+   "shot": "s19",
+   "text": "Short sellers as a group lost billions of dollars in a matter of days.",
+   "pad": 0.3
+  },
+  {
+   "id": "b034",
+   "shot": "s20",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b035",
+   "shot": "s21",
+   "text": "Then, on January twenty-eighth, something happened that made people furious.",
+   "pad": 0.15
+  },
+  {
+   "id": "b036",
+   "shot": "s21",
+   "text": "Robinhood, the trading app many of the new investors used, stopped customers from buying GameStop. Other brokers did the same. You could sell. You just couldn't buy.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     1.0,
+     "kenney-interface/error_006",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b037",
+   "shot": "s21",
+   "text": "The price dropped. People accused the brokers of protecting Wall Street.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     0.5,
+     "synth/whoosh_3",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b038",
+   "shot": "s22",
+   "text": "The brokers said it was about the plumbing. To trade, they have to put up cash with a clearing house, and the wild swings meant they suddenly had to put up far more.",
+   "pad": 0.15
+  },
+  {
+   "id": "b039",
+   "shot": "s22",
+   "text": "Congress held hearings. Regulators wrote a long report. But in those wild days, the buy button was gone.",
+   "pad": 0.3
+  },
+  {
+   "id": "b040",
+   "shot": "s23",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b041",
+   "shot": "s24",
+   "text": "So who won?",
+   "pad": 0.2
+  },
+  {
+   "id": "b042",
+   "shot": "s24",
+   "text": "At its peak, Keith Gill's position was worth nearly forty-eight million dollars, on paper.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     0.5,
+     "synth/cash",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b043",
+   "shot": "s24",
+   "text": "Some people who bought early made fortunes. Many who bought near the top, at three or four hundred dollars, lost a lot when the price fell back.",
+   "pad": 0.15
+  },
+  {
+   "id": "b044",
+   "shot": "s24",
+   "text": "Melvin Capital closed down in twenty twenty-two.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     1.6,
+     "cc0-100/slam_04",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b045",
+   "shot": "s25",
+   "text": "The lesson isn't that the little guy always wins. Most of the time, he doesn't.",
+   "pad": 0.15
+  },
+  {
+   "id": "b046",
+   "shot": "s25",
+   "text": "It's this. When you short a stock, you can lose more than everything you put in. And when too many people make the same bet, the exit gets very small.",
+   "pad": 0.25
+  },
+  {
+   "id": "b047",
+   "shot": "s26",
+   "text": "Some of Wall Street's biggest players bet a dying video game shop would go to zero. The bet nearly sent one of them there instead.",
+   "pad": 1.6,
+   "sfx": [
+    [
+     0.4,
+     "synth/ding_2",
+     0.4
+    ]
+   ]
+  }
+ ]
+}

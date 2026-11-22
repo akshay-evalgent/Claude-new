@@ -1,0 +1,30 @@
+{
+ "format": "2 \u00b7 Cartoon 'Explained like you're 5' (long)",
+ "synthetic": "**Yes**: the voice is synthetic; the cartoon characters are not likenesses of the real people",
+ "title": "The GameStop Squeeze Explained Like You're 5",
+ "alts": [
+  "Wall Street Bet a Video Game Shop Would Die. It Backfired.",
+  "How a $53,000 Bet Broke a Hedge Fund (GameStop, Explained Like You're 5)"
+ ],
+ "hook": "In January 2021, some of Wall Street's biggest players bet that a struggling video game shop would collapse. A man in a red headband had bet about $53,000 that they were wrong. Short selling, the short squeeze, Melvin Capital, the buy button that disappeared, and who actually won, explained like you're five.",
+ "open": "The bet",
+ "chapters": {
+  "s05": "The dying shop",
+  "s07": "Shorting, like you're 5",
+  "s11": "Too many shorts",
+  "s13": "The man in the red headband",
+  "s15": "The squeeze",
+  "s20": "The buy button",
+  "s23": "Who won?"
+ },
+ "sources": [
+  "US SEC Staff Report on Equity and Options Market Structure Conditions in Early 2021 (October 2021): GME short interest reached 122.97% of float; close $347.51 on Jan 27; intraday high $483.00 on Jan 28",
+  "Wikipedia, 'GameStop short squeeze' and 'Keith Gill' (Gill's ~$53,000 position; nearly $48 million by Jan 27, 2021; Melvin Capital's January loss and $2.75bn from Citadel and Point72; Melvin's 2022 closure)"
+ ],
+ "tags": "GameStop, GME, short squeeze, explained like you're 5, Roaring Kitty, WallStreetBets, Melvin Capital, Robinhood, short selling, stock market explained",
+ "pinned": "Short selling has no ceiling on losses. Did you know that before January 2021?",
+ "hashtags": "#GameStop #Stocks #Explained",
+ "notes": [
+  "Keith Gill is a real, living person; the cartoon is not a likeness. Keep titles factual."
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "format": "4 \u00b7 Explained with one running object (long)",
+ "title": "The Stock Market Explained With One Lemonade Stand",
+ "alts": [
+  "When You Buy Apple Stock, Apple Gets $0. Here's Why.",
+  "Stocks, IPOs, Bubbles and Short Sellers: One Lemonade Stand"
+ ],
+ "hook": "When you buy a share of Apple, Apple doesn't get a cent of your money. So who does? One lemonade stand explains the whole stock market: shares, dividends, IPOs, the market price, bubbles, short selling and crashes.",
+ "open": "Who gets your money?",
+ "chapters": {
+  "s04": "The stand",
+  "s07": "Selling slices",
+  "s11": "Going public",
+  "s13": "The market",
+  "s16": "What moves the price",
+  "s20": "The bubble",
+  "s22": "The short seller",
+  "s24": "The crash",
+  "s28": "The whole stock market"
+ },
+ "sources": [
+  "Apple's IPO: 12 December 1980, 4.6 million shares at $22, raising more than $100 million",
+  "Penny's lemonade stand is a made-up example; its numbers are illustrative"
+ ],
+ "tags": "stock market explained, how stocks work, what is a share, IPO explained, dividends, market cap, stock bubble, short selling, finance for beginners, lemonade stand",
+ "pinned": "Penny's business never changed. Only the price did. What would you have done at $1,000 a share?",
+ "hashtags": "#StockMarket #Investing #Explained"
+}

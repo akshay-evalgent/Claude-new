@@ -1,0 +1,592 @@
+{
+ "title": "Your Life at Every Level of a Trader: $1,000 to $1 Billion",
+ "voice": "am_michael",
+ "speed": 1.2,
+ "fps": 30,
+ "music": [
+  {
+   "track": "Werq",
+   "from": "b001",
+   "to": "b045",
+   "db": -22,
+   "fadeIn": 0.3,
+   "fadeOut": 2
+  },
+  {
+   "track": "Hitman",
+   "from": "b045",
+   "db": -23,
+   "fadeIn": 2,
+   "fadeOut": 3
+  }
+ ],
+ "duckDb": -8,
+ "beats": [
+  {
+   "id": "b001",
+   "shot": "s01",
+   "text": "At level one, you trade fifty times a day. At level ten, you might trade twice a year.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     0.2,
+     "kenney-interface/click_003",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b002",
+   "shot": "s01",
+   "text": "And the person trading fifty times a day? Almost always losing.",
+   "pad": 0.2,
+   "sfx": [
+    [
+     1.6,
+     "synth/thud",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b003",
+   "shot": "s02",
+   "text": "This is your life at every level of a trader, from a thousand dollars, to a billion.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     3.2,
+     "synth/riser",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b004",
+   "shot": "s03",
+   "text": "",
+   "pad": 0,
+   "hold": 2.6,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_2",
+     0.7
+    ],
+    [
+     0.3,
+     "synth/boom",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b005",
+   "shot": "s04",
+   "text": "",
+   "pad": 0,
+   "hold": 1.4,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_2",
+     0.6
+    ],
+    [
+     0.25,
+     "synth/ding_1",
+     0.45
+    ]
+   ]
+  },
+  {
+   "id": "b006",
+   "shot": "s05",
+   "text": "You have a thousand dollars and a free trading app. You've watched three videos about candlestick charts.",
+   "pad": 0.15
+  },
+  {
+   "id": "b007",
+   "shot": "s05",
+   "text": "You buy at nine thirty. Sell at nine thirty-four. Buy again. Your phone buzzes all day.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     0.5,
+     "kenney-interface/click_001",
+     0.4
+    ],
+    [
+     1.5,
+     "kenney-interface/click_002",
+     0.4
+    ],
+    [
+     2.6,
+     "kenney-interface/click_001",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b008",
+   "shot": "s05",
+   "text": "Some days you're up fifty dollars, and you feel like a genius. Most weeks, you're down.",
+   "pad": 0.3
+  },
+  {
+   "id": "b009",
+   "shot": "s05",
+   "text": "Your biggest risk at this level isn't the market. It's you. Boredom. Revenge trades after a loss. Trading because the app is open.",
+   "pad": 0.2
+  },
+  {
+   "id": "b010",
+   "shot": "s05",
+   "text": "The app is free, so it feels like trading costs nothing. But every time you buy and sell, you pay the gap between the buying price and the selling price. Fifty trades a day, that gap adds up.",
+   "pad": 0.3
+  },
+  {
+   "id": "b011",
+   "shot": "s06",
+   "text": "",
+   "pad": 0,
+   "hold": 1.4,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_2",
+     0.6
+    ],
+    [
+     0.25,
+     "synth/ding_1",
+     0.45
+    ]
+   ]
+  },
+  {
+   "id": "b012",
+   "shot": "s07",
+   "text": "You've saved ten thousand. You want to trade full time. Then your broker offers you margin. Borrowed money, so you can trade bigger.",
+   "pad": 0.15
+  },
+  {
+   "id": "b013",
+   "shot": "s07",
+   "text": "With two-to-one leverage, a ten percent drop doesn't cost you ten percent. It costs you twenty. Leverage makes good days better, and bad days fatal.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     3.5,
+     "kenney-interface/error_002",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b014",
+   "shot": "s07",
+   "text": "So you learn the first real rule of trading. Survive.",
+   "pad": 0.3
+  },
+  {
+   "id": "b015",
+   "shot": "s07",
+   "text": "You start writing down every trade, and why you made it. Most of your losses come from the same three mistakes.",
+   "pad": 0.3
+  },
+  {
+   "id": "b016",
+   "shot": "s08",
+   "text": "",
+   "pad": 0,
+   "hold": 1.4,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_2",
+     0.6
+    ],
+    [
+     0.25,
+     "synth/ding_1",
+     0.45
+    ]
+   ]
+  },
+  {
+   "id": "b017",
+   "shot": "s09",
+   "text": "Twenty-five thousand. You quit your job. Your desk now has three monitors.",
+   "pad": 0.15
+  },
+  {
+   "id": "b018",
+   "shot": "s09",
+   "text": "Here's what the data says about this level. Researchers followed everyone who started day trading Brazil's stock futures market between twenty thirteen and twenty fifteen.",
+   "pad": 0.15
+  },
+  {
+   "id": "b019",
+   "shot": "s09",
+   "text": "Of those who kept at it for more than three hundred days, ninety-seven percent lost money. Only about one in a hundred earned more than the minimum wage.",
+   "pad": 0.35,
+   "sfx": [
+    [
+     2.0,
+     "cc0-100/slam_02",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b020",
+   "shot": "s09",
+   "text": "Your day: wake at six, read the news, wait for the open, trade the first hour, then try not to give it all back by lunch. No salary. No sick pay. Your income is whatever the market lets you keep.",
+   "pad": 0.3
+  },
+  {
+   "id": "b021",
+   "shot": "s10",
+   "text": "",
+   "pad": 0,
+   "hold": 1.4,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_2",
+     0.6
+    ],
+    [
+     0.25,
+     "synth/ding_1",
+     0.45
+    ]
+   ]
+  },
+  {
+   "id": "b022",
+   "shot": "s11",
+   "text": "A hundred thousand. But it isn't yours.",
+   "pad": 0.15
+  },
+  {
+   "id": "b023",
+   "shot": "s11",
+   "text": "You paid a fee to take a trading test at a prop firm. You passed. Now you trade the firm's money, and keep a share of the profits.",
+   "pad": 0.15
+  },
+  {
+   "id": "b024",
+   "shot": "s11",
+   "text": "Break their rules, like losing too much in one day, and the account is gone.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     1.6,
+     "kenney-interface/error_004",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b025",
+   "shot": "s11",
+   "text": "The firm doesn't need you to be a genius. It needs you to not blow up. Most of the job is the boring part: small bets, tight stops, and walking away after a bad morning.",
+   "pad": 0.3
+  },
+  {
+   "id": "b026",
+   "shot": "s12",
+   "text": "",
+   "pad": 0,
+   "hold": 1.4,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_2",
+     0.6
+    ],
+    [
+     0.25,
+     "synth/ding_1",
+     0.45
+    ]
+   ]
+  },
+  {
+   "id": "b027",
+   "shot": "s13",
+   "text": "A million. You're on a bank's trading desk now. A suit. A badge. A daily loss limit.",
+   "pad": 0.15
+  },
+  {
+   "id": "b028",
+   "shot": "s13",
+   "text": "Your salary is good. Your bonus depends on your profits. And everything you do is recorded and checked.",
+   "pad": 0.15
+  },
+  {
+   "id": "b029",
+   "shot": "s13",
+   "text": "Risk managers watch your positions. Compliance reads your messages. If you hit your loss limit, you stop for the day. No arguments.",
+   "pad": 0.2
+  },
+  {
+   "id": "b030",
+   "shot": "s13",
+   "text": "This is the level where rogue traders appear. People who hide a loss, then bet bigger to win it back. In nineteen ninety-five, one of them, Nick Leeson, sank Barings, Britain's oldest merchant bank.",
+   "pad": 0.35,
+   "sfx": [
+    [
+     6.2,
+     "synth/boom",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b031",
+   "shot": "s14",
+   "text": "",
+   "pad": 0,
+   "hold": 1.4,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_2",
+     0.6
+    ],
+    [
+     0.25,
+     "synth/ding_1",
+     0.45
+    ]
+   ]
+  },
+  {
+   "id": "b032",
+   "shot": "s15",
+   "text": "Ten million. You're a portfolio manager. It's other people's money. Pensions. Families.",
+   "pad": 0.15
+  },
+  {
+   "id": "b033",
+   "shot": "s15",
+   "text": "You stop staring at one-minute charts. You think in weeks and months. You trade a few times a week, not a few times an hour.",
+   "pad": 0.3
+  },
+  {
+   "id": "b034",
+   "shot": "s15",
+   "text": "Your job isn't to be right every day. It's to be right more often than you're wrong, and to lose small when you're wrong. A good year might be ten percent. On ten million, that's a million dollars.",
+   "pad": 0.3
+  },
+  {
+   "id": "b035",
+   "shot": "s16",
+   "text": "",
+   "pad": 0,
+   "hold": 1.4,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_2",
+     0.6
+    ],
+    [
+     0.25,
+     "synth/ding_1",
+     0.45
+    ]
+   ]
+  },
+  {
+   "id": "b036",
+   "shot": "s17",
+   "text": "A hundred million. You've started your own hedge fund.",
+   "pad": 0.15
+  },
+  {
+   "id": "b037",
+   "shot": "s17",
+   "text": "The classic deal is two and twenty. Two percent of the money every year, and twenty percent of the profits.",
+   "pad": 0.15
+  },
+  {
+   "id": "b038",
+   "shot": "s17",
+   "text": "On a hundred million, that two percent is two million dollars a year, before you've made a single trade.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     0.8,
+     "synth/cash",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b039",
+   "shot": "s17",
+   "text": "You hire analysts. You spend half your time talking to investors. A bad year doesn't just cost money. Clients can pull their money out, and the fund can shrink overnight.",
+   "pad": 0.3
+  },
+  {
+   "id": "b040",
+   "shot": "s18",
+   "text": "",
+   "pad": 0,
+   "hold": 1.4,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_2",
+     0.6
+    ],
+    [
+     0.25,
+     "synth/ding_1",
+     0.45
+    ]
+   ]
+  },
+  {
+   "id": "b041",
+   "shot": "s19",
+   "text": "A billion. Now, your trades move the market.",
+   "pad": 0.15
+  },
+  {
+   "id": "b042",
+   "shot": "s19",
+   "text": "If you try to buy too fast, you push the price up against yourself. A big position can take weeks to build, a little at a time.",
+   "pad": 0.15
+  },
+  {
+   "id": "b043",
+   "shot": "s19",
+   "text": "So you need fewer, bigger, better ideas.",
+   "pad": 0.3
+  },
+  {
+   "id": "b044",
+   "shot": "s19",
+   "text": "At this size, you have a team, a risk committee, lawyers, and brokers competing for your business. Your edge is no longer speed. It's thinking further ahead than everybody else.",
+   "pad": 0.3
+  },
+  {
+   "id": "b045",
+   "shot": "s20",
+   "text": "",
+   "pad": 0,
+   "hold": 1.4,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_2",
+     0.6
+    ],
+    [
+     0.25,
+     "synth/ding_1",
+     0.45
+    ]
+   ]
+  },
+  {
+   "id": "b046",
+   "shot": "s21",
+   "text": "Level nine is the legend. One idea, sized to win.",
+   "pad": 0.15
+  },
+  {
+   "id": "b047",
+   "shot": "s21",
+   "text": "In September nineteen ninety-two, George Soros's fund bet that the British pound would crash. It did. The bet reportedly made about a billion dollars.",
+   "pad": 0.35,
+   "sfx": [
+    [
+     5.2,
+     "synth/boom",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b048",
+   "shot": "s21",
+   "text": "But for every famous winning bet, there are funds that bet big, were wrong, and disappeared.",
+   "pad": 0.3
+  },
+  {
+   "id": "b049",
+   "shot": "s22",
+   "text": "",
+   "pad": 0,
+   "hold": 1.4,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_2",
+     0.6
+    ],
+    [
+     0.25,
+     "synth/ding_1",
+     0.45
+    ]
+   ]
+  },
+  {
+   "id": "b050",
+   "shot": "s23",
+   "text": "And level ten barely trades at all.",
+   "pad": 0.15
+  },
+  {
+   "id": "b051",
+   "shot": "s23",
+   "text": "Warren Buffett once wrote that his favourite holding period is forever.",
+   "pad": 0.3
+  },
+  {
+   "id": "b052",
+   "shot": "s23",
+   "text": "He buys a company and holds it for years, sometimes decades. No screens flashing all day. Mostly, reading.",
+   "pad": 0.3
+  },
+  {
+   "id": "b053",
+   "shot": "s24",
+   "text": "So look at the ladder again.",
+   "pad": 0.15
+  },
+  {
+   "id": "b054",
+   "shot": "s24",
+   "text": "At the bottom, the most trades, the least money, and the worst results. At the top, the fewest trades, and the biggest money.",
+   "pad": 0.15
+  },
+  {
+   "id": "b055",
+   "shot": "s24",
+   "text": "Every trade costs something. Fees, spreads, mistakes. The traders who last learn to do less.",
+   "pad": 0.2
+  },
+  {
+   "id": "b056",
+   "shot": "s25",
+   "text": "Most people start at level one and try to trade their way up. The ones at the top got there by trading less.",
+   "pad": 1.5,
+   "sfx": [
+    [
+     0.4,
+     "synth/ding_2",
+     0.4
+    ]
+   ]
+  }
+ ]
+}

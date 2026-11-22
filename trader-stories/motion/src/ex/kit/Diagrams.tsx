@@ -27,13 +27,13 @@ export const TAccount: React.FC<{ x: number; y: number; w?: number; h?: number; 
           const rt = interpolate(f, [r.at, r.at + 12], [0, 1], { ...clamp, easing: pop });
           if (rt <= 0) return null;
           const rx = r.side === "A" ? x + 60 : x + w / 2 + 40;
-          const ry = cy + 50 + k * 92;
+          const ry = cy + 90 + k * 116;
           const st = r.strike !== undefined ? p01(f, r.strike, 10) : 0;
           return (
             <g key={i} transform={`translate(${rx} ${ry}) scale(${rt})`} opacity={1 - st * 0.55}>
-              <rect x={0} y={-48} width={w / 2 - 100} height={72} rx={16} fill={r.color ?? K.white} stroke={OUT} strokeWidth={4} />
-              <text x={22} y={2} fontFamily={CF.label} fontWeight={600} fontSize={34} fill={OUT}>{r.text}</text>
-              <text x={w / 2 - 122} y={2} textAnchor="end" fontFamily={CF.caption} fontWeight={900} fontSize={36} fill={OUT}>{r.amount}</text>
+              <rect x={0} y={-58} width={w / 2 - 100} height={92} rx={18} fill={r.color ?? K.white} stroke={OUT} strokeWidth={4} />
+              <text x={24} y={2} fontFamily={CF.label} fontWeight={600} fontSize={44} fill={OUT}>{r.text}</text>
+              <text x={w / 2 - 124} y={2} textAnchor="end" fontFamily={CF.caption} fontWeight={900} fontSize={46} fill={OUT}>{r.amount}</text>
               {st > 0 && <path d={`M 10 -12 L ${10 + (w / 2 - 120) * st} -12`} stroke={K.loss} strokeWidth={8} strokeLinecap="round" />}
             </g>
           );
@@ -43,17 +43,18 @@ export const TAccount: React.FC<{ x: number; y: number; w?: number; h?: number; 
   };
 
 /** 10x10 waffle: first `n` squares in colour A, rest in colour B, filled progressively. */
-export const Waffle: React.FC<{ x: number; y: number; size?: number; n: number; a: string; b: string; at?: number; dur?: number; highlightB?: number; iconA?: PropName; }> =
-  ({ x, y, size = 600, n, a, b, at = 0, dur = 40, highlightB }) => {
+export const Waffle: React.FC<{ x: number; y: number; size?: number; n: number; a: string; b: string; at?: number; atB?: number; dur?: number; highlightB?: number; iconA?: PropName; }> =
+  ({ x, y, size = 600, n, a, b, at = 0, atB, dur = 40, highlightB }) => {
     const f = useCurrentFrame();
     const cell = size / 10;
     return (
       <g>
         {Array.from({ length: 100 }).map((_, i) => {
           const r = Math.floor(i / 10), c = i % 10;
-          const t = interpolate(f, [at + (i / 100) * dur, at + (i / 100) * dur + 8], [0, 1], { ...clamp, easing: pop });
-          if (t <= 0) return null;
           const isA = i < n;
+          const a0 = isA ? at + (i / Math.max(1, n)) * 8 : (atB ?? at) + ((i - n) / Math.max(1, 100 - n)) * dur;
+          const t = interpolate(f, [a0, a0 + 8], [0, 1], { ...clamp, easing: pop });
+          if (t <= 0) return null;
           const hb = !isA && highlightB !== undefined ? 1 + 0.12 * Math.sin((f - highlightB) / 3) * (f > highlightB ? 1 : 0) : 1;
           return <rect key={i} x={x + c * cell + cell * 0.08} y={y + r * cell + cell * 0.08} width={cell * 0.84} height={cell * 0.84} rx={cell * 0.18}
             fill={isA ? a : b} stroke={OUT} strokeWidth={3.5} transform={`translate(${x + c * cell + cell / 2} ${y + r * cell + cell / 2}) scale(${t * hb}) translate(${-(x + c * cell + cell / 2)} ${-(y + r * cell + cell / 2)})`} />;
@@ -63,11 +64,12 @@ export const Waffle: React.FC<{ x: number; y: number; size?: number; n: number; 
   };
 
 /** Circular cycle of labelled nodes with arrows; a highlight runs round the loop. */
-export const Cycle: React.FC<{ cx: number; cy: number; r: number; nodes: { text: string; at: number; color?: string }[]; spinFrom?: number; reverse?: boolean; nodeW?: number }> =
-  ({ cx, cy, r, nodes, spinFrom, reverse, nodeW = 360 }) => {
+export const Cycle: React.FC<{ cx: number; cy: number; r: number; rx?: number; nodes: { text: string; at: number; color?: string }[]; spinFrom?: number; reverse?: boolean; nodeW?: number }> =
+  ({ cx, cy, r, rx, nodes, spinFrom, reverse, nodeW = 360 }) => {
+    const RX = rx ?? r;
     const f = useCurrentFrame();
     const n = nodes.length;
-    const pos = (i: number) => { const a = -Math.PI / 2 + (i / n) * Math.PI * 2; return [cx + Math.cos(a) * r, cy + Math.sin(a) * r]; };
+    const pos = (i: number) => { const a = -Math.PI / 2 + (i / n) * Math.PI * 2; return [cx + Math.cos(a) * RX, cy + Math.sin(a) * r]; };
     const active = spinFrom !== undefined && f >= spinFrom ? Math.floor((f - spinFrom) / 18) % n : -1;
     return (
       <g>
@@ -76,10 +78,11 @@ export const Cycle: React.FC<{ cx: number; cy: number; r: number; nodes: { text:
           const t = p01(f, nodes[j].at, 14);
           if (t <= 0 || p01(f, nd.at, 10) <= 0) return null;
           const a0 = -Math.PI / 2 + ((i + 0.22) / n) * Math.PI * 2, a1 = -Math.PI / 2 + ((i + 0.78) / n) * Math.PI * 2;
-          const p0 = [cx + Math.cos(a0) * r, cy + Math.sin(a0) * r], p1 = [cx + Math.cos(a1) * r, cy + Math.sin(a1) * r];
-          const d = reverse ? `M ${p1[0]} ${p1[1]} A ${r} ${r} 0 0 0 ${p0[0]} ${p0[1]}` : `M ${p0[0]} ${p0[1]} A ${r} ${r} 0 0 1 ${p1[0]} ${p1[1]}`;
+          const p0 = [cx + Math.cos(a0) * RX, cy + Math.sin(a0) * r], p1 = [cx + Math.cos(a1) * RX, cy + Math.sin(a1) * r];
+          const d = reverse ? `M ${p1[0]} ${p1[1]} A ${RX} ${r} 0 0 0 ${p0[0]} ${p0[1]}` : `M ${p0[0]} ${p0[1]} A ${RX} ${r} 0 0 1 ${p1[0]} ${p1[1]}`;
           const end = reverse ? p0 : p1;
-          const ang = (reverse ? a0 - Math.PI / 2 : a1 + Math.PI / 2) * 180 / Math.PI;
+          const tg = reverse ? [Math.sin(a0) * RX, -Math.cos(a0) * r] : [-Math.sin(a1) * RX, Math.cos(a1) * r];
+          const ang = Math.atan2(tg[1], tg[0]) * 180 / Math.PI;
           return <g key={`a${i}`} opacity={t}><path d={d} fill="none" stroke={OUT} strokeWidth={9} strokeLinecap="round" />
             <path d="M -22 -14 L 0 0 L -22 14" transform={`translate(${end[0]} ${end[1]}) rotate(${ang})`} fill="none" stroke={OUT} strokeWidth={9} strokeLinecap="round" strokeLinejoin="round" /></g>;
         })}
@@ -196,6 +199,51 @@ export const Burst: React.FC<{ x: number; y: number; at: number; n?: number; ite
         const px = x + Math.cos(a) * spread * v * out(t), py = y + Math.sin(a) * spread * v * out(t) + 400 * t * t;
         return <g key={i} transform={`translate(${px} ${py}) scale(${0.6}) rotate(${t * 360 * (rnd(i + 3) - 0.5)})`} opacity={1 - t}><Prop name={item} /></g>;
       })}
+    </g>
+  );
+};
+
+/** Paper quote card; words light up progressively between frames a and b (synced to the read-out). */
+export const QuoteCard: React.FC<{ x: number; y: number; w?: number; text: string; source?: string; at?: number; a: number; b: number; size?: number; hi?: string[] }> =
+  ({ x, y, w = 1400, text, source, at = 0, a, b, size = 56, hi = [] }) => {
+    const f = useCurrentFrame();
+    const t = interpolate(f, [at, at + 14], [0, 1], { ...clamp, easing: pop });
+    if (t <= 0) return null;
+    const lines = wrapW(text, Math.floor(w / (size * 0.5)));
+    const total = text.split(/\s+/).length;
+    const shown = interpolate(f, [a, b], [0, total], clamp);
+    const h = lines.length * size * 1.3 + (source ? 170 : 110);
+    let k = 0;
+    return (
+      <g transform={`translate(${x} ${y}) scale(${t}) rotate(-1)`}>
+        <rect x={-w / 2 + 12} y={-h / 2 + 16} width={w} height={h} rx={24} fill={OUT} />
+        <rect x={-w / 2} y={-h / 2} width={w} height={h} rx={24} fill={K.white} stroke={OUT} strokeWidth={LW} />
+        <text x={-w / 2 + 40} y={-h / 2 + 120} fontFamily={CF.caption} fontWeight={900} fontSize={160} fill={K.yellow} stroke={OUT} strokeWidth={4}>“</text>
+        {lines.map((ln, i) => (
+          <text key={i} x={-w / 2 + 130} y={-h / 2 + 90 + i * size * 1.3} fontFamily={CF.label} fontWeight={600} fontSize={size}>
+            {ln.split(" ").map((wd, j) => { const idx = k++; const on = idx < shown; const hot = hi.some((h2) => wd.toLowerCase().startsWith(h2));
+              return <tspan key={j} fill={on ? (hot ? K.loss : OUT) : OUT} fillOpacity={on ? 1 : 0.22}>{wd + " "}</tspan>; })}
+          </text>
+        ))}
+        {source && <text x={w / 2 - 50} y={h / 2 - 50} textAnchor="end" fontFamily={CF.label} fontWeight={600} fontSize={34} fill={OUT} opacity={0.65}>— {source}</text>}
+      </g>
+    );
+  };
+function wrapW(text: string, n: number) { const out: string[] = []; let cur = ""; for (const w of text.split(/\s+/)) { if ((cur + " " + w).trim().length > n && cur) { out.push(cur); cur = w; } else cur = (cur + " " + w).trim(); } if (cur) out.push(cur); return out; }
+
+/** Chapter card: number + title, slides in. */
+export const Chapter: React.FC<{ n: number | string; title: string; color?: string }> = ({ n, title, color = K.yellow }) => {
+  const f = useCurrentFrame();
+  const t = interpolate(f, [0, 12], [0, 1], { ...clamp, easing: pop });
+  const size = Math.min(100, 1350 / (title.length * 0.66));
+  const tw = title.length * size * 0.66;
+  const total = 220 + 40 + tw;
+  const x0 = -total / 2;
+  return (
+    <g transform={`translate(960 540) scale(${t}) rotate(-2)`}>
+      <circle cx={x0 + 110} cy={0} r={110} fill={color} stroke={OUT} strokeWidth={LW + 2} />
+      <text x={x0 + 110} y={44} textAnchor="middle" fontFamily={CF.caption} fontWeight={900} fontSize={130} fill={OUT}>{n}</text>
+      <text x={x0 + 260} y={size * 0.36} fontFamily={CF.caption} fontWeight={900} fontSize={size} fill={OUT}>{title}</text>
     </g>
   );
 };

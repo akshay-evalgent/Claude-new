@@ -1,0 +1,34 @@
+{
+ "format": "1 \u00b7 Clever-hustle true story (long)",
+ "synthetic": "**Yes**: people and places are AI-generated dramatisations (not the real couple), and the voice is synthetic",
+ "made": "Dramatised stills generated with AI (FLUX.1-schnell), animated and graphics built in code (Remotion). They are not photographs and do not show the real people. The narration is a synthetic voice (Kokoro).",
+ "title": "The Lottery That Lost Money to a Retired Shopkeeper",
+ "alts": [
+  "He Found a Lottery That Paid More Than It Cost. Legally.",
+  "How a Retired Couple Won $27 Million From the Lottery With Maths"
+ ],
+ "hook": "They say the lottery is a tax on people who can't do maths. In 2003, a retired shopkeeper in Evart, Michigan did the maths, and found a lottery that was losing money to him. Over nine years, Jerry and Marge Selbee's group won almost $27 million in prizes. Legally.",
+ "open": "A tax on people who can't do maths",
+ "chapters": {
+  "s05": "The lottery that lost money",
+  "s06": "Evart, Michigan",
+  "s08": "The flaw",
+  "s11": "The test",
+  "s16": "Massachusetts",
+  "s19": "The rivals",
+  "s21": "Found out",
+  "s23": "The final count"
+ },
+ "sources": [
+  "Jason Fagone, 'Jerry and Marge Go Large', HuffPost Highline (2018)",
+  "Wikipedia, 'Jerry and Marge Selbee' and 'Massachusetts Lottery' (Cash WinFall): $5M Winfall roll-down; $2M Cash WinFall roll-down; ~$27M in winning tickets; $7.75M profit; MIT group's $17M bet in 7 hours; game ended January 26, 2012",
+  "Jerry & Marge Go Large (2022 film, Paramount+)"
+ ],
+ "tags": "Jerry and Marge Selbee, lottery loophole, Cash WinFall, Winfall, roll down, expected value, MIT lottery, true story, money documentary, lottery maths",
+ "pinned": "They didn't cheat, they read the rules. Would you have spotted it?",
+ "hashtags": "#TrueStory #Lottery #Maths",
+ "notes": [
+  "The Selbees are real people; the images are dramatisations, labelled DRAMATISED. Keep titles factual.",
+  "The second Michigan bet is reported as $3,400 (HuffPost) or $3,600 (Wikipedia), so the film skips that figure."
+ ]
+}

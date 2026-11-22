@@ -1,0 +1,609 @@
+{
+ "title": "The Stock Market Explained With One Lemonade Stand",
+ "voice": "am_michael",
+ "speed": 1.2,
+ "fps": 30,
+ "music": [
+  {
+   "track": "Carefree",
+   "from": "b001",
+   "to": "b037",
+   "db": -22,
+   "fadeIn": 0.4,
+   "fadeOut": 2
+  },
+  {
+   "track": "Investigations",
+   "from": "b037",
+   "to": "b049",
+   "db": -21,
+   "fadeIn": 0.5,
+   "fadeOut": 1.5
+  },
+  {
+   "track": "Wallpaper",
+   "from": "b049",
+   "db": -22,
+   "fadeIn": 1.5,
+   "fadeOut": 3
+  }
+ ],
+ "duckDb": -8,
+ "beats": [
+  {
+   "id": "b001",
+   "shot": "s01",
+   "text": "When you buy a share of Apple, Apple doesn't get a single cent of your money.",
+   "pad": 0.2,
+   "sfx": [
+    [
+     0.2,
+     "kenney-interface/click_002",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b002",
+   "shot": "s01",
+   "text": "So who does? And if the company doesn't get the money, why does the stock market even exist?",
+   "pad": 0.2
+  },
+  {
+   "id": "b003",
+   "shot": "s02",
+   "text": "To answer that, we only need one thing. A lemonade stand.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     2.6,
+     "synth/pop_2",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b004",
+   "shot": "s03",
+   "text": "",
+   "pad": 0,
+   "hold": 3.0,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_2",
+     0.7
+    ],
+    [
+     0.3,
+     "synth/ding_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b005",
+   "shot": "s04",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b006",
+   "shot": "s05",
+   "text": "Meet Penny. Penny sells lemonade. A cup sells for a dollar, and costs about forty cents to make.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     0.1,
+     "cc0-100/bell_02",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b007",
+   "shot": "s05",
+   "text": "On a good summer, she sells a thousand cups. That's six hundred dollars of profit.",
+   "pad": 0.2,
+   "sfx": [
+    [
+     2.0,
+     "synth/cash",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b008",
+   "shot": "s06",
+   "text": "Penny wants a second stand, across town. That needs a thousand dollars she doesn't have.",
+   "pad": 0.15
+  },
+  {
+   "id": "b009",
+   "shot": "s06",
+   "text": "She could borrow it. But a loan has to be paid back, with interest, even if it rains all summer.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     3.5,
+     "cc0-100/splash_01",
+     0.3
+    ]
+   ]
+  },
+  {
+   "id": "b010",
+   "shot": "s06",
+   "text": "So she has another idea.",
+   "pad": 0.3
+  },
+  {
+   "id": "b011",
+   "shot": "s07",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b012",
+   "shot": "s08",
+   "text": "She splits her business into one hundred equal slices. These slices are called shares.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     1.5,
+     "synth/whoosh_1",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b013",
+   "shot": "s08",
+   "text": "Each share is one percent of the stand. One percent of the cups, the profits, and the future.",
+   "pad": 0.15
+  },
+  {
+   "id": "b014",
+   "shot": "s09",
+   "text": "She keeps sixty shares, and sells forty to her neighbours, for twenty-five dollars each.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     2.8,
+     "kenney-casino/chips-stack-3",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b015",
+   "shot": "s09",
+   "text": "Penny gets her thousand dollars. She builds the second stand. And her neighbours now own part of her business.",
+   "pad": 0.25,
+   "sfx": [
+    [
+     0.6,
+     "synth/cash",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b016",
+   "shot": "s10",
+   "text": "Grandma bought ten shares. With two stands, the business now makes twelve hundred dollars a year. Ten percent of that belongs to Grandma.",
+   "pad": 0.15
+  },
+  {
+   "id": "b017",
+   "shot": "s10",
+   "text": "Some of the profit, Penny keeps to grow. Some, she pays out to her shareholders. That payout is called a dividend.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     5.0,
+     "kenney-rpg/handleCoins",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b018",
+   "shot": "s11",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b019",
+   "shot": "s12",
+   "text": "This is exactly what Apple did in nineteen eighty. It sold shares to the public for the first time. That's called an I. P. O., an initial public offering.",
+   "pad": 0.15
+  },
+  {
+   "id": "b020",
+   "shot": "s12",
+   "text": "Apple sold shares at twenty-two dollars each, and raised about a hundred million dollars.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     3.0,
+     "synth/cash",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b021",
+   "shot": "s12",
+   "text": "That first sale is when the company gets the money. And it's almost the only time it does.",
+   "pad": 0.35
+  },
+  {
+   "id": "b022",
+   "shot": "s13",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b023",
+   "shot": "s14",
+   "text": "Because now, Grandma wants a new bicycle. She doesn't want to own lemonade any more. She wants cash.",
+   "pad": 0.15
+  },
+  {
+   "id": "b024",
+   "shot": "s14",
+   "text": "She can't make Penny buy her shares back. But she can sell them to someone else. Sam, next door, offers thirty dollars a share.",
+   "pad": 0.15
+  },
+  {
+   "id": "b025",
+   "shot": "s14",
+   "text": "Grandma gets three hundred dollars. Sam gets ten shares. And Penny? Penny gets nothing. The money went from Sam, to Grandma.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     1.2,
+     "synth/cash",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b026",
+   "shot": "s15",
+   "text": "That's the stock market. Not a place where companies get money, but a place where owners trade with each other.",
+   "pad": 0.15
+  },
+  {
+   "id": "b027",
+   "shot": "s15",
+   "text": "When you buy Apple shares today, you're buying them from another investor who wanted to sell. Apple isn't involved.",
+   "pad": 0.15
+  },
+  {
+   "id": "b028",
+   "shot": "s15",
+   "text": "So, the answer to our question. Your money goes to whoever sold you the share.",
+   "pad": 0.35,
+   "sfx": [
+    [
+     0.6,
+     "synth/ding_2",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b029",
+   "shot": "s16",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b030",
+   "shot": "s17",
+   "text": "So why does the price matter to Penny at all?",
+   "pad": 0.15
+  },
+  {
+   "id": "b031",
+   "shot": "s17",
+   "text": "Because the price is the town's vote on what her business is worth. A hundred shares at thirty dollars means the whole stand is worth three thousand.",
+   "pad": 0.15
+  },
+  {
+   "id": "b032",
+   "shot": "s17",
+   "text": "That's called market capitalisation. And a high price helps Penny. Next time she needs money, she can sell new shares for more.",
+   "pad": 0.3
+  },
+  {
+   "id": "b033",
+   "shot": "s18",
+   "text": "So what moves the price? Just two things. How many people want to buy, and how many want to sell.",
+   "pad": 0.2
+  },
+  {
+   "id": "b034",
+   "shot": "s19",
+   "text": "A heatwave is forecast. Everyone expects record sales. Buyers rush in. Thirty dollars becomes fifty.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     2.8,
+     "synth/riser",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b035",
+   "shot": "s19",
+   "text": "Then a rumour says a big chain is opening a juice bar on the same street. Sellers rush out. Fifty becomes twenty.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     4.0,
+     "synth/whoosh_3",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b036",
+   "shot": "s19",
+   "text": "Nothing about the lemons changed. Only what people expect about the future.",
+   "pad": 0.35
+  },
+  {
+   "id": "b037",
+   "shot": "s20",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b038",
+   "shot": "s21",
+   "text": "Then it gets strange.",
+   "pad": 0.2
+  },
+  {
+   "id": "b039",
+   "shot": "s21",
+   "text": "Word spreads that lemonade shares only ever go up. People start buying, not for the lemonade, but because they expect to sell to someone else for more.",
+   "pad": 0.15
+  },
+  {
+   "id": "b040",
+   "shot": "s21",
+   "text": "The price hits a thousand dollars a share. A business making twelve hundred dollars a year, priced at a hundred thousand.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     1.4,
+     "synth/riser",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b041",
+   "shot": "s21",
+   "text": "It would take more than eighty years of profits to earn that back. That's a bubble.",
+   "pad": 0.35,
+   "sfx": [
+    [
+     3.6,
+     "cc0-100/glass_02",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b042",
+   "shot": "s22",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b043",
+   "shot": "s23",
+   "text": "Not everyone is fooled. A trader called Rex thinks the price is crazy.",
+   "pad": 0.15
+  },
+  {
+   "id": "b044",
+   "shot": "s23",
+   "text": "He borrows ten shares from Sam, and promises to give ten shares back later. Then he sells them, right away, for a thousand dollars each.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     5.0,
+     "synth/cash",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b045",
+   "shot": "s23",
+   "text": "If the price crashes, he can buy ten shares back cheap, return them to Sam, and keep the difference. That's short selling.",
+   "pad": 0.15
+  },
+  {
+   "id": "b046",
+   "shot": "s23",
+   "text": "It's a bet that the price will fall. And it's dangerous. If the price keeps rising, his losses have no limit.",
+   "pad": 0.35,
+   "sfx": [
+    [
+     4.2,
+     "synth/thud",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b047",
+   "shot": "s24",
+   "text": "",
+   "pad": 0,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b048",
+   "shot": "s25",
+   "text": "Then autumn arrives. Sales slow. Somebody sells. Then everybody sells.",
+   "pad": 0.15
+  },
+  {
+   "id": "b049",
+   "shot": "s25",
+   "text": "A thousand dollars. Five hundred. A hundred. Forty.",
+   "pad": 0.25,
+   "sfx": [
+    [
+     0.5,
+     "synth/whoosh_3",
+     0.4
+    ],
+    [
+     1.6,
+     "synth/thud",
+     0.5
+    ],
+    [
+     2.4,
+     "synth/thud",
+     0.5
+    ],
+    [
+     3.1,
+     "synth/thud",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b050",
+   "shot": "s26",
+   "text": "Rex buys back ten shares at forty dollars, hands them back to Sam, and keeps nine thousand six hundred dollars.",
+   "pad": 0.2,
+   "sfx": [
+    [
+     4.5,
+     "synth/cash",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b051",
+   "shot": "s26",
+   "text": "The people who bought at the top have lost almost everything, on paper.",
+   "pad": 0.25
+  },
+  {
+   "id": "b052",
+   "shot": "s27",
+   "text": "And Penny's lemonade? It tastes exactly the same. Two stands. Twelve hundred dollars a year. The business never changed. Only the price did.",
+   "pad": 0.4
+  },
+  {
+   "id": "b053",
+   "shot": "s28",
+   "text": "That's the whole stock market. A company sells slices of itself once, to raise money. After that, the owners trade the slices with each other.",
+   "pad": 0.15
+  },
+  {
+   "id": "b054",
+   "shot": "s28",
+   "text": "The price is just the latest deal between a buyer and a seller. It's what people expect, not what the business is.",
+   "pad": 0.3
+  },
+  {
+   "id": "b055",
+   "shot": "s29",
+   "text": "So when you buy a share of Apple, you're not giving Apple money.",
+   "pad": 0.2
+  },
+  {
+   "id": "b056",
+   "shot": "s29",
+   "text": "You're buying a slice of its future, from someone who'd rather have the cash.",
+   "pad": 1.6,
+   "sfx": [
+    [
+     0.4,
+     "synth/ding_1",
+     0.4
+    ]
+   ]
+  }
+ ]
+}

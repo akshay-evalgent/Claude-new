@@ -1,0 +1,80 @@
+{
+ "title": "When a Lottery Ticket Is Worth More Than It Costs",
+ "voice": "am_michael",
+ "speed": 1.22,
+ "fps": 30,
+ "music": [
+  {
+   "track": "Sneaky Snitch",
+   "db": -22,
+   "fadeIn": 0.1,
+   "fadeOut": 0.3
+  }
+ ],
+ "duckDb": -8,
+ "beats": [
+  {
+   "id": "b001",
+   "shot": "s01",
+   "text": "There was a lottery where buying tickets made you money.",
+   "pad": 0.1,
+   "sfx": [
+    [
+     0.1,
+     "kenney-casino/chips-collide-1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b002",
+   "shot": "s02",
+   "text": "In Michigan, a game called Winfall had a strange rule. If the jackpot passed five million dollars and nobody won it, the money rolled down to the smaller prizes.",
+   "pad": 0.1
+  },
+  {
+   "id": "b003",
+   "shot": "s03",
+   "text": "Suddenly, matching just a few numbers paid far more than usual.",
+   "pad": 0.1,
+   "sfx": [
+    [
+     1.5,
+     "synth/cash",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b004",
+   "shot": "s04",
+   "text": "A retired shopkeeper named Jerry Selbee did the maths in minutes. On those weeks, the average ticket was worth more than it cost.",
+   "pad": 0.1
+  },
+  {
+   "id": "b005",
+   "shot": "s05",
+   "text": "So he bought thousands. Over nine years, he and his wife Marge won almost twenty-seven million dollars in prizes.",
+   "pad": 0.1,
+   "sfx": [
+    [
+     3.0,
+     "synth/boom",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b006",
+   "shot": "s06",
+   "text": "Legally. They didn't cheat the lottery. They read the rules.",
+   "pad": 0.15
+  },
+  {
+   "id": "b007",
+   "shot": "s07",
+   "text": "Every roll-down week, the maths said the same thing.",
+   "pad": 0.0
+  }
+ ]
+}

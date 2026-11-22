@@ -1,0 +1,122 @@
+{
+ "title": "Why Prices Are Never Supposed to Go Back Down",
+ "voice": "am_michael",
+ "speed": 1.22,
+ "fps": 30,
+ "music": [
+  {
+   "track": "Monkeys Spinning Monkeys",
+   "db": -23,
+   "fadeIn": 0.1,
+   "fadeOut": 0.3
+  }
+ ],
+ "duckDb": -8,
+ "beats": [
+  {
+   "id": "b001",
+   "shot": "s01",
+   "text": "Central banks want your lemonade to cost more every year. On purpose.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     0.1,
+     "kenney-interface/click_002",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b002",
+   "shot": "s02",
+   "text": "Penny's lemonade costs a dollar. Next year, a dollar and two cents. The year after, a dollar and four.",
+   "pad": 0.1,
+   "sfx": [
+    [
+     0.2,
+     "synth/tick",
+     0.6
+    ],
+    [
+     2.2,
+     "synth/tick",
+     0.6
+    ],
+    [
+     4.0,
+     "synth/tick",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b003",
+   "shot": "s02",
+   "text": "That's two percent inflation. And America's central bank has officially aimed for exactly that since twenty twelve.",
+   "pad": 0.15
+  },
+  {
+   "id": "b004",
+   "shot": "s03",
+   "text": "Why not zero? Why not let prices fall?",
+   "pad": 0.1
+  },
+  {
+   "id": "b005",
+   "shot": "s04",
+   "text": "Because if you knew lemonade would be cheaper next week, you'd wait.",
+   "pad": 0.1
+  },
+  {
+   "id": "b006",
+   "shot": "s04",
+   "text": "So would everyone. Penny sells less. She cuts hours. People earn less, so they spend less, so prices fall again.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     1.0,
+     "synth/whoosh_3",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b007",
+   "shot": "s05",
+   "text": "In the Great Depression, American prices fell by about a quarter in four years. It was a disaster.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     3.0,
+     "synth/boom",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b008",
+   "shot": "s06",
+   "text": "So central banks aim a little above zero. Prices creep up slowly, so nobody waits.",
+   "pad": 0.1
+  },
+  {
+   "id": "b009",
+   "shot": "s07",
+   "text": "The goal isn't cheaper lemonade. It's wages that rise faster than lemonade does.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     1.2,
+     "synth/ding_1",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b010",
+   "shot": "s08",
+   "text": "So next time prices tick up two percent, that's not the system failing. It's the system working. Because",
+   "pad": 0.0
+  }
+ ]
+}

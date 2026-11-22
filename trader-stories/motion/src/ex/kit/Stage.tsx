@@ -52,7 +52,7 @@ const Background: React.FC<{ bg: Bg; W: number; H: number; gy: number; f: number
   const sky = (top = "#9ED6EE", bot = "#E8F6F8") => (
     <>
       <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={top} /><stop offset="1" stopColor={bot} /></linearGradient></defs>
-      <rect x={-W} y={-H} width={W * 3} height={H * 3} fill="url(#sky)" />
+      <rect x={-W * 2} y={-H * 4} width={W * 5} height={H * 6} fill="url(#sky)" />
       {[0, 1, 2, 3].map((i) => <Cloud key={i} x={((rnd(i) * W * 1.4 + f * (0.4 + rnd(i + 9) * 0.5)) % (W * 1.4)) - W * 0.2} y={H * (0.08 + rnd(i + 4) * 0.22)} s={0.6 + rnd(i + 2) * 0.6} />)}
     </>
   );
@@ -67,9 +67,11 @@ const Background: React.FC<{ bg: Bg; W: number; H: number; gy: number; f: number
     case "sky": return <>{sky()}{ground(K.grass)}</>;
     case "studio": {
       const c = color ?? "#F4E7CF";
+      const hx = c.replace("#", ""); const lum = hx.length === 6 ? (0.299 * parseInt(hx.slice(0, 2), 16) + 0.587 * parseInt(hx.slice(2, 4), 16) + 0.114 * parseInt(hx.slice(4, 6), 16)) / 255 : 1;
+      const glow = lum < 0.4 ? 0.12 : 0.55;
       return (
         <>
-          <defs><radialGradient id="studio" cx="0.5" cy="0.42" r="0.75"><stop offset="0" stopColor="#FFFFFF" stopOpacity="0.55" /><stop offset="1" stopColor="#FFFFFF" stopOpacity="0" /></radialGradient>
+          <defs><radialGradient id="studio" cx="0.5" cy="0.42" r="0.75"><stop offset="0" stopColor="#FFFFFF" stopOpacity={glow} /><stop offset="1" stopColor="#FFFFFF" stopOpacity="0" /></radialGradient>
             <pattern id="dots" width="44" height="44" patternUnits="userSpaceOnUse"><circle cx="22" cy="22" r="3" fill={OUT} opacity="0.07" /></pattern></defs>
           <rect x={-W} y={-H} width={W * 3} height={H * 3} fill={c} />
           <rect x={-W} y={-H} width={W * 3} height={H * 3} fill="url(#dots)" />

@@ -1,0 +1,153 @@
+{
+ "title": "Every Level of Trader in 45 Seconds",
+ "voice": "am_michael",
+ "speed": 1.25,
+ "fps": 30,
+ "music": [
+  {
+   "track": "Volatile Reaction",
+   "db": -22,
+   "fadeIn": 0.1,
+   "fadeOut": 0.3
+  }
+ ],
+ "duckDb": -7,
+ "beats": [
+  {
+   "id": "b001",
+   "shot": "s01",
+   "text": "Every level of trader, from a thousand dollars to a billion.",
+   "pad": 0.1,
+   "sfx": [
+    [
+     0.1,
+     "synth/whoosh_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b002",
+   "shot": "s02",
+   "text": "Level one. A phone app. Fifty trades a day. Most people here lose.",
+   "pad": 0.05,
+   "sfx": [
+    [
+     0,
+     "synth/pop_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b003",
+   "shot": "s03",
+   "text": "Level two. Ten thousand. You discover leverage. Bigger wins. Faster wipeouts.",
+   "pad": 0.05,
+   "sfx": [
+    [
+     0,
+     "synth/pop_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b004",
+   "shot": "s04",
+   "text": "Level three. You quit your job. In one huge study, ninety-seven percent of long-time day traders lost money.",
+   "pad": 0.05,
+   "sfx": [
+    [
+     0,
+     "synth/pop_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b005",
+   "shot": "s05",
+   "text": "Level four. You trade a prop firm's money, and keep a cut.",
+   "pad": 0.05,
+   "sfx": [
+    [
+     0,
+     "synth/pop_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b006",
+   "shot": "s06",
+   "text": "Level five. A bank desk. A daily loss limit. A bonus.",
+   "pad": 0.05,
+   "sfx": [
+    [
+     0,
+     "synth/pop_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b007",
+   "shot": "s07",
+   "text": "Level six. Your own fund. Two percent a year, just for managing it.",
+   "pad": 0.05,
+   "sfx": [
+    [
+     0,
+     "synth/pop_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b008",
+   "shot": "s08",
+   "text": "Level seven. A billion. Your trades move the price.",
+   "pad": 0.05,
+   "sfx": [
+    [
+     0,
+     "synth/pop_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b009",
+   "shot": "s09",
+   "text": "Level eight. One bet against a currency, a billion dollars.",
+   "pad": 0.05,
+   "sfx": [
+    [
+     0,
+     "synth/pop_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b010",
+   "shot": "s10",
+   "text": "Level nine. You barely trade. Your favourite holding period? Forever.",
+   "pad": 0.1,
+   "sfx": [
+    [
+     0,
+     "synth/pop_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b011",
+   "shot": "s11",
+   "text": "Notice something? The higher the level, the fewer the trades. Watch it again and count.",
+   "pad": 0.0
+  }
+ ]
+}
