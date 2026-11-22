@@ -22,7 +22,7 @@ import subprocess
 import sys
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 W, H, FPS = 1080, 1920, 30
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -96,19 +96,45 @@ def caption_chunks(ws, maxw=3):
     return chunks
 
 
-def draw_caption(img, chunk, t, hl, y=1240):
-    d = ImageDraw.Draw(img); f = ImageFont.truetype(FONT, 92)
-    toks = [re.sub(r"[^\w'’\-]", "", w["w"]).upper() for w in chunk]
-    widths = [d.textlength(x + " ", font=f) for x in toks]; total = sum(widths) - d.textlength(" ", font=f)
-    x = (W - total) / 2
-    for w, tok, wd in zip(chunk, toks, widths):
-        if t + 0.02 < w["t0"]:
-            x += wd; continue                              # word not spoken yet
-        col = (255, 221, 0) if any(h.lower() in tok.lower() for h in hl) else (255, 255, 255)
-        k = min(1, (t - w["t0"]) / 0.08 + 0.6)             # quick pop-in
-        fs = ImageFont.truetype(FONT, int(92 * (0.85 + 0.15 * k)))
-        d.text((x, y), tok, font=fs, fill=col, stroke_width=10, stroke_fill=(0, 0, 0), anchor="ls")
-        x += wd
+def draw_word(img, ws, t, hl, y=1180):
+    """One word at a time (dns style): gold, bold, dark outline and soft shadow."""
+    cur = None
+    for i, w in enumerate(ws):
+        nxt = ws[i + 1]["t0"] if i + 1 < len(ws) else w["t1"] + 0.3
+        if w["t0"] - 0.03 <= t < min(nxt, w["t1"] + 0.45):
+            cur = w
+    if not cur:
+        return
+    tok = re.sub(r"[^\w'’\-.,?!]", "", cur["w"])
+    if not tok:
+        return
+    k = min(1.0, (t - cur["t0"] + 0.03) / 0.07)
+    f = ImageFont.truetype(FONT, int(86 * (0.9 + 0.1 * k)))
+    col = (255, 255, 255) if any(h.lower() in tok.lower() for h in hl) else (247, 181, 24)
+    d = ImageDraw.Draw(img)
+    d.text((W / 2 + 4, y + 6), tok, font=f, fill=(0, 0, 0), anchor="mm", stroke_width=9, stroke_fill=(0, 0, 0))
+    d.text((W / 2, y), tok, font=f, fill=col, anchor="mm", stroke_width=7, stroke_fill=(20, 14, 6))
+
+
+def shot_plan(ws, n, seed=3):
+    """Visual rhythm without B-roll: change framing every 1-2 s, on word boundaries. face / wide inset / punch-in."""
+    rng = np.random.default_rng(seed)
+    cuts = [0]; t = 0.0
+    bounds = [w["t0"] for w in ws] + [n / FPS]
+    while True:
+        target = t + rng.uniform(1.0, 2.0)
+        later = [b for b in bounds if b >= target]
+        if not later or later[0] >= n / FPS - 0.6:
+            break
+        t = later[0]; cuts.append(t)
+    kinds = []
+    for i in range(len(cuts)):
+        if i == 0:
+            kinds.append("face")
+        else:
+            opts = [k for k in ("face", "wide", "punch") if k != kinds[-1]]
+            kinds.append(opts[int(rng.integers(len(opts)))] if rng.random() > 0.15 else "face")
+    return list(zip(cuts, kinds))
 
 
 def wrap(d, text, font, maxw):
@@ -129,14 +155,14 @@ def main():
     dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", src], capture_output=True, text=True).stdout)
     n = int(dur * FPS)
     ws = words(src); json.dump(ws, open(os.path.join(work, "words.json"), "w"), indent=1)
-    chunks = caption_chunks(ws)
+    plan = shot_plan(ws, n); json.dump(plan, open(os.path.join(work, 'plan.json'), 'w'))
     cx, fw, fh = track(src, n)
     # crop: full height, 9:16 width, following the face; scaled up to 1080x1920
     cw = fh * W / H
     if cw > fw:
         cw = fw
     hl = spec.get("highlight", [])
-    hook = spec.get("hook"); hook_dur = spec.get("hook_dur", 2.6)
+    hook = spec.get("hook"); hook_dur = spec.get("hook_dur", 2.6)          # optional; dns uses none
     fh_font = ImageFont.truetype(FONT2, 64); cred_font = ImageFont.truetype(FONT2, 30)
     dec = subprocess.Popen(["ffmpeg", "-v", "error", "-i", src, "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE)
     wav = os.path.join(work, "audio.wav")
@@ -150,15 +176,22 @@ def main():
         if len(raw) < fsz:
             break
         fr = Image.frombuffer("RGB", (int(fw), int(fh)), raw)
-        x0 = float(np.clip(cx[min(i, len(cx) - 1)] - cw / 2, 0, fw - cw))
-        zoom = 1.0 + 0.03 * (i / max(1, n))                 # slow push-in
-        cwz, chz = cw / zoom, fh / zoom
-        box = (x0 + (cw - cwz) / 2, (fh - chz) * 0.35, x0 + (cw + cwz) / 2, (fh - chz) * 0.35 + chz)
-        img = fr.resize((W, H), Image.BICUBIC, box=box)
         t = i / FPS
-        ch = next((c for c in chunks if c[0]["t0"] - 0.05 <= t <= c[-1]["t1"] + 0.25), None)
-        if ch:
-            draw_caption(img, ch, t, hl)
+        kind = [k for c, k in plan if c <= t + 1e-6][-1]
+        x0 = float(np.clip(cx[min(i, len(cx) - 1)] - cw / 2, 0, fw - cw))
+        if kind == "wide":                                  # whole 16:9 frame over a blurred, zoomed copy of itself
+            bg = fr.resize((W, H), Image.BICUBIC, box=(x0 + cw * 0.1, fh * 0.1, x0 + cw * 0.9, fh * 0.9)).filter(ImageFilter.GaussianBlur(28))
+            bg = Image.eval(bg, lambda v: int(v * 0.6))
+            ww = W - 60; wh = int(ww * fh / fw)
+            bg.paste(fr.resize((ww, wh), Image.BICUBIC), (30, int(H * 0.42 - wh / 2)))
+            img = bg
+        else:
+            zoom = (1.0 + 0.03 * (i / max(1, n))) * (1.22 if kind == "punch" else 1.0)
+            cwz, chz = cw / zoom, fh / zoom
+            cxf = x0 + cw / 2
+            box = (cxf - cwz / 2, (fh - chz) * 0.3, cxf + cwz / 2, (fh - chz) * 0.3 + chz)
+            img = fr.resize((W, H), Image.BICUBIC, box=box)
+        draw_word(img, ws, t, hl)
         d = ImageDraw.Draw(img)
         if hook and t < hook_dur:
             a = min(1, t / 0.15) * min(1, (hook_dur - t) / 0.25)
