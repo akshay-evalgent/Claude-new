@@ -53,7 +53,7 @@ w, h = (1080, 1920) if kit.get("short") else (1920, 1080)
 lines = [f"# YouTube upload kit: {kit['title']}", "",
          f"| File | Use |", "|---|---|",
          f"| `{name}.mp4` (in `build/`, sent separately) | {'Short, vertical' if kit.get('short') else 'Long video'}: {w}×{h}, 30 fps, {ts(dur)}, mixed to −14 LUFS |",
-         f"| `captions.srt` (in `build/`) | English subtitles from the narration timing |", "",
+         f"| `{name}.en.srt` | English subtitles from the narration timing |"] + ([] if kit.get("short") else [f"| `thumbnail-a.jpg`, `thumbnail-b.jpg` | Thumbnails: A main, B for Test & Compare |"]) + ["",
          f"Format test: **{kit.get('format', '')}**", "", "## Title", "", f"> {kit['title']}", ""]
 if kit.get("alts"):
     lines += ["Alternatives for Test & Compare:", ""] + [f"- {a}" for a in kit["alts"]] + [""]
@@ -61,7 +61,7 @@ lines += ["## Description", "", "```", desc, "```", "", "## Tags", "", "```", ki
 lines += ["## Studio settings", "", "| Setting | Value |", "|---|---|",
           "| Audience | No, it's not made for kids |",
           "| Altered or synthetic content | " + kit.get("synthetic", "**Yes**: the voice is synthetic" ) + " |",
-          "| Category | Education |", "| Captions | Upload `captions.srt` (English) |",
+          "| Category | Education |", f"| Captions | Upload `{name}.en.srt` (English) |",
           "| Licence | Standard YouTube Licence |"]
 if kit.get("short"):
     lines += ["| Related video | Link the matching long video (Shorts 'Related video' field) |"]
@@ -74,4 +74,6 @@ lines += ["## What to measure (format test)", "",
           ("- Viewed vs swiped away ≥ 75% · average percentage viewed ≥ 100% (loops) · shares per 1,000 views ≥ 10" if kit.get("short")
            else "- Still watching at 0:30 ≥ 75% · average percentage viewed ≥ 50% · returning viewers ≥ 20% · shares per 1,000 views ≥ 5"), ""]
 (vdir / "UPLOAD_KIT.md").write_text("\n".join(lines))
+import shutil
+if (vdir / "build" / "captions.srt").exists(): shutil.copy(vdir / "build" / "captions.srt", vdir / f"{name}.en.srt")
 print("wrote", vdir / "UPLOAD_KIT.md", ts(dur), len(chapters), "chapters")

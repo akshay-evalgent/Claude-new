@@ -46,12 +46,12 @@ const S01: React.FC = () => {
   const cue = useCue();
   return (
     <Stage bg="wallst" cam={usePush(1, 1.08)}>
-      <OnGround x={1350} s={0.9}><Shop /></OnGround>
+      <OnGround x={1300} s={0.9}><Shop /></OnGround>
       <OnGround x={420}><Character look={FUND} pose={[[0, "hips"], [cue("bet"), "point"]]} mood="smug" seed={4} /></OnGround>
       <OnGround x={700}><Character look={FUND2} pose="signR" hold={{ item: "sign", label: "SHORT" }} mood="smug" seed={5} /></OnGround>
       <PopText x={560} y={200} at={cue("powerful")} text="WALL STREET'S BIG PLAYERS" size={52} pill={K.white} />
-      <Arrow a={[1350, 300]} b={[1350, 620]} at={cue("collapse") - 4} bend={0} color={K.loss} w={14} />
-      <PopText x={1350} y={260} at={cue("collapse")} text="→ $0" size={90} font="caption" color={K.loss} stroke={OUT} />
+      <Arrow a={[1700, 330]} b={[1700, 700]} at={cue("collapse") - 4} bend={0} color={K.loss} w={14} />
+      <PopText x={1700} y={280} at={cue("collapse")} text="↓ $0" size={90} font="caption" color={K.loss} stroke={OUT} />
     </Stage>
   );
 };

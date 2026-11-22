@@ -2,8 +2,8 @@
 
 | File | Use |
 |---|---|
-| `f4-prices-short.mp4` (in `build/`, sent separately) | Short, vertical: 1080×1920, 30 fps, 0:57, mixed to −14 LUFS |
-| `captions.srt` (in `build/`) | English subtitles from the narration timing |
+| `prices-short.mp4` (in `build/`, sent separately) | Short, vertical: 1080×1920, 30 fps, 0:57, mixed to −14 LUFS |
+| `prices-short.en.srt` | English subtitles from the narration timing |
 
 Format test: **4 · Explained with one running object (Short)**
 
@@ -51,7 +51,7 @@ inflation explained, 2 percent inflation, deflation, federal reserve, why prices
 | Audience | No, it's not made for kids |
 | Altered or synthetic content | **Yes**: the voice is synthetic |
 | Category | Education |
-| Captions | Upload `captions.srt` (English) |
+| Captions | Upload `prices-short.en.srt` (English) |
 | Licence | Standard YouTube Licence |
 | Related video | Link the matching long video (Shorts 'Related video' field) |
 

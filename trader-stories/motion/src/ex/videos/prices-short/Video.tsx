@@ -40,7 +40,7 @@ const Hero: React.FC<{ ending?: boolean }> = ({ ending }) => {
     <Stage bg="town" groundY={GY} cam={ending ? [[0, { z: 1.22, x: 540, y: 820 }], [s.frames, { z: 1.12, x: 540, y: 820 }]] : usePush(1.12, 1.22)}>
       <OnGround x={560} s={0.9}><LemonadeStand /></OnGround>
       <OnGround x={250} s={1.05}><Character look={PENNY} pose="hold" hold={{ item: "cup" }} mood={ending ? "smug" : "happy"} seed={3} /></OnGround>
-      <Tag x={600} y={430} keys={ending ? [[0, 1.0]] : [[0, 1.0], [cue("more"), 1.0], [cue("more") + 10, 1.02], [cue("year"), 1.04]]} />
+      <Tag x={600} y={480} keys={ending ? [[0, 1.0]] : [[0, 1.0], [cue("more"), 1.0], [cue("more") + 10, 1.02], [cue("year"), 1.04]]} />
       {!ending && <Stamp x={560} y={620} at={cue("purpose")} text="ON PURPOSE" size={90} color={K.blue} />}
     </Stage>
   );
@@ -50,10 +50,10 @@ const S02: React.FC = () => {
   const cue = useCue();
   return (
     <Stage bg="studio" color={BG} groundY={GY} cam={usePush()}>
-      <Tag x={540} y={420} s={1.3} keys={[[0, 1.0], [cue("next"), 1.0], [cue("two") + 4, 1.02], [cue("after"), 1.02], [cue("four") + 4, 1.04]]} />
-      <PopText x={540} y={640} at={cue("two", 2)} text="= 2% INFLATION" size={74} font="caption" color={K.orange} stroke={OUT} />
+      <Tag x={540} y={480} s={1.25} keys={[[0, 1.0], [cue("next"), 1.0], [cue("two") + 4, 1.02], [cue("after"), 1.02], [cue("four") + 4, 1.04]]} />
+      <PopText x={540} y={690} at={cue("two", 2)} text="= 2% INFLATION" size={74} font="caption" color={K.orange} stroke={OUT} />
       <PopIn at={cue("central")} x={540} y={GY}><Building w={420} h={340} color="#E8DDC8" roof="columns" label="THE FED" /></PopIn>
-      <PopText x={540} y={760} at={cue("twenty")} text="official target since 2012" size={46} pill={K.white} />
+      <PopText x={540} y={1215} at={cue("twenty")} text="official target since 2012" size={46} pill={K.white} />
     </Stage>
   );
 };
@@ -63,7 +63,7 @@ const S03: React.FC = () => {
   return (
     <Stage bg="studio" color={BG} groundY={GY} cam={usePush()}>
       <OnGround x={540} s={1.2}><Character look={CAST.sam} pose="shrug" mood="worried" seed={2} /></OnGround>
-      <PopText x={540} y={420} at={cue("zero")} text="WHY NOT 0%?" size={110} font="caption" color={K.white} stroke={OUT} />
+      <PopText x={540} y={480} at={cue("zero")} text="WHY NOT 0%?" size={110} font="caption" color={K.white} stroke={OUT} />
     </Stage>
   );
 };
@@ -77,7 +77,7 @@ const S04: React.FC = () => {
       {f < b6 ? (
         <>
           <OnGround x={540} s={1.2}><Character look={CAST.sam} pose="hips" mood="sleepy" seed={2} /></OnGround>
-          <PopText x={540} y={420} at={cue("cheaper")} text="cheaper next week?" size={64} pill={K.white} />
+          <PopText x={540} y={490} at={cue("cheaper")} text="cheaper next week?" size={64} pill={K.white} />
           <PopText x={540} y={540} at={cue("wait")} text="…I'll wait." size={80} font="hand" />
         </>
       ) : (
@@ -94,9 +94,9 @@ const S05: React.FC = () => {
   return (
     <Stage bg="city" groundY={GY} tint="rgba(60,50,40,0.35)" cam={usePush()}>
       {Array.from({ length: 4 }).map((_, i) => <OnGround key={i} x={170 + i * 250} s={0.9}><Character look={{ ...crowdLook(110 + i), hat: i % 2 ? "cap" : undefined, hatColor: "#5A4A3A" }} pose="idle" mood="sad" seed={110 + i} /></OnGround>)}
-      <PopText x={540} y={360} at={cue("great")} text="1929 – 1933" size={90} font="caption" color={K.white} stroke={OUT} />
-      <PopText x={540} y={520} at={cue("quarter")} text="PRICES −25%" size={100} font="caption" color={K.loss} stroke={OUT} />
-      <Stamp x={540} y={680} at={cue("disaster")} text="DISASTER" size={90} />
+      <PopText x={540} y={440} at={cue("great")} text="1929 – 1933" size={90} font="caption" color={K.white} stroke={OUT} />
+      <PopText x={540} y={580} at={cue("quarter")} text="PRICES −25%" size={100} font="caption" color={K.loss} stroke={OUT} />
+      <Stamp x={540} y={730} at={cue("disaster")} text="DISASTER" size={90} />
     </Stage>
   );
 };
@@ -108,7 +108,7 @@ const S06: React.FC = () => {
   const v = interpolate(f, [0, s.frames], [1.0, 1.06], clamp);
   return (
     <Stage bg="studio" color={BG} groundY={GY} cam={usePush()}>
-      <Tag x={540} y={460} s={1.3} keys={[[0, v], [s.frames, v]]} />
+      <Tag x={540} y={500} s={1.25} keys={[[0, v], [s.frames, v]]} />
       <PopText x={540} y={680} at={cue("above")} text="a little above zero" size={66} pill={K.yellow} />
       <PopText x={540} y={820} at={cue("waits")} text="so nobody waits" size={60} font="hand" />
     </Stage>

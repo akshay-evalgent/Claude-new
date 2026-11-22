@@ -2,8 +2,9 @@
 
 | File | Use |
 |---|---|
-| `f4-lemonade.mp4` (in `build/`, sent separately) | Long video: 1920×1080, 30 fps, 5:16, mixed to −14 LUFS |
-| `captions.srt` (in `build/`) | English subtitles from the narration timing |
+| `lemonade.mp4` (in `build/`, sent separately) | Long video: 1920×1080, 30 fps, 5:16, mixed to −14 LUFS |
+| `lemonade.en.srt` | English subtitles from the narration timing |
+| `thumbnail-a.jpg`, `thumbnail-b.jpg` | Thumbnails: A main, B for Test & Compare |
 
 Format test: **4 · Explained with one running object (long)**
 
@@ -69,7 +70,7 @@ stock market explained, how stocks work, what is a share, IPO explained, dividen
 | Audience | No, it's not made for kids |
 | Altered or synthetic content | **Yes**: the voice is synthetic |
 | Category | Education |
-| Captions | Upload `captions.srt` (English) |
+| Captions | Upload `lemonade.en.srt` (English) |
 | Licence | Standard YouTube Licence |
 | Chapters | From the description timestamps |
 | End screen (last 20 s) | Subscribe + the matching Short's long companion / best-for-viewer |

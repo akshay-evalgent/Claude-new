@@ -1,0 +1,608 @@
+1
+00:00:00,385 --> 00:00:02,297
+In January twenty twenty-one,
+
+2
+00:00:02,297 --> 00:00:04,210
+some of the most powerful investors on
+
+3
+00:00:04,210 --> 00:00:06,260
+Wall Street bet that a struggling video
+
+4
+00:00:06,260 --> 00:00:07,935
+game shop would collapse.
+
+5
+00:00:08,560 --> 00:00:09,798
+A man on the internet in a
+
+6
+00:00:09,798 --> 00:00:12,635
+red headband had bet about fifty-three thousand
+
+7
+00:00:12,635 --> 00:00:14,285
+dollars that they were wrong.
+
+8
+00:00:14,927 --> 00:00:15,852
+Within weeks,
+
+9
+00:00:15,852 --> 00:00:18,402
+his position was worth nearly forty-eight million
+
+10
+00:00:18,402 --> 00:00:19,377
+dollars.
+
+11
+00:00:19,377 --> 00:00:20,914
+And one of the funds betting against
+
+12
+00:00:20,914 --> 00:00:23,202
+him needed billions to keep going.
+
+13
+00:00:23,893 --> 00:00:25,593
+This is the GameStop story,
+
+14
+00:00:25,593 --> 00:00:27,218
+explained like you're five.
+
+15
+00:00:32,518 --> 00:00:35,368
+GameStop sold video games in shopping malls
+
+16
+00:00:35,468 --> 00:00:37,881
+But people had started downloading games instead
+
+17
+00:00:37,881 --> 00:00:39,193
+of buying discs.
+
+18
+00:00:39,827 --> 00:00:41,839
+Then the pandemic shut the malls.
+
+19
+00:00:41,839 --> 00:00:43,440
+So a lot of big investors looked
+
+20
+00:00:43,440 --> 00:00:45,365
+at GameStop and saw a business that
+
+21
+00:00:45,365 --> 00:00:46,377
+was dying.
+
+22
+00:00:48,660 --> 00:00:50,410
+When big investors think a company will
+
+23
+00:00:50,410 --> 00:00:51,010
+fail,
+
+24
+00:00:51,010 --> 00:00:52,185
+they can bet on it.
+
+25
+00:00:52,185 --> 00:00:53,810
+It's called short selling.
+
+26
+00:00:54,427 --> 00:00:56,527
+Imagine you borrow your friend's toy car
+
+27
+00:00:56,627 --> 00:00:58,027
+It's worth ten dollars.
+
+28
+00:00:58,027 --> 00:00:59,227
+You sell it straight away,
+
+29
+00:00:59,227 --> 00:01:00,502
+for ten dollars.
+
+30
+00:01:01,152 --> 00:01:01,752
+Next week,
+
+31
+00:01:01,677 --> 00:01:03,802
+toy cars drop to two dollars.
+
+32
+00:01:03,802 --> 00:01:05,352
+You buy one back for two,
+
+33
+00:01:05,352 --> 00:01:06,215
+give it to your friend,
+
+34
+00:01:06,215 --> 00:01:07,727
+and keep eight dollars.
+
+35
+00:01:08,360 --> 00:01:09,235
+That's a short.
+
+36
+00:01:09,235 --> 00:01:10,910
+You win when the price falls.
+
+37
+00:01:11,602 --> 00:01:12,877
+But here's the catch.
+
+38
+00:01:12,877 --> 00:01:14,627
+What if the price goes up instead
+
+39
+00:01:14,727 --> 00:01:16,090
+You still owe your friend a toy
+
+40
+00:01:16,090 --> 00:01:16,690
+car.
+
+41
+00:01:16,677 --> 00:01:17,840
+You have to buy one back,
+
+42
+00:01:17,840 --> 00:01:19,127
+whatever it costs.
+
+43
+00:01:19,735 --> 00:01:20,873
+When you buy something,
+
+44
+00:01:20,873 --> 00:01:22,235
+the most you can lose is what
+
+45
+00:01:22,235 --> 00:01:23,160
+you paid.
+
+46
+00:01:23,160 --> 00:01:24,223
+When you short something,
+
+47
+00:01:24,223 --> 00:01:25,385
+there's no limit.
+
+48
+00:01:27,702 --> 00:01:28,840
+With GameStop,
+
+49
+00:01:28,840 --> 00:01:30,602
+so many funds were shorting that something
+
+50
+00:01:30,602 --> 00:01:31,902
+strange happened.
+
+51
+00:01:32,552 --> 00:01:34,490
+More shares had been sold short than
+
+52
+00:01:34,490 --> 00:01:36,764
+were actually available to trade.
+
+53
+00:01:36,764 --> 00:01:39,815
+America's market regulator later put short interest
+
+54
+00:01:39,815 --> 00:01:41,915
+at nearly a hundred and twenty-three percent
+
+55
+00:01:41,915 --> 00:01:43,527
+of the shares available.
+
+56
+00:01:44,135 --> 00:01:46,035
+It's like borrowing and selling more toy
+
+57
+00:01:46,035 --> 00:01:47,485
+cars than there are in the whole
+
+58
+00:01:47,485 --> 00:01:48,560
+playground.
+
+59
+00:01:50,852 --> 00:01:52,427
+One person had looked at the same
+
+60
+00:01:52,427 --> 00:01:54,877
+company and seen something different.
+
+61
+00:01:55,468 --> 00:01:56,218
+Keith Gill,
+
+62
+00:01:56,218 --> 00:01:58,193
+known online as Roaring Kitty,
+
+63
+00:01:58,193 --> 00:02:00,281
+believed GameStop was worth far more than
+
+64
+00:02:00,281 --> 00:02:01,293
+its price.
+
+65
+00:02:01,952 --> 00:02:03,052
+In twenty nineteen,
+
+66
+00:02:03,052 --> 00:02:05,189
+he posted his position online.
+
+67
+00:02:05,189 --> 00:02:07,402
+About fifty-three thousand dollars.
+
+68
+00:02:07,402 --> 00:02:08,989
+And he kept posting updates,
+
+69
+00:02:08,989 --> 00:02:09,990
+month after month,
+
+70
+00:02:09,990 --> 00:02:12,177
+and making videos explaining why.
+
+71
+00:02:12,768 --> 00:02:14,705
+And people started to notice the trap
+
+72
+00:02:14,705 --> 00:02:17,018
+the short sellers had built for themselves
+
+73
+00:02:19,435 --> 00:02:21,110
+If the price started rising,
+
+74
+00:02:21,110 --> 00:02:22,735
+the short sellers would have to buy
+
+75
+00:02:22,735 --> 00:02:24,960
+shares back to stop their losses.
+
+76
+00:02:24,960 --> 00:02:26,710
+And buying pushes the price up even
+
+77
+00:02:26,710 --> 00:02:27,485
+more.
+
+78
+00:02:28,102 --> 00:02:30,277
+Which forces more short sellers to buy
+
+79
+00:02:30,402 --> 00:02:32,252
+Which pushes the price higher still.
+
+80
+00:02:32,252 --> 00:02:33,802
+That's a short squeeze.
+
+81
+00:02:34,552 --> 00:02:36,415
+In January twenty twenty-one,
+
+82
+00:02:36,415 --> 00:02:38,714
+huge numbers of ordinary people,
+
+83
+00:02:38,714 --> 00:02:41,477
+many from an online forum called WallStreetBets
+
+84
+00:02:41,577 --> 00:02:42,627
+piled in.
+
+85
+00:02:43,260 --> 00:02:44,760
+On January eleventh,
+
+86
+00:02:44,760 --> 00:02:46,885
+a GameStop share closed at about twenty
+
+87
+00:02:46,885 --> 00:02:47,822
+dollars.
+
+88
+00:02:47,822 --> 00:02:49,585
+By January twenty-seventh,
+
+89
+00:02:49,585 --> 00:02:51,985
+it closed at three hundred and forty-seven
+
+90
+00:02:52,702 --> 00:02:53,627
+The next morning,
+
+91
+00:02:53,627 --> 00:02:56,027
+it touched four hundred and eighty-three dollars
+
+92
+00:02:56,960 --> 00:02:58,035
+One of the funds caught on the
+
+93
+00:02:58,035 --> 00:03:00,810
+wrong side was called Melvin Capital.
+
+94
+00:03:01,452 --> 00:03:03,102
+Melvin lost more than half its money
+
+95
+00:03:03,102 --> 00:03:04,352
+in January.
+
+96
+00:03:04,352 --> 00:03:06,377
+It took two point seven five billion
+
+97
+00:03:06,377 --> 00:03:08,327
+dollars from two other firms,
+
+98
+00:03:08,327 --> 00:03:10,102
+Citadel and Point72,
+
+99
+00:03:10,102 --> 00:03:11,302
+to keep going.
+
+100
+00:03:11,952 --> 00:03:13,915
+Short sellers as a group lost billions
+
+101
+00:03:13,915 --> 00:03:15,827
+of dollars in a matter of days
+
+102
+00:03:18,285 --> 00:03:18,885
+Then,
+
+103
+00:03:18,597 --> 00:03:20,197
+on January twenty-eighth,
+
+104
+00:03:20,197 --> 00:03:22,610
+something happened that made people furious.
+
+105
+00:03:23,277 --> 00:03:23,877
+Robinhood,
+
+106
+00:03:23,839 --> 00:03:25,177
+the trading app many of the new
+
+107
+00:03:25,177 --> 00:03:26,315
+investors used,
+
+108
+00:03:26,315 --> 00:03:28,815
+stopped customers from buying GameStop.
+
+109
+00:03:28,815 --> 00:03:30,527
+Other brokers did the same.
+
+110
+00:03:30,527 --> 00:03:31,477
+You could sell.
+
+111
+00:03:31,477 --> 00:03:32,802
+You just couldn't buy.
+
+112
+00:03:33,402 --> 00:03:34,552
+The price dropped.
+
+113
+00:03:34,552 --> 00:03:36,677
+People accused the brokers of protecting Wall
+
+114
+00:03:36,677 --> 00:03:37,427
+Street.
+
+115
+00:03:38,060 --> 00:03:39,373
+The brokers said it was about the
+
+116
+00:03:39,373 --> 00:03:40,198
+plumbing.
+
+117
+00:03:40,198 --> 00:03:41,085
+To trade,
+
+118
+00:03:41,085 --> 00:03:42,297
+they have to put up cash with
+
+119
+00:03:42,297 --> 00:03:43,485
+a clearing house,
+
+120
+00:03:43,485 --> 00:03:45,260
+and the wild swings meant they suddenly
+
+121
+00:03:45,260 --> 00:03:46,910
+had to put up far more.
+
+122
+00:03:47,502 --> 00:03:48,965
+Congress held hearings.
+
+123
+00:03:48,965 --> 00:03:51,127
+Regulators wrote a long report.
+
+124
+00:03:51,127 --> 00:03:52,415
+But in those wild days,
+
+125
+00:03:52,415 --> 00:03:54,002
+the buy button was gone.
+
+126
+00:03:56,318 --> 00:03:57,368
+So who won?
+
+127
+00:03:58,035 --> 00:03:58,785
+At its peak,
+
+128
+00:03:58,785 --> 00:04:01,160
+Keith Gill's position was worth nearly forty-eight
+
+129
+00:04:01,160 --> 00:04:02,185
+million dollars,
+
+130
+00:04:02,185 --> 00:04:03,235
+on paper.
+
+131
+00:04:03,885 --> 00:04:06,235
+Some people who bought early made fortunes
+
+132
+00:04:06,372 --> 00:04:07,735
+Many who bought near the top,
+
+133
+00:04:07,735 --> 00:04:09,648
+at three or four hundred dollars,
+
+134
+00:04:09,648 --> 00:04:11,085
+lost a lot when the price fell
+
+135
+00:04:11,085 --> 00:04:11,835
+back.
+
+136
+00:04:12,485 --> 00:04:15,210
+Melvin Capital closed down in twenty twenty-two
+
+137
+00:04:16,127 --> 00:04:17,765
+The lesson isn't that the little guy
+
+138
+00:04:17,765 --> 00:04:19,039
+always wins.
+
+139
+00:04:19,039 --> 00:04:19,814
+Most of the time,
+
+140
+00:04:19,814 --> 00:04:20,677
+he doesn't.
+
+141
+00:04:21,268 --> 00:04:22,168
+It's this.
+
+142
+00:04:22,168 --> 00:04:23,368
+When you short a stock,
+
+143
+00:04:23,368 --> 00:04:24,893
+you can lose more than everything you
+
+144
+00:04:24,893 --> 00:04:25,768
+put in.
+
+145
+00:04:25,768 --> 00:04:27,181
+And when too many people make the
+
+146
+00:04:27,181 --> 00:04:27,968
+same bet,
+
+147
+00:04:27,968 --> 00:04:29,918
+the exit gets very small.
+
+148
+00:04:30,660 --> 00:04:32,585
+Some of Wall Street's biggest players bet
+
+149
+00:04:32,585 --> 00:04:34,285
+a dying video game shop would go
+
+150
+00:04:34,285 --> 00:04:35,335
+to zero.
+
+151
+00:04:35,335 --> 00:04:36,935
+The bet nearly sent one of them
+
+152
+00:04:36,935 --> 00:04:38,085
+there instead.
+

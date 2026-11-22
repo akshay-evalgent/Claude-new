@@ -2,8 +2,9 @@
 
 | File | Use |
 |---|---|
-| `f3-banks.mp4` (in `build/`, sent separately) | Long video: 1920×1080, 30 fps, 7:01, mixed to −14 LUFS |
-| `captions.srt` (in `build/`) | English subtitles from the narration timing |
+| `banks.mp4` (in `build/`, sent separately) | Long video: 1920×1080, 30 fps, 7:01, mixed to −14 LUFS |
+| `banks.en.srt` | English subtitles from the narration timing |
+| `thumbnail-a.jpg`, `thumbnail-b.jpg` | Thumbnails: A main, B for Test & Compare |
 
 Format test: **3 · 'If you don't understand X' (long)**
 
@@ -68,7 +69,7 @@ how banks create money, money creation, bank of england, fractional reserve, mon
 | Audience | No, it's not made for kids |
 | Altered or synthetic content | **Yes**: the voice is synthetic |
 | Category | Education |
-| Captions | Upload `captions.srt` (English) |
+| Captions | Upload `banks.en.srt` (English) |
 | Licence | Standard YouTube Licence |
 | Chapters | From the description timestamps |
 | End screen (last 20 s) | Subscribe + the matching Short's long companion / best-for-viewer |

@@ -2,8 +2,8 @@
 
 | File | Use |
 |---|---|
-| `f5-levels-short.mp4` (in `build/`, sent separately) | Short, vertical: 1080×1920, 30 fps, 0:50, mixed to −14 LUFS |
-| `captions.srt` (in `build/`) | English subtitles from the narration timing |
+| `levels-short.mp4` (in `build/`, sent separately) | Short, vertical: 1080×1920, 30 fps, 0:50, mixed to −14 LUFS |
+| `levels-short.en.srt` | English subtitles from the narration timing |
 
 Format test: **5 · 'Every level of…' (Short)**
 
@@ -51,7 +51,7 @@ trader levels, day trading, every level, trading, investing, shorts
 | Audience | No, it's not made for kids |
 | Altered or synthetic content | **Yes**: the voice is synthetic |
 | Category | Education |
-| Captions | Upload `captions.srt` (English) |
+| Captions | Upload `levels-short.en.srt` (English) |
 | Licence | Standard YouTube Licence |
 | Related video | Link the matching long video (Shorts 'Related video' field) |
 

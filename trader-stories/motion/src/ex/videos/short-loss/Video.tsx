@@ -41,10 +41,10 @@ const S02: React.FC = () => {
   const cue = useCue();
   return (
     <Stage bg="studio" color={BG} groundY={GY} cam={usePush()}>
-      <PopText x={540} y={430} at={2} text="BUY" size={110} font="caption" color={K.gain} stroke={OUT} />
-      <Tag x={540} y={640} s={1.3} keys={[[0, 10], [cue("zero") - 10, 10], [cue("zero") + 6, 0]]} />
-      <PopText x={540} y={830} at={cue("lose")} text="worst case: −$10 (−100%)" size={56} pill={K.white} />
-      <OnGround x={540}><Character look={CAST.sam} pose={[[0, "hold"], [cue("zero"), "shrug"]]} hold={{ item: "paper", label: "1 SHARE" }} mood={[[0, "happy"], [cue("zero"), "sad"]]} seed={2} /></OnGround>
+      <PopText x={540} y={390} at={2} text="BUY" size={110} font="caption" color={K.gain} stroke={OUT} />
+      <Tag x={540} y={570} s={1.2} keys={[[0, 10], [cue("zero") - 10, 10], [cue("zero") + 6, 0]]} />
+      <PopText x={540} y={1235} at={cue("lose")} text="worst case: −$10 (−100%)" size={52} pill={K.white} />
+      <OnGround x={540} s={0.78}><Character look={CAST.sam} pose={[[0, "hold"], [cue("zero"), "shrug"]]} hold={{ item: "paper", label: "1 SHARE" }} mood={[[0, "happy"], [cue("zero"), "sad"]]} seed={2} /></OnGround>
     </Stage>
   );
 };
@@ -57,11 +57,11 @@ const S03: React.FC = () => {
     <Stage bg="studio" color={BG} groundY={GY} cam={usePush()}>
       <PopText x={540} y={420} at={2} text="SHORT" size={110} font="caption" color={K.loss} stroke={OUT} />
       <OnGround x={300}><Character look={CAST.trader} pose={[[0, "present"], [cue("falls"), "cheer"], [ceil, "panic"]]} mood={[[0, "smug"], [cue("falls"), "grin"], [ceil, "worried"]]} seed={3} /></OnGround>
-      <PopText x={740} y={560} at={cue("borrow")} text="1. borrow" size={46} pill={K.white} />
-      <PopText x={740} y={650} at={cue("sell")} text="2. sell $10" size={46} pill={K.white} />
-      <PopText x={740} y={740} at={cue("buy")} text="3. buy back later" size={46} pill={K.white} />
-      <PopText x={740} y={850} at={cue("eight")} text="falls to $2: +$8" size={46} pill={K.gain} color={K.white} />
-      {f >= ceil && <PopIn at={ceil} x={800} y={1000}><path d="M 0 80 L 0 -260 M -50 -200 L 0 -260 L 50 -200" stroke={K.loss} strokeWidth={22} fill="none" strokeLinecap="round" strokeLinejoin="round" /><text x={90} y={-120} fontFamily={CF.caption} fontWeight={900} fontSize={120} fill={K.loss}>∞</text></PopIn>}
+      <PopText x={740} y={560} at={cue("borrow")} until={ceil - 4} text="1. borrow" size={46} pill={K.white} />
+      <PopText x={740} y={650} at={cue("sell")} until={ceil - 4} text="2. sell $10" size={46} pill={K.white} />
+      <PopText x={740} y={740} at={cue("buy")} until={ceil - 4} text="3. buy back later" size={46} pill={K.white} />
+      <PopText x={740} y={850} at={cue("eight")} until={ceil - 4} text="falls to $2: +$8" size={46} pill={K.gain} color={K.white} />
+      {f >= ceil && <PopIn at={ceil} x={700} y={1000}><path d="M 0 80 L 0 -260 M -50 -200 L 0 -260 L 50 -200" stroke={K.loss} strokeWidth={22} fill="none" strokeLinecap="round" strokeLinejoin="round" /><text x={90} y={-120} fontFamily={CF.caption} fontWeight={900} fontSize={120} fill={K.loss}>∞</text></PopIn>}
     </Stage>
   );
 };
@@ -75,8 +75,8 @@ const S04: React.FC = () => {
   return (
     <Stage bg="studio" color={BG} groundY={GY} shake={[[cue("fifty"), cue("fifty") + 10]]} cam={usePush()}>
       <Tag x={540} y={450} s={1.3} keys={keys} />
-      <text x={540} y={660} textAnchor="middle" fontFamily={CF.caption} fontWeight={900} fontSize={170} fill={K.loss} stroke={OUT} strokeWidth={14} paintOrder="stroke">−{loss}%</text>
-      <OnGround x={540} s={0.9}><Character look={CAST.trader} pose="panic" mood="shocked" seed={3} /></OnGround>
+      <text x={540} y={700} textAnchor="middle" fontFamily={CF.caption} fontWeight={900} fontSize={160} fill={K.loss} stroke={OUT} strokeWidth={14} paintOrder="stroke">−{loss}%</text>
+      <OnGround x={540} s={0.72}><Character look={CAST.trader} pose="panic" mood="shocked" seed={3} /></OnGround>
     </Stage>
   );
 };

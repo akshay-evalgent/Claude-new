@@ -2,8 +2,9 @@
 
 | File | Use |
 |---|---|
-| `f5-levels.mp4` (in `build/`, sent separately) | Long video: 1920×1080, 30 fps, 5:34, mixed to −14 LUFS |
-| `captions.srt` (in `build/`) | English subtitles from the narration timing |
+| `levels.mp4` (in `build/`, sent separately) | Long video: 1920×1080, 30 fps, 5:34, mixed to −14 LUFS |
+| `levels.en.srt` | English subtitles from the narration timing |
+| `thumbnail-a.jpg`, `thumbnail-b.jpg` | Thumbnails: A main, B for Test & Compare |
 
 Format test: **5 · 'Your life at every level of…' (long)**
 
@@ -71,7 +72,7 @@ day trading, trader levels, every level of trader, prop firm, hedge fund, 2 and 
 | Audience | No, it's not made for kids |
 | Altered or synthetic content | **Yes**: the voice is synthetic |
 | Category | Education |
-| Captions | Upload `captions.srt` (English) |
+| Captions | Upload `levels.en.srt` (English) |
 | Licence | Standard YouTube Licence |
 | Chapters | From the description timestamps |
 | End screen (last 20 s) | Subscribe + the matching Short's long companion / best-for-viewer |

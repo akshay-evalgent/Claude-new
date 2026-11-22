@@ -2,8 +2,8 @@
 
 | File | Use |
 |---|---|
-| `f3-fee-short.mp4` (in `build/`, sent separately) | Short, vertical: 1080×1920, 30 fps, 0:42, mixed to −14 LUFS |
-| `captions.srt` (in `build/`) | English subtitles from the narration timing |
+| `fee-short.mp4` (in `build/`, sent separately) | Short, vertical: 1080×1920, 30 fps, 0:42, mixed to −14 LUFS |
+| `fee-short.en.srt` | English subtitles from the narration timing |
 
 Format test: **3 · 'If you don't understand X' (Short)**
 
@@ -50,7 +50,7 @@ investment fees, 1% fee, compound interest, index funds, retirement, personal fi
 | Audience | No, it's not made for kids |
 | Altered or synthetic content | **Yes**: the voice is synthetic |
 | Category | Education |
-| Captions | Upload `captions.srt` (English) |
+| Captions | Upload `fee-short.en.srt` (English) |
 | Licence | Standard YouTube Licence |
 | Related video | Link the matching long video (Shorts 'Related video' field) |
 
