@@ -4,3 +4,7 @@ engine-explainer/node_modules
 engine-explainer/stills/
 engine-explainer/*.score.wav
 engine-explainer/*.part*.mp4
+jet-car/node_modules
+jet-car/stills/
+jet-car/*.score.wav
+jet-car/*.part*.mp4
