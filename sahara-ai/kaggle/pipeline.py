@@ -112,7 +112,8 @@ def outputs(hist, out):
 
 
 def prompt_text(s, key):
-    return s[key].replace("HERO", DATA["hero"]) + " " + DATA["style"]
+    t = s[key].replace("HEROFACE", DATA.get("hero_face", DATA["hero"])).replace("HERO", DATA["hero"])
+    return t + " " + DATA["style"]
 
 
 def wf_keyframe(text, seed, prefix):
