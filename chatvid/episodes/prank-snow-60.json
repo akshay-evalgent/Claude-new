@@ -7,7 +7,7 @@
  "typeSpeed": 28,
  "readMul": 0.7,
  "pace": 0.62,
- "tail": 0.9,
+ "tail": 0.3,
  "booms": true,
  "music": {
   "track": "kidding-around",
@@ -44,7 +44,8 @@
    }
   ],
   "caption": "Pranking my dad the snow guy called his \"cousins\"💀😭",
-  "dur": 3.6
+  "dur": 3.6,
+  "open": "payoff"
  },
  "tool": {
   "style": "edit",
@@ -57,7 +58,8 @@
    "at": 4.5
   },
   "prompt": "Add a snow mountain",
-  "project": "Driveway 1 of 1"
+  "project": "Driveway 1 of 1",
+  "quick": true
  },
  "history": [
   {
@@ -187,5 +189,11 @@
   "title": "He did NOT take this well😭 #prank #snow #dad #funnyvideo #comedyshorts",
   "description": [],
   "tags": []
+ },
+ "loopOut": true,
+ "next": {
+  "contact": "neighbor",
+  "text": "I CANT SEE OUT OF MY WINDOWS",
+  "tag": "follow for part 2"
  }
 }

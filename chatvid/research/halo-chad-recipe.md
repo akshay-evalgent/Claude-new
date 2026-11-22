@@ -167,3 +167,36 @@ These are our own premises in their winning topics. We don't remake their videos
 ## 8. Sources
 - **Channel data:** `research/data/halo-chad-shorts-2026-11-20.tsv`.
 - **The 8 Shorts studied:** 4AO5CkaDRLg, KZVxwT4rJBk, y9n_4uhqCXI, y3fMhO7Ybv8, JWy0N7c6jDc, oTgAg6igTK8, YrpBEQ8oN9w, Y3cBAF3OhQ8. They were downloaded by you and read frame by frame; only notes are kept here, not their footage.
+
+## 9. What our own analytics changed (22 Nov 2026)
+Our first uploads were the long versions (1:39-1:43):
+- **Stayed to watch:** 66-68%.
+- **Average viewed:** 37%.
+- **The biggest drop:** at 0:03-0:08, exactly the old 5-second app screen.
+- **Audience:** 85% India, mostly women aged 35-44, for videos set in US suburbs.
+
+### Five fixes, now on by default (`episodes/prank-*-60.json`)
+1. **App screen in about 1.5 s:** `"tool": {"quick": true}`, with a 2-4 word prompt.
+2. **Open on the payoff:** `"hook": {"open": "payoff"}` flashes the most absurd stage first, then cuts normal → absurd.
+3. **Hard cut at the end:** `"tail": 0.3`.
+4. **Loop:** `"loopOut": true` opens the photo sheet on the payoff picture as the video ends; the video restarts on that same picture.
+5. **Part-2 tease:** `"next": {"contact": "landlord", "text": "We need to talk about the giraffe.", "tag": "follow for part 2"}`. The next character's text arrives as a banner in the last ~2 s, with a small red "follow" tag.
+
+### Every tease is a promise
+Each "part 2" banner names a sequel we owe:
+- **Snow →** Steve can't see out of his windows.
+- **Dogs →** Mom asks why Dad is chasing 40 dogs.
+- **Hot tub →** the permit office asks about the river.
+- **Pet →** Mr. Doyle wants to talk about the giraffe.
+- **Lunch →** Agent Miller saw the ice sculpture.
+
+### Audience plan
+- **3 of every 4 Shorts are US-focused**, posted at **7-9 pm US Eastern**.
+  - Video language: English, with English captions published.
+  - Hashtags: English.
+  - Channel country: stays your real country.
+- **1 of every 4 is set in India with the same cast:**
+  - Jordan's family visits India for a cousin's wedding, or Diwali at Grandma Rosa's friend's house.
+  - Dad (Greg) at a baraat; Mom at a sangeet; Gary on a work trip to the Bangalore office; Maya at a Goa resort.
+  - Same escalation; Indian setting and footage.
+  - Post those at Indian evening times.

@@ -18,7 +18,7 @@
   const hash = (s, i) => { let h = 2166136261; for (const c of s + i) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return ((h >>> 0) % 1000) / 1000; };
 
   let EP, MSGS = [], EV = [], duration = 0, HEIGHTS = [], KEYS = {}, hookEnd = 0, chatStart = 0, lastCount = -1, lastPicker = '';
-  let TOOL = null, HOOKCUTS = null, STILL = {};
+  let TOOL = null, HOOKCUTS = null, STILL = {}, NEXT = null;
   const isCaps = (x) => { const l = String(x).replace(/[^\p{L}]/gu, ''); return l.length >= 4 && l === l.toUpperCase(); };   // {t0, keys: [{t, n}], go, gen0, gen1, end}
   const meta = (k) => (EP.__mediaMeta && EP.__mediaMeta[k]) || null;
   const frameSrc = (k, i) => { const m = meta(k); return `../assets/media/${k}/f${String((i % m.count) + 1).padStart(4, '0')}.${m.ext}`; };
@@ -71,7 +71,10 @@
       const hm = ep.hook.media ? meta(ep.hook.media) : null;
       if (ep.hook.stages) {
         // the AI stages cut from normal to absurd, with a hit on every cut
-        const st = ep.hook.stages, each = hookEnd / st.length;
+        // "open": "payoff" flashes the most absurd stage first (the frame that stops the scroll), then normal → absurd
+        let st = ep.hook.stages;
+        if (ep.hook.open === 'payoff') { const last = st[st.length - 1], pd = ep.hook.payoffDur ?? 0.9; st = [{ ...last, dur: pd }, ...st.map((x) => ({ ...x, dur: x.dur ?? (hookEnd - pd) / st.length }))]; }
+        const each = hookEnd / st.length;
         let u = 0;
         HOOKCUTS = st.map((x) => { const c = { ...x, t0: u }; u += x.dur ?? each; if (x.at != null) STILL[x.media] = x.at; return c; });
         HOOKCUTS.forEach((c, i) => cues.push({ t: c.t0, s: 'boom', g: i === HOOKCUTS.length - 1 ? -8 : -12 }));
@@ -95,28 +98,29 @@
       t += 0.35;
     } else if (ep.tool) {
       // the AI app: the prompt is typed fast, "generate" is tapped, the clip appears
-      const tl = ep.tool, chars = [...tl.prompt], tcps = tl.typeSpeed || (tl.style === 'edit' ? 22 : 34);
+      const tl = ep.tool, chars = [...tl.prompt], Q = !!tl.quick;   // quick: the whole app beat in about 1.5 s
+      const tcps = tl.typeSpeed || (Q ? 32 : tl.style === 'edit' ? 22 : 34);
       TOOL = { t0: t, keys: [] };
       ev({ type: 'tool', on: true });
-      let u = t + (tl.lead ?? (tl.style === 'edit' ? 0.2 : 0.3));
+      let u = t + (tl.lead ?? (Q ? 0.08 : tl.style === 'edit' ? 0.2 : 0.3));
       chars.forEach((ch, k) => {
         TOOL.keys.push({ t: u, n: k + 1, ch: ch.toLowerCase() });
         if (ch !== ' ') cues.push({ t: u, s: ['key1', 'key2', 'key3'][k % 3], g: -30 + 3 * hash(tl.prompt, k), rate: 1.0 + 0.1 * hash(tl.prompt, k + 3) });
         u += (1 / tcps) * (0.6 + 0.9 * hash(tl.prompt, k)) * (ch === ' ' ? 0.7 : 1);
       });
-      TOOL.go = u + (tl.style === 'edit' ? 0.15 : 0.25);
+      TOOL.go = u + (Q ? 0.08 : tl.style === 'edit' ? 0.15 : 0.25);
       cues.push({ t: TOOL.go, s: 'soft-pop', g: -14, rate: 1.2 });
-      TOOL.gen0 = TOOL.go + 0.15;
-      TOOL.gen1 = TOOL.gen0 + (tl.generate ?? (tl.style === 'edit' ? 1.3 : 1.4));
+      TOOL.gen0 = TOOL.go + (Q ? 0.08 : 0.15);
+      TOOL.gen1 = TOOL.gen0 + (tl.generate ?? (Q ? 0.55 : tl.style === 'edit' ? 1.3 : 1.4));
       cues.push({ t: TOOL.gen0, s: '@riser', g: -26, dur: TOOL.gen1 - TOOL.gen0 });
       cues.push({ t: TOOL.gen1, s: 'ding', g: -18 });
       const tm = meta(tl.media);
       if (tl.style !== 'edit' && tm && tm.audio) cues.push({ t: TOOL.gen1, s: '@media:' + tl.media, g: tl.audioGain ?? -5, dur: tl.show ?? 1.4 });
-      TOOL.end = TOOL.gen1 + (tl.show ?? (tl.style === 'edit' ? 0.5 : 1.4));
+      TOOL.end = TOOL.gen1 + (tl.show ?? (Q ? 0.35 : tl.style === 'edit' ? 0.5 : 1.4));
       t = TOOL.end;
       ev({ type: 'tool', on: false });
       cues.push({ t, s: 'soft-swoosh', g: -14 });
-      t += tl.style === 'edit' ? 0.15 : 0.35;
+      t += Q ? 0.05 : tl.style === 'edit' ? 0.15 : 0.35;
     }
     chatStart = t;
     const P = ep.pace ?? 1;                                   // < 1 = snappier: every default wait and hold shrinks
@@ -178,7 +182,20 @@
       }
       lastFrom = from;
     }
+    // the loop: the photo sheet opens on the payoff picture, then a hard cut back to the opening (the same picture)
+    if (ep.loopOut && HOOKCUTS) {
+      const pay = HOOKCUTS[0].media;
+      t += 0.15;
+      ev({ type: 'picker', open: true, media: pay, sel: false });
+      cues.push({ t, s: 'soft-pop', g: -20 });
+      t += 0.35;
+      ev({ type: 'picker', open: true, media: pay, sel: true });
+      cues.push({ t, s: 'soft-pop', g: -16, rate: 1.3 });
+      t += 0.2;
+    }
     t += ep.tail ?? 1.2;
+    // the next contact texts in: a banner over the header for the last moments (the "part 2" tease)
+    if (ep.next) { NEXT = { ...ep.next, t0: Math.max(chatStart, t - (ep.next.lead ?? 2.2)) }; cues.push({ t: NEXT.t0, s: 'notify', g: -15 }); }
     duration = t;
     EV.sort((x, y) => x.t - y.t);
     // a separator before the first message of today, and "Delivered" under the last one I sent
@@ -338,6 +355,16 @@
     const [hh, mm] = (EP.clock || '11:24').split(':').map(Number), add = Math.floor(Math.max(0, T - chatStart) / (EP.minuteEvery || 40));
     $('clock').textContent = `${hh}:${String(mm + add).padStart(2, '0')}`;
     show('tool', !!s.tool && !rec);
+    show('nb', !!NEXT && T >= NEXT.t0 && !s.hook && !s.tool);
+    if (NEXT && T >= NEXT.t0) {
+      if (!$('nb').dataset.on) {
+        $('nbImg').src = NEXT.avatar ? `../assets/media/${NEXT.avatar}.jpg` : '';
+        $('nbName').innerHTML = rich(NEXT.name || ''); $('nbText').innerHTML = rich(NEXT.text || ''); $('nbTag').textContent = NEXT.tag || 'follow for part 2';
+        $('nb').dataset.on = '1';
+      }
+      const p = EASE.outBack(clamp((T - NEXT.t0) / 0.35, 0, 1));
+      $('nb').style.transform = `translateY(${((1 - p) * -260).toFixed(1)}px)`;
+    }
     if (s.tool && !rec) renderTool(T, f);
 
     // thread

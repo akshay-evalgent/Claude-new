@@ -38,6 +38,15 @@ if (typeof ep.contact === 'string') {
   }
   ep.contact = { name: c.contact, avatar };
 }
+// "next": {"contact": "landlord", "text": "..."} is the next episode's character texting in at the end
+if (ep.next && ep.next.contact) {
+  const cast = JSON.parse(fs.readFileSync(path.join(HERE, 'cast', 'cast.json'), 'utf8'));
+  const c = cast[ep.next.contact];
+  if (!c) { console.error(`unknown cast member "${ep.next.contact}" in "next"`); process.exit(1); }
+  const photo = path.join(HERE, 'cast', 'photos', `${ep.next.contact}.jpg`);
+  if (fs.existsSync(photo)) fs.copyFileSync(photo, path.join(HERE, 'assets', 'media', `cast-${ep.next.contact}.jpg`));
+  ep.next = { ...ep.next, name: c.contact, avatar: fs.existsSync(photo) ? `cast-${ep.next.contact}` : null };
+}
 if (opt('interface')) ep.interface = opt('interface');
 // documentary episodes: clips and narration timings come from tools/docu_prepare.py
 const baseSlug = path.basename(epPath, '.json');

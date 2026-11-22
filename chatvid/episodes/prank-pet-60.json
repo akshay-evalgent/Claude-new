@@ -7,7 +7,7 @@
  "typeSpeed": 28,
  "readMul": 0.7,
  "pace": 0.62,
- "tail": 0.9,
+ "tail": 0.3,
  "booms": true,
  "music": {
   "track": "kidding-around",
@@ -44,7 +44,8 @@
    }
   ],
   "caption": "Pranking my girlfriend i got us a \"small\" pet💀😭",
-  "dur": 3.6
+  "dur": 3.6,
+  "open": "payoff"
  },
  "tool": {
   "style": "edit",
@@ -57,7 +58,8 @@
    "at": 2.5
   },
   "prompt": "Add a giraffe",
-  "project": "Apartment 1 of 1"
+  "project": "Apartment 1 of 1",
+  "quick": true
  },
  "history": [
   {
@@ -187,5 +189,11 @@
   "title": "She did NOT see that coming😭 #prank #girlfriend #pets #funnyvideo #comedyshorts",
   "description": [],
   "tags": []
+ },
+ "loopOut": true,
+ "next": {
+  "contact": "landlord",
+  "text": "We need to talk about the giraffe.",
+  "tag": "follow for part 2"
  }
 }
