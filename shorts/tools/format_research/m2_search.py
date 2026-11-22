@@ -1,7 +1,7 @@
 import subprocess, sys, json, os, urllib.parse
 from concurrent.futures import ThreadPoolExecutor
 S = __import__('os').environ.get('RESEARCH_WORK', '.')
-SP = {"week": "CAMSAggD", "month": "CAMSAggE", "year": "CAMSAggF"}      # sorted by view count, uploaded this week/month/year
+SP = {"today": "CAMSAggC", "week": "CAMSAggD", "month": "CAMSAggE", "year": "CAMSAggF"}      # sorted by view count, uploaded this week/month/year
 def go(qf):
     q, f = qf
     out = f"{S}/search/{''.join(c if c.isalnum() else '_' for c in q)}__{f}.json"
