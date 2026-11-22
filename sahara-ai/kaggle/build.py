@@ -1,6 +1,7 @@
 """Fills the Kaggle script template and writes a push-ready kernel folder.
    python kaggle/build.py keyframes [--only k01,k05] [--candidates 2] [--seed 100]
-   python kaggle/build.py clips [--only ...]"""
+   python kaggle/build.py clips [--only ...]
+   --slug NAME pushes under akkikmr/NAME instead of sahara-ai-<mode> (e.g. when that notebook is stuck in the queue)"""
 import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 mode = sys.argv[1]; a = sys.argv[2:]
@@ -11,7 +12,7 @@ shots = json.dumps(json.load(open(os.path.join(HERE, '..', 'shots.json'))))
 for k, v in (('__MODE__', mode), ('__ONLY__', repr(only)), ('__CANDIDATES__', opt.get('candidates', '2')), ('__SEED0__', opt.get('seed', '100')),
              ('__KFDS__', 'sahara-ai-stills'), ('__SHOTS__', shots)):
     src = src.replace(k, v)
-slug = f"sahara-ai-{mode}"
+slug = opt.get('slug', f"sahara-ai-{mode}")
 d = os.path.join(HERE, 'push', slug); os.makedirs(d, exist_ok=True)
 open(os.path.join(d, slug + '.py'), 'w').write(src)
 meta = {"id": f"akkikmr/{slug}", "title": slug, "code_file": slug + ".py", "language": "python", "kernel_type": "script",

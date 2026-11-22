@@ -3,7 +3,7 @@
 #   MODE "clips"    : Wan2.2-I2V-A14B Q4_K_M (high+low noise) + Lightning 4-step LoRAs -> 49-frame clips from the
 #                     approved stills (dataset /kaggle/input/<KEYFRAME_DATASET>), RIFE x2 to 32 fps, ESRGAN x2 upscale
 # One ComfyUI server per GPU; a worker thread per server pulls jobs from a shared queue.
-import json, os, queue, shutil, subprocess, sys, threading, time, traceback, urllib.request, glob
+import json, os, queue, shutil, subprocess, sys, threading, time, traceback, urllib.request, urllib.parse, urllib.error, glob
 
 MODE = "__MODE__"
 ONLY = __ONLY__                 # list of shot ids to run, or None for all
@@ -89,11 +89,38 @@ def start_server(gpu, port):
 
 def post(port, path, data):
     req = urllib.request.Request(f"http://127.0.0.1:{port}{path}", data=json.dumps(data).encode(), headers={"Content-Type": "application/json"})
-    return json.loads(urllib.request.urlopen(req, timeout=60).read() or b"{}")
+    try:
+        return json.loads(urllib.request.urlopen(req, timeout=60).read() or b"{}")
+    except urllib.error.HTTPError as e:   # ComfyUI explains a rejected workflow in the body (node_errors)
+        raise RuntimeError(f"HTTP {e.code} {path}: {e.read().decode(errors='replace')[:3000]}") from None
+
+
+NODE_INFO = {}
+
+
+def fill_defaults(port, wf):
+    """Custom nodes grow new required inputs between releases; give any input the workflow leaves out its declared default."""
+    for node in wf.values():
+        ct = node["class_type"]
+        if ct not in NODE_INFO:
+            q = urllib.parse.quote(ct)
+            NODE_INFO[ct] = json.loads(urllib.request.urlopen(f"http://127.0.0.1:{port}/object_info/{q}", timeout=30).read()).get(ct, {})
+        for name, spec in NODE_INFO[ct].get("input", {}).get("required", {}).items():
+            if name in node["inputs"]:
+                continue
+            opts = spec[1] if len(spec) > 1 and isinstance(spec[1], dict) else {}
+            if "default" in opts:
+                node["inputs"][name] = opts["default"]
+            elif isinstance(spec[0], list) and spec[0]:
+                node["inputs"][name] = spec[0][0]
+            else:
+                continue
+            log("filled", ct, name, "=", node["inputs"][name])
+    return wf
 
 
 def run_prompt(port, wf, label):
-    pid = post(port, "/prompt", {"prompt": wf})["prompt_id"]; t = time.time()
+    pid = post(port, "/prompt", {"prompt": fill_defaults(port, wf)})["prompt_id"]; t = time.time()
     while True:
         h = json.loads(urllib.request.urlopen(f"http://127.0.0.1:{port}/history/{pid}", timeout=30).read())
         if pid in h:
@@ -167,7 +194,8 @@ def wf_clip(image, text, prefix, seed, vfi):
     src = ["15", 0]
     if vfi:
         wf["16"] = {"class_type": "RIFE VFI", "inputs": {"ckpt_name": "rife47.pth", "frames": ["15", 0], "clear_cache_after_n_frames": 10,
-                                                         "multiplier": 2, "fast_mode": True, "ensemble": True, "scale_factor": 1.0}}
+                                                         "multiplier": 2, "fast_mode": True, "ensemble": True, "scale_factor": 1.0,
+                                                         "dtype": "float32", "torch_compile": False, "batch_size": 1}}
         src = ["16", 0]
     wf["18"] = {"class_type": "ImageUpscaleWithModel", "inputs": {"upscale_model": ["17", 0], "image": src}}
     wf["19"] = {"class_type": "SaveImage", "inputs": {"images": ["18", 0], "filename_prefix": prefix}}
