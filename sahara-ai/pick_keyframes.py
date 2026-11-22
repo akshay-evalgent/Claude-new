@@ -26,6 +26,6 @@ for sid in shots:
     else:
         shutil.copyfile(src, os.path.join(dst, f'{sid}.png'))
     print(sid, '<-', os.path.relpath(src, HERE), crop)
-json.dump({"title": "sahara-ai-keyframes", "id": "akkikmr/sahara-ai-keyframes", "licenses": [{"name": "CC0-1.0"}]},
+json.dump({"title": "sahara-ai-stills", "id": "akkikmr/sahara-ai-stills", "licenses": [{"name": "CC0-1.0"}]},
           open(os.path.join(dst, 'dataset-metadata.json'), 'w'), indent=1)
 print(dst)
