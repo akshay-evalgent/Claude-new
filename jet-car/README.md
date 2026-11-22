@@ -29,6 +29,8 @@ The run is a real simulation, integrated in the page:
 - `film.html`: the film and its player.
 - `index.html`: the same page wrapped as a standalone document; open it in a browser.
 - `render.mjs`: renders the film to MP4 or stills with Playwright and ffmpeg.
+- `thumbnails.mjs`: renders the YouTube thumbnails from the 3D scene.
+- `youtube/`: the upload kit (title, description, tags, settings) and three thumbnails.
 
 ## Watch it
 

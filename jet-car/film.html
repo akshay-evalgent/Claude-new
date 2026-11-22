@@ -1335,14 +1335,16 @@ function shotAt(T) {
   }
   return s;
 }
+const STILL = { cam: null, clean: false };          // render-mode stills: an optional camera and a clean frame
 function placeCamera(T) {
-  const s = shotAt(T), az = s.az * D2R, el = s.el * D2R, ty = s.tg[1] + carRoot.position.y;
+  const s = STILL.cam || shotAt(T), az = s.az * D2R, el = s.el * D2R, ty = s.tg[1] + carRoot.position.y;
   const spd = clamp(S.v / 150), rate = Math.min(1, Math.abs(S.rate));
   let A = 0.022 * spd * rate * (s.run ? 1 : 0.4);
   A += 0.05 * Math.exp(-Math.max(0, T - T_GO) * 3) * (T > T_GO ? 1 : 0);
   if (T > 43.2 && T < T_GO) A += 0.006 * clamp(S.thr / 15000);
   if (T > T_BUMP && T < T_BT0) A += 0.03 * Math.exp(-(T - T_BUMP) * 4);
   if (S.phase === 'brake') A += 0.03 * Math.exp(-Math.max(0, S.b - 0.8) * 3) * (S.b > 0.8 ? 1 : 0);
+  if (STILL.cam) A = 0;
   const fov = s.fov + (s.run ? 5 * spd : 0);
   camera.position.set(s.tg[0] + s.R * Math.sin(az) * Math.cos(el), ty + s.R * Math.sin(el), s.tg[2] + s.R * Math.cos(az) * Math.cos(el));
   camera.position.x += A * Math.sin(S.W * 53); camera.position.y += A * Math.sin(S.W * 47 + 1.3); camera.position.z += A * 0.5 * Math.sin(S.W * 61 + 2);
@@ -1602,6 +1604,7 @@ function renderAt(T) {
   updateDust(T, S);
   CU.press.value = win(T, 77.6, T_BR - 0.1, 0.8, 0.4) * 0.75 * (1 - 0.5 * win(T, T_BT0, T_BT1, 0.6, 0.1));
   updateArrows(T);
+  if (STILL.clean) for (const k in ARR) ARR[k].g.visible = false;
   // post: heat haze behind the nozzle, sun flare, slow-motion and rewind looks
   const nz = JET.g.localToWorld(V3(-0.9, 0, 0)), nz2 = JET.g.localToWorld(V3(-5.5, -0.15, 0));
   const pa = nz.clone().project(camera), pb = nz2.clone().project(camera);
@@ -1620,6 +1623,7 @@ function renderAt(T) {
   g.uRew.value = (T >= T_BT1 && T < T_BR) ? 1 : 0;
   g.uBul.value = win(T, T_BT0, T_BT1, 0.6, 0.1);
   bloom.strength = 0.55 + 0.08 * win(T, 81.5, T_BT1, 0.6, 0.2);
+  if (STILL.clean) { g.uRew.value = 0; g.uBul.value = 0; }
   updateHUD(T);
   composer.render();
 }
@@ -1796,7 +1800,8 @@ function fit() {
 }
 
 if (RENDER) {
-  window.__film = { duration: DUR, seek: T => { renderAt(T); return true; }, anchors: T => { renderAt(T); return LBL.map(L => [L.txt, ...project(L.at()).map(v => Math.round(v * 100) / 100)]); },
+  window.__film = { duration: DUR, seek: T => { renderAt(T); return true; },
+    still: (T, cam, clean) => { STILL.cam = cam || null; STILL.clean = !!clean; renderAt(T); STILL.cam = null; STILL.clean = false; return true; }, anchors: T => { renderAt(T); return LBL.map(L => [L.txt, ...project(L.at()).map(v => Math.round(v * 100) / 100)]); },
     facts: () => ({ S_BRANCH, E0, B_STOP, E_END, REW, LO_MAX, toasts: TOASTS.map(o => [o.kmh, o.t, o.s]), top: lut(RUN, 'v', 42) * 3.6, split: [BRK.ech[BRK.n] / E_END, BRK.eair[BRK.n] / E_END, BRK.ebr[BRK.n] / E_END], brkDist: lut(BRK, 'x', 16) }),
     audio: async () => wavBase64(await buildScore()) };
   fit(); renderAt(0); window.__filmReady = true;
