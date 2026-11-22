@@ -73,14 +73,24 @@ For the 12 newer channels where I could see every upload, I looked at their **fi
 
 Middle case: about 27K views per Short across the first ten.
 
-### What it looks like
+### What it looks like (measured frame by frame from five downloaded Shorts)
 
-- **One photo at a time**, centred on a black background (the photo is usually square or 4:5).
-- **A huge year label** on the photo: white for the old photo, **green for the "now" photo**.
-- **No narration, no captions, no logo.** Music only.
-- The same subject appears as "then", and a second or two later as "now". Then the next subject.
-- **Length: 80–150 seconds** (median 123 s in a sample of 56). Far longer than our 37-second videos. Viewers stay because the next reveal is always one or two seconds away.
-- I could not check the music from here (YouTube blocks playback on this machine). See "What I need from you".
+| Short | Views | Length | Seconds per photo | Sound |
+|---|---|---|---|---|
+| BRANDOMEMES, Legendary Memes | 35M | 16.6 s | 2.06 | Trending vocal song, 117.5 BPM |
+| Love Nostalgia, Cat & Dog Memes | 18M | 16.9 s | 2.06 | The same song |
+| Echo Lives, AC/DC | 11M | 56.8 s | no cuts (one AI-made video) | The band's own "Thunderstruck" |
+| Celeb Data, Lamine Yamal | 6.3M | 23.8 s | 1.4 | The same song, sped up |
+| Meme Legends, Animal Memes (weakest channel) | 27K | 16.0 s | 2.00 | An instrumental |
+
+- **Short, not long: 16–24 seconds**, usually **4 then/now pairs**. (My first draft said 80–150 s. That figure came from search results that mixed in regular videos up to 3 minutes, and it was wrong.)
+- **One photo per 4 beats of the song** (2.04 s at 117.5 BPM), so each photo lasts one sung line. Hard cuts, no transitions.
+- **The clean part of the song is exactly 8 lines (16.3 s)**, and line 9 is explicit. That is why BRANDOMEMES and Love Nostalgia both stop at about 16.5 seconds.
+- **One photo (or short looping clip) at a time**, about 980 px wide, centred on black, **slowly zooming in by 10–18%** during its 2 seconds.
+- **A huge year label** (about 190 px tall, outlined in black): white for "then", **pure green (#07FB11) for "now"**.
+- **No narration, no captions, no logo.** The only sound is a song, added from YouTube's sound library in the app.
+- **Three of the five use the same trending vocal song.** The weakest channel uses an instrumental. The leader of the bands niche uses the band's own hit.
+- **Two of the five use AI-made images.** Echo Lives' then and now band members sitting side by side are AI-generated, and some of Celeb Data's childhood photos look generated.
 
 Engagement on four of the top ones:
 
@@ -98,10 +108,10 @@ There is no spoken script. The script is the order of the photos:
 | Step | What happens | Why |
 |---|---|---|
 | Frame 1 | The most recognisable subject, old photo, year in white | Recognition is the hook. No text needed |
-| 1–2 s later | The same subject now, year in green | First payoff inside 3 seconds |
-| Repeat | 10–40 subjects, one "then → now" pair every 2–4 seconds | A new curiosity gap opens and closes constantly |
-| Order | Strongest subject first, second strongest last | Keeps people to the end and feeds replays |
-| End | No call to action. The video just ends, or loops | Nothing tells the viewer it's over |
+| 2.04 s | The same subject now, year in green | First payoff inside 3 seconds |
+| Repeat | 4 subjects in total, one photo per sung line | A new curiosity gap opens and closes every 4 seconds |
+| Order | Biggest visible change first, a big name last | Keeps people to the end and feeds replays |
+| End | No call to action. It cuts at 16 s, mid-song | A 16-second loop invites watching again |
 
 **Tone:** quiet, emotional, nostalgic. The feeling is "time flies" or "I feel old". Comments write themselves.
 
@@ -184,19 +194,15 @@ First ten videos, most evidence first:
 ## What I need from you
 
 1. **Check one number in YouTube Studio** for the Spike Files Shorts: "Shown in feed". If it is near zero, YouTube never showed them to anyone, and that is a channel problem (new or unverified channel), not a format problem. A new format would hit the same wall.
-2. **Download five reference Shorts** so I can measure the music, the seconds per photo and the transitions. Put them in a Drive folder called `Then vs now refs`:
-
-```bash
-yt-dlp -f "bv*[ext=mp4][height<=1920]+ba[ext=m4a]/b[ext=mp4]/b" --merge-output-format mp4 -o "%(uploader)s - %(id)s.%(ext)s" https://www.youtube.com/shorts/hHEnpN918ZY https://www.youtube.com/shorts/XFdnuQSUJcA https://www.youtube.com/shorts/EHdVsl9mOpQ https://www.youtube.com/shorts/7g-yaeVoLOU https://www.youtube.com/shorts/AQgq2pdt5AI
-```
-
-3. **Photos need a source and a date.** For each subject I'll list where the then and now photos come from, so you can clear the rights.
+2. ~~Download five reference Shorts~~: done. The measurements are in "What it looks like" above.
+3. **Photos need a source and a date.** The first video uses only real, dated Wikimedia Commons photos under CC BY licences, so each one needs a credit line. They are listed in the upload kit.
 
 ## Limits of this research
 
 - It covers what YouTube search returned for about 300 topic queries and 100 view-sorted queries. Channels outside those results were not measured.
 - Only the latest 120–150 Shorts per channel were pulled, so very old uploads of big channels are missing.
-- I could not watch or hear any video. Visual notes come from the four still frames YouTube serves per Short.
+- Pacing, layout and sound were measured from five Shorts you downloaded. Everything else about visuals comes from the four still frames YouTube serves per Short.
+- I could not name the trending song from here (lyrics search found no match). The upload kit shows how to pick it in the YouTube app from a reference Short.
 - Title and subject comparisons are associations within this sample.
 
 The search and ranking scripts are in `tools/format_research/`.

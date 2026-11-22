@@ -1,0 +1,82 @@
+{
+ "title": "OG YouTubers (Then and Now)",
+ "note": "Photos: Wikimedia Commons, real and dated (credits in tvn_photos/og_youtubers/credits.json). Four pairs x 2 photos x 2.043 s = 16.3 s: the clean first 8 lines of the trending sound the reference channels use (line 9 is explicit, which is why they stop at ~16.5 s). Rhett & Link open (biggest visible change); Smosh close.",
+ "shot": 2.043,
+ "aspect": 0.8,
+ "face_h": 0.42,
+ "face_y": 0.42,
+ "items": [
+  {
+   "img": "rl_2008.jpg",
+   "label": "2008",
+   "kind": "then",
+   "name": "Rhett & Link",
+   "crop": [
+    400,
+    70,
+    960,
+    443
+   ]
+  },
+  {
+   "img": "rl_2025.jpg",
+   "label": "2025",
+   "kind": "now",
+   "name": "Rhett & Link",
+   "crop": [
+    50,
+    20,
+    1230,
+    807
+   ]
+  },
+  {
+   "img": "tyler_2010.jpg",
+   "label": "2010",
+   "kind": "then",
+   "name": "Tyler Oakley"
+  },
+  {
+   "img": "tyler_2025.jpg",
+   "label": "2025",
+   "kind": "now",
+   "name": "Tyler Oakley"
+  },
+  {
+   "img": "grace_2013.jpg",
+   "label": "2013",
+   "kind": "then",
+   "name": "Grace Helbig"
+  },
+  {
+   "img": "grace_2025.jpg",
+   "label": "2025",
+   "kind": "now",
+   "name": "Grace Helbig"
+  },
+  {
+   "img": "smosh_2008.jpg",
+   "label": "2008",
+   "kind": "then",
+   "name": "Smosh",
+   "crop": [
+    10,
+    0,
+    490,
+    320
+   ]
+  },
+  {
+   "img": "smosh_2025.jpg",
+   "label": "2025",
+   "kind": "now",
+   "name": "Smosh",
+   "crop": [
+    214,
+    0,
+    1280,
+    711
+   ]
+  }
+ ]
+}
