@@ -18,7 +18,7 @@ const Still: React.FC<{ src: string; children?: React.ReactNode; move?: "in" | "
 );
 
 const Drum: React.FC<{ ending?: boolean }> = ({ ending }) => (
-  <AbsoluteFill style={{ background: C.ink }}><LotteryDrum n={36} speed={ending ? 1.1 : 1} camZ={8.5} highlight={[7, 12, 23]} /><FilmLook dark={0.6} /></AbsoluteFill>
+  <AbsoluteFill style={{ background: C.ink }}><LotteryDrum n={36} speed={ending ? 1.1 : 1} camZ={12.5} highlight={[7, 12, 23]} /><FilmLook dark={0.6} /></AbsoluteFill>
 );
 
 const Jars: React.FC = () => {
@@ -34,13 +34,13 @@ const Jars: React.FC = () => {
   );
   return (
     <AbsoluteFill style={{ background: C.ink }}>
-      <svg width={1080} height={1920}>
-        <text x={540} y={420} textAnchor="middle" fontFamily={font("display")} fontWeight={700} fontSize={70} fill={C.paper}>MICHIGAN'S WINFALL</text>
-        {jar(540, 900, 520, 380, big, C.ochre, "JACKPOT")}
-        {f >= cue("passed") && f < roll + 40 && <text x={540} y={470} textAnchor="middle" fontFamily={font("display")} fontWeight={700} fontSize={60} fill={C.ochre}>$5 MILLION+, NO WINNER</text>}
-        {f >= roll - 4 && [0, 1, 2].map((i) => jar(220 + i * 320, 1300, 240, 300, small * (1 - i * 0.05), C.gain, ["5 numbers", "4 numbers", "3 numbers"][i]))}
-        {f >= roll && <text x={540} y={1000} textAnchor="middle" fontFamily={font("display")} fontWeight={700} fontSize={76} fill={C.gain}>IT ROLLS DOWN ↓</text>}
-      </svg>
+      <svg width={1080} height={1920}><g transform="translate(0 70)">
+        <text x={540} y={380} textAnchor="middle" fontFamily={font("display")} fontWeight={700} fontSize={70} fill={C.paper}>MICHIGAN'S WINFALL</text>
+        {jar(540, 800, 480, 300, big, C.ochre, "JACKPOT")}
+        {f >= cue("passed") && f < roll + 40 && <text x={540} y={450} textAnchor="middle" fontFamily={font("display")} fontWeight={700} fontSize={56} fill={C.ochre}>$5 MILLION+, NO WINNER</text>}
+        {f >= roll - 4 && [0, 1, 2].map((i) => jar(220 + i * 320, 1180, 240, 230, small * (1 - i * 0.05), C.gain, ["5 numbers", "4 numbers", "3 numbers"][i]))}
+        {f >= roll && <text x={540} y={905} textAnchor="middle" fontFamily={font("display")} fontWeight={700} fontSize={76} fill={C.gain}>IT ROLLS DOWN ↓</text>}
+      </g></svg>
     </AbsoluteFill>
   );
 };

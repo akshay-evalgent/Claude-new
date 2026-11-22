@@ -39,7 +39,7 @@ export const THUMBS: Record<string, React.FC> = {
     <Big lines={[{ t: "$53,000", s: 110 }, { t: "→ $48M", c: K.gain, s: 150 }]} y={130} /><div style={{ position: "absolute", left: 66, top: 470, fontFamily: CF.caption, fontWeight: 900, fontSize: 52, color: OUT, background: K.yellow, padding: "6px 18px", border: `5px solid ${OUT}`, borderRadius: 14 }}>EXPLAINED LIKE YOU'RE 5</div></Frame>,
   "gamestop-b": () => <Frame><Stage bg="wallst"><OnGround x={1080} dy={30} s={0.95}><Character look={CAST.boss} pose="panic" mood="shocked" seed={4} /></OnGround></Stage>
     <Big lines={[{ t: "WALL STREET", s: 96 }, { t: "BET IT WOULD DIE.", s: 80 }, { t: "IT BACKFIRED", c: K.loss, s: 110 }]} y={80} w={900} /></Frame>,
-  "lottery-a": () => <Frame><Img src={staticFile("frames/lottery/couple_kitchen.jpg")} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+  "lottery-a": () => <Frame><Img src={staticFile("frames/lottery/jerry_counter.jpg")} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", transform: "scaleX(-1)" }} />
     <AbsoluteFill style={{ background: "linear-gradient(90deg, rgba(14,15,17,0.92) 0%, rgba(14,15,17,0.55) 50%, rgba(14,15,17,0) 75%)" }} />
     <div style={{ position: "absolute", left: 60, top: 120, fontFamily: font("display"), fontWeight: 700, lineHeight: 1 }}>
       <div style={{ fontSize: 64, color: C.paper }}>THEY BEAT THE LOTTERY</div><div style={{ fontSize: 190, color: C.gain }}>$27M</div><div style={{ fontSize: 70, color: C.ochre }}>LEGALLY.</div></div>

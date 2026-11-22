@@ -1,0 +1,656 @@
+1
+00:00:00,360 --> 00:00:01,973
+They say the lottery is a tax
+
+2
+00:00:01,973 --> 00:00:03,810
+on people who can't do maths.
+
+3
+00:00:04,493 --> 00:00:05,843
+In two thousand three,
+
+4
+00:00:05,843 --> 00:00:08,168
+a retired shopkeeper in a small Michigan
+
+5
+00:00:08,168 --> 00:00:09,618
+town did the maths.
+
+6
+00:00:09,618 --> 00:00:10,980
+And he found a lottery that was
+
+7
+00:00:10,980 --> 00:00:12,368
+losing money to him.
+
+8
+00:00:13,060 --> 00:00:14,560
+Over the next nine years,
+
+9
+00:00:14,560 --> 00:00:16,535
+he and his wife won almost twenty-seven
+
+10
+00:00:16,535 --> 00:00:18,385
+million dollars in prizes.
+
+11
+00:00:18,385 --> 00:00:19,335
+Legally.
+
+12
+00:00:20,027 --> 00:00:21,402
+This is the story of Jerry and
+
+13
+00:00:21,402 --> 00:00:22,527
+Marge Selbee.
+
+14
+00:00:26,318 --> 00:00:26,918
+Evart,
+
+15
+00:00:26,668 --> 00:00:27,343
+Michigan.
+
+16
+00:00:27,343 --> 00:00:28,243
+A small town,
+
+17
+00:00:28,243 --> 00:00:29,943
+a long way from anywhere.
+
+18
+00:00:30,535 --> 00:00:31,510
+For seventeen years,
+
+19
+00:00:31,510 --> 00:00:33,485
+Jerry and Marge ran the convenience store
+
+20
+00:00:33,485 --> 00:00:34,185
+there.
+
+21
+00:00:34,185 --> 00:00:34,785
+Milk,
+
+22
+00:00:34,723 --> 00:00:35,323
+bread,
+
+23
+00:00:35,210 --> 00:00:35,810
+coffee,
+
+24
+00:00:35,622 --> 00:00:36,985
+and lottery tickets.
+
+25
+00:00:37,652 --> 00:00:39,852
+Jerry had studied mathematics at college.
+
+26
+00:00:39,852 --> 00:00:41,064
+He liked puzzles.
+
+27
+00:00:41,064 --> 00:00:41,864
+Patterns.
+
+28
+00:00:41,864 --> 00:00:43,777
+Numbers that didn't quite add up.
+
+29
+00:00:44,393 --> 00:00:45,718
+In two thousand three,
+
+30
+00:00:45,718 --> 00:00:46,968
+already retired,
+
+31
+00:00:46,968 --> 00:00:48,231
+he picked up a brochure for a
+
+32
+00:00:48,231 --> 00:00:50,443
+new lottery game called Winfall.
+
+33
+00:00:51,252 --> 00:00:53,277
+Most lotteries work the same way.
+
+34
+00:00:53,277 --> 00:00:54,690
+If nobody wins the jackpot,
+
+35
+00:00:54,690 --> 00:00:55,452
+it grows.
+
+36
+00:00:55,452 --> 00:00:56,502
+And grows.
+
+37
+00:00:57,152 --> 00:00:58,652
+Winfall had a twist.
+
+38
+00:00:58,652 --> 00:01:00,877
+If the jackpot passed five million dollars
+
+39
+00:01:00,877 --> 00:01:02,802
+and nobody matched all six numbers,
+
+40
+00:01:02,802 --> 00:01:04,177
+it didn't keep growing.
+
+41
+00:01:04,177 --> 00:01:05,452
+It rolled down.
+
+42
+00:01:06,093 --> 00:01:07,555
+All that money was shared out among
+
+43
+00:01:07,555 --> 00:01:08,943
+the smaller prizes.
+
+44
+00:01:08,943 --> 00:01:10,693
+The people who matched five numbers,
+
+45
+00:01:10,693 --> 00:01:11,368
+or four,
+
+46
+00:01:11,368 --> 00:01:12,318
+or three.
+
+47
+00:01:12,985 --> 00:01:14,122
+Jerry read the rules and,
+
+48
+00:01:14,122 --> 00:01:15,073
+by one account,
+
+49
+00:01:15,073 --> 00:01:16,460
+saw the flaw in less than two
+
+50
+00:01:16,460 --> 00:01:17,210
+minutes.
+
+51
+00:01:17,927 --> 00:01:19,052
+On a roll-down week,
+
+52
+00:01:19,052 --> 00:01:21,002
+the small prizes grew so big that
+
+53
+00:01:21,102 --> 00:01:22,127
+on average,
+
+54
+00:01:22,127 --> 00:01:23,552
+a ticket was worth more than the
+
+55
+00:01:23,552 --> 00:01:24,777
+dollar it cost.
+
+56
+00:01:25,393 --> 00:01:26,493
+Buy enough tickets,
+
+57
+00:01:26,493 --> 00:01:28,068
+and the maths was on your side
+
+58
+00:01:29,060 --> 00:01:30,322
+Think of it like this.
+
+59
+00:01:30,322 --> 00:01:30,935
+Normally,
+
+60
+00:01:30,935 --> 00:01:32,797
+a lottery pays out less in prizes
+
+61
+00:01:32,797 --> 00:01:33,922
+than it takes in.
+
+62
+00:01:33,922 --> 00:01:35,885
+That gap is the lottery's profit,
+
+63
+00:01:35,885 --> 00:01:37,960
+and it's why players lose over time
+
+64
+00:01:38,752 --> 00:01:40,752
+Imagine a raffle with a hundred tickets
+
+65
+00:01:40,752 --> 00:01:41,977
+at a dollar each,
+
+66
+00:01:41,977 --> 00:01:43,964
+and a prize of fifty dollars.
+
+67
+00:01:43,964 --> 00:01:45,077
+Buy every ticket,
+
+68
+00:01:45,077 --> 00:01:46,602
+and you spend a hundred dollars to
+
+69
+00:01:46,602 --> 00:01:47,677
+win fifty.
+
+70
+00:01:48,343 --> 00:01:50,393
+Now imagine one week where the prize
+
+71
+00:01:50,393 --> 00:01:52,668
+suddenly jumps to a hundred and fifty
+
+72
+00:01:52,831 --> 00:01:54,118
+Buy every ticket,
+
+73
+00:01:54,118 --> 00:01:55,368
+and you spend a hundred to win
+
+74
+00:01:55,368 --> 00:01:56,793
+a hundred and fifty.
+
+75
+00:01:57,502 --> 00:01:59,127
+That was a roll-down week.
+
+76
+00:01:59,127 --> 00:02:00,952
+The trick was buying so many tickets
+
+77
+00:02:00,952 --> 00:02:02,227
+that luck evened out,
+
+78
+00:02:02,227 --> 00:02:03,977
+and the averages took over.
+
+79
+00:02:06,185 --> 00:02:08,160
+Jerry didn't tell Marge at first.
+
+80
+00:02:08,160 --> 00:02:09,410
+He drove to a store in the
+
+81
+00:02:09,410 --> 00:02:10,198
+next town,
+
+82
+00:02:10,198 --> 00:02:12,135
+and bought two thousand two hundred dollars'
+
+83
+00:02:12,135 --> 00:02:13,335
+worth of tickets.
+
+84
+00:02:13,935 --> 00:02:15,160
+He checked them by hand at the
+
+85
+00:02:15,160 --> 00:02:16,210
+kitchen table.
+
+86
+00:02:16,210 --> 00:02:17,848
+They'd won two thousand one hundred and
+
+87
+00:02:17,848 --> 00:02:18,572
+fifty.
+
+88
+00:02:18,572 --> 00:02:19,910
+A small loss.
+
+89
+00:02:20,502 --> 00:02:21,827
+He hadn't bought enough to beat the
+
+90
+00:02:21,827 --> 00:02:22,439
+luck.
+
+91
+00:02:22,439 --> 00:02:23,240
+So next time,
+
+92
+00:02:23,240 --> 00:02:24,177
+he bought more.
+
+93
+00:02:24,177 --> 00:02:25,552
+And then more again.
+
+94
+00:02:26,168 --> 00:02:27,943
+He bet eight thousand dollars,
+
+95
+00:02:27,943 --> 00:02:30,243
+and won fifteen thousand seven hundred.
+
+96
+00:02:30,960 --> 00:02:32,335
+Then he told Marge.
+
+97
+00:02:33,252 --> 00:02:34,965
+Marge didn't tell him to stop.
+
+98
+00:02:34,965 --> 00:02:36,302
+She was good at keeping track of
+
+99
+00:02:36,302 --> 00:02:37,102
+things.
+
+100
+00:02:37,727 --> 00:02:38,939
+They set up a company,
+
+101
+00:02:38,939 --> 00:02:40,777
+G. S. Investment Strategies,
+
+102
+00:02:40,777 --> 00:02:42,839
+and sold shares at five hundred dollars
+
+103
+00:02:42,839 --> 00:02:43,577
+each.
+
+104
+00:02:43,577 --> 00:02:44,989
+First to their children.
+
+105
+00:02:44,989 --> 00:02:46,727
+Then to friends in Evart.
+
+106
+00:02:47,360 --> 00:02:48,585
+On roll-down weeks,
+
+107
+00:02:48,585 --> 00:02:50,598
+they bought tickets by the thousand.
+
+108
+00:02:50,598 --> 00:02:51,773
+Then every one of them had to
+
+109
+00:02:51,773 --> 00:02:52,373
+be checked,
+
+110
+00:02:52,273 --> 00:02:52,873
+by hand,
+
+111
+00:02:52,860 --> 00:02:54,360
+for hours on end.
+
+112
+00:02:56,527 --> 00:02:58,052
+In May two thousand five,
+
+113
+00:02:58,052 --> 00:02:59,515
+Michigan shut Winfall down,
+
+114
+00:02:59,515 --> 00:03:00,827
+with no warning.
+
+115
+00:03:01,535 --> 00:03:02,885
+But Jerry had heard of a similar
+
+116
+00:03:02,885 --> 00:03:04,310
+game in Massachusetts,
+
+117
+00:03:04,310 --> 00:03:05,935
+called Cash WinFall.
+
+118
+00:03:05,935 --> 00:03:07,410
+It rolled down even sooner,
+
+119
+00:03:07,410 --> 00:03:09,035
+at two million dollars.
+
+120
+00:03:09,685 --> 00:03:11,648
+So whenever a roll-down was coming,
+
+121
+00:03:11,648 --> 00:03:13,535
+Jerry and Marge drove from Michigan to
+
+122
+00:03:13,535 --> 00:03:14,672
+Massachusetts.
+
+123
+00:03:14,672 --> 00:03:16,060
+Hundreds of miles.
+
+124
+00:03:16,060 --> 00:03:17,710
+Then they bought more tickets.
+
+125
+00:03:19,893 --> 00:03:21,118
+They weren't the only ones who had
+
+126
+00:03:21,118 --> 00:03:21,968
+noticed.
+
+127
+00:03:22,593 --> 00:03:24,393
+A group of students from the Massachusetts
+
+128
+00:03:24,393 --> 00:03:26,681
+Institute of Technology had spotted the same
+
+129
+00:03:26,681 --> 00:03:27,580
+flaw.
+
+130
+00:03:27,580 --> 00:03:29,693
+Led by a student called James Harvey
+
+131
+00:03:29,793 --> 00:03:31,293
+they formed their own group,
+
+132
+00:03:31,293 --> 00:03:33,168
+called Random Strategies.
+
+133
+00:03:33,818 --> 00:03:34,943
+In one roll-down,
+
+134
+00:03:34,943 --> 00:03:37,006
+the M. I. T. group reportedly bet
+
+135
+00:03:37,006 --> 00:03:39,793
+seventeen million dollars in just seven hours
+
+136
+00:03:42,160 --> 00:03:43,348
+In twenty eleven,
+
+137
+00:03:43,348 --> 00:03:45,447
+journalists noticed that a handful of groups
+
+138
+00:03:45,447 --> 00:03:46,760
+were winning a huge share of the
+
+139
+00:03:46,760 --> 00:03:47,710
+prizes.
+
+140
+00:03:48,327 --> 00:03:50,977
+The state's inspector general investigated.
+
+141
+00:03:50,977 --> 00:03:53,427
+The Selbees were never charged with anything
+
+142
+00:03:53,527 --> 00:03:55,652
+They had simply played by the rules
+
+143
+00:03:56,402 --> 00:03:59,277
+Cash WinFall ended in January twenty twelve
+
+144
+00:04:00,260 --> 00:04:01,460
+Over nine years,
+
+145
+00:04:01,460 --> 00:04:03,885
+the Selbees' group won almost twenty-seven million
+
+146
+00:04:03,885 --> 00:04:05,410
+dollars in prizes.
+
+147
+00:04:06,027 --> 00:04:07,977
+After paying for all those tickets,
+
+148
+00:04:07,977 --> 00:04:09,990
+the profit was about seven point seven
+
+149
+00:04:09,990 --> 00:04:11,577
+five million dollars,
+
+150
+00:04:11,577 --> 00:04:13,802
+shared among everyone who'd bought in.
+
+151
+00:04:14,518 --> 00:04:16,505
+Jerry and Marge stayed in Evart.
+
+152
+00:04:16,505 --> 00:04:17,568
+In twenty twenty-two,
+
+153
+00:04:17,568 --> 00:04:19,781
+their story became a Hollywood film,
+
+154
+00:04:19,781 --> 00:04:21,593
+Jerry and Marge Go Large.
+
+155
+00:04:22,402 --> 00:04:23,927
+They didn't beat the lottery.
+
+156
+00:04:23,927 --> 00:04:25,665
+They read the rules more carefully than
+
+157
+00:04:25,665 --> 00:04:27,127
+the people who wrote them.
+
+158
+00:04:27,818 --> 00:04:28,468
+Most weeks,
+
+159
+00:04:28,468 --> 00:04:30,193
+the lottery still wins.
+
+160
+00:04:30,193 --> 00:04:31,156
+But for a few days at a
+
+161
+00:04:31,156 --> 00:04:31,756
+time,
+
+162
+00:04:31,743 --> 00:04:33,618
+the lottery was beating itself.
+
+163
+00:04:33,618 --> 00:04:35,668
+And a retired shopkeeper with a pencil
+
+164
+00:04:35,668 --> 00:04:36,843
+noticed first.
+

@@ -125,11 +125,11 @@ const S05: React.FC = () => {
 const S06: React.FC = () => { const cue = useCue(); return <Shot><PhotoSeq items={[{ at: 0, src: F("evart_street"), move: "right" }, { at: cue("seventeen") - 6, src: F("corner_store") }, { at: cue("milk"), src: F("jerry_counter") }]} />
   <DateLine at={4} until={cue("seventeen") - 8} text="EVART, MICHIGAN" /><Caption at={cue("seventeen")} until={cue("milk") - 4} text="17 YEARS BEHIND THE COUNTER" size={60} /></Shot>; };
 const S07: React.FC = () => { const cue = useCue(); return <Shot><PhotoSeq items={[{ at: 0, src: F("jerry_math") }, { at: cue("brochure") - 4, src: F("brochure"), move: "in" }]} /><DateLine at={cue("two")} text="2003 · RETIRED" /><Caption at={cue("winfall")} text="WINFALL" size={110} y={0.66} color={C.ochre} /></Shot>; };
-const S09b: React.FC = () => { const cue = useCue(); const s = useShot(); const b = s.beats[1]?.start ?? 0; const f = useCurrentFrame(); return f < b ? <RollDown after /> : <Shot><Photo src={F("jerry_math")} move="in" /><BigFigure at={cue("two") || b + 10} value="< 2 MINUTES" label="TO SEE THE FLAW (BY ONE ACCOUNT)" tone="ochre" y={0.4} /></Shot>; };
+const S09b: React.FC = () => { const cue = useCue(); const s = useShot(); const b = s.beats[1]?.start ?? 0; const f = useCurrentFrame(); return f < b ? <RollDown after /> : <Shot><Photo src={F("brochure")} move="in" /><BigFigure at={cue("two") || b + 10} value="< 2 MINUTES" label="TO SEE THE FLAW (BY ONE ACCOUNT)" tone="ochre" y={0.4} /></Shot>; };
 const S10: React.FC = () => { const cue = useCue(); return <Shot><Photo src={F("pencil_notepad")} move="in" />
   <BigFigure at={cue("worth")} value="TICKET > $1" label="ON A ROLL-DOWN WEEK, ON AVERAGE" tone="gain" y={0.42} /><Caption at={cue("side")} text="the maths was on your side" serif size={60} y={0.74} /></Shot>; };
 const S12: React.FC = () => { const cue = useCue(); const s = useShot(); const b3 = s.beats[2]?.start ?? 0; const b4 = s.beats[3]?.start ?? 0;
-  return <Shot><PhotoSeq items={[{ at: 0, src: F("ticket_printer") }, { at: cue("kitchen") - 6, src: F("kitchen_tickets") }, { at: b4, src: F("jerry_math") }]} />
+  return <Shot><PhotoSeq items={[{ at: 0, src: F("ticket_printer") }, { at: cue("kitchen") - 6, src: F("kitchen_tickets") }, { at: b4, src: F("ticket_printer") }]} />
     <BigFigure at={cue("two")} until={cue("kitchen") - 6} value="$2,200" label="FIRST TEST · TICKETS BOUGHT" tone="paper" />
     <BigFigure at={cue("fifty")} until={b3 - 4} value="$2,150" label="WON BACK · A SMALL LOSS" tone="loss" />
     <Caption at={b3 + 4} until={b4 - 4} text="not enough tickets to beat the luck" serif size={58} y={0.42} />
@@ -139,7 +139,7 @@ const S14: React.FC = () => { const cue = useCue(); return <Shot><PhotoSeq items
   <LowerThird at={cue("g.")} title="GS INVESTMENT STRATEGIES" sub="shares at $500 each · family and friends" /></Shot>; };
 const S15: React.FC = () => { const cue = useCue(); return <Shot><PhotoSeq items={[{ at: 0, src: F("ticket_boxes") }, { at: cue("checked") - 4, src: F("sorting_hands"), move: "in" }]} /><Caption at={cue("hand")} text="every ticket, checked by hand" serif size={60} /></Shot>; };
 const S17: React.FC = () => { const cue = useCue(); return <Shot><PhotoSeq items={[{ at: 0, src: F("tickets_trash") }, { at: cue("massachusetts") - 4, src: F("mass_store") }]} />
-  <DocStamp at={cue("warning") - 4} text="MAY 2005 · GAME OVER" y={0.4} /><BigFigure at={cue("two")} value="$2 MILLION" label="CASH WINFALL'S ROLL-DOWN POINT" tone="ochre" y={0.4} /></Shot>; };
+  {useCurrentFrame() < cue("massachusetts") - 4 && <DocStamp at={cue("warning") - 4} text="MAY 2005 · GAME OVER" y={0.4} />}<BigFigure at={cue("two")} value="$2 MILLION" label="CASH WINFALL'S ROLL-DOWN POINT" tone="ochre" y={0.4} /></Shot>; };
 const S18: React.FC = () => { const cue = useCue(); return <Shot><Photo src={F("highway_dawn")} move="right" strength={1.3} /><Caption at={cue("michigan")} text="MICHIGAN  →  MASSACHUSETTS" size={70} y={0.7} /></Shot>; };
 const S20: React.FC = () => { const cue = useCue(); return <Shot><Photo src={F("mit_students")} move="in" />
   <LowerThird at={cue("random")} until={cue("reportedly") - 6} title="RANDOM STRATEGIES" sub="MIT students · led by James Harvey" />
