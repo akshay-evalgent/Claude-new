@@ -17,7 +17,7 @@ OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(SCRATCH, "amsterdam_poc
 
 CAPTIONS = [  # text, start s, end s
     ("In old Amsterdam", 0.10, 1.20),
-    ("houses lean forward", 1.20, 2.38),
+    ("houses lean forward", 1.20, 2.36),
     ("on purpose", 2.45, 3.55),
     ("Here's why", 3.62, 5.00),
 ]
