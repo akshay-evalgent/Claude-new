@@ -47,8 +47,8 @@ const S02: React.FC = () => {
         <Character look={CAST.sam} pose={[[0, "signR"], [cue("not"), "panic"]]} mood={[[0, "happy"], [cue("not"), "shocked"]]}
           talk={speakingIntervals(s)} seed={4} jump={[cue("not")]} />
       </OnGround>
-      <PopText x={250} y={560} at={cue("forty")} text="40 YEARS" size={56} pill={K.white} rot={-6} />
-      <Count x={560} y={400} a={cue("third")} b={cue("third") + 16} from={0} to={31} prefix="−" suffix="%" size={190} color={K.loss} stroke={OUT} />
+      <PopText x={250} y={640} at={cue("forty")} text="40 YEARS" size={56} pill={K.white} rot={-6} />
+      <Count x={560} y={500} a={cue("third")} b={cue("third") + 16} from={0} to={31} prefix="−" suffix="%" size={190} color={K.loss} stroke={OUT} />
     </Stage>
   );
 };
