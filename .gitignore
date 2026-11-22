@@ -1,2 +1,6 @@
 film/input/
 __pycache__/
+engine-explainer/node_modules
+engine-explainer/stills/
+engine-explainer/*.score.wav
+engine-explainer/*.part*.mp4

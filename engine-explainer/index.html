@@ -1,0 +1,1524 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body><title>How a Car Engine Works</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,500&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one fixed 1920x1080 film frame, letterboxed to fit the window, with player controls floating over its lower edge.
+   A single committed look: a test-bench engine under studio lights, with the four strokes colour-coded. */
+:root{
+  --void:#05080A; --frame:#0A1015; --paper:#E9EEF1; --mist:#B7C3CB; --muted:#7D8D99; --hair:rgba(233,238,241,.15);
+  --intake:#46CFEA; --compress:#F4B740; --power:#FF5A2B; --exhaust:#AEA4DA;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",sans-serif;
+  --body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  color-scheme:dark;
+}
+html,body{height:100%}
+[hidden]{display:none!important}
+body{margin:0;background:var(--void);color:var(--paper);font-family:var(--body);overflow:hidden;-webkit-font-smoothing:antialiased}
+.app{position:fixed;inset:0;background:var(--void);user-select:none;-webkit-user-select:none}
+.viewport{position:absolute;inset:0;overflow:hidden}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;background:var(--frame)}
+#gl{position:absolute;left:0;top:0;width:1920px;height:1080px;display:block}
+.layer{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none}
+.w{display:inline-block}
+.fx{position:absolute;visibility:hidden}
+
+/* scrims keep words on calm ground */
+.scrim-l{position:absolute;left:0;top:0;width:1100px;height:1080px;background:radial-gradient(70% 62% at 0% 55%, rgba(6,10,13,.82), rgba(6,10,13,0) 100%)}
+.scrim-b{position:absolute;left:0;bottom:0;width:1920px;height:420px;background:linear-gradient(rgba(6,10,13,0), rgba(6,10,13,.78))}
+.scrim-r{position:absolute;right:0;top:0;width:760px;height:1080px;background:linear-gradient(90deg, rgba(6,10,13,0), rgba(6,10,13,.72) 45%)}
+.blackout{position:absolute;inset:0;background:#000}
+
+/* chapter + speed */
+.chap{left:110px;top:66px;display:flex;gap:20px;align-items:baseline;font:600 21px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.chap b{color:var(--paper);font-weight:600}
+.speed{right:96px;top:62px;display:flex;gap:14px;align-items:center;font:500 20px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mist);white-space:nowrap;font-variant-numeric:tabular-nums}
+.speed i{display:block;width:12px;height:12px;border-radius:50%;background:var(--power);box-shadow:0 0 14px var(--power)}
+
+/* title */
+.title{left:110px;top:236px;width:880px}
+.eyebrow{margin:0 0 34px;font:600 23px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--intake)}
+.t-line{margin:0;font:700 176px/.88 var(--display);letter-spacing:-.005em;text-wrap:balance}
+.t-sub{margin:40px 0 0;max-width:660px;font:400 35px/1.36 var(--body);color:var(--mist)}
+
+/* interstitial */
+.inter{left:110px;top:330px;width:760px}
+.inter p{margin:0;font:700 132px/.92 var(--display)}
+.inter p + p{color:var(--compress)}
+
+/* stroke cards */
+.stroke{left:110px;top:132px;width:440px}
+.s-top{display:flex;align-items:flex-end;gap:22px}
+.s-num{font:700 250px/.78 var(--display);letter-spacing:-.02em}
+.s-of{margin-bottom:14px;font:600 22px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.s-name{margin:26px 0 0;font:700 92px/.95 var(--display);letter-spacing:.005em}
+.s-mn{margin:12px 0 0;font:italic 500 46px/1 var(--display);color:var(--mist)}
+
+/* captions */
+.cap{text-shadow:0 2px 18px rgba(5,8,10,.9);left:110px;bottom:92px;width:1040px;margin:0;font:500 42px/1.3 var(--body);color:var(--paper);text-wrap:pretty}
+.cap.col{left:110px;bottom:auto;top:640px;width:440px;font-size:35px;line-height:1.32}
+.cap .k{display:block;margin-bottom:16px;font:600 20px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+/* right-hand instrument panels */
+.panel{right:96px;width:430px;font-family:var(--mono);color:var(--mist)}
+.p-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;margin-bottom:14px;border-bottom:1px solid var(--hair);font:600 17px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.p-head b{color:var(--paper);font-weight:600}
+#cycle{top:128px}
+#dial{display:block;width:340px;height:340px;margin:0 auto 22px}
+#pv,#strip{display:block;width:430px;height:250px}
+.reads{display:grid;grid-template-columns:1fr 1.2fr .9fr;gap:10px;margin-top:18px}
+.reads div{display:flex;flex-direction:column;gap:8px}
+.reads span{font:600 14px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.reads b{font:600 26px/1 var(--mono);color:var(--paper);font-variant-numeric:tabular-nums;white-space:nowrap}
+.chips{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.chip{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--hair);border-radius:999px;font:600 15px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.chip i{display:block;width:10px;height:10px;border-radius:50%;background:rgba(233,238,241,.18)}
+
+#crankp{top:150px}
+#camp{top:170px}
+.big2{display:flex;align-items:baseline;justify-content:space-between;margin:6px 0 8px}
+.big2 b{font:600 104px/1 var(--mono);color:var(--paper);font-variant-numeric:tabular-nums}
+.big2 span{font:600 18px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:right}
+.ratio{margin-top:26px;padding-top:22px;border-top:1px solid var(--hair);display:flex;align-items:baseline;gap:18px}
+.ratio b{flex:none;white-space:nowrap;font:700 120px/1 var(--display);color:var(--compress)}
+.ratio span{font:500 26px/1.25 var(--body);color:var(--mist)}
+
+#firing{top:128px}
+.order{display:flex;gap:12px;margin-bottom:30px}
+.order span{flex:1;display:grid;place-items:center;height:92px;border:1px solid var(--hair);border-radius:14px;font:700 64px/1 var(--display);color:var(--muted)}
+.cyls{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cyl{display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.cyl-n{font:600 15px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cyl-bar{position:relative;height:230px;border-radius:10px;background:rgba(233,238,241,.06);overflow:hidden}
+.cyl-bar i{position:absolute;left:0;right:0;bottom:0;border-radius:10px}
+.cyl-s{font:600 15px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--paper);min-height:36px}
+
+/* 3D labels */
+.lbl{position:absolute;left:0;top:0;white-space:nowrap}
+.lbl{text-shadow:0 2px 14px rgba(5,8,10,.95),0 0 4px rgba(5,8,10,.8)}
+.lbl b{display:block;font:600 34px/1 var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--paper)}
+.lbl span{display:block;margin-top:7px;font:500 20px/1.1 var(--body);color:var(--mist)}
+.lbl.l{text-align:right}
+
+/* ending */
+.endw{left:110px;top:250px;width:900px}
+.endw p{margin:0;font:700 150px/.94 var(--display)}
+.ends{left:114px;top:930px;font:600 22px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
+
+/* player chrome (real pixels, outside the film frame) */
+.controls{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;gap:14px;padding-block:18px calc(14px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));background:linear-gradient(rgba(5,8,10,0),rgba(5,8,10,.88));transition:opacity .35s}
+.app.idle .controls{opacity:0}
+.app.idle{cursor:none}
+.cbtn{flex:none;width:40px;height:40px;padding:0;display:grid;place-items:center;border-radius:50%;border:1px solid var(--hair);background:rgba(10,16,21,.6);color:var(--paper);cursor:pointer}
+.cbtn:hover{background:rgba(233,238,241,.12)}
+.cbtn:focus-visible,.scrub:focus-visible,.bigplay:focus-visible{outline:2px solid var(--intake);outline-offset:3px}
+.cbtn svg{width:18px;height:18px;fill:currentColor}
+.time{flex:none;font:500 13px/1 var(--mono);color:var(--mist);font-variant-numeric:tabular-nums;white-space:nowrap}
+.chname{flex:none;font:600 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.scrub{position:relative;flex:1;min-width:0;height:30px;cursor:pointer;touch-action:none;border-radius:6px}
+.track{position:absolute;left:0;right:0;top:13px;height:4px;border-radius:2px;background:rgba(233,238,241,.16)}
+.fill{position:absolute;left:0;top:0;bottom:0;border-radius:2px;background:var(--paper)}
+.tick{position:absolute;top:-4px;width:2px;height:12px;margin-left:-1px;border-radius:1px;background:rgba(233,238,241,.4)}
+.knob{position:absolute;top:8px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--paper);box-shadow:0 0 0 4px rgba(233,238,241,.14)}
+.tip{position:absolute;bottom:32px;transform:translateX(-50%);padding:7px 10px;border-radius:6px;border:1px solid var(--hair);background:rgba(10,16,21,.94);font:500 12px/1 var(--mono);color:var(--paper);white-space:nowrap;pointer-events:none}
+.poster{position:absolute;inset:0;z-index:6;display:flex;align-items:flex-end;justify-content:center;padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+.bigplay{display:flex;align-items:center;gap:16px;padding:12px 26px 12px 12px;border-radius:999px;border:1px solid rgba(233,238,241,.28);background:rgba(10,16,21,.78);color:var(--paper);font:600 20px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.bigplay .ic{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--paper);color:var(--void)}
+.bigplay .ic svg{width:18px;height:18px;fill:currentColor;margin-left:3px}
+.bigplay small{display:block;margin-top:6px;font:500 12px/1 var(--mono);letter-spacing:.08em;color:var(--muted);text-transform:none}
+.err{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;font:500 18px/1.5 var(--body);color:var(--mist)}
+@media (max-width:620px){ .chname{display:none} .bigplay{font-size:17px} }
+@media (prefers-reduced-motion:reduce){ .controls{transition:none} }
+</style>
+
+<div class="app" id="app">
+  <div class="viewport" id="viewport">
+    <div id="stage">
+      <canvas id="gl" width="1920" height="1080"></canvas>
+      <div class="layer" id="scrims">
+        <div class="fx scrim-l" id="scrimL"></div>
+        <div class="fx scrim-b" id="scrimB"></div>
+        <div class="fx scrim-r" id="scrimR"></div>
+      </div>
+      <svg class="layer" id="leaders" viewBox="0 0 1920 1080"></svg>
+      <div class="layer" id="labels"></div>
+      <div class="layer" id="hud">
+        <div class="fx chap" id="chap"><b id="chapN">01</b><span id="chapT">What's inside</span></div>
+        <div class="fx speed" id="speed"><i></i><span id="speedT">Slowed about 150×</span></div>
+
+        <section class="fx title" id="title">
+          <p class="eyebrow wr" id="tEye">An explainer in 3D</p>
+          <h1 class="t-line wr" id="tLine">How a car engine works</h1>
+          <p class="t-sub wr" id="tSub">A four-stroke, inline-four petrol engine, slowed down so you can watch every step.</p>
+        </section>
+
+        <section class="fx inter" id="inter">
+          <p class="wr" id="inter1">One cylinder.</p>
+          <p class="wr" id="inter2">Four strokes.</p>
+        </section>
+
+        <div id="strokes"></div>
+        <div id="caps"></div>
+
+        <section class="fx panel" id="cycle">
+          <div class="p-head"><span>Cylinder 1 cycle</span><b id="cycDeg">0°</b></div>
+          <svg id="dial" viewBox="0 0 340 340"></svg>
+          <div class="p-head"><span>Pressure vs volume</span><b>bar · cc</b></div>
+          <canvas id="pv" width="860" height="500"></canvas>
+          <div class="reads">
+            <div><span>Volume</span><b id="rVol">56 cc</b></div>
+            <div><span>Pressure</span><b id="rP">0.9 bar</b></div>
+            <div><span>Piston</span><b id="rPis">TDC</b></div>
+          </div>
+          <div class="chips">
+            <div class="chip" id="chIn"><i></i>Intake valve</div>
+            <div class="chip" id="chEx"><i></i>Exhaust valve</div>
+            <div class="chip" id="chSp"><i></i>Spark</div>
+          </div>
+        </section>
+
+        <section class="fx panel" id="crankp">
+          <div class="p-head"><span>Piston height</span><b id="crDeg">0°</b></div>
+          <canvas id="strip" width="860" height="500"></canvas>
+          <div class="reads">
+            <div><span>Stroke</span><b>86 mm</b></div>
+            <div><span>Crank throw</span><b>43 mm</b></div>
+            <div><span>Rod</span><b>145 mm</b></div>
+          </div>
+        </section>
+
+        <section class="fx panel" id="camp">
+          <div class="p-head"><span>Counting turns</span><b>since 1:11</b></div>
+          <div class="big2"><b id="nCrank">0.0</b><span>Crankshaft<br>turns</span></div>
+          <div class="big2"><b id="nCam" style="color:var(--compress)">0.0</b><span>Camshaft<br>turns</span></div>
+          <div class="ratio"><b>2 : 1</b><span>The cam gear has 40 teeth, the crank gear 20.</span></div>
+        </section>
+
+        <section class="fx panel" id="firing">
+          <div class="p-head"><span>Firing order</span><b>1 · 3 · 4 · 2</b></div>
+          <div class="order" id="order"><span>1</span><span>3</span><span>4</span><span>2</span></div>
+          <div class="p-head"><span>Each cylinder now</span><b id="fireRpm"></b></div>
+          <div class="cyls" id="cyls"></div>
+        </section>
+
+        <section class="fx endw" id="endw">
+          <p class="ew" style="color:var(--intake)">Suck.</p>
+          <p class="ew" style="color:var(--compress)">Squeeze.</p>
+          <p class="ew" style="color:var(--power)">Bang.</p>
+          <p class="ew" style="color:var(--exhaust)">Blow.</p>
+        </section>
+        <div class="fx ends wr" id="ends">Intake · Compression · Power · Exhaust</div>
+        <div class="fx blackout" id="blackout"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="poster" id="poster" hidden>
+    <button class="bigplay" id="bigplay" type="button" aria-label="Play the film">
+      <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+      <span>Play the film<small>1 min 46 s · sound on</small></span>
+    </button>
+  </div>
+
+  <div class="controls" id="controls" hidden>
+    <button class="cbtn" id="bPlay" type="button" aria-label="Play"><svg viewBox="0 0 24 24" aria-hidden="true" id="icPlay"><path d="M7 4l13 8-13 8z"/></svg></button>
+    <span class="time" id="time">0:00 / 1:46</span>
+    <div class="scrub" id="scrub" tabindex="0" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="106" aria-valuenow="0">
+      <div class="track" id="track"><div class="fill" id="fill"></div></div>
+      <div class="knob" id="knob"></div>
+      <div class="tip" id="tip" hidden></div>
+    </div>
+    <span class="chname" id="chname">Title</span>
+    <button class="cbtn" id="bSound" type="button" aria-label="Mute"><svg viewBox="0 0 24 24" aria-hidden="true" id="icSound"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 010 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+    <button class="cbtn" id="bFull" type="button" aria-label="Full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v2H6v4H4zM14 4h6v6h-2V6h-4zM4 14h2v4h4v2H4zM18 14h2v6h-6v-2h4z"/></svg></button>
+  </div>
+</div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+/* =====================================================================
+   0. Clock, maths, film constants
+   ===================================================================== */
+const DUR = 106;
+const RENDER = new URLSearchParams(location.search).has('render');
+const TAU = Math.PI * 2, D2R = Math.PI / 180;
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const lerp = (a, b, p) => a + (b - a) * p;
+const mod = (a, n) => ((a % n) + n) % n;
+const eo = x => 1 - Math.pow(1 - x, 3);
+const ei = x => x * x * x;
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const eob = (x, s = 1.7) => { const c = s + 1; return 1 + c * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2); };
+const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+const win = (T, a, b, fi = .5, fo = .5) => Math.min(eo(seg(T, a, a + fi)), 1 - ei(seg(T, b - fo, b)));
+function rng(seed) { let s = (seed >>> 0) || 1; return () => { s ^= s << 13; s >>>= 0; s ^= s >>> 17; s ^= s << 5; s >>>= 0; return s / 4294967296; }; }
+
+// Engine geometry, in units of 100 mm: an 86 x 86 mm "square" 2.0-litre inline-four at 10:1 compression.
+const BORE = 0.43, CR = 0.43, ROD = 1.45, PIN_CROWN = 0.30, CLEAR = 0.86 / 9;
+const DECK = CR + ROD + PIN_CROWN + CLEAR;                  // underside of the cylinder head
+const CYL_X = [1.575, 0.525, -0.525, -1.575];              // cylinder 1 sits at the front (timing-belt end)
+const PHASE = [0, 540, 180, 360];                          // firing order 1-3-4-2
+const TILT = 16 * D2R, LIFT = 0.11, R0 = 0.17;
+const IN_A = -8, IN_W = 200, EX_A = 524, EX_W = 204;
+const SWEPT_CC = 499.6, VC_CC = SWEPT_CC / 9;
+
+const pinY = a => CR * Math.cos(a * D2R) + Math.sqrt(ROD * ROD - Math.pow(CR * Math.sin(a * D2R), 2));
+const crownY = a => pinY(a) + PIN_CROWN;
+function bump(c, a, w) { const d = mod(c - a, 720); return d < w ? Math.pow(Math.sin(Math.PI * d / w), 2) : 0; }
+const liftIn = c => LIFT * bump(c, IN_A, IN_W);
+const liftEx = c => LIFT * bump(c, EX_A, EX_W);
+const strokeOf = c => Math.floor(mod(c, 720) / 180);
+const sparkAt = c => (c >= 352 && c <= 366) ? Math.sin(Math.PI * (c - 352) / 14) : 0;
+const flameR = c => 1.3 * eo(seg(c, 357, 392));
+function volumeCC(c) { const x = (CR + ROD) - pinY(c); return VC_CC + x / (2 * CR) * SWEPT_CC; }
+function pressureBar(c) {
+  c = mod(c, 720);
+  const V = volumeCC(c), mot = 0.92 * Math.pow((VC_CC + SWEPT_CC) / V, 1.32);
+  if (c < 180) return 0.92 - 0.07 * Math.sin(Math.PI * c / 180);
+  if (c < 356) return mot;
+  const xb = 1 - Math.exp(-5 * Math.pow(seg(c, 356, 396), 3));
+  if (c < 524) return mot * (1 + 3.6 * xb);
+  if (c < 572) return lerp(mot * 4.6, 1.12, eio(seg(c, 524, 572)));
+  return 1.12;
+}
+
+const STROKES = [
+  { name: 'Intake', mn: 'Suck.', col: '#46CFEA', deg: '0°–180°' },
+  { name: 'Compression', mn: 'Squeeze.', col: '#F4B740', deg: '180°–360°' },
+  { name: 'Power', mn: 'Bang.', col: '#FF5A2B', deg: '360°–540°' },
+  { name: 'Exhaust', mn: 'Blow.', col: '#AEA4DA', deg: '540°–720°' },
+];
+const S0 = 25, SLEN = 8.5;                                  // four-stroke chapter: stroke k starts at S0 + k*SLEN
+const CHAPTERS = [
+  { t: 0, n: '', name: 'Title' },
+  { t: 7, n: '01', name: "What's inside" },
+  { t: 23, n: '02', name: 'One cylinder, four strokes' },
+  { t: 59, n: '03', name: 'Push becomes rotation' },
+  { t: 71, n: '04', name: 'Keeping time' },
+  { t: 83, n: '05', name: 'Four cylinders, taking turns' },
+  { t: 96, n: '', name: 'Recap' },
+];
+
+/* Crank angle θ as a pure function of film time: idle, stop, four slow strokes, then spin up. */
+const SEGS = [];
+(function buildTheta() {
+  let th = 382.5, t = 0;
+  const add = (t1, type, o = {}) => {
+    const s = { t0: t, t1, th0: th, type, ...o };
+    if (type === 'speed') th += (o.v0 + o.v1) / 2 * (t1 - t); else if (o.to !== undefined) th = o.to;
+    s.th1 = th; SEGS.push(s); t = t1;
+  };
+  add(6, 'speed', { v0: 45, v1: 45 });
+  add(9, 'speed', { v0: 45, v1: 0 });
+  add(S0 + .8, 'hold');
+  add(S0 + 6.3, 'ease', { to: 900 });
+  add(S0 + SLEN + .8, 'hold');
+  add(S0 + SLEN + 6.3, 'ease', { to: 1070 });
+  add(S0 + 2 * SLEN + .8, 'hold');
+  add(S0 + 2 * SLEN + 6.3, 'power', { to: 1260 });
+  add(S0 + 3 * SLEN + .8, 'hold');
+  add(S0 + 3 * SLEN + 6.3, 'ease', { to: 1440 });
+  add(59.5, 'hold');
+  add(61.5, 'speed', { v0: 0, v1: 120 });
+  add(83, 'speed', { v0: 120, v1: 120 });
+  add(88, 'speed', { v0: 120, v1: 360 });
+  add(DUR + 10, 'speed', { v0: 360, v1: 360 });
+})();
+function thetaAt(T) {
+  T = clamp(T, 0, DUR + 10);
+  for (const s of SEGS) if (T <= s.t1) {
+    const D = s.t1 - s.t0, u = T - s.t0;
+    if (s.type === 'hold') return s.th0;
+    if (s.type === 'speed') return s.th0 + s.v0 * u + .5 * (s.v1 - s.v0) / D * u * u;
+    if (s.type === 'ease') return lerp(s.th0, s.th1, eio(u / D));
+    const x = u / D, mid = s.th0 + 18;                     // power: creep through ignition, then the kick
+    return x < .3 ? lerp(s.th0, mid, eio(x / .3)) : lerp(mid, s.th1, eo((x - .3) / .7));
+  }
+  return SEGS[SEGS.length - 1].th1;
+}
+const speedAt = T => (thetaAt(T + .02) - thetaAt(T - .02)) / .04;
+const EX = T => eio(seg(T, 11.4, 13.4)) - eio(seg(T, 20.6, 22.6));   // exploded-view amount
+const mechVis = (i, T) => i === 0 ? 1 : clamp(1 - eio(seg(T, 23, 24.4)) + eio(seg(T, 59, 60.5)));
+const gasVis = (i, T) => i === 0 ? eio(seg(T, 24.2, 25.4)) : eio(seg(T, 59.5, 61));
+const frontVis = T => clamp(1 - eio(seg(T, 23, 24.2)) + eio(seg(T, 70.2, 71.4))) * (1 - clamp(EX(T) * 2.5));
+const cutAt = T => lerp(3.7, -3.9, eio(seg(T, 7.4, 10.4)));
+let T_IGNITE = 0; for (let t = S0 + 2 * SLEN; t < S0 + 3 * SLEN; t += .005) if (mod(thetaAt(t), 720) >= 357) { T_IGNITE = t; break; }
+
+/* =====================================================================
+   1. Renderer, scene, post-processing
+   ===================================================================== */
+const canvas = document.getElementById('gl');
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance', preserveDrawingBuffer: RENDER });
+} catch (e) {
+  document.getElementById('viewport').insertAdjacentHTML('beforeend', '<div class="err">This film needs WebGL, which this browser has turned off. Try a current Chrome, Edge, Firefox or Safari.</div>');
+  throw e;
+}
+renderer.setPixelRatio(1);
+renderer.setSize(1920, 1080, false);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.localClippingEnabled = false;
+
+const scene = new THREE.Scene();
+const BG = new THREE.Color('#0c1319');
+scene.background = BG;
+scene.fog = new THREE.Fog(BG, 16, 40);
+const camera = new THREE.PerspectiveCamera(30, 1920 / 1080, 0.1, 120);
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+// Backdrop dome: a cool overhead falloff to a dark horizon that the floor fog melts into.
+{
+  const g = new THREE.SphereGeometry(80, 48, 24);
+  const m = new THREE.ShaderMaterial({
+    side: THREE.BackSide, depthWrite: false, fog: false,
+    uniforms: { top: { value: new THREE.Color('#1d2c38') }, mid: { value: BG.clone() }, bot: { value: new THREE.Color('#06090c') } },
+    vertexShader: 'varying vec3 vP; void main(){ vP = normalize(position); gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+    fragmentShader: 'uniform vec3 top; uniform vec3 mid; uniform vec3 bot; varying vec3 vP; void main(){ float h = vP.y; vec3 c = h > 0.0 ? mix(mid, top, smoothstep(0.0, 0.75, h)) : mix(mid, bot, smoothstep(0.0, 0.25, -h)); gl_FragColor = vec4(c, 1.0); }',
+  });
+  scene.add(new THREE.Mesh(g, m));
+}
+
+// Lights: warm key with soft shadows, two coloured rims, a low fill.
+scene.add(new THREE.HemisphereLight(0xa9c2d6, 0x1a1410, 0.45));
+const key = new THREE.DirectionalLight(0xfff0de, 2.6);
+key.position.set(6, 11, 8); key.target.position.set(0, 1, 0);
+key.castShadow = true; key.shadow.mapSize.set(2048, 2048);
+Object.assign(key.shadow.camera, { left: -6.5, right: 6.5, top: 6.5, bottom: -6.5, near: 2, far: 30 });
+key.shadow.bias = -0.0004; key.shadow.normalBias = 0.02;
+scene.add(key, key.target);
+const rimC = new THREE.DirectionalLight(0x6cc8ff, 2.0); rimC.position.set(-8, 4, -6); scene.add(rimC);
+const rimW = new THREE.DirectionalLight(0xffa860, 1.4); rimW.position.set(8, 3, -7); scene.add(rimW);
+const fill = new THREE.DirectionalLight(0x8fa6ba, 0.5); fill.position.set(-4, -2, 8); scene.add(fill);
+
+// Post: bloom for anything hotter than white, then grade (vignette, a breath of chromatic aberration, film grain).
+const composer = new EffectComposer(renderer);
+composer.setPixelRatio(1); composer.setSize(1920, 1080);
+composer.addPass(new RenderPass(scene, camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(960, 540), 0.6, 0.5, 1.0);
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
+const grade = new ShaderPass({
+  uniforms: { tDiffuse: { value: null }, uTime: { value: 0 }, uRes: { value: new THREE.Vector2(1920, 1080) } },
+  vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+  fragmentShader: `uniform sampler2D tDiffuse; uniform float uTime; uniform vec2 uRes; varying vec2 vUv;
+    float h(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }
+    void main(){
+      vec2 d = vUv - 0.5; float r2 = dot(d, d);
+      vec2 off = d * 0.0025 * r2 * 4.0;
+      vec3 c = vec3(texture2D(tDiffuse, vUv - off).r, texture2D(tDiffuse, vUv).g, texture2D(tDiffuse, vUv + off).b);
+      float v = smoothstep(1.05, 0.25, length(d * vec2(1.0, 1.2)) * 1.35);
+      c *= mix(0.62, 1.0, v);
+      c += (h(vUv * uRes + fract(uTime * 7.31) * 91.7) - 0.5) * 0.03;
+      gl_FragColor = vec4(c, 1.0);
+    }`,
+});
+composer.addPass(grade);
+
+/* =====================================================================
+   2. Materials: cast housings dissolve to x-ray; moving metal stays solid
+   ===================================================================== */
+function noiseTexture(size, seed, cells, contrast) {
+  const c = document.createElement('canvas'); c.width = c.height = size;
+  const g = c.getContext('2d'), img = g.createImageData(size, size), r = rng(seed);
+  const layers = cells.map(n => { const a = []; for (let i = 0; i < n * n; i++) a.push(r()); return { n, a }; });
+  for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+    let v = 0, wsum = 0;
+    layers.forEach((L, li) => {
+      const gx = x / size * L.n, gy = y / size * L.n, ix = Math.floor(gx), iy = Math.floor(gy), fx = gx - ix, fy = gy - iy;
+      const at = (a, b) => L.a[(mod(b, L.n)) * L.n + mod(a, L.n)];
+      const sx = fx * fx * (3 - 2 * fx), sy = fy * fy * (3 - 2 * fy);
+      const w = 1 / (li + 1);
+      v += w * lerp(lerp(at(ix, iy), at(ix + 1, iy), sx), lerp(at(ix, iy + 1), at(ix + 1, iy + 1), sx), sy); wsum += w;
+    });
+    v = clamp(.5 + (v / wsum - .5) * contrast + (r() - .5) * .18);
+    const o = (y * size + x) * 4; img.data[o] = img.data[o + 1] = img.data[o + 2] = v * 255; img.data[o + 3] = 255;
+  }
+  g.putImageData(img, 0, 0);
+  const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; return t;
+}
+const castTex = noiseTexture(256, 11, [8, 32, 64], 1.6); castTex.repeat.set(2, 2);
+const crinkleTex = noiseTexture(256, 23, [48, 96], 2.2); crinkleTex.repeat.set(3, 3);
+
+const U = { cut: { value: 3.7 }, time: { value: 0 }, glow: { value: new THREE.Color(0.25, 0.75, 1.0) } };
+function cutMat(params) {
+  const m = new THREE.MeshPhysicalMaterial({ envMapIntensity: 0.85, ...params });
+  m.onBeforeCompile = sh => {
+    sh.uniforms.uCut = U.cut; sh.uniforms.uGlow = U.glow;
+    sh.vertexShader = 'varying vec3 vWp;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>\n vWp = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+    sh.fragmentShader = 'varying vec3 vWp;\nuniform float uCut;\nuniform vec3 uGlow;\n' + sh.fragmentShader
+      .replace('#include <clipping_planes_fragment>', '#include <clipping_planes_fragment>\n if (vWp.x > uCut) discard;')
+      .replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\n { float cb = 1.0 - smoothstep(0.0, 0.06, uCut - vWp.x); totalEmissiveRadiance += uGlow * cb * 7.0; }');
+  };
+  m.customProgramCacheKey = () => 'cut-shell';
+  return m;
+}
+const ghostVS = 'varying vec3 vW; varying vec3 vN; void main(){ vec4 w = modelMatrix * vec4(position, 1.0); vW = w.xyz; vN = normalize(mat3(modelMatrix) * normal); gl_Position = projectionMatrix * viewMatrix * w; }';
+const ghostFS = `uniform float uCut; uniform float uOp; uniform vec3 uColor; uniform float uTime; varying vec3 vW; varying vec3 vN;
+  void main(){
+    if (vW.x < uCut) discard;
+    vec3 V = normalize(cameraPosition - vW);
+    float f = pow(1.0 - abs(dot(normalize(vN), V)), 2.3);
+    float scan = 0.7 + 0.3 * smoothstep(0.86, 1.0, sin(vW.y * 38.0 - uTime * 1.4));
+    float front = smoothstep(0.35, 0.0, vW.x - uCut) * step(-3.8, uCut);
+    float a = (0.014 + 0.42 * f) * uOp * scan + front * 0.35 * uOp;
+    gl_FragColor = vec4(uColor * a, 1.0);
+  }`;
+const lineVS = 'varying vec3 vW; void main(){ vec4 w = modelMatrix * vec4(position, 1.0); vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }';
+const lineFS = 'uniform float uCut; uniform float uOp; uniform vec3 uColor; varying vec3 vW; void main(){ if (vW.x < uCut) discard; gl_FragColor = vec4(uColor * uOp, 1.0); }';
+const GH = {
+  op: { value: 0 }, line: { value: 0 },
+  col: { value: new THREE.Color(0.22, 0.46, 0.68) }, lcol: { value: new THREE.Color(0.38, 0.72, 0.95) },
+  inCol: { value: new THREE.Color(0.16, 0.6, 0.85) }, exCol: { value: new THREE.Color(0.5, 0.42, 0.62) },
+};
+const ghostMats = new Map();
+function ghostMat(op, col) {
+  const k = op.uuid || (op.uuid = THREE.MathUtils.generateUUID()), key2 = k + (col === GH.col ? '' : col === GH.inCol ? 'i' : 'e');
+  if (ghostMats.has(key2)) return ghostMats.get(key2);
+  const m = new THREE.ShaderMaterial({ uniforms: { uCut: U.cut, uOp: op, uColor: col, uTime: U.time }, vertexShader: ghostVS, fragmentShader: ghostFS, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide });
+  ghostMats.set(key2, m); return m;
+}
+const lineMats = new Map();
+function lineMat(op) {
+  const k = op.uuid || (op.uuid = THREE.MathUtils.generateUUID());
+  if (lineMats.has(k)) return lineMats.get(k);
+  const m = new THREE.ShaderMaterial({ uniforms: { uCut: U.cut, uOp: op, uColor: GH.lcol }, vertexShader: lineVS, fragmentShader: lineFS, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending });
+  lineMats.set(k, m); return m;
+}
+const shells = [];
+function shell(mesh, { edges = true, op = GH.op, lop = GH.line, col = GH.col, angle = 30 } = {}) {
+  mesh.castShadow = true; mesh.receiveShadow = true;
+  const g = new THREE.Mesh(mesh.geometry, ghostMat(op, col)); g.renderOrder = 2; mesh.add(g);
+  if (edges) { const e = new THREE.LineSegments(new THREE.EdgesGeometry(mesh.geometry, angle), lineMat(lop)); e.renderOrder = 3; mesh.add(e); }
+  shells.push(mesh); return mesh;
+}
+
+const MAT = {
+  iron: cutMat({ color: 0x4d555c, metalness: 0.55, roughness: 0.66, bumpMap: castTex, bumpScale: 0.45 }),
+  alu: cutMat({ color: 0xa9afb5, metalness: 0.85, roughness: 0.42, bumpMap: castTex, bumpScale: 0.2 }),
+  paint: cutMat({ color: 0x8a1c20, metalness: 0.25, roughness: 0.5, clearcoat: 0.8, clearcoatRoughness: 0.35, bumpMap: crinkleTex, bumpScale: 0.9 }),
+  composite: cutMat({ color: 0x24282c, metalness: 0.1, roughness: 0.45, clearcoat: 0.4, clearcoatRoughness: 0.4 }),
+  header: cutMat({ color: 0x8a7766, metalness: 0.9, roughness: 0.36, iridescence: 0.85, iridescenceIOR: 1.6, iridescenceThicknessRange: [180, 520] }),
+  pan: cutMat({ color: 0x353b41, metalness: 0.6, roughness: 0.5 }),
+  coil: cutMat({ color: 0x111315, metalness: 0.2, roughness: 0.42, clearcoat: 0.5 }),
+  filter: cutMat({ color: 0x1f4f8c, metalness: 0.3, roughness: 0.35, clearcoat: 1, clearcoatRoughness: 0.15 }),
+  gasket: cutMat({ color: 0x2a2d30, metalness: 0.4, roughness: 0.5 }),
+  yellow: cutMat({ color: 0xe0ad1f, metalness: 0.1, roughness: 0.4 }),
+};
+const std = (color, metalness, roughness, extra = {}) => new THREE.MeshStandardMaterial({ color, metalness, roughness, envMapIntensity: 0.7, ...extra });
+const SOLID = {
+  crank: std(0xa9afb5, 1, 0.3), cam: std(0xb0b6bc, 1, 0.22), fly: std(0x7c848a, 1, 0.34), dark: std(0x2b3035, 0.7, 0.45),
+  white: std(0xe9eef1, 0.1, 0.4), tooth: std(0x8d949a, 1, 0.32),
+  sprocket: std(0xa2a8ae, 1, 0.3, { transparent: true }), pulley: std(0x2c3135, 0.7, 0.42, { transparent: true }),
+  frontPulley: std(0x9aa1a7, 1, 0.3, { transparent: true }), snout: std(0xa9afb5, 1, 0.3, { transparent: true }), mark: std(0xf2f2ee, 0.1, 0.4, { transparent: true }),
+};
+function cylMats() {
+  const t = (c, m, r, e = {}) => std(c, m, r, { transparent: true, ...e });
+  return {
+    piston: t(0xa9afb5, 1, 0.4), ring: t(0x3a3f45, 1, 0.36), rod: t(0x8f969d, 1, 0.36), valve: t(0xb9bec3, 1, 0.32),
+    spring: t(0x5a7a98, 0.85, 0.36), bucket: t(0xa6acb2, 1, 0.3), plugMetal: t(0x9aa1a7, 1, 0.3),
+    plugCer: new THREE.MeshPhysicalMaterial({ color: 0xefece6, metalness: 0, roughness: 0.28, clearcoat: 0.7, transparent: true }),
+  };
+}
+const CM = [0, 1, 2, 3].map(cylMats);
+const cylOp = [0, 1, 2, 3].map(() => ({ value: 1 }));
+const runOp = [0, 1, 2, 3].map(() => ({ value: 1 }));
+const inOp = { value: 0 }, inLine = { value: 0 };         // ghost opacity per cylinder (liners, runners, headers)
+
+/* =====================================================================
+   3. Geometry builders
+   ===================================================================== */
+function extrudeX(shape, depth, bevel = 0.012, curveSegments = 24) {
+  const g = new THREE.ExtrudeGeometry(shape, { depth, bevelEnabled: bevel > 0, bevelThickness: bevel, bevelSize: bevel, bevelSegments: 2, curveSegments });
+  g.translate(0, 0, -depth / 2); g.rotateY(Math.PI / 2);   // shape x -> -z, shape y -> y, extrusion -> x
+  return g;
+}
+function poly(pts) { const s = new THREE.Shape(); pts.forEach(([x, y], i) => i ? s.lineTo(x, y) : s.moveTo(x, y)); s.closePath(); return s; }
+function latheX(pts, seg = 48) { const g = new THREE.LatheGeometry(pts.map(([r, y]) => new THREE.Vector2(r, y)), seg); g.rotateZ(-Math.PI / 2); return g; }
+function cylX(r, len, seg = 32) { const g = new THREE.CylinderGeometry(r, r, len, seg); g.rotateZ(Math.PI / 2); return g; }
+function gearShape(n, rRoot, rTip, holes = []) {
+  const s = new THREE.Shape(), st = TAU / n;
+  for (let i = 0; i < n; i++) {
+    const a = i * st;
+    [[a, rRoot], [a + st * .16, rTip], [a + st * .5, rTip], [a + st * .66, rRoot]].forEach(([q, r], j) => {
+      const x = Math.cos(q) * r, y = Math.sin(q) * r; (i === 0 && j === 0) ? s.moveTo(x, y) : s.lineTo(x, y);
+    });
+  }
+  s.closePath();
+  holes.forEach(([x, y, r]) => { const h = new THREE.Path(); h.absarc(x, y, r, 0, TAU, true); s.holes.push(h); });
+  return s;
+}
+function camLobeGeo(w) {
+  const pts = [];
+  for (let i = 0; i < 144; i++) {
+    const b = -180 + i * 2.5, rho = R0 + (Math.abs(b) < w / 4 ? LIFT * Math.pow(Math.cos(TAU * b / w), 2) : 0);
+    pts.push([rho * Math.sin(b * D2R), -rho * Math.cos(b * D2R)]);
+  }
+  return extrudeX(poly(pts), 0.13, 0.01, 12);
+}
+
+/* =====================================================================
+   4. The engine
+   ===================================================================== */
+const engine = new THREE.Group(); scene.add(engine);
+const gBlock = new THREE.Group(), gHead = new THREE.Group(), gPan = new THREE.Group(), gCrank = new THREE.Group();
+const gIntake = new THREE.Group(), gExhaust = new THREE.Group(), gFront = new THREE.Group();
+engine.add(gBlock, gHead, gPan, gCrank, gIntake, gExhaust, gFront);
+const add = (parent, geo, mat, x = 0, y = 0, z = 0) => { const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); m.castShadow = true; m.receiveShadow = true; parent.add(m); return m; };
+
+// Floor: dark studio floor with a faint engineering grid, fading into fog.
+{
+  const m = new THREE.MeshStandardMaterial({ color: 0x0b1015, roughness: 0.86, metalness: 0.0 });
+  m.onBeforeCompile = sh => {
+    sh.vertexShader = 'varying vec3 vWp;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>\n vWp = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+    sh.fragmentShader = 'varying vec3 vWp;\n' + sh.fragmentShader.replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+      { vec2 p = vWp.xz; float fade = 1.0 - smoothstep(3.0, 15.0, length(p));
+        vec2 g1 = abs(fract(p / 0.5 - 0.5) - 0.5) / fwidth(p / 0.5); float l1 = 1.0 - min(min(g1.x, g1.y), 1.0);
+        vec2 g2 = abs(fract(p / 2.5 - 0.5) - 0.5) / fwidth(p / 2.5); float l2 = 1.0 - min(min(g2.x, g2.y), 1.0);
+        totalEmissiveRadiance += vec3(0.12, 0.26, 0.36) * (l1 * 0.18 + l2 * 0.55) * fade; }`);
+  };
+  const f = new THREE.Mesh(new THREE.CircleGeometry(60, 96), m); f.rotation.x = -Math.PI / 2; f.position.y = -1.34; f.receiveShadow = true; scene.add(f);
+}
+
+// --- Block, sump, head, cam cover
+const BLK_L = 4.7;
+shell(add(gBlock, extrudeX(poly([[-0.92, -0.62], [0.92, -0.62], [0.92, 0.2], [0.71, 0.62], [0.71, DECK], [-0.71, DECK], [-0.71, 0.62], [-0.92, 0.2]]), BLK_L, 0.035), MAT.iron));
+for (let i = 0; i < 5; i++) for (const s of [-1, 1]) {                  // side ribs over each main bearing
+  const x = 2.1 - i * 1.05;
+  shell(add(gBlock, new THREE.BoxGeometry(0.09, 0.5, 0.1), MAT.iron, x, 0.42, s * 0.82), { edges: false });
+}
+for (const s of [-1, 1]) for (let i = 0; i < 3; i++) {                  // freeze plugs
+  const p = add(gBlock, new THREE.CylinderGeometry(0.075, 0.075, 0.03, 24), MAT.alu, 1.05 - i * 1.05, 1.45, s * 0.725);
+  p.rotation.x = Math.PI / 2; shell(p, { edges: false });
+}
+for (let i = 0; i < 4; i++) shell(add(gBlock, new THREE.CylinderGeometry(BORE + 0.006, BORE + 0.006, DECK - 0.92, 48, 1, true), new THREE.MeshBasicMaterial({ visible: false }), CYL_X[i], (DECK + 0.92) / 2, 0), { op: cylOp[i], lop: cylOp[i], angle: 80 });
+shell(add(gBlock, new THREE.CylinderGeometry(0.2, 0.2, 0.36, 40), MAT.filter, -0.95, 0.05, 1.12), { edges: false }).rotation.x = Math.PI / 2;
+shell(add(gBlock, new THREE.CylinderGeometry(0.2, 0.2, 0.36, 40), MAT.filter, -0.95, 0.05, 1.12), { edges: false }).rotation.x = Math.PI / 2;
+{ // dipstick: a thin tube and its yellow loop
+  const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(1.95, 0.35, 0.93), new THREE.Vector3(2.0, 1.6, 1.0), new THREE.Vector3(2.02, 2.75, 1.12)]);
+  shell(add(gBlock, new THREE.TubeGeometry(curve, 24, 0.022, 8), MAT.alu), { edges: false });
+  const ring = add(gBlock, new THREE.TorusGeometry(0.07, 0.018, 8, 24), MAT.yellow, 2.02, 2.84, 1.12); ring.rotation.y = Math.PI / 2; shell(ring, { edges: false });
+}
+
+shell(add(gPan, extrudeX(poly([[-0.85, -0.62], [0.85, -0.62], [0.85, -0.76], [0.6, -1.26], [-0.6, -1.26], [-0.85, -0.76]]), 4.5, 0.03), MAT.pan));
+shell(add(gPan, extrudeX(poly([[-0.97, -0.6], [0.97, -0.6], [0.97, -0.66], [-0.97, -0.66]]), 4.76, 0.01), MAT.pan), { edges: false });
+
+const HEAD_TOP = DECK + 0.92;
+shell(add(gHead, extrudeX(poly([[-0.79, DECK + 0.012], [0.79, DECK + 0.012], [0.79, DECK + 0.78], [0.7, HEAD_TOP], [-0.7, HEAD_TOP], [-0.79, DECK + 0.78]]), BLK_L, 0.03), MAT.alu));
+shell(add(gHead, extrudeX(poly([[-0.75, DECK - 0.012], [0.75, DECK - 0.012], [0.75, DECK + 0.012], [-0.75, DECK + 0.012]]), BLK_L + 0.05, 0.004), MAT.gasket), { edges: false });
+{
+  const s = new THREE.Shape(); const H0 = HEAD_TOP, H1 = HEAD_TOP + 0.72;
+  s.moveTo(-0.74, H0); s.lineTo(0.74, H0); s.lineTo(0.74, H0 + 0.36); s.quadraticCurveTo(0.72, H1, 0.42, H1); s.lineTo(-0.42, H1); s.quadraticCurveTo(-0.72, H1, -0.74, H0 + 0.36); s.closePath();
+  shell(add(gHead, extrudeX(s, 4.55, 0.045, 16), MAT.paint));
+  for (let i = 0; i < 9; i++) for (const sd of [-1, 1])                // cast fins along the cover
+    shell(add(gHead, new THREE.BoxGeometry(0.05, 0.22, 0.05), MAT.paint, 2.0 - i * 0.5, H0 + 0.26, sd * 0.765), { edges: false });
+  for (let i = 0; i < 4; i++) {                                           // coil-on-plug packs
+    shell(add(gHead, new THREE.BoxGeometry(0.3, 0.16, 0.42), MAT.coil, CYL_X[i], H1 + 0.08, 0), { edges: false });
+    shell(add(gHead, new THREE.BoxGeometry(0.12, 0.1, 0.14), MAT.coil, CYL_X[i], H1 + 0.08, 0.27), { edges: false });
+  }
+}
+
+// --- Crankshaft (rotates about X), with flywheel, timing gear and front pulley
+function webShape() {
+  const s = new THREE.Shape(); s.moveTo(0.24, CR); s.absarc(0, CR, 0.24, 0, Math.PI, false);
+  s.absarc(0, 0, 0.56, Math.PI + 0.42, TAU - 0.42, false); s.lineTo(0.24, CR); return s;
+}
+const webGeo = extrudeX(webShape(), 0.1, 0.012, 32);
+for (let i = 0; i < 4; i++) {
+  const up = (i === 0 || i === 3) ? 1 : -1, x = CYL_X[i];
+  add(gCrank, cylX(0.155, 0.18), SOLID.crank, x, up * CR, 0);
+  for (const s of [-1, 1]) { const w = add(gCrank, webGeo, SOLID.crank, x + s * 0.14, 0, 0); if (up < 0) w.rotation.x = Math.PI; }
+}
+[[0.705, 1.435], [-0.345, 0.345], [-1.435, -0.705], [-2.5, -1.715]].forEach(([a, b]) => add(gCrank, cylX(0.2, b - a), SOLID.crank, (a + b) / 2, 0, 0));
+add(gCrank, cylX(0.2, 0.3), SOLID.crank, 1.865, 0, 0);
+add(gCrank, cylX(0.2, 0.8), SOLID.snout, 2.42, 0, 0);
+add(gCrank, new THREE.ExtrudeGeometry(gearShape(20, 0.2, 0.235), { depth: 0.12, bevelEnabled: false }).rotateY(Math.PI / 2).translate(2.39, 0, 0), SOLID.sprocket);
+{ // front pulley (harmonic balancer) with a timing notch
+  add(gCrank, latheX([[0.2, 0], [0.42, 0], [0.42, 0.03], [0.39, 0.055], [0.42, 0.08], [0.39, 0.105], [0.42, 0.13], [0.42, 0.16], [0.2, 0.16]], 64).translate(2.6, 0, 0), SOLID.pulley);
+  add(gCrank, new THREE.BoxGeometry(0.02, 0.09, 0.05), SOLID.mark, 2.775, 0.33, 0);
+}
+{ // flywheel with ring gear, bolts and a white timing mark
+  const fx = -2.6;
+  add(gCrank, latheX([[0.16, -0.07], [0.98, -0.07], [0.98, 0.07], [0.62, 0.07], [0.55, 0.03], [0.16, 0.03]], 96).translate(fx, 0, 0), SOLID.fly);
+  const tg = new THREE.BoxGeometry(0.1, 0.07, 0.035), n = 110, inst = new THREE.InstancedMesh(tg, SOLID.tooth, n), o = new THREE.Object3D();
+  for (let k = 0; k < n; k++) { const a = k / n * TAU; o.position.set(fx, Math.cos(a) * 1.0, Math.sin(a) * 1.0); o.rotation.set(a, 0, 0); o.updateMatrix(); inst.setMatrixAt(k, o.matrix); }
+  inst.castShadow = true; gCrank.add(inst);
+  for (let k = 0; k < 6; k++) { const a = k / 6 * TAU; add(gCrank, cylX(0.045, 0.06, 12), SOLID.dark, fx - 0.07, Math.cos(a) * 0.24, Math.sin(a) * 0.24); }
+  for (let k = 0; k < 8; k++) { const a = (k + .5) / 8 * TAU; add(gCrank, cylX(0.085, 0.012, 24), SOLID.dark, fx - 0.075, Math.cos(a) * 0.68, Math.sin(a) * 0.68); }
+  add(gCrank, new THREE.BoxGeometry(0.02, 0.1, 0.1), SOLID.white, fx - 0.08, 0.86, 0);
+}
+
+// --- Pistons and connecting rods
+const pistonGeo = (() => {
+  const R = BORE - 0.006, P = [];
+  [[0.0001, 0.3], [0.2, 0.297], [0.34, 0.29], [R - 0.01, 0.282], [R, 0.272], [R, 0.245], [R - 0.02, 0.243], [R - 0.02, 0.225], [R, 0.223], [R, 0.2], [R - 0.02, 0.198], [R - 0.02, 0.18], [R, 0.178], [R, 0.155], [R - 0.025, 0.153], [R - 0.025, 0.128], [R, 0.126], [R, -0.3], [R - 0.012, -0.318], [R - 0.05, -0.32], [R - 0.05, 0.1], [0.0001, 0.12]].forEach(([r, y]) => P.push(new THREE.Vector2(r, y)));
+  return new THREE.LatheGeometry(P, 64);
+})();
+const rodGeo = (() => {
+  const R1 = 0.15, R2 = 0.24, hw1 = 0.075, hw2 = 0.12, y1 = Math.sqrt(R1 * R1 - hw1 * hw1), y2 = Math.sqrt(R2 * R2 - hw2 * hw2), ta = Math.atan2(y2, hw2);
+  const s = new THREE.Shape();
+  s.moveTo(hw1, -y1); s.lineTo(hw2, -ROD + y2); s.absarc(0, -ROD, R2, ta, Math.PI - ta, true); s.lineTo(-hw1, -y1);
+  s.absarc(0, 0, R1, Math.atan2(-y1, -hw1), Math.atan2(-y1, hw1), true);
+  const h1 = new THREE.Path(); h1.absarc(0, 0, 0.095, 0, TAU, true); s.holes.push(h1);
+  const h2 = new THREE.Path(); h2.absarc(0, -ROD, 0.16, 0, TAU, true); s.holes.push(h2);
+  return extrudeX(s, 0.13, 0.014, 32);
+})();
+const ringGeo = new THREE.TorusGeometry(BORE - 0.016, 0.009, 6, 64).rotateX(Math.PI / 2);
+const pistons = [], rods = [];
+for (let i = 0; i < 4; i++) {
+  const p = new THREE.Group(); engine.add(p);
+  add(p, pistonGeo, CM[i].piston);
+  [0.234, 0.189, 0.14].forEach(y => add(p, ringGeo, CM[i].ring, 0, y, 0));
+  add(p, cylX(0.095, 0.62, 20), CM[i].ring, 0, 0, 0);
+  pistons.push(p);
+  const r = new THREE.Group(); engine.add(r);
+  add(r, rodGeo, CM[i].rod);
+  for (const s of [-1, 1]) add(r, new THREE.CylinderGeometry(0.03, 0.03, 0.2, 10), CM[i].ring, 0, -ROD + 0.02, s * 0.19);
+  rods.push(r);
+}
+
+// --- Valvetrain: 16 valves, buckets, springs, two camshafts
+const valveGeo = (Rh) => new THREE.LatheGeometry([[0.0001, 0], [Rh, 0], [Rh, 0.018], [Rh * 0.8, 0.045], [Rh * 0.42, 0.09], [0.042, 0.16], [0.03, 0.23], [0.03, 0.9], [0.0001, 0.9]].map(([r, y]) => new THREE.Vector2(r, y)), 40);
+const vGeoIn = valveGeo(0.135), vGeoEx = valveGeo(0.122);
+const springGeo = (() => { const pts = []; for (let i = 0; i <= 240; i++) { const u = i / 240, a = u * 6.5 * TAU; pts.push(new THREE.Vector3(Math.cos(a) * 0.072, u, Math.sin(a) * 0.072)); } return new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 360, 0.011, 6, false); })();
+const bucketGeo = new THREE.CylinderGeometry(0.1, 0.1, 0.1, 32).translate(0, 0.05, 0);
+const retGeo = new THREE.CylinderGeometry(0.085, 0.06, 0.03, 24);
+const valves = [];   // {i, kind, frame, valve, spring, ret, bucket}
+const CAM_D = 0.9 + 0.1 + R0;
+for (let i = 0; i < 4; i++) for (const kind of ['in', 'ex']) for (const side of [-1, 1]) {
+  const sgn = kind === 'in' ? 1 : -1, f = new THREE.Group();
+  f.position.set(CYL_X[i] + side * 0.19, DECK, sgn * 0.2); f.rotation.x = sgn * TILT; gHead.add(f);
+  const v = add(f, kind === 'in' ? vGeoIn : vGeoEx, CM[i].valve);
+  const sp = add(f, springGeo, CM[i].spring); sp.position.y = 0.56;
+  const rt = add(f, retGeo, CM[i].bucket);
+  const bk = add(f, bucketGeo, CM[i].bucket);
+  valves.push({ i, kind, side, f, v, sp, rt, bk });
+}
+const camLobeIn = camLobeGeo(IN_W), camLobeEx = camLobeGeo(EX_W);
+const camshafts = [];
+for (const kind of ['in', 'ex']) {
+  const sgn = kind === 'in' ? 1 : -1, phi = sgn * TILT, g = new THREE.Group();
+  g.position.set(0, DECK + CAM_D * Math.cos(TILT), sgn * (0.2 + CAM_D * Math.sin(TILT))); gHead.add(g);
+  add(g, cylX(0.085, 4.7, 24), SOLID.cam, 0.05, 0, 0);
+  for (let i = 0; i < 4; i++) for (const side of [-1, 1]) {
+    const peak = PHASE[i] + (kind === 'in' ? IN_A + IN_W / 2 : EX_A + EX_W / 2);
+    const lobe = add(g, kind === 'in' ? camLobeIn : camLobeEx, SOLID.cam, CYL_X[i] + side * 0.19, 0, 0);
+    lobe.rotation.x = phi - (peak / 2) * D2R;
+  }
+  for (let i = 0; i < 5; i++) add(g, cylX(0.11, 0.14, 24), SOLID.cam, 2.1 - i * 1.05, 0, 0);
+  const sprocket = new THREE.ExtrudeGeometry(gearShape(40, 0.43, 0.465, [0, 1, 2, 3, 4].map(k => [Math.cos(k / 5 * TAU) * 0.26, Math.sin(k / 5 * TAU) * 0.26, 0.075])), { depth: 0.12, bevelEnabled: false, curveSegments: 16 }).rotateY(Math.PI / 2).translate(2.39, 0, 0);
+  add(g, sprocket, SOLID.sprocket);
+  add(g, new THREE.BoxGeometry(0.02, 0.05, 0.08), SOLID.mark, 2.515, 0.37, 0);
+  for (let i = 0; i < 5; i++) shell(add(gHead, new THREE.BoxGeometry(0.16, 0.12, 0.3), MAT.alu, 2.1 - i * 1.05, g.position.y + 0.08, g.position.z), { edges: false });
+  camshafts.push({ g, kind });
+}
+// Spark plugs
+const plugs = [];
+for (let i = 0; i < 4; i++) {
+  const g = new THREE.Group(); g.position.set(CYL_X[i], DECK, 0); gHead.add(g);
+  add(g, new THREE.CylinderGeometry(0.012, 0.012, 0.04, 8), CM[i].plugMetal, 0, -0.02, 0);
+  add(g, new THREE.BoxGeometry(0.06, 0.014, 0.014), CM[i].plugMetal, 0.02, -0.045, 0);
+  add(g, new THREE.CylinderGeometry(0.055, 0.055, 0.24, 20), CM[i].plugMetal, 0, 0.12, 0);
+  add(g, new THREE.CylinderGeometry(0.085, 0.085, 0.08, 6), CM[i].plugMetal, 0, 0.28, 0);
+  add(g, new THREE.LatheGeometry([[0.0001, 0.32], [0.05, 0.32], [0.05, 0.36], [0.044, 0.38], [0.05, 0.4], [0.044, 0.42], [0.05, 0.44], [0.044, 0.46], [0.05, 0.48], [0.04, 0.62], [0.0001, 0.62]].map(([r, y]) => new THREE.Vector2(r, y)), 24), CM[i].plugCer);
+  add(g, new THREE.CylinderGeometry(0.02, 0.02, 0.06, 10), CM[i].plugMetal, 0, 0.65, 0);
+  plugs.push(g);
+}
+
+// --- Intake: runners from each port to a plenum, throttle body at the front
+const INL = [], EXL = [];
+const lut = (curve, n = 72) => { const a = []; for (let k = 0; k <= n; k++) a.push(curve.getPoint(k / n)); return a; };
+for (let i = 0; i < 4; i++) {
+  const x = CYL_X[i];
+  const ci = new THREE.CatmullRomCurve3([[x, DECK + 0.01, 0.2], [x, DECK + 0.22, 0.4], [x, DECK + 0.48, 0.74], [x, DECK + 0.66, 1.08], [x, DECK + 0.58, 1.42], [x, DECK + 0.2, 1.66], [x, 1.95, 1.74]].map(p => new THREE.Vector3(...p)));
+  INL.push(lut(ci));
+  shell(add(gIntake, new THREE.TubeGeometry(ci, 64, 0.14, 20), MAT.composite), { edges: false, op: runOp[i], col: GH.inCol });
+  const ce = new THREE.CatmullRomCurve3([[x, DECK + 0.01, -0.2], [x, DECK + 0.2, -0.42], [x, DECK + 0.32, -0.8], [x * 0.85 + 0.05, DECK + 0.05, -1.15], [x * 0.55 + 0.1, 1.55, -1.38], [x * 0.25 + 0.15, 0.95, -1.42], [0.2, 0.62, -1.42]].map(p => new THREE.Vector3(...p)));
+  EXL.push(lut(ce));
+  shell(add(gExhaust, new THREE.TubeGeometry(ce, 64, 0.105, 16), MAT.header), { edges: false, op: cylOp[i], col: GH.exCol });
+}
+shell(add(gIntake, new THREE.CapsuleGeometry(0.32, 4.0, 10, 32).rotateZ(Math.PI / 2), MAT.composite, -0.05, 1.78, 1.74), { col: GH.inCol, angle: 45, op: inOp, lop: inLine });
+shell(add(gIntake, cylX(0.2, 0.5, 32), MAT.alu, 2.4, 1.78, 1.74), { col: GH.inCol, op: inOp, lop: inLine });
+shell(add(gIntake, cylX(0.26, 0.04, 32), MAT.alu, 2.18, 1.78, 1.74), { edges: false, col: GH.inCol, op: inOp });
+const throttle = add(gIntake, new THREE.CylinderGeometry(0.185, 0.185, 0.012, 32).rotateZ(Math.PI / 2), SOLID.cam, 2.45, 1.78, 1.74);
+shell(add(gExhaust, new THREE.SphereGeometry(0.2, 24, 16), MAT.header, 0.2, 0.62, -1.42), { edges: false, col: GH.exCol });
+shell(add(gExhaust, new THREE.TubeGeometry(new THREE.CatmullRomCurve3([[0.2, 0.62, -1.42], [0.18, -0.2, -1.46], [0.05, -1.05, -1.52]].map(p => new THREE.Vector3(...p))), 24, 0.14, 16), MAT.header), { edges: false, col: GH.exCol });
+
+// --- Timing belt, water pump and tensioner (front, x = 2.45)
+const BELT_X = 2.45;
+const camY = DECK + CAM_D * Math.cos(TILT), camZ = 0.2 + CAM_D * Math.sin(TILT);
+const pulleys = [{ y: 1.35, z: 0.62, r: 0.22, holes: true }, { y: 1.55, z: -0.66, r: 0.17 }];
+let BELT_LEN = 0; const beltTex = (() => {
+  const c = document.createElement('canvas'); c.width = 64; c.height = 16; const g = c.getContext('2d');
+  g.fillStyle = '#16191c'; g.fillRect(0, 0, 64, 16); g.fillStyle = '#30363c'; g.fillRect(0, 0, 22, 16); g.fillStyle = '#0c0e10'; g.fillRect(22, 0, 3, 16);
+  const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.colorSpace = THREE.SRGBColorSpace; return t;
+})();
+const beltMat = new THREE.MeshStandardMaterial({ map: beltTex, roughness: 0.75, metalness: 0.05, side: THREE.DoubleSide, transparent: true });
+{
+  const circles = [{ y: 0, z: 0, r: 0.245 }, { y: camY, z: camZ, r: 0.475 }, { y: camY, z: -camZ, r: 0.475 }, ...pulleys.map(p => ({ ...p, r: p.r + 0.01 }))];
+  const pts = [];
+  circles.forEach(c => { for (let k = 0; k < 120; k++) { const a = k / 120 * TAU; pts.push([c.z + Math.cos(a) * c.r, c.y + Math.sin(a) * c.r]); } });
+  pts.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  const cross = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const lo = [], hi = [];
+  for (const p of pts) { while (lo.length >= 2 && cross(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); }
+  for (let k = pts.length - 1; k >= 0; k--) { const p = pts[k]; while (hi.length >= 2 && cross(hi[hi.length - 2], hi[hi.length - 1], p) <= 0) hi.pop(); hi.push(p); }
+  const hull = lo.slice(0, -1).concat(hi.slice(0, -1)); hull.push(hull[0]);
+  const pos = [], uv = [], idx = []; let s = 0;
+  hull.forEach((p, k) => {
+    if (k) s += Math.hypot(p[0] - hull[k - 1][0], p[1] - hull[k - 1][1]);
+    pos.push(BELT_X - 0.075, p[1], p[0], BELT_X + 0.075, p[1], p[0]); uv.push(s / 0.07, 0, s / 0.07, 1);
+    if (k) { const b = (k - 1) * 2; idx.push(b, b + 1, b + 2, b + 1, b + 3, b + 2); }
+  });
+  BELT_LEN = s;
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2)); g.setIndex(idx); g.computeVertexNormals();
+  const belt = new THREE.Mesh(g, beltMat); belt.castShadow = true; gFront.add(belt);
+}
+const frontPulleys = pulleys.map(p => {
+  const g = new THREE.Group(); g.position.set(BELT_X, p.y, p.z); gFront.add(g);
+  add(g, latheX([[0.03, -0.09], [p.r, -0.09], [p.r + 0.02, -0.075], [p.r + 0.02, 0.075], [p.r, 0.09], [0.03, 0.09]], 40), SOLID.frontPulley);
+  if (p.holes) for (let k = 0; k < 4; k++) add(g, cylX(0.04, 0.2, 14), SOLID.pulley, 0, Math.cos(k / 4 * TAU) * 0.12, Math.sin(k / 4 * TAU) * 0.12);
+  else add(g, new THREE.BoxGeometry(0.2, 0.03, 0.2), SOLID.pulley, 0, 0, 0);
+  return { g, r: p.r };
+});
+
+// --- Combustion: flame volume, spark sprite and a point light per cylinder
+const sparkTex = (() => {
+  const c = document.createElement('canvas'); c.width = c.height = 128; const g = c.getContext('2d');
+  const gr = g.createRadialGradient(64, 64, 0, 64, 64, 64); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.18, 'rgba(190,220,255,.85)'); gr.addColorStop(0.5, 'rgba(90,140,255,.18)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+  g.fillStyle = gr; g.fillRect(0, 0, 128, 128); return new THREE.CanvasTexture(c);
+})();
+const flameFS = `uniform vec3 uTip; uniform float uR; uniform float uHeat; uniform float uFront; uniform float uTime; varying vec3 vW; varying vec3 vN;
+  float n3(vec3 p){ return fract(sin(dot(p, vec3(12.9898, 78.233, 37.719))) * 43758.5453); }
+  float vn(vec3 p){ vec3 i = floor(p), f = fract(p); f = f*f*(3.0-2.0*f);
+    return mix(mix(mix(n3(i), n3(i+vec3(1,0,0)), f.x), mix(n3(i+vec3(0,1,0)), n3(i+vec3(1,1,0)), f.x), f.y),
+               mix(mix(n3(i+vec3(0,0,1)), n3(i+vec3(1,0,1)), f.x), mix(n3(i+vec3(0,1,1)), n3(i+vec3(1,1,1)), f.x), f.y), f.z); }
+  void main(){
+    float d = distance(vW, uTip);
+    float inside = smoothstep(uR, uR - 0.14, d);
+    float n = vn(vW * 9.0 + vec3(0.0, -uTime * 2.2, uTime * 0.7)) * 0.6 + vn(vW * 23.0 - uTime * 1.3) * 0.4;
+    vec3 V = normalize(cameraPosition - vW);
+    float rim = pow(1.0 - abs(dot(normalize(vN), V)), 1.4);
+    vec3 hot = mix(vec3(1.0, 0.26, 0.05), vec3(1.0, 0.72, 0.36), n);
+    float a = inside * uHeat * (0.3 + 0.7 * n) * (0.25 + rim);
+    float edge = exp(-pow((d - uR) / 0.035, 2.0)) * uFront;
+    gl_FragColor = vec4(hot * a * 1.15 + vec3(1.0, 0.86, 0.62) * edge * 1.6, 1.0);
+  }`;
+const flames = [];
+for (let i = 0; i < 4; i++) {
+  const mat = new THREE.ShaderMaterial({ uniforms: { uTip: { value: new THREE.Vector3() }, uR: { value: 0 }, uHeat: { value: 0 }, uFront: { value: 0 }, uTime: U.time }, vertexShader: ghostVS, fragmentShader: flameFS, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide });
+  const mesh = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, 1, 48, 1, false), mat); mesh.renderOrder = 4; engine.add(mesh);
+  const spark = new THREE.Sprite(new THREE.SpriteMaterial({ map: sparkTex, color: new THREE.Color(2.2, 2.5, 3.5), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true })); spark.renderOrder = 5; engine.add(spark);
+  const light = new THREE.PointLight(0xff7a32, 0, 3.2, 2); engine.add(light);
+  flames.push({ mesh, mat, spark, light });
+}
+
+// --- Crank-chapter guides: the crank-pin circle and the piston's straight track
+const guideMat = new THREE.MeshBasicMaterial({ color: new THREE.Color(1.6, 1.1, 0.35), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false });
+const pinRing = new THREE.Mesh(new THREE.TorusGeometry(CR, 0.008, 8, 160).rotateY(Math.PI / 2), guideMat); pinRing.position.x = CYL_X[0] + 0.27; engine.add(pinRing);
+const pinDot = new THREE.Mesh(new THREE.SphereGeometry(0.03, 16, 12), guideMat); engine.add(pinDot);
+const trackMat = new THREE.MeshBasicMaterial({ color: new THREE.Color(0.4, 1.2, 1.6), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false });
+const track = new THREE.Mesh(new THREE.BoxGeometry(0.008, 2 * CR, 0.008), trackMat); track.position.set(CYL_X[0] + 0.27, CR + ROD - CR + PIN_CROWN - 0.3, BORE + 0.12); engine.add(track);
+track.position.y = (pinY(0) + pinY(180)) / 2;
+const trackDot = new THREE.Mesh(new THREE.SphereGeometry(0.03, 16, 12), trackMat); engine.add(trackDot);
+
+// --- Scan plane for the x-ray reveal
+const scanMat = new THREE.ShaderMaterial({
+  uniforms: { uOp: { value: 0 } }, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
+  vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+  fragmentShader: `uniform float uOp; varying vec2 vUv; void main(){
+    vec2 g = abs(fract(vUv * vec2(18.0, 26.0)) - 0.5); float line = smoothstep(0.46, 0.5, max(g.x, g.y));
+    float e = min(min(vUv.x, 1.0 - vUv.x), min(vUv.y, 1.0 - vUv.y)); float edge = smoothstep(0.0, 0.03, e); float border = smoothstep(0.012, 0.0, e);
+    gl_FragColor = vec4(vec3(0.25, 0.75, 1.0) * ((0.05 + line * 0.3) * edge + border * 1.2) * uOp, 1.0); }`,
+});
+const scanPlane = new THREE.Mesh(new THREE.PlaneGeometry(4.0, 6.2).rotateY(Math.PI / 2), scanMat); scanPlane.position.y = 1.35; scanPlane.renderOrder = 6; scene.add(scanPlane);
+
+/* =====================================================================
+   5. Gas: 1,000+ stateless particles, each a pure function of crank angle
+   ===================================================================== */
+const PPC = 240, EMB = 26, NP = 4 * (PPC + EMB) + 260;
+const pPos = new Float32Array(NP * 3), pCol = new Float32Array(NP * 3), pSize = new Float32Array(NP), pAlpha = new Float32Array(NP);
+const pGeo = new THREE.BufferGeometry();
+pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+pGeo.setAttribute('aColor', new THREE.BufferAttribute(pCol, 3));
+pGeo.setAttribute('aSize', new THREE.BufferAttribute(pSize, 1));
+pGeo.setAttribute('aAlpha', new THREE.BufferAttribute(pAlpha, 1));
+const pMat = new THREE.ShaderMaterial({
+  uniforms: { uScale: { value: 1 } }, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+  vertexShader: 'attribute vec3 aColor; attribute float aSize; attribute float aAlpha; uniform float uScale; varying vec3 vC; varying float vA; void main(){ vec4 mv = modelViewMatrix * vec4(position, 1.0); gl_Position = projectionMatrix * mv; gl_PointSize = min(64.0, aSize * uScale / -mv.z); vC = aColor; vA = aAlpha; }',
+  fragmentShader: 'varying vec3 vC; varying float vA; void main(){ if (vA < 0.004) discard; float d = length(gl_PointCoord - 0.5); float a = smoothstep(0.5, 0.0, d); a *= a; gl_FragColor = vec4(vC * a * vA, 1.0); }',
+});
+const points = new THREE.Points(pGeo, pMat); points.frustumCulled = false; points.renderOrder = 7; scene.add(points);
+const seeds = Array.from({ length: PPC }, (_, k) => { const r = rng(1000 + k * 7919); return { rho: Math.sqrt(r()) * 0.92, ph: r() * TAU, hh: r(), ce: 6 + r() * 164, cx: 548 + r() * 128, fuel: r() < 0.24, side: r() < 0.5 ? -1 : 1, jx: r() - 0.5, jy: r() - 0.5, ring: r() * TAU, tw: r() * TAU, sz: 0.75 + r() * 0.5 }; });
+const eseeds = Array.from({ length: EMB }, (_, k) => { const r = rng(5000 + k * 104729), a = r() * TAU, el = -0.15 - r() * 1.0; return { dx: Math.cos(a) * Math.cos(el), dy: Math.sin(el), dz: Math.sin(a) * Math.cos(el), sp: 0.2 + r() * 0.35, d: r() * 0.05 }; });
+const motes = Array.from({ length: 260 }, (_, k) => { const r = rng(9000 + k * 31); return { x: (r() - .5) * 16, y: -1 + r() * 7, z: (r() - .5) * 12, f: .1 + r() * .25, p: r() * TAU, s: .02 + r() * .03 }; });
+const V1 = new THREE.Vector3();
+function lutAt(L, u, out) { u = clamp(u) * (L.length - 1); const k = Math.min(L.length - 2, Math.floor(u)); return out.copy(L[k]).lerp(L[k + 1], u - k); }
+const AIR = [0.16, 0.6, 1.05], FUEL = [1.05, 0.66, 0.2], HOTM = [1.25, 0.52, 0.14], WHITE = [2.0, 1.55, 1.05], ORANGE = [1.45, 0.4, 0.1], SMOKE = [0.34, 0.31, 0.48];
+const mix3 = (a, b, t) => [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)];
+
+function updateGas(T, cyc) {
+  let n = 0;
+  for (let i = 0; i < 4; i++) {
+    const gv = gasVis(i, T), c = cyc[i], x0 = CYL_X[i];
+    const crown = crownY(c), top = DECK - 0.014, bot = crown + 0.016, lI = liftIn(c), lE = liftEx(c), Rf = flameR(c), tipY = DECK - 0.035;
+    for (let k = 0; k < PPC; k++, n++) {
+      const s = seeds[k]; let a = 0, px = 0, py = -50, pz = 0, size = (s.fuel ? 0.046 : 0.032) * s.sz, col = AIR;
+      if (gv > 0.002) {
+        const age = c - s.ce, ph = s.ph + i * 1.7 + age * 0.0105 + 0.12 * Math.sin(T * 1.1 + s.tw);
+        const rr = s.rho * (BORE - 0.035) * (1 + 0.03 * Math.sin(T * 2.3 + s.tw));
+        const tx = x0 + rr * Math.cos(ph), tz = rr * Math.sin(ph), ty = bot + (top - bot) * (0.04 + 0.92 * s.hh) + 0.008 * Math.sin(T * 3.1 + s.tw * 2);
+        let inPort = false, exPort = false;
+        if (c < s.ce) {
+          const u = 1 - (s.ce - c) / 80;
+          if (u > 0) {
+            lutAt(INL[i], 1 - u, V1); const sv = smooth(0.62, 1, u);
+            px = V1.x + s.jx * 0.16 * (1 - sv) + s.side * 0.19 * sv; py = V1.y + s.jy * 0.13 * (1 - sv); pz = V1.z + s.jy * 0.05 * (1 - sv);
+            a = smooth(0, 0.3, u) * smooth(0, 14, c); inPort = true;
+          }
+        } else if (c < s.cx) {
+          const p = eo(seg(c, s.ce, s.ce + 42));
+          if (p < 1) {
+            const gx = x0 + s.side * 0.19 + Math.cos(s.ring) * 0.12, gy = DECK - 0.02 - lI * 0.6, gz = 0.2 + Math.sin(s.ring) * 0.12;
+            px = lerp(gx, tx, p); py = lerp(gy, ty, p) - Math.sin(p * Math.PI) * 0.05; pz = lerp(gz, tz, p);
+          } else { px = tx; py = ty; pz = tz; }
+          a = 1;
+        } else {
+          const p = eio(seg(c, s.cx, s.cx + 30));
+          if (p < 1) {
+            const gx = x0 + s.side * 0.19 + Math.cos(s.ring) * 0.11, gy = DECK - 0.02 - lE * 0.6, gz = -0.2 + Math.sin(s.ring) * 0.11;
+            px = lerp(tx, gx, p); py = lerp(ty, gy, p); pz = lerp(tz, gz, p); a = 1;
+          } else {
+            const u = (c - s.cx - 30) / 80; lutAt(EXL[i], u, V1); const sv = 1 - smooth(0, 0.3, u);
+            px = V1.x + s.jx * 0.12 * (1 - sv) + s.side * 0.19 * sv; py = V1.y + s.jy * 0.1 * (1 - sv); pz = V1.z;
+            a = u < 1 ? 1 - smooth(0.5, 1, u) : 0; exPort = true;
+          }
+          a *= 1 - smooth(700, 718, c);
+        }
+        // colour: cool mixture, warming under compression, ignited by the flame front, cooling to exhaust smoke
+        const burnt = c >= 357 && (c >= 400 || Math.hypot(px - x0, py - tipY, pz) < Rf);
+        if (inPort || (!burnt && c < 540)) {
+          const h = c < 180 ? 0 : Math.pow(seg(c, 180, 356), 1.6);
+          col = mix3(s.fuel ? FUEL : AIR, HOTM, h * 0.85); const b = 1 + 0.5 * h; col = [col[0] * b, col[1] * b, col[2] * b];
+        } else if (exPort || c >= 540) {
+          col = SMOKE; size *= 1.7; a *= 0.6;
+        } else {
+          const b = seg(c, 357, 540); col = b < 0.3 ? mix3(WHITE, ORANGE, smooth(0, 0.3, b)) : mix3(ORANGE, [0.7, 0.2, 0.08], smooth(0.3, 1, b));
+          size *= 1.1;
+        }
+        a *= gv;
+      }
+      pPos[n * 3] = px; pPos[n * 3 + 1] = py; pPos[n * 3 + 2] = pz;
+      pCol[n * 3] = col[0]; pCol[n * 3 + 1] = col[1]; pCol[n * 3 + 2] = col[2]; pSize[n] = size; pAlpha[n] = a;
+    }
+    for (let k = 0; k < EMB; k++, n++) {
+      const e = eseeds[k]; let a = 0, px = 0, py = -50, pz = 0;
+      if (gv > 0.002 && c >= 357 && c < 432) {
+        const age = (c - 357) / 75, d = e.d + e.sp * eo(age);
+        px = x0 + e.dx * d; pz = e.dz * d; py = tipY + e.dy * d * 0.7;
+        const rr = Math.hypot(px - x0, pz), lim = BORE - 0.03; if (rr > lim) { px = x0 + (px - x0) * lim / rr; pz *= lim / rr; }
+        py = Math.max(py, crown + 0.02); a = Math.pow(1 - age, 1.5) * gv;
+      }
+      pPos[n * 3] = px; pPos[n * 3 + 1] = py; pPos[n * 3 + 2] = pz;
+      pCol[n * 3] = 3.0; pCol[n * 3 + 1] = 1.35; pCol[n * 3 + 2] = 0.4; pSize[n] = 0.024; pAlpha[n] = a;
+    }
+  }
+  const mv = 0.55 * (1 - 0.6 * seg(T, 23, 25) + 0.6 * seg(T, 59, 61));
+  for (const m of motes) {
+    pPos[n * 3] = m.x + Math.sin(T * m.f + m.p) * 0.4; pPos[n * 3 + 1] = m.y + Math.sin(T * m.f * 0.7 + m.p * 2) * 0.3 + T * 0.015; pPos[n * 3 + 2] = m.z + Math.cos(T * m.f + m.p) * 0.4;
+    pCol[n * 3] = 0.5; pCol[n * 3 + 1] = 0.62; pCol[n * 3 + 2] = 0.75; pSize[n] = m.s; pAlpha[n] = mv; n++;
+  }
+  pGeo.attributes.position.needsUpdate = pGeo.attributes.aColor.needsUpdate = pGeo.attributes.aSize.needsUpdate = pGeo.attributes.aAlpha.needsUpdate = true;
+}
+
+/* =====================================================================
+   6. Pose the engine for time T
+   ===================================================================== */
+const cyc = [0, 0, 0, 0];
+function poseEngine(T) {
+  const th = thetaAt(T), E = EX(T), rad = th * D2R;
+  for (let i = 0; i < 4; i++) cyc[i] = mod(th - PHASE[i], 720);
+  // explode offsets
+  gHead.position.y = 1.0 * E; gIntake.position.set(0, 0.75 * E, 0.7 * E); gExhaust.position.set(0, 0.5 * E, -0.7 * E);
+  gPan.position.y = -0.85 * E; gCrank.position.y = -0.62 * E; gFront.position.y = 0;
+  gCrank.rotation.x = rad;
+  const inFade = 1 - 0.78 * win(T, 59.3, 70.6, 0.8, 0.8);
+  for (let i = 0; i < 4; i++) {
+    const a = cyc[i], py = pinY(a);
+    pistons[i].position.set(CYL_X[i], py + 0.42 * E, 0);
+    rods[i].position.set(CYL_X[i], py + 0.18 * E, 0);
+    rods[i].rotation.x = Math.asin(-CR * Math.sin(a * D2R) / ROD);
+    const vis = mechVis(i, T);
+    for (const m of Object.values(CM[i])) { m.opacity = vis; m.visible = vis > 0.003; m.depthWrite = vis > 0.6; }
+    cylOp[i].value = 0.15 + 0.85 * vis;
+    runOp[i].value = cylOp[i].value * inFade;
+  }
+  for (const v of valves) {
+    const L = v.kind === 'in' ? liftIn(cyc[v.i]) : liftEx(cyc[v.i]);
+    v.v.position.y = -L; v.sp.scale.y = 0.32 - L; v.rt.position.y = 0.88 - L; v.bk.position.y = 0.9 - L;
+  }
+  for (const c of camshafts) c.g.rotation.x = rad / 2;
+  // belt and front pulleys
+  const fv = frontVis(T);
+  beltTex.offset.x = -rad * 0.235 / 0.07;
+  for (const p of frontPulleys) p.g.rotation.x = rad * 0.235 / p.r;
+  for (const m of [beltMat, SOLID.sprocket, SOLID.pulley, SOLID.frontPulley, SOLID.mark, SOLID.snout]) { m.opacity = fv; m.visible = fv > 0.003; m.depthWrite = fv > 0.6; }
+  gFront.visible = fv > 0.003;
+  throttle.rotation.y = lerp(0.12, 1.1, smooth(84, 89, T)) * (T > 59 ? 1 : 0.2);
+  // x-ray reveal
+  const cut = cutAt(T); U.cut.value = cut;
+  scanPlane.position.x = cut; scanMat.uniforms.uOp.value = win(T, 7.3, 10.6, 0.5, 0.6);
+  const ghostLevel = cut < 3.6 ? 1 : 0;
+  GH.op.value = ghostLevel * lerp(1, 0.7, seg(T, 23, 25) - seg(T, 59, 61));
+  GH.line.value = ghostLevel * lerp(0.5, 0.28, seg(T, 23, 25) - seg(T, 59, 61));
+  inOp.value = GH.op.value * inFade; inLine.value = GH.line.value * inFade;
+  for (const s of shells) s.castShadow = cut > 0.5;
+  const heat = smooth(60, 90, T);
+  GH.exCol.value.setRGB(lerp(0.5, 1.0, heat), lerp(0.42, 0.42, heat), lerp(0.62, 0.2, heat));
+  // combustion
+  for (let i = 0; i < 4; i++) {
+    const c = cyc[i], gv = gasVis(i, T), f = flames[i], crown = crownY(c), x0 = CYL_X[i];
+    const heatC = gv * smooth(356, 368, c) * Math.pow(1 - seg(c, 372, 548), 1.4) * (c < 560 ? 1 : 0);
+    const front = gv * (c >= 357 && c < 404 ? (1 - seg(c, 382, 404)) * smooth(357, 361, c) : 0);
+    const sp = gv * sparkAt(c);
+    f.mesh.visible = heatC > 0.002 || front > 0.002;
+    f.mesh.position.set(x0, (crown + DECK) / 2, 0); f.mesh.scale.set(BORE * 0.975, Math.max(0.01, DECK - crown - 0.008), BORE * 0.975);
+    f.mat.uniforms.uTip.value.set(x0, DECK - 0.035, 0); f.mat.uniforms.uR.value = flameR(c); f.mat.uniforms.uHeat.value = heatC; f.mat.uniforms.uFront.value = front;
+    f.spark.visible = sp > 0.002; f.spark.position.set(x0, DECK - 0.045, 0); f.spark.scale.setScalar(0.05 + 0.26 * sp);
+    f.light.position.set(x0, (crown + DECK) / 2, 0); f.light.intensity = heatC * 5 + sp * 2.5;
+  }
+  // crank-chapter guides
+  const gvis = win(T, 59.6, 65.2, 0.8, 0.8);
+  guideMat.opacity = trackMat.opacity = gvis;
+  pinRing.visible = pinDot.visible = track.visible = trackDot.visible = gvis > 0.003;
+  const a1 = cyc[0] * D2R;
+  pinDot.position.set(CYL_X[0] + 0.27, CR * Math.cos(a1), CR * Math.sin(a1));
+  track.position.set(CYL_X[0] + 0.27, (pinY(0) + pinY(180)) / 2, BORE + 0.14);
+  trackDot.position.set(CYL_X[0] + 0.27, pinY(cyc[0]), BORE + 0.14);
+  updateGas(T, cyc);
+  return th;
+}
+
+/* =====================================================================
+   7. Camera: shots in spherical terms, blended along arcs
+   ===================================================================== */
+const SHOTS = [
+  { t: 0, b: 0, f: T => ({ tg: [0.1, 1.25, 0], az: lerp(24, 44, eio(seg(T, 0, 8))), el: lerp(8, 13, eio(seg(T, 0, 8))), R: lerp(14.2, 13.0, eio(seg(T, 0, 8))), fov: 30, sh: 0.2 }) },
+  { t: 7.0, b: 2.6, f: T => { const e = EX(T); return { tg: [0, 1.15 + 0.15 * e, 0], az: lerp(40, 26, eio(seg(T, 7, 23))), el: lerp(13, 10, seg(T, 7, 23)), R: 12.6 + 4.4 * e, fov: 30, sh: 0.02 }; } },
+  { t: 22.7, b: 2.4, f: T => ({ tg: [CYL_X[0], 1.45, 0], az: 90 + 3.5 * Math.sin((T - 23) * 0.11), el: 6 + 2 * Math.sin((T - 23) * 0.08 + 0.6), R: 9.3 - 0.3 * seg(T, 23, 59), fov: 34, sh: 0.0 }) },
+  { t: 59.0, b: 2.2, f: T => ({ tg: [1.25, 0.85, 0], az: lerp(64, 72, seg(T, 59, 65)), el: lerp(6, 9, seg(T, 59, 65)), R: 8.4, fov: 34, sh: -0.05 }) },
+  { t: 64.8, b: 2.4, f: T => ({ tg: [-2.2, 0.4, 0], az: lerp(-60, -50, seg(T, 64.8, 71)), el: lerp(9, 12, seg(T, 64.8, 71)), R: 6.2, fov: 34, sh: -0.1 }) },
+  { t: 70.8, b: 2.6, f: T => ({ tg: [2.2, 1.75, 0], az: lerp(60, 70, seg(T, 70.8, 77)), el: lerp(14, 19, seg(T, 70.8, 77)), R: 10.2, fov: 32, sh: -0.14 }) },
+  { t: 76.8, b: 2.6, f: T => ({ tg: [0.3, 3.25, 0], az: lerp(66, 58, seg(T, 76.8, 83)), el: lerp(44, 40, seg(T, 76.8, 83)), R: 6.8, fov: 34, sh: -0.1 }) },
+  { t: 82.8, b: 2.8, f: T => ({ tg: [0, 1.4, 0], az: lerp(18, 34, seg(T, 82.8, 96)), el: lerp(13, 17, seg(T, 82.8, 96)), R: 11.4, fov: 30, sh: -0.12 }) },
+  { t: 95.8, b: 3.0, f: T => ({ tg: [0, 1.4, 0], az: lerp(36, 58, seg(T, 95.8, DUR)), el: lerp(16, 21, seg(T, 95.8, DUR)), R: lerp(12, 14.2, eio(seg(T, 95.8, DUR))), fov: 30, sh: 0.18 }) },
+];
+function shotAt(T) {
+  let k = 0; for (let j = 0; j < SHOTS.length; j++) if (T >= SHOTS[j].t) k = j;
+  let s = SHOTS[k].f(T);
+  if (k > 0 && T < SHOTS[k].t + SHOTS[k].b) {
+    const p = eio(seg(T, SHOTS[k].t, SHOTS[k].t + SHOTS[k].b)), q = SHOTS[k - 1].f(T);
+    s = { tg: q.tg.map((v, j) => lerp(v, s.tg[j], p)), az: lerp(q.az, s.az, p), el: lerp(q.el, s.el, p), R: lerp(q.R, s.R, p), fov: lerp(q.fov, s.fov, p), sh: lerp(q.sh, s.sh, p) };
+  }
+  return s;
+}
+function placeCamera(T) {
+  const s = shotAt(T), az = s.az * D2R, el = s.el * D2R;
+  let shake = 0; if (T > T_IGNITE && T < T_IGNITE + 1.2) shake = 0.05 * Math.exp(-(T - T_IGNITE) * 5);
+  camera.position.set(s.tg[0] + s.R * Math.sin(az) * Math.cos(el), s.tg[1] + s.R * Math.sin(el), s.tg[2] + s.R * Math.cos(az) * Math.cos(el));
+  camera.position.x += shake * Math.sin(T * 91); camera.position.y += shake * Math.sin(T * 77 + 1);
+  camera.fov = s.fov; camera.lookAt(s.tg[0], s.tg[1], s.tg[2]);
+  camera.filmOffset = -s.sh * 35 * camera.aspect * 2 * Math.tan(s.fov * D2R / 2);
+  camera.updateProjectionMatrix();
+  pMat.uniforms.uScale.value = 1080 * renderer.getPixelRatio() / (2 * Math.tan(s.fov * D2R / 2));
+}
+
+/* =====================================================================
+   8. Motion graphics overlay
+   ===================================================================== */
+const $ = s => document.querySelector(s);
+const hud = $('#hud');
+function splitWords(el) {
+  const ws = el.textContent.trim().split(/\s+/); el.textContent = '';
+  return ws.map((w, i) => { const s = document.createElement('span'); s.className = 'w'; s.textContent = w; el.appendChild(s); if (i < ws.length - 1) el.appendChild(document.createTextNode(' ')); return s; });
+}
+function reveal(spans, T, t0, stagger = 0.08, dur = 0.55, dy = 30) {
+  for (let i = 0; i < spans.length; i++) {
+    const p = eo(seg(T, t0 + i * stagger, t0 + i * stagger + dur));
+    spans[i].style.opacity = p.toFixed(3); spans[i].style.transform = 'translateY(' + ((1 - p) * dy).toFixed(1) + 'px)';
+  }
+}
+function show(el, a, dx = 0) {
+  el.style.visibility = a > 0.002 ? 'visible' : 'hidden';
+  el.style.opacity = a.toFixed(3);
+  if (dx) el.style.transform = 'translateX(' + dx.toFixed(1) + 'px)'; else el.style.transform = '';
+}
+
+// Stroke cards and captions are built from data.
+const strokeCards = STROKES.map((s, k) => {
+  const el = document.createElement('section'); el.className = 'fx stroke';
+  el.innerHTML = '<div class="s-top"><span class="s-num" style="color:' + s.col + '">' + (k + 1) + '</span><span class="s-of">Stroke ' + (k + 1) + ' of 4<br>' + s.deg + '</span></div><h2 class="s-name" style="color:' + s.col + '">' + s.name + '</h2><p class="s-mn">' + s.mn + '</p>';
+  $('#strokes').appendChild(el);
+  return { el, num: el.querySelector('.s-num'), name: splitWords(el.querySelector('.s-name')), mn: el.querySelector('.s-mn'), of: el.querySelector('.s-of') };
+});
+const CAPS = [
+  { t0: 7.7, t1: 12.4, text: 'Under the metal, a car engine is a set of parts moving in perfect time.' },
+  { t0: 12.8, t1: 22.6, text: 'Four pistons slide in four cylinders. Rods link them to a crankshaft, and camshafts open the valves that let gas in and out.' },
+  { t0: S0 + 0.7, t1: S0 + 8.3, col: true, text: 'The piston moves down and the intake valve opens. A fine mist of air and fuel is drawn into the cylinder.' },
+  { t0: S0 + SLEN + 0.7, t1: S0 + SLEN + 8.3, col: true, text: 'Both valves close. The rising piston squeezes the mixture into a tenth of the space, which heats it up.' },
+  { t0: S0 + 2 * SLEN + 0.7, t1: S0 + 2 * SLEN + 8.3, col: true, text: 'The spark plug fires. The burning mixture expands with enormous force and drives the piston down.' },
+  { t0: S0 + 3 * SLEN + 0.7, t1: S0 + 3 * SLEN + 8.3, col: true, text: 'The exhaust valve opens and the rising piston pushes the burnt gas out. Then the cycle starts again.' },
+  { t0: 59.8, t1: 65.0, text: "The rod turns the piston's push into rotation, like a cyclist's leg turning a pedal." },
+  { t0: 65.3, t1: 70.7, text: 'A heavy flywheel stores energy to carry the crank through the strokes that make no power.' },
+  { t0: 71.5, t1: 76.8, text: 'A toothed belt drives the camshafts. Their gears have twice the teeth, so they turn at half speed.' },
+  { t0: 77.1, t1: 82.7, text: 'Each egg-shaped cam lobe opens its valve once every two crank turns, right on cue.' },
+  { t0: 83.5, t1: 89.0, text: 'The cylinders fire in the order 1-3-4-2, so one of them is always on its power stroke.' },
+  { t0: 89.3, t1: 95.6, text: "That's a push every half turn. At an 800 rpm idle, about 27 power strokes a second." },
+].map(c => { const el = document.createElement('p'); el.className = 'fx cap' + (c.col ? ' col' : ''); el.textContent = c.text; $('#caps').appendChild(el); return { ...c, el, words: splitWords(el) }; });
+
+const W = {}; document.querySelectorAll('.wr').forEach(el => { W[el.id] = splitWords(el); });
+const endWords = [...document.querySelectorAll('.ew')];
+
+// Cycle dial
+const dial = $('#dial'), NS = 'http://www.w3.org/2000/svg';
+const svg = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
+const arcD = (cx, cy, r, a0, a1) => { const P = a => [cx + r * Math.sin(a * D2R), cy - r * Math.cos(a * D2R)]; const [x0, y0] = P(a0), [x1, y1] = P(a1); return 'M' + x0.toFixed(2) + ' ' + y0.toFixed(2) + ' A' + r + ' ' + r + ' 0 ' + (a1 - a0 > 180 ? 1 : 0) + ' 1 ' + x1.toFixed(2) + ' ' + y1.toFixed(2); };
+const DC = 170, DR = 138;
+for (let k = 0; k < 72; k++) { const a = k * 5, L = k % 9 === 0 ? 14 : 6; svg('line', { x1: DC + (DR + 18) * Math.sin(a * D2R), y1: DC - (DR + 18) * Math.cos(a * D2R), x2: DC + (DR + 18 + L) * Math.sin(a * D2R), y2: DC - (DR + 18 + L) * Math.cos(a * D2R), stroke: 'rgba(233,238,241,.28)', 'stroke-width': 2 }, dial); }
+const dialBase = STROKES.map((s, k) => svg('path', { d: arcD(DC, DC, DR, k * 90 + 1.5, (k + 1) * 90 - 1.5), stroke: s.col, 'stroke-opacity': .22, 'stroke-width': 20, fill: 'none' }, dial));
+const dialProg = STROKES.map((s, k) => svg('path', { d: '', stroke: s.col, 'stroke-width': 20, fill: 'none' }, dial));
+[['TDC', 0], ['BDC', 90], ['TDC', 180], ['BDC', 270]].forEach(([t, a]) => { const e = svg('text', { x: DC + (DR - 40) * Math.sin(a * D2R), y: DC - (DR - 40) * Math.cos(a * D2R) + 5, 'text-anchor': 'middle', fill: 'rgba(233,238,241,.45)', 'font-family': 'JetBrains Mono, monospace', 'font-size': 13, 'font-weight': 600, 'letter-spacing': '1.5' }, dial); e.textContent = t; });
+const needle = svg('g', {}, dial);
+svg('line', { x1: DC, y1: DC - DR + 16, x2: DC, y2: DC - DR - 26, stroke: '#E9EEF1', 'stroke-width': 4, 'stroke-linecap': 'round' }, needle);
+svg('circle', { cx: DC, cy: DC - DR, r: 8, fill: '#0A1015', stroke: '#E9EEF1', 'stroke-width': 3 }, needle);
+const dialName = svg('text', { x: DC, y: DC + 14, 'text-anchor': 'middle', fill: '#E9EEF1', 'font-family': 'Barlow Condensed, Arial Narrow, sans-serif', 'font-size': 40, 'font-weight': 700, 'letter-spacing': '1' }, dial);
+const dialSub = svg('text', { x: DC, y: DC + 44, 'text-anchor': 'middle', fill: 'rgba(233,238,241,.55)', 'font-family': 'JetBrains Mono, monospace', 'font-size': 15, 'font-weight': 600 }, dial);
+
+// P-V loop
+const pvC = $('#pv').getContext('2d');
+const PVL = []; for (let c = 0; c <= 720; c += 1) PVL.push([volumeCC(c), pressureBar(c)]);
+function drawPV(c) {
+  const g = pvC, Wd = 860, Hd = 500, L = 74, B = 52, Rr = 18, Tp = 16;
+  const X = v => L + v / 600 * (Wd - L - Rr), Y = p => Hd - B - p / 50 * (Hd - B - Tp);
+  g.clearRect(0, 0, Wd, Hd); g.lineWidth = 2; g.font = '600 22px JetBrains Mono, monospace'; g.fillStyle = 'rgba(233,238,241,.45)';
+  g.strokeStyle = 'rgba(233,238,241,.1)';
+  for (let p = 0; p <= 50; p += 10) { g.beginPath(); g.moveTo(L, Y(p)); g.lineTo(Wd - Rr, Y(p)); g.stroke(); g.textAlign = 'right'; g.fillText(String(p), L - 12, Y(p) + 8); }
+  g.textAlign = 'center'; for (let v = 0; v <= 600; v += 200) g.fillText(String(v), X(v), Hd - B + 34);
+  g.lineWidth = 3; g.strokeStyle = 'rgba(233,238,241,.16)'; g.beginPath(); PVL.forEach(([v, p], k) => k ? g.lineTo(X(v), Y(p)) : g.moveTo(X(v), Y(p))); g.stroke();
+  g.lineWidth = 5; g.lineJoin = 'round';
+  for (let k = 0; k < 4; k++) {
+    const a = k * 180, b = Math.min(c, a + 180); if (b <= a) break;
+    g.strokeStyle = STROKES[k].col; g.beginPath();
+    for (let q = a; q <= b; q++) { const [v, p] = PVL[q]; q === a ? g.moveTo(X(v), Y(p)) : g.lineTo(X(v), Y(p)); }
+    g.stroke();
+  }
+  const [v, p] = [volumeCC(c), pressureBar(c)];
+  g.fillStyle = '#E9EEF1'; g.beginPath(); g.arc(X(v), Y(p), 9, 0, TAU); g.fill();
+}
+// Piston-height strip chart
+const stC = $('#strip').getContext('2d');
+function drawStrip(T) {
+  const g = stC, Wd = 860, Hd = 500, L = 20, Rr = 20, Tp = 30, B = 40, span = 4;
+  g.clearRect(0, 0, Wd, Hd);
+  g.strokeStyle = 'rgba(233,238,241,.1)'; g.lineWidth = 2;
+  [0, .5, 1].forEach(f => { const y = Tp + f * (Hd - Tp - B); g.beginPath(); g.moveTo(L, y); g.lineTo(Wd - Rr, y); g.stroke(); });
+  g.font = '600 22px JetBrains Mono, monospace'; g.fillStyle = 'rgba(233,238,241,.45)'; g.textAlign = 'left';
+  g.fillText('TDC', L + 6, Tp - 8); g.fillText('BDC', L + 6, Hd - B + 30);
+  const Y = c => { const f = (pinY(0) - pinY(c)) / (pinY(0) - pinY(180)); return Tp + f * (Hd - Tp - B); };
+  g.lineWidth = 5; g.strokeStyle = '#46CFEA'; g.beginPath();
+  for (let k = 0; k <= 160; k++) { const tt = T - span + span * k / 160, x = L + (Wd - L - Rr) * k / 160, y = Y(mod(thetaAt(tt), 720)); k ? g.lineTo(x, y) : g.moveTo(x, y); }
+  g.stroke();
+  g.fillStyle = '#E9EEF1'; g.beginPath(); g.arc(Wd - Rr, Y(mod(thetaAt(T), 720)), 9, 0, TAU); g.fill();
+}
+// Firing panel tiles
+const cylTiles = [0, 1, 2, 3].map(i => {
+  const el = document.createElement('div'); el.className = 'cyl';
+  el.innerHTML = '<span class="cyl-n">Cyl ' + (i + 1) + '</span><div class="cyl-bar"><i></i></div><span class="cyl-s"></span>';
+  $('#cyls').appendChild(el); return { bar: el.querySelector('i'), s: el.querySelector('.cyl-s') };
+});
+const orderEls = [...document.querySelectorAll('#order span')];
+const ORDER = [0, 2, 3, 1];
+
+// 3D labels with leader lines
+const LBL = [
+  // anatomy callouts sit in two columns either side of the exploded engine
+  { t: 13.4, txt: 'Cylinder head', sub: 'Holds valves, ports and plugs', x: 1440, y: 196, at: () => gHead.localToWorld(V1.set(1.9, DECK + 0.62, 0.79)) },
+  { t: 14.4, txt: 'Camshafts', sub: 'Open the valves on time', x: 600, y: 186, at: () => camshafts[0].g.localToWorld(V1.set(-1.38, 0.2, 0)) },
+  { t: 15.4, txt: 'Valves', sub: 'Let gas in and out', x: 600, y: 326, at: () => valves.find(v => v.i === 2 && v.kind === 'in' && v.side === -1).f.localToWorld(V1.set(0, 0.45, 0)) },
+  { t: 16.4, txt: 'Spark plugs', sub: 'Light the mixture', x: 1440, y: 326, at: () => plugs[1].localToWorld(V1.set(0, 0.5, 0)) },
+  { t: 17.4, txt: 'Pistons', sub: 'Pushed down by burning gas', x: 1440, y: 456, at: () => pistons[1].localToWorld(V1.set(0, 0.0, BORE)) },
+  { t: 18.4, txt: 'Connecting rods', sub: 'Link piston to crank', x: 600, y: 486, at: () => rods[2].localToWorld(V1.set(0, -0.7, 0.07)) },
+  { t: 19.4, txt: 'Crankshaft', sub: 'Turns push into rotation', x: 1440, y: 716, at: () => engine.localToWorld(V1.set(0.3, gCrank.position.y, 0.2)) },
+  { t: 20.0, txt: 'Flywheel', sub: 'Smooths out the pulses', x: 600, y: 646, at: () => engine.localToWorld(V1.set(-2.62, gCrank.position.y + 0.75, 0.3)) },
+  { t: 20.6, txt: 'Engine block', sub: 'Houses the cylinders', x: 1440, y: 586, at: () => V1.set(1.3, 1.3, 0.72), end: 22.4 },
+  // later chapters: offsets from the part
+  { t: 61.0, end: 65.0, txt: 'Crank pin', sub: 'Travels in a circle', dx: 210, dy: -150, at: () => pinDot.getWorldPosition(V1) },
+  { t: 62.0, end: 65.0, txt: 'Piston', sub: 'Travels in a line', dx: 300, dy: -30, at: () => trackDot.getWorldPosition(V1) },
+  { t: 66.4, end: 70.6, txt: 'Flywheel', sub: '110-tooth ring gear for the starter', dx: -210, dy: -150, at: () => V1.set(-2.62, 0.95, 0.0) },
+  { t: 72.4, end: 76.6, txt: 'Crank gear', sub: '20 teeth', dx: 250, dy: -130, at: () => V1.set(2.46, -0.24, 0) },
+  { t: 73.2, end: 76.6, txt: 'Cam gears', sub: '40 teeth each', dx: 260, dy: -10, at: () => V1.set(2.46, camY + 0.47, camZ) },
+  { t: 74.0, end: 76.6, txt: 'Timing belt', sub: 'Keeps them in step', dx: 250, dy: 30, at: () => V1.set(2.46, 1.5, -0.83) },
+  { t: 78.4, end: 82.6, txt: 'Cam lobes', sub: 'Push the valves open', dx: -280, dy: -190, at: () => camshafts[1].g.localToWorld(V1.set(-0.33, 0.0, 0.2)) },
+];
+const leaders = $('#leaders'), labelsEl = $('#labels');
+for (const L of LBL) {
+  if (L.x !== undefined) L.dx = L.x < 960 ? -1 : 1;
+  L.el = document.createElement('div'); L.el.className = 'lbl' + (L.dx < 0 ? ' l' : ''); L.el.innerHTML = '<b>' + L.txt + '</b><span>' + L.sub + '</span>'; labelsEl.appendChild(L.el);
+  L.g = svg('g', {}, leaders);
+  L.path = svg('path', { fill: 'none', stroke: 'rgba(233,238,241,.75)', 'stroke-width': 2 }, L.g);
+  L.ring = svg('circle', { r: 11, fill: 'none', stroke: 'rgba(233,238,241,.5)', 'stroke-width': 2 }, L.g);
+  L.dot = svg('circle', { r: 5, fill: '#E9EEF1' }, L.g);
+  if (!L.end) L.end = 22.4;
+}
+const PV3 = new THREE.Vector3();
+function project(v) { PV3.copy(v).project(camera); return [(PV3.x + 1) / 2 * 1920, (1 - PV3.y) / 2 * 1080, PV3.z]; }
+function updateLabels(T) {
+  for (const L of LBL) {
+    const a = win(T, L.t, L.end, 0.6, 0.5);
+    if (a <= 0.002) { L.el.style.visibility = 'hidden'; L.g.style.visibility = 'hidden'; continue; }
+    const [x, y, z] = project(L.at());
+    if (z > 1) { L.el.style.visibility = 'hidden'; L.g.style.visibility = 'hidden'; continue; }
+    const draw = eo(seg(T, L.t, L.t + 0.45)), txt = eo(seg(T, L.t + 0.25, L.t + 0.8));
+    const sg = Math.sign(L.dx);
+    const tx = L.x !== undefined ? L.x - sg * 36 : x + L.dx, ty = L.y !== undefined ? L.y : y + L.dy;
+    const ex = lerp(x, tx, draw), ey = lerp(y, ty, draw), bx = ex + sg * 22;
+    L.path.setAttribute('d', 'M' + x.toFixed(1) + ' ' + y.toFixed(1) + ' L' + ex.toFixed(1) + ' ' + ey.toFixed(1) + ' L' + (ex + sg * 22 * txt).toFixed(1) + ' ' + ey.toFixed(1));
+    L.dot.setAttribute('cx', x.toFixed(1)); L.dot.setAttribute('cy', y.toFixed(1));
+    L.ring.setAttribute('cx', x.toFixed(1)); L.ring.setAttribute('cy', y.toFixed(1)); L.ring.setAttribute('r', (6 + 10 * eob(seg(T, L.t, L.t + 0.5))).toFixed(1));
+    L.g.style.visibility = 'visible'; L.g.style.opacity = a.toFixed(3);
+    L.el.style.visibility = 'visible'; L.el.style.opacity = (a * txt).toFixed(3);
+    const lx = bx + sg * 12 + sg * (1 - txt) * 18;
+    L.el.style.transform = 'translate(' + (sg > 0 ? lx : lx).toFixed(1) + 'px,' + (ey - 22).toFixed(1) + 'px)' + (sg < 0 ? ' translateX(-100%)' : '');
+  }
+}
+
+const chapEls = { n: $('#chapN'), t: $('#chapT') };
+function updateHUD(T, th) {
+  show($('#blackout'), 1 - eo(seg(T, 0, 1.4)));
+  // title
+  const tA = 1 - ei(seg(T, 6.4, 7.4));
+  show($('#title'), tA, -40 * ei(seg(T, 6.4, 7.4)));
+  reveal(W.tEye, T, 0.5, 0.1); reveal(W.tLine, T, 0.9, 0.13, 0.7, 46); reveal(W.tSub, T, 2.2, 0.05, 0.5, 20);
+  // chapter tag
+  let ch = 0; for (let k = 0; k < CHAPTERS.length; k++) if (T >= CHAPTERS[k].t) ch = k;
+  const chA = win(T, 7.3, 95.6, 0.6, 0.5) * Math.min(1, seg(T, CHAPTERS[ch].t + 0.2, CHAPTERS[ch].t + 0.8) + (ch === 1 ? 1 : 0)) * (1 - win(T, CHAPTERS[ch].t - 0.01, CHAPTERS[ch].t + 0.2, 0.01, 0.2) * 0);
+  if (CHAPTERS[ch].n) { chapEls.n.textContent = CHAPTERS[ch].n; chapEls.t.textContent = CHAPTERS[ch].name; }
+  const chIn = eo(seg(T, CHAPTERS[ch].t + 0.1, CHAPTERS[ch].t + 0.7)), chOut = ch + 1 < CHAPTERS.length ? 1 - ei(seg(T, CHAPTERS[ch + 1].t - 0.4, CHAPTERS[ch + 1].t)) : 1;
+  show($('#chap'), win(T, 7.3, 95.6, 0.6, 0.5) * Math.min(chIn, chOut), 0);
+  // speed tag
+  const v = speedAt(T);
+  let spTxt = 'Slowed about 150×';
+  if (T > 59.5) spTxt = v > 30 ? 'Slowed ' + Math.round(4800 / v) + '× vs idle' : 'Slowed about 150×';
+  $('#speedT').textContent = spTxt;
+  show($('#speed'), win(T, 25, 95.6, 0.6, 0.5));
+  // scrims
+  show($('#scrimL'), Math.max(win(T, 0, 7.4, 0.01, 0.8), win(T, 23, 59.2, 0.8, 0.6), win(T, 95.8, DUR + 1, 1.0, 0.1)));
+  show($('#scrimB'), Math.max(win(T, 7.4, 23.2, 0.6, 0.6), win(T, 59.2, 95.9, 0.6, 0.6)));
+  show($('#scrimR'), Math.max(win(T, 24.6, 59.2, 0.8, 0.6), win(T, 59.4, 82.9, 0.8, 0.6), win(T, 83.3, 95.8, 0.6, 0.5)));
+  // interstitial
+  show($('#inter'), 1 - ei(seg(T, 24.9, 25.4)));
+  reveal(W.inter1, T, 23.2, 0.12, 0.6, 40); reveal(W.inter2, T, 23.8, 0.12, 0.6, 40);
+  // stroke cards
+  strokeCards.forEach((s, k) => {
+    const t0 = S0 + k * SLEN, a = win(T, t0, t0 + 8.3, 0.3, 0.45);
+    show(s.el, a, -30 * ei(seg(T, t0 + 7.85, t0 + 8.3)));
+    if (a <= 0) return;
+    const pn = eob(seg(T, t0 + 0.05, t0 + 0.6), 1.5);
+    s.num.style.transform = 'translateY(' + ((1 - pn) * 60).toFixed(1) + 'px)'; s.num.style.opacity = clamp(pn * 1.4).toFixed(3);
+    s.of.style.opacity = eo(seg(T, t0 + 0.35, t0 + 0.85)).toFixed(3);
+    reveal(s.name, T, t0 + 0.25, 0.08, 0.5, 30);
+    const m = eo(seg(T, t0 + 0.7, t0 + 1.2)); s.mn.style.opacity = m.toFixed(3); s.mn.style.transform = 'translateY(' + ((1 - m) * 18).toFixed(1) + 'px)';
+  });
+  // captions
+  for (const c of CAPS) {
+    const a = win(T, c.t0, c.t1, 0.25, 0.45);
+    show(c.el, a, -24 * ei(seg(T, c.t1 - 0.45, c.t1)));
+    if (a > 0) reveal(c.words, T, c.t0, 0.045, 0.45, 22);
+  }
+  // cycle panel
+  const cyA = win(T, 24.7, 58.9, 0.7, 0.5);
+  show($('#cycle'), cyA, 30 * (1 - eo(seg(T, 24.7, 25.5))));
+  if (cyA > 0) {
+    const c = cyc[0], k = strokeOf(c);
+    for (let j = 0; j < 4; j++) { const a0 = j * 90 + 1.5, a1 = Math.min(c / 2, (j + 1) * 90 - 1.5); dialProg[j].setAttribute('d', a1 > a0 ? arcD(DC, DC, DR, a0, a1) : ''); }
+    needle.setAttribute('transform', 'rotate(' + (c / 2).toFixed(2) + ' ' + DC + ' ' + DC + ')');
+    dialName.textContent = STROKES[k].name; dialName.setAttribute('fill', STROKES[k].col);
+    dialSub.textContent = Math.round(c) + '° of 720°';
+    $('#cycDeg').textContent = Math.round(c) + '°';
+    drawPV(c);
+    $('#rVol').textContent = Math.round(volumeCC(c)) + ' cc';
+    { const pb = pressureBar(c); $('#rP').textContent = (pb >= 10 ? pb.toFixed(0) : pb.toFixed(1)) + ' bar'; }
+    const mm = (pinY(0) - pinY(c)) * 100; $('#rPis').textContent = mm < 0.5 ? 'TDC' : mm > 85.5 ? 'BDC' : Math.round(mm) + ' mm';
+    const li = liftIn(c) > 0.004, le = liftEx(c) > 0.004, spk = sparkAt(c) > 0.05 || (c > 352 && c < 372);
+    const chip = (el, on, col) => { el.style.color = on ? '#E9EEF1' : ''; el.style.borderColor = on ? col : ''; el.firstChild.style.background = on ? col : ''; el.firstChild.style.boxShadow = on ? '0 0 12px ' + col : ''; };
+    chip($('#chIn'), li, '#46CFEA'); chip($('#chEx'), le, '#AEA4DA'); chip($('#chSp'), spk, '#FF5A2B');
+  }
+  // crank panel
+  const crA = win(T, 59.6, 70.6, 0.7, 0.5);
+  show($('#crankp'), crA, 30 * (1 - eo(seg(T, 59.6, 60.4))));
+  if (crA > 0) { drawStrip(T); $('#crDeg').textContent = Math.round(mod(th, 360)) + '°'; }
+  // cam panel
+  const caA = win(T, 71.4, 82.8, 0.7, 0.5);
+  show($('#camp'), caA, 30 * (1 - eo(seg(T, 71.4, 72.2))));
+  if (caA > 0) { const turns = Math.max(0, (th - thetaAt(71)) / 360); $('#nCrank').textContent = turns.toFixed(1); $('#nCam').textContent = (turns / 2).toFixed(1); }
+  // firing panel
+  const fiA = win(T, 83.3, 95.6, 0.7, 0.5);
+  show($('#firing'), fiA, 30 * (1 - eo(seg(T, 83.3, 84.1))));
+  if (fiA > 0) {
+    for (let i = 0; i < 4; i++) {
+      const c = cyc[i], k = strokeOf(c), f = mod(c, 180) / 180;
+      cylTiles[i].bar.style.background = STROKES[k].col; cylTiles[i].bar.style.height = (k % 2 === 0 ? f : 1 - f) * 100 + '%';
+      cylTiles[i].bar.style.opacity = '0.85'; cylTiles[i].s.textContent = STROKES[k].name; cylTiles[i].s.style.color = STROKES[k].col;
+    }
+    ORDER.forEach((ci, j) => { const c = cyc[ci], on = c >= 356 && c < 470; const el = orderEls[j]; el.style.color = on ? '#0A1015' : ''; el.style.background = on ? '#FF5A2B' : ''; el.style.borderColor = on ? '#FF5A2B' : ''; el.style.boxShadow = on ? '0 0 30px rgba(255,90,43,.55)' : ''; });
+    $('#fireRpm').textContent = Math.round(v / 6) + ' rpm shown';
+  }
+  // ending
+  const enA = seg(T, 96.1, 96.5);
+  show($('#endw'), enA);
+  endWords.forEach((el, k) => { const p = eob(seg(T, 96.4 + k * 0.6, 96.4 + k * 0.6 + 0.6), 1.5); el.style.opacity = clamp(p * 1.3).toFixed(3); el.style.transform = 'translateY(' + ((1 - p) * 60).toFixed(1) + 'px)'; });
+  show($('#ends'), seg(T, 99.0, 99.2)); reveal(W.ends, T, 99.0, 0.12, 0.5, 18);
+  updateLabels(T);
+}
+
+/* =====================================================================
+   9. Render one frame for time T (pure: any T, any order)
+   ===================================================================== */
+let lastT = -1;
+function renderAt(T) {
+  T = clamp(T, 0, DUR); lastT = T;
+  U.time.value = T; grade.uniforms.uTime.value = T;
+  const th = poseEngine(T);
+  placeCamera(T);
+  bloom.strength = 0.6 + 0.22 * Math.exp(-Math.max(0, T - T_IGNITE) * 3) * (T > T_IGNITE ? 1 : 0);
+  scene.updateMatrixWorld(); camera.updateMatrixWorld();
+  updateHUD(T, th);
+  composer.render();
+}
+
+/* =====================================================================
+   10. Sound: one score rendered offline, then played from any offset
+   ===================================================================== */
+async function buildScore(SR = 44100) {
+  const ac = new OfflineAudioContext(2, Math.ceil(SR * DUR), SR);
+  const noise = (() => { const b = ac.createBuffer(1, SR * 2, SR), d = b.getChannelData(0), r = rng(99); for (let i = 0; i < d.length; i++) d[i] = r() * 2 - 1; return b; })();
+  const ir = (() => { const n = Math.floor(SR * 3.2), b = ac.createBuffer(2, n, SR); for (let ch = 0; ch < 2; ch++) { const d = b.getChannelData(ch), r = rng(5 + ch); for (let i = 0; i < n; i++) { const t = i / n; d[i] = (r() * 2 - 1) * Math.pow(1 - t, 2.8); } } return b; })();
+  const comp = ac.createDynamicsCompressor(); comp.threshold.value = -14; comp.knee.value = 10; comp.ratio.value = 3.5; comp.attack.value = 0.004; comp.release.value = 0.25;
+  const master = ac.createGain(); master.gain.setValueAtTime(0.0001, 0); master.gain.exponentialRampToValueAtTime(1.3, 0.6); master.gain.setValueAtTime(1.3, DUR - 2); master.gain.linearRampToValueAtTime(0.0001, DUR);
+  master.connect(comp); comp.connect(ac.destination);
+  const verb = ac.createConvolver(); verb.buffer = ir; const vret = ac.createGain(); vret.gain.value = 0.42; verb.connect(vret); vret.connect(master);
+  const bus = (gain, wet) => { const g = ac.createGain(); g.gain.value = gain; g.connect(master); if (wet) { const s = ac.createGain(); s.gain.value = wet; g.connect(s); s.connect(verb); } return g; };
+  const sfx = bus(0.9, 0.3), low = bus(1.0, 0.15), padB = bus(0.5, 0.7), ui = bus(0.55, 0.45);
+  const envG = (g, t, a, peak, d) => { g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(peak, t + a); g.gain.exponentialRampToValueAtTime(0.0001, t + a + d); };
+  const nz = (t, dur, { type = 'lowpass', f0 = 800, f1 = f0, q = 0.7, gain = 0.3, a = 0.01, out = sfx } = {}) => {
+    const src = ac.createBufferSource(); src.buffer = noise; src.loop = true;
+    const f = ac.createBiquadFilter(); f.type = type; f.Q.value = q; f.frequency.setValueAtTime(f0, t); f.frequency.exponentialRampToValueAtTime(f1, t + a + dur);
+    const g = ac.createGain(); envG(g, t, a, gain, dur); src.connect(f); f.connect(g); g.connect(out); src.start(t, (t * 0.37) % 1.5); src.stop(t + a + dur + 0.05);
+  };
+  const tone = (t, dur, { type = 'sine', f0 = 220, f1 = f0, gain = 0.2, a = 0.01, out = sfx } = {}) => {
+    const o = ac.createOscillator(); o.type = type; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(f1, t + a + dur);
+    const g = ac.createGain(); envG(g, t, a, gain, dur); o.connect(g); g.connect(out); o.start(t); o.stop(t + a + dur + 0.05);
+  };
+  const swell = (t, dur, { type = 'bandpass', f0 = 300, f1 = 2000, q = 1, gain = 0.2, out = sfx } = {}) => {
+    const src = ac.createBufferSource(); src.buffer = noise; src.loop = true;
+    const f = ac.createBiquadFilter(); f.type = type; f.Q.value = q; f.frequency.setValueAtTime(f0, t); f.frequency.exponentialRampToValueAtTime(f1, t + dur);
+    const g = ac.createGain(); g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(gain, t + dur * 0.55); g.gain.linearRampToValueAtTime(0.0001, t + dur);
+    src.connect(f); f.connect(g); g.connect(out); src.start(t, (t * 0.53) % 1.5); src.stop(t + dur + 0.05);
+  };
+  const N = m => 440 * Math.pow(2, (m - 69) / 12);
+  const pad = (t0, t1, notes, gain = 0.05) => notes.forEach((m, i) => [-7, 7].forEach(dt => {
+    const o = ac.createOscillator(); o.type = i === 0 ? 'sine' : 'triangle'; o.frequency.value = N(m); o.detune.value = dt;
+    const lp = ac.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1300;
+    const g = ac.createGain(); g.gain.setValueAtTime(0.0001, t0); g.gain.linearRampToValueAtTime(gain, t0 + 2.4); g.gain.setValueAtTime(gain, Math.max(t0 + 2.4, t1 - 2.4)); g.gain.linearRampToValueAtTime(0.0001, t1);
+    o.connect(lp); lp.connect(g); g.connect(padB); o.start(t0); o.stop(t1 + 0.1);
+  }));
+  const boom = (t, s = 1) => { tone(t, 1.3 * s, { f0: 96, f1: 32, gain: 0.9 * s, a: 0.004, out: low }); nz(t, 0.7 * s, { f0: 1800, f1: 90, gain: 0.55 * s, a: 0.002 }); nz(t, 0.05, { type: 'highpass', f0: 2600, gain: 0.25 * s, a: 0.001 }); };
+  const thump = (t, s = 1) => { tone(t, 0.34, { f0: 80, f1: 40, gain: 0.5 * s, a: 0.003, out: low }); nz(t, 0.2, { f0: 1000, f1: 140, gain: 0.26 * s, a: 0.002 }); };
+  const tick = (t, s = 1) => nz(t, 0.035, { type: 'bandpass', f0: 3300, q: 3, gain: 0.2 * s, a: 0.001 });
+  const zap = t => { nz(t, 0.08, { type: 'highpass', f0: 5200, f1: 3000, gain: 0.3, a: 0.001 }); tone(t, 0.07, { type: 'square', f0: 2400, f1: 1300, gain: 0.035, a: 0.001 }); };
+  const blip = (t, m) => { tone(t, 0.2, { f0: N(m), gain: 0.06, a: 0.004, out: ui }); tone(t, 0.14, { f0: N(m + 12), gain: 0.018, a: 0.004, out: ui }); };
+  const pluck = (t, m, g = 0.07) => { tone(t, 0.9, { type: 'triangle', f0: N(m), gain: g, a: 0.005, out: ui }); tone(t, 0.5, { f0: N(m + 12), gain: g * 0.3, a: 0.005, out: ui }); };
+  const whoosh = (t, dur = 1.3, gain = 0.1) => swell(t, dur, { f0: 260, f1: 2600, q: 0.8, gain });
+
+  // music bed: five chords, one per act, resolving to D major at the end
+  pad(0, 24, [38, 45, 50, 52, 53], 0.045);
+  pad(22.4, 60, [34, 41, 45, 50, 57], 0.04);
+  pad(58.4, 84, [41, 48, 52, 55, 60], 0.04);
+  pad(82.4, 97, [36, 43, 48, 50, 55], 0.045);
+  pad(95.4, DUR + 0.2, [38, 45, 50, 54, 57, 62], 0.05);
+  // title slam and riser into the x-ray scan
+  boom(0.95, 0.75); tone(0.9, 2.5, { f0: 55, f1: 50, gain: 0.25, a: 0.02, out: low });
+  swell(5.2, 2.3, { type: 'highpass', f0: 400, f1: 4000, q: 0.5, gain: 0.08 });
+  swell(7.4, 3.2, { f0: 600, f1: 7000, q: 1.6, gain: 0.12 }); tone(7.4, 3.0, { f0: 220, f1: 880, gain: 0.025, a: 1.0 });
+  tone(10.3, 1.8, { f0: N(88), gain: 0.035, a: 0.005, out: ui }); tone(10.42, 1.8, { f0: N(93), gain: 0.025, a: 0.005, out: ui });
+  // exploded view and labels
+  whoosh(11.2, 2.2, 0.12); whoosh(20.4, 2.2, 0.1);
+  LBL.forEach((L, k) => blip(L.t, [74, 76, 77, 79, 81, 83, 84, 86, 88, 86, 88, 83, 81, 83, 84, 86][k] - 12));
+  // camera moves
+  [22.6, 58.9, 64.7, 70.7, 76.7, 82.7, 95.6].forEach(t => whoosh(t, 1.6, 0.09));
+  // four-stroke chapter
+  for (let k = 0; k < 4; k++) { const t0 = S0 + k * SLEN; tone(t0 + 0.08, 0.6, { f0: 110, f1: 66, gain: 0.3, a: 0.004, out: low }); tick(t0 + 0.08, 1.2); }
+  swell(S0 + 0.8, 5.6, { f0: 380, f1: 1500, q: 0.9, gain: 0.22 });
+  tone(S0 + SLEN + 0.8, 5.2, { f0: 62, f1: 150, gain: 0.09, a: 4.2 }); nz(S0 + SLEN + 0.8, 1.0, { f0: 200, f1: 900, gain: 0.08, a: 4.4 });
+  swell(S0 + 3 * SLEN + 0.8, 5.6, { type: 'lowpass', f0: 1400, f1: 260, q: 0.7, gain: 0.26 });
+  // engine events from the crank-angle timeline
+  const prev = [null, null, null, null]; const dt = 1 / 600; let bigBang = false;
+  const crossed = (pc, c, a) => { const step = mod(c - pc, 720); return step > 0 && step < 360 && mod(a - pc, 720) <= step; };
+  for (let T = 0; T < DUR; T += dt) {
+    const th = thetaAt(T);
+    for (let i = 0; i < 4; i++) {
+      const c = mod(th - PHASE[i], 720), pc = prev[i]; prev[i] = c; if (pc === null) continue;
+      const gv = gasVis(i, T); if (gv < 0.3) continue;
+      if (crossed(pc, c, 352) && T < 59) zap(T);
+      if (crossed(pc, c, 357)) {
+        if (T < 59 && !bigBang) { boom(T, 1.25); nz(T + 0.05, 3.5, { f0: 420, f1: 70, gain: 0.22, a: 0.05 }); bigBang = true; }
+        else if (T >= 59) {
+          thump(T, T > 83 ? 0.85 : 0.6);
+          if (T > 83 && T < 96) { const seq = [72, 79, 76, 74]; pluck(T, seq[ORDER.indexOf(i)] , 0.06); }
+        }
+      }
+      if (T > S0 && T < 59) { if (crossed(pc, c, IN_A + IN_W)) tick(T, 0.8); if (crossed(pc, c, mod(EX_A + EX_W, 720))) tick(T, 0.8); }
+    }
+  }
+  // ending: one sound per word, then the chord
+  swell(96.3, 0.8, { f0: 2400, f1: 300, q: 0.8, gain: 0.16 });
+  tone(96.9, 0.6, { f0: 80, f1: 240, gain: 0.12, a: 0.3 });
+  boom(97.6, 0.9);
+  swell(98.2, 1.2, { type: 'lowpass', f0: 1600, f1: 200, q: 0.6, gain: 0.2 });
+  [62, 66, 69, 74].forEach((m, k) => pluck(99.0 + k * 0.12, m, 0.05));
+  return ac.startRendering();
+}
+function wavBase64(buf) {
+  const ch = buf.numberOfChannels, len = buf.length, out = new DataView(new ArrayBuffer(44 + len * ch * 2));
+  const ws = (o, s) => { for (let i = 0; i < s.length; i++) out.setUint8(o + i, s.charCodeAt(i)); };
+  ws(0, 'RIFF'); out.setUint32(4, 36 + len * ch * 2, true); ws(8, 'WAVE'); ws(12, 'fmt '); out.setUint32(16, 16, true); out.setUint16(20, 1, true); out.setUint16(22, ch, true);
+  out.setUint32(24, buf.sampleRate, true); out.setUint32(28, buf.sampleRate * ch * 2, true); out.setUint16(32, ch * 2, true); out.setUint16(34, 16, true); ws(36, 'data'); out.setUint32(40, len * ch * 2, true);
+  const data = [...Array(ch)].map((_, c) => buf.getChannelData(c)); let o = 44;
+  for (let i = 0; i < len; i++) for (let c = 0; c < ch; c++) { out.setInt16(o, clamp(data[c][i], -1, 1) * 32767, true); o += 2; }
+  const bytes = new Uint8Array(out.buffer); let s = ''; for (let i = 0; i < bytes.length; i += 32768) s += String.fromCharCode.apply(null, bytes.subarray(i, i + 32768));
+  return btoa(s);
+}
+
+/* =====================================================================
+   11. Player
+   ===================================================================== */
+const app = $('#app'), stage = $('#stage'), viewport = $('#viewport');
+let scale = 1;
+function fit() {
+  const w = viewport.clientWidth, h = viewport.clientHeight; scale = Math.min(w / 1920, h / 1080);
+  stage.style.transform = 'translate(' + ((w - 1920 * scale) / 2).toFixed(1) + 'px,' + ((h - 1080 * scale) / 2).toFixed(1) + 'px) scale(' + scale + ')';
+  if (!RENDER) {
+    const pr = clamp(scale * (window.devicePixelRatio || 1), 0.5, 1.25);
+    renderer.setPixelRatio(pr); composer.setPixelRatio(pr); renderer.setSize(1920, 1080, false); composer.setSize(1920, 1080);
+    canvas.style.width = '1920px'; canvas.style.height = '1080px';
+    if (lastT >= 0) renderAt(lastT);
+  }
+}
+
+if (RENDER) {
+  window.__film = { duration: DUR, seek: T => { renderAt(T); return true; }, anchors: T => { renderAt(T); return LBL.map(L => [L.txt, ...project(L.at()).map(v => Math.round(v * 100) / 100)]); }, audio: async () => wavBase64(await buildScore()) };
+  fit(); renderAt(0); window.__filmReady = true;
+} else {
+  const poster = $('#poster'), controls = $('#controls'), bPlay = $('#bPlay'), scrub = $('#scrub'), fillEl = $('#fill'), knob = $('#knob'), tip = $('#tip'), timeEl = $('#time'), chname = $('#chname');
+  CHAPTERS.slice(1).forEach(c => { const t = document.createElement('div'); t.className = 'tick'; t.style.left = (c.t / DUR * 100) + '%'; $('#track').appendChild(t); });
+  let audioT0 = 0, audioC0 = 0;
+  let T = 0, playing = false, last = 0, audioCtx = null, scoreBuf = null, scorePromise = null, src = null, muted = false, gain = null, started = false;
+  const fmt = s => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+  function ui() {
+    const f = T / DUR * 100; fillEl.style.width = f + '%'; knob.style.left = f + '%';
+    timeEl.textContent = fmt(T) + ' / ' + fmt(DUR); scrub.setAttribute('aria-valuenow', Math.round(T));
+    let ch = 0; for (let k = 0; k < CHAPTERS.length; k++) if (T >= CHAPTERS[k].t) ch = k; chname.textContent = CHAPTERS[ch].name;
+    bPlay.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+    $('#icPlay').innerHTML = playing ? '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>' : '<path d="M7 4l13 8-13 8z"/>';
+  }
+  function stopAudio() { if (src) { try { src.stop(); } catch (e) {} src.disconnect(); src = null; } }
+  function startAudio() {
+    stopAudio(); if (!audioCtx || !scoreBuf || !playing) return;
+    src = audioCtx.createBufferSource(); src.buffer = scoreBuf; src.connect(gain); src.start(0, Math.min(T, DUR - 0.01));
+    audioT0 = T; audioC0 = audioCtx.currentTime;
+  }
+  function play() {
+    if (T >= DUR - 0.05) T = 0;
+    playing = true; started = true; poster.hidden = true; controls.hidden = false; last = performance.now();
+    try {
+      if (!audioCtx) { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); gain = audioCtx.createGain(); gain.gain.value = muted ? 0 : 1; gain.connect(audioCtx.destination); }
+      audioCtx.resume();
+      if (!scorePromise) scorePromise = buildScore(audioCtx.sampleRate).then(b => { scoreBuf = b; startAudio(); }).catch(() => {});
+      else startAudio();
+    } catch (e) {}
+    ui(); idleSoon();
+  }
+  function pause() { playing = false; stopAudio(); ui(); app.classList.remove('idle'); }
+  function seek(t) { T = clamp(t, 0, DUR); renderAt(T); ui(); if (playing) startAudio(); }
+  function loop(now) {
+    if (playing) {
+      // follow the sound's clock when it is playing, so slow devices drop frames instead of drifting
+      if (src && audioCtx && audioCtx.state === 'running') T = audioT0 + (audioCtx.currentTime - audioC0);
+      else T += Math.min(0.25, (now - last) / 1000);
+      if (T >= DUR) { T = DUR; renderAt(T); pause(); }
+      else renderAt(T);
+      ui();
+    }
+    last = now; requestAnimationFrame(loop);
+  }
+  $('#bigplay').addEventListener('click', () => { T = 0; play(); });
+  bPlay.addEventListener('click', () => playing ? pause() : play());
+  $('#bSound').addEventListener('click', () => {
+    muted = !muted; if (gain) gain.gain.value = muted ? 0 : 1;
+    $('#bSound').setAttribute('aria-label', muted ? 'Unmute' : 'Mute');
+    $('#icSound').innerHTML = muted ? '<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2"/>' : '<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 010 7" fill="none" stroke="currentColor" stroke-width="2"/>';
+  });
+  $('#bFull').addEventListener('click', () => { try { if (document.fullscreenElement) document.exitFullscreen(); else app.requestFullscreen().catch(() => {}); } catch (e) {} });
+  let dragging = false;
+  const posT = e => { const r = scrub.getBoundingClientRect(); return clamp((e.clientX - r.left) / r.width) * DUR; };
+  scrub.addEventListener('pointerdown', e => { dragging = true; scrub.setPointerCapture(e.pointerId); seek(posT(e)); });
+  scrub.addEventListener('pointermove', e => {
+    const t = posT(e); let ch = 0; for (let k = 0; k < CHAPTERS.length; k++) if (t >= CHAPTERS[k].t) ch = k;
+    tip.hidden = false; tip.textContent = fmt(t) + ' · ' + CHAPTERS[ch].name; tip.style.left = (t / DUR * 100) + '%';
+    if (dragging) seek(t);
+  });
+  scrub.addEventListener('pointerup', () => { dragging = false; });
+  scrub.addEventListener('pointerleave', () => { tip.hidden = true; });
+  scrub.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { seek(T + 5); e.preventDefault(); } if (e.key === 'ArrowLeft') { seek(T - 5); e.preventDefault(); } });
+  window.addEventListener('keydown', e => {
+    if (e.target.closest && e.target.closest('button') && (e.key === ' ' || e.key === 'Enter')) return;
+    if (e.key === ' ') { e.preventDefault(); if (!started) { T = 0; play(); } else playing ? pause() : play(); }
+    else if (e.key === 'ArrowRight' && e.target !== scrub) seek(T + 5);
+    else if (e.key === 'ArrowLeft' && e.target !== scrub) seek(T - 5);
+    else if (e.key === 'm' || e.key === 'M') $('#bSound').click();
+    else if (e.key === 'f' || e.key === 'F') $('#bFull').click();
+  });
+  let idleTimer = 0;
+  function idleSoon() { clearTimeout(idleTimer); app.classList.remove('idle'); if (playing) idleTimer = setTimeout(() => app.classList.add('idle'), 2600); }
+  ['pointermove', 'pointerdown', 'keydown'].forEach(ev => window.addEventListener(ev, idleSoon));
+  document.addEventListener('visibilitychange', () => { if (document.hidden && playing) pause(); });
+  window.addEventListener('resize', fit);
+  fit();
+  T = 0; renderAt(3.4); ui();       // poster frame: the title, fully set
+  poster.hidden = false; controls.hidden = false;
+  requestAnimationFrame(loop);
+}
+</script>
+</body></html>
