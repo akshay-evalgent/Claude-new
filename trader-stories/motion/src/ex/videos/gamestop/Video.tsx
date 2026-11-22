@@ -48,7 +48,7 @@ const S01: React.FC = () => {
     <Stage bg="wallst" cam={usePush(1, 1.08)}>
       <OnGround x={1350} s={0.9}><Shop /></OnGround>
       <OnGround x={420}><Character look={FUND} pose={[[0, "hips"], [cue("bet"), "point"]]} mood="smug" seed={4} /></OnGround>
-      <OnGround x={720}><Character look={FUND2} pose="hold" hold={{ item: "sign", label: "SHORT" }} mood="smug" seed={5} /></OnGround>
+      <OnGround x={700}><Character look={FUND2} pose="signR" hold={{ item: "sign", label: "SHORT" }} mood="smug" seed={5} /></OnGround>
       <PopText x={560} y={200} at={cue("powerful")} text="WALL STREET'S BIG PLAYERS" size={52} pill={K.white} />
       <Arrow a={[1350, 300]} b={[1350, 620]} at={cue("collapse") - 4} bend={0} color={K.loss} w={14} />
       <PopText x={1350} y={260} at={cue("collapse")} text="→ $0" size={90} font="caption" color={K.loss} stroke={OUT} />
@@ -112,7 +112,7 @@ const S08: React.FC = () => {
   const cue = useCue();
   return (
     <Stage bg="studio" color={PAPER} cam={usePush(1, 1.06)}>
-      <OnGround x={760}><Character look={FUND} pose="hold" hold={{ item: "sign", label: "IT'LL FAIL" }} mood="smug" seed={4} /></OnGround>
+      <OnGround x={700}><Character look={FUND} pose="signR" hold={{ item: "sign", label: "IT'LL FAIL" }} mood="smug" seed={4} /></OnGround>
       <PopText x={1300} y={480} at={cue("short")} text="SHORT SELLING" size={90} font="caption" color={K.red} stroke={OUT} />
     </Stage>
   );
@@ -234,7 +234,7 @@ const S18: React.FC = () => {
   return (
     <Stage bg="studio" color={PAPER} cam={usePush(1, 1.05)}>
       <CChart x={220} y={140} w={1480} h={800} xMax={17} yMax={500} title="GameStop share price, January 2021" at={2}
-        xTicks={[0, 5, 16, 17]} xLabel={(v) => ({ 0: "Jan 4", 5: "Jan 11", 16: "Jan 27", 17: "Jan 28" } as Record<number, string>)[v]} yTicks={[100, 200, 300, 400, 500]} yFmt={(v) => `$${v}`}
+        xTicks={[0, 5, 17]} xLabel={(v) => ({ 0: "Jan 4", 5: "Jan 11", 16: "Jan 27", 17: "Jan 28" } as Record<number, string>)[v]} yTicks={[100, 200, 300, 400, 500]} yFmt={(v) => `$${v}`}
         series={[{ pts, color: K.gain, at: cue("eleventh"), dur: Math.max(30, cue("forty-seven") - cue("eleventh")) }]} />
       <PopText x={540} y={760} at={cue("twenty") } text="~$20" size={56} font="caption" color={OUT} />
       <PopText x={1250} y={330} at={cue("forty-seven")} text="$347 close" size={52} pill={K.white} />
@@ -248,12 +248,12 @@ const S19: React.FC = () => {
   return (
     <Stage bg="wallst" cam={usePush(1, 1.05)}>
       <OnGround x={960}><Building w={460} h={480} color="#D9D2E9" label="MELVIN CAPITAL" /></OnGround>
-      <PopText x={960} y={300} at={cue("half")} text="−53% in January" size={64} font="caption" color={K.loss} stroke={OUT} />
-      <OnGround x={300} s={0.7}><Building w={360} h={460} color="#C9D9E8" label="CITADEL" /></OnGround>
-      <OnGround x={1620} s={0.7}><Building w={360} h={460} color="#E8D3B0" label="POINT72" /></OnGround>
+      <PopText x={960} y={270} at={cue("half")} text="−53% in January" size={64} font="caption" color={K.loss} stroke={OUT} />
+      <OnGround x={300} s={0.85}><Building w={360} h={420} color="#C9D9E8" label="CITADEL" /></OnGround>
+      <OnGround x={1620} s={0.85}><Building w={360} h={420} color="#E8D3B0" label="POINT72" /></OnGround>
       <Flow a={[360, 600]} b={[860, 640]} at={cue("citadel")} count={6} />
       <Flow a={[1560, 600]} b={[1060, 640]} at={cue("point72")} count={4} />
-      <PopText x={960} y={180} at={cue("seven")} text="$2.75 BILLION" size={90} font="caption" color={K.gain} stroke={OUT} />
+      <PopText x={960} y={150} at={cue("seven")} text="$2.75 BILLION" size={90} font="caption" color={K.gain} stroke={OUT} />
       <PopText x={960} y={1000} at={cue("group")} text="short sellers lost billions" size={50} pill={K.white} />
     </Stage>
   );
@@ -277,7 +277,7 @@ const S21: React.FC = () => {
         {f >= off && <path d="M -150 40 L 150 200 M 150 40 L -150 200" stroke={K.loss} strokeWidth={18} strokeLinecap="round" />}
       </PopIn>
       <PopText x={960} y={70} at={cue("twenty-eighth")} text="JANUARY 28, 2021" size={56} pill={K.white} />
-      {[0, 1, 2].map((i) => <OnGround key={i} x={260 + i * 1400 / 2.4} s={0.75}><Character look={crowdLook(300 + i)} pose={[[0, "idle"], [cue("furious"), "panic"], [cue("accused"), "point"]]} mood={[[0, "neutral"], [cue("furious"), "angry"]]} seed={300 + i} enter={cue("furious") - 6 + i * 4} facing={i > 0 ? -1 : 1} /></OnGround>)}
+      {[0, 1, 2].map((i) => <OnGround key={i} x={[300, 1480, 1700][i]} s={0.75}><Character look={crowdLook(300 + i)} pose={[[0, "idle"], [cue("furious"), "panic"], [cue("accused"), "point"]]} mood={[[0, "neutral"], [cue("furious"), "angry"]]} seed={300 + i} enter={cue("furious") - 6 + i * 4} facing={i > 0 ? -1 : 1} /></OnGround>)}
       <PopText x={1540} y={420} at={cue("sell")} text="sell: yes · buy: no" size={48} font="hand" />
       <PopText x={360} y={420} at={cue("dropped")} text="price drops ↓" size={56} font="caption" color={K.loss} stroke={OUT} />
     </Stage>

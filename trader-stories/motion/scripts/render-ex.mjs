@@ -8,7 +8,7 @@ const [id, outArg] = process.argv.slice(2);
 const fr = process.argv.find((a) => a.startsWith("--frames="));
 const frameRange = fr ? fr.slice(9).split("-").map(Number) : null;
 const browserExecutable = process.env.REMOTION_BROWSER || null;
-const chromiumOptions = { gl: "swangle" };
+const chromiumOptions = process.env.GL === "default" ? {} : { gl: process.env.GL || "swangle" };
 const serveUrl = await bundle({ entryPoint: path.join(root, "src/ex/index.ts") });
 const composition = await selectComposition({ serveUrl, id, browserExecutable, chromiumOptions });
 const t0 = Date.now(); let last = -1;

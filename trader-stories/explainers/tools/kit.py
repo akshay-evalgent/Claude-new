@@ -16,6 +16,9 @@ timing = json.load(open(vdir / "build" / "timing.json"))
 fps = timing["fps"]
 dur = timing["total"] / fps
 name = vdir.name
+mp4s = sorted((vdir / "build").glob("*.mp4"))
+if mp4s: name = mp4s[0].stem
+elif kit.get("file"): name = kit["file"]
 
 def ts(sec):
     sec = int(round(sec)); return f"{sec // 60}:{sec % 60:02d}"

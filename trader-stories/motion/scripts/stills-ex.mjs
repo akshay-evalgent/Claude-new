@@ -7,7 +7,7 @@ const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..")
 const [id, outdir, ...frames] = process.argv.slice(2);
 fs.mkdirSync(outdir, { recursive: true });
 const browserExecutable = process.env.REMOTION_BROWSER || null;
-const chromiumOptions = { gl: "swangle" };
+const chromiumOptions = process.env.GL === "default" ? {} : { gl: process.env.GL || "swangle" };
 const serveUrl = await bundle({ entryPoint: path.join(root, "src/ex/index.ts") });
 const composition = await selectComposition({ serveUrl, id, browserExecutable, chromiumOptions });
 for (const fr of frames) {

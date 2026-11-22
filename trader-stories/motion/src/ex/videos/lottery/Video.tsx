@@ -44,7 +44,7 @@ const RollDown: React.FC<{ after?: boolean }> = ({ after }) => {
   const roll = cue("rolled");
   const big = f < roll ? interpolate(f, [pass, pass + 30], [grow, 1], clamp) : interpolate(f, [roll, roll + 40], [1, 0.1], { ...clamp, easing: out });
   const small = f < roll ? 0.1 : interpolate(f, [roll + 10, roll + 50], [0.1, 0.95], { ...clamp, easing: out });
-  const b9 = after ? 0 : s.beats[1]?.start ?? 9999;
+  const b9 = after ? 0 : 99999;
   return (
     <AbsoluteFill style={{ background: C.ink }}>
       <svg width={1920} height={1080}>
@@ -57,8 +57,8 @@ const RollDown: React.FC<{ after?: boolean }> = ({ after }) => {
             <Jar x={1690} label="3 numbers" fill={small * 0.9} color={C.gain} />
           </>}
         </g>
-        {f >= pass && f < roll + 60 && <text x={500} y={230} textAnchor="middle" fontFamily={font("display")} fontWeight={700} fontSize={56} fill={C.ochre}>$5 MILLION+</text>}
-        {f >= cue("nobody") && f < roll && <text x={500} y={300} textAnchor="middle" fontFamily={font("mono")} fontSize={34} fill={C.paper}>no winner</text>}
+        {f >= pass && f < roll + 60 && <text x={500} y={215} textAnchor="middle" fontFamily={font("display")} fontWeight={700} fontSize={56} fill={C.ochre}>$5 MILLION+</text>}
+        {f >= cue("nobody") && f < roll && <text x={500} y={275} textAnchor="middle" fontFamily={font("mono")} fontSize={34} fill={C.paper}>no winner</text>}
         {f >= roll && <path d={`M 720 ${420} C 900 ${300}, 1000 ${320}, ${1150} ${430}`} stroke={C.ochre} strokeWidth={10} fill="none" strokeDasharray="22 14" strokeDashoffset={-f * 3} />}
         {f >= roll && !after && <text x={960} y={300} textAnchor="middle" fontFamily={font("display")} fontWeight={700} fontSize={80} fill={C.gain} opacity={interpolate(f, [roll, roll + 10], [0, 1], clamp)}>IT ROLLED DOWN</text>}
         {f >= b9 && <text x={1420} y={930} textAnchor="middle" fontFamily={font("mono")} fontSize={30} fill={C.paperDim}>smaller prizes, suddenly much bigger</text>}
@@ -95,7 +95,7 @@ const Raffle: React.FC = () => {
             return <rect key={i} x={260 + c * 58} y={220 + r * 58} width={48} height={48} rx={8} fill={on ? C.ochre : C.slate} stroke={C.line} strokeWidth={2} />;
           })}
           <text x={550} y={850} textAnchor="middle" fontFamily={font("mono")} fontSize={32} fill={C.paper}>100 tickets × $1</text>
-          <text x={1350} y={420} textAnchor="middle" fontFamily={font("mono")} fontSize={36} fill={C.paperDim}>PRIZE</text>
+          <text x={1350} y={360} textAnchor="middle" fontFamily={font("mono")} fontSize={36} fill={C.paperDim}>PRIZE</text>
           <text x={1350} y={560} textAnchor="middle" fontFamily={font("display")} fontWeight={700} fontSize={170} fill={prize > 100 ? C.gain : C.paper}>${Math.round(prize)}</text>
           <text x={1350} y={700} textAnchor="middle" fontFamily={font("display")} fontWeight={700} fontSize={64} fill={prize > 100 ? C.gain : C.loss}>
             {f > cue("spend", f < ex3 ? 1 : 2) ? (prize > 100 ? "spend $100 → win $150" : "spend $100 → win $50") : ""}</text>
