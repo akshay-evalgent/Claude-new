@@ -32,20 +32,21 @@
   "stages": [
    {
     "media": "flow-lunch-a",
-    "at": 2.5
+    "at": 3.5
    },
    {
     "media": "flow-lunch-b",
-    "at": 2.5
+    "at": 3.0
    },
    {
     "media": "flow-lunch-c",
-    "at": 3.0
+    "at": 4.0
    }
   ],
   "caption": "Pranking my boss i ordered \"a little\" lunch for the team💀😭",
   "dur": 3.6,
-  "open": "payoff"
+  "open": "payoff",
+  "captionTop": "68%"
  },
  "tool": {
   "style": "edit",
@@ -55,7 +56,7 @@
   },
   "result": {
    "media": "flow-lunch-c",
-   "at": 3.0
+   "at": 4.0
   },
   "prompt": "Add an ice sculpture",
   "project": "Team lunch 1 of 1",
@@ -77,17 +78,17 @@
  ],
  "media": {
   "flow-lunch-a": {
-   "file": "placeholder-lunch-a.mp4",
+   "file": "flow-lunch-a.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   },
   "flow-lunch-b": {
-   "file": "placeholder-lunch-b.mp4",
+   "file": "flow-lunch-b.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   },
   "flow-lunch-c": {
-   "file": "placeholder-lunch-c.mp4",
+   "file": "flow-lunch-c.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   }
@@ -113,7 +114,7 @@
   },
   {
    "media": "flow-lunch-a",
-   "at": 2.5
+   "at": 3.5
   },
   {
    "them": "Perfect. That's exactly what I approved."
@@ -129,7 +130,7 @@
   },
   {
    "media": "flow-lunch-b",
-   "at": 2.5
+   "at": 3.0
   },
   {
    "them": "WHY IS THERE A FOOD TRUCK IN THE CONFERENCE ROOM"
@@ -169,7 +170,7 @@
   },
   {
    "media": "flow-lunch-c",
-   "at": 3.0
+   "at": 4.0
   },
   {
    "them": "WHY IS THERE AN ICE SCULPTURE OF ME"

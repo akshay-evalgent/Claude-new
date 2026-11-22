@@ -346,6 +346,7 @@
       if (img.dataset.src !== src) { img.src = src; img.dataset.src = src; }
       img.style.transform = `scale(${(1 + 0.06 * clamp(1 - (T - c.t0) / 0.25, 0, 1)).toFixed(3)})`;
       $('hookCap').innerHTML = rich(EP.hook.caption || '');
+      $('hookCap').style.top = EP.hook.captionTop || '';   // move the caption off the payoff when it would cover it
     } else if (s.hook) {
       const k = EP.hook.media, img = $('hookImg'), src = frameSrc(k, f);
       if (img.dataset.src !== src) { img.src = src; img.dataset.src = src; }
