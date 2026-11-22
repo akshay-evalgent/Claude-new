@@ -77,7 +77,7 @@ def start_server(gpu, port):
     out = f"/tmp/out{gpu}"; os.makedirs(out, exist_ok=True)
     proc = subprocess.Popen([sys.executable, "main.py", "--listen", "127.0.0.1", "--port", str(port), "--cuda-device", str(gpu),
                              "--output-directory", out, "--disable-auto-launch"], cwd=ROOT,
-                            stdout=open(f"{W}/comfy{gpu}.log", "w"), stderr=subprocess.STDOUT)
+                            stdout=open(f"{W}/comfy{gpu}.log", "a"), stderr=subprocess.STDOUT)
     for _ in range(300):
         try:
             urllib.request.urlopen(f"http://127.0.0.1:{port}/system_stats", timeout=2); return proc
@@ -214,7 +214,7 @@ else:
 lock = threading.Lock()
 
 
-def worker(gpu, port):
+def worker(gpu, port, restarts=2):
     global VFI_OK
     out = f"/tmp/out{gpu}"
     while True:
@@ -255,8 +255,17 @@ def worker(gpu, port):
             log("ERROR", gpu, s["id"], str(e)[:300])
             try:
                 urllib.request.urlopen(f"http://127.0.0.1:{port}/system_stats", timeout=5)
-            except Exception:                   # this server is gone: hand the job back to the other one and stop
-                jobs.put((s, c)); return
+            except Exception:                   # this server is gone (silently killed when host RAM runs out): requeue the job, restart it
+                jobs.put((s, c))
+                mem = subprocess.run(["free", "-m"], capture_output=True, text=True).stdout
+                with lock: report["errors"].append(f"server {gpu} died:\n{mem}"); save()
+                if restarts <= 0: return
+                restarts -= 1
+                try:
+                    start_server(gpu, port); log("restarted server", gpu)
+                except Exception as e2:
+                    with lock: report["errors"].append(f"server {gpu} restart failed: {e2}"); save()
+                    return
 
 
 try:
