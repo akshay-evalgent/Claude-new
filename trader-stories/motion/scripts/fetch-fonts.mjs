@@ -11,6 +11,9 @@ const FAMILIES = [
   { family: "IBM Plex Sans", key: "plexsans", weights: [400, 600], italic: false },
   { family: "Source Serif 4", key: "serif", weights: [400, 600], italic: true },
   { family: "Noto Serif SC", key: "cjk", weights: [700], italic: false, cjk: true },
+  { family: "Montserrat", key: "montserrat", weights: [700, 800, 900], italic: false },
+  { family: "Fredoka", key: "fredoka", weights: [500, 600, 700], italic: false },
+  { family: "Patrick Hand", key: "hand", weights: [400], italic: false },
 ];
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
 

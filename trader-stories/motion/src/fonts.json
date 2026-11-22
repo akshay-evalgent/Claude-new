@@ -64,5 +64,47 @@
     "weight": "700",
     "style": "normal",
     "file": "cjk-700.woff2"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "normal",
+    "file": "montserrat-700.woff2"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "normal",
+    "file": "montserrat-800.woff2"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "normal",
+    "file": "montserrat-900.woff2"
+  },
+  {
+    "family": "Fredoka",
+    "weight": "500",
+    "style": "normal",
+    "file": "fredoka-500.woff2"
+  },
+  {
+    "family": "Fredoka",
+    "weight": "600",
+    "style": "normal",
+    "file": "fredoka-600.woff2"
+  },
+  {
+    "family": "Fredoka",
+    "weight": "700",
+    "style": "normal",
+    "file": "fredoka-700.woff2"
+  },
+  {
+    "family": "Patrick Hand",
+    "weight": "400",
+    "style": "normal",
+    "file": "hand-400.woff2"
   }
 ]

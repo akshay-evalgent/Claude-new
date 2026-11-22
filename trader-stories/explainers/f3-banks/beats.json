@@ -1,0 +1,695 @@
+{
+ "title": "If You Don't Understand How Banks Create Money, You Don't Understand Money",
+ "voice": "am_michael",
+ "speed": 1.2,
+ "fps": 30,
+ "music": [
+  {
+   "track": "Spy Glass",
+   "from": "b001",
+   "to": "b046",
+   "db": -22,
+   "fadeIn": 0.5,
+   "fadeOut": 2.5
+  },
+  {
+   "track": "Deliberate Thought",
+   "from": "b046",
+   "db": -23,
+   "fadeIn": 2,
+   "fadeOut": 3
+  }
+ ],
+ "duckDb": -8,
+ "beats": [
+  {
+   "id": "b001",
+   "shot": "s01",
+   "text": "When you put a thousand dollars in the bank, where does it go?",
+   "pad": 0.3,
+   "sfx": [
+    [
+     0.1,
+     "kenney-rpg/handleCoins",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b002",
+   "shot": "s01",
+   "text": "Most people think the bank keeps a little of it, and lends the rest to somebody else.",
+   "pad": 0.15
+  },
+  {
+   "id": "b003",
+   "shot": "s02",
+   "text": "That's what I was taught. It's probably what you were taught too.",
+   "pad": 0.1
+  },
+  {
+   "id": "b004",
+   "shot": "s02",
+   "text": "It's not how it works.",
+   "pad": 0.35,
+   "sfx": [
+    [
+     0.0,
+     "synth/thud",
+     0.7
+    ]
+   ]
+  },
+  {
+   "id": "b005",
+   "shot": "s03",
+   "text": "When a bank gives someone a loan, it doesn't hand over anybody's savings. It types brand new money into existence.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     3.6,
+     "synth/cash",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b006",
+   "shot": "s04",
+   "text": "That's not a conspiracy theory. It's what the Bank of England, Britain's central bank, wrote in plain English in twenty fourteen.",
+   "pad": 0.2,
+   "sfx": [
+    [
+     0.0,
+     "kenney-rpg/bookOpen",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b007",
+   "shot": "s04",
+   "text": "And once you see it, you'll understand why booms get so big, why crashes hit so hard, and what the number in your bank account really is.",
+   "pad": 0.3
+  },
+  {
+   "id": "b008",
+   "shot": "s05",
+   "text": "",
+   "pad": 0.25,
+   "hold": 3.0,
+   "sfx": [
+    [
+     0.0,
+     "synth/whoosh_2",
+     0.7
+    ],
+    [
+     0.35,
+     "synth/boom",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b009",
+   "shot": "s06",
+   "text": "",
+   "pad": 0.25,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0.0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b010",
+   "shot": "s07",
+   "text": "Here's the version in most textbooks.",
+   "pad": 0.1
+  },
+  {
+   "id": "b011",
+   "shot": "s07",
+   "text": "Lena saves a thousand dollars and puts it in the bank.",
+   "pad": 0.2,
+   "sfx": [
+    [
+     1.6,
+     "kenney-rpg/handleCoins2",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b012",
+   "shot": "s08",
+   "text": "The bank keeps a slice, say ten percent, a hundred dollars, in reserve. And it lends the other nine hundred to Sam.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     4.2,
+     "synth/whoosh_1",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b013",
+   "shot": "s08",
+   "text": "Sam spends it. The shop puts it in its bank. That bank keeps ten percent, and lends out the rest. And on it goes.",
+   "pad": 0.2
+  },
+  {
+   "id": "b014",
+   "shot": "s09",
+   "text": "It's called the money multiplier. In this story, the bank is just a middleman, passing savers' money on to borrowers.",
+   "pad": 0.15
+  },
+  {
+   "id": "b015",
+   "shot": "s09",
+   "text": "It's neat. It's tidy. And according to the Bank of England, it is not an accurate description of how money is created.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     4.6,
+     "cc0-100/slam_03",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b016",
+   "shot": "s10",
+   "text": "Their paper, called Money Creation in the Modern Economy, puts it like this.",
+   "pad": 0.2,
+   "sfx": [
+    [
+     0.1,
+     "kenney-rpg/bookFlip2",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b017",
+   "shot": "s10",
+   "text": "Rather than banks receiving deposits when households save and then lending them out, bank lending creates deposits.",
+   "pad": 0.3
+  },
+  {
+   "id": "b018",
+   "shot": "s10",
+   "text": "Read that again. The loan comes first. The deposit is created by the loan.",
+   "pad": 0.35
+  },
+  {
+   "id": "b019",
+   "shot": "s11",
+   "text": "",
+   "pad": 0.25,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0.0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b020",
+   "shot": "s12",
+   "text": "Let's run it properly. Sam wants to borrow ten thousand dollars, for a car.",
+   "pad": 0.15
+  },
+  {
+   "id": "b021",
+   "shot": "s12",
+   "text": "The bank checks he's likely to pay it back. Then it does something remarkably simple.",
+   "pad": 0.25
+  },
+  {
+   "id": "b022",
+   "shot": "s13",
+   "text": "It adds ten thousand dollars to Sam's account.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     1.2,
+     "synth/cash",
+     0.7
+    ]
+   ]
+  },
+  {
+   "id": "b023",
+   "shot": "s13",
+   "text": "That's it. Nobody's savings went down. Lena still has her thousand dollars. Sam now has ten thousand he didn't have a minute ago.",
+   "pad": 0.3
+  },
+  {
+   "id": "b024",
+   "shot": "s14",
+   "text": "Look at the bank's books. Two new lines appear, at the same moment.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     0.1,
+     "kenney-rpg/bookOpen",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b025",
+   "shot": "s14",
+   "text": "On one side, a loan. Sam owes the bank ten thousand dollars. That's something the bank owns.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     0.6,
+     "synth/pop_2",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b026",
+   "shot": "s14",
+   "text": "On the other side, a deposit. The bank owes Sam ten thousand dollars. That's something the bank owes.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     0.8,
+     "synth/pop_2",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b027",
+   "shot": "s14",
+   "text": "Both were created out of nothing, with a few keystrokes. And Sam's deposit is real money. He can spend it, transfer it, pay the car dealer with it.",
+   "pad": 0.3
+  },
+  {
+   "id": "b028",
+   "shot": "s15",
+   "text": "In the Bank of England's own words: whenever a bank makes a loan, it simultaneously creates a matching deposit in the borrower's bank account, thereby creating new money.",
+   "pad": 0.35
+  },
+  {
+   "id": "b029",
+   "shot": "s16",
+   "text": "And it works backwards too. When Sam pays the loan back, both lines are crossed out. The money disappears.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     4.0,
+     "synth/whoosh_3",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b030",
+   "shot": "s16",
+   "text": "Just as taking out a new loan creates money, the repayment of bank loans destroys money.",
+   "pad": 0.35
+  },
+  {
+   "id": "b031",
+   "shot": "s17",
+   "text": "",
+   "pad": 0.25,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0.0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b032",
+   "shot": "s18",
+   "text": "So how much of our money is made this way? Start with the money you can hold.",
+   "pad": 0.15
+  },
+  {
+   "id": "b033",
+   "shot": "s18",
+   "text": "Notes and coins. When the Bank of England wrote its paper, cash was just three percent of the money in circulation in Britain.",
+   "pad": 0.15
+  },
+  {
+   "id": "b034",
+   "shot": "s18",
+   "text": "The other ninety-seven percent? Bank deposits. Numbers on screens.",
+   "pad": 0.2,
+   "sfx": [
+    [
+     0.3,
+     "synth/riser",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b035",
+   "shot": "s18",
+   "text": "And those deposits, it says, are mostly created by commercial banks themselves.",
+   "pad": 0.3
+  },
+  {
+   "id": "b036",
+   "shot": "s19",
+   "text": "So the number in your account isn't a pile of cash with your name on it, sitting in a vault.",
+   "pad": 0.15
+  },
+  {
+   "id": "b037",
+   "shot": "s19",
+   "text": "It's a promise. An I. O. U. from your bank. The bank owes you that money.",
+   "pad": 0.35,
+   "sfx": [
+    [
+     0.4,
+     "synth/ding_1",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b038",
+   "shot": "s20",
+   "text": "And the idea is old. In the sixteen hundreds, London goldsmiths stored people's gold, and handed out paper receipts.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     0.2,
+     "kenney-rpg/metalClick",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b039",
+   "shot": "s20",
+   "text": "People started paying each other with the receipts instead of the gold. And the goldsmiths noticed something. Hardly anyone came back for their gold at the same time.",
+   "pad": 0.15
+  },
+  {
+   "id": "b040",
+   "shot": "s20",
+   "text": "So they lent out receipts for gold that wasn't there. Promises, spent as money. That's banking.",
+   "pad": 0.35
+  },
+  {
+   "id": "b041",
+   "shot": "s21",
+   "text": "",
+   "pad": 0.25,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0.0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b042",
+   "shot": "s22",
+   "text": "Which raises the obvious question. If banks can create money by typing, why don't they just type more?",
+   "pad": 0.2
+  },
+  {
+   "id": "b043",
+   "shot": "s22",
+   "text": "The Bank of England lists three main limits.",
+   "pad": 0.2
+  },
+  {
+   "id": "b044",
+   "shot": "s23",
+   "text": "One. The bank has to make a profit. Lend to people who can't pay you back, and you lose. In a competitive market, banks can't lend without limit and stay profitable. And regulators make them hold a cushion of their own capital.",
+   "pad": 0.25,
+   "sfx": [
+    [
+     0.0,
+     "synth/pop_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b045",
+   "shot": "s24",
+   "text": "Two. The rest of us. Households and companies can destroy money too, just by paying off their debts.",
+   "pad": 0.25,
+   "sfx": [
+    [
+     0.0,
+     "synth/pop_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b046",
+   "shot": "s25",
+   "text": "Three, and most important. The central bank. By setting interest rates, it makes borrowing cheaper or more expensive. That's the brake and the accelerator.",
+   "pad": 0.15,
+   "sfx": [
+    [
+     0.0,
+     "synth/pop_1",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b047",
+   "shot": "s25",
+   "text": "The paper calls monetary policy the ultimate constraint on money creation.",
+   "pad": 0.3
+  },
+  {
+   "id": "b048",
+   "shot": "s26",
+   "text": "Now here's the part that surprises people. What about the rule that banks must keep a slice of deposits in reserve?",
+   "pad": 0.15
+  },
+  {
+   "id": "b049",
+   "shot": "s26",
+   "text": "Britain doesn't have one. And in America, since March twenty twenty, the reserve requirement has been zero percent.",
+   "pad": 0.25,
+   "sfx": [
+    [
+     5.2,
+     "cc0-100/slam_02",
+     0.7
+    ]
+   ]
+  },
+  {
+   "id": "b050",
+   "shot": "s26",
+   "text": "Banks aren't limited by how much cash they keep. They're limited by whether lending is worth it.",
+   "pad": 0.35
+  },
+  {
+   "id": "b051",
+   "shot": "s27",
+   "text": "",
+   "pad": 0.25,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0.0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b052",
+   "shot": "s28",
+   "text": "Now you can see why booms get so big.",
+   "pad": 0.1
+  },
+  {
+   "id": "b053",
+   "shot": "s28",
+   "text": "When times are good, banks lend more. More loans means more deposits. More money chases the same houses. Prices rise.",
+   "pad": 0.15
+  },
+  {
+   "id": "b054",
+   "shot": "s28",
+   "text": "Higher prices mean bigger loans. Bigger loans create more money. And the loop feeds itself.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     0.5,
+     "synth/riser",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b055",
+   "shot": "s29",
+   "text": "And it runs in reverse. When people get scared and pay down debt, and banks stop lending, money actually disappears.",
+   "pad": 0.15
+  },
+  {
+   "id": "b056",
+   "shot": "s29",
+   "text": "The Bank of England says the fall in bank lending in Britain after two thousand eight is an important reason money grew so much more slowly than before the crash.",
+   "pad": 0.35
+  },
+  {
+   "id": "b057",
+   "shot": "s30",
+   "text": "",
+   "pad": 0.25,
+   "hold": 1.5,
+   "sfx": [
+    [
+     0.0,
+     "synth/whoosh_1",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b058",
+   "shot": "s31",
+   "text": "There's one more thing this explains. Bank runs.",
+   "pad": 0.15
+  },
+  {
+   "id": "b059",
+   "shot": "s31",
+   "text": "Your deposit is a promise. But the bank doesn't keep all its promises as cash. Most of what it owns is loans, which won't be paid back for years.",
+   "pad": 0.15
+  },
+  {
+   "id": "b060",
+   "shot": "s31",
+   "text": "Normally that's fine, because only a few people want their money on any given day.",
+   "pad": 0.3
+  },
+  {
+   "id": "b061",
+   "shot": "s32",
+   "text": "In September two thousand seven, savers queued outside Northern Rock in Britain. It was the country's first bank run in a hundred and fifty years.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     0.2,
+     "kenney-rpg/footstep03",
+     0.4
+    ],
+    [
+     0.6,
+     "kenney-rpg/footstep05",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b062",
+   "shot": "s33",
+   "text": "In March twenty twenty-three, customers of Silicon Valley Bank pulled out more than forty billion dollars in a single day, mostly with a few taps on their phones.",
+   "pad": 0.2,
+   "sfx": [
+    [
+     4.8,
+     "synth/whoosh_3",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b063",
+   "shot": "s33",
+   "text": "Management expected another hundred billion the next day. That day, regulators shut it down.",
+   "pad": 0.35,
+   "sfx": [
+    [
+     4.4,
+     "cc0-100/slam_05",
+     0.7
+    ]
+   ]
+  },
+  {
+   "id": "b064",
+   "shot": "s34",
+   "text": "That's why governments insure deposits. In the US, the F. D. I. C. covers up to two hundred and fifty thousand dollars per depositor, at each bank, for each type of account.",
+   "pad": 0.35,
+   "sfx": [
+    [
+     0.3,
+     "synth/ding_2",
+     0.4
+    ]
+   ]
+  },
+  {
+   "id": "b065",
+   "shot": "s35",
+   "text": "So, back to the question. When you put a thousand dollars in the bank, where does it go?",
+   "pad": 0.2
+  },
+  {
+   "id": "b066",
+   "shot": "s35",
+   "text": "It doesn't go anywhere. It becomes a promise. And when someone else borrows, the bank doesn't hand them your money.",
+   "pad": 0.2
+  },
+  {
+   "id": "b067",
+   "shot": "s36",
+   "text": "It makes new money. With a keyboard. The moment someone signs for a loan.",
+   "pad": 0.3,
+   "sfx": [
+    [
+     0.6,
+     "synth/cash",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "b068",
+   "shot": "s37",
+   "text": "Most of the money in the world wasn't printed. It was typed.",
+   "pad": 0.4,
+   "sfx": [
+    [
+     2.4,
+     "synth/boom",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "b069",
+   "shot": "s37",
+   "text": "And if you don't understand that, you don't understand money.",
+   "pad": 1.6
+  }
+ ]
+}

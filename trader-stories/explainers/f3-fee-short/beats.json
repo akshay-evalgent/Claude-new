@@ -1,0 +1,18 @@
+{
+  "title": "A 1% Fee Doesn't Take 1% of Your Money",
+  "voice": "am_michael", "speed": 1.22, "fps": 30,
+  "music": [{"track": "Lobby Time", "db": -21, "fadeIn": 0.1, "fadeOut": 0.4}],
+  "duckDb": -8,
+  "beats": [
+    {"id": "b01", "shot": "s01", "text": "A one percent fee sounds tiny.", "pad": 0.1, "sfx": [[0.05, "kenney-interface/click_002", 0.5]]},
+    {"id": "b02", "shot": "s02", "text": "It's not. Over forty years, it can take almost a third of your money.", "pad": 0.25, "sfx": [[2.3, "cc0-100/slam_02", 0.7]]},
+    {"id": "b03", "shot": "s03", "text": "Say you invest ten thousand dollars, and it grows seven percent a year.", "pad": 0.1, "sfx": [[0.2, "kenney-casino/chips-stack-2", 0.6]]},
+    {"id": "b04", "shot": "s03", "text": "After forty years, you have about a hundred and fifty thousand.", "pad": 0.2, "sfx": [[2.2, "kenney-interface/confirmation_002", 0.5]]},
+    {"id": "b05", "shot": "s04", "text": "Now take one percent off, every single year. You're growing at six.", "pad": 0.1, "sfx": [[0.3, "kenney-casino/chips-handle-3", 0.6]]},
+    {"id": "b06", "shot": "s04", "text": "Forty years later? About a hundred and three thousand.", "pad": 0.15},
+    {"id": "b07", "shot": "s04", "text": "The fee didn't take one percent. It took forty-seven thousand dollars.", "pad": 0.25, "sfx": [[1.9, "cc0-100/slam_04", 0.7]]},
+    {"id": "b08", "shot": "s05", "text": "Because a fee doesn't just take your money. It takes everything that money would have earned.", "pad": 0.2, "sfx": [[0.2, "kenney-interface/maximize_003", 0.4]]},
+    {"id": "b09", "shot": "s06", "text": "And a two percent fee? It takes more than half.", "pad": 0.25, "sfx": [[1.6, "cc0-100/slam_06", 0.7]]},
+    {"id": "b10", "shot": "s07", "text": "So next time someone tells you it's only one percent,", "pad": 0.0}
+  ]
+}
