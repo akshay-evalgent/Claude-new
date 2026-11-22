@@ -12,8 +12,8 @@ const fs = require('fs');
   page.on('pageerror', e => console.log('PAGEERROR', e.message));
   await page.goto(url);
   await page.waitForFunction('window.READY === true', null, { timeout: 180000 });
-  const info = await page.evaluate(() => ({ frames: window.FRAMES, sfx: window.SFX, breaks: window.BREAKS }));
-  if (sfxOut) fs.writeFileSync(sfxOut, JSON.stringify({ sfx: info.sfx, breaks: info.breaks }));
+  const info = await page.evaluate(() => ({ frames: window.FRAMES, sfx: window.SFX, breaks: window.BREAKS, meta: window.META || null }));
+  if (sfxOut) fs.writeFileSync(sfxOut, JSON.stringify({ sfx: info.sfx, breaks: info.breaks, frames: info.frames, ...(info.meta || {}) }));
   if (out.endsWith('.png') || out.endsWith('.jpg')) {
     await page.evaluate(f => window.setFrame(f), +a);
     await page.screenshot({ path: out, type: out.endsWith('.png') ? 'png' : 'jpeg' });

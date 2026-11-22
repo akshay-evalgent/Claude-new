@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  @font-face { font-family: 'Caveat'; src: url('fonts/Caveat.ttf'); font-weight: 400 700; }
+  @font-face { font-family: 'OpenSansXB'; src: url('../repo_fonts/OpenSans-ExtraBold.ttf'); }
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #3a2a20; }
+  #gl { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+  .head { position: absolute; left: 50%; top: 150px; transform: translateX(-50%); width: 960px; box-sizing: border-box;
+          background: #fff3a3; border-radius: 22px; padding: 26px 34px; text-align: center;
+          font: 800 56px/1.22 'OpenSansXB', sans-serif; color: #1d1a17; box-shadow: 0 10px 30px rgba(0,0,0,0.28); }
+  .head svg { width: 50px; height: 46px; vertical-align: -6px; margin-left: 8px; }
+  #flash { position: absolute; inset: 0; background: #fffdf4; opacity: 0; pointer-events: none; }
+  #vig { position: absolute; inset: 0; pointer-events: none;
+         background: radial-gradient(ellipse at 50% 48%, rgba(0,0,0,0) 62%, rgba(0,0,0,0.22) 100%); }
+</style></head>
+<body>
+<canvas id="gl" width="1080" height="1920"></canvas>
+<div id="vig"></div>
+<div class="head" id="h1"></div>
+<div class="head" id="h2" style="opacity:0"></div>
+<div id="flash"></div>
+<script type="importmap">{ "imports": { "three": "../vendor/three.module.min.js" } }</script>
+<script type="module" src="main.js"></script>
+</body></html>
