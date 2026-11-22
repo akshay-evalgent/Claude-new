@@ -1,0 +1,194 @@
+{
+ "engine": "imsg",
+ "format": "vertical",
+ "crf": 18,
+ "fps": 30,
+ "minuteEvery": 40,
+ "typeSpeed": 28,
+ "readMul": 0.7,
+ "pace": 0.62,
+ "tail": 0.9,
+ "booms": true,
+ "music": {
+  "track": "kidding-around",
+  "gain": -27
+ },
+ "contact": "boss",
+ "title": "Pranking my boss i ordered a little lunch",
+ "clock": "12:14",
+ "unread": "27",
+ "cameraRoll": [
+  "📊",
+  "🍕",
+  "☕",
+  "📎",
+  "🐶",
+  "🌮",
+  "🖨️",
+  "🍩",
+  "📅"
+ ],
+ "hook": {
+  "stages": [
+   {
+    "media": "flow-lunch-a",
+    "at": 2.5
+   },
+   {
+    "media": "flow-lunch-b",
+    "at": 2.5
+   },
+   {
+    "media": "flow-lunch-c",
+    "at": 3.0
+   }
+  ],
+  "caption": "Pranking my boss i ordered \"a little\" lunch for the team💀😭",
+  "dur": 3.6
+ },
+ "tool": {
+  "style": "edit",
+  "photo": {
+   "media": "flow-lunch-a",
+   "at": 0.3
+  },
+  "result": {
+   "media": "flow-lunch-c",
+   "at": 3.0
+  },
+  "prompt": "Add an ice sculpture",
+  "project": "Team lunch 1 of 1"
+ },
+ "history": [
+  {
+   "them": "Quick question."
+  },
+  {
+   "them": "Who microwaved fish on the 3rd floor."
+  },
+  {
+   "me": "no idea"
+  },
+  {
+   "them": "Per my last email, I will find out."
+  }
+ ],
+ "media": {
+  "flow-lunch-a": {
+   "file": "placeholder-lunch-a.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-lunch-b": {
+   "file": "placeholder-lunch-b.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-lunch-c": {
+   "file": "placeholder-lunch-c.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  }
+ },
+ "beats": [
+  {
+   "them": "Did you order the team lunch?"
+  },
+  {
+   "me": "yep its here"
+  },
+  {
+   "them": "Reminder: the budget is $200. For 12 people."
+  },
+  {
+   "me": "about that"
+  },
+  {
+   "them": "Jordan."
+  },
+  {
+   "me": "its fine look"
+  },
+  {
+   "media": "flow-lunch-a",
+   "at": 2.5
+  },
+  {
+   "them": "Perfect. That's exactly what I approved."
+  },
+  {
+   "me": "the pizza guy said its not enough food"
+  },
+  {
+   "them": "For 12 people? It's plenty."
+  },
+  {
+   "me": "he called a friend"
+  },
+  {
+   "media": "flow-lunch-b",
+   "at": 2.5
+  },
+  {
+   "them": "WHY IS THERE A FOOD TRUCK IN THE CONFERENCE ROOM"
+  },
+  {
+   "them": "HOW DID IT GET THROUGH THE DOOR"
+  },
+  {
+   "me": "the door was optional"
+  },
+  {
+   "them": "WHO APPROVED THIS"
+  },
+  {
+   "me": "you did. per your last message"
+  },
+  {
+   "them": "THIS IS NOW AN HR MATTER"
+  },
+  {
+   "me": "dw HR is here"
+  },
+  {
+   "them": "Good."
+  },
+  {
+   "me": "they're in line for tacos"
+  },
+  {
+   "them": "Jordan please tell me it stops here"
+  },
+  {
+   "me": "it stops here"
+  },
+  {
+   "me": "the caterer just needs to set up one small thing"
+  },
+  {
+   "media": "flow-lunch-c",
+   "at": 3.0
+  },
+  {
+   "them": "WHY IS THERE AN ICE SCULPTURE OF ME"
+  },
+  {
+   "them": "IS THAT EXPENSED"
+  },
+  {
+   "me": "hes melting a little 😭"
+  },
+  {
+   "them": "I ASKED FOR LUNCH NOT A WEDDING"
+  },
+  {
+   "me": "the ceo said its the best meeting we've ever had",
+   "unsent": true
+  }
+ ],
+ "youtube": {
+  "title": "I'm so getting FIRED😭 #prank #boss #work #funnyvideo #comedyshorts",
+  "description": [],
+  "tags": []
+ }
+}
