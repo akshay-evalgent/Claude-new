@@ -18,6 +18,11 @@ Spec:
 }
 A beat's shots share its duration equally (film shots start at the given source time). Photos are shown framed over
 their own blur with a slow push-in. Dark night shots are brightened automatically.
+Shot options: "cx"/"cy" crop centre (0-1), "zoom", "w" weight, "d" fixed seconds, "bright" extra brightness,
+"rows": [top, bottom] to override letterbox detection (very dark skies fool it), "fit": zoom to show a wider window
+(aspect "ar", placed at height "fy") over a blurred fill, for signs or actions a vertical crop would cut. "cx" can
+also move through the shot: "cx1" end value, or [[k, cx], ...] keyframes to follow a sign through a camera pan.
+Film beats can carry "words": [[start, end, "word"], ...] when the transcript missed the line.
 Measured from two DetectivePasini Shorts (3.7M and 1.4M views): 140 s, about 210-240 words a minute, a cut every
 0.8-0.9 s, film lines inside the narration, the reveal at the very end and no call to action.
 """
@@ -88,19 +93,54 @@ class Frames:
         self.p.stdout.close(); self.p.wait()
 
 
+def lerp(opts, key, default, k):
+    """A crop value that can move during the shot (to follow a sign through a pan): "cx" at the start and "cx1" at
+    the end, or "cx": [[k, value], ...] keyframes over the shot (k from 0 to 1)."""
+    a = opts.get(key, default)
+    if isinstance(a, list):
+        return float(np.interp(k, [p[0] for p in a], [p[1] for p in a]))
+    return a + (opts.get(key + "1", a) - a) * k
+
+
+def gain(mean, opts):
+    """Brightness lift for dark shots, times an optional per-shot "bright" factor."""
+    return (min(1.9, 62 / max(mean, 8)) if mean < 52 else 1.0) * opts.get("bright", 1.0)
+
+
 def compose_clip(fr, info, opts, k):
     fw, fh = fr.size; y0, y1, mean, cx_auto = info
     ah = y1 - y0
     cw = ah * W / H
     z = opts.get("zoom", 1.0) * (1.0 + 0.05 * k)
     cwz, chz = cw / z, ah / z
-    cx = opts.get("cx", cx_auto) * fw
-    x0 = float(np.clip(cx - cwz / 2, 0, fw - cwz)); yy = y0 + (ah - chz) * opts.get("cy", 0.4)
+    cx = lerp(opts, "cx", cx_auto, k) * fw
+    x0 = float(np.clip(cx - cwz / 2, 0, fw - cwz)); yy = y0 + (ah - chz) * lerp(opts, "cy", 0.4, k)
     img = fr.resize((W, H), Image.BICUBIC, box=(x0, yy, x0 + cwz, yy + chz))
-    if mean < 52:                                   # night shots: lift them so faces read on a phone
-        img = ImageEnhance.Brightness(img).enhance(min(1.9, 62 / max(mean, 8)))
-        img = ImageEnhance.Contrast(img).enhance(1.06)
+    g = gain(mean, opts)                            # night shots: lift them so faces read on a phone
+    if g != 1.0:
+        img = ImageEnhance.Contrast(ImageEnhance.Brightness(img).enhance(g)).enhance(1.06)
     return img.filter(ImageFilter.UnsharpMask(radius=2.2, percent=70, threshold=2))
+
+
+def compose_fit(fr, info, opts, k):
+    """A wider shot (for a sign or an action the vertical crop would cut): a full-width window of aspect `ar`
+    (default: the picture's own), zoomed by `fit` around cx/cy, sits at fy of the screen over a blurred fill of itself."""
+    fw, fh = fr.size; y0, y1, mean, cx_auto = info
+    ah = y1 - y0
+    z = opts["fit"] * (1.0 + 0.04 * k)
+    ch = ah / z; cw = min(fw / z, ch * opts.get("ar", fw / ah))
+    x0 = float(np.clip(lerp(opts, "cx", 0.5, k) * fw - cw / 2, 0, fw - cw)); yy = y0 + (ah - ch) * lerp(opts, "cy", 0.5, k)
+    fg = fr.resize((W, int(round(W * ch / cw))), Image.BICUBIC, box=(x0, yy, x0 + cw, yy + ch))
+    bw = ah * W / H; bx = float(np.clip(lerp(opts, "cx", 0.5, k) * fw - bw / 2, 0, fw - bw))
+    bg = fr.resize((W // 4, H // 4), Image.BILINEAR, box=(bx, y0, bx + bw, y1)).filter(ImageFilter.GaussianBlur(7)).resize((W, H), Image.BICUBIC)
+    bg = Image.eval(bg, lambda v: int(v * 0.42))
+    g = gain(mean, opts)
+    if g != 1.0:
+        fg = ImageEnhance.Contrast(ImageEnhance.Brightness(fg).enhance(g)).enhance(1.06)
+        bg = ImageEnhance.Brightness(bg).enhance(g)
+    fg = fg.filter(ImageFilter.UnsharpMask(radius=2.2, percent=70, threshold=2))
+    bg.paste(fg, (0, int(H * opts.get("fy", 0.30) - fg.height / 2)))
+    return bg
 
 
 def compose_photo(ph, k):
@@ -173,11 +213,10 @@ def main():
             y[:f] *= np.linspace(0, 1, f)[:, None]; y[-f:] *= np.linspace(1, 0, f)[:, None]
             d = len(y) / SR; film_parts.append((t, y))
             tx = os.path.join(base, "tx", sid + ".json")
-            if os.path.exists(tx):
-                for r in json.load(open(tx)):
-                    for w in r["w"]:
-                        if a <= w[0] < e - 0.1:
-                            words.append({"t0": w[0] - a + t, "t1": min(w[1], e) - a + t, "w": w[2].strip()})
+            src_words = b.get("words") or ([w for r in json.load(open(tx)) for w in r["w"]] if os.path.exists(tx) else [])
+            for w in src_words:                     # "words": [[start, end, "word"], ...] in source time, when the transcript missed a line
+                if a <= w[0] < e - 0.1:
+                    words.append({"t0": w[0] - a + t, "t1": min(w[1], e) - a + t, "w": w[2].strip()})
             seq = b.get("shots") or [[sid, a, {}]]
         else:
             y, path = rd.tts(b.get("speak", b["say"]), voice, speed, cache); d = len(y) / SR      # "speak" = phonetic spelling for the voice
@@ -186,11 +225,14 @@ def main():
             for w in rd.align_script_words(b["say"], heard):
                 words.append({"t0": t + w["s"], "t1": t + w["e"], "w": w["w"]})
             seq = b["shots"]
-        # shots share the beat's duration (optionally weighted)
-        wts = [(s[2].get("w", 1.0) if len(s) > 2 else 1.0) for s in seq]; tot = sum(wts); tt = t
+        # shots share the beat's duration (optionally weighted); "d" pins a shot to a fixed length in seconds
+        opt = [s[2] if len(s) > 2 else {} for s in seq]
+        fixed = sum(o["d"] for o in opt if "d" in o)
+        wts = [o.get("w", 1.0) for o in opt if "d" not in o]; tot = sum(wts) or 1.0; tt = t
         span = d + gap                              # shots also cover the short gap after the beat (no missing frames)
-        for s, wt in zip(seq, wts):
-            sd = span * wt / tot
+        free = max(0.0, span - fixed)
+        for s, o in zip(seq, opt):
+            sd = o["d"] if "d" in o else free * o.get("w", 1.0) / tot
             shots.append({"t0": tt, "t1": tt + sd, "sid": s[0], "st": s[1] if len(s) > 1 else 0, "opts": s[2] if len(s) > 2 else {}})
             tt += sd
         t += d + gap
@@ -244,9 +286,13 @@ def main():
         if key not in infos:
             infos[key] = analyse(path, s["st"], fw, fh)
         rdr = Frames(path, s["st"], f1 - f0, fw, fh)
+        info = infos[key]
+        if "rows" in s["opts"]:                     # override the letterbox detection (very dark frames fool it)
+            info = (int(s["opts"]["rows"][0] * fh), int(s["opts"]["rows"][1] * fh)) + info[2:]
+        comp = compose_fit if "fit" in s["opts"] else compose_clip
         for f in range(f0, f1):
             fr = rdr.next()
-            img = compose_clip(fr, infos[key], s["opts"], (f - f0) / max(1, f1 - f0))
+            img = comp(fr, info, s["opts"], (f - f0) / max(1, f1 - f0))
             caption(img, words, f / FPS)
             enc.stdin.write(img.tobytes()); written += 1
         rdr.close()

@@ -1,0 +1,554 @@
+{
+ "title": "Did you notice this sign in Back to the Future???",
+ "note": "Twin Pines Mall becomes Lone Pine Mall because Marty runs over one of Peabody's two pine trees in 1955. Built to loop: the first frame is the LONE PINE MALL sign, and the last shot (Marty in the same parking lot) cuts back into it. Ends on the fans' 'why don't his parents recognise him?' debate (Bob Gale's answer: The Hollywood Reporter, 2020) to drive comments. Run from the work folder holding src/ and tx/.",
+ "base": ".",
+ "voice": "am_michael",
+ "speed": 1.32,
+ "gap": 0.05,
+ "beats": [
+  {
+   "say": "If you pay attention, you'll notice this mall changes its name in Back to the Future.",
+   "shots": [
+    [
+     "kc7nFh5eOhA",
+     380.6,
+     {
+      "fit": 1.12,
+      "ar": 1.0,
+      "cx": [
+       [
+        0,
+        0.44
+       ],
+       [
+        0.143,
+        0.36
+       ],
+       [
+        0.286,
+        0.315
+       ],
+       [
+        0.5,
+        0.29
+       ],
+       [
+        0.571,
+        0.27
+       ],
+       [
+        0.786,
+        0.245
+       ],
+       [
+        1,
+        0.235
+       ]
+      ],
+      "cy": 0.0,
+      "fy": 0.3,
+      "d": 1.4
+     }
+    ],
+    [
+     "kc7nFh5eOhA",
+     382.05,
+     {
+      "cx": 0.6,
+      "d": 1.2
+     }
+    ],
+    [
+     "FWG3Dfss3Jc",
+     0.3,
+     {
+      "cx": 0.78
+     }
+    ]
+   ]
+  },
+  {
+   "say": "At the start, it's called Twin Pines Mall. And Doc drops a clue right here.",
+   "shots": [
+    [
+     "FWG3Dfss3Jc",
+     22.2,
+     {
+      "cx": 0.45
+     }
+    ],
+    [
+     "FWG3Dfss3Jc",
+     5.7,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "FWG3Dfss3Jc",
+     13.0,
+     {
+      "cx": 0.6
+     }
+    ],
+    [
+     "k-e640rn8S4",
+     4.8,
+     {
+      "cx": 0.68
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "k-e640rn8S4",
+    9.35,
+    11.9
+   ],
+   "shots": [
+    [
+     "k-e640rn8S4",
+     9.35,
+     {
+      "cx": 0.45
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "k-e640rn8S4",
+    12.85,
+    16.65
+   ],
+   "shots": [
+    [
+     "k-e640rn8S4",
+     12.85,
+     {
+      "cx": 0.45,
+      "zoom": 1.15,
+      "w": 1.7
+     }
+    ],
+    [
+     "GW98p3Rq0cg",
+     21.0,
+     {
+      "cx": 0.6,
+      "w": 2.1
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Then Marty goes back to 1955, and crashes right into old man Peabody's barn.",
+   "speak": "Then Marty goes back to nineteen fifty-five, and crashes right into old man Peabody's barn.",
+   "shots": [
+    [
+     "QyrV3UbSdDQ",
+     95.65,
+     {
+      "fit": 1.4,
+      "cx": 0.36,
+      "cy": 0.5,
+      "d": 0.95
+     }
+    ],
+    [
+     "QyrV3UbSdDQ",
+     107.3,
+     {
+      "cx": 0.55
+     }
+    ],
+    [
+     "QyrV3UbSdDQ",
+     113.9,
+     {
+      "cx": 0.33,
+      "d": 0.9
+     }
+    ],
+    [
+     "GW98p3Rq0cg",
+     15.5,
+     {
+      "cx": 0.55
+     }
+    ],
+    [
+     "GW98p3Rq0cg",
+     37.0,
+     {
+      "cx": 0.4
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "GW98p3Rq0cg",
+    41.9,
+    43.3
+   ],
+   "shots": [
+    [
+     "GW98p3Rq0cg",
+     41.9,
+     {
+      "cx": 0.45
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "GW98p3Rq0cg",
+    45.6,
+    47.15
+   ],
+   "shots": [
+    [
+     "GW98p3Rq0cg",
+     58.5,
+     {
+      "cx": 0.5
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Peabody grabs his shotgun. So Marty floors it, and smashes right through one of his two pine trees.",
+   "shots": [
+    [
+     "GW98p3Rq0cg",
+     104.3,
+     {
+      "cx": 0.38,
+      "d": 1.5
+     }
+    ],
+    [
+     "GW98p3Rq0cg",
+     64.5,
+     {
+      "cx": 0.72,
+      "d": 1.17
+     }
+    ],
+    [
+     "GW98p3Rq0cg",
+     115.45,
+     {
+      "cx": 0.5,
+      "d": 0.9
+     }
+    ],
+    [
+     "GW98p3Rq0cg",
+     116.42,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "GW98p3Rq0cg",
+     117.7,
+     {
+      "fit": 1.0,
+      "ar": 1.0,
+      "cx": 0.54,
+      "cy": 0.5,
+      "bright": 1.35,
+      "d": 0.4,
+      "rows": [
+       0,
+       1
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "GW98p3Rq0cg",
+    125.55,
+    126.95
+   ],
+   "words": [
+    [
+     125.66,
+     125.82,
+     "You"
+    ],
+    [
+     125.82,
+     126.16,
+     "killed"
+    ],
+    [
+     126.16,
+     126.44,
+     "a"
+    ],
+    [
+     126.44,
+     126.9,
+     "pine!"
+    ]
+   ],
+   "shots": [
+    [
+     "GW98p3Rq0cg",
+     118.1,
+     {
+      "fit": 1.0,
+      "ar": 1.0,
+      "cx": [
+       [
+        0,
+        0.54
+       ],
+       [
+        1,
+        0.6
+       ]
+      ],
+      "cy": 0.5,
+      "bright": 1.35,
+      "rows": [
+       0,
+       1
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Twin Pines Ranch. Now down to one.",
+   "shots": [
+    [
+     "GW98p3Rq0cg",
+     127.25,
+     {
+      "cx": 0.8,
+      "zoom": 1.2,
+      "cy": 0.5
+     }
+    ]
+   ]
+  },
+  {
+   "say": "So when Marty finally gets back to 1985, look at the sign.",
+   "speak": "So when Marty finally gets back to nineteen eighty-five, look at the sign.",
+   "shots": [
+    [
+     "kc7nFh5eOhA",
+     281.6,
+     {
+      "cx": 0.62
+     }
+    ],
+    [
+     "kc7nFh5eOhA",
+     293.0,
+     {
+      "cx": 0.55
+     }
+    ],
+    [
+     "kc7nFh5eOhA",
+     308.0,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "kc7nFh5eOhA",
+     363.0,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "kc7nFh5eOhA",
+     377.6,
+     {
+      "cx": 0.4
+     }
+    ]
+   ]
+  },
+  {
+   "say": "It's not Twin Pines Mall anymore. It's Lone Pine Mall.",
+   "shots": [
+    [
+     "kc7nFh5eOhA",
+     385.6,
+     {
+      "cx": 0.42
+     }
+    ],
+    [
+     "kc7nFh5eOhA",
+     380.6,
+     {
+      "fit": 1.12,
+      "ar": 1.0,
+      "cx": [
+       [
+        0,
+        0.44
+       ],
+       [
+        0.143,
+        0.36
+       ],
+       [
+        0.286,
+        0.315
+       ],
+       [
+        0.5,
+        0.29
+       ],
+       [
+        0.571,
+        0.27
+       ],
+       [
+        0.786,
+        0.245
+       ],
+       [
+        1,
+        0.235
+       ]
+      ],
+      "cy": 0.0,
+      "fy": 0.3,
+      "d": 1.4
+     }
+    ]
+   ]
+  },
+  {
+   "say": "And here's what fans still argue about. In 1955, Marty spent a whole week with his own parents.",
+   "speak": "And here's what fans still argue about. In nineteen fifty-five, Marty spent a whole week with his own parents.",
+   "shots": [
+    [
+     "Qfs38mrZF-4",
+     100.3,
+     {
+      "cx": 0.52
+     }
+    ],
+    [
+     "Qfs38mrZF-4",
+     104.6,
+     {
+      "cx": 0.38
+     }
+    ],
+    [
+     "Qfs38mrZF-4",
+     28.0,
+     {
+      "cx": 0.38
+     }
+    ],
+    [
+     "Qfs38mrZF-4",
+     119.5,
+     {
+      "cx": 0.55
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "Qfs38mrZF-4",
+    110.4,
+    113.65
+   ],
+   "shots": [
+    [
+     "Qfs38mrZF-4",
+     110.4,
+     {
+      "cx": 0.5,
+      "d": 1.67
+     }
+    ],
+    [
+     "Qfs38mrZF-4",
+     112.1,
+     {
+      "cx": 0.68
+     }
+    ]
+   ]
+  },
+  {
+   "say": "So thirty years later, why don't they notice their son looks exactly like that boy? The writer says they only knew him for about a week. Do you buy that?",
+   "shots": [
+    [
+     "VO4ebmJHFF0",
+     1.5,
+     {
+      "cx": 0.4
+     }
+    ],
+    [
+     "Qfs38mrZF-4",
+     131.0,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "Qfs38mrZF-4",
+     113.0,
+     {
+      "cx": 0.68
+     }
+    ],
+    [
+     "Qfs38mrZF-4",
+     139.0,
+     {
+      "cx": 0.33
+     }
+    ],
+    [
+     "Qfs38mrZF-4",
+     136.2,
+     {
+      "cx": 0.58
+     }
+    ],
+    [
+     "Qfs38mrZF-4",
+     109.0,
+     {
+      "cx": 0.55
+     }
+    ],
+    [
+     "kc7nFh5eOhA",
+     385.0,
+     {
+      "cx": 0.42
+     }
+    ]
+   ]
+  }
+ ],
+ "credits": [
+  "Back to the Future (1985, Universal)",
+  "Bob Gale's answer: The Hollywood Reporter, 2020"
+ ]
+}

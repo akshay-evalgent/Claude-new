@@ -96,3 +96,66 @@ Which movie should we break down next? 👇
 ```
 
 **Settings:** Made for kids: **No** · Altered or synthetic content: **Yes** (AI narrator voice, the safe choice) · Category: Film & Animation
+
+---
+
+## Back to the Future: Twin Pines becomes Lone Pine
+
+**File:** `bttf_lone_pine.mp4` (54.8 s) · **Cover:** `bttf_lone_pine_cover.jpg` (the LONE PINE MALL sign)
+
+**The detail:**
+1. At the start of the film the mall is **Twin Pines Mall**.
+2. Doc drops a clue there: "Old man Peabody owned all of this. He had this crazy idea about breeding pine trees."
+3. In 1955 Marty crashes into Peabody's barn. On his way out he smashes through one of Peabody's two pine trees ("You killed a pine!").
+4. When Marty gets back to 1985, the sign says **Lone Pine Mall**.
+
+**More of the film this time:** about 44 shots, almost all from the film, and 7 real lines from the film:
+- Doc's two Peabody lines;
+- "Looks like an airplane." / "That ain't no airplane.";
+- "You killed a pine!";
+- "You're George McFly." / "Yeah, who are you?"
+
+**Built to be rewatched:**
+- **Frame one is already the answer.** The video opens on the LONE PINE MALL sign. The viewer only learns why it matters at the reveal, so many will replay it to look again.
+- **The last shot loops straight back.** It is Marty in that same parking lot, so the cut back to the sign looks like the next shot of the scene, not a restart.
+- **No outro or call to action.** The last line ends on a question, and the loop starts.
+
+**Built for comments:** it ends on the most argued-about question in the film. Marty spent a week with his teenage parents, so why don't they notice their son looks exactly like "that boy"?
+- It quotes the writer's answer ("they only knew him for about a week") and then asks "Do you buy that?"
+- That gives two sides to argue, and a yes/no answer that is easy to type.
+
+**Title:**
+```
+Did you notice this sign in Back to the Future???
+```
+Alternates: `Marty changed this sign in Back to the Future` · `The Back to the Future detail 99% of people missed`
+
+**Description:**
+```
+At the start of Back to the Future it's Twin Pines Mall. Marty runs over one of old man Peabody's two pine trees in 1955, and when he gets back to 1985 it's Lone Pine Mall.
+
+So why don't Marty's parents ever notice their son looks exactly like the boy they met in 1955? Writer Bob Gale says they only knew him for about a week. Do you buy that?
+
+Send this to the friend who's seen Back to the Future 20 times.
+
+Sources: Back to the Future (1985, Universal); Bob Gale in The Hollywood Reporter (2020).
+Film clips used for commentary.
+
+#backtothefuture #moviedetails #didyouknow #martymcfly #shorts
+```
+
+**Pinned comment:**
+```
+Be honest: did you notice the sign the first time? 👇
+```
+
+**In the first hour after posting:** reply to the early comments on both sides of the "parents" question and heart them. Replies count as comments, and an active thread keeps the Short being pushed.
+
+**Settings:** Made for kids: **No** · Altered or synthetic content: **Yes** (AI narrator voice) · Category: Film & Animation
+
+**Accuracy notes** (in case a commenter asks):
+- Doc's Peabody line is in the released film, in the Twin Pines parking-lot scene.
+- **Peabody's full line** is "You space bastard! You killed a pine!" The video uses only the second half, which keeps the profanity out. The same applies to "Take that, you mutated son of a…", which is not used.
+- **The week:** Marty arrives on 5 November 1955 and leaves on 12 November.
+- **Gale's answer** comes from The Hollywood Reporter, 2020. Reports quote it as "six days" or "eight days", and he notes they didn't see Marty every day. The video says "about a week".
+- **Watermarks:** two of the downloaded uploads carry the uploader's watermark: "Beyond the Marquee" on the farm clip, and a VHS icon on the mall clip. Every crop in the video keeps both out of frame.
