@@ -255,7 +255,7 @@ def perform(rig):
     for name, t0, t1, st in SHOTS:
         fr = f(t0)
         rig.world.set_mode(fr, st == "dawn")
-        sc.view_settings.exposure = {"dawn": 0.0, "sun": -0.4}.get(st, 0.3)
+        sc.view_settings.exposure = {"dawn": -0.35, "sun": -0.4}.get(st, 0.3)
         sc.view_settings.keyframe_insert("exposure", frame=fr)
 
     # ---- headlights / hazards / gauges ("fried" in the dash shot)
@@ -272,8 +272,8 @@ def perform(rig):
     for fr, v in ((1, 6.0), (fry - 1, 6.0), (fry, 0.0)):
         ST.key_value(head_s, fr, v); ST.key_value(tail_s, fr, v / 2)
     a, _ = ends("dash")
-    seq = [2.5, 0.4, 3.5, 0.0, 2.0, 4.0, 0.0, 0.6, 3.0, 0.0, 0.0, 1.5, 0.0]
-    ST.key_value(gauge_s, 1, 2.5); ST.key_value(gauge_s, a + 3, 2.5)
+    seq = [6.0, 0.8, 8.0, 0.0, 5.0, 9.0, 0.0, 1.5, 7.0, 0.0, 0.0, 4.0, 0.0]
+    ST.key_value(gauge_s, 1, 6.0); ST.key_value(gauge_s, a + 3, 6.0)
     for i, v in enumerate(seq):
         ST.key_value(gauge_s, a + 4 + i * 2, v)
     ST.key_value(gauge_s, fry, 0.0)
@@ -341,7 +341,7 @@ def perform(rig):
         pat = [pk * (0.55 + 0.45 * rnd.random()) for _ in range(b - a + 1)]
         rig.flash([(a + i, v) for i, v in enumerate(pat)] + [(b + 1, 0.0)])
         if name in ("antenna_hit", "xray_current", "bolt_macro"):
-            bolt_on(rig.bolts["strike"], a, b, 30 if name != "bolt_macro" else 22, 2.5 if name != "bolt_macro" else 2.0,
+            bolt_on(rig.bolts["strike"], a, b, 30 if name != "bolt_macro" else 24, 1.2 if name == "xray_current" else 0.5,
                     [0.7 + 0.3 * rnd.random() for _ in range(b - a + 1)])
     # distant flickers in the calmer storm shots
     for name in ("shell_paint", "car_smoke", "window_rain", "convertible"):
@@ -434,8 +434,8 @@ def perform(rig):
                    car["root"], speed=(1.0, 3.0), bias=Vector((0, 0.6, 1)), spread=0.9, seed=30)
     # smoke after the strike: antenna base and the bonnet seams
     a, b = ends("car_smoke")
-    ST.smoke("SmokeAnt", Vector((-0.6, 0, C.cab_top(-0.55) + 0.05)), a - 2, b + 6, 8, rig.smoke_mat, rig.fx, car["root"],
-             rise=1.3, size=(0.06, 0.5), seed=40, opacity=0.6)
+    ST.smoke("SmokeAnt", Vector((-0.6, 0, C.cab_top(-0.55) + 0.05)), a - 2, b + 6, 6, rig.smoke_mat, rig.fx, car["root"],
+             rise=1.0, size=(0.05, 0.4), seed=40, opacity=0.35)
     ST.smoke("SmokeHood", Vector((1.6, 0, C.top(1.6) + 0.05)), a, b + 6, 8, rig.smoke_mat, rig.fx, car["root"],
              rise=1.0, size=(0.1, 0.6), seed=41, opacity=0.5)
     # antenna melt: glow + droop
@@ -534,10 +534,10 @@ def perform(rig):
     da = ends("dawn_wide")[0]
     root.rotation_euler = (math.radians(-0.9), math.radians(0.7), 0); root.keyframe_insert("rotation_euler", frame=da)
     root.keyframe_insert("rotation_euler", frame=a + 4)
-    root.rotation_euler = (math.radians(-2.3), math.radians(0.1), 0); root.keyframe_insert("rotation_euler", frame=a + 24)
+    root.rotation_euler = (math.radians(-3.6), math.radians(-0.4), 0); root.keyframe_insert("rotation_euler", frame=a + 24)
     root.location = CAR; root.keyframe_insert("location", frame=da)
     root.keyframe_insert("location", frame=a + 4)
-    root.location = CAR + Vector((0, 0, -0.06)); root.keyframe_insert("location", frame=a + 24)
+    root.location = CAR + Vector((0, 0, -0.08)); root.keyframe_insert("location", frame=a + 24)
     # antenna gives up completely
     kb.value = 1.0; kb.keyframe_insert("value", frame=a + 26)
     return p
@@ -573,8 +573,8 @@ def cam_plan():
     tip = CAR + Vector(C_TIP[0])
     hero_top = HERO[0]; hero_end = HERO[1]
     plan = {
-        "aerial_drive": (24, lambda u, fr: (car_pos(fr) + lerp((-15, 9, 10.5), (-9, 8, 8.0), u),
-                                            car_pos(fr) + Vector((14, -3, -1.5))), None, 0.6, 0),
+        "aerial_drive": (24, lambda u, fr: (car_pos(fr) + lerp((-15, 9, 10.5), (-10, 8, 8.0), u),
+                                            car_pos(fr) + Vector((7, -1.5, -0.5))), None, 0.6, 0),
         "driver_flash": (28, lambda u, fr: (car_pos(fr) + lerp((1.95, 0.55, 1.18), (1.85, 0.42, 1.16), u),
                                             car_pos(fr) + Vector((-0.1, 0.37, 1.12))), 2.8, 0.4, 0),
         "tire_roll": (30, lambda u, fr: (car_pos(fr) + lerp((2.4, 2.05, 0.22), (1.9, 1.75, 0.2), u),
@@ -592,7 +592,7 @@ def cam_plan():
         "xray_cabin": (32, lambda u, fr: (cw(lerp((-0.4, 3.6, 1.25), (0.0, 3.4, 1.2), u)), cw((-0.1, 0.2, 0.95))), None, 0.4, 0),
         "driver_xray": (40, lambda u, fr: (cw(lerp((0.9, 2.2, 1.35), (0.7, 2.0, 1.3), u)), cw((-0.15, 0.37, 1.05))), 3.0, 0.4, 0),
         "car_smoke": (30, lambda u, fr: (cw(lerp((5.6, 3.8, 1.6), (5.1, 3.5, 1.55), u)), cw((0, 0, 1.0))), None, 0.3, 0),
-        "bolt_macro": (35, lambda u, fr: (MACRO_PT[0] + lerp((1.5, 1.2, 0.3), (1.15, 0.95, 0.2), u), MACRO_PT[0]), 1.4, 0.6, 0),
+        "bolt_macro": (35, lambda u, fr: (MACRO_PT[0] + lerp((2.7, 2.2, 0.2), (2.3, 1.9, 0.1), u), MACRO_PT[0]), 2.0, 0.6, 0),
         "sun": (35, lambda u, fr: (ST.SUN_P + lerp((0, -900, 40), (0, -760, 30), u), ST.SUN_P + Vector((0, 0, 30))), None, 0.0, 0),
         "antenna_melt": (60, lambda u, fr: (cw(lerp((0.3, 0.95, 2.05), (0.2, 0.85, 2.0), u)), cw((-0.75, 0, 1.68))), 2.5, 0.2, 0),
         "tire_pop": (35, lambda u, fr: (cw(lerp((2.6, 2.15, 0.5), (2.5, 2.05, 0.48), u)), cw((1.375, 0.85, 0.3))), 3.2, 0.6, 0),
@@ -605,8 +605,8 @@ def cam_plan():
         "conv_xray": (28, lambda u, fr: (ST.CONV_P + lerp((4.2, 4.4, 3.3), (3.6, 4.0, 3.0), u), ST.CONV_P + Vector((0, 0, 0.8))), None, 0.5, 0),
         "dawn_wide": (24, lambda u, fr: (cw(lerp((9.5, 7.8, 1.6), (8.8, 7.2, 1.5), u)), cw((0.0, 0.6, 0.9))), None, 0.15, 0),
         "step_out": (40, lambda u, fr: (cw(lerp((2.6, 5.2, 1.45), (2.4, 4.8, 1.4), u)), cw((0.45, 1.62, 1.25))), 4.0, 0.15, 0),
-        "hubcap": (28, lambda u, fr: (cw(lerp((-7.6, 3.3, 0.6), (-7.3, 3.1, 0.58), u)), cw(lerp((-1.3, 1.4, 0.5), (-3.8, 2.3, 0.3), _ease(u)))), 5.0, 0.3, 0),
-        "sag": (24, lambda u, fr: (cw(lerp((4.3, 7.8, 1.5), (4.0, 7.3, 1.45), u)), cw((-0.7, 0.8, 0.72))), None, 0.15, 0),
+        "hubcap": (28, lambda u, fr: (cw(lerp((-6.9, 4.0, 1.45), (-6.6, 3.8, 1.4), u)), cw(lerp((-1.4, 1.3, 0.45), (-3.8, 2.4, 0.22), _ease(u)))), 5.0, 0.3, 0),
+        "sag": (22, lambda u, fr: (cw(lerp((3.4, 8.4, 1.4), (3.1, 7.9, 1.36), u)), cw((-1.0, 0.6, 0.7))), None, 0.15, 0),
     }
     return plan
 

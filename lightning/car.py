@@ -623,6 +623,10 @@ def lights(coll, parent):
         tl.data.energy = 6; tl.data.color = (1.0, 0.05, 0.03); tl.data.shadow_soft_size = 0.1
         tl.parent = parent; tl.location = (-L2 - 0.1, side * 0.65, 0.85)
         out.append(tl)
+    dg = bpy.data.objects.new("DashGlow", bpy.data.lights.new("DashGlow", "POINT")); S.link(dg, coll)
+    dg.data.energy = 6.0; dg.data.color = (0.45, 0.7, 1.0); dg.data.shadow_soft_size = 0.15
+    dg.parent = parent; dg.location = (0.55, 0.2, 0.98)
+    out.append(dg)
     return out
 
 

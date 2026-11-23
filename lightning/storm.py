@@ -94,7 +94,8 @@ class World:
         storm_col = S._mix(nt, 1.0, storm.outputs["Color"], (0.30, 0.36, 0.5), blend="MULTIPLY")
         self.dawn_mix = nt.nodes.new("ShaderNodeValue"); self.dawn_mix.label = "DawnMix"
         self.dawn_mix.outputs[0].default_value = 0.0
-        col = S._mix(nt, self.dawn_mix.outputs[0], storm_col, dawn.outputs["Color"])
+        dawn_col = S._mix(nt, 1.0, dawn.outputs["Color"], (1.0, 0.86, 0.72), blend="MULTIPLY")
+        col = S._mix(nt, self.dawn_mix.outputs[0], storm_col, dawn_col)
         self.flash = nt.nodes.new("ShaderNodeValue"); self.flash.label = "Flash"
         self.flash.outputs[0].default_value = 0.0
         self.strength = nt.nodes.new("ShaderNodeValue"); self.strength.label = "SkyStrength"
@@ -117,7 +118,7 @@ class World:
     def set_mode(self, frame, dawn):
         key_value(self.dawn_mix.outputs[0], frame, 1.0 if dawn else 0.0)
         key_value(self.strength.outputs[0], frame, 1.0 if dawn else 0.55)
-        self.dawn_sun.data.energy = 4.5 if dawn else 0.0
+        self.dawn_sun.data.energy = 6.0 if dawn else 0.0
         self.dawn_sun.data.keyframe_insert("energy", frame=frame)
 
 
@@ -294,10 +295,11 @@ def cloud_ceiling(flash_lights):
     mp = nt.nodes.new("ShaderNodeMapping"); mp.inputs["Scale"].default_value = (0.004, 0.004, 0.004)
     nt.links.new(tc.outputs["Object"], mp.inputs["Vector"])
     n1 = S._noise(nt, mp.outputs[0], 2.5, 8, 0.62)
-    nt.links.new(S._ramp(nt, n1, [(0.35, (0.03, 0.035, 0.045)), (0.6, (0.12, 0.13, 0.16)), (0.8, (0.28, 0.3, 0.36))]),
-                 b.inputs["Base Color"])
+    cc = S._ramp(nt, n1, [(0.35, (0.03, 0.035, 0.045)), (0.6, (0.12, 0.13, 0.16)), (0.8, (0.28, 0.3, 0.36))])
+    nt.links.new(cc, b.inputs["Base Color"]); nt.links.new(cc, b.inputs["Emission Color"])
+    b.inputs["Emission Strength"].default_value = 0.35
     b.inputs["Roughness"].default_value = 1.0
-    o = S.grid("CloudBase", 4000, 4000, 1, 1, m, coll, z=0.0)
+    o = S.grid("CloudBase", 60000, 60000, 1, 1, m, coll, z=0.0)
     o.rotation_euler = (math.pi, 0, 0)       # face down
     o.location = (CAR_P.x, CAR_P.y, 420)
     lamp = bpy.data.objects.new("CloudGlow", bpy.data.lights.new("CloudGlow", "POINT")); S.link(lamp, coll)
@@ -419,9 +421,9 @@ def bolt_materials():
     em2.inputs["Strength"].default_value = 0.0
     tr = nt.nodes.new("ShaderNodeBsdfTransparent")
     add = nt.nodes.new("ShaderNodeAddShader")
-    fac = S._math(nt, "POWER", lw.outputs["Facing"], 3.0)
+    fac = S._math(nt, "POWER", S._math(nt, "SUBTRACT", 1.0, lw.outputs["Facing"]), 3.0)
     mix = nt.nodes.new("ShaderNodeMixShader")
-    nt.links.new(S._math(nt, "SUBTRACT", 1.0, fac), mix.inputs[0])
+    nt.links.new(S._math(nt, "MULTIPLY", fac, 0.8), mix.inputs[0])
     nt.links.new(tr.outputs[0], mix.inputs[1]); nt.links.new(em2.outputs[0], mix.inputs[2])
     nt.links.new(mix.outputs[0], out.inputs["Surface"])
     return core, em.inputs["Strength"], halo, em2.inputs["Strength"]
