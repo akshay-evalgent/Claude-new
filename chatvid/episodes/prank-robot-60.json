@@ -1,0 +1,196 @@
+{
+ "engine": "imsg",
+ "format": "vertical",
+ "crf": 18,
+ "fps": 30,
+ "minuteEvery": 40,
+ "typeSpeed": 28,
+ "readMul": 0.7,
+ "pace": 0.62,
+ "tail": 0.3,
+ "booms": true,
+ "music": {
+  "track": "kidding-around",
+  "gain": -27
+ },
+ "loopOut": true,
+ "contact": "agent",
+ "title": "Pranking my FBI agent my science project got a little bigger",
+ "clock": "3:42",
+ "unread": "1",
+ "cameraRoll": [
+  "🐶",
+  "🍕",
+  "🔧",
+  "☕",
+  "🔋",
+  "🎮",
+  "🍪",
+  "📦",
+  "🌮"
+ ],
+ "hook": {
+  "stages": [
+   {
+    "media": "flow-robot-a",
+    "at": 2.5
+   },
+   {
+    "media": "flow-robot-b",
+    "at": 2.5
+   },
+   {
+    "media": "flow-robot-c",
+    "at": 3.0
+   }
+  ],
+  "open": "payoff",
+  "caption": "Pranking my FBI agent my science project got \"a little\" bigger💀😭",
+  "dur": 3.6
+ },
+ "tool": {
+  "style": "edit",
+  "quick": true,
+  "photo": {
+   "media": "flow-robot-a",
+   "at": 0.3
+  },
+  "result": {
+   "media": "flow-robot-c",
+   "at": 3.0
+  },
+  "prompt": "Make him huge",
+  "project": "Garage 1 of 1"
+ },
+ "history": [
+  {
+   "them": "I saw the ice sculpture. Explain."
+  },
+  {
+   "me": "corporate synergy"
+  },
+  {
+   "them": "This is going in the report."
+  }
+ ],
+ "media": {
+  "flow-robot-a": {
+   "file": "placeholder-robot-a.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-robot-b": {
+   "file": "placeholder-robot-b.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-robot-c": {
+   "file": "placeholder-robot-c.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  }
+ },
+ "beats": [
+  {
+   "me": "you watching rn?"
+  },
+  {
+   "them": "I am always watching."
+  },
+  {
+   "them": "What are you doing in the garage."
+  },
+  {
+   "me": "small science project"
+  },
+  {
+   "them": "How small."
+  },
+  {
+   "me": "very small. look"
+  },
+  {
+   "media": "flow-robot-a",
+   "at": 2.5
+  },
+  {
+   "them": "That's actually cute."
+  },
+  {
+   "them": "Don't tell anyone I said that."
+  },
+  {
+   "me": "his name is kevin"
+  },
+  {
+   "them": "Please don't name it."
+  },
+  {
+   "me": "kevin wanted to be taller"
+  },
+  {
+   "them": "Absolutely not."
+  },
+  {
+   "media": "flow-robot-b",
+   "at": 2.5
+  },
+  {
+   "them": "WHY ARE KEVINS EYES GLOWING"
+  },
+  {
+   "them": "WHAT IS HE PLUGGED INTO"
+  },
+  {
+   "me": "the dryer"
+  },
+  {
+   "them": "THAT IS NOT HOW DRYERS WORK"
+  },
+  {
+   "me": "dw i unplugged him"
+  },
+  {
+   "them": "Thank you."
+  },
+  {
+   "me": "he plugged himself back in"
+  },
+  {
+   "them": "Jordan."
+  },
+  {
+   "me": "he wants to say hi to you"
+  },
+  {
+   "media": "flow-robot-c",
+   "at": 3.0
+  },
+  {
+   "them": "WHY IS HE WAVING AT MY VAN"
+  },
+  {
+   "them": "HOW DOES HE KNOW WHICH VAN IS MINE"
+  },
+  {
+   "me": "everyone knows which van is yours 😭"
+  },
+  {
+   "them": "I AM GOING TO HAVE TO EXPLAIN THIS TO MY SUPERVISOR"
+  },
+  {
+   "me": "kevin said your supervisor is in the other van",
+   "unsent": true
+  }
+ ],
+ "next": {
+  "contact": "mom",
+  "text": "Why is there a robot in my driveway?",
+  "tag": "follow for part 2"
+ },
+ "youtube": {
+  "title": "He was NOT ready for Kevin😭 #prank #fbi #robot #funnyvideo #comedyshorts",
+  "description": [],
+  "tags": []
+ }
+}
