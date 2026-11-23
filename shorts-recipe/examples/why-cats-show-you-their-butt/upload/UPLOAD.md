@@ -54,7 +54,13 @@ why do cats show you their butt, cat butt in face, cat tail up meaning, cat gree
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | Your view from the sofa: the cat's back to you, tail straight up, caption "When your cat sticks" | **Main pick.** Every cat owner knows this view; it's the frame the video opens and loops on |
+| `thumbnail-alt-nose-touch.jpg` | The ginger cat and the silver tabby nose to nose, caption "they touch noses" | Cute angle |
+| `thumbnail-alt-scent-id.jpg` | Two glowing "SCENT ID" cards over the cat, "UNIQUE TO EACH CAT" | Curiosity angle |
+| `thumbnail-alt-tail-up-hello.jpg` | The cat walking with its tail high, "TAIL UP = HELLO" | Answer-up-front angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
