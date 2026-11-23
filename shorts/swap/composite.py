@@ -1,11 +1,14 @@
 # composite.py [frames...] : remove Biff (inpaint) and place the rendered figure over him -> swap16x9.mp4 (or test pngs)
-import json, sys, subprocess, numpy as np, cv2
+import json, sys, os, subprocess, numpy as np, cv2
 from PIL import Image, ImageFilter
 W, H = 1920, 1080
 place = {p["f"]: (i, p) for i, p in enumerate(json.load(open("place.json")))}
 meta = json.load(open("figframes/meta.json"))
 CARI = 1.38                                                     # figure head = 1.38 x Biff's head width (big-headed caricature)
 rng = np.random.default_rng(1)
+_r = np.array([[m.get("rx", 0), m.get("ry", 0)] for m in meta]); SHIFT = _r.copy()
+for c in (0, 1):                                               # smooth the slide so the figure doesn't jitter
+    SHIFT[:, c] = np.convolve(np.pad(_r[:, c], 4, mode="edge"), np.ones(9) / 9, "valid")
 def get_mask(f, tid):
     z = np.load(f"det/{min(f, 473):04d}.npz"); ids = list(z["ids"].astype(int))
     return z["masks"][ids.index(tid)].astype(np.uint8) if tid in ids else None
@@ -15,6 +18,8 @@ def comp(f, img):
     m = get_mask(f, p["tid"])
     small = cv2.resize(img, (W // 2, H // 2), interpolation=cv2.INTER_AREA)
     occs = [om for om in (get_mask(f, t) for t in p["occ"]) if om is not None]
+    if os.path.exists(f"fills/{f:04d}.jpg"):                   # clean plate from fill2.py (LaMa / nearby frames)
+        img = cv2.imread(f"fills/{f:04d}.jpg"); m = None
     if m is not None:                                          # 1) erase Biff: inpaint at half res inside his (dilated) mask
         ys, xs = np.where(m)                                   # ...plus any of his red shirt the mask missed, near him
         x0, x1, y0, y1 = xs.min(), xs.max(), ys.min(), ys.max(); px, py = int((x1 - x0) * 0.25), int((y1 - y0) * 0.1)
@@ -31,9 +36,11 @@ def comp(f, img):
         a = cv2.GaussianBlur(cv2.resize(md.astype(np.float32), (W, H)), (0, 0), 4)[..., None]
         img = (img * (1 - a) + fillF * a).astype(np.uint8)
     fig = Image.open(f"figframes/{k:04d}.png").convert("RGBA")  # 2) the figure, scaled so its head is CARI x Biff's head
-    mt = meta[k]; s = CARI * p["hw"] / mt["ppu"]
+    mt = meta[k]; s = p.get("cari", CARI) * p["hw"] / mt["ppu"]
     fig = fig.resize((int(fig.width * s), int(fig.height * s)), Image.LANCZOS).filter(ImageFilter.GaussianBlur(0.7))
     ox, oy = int(p["cx"] - mt["ax"] * s), int(p["top"] - 0.06 * p["hw"] - mt["ay"] * s)
+    if "rx" in mt:                                             # arm couldn't quite reach: slide the figure the rest of the way
+        ox += int(SHIFT[k][0] * s); oy += int(SHIFT[k][1] * s)
     fa = np.array(fig).astype(np.float32)
     layer = np.zeros((H, W, 4), np.float32)
     x0, y0, x1, y1 = max(ox, 0), max(oy, 0), min(ox + fig.width, W), min(oy + fig.height, H)

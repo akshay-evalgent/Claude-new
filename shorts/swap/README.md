@@ -14,13 +14,21 @@ Run every step from a work folder that holds `seg.mkv` (the clip) and `seg.wav` 
 7. `node figrender.js poses.json figframes`: renders the figure for every frame (three.js in headless Chromium).
    - Serve `fig/` first with `python3 -m http.server 8765`.
    - Copy `three.module.min.js` into `fig/` beforehand.
-8. `python3 composite.py`: removes the actor and places the figure over them, producing `swap16x9_v.mp4`. It:
-   - inpaints the actor's mask, plus any of their red shirt the mask missed;
-   - scales the figure from the head width;
-   - hides the figure behind anyone standing in front of the actor and behind the counter.
-9. `python3 assemble.py`: builds the vertical Short `swap_test.mp4`. It:
+8. `python3 fill2.py A,C,E,F` builds a clean plate for every frame (`fills/`), saved as `fills/NNNN.jpg`. On this CPU it takes about 70 minutes.
+   - **Real background first:** in shots where the actor walks away, it borrows real background from nearby frames. Frames where the actor wasn't detected are skipped, and a wide margin is kept around him so none of his pixels leak back in.
+   - **LaMa (big-lama, `inpaint.py`) for the rest:** it redraws anything no frame ever shows. In a static shot that fill is held from frame to frame so it doesn't flicker.
+   - **Wider hole:** the hole also takes in any of the actor's red shirt the mask missed, but only red patches touching him and outside everyone else, so other people's lips are left alone.
+   - **Contact shots:** where the actor's hand touches someone, his real hand is left in place, so the other person's face is never redrawn.
+   - The model goes in `../models/big-lama.pt` (from the simple-lama-inpainting release).
+9. `python3 composite.py` places the figure over the clean plates and writes `swap16x9_v.mp4`.
+   - **Scale:** set from the actor's head width; hand-held where the mask collapses.
+   - **Contact shots:** the near arm reaches each frame to Biff's hand position, marked by eye in `HAND` in `poses.py`, with an enlarged hand that covers the real one.
+   - **Occlusion:** the figure is hidden behind people in front of it and behind the counter.
+10. `python3 assemble.py`: builds the vertical Short `swap_test.mp4`. It:
    - removes the actor's voice and adds the new lines with a touch of room echo;
    - mixes to -14 LUFS;
    - lays out a 4:3 window over a blurred fill, with a PARODY tag and one word of caption at a time.
 
-**Limits:** fast, motion-blurred hands are not caught by the mask; the test simply cuts that second out. Large inpainted areas, such as where the actor's arm covered someone's face, show as soft smudges.
+**Limits:**
+- Fast, motion-blurred hands aren't caught by the mask, so that second is cut.
+- A new clip needs its shots, keyframes and hand marks set by hand: a few hours of work.

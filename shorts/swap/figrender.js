@@ -10,7 +10,7 @@ const { chromium } = require('playwright'); const fs = require('fs');
   await page.waitForFunction('window.READY === true', null, { timeout: 120000 });
   const meta = [];
   for (let i = 0; i < poses.length; i++) {
-    const m = await page.evaluate(p => window.setPose(p), poses[i]);
+    const m = poses[i].target ? await page.evaluate(([p, t]) => window.solveArm(p, t[0], t[1]), [poses[i], poses[i].target]) : await page.evaluate(p => window.setPose(p), poses[i]);
     const b64 = await page.evaluate(() => window.png());
     fs.writeFileSync(`${out}/${String(i).padStart(4, '0')}.png`, Buffer.from(b64.split(',')[1], 'base64'));
     meta.push(m);

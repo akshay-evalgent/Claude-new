@@ -7,12 +7,17 @@ KEYS = {   # frame: pose keyframes (linear in between)
        42: dict(yaw=0.05, armR=0.1, armL=0.1, armRz=0.15, armLz=0.15), 63: dict(yaw=0.0, armR=0.1, armL=0.1, armRz=0.12, armLz=0.12)},
  "C": {123: dict(yaw=0.35), 145: dict(yaw=0.55, armR=0.35, armRz=0.9, armLz=0.5), 160: dict(yaw=0.65, armR=0.3, armRz=0.8, armLz=0.4),
        178: dict(yaw=0.7, lean=0.1, armR=0.2, armRz=0.2, armLz=0.15), 200: dict(yaw=0.6, lean=0.25, armR=0.5, armL=0.5), 222: dict(yaw=0.6, lean=0.25, armR=0.5, armL=0.5)},
- "E": {280: dict(yaw=1.05, lean=0.1, armR=1.0, armRz=0.1, armL=0.1), 360: dict(yaw=1.05, lean=0.12, armR=1.0, armRz=0.1, armL=0.1),
+ "E": {280: dict(yaw=1.05, lean=0.1, armR=1.0, armRz=0.1, armL=-0.35), 360: dict(yaw=1.05, lean=0.12, armR=1.0, armRz=0.1, armL=-0.35),
        372: dict(yaw=1.15, lean=0.35, armR=1.3, armL=0.1), 382: dict(yaw=1.2, lean=0.45, armR=1.35, armL=0.1)},
- "F": {383: dict(yaw=1.25, lean=0.15, armR=1.25, armL=0.05, armLz=0.1), 473: dict(yaw=1.25, lean=0.15, armR=1.25, armL=0.05, armLz=0.1)},
+ "F": {383: dict(yaw=1.25, lean=0.15, armR=1.25, armL=-0.45, armLz=0.05), 473: dict(yaw=1.25, lean=0.15, armR=1.25, armL=-0.45, armLz=0.05)},
 }
 WALK = {"A": (0, 63), "C": (123, 178)}
-KNOCK = [(16.4, 17.0), (17.2, 18.3)]
+KNOCK = []                                                 # (the knocking now follows Biff's real hand)
+HAND = {383: (1260, 450), 395: (1320, 490), 405: (1290, 460), 415: (1270, 460), 425: (1270, 480), 435: (1280, 450),
+        445: (1360, 360), 455: (1420, 380), 465: (1420, 360), 473: (1440, 370)}      # Biff's hand on George, by eye (full-res px)
+CARI = {"A": 1.38, "C": 1.38, "E": 1.38, "F": 1.5}
+import os
+prev_meta = json.load(open("figframes/meta.json")) if os.path.exists("figframes/meta.json") else None
 lines = json.load(open("lines.json"))
 env = np.zeros(int(21 * 100))                              # mouth from the new lines' loudness, 100 Hz
 for L in lines:
@@ -57,7 +62,15 @@ for name, (a, b, tid, occ) in SHOTS.items():
             hw, cx, top = 360.0, ea["cx"], ea["top"]
         else:
             hw, cx, top = hws[k], cxs[k], tops[k]
-        poses.append(p); place.append({"f": f, "shot": name, "tid": tid, "occ": occ, "clip": 905 if (name == "C" and f >= 165) else None, "hw": float(hw), "cx": float(cx), "top": float(top)})
+            if name == "C": hw = max(hw, 182.0)                # his mask collapses as he leans in at the end: hold the size
+        if name == "F":
+            p["handScale"] = 1.5
+            hk = sorted(HAND); hx = np.interp(f, hk, [HAND[k][0] for k in hk]); hy = np.interp(f, hk, [HAND[k][1] for k in hk])
+            if prev_meta:                                  # frame px -> figure canvas px (the head anchor does not depend on the arm)
+                mt = prev_meta[len(poses)]; sc = CARI[name] * hw / mt["ppu"]
+                ox, oy = cx - mt["ax"] * sc, top - 0.06 * hw - mt["ay"] * sc
+                p["target"] = [float((hx - ox) / sc), float((hy - oy) / sc)]
+        poses.append(p); place.append({"cari": CARI[name], "f": f, "shot": name, "tid": tid, "occ": occ, "clip": 905 if (name == "C" and f >= 165) else None, "hw": float(hw), "cx": float(cx), "top": float(top)})
 json.dump(poses, open("poses.json", "w")); json.dump(place, open("place.json", "w"))
 print(len(poses), "poses")
 for q in place[::25]: print(q["f"], q["shot"], round(q["hw"]), round(q["cx"]), round(q["top"]))
