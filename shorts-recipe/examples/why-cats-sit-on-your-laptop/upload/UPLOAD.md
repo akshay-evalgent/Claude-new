@@ -54,7 +54,13 @@ why do cats sit on laptops, cat on keyboard, cat on laptop, why do cats like war
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | A tabby fast asleep across an open laptop, caption "Your cat isn't sitting" | **Main pick.** Says "cat on laptop" at a glance; it's the frame the video opens and loops on |
+| `thumbnail-alt-thermal.jpg` | The same cat in the thermal view, glowing yellow-hot, caption "on a heater" | Curiosity angle: the most unusual-looking frame |
+| `thumbnail-alt-on-the-keys.jpg` | The ginger cat stepping onto the keyboard, caption "so it sits right on it" | Action angle (the share prompt is on screen here too) |
+| `thumbnail-alt-comfort-zone.jpg` | The thermometer: "CAT 30–38 °C", the tabby by the fire | Science angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
