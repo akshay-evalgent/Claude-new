@@ -1,0 +1,203 @@
+{
+ "engine": "imsg",
+ "format": "vertical",
+ "crf": 18,
+ "fps": 30,
+ "minuteEvery": 40,
+ "typeSpeed": 28,
+ "readMul": 0.7,
+ "pace": 0.62,
+ "tail": 0.3,
+ "booms": true,
+ "music": {
+  "track": "kidding-around",
+  "gain": -27
+ },
+ "loopOut": true,
+ "contact": "dad",
+ "audience": "india",
+ "title": "Pranking my dad the baraat got a little bigger",
+ "clock": "7:18",
+ "unread": "4,219",
+ "cameraRoll": [
+  "🐶",
+  "🍛",
+  "🌺",
+  "☕",
+  "🪔",
+  "🍬",
+  "🐘",
+  "📸",
+  "🥭"
+ ],
+ "hook": {
+  "stages": [
+   {
+    "media": "flow-baraat-a",
+    "at": 2.5
+   },
+   {
+    "media": "flow-baraat-b",
+    "at": 2.5
+   },
+   {
+    "media": "flow-baraat-c",
+    "at": 3.0
+   }
+  ],
+  "open": "payoff",
+  "caption": "Pranking my dad the baraat got \"a little\" bigger💀😭",
+  "dur": 3.6
+ },
+ "tool": {
+  "style": "edit",
+  "quick": true,
+  "photo": {
+   "media": "flow-baraat-a",
+   "at": 0.3
+  },
+  "result": {
+   "media": "flow-baraat-c",
+   "at": 3.0
+  },
+  "prompt": "Add 3 elephants",
+  "project": "Shaadi 1 of 1"
+ },
+ "history": [
+  {
+   "them": "why is my hotel phone ringing at 6am"
+  },
+  {
+   "me": "thats the wedding planner"
+  },
+  {
+   "them": "the wedding is in 3 days"
+  },
+  {
+   "me": "this is day 1 of 5"
+  }
+ ],
+ "media": {
+  "flow-baraat-a": {
+   "file": "placeholder-baraat-a.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-baraat-b": {
+   "file": "placeholder-baraat-b.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-baraat-c": {
+   "file": "placeholder-baraat-c.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  }
+ },
+ "beats": [
+  {
+   "them": "are you with the groom"
+  },
+  {
+   "me": "yeah the baraat is starting"
+  },
+  {
+   "them": "whats a baraat"
+  },
+  {
+   "me": "the groom rides to the venue and everyone dances"
+  },
+  {
+   "them": "ok. 10 minutes. i paid for ONE horse"
+  },
+  {
+   "me": "one horse got it"
+  },
+  {
+   "media": "flow-baraat-a",
+   "at": 2.5
+  },
+  {
+   "them": "ok thats actually beautiful"
+  },
+  {
+   "them": "tell your cousin to sit up straight"
+  },
+  {
+   "me": "the uncles said one horse is a little sad"
+  },
+  {
+   "them": "its a horse not a parade"
+  },
+  {
+   "me": "they upgraded"
+  },
+  {
+   "media": "flow-baraat-b",
+   "at": 2.5
+  },
+  {
+   "them": "WHY IS HE ON AN ELEPHANT"
+  },
+  {
+   "them": "WHERE DID THE HORSE GO"
+  },
+  {
+   "me": "the horse is dancing too"
+  },
+  {
+   "them": "WHO IS PAYING FOR THE ELEPHANT"
+  },
+  {
+   "me": "priyas uncle said its a gift"
+  },
+  {
+   "them": "oh thats nice"
+  },
+  {
+   "me": "he said the next one is on you"
+  },
+  {
+   "them": "THE NEXT WHAT"
+  },
+  {
+   "me": "dw they're almost at the venue"
+  },
+  {
+   "them": "thank god"
+  },
+  {
+   "me": "they've moved 40 meters in 3 hours 😭"
+  },
+  {
+   "media": "flow-baraat-c",
+   "at": 3.0
+  },
+  {
+   "them": "HOLY SHIT"
+  },
+  {
+   "them": "IS THAT THE WHOLE CITY"
+  },
+  {
+   "me": "no thats just the grooms side"
+  },
+  {
+   "them": "I PAID FOR ONE HORSE NOT A NATIONAL HOLIDAY"
+  },
+  {
+   "me": "the dj said you have to dance now",
+   "unsent": true
+  }
+ ],
+ "next": {
+  "contact": "friend",
+  "text": "My uncle says your dad owes him an elephant",
+  "tag": "follow for part 2"
+ },
+ "youtube": {
+  "title": "Dad was NOT ready for an Indian wedding😭 #prank #shaadi #baraat #funnyvideo #comedyshorts",
+  "description": [],
+  "tags": []
+ }
+}
