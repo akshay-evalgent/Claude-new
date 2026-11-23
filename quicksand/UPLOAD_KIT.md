@@ -7,10 +7,13 @@
 **Title**
 
 ```
-How To Escape Quicksand 😨
+Pulling Your Leg Out Of Quicksand 🤯
 ```
 
-Backups in the same format: `Why You Can't Pull Your Leg Out Of Quicksand 😨`, `Quicksand Can't Swallow You Whole 🤔`
+Zack D. Films already has "How To Survive Quicksand 😨" (20.7M views, 2024), so this title leads with our
+own angle, the car-lifting force, instead of competing with theirs. It uses their gerund format
+("Turning Your Finger Into A Gun 😨", "Escaping A Grain Bin 😰").
+Backup: `Quicksand Can't Pull You Under 🤔`
 
 **Description:** leave it blank. Every one of Zack's 15 latest uploads has an empty description.
 If you want a line anyway, use only the source:
