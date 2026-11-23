@@ -34,15 +34,15 @@
   "stages": [
    {
     "media": "flow-baraat-a",
-    "at": 2.5
+    "at": 3.2
    },
    {
     "media": "flow-baraat-b",
-    "at": 2.5
+    "at": 4.0
    },
    {
     "media": "flow-baraat-c",
-    "at": 3.0
+    "at": 2.5
    }
   ],
   "open": "payoff",
@@ -58,7 +58,7 @@
   },
   "result": {
    "media": "flow-baraat-c",
-   "at": 3.0
+   "at": 2.5
   },
   "prompt": "Add 3 elephants",
   "project": "Shaadi 1 of 1"
@@ -79,17 +79,17 @@
  ],
  "media": {
   "flow-baraat-a": {
-   "file": "placeholder-baraat-a.mp4",
+   "file": "flow-baraat-a.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   },
   "flow-baraat-b": {
-   "file": "placeholder-baraat-b.mp4",
+   "file": "flow-baraat-b.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   },
   "flow-baraat-c": {
-   "file": "placeholder-baraat-c.mp4",
+   "file": "flow-baraat-c.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   }
@@ -115,7 +115,7 @@
   },
   {
    "media": "flow-baraat-a",
-   "at": 2.5
+   "at": 3.2
   },
   {
    "them": "ok thats actually beautiful"
@@ -134,7 +134,7 @@
   },
   {
    "media": "flow-baraat-b",
-   "at": 2.5
+   "at": 4.0
   },
   {
    "them": "WHY IS HE ON AN ELEPHANT"
@@ -171,7 +171,7 @@
   },
   {
    "media": "flow-baraat-c",
-   "at": 3.0
+   "at": 2.5
   },
   {
    "them": "HOLY SHIT"
