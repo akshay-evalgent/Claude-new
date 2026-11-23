@@ -140,7 +140,7 @@ def outputs(hist, out):
 
 def prompt_text(s, key):
     t = s[key].replace("HEROFACE", DATA.get("hero_face", DATA["hero"])).replace("HERO", DATA["hero"])
-    return t + " " + DATA["style"]
+    return t + " " + DATA.get("style_" + s.get("style", ""), DATA["style"])   # a shot can name another style, e.g. "scene"
 
 
 def wf_keyframe(text, seed, prefix):
