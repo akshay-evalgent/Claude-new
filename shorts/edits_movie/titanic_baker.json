@@ -3,60 +3,523 @@
  "note": "Charles Joughin, chief baker. Facts: Wikipedia 'Charles Joughin' (his British inquiry testimony) and 'Sinking of the Titanic'. Colour shots: Titanic (1997). Black-and-white shots: A Night to Remember (1958). Photos: public domain (Wikimedia Commons). Run from the work folder that holds src/, photos/ and tx/.",
  "base": ".",
  "voice": "am_michael",
- "speed": 1.22,
+ "speed": 1.32,
  "gap": 0.05,
  "beats": [
-  {"say": "If you pay attention, you'll notice one man in Titanic who is way too calm.",
-   "shots": [["DEz_gv1y2Nw", 193.3, {"cx": 0.5, "zoom": 1.15}], ["0uUm-8Jz6x8", 161.6], ["DEz_gv1y2Nw", 182.9]]},
-  {"say": "While the ship is going down, and everyone around him is screaming,",
-   "shots": [["KMw7BXd9npk", 22.5, {"cx": 0.5}], ["KMw7BXd9npk", 75.2], ["DEz_gv1y2Nw", 209.2, {"cx": 0.62}]]},
-  {"say": "he's holding the railing right next to Jack and Rose,",
-   "shots": [["DEz_gv1y2Nw", 181.3, {"cx": 0.4}], ["0uUm-8Jz6x8", 169.2, {"cx": 0.42}]]},
-  {"say": "and he casually takes a sip from his flask.",
-   "shots": [["0uUm-8Jz6x8", 172.6, {"zoom": 1.2}], ["DEz_gv1y2Nw", 193.6]]},
-  {"say": "Most people think he's just an extra. But he was a real person.",
-   "shots": [["DEz_gv1y2Nw", 183.1], ["DEz_gv1y2Nw", 189.7, {"cx": 0.38}], ["photo:joughin_1912.jpg", 0, {"w": 1.3}]]},
-  {"say": "His name was Charles Joughin, and he was the Titanic's chief baker.",
-   "shots": [["photo:joughin_1912.jpg", 0, {"w": 1.4}], ["photo:titanic_departing_1912.jpg", 0]]},
-  {"say": "And what he did that night is even crazier than the movie.",
-   "shots": [["DEz_gv1y2Nw", 162.2, {"cx": 0.5}], ["KMw7BXd9npk", 2.6, {"cx": 0.42}]]},
-  {"say": "When the ship hit the iceberg, Joughin was off duty, in his bunk.",
-   "shots": [["0uUm-8Jz6x8", 16.6], ["0uUm-8Jz6x8", 24.4], ["0uUm-8Jz6x8", 98.2]]},
-  {"say": "He sent his thirteen bakers up to the lifeboats, with loaves of bread.",
-   "shots": [["0uUm-8Jz6x8", 2.3], ["0uUm-8Jz6x8", 5.2], ["0uUm-8Jz6x8", 0.2]]},
-  {"say": "He was even put in charge of lifeboat number ten. But he didn't get in. He helped women and children into it instead.",
-   "shots": [["0uUm-8Jz6x8", 8.2, {"cx": 0.62}], ["0uUm-8Jz6x8", 11.2, {"cx": 0.62}], ["0uUm-8Jz6x8", 51.0], ["0uUm-8Jz6x8", 55.2], ["0uUm-8Jz6x8", 58.5]]},
-  {"say": "Then he went back down to his cabin, and had a drink. By his own account, half a glass of liqueur.",
-   "shots": [["0uUm-8Jz6x8", 30.3], ["0uUm-8Jz6x8", 33.6, {"zoom": 1.2}], ["0uUm-8Jz6x8", 40.6], ["0uUm-8Jz6x8", 44.2, {"zoom": 1.15}]]},
-  {"say": "When he came back up, every lifeboat was gone. So he threw about fifty deck chairs into the sea, so people in the water would have something to float on.",
-   "shots": [["0uUm-8Jz6x8", 104.2], ["0uUm-8Jz6x8", 110.2], ["0uUm-8Jz6x8", 132.3], ["0uUm-8Jz6x8", 136.2], ["KMw7BXd9npk", 12.6], ["KMw7BXd9npk", 17.6]]},
-  {"say": "Then he ran to the very back of the ship, climbed over the railing, and held on from the outside.",
-   "shots": [["DEz_gv1y2Nw", 189.8, {"cx": 0.38}], ["0uUm-8Jz6x8", 175.6], ["DEz_gv1y2Nw", 181.5, {"cx": 0.4}], ["0uUm-8Jz6x8", 170.6, {"cx": 0.42}]]},
-  {"say": "Exactly where Jack and Rose are in the movie.",
-   "shots": [["KMw7BXd9npk", 57.7, {"cx": 0.5}], ["KMw7BXd9npk", 130.3, {"cx": 0.5}]]},
-  {"say": "When the stern finally went down, he said he rode it like an elevator. His head barely got wet.",
-   "shots": [["KMw7BXd9npk", 92.6], ["KMw7BXd9npk", 122.6, {"cx": 0.5}], ["KMw7BXd9npk", 155.2, {"cx": 0.5}], ["KMw7BXd9npk", 160.6, {"cx": 0.5}]]},
-  {"say": "That made him the last survivor to leave the Titanic.",
-   "shots": [["KMw7BXd9npk", 163.2, {"cx": 0.5}], ["DEz_gv1y2Nw", 211.2, {"cx": 0.62}]]},
-  {"say": "And the water he landed in? Jack describes it perfectly.",
-   "shots": [["0uUm-8Jz6x8", 138.2], ["KMw7BXd9npk", 147.6, {"cx": 0.5}]]},
-  {"film": ["zSRvmHSgaBg", 120.30, 123.58]},
-  {"film": ["zSRvmHSgaBg", 125.42, 128.80]},
-  {"film": ["zSRvmHSgaBg", 129.92, 132.92]},
-  {"say": "Almost everyone who ended up in that water died within minutes.",
-   "shots": [["KMw7BXd9npk", 137.6, {"cx": 0.5}], ["KMw7BXd9npk", 142.6, {"cx": 0.5}], ["0uUm-8Jz6x8", 142.2]]},
-  {"say": "But Joughin claimed he stayed in it for about two hours, and said he hardly felt the cold.",
-   "shots": [["DEz_gv1y2Nw", 183.3], ["0uUm-8Jz6x8", 162.0], ["0uUm-8Jz6x8", 150.4]]},
-  {"say": "He believed it was the alcohol. Historians still argue about it.",
-   "shots": [["0uUm-8Jz6x8", 172.9, {"zoom": 1.25}], ["0uUm-8Jz6x8", 44.8]]},
-  {"say": "At dawn, he reached an overturned lifeboat. There was no room for him, so a cook who knew him held his hand, while his legs stayed in the water.",
-   "shots": [["photo:lifeboat_1912.jpg", 0, {"w": 1.6}], ["0uUm-8Jz6x8", 180.6], ["0uUm-8Jz6x8", 184.2], ["0uUm-8Jz6x8", 188.0]]},
-  {"say": "Another lifeboat picked him up, and the rescue ship Carpathia took him in, with nothing worse than swollen feet.",
-   "shots": [["photo:carpathia_deck_1912.jpg", 0, {"w": 1.5}], ["photo:lifeboat_1912.jpg", 0]]},
-  {"say": "He lived until 1956.",
-   "shots": [["photo:joughin_1912.jpg", 0]]},
-  {"say": "So next time you watch Titanic, look for the calm man with the flask.",
-   "shots": [["DEz_gv1y2Nw", 181.7, {"cx": 0.4}], ["0uUm-8Jz6x8", 172.6, {"zoom": 1.15}]]}
+  {
+   "say": "If you pay attention, you'll notice one man in Titanic who is way too calm.",
+   "shots": [
+    [
+     "DEz_gv1y2Nw",
+     193.4
+    ],
+    [
+     "0uUm-8Jz6x8",
+     161.6
+    ],
+    [
+     "DEz_gv1y2Nw",
+     182.9
+    ]
+   ]
+  },
+  {
+   "say": "While the ship is going down, and everyone around him is screaming,",
+   "shots": [
+    [
+     "KMw7BXd9npk",
+     22.5,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "KMw7BXd9npk",
+     75.2
+    ],
+    [
+     "DEz_gv1y2Nw",
+     209.2,
+     {
+      "cx": 0.62
+     }
+    ]
+   ]
+  },
+  {
+   "say": "he's holding the railing right next to Jack and Rose,",
+   "shots": [
+    [
+     "DEz_gv1y2Nw",
+     181.3,
+     {
+      "cx": 0.4
+     }
+    ],
+    [
+     "0uUm-8Jz6x8",
+     169.2,
+     {
+      "cx": 0.42
+     }
+    ]
+   ]
+  },
+  {
+   "say": "and he casually takes a sip from his flask.",
+   "shots": [
+    [
+     "0uUm-8Jz6x8",
+     172.6
+    ],
+    [
+     "DEz_gv1y2Nw",
+     193.6
+    ]
+   ]
+  },
+  {
+   "say": "Most people think he's just an extra. But he was a real person.",
+   "shots": [
+    [
+     "DEz_gv1y2Nw",
+     183.1
+    ],
+    [
+     "DEz_gv1y2Nw",
+     189.7,
+     {
+      "cx": 0.38
+     }
+    ],
+    [
+     "photo:joughin_1912.jpg",
+     0,
+     {
+      "w": 1.3
+     }
+    ]
+   ]
+  },
+  {
+   "say": "His name was Charles Joughin, and he was the Titanic's chief baker.",
+   "shots": [
+    [
+     "photo:joughin_1912.jpg",
+     0,
+     {
+      "w": 1.4
+     }
+    ],
+    [
+     "photo:titanic_departing_1912.jpg",
+     0
+    ]
+   ],
+   "speak": "His name was Charles Jockin, and he was the Titanic's chief baker."
+  },
+  {
+   "say": "And what he did that night is even crazier than the movie.",
+   "shots": [
+    [
+     "DEz_gv1y2Nw",
+     162.2,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "KMw7BXd9npk",
+     2.6,
+     {
+      "cx": 0.42
+     }
+    ]
+   ]
+  },
+  {
+   "say": "When the ship hit the iceberg, Joughin was off duty, in his bunk.",
+   "shots": [
+    [
+     "0uUm-8Jz6x8",
+     20.6
+    ],
+    [
+     "0uUm-8Jz6x8",
+     24.4
+    ],
+    [
+     "0uUm-8Jz6x8",
+     98.2
+    ]
+   ],
+   "speak": "When the ship hit the iceberg, Jockin was off duty, in his bunk."
+  },
+  {
+   "say": "He sent his thirteen bakers up to the lifeboats, with loaves of bread.",
+   "shots": [
+    [
+     "0uUm-8Jz6x8",
+     2.3
+    ],
+    [
+     "0uUm-8Jz6x8",
+     5.2
+    ],
+    [
+     "0uUm-8Jz6x8",
+     0.2
+    ]
+   ]
+  },
+  {
+   "say": "He was even put in charge of lifeboat number ten. But he didn't get in. He helped women and children into it instead.",
+   "shots": [
+    [
+     "0uUm-8Jz6x8",
+     8.2,
+     {
+      "cx": 0.62
+     }
+    ],
+    [
+     "0uUm-8Jz6x8",
+     11.2,
+     {
+      "cx": 0.62
+     }
+    ],
+    [
+     "0uUm-8Jz6x8",
+     51.0
+    ],
+    [
+     "0uUm-8Jz6x8",
+     55.2
+    ],
+    [
+     "0uUm-8Jz6x8",
+     58.5
+    ]
+   ]
+  },
+  {
+   "say": "Then he went back down to his cabin, and had a drink. By his own account, half a glass of liqueur.",
+   "shots": [
+    [
+     "0uUm-8Jz6x8",
+     30.3
+    ],
+    [
+     "0uUm-8Jz6x8",
+     33.6,
+     {
+      "zoom": 1.2
+     }
+    ],
+    [
+     "0uUm-8Jz6x8",
+     40.6
+    ],
+    [
+     "0uUm-8Jz6x8",
+     44.2,
+     {
+      "zoom": 1.15
+     }
+    ]
+   ]
+  },
+  {
+   "say": "When he came back up, every lifeboat was gone. So he threw about fifty deck chairs into the sea, so people in the water would have something to float on.",
+   "shots": [
+    [
+     "0uUm-8Jz6x8",
+     104.2
+    ],
+    [
+     "0uUm-8Jz6x8",
+     110.2
+    ],
+    [
+     "0uUm-8Jz6x8",
+     132.3
+    ],
+    [
+     "0uUm-8Jz6x8",
+     136.2
+    ],
+    [
+     "KMw7BXd9npk",
+     12.6
+    ],
+    [
+     "KMw7BXd9npk",
+     17.6
+    ]
+   ]
+  },
+  {
+   "say": "Then he ran to the very back of the ship, climbed over the railing, and held on from the outside.",
+   "shots": [
+    [
+     "DEz_gv1y2Nw",
+     189.8,
+     {
+      "cx": 0.38
+     }
+    ],
+    [
+     "0uUm-8Jz6x8",
+     175.6
+    ],
+    [
+     "DEz_gv1y2Nw",
+     181.5,
+     {
+      "cx": 0.4
+     }
+    ],
+    [
+     "0uUm-8Jz6x8",
+     170.6,
+     {
+      "cx": 0.42
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Exactly where Jack and Rose are in the movie.",
+   "shots": [
+    [
+     "KMw7BXd9npk",
+     57.7,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "KMw7BXd9npk",
+     130.3,
+     {
+      "cx": 0.5
+     }
+    ]
+   ]
+  },
+  {
+   "say": "When the stern finally went down, he said he rode it like an elevator. His head barely got wet.",
+   "shots": [
+    [
+     "KMw7BXd9npk",
+     92.6
+    ],
+    [
+     "KMw7BXd9npk",
+     122.6,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "KMw7BXd9npk",
+     155.2,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "KMw7BXd9npk",
+     160.6,
+     {
+      "cx": 0.5
+     }
+    ]
+   ]
+  },
+  {
+   "say": "That made him the last survivor to leave the Titanic.",
+   "shots": [
+    [
+     "KMw7BXd9npk",
+     163.2,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "DEz_gv1y2Nw",
+     211.2,
+     {
+      "cx": 0.62
+     }
+    ]
+   ]
+  },
+  {
+   "say": "And the water he landed in? Jack describes it perfectly.",
+   "shots": [
+    [
+     "KMw7BXd9npk",
+     145.0,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "KMw7BXd9npk",
+     147.6,
+     {
+      "cx": 0.5
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "zSRvmHSgaBg",
+    120.25,
+    124.1
+   ]
+  },
+  {
+   "film": [
+    "zSRvmHSgaBg",
+    125.3,
+    128.85
+   ]
+  },
+  {
+   "film": [
+    "zSRvmHSgaBg",
+    129.55,
+    132.95
+   ]
+  },
+  {
+   "say": "Almost everyone who ended up in that water died within minutes.",
+   "shots": [
+    [
+     "KMw7BXd9npk",
+     150.2,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "KMw7BXd9npk",
+     152.7,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "DEz_gv1y2Nw",
+     195.6
+    ]
+   ]
+  },
+  {
+   "say": "But Joughin claimed he stayed in it for about two hours, and said he hardly felt the cold.",
+   "shots": [
+    [
+     "DEz_gv1y2Nw",
+     183.3
+    ],
+    [
+     "0uUm-8Jz6x8",
+     162.0
+    ],
+    [
+     "0uUm-8Jz6x8",
+     150.4
+    ]
+   ],
+   "speak": "But Jockin claimed he stayed in it for about two hours, and said he hardly felt the cold."
+  },
+  {
+   "say": "He believed it was the alcohol. Historians still argue about it.",
+   "shots": [
+    [
+     "0uUm-8Jz6x8",
+     172.9
+    ],
+    [
+     "0uUm-8Jz6x8",
+     44.8
+    ]
+   ]
+  },
+  {
+   "say": "At dawn, he reached an overturned lifeboat. There was no room for him, so a cook who knew him held his hand, while his legs stayed in the water.",
+   "shots": [
+    [
+     "photo:lifeboat_1912.jpg",
+     0,
+     {
+      "w": 1.6
+     }
+    ],
+    [
+     "0uUm-8Jz6x8",
+     180.6
+    ],
+    [
+     "0uUm-8Jz6x8",
+     184.2
+    ],
+    [
+     "0uUm-8Jz6x8",
+     188.0
+    ]
+   ]
+  },
+  {
+   "say": "Another lifeboat picked him up, and the rescue ship Carpathia took him in, with nothing worse than swollen feet.",
+   "shots": [
+    [
+     "photo:carpathia_deck_1912.jpg",
+     0,
+     {
+      "w": 1.5
+     }
+    ],
+    [
+     "photo:lifeboat_1912.jpg",
+     0
+    ]
+   ]
+  },
+  {
+   "say": "He lived until 1956.",
+   "shots": [
+    [
+     "photo:joughin_1912.jpg",
+     0
+    ]
+   ]
+  },
+  {
+   "say": "So next time you watch Titanic, look for the calm man with the flask.",
+   "shots": [
+    [
+     "DEz_gv1y2Nw",
+     181.7,
+     {
+      "cx": 0.4
+     }
+    ],
+    [
+     "0uUm-8Jz6x8",
+     172.6
+    ]
+   ]
+  }
  ],
- "credits": ["Titanic (1997)", "A Night to Remember (1958)", "Photos: public domain"]
+ "credits": [
+  "Titanic (1997)",
+  "A Night to Remember (1958)",
+  "Photos: public domain"
+ ]
 }

@@ -51,7 +51,7 @@ Which Titanic detail should we explain next? 👇
 
 **Settings**
 - Made for kids: **No**
-- Altered or synthetic content: **Yes**, for the voice. The narration is an AI voice, and YouTube asks you to disclose realistic synthetic voices. Recording the script yourself avoids this and is better for monetisation. The script is in `edits_movie/titanic_baker.json`.
+- Altered or synthetic content: **Yes** (the safe choice). The narration is an AI voice, and YouTube's guidance on AI narration is ambiguous ([YouTube Help](https://support.google.com/youtube/answer/14328491)). Recording the script yourself removes the question and is better for monetisation. The script is the `say` lines in `edits_movie/titanic_baker.json`.
 - Category: Film & Animation
 
 **Accuracy notes** (in case a commenter asks):

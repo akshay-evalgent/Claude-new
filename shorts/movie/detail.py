@@ -180,7 +180,7 @@ def main():
                             words.append({"t0": w[0] - a + t, "t1": min(w[1], e) - a + t, "w": w[2].strip()})
             seq = b.get("shots") or [[sid, a, {}]]
         else:
-            y, path = rd.tts(b["say"], voice, speed, cache); d = len(y) / SR
+            y, path = rd.tts(b.get("speak", b["say"]), voice, speed, cache); d = len(y) / SR      # "speak" = phonetic spelling for the voice
             voice_parts.append((t, y))
             heard = rd.word_times(path)
             for w in rd.align_script_words(b["say"], heard):
@@ -188,8 +188,9 @@ def main():
             seq = b["shots"]
         # shots share the beat's duration (optionally weighted)
         wts = [(s[2].get("w", 1.0) if len(s) > 2 else 1.0) for s in seq]; tot = sum(wts); tt = t
+        span = d + gap                              # shots also cover the short gap after the beat (no missing frames)
         for s, wt in zip(seq, wts):
-            sd = d * wt / tot
+            sd = span * wt / tot
             shots.append({"t0": tt, "t1": tt + sd, "sid": s[0], "st": s[1] if len(s) > 1 else 0, "opts": s[2] if len(s) > 2 else {}})
             tt += sd
         t += d + gap
