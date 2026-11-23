@@ -9,6 +9,7 @@ neural voice.
 - `quicksand.mp4`: the short (1080x1920, 24 fps, stereo audio)
 - `quicksand_captions.mp4`: the same with burned-in captions
 - `poster.jpg`: stills from it
+- `thumbnail.jpg` and `UPLOAD_KIT.md`: Shorts thumbnail, title, tags, pinned comment and the research behind them
 
 ## Script
 
@@ -46,6 +47,7 @@ the next patch.
 | `scene.py` | Builds everything; renders check stills, a preview or the full frames |
 | `sound.py` | Synthesised sound design and the mix (ambience, footsteps, suction, whooshes, tide, plunge, music bed, ducking) |
 | `assemble.py` | Encodes frames + audio (loudness-normalised to -14 LUFS), optional captions |
+| `thumbnail.py` | Shorts thumbnail: a natively rendered frame with the same grade and caption as the video |
 | `fetch_assets.py` | Downloads the Poly Haven textures, sky and props |
 | `test_char.py` | Character and expression check renders |
 

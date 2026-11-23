@@ -39,36 +39,52 @@ def caption_chunks():
             d = dur * len(" ".join(g)) / total
             out.append((txt, t, t + d))
             t += d
+    if out:  # caption on screen from the very first frame
+        out[0] = (out[0][0], 0.0, out[0][2])
     return out
 
 
-def burn_captions(src_dir, dst_dir, fps):
+def caption_at(chunks, t):
+    for text, a, b in chunks:
+        if a <= t < b + 0.05:
+            return text, a
+    return None, None
+
+
+def draw_caption(im, text, k=1.0):
+    """Caption look: heavy white sans, thin dark outline and soft shadow, centred at 78% height.
+    k (0..1) drives a short pop-in scale."""
     from PIL import Image, ImageDraw, ImageFilter, ImageFont
     font_path = os.path.join(SCRATCH, "..", "fonts", "OpenSans-ExtraBold.ttf")
+    im = im.convert("RGBA")
+    W, H = im.size
+    sc = 0.88 + 0.12 * (1 - (1 - k) ** 3)
+    fs = int(W * 0.068 * sc)
+    font = ImageFont.truetype(font_path, fs)
+    layer = Image.new("RGBA", im.size, (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer)
+    l, t, r, b = d.textbbox((0, 0), text, font=font, stroke_width=fs // 20)
+    x, y = (W - (r - l)) // 2 - l, int(H * 0.78) - (b + t) // 2
+    sh = Image.new("RGBA", im.size, (0, 0, 0, 0))
+    ImageDraw.Draw(sh).text((x, y + fs // 16), text, font=font, fill=(0, 0, 0, 170),
+                            stroke_width=fs // 12, stroke_fill=(0, 0, 0, 170))
+    sh = sh.filter(ImageFilter.GaussianBlur(fs * 0.12))
+    d.text((x, y), text, font=font, fill=(255, 255, 255, 255), stroke_width=fs // 20,
+           stroke_fill=(20, 20, 20, 230))
+    return Image.alpha_composite(im, Image.alpha_composite(sh, layer))
+
+
+def burn_captions(src_dir, dst_dir, fps):
+    from PIL import Image
     chunks = caption_chunks()
     os.makedirs(dst_dir, exist_ok=True)
     files = sorted(f for f in os.listdir(src_dir) if f.endswith(".png"))
     for i, fn in enumerate(files):
         t = i / fps
-        im = Image.open(os.path.join(src_dir, fn)).convert("RGBA")
-        W, H = im.size
-        for text, a, b in chunks:
-            if a <= t < b + 0.05:
-                k = min(1.0, (t - a) * fps / 3)
-                sc = 0.85 + 0.15 * (1 - (1 - k) ** 3)
-                fs = int(W * 0.075 * sc)
-                font = ImageFont.truetype(font_path, fs)
-                layer = Image.new("RGBA", im.size, (0, 0, 0, 0))
-                d = ImageDraw.Draw(layer)
-                tw, th = d.textbbox((0, 0), text, font=font, stroke_width=fs // 12)[2:]
-                x, y = (W - tw) // 2, int(H * 0.70) - th // 2
-                sh = Image.new("RGBA", im.size, (0, 0, 0, 0))
-                ImageDraw.Draw(sh).text((x, y + fs // 14), text, font=font, fill=(0, 0, 0, 200),
-                                        stroke_width=fs // 10, stroke_fill=(0, 0, 0, 200))
-                sh = sh.filter(ImageFilter.GaussianBlur(fs * 0.1))
-                d.text((x, y), text, font=font, fill=(255, 255, 255, 255), stroke_width=fs // 14,
-                       stroke_fill=(0, 0, 0, 255))
-                im = Image.alpha_composite(im, Image.alpha_composite(sh, layer))
+        im = Image.open(os.path.join(src_dir, fn))
+        text, a = caption_at(chunks, t)
+        if text:
+            im = draw_caption(im, text, 1.0 if a == 0 else min(1.0, (t - a) * fps / 3))
         im.convert("RGB").save(os.path.join(dst_dir, f"c{i + 1:04d}.png"))
     return os.path.join(dst_dir, "c%04d.png")
 
