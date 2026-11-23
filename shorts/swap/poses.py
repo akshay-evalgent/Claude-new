@@ -5,7 +5,7 @@ SHOTS = {"A": (0, 63, 2, []), "C": (123, 222, 2, [27, 47]), "E": (280, 382, 93, 
 KEYS = {   # frame: pose keyframes (linear in between)
  "A": {0: dict(yaw=0.1, armR=0.5, armL=0.5, armRz=1.0, armLz=1.0), 22: dict(yaw=0.1, armR=0.35, armL=0.3, armRz=0.75, armLz=0.6),
        42: dict(yaw=0.05, armR=0.1, armL=0.1, armRz=0.15, armLz=0.15), 63: dict(yaw=0.0, armR=0.1, armL=0.1, armRz=0.12, armLz=0.12)},
- "C": {123: dict(yaw=0.35), 145: dict(yaw=0.55, armR=0.35, armRz=0.9, armLz=0.5), 160: dict(yaw=0.65, armR=0.3, armRz=0.8, armLz=0.4),
+ "C": {123: dict(yaw=0.35), 145: dict(yaw=0.55, armR=0.15, armRz=0.5, armLz=0.5), 160: dict(yaw=0.65, armR=0.15, armRz=0.45, armLz=0.4),
        178: dict(yaw=0.7, lean=0.1, armR=0.2, armRz=0.2, armLz=0.15), 200: dict(yaw=0.6, lean=0.25, armR=0.5, armL=0.5), 222: dict(yaw=0.6, lean=0.25, armR=0.5, armL=0.5)},
  "E": {280: dict(yaw=1.05, lean=0.1, armR=1.0, armRz=0.1, armL=-0.35), 360: dict(yaw=1.05, lean=0.12, armR=1.0, armRz=0.1, armL=-0.35),
        372: dict(yaw=1.15, lean=0.35, armR=1.3, armL=0.1), 382: dict(yaw=1.2, lean=0.45, armR=1.35, armL=0.1)},

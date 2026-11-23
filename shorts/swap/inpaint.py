@@ -28,6 +28,19 @@ def hole_for(f, img):
         c = lab == i
         if (c & near).any(): keep[c] = 1
     m = np.maximum(m, keep)
+    if p["shot"] == "C" and 140 <= f <= 166:                     # his waving hand blurs out of the mask: saturated skin touching him
+        ycc = cv2.cvtColor(small, cv2.COLOR_BGR2YCrCb)
+        skin = ((ycc[..., 1] > 140) & (ycc[..., 1] < 180) & (ycc[..., 2] > 85) & (ycc[..., 2] < 125) & (hsv[..., 1] > 70)).astype(np.uint8) * box
+        for tid, om in zip(z["ids"].astype(int), z["masks"]):
+            if tid != p["tid"]: skin = skin * (1 - cv2.dilate(om.astype(np.uint8), np.ones((5, 5), np.uint8)))
+        skin = cv2.morphologyEx(skin, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
+        n, lab = cv2.connectedComponents(skin); near = cv2.dilate(m, np.ones((15, 15), np.uint8)) > 0
+        top, hgt = ys.min(), ys.max() - ys.min()
+        for i in range(1, n):                                    # hand-like: a compact blob below his shoulders
+            c = lab == i; cy_, cx_ = np.where(c)
+            if not ((c & near).any() and c.sum() > 25): continue
+            bh, bw = cy_.max() - cy_.min() + 1, cx_.max() - cx_.min() + 1
+            if cy_.mean() > top + 0.35 * hgt and bh < 2.5 * bw: m[c] = 1
     hole = cv2.resize(m * 255, (W, H), interpolation=cv2.INTER_LINEAR) > 100
     return cv2.dilate(hole.astype(np.uint8), cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (21, 21)))
 def lama(img, hole):
