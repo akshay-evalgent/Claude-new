@@ -76,7 +76,9 @@ stage("download", t)
 def start_server(gpu, port):
     out = f"/tmp/out{gpu}"; os.makedirs(out, exist_ok=True)
     proc = subprocess.Popen([sys.executable, "main.py", "--listen", "127.0.0.1", "--port", str(port), "--cuda-device", str(gpu),
-                             "--output-directory", out, "--disable-auto-launch"], cwd=ROOT,
+                             "--output-directory", out, "--disable-auto-launch",
+                             "--disable-pinned-memory"],   # each server would pin ~14 GB, and two of them overran the 32 GB host
+                            cwd=ROOT,
                             stdout=open(f"{W}/comfy{gpu}.log", "a"), stderr=subprocess.STDOUT)
     for _ in range(300):
         try:
@@ -214,7 +216,7 @@ else:
 lock = threading.Lock()
 
 
-def worker(gpu, port, restarts=2):
+def worker(gpu, port, restarts=4):
     global VFI_OK
     out = f"/tmp/out{gpu}"
     while True:
