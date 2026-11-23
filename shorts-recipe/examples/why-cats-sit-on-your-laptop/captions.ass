@@ -1,0 +1,46 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.02,0:00:01.06,Short,,0,0,0,,Your cat isn't sitting
+Dialogue: 0,0:00:01.06,0:00:01.90,Short,,0,0,0,,on your laptop
+Dialogue: 0,0:00:01.90,0:00:02.98,Short,,0,0,0,,to annoy you
+Dialogue: 0,0:00:02.98,0:00:03.40,Short,,0,0,0,,It's sitting
+Dialogue: 0,0:00:03.40,0:00:04.28,Short,,0,0,0,,on a heater
+Dialogue: 0,0:00:04.64,0:00:05.56,Short,,0,0,0,,A laptop runs
+Dialogue: 0,0:00:05.56,0:00:07.16,Short,,0,0,0,,as warm as your skin
+Dialogue: 0,0:00:07.16,0:00:08.38,Short,,0,0,0,,and cats feel best
+Dialogue: 0,0:00:08.38,0:00:09.10,Short,,0,0,0,,at temperatures
+Dialogue: 0,0:00:09.10,0:00:09.84,Short,,0,0,0,,that would make
+Dialogue: 0,0:00:09.84,0:00:10.62,Short,,0,0,0,,you sweat
+Dialogue: 0,0:00:10.97,0:00:11.62,Short,,0,0,0,,Their ancestors
+Dialogue: 0,0:00:11.62,0:00:13.22,Short,,0,0,0,,lived in the desert
+Dialogue: 0,0:00:13.22,0:00:14.26,Short,,0,0,0,,That's why it steals
+Dialogue: 0,0:00:14.26,0:00:15.18,Short,,0,0,0,,your warm seat
+Dialogue: 0,0:00:15.18,0:00:16.48,Short,,0,0,0,,and follows the sunbeam
+Dialogue: 0,0:00:16.48,0:00:17.60,Short,,0,0,0,,across the floor
+Dialogue: 0,0:00:17.94,0:00:19.16,Short,,0,0,0,,There's a second reason
+Dialogue: 0,0:00:19.46,0:00:20.26,Short,,0,0,0,,The laptop is
+Dialogue: 0,0:00:20.26,0:00:21.30,Short,,0,0,0,,where your eyes are
+Dialogue: 0,0:00:21.30,0:00:22.10,Short,,0,0,0,,all day
+Dialogue: 0,0:00:22.38,0:00:23.11,Short,,0,0,0,,To your cat
+Dialogue: 0,0:00:23.11,0:00:23.66,Short,,0,0,0,,it's the thing
+Dialogue: 0,0:00:23.66,0:00:24.86,Short,,0,0,0,,stealing your attention
+Dialogue: 0,0:00:24.86,0:00:26.74,Short,,0,0,0,,so it sits right on it
+Dialogue: 0,0:00:26.74,0:00:27.26,Short,,0,0,0,,And the keys
+Dialogue: 0,0:00:27.26,0:00:28.52,Short,,0,0,0,,smell like your hands
+Dialogue: 0,0:00:28.52,0:00:30.12,Short,,0,0,0,,So next time your cat
+Dialogue: 0,0:00:30.12,0:00:31.60,Short,,0,0,0,,lies on your keyboard
+Dialogue: 0,0:00:31.60,0:00:32.38,Short,,0,0,0,,don't push it off
+Dialogue: 0,0:00:32.38,0:00:32.63,Short,,0,0,0,,because
+Dialogue: 1,0:00:24.40,0:00:28.30,Prompt,,0,0,0,,{\fad(300,250)}Send this to someone\Nwhose cat sits on their keyboard

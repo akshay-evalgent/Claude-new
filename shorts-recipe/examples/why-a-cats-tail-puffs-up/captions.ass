@@ -1,0 +1,47 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Short,Nunito ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H64000000,&H78000000,-1,0,0,0,100,100,0,0,1,2.2,3,2,80,80,384,1
+Style: Prompt,Nunito ExtraBold,56,&H00FFFFFF,&H00FFFFFF,&H50000000,&H8C000000,-1,0,0,0,100,100,0,0,1,2.0,3,8,90,90,250,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.03,0:00:00.84,Short,,0,0,0,,When a cat's tail
+Dialogue: 0,0:00:00.84,0:00:01.40,Short,,0,0,0,,puffs up
+Dialogue: 0,0:00:01.40,0:00:02.76,Short,,0,0,0,,like a bottle brush
+Dialogue: 0,0:00:02.76,0:00:03.66,Short,,0,0,0,,it's the same thing
+Dialogue: 0,0:00:03.66,0:00:04.32,Short,,0,0,0,,that gives you
+Dialogue: 0,0:00:04.32,0:00:05.42,Short,,0,0,0,,goosebumps
+Dialogue: 0,0:00:05.42,0:00:06.36,Short,,0,0,0,,Every hair grows
+Dialogue: 0,0:00:06.36,0:00:07.48,Short,,0,0,0,,from a tiny pit
+Dialogue: 0,0:00:07.48,0:00:09.06,Short,,0,0,0,,with its own tiny muscle
+Dialogue: 0,0:00:09.34,0:00:10.78,Short,,0,0,0,,When the cat gets scared
+Dialogue: 0,0:00:11.32,0:00:11.72,Short,,0,0,0,,adrenaline hits
+Dialogue: 0,0:00:11.72,0:00:12.38,Short,,0,0,0,,and thousands
+Dialogue: 0,0:00:12.38,0:00:13.24,Short,,0,0,0,,of those muscles
+Dialogue: 0,0:00:13.24,0:00:14.36,Short,,0,0,0,,squeeze at once
+Dialogue: 0,0:00:14.68,0:00:15.38,Short,,0,0,0,,The hairs stand
+Dialogue: 0,0:00:15.38,0:00:16.07,Short,,0,0,0,,straight up
+Dialogue: 0,0:00:16.07,0:00:16.64,Short,,0,0,0,,and the tail
+Dialogue: 0,0:00:16.64,0:00:18.39,Short,,0,0,0,,can look twice as thick
+Dialogue: 0,0:00:18.39,0:00:19.10,Short,,0,0,0,,Then the cat
+Dialogue: 0,0:00:19.10,0:00:19.96,Short,,0,0,0,,arches its back
+Dialogue: 0,0:00:19.96,0:00:21.12,Short,,0,0,0,,and turns sideways
+Dialogue: 0,0:00:21.12,0:00:22.36,Short,,0,0,0,,so whatever scared it
+Dialogue: 0,0:00:22.36,0:00:23.22,Short,,0,0,0,,sees the biggest
+Dialogue: 0,0:00:23.22,0:00:24.36,Short,,0,0,0,,cat possible
+Dialogue: 0,0:00:24.73,0:00:25.56,Short,,0,0,0,,Your goosebumps
+Dialogue: 0,0:00:25.56,0:00:26.32,Short,,0,0,0,,are left over
+Dialogue: 0,0:00:26.32,0:00:27.48,Short,,0,0,0,,from when our ancestors
+Dialogue: 0,0:00:27.48,0:00:28.22,Short,,0,0,0,,had fur
+Dialogue: 0,0:00:28.22,0:00:29.78,Short,,0,0,0,,So if your cat's tail
+Dialogue: 0,0:00:29.78,0:00:30.71,Short,,0,0,0,,ever puffs up
+Dialogue: 0,0:00:30.71,0:00:31.60,Short,,0,0,0,,give it some space
+Dialogue: 0,0:00:31.60,0:00:32.00,Short,,0,0,0,,because
+Dialogue: 1,0:00:23.60,0:00:28.00,Prompt,,0,0,0,,{\fad(300,250)}Send this to someone\Nwhose cat puffs up
