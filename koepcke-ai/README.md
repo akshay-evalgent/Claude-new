@@ -8,6 +8,11 @@ It is built with the same pipeline as `../sahara-ai/`; that README covers the mo
 Kaggle names come from this folder's name: notebooks `koepcke-ai-keyframes` and `koepcke-ai-clips`, and stills dataset
 `koepcke-ai-stills`. To make the next short, copy the folder.
 
+If a notebook stays QUEUED for hours while quota is left, it may be stuck rather than waiting. Push an identical
+copy under another name (`python kaggle/build.py keyframes --slug koepcke-ai-kf2`). Then delete whichever of the two
+starts second, or it will run the whole job again. Here the first stills run sat queued for 7 hours; the copy
+started within a minute, so these stills came from `koepcke-ai-kf2`.
+
 ## Build
 
 ```bash
