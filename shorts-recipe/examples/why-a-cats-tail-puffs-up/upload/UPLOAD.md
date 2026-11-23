@@ -54,7 +54,13 @@ why do cats tails puff up, cat bottle brush tail, cat puffed tail, piloerection,
 
 As with the channel, the thumbnail is a frame from the video: the subject big and mid-action, with the caption showing. No added text or logo.
 
-THUMB_TABLE
+| File | Frame | Use |
+|---|---|---|
+| `thumbnail-vertical.jpg` | The cat side-on, back arched, tail puffed into a bottle brush, caption "When a cat's tail" | **Main pick.** Shows the title's subject; it's the frame the video opens and loops on |
+| `thumbnail-alt-as-big-as-possible.jpg` | The puffed-up cat from the floor, "AS BIG AS POSSIBLE" | Answer-up-front angle |
+| `thumbnail-alt-adrenaline.jpg` | Under the microscope: every hair standing up, "ADRENALINE" | Science angle |
+| `thumbnail-alt-scared-eyes.jpg` | Close on the cat's face, eyes glowing, caption "When the cat gets scared" | Face angle |
+| `thumbnail-16x9.jpg` | Main pick, pillarboxed on a blurred copy | Only if a 16:9 image is asked for |
 
 Set it in the YouTube app: after selecting the video, tap the pencil icon on the preview, choose **Thumbnail**, then scrub to the frame or tap **Add from gallery**.
 
