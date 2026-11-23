@@ -58,3 +58,41 @@ Which Titanic detail should we explain next? 👇
 - The "two hours" and "hardly felt the cold" are Joughin's own claims. The video says "he claimed" and "historians still argue about it".
 - "Almost everyone who ended up in the water died within minutes": Wikipedia, "Sinking of the Titanic" (cold shock, within 15–30 minutes).
 - The black-and-white shots are from *A Night to Remember* (1958). They show the moments the 1997 film skips, such as him drinking in his cabin.
+
+---
+
+## Jurassic Park: the glass of water
+
+**File:** `jurassic_water_cup.mp4` · **Cover:** `jurassic_water_cup_cover.jpg`
+
+**The detail:** the most famous warning in the film, the rippling glass of water, was one of its hardest shots.
+- **The idea** came from Spielberg, whose car mirror was shaking to Earth, Wind & Fire.
+- **The mirror** was easy: a little vibrating motor.
+- **The water** beat everyone, until Michael Lantieri (Special Dinosaur Effects) found the right note on a guitar one night.
+- **On set,** guitar strings ran through the car, and a crew member lay on the floor plucking them on cue.
+- **Bonus:** the giant T-rex wasn't waterproof. It soaked up the fake rain, got too heavy and shook on its own, so the crew dried it with blow dryers between takes.
+
+Lantieri tells the key part himself, from Universal's own featurette. The reveal comes at the very end and loops back to the cup.
+
+**Title:**
+```
+Did you notice this detail in Jurassic Park???
+```
+Alternates: `The hardest shot in Jurassic Park wasn't the T-rex` · `How they made the water ripple in Jurassic Park`
+
+**Description:**
+```
+The rippling glass of water was one of the hardest shots in Jurassic Park. The answer wasn't computer graphics: it was a guitar string.
+
+Sources: Michael Lantieri in Universal's "Glass of Water" featurette; Film Stories and Guitar World on the rigging; Slashfilm and Fangoria on the waterlogged T-rex.
+Clips for commentary: Jurassic Park (1993, Universal), Universal Pictures Home Entertainment featurette, Stan Winston School rehearsal footage.
+
+#jurassicpark #movie #didyouknow #moviedetails #shorts
+```
+
+**Pinned comment:**
+```
+Which movie should we break down next? 👇
+```
+
+**Settings:** Made for kids: **No** · Altered or synthetic content: **Yes** (AI narrator voice, the safe choice) · Category: Film & Animation
