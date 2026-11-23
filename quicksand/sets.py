@@ -222,8 +222,9 @@ def water_material(name, front=False, tint=(0.55, 0.62, 0.6), wave_scale=3.0):
     alpha = _math(nt, "MULTIPLY", _math(nt, "ADD", x, 0.9), 1.6, clamp=True)
     foam_band = _math(nt, "SUBTRACT", 1.0, _math(nt, "ABSOLUTE", _math(nt, "MULTIPLY", _math(nt, "ADD", x, 0.45), 1.8)))
     foam_n = _noise(nt, tc.outputs["Object"], 9.0, 4, 0.7)
-    foam = _math(nt, "MULTIPLY", _math(nt, "MAXIMUM", foam_band, 0.0), _math(nt, "MULTIPLY", _math(nt, "SUBTRACT", foam_n, 0.35), 3.0, clamp=True), clamp=True)
-    fb = nt.nodes.new("ShaderNodeBsdfPrincipled"); fb.inputs["Base Color"].default_value = (0.85, 0.84, 0.8, 1)
+    foam_band = _math(nt, "SUBTRACT", 1.0, _math(nt, "ABSOLUTE", _math(nt, "MULTIPLY", _math(nt, "ADD", x, 0.35), 1.1)))
+    foam = _math(nt, "MULTIPLY", _math(nt, "MULTIPLY", _math(nt, "MAXIMUM", foam_band, 0.0), 1.6), _math(nt, "MULTIPLY", _math(nt, "SUBTRACT", foam_n, 0.22), 3.5, clamp=True), clamp=True)
+    fb = nt.nodes.new("ShaderNodeBsdfPrincipled"); fb.inputs["Base Color"].default_value = (0.92, 0.92, 0.9, 1)
     fb.inputs["Roughness"].default_value = 0.6
     mix = nt.nodes.new("ShaderNodeMixShader"); nt.links.new(foam, mix.inputs[0])
     nt.links.new(b.outputs[0], mix.inputs[1]); nt.links.new(fb.outputs[0], mix.inputs[2])
@@ -380,7 +381,7 @@ def beach(sink_empties):
 
 def tide(coll):
     """Water sheet whose ragged front sits at the object's origin and covers local +X."""
-    mat = water_material("TideWater", front=True)
+    mat = water_material("TideWater", front=True, tint=(0.42, 0.55, 0.6))
     me = bpy.data.meshes.new("Tide")
     me.from_pydata([(-3, -300, 0), (400, -300, 0), (400, 300, 0), (-3, 300, 0)], [], [(0, 1, 2, 3)])
     me.materials.append(mat)
