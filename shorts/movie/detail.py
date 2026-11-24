@@ -71,6 +71,8 @@ def analyse(path, t, fw, fh):
     act = fr[y0:y1].astype(np.uint8)
     mean = float(act.mean())
     gray = cv2.cvtColor(act, cv2.COLOR_RGB2GRAY); s = 480 / gray.shape[0]
+    if not hasattr(cv2, "CascadeClassifier"):                # OpenCV 5 dropped Haar cascades: set cx by hand (pip install "opencv-python-headless<5")
+        return y0, y1, mean, 0.5
     det = cv2.CascadeClassifier(os.path.join(cv2.data.haarcascades, "haarcascade_frontalface_default.xml"))
     f = det.detectMultiScale(cv2.equalizeHist(cv2.resize(gray, None, fx=s, fy=s)), 1.08, 5, minSize=(22, 22))
     cx = (max(f, key=lambda r: r[2] * r[3])[0] + max(f, key=lambda r: r[2] * r[3])[2] / 2) / s / fw if len(f) else 0.5
