@@ -14,17 +14,31 @@ Qwen-Image would not draw a capsized boat: "upside down" and "keel and propeller
 in the cabin shots the phrase "upside-down cabin" turned Harrison himself upside down. The redo prompts describe what
 is on top and what is underneath instead, and never say "upside down" for the cabin. For the sinking shot (o07) the
 prompt asks for an ordinary tug in open water with no surface or sea floor, and `picks.json` turns it over (a trailing
-`^` on the pick rotates the picture 180°). Other redos: a Coca-Cola logo on the bottle (o12), a flame in place of the
-dying flashlight (o13), and a T-shirt in the close-ups (o01, o13), when he only had his boxer shorts.
+`^` on the pick rotates the picture 180°, and is then cropped to lose a patch of sea floor that had ended up on top).
+Other redos: a Coca-Cola logo on the bottle (o12), a flame in place of the dying flashlight (o13), and a T-shirt in the
+close-ups (o01, o13), when he only had his boxer shorts.
+
+The redo (`okene-ai-redo1`, seed 300) fixed o02 and o14 (an orange hull lying keel-up, propeller on top) and the cabin
+shots. Two needed more:
+- **o08** (the tug hitting the sea floor) came out upright again, so it borrows o02's other candidate, the same wreck,
+  and the clip prompt adds the cloud of sand as it settles (`"o08": "kaggle_redo1/o02_0"` in `picks.json`).
+- **o12**: asking for a "plain bottle of soda with no label" still gave a soda logo. `fix_bottle.py` paints the label
+  off candidate 1, filling it with the cola below it, and writes `out/kaggle_edit/`.
+
+The clips came from two notebooks: `okene-ai-clips` (the 15 shots that were right first time) and `okene-ai-clips2`
+(the nine redone shots), run side by side.
 
 ## Build
 
 ```bash
 python kaggle/build.py keyframes --slug okene-ai-kf2 && kaggle kernels push -p kaggle/push/okene-ai-kf2
 kaggle kernels output akkikmr/okene-ai-kf2 -p out/kaggle_kf && python sheet_keyframes.py kaggle_kf
+python kaggle/build.py keyframes --only o01,o02,o03,o07,o08,o11,o12,o13,o14 --seed 300 --slug okene-ai-redo1   # the redo
+kaggle kernels output akkikmr/okene-ai-redo1 -p out/kaggle_redo1 && python fix_bottle.py
 python pick_keyframes.py picks.json && kaggle datasets create -p out/kf_dataset      # later rounds: datasets version
-python kaggle/build.py clips && kaggle kernels push -p kaggle/push/okene-ai-clips
-./fetch_clips.sh                                     # -> out/clips/<id>/f%04d.jpg + out/clips.json
+python kaggle/build.py clips --only o04,o05,...  && kaggle kernels push -p kaggle/push/okene-ai-clips
+python kaggle/build.py clips --only o01,o02,... --slug okene-ai-clips2 && kaggle kernels push -p kaggle/push/okene-ai-clips2
+./fetch_clips.sh okene-ai-clips okene-ai-clips2      # -> out/clips/<id>/f%04d.jpg + out/clips.json
 python vo/make.py <kokoro-v1.0.onnx> <voices-v1.0.bin> && python prep_vo.py && cp out/vo.wav vo/vo.wav
 python audio.py                                      # out/mix.wav
 node render.js frames 0 58.3 out/frames
