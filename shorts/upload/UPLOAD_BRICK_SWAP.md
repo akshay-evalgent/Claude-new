@@ -11,7 +11,7 @@
 
 ## Back to the Future: the café scene, Biff replaced
 
-**File:** `brick_swap_full.mp4` (about 60 s, vertical 1080×1920)
+**File:** `brick_swap_full.mp4` (61.5 s, vertical 1080×1920) · **Cover:** `brick_swap_full_cover.jpg` (the head-knock)
 
 **What happens:** the whole Lou's Café confrontation from Back to the Future (1985). Biff walks in, bullies George about his homework, turns on Marty, plays the "your shoe's untied" trick and leaves. The figure does all of it:
 
