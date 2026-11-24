@@ -37,11 +37,11 @@
    },
    {
     "media": "flow-room-b",
-    "at": 2.5
+    "at": 3.0
    },
    {
     "media": "flow-room-c",
-    "at": 2.5
+    "at": 1.6
    }
   ],
   "open": "payoff",
@@ -57,7 +57,7 @@
   },
   "result": {
    "media": "flow-room-c",
-   "at": 2.5
+   "at": 1.6
   },
   "prompt": "Make it a hotel",
   "project": "My room 1 of 1"
@@ -75,17 +75,17 @@
  ],
  "media": {
   "flow-room-a": {
-   "file": "placeholder-room-a.mp4",
+   "file": "flow-room-a.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   },
   "flow-room-b": {
-   "file": "placeholder-room-b.mp4",
+   "file": "flow-room-b.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   },
   "flow-room-c": {
-   "file": "placeholder-room-c.mp4",
+   "file": "flow-room-c.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   }
@@ -121,7 +121,7 @@
   },
   {
    "media": "flow-room-b",
-   "at": 2.5
+   "at": 3.0
   },
   {
    "them": "WHY ARE THERE PEOPLE IN HAZMAT SUITS IN MY HOUSE"
@@ -158,10 +158,10 @@
   },
   {
    "media": "flow-room-c",
-   "at": 2.5
+   "at": 1.6
   },
   {
-   "them": "WHY IS THERE A TOWEL SWAN ON YOUR BED"
+   "them": "WHY ARE THERE TOWEL SWANS ON YOUR BED"
   },
   {
    "them": "WHO IS THAT MAN AT THE DOOR"
