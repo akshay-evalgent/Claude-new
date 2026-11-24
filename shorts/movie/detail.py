@@ -66,8 +66,14 @@ def analyse(path, t, fw, fh):
     import cv2
     fr = grab(path, t + 0.15, fw, fh)
     g = fr.mean(2)
-    rows = np.where(g.mean(1) > 9)[0]
-    y0, y1 = (int(rows[0]), int(rows[-1]) + 1) if len(rows) else (0, fh)
+    on = g.mean(1) > 9                               # picture rows; take the longest run so a watermark printed in the
+    y0, y1, best, start = 0, fh, 0, None              # letterbox bar (e.g. MOVIECLIPS.com) isn't counted as picture
+    for i, v in enumerate(list(on) + [False]):
+        if v and start is None: start = i
+        if not v and start is not None:
+            if i - start > best: best, y0, y1 = i - start, start, i
+            start = None
+    if best < fh * 0.3: y0, y1 = 0, fh
     act = fr[y0:y1].astype(np.uint8)
     mean = float(act.mean())
     gray = cv2.cvtColor(act, cv2.COLOR_RGB2GRAY); s = 480 / gray.shape[0]

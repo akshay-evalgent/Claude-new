@@ -8,7 +8,13 @@ tiles = []
 for bi, b in enumerate(spec["beats"]):
     seq = b.get("shots") or [[b["film"][0], b["film"][1], {}]]
     for s in seq:
-        sid, st, o = s[0], s[1], (s[2] if len(s) > 2 else {})
+        sid, st, o = s[0], (s[1] if len(s) > 1 else 0), (s[2] if len(s) > 2 else {})
+        dt.MID = spec.get("mid", 0.66)
+        if sid.startswith("photo:"):                    # archive photo: framed over its own blur
+            img = dt.compose_photo(Image.open(dt.src_path(base, sid)), 0.0)
+            im = img.resize((216, 384)); d = ImageDraw.Draw(im)
+            d.rectangle([0, 0, 216, 14], fill=(0, 0, 0)); d.text((2, 1), f"B{bi+1} {sid[6:20]}", fill=(255, 255, 0))
+            tiles.append(im); continue
         p = dt.src_path(base, sid); fw, fh = dt.probe(p)
         info = dt.analyse(p, st, fw, fh)
         if "rows" in o: info = (int(o["rows"][0] * fh), int(o["rows"][1] * fh)) + info[2:]
