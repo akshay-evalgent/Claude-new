@@ -1,0 +1,193 @@
+{
+ "engine": "imsg",
+ "format": "vertical",
+ "crf": 18,
+ "fps": 30,
+ "minuteEvery": 40,
+ "typeSpeed": 28,
+ "readMul": 0.7,
+ "pace": 0.62,
+ "tail": 0.3,
+ "booms": true,
+ "music": {
+  "track": "kidding-around",
+  "gain": -27
+ },
+ "loopOut": true,
+ "contact": "mom",
+ "title": "Pranking my mom i cleaned my room",
+ "clock": "4:20",
+ "unread": "14",
+ "cameraRoll": [
+  "🐶",
+  "🍕",
+  "🧦",
+  "☕",
+  "🎮",
+  "🍪",
+  "📚",
+  "🧹",
+  "🌮"
+ ],
+ "hook": {
+  "stages": [
+   {
+    "media": "flow-room-a",
+    "at": 2.5
+   },
+   {
+    "media": "flow-room-b",
+    "at": 2.5
+   },
+   {
+    "media": "flow-room-c",
+    "at": 2.5
+   }
+  ],
+  "open": "payoff",
+  "caption": "Pranking my mom i \"cleaned\" my room💀😭",
+  "dur": 3.6
+ },
+ "tool": {
+  "style": "edit",
+  "quick": true,
+  "photo": {
+   "media": "flow-room-a",
+   "at": 0.2
+  },
+  "result": {
+   "media": "flow-room-c",
+   "at": 2.5
+  },
+  "prompt": "Make it a hotel",
+  "project": "My room 1 of 1"
+ },
+ "history": [
+  {
+   "them": "The ball pit is still in the hallway."
+  },
+  {
+   "me": "dad lives there now"
+  },
+  {
+   "them": "K."
+  }
+ ],
+ "media": {
+  "flow-room-a": {
+   "file": "placeholder-room-a.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-room-b": {
+   "file": "placeholder-room-b.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-room-c": {
+   "file": "placeholder-room-c.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  }
+ },
+ "beats": [
+  {
+   "them": "Clean your room before I get home. I mean it."
+  },
+  {
+   "me": "on it"
+  },
+  {
+   "them": "And I will check under the bed. 🙂"
+  },
+  {
+   "me": "its spotless look"
+  },
+  {
+   "media": "flow-room-a",
+   "at": 2.5
+  },
+  {
+   "them": "Oh my goodness. Who are you."
+  },
+  {
+   "them": "I'm so proud of you. 🙂"
+  },
+  {
+   "me": "i had a little help"
+  },
+  {
+   "them": "What kind of help."
+  },
+  {
+   "media": "flow-room-b",
+   "at": 2.5
+  },
+  {
+   "them": "WHY ARE THERE PEOPLE IN HAZMAT SUITS IN MY HOUSE"
+  },
+  {
+   "me": "they said it was a level 4 situation"
+  },
+  {
+   "them": "IT WAS A FEW SOCKS"
+  },
+  {
+   "me": "they found a sandwich from 2019"
+  },
+  {
+   "them": "I made that sandwich."
+  },
+  {
+   "them": "Jordan."
+  },
+  {
+   "them": "How much is this costing."
+  },
+  {
+   "me": "dw its free"
+  },
+  {
+   "them": "Nothing is free."
+  },
+  {
+   "me": "they just needed to take some photos"
+  },
+  {
+   "them": "Photos for what."
+  },
+  {
+   "media": "flow-room-c",
+   "at": 2.5
+  },
+  {
+   "them": "WHY IS THERE A TOWEL SWAN ON YOUR BED"
+  },
+  {
+   "them": "WHO IS THAT MAN AT THE DOOR"
+  },
+  {
+   "me": "thats the concierge"
+  },
+  {
+   "them": "WE DON'T HAVE A CONCIERGE"
+  },
+  {
+   "them": "I ASKED YOU TO CLEAN IT NOT LIST IT ON AIRBNB"
+  },
+  {
+   "me": "the first guest checks in at 3",
+   "unsent": true
+  }
+ ],
+ "next": {
+  "contact": "dad",
+  "text": "why is a stranger asking me for the wifi password",
+  "tag": "follow for part 2"
+ },
+ "youtube": {
+  "title": "Mom did NOT ask for this😭 #prank #mom #cleanroom #funnyvideo #comedyshorts",
+  "description": [],
+  "tags": []
+ }
+}
