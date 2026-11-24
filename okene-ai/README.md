@@ -7,13 +7,14 @@ Jascon-4 when it capsized off the coast of Nigeria and sank upside down about 30
 It is built with the same pipeline as `../koepcke-ai/` and `../sahara-ai/`; those READMEs cover the models, the Kaggle
 setup and the lessons learned (stuck queues, server memory, trimming clips). Kaggle names come from this folder's
 name: notebooks `okene-ai-<mode>` and stills dataset `okene-ai-stills`. The first stills notebook was replaced while
-still queued (a shot was added), so the stills came from `okene-ai-kf`.
+still queued (a shot was added). Its replacement, `okene-ai-kf`, then sat queued for 30 minutes while an identical
+copy, `okene-ai-kf2`, started at once, so the stills came from `okene-ai-kf2`.
 
 ## Build
 
 ```bash
-python kaggle/build.py keyframes --slug okene-ai-kf && kaggle kernels push -p kaggle/push/okene-ai-kf
-kaggle kernels output akkikmr/okene-ai-kf -p out/kaggle_kf && python sheet_keyframes.py kaggle_kf
+python kaggle/build.py keyframes --slug okene-ai-kf2 && kaggle kernels push -p kaggle/push/okene-ai-kf2
+kaggle kernels output akkikmr/okene-ai-kf2 -p out/kaggle_kf && python sheet_keyframes.py kaggle_kf
 python pick_keyframes.py picks.json && kaggle datasets create -p out/kf_dataset      # later rounds: datasets version
 python kaggle/build.py clips && kaggle kernels push -p kaggle/push/okene-ai-clips
 ./fetch_clips.sh                                     # -> out/clips/<id>/f%04d.jpg + out/clips.json
