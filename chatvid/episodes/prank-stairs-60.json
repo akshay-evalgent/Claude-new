@@ -1,0 +1,199 @@
+{
+ "engine": "imsg",
+ "format": "vertical",
+ "crf": 18,
+ "fps": 30,
+ "minuteEvery": 40,
+ "typeSpeed": 28,
+ "readMul": 0.7,
+ "pace": 0.62,
+ "tail": 0.3,
+ "booms": true,
+ "music": {
+  "track": "kidding-around",
+  "gain": -27
+ },
+ "loopOut": true,
+ "contact": "mom",
+ "title": "Pranking my mom my gf slipped so i fixed the stairs",
+ "clock": "6:05",
+ "unread": "12",
+ "cameraRoll": [
+  "🐶",
+  "🍕",
+  "🌷",
+  "☕",
+  "📚",
+  "🍪",
+  "🧶",
+  "🎂",
+  "🌮"
+ ],
+ "hook": {
+  "stages": [
+   {
+    "media": "flow-stairs-a",
+    "at": 2.5
+   },
+   {
+    "media": "flow-stairs-b",
+    "at": 2.5
+   },
+   {
+    "media": "flow-stairs-c",
+    "at": 3.0
+   }
+  ],
+  "open": "payoff",
+  "caption": "Pranking my mom my gf slipped so i \"fixed\" her stairs💀😭",
+  "dur": 3.6
+ },
+ "tool": {
+  "style": "edit",
+  "quick": true,
+  "photo": {
+   "media": "flow-stairs-a",
+   "at": 0.3
+  },
+  "result": {
+   "media": "flow-stairs-c",
+   "at": 3.0
+  },
+  "prompt": "Add a ball pit",
+  "project": "Stairs 1 of 1"
+ },
+ "history": [
+  {
+   "them": "Why is there a robot in my driveway?"
+  },
+  {
+   "me": "kevin is visiting"
+  },
+  {
+   "them": "K."
+  }
+ ],
+ "media": {
+  "flow-stairs-a": {
+   "file": "placeholder-stairs-a.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-stairs-b": {
+   "file": "placeholder-stairs-b.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-stairs-c": {
+   "file": "placeholder-stairs-c.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  }
+ },
+ "beats": [
+  {
+   "me": "mom dont panic"
+  },
+  {
+   "them": "I am already panicking. What happened."
+  },
+  {
+   "me": "maya slipped on your stairs"
+  },
+  {
+   "them": "Oh no! Is she okay??"
+  },
+  {
+   "me": "shes fine. only her pride is hurt"
+  },
+  {
+   "them": "Thank God. I've told your father those stairs are slippery."
+  },
+  {
+   "me": "dont worry i made them safer"
+  },
+  {
+   "them": "That's very sweet of you. 🙂"
+  },
+  {
+   "media": "flow-stairs-a",
+   "at": 2.5
+  },
+  {
+   "them": "Oh that's actually smart."
+  },
+  {
+   "them": "Your father could never."
+  },
+  {
+   "me": "maya said its still a little scary"
+  },
+  {
+   "them": "Then she can hold the railing."
+  },
+  {
+   "me": "i removed the railing"
+  },
+  {
+   "them": "Why would you remove the railing."
+  },
+  {
+   "media": "flow-stairs-b",
+   "at": 2.5
+  },
+  {
+   "them": "JORDAN."
+  },
+  {
+   "them": "IS THAT A SLIDE ON MY STAIRS"
+  },
+  {
+   "me": "now nobody has to walk down"
+  },
+  {
+   "them": "I have book club here on Thursday."
+  },
+  {
+   "me": "they'll love it"
+  },
+  {
+   "them": "Take it down. Now. 🙂"
+  },
+  {
+   "me": "ok ok the slide is gone"
+  },
+  {
+   "them": "Thank you."
+  },
+  {
+   "me": "maya said stairs are dangerous in general"
+  },
+  {
+   "media": "flow-stairs-c",
+   "at": 3.0
+  },
+  {
+   "them": "WHERE ARE MY STAIRS"
+  },
+  {
+   "them": "WHO RAISED YOU"
+  },
+  {
+   "them": "I did. I'm calling your father."
+  },
+  {
+   "me": "dad is already in the ball pit",
+   "unsent": true
+  }
+ ],
+ "next": {
+  "contact": "dad",
+  "text": "honestly the ball pit is nice",
+  "tag": "follow for part 2"
+ },
+ "youtube": {
+  "title": "Mom did NOT approve😭 #prank #mom #stairs #funnyvideo #comedyshorts",
+  "description": [],
+  "tags": []
+ }
+}
