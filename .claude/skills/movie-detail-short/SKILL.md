@@ -145,10 +145,15 @@ python3 /home/user/Claude-new/shorts/movie/detail.py /home/user/Claude-new/short
 
 Every shot option is listed in `references/spec.md`; read it when writing the spec.
 
-**Layout: show the whole scene.** This is the user's rule, set after the Titanic video.
-- **The default is `"layout": "full"`.** Every film shot shows the entire frame across the full width, uncropped and unzoomed. The letterbox bars are removed and the picture sits at 40% of the screen height over a blurred copy of itself, with captions just under it.
-- **Why the old crop is gone:** the old 9:16 crop (`"layout": "crop"`, kept only for the three early specs) cut faces and looked zoomed in on a phone, and the user disliked it.
-- **The one exception:** a tiny `fit` crop (1.1–1.2) is fine just to hide a watermark or burned-in text.
+**Layout: the user's rule.** The picture fills the middle 66% of the screen. Blurred bands of 17% sit above and below it, and the captions go in the bottom band, never over the picture.
+- **How it works:** this is `"layout": "full"` with `"mid": 0.66`, the defaults. Each scene fills the band's full height, with letterbox bars removed. Its sides are trimmed around `cx`, so set `cx` on any shot whose subject is off-centre, and check it in the preview sheet.
+- **How the user got here:**
+  - The first Titanic-style 9:16 crop cut faces and looked zoomed in.
+  - The whole-scene version that followed left too much blur.
+  - The 66% middle band is the agreed balance.
+- **Old Shorts:** keep `"layout": "crop"` only for re-renders of the early ones.
+- **Watermarks:** use a small extra `fit` crop only to hide a watermark.
+- **Thumbnail:** the same layout, a hero frame of the detail in the middle, with one short line of text in each band (e.g. top: "THESE MOUNTAINS", white; bottom: "ARE REAL", yellow). It's made with `compose_full` plus the caption font.
 
 **Defaults that worked:**
 - 2–6 shots per narration beat, each about 1–1.5 s.

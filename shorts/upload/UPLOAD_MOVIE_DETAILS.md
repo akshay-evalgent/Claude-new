@@ -166,7 +166,7 @@ Be honest: did you notice the sign the first time? 👇
 
 **File:** `avatar_pandora_real.mp4` (85 s) · **Cover:** `avatar_pandora_real_cover.jpg` (Pandora's floating mountains)
 
-**Layout:** this is the first one with the new full-scene layout. Every film shot shows uncropped across the full width, over a blurred fill, with captions underneath.
+**Layout:** the picture fills the middle 66% of the screen. Blurred bands sit above and below, and the captions are in the bottom band. The thumbnail uses the same layout: "THESE MOUNTAINS" at the top, "ARE REAL" at the bottom.
 
 **The detail:** Pandora's floating "Hallelujah Mountains" are modelled on real sandstone pillars in Zhangjiajie, China. It follows the Titanic pattern: something on screen that everyone assumes is made up turns out to be real.
 

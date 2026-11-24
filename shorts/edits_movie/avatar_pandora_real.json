@@ -1,6 +1,6 @@
 {
  "title": "Did you notice this detail in Avatar???",
- "note": "Pandora's floating mountains are real: Zhangjiajie, Hunan. Facts and sources: shorts/edits_movie/avatar_pandora_real.script.md. Full-scene layout (whole picture, uncropped). Run from the work folder holding src/ and tx/.",
+ "note": "Pandora's floating mountains are real: Zhangjiajie, Hunan. Facts and sources: shorts/edits_movie/avatar_pandora_real.script.md. Layout: picture in the middle 66% of the screen, blurred bands above and below, captions in the bottom band. Run from the work folder holding src/ and tx/.",
  "base": ".",
  "layout": "full",
  "voice": "am_michael",
@@ -61,7 +61,10 @@
    "shots": [
     [
      "dULrAcg3R-Y",
-     175.0
+     175.0,
+     {
+      "cx": 0.55
+     }
     ],
     [
      "jkyNC2fvfVQ",
@@ -73,7 +76,10 @@
     ],
     [
      "8s4Dg-3qPss",
-     11.5
+     11.5,
+     {
+      "cx": 0.68
+     }
     ]
    ]
   },
@@ -87,7 +93,10 @@
     ],
     [
      "8s4Dg-3qPss",
-     2.5
+     2.5,
+     {
+      "cx": 0.6
+     }
     ],
     [
      "dULrAcg3R-Y",
@@ -249,40 +258,28 @@
      "mtXZSugA3k0",
      10.2,
      {
-      "fit": 1.2,
-      "cx": 0.45,
-      "cy": 0.85,
-      "fy": 0.4
+      "cx": 0.45
      }
     ],
     [
      "mtXZSugA3k0",
      16.4,
      {
-      "fit": 1.2,
-      "cx": 0.45,
-      "cy": 0.85,
-      "fy": 0.4
+      "cx": 0.45
      }
     ],
     [
      "mtXZSugA3k0",
      30.4,
      {
-      "fit": 1.2,
-      "cx": 0.45,
-      "cy": 0.85,
-      "fy": 0.4
+      "cx": 0.45
      }
     ],
     [
      "mtXZSugA3k0",
      32.4,
      {
-      "fit": 1.2,
-      "cx": 0.45,
-      "cy": 0.85,
-      "fy": 0.4
+      "cx": 0.45
      }
     ],
     [
@@ -324,7 +321,8 @@
      "OTWBHVFNfT4",
      217.75,
      {
-      "w": 0.8
+      "w": 0.8,
+      "cx": 0.62
      }
     ],
     [
@@ -359,5 +357,6 @@
   "Zhangjiajie drone footage: DS Videography, PJ Travels",
   "Hallelujah Mountain footage: YouTube uploader 'ling daisly'",
   "Bailong Elevator: South China Morning Post"
- ]
+ ],
+ "mid": 0.66
 }

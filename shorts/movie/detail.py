@@ -145,23 +145,31 @@ def compose_fit(fr, info, opts, k):
     return bg
 
 
-FULL_FY = 0.40                                       # full-scene layout: picture centre, as a fraction of the height
+FULL_FY = 0.50                                       # full-scene layout: picture centre, as a fraction of the height
+MID = 0.66                                           # picture height as a fraction of the screen (set from the spec in main)
 
 
 def compose_full(fr, info, opts, k):
-    """The whole scene, uncropped: the picture (letterbox bars removed) spans the full width at FULL_FY, over a blurred,
-    darkened fill of itself. No crop and no zoom, so nothing in the scene is cut off (the user's rule since Avatar)."""
-    fw, fh = fr.size; y0, y1, mean, _ = info
+    """Picture in the middle MID of the screen (the user's rule: at least 66% picture, the rest split as two equal blurred
+    bands, captions in the bottom band). The scene's full height fills the window; when the scene is wider than the
+    window, its sides are trimmed around `cx` (no zoom beyond that). Letterbox bars are removed first."""
+    fw, fh = fr.size; y0, y1, mean, cx_auto = info
     ah = y1 - y0
-    fg = fr.resize((W, int(round(W * ah / fw))), Image.LANCZOS, box=(0, y0, fw, y1))
-    bw = ah * W / H; bx = (fw - bw) / 2
+    th = int(round(H * MID))
+    if W * ah / fw >= th:                            # already tall enough at full width: show it all
+        x0, cw = 0.0, float(fw); th = int(round(W * ah / fw))
+    else:                                            # fill the window's height, trim the sides around cx
+        cw = ah * W / th
+        x0 = float(np.clip(lerp(opts, "cx", 0.5 if opts.get("auto_cx") is False else cx_auto, k) * fw - cw / 2, 0, fw - cw))
+    fg = fr.resize((W, th), Image.LANCZOS, box=(x0, y0, x0 + cw, y1))
+    bw = ah * W / H; bx = float(np.clip(x0 + cw / 2 - bw / 2, 0, fw - bw))
     bg = fr.resize((W // 4, H // 4), Image.BILINEAR, box=(bx, y0, bx + bw, y1)).filter(ImageFilter.GaussianBlur(8)).resize((W, H), Image.BICUBIC)
     bg = Image.eval(bg, lambda v: int(v * 0.38))
     g = gain(mean, opts)
     if g != 1.0:
         fg = ImageEnhance.Contrast(ImageEnhance.Brightness(fg).enhance(g)).enhance(1.06)
         bg = ImageEnhance.Brightness(bg).enhance(g)
-    fg = fg.filter(ImageFilter.UnsharpMask(radius=1.6, percent=55, threshold=2))
+    fg = fg.filter(ImageFilter.UnsharpMask(radius=1.8, percent=60, threshold=2))
     bg.paste(fg, (0, int(H * opts.get("fy", FULL_FY) - fg.height / 2)))
     return bg
 
@@ -228,9 +236,10 @@ def music_bed(seconds, seed=12):
 def main():
     spec = json.load(open(sys.argv[1])); out = sys.argv[2]
     base = spec["base"]; voice, speed = spec.get("voice", "am_michael"), spec.get("speed", 1.22)
-    global CAP_Y
-    layout = spec.get("layout", "full")                 # "full": whole scene, uncropped (default); "crop": 9:16 crop (old Shorts)
-    CAP_Y = spec.get("cap_y", 0.635 if layout == "full" else 0.52)
+    global CAP_Y, MID
+    layout = spec.get("layout", "full")                 # "full": picture in the middle band (default); "crop": 9:16 crop (old Shorts)
+    MID = spec.get("mid", 0.66)                         # picture height share; the blurred bands above and below split the rest
+    CAP_Y = spec.get("cap_y", 1 - (1 - MID) / 4 if layout == "full" else 0.52)   # captions centred in the bottom band
     work = os.path.splitext(out)[0] + "_work"; os.makedirs(work, exist_ok=True)
     cache = os.path.join(work, "tts"); os.makedirs(cache, exist_ok=True)
     gap = spec.get("gap", 0.05)
