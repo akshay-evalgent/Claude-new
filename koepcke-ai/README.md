@@ -11,7 +11,17 @@ Kaggle names come from this folder's name: notebooks `koepcke-ai-keyframes` and 
 If a notebook stays QUEUED for hours while quota is left, it may be stuck rather than waiting. Push an identical
 copy under another name (`python kaggle/build.py keyframes --slug koepcke-ai-kf2`). Then delete whichever of the two
 starts second, or it will run the whole job again. Here the first stills run sat queued for 7 hours; the copy
-started within a minute, so these stills came from `koepcke-ai-kf2`.
+started within a minute, so these stills came from `koepcke-ai-kf2`. Eight weak stills were redone in `koepcke-ai-redo1`,
+and the clips came from two notebooks: `koepcke-ai-clips2` (the 8 redone shots) and `koepcke-ai-clips1c` (the other 14).
+`fetch_clips.sh` takes both names and merges them.
+
+Running two ComfyUI servers on the 32 GB Kaggle host can still run out of memory. `--disable-pinned-memory` made it
+less likely but did not stop it. Each worker restarts its server up to 4 times, and in practice that was enough: the
+14-shot run lost a server 7 times and still finished every shot (about 13 min per clip per GPU, 2 h 20 min in total).
+
+Some clips go wrong near the end, for example a figure floating off the ground or walking out of frame. In `film.html`,
+`CLIPCUT` stops a clip at its last good frame (and can play it forward and then back), and `CLIPCROP` zooms in to keep part
+of the frame out of shot. That is quicker than generating the clip again.
 
 ## Build
 

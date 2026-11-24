@@ -52,7 +52,8 @@ Or: `Her father's advice saved her life: find water and follow it. What's the be
 ## Settings
 
 - **Thumbnail:** upload `cover.jpg` if Studio offers a custom thumbnail for the Short (this is rolling out to channels in the
-  Partner Program). If it doesn't, choose the frame at about **0:01**, where the seat row tumbles through the storm.
+  Partner Program). If it doesn't, choose the frame at about **0:01**, the same picture as the cover: her strapped into her seat as
+  lightning strikes through the torn-open cabin.
 - **Audience:** *No, it's not made for kids.* The cartoon-like look can lead YouTube to classify it as made for kids,
   and that turns off comments and notifications. The story also has a plane crash and an infected wound.
 - **Altered or synthetic content:** choose *Yes*. It shows a real person and real events in AI-generated
