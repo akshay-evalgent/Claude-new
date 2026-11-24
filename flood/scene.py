@@ -133,6 +133,10 @@ def build():
     suv = VH.build_suv("SUV", (0.1, 0.14, 0.19), S.collection("SUV"))
     truck = VH.build_pickup("Pickup", (0.5, 0.51, 0.53), S.collection("Pickup"))
     bpy.context.view_layer.update()
+    for c in (car, conv, suv, truck):           # no glare disks from the dash/tail lamps in the glass
+        for lamp in c["lamps"]:
+            if lamp.data.type == "POINT":
+                lamp.visible_glossy = False
 
     arrow_mat = ST._emit("Arrow", (1.0, 0.78, 0.2), 7.0)
     up_arrows, side_arrows = [], []

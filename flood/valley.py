@@ -41,7 +41,7 @@ def base_h(x):
 
 def washout(x, y):
     """0..1 scour hole under the road (only in the washout cutaway)."""
-    return math.exp(-((x - 6.0) / 2.6) ** 2 - ((y - 0.3) / 4.8) ** 4)
+    return math.exp(-((x - 6.0) / 1.6) ** 2 - ((y - 0.3) / 4.8) ** 4)
 
 
 def ground(x, y, wash=False):
@@ -463,7 +463,7 @@ class Valley:
         """Broken asphalt slabs tipped into the scour hole (washout cutaway only)."""
         rnd = random.Random(3)
         out = []
-        for i, (x, y, rx, ry) in enumerate(((4.4, -1.0, 18, -10), (7.6, 0.4, -24, 8), (5.8, 2.2, 10, 30), (6.6, -2.4, -14, -6))):
+        for i, (x, y, rx, ry) in enumerate(((5.0, -1.2, 22, -10), (7.0, 0.4, -26, 8), (5.9, 2.2, 10, 30), (6.4, -2.2, -14, -6))):
             z = ground(x, y, True) + 0.25
             o = S.box(f"Slab{i}", (-0.7, -0.9, -0.06), (0.7, 0.9, 0.06), self.mats["asphalt"], self.cut_coll["W"], 0.01)
             o.location = (x, y, z); o.rotation_euler = (math.radians(rx), math.radians(ry), rnd.uniform(-0.5, 0.5))
@@ -743,9 +743,37 @@ def spray_material():
     m = bpy.data.materials.new("Spray"); m.use_nodes = True
     nt = m.node_tree; nt.nodes.clear()
     out = nt.nodes.new("ShaderNodeOutputMaterial")
-    df = nt.nodes.new("ShaderNodeBsdfDiffuse"); df.inputs["Color"].default_value = (0.75, 0.68, 0.58, 1)
+    df = nt.nodes.new("ShaderNodeBsdfDiffuse"); df.inputs["Color"].default_value = (0.8, 0.74, 0.64, 1)
     tr = nt.nodes.new("ShaderNodeBsdfTransparent")
-    mix = nt.nodes.new("ShaderNodeMixShader"); mix.inputs[0].default_value = 0.75
+    mix = nt.nodes.new("ShaderNodeMixShader"); mix.inputs[0].default_value = 0.55
     nt.links.new(tr.outputs[0], mix.inputs[1]); nt.links.new(df.outputs[0], mix.inputs[2])
     nt.links.new(mix.outputs[0], out.inputs["Surface"])
     return m
+
+
+def spray_drops(name, origin, frame0, n, mat, coll, speed=(1.2, 3.2), life=(6, 12), bias=Vector((0, 0, 1)), spread=0.5,
+                seed=0, size=(0.025, 0.06), gravity=9.8):
+    """Ballistic water droplets (small spheres), keyed per frame, scale 0 outside their life."""
+    rnd = random.Random(seed)
+    bm = bmesh.new(); bmesh.ops.create_icosphere(bm, subdivisions=1, radius=1.0)
+    me = bpy.data.meshes.get("SprayDrop")
+    if me is None:
+        me = bpy.data.meshes.new("SprayDrop"); bm.to_mesh(me); me.materials.append(mat)
+    bm.free()
+    objs = []
+    for i in range(n):
+        o = S.new_obj(f"{name}{i}", me, coll); o.visible_shadow = False
+        d = (Vector(bias).normalized() + Vector((rnd.gauss(0, 1), rnd.gauss(0, 1), rnd.gauss(0, 1))) * spread).normalized()
+        v0 = d * rnd.uniform(*speed)
+        lf = rnd.randint(*life); r = rnd.uniform(*size)
+        f0 = frame0 + rnd.randint(0, 2)
+        o.scale = (0, 0, 0); o.keyframe_insert("scale", frame=f0 - 1)
+        for k in range(lf + 1):
+            t = k / FPS
+            o.location = Vector(origin) + v0 * t + Vector((0, 0, -0.5 * gravity * t * t))
+            o.keyframe_insert("location", frame=f0 + k)
+            sc = r * (1 - 0.5 * k / (lf + 1))
+            o.scale = (sc, sc, sc * 1.3); o.keyframe_insert("scale", frame=f0 + k)
+        o.scale = (0, 0, 0); o.keyframe_insert("scale", frame=f0 + lf + 1)
+        objs.append(o)
+    return objs

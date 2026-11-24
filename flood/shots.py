@@ -560,24 +560,23 @@ def perform(rig):
             for sd in (1, -1):
                 origin = loc + fwd * 2.25 + left * sd * 0.8
                 origin.z = level_at(name, u) + 0.02
-                ST.spark_burst(f"{tag}{name}{k}", origin, fr, n, spray, fx, speed=(1.2, 3.2), life=(6, 12),
-                               bias=(fwd * 0.6 + left * sd * 0.8 + Vector((0, 0, up))), spread=0.45, seed=k * 7 + sd,
-                               length=0.04)
+                VL.spray_drops(f"{tag}{name}{k}", origin, fr, n, spray, fx, speed=(1.4, 3.6), life=(6, 12),
+                               bias=(fwd * 0.6 + left * sd * 0.8 + Vector((0, 0, up))), spread=0.45, seed=k * 7 + sd)
                 k += 1
-    bow("conv_cross", conv_xf, every=3, n=8)
-    bow("aerial_approach", conv_xf, every=4, n=5)
+    bow("conv_cross", conv_xf, every=2, n=14)
+    bow("aerial_approach", conv_xf, every=3, n=8)
     a, b = ends("swept")
     for k, fr in enumerate(range(a, b - 4, 4)):
         u = (fr - a) / max(1, b - a)
         loc, r = hero_xf("swept", u, fr)
         origin = loc + Vector((0.0, 0.9, 0)); origin.z = level_at("swept", u) + 0.05
-        ST.spark_burst(f"Slam{k}", origin, fr, 9, spray, fx, speed=(1.5, 3.8), life=(6, 12),
-                       bias=Vector((0, 0.3, 1.6)), spread=0.6, seed=100 + k, length=0.05)
+        VL.spray_drops(f"Slam{k}", origin, fr, 16, spray, fx, speed=(1.5, 3.8), life=(6, 12),
+                       bias=Vector((0, 0.3, 1.6)), spread=0.6, seed=100 + k, size=(0.02, 0.05))
     a, b = ends("current_cut")
     for k, fr in enumerate(range(a, b - 4, 5)):
         origin = Vector((VL.CAR_X + 1.8, VL.LANE_Y + 0.85, level_at("current_cut", 0.5) + 0.03))
-        ST.spark_burst(f"Pile{k}", origin, fr, 6, spray, fx, speed=(0.8, 2.0), life=(6, 10),
-                       bias=Vector((0, -0.3, 1.5)), spread=0.5, seed=200 + k, length=0.04)
+        VL.spray_drops(f"Pile{k}", origin, fr, 8, spray, fx, speed=(0.8, 2.0), life=(6, 10),
+                       bias=Vector((0, -0.3, 1.5)), spread=0.5, seed=200 + k)
     return p
 
 
@@ -618,15 +617,15 @@ def cam_plan():
                                             hero("driver_watch", u, fr) + Vector((-0.1, 0.37, 1.12))), 2.8, 0.25, 0),
         "rise_gauge": (40, lambda u, fr: (gauge + lerp((-0.7, -2.5, 0.5), (-0.6, -2.3, 0.55), u),
                                           gauge + Vector((0, 0, 0.3))), 3.0, 0.2, 0),
-        "murky": (28, lambda u, fr: (lerp((-24.4, -1.3, lvl("murky") + 1.1), (-24.0, -1.1, lvl("murky") + 1.0), u),
-                                     Vector((-19.6, -0.3, lvl("murky") - 0.5))), 5.0, 0.2, 0),
-        "depth_reveal": (65, lambda u, fr: (lerp((-15.6, -9.8, gauge.z + 0.75), (-15.55, -9.2, gauge.z + 0.7), u),
-                                            gauge + Vector((0, 0, 0.42))), None, 0.15, 0),
+        "murky": (28, lambda u, fr: (lerp((-23.4, -0.9, lvl("murky") + 1.45), (-23.0, -0.8, lvl("murky") + 1.35), u),
+                                     Vector((-20.4, -0.5, lvl("murky") - 0.55))), 5.0, 0.2, 0),
+        "depth_reveal": (60, lambda u, fr: (lerp((-15.45, -5.9, lvl("depth_reveal") - 0.03), (-15.45, -5.6, lvl("depth_reveal") - 0.03), u),
+                                            Vector((gauge.x, gauge.y, lvl("depth_reveal") - 0.03))), None, 0.05, 0),
         "six_cut": (30, lambda u, fr: (lerp((cx + 0.6, -8.6, ROAD0 + 0.75), (cx + 0.4, -8.0, ROAD0 + 0.7), u), Vector((cx, 0, ROAD0 + 0.3))), None, 0.15, 0),
-        "underbody": (30, lambda u, fr: (Vector((cx + 1.7, ly - 2.15, lvl("underbody") + 0.1)) + lerp((0, 0, 0), (-0.15, 0.1, 0), u),
-                                         Vector((cx + 0.4, ly - 0.5, lvl("underbody") + 0.02))), 3.5, 0.2, 0),
-        "stall_dash": (18, lambda u, fr: (hero("stall_dash", u, fr) + lerp((-0.32, -0.45, 1.2), (-0.28, -0.43, 1.19), u),
-                                          hero("stall_dash", u, fr) + Vector((0.18, 0.4, 1.0))), 1.6, 0.2, 0),
+        "underbody": (28, lambda u, fr: (Vector((cx + 2.6, ly - 3.3, lvl("underbody") + 0.16)) + lerp((0, 0, 0), (-0.2, 0.12, 0), u),
+                                         Vector((cx + 0.7, ly - 0.7, lvl("underbody") + 0.06))), 4.0, 0.2, 0),
+        "stall_dash": (20, lambda u, fr: (hero("stall_dash", u, fr) + lerp((-0.22, -0.32, 1.22), (-0.19, -0.3, 1.2), u),
+                                          hero("stall_dash", u, fr) + Vector((0.66, 0.3, 0.9))), 1.6, 0.2, 0),
         "foot_cut": (32, lambda u, fr: (lerp((cx + 0.5, -8.4, ROAD0 + 0.75), (cx + 0.4, -8.0, ROAD0 + 0.72), u), Vector((cx, 0, ROAD0 + 0.35))), None, 0.15, 0),
         "float_wide": (30, lambda u, fr: (hero("float_wide", u, fr) + lerp((7.2, -6.2, 1.7), (6.6, -5.8, 1.6), u),
                                           hero("float_wide", u, fr) + Vector((0, 0, 0.55))), None, 0.4, 0),
@@ -647,7 +646,7 @@ def cam_plan():
                                      truck_xf("truck", u, fr)[0] + Vector((0, 0, 0.7))), None, 0.5, 0),
         "washout_surface": (30, lambda u, fr: (lerp((-10, -2.7, lvl("washout_surface") + 0.55), (-8.5, -2.6, lvl("washout_surface") + 0.5), u),
                                                Vector((8, 0.2, lvl("washout_surface") - 0.05))), None, 0.2, 0),
-        "washout_cut": (24, lambda u, fr: (lerp((5.2, -11.8, -0.8), (5.4, -11.0, -0.95), u), Vector((5.6, 0, -1.75))), None, 0.15, 0),
+        "washout_cut": (20, lambda u, fr: (lerp((5.8, -12.6, -0.7), (5.9, -11.8, -0.8), u), Vector((6.0, 0, -1.7))), None, 0.15, 0),
         "stranded": (26, lambda u, fr: (lerp((15, -37, 9.5), (14, -39, 8.8), u), Vector((1, -62, lvl("stranded") - 0.2))), None, 0.4, 0),
         "stranded_close": (35, lambda u, fr: (lerp((-0.2, -53.8, lvl("stranded_close") + 1.3), (-0.6, -54.3, lvl("stranded_close") + 1.2), u),
                                               Vector((-4, -58, lvl("stranded_close") + 0.35))), 4.0, 0.3, 0),
