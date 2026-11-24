@@ -166,6 +166,7 @@ function captions(t, shot) {
   show(el.cap, 1, `scale(${(0.86 + 0.14 * eo(seg(t, c.a, c.a + 0.12))).toFixed(3)})`);
 }
 // chips: [shot, text]; the part in <b> is gold
+const CHIPTOP = { h10: 1290, h19: 150, h23: 150 };   // shots whose head sits at chip height: chip higher, or under the caption
 const CHIPS = [['h03', 'SOUTH WALES · 2009'], ['h04', 'JAMES HOWELLS · IT ENGINEER'], ['h05', '<b>8,000</b> BITCOIN'], ['h07', 'SUMMER 2013'],
   ['h10', 'LATE 2013 · NOW <b>≈ $8 MILLION</b>'], ['h14', '2021 · NOW <b>≈ $280 MILLION</b>'], ['h16', 'HIS CLAIM: <b>£495 MILLION</b>'],
   ['h23', 'HIS OFFER: <b>£25 MILLION</b>'], ['h19', 'AUGUST 2025']];
@@ -199,7 +200,7 @@ function frame(t) {
   el.gfx.style.transform = `translate(${sx.toFixed(1)}px,${sy.toFixed(1)}px)`;
   weather(t, s[0]);
   const cEnd = c => Math.min(T(c[0])[1], ENDCARD) - 0.05, chip = CHIPS.find(c => t >= T(c[0])[0] + 0.15 && t < cEnd(c));
-  if (chip) { el.chipT.innerHTML = chip[1]; show(el.chip, win(t, T(chip[0])[0] + 0.15, cEnd(chip), 0.2, 0.2), `translateY(${(-14 * (1 - eo(seg(t, T(chip[0])[0] + 0.15, T(chip[0])[0] + 0.5)))).toFixed(1)}px)`); } else show(el.chip, 0);
+  if (chip) { el.chipT.innerHTML = chip[1]; el.chip.style.top = (CHIPTOP[chip[0]] || 290) + 'px'; show(el.chip, win(t, T(chip[0])[0] + 0.15, cEnd(chip), 0.2, 0.2), `translateY(${(-14 * (1 - eo(seg(t, T(chip[0])[0] + 0.15, T(chip[0])[0] + 0.5)))).toFixed(1)}px)`); } else show(el.chip, 0);
   const bg = BIG.find(g => t >= g.a && t < g.b);
   if (bg) {
     const txt = bg.roll ? money(bg.roll * Math.pow(eo(seg(t, bg.a, bg.a + 1.0)), 2.2)) : bg.text;

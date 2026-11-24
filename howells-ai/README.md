@@ -41,6 +41,8 @@ node youtube/make_kit.js                             # captions.en.srt and cover
 - The big words (`BIG`) are the hook's rolling "$1,000,000,000", "NO.", "STILL NO." and a red "DISMISSED" stamp; each
   lands with a short shake (`IMPACTS`) and a hit in the sound.
 - The chips carry the year and what the coins were worth at that point, so the number keeps growing while he loses.
+- `CAPTOP`, `CHIPTOP` and the `top` of a big word move text off faces, shot by shot. The cover's title sits at the top,
+  because the drive is in the lower half of the frame.
 - The end card asks the question from the last line again ("Would you have kept digging?"), to pull comments.
 
 ## What is true, and what is not certain

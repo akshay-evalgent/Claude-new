@@ -48,8 +48,8 @@ const html = `<style>
 @font-face { font-family: Anton; src: url(data:font/woff2;base64,${b64('assets/anton.woff2')}) format('woff2'); }
 html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
 .bg { position: absolute; inset: 0; background: url(data:image/jpeg;base64,${b64(COVER)}) center / cover; }
-.shade { position: absolute; left: 0; right: 0; bottom: 0; height: 900px; background: linear-gradient(transparent, rgba(0,0,0,.82) 55%); }
-.t { position: absolute; left: 0; right: 0; bottom: 230px; text-align: center; font-family: Anton; color: #fff; line-height: .95;
+.shade { position: absolute; left: 0; right: 0; top: 0; height: 1000px; background: linear-gradient(rgba(0,0,0,.82) 45%, transparent); }   /* title on top: the drive is in the lower half */
+.t { position: absolute; left: 0; right: 0; top: 200px; text-align: center; font-family: Anton; color: #fff; line-height: .95;
      text-transform: uppercase; text-shadow: 0 6px 24px rgba(0,0,0,.6); }
 .a { font-size: 200px; color: #ffd23f; margin: 10px 0 4px; }
 .b { font-size: 120px; letter-spacing: 2px; }
