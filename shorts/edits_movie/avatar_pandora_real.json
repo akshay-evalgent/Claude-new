@@ -1,0 +1,363 @@
+{
+ "title": "Did you notice this detail in Avatar???",
+ "note": "Pandora's floating mountains are real: Zhangjiajie, Hunan. Facts and sources: shorts/edits_movie/avatar_pandora_real.script.md. Full-scene layout (whole picture, uncropped). Run from the work folder holding src/ and tx/.",
+ "base": ".",
+ "layout": "full",
+ "voice": "am_michael",
+ "speed": 1.32,
+ "gap": 0.05,
+ "beats": [
+  {
+   "say": "If you pay attention to Avatar, you'll notice one thing on Pandora that isn't made up at all.",
+   "shots": [
+    [
+     "OTWBHVFNfT4",
+     196.0
+    ],
+    [
+     "dULrAcg3R-Y",
+     120.0
+    ],
+    [
+     "OTWBHVFNfT4",
+     223.5
+    ]
+   ]
+  },
+  {
+   "say": "These floating mountains.",
+   "shots": [
+    [
+     "OTWBHVFNfT4",
+     227.5
+    ]
+   ]
+  },
+  {
+   "film": [
+    "5PSNL1qE6VY",
+    34.55,
+    39.55
+   ],
+   "shots": [
+    [
+     "5PSNL1qE6VY",
+     34.55,
+     {
+      "w": 2.05
+     }
+    ],
+    [
+     "OTWBHVFNfT4",
+     197.6,
+     {
+      "w": 2.95
+     }
+    ]
+   ]
+  },
+  {
+   "say": "When Avatar came out, people fell so hard for Pandora that some of them got genuinely sad it wasn't real.",
+   "shots": [
+    [
+     "dULrAcg3R-Y",
+     175.0
+    ],
+    [
+     "jkyNC2fvfVQ",
+     257.5
+    ],
+    [
+     "jkyNC2fvfVQ",
+     249.5
+    ],
+    [
+     "8s4Dg-3qPss",
+     11.5
+    ]
+   ]
+  },
+  {
+   "say": "CNN even ran a story about it, called Avatar blues. On one fan forum, a single thread about coping with it got more than a thousand posts.",
+   "speak": "CNN even ran a story about it, called Avatar blues. On one fan forum, a single thread about coping with it got more than a thousand posts.",
+   "shots": [
+    [
+     "5PSNL1qE6VY",
+     131.0
+    ],
+    [
+     "8s4Dg-3qPss",
+     2.5
+    ],
+    [
+     "dULrAcg3R-Y",
+     105.0
+    ],
+    [
+     "OTWBHVFNfT4",
+     245.5
+    ],
+    [
+     "dULrAcg3R-Y",
+     160.0
+    ]
+   ]
+  },
+  {
+   "say": "But those mountains are real.",
+   "shots": [
+    [
+     "6OdiVeO1M5w",
+     72.0
+    ],
+    [
+     "6OdiVeO1M5w",
+     102.0
+    ]
+   ]
+  },
+  {
+   "say": "In Zhangjiajie, in China's Hunan province, about three thousand sandstone pillars rise straight out of the forest. Many are over two hundred meters tall.",
+   "speak": "In Jahng-jyah-jyeh, in China's Hoo-nahn province, about three thousand sandstone pillars rise straight out of the forest. Many are over two hundred meters tall.",
+   "shots": [
+    [
+     "Zdlou7HSsrE",
+     42.0
+    ],
+    [
+     "6OdiVeO1M5w",
+     120.0
+    ],
+    [
+     "6OdiVeO1M5w",
+     150.0
+    ],
+    [
+     "Zdlou7HSsrE",
+     75.0
+    ],
+    [
+     "6OdiVeO1M5w",
+     24.0
+    ],
+    [
+     "6OdiVeO1M5w",
+     162.0
+    ]
+   ]
+  },
+  {
+   "say": "When the mist rolls in, their bases disappear, and they look like they're floating.",
+   "shots": [
+    [
+     "UKqpW8hzWLU",
+     1.0
+    ],
+    [
+     "6OdiVeO1M5w",
+     78.0
+    ],
+    [
+     "UKqpW8hzWLU",
+     31.0
+    ]
+   ]
+  },
+  {
+   "say": "The city says a Hollywood photographer shot these pillars in 2008, and his photos became the model for Pandora's floating mountains.",
+   "speak": "The city says a Hollywood photographer shot these pillars in two thousand eight, and his photos became the model for Pandora's floating mountains.",
+   "shots": [
+    [
+     "6OdiVeO1M5w",
+     30.0
+    ],
+    [
+     "Zdlou7HSsrE",
+     33.0
+    ],
+    [
+     "OTWBHVFNfT4",
+     191.5
+    ],
+    [
+     "wCnxJOhZmC4",
+     20.0
+    ]
+   ]
+  },
+  {
+   "say": "So in January 2010, just weeks after the movie came out, they renamed one of the pillars Avatar Hallelujah Mountain.",
+   "speak": "So in January twenty ten, just weeks after the movie came out, they renamed one of the pillars Avatar Hallelujah Mountain.",
+   "shots": [
+    [
+     "wCnxJOhZmC4",
+     16.0
+    ],
+    [
+     "6OdiVeO1M5w",
+     12.0
+    ],
+    [
+     "UKqpW8hzWLU",
+     4.5
+    ],
+    [
+     "UKqpW8hzWLU",
+     33.5
+    ]
+   ]
+  },
+  {
+   "say": "A lot of people in China hated it. In one online poll of sixty thousand people, about ninety percent voted against it.",
+   "shots": [
+    [
+     "Zdlou7HSsrE",
+     16.5
+    ],
+    [
+     "6OdiVeO1M5w",
+     48.0
+    ],
+    [
+     "6OdiVeO1M5w",
+     54.0
+    ],
+    [
+     "Zdlou7HSsrE",
+     60.0
+    ]
+   ]
+  },
+  {
+   "say": "The city backed down. But the name stuck.",
+   "shots": [
+    [
+     "UKqpW8hzWLU",
+     7.0
+    ],
+    [
+     "6OdiVeO1M5w",
+     216.0
+    ]
+   ]
+  },
+  {
+   "say": "And to get up there, you can ride the Bailong Elevator, built into the side of a cliff. It climbs three hundred twenty-six meters, the tallest outdoor elevator in the world.",
+   "speak": "And to get up there, you can ride the Bye-long Elevator, built into the side of a cliff. It climbs three hundred twenty-six meters, the tallest outdoor elevator in the world.",
+   "shots": [
+    [
+     "mtXZSugA3k0",
+     10.2,
+     {
+      "fit": 1.2,
+      "cx": 0.45,
+      "cy": 0.85,
+      "fy": 0.4
+     }
+    ],
+    [
+     "mtXZSugA3k0",
+     16.4,
+     {
+      "fit": 1.2,
+      "cx": 0.45,
+      "cy": 0.85,
+      "fy": 0.4
+     }
+    ],
+    [
+     "mtXZSugA3k0",
+     30.4,
+     {
+      "fit": 1.2,
+      "cx": 0.45,
+      "cy": 0.85,
+      "fy": 0.4
+     }
+    ],
+    [
+     "mtXZSugA3k0",
+     32.4,
+     {
+      "fit": 1.2,
+      "cx": 0.45,
+      "cy": 0.85,
+      "fy": 0.4
+     }
+    ],
+    [
+     "Zdlou7HSsrE",
+     90.0
+    ]
+   ]
+  },
+  {
+   "say": "Some say Cameron's team took even more from Huangshan, another mountain range in China. Either way, Pandora was hiding on Earth. And like Jake says,",
+   "speak": "Some say Cameron's team took even more from Huang Shan, another mountain range in China. Either way, Pandora was hiding on Earth. And like Jake says,",
+   "shots": [
+    [
+     "6OdiVeO1M5w",
+     6.0
+    ],
+    [
+     "6OdiVeO1M5w",
+     84.0
+    ],
+    [
+     "OTWBHVFNfT4",
+     246.0
+    ],
+    [
+     "6OdiVeO1M5w",
+     132.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "OTWBHVFNfT4",
+    217.75,
+    219.95
+   ],
+   "shots": [
+    [
+     "OTWBHVFNfT4",
+     217.75,
+     {
+      "w": 0.8
+     }
+    ],
+    [
+     "dULrAcg3R-Y",
+     100.0,
+     {
+      "w": 1.4
+     }
+    ]
+   ]
+  },
+  {
+   "say": "So next time you watch Avatar, look at the floating mountains. They're waiting for you in China.",
+   "shots": [
+    [
+     "OTWBHVFNfT4",
+     230.0
+    ],
+    [
+     "6OdiVeO1M5w",
+     180.0
+    ],
+    [
+     "UKqpW8hzWLU",
+     31.5
+    ]
+   ]
+  }
+ ],
+ "credits": [
+  "Avatar (2009, 20th Century Studios)",
+  "Zhangjiajie drone footage: DS Videography, PJ Travels",
+  "Hallelujah Mountain footage: YouTube uploader 'ling daisly'",
+  "Bailong Elevator: South China Morning Post"
+ ]
+}

@@ -2,6 +2,7 @@
  "title": "Did you notice this detail in Jurassic Park???",
  "note": "The rippling glass of water. Sources: Michael Lantieri's own account (Universal's 'Glass of Water' featurette, YFBrIVCasE4), Film Stories and Guitar World on the guitar strings and the crew member on the car floor; Slashfilm, Fangoria, Far Out and Yahoo on the T-rex soaking up the rain and being blow-dried between takes. Run from the work folder holding src/ and tx/.",
  "base": ".",
+ "layout": "crop",
  "voice": "am_michael",
  "speed": 1.32,
  "gap": 0.05,

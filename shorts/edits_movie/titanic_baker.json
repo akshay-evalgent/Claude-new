@@ -2,6 +2,7 @@
  "title": "Did you notice this man in Titanic???",
  "note": "Charles Joughin, chief baker. Facts: Wikipedia 'Charles Joughin' (his British inquiry testimony) and 'Sinking of the Titanic'. Colour shots: Titanic (1997). Black-and-white shots: A Night to Remember (1958). Photos: public domain (Wikimedia Commons). Run from the work folder that holds src/, photos/ and tx/.",
  "base": ".",
+ "layout": "crop",
  "voice": "am_michael",
  "speed": 1.32,
  "gap": 0.05,

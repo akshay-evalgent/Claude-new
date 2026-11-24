@@ -81,7 +81,9 @@ Each fact needs two independent sources, or one primary source such as testimony
 - Short spoken sentences.
 - Numbers as words when the voice stumbles on them; use the `speak` field.
 - Phonetic spellings for names, e.g. "Jockin" for Joughin.
+- **Test hyphenated phonetics.** They can backfire: "Hwahng-shahn" was read as "H. Wangshan", while "Huang Shan" was read correctly, and plain "CNN" also works. Check every name by voicing it and transcribing it before the full render.
 - No profanity in film lines; trim the line instead.
+- **Lead into a film line** that starts mid-thought ("And like Jake says,"), and trim words like "But to do that" off its start.
 
 ## Step 4: Get the clips
 
@@ -143,11 +145,16 @@ python3 /home/user/Claude-new/shorts/movie/detail.py /home/user/Claude-new/short
 
 Every shot option is listed in `references/spec.md`; read it when writing the spec.
 
+**Layout: show the whole scene.** This is the user's rule, set after the Titanic video.
+- **The default is `"layout": "full"`.** Every film shot shows the entire frame across the full width, uncropped and unzoomed. The letterbox bars are removed and the picture sits at 40% of the screen height over a blurred copy of itself, with captions just under it.
+- **Why the old crop is gone:** the old 9:16 crop (`"layout": "crop"`, kept only for the three early specs) cut faces and looked zoomed in on a phone, and the user disliked it.
+- **The one exception:** a tiny `fit` crop (1.1–1.2) is fine just to hide a watermark or burned-in text.
+
 **Defaults that worked:**
-- 2–6 shots per narration beat.
-- Set each shot's crop (`cx`) by eye; the automatic face finder fails on dark frames.
-- Archive photos at `"w": 1.3–1.6`.
+- 2–6 shots per narration beat, each about 1–1.5 s.
 - Film beats get cutaways weighted in seconds, so the line stays in sync.
+- Archive photos at `"w": 1.3–1.6`.
+- Alternate film and real footage on the "it's real" beats (film mountain → real pillar → film mountain), so viewers can compare them.
 
 **Setup:** OpenCV must be version 4. Version 5 dropped the face finder. If `python3 -c "import cv2; print(cv2.__version__)"` prints 5.x, run `pip install "opencv-python-headless<5"`. The ultralytics package can pull in OpenCV 5 when it's installed.
 

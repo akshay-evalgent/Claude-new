@@ -145,6 +145,27 @@ def compose_fit(fr, info, opts, k):
     return bg
 
 
+FULL_FY = 0.40                                       # full-scene layout: picture centre, as a fraction of the height
+
+
+def compose_full(fr, info, opts, k):
+    """The whole scene, uncropped: the picture (letterbox bars removed) spans the full width at FULL_FY, over a blurred,
+    darkened fill of itself. No crop and no zoom, so nothing in the scene is cut off (the user's rule since Avatar)."""
+    fw, fh = fr.size; y0, y1, mean, _ = info
+    ah = y1 - y0
+    fg = fr.resize((W, int(round(W * ah / fw))), Image.LANCZOS, box=(0, y0, fw, y1))
+    bw = ah * W / H; bx = (fw - bw) / 2
+    bg = fr.resize((W // 4, H // 4), Image.BILINEAR, box=(bx, y0, bx + bw, y1)).filter(ImageFilter.GaussianBlur(8)).resize((W, H), Image.BICUBIC)
+    bg = Image.eval(bg, lambda v: int(v * 0.38))
+    g = gain(mean, opts)
+    if g != 1.0:
+        fg = ImageEnhance.Contrast(ImageEnhance.Brightness(fg).enhance(g)).enhance(1.06)
+        bg = ImageEnhance.Brightness(bg).enhance(g)
+    fg = fg.filter(ImageFilter.UnsharpMask(radius=1.6, percent=55, threshold=2))
+    bg.paste(fg, (0, int(H * opts.get("fy", FULL_FY) - fg.height / 2)))
+    return bg
+
+
 def compose_photo(ph, k):
     bg = ph.copy().convert("RGB")
     s = max(W / bg.width, H / bg.height); bg = bg.resize((int(bg.width * s) + 1, int(bg.height * s) + 1), Image.BICUBIC)
@@ -159,6 +180,9 @@ def compose_photo(ph, k):
     frame = Image.new("RGB", (tw + 24, th + 24), (240, 236, 226)); frame.paste(p, (12, 12))
     bg.paste(frame, ((W - frame.width) // 2, int(H * 0.44 - frame.height / 2)))
     return bg
+
+
+CAP_Y = 0.52                                         # caption centre (set from the spec in main)
 
 
 def caption(img, words, t):
@@ -178,7 +202,7 @@ def caption(img, words, t):
     d = ImageDraw.Draw(img)
     while d.textlength(tok, font=f) > 980 and size > 70:
         size -= 6; f = ImageFont.truetype(CAP_FONT, size)
-    y = H * 0.52
+    y = H * CAP_Y
     d.text((W / 2 + 5, y + 7), tok, font=f, fill=(0, 0, 0), anchor="mm", stroke_width=12, stroke_fill=(0, 0, 0))
     d.text((W / 2, y), tok, font=f, fill=(255, 230, 0), anchor="mm", stroke_width=9, stroke_fill=(10, 10, 10))
 
@@ -192,9 +216,11 @@ def music_bed(seconds, seed=12):
     for b in range(int(seconds / bar) + 2):
         ch = chords[b % 4]; t0 = b * bar
         for m in ch:
-            x = mu.strings(m, bar, rng, 0.06, 1800, attack=1.2, release=1.6); p = int(t0 * SR); y[p:p + len(x)] += x[: n - p]
+            x = mu.strings(m, bar, rng, 0.06, 1800, attack=1.2, release=1.6); p = int(t0 * SR)
+            if p < n: y[p:p + len(x)] += x[: n - p]
         for beat in (0, 2):
-            x = mu.thump(0.22); p = int((t0 + beat * bar / 4) * SR); y[p:p + len(x)] += x[: n - p]
+            x = mu.thump(0.22); p = int((t0 + beat * bar / 4) * SR)
+            if p < n: y[p:p + len(x)] += x[: n - p]   # a hit past the end would mis-slice
     y = mu.convolve(y, mu.reverb_ir(2.6)) * 0.6 + y * 0.4
     return y[: int(seconds * SR)].astype(np.float32)
 
@@ -202,6 +228,9 @@ def music_bed(seconds, seed=12):
 def main():
     spec = json.load(open(sys.argv[1])); out = sys.argv[2]
     base = spec["base"]; voice, speed = spec.get("voice", "am_michael"), spec.get("speed", 1.22)
+    global CAP_Y
+    layout = spec.get("layout", "full")                 # "full": whole scene, uncropped (default); "crop": 9:16 crop (old Shorts)
+    CAP_Y = spec.get("cap_y", 0.635 if layout == "full" else 0.52)
     work = os.path.splitext(out)[0] + "_work"; os.makedirs(work, exist_ok=True)
     cache = os.path.join(work, "tts"); os.makedirs(cache, exist_ok=True)
     gap = spec.get("gap", 0.05)
@@ -291,7 +320,8 @@ def main():
         info = infos[key]
         if "rows" in s["opts"]:                     # override the letterbox detection (very dark frames fool it)
             info = (int(s["opts"]["rows"][0] * fh), int(s["opts"]["rows"][1] * fh)) + info[2:]
-        comp = compose_fit if "fit" in s["opts"] else compose_clip
+        o = s["opts"]
+        comp = compose_fit if "fit" in o else (compose_clip if (layout == "crop" or o.get("crop")) else compose_full)
         for f in range(f0, f1):
             fr = rdr.next()
             img = comp(fr, info, s["opts"], (f - f0) / max(1, f1 - f0))

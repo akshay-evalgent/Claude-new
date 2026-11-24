@@ -13,6 +13,11 @@
 
 `base` is the work folder, which holds `src/<clip-id>.mp4`, `photos/` and `tx/<clip-id>.json`.
 
+**Layout keys:**
+- `"layout": "full"` (the default) shows each film shot uncropped across the full width at 40% of the screen height, over a blurred fill, with captions at `cap_y` (default 0.635).
+- `"layout": "crop"` is the old full-screen 9:16 crop. It cuts the scene, and the user rejected it.
+- A single shot can still use `fit` (a slight crop to hide a watermark) or `"crop": true`.
+
 ## Beats
 
 **Narration beat:**

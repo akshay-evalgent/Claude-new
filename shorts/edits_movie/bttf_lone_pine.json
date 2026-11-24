@@ -2,6 +2,7 @@
  "title": "Did you notice this sign in Back to the Future???",
  "note": "Twin Pines Mall becomes Lone Pine Mall because Marty runs over one of Peabody's two pine trees in 1955. Built to loop: the first frame is the LONE PINE MALL sign, and the last shot (Marty in the same parking lot) cuts back into it. Ends on the fans' 'why don't his parents recognise him?' debate (Bob Gale's answer: The Hollywood Reporter, 2020) to drive comments. Run from the work folder holding src/ and tx/.",
  "base": ".",
+ "layout": "crop",
  "voice": "am_michael",
  "speed": 1.32,
  "gap": 0.05,

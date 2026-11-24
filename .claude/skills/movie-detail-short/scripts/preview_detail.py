@@ -13,7 +13,9 @@ for bi, b in enumerate(spec["beats"]):
         info = dt.analyse(p, st, fw, fh)
         if "rows" in o: info = (int(o["rows"][0] * fh), int(o["rows"][1] * fh)) + info[2:]
         fr = Image.fromarray(dt.grab(p, st + 0.2, fw, fh))
-        img = (dt.compose_fit if "fit" in o else dt.compose_clip)(fr, info, o, float(sys.argv[3]) if len(sys.argv) > 3 else 0.0)
+        layout = spec.get("layout", "full")
+        comp = dt.compose_fit if "fit" in o else (dt.compose_clip if (layout == "crop" or o.get("crop")) else dt.compose_full)
+        img = comp(fr, info, o, float(sys.argv[3]) if len(sys.argv) > 3 else 0.0)
         im = img.resize((216, 384)); d = ImageDraw.Draw(im)
         d.rectangle([0, 0, 216, 14], fill=(0, 0, 0)); d.text((2, 1), f"B{bi+1} {sid[:5]} {st} cx{info[3]:.2f}", fill=(255, 255, 0))
         tiles.append(im)

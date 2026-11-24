@@ -159,3 +159,60 @@ Be honest: did you notice the sign the first time? 👇
 - **The week:** Marty arrives on 5 November 1955 and leaves on 12 November.
 - **Gale's answer** comes from The Hollywood Reporter, 2020. Reports quote it as "six days" or "eight days", and he notes they didn't see Marty every day. The video says "about a week".
 - **Watermarks:** two of the downloaded uploads carry the uploader's watermark: "Beyond the Marquee" on the farm clip, and a VHS icon on the mall clip. Every crop in the video keeps both out of frame.
+
+---
+
+## Avatar: the floating mountains are real
+
+**File:** `avatar_pandora_real.mp4` (85 s) · **Cover:** `avatar_pandora_real_cover.jpg` (Pandora's floating mountains)
+
+**Layout:** this is the first one with the new full-scene layout. Every film shot shows uncropped across the full width, over a blurred fill, with captions underneath.
+
+**The detail:** Pandora's floating "Hallelujah Mountains" are modelled on real sandstone pillars in Zhangjiajie, China. It follows the Titanic pattern: something on screen that everyone assumes is made up turns out to be real.
+
+**Story beats:**
+1. **Avatar blues:** fans got so sad Pandora wasn't real that CNN reported on it, and one forum thread about coping passed 1,000 posts.
+2. **The reveal:** about 3,000 sandstone pillars, many over 200 m tall, that look like they float in the mist.
+3. **The photographer:** the city says a Hollywood photographer's 2008 photos became the model.
+4. **The rename:** in January 2010 one pillar was renamed "Avatar Hallelujah Mountain".
+5. **The backlash:** about 90% of 60,000 people in an online poll voted against it. The city backed down, but the name stuck.
+6. **The elevator:** the 326 m Bailong Elevator climbs the cliff.
+7. **Doubt beat:** some say Huangshan inspired it more.
+8. **Ending:** "you gotta go where the banshees are… they're waiting for you in China."
+
+**Film lines used:**
+- "You are not in Kansas anymore. You're on Pandora." (trailer)
+- Jake: "you gotta go where the banshees are."
+
+**Title:**
+```
+Did you notice this detail in Avatar???
+```
+Alternates: `Pandora is REAL (and you can visit it)` · `These Avatar mountains actually exist`
+
+**Description:**
+```
+Pandora's floating Hallelujah Mountains are based on real sandstone pillars in Zhangjiajie, China. One of them was even renamed "Avatar Hallelujah Mountain" after the movie came out.
+
+Sources: CNN, "Audiences experience 'Avatar' blues" (2010); Wikipedia ("Wulingyuan", "Bailong Elevator"); The Irish Times and Slashfilm on the 2010 renaming; TechCrunch on the backlash poll; Atlas Obscura.
+Clips for commentary: Avatar (2009, 20th Century Studios). Zhangjiajie footage: DS Videography, PJ Travels, "ling daisly". Bailong Elevator: South China Morning Post.
+
+#avatar #pandora #zhangjiajie #didyouknow #shorts
+```
+
+**Pinned comment:**
+```
+Would you go see the real Pandora? 🇨🇳👇
+```
+
+**Settings:** Made for kids: **No** · Altered or synthetic content: **Yes** (AI narrator voice) · Category: Film & Animation
+
+**Accuracy notes** (in case a commenter asks):
+- **"Avatar blues":** CNN reported it in January 2010. It's a media label, not a medical diagnosis; the video says "some of them got genuinely sad".
+- **The photographer claim** is the city government's, so the video says "the city says". Some sources point to Huangshan instead, so the video says "some say".
+- **The rename:** the city later denied it after the backlash, but the name is still used today (Atlas Obscura). The video says "the city backed down, but the name stuck".
+- **Pillar count:** "more than 3,000" per Wikipedia (Wulingyuan). The video says "about three thousand".
+
+**Rights:**
+- **Film:** expect Content ID claims on the Avatar footage.
+- **Other footage:** the drone and elevator footage belongs to its uploaders, and you said you'd get permission.
