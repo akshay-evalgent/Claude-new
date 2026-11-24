@@ -33,15 +33,15 @@
   "stages": [
    {
     "media": "flow-stairs-a",
-    "at": 2.5
+    "at": 0.6
    },
    {
     "media": "flow-stairs-b",
-    "at": 2.5
+    "at": 0.6
    },
    {
     "media": "flow-stairs-c",
-    "at": 3.0
+    "at": 0.6
    }
   ],
   "open": "payoff",
@@ -53,11 +53,11 @@
   "quick": true,
   "photo": {
    "media": "flow-stairs-a",
-   "at": 0.3
+   "at": 0.1
   },
   "result": {
    "media": "flow-stairs-c",
-   "at": 3.0
+   "at": 0.6
   },
   "prompt": "Add a ball pit",
   "project": "Stairs 1 of 1"
@@ -75,17 +75,17 @@
  ],
  "media": {
   "flow-stairs-a": {
-   "file": "placeholder-stairs-a.mp4",
+   "file": "flow-stairs-a.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   },
   "flow-stairs-b": {
-   "file": "placeholder-stairs-b.mp4",
+   "file": "flow-stairs-b.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   },
   "flow-stairs-c": {
-   "file": "placeholder-stairs-c.mp4",
+   "file": "flow-stairs-c.mp4",
    "credit": "AI video generated with Google Flow for this channel",
    "short": "AI video (Google Flow)"
   }
@@ -117,7 +117,7 @@
   },
   {
    "media": "flow-stairs-a",
-   "at": 2.5
+   "at": 0.6
   },
   {
    "them": "Oh that's actually smart."
@@ -132,14 +132,14 @@
    "them": "Then she can hold the railing."
   },
   {
-   "me": "i removed the railing"
+   "me": "i improved the railing"
   },
   {
-   "them": "Why would you remove the railing."
+   "them": "What does that mean."
   },
   {
    "media": "flow-stairs-b",
-   "at": 2.5
+   "at": 0.6
   },
   {
    "them": "JORDAN."
@@ -170,7 +170,7 @@
   },
   {
    "media": "flow-stairs-c",
-   "at": 3.0
+   "at": 0.6
   },
   {
    "them": "WHERE ARE MY STAIRS"
