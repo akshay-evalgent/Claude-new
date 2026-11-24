@@ -10,6 +10,13 @@ name: notebooks `okene-ai-<mode>` and stills dataset `okene-ai-stills`. The firs
 still queued (a shot was added). Its replacement, `okene-ai-kf`, then sat queued for 30 minutes while an identical
 copy, `okene-ai-kf2`, started at once, so the stills came from `okene-ai-kf2`.
 
+Qwen-Image would not draw a capsized boat: "upside down" and "keel and propellers pointing up" gave an upright tug, and
+in the cabin shots the phrase "upside-down cabin" turned Harrison himself upside down. The redo prompts describe what
+is on top and what is underneath instead, and never say "upside down" for the cabin. For the sinking shot (o07) the
+prompt asks for an ordinary tug in open water with no surface or sea floor, and `picks.json` turns it over (a trailing
+`^` on the pick rotates the picture 180°). Other redos: a Coca-Cola logo on the bottle (o12), a flame in place of the
+dying flashlight (o13), and a T-shirt in the close-ups (o01, o13), when he only had his boxer shorts.
+
 ## Build
 
 ```bash
