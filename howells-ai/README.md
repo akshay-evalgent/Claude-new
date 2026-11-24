@@ -8,7 +8,10 @@ It is built with the same pipeline as `../okene-ai/` and `../koepcke-ai/`; those
 setup and the lessons learned (stuck queues, server memory, trimming clips). Kaggle names come from this folder's
 name: notebooks `howells-ai-<mode>` and stills dataset `howells-ai-stills`. The first stills notebook,
 `howells-ai-keyframes`, sat queued while an identical copy, `howells-ai-kf2`, started at once, so the stills came from
-`howells-ai-kf2`. Shots h22 and h23 were added to the shot list after that run started and were made with the redo.
+`howells-ai-kf2`. Shots h22 and h23 were added to the shot list after that run started; they and h06 (whose first
+version showed a face that was not James's, so its prompt now asks for the hand alone) came from the redo,
+`howells-ai-redo2` (its twin `howells-ai-redo1` sat queued). The clips came from `howells-ai-clips` (20 shots) and
+`howells-ai-clips2` (h06, h22, h23): `./fetch_clips.sh howells-ai-clips howells-ai-clips2`.
 
 ## Build
 
@@ -33,6 +36,8 @@ node youtube/make_kit.js                             # captions.en.srt and cover
 - The cut is `SLOTS` in `film.html` (and the same list in `audio.py`). `CHART0` and `CHART1` are drawn in the page: the
   dollar value of 8,000 bitcoin from 2009 on. The first time it stops at October 2009, the first published price
   (1,309 BTC to the dollar, so 8,000 BTC ≈ $6). The second time it climbs to the October 2025 peak.
+- h10's clip turns his shock into a grin after a second, so `CLIPREV` plays its first 26 frames backwards: calm, then
+  the gasp, as the narration says "he realized what he'd thrown away".
 - The big words (`BIG`) are the hook's rolling "$1,000,000,000", "NO.", "STILL NO." and a red "DISMISSED" stamp; each
   lands with a short shake (`IMPACTS`) and a hit in the sound.
 - The chips carry the year and what the coins were worth at that point, so the number keeps growing while he loses.
