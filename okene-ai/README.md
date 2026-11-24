@@ -57,6 +57,12 @@ node youtube/make_kit.js                             # captions.en.srt and cover
   die ("within a day"), 60 when the divers arrive. It is a pacing device keyed to the narration, not a log of his time.
 - `DIM` darkens the screen as the flashlight dies, `SNOW` draws drifting particles over the underwater shots, `RAIN`
   the rain at sea, and `SHAKE` the capsize and the flooding toilet.
+- Trimmed clips: the light in the toilet (o09) turns orange after frame 64, so `CLIPCUT` ends it at frame 70 (it then
+  plays at about 0.65× speed, under the shake). o08's sand cloud only builds after frame 30 and its slot is 1.2 s, so
+  the new `CLIPFROM` starts it at frame 28.
+- The caption sits lower (`CAPTOP`) on o01, where it covered his chin, and on the map, where it covered the tug. The
+  "1 OF 12" title is raised above his head (an optional fifth value in `BIG`). The map has no country labels for Benin
+  and Cameroon: the camera's zoom cut them off.
 
 ## What is true, and what is not certain
 

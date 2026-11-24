@@ -59,8 +59,9 @@ const SLOTS = [['o01', 2.0], ['o02', 1.7], ['o03', 1.3], ['o04', 2.3], ['o05', 2
 const END = 58.3;   // film length: the narration ends at 54.3, then the end card
 const SRC_FPS = 32, CLIPLEN = window.CLIPLEN || {};   // frames per clip, filled in by clips.json
 // clips that go wrong late: { id: [last good frame, play forward then back] }; CLIPCROP: { id: [zoom, centre x] } keeps
-// part of a frame out of shot
-const CLIPCUT = {}, CLIPCROP = {};
+// part of a frame out of shot; CLIPFROM: { id: first frame } starts a clip late (o08: the sand cloud only builds after
+// frame 30, and the slot is too short to wait for it)
+const CLIPCUT = { o09: [70] }, CLIPCROP = {}, CLIPFROM = { o08: 28 };
 let acc = 0; const CUT = {}; const SEQ = [];
 SLOTS.forEach(([n, d]) => { if (!d) d = END - acc; CUT[n] = [acc, acc + d]; SEQ.push([n, d, acc]); acc += d; });
 const TOTAL = Math.round(acc * FPS); window.DURATION = acc; window.FRAMES = TOTAL;
@@ -89,7 +90,6 @@ function drawMap(name, t) {
   mc.lineWidth = 3; [[-70, 1110], [-10, 1150], [60, 1140], [130, 1095]].forEach(([dx, y1]) => { mc.beginPath(); mc.moveTo(640 + 30 * Math.sin(900 / 110), 900); mc.quadraticCurveTo(650 + dx * 0.5, 1000, 690 + dx, y1); mc.stroke(); });   // delta creeks
   mc.setLineDash([12, 10]); mc.strokeStyle = 'rgba(255,255,255,0.45)'; mc.lineWidth = 4;
   mc.beginPath(); mc.moveTo(160, -300); mc.lineTo(180, coastY(180)); mc.stroke(); mc.beginPath(); mc.moveTo(1060, -300); mc.lineTo(1030, coastY(1030)); mc.stroke(); mc.setLineDash([]);
-  mlabel('BENIN', 150, 600, 28, 'rgba(255,255,255,0.6)', 'right'); mlabel('CAMEROON', 1075, 600, 28, 'rgba(255,255,255,0.6)', 'left');
   mlabel('NIGERIA', 400, 760, 64, '#eaf5d8', 'center'); mlabel('NIGER DELTA', 760, 980, 28, '#d9f2c4', 'center'); mlabel('GULF OF GUINEA', 560, 1520, 40, 'rgba(255,255,255,0.6)', 'center');
   const dot = (p, r, c) => { mc.fillStyle = c; mc.beginPath(); mc.arc(p[0], p[1], r, 0, 7); mc.fill(); };
   dot(LAGOS, 12, '#fff'); mlabel('LAGOS', LAGOS[0], LAGOS[1] - 26, 34, '#fff', 'center'); dot(ESCRAVOS, 10, '#fff'); mlabel('ESCRAVOS', ESCRAVOS[0] - 22, ESCRAVOS[1] - 18, 30, '#fff', 'right');
@@ -142,7 +142,7 @@ function buildChunks() {
   if (cur.length) CHUNKS.push(cur);
   CHUNKS.forEach((c, i) => { c.a = c[0].a - 0.04; const nx = CHUNKS[i + 1]; c.b = c[c.length - 1].end ? c[c.length - 1].lineEnd + 0.2 : (nx ? nx[0].a - 0.04 : 99); if (nx && c.b > nx[0].a - 0.04) c.b = nx[0].a - 0.04; });
 }
-const CAPTOP = {};   // shots whose subject sits at caption height get their caption lower down
+const CAPTOP = { o01: 1580, MAP1: 1640 };   // shots whose subject sits at caption height get their caption lower down
 function captions(t, shot) {
   el.cap.style.top = (CAPTOP[shot] || 1150) + 'px';
   const c = CHUNKS.find(c => t >= c.a && t < c.b);
@@ -155,7 +155,7 @@ const CHIPS = [['o04', 'NIGERIA · 26 MAY 2013'], ['o05', 'HARRISON OKENE · 29'
 const HOURS = [[25.2, 1], [32.3, 24], [39.2, 60]], H0 = 25.2, H1 = 42.75;
 function hoursAt(t) { for (let i = 1; i < HOURS.length; i++) if (t < HOURS[i][0]) return lerp(HOURS[i - 1][1], HOURS[i][1], seg(t, HOURS[i - 1][0], HOURS[i][0])); return 60; }
 // big words: [text, from, to, font size]
-const BIG = [["HE'S ALIVE!", 46.3, 48.3, 170], ['1 OF 12', 48.9, 50.5, 230]];
+const BIG = [["HE'S ALIVE!", 46.3, 48.3, 170], ['1 OF 12', 48.9, 50.5, 230, 150]];   // [text, from, to, size, top (default 380)]
 
 const SHAKE = { o06: 1, o09: 0.8, o20: 0.4 };
 let plateKey = '';
@@ -166,9 +166,11 @@ function frame(t) {
   else if (s[0].startsWith('BLACK')) { show(el.plate, 0); show(el.map, 0); }
   else {
     show(el.map, 0); show(el.plate, 1);
-    const cut = CLIPCUT[s[0]], n = cut ? cut[0] : CLIPLEN[s[0]] || 97, span = cut && cut[1] ? 2 * n - 1 : n, lt = t - s[2];
+    const cut = CLIPCUT[s[0]], from = CLIPFROM[s[0]] || 1, n = (cut ? cut[0] : CLIPLEN[s[0]] || 97) - from + 1;
+    const span = cut && cut[1] ? 2 * n - 1 : n, lt = t - s[2];
     const rate = cut ? Math.min(1, span / SRC_FPS / s[1]) : Math.max(0.75, Math.min(1, n / SRC_FPS / s[1]));
     let idx = Math.min(span, 1 + Math.floor(lt * rate * SRC_FPS)); if (idx > n) idx = 2 * n - idx;
+    idx += from - 1;
     const src = `out/clips/${s[0]}/f${String(idx).padStart(4, '0')}.jpg`;
     if (src !== plateKey) { plateKey = src; el.plate.src = src; wait = el.plate.decode().catch(() => {}); }
     const k = lt / s[1];
@@ -183,7 +185,7 @@ function frame(t) {
   if (hc) { el.chipT.textContent = hc[1]; show(el.chip, win(t, H0 + 0.15, H1, 0.2, 0.2)); }
   else if (chip) { el.chipT.textContent = chip[1]; show(el.chip, win(t, T(chip[0])[0] + 0.15, cEnd(chip), 0.2, 0.2), `translateY(${(-14 * (1 - eo(seg(t, T(chip[0])[0] + 0.15, T(chip[0])[0] + 0.5)))).toFixed(1)}px)`); } else show(el.chip, 0);
   const bg = BIG.find(g => t >= g[1] && t < g[2]);
-  if (bg) { el.big.textContent = bg[0]; el.big.style.fontSize = bg[3] + 'px'; show(el.big, win(t, bg[1], bg[2], 0.12, 0.25), `scale(${(1 + 0.5 * (1 - eo(seg(t, bg[1], bg[1] + 0.35)))).toFixed(3)})`); } else show(el.big, 0);
+  if (bg) { el.big.textContent = bg[0]; el.big.style.fontSize = bg[3] + 'px'; el.big.style.top = (bg[4] || 380) + 'px'; show(el.big, win(t, bg[1], bg[2], 0.12, 0.25), `scale(${(1 + 0.5 * (1 - eo(seg(t, bg[1], bg[1] + 0.35)))).toFixed(3)})`); } else show(el.big, 0);
   show(el.end, seg(t, 54.6, 55.2));
   show(el.fade, Math.max(1 - seg(t, 0, 0.12), seg(t, window.DURATION - 0.55, window.DURATION - 0.05)));
   captions(Math.min(t, 54.6), s[0]);
