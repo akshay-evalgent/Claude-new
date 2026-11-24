@@ -216,3 +216,64 @@ Would you go see the real Pandora? 🇨🇳👇
 **Rights:**
 - **Film:** expect Content ID claims on the Avatar footage.
 - **Other footage:** the drone and elevator footage belongs to its uploaders, and you said you'd get permission.
+
+---
+
+## Jaws: Quint's USS Indianapolis story is real
+
+**File:** `jaws_indianapolis.mp4` (about 111 s) · **Cover:** `jaws_indianapolis_cover.jpg` (Quint, with "HIS STORY / WAS REAL")
+
+**Layout:** the picture fills the middle 66%, with captions in the bottom band.
+
+**The detail:** Quint's famous late-night speech describes a real 1945 disaster, and the true story goes further than the speech.
+
+**Story beats:**
+1. **The ship:** the USS Indianapolis secretly carried parts of the Hiroshima bomb.
+2. **The sinking:** four days later two torpedoes sank it in 12 minutes. About 900 men went into the water.
+3. **No rescue:** the Navy didn't notice the ship was missing. The men spent four days without food or water, and then the sharks came.
+4. **A real survivor** (National Geographic): "you hear a blood-curdling scream… the shark had taken him under."
+5. **Found by accident:** a patrol plane spotted them.
+6. **Doubt beat:** Quint gets things wrong. It was about 900 men, not 1,100, and July 30, not June 29. Heat and thirst probably killed more men than the sharks.
+7. **The captain:** Charles McVay was court-martialed and carried the blame.
+8. **The kid:** an 11-year-old Jaws fan, Hunter Scott, made it his school project and took it to Congress. Congress cleared McVay in 2000.
+9. **The wreck:** found in 2017, 18,000 ft down.
+
+**Film lines used:**
+- "Japanese submarine slammed two torpedoes into our side, Chief."
+- "…delivered the bomb. The Hiroshima bomb."
+- "The thing about a shark, he's got lifeless eyes… like a doll's eyes."
+- "Eleven hundred men went into the water, 316 men come out, the sharks took the rest. June the 29th, 1945."
+
+**Title:**
+```
+Did you notice this detail in Jaws???
+```
+Alternates: `Quint's story in Jaws really happened` · `The Jaws speech that changed history`
+
+**Description:**
+```
+Quint's famous USS Indianapolis speech in Jaws describes a real 1945 disaster, and the true story is even crazier. Decades later, an 11-year-old Jaws fan helped clear the captain's name.
+
+Sources: Smithsonian Magazine; U.S. Navy (Naval History and Heritage Command); National WWII Museum; National Geographic; Wikipedia ("Charles B. McVay III", "Hunter Scott").
+Clips for commentary: Jaws (1975, Universal). Survivor interviews: National Geographic. Reenactment and archive: Smithsonian Channel. News: WEAR Channel 3. Wreck footage: courtesy of Paul G. Allen. Photos: U.S. Navy, public domain.
+
+#jaws #ussindianapolis #history #didyouknow #shorts
+```
+
+**Pinned comment:**
+```
+Did you know Quint's story was real? 👇
+```
+
+**Settings:** Made for kids: **No** · Altered or synthetic content: **Yes** (AI narrator voice) · Category: Film & Animation
+
+**Accuracy notes** (in case a commenter asks):
+- **Crew numbers:** 1,195 or 1,196 aboard and about 890 to 900 in the water. Sources give 316 or 317 survivors.
+- **Quint's numbers:** he says "1,100 went into the water" and "June the 29th". The video corrects both, and the corrections are good comment bait.
+- **Shark deaths:** estimates run as high as about 150. Most deaths came from exposure, dehydration and saltwater poisoning, so the video says historians "think" this.
+- **The exoneration:** the 2000 resolution expressed the sense of Congress, and the Navy added a letter clearing McVay to his record in 2001. McVay died in 1968, so the exoneration was posthumous.
+- **Hunter Scott's age:** he was 11 when he started the project.
+
+**Rights:**
+- **Jaws footage:** expect Content ID claims.
+- **Other footage:** the documentary, news and wreck footage belongs to those channels, and you said you'd get permission. The Navy photos are public domain.
