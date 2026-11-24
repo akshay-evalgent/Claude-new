@@ -624,8 +624,9 @@ def cam_plan():
         "six_cut": (30, lambda u, fr: (lerp((cx + 0.6, -8.6, ROAD0 + 0.75), (cx + 0.4, -8.0, ROAD0 + 0.7), u), Vector((cx, 0, ROAD0 + 0.3))), None, 0.15, 0),
         "underbody": (28, lambda u, fr: (Vector((cx + 2.6, ly - 3.3, lvl("underbody") + 0.16)) + lerp((0, 0, 0), (-0.2, 0.12, 0), u),
                                          Vector((cx + 0.7, ly - 0.7, lvl("underbody") + 0.06))), 4.0, 0.2, 0),
-        "stall_dash": (20, lambda u, fr: (hero("stall_dash", u, fr) + lerp((-0.22, -0.32, 1.22), (-0.19, -0.3, 1.2), u),
-                                          hero("stall_dash", u, fr) + Vector((0.66, 0.3, 0.9))), 1.6, 0.2, 0),
+        # from the back seat over his shoulder: the dash and headlights die (his hands are hidden by his body)
+        "stall_dash": (24, lambda u, fr: (hero("stall_dash", u, fr) + lerp((-1.05, 0.0, 1.17), (-0.95, 0.02, 1.15), u),
+                                          hero("stall_dash", u, fr) + Vector((0.9, 0.22, 0.97))), 4.0, 0.2, 0),
         "foot_cut": (32, lambda u, fr: (lerp((cx + 0.5, -8.4, ROAD0 + 0.75), (cx + 0.4, -8.0, ROAD0 + 0.72), u), Vector((cx, 0, ROAD0 + 0.35))), None, 0.15, 0),
         "float_wide": (30, lambda u, fr: (hero("float_wide", u, fr) + lerp((7.2, -6.2, 1.7), (6.6, -5.8, 1.6), u),
                                           hero("float_wide", u, fr) + Vector((0, 0, 0.55))), None, 0.4, 0),
