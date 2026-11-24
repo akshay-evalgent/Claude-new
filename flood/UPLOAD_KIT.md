@@ -31,10 +31,10 @@ Sources: National Weather Service (weather.gov/safety/flood-turn-around-dont-dro
 flood, flash flood, flooded road, turn around dont drown, car floating, car swept away, driving through water, flood safety, 3d animation, animated facts
 ```
 
-**Thumbnail:** `thumbnail.jpg` (1080x1920): the car being swept off the road, with the caption on screen at
-that moment.
+**Thumbnail:** `thumbnail.jpg` (1080x1920): the car up to its doors in brown water with "START TO FLOAT" on
+screen (frame 408, at 0:17). It shows the title's promise in one picture.
 - Custom upload (YouTube Partner Program and verified channels; YouTube Studio on a computer).
-- Without custom upload: use the frame picker at the time given in the README.
+- Without custom upload: pick the frame at 0:17 in the frame picker.
 
 **Pinned comment**
 

@@ -65,7 +65,8 @@ python3 scene.py render 720 1280 10
 python3 ../quicksand/assemble.py flood_captions.mp4 --captions --upscale 1080 1920
 ```
 
-Thumbnail frame for YouTube's frame picker (without a custom thumbnail): THUMB_TIME.
+Thumbnail: frame 408 (0:17), rendered natively at 1080x1920 with `python3 -I scene.py stills 408 --res 1080 1920 --samples 64`
+and captioned with `python3 -I ../quicksand/thumbnail.py`.
 
 ## Licences
 
