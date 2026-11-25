@@ -16,11 +16,12 @@ def arg(name, n=1, default=None):
 
 
 def caption_chunks():
-    """Split each narration line into 2-3 word chunks timed by character count."""
+    """Split each narration line into 2-3 word chunks timed by character count. A line may carry a
+    "caption" (what to show, e.g. digits) that differs from the spoken "text"."""
     lines = json.load(open(os.path.join(SCRATCH, "vo_timing.json")))["lines"]
     out = []
     for ln in lines:
-        words = ln["text"].replace("...", "").split()
+        words = ln.get("caption", ln["text"]).replace("...", "").split()
         groups, cur = [], []
         for w in words:
             cur.append(w)

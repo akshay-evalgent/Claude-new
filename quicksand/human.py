@@ -127,8 +127,9 @@ def skin_material(name, mhmat_path, tone=(0.97, 0.86, 0.76)):
     return m
 
 
-def alpha_material(name, mhmat_path, tint=None, roughness=0.5, sheen=0.0):
-    """Texture with alpha (eyebrows, lashes, hair cards)."""
+def alpha_material(name, mhmat_path, tint=None, roughness=0.5, sheen=0.0, recolor=False):
+    """Texture with alpha (eyebrows, lashes, hair cards). recolor=True takes the texture's luminance
+    (normalised) times the tint, so light tints work (grey or white hair)."""
     folder = os.path.dirname(mhmat_path)
     d = _mhmat(mhmat_path)
     m = bpy.data.materials.new(name)
@@ -141,7 +142,15 @@ def alpha_material(name, mhmat_path, tint=None, roughness=0.5, sheen=0.0):
     if tint:
         mix = nt.nodes.new("ShaderNodeMix"); mix.data_type = "RGBA"; mix.blend_type = "MULTIPLY"
         mix.inputs["Factor"].default_value = 1.0; mix.inputs[7].default_value = (*tint, 1)
-        nt.links.new(t.outputs["Color"], mix.inputs[6]); nt.links.new(mix.outputs[2], b.inputs["Base Color"])
+        if recolor:
+            bw = nt.nodes.new("ShaderNodeRGBToBW")
+            g = nt.nodes.new("ShaderNodeMath"); g.operation = "MULTIPLY"
+            g.inputs[1].default_value = 0.8 / max(0.02, _mean_lum(os.path.join(folder, d["diffuseTexture"])))
+            nt.links.new(t.outputs["Color"], bw.inputs["Color"]); nt.links.new(bw.outputs["Val"], g.inputs[0])
+            nt.links.new(g.outputs["Value"], mix.inputs[6])
+        else:
+            nt.links.new(t.outputs["Color"], mix.inputs[6])
+        nt.links.new(mix.outputs[2], b.inputs["Base Color"])
     else:
         nt.links.new(t.outputs["Color"], b.inputs["Base Color"])
     nt.links.new(t.outputs["Alpha"], b.inputs["Alpha"])
@@ -296,6 +305,8 @@ def _parse_mhclo(path):
             info["obj"] = s.split(maxsplit=1)[1]
         elif key == "material":
             info["material"] = s.split(maxsplit=1)[1]
+        elif key == "vertexboneweights_file":
+            pass                                  # metadata that may sit between "verts" and its data
         elif key == "verts":
             mode = "verts"
         elif key == "delete_verts":
@@ -380,7 +391,8 @@ OUTFIT_HIKER = [  # inner -> outer: (pack/clothes/folder, mhclo name, tint, push
 
 
 def build_human(name="Hiker", outfit=OUTFIT_HIKER, macro=None, skin="young_caucasian_male",
-                eyes="brown", hair="short02", hair_tint=(0.24, 0.15, 0.09), brows="eyebrow001"):
+                eyes="brown", hair="short02", hair_tint=(0.24, 0.15, 0.09), brows="eyebrow001", hair_recolor=False,
+                exact_hide=False):
     mh, uvs, faces, face_uvs = _parse_obj(os.path.join(MPFB, "3dobjs", "base.obj"), keep_groups={"body"})
     macro = macro or {"universal-male-young-averagemuscle-averageweight": 1.0, "caucasian-male-young": 1.0}
     for t, w in macro.items():
@@ -493,14 +505,18 @@ def build_human(name="Hiker", outfit=OUTFIT_HIKER, macro=None, skin="young_cauca
         o, inf = add_proxy(cdir, nm, label, fn)
         face_proxies.append(o); proxy_infos.append(inf)
     hair_obj, _ = add_proxy(os.path.join(SYS, "hair", hair), hair, "hair",
-                            lambda p: alpha_material(name + "_hair", p, tint=hair_tint, roughness=0.55))
+                            lambda p: alpha_material(name + "_hair", p, tint=hair_tint, roughness=0.55, recolor=hair_recolor))
 
     clothes, hide, cloth_pts = [], set(), []
     for folder, mhclo_name, tint, push in outfit:
         cdir = os.path.join(PACKS, folder)
-        obj, info = add_proxy(cdir, mhclo_name, mhclo_name, lambda p, n=mhclo_name, t=tint: cloth_material(name + "_" + n, p, t),
+        # tint None keeps the texture's own colours (multi-colour outfits such as the system suits)
+        obj, info = add_proxy(cdir, mhclo_name, mhclo_name,
+                              lambda p, n=mhclo_name, t=tint: cloth_material(name + "_" + n, p, t or (1.0, 1.0, 1.0),
+                                                                             recolor=t is not None),
                               nearest=True)
-        hide.update(info["delete"])
+        if not exact_hide:
+            hide.update(info["delete"])
         obj.data.update()
         for v in obj.data.vertices:
             cloth_pts.append((v.co.copy(), v.normal.copy()))
@@ -515,12 +531,31 @@ def build_human(name="Hiker", outfit=OUTFIT_HIKER, macro=None, skin="young_cauca
         kd.balance()
         arm_cols = [j for j, bname in enumerate(bones) if bname.endswith(("Arm", "ForeArm"))]
         arm_w = W[:, arm_cols].sum(1)
+        bvh = None
+        if exact_hide:
+            from mathutils.bvhtree import BVHTree
+            dg = bpy.context.evaluated_depsgraph_get()
+            vs, fs = [], []
+            for o in clothes:
+                me = o.data
+                base = len(vs)
+                vs.extend(v.co.copy() for v in me.vertices)
+                fs.extend([base + i for i in p.vertices] for p in me.polygons)
+            bvh = BVHTree.FromPolygons(vs, fs)
+        neck_z = pos(rig["mixamorig:Neck"]["head"]).z - 0.15 if exact_hide else 1e9
         for vi in body_idx:
             if arm_w[vi] > 0.35:  # keep arm skin under sleeves: no gaps when arms move away
+                continue
+            if bl[vi, 2] > neck_z:  # keep the skin around the neck: open collars show skin, not the shirt's inside
                 continue
             co = Vector(bl[vi])
             hit, idx, dist = kd.find(co)
             if dist < 0.06 and (co - hit).dot(cloth_pts[idx][1]) < 0.004:
+                if bvh is not None:
+                    n = body_n[vi]
+                    loc, _, _, d = bvh.ray_cast(co - n * 0.002, n, 0.07)
+                    if loc is None:
+                        continue
                 hide.add(vi)
         g = body.vertex_groups.new(name="hidden")
         g.add(sorted(hide), 1.0, "REPLACE")
