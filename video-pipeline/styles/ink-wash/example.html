@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ink-wash example</title>
+<!-- A three-shot worked example of the ink-wash style on film.js.
+     Preview: open this file with ?play, or ?t=4.2 to stop on a moment.
+     Render:  node ../../tools/render.js example.html --out /tmp/example.mp4 -->
+<link rel="stylesheet" href="ink.css">
+</head>
+<body>
+<main id="stage">
+
+  <!-- 1. the village: far hills arrive as mist, the ridge is drawn, the house last -->
+  <section class="shot" id="village">
+    <svg viewBox="0 0 1080 1920">
+      <g data-drift="0 -26 1.04">
+        <path class="mist" data-fade="0 0.8" d="M-60 900 C120 700 230 640 330 760 C420 600 560 520 680 700 C790 600 930 640 1140 860 L1140 1040 L-60 1040 Z"/>
+        <path class="wash pale" data-fade="0.2 1.0" d="M-40 1010 C90 880 200 800 300 930 C380 820 470 760 560 900 C660 790 800 760 900 900 C980 850 1060 870 1120 960 L1120 1090 L-40 1090 Z"/>
+        <path class="ink fine" data-draw="0.3 1.7" d="M-20 1004 C92 878 198 802 298 928 C378 820 470 762 560 898 C660 790 798 762 900 900 C980 852 1058 872 1100 950"/>
+      </g>
+      <g data-rise="1.2 1.9 18">
+        <path class="wash" d="M612 1228 L612 1322 L748 1322 L748 1228 Z"/>
+        <path class="ink fine" d="M612 1232 L612 1322 M748 1232 L748 1322 M604 1322 L758 1322"/>
+        <path class="dry" d="M572 1238 C620 1176 660 1160 684 1158 C712 1160 752 1178 796 1238 C740 1214 624 1214 572 1238 Z"/>
+        <rect class="accent" x="664" y="1262" width="34" height="58" rx="3"/>
+      </g>
+      <g data-fade="1.5 2.2">
+        <path class="ink fine" d="M236 1330 C240 1250 238 1190 244 1120 M286 1332 C284 1262 290 1210 288 1150 M336 1330 C338 1270 334 1226 340 1180"/>
+        <path class="blot" d="M244 1150 l46 -22 l-4 12 Z M288 1182 l-44 -20 l6 12 Z M340 1212 l42 -18 l-4 11 Z M244 1210 l-40 -16 l5 11 Z"/>
+      </g>
+      <path class="ink hair" data-draw="1.0 2.4" d="M40 1420 C300 1404 640 1410 1040 1392" opacity=".45"/>
+    </svg>
+  </section>
+
+  <!-- 2. the boy: one figure, centred, the robe in dry brush -->
+  <section class="shot" id="boy">
+    <svg viewBox="0 0 1080 1920">
+      <g data-drift="0 0 1.05">
+        <path class="wash pale" d="M360 1420 C420 1396 660 1396 730 1420 C660 1446 430 1446 360 1420 Z"/>
+        <path class="dry" d="M462 792 C500 770 580 770 620 794 C668 980 690 1180 704 1392 C620 1410 470 1410 380 1392 C396 1180 420 980 462 792 Z"/>
+        <path class="wash deep" d="M470 800 C520 786 566 786 612 800 C640 960 660 1160 676 1380 C600 1392 480 1392 406 1380 C420 1160 444 960 470 800 Z"/>
+        <path class="ink heavy" d="M430 1040 C500 1058 590 1058 662 1038"/>
+        <path class="ink fine" d="M468 800 C440 900 424 1010 414 1100 M616 802 C642 900 660 1010 668 1100"/>
+        <ellipse class="wash pale" cx="540" cy="690" rx="82" ry="98"/>
+        <path class="ink fine" d="M462 700 C458 760 500 800 540 800 C582 800 624 760 620 700"/>
+        <path class="blot" d="M452 700 C440 620 480 568 544 566 C606 566 644 616 630 700 C612 646 580 624 540 626 C500 626 470 648 452 700 Z"/>
+        <path class="ink fine" d="M504 706 l22 2 M560 708 l22 -2 M540 716 l-6 30 M520 768 C534 760 548 760 562 768"/>
+        <path class="blot" d="M470 1396 h44 v22 h-52 Z M566 1396 h44 l8 22 h-52 Z"/>
+      </g>
+    </svg>
+  </section>
+
+  <!-- 3. the route: home top left with its red mark, the boy small at the far end -->
+  <section class="shot" id="route">
+    <svg viewBox="0 0 1080 1920">
+      <path class="ink fine" d="M176 420 L226 330 L262 392 L306 318 L360 420" data-draw="0.1 0.7"/>
+      <circle class="accent" cx="268" cy="452" r="15" data-fade="0.5 0.8"/>
+      <path class="ink hair" data-draw="0.6 2.6" d="M270 470 C330 560 250 660 330 760 C420 870 560 800 600 930 C640 1060 520 1120 600 1240 C660 1330 790 1300 840 1440"/>
+      <text class="label" x="560" y="760" data-fade="1.3 1.9">1,000 miles</text>
+      <g data-rise="2.2 2.8 14">
+        <path class="dry" d="M826 1470 C834 1462 852 1462 860 1470 C870 1510 876 1548 880 1590 C860 1596 826 1596 808 1590 C812 1548 818 1510 826 1470 Z"/>
+        <circle class="blot" cx="843" cy="1448" r="16"/>
+      </g>
+    </svg>
+  </section>
+
+  <div id="caption"></div>
+</main>
+
+<script src="ink.js"></script>
+<script src="../../runtime/film.js"></script>
+<script>
+  Film.setup({ width: 1080, height: 1920, fps: 24 });
+  Film.shot({ id: 'village', dur: 3.0 });
+  Film.shot({ id: 'boy', dur: 2.5, enter: { type: 'dissolve', dur: 0.5 } });
+  Film.shot({ id: 'route', dur: 3.5, enter: { type: 'iris', dur: 0.7, at: [25, 23] } });
+  Film.captions([
+    { start: 0.30, end: 1.50, text: 'a village' },
+    { start: 1.50, end: 2.95, text: 'he had to leave' },
+    { start: 3.10, end: 4.30, text: 'he was four' },
+    { start: 4.30, end: 5.45, text: 'years old.' },
+    { start: 5.70, end: 7.20, text: 'taken far' },
+    { start: 7.20, end: 8.80, text: 'from his family.' },
+  ]);
+  Film.ready();
+</script>
+</body>
+</html>

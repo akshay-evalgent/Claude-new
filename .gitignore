@@ -1,2 +1,14 @@
 film/input/
 __pycache__/
+
+# video pipeline: reference videos are for study only and are never committed;
+# working renders and frame dumps are rebuilt on demand
+video-pipeline/runs/*/01-sources/refs/**/*.mp4
+video-pipeline/runs/*/01-sources/refs/**/*.mov
+video-pipeline/runs/*/01-sources/refs/**/*.webm
+video-pipeline/runs/*/01-sources/refs/**/*.mkv
+video-pipeline/runs/*/05-video/proof/
+video-pipeline/runs/*/05-video/audio/_*.wav
+node_modules/
+# runs whose name starts with an underscore are scratch tests
+video-pipeline/runs/_*/
