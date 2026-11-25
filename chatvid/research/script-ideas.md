@@ -5,7 +5,7 @@ Each idea follows the formula: someone asks for one small, reasonable thing; it 
 | # | Character | Premise | The three pictures | Peak line | Audience | Status |
 |---|---|---|---|---|---|---|
 | 1 | Mom | "Clean your room" | tidy room → hazmat cleaners → hotel suite with a concierge | I ASKED YOU TO CLEAN IT NOT LIST IT ON AIRBNB | US + India | ✅ rendered (`prank-room-60`) |
-| 2 | Dad | "Do NOT touch the thermostat" | small fan → industrial AC → snow in the living room | I PAY FOR THAT AIR | US | |
+| 2 | Dad | "Do NOT touch the thermostat" | small fan → industrial AC → snow in the living room | I PAY FOR THAT AIR | US | script ready (`prank-thermo-60`) |
 | 3 | Dad | "Turn off the lights" | one lamp → house in Christmas lights → stadium floodlights, planes circling | DO I OWN THE ELECTRIC COMPANY | US + India | |
 | 4 | Grandma Rosa | "Help me post a photo" | 3 likes → a crowd outside → TV news van and red carpet (she loves it) | AM I FAMOUS | US | |
 | 5 | Priya | "Don't eat my labeled leftovers" | one fry missing → empty fridge → the kitchen is a restaurant | I LABELED IT | US + India | |

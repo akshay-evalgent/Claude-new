@@ -1,0 +1,196 @@
+{
+ "engine": "imsg",
+ "format": "vertical",
+ "crf": 18,
+ "fps": 30,
+ "minuteEvery": 40,
+ "typeSpeed": 28,
+ "readMul": 0.7,
+ "pace": 0.62,
+ "tail": 0.3,
+ "booms": true,
+ "music": {
+  "track": "kidding-around",
+  "gain": -27
+ },
+ "loopOut": true,
+ "contact": "dad",
+ "title": "Pranking my dad i didnt touch the thermostat",
+ "clock": "8:02",
+ "unread": "4,224",
+ "cameraRoll": [
+  "🐶",
+  "🍕",
+  "☕",
+  "❄️",
+  "🎮",
+  "🍪",
+  "🌮",
+  "🧊",
+  "🧣"
+ ],
+ "hook": {
+  "stages": [
+   {
+    "media": "flow-thermo-a",
+    "at": 2.5
+   },
+   {
+    "media": "flow-thermo-b",
+    "at": 2.5
+   },
+   {
+    "media": "flow-thermo-c",
+    "at": 2.5
+   }
+  ],
+  "open": "payoff",
+  "caption": "Pranking my dad i didn't touch the \"thermostat\"💀😭",
+  "dur": 3.6
+ },
+ "tool": {
+  "style": "edit",
+  "quick": true,
+  "photo": {
+   "media": "flow-thermo-a",
+   "at": 0.2
+  },
+  "result": {
+   "media": "flow-thermo-c",
+   "at": 2.5
+  },
+  "prompt": "Make it snow",
+  "project": "Living room 1 of 1"
+ },
+ "history": [
+  {
+   "them": "why is a stranger asking me for the wifi password"
+  },
+  {
+   "me": "thats our guest"
+  },
+  {
+   "them": "we dont have guests we have a son"
+  }
+ ],
+ "media": {
+  "flow-thermo-a": {
+   "file": "placeholder-thermo-a.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-thermo-b": {
+   "file": "placeholder-thermo-b.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  },
+  "flow-thermo-c": {
+   "file": "placeholder-thermo-c.mp4",
+   "credit": "AI video generated with Google Flow for this channel",
+   "short": "AI video (Google Flow)"
+  }
+ },
+ "beats": [
+  {
+   "them": "leaving for work. do NOT touch the thermostat"
+  },
+  {
+   "them": "its 68. it stays at 68"
+  },
+  {
+   "me": "its kinda hot tho"
+  },
+  {
+   "them": "then open a window. windows are free"
+  },
+  {
+   "me": "i found a better way"
+  },
+  {
+   "them": "what did you do"
+  },
+  {
+   "media": "flow-thermo-a",
+   "at": 2.5
+  },
+  {
+   "them": "ok a fan is fine"
+  },
+  {
+   "them": "fans are cheap"
+  },
+  {
+   "me": "it wasnt strong enough"
+  },
+  {
+   "them": "its a fan. its doing its best"
+  },
+  {
+   "me": "i upgraded it"
+  },
+  {
+   "media": "flow-thermo-b",
+   "at": 2.5
+  },
+  {
+   "them": "WHAT IS THAT"
+  },
+  {
+   "them": "IS THAT FROM A WAREHOUSE"
+  },
+  {
+   "me": "the guy said its for airplane hangars"
+  },
+  {
+   "them": "WHY IS THERE FROST ON THE WINDOWS"
+  },
+  {
+   "me": "dw its set to 68"
+  },
+  {
+   "them": "68 WHAT. BELOW ZERO??"
+  },
+  {
+   "them": "TURN IT OFF RIGHT NOW"
+  },
+  {
+   "me": "ok its off"
+  },
+  {
+   "them": "thank you"
+  },
+  {
+   "me": "it just needs a minute to warm back up"
+  },
+  {
+   "media": "flow-thermo-c",
+   "at": 2.5
+  },
+  {
+   "them": "HOLY SHIT"
+  },
+  {
+   "them": "ITS SNOWING IN MY LIVING ROOM"
+  },
+  {
+   "me": "the snowman's name is greg jr"
+  },
+  {
+   "them": "I PAY FOR THAT AIR"
+  },
+  {
+   "me": "the electric company called to say thank you",
+   "unsent": true
+  }
+ ],
+ "next": {
+  "contact": "neighbor",
+  "text": "Why is it snowing on my side of the fence?",
+  "tag": "follow for part 2"
+ },
+ "youtube": {
+  "title": "Dad was NOT okay with this😭 #prank #dad #thermostat #funnyvideo #comedyshorts",
+  "description": [],
+  "tags": []
+ }
+}
