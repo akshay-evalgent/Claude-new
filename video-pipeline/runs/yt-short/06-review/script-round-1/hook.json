@@ -1,0 +1,73 @@
+{
+  "check": "hook",
+  "stage": "script",
+  "round": 1,
+  "score": 7,
+  "pass": true,
+  "summary": "The cold open is the reference's kind and is faster than the reference (picture, counters and line on frame 0, title by 3.1 s), but its one sentence is about the snow, not about the viewer: put 'you' in the line so the hook does not depend on a small label.",
+  "findings": [
+    {
+      "criterion": "the first words and the first picture",
+      "result": "met",
+      "ours": "beat 'coldopen' 0.0-2.9 s: \"Twenty-five seconds ago, this was snow.\" (6 words, two rows, upright and heavier) over bare scorched ground glowing orange round your feet, burning fence stumps with shadows pointing away from you, a ridge lit like noon under a black sky; counters read 5,510 °C and 25.0 s on frame 0.",
+      "reference": "what-if-time-sped-up 0.5-5.5 s (full at 0.75 s): \"You have been standing here for five minutes.\" (8 words) over molten ground under a red sky; counters read the year 6.63 billion and 5 min 06 s (hook.jpg).",
+      "why_it_matters": "Both are specific: a number, an object and something happening, with no greeting, topic line or logo. Ours names a before (snow) that the picture contradicts, which is as concrete as the reference. Small point: the line says twenty-five while the clock beside it runs from 25.0 s to 27.9 s in tenths; they agree when the line is first read, so this is noted, not counted."
+    },
+    {
+      "criterion": "the question",
+      "result": "met",
+      "ours": "beat 'coldopen' opens: what turned a snowfield into this in twenty-five seconds? Beat 'snow' 3.1 s, the title \"What If You Got Hotter and Couldn't Stop?\", opens script.json's question (how far could it go, and does it have to stop?). The NEXT row on frame 0 (\"THE SUN'S CORE, in 15 million °C\") already says it is still climbing.",
+      "reference": "what-if-time-sped-up 0.5 s opens 'how did five minutes of standing still put you here?'; the title at 6.8 s opens 'where does it stop?' (benchmarks.json hook.question_opened).",
+      "why_it_matters": "Same two-step as the reference: the cold open asks how we got here, the title asks where it ends. The script's own question is the title's, and it arrives 3.7 s earlier than the reference's title does."
+    },
+    {
+      "criterion": "stakes",
+      "result": "partly",
+      "ours": "beat 'coldopen': the line \"Twenty-five seconds ago, this was snow.\" has no person in it. That the heat is the viewer's is carried only by the small-capitals labels (\"YOUR TEMPERATURE\", \"YOU HAVE BEEN HEATING UP FOR\", \"HOTTER THAN THE SUN'S SURFACE\") and by shadows pointing away from the camera.",
+      "reference": "what-if-time-sped-up 0.5 s: the line itself is second person (\"You have been standing here...\"), and its large left figure explains itself (a year in the billions). Its small label rows are on the Do not copy list (patterns.md Look: cap height 1.1%, almost nobody quotes them).",
+      "why_it_matters": "In the reference a viewer who reads only the big text gets 'you' and an absurd gap between two numbers. In ours the big text gives 5,510 °C, 25.0 s and a sentence about snow: without the label nobody knows the 5,510 is them, so it reads as a fire in a field, not as something happening to the viewer. The stake is there but sits in the smallest type on the frame."
+    },
+    {
+      "criterion": "speed",
+      "result": "met",
+      "ours": "beat 'coldopen': picture, both counters and the line complete on frame 0 (0.0 s), no fade; 6 line words plus about 28 counter words and figures in the first 3 s; line up 2.9 s (2.1 words a second); temperature climbing about 50 °C a second and the clock in tenths, sparks, quivering shadows, slow camera turn; first picture change at 3.0 s, a one-frame flip to night with no black frame; title on at 3.1 s.",
+      "reference": "benchmarks.json hook: first picture 0.133 s, line full at 0.75 s, 8 line words and about 29 counter words in the first 3 s; first_cut_s 0.233 is the fade from black (an artefact, per notes); first real change 5.5-6.5 s through black. notes.scaled_to_60s: cold open 2.5-3.0 s.",
+      "why_it_matters": "Ours beats the reference on every hook timing and avoids both of its Do not copy faults (black first frame, dip to black). There are no spoken words in either. Outside my three seconds and left to the pacing judge: the title is on 3.4 s against a scaled 2.0-2.5 s, so the first story line lands at 6.7 s, 0.7 s past the scaled 6.0 s."
+    },
+    {
+      "criterion": "muted",
+      "result": "met",
+      "ours": "beat 'coldopen': no voice anywhere; every word of the hook is on screen from frame 0, and the sound (bed and roar) carries no information the picture lacks.",
+      "reference": "what-if-time-sped-up 0.0-5.5 s: no voice, works_muted true (benchmarks.json), but the line is not readable until 0.75 s.",
+      "why_it_matters": "Nothing is lost with the sound off. The risk is legibility, which cannot be judged from a script: the line sits bottom centre, directly over the patch of ground that 'glows dull orange round your feet' under 'hard yellow-white light'. The reference's light text over light ground is on the Do not copy list; script.json line_notes.contrast already flags it in general."
+    },
+    {
+      "criterion": "kind of opening",
+      "result": "met",
+      "ours": "beat 'coldopen': the film's own 28.0-31.0 s shown first, two counters already disagreeing, one flat upright sentence stating the small number; then the ordinary start and the title as a question (beat 'snow', 3.0 s).",
+      "reference": "benchmarks.json hook.type: cold open on the scenario's far end, two counters already disagreeing, one flat second-person sentence stating the small number (0.13-5.5 s, an excerpt of 312-318 s).",
+      "why_it_matters": "It is the reference's kind, cut to the 3 s the playbook asks for at 60 seconds. The excerpt is the right one: it is the last stage with a real picture before the frame bleaches to white. The one departure is that the sentence is not second person (see stakes)."
+    },
+    {
+      "criterion": "promise kept",
+      "result": "met",
+      "ours": "beat 'sun' 28.0-31.0 s (0.47-0.52 of the run): the same picture frame for frame, clock passing 25.0 s as the line says \"Twenty-five seconds. The surface of the Sun.\"; the field at 3.0 s is snow, so the cold-open line is true inside the film. The title's question is answered at beat 'edge' 48.2 s: \"Here, physics runs out of answers.\" with NEXT: NOBODY KNOWS. The cold open already shows \"REAL NUMBERS. PRETEND BODY.\"",
+      "reference": "what-if-time-sped-up: the cold-open picture and counter values are reached in sequence at 312-318 s (0.58); the title is answered at 506.9 s (0.94).",
+      "why_it_matters": "The opening claims nothing the film does not show, the counter values in the cold open match the clock keys at 28.0 and 31.0 s, and the invented part is labelled from the first frame. No overstatement."
+    }
+  ],
+  "fixes": [
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Put the viewer in the cold-open line. Replace \"Twenty-five seconds ago, this was snow.\" with \"Twenty-five seconds ago, you were standing in snow.\" (8 words, the reference's count; rows: \"Twenty-five seconds ago,\" / \"you were standing in snow.\"). The line cannot stay up past 3.0 s, so if 8 words in 2.9 s (2.8 words a second) is judged too fast, use \"Twenty-five seconds ago, you stood in snow.\" (7 words; rows: \"Twenty-five seconds ago,\" / \"you stood in snow.\"). Keep it upright and heavier, on frame 0. Update target.words and checks.on_screen_words (+2 or +1)."
+    },
+    {
+      "stage": "moodboard",
+      "priority": "should",
+      "change": "On the cold-open frame, set the label \"YOUR TEMPERATURE\" and the comparison row \"HOTTER THAN THE SUN'S SURFACE\" large enough to read on a phone at a glance (well above the reference's 1.1% cap height, at full opacity): together with 5,510 °C and 25.0 s they are the hook. Show frame 0 on the board with the line over the glowing ground and prove its contrast (a dark plate or dark ink, not a faint halo)."
+    }
+  ],
+  "blocked_on": [],
+  "evidence": "One reference with public numbers (2,166,790 views, 23,825 likes, about 2,392 comments, about 24,000 subscribers, as of 2026-11-25): these are what the reference does, not proof of what performs. No result evidence. Ranged values are the reference's single figure widened about 15% either way; single values are limits or facts as measured. Format and length follow the brief (vertical 1080x1920, no longer than 60 s), not the reference (horizontal 1920x1080, 537.2 s). The reference has no voice, so spoken-word values are null and the word budget is the analyst's count of on-screen text. Tool figures are as measured over the full 537.2 s; what they come to in a 60 s film is in notes.scaled_to_60s and is arithmetic, not measurement. Beyond it: script.json read in full (no timing.json, as the brief rules; times are the script's own clock), the reference's hook.jpg looked at, breakdown.md section 3. Our counter word count (about 28) is my own count from the cold-open counter states. This verdict says the opening does what the one reference does; it does not say it will perform. Nothing here was seen as a picture: legibility and motion are judged from the script's description only."
+}
