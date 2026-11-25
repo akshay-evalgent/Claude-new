@@ -1,0 +1,101 @@
+{
+  "check": "retention",
+  "stage": "video",
+  "round": 1,
+  "score": 7,
+  "pass": true,
+  "summary": "Passes: something is pending from the first frame to the last and the words light with the voice, but the voice runs for under 40% of the film and the longest rest (14.2 to 16.2 s, in the middle of the run) is two seconds of a road tip creeping with no sound event; shorten that rest to 1.6 s, and have a person listen to lines 3 and 6.",
+  "carried_forward_fixes": [
+    {
+      "fix": "script round 2 should: \"I love you.\" not readable before it is spoken; bring it in when \"Asking is how\" ends",
+      "made": "yes. Measured on the film: row one is alone on the sheet from 16.22 s, row two arrives faint between 17.5 and 17.6 s (the voice stops at 17.46 s) and lights from 18.2 s. The answer is on screen about 0.6 s before the voice, not 1.8 s"
+    },
+    {
+      "fix": "script round 2 should: check \"Until one word,\" by ear; if it sounds closed, cut its pause to 1.0 s",
+      "made": "not made and not checkable here. The producer tested one-utterance takes (still falls to about 100 Hz at the comma), changed nothing and saved a listen file. The film's own transcript writes \"Until one word.\" with a full stop. See blocked_on"
+    },
+    {
+      "fix": "review.md: line 6 spoken as one utterance and cut at the silence",
+      "made": "yes (NOTES.md: \"how\" now ends at 192 Hz, not 97 Hz). Whether it now sounds like a question is unknown; the film's transcript still writes \"Asking is how.\" See blocked_on"
+    },
+    {
+      "fix": "script round 2 should (moodboard): the unlit window reads as a window and as the road's destination at phone size",
+      "made": "half. It reads as a window in frame 0 (dotted square, cross-bar, sill; hook.jpg 0.00 s and phone_390.jpg). It does not yet read as where the road is going: from 3 to 7.6 s the road is a stub covering 5% to 22% of the width at lower left and the window is at 78% across. The link becomes plain between 10.6 and 13.1 s, when the window lights and the road is a third of the way"
+    },
+    {
+      "fix": "script round 2 should (video): no stretch without visible motion over about 1.2 s",
+      "made": "by the letter, yes: no frozen stretch longer than 0.5 s (my frame count agrees with measure.json: stills empty). In effect, partly: see the pace finding"
+    },
+    {
+      "fix": "script round 2 should (video): the change from \"home\" to \"Home.\" visible as an event",
+      "made": "yes. The old word fades out from 22.64 s and the new one is drawn with one swell by 22.88 s (reset_frames.jpg); it then stands 1.89 s"
+    }
+  ],
+  "findings": [
+    {
+      "criterion": "every beat earns its place",
+      "result": "met",
+      "ours": "Nine beats, none deletable. 'again' (4.49 to 7.68 s) adds no words, but on screen the line drops back to faint at 4.5 s and is lit a second time, which is the refrain's immediate repeat and the only place the viewer learns how the film works (words light as they are said). 'until' (7.68 to 10.32 s, \"Until one word,\") is half a sentence; 'light' (10.32 to 13.14 s) finishes it and is the largest change of picture in the run (the dark round the window grows from nothing to full between 10.6 and 13.1 s). 'asking' and 'love' are one line in two rows, not a repeat.",
+      "reference": "barsat-song 13.4 to 16.5 s and 16.8 to 20.2 s: first line sung twice at once; 20.2 to 22.8 s an unfinished clause completed at 23.7 s. Ours does both (1.45 and 4.61 s; 7.80 and 10.44 s).",
+      "why_it_matters": "Nothing on screen is a line the viewer has already finished with."
+    },
+    {
+      "criterion": "an open question at every moment",
+      "result": "met",
+      "ours": "By stretch, as seen on dense.jpg: 0.00 to 21.5 s a road grows toward a window that is on the sheet, unlit, from frame 0; 7.68 to 11.66 s an unfinished sentence (the comma and the lower-case \"the\" are on screen); 7.68 to 22.9 s which word, answered by \"Home.\"; 13.26 to 18.78 s \"I know you're fine.\" opens then why ask; 18.78 to 21.5 s the last gap closing. The thin stretch is still 2.96 to 7.68 s (4.7 s, 19% of the run): the words are a verbatim repeat and the picture thread is weaker than the script promised, because the road there is a short stub at lower left (5% to 22% of the width) and nothing yet ties it to the window at 78% across.",
+      "reference": "barsat-song 13.4 s: the first sung line is a plea with an unknown outcome, apparently held to 73 to 77 s, 0.40 of its run (tentative). Its picture opens nothing at any time (0.00 to 185.33 s, a Do not copy). Ours is open in the picture from frame 0 and in words from 7.80 s (31%).",
+      "why_it_matters": "From 3 to 7.7 s the viewer is held by the refrain's repeat and a growing line, not by a question they could name. It is short and the reference does the same repeat, so it is not an exit by itself; it is where one would be if the opening had not landed."
+    },
+    {
+      "criterion": "the middle",
+      "result": "met",
+      "ours": "40% to 70% of the run is 9.9 to 17.3 s. In it: \"the light stays on.\" completes the sentence and the window lights (10.44 to 13.1 s, 42% to 53%), with one added layer in the sound from 10.54 s; the turn \"I know you're fine.\" (13.26 to 14.24 s, 54% to 58%), after which the road runs straight at the window (dense.jpg 14.10 to 16.17 s); the first half of the payoff starts at 16.34 s (66%). The run's longest rest also sits here: see pace.",
+      "reference": "barsat-song 69.3 to 89.7 s (0.37 to 0.48 of its run): a block of new verse lines in which its question appears to be answered; refrain back at 0.49 to 0.58. Ours puts its new lines and its turn in the same part of the run.",
+      "why_it_matters": "The turn makes the payoff more than the answer assumed at 3 s. It is in the right place."
+    },
+    {
+      "criterion": "pace",
+      "result": "partly",
+      "ours": "32 words in 24.77 s, 78 a minute (budget 24 to 32 words, met). One unbroken shot, no cut (measure.json; the eye agrees). Line slots 3.16, 3.19, 2.65, 2.82, 3.08, 4.23 and 4.31 s. In step: on every line the first word turns to full ink within 0.1 s of the voice starting (my frame count against the level of audio/vo.wav: 1.5/1.47, 4.7/4.63, 7.9/7.83, 10.5/10.48, 13.3/13.31, 16.4/16.42, 18.2/18.14, 20.7/20.64 s), each line is on the sheet faint 0.12 s before it is spoken, and nothing trails. The gap is the rests. Voice is present for 9.3 s, 38% of the run. The seven waits between spoken stretches are 1.73, 1.68, 1.48, 1.68, 2.20, 0.68 and 1.88 s, then 2.63 s to the end. Nothing is frozen (longest stretch with no changed pixel: 0.47 s, 1.00 to 1.47 s), but in most rests the only motion is one or two dots a frame. The longest is 14.24 to 16.22 s (57% to 65% of the run): 1.98 s in which the lit line and the window do not change, the road tip advances about 7% of the frame width (rest of the frame identical), and the sound has no event at all (measure.json timeline, seconds 14 and 15: motion 0.0, onsets 0). Seconds 3, 9 and 24 also read 0.0.",
+      "reference": "barsat-song lyric_lines: gap between lines at most 1.2 s, always filled by a band (audible share 0.988, 3.45 onsets a second; ours 1.05); voiced part of slot 2.3 to 3.7 s (ours 0.6 to 1.5 s); line slot 3.0 to 4.1 s. The reference's own long voiceless stretches (55.6 to 69.3 s, 155.9 to 168.0 s) are Do not copy, as is its still picture. benchmarks.json expects a spoken line to be shorter than its slot and leaves the fill to the producer; compare.py's shot-length, first-word and words-a-minute fails are the rows its notes say to disregard, and I have.",
+      "why_it_matters": "Six of seven rests are longer than the longest gap the reference leaves, and they are filled more thinly than the reference fills its gaps. The 2.0 s one is the stillest two seconds of the film and falls where most viewers leave. A question is pending through it, which is why this is not a must."
+    },
+    {
+      "criterion": "easy to follow",
+      "result": "met",
+      "ours": "One line at a time, in one place, two rows broken as phrases (\"I know\" / \"you're fine.\", \"Asking is how\" / \"I love you.\"); 3 to 6 words a line; no name, number or term. Faint ink is readable (hook.jpg 0.75 s). Lit words follow the voice word by word, so the film can be followed muted. Automatic captions are not drawn; the lyric rows are the only words. Two lines depend on a sound nobody in the pipeline has heard: \"Until one word,\" ends on the pitch of a full stop and is followed by 1.48 s without voice, and \"how\" now rises and may sound like a question. The film's own transcript writes both with a full stop (transcript.md 7.67 and 16.36 s). On screen the comma and the lower-case \"the\" carry line 3, and row two arriving under row one carries line 6.",
+      "reference": "barsat-song 13.4 to 107.5 s: lines of 3 to 6 words, most often 4 (ours the same). It shows no lyric on screen and is sung (lyrics_on_screen all null), so the row setting and the spoken intonation are held to the brief only.",
+      "why_it_matters": "A viewer who looks follows every line at first pass. One who only listens may hear two fragments."
+    },
+    {
+      "criterion": "the payoff",
+      "result": "met",
+      "ours": "\"Asking is how / I love you.\" runs 16.34 to 18.78 s (66% to 76% of the run; \"I love you.\" 73% to 76%) and answers the question the turn opened. It has the longest slot (4.23 s). Row two is withheld until the voice pauses (17.5 s), so the 0.6 s pause now withholds something. It is then shown: the road's last stretch starts at 19.4 s and reaches the sill at 21.5 s as \"home\" turns red (arrival frames checked at 20.4, 21.0, 21.45 and 21.6 s). One small weakness: the road's last dots land inside the dark round the window, dark on dark, so the arrival is carried by the word turning red more than by the road.",
+      "reference": "No firm reference: pacing.payoff_at_share_of_run is null. Tentatively barsat-song answers at about 0.40 and keeps returning to the refrain; its long direct lines are at 168.0 to 182.9 s (0.91 to 0.99) with about twice the usual slot. Ours gives its direct line 1.3 to 1.6 times the other slots and the refrain after it.",
+      "why_it_matters": "The answer is told, then shown, and the eye no longer gets it before the ear."
+    },
+    {
+      "criterion": "the ending",
+      "result": "met",
+      "ours": "5.99 s run after the payoff ends (18.78 to 24.77 s, 24% of the run) and each part carries something new: 19.4 to 20.5 s the gap closing; 20.58 to 22.16 s the refrain with a changed meaning and the road arriving; 22.2 to 22.6 s the ink words leave; 22.64 to 22.88 s \"home\" becomes \"Home.\" with one swell; then 1.89 s on the finished sheet with the bed sounding (tail silence 0.11 s) and a few dots still landing round the window until 0.3 s before the last frame. The film ends 2.6 s after the last word. The last frame's red word sits where frame 0's sat, so a loop restarts cleanly (end.jpg against hook.jpg). The hold is at the limit: after about 23.3 s nothing a viewer would notice changes, so about 1.4 s rest on reading one word.",
+      "reference": "barsat-song 182.9 to 185.33 s: the same card for 2.4 to 3.0 s after the last word, the last 1.72 s silent, no end image (a Do not copy). Ours runs the same length after the last word but changes the picture once in it, answers an open question with that change, and is not silent.",
+      "why_it_matters": "The last 1.9 s are the final 8% of the run. They hold only because \"Home.\" is new information; do not lengthen them."
+    }
+  ],
+  "fixes": [
+    {
+      "stage": "video",
+      "priority": "should",
+      "change": "Shorten the rest after \"I know you're fine.\" from 2.1 s to 1.6 s. 05-video/audio/build_voice.py takes each pause from pause_after_s in 03-script/script.json, so set pause_after_s on beat 'fine' to 1.6 there, then re-run build_voice.py, transcribe.py, audio/sync_words.py, audio/mix.py and the render. Everything from beat 'asking' on moves 0.5 s earlier; the run becomes about 24.3 s, the turn stays at 54% to 58% and the payoff line starts near 65%. Keep the road landing dots through the rest as now. Do not shorten the 0.6 s pause inside the payoff line or the 1.8 s breath after it (review.md ruling 1)."
+    },
+    {
+      "stage": "video",
+      "priority": "should",
+      "change": "Only if the listen in blocked_on finds that \"Until one word,\" sounds like a finished sentence: set pause_after_s on beat 'until' to 1.0 (from 1.4) in 03-script/script.json and re-run the same chain, so the two halves are heard as one sentence. Do not merge the two lines into one utterance: the voice falls at the comma there too (NOTES.md, 5 takes)."
+    }
+  ],
+  "blocked_on": [
+    "A person must listen to the three files in 05-video/audio/listen/ (about 15 s in all). (1) lines3_4_until_one_word.wav: does \"Until one word,\" sound like a closed statement followed by a gap? If yes, apply the second fix. (2) line6_as_in_film.wav against line6_scriptwriter_split.wav: does \"how\" sound held open, or like a question or like \"howl\"? If it is worse than the scriptwriter's, NOTES.md gives the one command that reverts it. Nobody in the pipeline can hear, and both lines read correctly on screen either way, so this does not hold up a pass."
+  ],
+  "evidence": "One reference. It has public numbers (1,938,059 views, 5,421 likes, 89 comments, a 700-follower channel, as of 2026-11-25) but one video gives no result evidence: these are what the reference does, not proof of what performs. The reference is NOT a lyric video: it is one still title card held for 185.33 s under a full song, with no lyric on screen at any time, no motion and no cut. Every value about how lyrics are set, timed, moved or coloured is therefore null, and the brief governs those. Tool figures are given as measured; ranged values are the single reference's figure widened about 15% either way; length follows the brief (20 to 30 s), not the reference (185.33 s). Sung-word figures rest on a low-trust transcript of singing over a band. Beyond benchmarks.json: I looked at 05-video/check/hook.jpg, shots.jpg, dense.jpg, end.jpg, reset_frames.jpg and phone_390.jpg, and read measure.json, transcript.json, compare.json, 05-video/NOTES.md, audio/timing.json and audio/words.json. I decoded all 743 frames of video.mp4 at 960x540 and counted changed pixels frame to frame and ink in the text, road and window areas every 0.1 s (stillness, when each word lights, when the window lights, when the road arrives); I measured where the voice is present on 05-video/audio/vo.wav (10 ms level above -45 dB); and I pulled single frames at 14.3, 15.2, 16.15, 19.3, 20.4, 21.0, 21.45, 21.6 and 22.1 s. Those working files are not in the run folder. Word-light times are good to 0.1 s. I cannot hear the film: nothing here says how the voice or the bed sounds. Pace was held to benchmarks lyric_lines, not to the rows its notes call misleading. This is an estimate of where a viewer might leave, made against one reference that is not a lyric video; it is not a prediction of results."
+}

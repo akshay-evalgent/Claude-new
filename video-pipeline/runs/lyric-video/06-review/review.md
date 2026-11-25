@@ -38,3 +38,33 @@ The script passed all four checks in round 2 with no must fixes.
 - **Ending (share, retention):** make the "home" to "Home." reset a visible event (one pulse) and hold it about 2.0 s.
 - **Motion (retention):** no motionless stretch over about 1.2 s.
 - **Words on screen (hook):** the lyric rows are the only words; the automatic captions are not drawn.
+
+## Final review (the finished video)
+
+| Check | Round 1 |
+|---|---|
+| Quality | 7, fail |
+| Hook | 7, pass |
+| Retention | 7, pass |
+| Share | 7, pass |
+| Comments | 8, pass |
+
+### Round 1 must fix
+
+- **Quality (mood board stage):** the window is ruled geometry: 115 equal dots at an even pitch on straight lines, with knife-straight pane and sill, where the reference's drawing is modelled by dot density with ragged edges. Redraw it as hand stipple.
+
+### Round 1 should fixes, by stage
+
+- **Mood board:** a stippled fragment round the unlit window so frame 0 carries more ink (0.6% of the frame against the reference's 6.3%); the window about 1.5 times larger, and larger type if the row allows; folds, mottling and specks in the paper.
+- **Video:** two or three lead dots ahead of the road between 2.0 and 2.9 s so the road reads as heading for the window; more happening in the rest at 14.2 to 16.2 s; the repeated line ramping back to faint over 0.1 to 0.15 s instead of one frame; the bed lifted in the rests to about -22 dB; one soft hit at about 0.5 s.
+- **Script:** the retention judge asks for the pause after "I know you're fine." to drop from 2.1 to 1.6 s.
+
+### Ruling
+
+The script pause is left at 2.1 s this round. In script round 1 the same judge asked for it to stay at 2.1 s, and the fault it now names is that nothing happens in that rest. The producer is asked to fill the rest with motion and sound instead. If round 2 still faults it, the pause goes to the scriptwriter.
+
+### What the judges confirmed
+
+- Word sync: every word starts turning at its time and is full ink within 0.1 s; three words checked against the voice waveform were within 0.02 s.
+- Nothing is frozen for more than 0.5 s. Every line reads at phone width.
+- All five failing rows in the measured comparison are misfits against this reference (it is one 185 s still shot under a sung song), as the benchmarks' notes predicted.
