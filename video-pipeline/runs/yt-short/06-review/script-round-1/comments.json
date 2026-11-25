@@ -1,0 +1,83 @@
+{
+  "check": "comments",
+  "stage": "script",
+  "round": 1,
+  "score": 7,
+  "pass": true,
+  "summary": "The script gives viewers lines to quote and a pretend body to joke about, as the reference does, but almost nothing in it touches a viewer's own life and the only question it raises is one for a physicist; put an easy question in the caption, post a first comment that carries the disclosures, and reword two closing lines that would otherwise be corrected.",
+  "findings": [
+    {
+      "criterion": "something to answer",
+      "result": "met",
+      "ours": "Three things a viewer can reply to without being asked. A body to joke about: beat sun, 31.6 s, 'Tungsten boils here. Pretend you don't.', with the clock row 'REAL NUMBERS. PRETEND BODY.' from 10.2 s. A true claim that goes against what many assume: beat glow, 20.9 s, 'Red is the coolest glow there is.' (research.md, 'Where popular versions get it wrong'). A flat final statement: beat edge, 48.2 s, 'Here, physics runs out of answers.' One thing is thinner than in the reference: the scene holds no other person (a field, a fence, a ridge), so jokes about what onlookers make of you have only the fence to stand on.",
+      "reference": "what-if-time-sped-up asks nothing anywhere in its 537.2 s (patterns.md, Comments 6). 15 of its top 100 comments finish the story of the person standing there (17% of likes), most of them using the walkers, a boss, a cameraman or the city built round you; 8 quote or answer a line (lines at 87, 91, 171, 283, 407 and 506.9 s, and one counter row).",
+      "why_it_matters": "the reference's replies come from the frame it sets up, not from a prompt, and the script builds the same frame: second person, short final lines, one plainly stated pretence."
+    },
+    {
+      "criterion": "a story of their own",
+      "result": "partly",
+      "ours": "Two lines reach the viewer's own life. Beat boil, 10.2 s, 'Forty-one. Heat stroke. It can kill.': on for 2.8 s, in Celsius only, and gone by 13.0 s. Beat flake, 51.6 s, 'At thirty-seven degrees, you glow too.': a fact about the viewer's body, not something they have lived through. From 13.5 s to 51.0 s every stage is lava, the Sun, a collider, a constant: nothing a viewer has a version of.",
+      "reference": "what-if-time-sped-up: 6 of the top 100 comments are about the writer's own life and time passing, with 13% of the likes; one of them is the most-liked comment of all (rank 1, 4,700 likes) and another is the only one the uploader hearted (rank 86). They follow lines that measure the scenario against a human life (76.6 s, 87.4 s). Its human-scale part runs from 8.2% to 21.6% of the film, and its subject, time passing, is one every viewer already lives.",
+      "why_it_matters": "this is where the reference's single biggest comment came from, and the topic chosen here gives less of it. The film cannot fix that without inventing facts, so the caption and the first comment have to do the turning toward the viewer."
+    },
+    {
+      "criterion": "easy to answer",
+      "result": "partly",
+      "ours": "Easy replies exist: lines of three to five words that can be quoted from memory (17.8 s 'That red light is you.', 42.3 s 'Protons melt.', 58.0 s 'Ask the snowflake.'), and, as a guess, the second meaning of 'hotter' in the title, which hands out a one-line joke. But the one question the film itself leaves open (beat edge, 47.8 s: the figure '1.4 x 10^32 K ?' and the NEXT row 'NOBODY KNOWS') needs physics to answer, and nothing in post_caption offers an easier one.",
+      "reference": "what-if-time-sped-up: every one of the top 100 comments is a reply that needs no rewatching and no expertise. None answers a question, because none is asked. 32 of them (48% of likes) are an in-joke the premise handed to an existing fandom, which patterns.md (Sharing 5) calls a property of the topic, not of the craft.",
+      "why_it_matters": "our topic does not come with a fandom's ready-made line, so the easy reply has to be offered: a question a viewer can answer in two words."
+    },
+    {
+      "criterion": "a detail to notice",
+      "result": "met",
+      "ours": "Several, all planted on purpose. The clock row flips from 'REAL BODY' to 'PRETEND BODY' at 10.2 s, the moment the figure reaches 41, and back at 51.6 s. The figure is already moving (37.1 at 4.2 s) before any line says so. The unit changes from °C to K at 45.1 s. The clock never resets and reads 56.9 s at the end under 'YOU HAVE BEEN HEATING UP FOR' while the figure holds 37.0. The NEXT row ends on 'STAY HERE' (51.6 s). Every shadow points away from you (17.3 s on). My estimate, not in the evidence: a Short replays, so the closing snow (59.9 s) runs straight into 'Twenty-five seconds ago, this was snow.' (0.0 s). The risk is that four of these live in the small rows.",
+      "reference": "what-if-time-sped-up: 6 of the top 100 comments point at a detail or a hole, among them the clock starting to speed up again at 534-537 s (rank 34), the clock time at 530.5 s (rank 19) and the film's length (ranks 26 and 48). Only 1 of 100 quotes a small counter row (rank 83, the comparison row at about 418 s); breakdown.md section 10 item 4 puts that down to a cap height of 1.1% of frame height at reduced opacity.",
+      "why_it_matters": "there is more here to point out than the reference offers, but only if the rows that carry it can be read on a phone in the second or two they are current."
+    },
+    {
+      "criterion": "room to disagree, honestly",
+      "result": "partly",
+      "ours": "The real one is honest: beat edge, 47.8-51.0 s, the figure with a question mark and 'NOBODY KNOWS', backed by research.md row 20 (contested; physicists disagree). Two closing lines invite correction instead of discussion. Beat flake, 54.7 s, 'In infrared. No eye can see it.' says more than research.md row 2 supports, which is about human eyes. Beat flake, 58.0 s, 'Ask the snowflake.' reads as if the flake detects the glow; post_description itself says 'The snowflake melts because your skin is warm, not because it can see infrared', but that sentence sits in a description few Shorts viewers open.",
+      "reference": "what-if-time-sped-up makes no claim to dispute (patterns.md, Comments 6). Its one correction thread came from a slip: trees still standing at 208-227 s, pointed out with the timestamp 3:28 (396 likes), which patterns.md lists under Do not copy.",
+      "why_it_matters": "an open question labelled as open is a fair thing to argue about; a line that outruns its source draws 'actually' replies, and the playbook says not to earn comments that way."
+    },
+    {
+      "criterion": "the caption and first comment",
+      "result": "partly",
+      "ours": "post_caption: 'You start at 37 °C. One minute later, physics gives up. Every temperature on the counter is real; the body that survives them is not.' It sounds like a person and it is honest, but it asks nothing, and 'One minute later' disagrees with the film's own clock, which reads 44.8 s when the figure stops (47.8 s). comment_prompt lists what viewers may talk about and says 'The film asks nothing'; no first comment has been written.",
+      "reference": "what-if-time-sped-up: the description (info.json) states the premise and splits real from guessed; it asks nothing. In comments.json no comment is pinned, none is by the uploader and one is hearted (rank 86). The reference does not do this at all, so there is nothing to match and this cannot be a must.",
+      "why_it_matters": "the film is right to ask nothing on screen; the caption and a first comment are the only places left where an easy question and the snowflake disclosure can sit where viewers will meet them."
+    },
+    {
+      "criterion": "no bait",
+      "result": "met",
+      "ours": "No call to comment, to tag anyone or to wait for the end, in the lines, the counter rows, post_caption or post_description. The title at 3.1 s is a question about the scenario, not a request. 'SOURCES IN THE DESCRIPTION' (51.6 s to the end) is a pointer. 'NEXT: STAY HERE' is addressed to the character in the story.",
+      "reference": "what-if-time-sped-up: no call to action anywhere; the file ends in motion at 537.2 s with no end card (breakdown.md 2c).",
+      "why_it_matters": "nothing to remove."
+    }
+  ],
+  "fixes": [
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Rewrite post_caption (and the matching line in script.md) so it asks one question anyone can answer in two words, and so its time agrees with the clock. Use: \"You start at 37 °C. Forty-five seconds later, physics runs out of answers. What did you think was the hottest thing there is? Every temperature on the counter is real; the body that survives them is not.\" If a shorter question is wanted: \"Where did you think it would stop?\""
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Write a first comment for the creator to post and pin, and store it in script.json (after the existing text of comment_prompt, or in a new first_comment field). It turns the film toward the viewer, gives the fatal step in both units, and puts the snowflake disclosure where viewers will see it. Every figure is in research.md (rows 3, 12, 13 and the 'popular versions' list). Use: \"The one made-up thing here is you. A real body stops being alive near the second step: 41 °C, which is 106 °F. People often say lightning is hotter than the Sun. Hotter than its surface, about five times over (0:35); the core is about 500 times hotter again. And the snowflake melts because your skin is warm, not because it can see infrared. Sources are in the description. What is the highest your own thermometer has ever read?\" Do not add a personal anecdote unless the creator supplies a true one."
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "In beat flake, change the line at 54.7 s from \"In infrared. No eye can see it.\" to \"In infrared. Your eyes cannot see it.\" (rows: \"In infrared.\" / \"Your eyes cannot see it.\"). Same word count, same 3.1 s, and it says only what research.md row 2 supports. Keep \"Ask the snowflake.\" at 58.0 s as it is: the first comment above carries its disclosure."
+    },
+    {
+      "stage": "moodboard",
+      "priority": "should",
+      "change": "Set the clock row (REAL BODY / PRETEND BODY) and the NEXT row at full opacity and clearly larger than the reference's small rows (cap height 1.1% of frame height), and check on the board that each reads at phone size in about a second. Mark the three moments viewers are meant to catch with a visible change in the row itself, not a new element: the flip to PRETEND BODY at 10.2 s, NOBODY KNOWS at 47.8 s, STAY HERE at 51.6 s (for example the row's words swapping with a quick roll, as the large figure does when it changes form)."
+    }
+  ],
+  "blocked_on": [],
+  "evidence": "From benchmarks.json: One reference with public numbers (2,166,790 views, 23,825 likes, about 2,392 comments, about 24,000 subscribers, as of 2026-11-25): these are what the reference does, not proof of what performs. No result evidence. Ranged values are the reference's single figure widened about 15% either way; single values are limits or facts as measured. Format and length follow the brief (vertical 1080x1920, no longer than 60 s), not the reference (horizontal 1920x1080, 537.2 s). The reference has no voice, so spoken-word values are null and the word budget is the analyst's count of on-screen text. Tool figures are as measured over the full 537.2 s; what they come to in a 60 s film is in notes.scaled_to_60s and is arithmetic, not measurement. Beyond it: 01-sources/refs/what-if-time-sped-up/comments.json, the top 100 of about 2,392 comments in the platform's 'top' order, top-level only, with no replies, so which comments drew replies cannot be seen. Sorted by theme, one theme each (36,756 likes in all): in-jokes from one anime with the same premise 32 (48% of likes); jokes that finish the story of the person standing there 15 (17%); own life and time passing 6 (13%, one comment holding most of it); unrelated running jokes 9 (8%); quoting or answering one on-screen line 8 (7%); plain reaction or praise 18 (4%); a detail or a hole in the logic 6 (2%), about 3 of them corrections; saying it looks machine-made 6 (1%). Answers to a question: 0. Tagging someone: 0. Eight carry a timestamp. None is pinned or by the uploader; one is hearted. There is no timing.json for this run: times and lines are from 03-script/script.json, as the brief sets. This is an estimate from one reference and no audience numbers of our own: it says the script does what the reference does, not that it will perform. That a Short's description is rarely opened and that a Short replays are my understanding of the platform, not something in the run's evidence."
+}
