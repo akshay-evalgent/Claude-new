@@ -27,6 +27,13 @@ if [ ! -f "$VOICE_DIR/$VOICE.onnx" ]; then
   python3 -m piper.download_voices "$VOICE" --download-dir "$VOICE_DIR"
 fi
 
+# three.js, for films drawn in 3D (pinned in vendor/package.json)
+VENDOR="$(cd "$(dirname "$0")/.." && pwd)/vendor"
+if [ -f "$VENDOR/package.json" ] && [ ! -f "$VENDOR/node_modules/three/build/three.min.js" ]; then
+  echo "installing three.js"
+  (cd "$VENDOR" && npm install --no-audit --no-fund --silent)
+fi
+
 for c in ffmpeg ffprobe node; do
   command -v "$c" >/dev/null || { echo "missing: $c"; exit 1; }
 done

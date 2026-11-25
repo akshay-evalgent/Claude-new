@@ -8,6 +8,17 @@
 - **Supplied material:** none. Built-in voice and code-drawn pictures unless the user supplies their own.
 - **Must not:** reuse the reference's footage, artwork, music or wording. It is studied, not copied.
 
+## What the reference is
+
+"What If Time Sped Up and Couldn't Stop?" by Minute Zero: 8 min 57 s, horizontal 1920x1080, 2.17 million views on a channel of about 24,000 subscribers. It is a first-person 3D animation drawn in code: a low-poly street, trees and houses, a sky that turns, then the planet, the Sun and deep space, all seen from one spot. Counters sit in the top corners (the date or year on the left; how long "you have been standing here" on the right) and short italic lines sit at the bottom. The description under the video separates what is real from what is guessed.
+
+So for this run:
+
+- **Same type, new topic, new length and shape.** A "what if" science scenario told the same way, as a vertical 1080x1920 Short of at most 60 seconds. The reference is horizontal and nine minutes: the brief wins on format and length, the reference on everything else (how it is told, the look, the counters, the captions, the sound).
+- **Drawn in 3D.** The film is built with three.js, which `tools/setup.sh` installs to `video-pipeline/vendor/`; see "How the video is made" in `video-pipeline/README.md`. This is a new style kit: nothing existing fits.
+- **Facts.** The scenario's numbers must be real and sourced, and the script must say which parts are guesses, as the reference's description does. Research is in `01-sources/research.md`.
+- **Nothing reused.** New scene, new models, new words. The reference's street, shots and lines are not restaged.
+
 ## Open
 
-- The topic, to be chosen once the reference has been analysed.
+- Nothing blocking. The topic is chosen in `01-sources/research.md`.

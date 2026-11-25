@@ -126,6 +126,13 @@ node video-pipeline/tools/render.js video-pipeline/styles/ink-wash/example.html 
 A new look gets a new kit; the mood board artist creates one when the references
 call for it.
 
+A film can also be drawn in 3D. `tools/setup.sh` installs three.js (MIT licence)
+into `vendor/`; a composition loads `vendor/node_modules/three/build/three.min.js`
+with a script tag and renders its scene inside a shot's `update` function, so
+every frame still depends only on the time asked for. Create the renderer with
+`preserveDrawingBuffer: true`. The headless browser draws 3D in software: a
+simple 1080x1920 scene renders at about ten frames a second.
+
 ## Bringing your own material
 
 The built-in voice is a free synthetic one and the built-in pictures are drawn
