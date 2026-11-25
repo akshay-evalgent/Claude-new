@@ -304,6 +304,7 @@ def render_settings(w, h, samples):
     sc.render.resolution_percentage = 100
     sc.render.image_settings.file_format = "PNG"
     sc.render.use_motion_blur = False
+    sc.render.use_persistent_data = True      # keep static sets synced between frames
 
 
 def main():
