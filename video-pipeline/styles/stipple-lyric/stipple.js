@@ -153,10 +153,11 @@
        tight   distance between dots on the centre line (2.8); loose: at the band's edge (12)
        r       [smallest, largest] dot radius ([1.2, 2.5])
        ragged  how uneven the growing end is, in px along the path (16)
+       taper   the band narrows to a point over this many px at each end (48; 0 for blunt ends)
        order   [from, to]: the part of the group's 0-1 order this band takes ([0, 1]) */
     trail(g, o) {
       g = el(g);
-      const { d, half = 22, tight = 2.8, loose = 12, r = [1.2, 2.5], seed = 1, ragged = 16, order } = o;
+      const { d, half = 22, tight = 2.8, loose = 12, r = [1.2, 2.5], seed = 1, ragged = 16, taper = 48, order } = o;
       const rand = rng(seed), path = measure(g, d), field = Field(4), dots = [];
       const lanes = 8;
       for (let b = 0; b < lanes; b++) {                           // from the centre line outward, so the middle fills first
@@ -164,7 +165,9 @@
         const gapM = tight * Math.pow(loose / tight, em);
         const tries = Math.ceil((path.len * half * 2 / lanes) / (0.7 * gapM * gapM) * 8);
         for (let i = 0; i < tries; i++) {
-          const u = rand() * path.len, e = e0 + rand() * (e1 - e0), off = (rand() < 0.5 ? -1 : 1) * e * half;
+          const u = rand() * path.len, e = e0 + rand() * (e1 - e0);
+          const thin = taper > 0 ? 0.22 + 0.78 * smooth(clamp(Math.min(u, path.len - u) / taper)) : 1;
+          const off = (rand() < 0.5 ? -1 : 1) * e * half * thin;
           if (rand() < e * e * 0.7) continue;                     // the edge thins to scattered points
           const gap = tight * Math.pow(loose / tight, e);
           const p = path.at(u), x = p.x + p.nx * off, y = p.y + p.ny * off;
@@ -177,14 +180,15 @@
     },
 
     /* Single dots spaced along a path: the first marks of a line before it fills in.
-       every   distance between dots in px (60);  r: [smallest, largest] radius ([3.6, 4.8])
-       jitter  how far a dot may sit off the line (2.5);  from, to: the part of the path, 0-1 */
+       every   distance between dots in px (60), never quite even;  r: [smallest, largest] radius ([3.6, 4.8])
+       jitter  how far a dot may sit off the line (2.5);  from, to: the part of the path, 0-1
+       The first dot sits exactly on the start of the path. */
     beads(g, o) {
       g = el(g);
       const { d, every = 60, r = [3.6, 4.8], jitter = 2.5, seed = 1, from = 0, to = 1, order } = o;
       const rand = rng(seed), path = measure(g, d), dots = [];
-      for (let u = from * path.len; u <= to * path.len + 0.01; u += every) {
-        const p = path.at(u), a = rand() * Math.PI * 2, j = rand() * jitter;
+      for (let u = from * path.len; u <= to * path.len + 0.01; u += every * (0.78 + 0.44 * rand())) {
+        const p = path.at(u), a = rand() * Math.PI * 2, j = u > from * path.len ? rand() * jitter : 0;
         dots.push({ x: p.x + Math.cos(a) * j, y: p.y + Math.sin(a) * j, r: r[0] + (r[1] - r[0]) * rand(), k: u / path.len });
       }
       return commit(g, dots, order);
