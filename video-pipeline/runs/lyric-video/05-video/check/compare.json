@@ -4,8 +4,8 @@
  ],
  "ours": "video-pipeline/runs/lyric-video/05-video/check/measure.json",
  "counts": {
-  "PASS": 24,
-  "WARN": 1,
+  "PASS": 23,
+  "WARN": 2,
   "FAIL": 5,
   "SKIP": 0
  },
@@ -83,7 +83,7 @@
   {
    "check": "motion in first 3 s",
    "status": "PASS",
-   "ours": "0.04",
+   "ours": "0.05",
    "reference": "0",
    "detail": ""
   },
@@ -104,7 +104,7 @@
   {
    "check": "end hold",
    "status": "PASS",
-   "ours": "0.33 s",
+   "ours": "0.3 s",
    "reference": "3.33 s",
    "detail": ""
   },
@@ -124,10 +124,10 @@
   },
   {
    "check": "loudness",
-   "status": "PASS",
-   "ours": "-13.1 LUFS",
+   "status": "WARN",
+   "ours": "-15.6 LUFS",
    "reference": "-12.8 LUFS",
-   "detail": ""
+   "detail": "below the target -14.30 to -11.30 LUFS"
   },
   {
    "check": "true peak",
@@ -146,7 +146,7 @@
   {
    "check": "sound events per second",
    "status": "WARN",
-   "ours": "1.05",
+   "ours": "1.25",
    "reference": "3.45",
    "detail": "below the target 1.87 to 5.03. a voice produces 1.5-3 a second; far fewer usually means no voice-over"
   },
@@ -167,42 +167,42 @@
   {
    "check": "words a minute, while speaking",
    "status": "FAIL",
-   "ours": "193",
+   "ours": "197",
    "reference": "96",
    "detail": "above the target 84.48 to 107.52"
   },
   {
    "check": "voice running, share of run",
    "status": "PASS",
-   "ours": "0.402",
+   "ours": "0.394",
    "reference": "0.412",
    "detail": ""
   },
   {
    "check": "ground colour",
    "status": "PASS",
-   "ours": "#d5c4a9",
+   "ours": "#d5c4a8",
    "reference": "#ded0ba",
    "detail": "distance 23 of 441"
   },
   {
    "check": "brightness",
    "status": "PASS",
-   "ours": "0.773",
+   "ours": "0.767",
    "reference": "0.758",
    "detail": ""
   },
   {
    "check": "saturation",
    "status": "PASS",
-   "ours": "0.205",
+   "ours": "0.209",
    "reference": "0.214",
    "detail": ""
   },
   {
    "check": "dark ink share",
    "status": "PASS",
-   "ours": "0.0174",
+   "ours": "0.0245",
    "reference": "0.0368",
    "detail": ""
   },
