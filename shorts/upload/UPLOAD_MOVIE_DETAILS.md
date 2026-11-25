@@ -335,3 +335,64 @@ Would you have sworn too? 😂👇
 **Rights:**
 - **Studio footage:** expect Content ID claims on the Disney, Warner, Fox and Academy footage.
 - **Talk-show and fan-uploaded clips:** you said you'd get permission.
+
+---
+
+## True story: the Cecil Hotel water tank
+
+**File:** `cecil_hotel.mp4` · **Cover:** `cecil_hotel_cover.jpg` (the rooftop water tanks, "THE WATER / TASTED STRANGE")
+
+**Format:** this is the first true story that isn't about a movie. It uses the same engine and layout: the picture in the middle 66%, with captions in the bottom band.
+
+**Tone:** a real 21-year-old woman died, so the video is respectful true crime:
+- no gore and no ghost hype;
+- the elevator footage is used only briefly, as news footage;
+- the coroner's ruling is stated plainly;
+- the internet sleuths are the cautionary part of the story, not the heroes.
+
+**Story beats:**
+1. **The complaint,** in a real guest's voice: "It tasted horrible… a funny, sweetly disgusting taste."
+2. **The discovery:** a maintenance worker checked the four rooftop tanks and found Elisa Lam, 21, missing for almost three weeks. Hundreds of people had been using that water.
+3. **The elevator video** spread around the world. Then the bookstore manager who met her on her last day: "She was very outgoing, very lively, very friendly."
+4. **The hotel:** opened in 1924; the Night Stalker is *said to* have lived there in 1985; an Austrian serial killer checked in in 1991.
+5. **The internet:** people decided it was ghosts or murder, and sleuths named an innocent musician, who was in Mexico at the time and still gets hate messages.
+6. **The truth:** Elisa had bipolar disorder, and the coroner ruled her death an accidental drowning.
+7. **Ending:** in 2021 the Cecil reopened as 600 homes for people with nowhere else to go: "This is a game changer." Then "Remember Elisa kindly", which loops back to the tap water.
+
+**Title:**
+```
+Guests said the hotel water tasted strange...
+```
+Alternates: `The hotel guests complained about the water. Then they found out why.` · `The truth about the Cecil Hotel`
+
+**Description:**
+```
+In 2013, guests at LA's Cecil Hotel complained the water tasted strange. What the maintenance worker found on the roof became one of the internet's most famous mysteries, and the internet got it badly wrong.
+
+Rest in peace, Elisa Lam (1991–2013).
+
+Sources: LAPD; LA County coroner (accidental drowning); CNN, CBS, NBC LA, ABC7, LAist, NPR; Loudwire on the wrongly accused musician; Spectrum News on the 2021 reopening.
+News footage used for commentary: CNN, CBS News, CTV, ABC7, LA This Week, CBS LA.
+
+#cecilhotel #truestory #mystery #shorts
+```
+
+**Pinned comment:**
+```
+The internet got this case so wrong. Did you believe the ghost theories? 👇
+```
+
+**Settings:**
+- Made for kids: **No**.
+- Altered or synthetic content: **Yes** (AI narrator voice).
+- Category: News & Politics, or Education.
+
+**Monetisation:** YouTube may limit ads on videos about a real death, even respectful ones. Keep the title calm, with no "creepy", "cursed" or "horror". If the video gets the yellow icon, request a human review.
+
+**Accuracy notes** (in case a commenter asks):
+- **Opened in 1924:** some sources say 1925.
+- **Ramirez:** the claim is reported by LAist and CNN but has no hard record, so the video says "is said to".
+- **The coroner:** ruled accidental drowning, with bipolar disorder a significant factor.
+- **The musician** (Pablo Vergara, "Morbid"): he documented that he was in Mexico; the video doesn't name him, to avoid adding to the harm.
+
+**Rights:** the news footage belongs to CNN, CBS, CTV, ABC7, LA This Week and CBS LA. You said you'd get permission, and the description credits them.
