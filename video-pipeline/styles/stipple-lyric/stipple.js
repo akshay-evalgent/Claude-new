@@ -196,10 +196,11 @@
        reach        how far the dots scatter from the edge, px (175)
        tight        distance between dots at the edge (2.3); loose: at the reach (17)
        uneven       how far the outline wanders, 0-1 (0.4)
+       square       0 a round cloud, 1 a cloud with the rectangle's own corners (0.6)
        r            [smallest, largest] dot radius ([1.1, 2.2]) */
     halo(g, o) {
       g = el(g);
-      const { x, y, w, h, bare = [], reach = 175, tight = 2.3, loose = 17, uneven = 0.4,
+      const { x, y, w, h, bare = [], reach = 175, tight = 2.3, loose = 17, uneven = 0.4, square = 0.6,
               r = [1.1, 2.2], seed = 1, order } = o;
       const rand = rng(seed), wob = ringNoise(rand, 5), field = Field(4), dots = [];
       const rects = [[x, y, w, h]].concat(bare);
@@ -209,7 +210,8 @@
       const dist = (px, py) => {               // to the nearest bare rectangle
         let best = Infinity;
         for (const [rx, ry, rw, rh] of rects) {
-          best = Math.min(best, Math.hypot(Math.max(rx - px, 0, px - (rx + rw)), Math.max(ry - py, 0, py - (ry + rh))));
+          const dx = Math.max(rx - px, 0, px - (rx + rw)), dy = Math.max(ry - py, 0, py - (ry + rh));
+          best = Math.min(best, (1 - square) * Math.hypot(dx, dy) + square * Math.max(dx, dy));
         }
         return best;
       };
@@ -244,7 +246,7 @@
       // the pockets between the bare rectangles
       for (let i = Math.ceil((W * H) / (tight * tight) * 5); i > 0; i--) drop(X0 + rand() * W, Y0 + rand() * H);
       // then ring by ring outward, so each distance gets as many dots as it can hold
-      const rings = 28, R = reach * (1 + uneven), bw = R / rings;
+      const rings = 28, R = reach * (1 + uneven) * (1 + 0.42 * square), bw = R / rings;
       for (let b = 0; b < rings; b++) {
         const d0 = b * bw, dm = d0 + bw / 2, arc = Math.PI * dm / 2, per = 2 * (W + H) + 4 * arc;
         const gapM = gapAt(Math.min(1, dm / reach));
