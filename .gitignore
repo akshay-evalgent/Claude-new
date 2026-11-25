@@ -1,12 +1,10 @@
 film/input/
 __pycache__/
 
-# video pipeline: reference videos are for study only and are never committed;
+# video pipeline: reference videos and their comments are other people's work,
+# kept for study only and never committed (sources.json records what they were);
 # working renders and frame dumps are rebuilt on demand
-video-pipeline/runs/*/01-sources/refs/**/*.mp4
-video-pipeline/runs/*/01-sources/refs/**/*.mov
-video-pipeline/runs/*/01-sources/refs/**/*.webm
-video-pipeline/runs/*/01-sources/refs/**/*.mkv
+video-pipeline/runs/*/01-sources/refs/
 video-pipeline/runs/*/05-video/proof/
 video-pipeline/runs/*/05-video/audio/_*.wav
 node_modules/
