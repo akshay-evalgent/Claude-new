@@ -54,19 +54,20 @@
       sleep: () => `<path d="M${hx - ex - 9} ${ey} q9 7 18 0 M${hx + ex - 9} ${ey} q9 7 18 0" stroke="${INK}" stroke-width="5" fill="none" stroke-linecap="round"/>`,
       wide: () => `<circle cx="${hx - ex}" cy="${ey}" r="10" fill="#fff" stroke="${INK}" stroke-width="4"/><circle cx="${hx + ex}" cy="${ey}" r="10" fill="#fff" stroke="${INK}" stroke-width="4"/><circle cx="${hx - ex}" cy="${ey}" r="4" fill="${INK}"/><circle cx="${hx + ex}" cy="${ey}" r="4" fill="${INK}"/>`,
     };
-    const e = { angry: 'neutral', sad: 'neutral', panic: 'wide', proud: 'happy', tired: 'sleep' }[f] || f;
+    const e = { angry: 'neutral', sad: 'neutral', panic: 'wide', proud: 'happy', tired: 'sleep', cry: 'sleep', joy: 'happy' }[f] || f;
     o += (eyes[e] || eyes.neutral)();
     // brows
     if (f === 'angry') o += `<path d="M${hx - ex - 12} ${ey - 20} l20 8 M${hx + ex + 12} ${ey - 20} l-20 8" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>`;
     if (f === 'sad' || f === 'panic') o += `<path d="M${hx - ex - 12} ${ey - 14} l20 -7 M${hx + ex + 12} ${ey - 14} l-20 -7" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>`;
     // mouth
     const my = hy + 28;
-    if (f === 'happy' || f === 'proud') o += `<path d="M${hx - 16} ${my - 4} q16 16 32 0" stroke="${INK}" stroke-width="5" fill="none" stroke-linecap="round"/>`;
-    else if (f === 'sad' || f === 'tired') o += `<path d="M${hx - 13} ${my + 4} q13 -10 26 0" stroke="${INK}" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+    if (f === 'happy' || f === 'proud' || f === 'joy') o += `<path d="M${hx - 16} ${my - 4} q16 16 32 0" stroke="${INK}" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+    else if (f === 'sad' || f === 'tired' || f === 'cry') o += `<path d="M${hx - 13} ${my + 4} q13 -10 26 0" stroke="${INK}" stroke-width="5" fill="none" stroke-linecap="round"/>`;
     else if (f === 'angry') o += `<rect x="${hx - 16}" y="${my - 6}" width="32" height="14" rx="4" fill="${INK}"/>`;
     else if (f === 'wide' || f === 'panic') o += `<ellipse cx="${hx}" cy="${my + 2}" rx="9" ry="12" fill="${INK}"/>`;
     else if (f === 'sleep') o += `<ellipse cx="${hx}" cy="${my}" rx="6" ry="4" fill="${INK}"/>`;
     else o += `<path d="M${hx - 11} ${my} h22" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>`;
+    if (f === 'cry' || f === 'joy') o += [-1, 1].map((s) => { const k = (t * 1.3 + (s > 0 ? 0.5 : 0)) % 1; return `<path d="M${hx + s * ex} ${ey + 10 + k * 46} q-7 12 0 17 q7 -5 0 -17z" fill="#7fd3ff" stroke="${INK}" stroke-width="3" opacity="${F(1 - k * 0.6)}"/>`; }).join('');
     if (f === 'panic') o += [0, 1].map((i) => `<path d="M${hx + 62 + i * 14} ${hy - 30 + i * 22 + ((t * 60) % 14)} q-6 10 0 14 q6 -4 0 -14z" fill="#7fd3ff" stroke="${INK}" stroke-width="3"/>`).join('');
     return o;
   }
@@ -74,6 +75,7 @@
   // ---- hair, hats and glasses, drawn over the head
   function headwear(kind, hx, hy) {
     if (kind === 'student') return `<path d="M${hx - 56} ${hy - 10} q-6 -58 52 -62 q40 -6 58 28 q-26 -12 -40 2 q-14 -18 -32 4 q-18 -14 -38 28z" fill="${DARK}" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>`;
+    if (kind === 'mom') return `<path d="M${hx - 62} ${hy + 64} q-22 -120 40 -126 q78 -10 86 64 q4 40 -4 66 q-8 -50 -30 -70 q-38 10 -78 -6 q-14 30 -14 72z" fill="#6b3f24" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>`;
     if (kind === 'teacher') return `<path d="M${hx - 58} ${hy - 6} q0 -62 58 -60 q54 2 58 46 q-40 -26 -96 -10 q-14 6 -20 24z" fill="#8a8a8a" stroke="${INK}" stroke-width="5"/>` +
       `<circle cx="${hx - 20}" cy="${hy - 4}" r="15" fill="none" stroke="${INK}" stroke-width="5"/><circle cx="${hx + 20}" cy="${hy - 4}" r="15" fill="none" stroke="${INK}" stroke-width="5"/><path d="M${hx - 5} ${hy - 4} h10" stroke="${INK}" stroke-width="5"/>` +
       `<path d="M${hx - 22} ${hy + 18} q22 -10 44 0 q-22 8 -44 0z" fill="#8a8a8a" stroke="${INK}" stroke-width="4"/>`;
@@ -102,8 +104,9 @@
     footX.forEach(([fx]) => { o += `<ellipse cx="${F(fx + 16)}" cy="-4" rx="30" ry="14" fill="${DARK}" stroke="${INK}" stroke-width="4"/>`; });
     // torso
     const tw = 54;
-    o += `<path d="M${F(sh[0] - tw)} ${F(sh[1] + 14)} Q${F(sh[0])} ${F(sh[1] - 22)} ${F(sh[0] + tw)} ${F(sh[1] + 14)} L${F(hip[0] + 44)} ${F(hip[1] + 6)} Q${F(hip[0])} ${F(hip[1] + 22)} ${F(hip[0] - 44)} ${F(hip[1] + 6)} Z" fill="${kind === 'ai' ? SKIN : kind === 'teacher' ? '#d9c27a' : '#e2c862'}" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/>`;
+    o += `<path d="M${F(sh[0] - tw)} ${F(sh[1] + 14)} Q${F(sh[0])} ${F(sh[1] - 22)} ${F(sh[0] + tw)} ${F(sh[1] + 14)} L${F(hip[0] + 44)} ${F(hip[1] + 6)} Q${F(hip[0])} ${F(hip[1] + 22)} ${F(hip[0] - 44)} ${F(hip[1] + 6)} Z" fill="${kind === 'ai' ? SKIN : kind === 'teacher' ? '#d9c27a' : kind === 'mom' ? '#e89aa4' : '#e2c862'}" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/>`;
     if (kind === 'teacher') o += `<path d="M${F(sh[0])} ${F(sh[1] - 4)} l-10 22 l10 70 l10 -70z" fill="${DARK}"/>`;
+    if (kind === 'mom') o += `<path d="M${F(sh[0] - 30)} ${F(sh[1] + 40)} h60 l14 ${F(hip[1] - sh[1] - 30)} h-88z" fill="#fffaf0" stroke="${INK}" stroke-width="5"/>`;
     if (kind === 'student') o += `<path d="M${F(sh[0] - 34)} ${F(sh[1] + 4)} L${F(hip[0] - 26)} ${F(hip[1])}" stroke="${DARK}" stroke-width="10"/>`;
     // arms by pose: [elbow, hand] for the back and front arm
     const S0 = [sh[0] - 40, sh[1] + 16], S1 = [sh[0] + 40, sh[1] + 16];
@@ -116,6 +119,9 @@
       wave: [[[S0[0] - 18, S0[1] + 66], [S0[0] - 14, S0[1] + 132]], [[S1[0] + 60, S1[1] - 10], [S1[0] + 70 + Math.sin(t * 12) * 26, S1[1] - 92]]],
       panic: [[[S0[0] - 60, S0[1] - 10], [S0[0] - 50, S0[1] - 96]], [[S1[0] + 60, S1[1] - 10], [S1[0] + 50, S1[1] - 96]]],
       write: [[[S0[0] + 40, S0[1] + 70], [S0[0] + 120, S0[1] + 86]], [[S1[0] + 40, S1[1] + 74], [S1[0] + 110 + Math.sin(t * 22) * 10, S1[1] + 92]]],
+      hug: [[[S0[0] + 60, S0[1] + 40], [S0[0] + 140, S0[1] + 70]], [[S1[0] + 70, S1[1] + 30], [S1[0] + 150, S1[1] + 60]]],
+      phone: [[[S0[0] + 20, S0[1] + 80], [S0[0] + 70, S0[1] + 10]], [[S1[0] + 30, S1[1] + 80], [S1[0] + 66, S1[1] + 6]]],
+      'sit-phone': [[[S0[0] + 20, S0[1] + 80], [S0[0] + 70, S0[1] + 10]], [[S1[0] + 30, S1[1] + 80], [S1[0] + 66, S1[1] + 6]]],
       sleep: [[[S0[0] + 50, S0[1] + 40], [S0[0] + 130, S0[1] + 44]], [[S1[0] + 50, S1[1] + 44], [S1[0] + 110, S1[1] + 40]]],
     };
     const arms = ARMS[pose] || ARMS[sit ? 'write' : 'idle'];
@@ -139,6 +145,8 @@
     if (what === 'paper') return `<rect x="${x - 10}" y="${y - 64}" width="70" height="90" rx="4" fill="${PAPER}" stroke="${INK}" stroke-width="5" transform="rotate(-8 ${x} ${y})"/><path d="M${x + 2} ${y - 40} h40 M${x + 2} ${y - 26} h44 M${x + 2} ${y - 12} h30" stroke="${INK}" stroke-width="3" transform="rotate(-8 ${x} ${y})"/>`;
     if (what === 'stack') return `<g transform="translate(${x - 50} ${y - 90})">${Array.from({ length: 7 }, (_, i) => `<rect x="${(i % 2) * 6}" y="${i * 13}" width="100" height="14" fill="${PAPER}" stroke="${INK}" stroke-width="4"/>`).join('')}</g>`;
     if (what === 'crumple') return `<circle cx="${x + 20}" cy="${y - 10}" r="26" fill="${PAPER}" stroke="${INK}" stroke-width="5"/><path d="M${x + 4} ${y - 18} l18 10 l12 -12 M${x + 10} ${y + 4} l16 -8" stroke="${INK}" stroke-width="3" fill="none"/>`;
+    if (what === 'cup') return `<path d="M${x - 4} ${y - 52} h44 l-6 58 h-32z" fill="#fffef6" stroke="${INK}" stroke-width="5"/>`;
+    if (what === 'card') return `<g transform="rotate(-8 ${x} ${y})"><rect x="${x - 8}" y="${y - 70}" width="84" height="62" rx="4" fill="#ffd1dc" stroke="${INK}" stroke-width="5"/><path d="M${x + 34} ${y - 30} c-6 -12 -22 -6 -14 6 l14 12 l14 -12 c8 -12 -8 -18 -14 -6z" fill="#e5383b"/></g>`;
     if (what === 'phone') return `<rect x="${x - 6}" y="${y - 56}" width="38" height="66" rx="8" fill="${DARK}" stroke="${INK}" stroke-width="4"/>`;
     return '';
   }
@@ -169,12 +177,28 @@
     sign: (p) => { const { x, y, w = 300 } = p, lines = p.lines || [], h = 30 + lines.length * 40; return `<rect x="${x - w / 2}" y="${y}" width="${w}" height="${h}" rx="6" fill="${PAPER}" stroke="${INK}" stroke-width="6"/>` + lines.map((l, i) => `<text x="${x}" y="${y + 50 + i * 40}" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="${i === 0 ? 34 : 26}" fill="${l.startsWith('!') ? '#c0392b' : INK}">${esc(l.replace(/^!/, ''))}</text>`).join(''); },
     board: (p) => { const { x, y, w = 420, h = 230 } = p; return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#2f4a3a" stroke="${INK}" stroke-width="9"/>` + (p.lines || []).map((l, i) => `<text x="${x + 26}" y="${y + 58 + i * 46}" font-family="Inter, sans-serif" font-weight="700" font-size="34" fill="#f3f0e0">${esc(l)}</text>`).join(''); },
     paper: (p) => { const { x, y, w = 260, h = 330 } = p, rot = p.rot ?? 0; return `<g transform="rotate(${rot} ${x} ${y})"><rect x="${x - w / 2}" y="${y - h / 2}" width="${w}" height="${h}" fill="${PAPER}" stroke="${INK}" stroke-width="6"/>` + (p.lines || []).map((l, i) => `<text x="${x - w / 2 + 20}" y="${y - h / 2 + 48 + i * 40}" font-family="Inter, sans-serif" font-weight="${i === 0 ? 900 : 600}" font-size="${i === 0 ? 30 : 26}" fill="${INK}">${esc(l)}</text>`).join('') + '</g>'; },
-    laptop: (p) => { const { x, y, w = 360 } = p, h = w * 0.62; return `<rect x="${x - w / 2}" y="${y - h}" width="${w}" height="${h}" rx="12" fill="${DARK}" stroke="${INK}" stroke-width="7"/><rect x="${x - w / 2 + 16}" y="${y - h + 16}" width="${w - 32}" height="${h - 32}" fill="#16212e"/>` +
+    laptop: (p) => { const { x, y, w = 360 } = p, h = w * 0.62; if (p.closed) return `<path d="M${x - w / 2 - 30} ${y + 18} h${w + 60} l-30 -22 h${-w}z" fill="#9aa0a6" stroke="${INK}" stroke-width="6"/>`; return `<rect x="${x - w / 2}" y="${y - h}" width="${w}" height="${h}" rx="12" fill="${DARK}" stroke="${INK}" stroke-width="7"/><rect x="${x - w / 2 + 16}" y="${y - h + 16}" width="${w - 32}" height="${h - 32}" fill="#16212e"/>` +
       (p.lines || []).map((l, i) => { const fs = p.size || 26; return `<text x="${x - w / 2 + 26}" y="${F(y - h + 16 + fs * 1.5 + i * fs * 1.45)}" font-family="JetBrains Mono, monospace" font-weight="700" font-size="${fs}" fill="${l.startsWith('✓') ? '#6bff95' : '#cfe7ff'}">${esc(l)}</text>`; }).join('') +
       `<path d="M${x - w / 2 - 30} ${y + 18} h${w + 60} l-30 -18 h${-w}z" fill="#9aa0a6" stroke="${INK}" stroke-width="6"/>`; },
     stamp: (p, t) => { const k = clamp((t - (p.from ?? 0)) / 0.18, 0, 1); if (k <= 0) return ''; const s = 1.9 - 0.9 * k; return `<g transform="translate(${p.x} ${p.y}) rotate(${p.rot ?? -14}) scale(${F(s)})" opacity="${F(k)}"><rect x="${-(p.w || 220) / 2}" y="-52" width="${p.w || 220}" height="104" rx="10" fill="none" stroke="${p.color || '#d63031'}" stroke-width="11"/><text x="0" y="${p.size ? p.size * 0.35 : 26}" text-anchor="middle" font-family="Anton, Inter, sans-serif" font-size="${p.size || 76}" fill="${p.color || '#d63031'}" letter-spacing="2">${esc(p.text)}</text></g>`; },
     zzz: (p, t) => [0, 1, 2].map((i) => { const k = ((t * 0.8 + i / 3) % 1); return `<text x="${p.x + k * 60 + i * 6}" y="${p.y - k * 120}" font-family="Inter, sans-serif" font-weight="900" font-size="${28 + i * 8}" fill="${INK}" opacity="${F(1 - k)}">Z</text>`; }).join(''),
     fly: (p, t) => { if (t < p.t0 || t > p.t1) return ''; let o = ''; for (let i = 0; i < (p.n || 5); i++) { const k = ((t - p.t0) * (p.rate || 2.4) + i / (p.n || 5)) % 1, x = lerp(p.x1, p.x2, k), y = lerp(p.y1, p.y2, k) - Math.sin(k * Math.PI) * 120; o += `<rect x="${x - 30}" y="${y - 20}" width="60" height="40" fill="${PAPER}" stroke="${INK}" stroke-width="4" transform="rotate(${F(k * 300 + i * 40)} ${x} ${y})"/>`; } return o; },
+    bed: (p) => { const { x, y = 700, w = 420 } = p; return `<rect x="${x - w / 2}" y="${y - 175}" width="${w}" height="70" rx="14" fill="#9fb7e0" stroke="${INK}" stroke-width="6"/><rect x="${x - w / 2 + 14}" y="${y - 205}" width="110" height="36" rx="14" fill="#fffaf0" stroke="${INK}" stroke-width="5"/><path d="M${x - w / 2} ${y - 280} V${y} M${x + w / 2} ${y - 175} V${y}" stroke="${INK}" stroke-width="14" stroke-linecap="round"/><path d="M${x - w / 2} ${y - 105} H${x + w / 2}" stroke="${INK}" stroke-width="8"/>`; },
+    calendar: (p) => { const { x, y } = p; return `<rect x="${x - 70}" y="${y}" width="140" height="150" rx="8" fill="${PAPER}" stroke="${INK}" stroke-width="6"/><rect x="${x - 70}" y="${y}" width="140" height="40" fill="#d63031" stroke="${INK}" stroke-width="6"/><text x="${x}" y="${y + 112}" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="54" fill="${INK}">${esc(p.text || '')}</text>`; },
+    balloons: (p, t) => [['#e5383b', -60, 0], ['#3b82f6', 0, -40], ['#ffc300', 60, 10]].map(([c, dx, dy], i) => { const bx = p.x + dx + Math.sin(t * 1.4 + i) * 6, by = p.y + dy; return `<path d="M${bx} ${by + 60} q${-10} 80 ${6} 160" stroke="${INK}" stroke-width="3" fill="none"/><ellipse cx="${bx}" cy="${by}" rx="44" ry="56" fill="${c}" stroke="${INK}" stroke-width="5"/>`; }).join(''),
+    fridge: (p) => { const { x, y = 700, w = 220, h = 470 } = p; return `<rect x="${x - w / 2}" y="${y - h}" width="${w}" height="${h}" rx="18" fill="#f2f5f7" stroke="${INK}" stroke-width="7"/><path d="M${x - w / 2} ${y - h * 0.64} H${x + w / 2} M${x + w / 2 - 30} ${y - h + 40} v60 M${x + w / 2 - 30} ${y - h * 0.55} v80" stroke="${INK}" stroke-width="7" stroke-linecap="round"/>` + (p.card ? `<g transform="rotate(-6 ${x} ${y - h * 0.42})"><rect x="${x - 60}" y="${y - h * 0.5}" width="110" height="80" fill="${PAPER}" stroke="${INK}" stroke-width="4"/><text x="${x - 48}" y="${y - h * 0.5 + 34}" font-family="Caveat, cursive" font-weight="700" font-size="28" fill="${INK}">i love u</text><path d="M${x + 22} ${y - h * 0.5 + 54} c-5 -10 -18 -5 -11 5 l11 10 l11 -10 c7 -10 -6 -15 -11 -5z" fill="#e5383b"/><circle cx="${x - 5}" cy="${y - h * 0.5 - 4}" r="8" fill="#e5383b" stroke="${INK}" stroke-width="3"/></g>` : ''); },
+    hearts: (p, t) => [0, 1, 2, 3, 4].map((i) => { const k = (t * 0.6 + i / 5) % 1, hx = p.x + Math.sin(i * 2.1 + t * 2) * 50 + (i - 2) * 30, hy = p.y - k * 220, s = 0.7 + 0.5 * (1 - k); return `<path transform="translate(${F(hx)} ${F(hy)}) scale(${F(s)})" d="M0 -8 c-8 -16 -30 -8 -20 8 l20 18 l20 -18 c10 -16 -12 -24 -20 -8z" fill="#e5383b" stroke="${INK}" stroke-width="3" opacity="${F(1 - k)}"/>`; }).join(''),
+    // a card, full and readable: typed (Inter) or hand-written (Caveat), "reveal" 0..1 writes it on
+    card: (p) => {
+      const { x, y, w = 560, h = 380 } = p, hand = !!p.hand, fs = p.size || (hand ? 52 : 34), rv = clamp(p.reveal ?? 1, 0, 1), id = 'cr' + Math.round(x + y);
+      let o = `<rect x="${x - w / 2 - 6}" y="${y - h / 2 + 8}" width="${w}" height="${h}" fill="rgba(0,0,0,.18)"/><rect x="${x - w / 2}" y="${y - h / 2}" width="${w}" height="${h}" rx="8" fill="${p.color || PAPER}" stroke="${INK}" stroke-width="7"/>`;
+      o += `<clipPath id="${id}"><rect x="${x - w / 2}" y="${y - h / 2}" width="${F(w * rv)}" height="${h}"/></clipPath><g clip-path="url(#${id})">`;
+      o += (p.lines || []).map((l, i) => { const small = l.startsWith('~'); return `<text x="${x - w / 2 + 40}" y="${F(y - h / 2 + fs * 1.3 + i * fs * 1.22)}" font-family="${hand ? 'Caveat, cursive' : 'Inter, sans-serif'}" font-weight="${hand ? 700 : i === 0 ? 800 : 500}" font-size="${small ? fs * 0.62 : fs}" fill="${small ? '#8a8270' : INK}">${esc(l.replace(/^~/, ''))}</text>`; }).join('');
+      if (p.heart) o += `<path transform="translate(${x + w / 2 - 90} ${y + h / 2 - 80}) scale(2.2)" d="M0 -8 c-8 -16 -30 -8 -20 8 l20 18 l20 -18 c10 -16 -12 -24 -20 -8z" fill="#e5383b" stroke="${INK}" stroke-width="2.5"/>`;
+      return o + '</g>';
+    },
+    item: (p) => held(p.what, p.x, p.y),
+    dim: (p) => `<rect x="-2000" y="-2000" width="6000" height="6000" fill="#000" opacity="${p.a ?? 0.45}"/>`,
     text: (p) => `<text x="${p.x}" y="${p.y}" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="${p.size || 40}" fill="${p.color || INK}">${esc(p.text)}</text>`,
   };
 
@@ -199,7 +223,9 @@
     duration = t + (ep.tail ?? 0);
     $('top').innerHTML = rich(ep.top || '');
     await document.fonts.ready;
-    const music = ep.music ? { segments: [{ track: ep.music.track, t0: 0, t1: duration, gain: ep.music.gain ?? -18, offset: ep.music.offset ?? 0, fadeIn: 0.05, fadeOut: 0.6, duck: false }] } : null;
+    // music: one track for the whole video, or a list of {track, t0, t1, gain, fadeIn, fadeOut} when the mood changes
+    const ms = Array.isArray(ep.music) ? ep.music : ep.music ? [{ ...ep.music, t0: 0, t1: duration }] : [];
+    const music = ms.length ? { segments: ms.map((m) => ({ track: m.track, t0: m.t0 ?? 0, t1: m.t1 ?? duration, gain: m.gain ?? -18, offset: m.offset ?? 0, fadeIn: m.fadeIn ?? 0.05, fadeOut: m.fadeOut ?? 0.6, duck: false })) } : null;
     return { duration, cues: cues.sort((a, b) => a.t - b.t), music, mainStart: 0, exchanges: S.map((s) => +s.t0.toFixed(2)) };
   };
 

@@ -1,0 +1,1065 @@
+{
+ "engine": "toon",
+ "format": "vertical",
+ "title": "Love you, Mom",
+ "crf": 18,
+ "fps": 30,
+ "top": "POV: you let AI do everything for you",
+ "cam": {
+  "x": 820,
+  "y": 455,
+  "z": 1.28
+ },
+ "music": [
+  {
+   "track": "the-snail",
+   "t0": 0,
+   "t1": 33.4,
+   "gain": -17,
+   "fadeOut": 1.4
+  },
+  {
+   "track": "vastness",
+   "t0": 32.6,
+   "gain": -15,
+   "fadeIn": 2.2,
+   "fadeOut": 1.5
+  }
+ ],
+ "scenes": [
+  {
+   "dur": 7.0,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "window",
+     "x": 1080,
+     "y": 110,
+     "w": 290,
+     "h": 230,
+     "night": true
+    },
+    {
+     "kind": "clock",
+     "x": 300,
+     "y": 170,
+     "spin": 0.3
+    },
+    {
+     "kind": "chair",
+     "x": 520
+    },
+    {
+     "kind": "desk",
+     "x": 640,
+     "w": 400
+    },
+    {
+     "kind": "lamp",
+     "x": 790,
+     "y": 490
+    },
+    {
+     "kind": "stack",
+     "label": "HOMEWORK",
+     "x": 690,
+     "y": 490,
+     "n": 6
+    },
+    {
+     "kind": "item",
+     "what": "cup",
+     "x": 560,
+     "y": 490,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true
+      },
+      {
+       "t": 2.6,
+       "hide": false
+      }
+     ]
+    }
+   ],
+   "actors": [
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 520,
+       "pose": "write",
+       "face": "tired"
+      },
+      {
+       "t": 2.8,
+       "face": "happy"
+      },
+      {
+       "t": 4.6,
+       "face": "tired"
+      }
+     ]
+    },
+    {
+     "id": "mom",
+     "kind": "mom",
+     "keys": [
+      {
+       "t": 0,
+       "x": -260,
+       "pose": "hold",
+       "holds": "cup",
+       "face": "happy"
+      },
+      {
+       "t": 1.8,
+       "x": 330
+      },
+      {
+       "t": 2.0,
+       "pose": "give"
+      },
+      {
+       "t": 2.6,
+       "pose": "idle",
+       "holds": null
+      },
+      {
+       "t": 4.4,
+       "x": 330,
+       "flip": true
+      },
+      {
+       "t": 6.6,
+       "x": -280
+      }
+     ]
+    }
+   ],
+   "bubbles": [
+    {
+     "who": "mom",
+     "text": "❤",
+     "t0": 2.8,
+     "t1": 4.4,
+     "size": 44,
+     "dy": -140
+    },
+    {
+     "who": "kid",
+     "text": "thanks mom",
+     "t0": 3.1,
+     "t1": 4.6,
+     "size": 26,
+     "dy": -130,
+     "dx": 30
+    }
+   ],
+   "sfx": [
+    {
+     "t": 2.6,
+     "s": "soft-pop",
+     "g": -14
+    }
+   ]
+  },
+  {
+   "dur": 8.0,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "window",
+     "x": 1080,
+     "y": 110,
+     "w": 290,
+     "h": 230,
+     "night": true
+    },
+    {
+     "kind": "clock",
+     "x": 300,
+     "y": 170,
+     "spin": 0.3
+    },
+    {
+     "kind": "chair",
+     "x": 520
+    },
+    {
+     "kind": "desk",
+     "x": 640,
+     "w": 400
+    },
+    {
+     "kind": "lamp",
+     "x": 790,
+     "y": 490
+    },
+    {
+     "kind": "laptop",
+     "x": 800,
+     "y": 478,
+     "w": 200,
+     "size": 20,
+     "lines": [
+      "> hi!"
+     ]
+    },
+    {
+     "kind": "stack",
+     "label": "HOMEWORK",
+     "keys": [
+      {
+       "t": 0,
+       "x": 650,
+       "y": 490,
+       "n": 6
+      },
+      {
+       "t": 2.4,
+       "x": 650,
+       "y": 490,
+       "n": 6
+      },
+      {
+       "t": 2.9,
+       "x": 1000,
+       "y": 470,
+       "n": 6
+      },
+      {
+       "t": 3.4,
+       "x": 1000,
+       "y": 470,
+       "n": 6
+      },
+      {
+       "t": 5.4,
+       "x": 1000,
+       "y": 470,
+       "n": 0
+      }
+     ]
+    },
+    {
+     "kind": "stack",
+     "label": "DONE",
+     "keys": [
+      {
+       "t": 0,
+       "x": 1320,
+       "y": 700,
+       "n": 0
+      },
+      {
+       "t": 3.4,
+       "x": 1320,
+       "y": 700,
+       "n": 0
+      },
+      {
+       "t": 5.4,
+       "x": 1320,
+       "y": 700,
+       "n": 9
+      }
+     ]
+    },
+    {
+     "kind": "fly",
+     "t0": 3.4,
+     "t1": 5.4,
+     "x1": 1030,
+     "y1": 430,
+     "x2": 1320,
+     "y2": 600,
+     "n": 5
+    },
+    {
+     "kind": "stamp",
+     "text": "A+",
+     "x": 1320,
+     "y": 480,
+     "from": 5.6,
+     "w": 170
+    }
+   ],
+   "actors": [
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 520,
+       "pose": "write",
+       "face": "tired"
+      },
+      {
+       "t": 0.6,
+       "face": "wide"
+      },
+      {
+       "t": 1.4,
+       "face": "happy"
+      },
+      {
+       "t": 6.2,
+       "pose": "thumb",
+       "face": "proud"
+      }
+     ]
+    },
+    {
+     "id": "ai",
+     "kind": "ai",
+     "keys": [
+      {
+       "t": 0,
+       "x": 1040,
+       "hide": true,
+       "flip": true,
+       "pose": "wave"
+      },
+      {
+       "t": 0.6,
+       "hide": false
+      },
+      {
+       "t": 2.9,
+       "pose": "hold"
+      },
+      {
+       "t": 3.4,
+       "pose": "give"
+      },
+      {
+       "t": 5.6,
+       "pose": "thumb"
+      }
+     ]
+    }
+   ],
+   "flash": [
+    0.6
+   ],
+   "sfx": [
+    {
+     "t": 0.6,
+     "s": "soft-pop",
+     "g": -10
+    },
+    {
+     "t": 0.62,
+     "s": "ding",
+     "g": -16
+    },
+    {
+     "t": 3.4,
+     "s": "typing",
+     "g": -15,
+     "dur": 2.0
+    },
+    {
+     "t": 5.6,
+     "s": "impact",
+     "g": -12,
+     "dur": 1.3
+    },
+    {
+     "t": 6.2,
+     "s": "ding",
+     "g": -15
+    }
+   ]
+  },
+  {
+   "dur": 12.0,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "calendar",
+     "x": 1330,
+     "y": 120,
+     "keys": [
+      {
+       "t": 0,
+       "text": "MON"
+      },
+      {
+       "t": 3,
+       "text": "TUE"
+      },
+      {
+       "t": 6,
+       "text": "WED"
+      },
+      {
+       "t": 9,
+       "text": "THU"
+      }
+     ]
+    },
+    {
+     "kind": "clock",
+     "x": 680,
+     "y": 160,
+     "spin": 2.2
+    },
+    {
+     "kind": "bed",
+     "x": 380,
+     "w": 440
+    },
+    {
+     "kind": "desk",
+     "x": 1040,
+     "w": 360
+    },
+    {
+     "kind": "laptop",
+     "x": 1060,
+     "y": 478,
+     "w": 190,
+     "size": 17,
+     "keys": [
+      {
+       "t": 0,
+       "lines": [
+        "> essay.docx"
+       ]
+      },
+      {
+       "t": 3.6,
+       "lines": [
+        "> reply to friends"
+       ]
+      },
+      {
+       "t": 6.6,
+       "lines": [
+        "> card for mom"
+       ]
+      }
+     ]
+    }
+   ],
+   "actors": [
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 320,
+       "pose": "sit-phone",
+       "holds": "phone",
+       "face": "happy"
+      }
+     ]
+    },
+    {
+     "id": "ai",
+     "kind": "ai",
+     "keys": [
+      {
+       "t": 0,
+       "x": 1180,
+       "flip": true,
+       "pose": "give"
+      },
+      {
+       "t": 9.2,
+       "x": 1180,
+       "pose": "give",
+       "holds": "card"
+      },
+      {
+       "t": 10.6,
+       "x": 620
+      }
+     ]
+    }
+   ],
+   "bubbles": [
+    {
+     "who": "ai",
+     "text": "essay ✓",
+     "t0": 1.0,
+     "t1": 3.2,
+     "size": 30,
+     "dy": -140
+    },
+    {
+     "who": "ai",
+     "text": "texted your friends ✓",
+     "t0": 3.6,
+     "t1": 6.0,
+     "size": 28,
+     "dy": -140,
+     "dx": -60
+    },
+    {
+     "who": "kid",
+     "text": "lol 😂",
+     "t0": 4.2,
+     "t1": 5.8,
+     "size": 28,
+     "dy": -120,
+     "dx": 40
+    },
+    {
+     "who": "ai",
+     "text": "mom's birthday card ✓",
+     "t0": 6.6,
+     "t1": 9.0,
+     "size": 28,
+     "dy": -140,
+     "dx": -60
+    }
+   ],
+   "sfx": [
+    {
+     "t": 0.4,
+     "s": "typing",
+     "g": -18,
+     "dur": 8.4
+    },
+    {
+     "t": 1.0,
+     "s": "ding",
+     "g": -16
+    },
+    {
+     "t": 3.6,
+     "s": "ding",
+     "g": -16
+    },
+    {
+     "t": 6.6,
+     "s": "ding",
+     "g": -16
+    }
+   ]
+  },
+  {
+   "dur": 10.0,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "balloons",
+     "x": 330,
+     "y": 230
+    },
+    {
+     "kind": "balloons",
+     "x": 1350,
+     "y": 230
+    },
+    {
+     "kind": "sign",
+     "x": 820,
+     "y": 150,
+     "w": 560,
+     "lines": [
+      "HAPPY BIRTHDAY MOM!"
+     ]
+    },
+    {
+     "kind": "dim",
+     "a": 0.5,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true
+      },
+      {
+       "t": 2.0,
+       "hide": false
+      },
+      {
+       "t": 6.0,
+       "hide": true
+      }
+     ],
+     "front": true
+    },
+    {
+     "kind": "card",
+     "x": 820,
+     "y": 450,
+     "w": 640,
+     "h": 400,
+     "color": "#ffe3ea",
+     "keys": [
+      {
+       "t": 0,
+       "hide": true
+      },
+      {
+       "t": 2.0,
+       "hide": false
+      },
+      {
+       "t": 6.0,
+       "hide": true
+      }
+     ],
+     "lines": [
+      "Dear Mother,",
+      "You are a valued member",
+      "of this household.",
+      "Happy Birthday!",
+      "~— generated in 0.3 sec"
+     ],
+     "front": true
+    }
+   ],
+   "actors": [
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 600,
+       "pose": "give",
+       "holds": "card",
+       "face": "proud"
+      },
+      {
+       "t": 1.0,
+       "pose": "idle",
+       "holds": null
+      },
+      {
+       "t": 7.6,
+       "face": "sad"
+      }
+     ]
+    },
+    {
+     "id": "mom",
+     "kind": "mom",
+     "keys": [
+      {
+       "t": 0,
+       "x": 930,
+       "flip": true,
+       "pose": "idle",
+       "face": "happy"
+      },
+      {
+       "t": 1.0,
+       "pose": "hold",
+       "holds": "card"
+      },
+      {
+       "t": 6.0,
+       "face": "neutral"
+      },
+      {
+       "t": 7.0,
+       "face": "sad"
+      }
+     ]
+    }
+   ],
+   "bubbles": [
+    {
+     "who": "mom",
+     "text": "...thank you.",
+     "t0": 7.4,
+     "t1": 10.0,
+     "size": 28,
+     "dy": -90,
+     "dx": 150,
+     "tail": -1
+    }
+   ],
+   "sfx": [
+    {
+     "t": 0.2,
+     "s": "win-chimes",
+     "g": -20
+    },
+    {
+     "t": 2.0,
+     "s": "soft-swoosh",
+     "g": -14
+    }
+   ]
+  },
+  {
+   "dur": 10.0,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "window",
+     "x": 1080,
+     "y": 110,
+     "w": 290,
+     "h": 230,
+     "night": true
+    },
+    {
+     "kind": "clock",
+     "x": 300,
+     "y": 170,
+     "spin": 0.3
+    },
+    {
+     "kind": "chair",
+     "x": 520
+    },
+    {
+     "kind": "desk",
+     "x": 640,
+     "w": 400
+    },
+    {
+     "kind": "lamp",
+     "x": 790,
+     "y": 490
+    },
+    {
+     "kind": "laptop",
+     "x": 800,
+     "y": 478,
+     "w": 200,
+     "size": 18,
+     "keys": [
+      {
+       "t": 0,
+       "lines": [
+        "> I can help!"
+       ],
+       "closed": false
+      },
+      {
+       "t": 3.0,
+       "closed": true
+      }
+     ]
+    },
+    {
+     "kind": "balls",
+     "x": 960,
+     "y": 700,
+     "keys": [
+      {
+       "t": 0,
+       "n": 0
+      },
+      {
+       "t": 4.2,
+       "n": 0
+      },
+      {
+       "t": 6.0,
+       "n": 3
+      }
+     ]
+    },
+    {
+     "kind": "dim",
+     "a": 0.5,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true
+      },
+      {
+       "t": 6.2,
+       "hide": false
+      }
+     ],
+     "front": true
+    },
+    {
+     "kind": "card",
+     "x": 820,
+     "y": 440,
+     "w": 600,
+     "h": 420,
+     "color": "#ffe3ea",
+     "hand": true,
+     "heart": true,
+     "size": 76,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true,
+       "reveal": 0
+      },
+      {
+       "t": 6.2,
+       "hide": false,
+       "reveal": 0
+      },
+      {
+       "t": 8.8,
+       "reveal": 1
+      }
+     ],
+     "lines": [
+      "sorry mom.",
+      "i love u",
+      "— me"
+     ],
+     "front": true
+    }
+   ],
+   "actors": [
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 520,
+       "pose": "write",
+       "face": "sad"
+      },
+      {
+       "t": 3.0,
+       "face": "neutral"
+      }
+     ]
+    },
+    {
+     "id": "ai",
+     "kind": "ai",
+     "keys": [
+      {
+       "t": 0,
+       "x": 1040,
+       "flip": true,
+       "pose": "give"
+      },
+      {
+       "t": 3.0,
+       "pose": "idle"
+      }
+     ]
+    }
+   ],
+   "bubbles": [
+    {
+     "who": "ai",
+     "text": "I can make it better!",
+     "t0": 0.8,
+     "t1": 2.8,
+     "size": 28,
+     "dy": -140,
+     "dx": -60
+    },
+    {
+     "who": "kid",
+     "text": "no.",
+     "t0": 2.9,
+     "t1": 4.4,
+     "size": 34,
+     "dy": -130
+    }
+   ],
+   "sfx": [
+    {
+     "t": 3.0,
+     "s": "soft-pop",
+     "g": -12
+    },
+    {
+     "t": 4.2,
+     "s": "typing",
+     "g": -22,
+     "dur": 1.8
+    },
+    {
+     "t": 6.2,
+     "s": "soft-swoosh",
+     "g": -16
+    }
+   ]
+  },
+  {
+   "dur": 11.0,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "balloons",
+     "x": 330,
+     "y": 230
+    },
+    {
+     "kind": "fridge",
+     "x": 1330,
+     "keys": [
+      {
+       "t": 0,
+       "card": false
+      },
+      {
+       "t": 6.2,
+       "card": true
+      }
+     ],
+     "front": true
+    },
+    {
+     "kind": "hearts",
+     "x": 820,
+     "y": 360,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true
+      },
+      {
+       "t": 3.2,
+       "hide": false
+      },
+      {
+       "t": 6.4,
+       "hide": true
+      }
+     ]
+    }
+   ],
+   "actors": [
+    {
+     "id": "mom",
+     "kind": "mom",
+     "keys": [
+      {
+       "t": 0,
+       "x": 930,
+       "flip": true,
+       "pose": "hold",
+       "holds": "card",
+       "face": "neutral"
+      },
+      {
+       "t": 1.2,
+       "face": "joy"
+      },
+      {
+       "t": 3.0,
+       "x": 880,
+       "pose": "hug",
+       "holds": null
+      },
+      {
+       "t": 6.2,
+       "pose": "idle",
+       "face": "joy"
+      }
+     ]
+    },
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 420,
+       "pose": "idle",
+       "face": "sad"
+      },
+      {
+       "t": 1.6,
+       "x": 420
+      },
+      {
+       "t": 2.8,
+       "x": 740,
+       "face": "happy"
+      },
+      {
+       "t": 3.0,
+       "pose": "hug",
+       "face": "joy"
+      },
+      {
+       "t": 6.2,
+       "pose": "idle",
+       "face": "happy"
+      }
+     ]
+    },
+    {
+     "id": "ai",
+     "kind": "ai",
+     "keys": [
+      {
+       "t": 0,
+       "x": 1480,
+       "hide": true,
+       "flip": true
+      },
+      {
+       "t": 7.0,
+       "hide": false,
+       "pose": "idle"
+      },
+      {
+       "t": 7.6,
+       "x": 1470,
+       "pose": "thumb"
+      }
+     ]
+    }
+   ],
+   "sfx": [
+    {
+     "t": 3.0,
+     "s": "win-chimes",
+     "g": -22
+    }
+   ],
+   "caption": {
+    "at": 53.8,
+    "lines": [
+     "AI can write the perfect words.",
+     "Only you can mean them."
+    ]
+   },
+   "cam": [
+    {
+     "t": 0,
+     "x": 880,
+     "y": 455,
+     "z": 1.28
+    }
+   ]
+  }
+ ],
+ "youtube": {
+  "title": "I let AI write my mom's birthday card😭 #ai #mom #emotional #shorts",
+  "description": [],
+  "tags": [
+   "ai",
+   "mom",
+   "emotional",
+   "birthday",
+   "students",
+   "shorts"
+  ]
+ }
+}

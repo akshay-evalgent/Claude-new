@@ -28,6 +28,8 @@ The 6.2M hit is live action, but it works the same way: no dialogue, role labels
 | `episodes/toon-shortcut.json` | AI does all the homework (A+), but the exam-hall door slams on AI; the kid stares at a blank paper, AI pressed to the window: "I can't come in" | AI can do your homework. It can't take your exam. |
 | `episodes/toon-aislop.json` | The kid writes the essay himself all night; the teacher yells "AI SLOP!" and stamps AI DETECTED; zoom: the teacher's laptop "check 30 essays → write feedback ✓ done", AI pops up 👍 | Before you call it AI slop, check who's really using AI. |
 
+| `episodes/toon-mom.json` (58 s) | AI does everything, including Mom's birthday card ("You are a valued member of this household"); her smile fades; the kid closes the laptop and writes his own in crayon; a hug, and the card on the fridge | AI can write the perfect words. Only you can mean them. |
+
 ## More stories in this format
 - **The Yes-Machine:** "is this a good idea?" 👍 "and this?" 👍; he walks off a cliff, and AI follows 👍. *An AI that always agrees isn't helping.*
 - **1000 Paintings:** AI makes a mountain of pictures; one human paints one; the crowd walks past the mountain. *When everything is easy to make, care is rare.*

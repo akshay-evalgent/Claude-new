@@ -106,6 +106,7 @@ FONTS = {
     "PlayfairDisplay[wght].ttf": "ofl/playfairdisplay/PlayfairDisplay%5Bwght%5D.ttf",
     "PlayfairDisplay-Italic[wght].ttf": "ofl/playfairdisplay/PlayfairDisplay-Italic%5Bwght%5D.ttf",
     "Oswald[wght].ttf": "ofl/oswald/Oswald%5Bwght%5D.ttf",
+    "Caveat[wght].ttf": "ofl/caveat/Caveat%5Bwght%5D.ttf",
 }
 
 # Fluent folder names follow CLDR short names; these differ from Python's
