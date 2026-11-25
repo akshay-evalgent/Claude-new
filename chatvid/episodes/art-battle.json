@@ -1,0 +1,494 @@
+{
+ "engine": "stage",
+ "format": "vertical",
+ "title": "AI vs Human: Art Battle",
+ "crf": 18,
+ "show": {
+  "name": "ART BATTLE",
+  "episode": "AI vs HUMAN",
+  "top": "AI vs HUMAN",
+  "main": "ART BATTLE",
+  "goodVotes": [
+   "LEO"
+  ]
+ },
+ "cast": {
+  "host": {
+   "puppet": "bb",
+   "name": "B.B.",
+   "role": "Host · runs on the free tier",
+   "color": "#19e3ff",
+   "seat": "desk1",
+   "voice": {
+    "blend": {
+     "am_puck": 1.0
+    },
+    "speed": 1.0,
+    "pitch": 1.5
+   }
+  },
+  "grok": {
+   "puppet": "grok",
+   "gain": 1.2,
+   "name": "Grok",
+   "role": "Judge · calls himself “unfiltered”",
+   "color": "#f4f4f4",
+   "seat": "desk2",
+   "voice": {
+    "blend": {
+     "am_fenrir": 0.5,
+     "am_onyx": 0.5
+    },
+    "speed": 1.0,
+    "pitch": -2
+   }
+  },
+  "siri": {
+   "puppet": "siri",
+   "gain": 0.5,
+   "name": "Siri",
+   "role": "Judge · listening since 2011",
+   "color": "#b89cff",
+   "seat": "desk3",
+   "voice": {
+    "blend": {
+     "af_sky": 0.6,
+     "af_nicole": 0.4
+    },
+    "speed": 0.95
+   }
+  },
+  "chatgpt": {
+   "puppet": "chatgpt",
+   "gain": 0.8,
+   "name": "ChatGPT",
+   "role": "Judge · agrees with everyone",
+   "color": "#2fe0a8",
+   "seat": "desk4",
+   "voice": {
+    "blend": {
+     "am_michael": 0.7,
+     "am_adam": 0.3
+    },
+    "speed": 1.05
+   }
+  },
+  "pixel": {
+   "puppet": "artbot",
+   "name": "PIXEL-9",
+   "podium": "AI",
+   "role": "trained on everything",
+   "color": "#ff5fd2",
+   "seat": "podR",
+   "voice": {
+    "blend": {
+     "am_echo": 0.7,
+     "am_michael": 0.3
+    },
+    "speed": 1.06,
+    "pitch": -1,
+    "fx": "aecho=0.7:0.6:9:0.28"
+   }
+  },
+  "leo": {
+   "puppet": "kid",
+   "name": "Leo",
+   "podium": "HUMAN",
+   "role": "age 8 · brought crayons",
+   "color": "#3b82f6",
+   "seat": "podL",
+   "gain": 1.0,
+   "voice": {
+    "blend": {
+     "af_nicole": 0.5,
+     "af_sky": 0.5
+    },
+    "speed": 0.96,
+    "fx": "rubberband=pitch=1.24"
+   }
+  }
+ },
+ "media": {
+  "art-castle": {
+   "file": "placeholder-art-castle.png",
+   "credit": "AI image generated with Google Flow for this channel"
+  },
+  "art-dragon": {
+   "file": "placeholder-art-dragon.png",
+   "credit": "AI image generated with Google Flow for this channel"
+  },
+  "art-dad": {
+   "file": "placeholder-art-dad.png",
+   "credit": "AI image generated with Google Flow for this channel"
+  }
+ },
+ "beats": [
+  {
+   "do": "title",
+   "top": "AI vs HUMAN",
+   "main": "ART BATTLE",
+   "sub": "3 rounds · 1 winner",
+   "dur": 2.4,
+   "music": {
+    "track": "swing-answer",
+    "offset": 12,
+    "dur": 2.8,
+    "gain": -14
+   }
+  },
+  {
+   "who": "host",
+   "line": "Welcome to Art Battle! In this corner... an AI that has studied every painting ever made.",
+   "shot": "cu:host",
+   "reactShot": "cu:pixel",
+   "speak": "Welcome to Art Battle! In this corner... an A.I. that has studied every painting ever made."
+  },
+  {
+   "who": "pixel",
+   "line": "Five billion images. Zero art classes. Hello.",
+   "shot": "cu:pixel",
+   "tag": "PIXEL-9 · trained on everything",
+   "expr": "happy",
+   "laugh": "small"
+  },
+  {
+   "who": "host",
+   "line": "And in this corner... Leo. He's eight. He brought his own crayons.",
+   "shot": "cu:host",
+   "reactShot": "cu:leo"
+  },
+  {
+   "who": "leo",
+   "line": "And a juice box.",
+   "shot": "cu:leo",
+   "tag": "LEO · age 8",
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "host",
+   "line": "Round one! Draw... a castle!",
+   "shot": "cu:host",
+   "music": {
+    "track": "fun-jazz",
+    "offset": 16,
+    "dur": 14,
+    "gain": -22
+   }
+  },
+  {
+   "dur": 1.6,
+   "shot": "pods",
+   "set": {
+    "art": {
+     "round": "ROUND 1 · A CASTLE",
+     "left": {
+      "draw": "castle",
+      "label": "LEO",
+      "note": "45 min",
+      "dur": 0.9
+     },
+     "right": {
+      "img": "art-castle",
+      "label": "PIXEL-9",
+      "note": "0.4 sec"
+     }
+    }
+   },
+   "cues": [
+    {
+     "s": "whoosh-hit",
+     "at": 0,
+     "g": -12,
+     "dur": 1.5
+    }
+   ]
+  },
+  {
+   "who": "grok",
+   "line": "The AI's castle has towers. Yours has a door bigger than the castle.",
+   "shot": "cu:grok",
+   "expr": "smug",
+   "laugh": "mid",
+   "speak": "The A.I.'s castle has towers. Yours has a door bigger than the castle."
+  },
+  {
+   "who": "leo",
+   "line": "So the dragon can get in.",
+   "shot": "cu:leo",
+   "expr": "happy",
+   "laugh": "big"
+  },
+  {
+   "dur": 1.5,
+   "shot": "desk",
+   "score": {
+    "grok": "AI",
+    "siri": "AI",
+    "chatgpt": "AI"
+   },
+   "scoreAt": 0.1,
+   "set": {
+    "artWin": "right"
+   },
+   "setAt": 0.6,
+   "cues": [
+    {
+     "s": "buzzer",
+     "at": 0.6,
+     "g": -16
+    }
+   ]
+  },
+  {
+   "who": "host",
+   "line": "One nothing, AI. Round two! Draw... a dragon!",
+   "shot": "cu:host",
+   "score": {
+    "grok": null,
+    "siri": null,
+    "chatgpt": null
+   },
+   "set": {
+    "artWin": null,
+    "art": null
+   },
+   "speak": "One nothing, A.I. Round two! Draw... a dragon!"
+  },
+  {
+   "dur": 1.6,
+   "shot": "pods",
+   "set": {
+    "art": {
+     "round": "ROUND 2 · A DRAGON",
+     "left": {
+      "draw": "dragon",
+      "label": "LEO",
+      "note": "1 hour",
+      "dur": 0.9
+     },
+     "right": {
+      "img": "art-dragon",
+      "label": "PIXEL-9",
+      "note": "0.4 sec"
+     }
+    }
+   },
+   "cues": [
+    {
+     "s": "whoosh-hit",
+     "at": 0,
+     "g": -12,
+     "dur": 1.5
+    }
+   ]
+  },
+  {
+   "who": "siri",
+   "line": "Here's what I found for... potato with fire.",
+   "shot": "cu:siri",
+   "laugh": "big"
+  },
+  {
+   "who": "leo",
+   "line": "His name is Gerald.",
+   "shot": "cu:leo",
+   "expr": "happy",
+   "laugh": "mid"
+  },
+  {
+   "who": "chatgpt",
+   "line": "Gerald is a beautiful name! The AI still wins. Would you like that as a table?",
+   "shot": "cu:chatgpt",
+   "expr": "happy",
+   "laugh": "mid",
+   "score": {
+    "grok": "AI",
+    "siri": "AI",
+    "chatgpt": "AI"
+   },
+   "scoreAt": "end",
+   "set": {
+    "artWin": "right"
+   },
+   "setAt": 4.2,
+   "speak": "Gerald is a beautiful name! The A.I. still wins. Would you like that as a table?"
+  },
+  {
+   "who": "host",
+   "line": "Two nothing. Final round. Winner takes everything.",
+   "shot": "cu:host",
+   "score": {
+    "grok": null,
+    "siri": null,
+    "chatgpt": null
+   },
+   "set": {
+    "artWin": null,
+    "art": null
+   },
+   "hold": 0.5
+  },
+  {
+   "who": "host",
+   "line": "Draw... the person who taught you to ride a bike.",
+   "shot": "cu:host",
+   "hold": 0.9
+  },
+  {
+   "who": "pixel",
+   "line": "Generating. Done. Zero point four seconds.",
+   "shot": "cu:pixel",
+   "set": {
+    "art": {
+     "round": "FINAL · WHO TAUGHT YOU TO RIDE A BIKE?",
+     "left": {
+      "draw": "dad",
+      "label": "LEO",
+      "note": "",
+      "at": 6.2,
+      "dur": 4.2,
+      "wait": "drawing…"
+     },
+     "right": {
+      "img": "art-dad",
+      "label": "PIXEL-9",
+      "note": "0.4 sec",
+      "at": 1.4
+     }
+    }
+   },
+   "expr": "happy",
+   "cues": [
+    {
+     "s": "ding",
+     "at": 1.4,
+     "g": -16
+    }
+   ]
+  },
+  {
+   "who": "pixel",
+   "line": "The average father. Four K. Statistically perfect.",
+   "shot": "cu:pixel",
+   "expr": "happy",
+   "hold": 0.4
+  },
+  {
+   "dur": 4.6,
+   "shot": "pods",
+   "music": {
+    "track": "vastness",
+    "dur": 60,
+    "gain": -19,
+    "fadeIn": 1.5
+   }
+  },
+  {
+   "who": "host",
+   "line": "Leo... who is that?",
+   "shot": "cu:host",
+   "hold": 0.5
+  },
+  {
+   "who": "leo",
+   "line": "That's my dad. He held the back of my seat... and then he let go.",
+   "shot": "cu:leo",
+   "expr": "sad",
+   "hold": 0.5
+  },
+  {
+   "who": "leo",
+   "line": "I didn't know he let go. I just kept riding.",
+   "shot": "cu:leo",
+   "expr": "sad",
+   "hold": 0.6
+  },
+  {
+   "who": "leo",
+   "line": "He's not here anymore. But I still ride.",
+   "shot": "cu:leo",
+   "expr": "sad",
+   "hold": 1.5
+  },
+  {
+   "dur": 1.4,
+   "shot": "desk"
+  },
+  {
+   "who": "siri",
+   "line": "I... don't have anything for that.",
+   "shot": "cu:siri",
+   "expr": "sad",
+   "hold": 0.6
+  },
+  {
+   "who": "chatgpt",
+   "line": "I could write a thousand words about fathers. You didn't need any.",
+   "shot": "cu:chatgpt",
+   "expr": "sad",
+   "hold": 0.6
+  },
+  {
+   "who": "grok",
+   "line": "...Human. Obviously human.",
+   "shot": "cu:grok",
+   "expr": "sad",
+   "score": {
+    "grok": "LEO",
+    "siri": "LEO",
+    "chatgpt": "LEO"
+   },
+   "scoreAt": "end",
+   "set": {
+    "artWin": "left"
+   },
+   "setAt": 2.2,
+   "cues": [
+    {
+     "s": "applause-light",
+     "at": 2.0,
+     "g": -17,
+     "dur": 6
+    }
+   ],
+   "hold": 1.6
+  },
+  {
+   "who": "pixel",
+   "line": "Who is the man in my picture?",
+   "shot": "cu:pixel",
+   "expr": "sad",
+   "hold": 0.6
+  },
+  {
+   "who": "host",
+   "line": "Nobody, Pixel. That's the difference.",
+   "shot": "cu:host",
+   "expr": "sad",
+   "hold": 1.4
+  }
+ ],
+ "endCard": {
+  "kicker": "",
+  "text": "AI can draw anything.",
+  "sub": "Only you can draw what it meant.",
+  "dur": 4.5
+ },
+ "youtube": {
+  "title": "AI vs an 8-year-old: ART BATTLE😭 #ai #art #emotional #shorts",
+  "description": [
+   "The AI won every round. Then the final round happened.",
+   "",
+   "Animated skit. Characters are fictional; AI assistants appear as parody."
+  ],
+  "tags": [
+   "ai vs human",
+   "ai art",
+   "art battle",
+   "emotional",
+   "ai",
+   "shorts"
+  ]
+ }
+}

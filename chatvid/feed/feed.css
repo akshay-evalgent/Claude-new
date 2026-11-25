@@ -1,0 +1,49 @@
+/* A social feed seen on a phone (dark mode), the battery running out, then the real world. 1080x1920. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+#frame { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #000; font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; color: #f2f2f2; }
+#app { position: absolute; inset: 0; background: #0b0b0d; overflow: hidden; }
+#list { position: absolute; left: 0; right: 0; top: 0; }
+.post { padding-bottom: 34px; border-bottom: 1px solid #1d1d22; }
+.pHead { display: flex; align-items: center; gap: 22px; padding: 26px 34px; }
+.pAv { width: 84px; height: 84px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font: 800 38px/1 "Inter", sans-serif; color: #fff; }
+.pWho b { display: block; font: 700 36px/1.2 "Inter", sans-serif; }
+.pWho span { font: 500 28px/1.2 "Inter", sans-serif; color: #8d8d96; }
+.pDots { margin-left: auto; font: 700 44px/1 "Inter", sans-serif; color: #8d8d96; }
+.pImg { width: 1080px; height: 1080px; background: #222; overflow: hidden; }
+.pImg img { width: 100%; height: 100%; object-fit: cover; }
+.pAct { display: flex; gap: 46px; padding: 24px 34px 8px; font: 700 34px/1 "Inter", sans-serif; align-items: center; }
+.pAct .h { color: #ff3b5c; }
+.pCap { padding: 12px 34px 0; font: 400 36px/1.32 "Inter", sans-serif; }
+.pCap b { font-weight: 700; margin-right: 10px; }
+.pCom { padding: 14px 34px 0; font: 400 31px/1.45 "Inter", sans-serif; color: #c9c9cf; }
+.pCom b { font-weight: 700; color: #e9e9ee; margin-right: 10px; }
+.pCap img, .pCom img, #hookCap img, #nTitle img, #nText img, #lines img { height: 1.1em; vertical-align: -.2em; }
+#topbar { position: absolute; left: 0; right: 0; top: 0; height: 230px; padding-top: 136px; display: flex; justify-content: center; gap: 48px; background: linear-gradient(#0b0b0d 70%, rgba(11,11,13,0)); }
+.tb { font: 800 38px/1 "Inter", sans-serif; border-bottom: 5px solid #fff; padding-bottom: 12px; height: 56px; }
+.tb.dim { color: #77777f; border-color: transparent; }
+#status { position: absolute; left: 0; right: 0; top: 0; height: 120px; z-index: 20; display: flex; align-items: center; padding: 0 70px 0 96px; gap: 14px; font: 600 40px/1 "Inter", sans-serif; color: #fff; }
+#clock { margin-right: auto; }
+#bat { position: relative; width: 62px; height: 30px; border: 3px solid rgba(255,255,255,.55); border-radius: 9px; }
+#bat::after { content: ""; position: absolute; right: -9px; top: 8px; width: 5px; height: 10px; border-radius: 2px; background: rgba(255,255,255,.55); }
+#batFill { position: absolute; left: 3px; top: 3px; bottom: 3px; border-radius: 4px; background: #fff; display: block; }
+#batPct { font-size: 32px; }
+#hookCap { position: absolute; left: 60px; right: 60px; top: 38%; z-index: 22; display: none; text-align: center; font: 800 70px/1.15 "Inter", sans-serif; color: #fff; -webkit-text-stroke: 12px #000; paint-order: stroke fill; text-wrap: balance; }
+#alert { position: absolute; left: 50%; top: 50%; width: 640px; z-index: 30; display: none; transform: translate(-50%, -50%); border-radius: 36px; background: rgba(40,40,46,.96); text-align: center; overflow: hidden; }
+#alert b { display: block; padding: 40px 30px 8px; font: 700 40px/1.2 "Inter", sans-serif; }
+#alert span { display: block; padding: 0 30px 34px; font: 400 32px/1.3 "Inter", sans-serif; color: #d6d6dc; }
+#alert div { display: flex; border-top: 1px solid #4a4a52; }
+#alert em { flex: 1; padding: 26px 0; font: 600 34px/1 "Inter", sans-serif; font-style: normal; color: #3d9bff; }
+#alert em + em { border-left: 1px solid #4a4a52; }
+#real { position: absolute; inset: 0; z-index: 40; display: none; background: #000; }
+#realImg { width: 100%; height: 100%; object-fit: cover; }
+#notif { position: absolute; left: 26px; right: 26px; top: 60px; z-index: 45; display: none; gap: 22px; align-items: center; padding: 24px 28px; border-radius: 44px; background: rgba(32,32,38,.82); backdrop-filter: blur(18px); box-shadow: 0 14px 40px rgba(0,0,0,.4); }
+.nIcon { width: 90px; height: 90px; border-radius: 22px; flex: none; background: linear-gradient(135deg, #ff3b5c, #8a5cff); }
+.nTx { flex: 1; min-width: 0; }
+.nTop { display: flex; justify-content: space-between; font: 700 32px/1.2 "Inter", sans-serif; color: #fff; }
+.nTop span { font-weight: 500; color: #a7a7b0; font-size: 28px; }
+#nTitle { font: 600 34px/1.25 "Inter", sans-serif; color: #fff; margin-top: 4px; }
+#nText { font: 400 30px/1.25 "Inter", sans-serif; color: #c9c9d0; margin-top: 2px; }
+#lines { position: absolute; left: 70px; right: 70px; bottom: 300px; z-index: 46; text-align: center; font: 600 58px/1.3 "Inter", sans-serif; color: #fff; text-shadow: 0 3px 18px rgba(0,0,0,.7); }
+#lines div { opacity: 0; }
+#black { position: absolute; inset: 0; z-index: 60; background: #000; opacity: 0; pointer-events: none; }

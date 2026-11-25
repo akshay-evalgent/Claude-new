@@ -20,7 +20,9 @@
     .map((g) => (isEmoji(g) ? `<img src="../assets/emoji/${ekey(g)}.png" style="height:1.05em;vertical-align:-0.16em">` : esc(g))).join('');
   const rnd = (i) => { const x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
 
-  const SEAT = { desk1: { x: 1010, y: 520 }, desk2: { x: 1250, y: 520 }, desk3: { x: 1490, y: 520 }, desk4: { x: 1730, y: 520 }, stage: { x: 430, y: 500 } };
+  const SEAT = { desk1: { x: 1010, y: 520 }, desk2: { x: 1250, y: 520 }, desk3: { x: 1490, y: 520 }, desk4: { x: 1730, y: 520 }, stage: { x: 430, y: 500 },
+    podL: { x: 250, y: 500 }, podR: { x: 610, y: 500 } };   // two contestant podiums on stage (a head-to-head show)
+  const isDesk = (c) => c.seat.startsWith('desk');
   const SIZE = { desk: [276, 313], stage: [420, 476] };
   // audience reactions. Each has a pool of takes ([sound, gain dB, seconds, start offset, delay]) used in
   // turn, so the same laugh never plays twice in a row, and "hold": how long the show waits for it.
@@ -60,10 +62,12 @@
       // a tall frame holds one character at a time, or the whole desk as a band across the middle
       if (s.startsWith('pair:') || ['wide', 'stage', 'deskR'].includes(s)) s = b.who ? 'cu:' + b.who : st.onstage ? 'cu:' + st.onstage : 'desk';
       if (s === 'desk') return { key: s, x: 1385, y: 540, z: 1.0 };
+      if (s === 'pods') return { key: s, x: 540, y: 520, z: 1.0 };
       const c = CAST[s.slice(3)], p = SEAT[c.seat];
       return c.seat === 'stage' ? { key: s, x: p.x + 10, y: 492 + (c.camDy || 0), z: 1.8 * (c.camZ || 1), stage: true } : { key: s, x: p.x, y: 536, z: 2.2 };
     }
     if (s === 'wide') return { key: s, x: 960, y: 540, z: 1 };
+    if (s === 'pods') return { key: s, x: 430, y: 500, z: 1.45 };
     if (s === 'stage') return { key: s, x: 500, y: 500, z: 1.7 };
     if (s === 'desk') return { key: s, x: 1370, y: 520, z: 1.745 };
     if (s === 'deskR') return { key: s, x: 1105, y: 540, z: 1.25 };   // desk on the right, room for a panel on the left
@@ -90,9 +94,11 @@
     $('wlTop').textContent = show.top || ''; $('wlMain').textContent = show.main || '';
     $('bugName').innerHTML = rich(show.name || ''); $('bugEp').textContent = show.episode || '';
     $('chars').innerHTML = Object.entries(CAST).map(([id, c]) => `<div class="pup ${c.seat === 'stage' ? 'big' : ''}" id="pup-${id}"></div>`).join('');
-    $('plates').innerHTML = Object.entries(CAST).filter(([, c]) => c.seat !== 'stage')
+    $('plates').innerHTML = Object.entries(CAST).filter(([, c]) => isDesk(c))
       .map(([id, c]) => `<div class="plate" style="left:${SEAT[c.seat].x - 850 - 92}px;border-color:${c.color}">${esc(c.name)}</div>`).join('');
-    $('paddles').innerHTML = Object.entries(CAST).filter(([, c]) => c.seat !== 'stage').map(([id]) => `<div class="paddle" id="pad-${id}"><b></b><i></i></div>`).join('');
+    $('pods').innerHTML = Object.entries(CAST).filter(([, c]) => c.seat.startsWith('pod'))
+      .map(([, c]) => `<div class="pod" style="left:${SEAT[c.seat].x - 130}px;border-color:${c.color}"><b style="color:${c.color}">${esc(c.podium || c.name)}</b></div>`).join('');
+    $('paddles').innerHTML = Object.entries(CAST).filter(([, c]) => isDesk(c)).map(([id]) => `<div class="paddle" id="pad-${id}"><b></b><i></i></div>`).join('');
     $('crowd').innerHTML = Array.from({ length: 19 }, (_, i) => {
       const r = 44 + rnd(i) * 18, x = 30 + i * 104 + rnd(i + 40) * 30;
       return `<div class="head" data-i="${i}" style="left:${x - r}px;width:${2 * r}px;height:${2 * r}px;top:${34 - rnd(i + 9) * 26}px"></div>`;
@@ -151,7 +157,7 @@
     if (ep.endCard) {
       endStart = t; t += ep.endCard.dur ?? 5;
       cues.push({ t: endStart, s: 'soft-swoosh', g: -10 });
-      $('ecKicker').textContent = ep.endCard.kicker || 'NEXT EPISODE';
+      $('ecKicker').textContent = ep.endCard.kicker ?? 'NEXT EPISODE';
       $('ecText').innerHTML = rich(ep.endCard.text || ''); $('ecSub').innerHTML = rich(ep.endCard.sub || '');
       if (ep.endCard.music) music.push({ fadeIn: 0.3, fadeOut: 1.2, gain: -18, ...ep.endCard.music, t0: endStart, t1: t });
     }
@@ -185,6 +191,7 @@
       if (st.grid && T >= since.grid) { const e = EASE.out(clamp((T - since.grid) / 0.3, 0, 1)); cx -= (cam.stage ? 150 : 95) * e; cy -= 40 * e; z *= 1 - (cam.stage ? 0.2 : 0.1) * e; }
       else if (st.popup && T >= since.popup) cy -= (cam.stage ? 110 : 70) * EASE.out(clamp((T - since.popup) / 0.3, 0, 1));
       else if (st.feed && T >= since.feed) cy -= (cam.stage ? 190 : 150) * EASE.out(clamp((T - since.feed) / 0.3, 0, 1));
+      else if (st.art && T >= since.art) cy -= (cam.key === 'pods' ? 300 : 175) * EASE.out(clamp((T - since.art) / 0.3, 0, 1));
     }
     const hw = W / 2 / z, hh = H / 2 / z;
     cx = hw * 2 <= WW ? clamp(cx, hw, WW - hw) : WW / 2;
@@ -236,7 +243,7 @@
 
     // ---- judges' score paddles
     for (const [id, c] of Object.entries(CAST)) {
-      if (c.seat === 'stage') continue;
+      if (!isDesk(c)) continue;
       const el = $('pad-' + id), v = st.scores[id], on = v != null && T >= since['score.' + id];
       el.style.display = on ? 'block' : 'none';
       if (!on) continue;
@@ -245,7 +252,8 @@
       el.style.transform = `rotate(${(1 - p) * 30 + 7}deg)`;
       const txt = String(v), num = parseFloat(txt);
       el.firstChild.textContent = txt;
-      el.className = 'paddle ' + (isNaN(num) ? 'bad wide' : num <= 3 ? 'bad' : num < 7 ? 'mid' : 'good') + (txt.length > 2 ? ' wide' : '');
+      const good = ((EP.show && EP.show.goodVotes) || []).includes(txt);   // a vote paddle ("LEO") instead of a score
+      el.className = 'paddle ' + (good ? 'good wide' : isNaN(num) ? 'bad wide' : num <= 3 ? 'bad' : num < 7 ? 'mid' : 'good') + (txt.length > 2 ? ' wide' : '');
     }
 
     // ---- the contestant's self-rating, stamped next to them
@@ -333,6 +341,35 @@
       $('feed').querySelectorAll('.fdItem').forEach((el, k) => {
         const q = EASE.out(clamp((age - (FD.items[k].at ?? 0.25 + k * 0.4)) / 0.25, 0, 1));
         el.style.opacity = q; el.style.transform = `translateX(${((1 - q) * 40).toFixed(1)}px)`;
+      });
+    }
+
+    // ---- art battle: two canvases side by side. {round, left: {draw|img, label, at, dur}, right: {...}, winner}
+    const A = st.art, aOn = !!A && T >= since.art && !ended;
+    show('art', aOn, 'flex');
+    if (aOn) {
+      const age = T - since.art;
+      if ($('art').dataset.key !== 'a' + since.art) {
+        $('artRound').innerHTML = rich(A.round || '');
+        ['L', 'R'].forEach((k) => { const c = A[k === 'L' ? 'left' : 'right'] || {}; $('art' + k + 'Label').innerHTML = rich(c.label || ''); $('art' + k + 'Note').innerHTML = rich(c.note || ''); });
+        $('art').dataset.key = 'a' + since.art;
+      }
+      const p = EASE.outBack(clamp(age / 0.35, 0, 1));
+      $('art').style.transform = `translateX(-50%) scale(${(0.85 + 0.15 * p).toFixed(3)})`; $('art').style.opacity = clamp(p * 2, 0, 1);
+      ['L', 'R'].forEach((k) => {
+        const c = A[k === 'L' ? 'left' : 'right'] || {}, box = $('art' + k + 'Pic'), t0 = c.at ?? 0;
+        if (age < t0 || (!c.draw && !c.img)) { box.innerHTML = `<div class="artWait">${rich(c.wait || 'drawing…')}</div>`; box.dataset.k = ''; return; }
+        if (c.img) {
+          const src = `../assets/media/${c.img}.jpg`;
+          if (box.dataset.k !== src) { box.innerHTML = `<img src="${src}">`; box.dataset.k = src; }
+          const q = EASE.out(clamp((age - t0) / (c.dur ?? 0.25), 0, 1));
+          box.firstChild.style.opacity = q; box.firstChild.style.transform = `scale(${(1.08 - 0.08 * q).toFixed(3)})`;
+        } else {
+          const q = clamp((age - t0) / (c.dur ?? 0.6), 0, 1), key = c.draw + q.toFixed(3);
+          if (box.dataset.k !== key) { box.innerHTML = Drawings.svg(c.draw, q); box.dataset.k = key; }
+        }
+        const win = st.artWin === (k === 'L' ? 'left' : 'right') && T >= (since.artWin ?? 0);   // "artWin": stamp the winner after the vote
+        $('art' + k).classList.toggle('won', win);
       });
     }
 

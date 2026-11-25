@@ -171,3 +171,27 @@ html.vertical #spinText { top: 306px; font-size: 26px; }
 .fdTx span { display: block; margin-top: 6px; font: 600 23px/1.2 "Inter", sans-serif; color: #b9a8d6; }
 html.vertical #feed { left: 40px; top: 560px; width: 1000px; }
 html.vertical .fdTx b { font-size: 36px; } html.vertical .fdTx span { font-size: 27px; } html.vertical .fdHead { font-size: 34px; }
+
+/* head-to-head podiums on the stage */
+#pods { position: absolute; left: 0; top: 0; }
+.pod { position: absolute; top: 610px; width: 260px; height: 150px; border-radius: 16px 16px 0 0; background: linear-gradient(#1c2233, #0b0e16); border: 5px solid; border-bottom: none; display: flex; align-items: flex-start; justify-content: center; padding-top: 18px; z-index: 3; }
+.pod b { font: 900 40px/1 "Anton", "Inter", sans-serif; letter-spacing: 3px; }
+/* the art battle canvases */
+#art { position: absolute; left: 50%; top: 150px; transform: translateX(-50%); display: none; flex-direction: column; align-items: center; gap: 18px; z-index: 12; width: 1020px; }
+#artRound { font: 900 54px/1 "Anton", "Inter", sans-serif; letter-spacing: 2px; color: #fff; background: #ff2e4d; padding: 12px 30px 14px; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,.4); }
+#artRow { display: flex; gap: 28px; }
+.artCard { position: relative; width: 480px; background: #fff; border-radius: 18px; padding: 14px 14px 0; box-shadow: 0 16px 40px rgba(0,0,0,.5); border: 6px solid transparent; }
+.artCard.won { border-color: #ffd23f; box-shadow: 0 0 0 6px rgba(255,210,63,.35), 0 16px 40px rgba(0,0,0,.5); }
+.artPic { width: 100%; height: 560px; border-radius: 10px; overflow: hidden; background: #f1f1f4; display: flex; align-items: center; justify-content: center; }
+.artPic img { width: 100%; height: 100%; object-fit: cover; }
+.artPic svg { display: block; }
+.artWait { font: 700 34px/1.2 "Inter", sans-serif; color: #9a9aa6; }
+.artFoot { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 6px 16px; }
+.artFoot b { font: 900 34px/1 "Inter", sans-serif; color: #111; }
+.artFoot span { font: 600 26px/1 "Inter", sans-serif; color: #8a8a96; }
+.artWin { display: none; position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%) rotate(-10deg); padding: 10px 26px 14px; border: 8px solid #ffd23f; border-radius: 14px; background: rgba(0,0,0,.55); color: #ffd23f; font: 900 64px/1 "Anton", "Inter", sans-serif; letter-spacing: 3px; }
+.artCard.won .artWin { display: block; }
+/* a tall frame: the title has to fit 1080 px across */
+.vertical .tiMain > div { font-size: 118px; letter-spacing: 1px; }
+.vertical #ecText { font-size: 84px; text-align: center; padding: 0 60px; line-height: 1.1; }
+.vertical #ecSub { font-size: 46px; text-align: center; padding: 0 60px; margin-top: 26px; }

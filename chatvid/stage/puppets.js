@@ -76,6 +76,30 @@
     return out;
   }
 
+  // ---- a drawn human face (the kid): dot eyes with brows, a mouth that opens with the voice
+  function kidFace(cx, cy, st) {
+    const { expr = 'neutral', talk = 0, blink = 0 } = st;
+    let out = '';
+    [-1, 1].forEach((s) => {
+      const x = cx + s * 30;
+      const h = Math.max(1.5, (expr === 'wide' ? 15 : expr === 'happy' ? 4 : 11) * (1 - 0.9 * blink));
+      if (expr === 'happy') out += `<path d="M${F(x - 10)} ${F(cy + 3)} Q${F(x)} ${F(cy - 9)} ${F(x + 10)} ${F(cy + 3)}" fill="none" stroke="#2a1d14" stroke-width="5" stroke-linecap="round"/>`;
+      else out += `<ellipse cx="${F(x)}" cy="${F(cy + (expr === 'sad' ? 3 : 0))}" rx="${expr === 'wide' ? 9 : 7.5}" ry="${F(h)}" fill="#2a1d14"/>` +
+        (h > 5 ? `<circle cx="${F(x + 2.5)}" cy="${F(cy - 3)}" r="2.6" fill="#fff"/>` : '');
+      const by = cy - 26 - (expr === 'wide' ? 6 : 0), tilt = expr === 'sad' ? -7 * s : expr === 'angry' ? 7 * s : 0;
+      out += `<path d="M${F(x - 13)} ${F(by + tilt)} Q${F(x)} ${F(by - 5)} ${F(x + 13)} ${F(by - tilt)}" fill="none" stroke="#5b3a22" stroke-width="5" stroke-linecap="round"/>`;
+    });
+    out += `<circle cx="${cx - 52}" cy="${cy + 24}" r="13" fill="#ff9b8a" opacity=".45"/><circle cx="${cx + 52}" cy="${cy + 24}" r="13" fill="#ff9b8a" opacity=".45"/>`;
+    out += [[-44, 14], [-36, 22], [-50, 26], [44, 14], [36, 22], [50, 26]].map(([dx, dy]) => `<circle cx="${cx + dx}" cy="${cy + dy}" r="2" fill="#b9774f" opacity=".7"/>`).join('');
+    const my = cy + 46;
+    if (talk > 0.06) out += `<path d="M${F(cx - 16 - talk * 4)} ${F(my - 4)} Q${cx} ${F(my + 10 + talk * 20)} ${F(cx + 16 + talk * 4)} ${F(my - 4)} Z" fill="#6b2a22"/>`;
+    else if (expr === 'happy' || expr === 'smug') out += `<path d="M${cx - 22} ${my - 6} Q${cx} ${my + 16} ${cx + 22} ${my - 6}" fill="none" stroke="#6b2a22" stroke-width="6" stroke-linecap="round"/>`;
+    else if (expr === 'sad') out += `<path d="M${cx - 15} ${my + 6} Q${cx} ${my - 6} ${cx + 15} ${my + 6}" fill="none" stroke="#6b2a22" stroke-width="6" stroke-linecap="round"/>`;
+    else if (expr === 'wide') out += `<ellipse cx="${cx}" cy="${my}" rx="9" ry="11" fill="#6b2a22"/>`;
+    else out += `<path d="M${cx - 12} ${my} Q${cx} ${my + 4} ${cx + 12} ${my}" fill="none" stroke="#6b2a22" stroke-width="6" stroke-linecap="round"/>`;
+    return out;
+  }
+
   const DEFS = `<defs><filter id="pg" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     <radialGradient id="orb" cx="38%" cy="32%" r="80%"><stop offset="0" stop-color="#ff7bd0"/><stop offset=".42" stop-color="#8a5cff"/><stop offset=".78" stop-color="#2aa8ff"/><stop offset="1" stop-color="#16e0c8"/></radialGradient>
     <linearGradient id="clip" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef2f6"/><stop offset=".5" stop-color="#aab4c0"/><stop offset="1" stop-color="#7d8894"/></linearGradient>
@@ -221,6 +245,28 @@
         <rect x="236" y="196" width="58" height="14" rx="3" fill="#b8c1cc"/><path d="M246 196 l6 -40 h28 l6 40 z" fill="#f4f1e8" stroke="#c9c2b0" stroke-width="2"/>
         <rect x="96" y="228" width="108" height="112" fill="#c4ccd6"/><rect x="118" y="246" width="64" height="38" rx="4" fill="#2b3240"/>
         <text x="150" y="314" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="13" fill="#2b3240" letter-spacing="1">SELF CHECKOUT</text>`;
+    },
+    // the AI artist: a glossy white robot in a beret, holding a brush
+    artbot(st) {
+      const sway = Math.sin(st.t * 1.4) * 4;
+      return `<path d="M72 64 q78 -60 160 -6 q10 18 -14 22 q-60 -22 -134 2 q-22 -2 -12 -18 z" fill="#e0245e"/><circle cx="150" cy="16" r="9" fill="#e0245e"/>
+        <rect x="56" y="58" width="188" height="176" rx="54" fill="#f6f7fb" stroke="#c9cfe0" stroke-width="5"/>
+        <rect x="76" y="80" width="148" height="128" rx="36" fill="#0d1020"/>
+        ${ledFace(150, 134, { color: '#ff5fd2', dx: 38, ew: 24, eh: 34, my: 46, mw: 50, mopen: 26 }, st)}
+        <path d="M92 240 h116 l28 100 h-172 z" fill="#f6f7fb" stroke="#c9cfe0" stroke-width="4"/>
+        <circle cx="150" cy="276" r="12" fill="#ff5fd2" filter="url(#pg)"/>
+        <g transform="rotate(${F(16 + sway)} 262 320)"><rect x="258" y="200" width="9" height="120" rx="4" fill="#a0703c"/><path d="M257 200 q5 -32 11 0 z" fill="#2fd6ff" filter="url(#pg)"/></g>`;
+    },
+    // the human: a kid in a striped shirt with a crayon behind his ear
+    kid(st) {
+      const stripes = [0, 1, 2, 3].map((i) => `<rect x="70" y="${266 + i * 18}" width="160" height="8" fill="#ffd23f" opacity=".9"/>`).join('');
+      return `<path d="M70 262 q80 -34 160 0 v78 h-160 z" fill="#3b82f6"/>${stripes}
+        <rect x="132" y="224" width="36" height="34" rx="10" fill="#f0c19a"/>
+        <ellipse cx="62" cy="142" rx="16" ry="22" fill="#f0c19a"/><ellipse cx="238" cy="142" rx="16" ry="22" fill="#f0c19a"/>
+        <ellipse cx="150" cy="138" rx="90" ry="98" fill="#f6cfaa"/>
+        <path d="M58 118 q-6 -78 74 -88 q20 -26 44 -4 q66 4 70 86 q-24 -40 -66 -44 q-10 22 -38 10 q-26 26 -84 40 z" fill="#5b3a22"/>
+        ${kidFace(150, 142, st)}
+        <g transform="rotate(24 240 96)"><rect x="232" y="60" width="11" height="58" rx="3" fill="#ff4d6d"/><path d="M232 60 l5.5 -14 l5.5 14 z" fill="#ff4d6d"/></g>`;
     },
     // the feed: a dark slab that watches you back
     algorithm(st) {

@@ -1,0 +1,265 @@
+{
+ "engine": "feed",
+ "format": "vertical",
+ "title": "The Feed",
+ "crf": 18,
+ "fps": 30,
+ "hook": {
+  "caption": "POV: you open your feed for \"one minute\"",
+  "dur": 2.6
+ },
+ "posts": [
+  {
+   "user": "DailyBlessings_88",
+   "color": "#c0392b",
+   "caption": "Grandpa built this ship out of 1,000,000 matchsticks 😢 nobody liked it",
+   "likes": 2300000,
+   "comments": [
+    [
+     "user8291034",
+     "Amen 🙏"
+    ],
+    [
+     "blessed_janet",
+     "Beautiful 😍"
+    ],
+    [
+     "mark_77291",
+     "so real"
+    ]
+   ],
+   "clock": "6:41",
+   "battery": 9,
+   "img": "slop-1"
+  },
+  {
+   "user": "proud_mom_life",
+   "color": "#8e44ad",
+   "caption": "Rate my son 🥹",
+   "likes": 890000,
+   "comments": [
+    [
+     "rachel_k12",
+     "10/10 😍"
+    ],
+    [
+     "user4419027",
+     "so cute"
+    ],
+    [
+     "lovely_life_22",
+     "Amen 🙏"
+    ]
+   ],
+   "clock": "6:48",
+   "battery": 8,
+   "img": "slop-2"
+  },
+  {
+   "user": "NEWS24_TODAY_REAL",
+   "color": "#2980b9",
+   "caption": "BREAKING: man eats spaghetti",
+   "likes": 4100000,
+   "comments": [
+    [
+     "dan.9981",
+     "wow"
+    ],
+    [
+     "truth_seeker",
+     "they don't want you to know this"
+    ],
+    [
+     "user5520188",
+     "Amen 🙏"
+    ]
+   ],
+   "clock": "6:55",
+   "battery": 7,
+   "img": "slop-3"
+  },
+  {
+   "user": "AmazingWorld",
+   "color": "#16a085",
+   "caption": "This cat is made entirely of bread 🍞",
+   "likes": 1700000,
+   "comments": [
+    [
+     "catlover_88",
+     "Amen 🙏"
+    ],
+    [
+     "ai_art_fan",
+     "so real"
+    ],
+    [
+     "user0093321",
+     "Beautiful 😍"
+    ]
+   ],
+   "clock": "7:03",
+   "battery": 5,
+   "img": "slop-4"
+  },
+  {
+   "user": "Kindness_Daily",
+   "color": "#d35400",
+   "caption": "She's 104 and nobody wished her happy birthday 😢",
+   "likes": 12000000,
+   "comments": [
+    [
+     "user7781203",
+     "Happy birthday 🎂"
+    ],
+    [
+     "user7781204",
+     "Happy birthday 🎂"
+    ],
+    [
+     "user7781205",
+     "Happy birthday 🎂"
+    ],
+    [
+     "user7781206",
+     "Happy birthday 🎂"
+    ]
+   ],
+   "clock": "7:10",
+   "battery": 4,
+   "img": "slop-5"
+  },
+  {
+   "user": "VibesOnly_AI",
+   "color": "#e84393",
+   "caption": "Sunset but 9000% more vibrant 🔥",
+   "likes": 21000000,
+   "comments": [
+    [
+     "sunset_lover",
+     "so real"
+    ],
+    [
+     "user6612094",
+     "Amen 🙏"
+    ],
+    [
+     "nature_daily_bot",
+     "Beautiful 😍"
+    ]
+   ],
+   "clock": "7:18",
+   "battery": 2,
+   "img": "slop-6"
+  },
+  {
+   "user": "Built_Different",
+   "color": "#f39c12",
+   "caption": "I built a house out of 1 million LEGO for my wife 🥹",
+   "likes": 3400000,
+   "comments": [
+    [
+     "user2290017",
+     "Amen 🙏"
+    ],
+    [
+     "wifey_goals",
+     "so real"
+    ],
+    [
+     "user2290018",
+     "Beautiful 😍"
+    ]
+   ],
+   "clock": "7:22",
+   "battery": 1,
+   "img": "slop-7"
+  }
+ ],
+ "flick": 0.38,
+ "music": {
+  "track": "party-robot",
+  "gain": -24
+ },
+ "death": {
+  "alertLead": 1.6,
+  "after": 0.2,
+  "black": 1.6
+ },
+ "real": {
+  "media": "real-sunset",
+  "dur": 10,
+  "audioGain": -6,
+  "music": {
+   "track": "vastness",
+   "gain": -26,
+   "at": 2.0
+  },
+  "notif": {
+   "at": 1.8,
+   "stay": 1.8,
+   "app": "feed",
+   "title": "VibesOnly_AI posted",
+   "text": "Sunset but 10000% more vibrant 🔥"
+  },
+  "lines": [
+   {
+    "at": 4.2,
+    "text": "this sunset had 0 likes."
+   },
+   {
+    "at": 6.6,
+    "text": "it didn't need any."
+   }
+  ]
+ },
+ "media": {
+  "slop-1": {
+   "file": "placeholder-slop-1.png",
+   "credit": "AI image generated with Google Flow for this channel"
+  },
+  "slop-2": {
+   "file": "placeholder-slop-2.png",
+   "credit": "AI image generated with Google Flow for this channel"
+  },
+  "slop-3": {
+   "file": "placeholder-slop-3.png",
+   "credit": "AI image generated with Google Flow for this channel"
+  },
+  "slop-4": {
+   "file": "placeholder-slop-4.png",
+   "credit": "AI image generated with Google Flow for this channel"
+  },
+  "slop-5": {
+   "file": "placeholder-slop-5.png",
+   "credit": "AI image generated with Google Flow for this channel"
+  },
+  "slop-6": {
+   "file": "placeholder-slop-6.png",
+   "credit": "AI image generated with Google Flow for this channel"
+  },
+  "slop-7": {
+   "file": "placeholder-slop-7.png",
+   "credit": "AI image generated with Google Flow for this channel"
+  },
+  "real-sunset": {
+   "file": "placeholder-real-sunset.mp4",
+   "credit": "Real footage filmed for this channel"
+  }
+ },
+ "youtube": {
+  "title": "POV: you open your feed for \"one minute\"😭 #ai #aislop #shorts",
+  "description": [
+   "the phone died. the sky didn't.",
+   "",
+   "The feed images are AI-generated for this video. The sunset is real."
+  ],
+  "tags": [
+   "ai slop",
+   "ai",
+   "doomscrolling",
+   "touch grass",
+   "dead internet",
+   "shorts"
+  ]
+ }
+}
