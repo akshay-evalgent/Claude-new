@@ -22,7 +22,9 @@ The film is cut to the voice. If the user supplied a voice track at `05-video/au
 python3 video-pipeline/tools/voice.py <run>/03-script/script.json --out <run>/05-video/audio --pace 0.9
 ```
 
-Adjust `--pace` until `speaking_rate_wpm` sits inside the benchmark range and the total duration is what the script's `target` asks for. This writes `vo.wav`, `timing.json` and `timing.js`. `timing.json` gives every beat its `shot_start`, `shot_end` and `shot_dur`, and gives ready-made captions.
+Use the pace the scriptwriter timed the script at (`03-script/timing/timing.json` → `pace`), so the film is the length the script was written for. The script's length comes first. If `speaking_rate_wpm` then falls outside the benchmark range, do not chase it with the pace: report it, because the cure is more or fewer words and that is the scriptwriter's.
+
+This writes `vo.wav`, `timing.json` and `timing.js`. `timing.json` gives every beat its `shot_start`, `shot_end`, `shot_dur` and `enter` (how the shot arrives, from the script's `transition`; a dissolve or iris is placed in the breath before the beat's first word), and gives ready-made captions.
 
 ### 2. The composition
 
@@ -32,8 +34,7 @@ Write `05-video/composition.html`: one `<section class="shot" id="<beat id>">` p
 <script src="audio/timing.js"></script>
 <script>
   Film.setup({ width: 1080, height: 1920, fps: 24 });
-  const enter = { reunion: { type: 'dissolve', dur: 0.5 } };          // per-beat transitions from the script
-  for (const b of TIMING.beats) Film.shot({ id: b.id, dur: b.shot_dur, enter: enter[b.id] });
+  for (const b of TIMING.beats) Film.shot({ id: b.id, dur: b.shot_dur, enter: b.enter });
   Film.captions(TIMING.captions);
   Film.ready();
 </script>
@@ -48,7 +49,7 @@ For each shot:
 - **Motion has a reason.** Lines draw on in the order a hand would draw them. What the voice names appears as it is named: time `data-fade` and `data-draw` to the words, using the caption times.
 - **Keep the caption band clear.** Nothing important under the caption.
 - **The last shot ends.** Movement continues until `end_hold_s` or less before the final frame.
-- **Voice, caption and picture agree.** The captions come from the voice's own timing; never retime them by hand. If a picture has to arrive on a word, take the time from that word's caption.
+- **Voice, caption and picture agree.** The captions come from the voice's own timing; never retime them by hand. How they look (case, size, colour) is CSS and follows `style.json`. The one timing change allowed is holding the last caption to the final frame, if `style.json` asks for it. If a picture has to arrive on a word, take the time from that word's caption.
 - **Deterministic only.** No CSS animations or transitions, no timers, no `Math.random()` (use `Film.noise`). The same `t` must always draw the same frame.
 
 **Supplied artwork.** If `05-video/assets/shots/<beat id>.png|jpg|svg|mp4` or `01-sources/assets/` holds a picture for a beat, use it as that shot's picture (an `<img>` filling the shot, with a slow `data-drift`) instead of drawing it. This is how illustrations or footage from an image or video generator enter the film.
@@ -56,7 +57,7 @@ For each shot:
 ### 3. Proof before the full render
 
 ```bash
-node video-pipeline/tools/render.js <run>/05-video/composition.html --stills 0.5,3,8,15,22,30 --out <run>/05-video/proof
+node video-pipeline/tools/render.js <run>/05-video/composition.html --stills <one time inside each shot, comma-separated> --out <run>/05-video/proof
 node video-pipeline/tools/render.js <run>/05-video/composition.html --out <run>/05-video/proof/proof.mp4 --scale 0.5
 python3 video-pipeline/tools/measure.py <run>/05-video/proof/proof.mp4 --out <run>/05-video/proof
 python3 video-pipeline/tools/sheet.py <run>/05-video/proof/proof.mp4 --out <run>/05-video/proof --measure <run>/05-video/proof/measure.json
@@ -68,7 +69,7 @@ Read the stills and the sheets. Look for: a shot that is empty or cropped, a cap
 
 ```bash
 python3 video-pipeline/tools/sound.py --out <run>/05-video/audio/track.wav --duration <TIMING.duration> \
-  --vo <run>/05-video/audio/vo.wav --hits <every shot_start after the first, comma-separated> --lufs <benchmarks sound.integrated_lufs>
+  --vo <run>/05-video/audio/vo.wav --hits <the shot_start of every beat after the first, comma-separated> --lufs <benchmarks sound.integrated_lufs>
 ```
 
 Add `--music <file>` if `sources.json` lists music with `cleared_to_publish: true`. Never use music that is not cleared, and never take sound from a reference.

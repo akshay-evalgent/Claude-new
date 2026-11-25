@@ -7,7 +7,8 @@
 Reads beats[].vo from the script, speaks each beat on its own (so every beat's
 start and end are known exactly), lays them end to end and writes:
   DIR/vo.wav        the whole voice track
-  DIR/timing.json   per-beat times, shot boundaries and ready-made captions
+  DIR/timing.json   per-beat times, shot boundaries, each shot's way in (cut,
+                    dissolve or iris, from the beat's "transition") and captions
   DIR/timing.js     the same as `window.TIMING = {...}`, for the composition to load
                     with a <script> tag (a page opened from disk cannot fetch JSON)
 
@@ -139,11 +140,25 @@ def main():
         w.setframerate(sr)
         w.writeframes((np.clip(track, -1, 1) * 32767).astype(np.int16).tobytes())
 
-    # a beat's picture starts a touch before its first word and runs to the next beat's start
+    # A beat's picture starts a touch before its first word and runs to the next
+    # beat's start. A beat that arrives by dissolve or iris starts when the line
+    # before it ends, so the transition happens in the breath between the two.
     edges = []
-    for i, r in enumerate(rows):
+    for i, (r, b) in enumerate(zip(rows, beats)):
         s = r["vo_start"] if r["vo_start"] is not None else r["hold"][0]
-        edges.append(0.0 if i == 0 else round(max(s - 0.12, 0), 3))
+        kind = next((k for k in ("dissolve", "iris") if k in str(b.get("transition", "")).lower()), "cut")
+        prev_end = rows[i - 1]["vo_end"] if i > 0 else None
+        if i == 0:
+            kind = "cut"
+        if kind != "cut" and prev_end is not None and s > prev_end:
+            edge = prev_end + 0.02
+            room = min(max(s - prev_end - 0.04, 0.25), 0.7)
+            asked = re.search(r"(\d+(?:\.\d+)?)\s*s\b", str(b.get("transition", "")))   # "dissolve 0.3 s"
+            r["enter"] = {"type": kind, "dur": round(min(float(asked.group(1)), room) if asked else room, 3)}
+        else:
+            edge = max(s - 0.12, 0)
+            r["enter"] = {"type": "cut"} if kind == "cut" else {"type": kind, "dur": 0.5}
+        edges.append(0.0 if i == 0 else round(edge, 3))
     for i, r in enumerate(rows):
         r["shot_start"] = edges[i]
         r["shot_end"] = edges[i + 1] if i + 1 < len(rows) else total
@@ -151,8 +166,9 @@ def main():
         r.pop("hold", None)
 
     words = sum(len(r["text"].split()) for r in rows)
-    # time the voice is running, counted as transcribe.py counts it: first word to
-    # last, minus any silence longer than 0.7 s
+    # time the voice is running, counted the way transcribe.py counts it (first
+    # word to last, minus any silence longer than 0.7 s). The two agree to within
+    # a few words a minute, not exactly: this one knows the true edges.
     said = [r for r in rows if r["vo_end"] is not None]
     spoken = said[-1]["vo_end"] - said[0]["vo_start"] - sum(
         max(0.0, b["vo_start"] - a["vo_end"]) for a, b in zip(said, said[1:]) if b["vo_start"] - a["vo_end"] > 0.7)

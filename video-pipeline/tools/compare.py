@@ -39,7 +39,9 @@ def band(name, ours, refs, tol, wide, unit="", absolute=0.0, note="", floor=0.0)
     status = "PASS" if inner[0] <= ours <= inner[1] else "WARN" if outer[0] <= ours <= outer[1] else "FAIL"
     side = "" if status == "PASS" else ("below" if ours < inner[0] else "above") + \
         f" the target {inner[0]:.2f} to {inner[1]:.2f}{unit}"
-    return row(name, status, f"{ours:g}{unit}", ref_txt, (side + (". " + note if note and side else note)).strip())
+    if note and status != "PASS" and ours < inner[0]:      # the note explains a shortfall only
+        side += ". " + note
+    return row(name, status, f"{ours:g}{unit}", ref_txt, side)
 
 
 def fmt_refs(refs, unit=""):

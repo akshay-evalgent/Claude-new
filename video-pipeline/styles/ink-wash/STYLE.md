@@ -46,11 +46,11 @@ Build a figure in layers, back to front: a `dry` shape for the brushed body, a
 `ink fine` lines for folds, a `blot` for hair and feet (see the boy in
 `example.html`). A single flat fill reads as clip art.
 
-The streaks and the wobble come from a fixed noise field laid over the page, so
-they sit where the shape sits: moving a shape with a `transform` does not move
-its streaks, but changing its path coordinates does. If a streak cuts a small
-shape in two, nudge the shape a few pixels, use the `small` variant, or make it
-a `blot`.
+The streaks and the wobble are fixed in the shape's own coordinates. A
+`transform` (and so a drift) carries them along with the shape; changing the
+path's coordinates changes where they fall. If a streak cuts a small shape in
+two, shift the path's coordinates a few pixels, use the `small` variant, or make
+it a `blot`.
 
 ## Grammar
 
