@@ -1,0 +1,417 @@
+{
+ "engine": "toon",
+ "format": "vertical",
+ "title": "AI SLOP",
+ "crf": 18,
+ "fps": 30,
+ "top": "When you actually wrote the essay yourself 😭",
+ "music": {
+  "track": "the-snail",
+  "gain": -17,
+  "offset": 20
+ },
+ "cam": {
+  "x": 820,
+  "y": 455,
+  "z": 1.28
+ },
+ "scenes": [
+  {
+   "dur": 4.8,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "window",
+     "x": 1060,
+     "y": 110,
+     "w": 290,
+     "h": 230,
+     "night": true
+    },
+    {
+     "kind": "clock",
+     "x": 300,
+     "y": 170,
+     "spin": 1.6
+    },
+    {
+     "kind": "chair",
+     "x": 520
+    },
+    {
+     "kind": "desk",
+     "x": 640,
+     "w": 400
+    },
+    {
+     "kind": "lamp",
+     "x": 780,
+     "y": 490
+    },
+    {
+     "kind": "balls",
+     "x": 960,
+     "y": 700,
+     "keys": [
+      {
+       "t": 0,
+       "n": 0
+      },
+      {
+       "t": 3.6,
+       "n": 8
+      }
+     ]
+    }
+   ],
+   "actors": [
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 520,
+       "pose": "write",
+       "face": "tired"
+      },
+      {
+       "t": 3.8,
+       "pose": "write",
+       "face": "proud",
+       "holds": "paper"
+      }
+     ]
+    }
+   ],
+   "bubbles": [
+    {
+     "who": "kid",
+     "text": "done ❤",
+     "t0": 3.9,
+     "t1": 4.8,
+     "dy": -140
+    }
+   ],
+   "sfx": [
+    {
+     "t": 0.1,
+     "s": "typing",
+     "g": -18,
+     "dur": 3.5
+    },
+    {
+     "t": 3.9,
+     "s": "ding",
+     "g": -14
+    }
+   ]
+  },
+  {
+   "dur": 4.6,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "board",
+     "x": 190,
+     "y": 120,
+     "w": 400,
+     "h": 170,
+     "lines": [
+      "ESSAY: My Grandpa",
+      "due today"
+     ]
+    },
+    {
+     "kind": "paper",
+     "x": 1150,
+     "y": 470,
+     "w": 150,
+     "h": 70,
+     "rot": -4,
+     "front": true,
+     "lines": [
+      "My Grandpa"
+     ],
+     "keys": [
+      {
+       "t": 0,
+       "hide": true
+      },
+      {
+       "t": 1.2,
+       "hide": false
+      }
+     ]
+    },
+    {
+     "kind": "desk",
+     "x": 1230,
+     "w": 340,
+     "front": true
+    },
+    {
+     "kind": "laptop",
+     "x": 1300,
+     "y": 478,
+     "w": 200,
+     "front": true,
+     "lines": []
+    },
+    {
+     "kind": "stamp",
+     "text": "AI DETECTED",
+     "x": 1150,
+     "y": 450,
+     "from": 1.7,
+     "w": 260,
+     "size": 40,
+     "front": true
+    }
+   ],
+   "actors": [
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 560,
+       "pose": "idle",
+       "face": "proud"
+      },
+      {
+       "t": 1.7,
+       "face": "sad"
+      },
+      {
+       "t": 2.6,
+       "pose": "give",
+       "holds": "crumple"
+      }
+     ]
+    },
+    {
+     "id": "teach",
+     "kind": "teacher",
+     "keys": [
+      {
+       "t": 0,
+       "x": 900,
+       "pose": "hold",
+       "holds": "paper",
+       "face": "neutral",
+       "flip": true
+      },
+      {
+       "t": 0.8,
+       "face": "wide"
+      },
+      {
+       "t": 1.2,
+       "face": "angry",
+       "pose": "point",
+       "holds": null
+      }
+     ]
+    }
+   ],
+   "bubbles": [
+    {
+     "who": "teach",
+     "text": "AI SLOP!",
+     "t0": 1.2,
+     "t1": 2.9,
+     "dy": -150,
+     "dx": -30
+    },
+    {
+     "who": "kid",
+     "text": "I wrote it myself...",
+     "t0": 2.9,
+     "t1": 4.6,
+     "size": 28,
+     "dy": -150
+    }
+   ],
+   "sfx": [
+    {
+     "t": 1.2,
+     "s": "buzzer",
+     "g": -14
+    },
+    {
+     "t": 1.7,
+     "s": "impact",
+     "g": -11,
+     "dur": 1.4
+    },
+    {
+     "t": 2.6,
+     "s": "soft-swoosh",
+     "g": -16
+    }
+   ]
+  },
+  {
+   "dur": 5.2,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "desk",
+     "x": 1230,
+     "w": 340,
+     "front": true
+    },
+    {
+     "kind": "laptop",
+     "x": 1300,
+     "y": 478,
+     "w": 230,
+     "front": true,
+     "size": 17,
+     "keys": [
+      {
+       "t": 0,
+       "lines": []
+      },
+      {
+       "t": 0.5,
+       "lines": [
+        "> check 30 essays",
+        "> write feedback",
+        "✓ done"
+       ]
+      }
+     ]
+    }
+   ],
+   "actors": [
+    {
+     "id": "ai",
+     "kind": "ai",
+     "keys": [
+      {
+       "t": 0,
+       "x": 1490,
+       "y": 980,
+       "pose": "thumb"
+      },
+      {
+       "t": 1.4,
+       "y": 980,
+       "x": 1490
+      },
+      {
+       "t": 1.9,
+       "y": 740,
+       "x": 1490
+      }
+     ]
+    },
+    {
+     "id": "teach",
+     "kind": "teacher",
+     "keys": [
+      {
+       "t": 0,
+       "x": 900,
+       "pose": "idle",
+       "face": "angry",
+       "flip": true
+      },
+      {
+       "t": 1.9,
+       "face": "wide"
+      },
+      {
+       "t": 2.4,
+       "pose": "panic",
+       "face": "panic"
+      }
+     ]
+    }
+   ],
+   "cam": [
+    {
+     "t": 0,
+     "x": 1080,
+     "y": 420,
+     "z": 1.4
+    },
+    {
+     "t": 0.45,
+     "x": 1300,
+     "y": 405,
+     "z": 2.5
+    },
+    {
+     "t": 1.5,
+     "x": 1300,
+     "y": 405,
+     "z": 2.5
+    },
+    {
+     "t": 2.0,
+     "x": 1150,
+     "y": 420,
+     "z": 1.42
+    }
+   ],
+   "bubbles": [
+    {
+     "who": "ai",
+     "text": "👍",
+     "t0": 2.0,
+     "t1": 5.2,
+     "dy": -150
+    }
+   ],
+   "sfx": [
+    {
+     "t": 0.1,
+     "s": "whoosh-hit",
+     "g": -14,
+     "dur": 1.2
+    },
+    {
+     "t": 1.9,
+     "s": "soft-pop",
+     "g": -12
+    },
+    {
+     "t": 2.4,
+     "s": "gasp-m",
+     "g": -14,
+     "dur": 1.2
+    }
+   ],
+   "caption": {
+    "at": 12.0,
+    "lines": [
+     "Before you call it AI slop,",
+     "check who's really using AI."
+    ]
+   }
+  }
+ ],
+ "youtube": {
+  "title": "She called it AI SLOP😭 #ai #students #teacher #shorts",
+  "description": [],
+  "tags": [
+   "ai",
+   "ai slop",
+   "students",
+   "teacher",
+   "essay",
+   "education",
+   "shorts"
+  ]
+ }
+}

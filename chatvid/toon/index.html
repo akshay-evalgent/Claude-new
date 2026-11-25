@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>chatvid toon</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #262626; }
+  #frame { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #262626; font-family: "Inter", sans-serif; }
+  #top { position: absolute; left: 60px; right: 60px; top: 380px; text-align: center; color: #fff; font: 500 58px/1.25 "Playfair Display", Georgia, serif; text-wrap: balance; }
+  #top img { height: 1.05em; vertical-align: -.18em; }
+  #panel { position: absolute; left: 0; top: 656px; width: 1080px; height: 608px; overflow: hidden; }
+  #panel svg { display: block; }
+  #cap { position: absolute; left: 90px; right: 90px; bottom: 14px; display: none; padding: 8px 16px 10px; background: #f4e9b4; border: 3px solid #2a2118; text-align: center; font: 600 26px/1.3 "Inter", sans-serif; color: #2a2118; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="frame">
+  <div id="top"></div>
+  <div id="panel"></div>
+  <div id="capWrap" style="position:absolute;left:0;top:656px;width:1080px;height:608px;pointer-events:none"><div id="cap"></div></div>
+  <div id="flash"></div>
+</div>
+<script src="toon.js"></script>
+</body>
+</html>

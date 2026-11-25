@@ -1,0 +1,456 @@
+{
+ "engine": "toon",
+ "format": "vertical",
+ "title": "The Shortcut",
+ "crf": 18,
+ "fps": 30,
+ "top": "POV: AI did all your homework 💀",
+ "music": {
+  "track": "the-snail",
+  "gain": -17
+ },
+ "scenes": [
+  {
+   "dur": 5.4,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "window",
+     "x": 1080,
+     "y": 110,
+     "w": 290,
+     "h": 230,
+     "night": true
+    },
+    {
+     "kind": "clock",
+     "x": 250,
+     "y": 170,
+     "spin": 0.25
+    },
+    {
+     "kind": "chair",
+     "x": 470
+    },
+    {
+     "kind": "desk",
+     "x": 580,
+     "w": 400
+    },
+    {
+     "kind": "lamp",
+     "x": 720,
+     "y": 490
+    },
+    {
+     "kind": "stack",
+     "label": "HOMEWORK",
+     "keys": [
+      {
+       "t": 0,
+       "x": 660,
+       "y": 490,
+       "n": 8
+      },
+      {
+       "t": 0.9,
+       "x": 660,
+       "y": 490,
+       "n": 8
+      },
+      {
+       "t": 1.4,
+       "x": 1010,
+       "y": 470,
+       "n": 8
+      },
+      {
+       "t": 1.9,
+       "x": 1010,
+       "y": 470,
+       "n": 8
+      },
+      {
+       "t": 3.6,
+       "x": 1010,
+       "y": 470,
+       "n": 0
+      }
+     ]
+    },
+    {
+     "kind": "stack",
+     "label": "DONE",
+     "keys": [
+      {
+       "t": 0,
+       "x": 1320,
+       "y": 700,
+       "n": 0
+      },
+      {
+       "t": 1.9,
+       "x": 1320,
+       "y": 700,
+       "n": 0
+      },
+      {
+       "t": 3.6,
+       "x": 1320,
+       "y": 700,
+       "n": 9
+      }
+     ]
+    },
+    {
+     "kind": "fly",
+     "t0": 1.9,
+     "t1": 3.6,
+     "x1": 1030,
+     "y1": 430,
+     "x2": 1320,
+     "y2": 600,
+     "n": 5
+    },
+    {
+     "kind": "stamp",
+     "text": "A+",
+     "x": 1320,
+     "y": 480,
+     "from": 3.8,
+     "w": 170
+    },
+    {
+     "kind": "zzz",
+     "x": 650,
+     "y": 380,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true
+      },
+      {
+       "t": 1.6,
+       "hide": false
+      },
+      {
+       "t": 4.3,
+       "hide": true
+      }
+     ]
+    }
+   ],
+   "actors": [
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 470,
+       "pose": "write",
+       "face": "tired"
+      },
+      {
+       "t": 1.5,
+       "pose": "sleep",
+       "face": "sleep"
+      },
+      {
+       "t": 4.3,
+       "x": 470,
+       "pose": "thumb",
+       "face": "proud"
+      }
+     ]
+    },
+    {
+     "id": "ai",
+     "kind": "ai",
+     "keys": [
+      {
+       "t": 0,
+       "x": 1060,
+       "pose": "idle",
+       "flip": true
+      },
+      {
+       "t": 1.4,
+       "pose": "hold"
+      },
+      {
+       "t": 1.9,
+       "pose": "give"
+      },
+      {
+       "t": 3.7,
+       "pose": "thumb"
+      }
+     ]
+    }
+   ],
+   "sfx": [
+    {
+     "t": 0.9,
+     "s": "soft-swoosh",
+     "g": -12
+    },
+    {
+     "t": 1.9,
+     "s": "typing",
+     "g": -14,
+     "dur": 1.7
+    },
+    {
+     "t": 3.8,
+     "s": "impact",
+     "g": -12,
+     "dur": 1.5
+    },
+    {
+     "t": 4.35,
+     "s": "ding",
+     "g": -14
+    }
+   ]
+  },
+  {
+   "dur": 4.0,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "sign",
+     "x": 1060,
+     "y": 150,
+     "w": 380,
+     "lines": [
+      "EXAM HALL",
+      "!NO PHONES",
+      "!NO AI"
+     ]
+    },
+    {
+     "kind": "door",
+     "x": 1200,
+     "keys": [
+      {
+       "t": 0,
+       "open": 1
+      },
+      {
+       "t": 1.95,
+       "open": 1
+      },
+      {
+       "t": 2.15,
+       "open": 0
+      }
+     ]
+    }
+   ],
+   "actors": [
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": -120,
+       "pose": "idle",
+       "face": "proud"
+      },
+      {
+       "t": 1.5,
+       "x": 1270
+      },
+      {
+       "t": 1.55,
+       "hide": true
+      }
+     ]
+    },
+    {
+     "id": "ai",
+     "kind": "ai",
+     "keys": [
+      {
+       "t": 0,
+       "x": -420,
+       "pose": "idle"
+      },
+      {
+       "t": 2.0,
+       "x": 1110
+      },
+      {
+       "t": 2.15,
+       "x": 1110,
+       "pose": "panic"
+      },
+      {
+       "t": 2.5,
+       "x": 1010
+      }
+     ]
+    }
+   ],
+   "bubbles": [
+    {
+     "who": "ai",
+     "text": "?!",
+     "t0": 2.4,
+     "t1": 4.0,
+     "dy": -150,
+     "dx": -110
+    }
+   ],
+   "sfx": [
+    {
+     "t": 2.15,
+     "s": "boom",
+     "g": -8
+    },
+    {
+     "t": 2.17,
+     "s": "impact",
+     "g": -14,
+     "dur": 1
+    }
+   ],
+   "cam": [
+    {
+     "t": 0,
+     "x": 900,
+     "y": 470,
+     "z": 1.2
+    }
+   ]
+  },
+  {
+   "dur": 5.4,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "board",
+     "x": 270,
+     "y": 150,
+     "w": 400,
+     "h": 180,
+     "lines": [
+      "FINAL EXAM",
+      "time: 3 hours"
+     ]
+    },
+    {
+     "kind": "window",
+     "x": 1150,
+     "y": 120,
+     "w": 290,
+     "h": 250,
+     "peek": true
+    },
+    {
+     "kind": "chair",
+     "x": 660
+    },
+    {
+     "kind": "desk",
+     "x": 770,
+     "w": 380
+    },
+    {
+     "kind": "paper",
+     "x": 800,
+     "y": 455,
+     "w": 200,
+     "h": 110,
+     "rot": -3,
+     "lines": [
+      "Q1. _____",
+      "Q2. _____"
+     ],
+     "front": true
+    }
+   ],
+   "actors": [
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 660,
+       "pose": "write",
+       "face": "panic"
+      }
+     ]
+    }
+   ],
+   "bubbles": [
+    {
+     "who": "kid",
+     "text": "???",
+     "t0": 0.5,
+     "t1": 2.8,
+     "dy": -130
+    },
+    {
+     "at": [
+      1000,
+      190
+     ],
+     "text": "I can't come in",
+     "t0": 1.6,
+     "t1": 5.4,
+     "size": 30,
+     "dy": 0,
+     "tail": -1
+    }
+   ],
+   "cam": [
+    {
+     "t": 0,
+     "x": 860,
+     "y": 450,
+     "z": 1.22
+    },
+    {
+     "t": 5.4,
+     "x": 880,
+     "y": 440,
+     "z": 1.3
+    }
+   ],
+   "caption": {
+    "at": 12.0,
+    "lines": [
+     "AI can do your homework.",
+     "It can't take your exam."
+    ]
+   }
+  }
+ ],
+ "youtube": {
+  "title": "AI did ALL my homework💀 #ai #students #exam #shorts",
+  "description": [],
+  "tags": [
+   "ai",
+   "students",
+   "exam",
+   "homework",
+   "education",
+   "shorts"
+  ]
+ },
+ "cam": {
+  "x": 820,
+  "y": 455,
+  "z": 1.28
+ }
+}
