@@ -1,0 +1,243 @@
+{
+ "file": "video-pipeline/runs/lyric-video/05-video/video.mp4",
+ "video": {
+  "width": 1920,
+  "height": 1080,
+  "fps": 30.0,
+  "duration": 24.767,
+  "codec": "h264",
+  "aspect": 1.7778,
+  "orientation": "horizontal",
+  "has_audio": true,
+  "audio_codec": "aac",
+  "frames": 743,
+  "analysed_fps": 30.0
+ },
+ "shots": [
+  {
+   "n": 1,
+   "start": 0.0,
+   "end": 24.767,
+   "dur": 24.767
+  }
+ ],
+ "cuts": [],
+ "shot_stats": {
+  "count": 1,
+  "mean_s": 24.77,
+  "median_s": 24.77,
+  "min_s": 24.77,
+  "max_s": 24.77,
+  "cuts_per_10s": 0.0,
+  "final_shot_share": 1.0
+ },
+ "stills": [],
+ "still_share": 0.0,
+ "end_hold_s": 0.33,
+ "flat_runs": [],
+ "motion": {
+  "mean": 0.06,
+  "median": 0.0,
+  "p90": 0.12
+ },
+ "hook": {
+  "window_s": 3.0,
+  "first_picture_s": 0.0,
+  "first_cut_s": null,
+  "cuts": 0,
+  "motion_mean": 0.04,
+  "first_sound_s": 0.0,
+  "onsets": 4
+ },
+ "audio": {
+  "audible_share": 0.997,
+  "lead_silence": 0.0,
+  "tail_silence": 0.11,
+  "dropouts": [],
+  "onsets": [
+   1.342,
+   1.692,
+   2.342,
+   2.512,
+   4.632,
+   4.832,
+   5.402,
+   5.662,
+   6.092,
+   7.692,
+   8.042,
+   8.322,
+   8.922,
+   10.332,
+   10.952,
+   11.162,
+   13.152,
+   13.422,
+   13.702,
+   16.232,
+   16.702,
+   18.112,
+   20.612,
+   20.812,
+   21.422,
+   21.602
+  ],
+  "onsets_per_s": 1.05,
+  "integrated_lufs": -13.1,
+  "lra_lu": 3.9,
+  "true_peak_dbtp": -1.4
+ },
+ "sync": null,
+ "timeline": [
+  {
+   "s": 0,
+   "motion": 0.03,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 1,
+   "motion": 0.02,
+   "cuts": 0,
+   "onsets": 2
+  },
+  {
+   "s": 2,
+   "motion": 0.06,
+   "cuts": 0,
+   "onsets": 2
+  },
+  {
+   "s": 3,
+   "motion": 0.0,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 4,
+   "motion": 0.07,
+   "cuts": 0,
+   "onsets": 2
+  },
+  {
+   "s": 5,
+   "motion": 0.07,
+   "cuts": 0,
+   "onsets": 2
+  },
+  {
+   "s": 6,
+   "motion": 0.01,
+   "cuts": 0,
+   "onsets": 1
+  },
+  {
+   "s": 7,
+   "motion": 0.13,
+   "cuts": 0,
+   "onsets": 1
+  },
+  {
+   "s": 8,
+   "motion": 0.03,
+   "cuts": 0,
+   "onsets": 3
+  },
+  {
+   "s": 9,
+   "motion": 0.0,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 10,
+   "motion": 0.14,
+   "cuts": 0,
+   "onsets": 2
+  },
+  {
+   "s": 11,
+   "motion": 0.04,
+   "cuts": 0,
+   "onsets": 1
+  },
+  {
+   "s": 12,
+   "motion": 0.03,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 13,
+   "motion": 0.15,
+   "cuts": 0,
+   "onsets": 3
+  },
+  {
+   "s": 14,
+   "motion": 0.0,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 15,
+   "motion": 0.0,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 16,
+   "motion": 0.13,
+   "cuts": 0,
+   "onsets": 2
+  },
+  {
+   "s": 17,
+   "motion": 0.04,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 18,
+   "motion": 0.04,
+   "cuts": 0,
+   "onsets": 1
+  },
+  {
+   "s": 19,
+   "motion": 0.01,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 20,
+   "motion": 0.15,
+   "cuts": 0,
+   "onsets": 2
+  },
+  {
+   "s": 21,
+   "motion": 0.06,
+   "cuts": 0,
+   "onsets": 2
+  },
+  {
+   "s": 22,
+   "motion": 0.15,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 23,
+   "motion": 0.02,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 24,
+   "motion": 0.0,
+   "cuts": 0,
+   "onsets": 0
+  }
+ ]
+}

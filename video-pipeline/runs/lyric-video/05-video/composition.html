@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Home: lyric video</title>
+<!-- One sheet of paper from the first frame to the last. Each lyric line is its own
+     shot, in the same place; the drawing (road, steps, window) sits above the shots
+     and grows on the film's clock, so a cut shows only the words changing.
+
+     Nothing here is timed by a typed number that belongs to the voice:
+       audio/timing.js  window.TIMING  beats: shot_start, shot_dur, vo_start, vo_end (build_voice.py)
+       audio/words.js   window.WORDS   when each word lights                         (sync_words.py)
+     The only typed times are the picture's own, in PICTURE below, and each is the
+     script's or the mood board's (style.json).
+
+     Preview: open with ?play, or ?t=18.4 to stop on a moment.
+     Render:  node video-pipeline/tools/render.js <this file> --out video.mp4 --audio audio/track.wav
+
+     No #caption and no Film.captions: the lyric rows are the only words on screen. -->
+<link rel="stylesheet" href="../../../styles/stipple-lyric/stipple.css">
+<style>
+  /* tokens from 04-moodboard/style.json */
+  :root {
+    --paper: #ded0ba; --ink: #0b0100; --accent: #7a1713; --faint: 0.38;
+    --lyric-size: 160px; --lyric-leading: 178px; --lyric-x: 152px; --lyric-y: 274px;
+  }
+</style>
+</head>
+<body>
+<main id="stage">
+
+  <!-- Words: data-i is the word's place in its beat's line in WORDS; the script below
+       turns it into data-at (seconds from the start of the shot). -->
+
+  <!-- title: the red word alone, where it will sit in the line; the first line arrives faint at about 0.5 s -->
+  <section class="shot" id="title">
+    <p class="lyric">
+      <span class="row"><span class="w early">Text</span> <span class="w early">me</span></span>
+      <span class="row"><span class="w early">when</span> <span class="w early">you&rsquo;re</span> <span class="w accent lit">home</span></span>
+    </p>
+  </section>
+
+  <!-- ask: the faint line lights word by word; the red word swells once when it is spoken -->
+  <section class="shot" id="ask">
+    <p class="lyric">
+      <span class="row"><span class="w" data-i="0">Text</span> <span class="w" data-i="1">me</span></span>
+      <span class="row"><span class="w" data-i="2">when</span> <span class="w" data-i="3">you&rsquo;re</span> <span class="w accent lit" data-pulse-i="4">home</span></span>
+    </p>
+  </section>
+
+  <!-- again: the same markup in a new shot, so the cut drops the ink words back to faint -->
+  <section class="shot" id="again">
+    <p class="lyric">
+      <span class="row"><span class="w" data-i="0">Text</span> <span class="w" data-i="1">me</span></span>
+      <span class="row"><span class="w" data-i="2">when</span> <span class="w" data-i="3">you&rsquo;re</span> <span class="w accent lit" data-pulse-i="4">home</span></span>
+    </p>
+  </section>
+
+  <!-- until: no red on the sheet -->
+  <section class="shot" id="until">
+    <p class="lyric">
+      <span class="row"><span class="w" data-i="0">Until</span></span>
+      <span class="row"><span class="w" data-i="1">one</span> <span class="w" data-i="2">word,</span></span>
+    </p>
+  </section>
+
+  <!-- light: lower-case "the", because it finishes line 3's sentence -->
+  <section class="shot" id="light">
+    <p class="lyric">
+      <span class="row"><span class="w" data-i="0">the</span> <span class="w" data-i="1">light</span></span>
+      <span class="row"><span class="w" data-i="2">stays</span> <span class="w" data-i="3">on.</span></span>
+    </p>
+  </section>
+
+  <section class="shot" id="fine">
+    <p class="lyric">
+      <span class="row"><span class="w" data-i="0">I</span> <span class="w" data-i="1">know</span></span>
+      <span class="row"><span class="w" data-i="2">you&rsquo;re</span> <span class="w" data-i="3">fine.</span></span>
+    </p>
+  </section>
+
+  <!-- asking: row two is not on the sheet while row one is spoken. It arrives, faint,
+       when "Asking is how" ends, and waits through the pause (review round 2). -->
+  <section class="shot" id="asking">
+    <p class="lyric">
+      <span class="row"><span class="w" data-i="0">Asking</span> <span class="w" data-i="1">is</span> <span class="w" data-i="2">how</span></span>
+      <span class="row late"><span class="w">I</span> <span class="w">love</span> <span class="w">you.</span></span>
+    </p>
+  </section>
+
+  <!-- love: the same line in the same place; nothing changes at the cut -->
+  <section class="shot" id="love">
+    <p class="lyric">
+      <span class="row"><span class="w lit">Asking</span> <span class="w lit">is</span> <span class="w lit">how</span></span>
+      <span class="row"><span class="w" data-i="0">I</span> <span class="w" data-i="1">love</span> <span class="w" data-i="2">you.</span></span>
+    </p>
+  </section>
+
+  <!-- home: the refrain; the red word is faint until it is spoken. When the voice ends the
+       ink words leave, then the red word is redrawn in place as "Home." and swells once. -->
+  <section class="shot" id="home">
+    <p class="lyric">
+      <span class="row"><span class="w leaves" data-i="0">Text</span> <span class="w leaves" data-i="1">me</span></span>
+      <span class="row"><span class="w leaves" data-i="2">when</span> <span class="w leaves" data-i="3">you&rsquo;re</span> <span class="swap"><span class="w accent" id="home-said" data-i="4">home</span><span class="w accent lit" id="home-reply">Home.</span></span></span>
+    </p>
+  </section>
+
+  <!-- The drawing: one for the whole film, above the shots, on the film's clock. -->
+  <svg class="drawing" id="drawing" viewBox="0 0 1920 1080">
+    <g class="stipple road"></g>
+    <g class="stipple steps"></g>
+    <g class="stipple dark"></g>
+    <g class="stipple frame"></g>
+  </svg>
+
+</main>
+
+<script src="../../../styles/stipple-lyric/stipple.js"></script>
+<script src="../../../runtime/film.js"></script>
+<script src="audio/timing.js"></script>
+<script src="audio/words.js"></script>
+<script>
+  /* ---- the drawing, copied unchanged from 04-moodboard/frames.html ---------------- */
+  const ROAD = 'M160 944 C250 920 345 908 440 884 C520 864 590 864 628 902 C656 930 700 948 760 944 C850 938 925 929 985 888 L1472 552';
+  const PANE = { x: 1496, y: 372, w: 124, h: 146 };
+  const SILL = [1480, 529, 156, 9];
+  const box = (x, y, w, h, m) => `M${x - m} ${y - m} H${x + w + m} V${y + h + m} H${x - m} Z`;
+  function draw(root) {
+    // the road, and the larger steps that land ahead of it
+    Stipple.trail(root.querySelector('.road'), { d: ROAD, seed: 5 });
+    Stipple.beads(root.querySelector('.steps'), { d: ROAD, every: 62, r: [4.2, 5.4], seed: 9 });
+    // the unlit window: a closed square of dots, a cross-bar, a sill. On the sheet from frame 0
+    const frame = root.querySelector('.frame');
+    Stipple.beads(frame, { d: box(PANE.x, PANE.y, PANE.w, PANE.h, 3.5), every: 9, r: [2.5, 3.2], jitter: 0.5, seed: 31 });
+    Stipple.beads(frame, { d: `M${PANE.x + PANE.w / 2} ${PANE.y + 9} V${PANE.y + PANE.h - 6}`, every: 8, r: [1.7, 2.2], jitter: 0.4, seed: 32 });
+    Stipple.beads(frame, { d: `M${PANE.x + 9} ${PANE.y + 62} H${PANE.x + PANE.w - 6}`, every: 8, r: [1.7, 2.2], jitter: 0.4, seed: 33 });
+    Stipple.beads(frame, { d: `M${SILL[0] - 2} ${SILL[1] + SILL[3] + 4} H${SILL[0] + SILL[2] + 2}`, every: 8, r: [2.6, 3.2], jitter: 0.4, seed: 34 });
+    // the dark that gathers round it from the word "light": the pane and the sill are paper left alone
+    Stipple.halo(root.querySelector('.dark'), { ...PANE, bare: [SILL], reach: 150, uneven: 0.35, seed: 21 });
+  }
+  const drawing = document.querySelector('#drawing');
+  draw(drawing);
+
+  /* ---- the picture's own times and shares (script.json motion, style.json growth) -- */
+  const PICTURE = {
+    lineIn: [0.5, 0.62],        // title: the faint first line arrives at about 0.5 s, over four frames
+    steps: [0.3, 0.95],         // title: the second and third road dots land (the first is there in frame 0)
+    lateRow: 0.12,              // asking: row two arrives over 0.12 s, starting when "Asking is how" ends
+    roadWaits: 0.6,             // love: the road holds this long after "you", then closes on the window
+    wordsLeave: 0.4,            // home: the ink words leave over 0.4 s once the voice ends
+    reset: 0.6,                 // home: "Home." starts to arrive this long after the voice ends...
+    resetTakes: 0.12,           // ...after "home" has left over 0.12 s, and it arrives over the next 0.12 s
+    lastDot: 0.3,               // the last dot lands this long before the final frame
+    // where each part of the drawing stands at the END of each beat (style.json growth.by_beat)
+    road:  { ask: 0.17, again: 0.33, until: 0.47, light: 0.60, fine: 0.80, love: 0.92 },
+    stepsAt: { title: [0.01, 0.04, 0.09], ask: 0.22, again: 0.35, until: [0.37, 0.42, 0.46], untilEnd: 0.51,
+               light: 0.65, fine: 0.80, love: 0.93 },
+    // The dark's shares are style.json's up to the pause. After it they are lower than the mood
+    // board planned (0.80 by the end of "love", 0.93 when the voice ends): a share is a place in
+    // the dots' order, not a count, and 98% of the dark's dots are down by share 0.80, so that
+    // plan left 8 dots for the end hold and the hold measured as a frozen frame. These keep the
+    // "love" key frame's 0.62 and leave about 350 dots to land through the hold.
+    dark:  { light: 0.45, pause: 0.50, roadMoves: 0.62, love: 0.65, voiceEnds: 0.69 },
+  };
+
+  const T = window.TIMING, beat = Object.fromEntries(T.beats.map((b) => [b.id, b]));
+  const said = (id, i) => window.WORDS.beats[id][i].at;            // film time a word starts to light
+  const RAMP = window.WORDS.ramp;
+  const P = PICTURE, D = T.duration, f3 = (v) => v.toFixed(3);
+
+  /* ---- words: every time from WORDS and TIMING, as seconds into the word's own shot -- */
+  for (const b of T.beats) {
+    const el = document.getElementById(b.id), rel = (t) => f3(t - b.shot_start);
+    el.querySelectorAll('[data-i]').forEach((w) => { w.dataset.at = rel(said(b.id, Number(w.dataset.i))); });
+    el.querySelectorAll('[data-pulse-i]').forEach((w) => { w.dataset.pulse = rel(said(b.id, Number(w.dataset.pulseI))); });
+    el.querySelectorAll('.early').forEach((w) => { w.dataset.in = P.lineIn.join(' '); });
+    el.querySelectorAll('.late').forEach((r) => { r.dataset.in = rel(b.vo_end) + ' ' + rel(b.vo_end + P.lateRow); });
+    el.querySelectorAll('.leaves').forEach((w) => { w.dataset.out = rel(b.vo_end) + ' ' + rel(b.vo_end + P.wordsLeave); });
+  }
+  {
+    // the reset: "home" leaves, and "Home." is drawn in its place with one swell
+    const h = beat.home, at = h.vo_end + P.reset - h.shot_start;
+    document.getElementById('home-said').dataset.out = f3(at - P.resetTakes) + ' ' + f3(at);
+    const reply = document.getElementById('home-reply');
+    reply.dataset.in = f3(at) + ' ' + f3(at + P.resetTakes);
+    reply.dataset.pulse = f3(at);
+  }
+
+  /* ---- the drawing's growth: pairs of film time and share, straight lines between ---- */
+  const grow = (sel, pairs) => {
+    drawing.querySelector(sel).dataset.grow = pairs.map(([t, s]) => f3(t) + ' ' + s).join(', ');
+  };
+  const land = (t, from, to) => [[t - 0.001, from], [t, to]];       // dots that land in one frame
+  const arrives = said('home', 4) + RAMP;                           // the last "home" is fully red
+  const closing = beat.love.vo_end + P.roadWaits;                   // the road's last stretch starts
+
+  grow('.road', [
+    [0, 0], [beat.ask.vo_start, 0],                       // starts as the first word is spoken
+    [beat.again.shot_start, P.road.ask],
+    [beat.until.shot_start, P.road.again],                // through the bend
+    [beat.until.vo_end, P.road.again],                    // rests while "Until one word," is spoken
+    [beat.light.shot_start, P.road.until],                // fills in through the breath
+    [beat.fine.shot_start, P.road.light],
+    [beat.asking.shot_start, P.road.fine],                // the straight run, at an even rate
+    [closing, P.road.fine],                               // waits through "Asking is how / I love you."
+    [beat.home.shot_start, P.road.love],                  // the gap is seen closing, and stops short
+    [arrives, 1],                                         // the last dot lands at the sill on "home"
+  ]);
+  const u = P.stepsAt.until, s0 = P.stepsAt.title;
+  grow('.steps', [
+    [0, s0[0]], ...land(P.steps[0], s0[0], s0[1]), ...land(P.steps[1], s0[1], s0[2]),
+    [beat.ask.vo_start, s0[2]],
+    [beat.again.shot_start, P.stepsAt.ask],
+    [said('until', 0) - 0.002, P.stepsAt.again],
+    ...land(said('until', 0), P.stepsAt.again, u[0]),     // one step with each word: three for three
+    ...land(said('until', 1), u[0], u[1]),
+    ...land(said('until', 2), u[1], u[2]),
+    [beat.until.vo_end, u[2]],
+    [beat.light.shot_start, P.stepsAt.untilEnd],
+    [beat.fine.shot_start, P.stepsAt.light],
+    [beat.asking.shot_start, P.stepsAt.fine],
+    [closing, P.stepsAt.fine],
+    [beat.home.shot_start, P.stepsAt.love],
+    [arrives, 1],
+  ]);
+  // The dark's dots are crowded into the low shares, so a straight line in share is not an even
+  // rate of dots. evenly() reads the drawing's own order and adds pairs so the same number of
+  // dots lands in every fifth of a second between two times.
+  const darkDots = drawing.querySelector('.dark')._dots;            // in order, lowest share first
+  const downAt = (share) => darkDots.filter((d) => d.k <= share).length;
+  function evenly(t0, s0, t1, s1) {
+    const n0 = downAt(s0), n1 = downAt(s1), steps = Math.max(1, Math.round((t1 - t0) / 0.2)), out = [];
+    for (let i = 1; i <= steps; i++) {
+      const n = Math.round(n0 + (n1 - n0) * i / steps);
+      out.push([t0 + (t1 - t0) * i / steps, i === steps ? s1 : Number(darkDots[Math.max(n, 1) - 1].k.toFixed(5))]);
+    }
+    return out;
+  }
+  const dk = P.dark;
+  grow('.dark', [
+    [0, 0], [said('light', 1), 0],                                              // the window lights on the word "light"
+    ...evenly(said('light', 1), 0, beat.fine.shot_start, dk.light),             // and thickens through the breath
+    [beat.asking.vo_end, dk.light],                                             // holds through the turn and while row one is spoken
+    ...evenly(beat.asking.vo_end, dk.light, beat.love.vo_start, dk.pause),      // gains a little in the pause
+    ...evenly(beat.love.vo_start, dk.pause, closing, dk.roadMoves),             // thickens as "I love you." is spoken
+    ...evenly(closing, dk.roadMoves, beat.home.shot_start, dk.love),
+    ...evenly(beat.home.shot_start, dk.love, beat.home.vo_end, dk.voiceEnds),
+    ...evenly(beat.home.vo_end, dk.voiceEnds, D - P.lastDot, 1),                // dots still gathering through the end hold
+  ]);
+
+  /* ---- the film ---------------------------------------------------------------------- */
+  Film.setup({ width: 1920, height: 1080, fps: 30 });
+  for (const b of T.beats) {
+    Film.shot({ id: b.id, dur: b.shot_dur, enter: b.enter, update: Stipple.shot(b.shot_start, '#drawing') });
+  }
+  Film.ready();
+</script>
+</body>
+</html>

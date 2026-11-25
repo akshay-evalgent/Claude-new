@@ -1,0 +1,207 @@
+{
+ "duration": 24.7667,
+ "voice": "en_US-lessac-medium",
+ "pace": 0.8,
+ "tail": 2.6,
+ "fps": 30,
+ "words": 32,
+ "words_per_minute": 78,
+ "speaking_rate_wpm": 182,
+ "speech_share": 0.426,
+ "built_by": "05-video/audio/build_voice.py from 03-script/timing/vo.wav (beats title to fine, and home) and takes/line6_one_utterance.wav (beats asking and love)",
+ "line6": {
+  "gap_s": 0.138,
+  "gap_floor_db": -82.4,
+  "level_at_cut_db": -86.9,
+  "a_tail_kept_s": 0.06,
+  "b_lead_kept_s": 0.02,
+  "spoken_as": "Asking is how, I love you.",
+  "pause_laid_between_s": 0.6
+ },
+ "beats": [
+  {
+   "id": "title",
+   "vo_start": null,
+   "vo_end": null,
+   "text": "",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 0.0,
+   "shot_end": 1.33,
+   "shot_dur": 1.33
+  },
+  {
+   "id": "ask",
+   "vo_start": 1.45,
+   "vo_end": 2.955,
+   "text": "Text me when you're home.",
+   "source": "03-script/timing/vo.wav",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 1.33,
+   "shot_end": 4.485,
+   "shot_dur": 3.155
+  },
+  {
+   "id": "again",
+   "vo_start": 4.605,
+   "vo_end": 6.196,
+   "text": "Text me when you're home.",
+   "source": "03-script/timing/vo.wav",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 4.485,
+   "shot_end": 7.676,
+   "shot_dur": 3.191
+  },
+  {
+   "id": "until",
+   "vo_start": 7.796,
+   "vo_end": 9.043,
+   "text": "Until one word,",
+   "source": "03-script/timing/vo.wav",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 7.676,
+   "shot_end": 10.323,
+   "shot_dur": 2.647
+  },
+  {
+   "id": "light",
+   "vo_start": 10.443,
+   "vo_end": 11.662,
+   "text": "the light stays on.",
+   "source": "03-script/timing/vo.wav",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 10.323,
+   "shot_end": 13.142,
+   "shot_dur": 2.819
+  },
+  {
+   "id": "fine",
+   "vo_start": 13.262,
+   "vo_end": 14.243,
+   "text": "I know you're fine.",
+   "source": "03-script/timing/vo.wav",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 13.142,
+   "shot_end": 16.223,
+   "shot_dur": 3.081
+  },
+  {
+   "id": "asking",
+   "vo_start": 16.343,
+   "vo_end": 17.482,
+   "text": "Asking is how",
+   "source": "takes/line6_one_utterance.wav, first half",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 16.223,
+   "shot_end": 17.962,
+   "shot_dur": 1.739
+  },
+  {
+   "id": "love",
+   "vo_start": 18.082,
+   "vo_end": 18.776,
+   "text": "I love you.",
+   "source": "takes/line6_one_utterance.wav, second half",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 17.962,
+   "shot_end": 20.456,
+   "shot_dur": 2.494
+  },
+  {
+   "id": "home",
+   "vo_start": 20.576,
+   "vo_end": 22.16,
+   "text": "Text me when you're home.",
+   "source": "03-script/timing/vo.wav",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 20.456,
+   "shot_end": 24.7667,
+   "shot_dur": 4.311
+  }
+ ],
+ "captions": [
+  {
+   "start": 1.45,
+   "end": 2.273,
+   "text": "Text me when"
+  },
+  {
+   "start": 2.273,
+   "end": 2.955,
+   "text": "you're home."
+  },
+  {
+   "start": 4.605,
+   "end": 5.476,
+   "text": "Text me when"
+  },
+  {
+   "start": 5.476,
+   "end": 6.196,
+   "text": "you're home."
+  },
+  {
+   "start": 7.796,
+   "end": 9.043,
+   "text": "Until one word,"
+  },
+  {
+   "start": 10.443,
+   "end": 11.082,
+   "text": "the light"
+  },
+  {
+   "start": 11.082,
+   "end": 11.662,
+   "text": "stays on."
+  },
+  {
+   "start": 13.262,
+   "end": 13.654,
+   "text": "I know"
+  },
+  {
+   "start": 13.654,
+   "end": 14.243,
+   "text": "you're fine."
+  },
+  {
+   "start": 16.343,
+   "end": 18.082,
+   "text": "Asking is how"
+  },
+  {
+   "start": 18.082,
+   "end": 18.776,
+   "text": "I love you."
+  },
+  {
+   "start": 20.576,
+   "end": 21.443,
+   "text": "Text me when"
+  },
+  {
+   "start": 21.443,
+   "end": 22.16,
+   "text": "you're home."
+  }
+ ],
+ "captions_note": "not drawn: the lyric rows are the only words on screen"
+}

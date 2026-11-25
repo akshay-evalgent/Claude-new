@@ -1,0 +1,29 @@
+{
+ "lufs": -13.1,
+ "target_lufs": -12.8,
+ "peak_dbtp": -1.5,
+ "duration": 24.7667,
+ "hits": [
+  1.33,
+  4.485,
+  7.676,
+  10.323,
+  13.142,
+  16.223,
+  20.456
+ ],
+ "weight_layer": [
+  10.54,
+  16.223
+ ],
+ "rest_levels_db": {
+  "title 0.1-1.3": -27.5,
+  "after line 1": -27.4,
+  "after line 2": -29.8,
+  "after 'stays on.' (weight in)": -27.4,
+  "after 'fine.' (weight in, leaving)": -26.4,
+  "after 'you.' (thin again)": -27.8,
+  "end hold, first 1.5 s": -30.3,
+  "last 0.2 s": -47.5
+ }
+}
