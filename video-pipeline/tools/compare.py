@@ -4,6 +4,7 @@
     python3 compare.py --ref REF/measure.json [--ref ...] --out OUT/measure.json \
         [--ref-palette REF/palette.json ...] [--out-palette OUT/palette.json] \
         [--benchmarks benchmarks.json] \
+        [--ref-transcript REF/transcript.json ...] [--out-transcript OUT/transcript.json] \
         --write OUT/compare.json
 
 Each row is PASS, WARN or FAIL. With several references the target is the span
@@ -71,6 +72,8 @@ def main():
     ap.add_argument("--ref-palette", action="append", default=[])
     ap.add_argument("--out-palette")
     ap.add_argument("--benchmarks", help="benchmarks.json: its format.duration_s, where set, is the length target")
+    ap.add_argument("--ref-transcript", action="append", default=[], help="a reference's transcript.json")
+    ap.add_argument("--out-transcript", help="our transcript.json")
     ap.add_argument("--write", required=True)
     args = ap.parse_args()
 
@@ -168,6 +171,23 @@ def main():
                 rows.append(row("cuts landing on a sound", "FAIL" if os_ is None else "PASS" if os_ >= min(rs) - 0.15
                                 else "WARN" if os_ >= min(rs) - 0.35 else "FAIL",
                                 "none" if os_ is None else f"{os_:.0%}", fmt_refs([round(v * 100) for v in rs], "%")))
+
+    # voice
+    if args.ref_transcript and args.out_transcript:
+        rt = [load(p)["stats"] for p in args.ref_transcript]
+        rt = [t for t in rt if t.get("words")]
+        ot = load(args.out_transcript)["stats"]
+        if rt and not ot.get("words"):
+            rows.append(row("voice", "FAIL", "no speech found", "speech", "the references are narrated and ours is not"))
+        elif rt:
+            rows.append(band("first word", ot["first_word_s"], [t["first_word_s"] for t in rt], 0.0, 0.0, " s",
+                             absolute=0.4))
+            rows.append(band("words a minute, whole run", ot["words_per_minute"], [t["words_per_minute"] for t in rt],
+                             0.15, 0.3))
+            rows.append(band("words a minute, while speaking", ot["speaking_rate_wpm"],
+                             [t["speaking_rate_wpm"] for t in rt], 0.12, 0.25))
+            rows.append(band("voice running, share of run", ot["speech_share"], [t["speech_share"] for t in rt],
+                             0.15, 0.35))
 
     # colour
     if args.ref_palette and args.out_palette:

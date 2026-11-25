@@ -85,10 +85,11 @@ python3 video-pipeline/tools/palette.py <run>/05-video/video.mp4 --out $C
 python3 video-pipeline/tools/transcribe.py <run>/05-video/video.mp4 --out $C
 python3 video-pipeline/tools/compare.py --ref <run>/02-analysis/<ref-id>/measure.json --out $C/measure.json \
   --ref-palette <run>/02-analysis/<ref-id>/palette.json --out-palette $C/palette.json \
+  --ref-transcript <run>/02-analysis/<ref-id>/transcript.json --out-transcript $C/transcript.json \
   --benchmarks <run>/02-analysis/benchmarks.json --write $C/compare.json
 ```
 
-Give `--ref` and `--ref-palette` once for each reference. Read the comparison table. Fix every FAIL that is a real fault in your film and render again. A FAIL you judge to be a misfit (the reference does something this story should not) stays, with a one-line reason in your report: the quality checker decides.
+Give `--ref`, `--ref-palette` and `--ref-transcript` once for each reference. Read the comparison table. Fix every FAIL that is a real fault in your film and render again. A FAIL you judge to be a misfit (the reference does something this story should not) stays, with a one-line reason in your report: the quality checker decides.
 
 Check the transcript against the script: if the speech-to-text heard different words, the voice mispronounced something. Respell that word in `vo` for the voice tool only (keep the caption spelling) or reword the line with the scriptwriter's meaning intact.
 

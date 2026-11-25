@@ -125,6 +125,10 @@ def main():
             t += hold
             last_pause = 0.0
     (out / "_beat.wav").unlink(missing_ok=True)
+    # a caption stays up through the breath until the next one takes over
+    for a, b in zip(caps, caps[1:]):
+        if 0 < b["start"] - a["end"] <= 0.8:
+            a["end"] = b["start"]
     if sr is None:
         sys.exit("the script has no voice-over lines (beats[].vo)")
     total = t - last_pause + args.tail              # the pause after the last beat is replaced by the tail

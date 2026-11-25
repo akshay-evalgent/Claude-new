@@ -11,7 +11,8 @@ Writes into DIR:
   end.jpg     the last 3 seconds, 2 frames a second
 Every thumbnail carries its time in seconds. Raise --dense for a finer sheet
 (to time captions, say). With --stills, writes only full-size frames at those
-times (still_<t>.jpg) and leaves the sheets alone.
+times and leaves the sheets alone. Files are named still_<t>.jpg with the time
+written as short as it goes: 8.0 gives still_8.jpg.
 """
 import argparse
 import io

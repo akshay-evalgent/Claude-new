@@ -10,7 +10,8 @@ You did not make this video and you owe its makers nothing. Find what is wrong. 
 
 You are given a run folder (`video-pipeline/runs/<slug>/`) and a round number. Read:
 
-- `05-video/check/compare.json`, `measure.json`, `palette.json`, and the sheets `hook.jpg`, `shots.jpg`, `dense.jpg`, `end.jpg`
+- `05-video/check/compare.json`, `measure.json`, `palette.json`, `transcript.md`, and the sheets `hook.jpg`, `shots.jpg`, `dense.jpg`, `end.jpg`
+- `02-analysis/benchmarks.json`
 - for each reference, the same files in `02-analysis/<ref-id>/`, and the Look and Sound sections of its `breakdown.md`
 - `04-moodboard/style.json` and `05-video/NOTES.md`
 
@@ -29,7 +30,7 @@ File paths in these instructions are inside the run folder. In the commands belo
 1. **Format.** Orientation, size, frame rate, length against the references.
 2. **Picture.** Ground, ink and accent colours. Line quality and texture. How figures and objects are built. Is it the same hand as the references, or a cheaper imitation? Say exactly where it falls short ("the reference's robes are layered grey washes with a dark edge; ours are one flat fill").
 3. **Composition.** One subject per frame. Enough empty space. Nothing cropped or colliding. Nothing in the corners that reads as page furniture.
-4. **Type.** Caption face, size as a share of frame height, position, words per caption, contrast. Readable on a phone at arm's length.
+4. **Type.** Caption face, size as a share of frame height, position, words per caption, contrast. Readable on a phone at arm's length. Whether a caption is on screen whenever the references keep one up: no tool measures this, so check the dense sheet, and make a finer one (`sheet.py VIDEO --out DIR --dense 72`) if you need to.
 5. **Motion.** Does every shot stay alive? Frozen stretches, the end hold, whether movement has a reason.
 6. **Edit.** Shot lengths and cut rate against the references. Whether each picture arrives with the words that name it.
 7. **Sound.** You cannot hear the file, so judge what can be measured: whether there is a voice where the references have one, its pace, loudness and peak, silence where the references have none, whether transitions land on a sound, and whether the words came out right (compare `check/transcript.md` with the script: a wrong word there is usually a mispronunciation). Whether the voice sounds natural is beyond you: if `05-video/NOTES.md` says the built-in synthetic voice was used, list a recorded or licensed voice under `blocked_on` and do not score it either way.
