@@ -29,6 +29,18 @@
    ]
   }
  ],
+ "research": {
+  "path": "01-sources/research.md",
+  "what": "five candidate topics, the one chosen, and the sourced fact list for it",
+  "chosen_topic": "What If You Got Hotter and Couldn't Stop?",
+  "as_of": "2026-11-25",
+  "notes": [
+   "every source in the fact table was opened and read on the as_of date; rows marked 'calculated here' are worked out from sourced numbers and are illustrative",
+   "the other four candidates' numbers were not checked",
+   "the reference video was not watched for the research; the channel's other videos are known by title only",
+   "four points were looked for and not confirmed; they are listed at the end of research.md"
+  ]
+ },
  "assets": [],
  "missing": [
   "Tags and category of the reference: the platform did not serve them without the player response.",

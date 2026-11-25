@@ -19,6 +19,16 @@ So for this run:
 - **Facts.** The scenario's numbers must be real and sourced, and the script must say which parts are guesses, as the reference's description does. Research is in `01-sources/research.md`.
 - **Nothing reused.** New scene, new models, new words. The reference's street, shots and lines are not restaged.
 
+## The topic
+
+**"What If You Got Hotter and Couldn't Stop?"** Chosen by the scout from five candidates (`01-sources/research.md`): it fits the channel's own pattern ("you ..., and couldn't stop") without repeating one of its titles, and every step has a sourced number.
+
+Rulings for the writer and the artists:
+
+- **Told from where you stand, like the reference.** The viewer is the one heating up; the picture is the world around them reacting. The body is never shown suffering: the early steps (a fatal fever, boiling) are stated plainly and briefly, the way the reference states the end of the world.
+- **The scene carries the picture as long as it can.** Past the Sun's surface the honest view is too bright to look at, so plan what the surroundings do at each step before that, and let the counter and the colour of the light carry the rest.
+- **Real and guessed.** Use only the facts in `01-sources/research.md`, with its confidence labels. The weak rows it lists (the Draper point's source, CERN's expected figure) are worded as approximate or left out. The post description says which parts are illustrative.
+
 ## Open
 
-- Nothing blocking. The topic is chosen in `01-sources/research.md`.
+- Nothing blocking.

@@ -1,0 +1,16 @@
+{
+ "stats": {
+  "language": "en",
+  "duration": 537.26,
+  "words": 0,
+  "first_word_s": null,
+  "last_word_s": null,
+  "words_per_minute": 0,
+  "speaking_rate_wpm": 0,
+  "speech_share": 0.0,
+  "words_in_first_3s": 0,
+  "pauses_over_0.7s": []
+ },
+ "segments": [],
+ "words": []
+}
