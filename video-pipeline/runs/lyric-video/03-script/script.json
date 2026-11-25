@@ -1,0 +1,113 @@
+{
+  "title": "Home",
+  "premise": "Fiction: an original lyric, spoken to \"you\", in which someone keeps asking you to text when you are home and then admits that asking is how they say I love you.",
+  "audience": "General viewers of music and short video; anyone who has said or been told \"text me when you're home\".",
+  "question": "Why does the speaker keep asking you to text when you're home?",
+  "share_line": "this is what I mean every time I tell you to text me",
+  "comment_prompt": "What the people in a viewer's own life say in place of \"I love you\" (drive safe, have you eaten, wear a coat). The lyric names one such phrase and leaves the rest open.",
+  "post_caption": "Not everyone says it in three words.",
+  "target": { "duration_s": 23.8, "words": 33, "words_per_minute": 83 },
+  "target_notes": "Budgeted from benchmarks.json lyric_lines, not from pacing.words_per_minute (an undercount of a sung song, by the benchmarks' own notes). Seven lyric lines (budget 6 to 8 slots), 4 to 6 words a line (reference 3 to 6), a new line every 3.2 s with 3.6 s after the payoff line (reference 3.0 to 4.1 s). 33 words against a derived budget of 24 to 32: one over. Spoken with voice.py --pace 0.8 and default --lead, --gap and --tail: 23.79 s measured, first word at 1.45 s, line starts 3.15 to 3.28 s apart and 3.48 s before the last line. pacing.mean_shot_s (20 to 30 s) describes one unbroken shot: this video is also one unbroken ground, and its beats are line slots, so duration / lyric lines (about 3.4 s) is checked against line_slot_s instead.",
+  "carries_through": {
+    "ground": "One sheet of warm cream paper fills the frame from the first frame to the last. There is no change of scene; a new beat is a new line of words on the same sheet.",
+    "ink": "Brown-black ink for every lyric word and for the drawing.",
+    "accent": "One dark red, used for one word only: \"home\", every time it is on screen. Nothing else is ever red.",
+    "lyric_setting": "One lyric line on screen at a time, set large in the left half of the frame in two rows, in the same place every time and in one face throughout. Most of the sheet stays empty.",
+    "sync_rule": "A line appears whole in faint ink at the start of its slot, so it can be read ahead with the sound off. Each word turns to full ink at the moment the voice says it (real word times from transcribe.py on the voice track). The lit line stays through the breath and is replaced when the next line starts.",
+    "drawing": "One stippled ink drawing, built only from dots: a road of dots that starts at the lower left margin and grows to the right across the lower part of the sheet, one stretch per lyric line, toward a small lit window on the right. Dots keep landing in the breaths between lines, so nothing on screen is frozen while the voice rests."
+  },
+  "sound_notes": "For the producer; from patterns.md, Sound. Bed audible from the first frame and under every breath (no silent gap, no silent tail). Thin under the title and the first two lines; one added layer of weight from the line 'The light stays on'; thinned again under 'Asking is how I love you' and the last line. A soft hit on each line start gives the steady slot a pulse.",
+  "facts": [
+    { "claim": "The lyrics are original and were written for this video. They reuse no line, image or story from the reference song and are not a translation of it.", "source": "brief.md (supplied material: original lyrics, fiction, invented for this video)", "status": "invented" },
+    { "claim": "The speaker, the person addressed as \"you\", the road, the light left on and the window are made up. No real person or event is described.", "source": "brief.md (fiction)", "status": "invented" }
+  ],
+  "beats": [
+    {
+      "id": "title",
+      "role": "hook",
+      "vo": "",
+      "hold_s": 1.2,
+      "on_screen": "home",
+      "picture": "The bare sheet with one word on it: \"home\", large, dark red, in the left half, standing exactly where it will sit as the last word of the first line. Low in the left margin, the first three dots of the road.",
+      "motion": "The word is there in frame 0 and does not move. The three dots land one after another, so the sheet is alive before the voice starts.",
+      "transition": "cut",
+      "uses": "patterns.md Hook: readable words in the first frame, few and large; the first frame names the feeling before any word is heard; the one colour on the page for the one word that matters (barsat-song 0.00 s). Fixes its Do not copy: the wait before the voice is 1.45 s, not 13.36 s (benchmarks hook.first_word_s 1.4 to 2.2)."
+    },
+    {
+      "id": "ask",
+      "role": "hook",
+      "vo": "Text me when you're home.",
+      "on_screen": "",
+      "picture": "The first line builds in front of the red word. Row one: \"Text me\". Row two: \"when you're\", then the red \"home\" already in place. The road has left the margin and climbs a little to the right.",
+      "motion": "The four ink words appear faint, then turn full ink one by one as each is spoken. When the voice reaches \"home\" the red word gives one small pulse. The road grows to about a sixth of its length and keeps growing through the breath.",
+      "transition": "cut",
+      "pause_after_s": 1.65,
+      "uses": "patterns.md Hook: the first line heard is the line the whole piece is built on (barsat-song 13.4 s). Holding attention: open the question in the first sung line (13.4 s). Sharing: write to \"you\" (13.4 s, 23.7 s). Fixes Structure Do not copy: the title word is spoken about 2.6 s after it appears, not 87 s."
+    },
+    {
+      "id": "again",
+      "role": "hook",
+      "vo": "Text me when you're home.",
+      "on_screen": "",
+      "picture": "The same line in the same place, lit a second time. \"home\" has stayed red throughout. The road bends once, like a turn taken on a drive.",
+      "motion": "At the start of the slot the four ink words drop back to faint, then light again word by word; the red word pulses again on \"home\". The road grows through its bend to about a third of its length.",
+      "transition": "cut",
+      "pause_after_s": 1.6,
+      "uses": "patterns.md Hook: say the first line twice, at once (barsat-song 13.4-16.5 s and 16.8-20.2 s). Holding attention: let the listener know the next line (13.4 and 16.8 s)."
+    },
+    {
+      "id": "word",
+      "role": "setup",
+      "vo": "One word will do.",
+      "on_screen": "",
+      "picture": "The refrain, red word included, has lifted off the sheet. In its place a shorter line: row one \"One word\", row two \"will do.\" No red anywhere now. The road goes on in single, widely spaced dots.",
+      "motion": "The words light one by one; one road dot lands with each word, four dots for four words. In the breath the road fills in to nearly half its length.",
+      "transition": "cut",
+      "pause_after_s": 1.85,
+      "uses": "patterns.md Structure: keep lines short, 3 to 6 words, most often 4 (barsat-song 13.4-107.5 s); new material comes as a block after the refrain (69.3-89.7 s); one line per steady slot (mean 3.5 s)."
+    },
+    {
+      "id": "light",
+      "role": "escalation",
+      "vo": "The light stays on.",
+      "on_screen": "",
+      "picture": "Row one \"The light\", row two \"stays on.\" Far to the right, ahead of the road, a small window appears: a square of bare paper with stipple dots gathering round it, so the dark is drawn and the light is the paper left alone. The road now has somewhere to go.",
+      "motion": "The words light one by one. On the word \"light\" the first dots of the window's surround land; they thicken through the breath until the square reads as lit. The road reaches about three fifths of its length.",
+      "transition": "cut",
+      "pause_after_s": 2.05,
+      "uses": "patterns.md Sound: start thin, then add weight under the voice (barsat-song 25-30 s); Holding attention: change the arrangement at a section boundary (about 30 s), here in sound and in the drawing together. Fixes Holding attention Do not copy: a picture that never changes."
+    },
+    {
+      "id": "fine",
+      "role": "turn",
+      "vo": "I know you're fine.",
+      "on_screen": "",
+      "picture": "Row one \"I know\", row two \"you're fine.\" The road stops wandering: from here it runs straight at the window. The window holds steady.",
+      "motion": "The words light one by one. The road dots land at an even, unhurried rate in a straight line, reaching about four fifths of the way, and stop one stretch short of the window.",
+      "transition": "cut",
+      "pause_after_s": 2.1,
+      "uses": "The turn the middle needs (measured at 61% to 65% of the run): the asking is not worry, which changes what the first line seemed to mean. The reference turns on a new verse line in the same way (barsat-song 69.3-89.7 s, 0.37-0.48 of its run). patterns.md Holding attention: keep a steady slot (means 3.51 and 3.53 s)."
+    },
+    {
+      "id": "asking",
+      "role": "payoff",
+      "vo": "Asking is how I love you.",
+      "on_screen": "",
+      "picture": "The longest line: row one \"Asking is how\", row two \"I love you.\" All in ink; the red is kept for \"home\". The road waits, one stretch short. Only the window changes.",
+      "motion": "The words light one by one while the road holds still, so the eye stays on the words. Through the longer breath the dots round the window thicken slowly and the bare square reads brighter.",
+      "transition": "cut",
+      "pause_after_s": 2.0,
+      "uses": "patterns.md Comments: write a line that reads as a saying (the most-liked comment that is not plain praise, 6 likes). Sharing: give one line people will point at (4 of 75 comments are timestamps). Structure: end on lines addressed straight to the other person, longer than the rest (barsat-song 168.0-182.9 s). Sound: thin the backing for the closing lines (168.0-182.9 s). Answers the question at 74% to 80% of the run (measured)."
+    },
+    {
+      "id": "home",
+      "role": "close",
+      "vo": "Text me when you're home.",
+      "on_screen": "",
+      "picture": "The refrain back in its first place: \"Text me\" over \"when you're home\". The road closes the last gap and ends at the window's sill. At the end the ink words are gone and the sheet holds three things: the finished road, the lit window and the red word \"home\".",
+      "motion": "The words light one by one as the last road dots land; the final dot reaches the sill on the word \"home\", which turns red as it is spoken. The four ink words then fade over about 0.4 s and the red word stays to the last frame, with the bed still sounding.",
+      "transition": "cut",
+      "uses": "patterns.md Structure: bring the refrain back after every new block (barsat-song 90.3 s, 147.5 s). Fixes its Do not copy items: a title not connected to the words in time, and stopping without an ending (182.9-185.33 s). The last frame echoes the first with the drawing finished, so it is not the opening picture held unchanged."
+    }
+  ]
+}

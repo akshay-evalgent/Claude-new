@@ -1,0 +1,179 @@
+window.TIMING = {
+ "duration": 23.7917,
+ "voice": "en_US-lessac-medium",
+ "pace": 0.8,
+ "words": 33,
+ "words_per_minute": 83,
+ "speaking_rate_wpm": 196,
+ "speech_share": 0.424,
+ "beats": [
+  {
+   "id": "title",
+   "vo_start": null,
+   "vo_end": null,
+   "text": "",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 0.0,
+   "shot_end": 1.33,
+   "shot_dur": 1.33
+  },
+  {
+   "id": "ask",
+   "vo_start": 1.45,
+   "vo_end": 3.08,
+   "text": "Text me when you're home.",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 1.33,
+   "shot_end": 4.61,
+   "shot_dur": 3.28
+  },
+  {
+   "id": "again",
+   "vo_start": 4.73,
+   "vo_end": 6.372,
+   "text": "Text me when you're home.",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 4.61,
+   "shot_end": 7.852,
+   "shot_dur": 3.242
+  },
+  {
+   "id": "word",
+   "vo_start": 7.972,
+   "vo_end": 9.358,
+   "text": "One word will do.",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 7.852,
+   "shot_end": 11.088,
+   "shot_dur": 3.236
+  },
+  {
+   "id": "light",
+   "vo_start": 11.208,
+   "vo_end": 12.373,
+   "text": "The light stays on.",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 11.088,
+   "shot_end": 14.303,
+   "shot_dur": 3.215
+  },
+  {
+   "id": "fine",
+   "vo_start": 14.423,
+   "vo_end": 15.476,
+   "text": "I know you're fine.",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 14.303,
+   "shot_end": 17.456,
+   "shot_dur": 3.153
+  },
+  {
+   "id": "asking",
+   "vo_start": 17.576,
+   "vo_end": 19.06,
+   "text": "Asking is how I love you.",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 17.456,
+   "shot_end": 20.94,
+   "shot_dur": 3.484
+  },
+  {
+   "id": "home",
+   "vo_start": 21.06,
+   "vo_end": 22.778,
+   "text": "Text me when you're home.",
+   "enter": {
+    "type": "cut"
+   },
+   "shot_start": 20.94,
+   "shot_end": 23.7917,
+   "shot_dur": 2.852
+  }
+ ],
+ "captions": [
+  {
+   "start": 1.45,
+   "end": 2.342,
+   "text": "Text me when"
+  },
+  {
+   "start": 2.342,
+   "end": 3.08,
+   "text": "you're home."
+  },
+  {
+   "start": 4.73,
+   "end": 5.628,
+   "text": "Text me when"
+  },
+  {
+   "start": 5.628,
+   "end": 6.372,
+   "text": "you're home."
+  },
+  {
+   "start": 7.972,
+   "end": 8.702,
+   "text": "One word"
+  },
+  {
+   "start": 8.702,
+   "end": 9.358,
+   "text": "will do."
+  },
+  {
+   "start": 11.208,
+   "end": 11.818,
+   "text": "The light"
+  },
+  {
+   "start": 11.818,
+   "end": 12.373,
+   "text": "stays on."
+  },
+  {
+   "start": 14.423,
+   "end": 14.844,
+   "text": "I know"
+  },
+  {
+   "start": 14.844,
+   "end": 15.476,
+   "text": "you're fine."
+  },
+  {
+   "start": 17.576,
+   "end": 18.398,
+   "text": "Asking is how"
+  },
+  {
+   "start": 18.398,
+   "end": 19.06,
+   "text": "I love you."
+  },
+  {
+   "start": 21.06,
+   "end": 22.0,
+   "text": "Text me when"
+  },
+  {
+   "start": 22.0,
+   "end": 22.778,
+   "text": "you're home."
+  }
+ ]
+};
