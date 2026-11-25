@@ -402,7 +402,7 @@ def perform(rig):
         key_xf(bd, land, p_land)
     for u in (0.0, 0.5, 1.0):
         fr = F("boards", u)
-        A_.pose(fr, O + Vector((-2.55, 0.35, 0)), -100, lambda a: stand(a, look=(-8, -20), arms="hips", lean=4))
+        A_.pose(fr, O + Vector((-2.55, 0.35, 0)), 64, lambda a: stand(a, look=(-6, -4), arms="hips", lean=4))
         A_.face(fr, smug=0.9)
     for u in (0.0, 1.0):
         B_.pose(F("boards", u), O + Vector((-2.65, 1.3, 0)), -110, lambda a: stand(a, look=(-14, 10), arms="cross"))
@@ -517,8 +517,8 @@ def perform(rig):
     # ---------------------------------------------------------------- check: $1,500 slides across
     chq = rig.cheque
     a, b = ends("check")
-    key_xf(chq, a, O + Vector((0.55, 0.85, DESK_TOP + 0.002)), (0, 0, math.radians(185)))
-    key_xf(chq, a + 14, O + Vector((0.6, 1.36, DESK_TOP + 0.002)), (0, 0, math.radians(180)))
+    key_xf(chq, a, O + Vector((0.56, 1.13, DESK_TOP + 0.002)), (0, 0, math.radians(186)))
+    key_xf(chq, a + 9, O + Vector((0.6, 1.36, DESK_TOP + 0.002)), (0, 0, math.radians(180)))
     key_xf(chq, b, O + Vector((0.6, 1.37, DESK_TOP + 0.002)), (0, 0, math.radians(180)))
     at_desk("check", [(0.0, {"hands": "desk", "look": (-30, 0)}, {"calm": 0.3}),
                       (1.0, {"hands": "desk", "look": (-32, 0)}, {"smug": 0.3})])
@@ -700,8 +700,8 @@ def cam_plan(rig):
                                          o + V(0.35, 1.12, 1.0)), 2.8, 0.15, 0),
         "sketch": (35, lambda u, fr: (lerp(o + V(0.92, 1.85, 1.22), o + V(0.92, 1.8, 1.18), u),
                                      o + V(0.92, 1.42, DESK_TOP)), 4.0, 0.12, 0),
-        "boards": (20, lambda u, fr: (lerp(o + V(-2.3, -1.3, 1.45), o + V(-2.38, -1.12, 1.42), u),
-                                     o + V(-2.9, 0.4, 1.05)), 3.5, 0.2, 0),
+        "boards": (24, lambda u, fr: (lerp(o + V(-1.15, -0.35, 1.5), o + V(-1.3, -0.25, 1.48), u),
+                                     o + V(-2.95, 0.18, 1.05)), 3.5, 0.2, 0),
         "credit": (35, lambda u, fr: (lerp(o + V(1.02, 0.96, 2.2), o + V(1.02, 0.97, 2.12), u),
                                      o + V(1.02, 1.03, DESK_TOP)), 5.6, 0.12, 0),
         "hook": (17, lambda u, fr: (lerp(o + V(0.0, -2.85, 1.25), o + V(0.0, -2.7, 1.28), u),
@@ -716,7 +716,7 @@ def cam_plan(rig):
                                      o + V(0.64, 1.47, DESK_TOP)), 4.0, 0.12, 0),
         "cash800": (30, lambda u, fr: (lerp(o + V(0.75, 1.85, 1.32), o + V(0.72, 1.8, 1.28), u),
                                       o + V(0.5, 1.3, DESK_TOP)), 4.0, 0.15, 0),
-        "check": (30, lambda u, fr: (lerp(o + V(0.6, 1.5, 1.27), o + V(0.6, 1.46, 1.2), _ease(u)),
+        "check": (36, lambda u, fr: (lerp(o + V(0.6, 1.5, 1.27), o + V(0.6, 1.46, 1.2), _ease(u)),
                                     o + V(0.6, 1.365, DESK_TOP)), 5.6, 0.12, 0),
         "signoff": (32, lambda u, fr: (lerp(o + V(0.35, 0.3, 1.25), o + V(0.4, 0.45, 1.25), u),
                                       o + V(0.6, 1.95, 1.05)), 2.8, 0.2, 0),
@@ -731,8 +731,8 @@ def cam_plan(rig):
                                       SH + V(-0.04, 0.0, 0.95)), 5.6, 0.15, 0),
         "auction": (24, lambda u, fr: (lerp(AU + V(3.2, -5.8, 2.1), AU + V(2.9, -5.0, 2.05), u),
                                       AU + V(0.4, 4.2, 1.8)), None, 0.2, 0),
-        "gavel": (20, lambda u, fr: (lerp(AU + V(2.0, 1.05, 1.6), AU + V(2.05, 1.3, 1.6), u),
-                                    AU + V(2.2, 4.6, 2.4)), None, 0.2, 0),
+        "gavel": (18, lambda u, fr: (lerp(AU + V(2.05, 1.75, 1.45), AU + V(2.1, 1.95, 1.45), u),
+                                    AU + V(2.2, 4.6, 1.93)), None, 0.2, 0),
         "armchair": (30, lambda u, fr: (lerp(NV + V(-0.05, -1.55, 1.12), NV + V(0.0, -1.4, 1.1), u),
                                        NV + V(0.55, 0.6, 0.98)), 3.5, 0.15, 0),
         "newspaper": (28, lambda u, fr: (lerp(NV + V(0.4, -0.95, 1.05), NV + V(0.42, -0.85, 1.05), u),
