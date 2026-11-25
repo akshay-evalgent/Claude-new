@@ -13,7 +13,9 @@ start and end are known exactly), lays them end to end and writes:
 
 The film is cut to the voice, never the other way round: build the composition
 from timing.json. A beat with no "vo" holds for its "hold_s" (default 1.5 s).
-A beat may set "pause_after_s" to breathe longer than --gap.
+A beat may set "pause_after_s" to breathe longer than --gap (ignored on the last
+beat, where --tail applies). Captions are groups of up to --chunk words, broken at
+punctuation, never a single word on its own.
 
 If you have a recorded or generated voice instead, put it at DIR/vo.wav and run
 transcribe.py on it to get word times; this tool is the built-in fallback.
@@ -70,13 +72,11 @@ def chunks(text, start, end, size):
             cur = []
     if cur:
         groups.append(cur)
-    merged = []
-    for g in groups:                               # no one-word caption left dangling mid-sentence
-        if merged and len(g) == 1 and len(merged[-1]) <= size and not re.search(r"[.!?…]$", merged[-1][-1]):
-            merged[-1] = merged[-1] + g
-        else:
-            merged.append(g)
-    groups = merged
+    # no one-word caption left dangling: borrow a word from the group before it
+    for i in range(1, len(groups)):
+        prev, g = groups[i - 1], groups[i]
+        if len(g) == 1 and len(prev) >= 2 and not re.search(r"[.,;:!?…—]$", prev[-1]):
+            groups[i] = [prev.pop()] + g
     weights = [sum(len(re.sub(r"\W", "", w)) + 1.5 for w in g) for g in groups]
     total = sum(weights) or 1
     out, t = [], start
@@ -105,7 +105,7 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     voice = load_voice(args.voice)
 
-    sr, parts, rows, caps, t = None, [], [], [], args.lead
+    sr, parts, rows, caps, t, last_pause = None, [], [], [], args.lead, 0.0
     for i, b in enumerate(beats):
         text = (b.get("vo") or "").strip()
         pause = float(b.get("pause_after_s", args.gap))
@@ -117,14 +117,16 @@ def main():
             rows.append({"id": b["id"], "vo_start": round(t, 3), "vo_end": round(t + dur, 3), "text": text})
             caps += chunks(text, t, t + dur, args.chunk)
             t += dur + pause
+            last_pause = pause
         else:
             hold = float(b.get("hold_s", 1.5))
             rows.append({"id": b["id"], "vo_start": None, "vo_end": None, "text": "", "hold": [round(t, 3), round(t + hold, 3)]})
             t += hold
+            last_pause = 0.0
     (out / "_beat.wav").unlink(missing_ok=True)
     if sr is None:
         sys.exit("the script has no voice-over lines (beats[].vo)")
-    total = t - args.gap + args.tail if rows[-1]["vo_end"] is not None else t + args.tail
+    total = t - last_pause + args.tail              # the pause after the last beat is replaced by the tail
     total = round(round(total * 24) / 24, 4)          # a whole number of frames at 24 fps
 
     track = np.zeros(int(total * sr) + 1, np.float32)
@@ -149,7 +151,11 @@ def main():
         r.pop("hold", None)
 
     words = sum(len(r["text"].split()) for r in rows)
-    spoken = sum(r["vo_end"] - r["vo_start"] for r in rows if r["vo_end"] is not None)
+    # time the voice is running, counted as transcribe.py counts it: first word to
+    # last, minus any silence longer than 0.7 s
+    said = [r for r in rows if r["vo_end"] is not None]
+    spoken = said[-1]["vo_end"] - said[0]["vo_start"] - sum(
+        max(0.0, b["vo_start"] - a["vo_end"]) for a, b in zip(said, said[1:]) if b["vo_start"] - a["vo_end"] > 0.7)
     timing = {"duration": total, "voice": args.voice, "pace": args.pace,
               "words": words, "words_per_minute": round(words / total * 60),
               "speaking_rate_wpm": round(words / spoken * 60) if spoken else 0,

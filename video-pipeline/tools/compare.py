@@ -3,6 +3,7 @@
 
     python3 compare.py --ref REF/measure.json [--ref ...] --out OUT/measure.json \
         [--ref-palette REF/palette.json ...] [--out-palette OUT/palette.json] \
+        [--benchmarks benchmarks.json] \
         --write OUT/compare.json
 
 Each row is PASS, WARN or FAIL. With several references the target is the span
@@ -67,6 +68,7 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--ref-palette", action="append", default=[])
     ap.add_argument("--out-palette")
+    ap.add_argument("--benchmarks", help="benchmarks.json: its format.duration_s, where set, is the length target")
     ap.add_argument("--write", required=True)
     args = ap.parse_args()
 
@@ -87,7 +89,16 @@ def main():
     min_fps = min(r["fps"] for r in rv)
     rows.append(row("frame rate", "PASS" if ov["fps"] >= min_fps - 1 else "WARN", f"{ov['fps']:g} fps",
                     fmt_refs([r["fps"] for r in rv], " fps")))
-    rows.append(band("duration", ov["duration"], [r["duration"] for r in rv], 0.25, 0.5, " s"))
+    want = None
+    if args.benchmarks:
+        want = (load(args.benchmarks).get("format") or {}).get("duration_s")
+    if isinstance(want, list) and len(want) == 2:
+        lo, hi = want
+        d = ov["duration"]
+        rows.append(row("duration", "PASS" if lo - 0.25 <= d <= hi + 0.25 else "WARN" if lo * 0.8 <= d <= hi * 1.2 else "FAIL",
+                        f"{d:g} s", f"{lo:g}-{hi:g} s asked for", "the references run " + fmt_refs([r["duration"] for r in rv], " s")))
+    else:
+        rows.append(band("duration", ov["duration"], [r["duration"] for r in rv], 0.25, 0.5, " s"))
 
     # edit
     S = lambda m, k: g(m, "shot_stats", k)

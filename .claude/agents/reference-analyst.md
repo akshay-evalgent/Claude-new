@@ -52,7 +52,7 @@ Read every `02-analysis/*/breakdown.md` and `01-sources/sources.json`, then writ
 
 With a single reference the first two labels mean nothing: say once at the top that everything is "seen in the one reference" and drop them.
 
-End each section with a **Do not copy** list, taken from the faults you found (section 10 of the breakdowns), so the writer and producer do not reproduce a reference's mistakes.
+End each section with a **Do not copy** list, taken from the faults you found (section 10 of the breakdowns), so the writer and producer do not reproduce a reference's mistakes. A fault must never also appear as a pattern: before you finish, read each Do not copy list against the rules in the same file and remove or reword any rule that tells the reader to do what a list tells them not to.
 
 `02-analysis/benchmarks.json`: the numbers and facts the judges hold our video to. The values below only show the shape; fill every one from your breakdowns.
 
