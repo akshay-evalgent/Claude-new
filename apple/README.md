@@ -69,7 +69,8 @@ python3 scene.py render 720 1280 10
 python3 ../quicksand/assemble.py apple_captions.mp4 --captions --upscale 1080 1920
 ```
 
-THUMB_LINE
+Thumbnail: frame 124 (0:05), rendered natively at 1080x1920 with `python3 -I scene.py stills 124 --res 1080 1920 --samples 64`
+and captioned with `python3 -I ../quicksand/thumbnail.py`.
 
 ## Licences
 

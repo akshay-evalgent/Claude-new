@@ -31,10 +31,10 @@ Sources: Wikipedia (Ronald Wayne), Fortune, MacRumors (2011 Sotheby's sale), App
 apple, ronald wayne, steve jobs, steve wozniak, apple founder, sold for 800, biggest mistake, business story, money facts, 3d animation
 ```
 
-**Thumbnail:** `thumbnail.jpg` (1080x1920): Wayne holding up the fan of eight $100 bills with the caption on
-screen (frame and time in the README).
+**Thumbnail:** `thumbnail.jpg` (1080x1920): Wayne holding up the fan of eight $100 bills with "for $800" on
+screen (frame 124, 0:05).
 - Custom upload (YouTube Partner Program and verified channels; YouTube Studio on a computer).
-- Without custom upload: pick that frame in the frame picker.
+- Without custom upload: pick 0:05 in the frame picker.
 
 **Pinned comment**
 
