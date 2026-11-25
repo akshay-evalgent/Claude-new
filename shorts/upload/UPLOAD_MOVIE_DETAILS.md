@@ -277,3 +277,61 @@ Did you know Quint's story was real? 👇
 **Rights:**
 - **Jaws footage:** expect Content ID claims.
 - **Other footage:** the documentary, news and wreck footage belongs to those channels, and you said you'd get permission. The Navy photos are public domain.
+
+---
+
+## Mary Poppins: the crew member who dropped Julie Andrews
+
+**File:** `mary_poppins_drop.mp4` · **Cover:** `mary_poppins_drop_cover.jpg` (Mary Poppins with her umbrella, "THE CREW DROPPED / MARY POPPINS")
+
+**Layout:** the picture fills the middle 66%, with captions in the bottom band.
+
+**The detail:** a story built around an ordinary crew member, the man who lowered Julie Andrews on her flying wire.
+
+**Story beats:**
+1. **The fall:** near the end of filming she felt the wire slip and dropped to the stage "like a ton of bricks".
+2. **The crew member:** after a long silence he called out, "Is she down yet?" Mary Poppins answered with swear words.
+3. **The snub:** she only got the role because Jack Warner gave her Broadway part in My Fair Lady to Audrey Hepburn.
+4. **The Oscar:** she won Best Actress, and Hepburn wasn't nominated.
+5. **The Golden Globes thank-you**, in her real voice: "…the man who made all this possible… Mr. Jack Warner."
+6. **Bonus crew story:** on The Sound of Music, the camera helicopter's downdraft "slammed me into the ground", in her own voice from TODAY.
+7. **Doubt beat:** the fall is her own story, told decades later.
+
+**Real audio used:**
+- Film: "Practically perfect in every way."
+- Oscars 1965: "The winner is… Julie Andrews."
+- Golden Globes 1965: the Jack Warner line.
+- TODAY interview: the helicopter story.
+
+**Title:**
+```
+Did you notice this detail in Mary Poppins???
+```
+Alternates: `The crew DROPPED Mary Poppins` · `Mary Poppins' revenge on the man who rejected her`
+
+**Description:**
+```
+Mary Poppins floats down so gently, but Julie Andrews says a crew member once dropped her "like a ton of bricks". Then: "Is she down yet?" And she only got the role because Hollywood had rejected her.
+
+Sources: Julie Andrews on The Late Show (2017) and to The Hollywood Reporter; TCM on the My Fair Lady casting; D23 on her Oscar; the Golden Globes archive; Slashfilm on The Sound of Music helicopter.
+Clips for commentary: Mary Poppins (1964, Disney), My Fair Lady (1964, Warner Bros.) trailer, 37th Academy Awards, 1965 Golden Globes, The Sound of Music (1965), TODAY.
+
+#marypoppins #julieandrews #disney #didyouknow #shorts
+```
+
+**Pinned comment:**
+```
+Would you have sworn too? 😂👇
+```
+
+**Settings:** Made for kids: **No** (it mentions swearing, though nothing is said on screen) · Altered or synthetic content: **Yes** (AI narrator voice) · Category: Film & Animation
+
+**Accuracy notes** (in case a commenter asks):
+- **The fall:** this is Andrews' own account (The Late Show 2017; The Hollywood Reporter), and the video says so. Her quoted wording varies a little between interviews.
+- **"Wasn't famous enough":** a paraphrase of Warner's reasoning; he thought she wasn't a big enough name (TCM).
+- **The Jack Warner thank-you** was at the Golden Globes (8 February 1965), not the Oscars. Her Oscar speech was the "famous for your hospitality" one.
+- **Hepburn:** she wasn't nominated for Best Actress for My Fair Lady that year.
+
+**Rights:**
+- **Studio footage:** expect Content ID claims on the Disney, Warner, Fox and Academy footage.
+- **Talk-show and fan-uploaded clips:** you said you'd get permission.

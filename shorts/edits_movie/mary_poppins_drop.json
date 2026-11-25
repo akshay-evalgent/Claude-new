@@ -1,0 +1,765 @@
+{
+ "title": "Did you notice this detail in Mary Poppins???",
+ "note": "The crew member who dropped Julie Andrews, her My Fair Lady snub and Oscar, and the Sound of Music helicopter. Facts and sources: shorts/edits_movie/mary_poppins_drop.script.md. Layout: picture in the middle 66%, captions in the bottom band. Run from the work folder holding src/ and tx/.",
+ "base": ".",
+ "layout": "full",
+ "mid": 0.66,
+ "voice": "am_michael",
+ "speed": 1.32,
+ "gap": 0.05,
+ "beats": [
+  {
+   "say": "If you pay attention to Mary Poppins, you'll notice she always floats down so gently. In real life, Julie Andrews crashed.",
+   "shots": [
+    [
+     "EYcNVyIEJX0",
+     48.5
+    ],
+    [
+     "EYcNVyIEJX0",
+     3.0
+    ],
+    [
+     "5BHoDW9f7vY",
+     145.0
+    ],
+    [
+     "EYcNVyIEJX0",
+     60.5
+    ]
+   ]
+  },
+  {
+   "say": "To fly, she hung from thin wires, in a painful harness, high above the set.",
+   "shots": [
+    [
+     "EYcNVyIEJX0",
+     66.0
+    ],
+    [
+     "vgKUWV_YObA",
+     40.0
+    ],
+    [
+     "5BHoDW9f7vY",
+     124.0
+    ]
+   ]
+  },
+  {
+   "say": "Up in the back, a crew member held her wire, and let her down gently.",
+   "shots": [
+    [
+     "vgKUWV_YObA",
+     225.0
+    ],
+    [
+     "vgKUWV_YObA",
+     230.0,
+     {
+      "cx": 0.45
+     }
+    ],
+    [
+     "vgKUWV_YObA",
+     235.0
+    ]
+   ]
+  },
+  {
+   "say": "On one of the last days of filming, she was exhausted, and she felt the wire slip.",
+   "shots": [
+    [
+     "EYcNVyIEJX0",
+     24.0
+    ],
+    [
+     "EYcNVyIEJX0",
+     40.0
+    ],
+    [
+     "EYcNVyIEJX0",
+     36.0
+    ]
+   ]
+  },
+  {
+   "say": "Then she dropped to the stage, like a ton of bricks.",
+   "shots": [
+    [
+     "5BHoDW9f7vY",
+     104.0
+    ],
+    [
+     "5BHoDW9f7vY",
+     117.0,
+     {
+      "cx": 0.5
+     }
+    ]
+   ]
+  },
+  {
+   "say": "There was a long silence. And then, from the back, the crew member called out, \"Is she down yet?\"",
+   "shots": [
+    [
+     "EYcNVyIEJX0",
+     6.0
+    ],
+    [
+     "vgKUWV_YObA",
+     45.0,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "EYcNVyIEJX0",
+     27.0
+    ]
+   ]
+  },
+  {
+   "say": "And Mary Poppins, the most proper nanny in the world, answered with a stream of swear words.",
+   "shots": [
+    [
+     "EYcNVyIEJX0",
+     12.0
+    ],
+    [
+     "n4tfN_3J4Cc",
+     64.0
+    ],
+    [
+     "EYcNVyIEJX0",
+     18.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "n4tfN_3J4Cc",
+    72.2,
+    76.8
+   ],
+   "words": [
+    [
+     72.34,
+     72.52,
+     "As"
+    ],
+    [
+     72.52,
+     73.04,
+     "expected."
+    ],
+    [
+     73.04,
+     73.9,
+     "Mary"
+    ],
+    [
+     73.9,
+     74.34,
+     "Poppins."
+    ],
+    [
+     74.34,
+     74.92,
+     "Practically"
+    ],
+    [
+     74.92,
+     75.42,
+     "perfect"
+    ],
+    [
+     75.42,
+     75.72,
+     "in"
+    ],
+    [
+     75.72,
+     76.2,
+     "every"
+    ],
+    [
+     76.2,
+     76.64,
+     "way."
+    ]
+   ],
+   "shots": [
+    [
+     "n4tfN_3J4Cc",
+     72.2,
+     {
+      "w": 2.0
+     }
+    ],
+    [
+     "n4tfN_3J4Cc",
+     74.2,
+     {
+      "w": 2.6
+     }
+    ]
+   ]
+  },
+  {
+   "say": "But the craziest part is how she got this role at all.",
+   "shots": [
+    [
+     "_L4qauTiCY4",
+     20.0
+    ],
+    [
+     "EYcNVyIEJX0",
+     30.0
+    ]
+   ]
+  },
+  {
+   "say": "On Broadway, she was the star of My Fair Lady. But for the movie, studio boss Jack Warner said she wasn't famous enough, and gave her role to Audrey Hepburn.",
+   "shots": [
+    [
+     "c880_rbzbxk",
+     15.0
+    ],
+    [
+     "c880_rbzbxk",
+     100.0
+    ],
+    [
+     "c880_rbzbxk",
+     120.0
+    ],
+    [
+     "c880_rbzbxk",
+     140.0
+    ],
+    [
+     "c880_rbzbxk",
+     152.0,
+     {
+      "cx": 0.45
+     }
+    ]
+   ]
+  },
+  {
+   "say": "So Walt Disney made her Mary Poppins instead.",
+   "shots": [
+    [
+     "_L4qauTiCY4",
+     60.0
+    ],
+    [
+     "EYcNVyIEJX0",
+     42.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "vZ7d4Rx7ftI",
+    85.3,
+    92.15
+   ],
+   "words": [
+    [
+     85.4,
+     85.5,
+     "The"
+    ],
+    [
+     85.5,
+     85.66,
+     "winner"
+    ],
+    [
+     85.66,
+     86.38,
+     "is"
+    ],
+    [
+     90.51,
+     91.43,
+     "Julie"
+    ],
+    [
+     91.43,
+     92.03,
+     "Andrews."
+    ]
+   ],
+   "shots": [
+    [
+     "vZ7d4Rx7ftI",
+     85.3,
+     {
+      "w": 2.3
+     }
+    ],
+    [
+     "vZ7d4Rx7ftI",
+     96.0,
+     {
+      "w": 2.0
+     }
+    ],
+    [
+     "vZ7d4Rx7ftI",
+     104.5,
+     {
+      "w": 2.55
+     }
+    ]
+   ]
+  },
+  {
+   "say": "She won the Oscar for Best Actress. Audrey Hepburn wasn't even nominated.",
+   "shots": [
+    [
+     "vZ7d4Rx7ftI",
+     128.0
+    ],
+    [
+     "c880_rbzbxk",
+     122.0
+    ],
+    [
+     "vZ7d4Rx7ftI",
+     116.0
+    ]
+   ]
+  },
+  {
+   "say": "And at the Golden Globes, she thanked one man in particular.",
+   "shots": [
+    [
+     "HeBCcfwWpug",
+     4.5
+    ],
+    [
+     "HeBCcfwWpug",
+     9.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "HeBCcfwWpug",
+    14.45,
+    21.0
+   ],
+   "words": [
+    [
+     14.57,
+     14.85,
+     "Finally,"
+    ],
+    [
+     14.89,
+     15.07,
+     "my"
+    ],
+    [
+     15.07,
+     15.31,
+     "thanks"
+    ],
+    [
+     15.31,
+     15.55,
+     "to"
+    ],
+    [
+     15.55,
+     15.63,
+     "a"
+    ],
+    [
+     15.63,
+     15.79,
+     "man"
+    ],
+    [
+     15.79,
+     15.93,
+     "who"
+    ],
+    [
+     15.93,
+     16.05,
+     "made"
+    ],
+    [
+     16.05,
+     16.15,
+     "a"
+    ],
+    [
+     16.15,
+     16.41,
+     "wonderful"
+    ],
+    [
+     16.41,
+     16.77,
+     "movie"
+    ],
+    [
+     16.77,
+     17.21,
+     "and"
+    ],
+    [
+     17.21,
+     17.31,
+     "who"
+    ],
+    [
+     17.31,
+     17.45,
+     "made"
+    ],
+    [
+     17.45,
+     17.57,
+     "all"
+    ],
+    [
+     17.57,
+     17.71,
+     "this"
+    ],
+    [
+     17.71,
+     17.95,
+     "possible"
+    ],
+    [
+     17.95,
+     18.13,
+     "in"
+    ],
+    [
+     18.13,
+     18.23,
+     "the"
+    ],
+    [
+     18.23,
+     18.39,
+     "first"
+    ],
+    [
+     18.39,
+     18.69,
+     "place,"
+    ],
+    [
+     19.01,
+     19.25,
+     "Mr."
+    ],
+    [
+     19.25,
+     19.4,
+     "Jack"
+    ],
+    [
+     19.4,
+     19.75,
+     "Warner."
+    ]
+   ],
+   "shots": [
+    [
+     "HeBCcfwWpug",
+     14.45,
+     {
+      "w": 5.35
+     }
+    ],
+    [
+     "HeBCcfwWpug",
+     23.6,
+     {
+      "w": 1.2
+     }
+    ]
+   ]
+  },
+  {
+   "say": "And on her very next film, The Sound of Music, a camera helicopter kept knocking her flat into the grass.",
+   "shots": [
+    [
+     "5fH2FOn1V5g",
+     0.5
+    ],
+    [
+     "5fH2FOn1V5g",
+     2.6
+    ],
+    [
+     "5fH2FOn1V5g",
+     5.5
+    ]
+   ]
+  },
+  {
+   "film": [
+    "vjPlZsK5pZk",
+    43.6,
+    54.6
+   ],
+   "words": [
+    [
+     43.66,
+     43.86,
+     "Just"
+    ],
+    [
+     43.86,
+     44.08,
+     "as"
+    ],
+    [
+     44.08,
+     44.2,
+     "I"
+    ],
+    [
+     44.2,
+     44.42,
+     "opened"
+    ],
+    [
+     44.42,
+     44.68,
+     "my"
+    ],
+    [
+     44.68,
+     44.96,
+     "arms"
+    ],
+    [
+     44.96,
+     45.22,
+     "to"
+    ],
+    [
+     45.22,
+     45.5,
+     "sing,"
+    ],
+    [
+     46.0,
+     46.08,
+     "the"
+    ],
+    [
+     46.08,
+     46.48,
+     "helicopter"
+    ],
+    [
+     46.48,
+     46.82,
+     "went"
+    ],
+    [
+     46.82,
+     47.12,
+     "around"
+    ],
+    [
+     47.12,
+     47.34,
+     "me"
+    ],
+    [
+     47.34,
+     47.48,
+     "and"
+    ],
+    [
+     47.48,
+     47.62,
+     "the"
+    ],
+    [
+     47.62,
+     48.18,
+     "downdraft"
+    ],
+    [
+     48.18,
+     48.56,
+     "just"
+    ],
+    [
+     48.56,
+     49.0,
+     "slammed"
+    ],
+    [
+     49.0,
+     49.24,
+     "me"
+    ],
+    [
+     49.24,
+     49.4,
+     "into"
+    ],
+    [
+     49.4,
+     49.52,
+     "the"
+    ],
+    [
+     49.52,
+     49.82,
+     "ground."
+    ],
+    [
+     50.18,
+     50.38,
+     "So"
+    ],
+    [
+     50.38,
+     50.5,
+     "I"
+    ],
+    [
+     50.5,
+     50.62,
+     "was"
+    ],
+    [
+     50.62,
+     50.78,
+     "kind"
+    ],
+    [
+     50.78,
+     50.88,
+     "of"
+    ],
+    [
+     50.88,
+     51.2,
+     "spitting"
+    ],
+    [
+     51.2,
+     51.6,
+     "dust"
+    ],
+    [
+     51.6,
+     52.08,
+     "and"
+    ],
+    [
+     52.08,
+     52.82,
+     "hay"
+    ],
+    [
+     52.82,
+     53.18,
+     "and"
+    ],
+    [
+     53.18,
+     53.56,
+     "grass"
+    ],
+    [
+     53.56,
+     54.16,
+     "and"
+    ],
+    [
+     54.16,
+     54.46,
+     "mud."
+    ]
+   ],
+   "shots": [
+    [
+     "vjPlZsK5pZk",
+     43.6,
+     {
+      "w": 2.4
+     }
+    ],
+    [
+     "5fH2FOn1V5g",
+     6.5,
+     {
+      "w": 3.0
+     }
+    ],
+    [
+     "5fH2FOn1V5g",
+     1.5,
+     {
+      "w": 3.0
+     }
+    ],
+    [
+     "vjPlZsK5pZk",
+     52.0,
+     {
+      "w": 2.6
+     }
+    ]
+   ]
+  },
+  {
+   "say": "The fall is Julie's own story, told decades later. The man on the wire never told his side.",
+   "shots": [
+    [
+     "vgKUWV_YObA",
+     232.0
+    ],
+    [
+     "EYcNVyIEJX0",
+     33.0
+    ],
+    [
+     "vgKUWV_YObA",
+     228.0
+    ]
+   ]
+  },
+  {
+   "say": "So next time Mary Poppins floats down so gently, remember: she landed like a ton of bricks.",
+   "shots": [
+    [
+     "EYcNVyIEJX0",
+     15.0
+    ],
+    [
+     "5BHoDW9f7vY",
+     146.0
+    ]
+   ]
+  }
+ ],
+ "credits": [
+  "Mary Poppins (1964, Walt Disney Productions)",
+  "My Fair Lady (1964, Warner Bros.) trailer",
+  "37th Academy Awards (1965)",
+  "Golden Globe Awards (1965)",
+  "The Sound of Music (1965, 20th Century Fox)",
+  "TODAY interview with Julie Andrews"
+ ]
+}
