@@ -1,0 +1,78 @@
+{
+  "check": "comments",
+  "stage": "script",
+  "round": 1,
+  "score": 6,
+  "pass": false,
+  "summary": "The lyric gives viewers a phrase nearly all of them have heard or said, but nothing asks them about it: the post caption states the video's conclusion and there is no first comment to post. Make the caption a question and write the first comment.",
+  "findings": [
+    {
+      "criterion": "something to answer",
+      "result": "met",
+      "ours": "Two things a viewer can reply to. An experience they share: being told, or telling someone, 'Text me when you're home.' (beats ask, again and home; 1.45-3.08 s, 4.73-6.37 s, 21.06-22.78 s). And a claim: 'Asking is how I love you.' (beat asking, 17.58-19.06 s). The lyric answers its own question ('why do they keep asking?') at 74% to 80% of the run and does not turn to the viewer in words; for a lyric that is right, and it leaves the asking to the caption (see criterion 6).",
+      "reference": "barsat-song, 0.00-185.33 s: no question, claim or prompt anywhere in the video; 0 of 75 comments answer a question (comments.json). patterns.md, Comments, Do not copy: 'Giving viewers nothing to answer'. The yardstick here is that instruction, not the reference's own behaviour.",
+      "why_it_matters": "the reference's viewers had only the feeling to answer, and 54 of 75 answered with praise or emoji. Ours hands them a specific phrase and a specific claim, which is more than the reference offers."
+    },
+    {
+      "criterion": "a story of their own",
+      "result": "met",
+      "ours": "'Text me when you're home.' is said by parents, partners and friends, so most viewers have a version from one side or the other. The speaker is never named and no place is named, so the viewer supplies who it is. 'The light stays on.' (beat light, 11.21-12.37 s) and 'I know you're fine.' (beat fine, 14.42-15.48 s) stay general. The phrase also opens the door to loss without mentioning it: someone who used to say it and no longer does.",
+      "reference": "comments.json: 5 of 75 tell their own story or dedicate the song to a person (a love they cannot have, a pet that died, 'it happened to me too', one for a named person, one to a mother). Two of those five are among the ten most-liked. barsat-song 13.4 s and 23.7 s: the refrain is addressed to 'you' and names nobody. patterns.md, Comments: 'Leave room for the viewer's own story'.",
+      "why_it_matters": "this is the only kind of comment under the reference that says more than praise, and ours does what the reference does to earn it: second person, no names, one plain feeling."
+    },
+    {
+      "criterion": "easy to answer",
+      "result": "partly",
+      "ours": "The answer the script hopes for is short and needs no rewatch: a person ('my mum') or a quoted phrase ('drive safe'). But the viewer has to work out that this is what is wanted. The examples that would show them, 'drive safe, have you eaten, wear a coat', exist only in script.json comment_prompt, which is a note to the team; they are not in the lyric, not in post_caption, and not in anything a viewer sees. One phrase in the video does not show that there is a family of them.",
+      "reference": "comments.json: the easy replies under the reference are praise in words (34 of 75) and emoji alone (20 of 75); nothing asked for more, and 0 of 75 give an answer to anything. No reference shows a prompt being answered, so this rests on the playbook's instruction (patterns.md, Comments, Do not copy) and not on an example.",
+      "why_it_matters": "a prompt the viewer must infer gets the reference's result: short praise. Two quoted examples in the first comment show the shape of a three-word answer."
+    },
+    {
+      "criterion": "a detail to notice",
+      "result": "partly",
+      "ours": "There is a line to point at: 'Asking is how I love you.' (17.58-19.06 s), written as a saying. The picture details are tidy but each one repeats what the words already say: the road reaches the window's sill on the word 'home' (beat home, about 22.0-22.8 s); the window is bare paper with dots round it (beat light, from 11.2 s); the road waits one stretch short during the payoff (17.46-20.94 s). None is a discovery a viewer could tell others about. The nearest is unclaimed: 'One word will do.' (7.97-9.36 s) and a last frame that holds exactly one word, the red 'home' (after about 23.2 s). The script does not say the last word is the reply, and with the same lowercase word as the title at 0.00 s it will read as the title coming back.",
+      "reference": "comments.json: 4 of 75 single out a moment by time (1:50, 1:15, 1:06, and a run from 0:02 to 0:22) and 2 of 75 praise the writing, one with the most-liked comment that is not plain praise (6 likes). 0 of 75 mention the picture. barsat-song about 110 s: the level drops into the bridge where one of those comments points.",
+      "why_it_matters": "ours matches the reference on a line worth quoting. The reference's picture gave nobody anything to point at (patterns.md, Sharing, Do not copy); ours could do better with one small unspoken detail, and the script is one step from having it."
+    },
+    {
+      "criterion": "room to disagree, honestly",
+      "result": "met",
+      "ours": "Two fair points some viewers will push back on, neither one baited or false. 'I know you're fine.' (14.42-15.48 s): some will say they ask because they do not know. 'Asking is how I love you.' (17.58-19.06 s): some will say asking is not enough and the words should be said too; the current caption, 'Not everyone says it in three words.', leans on the same point. Both sides are defensible and personal. The disagreement is quiet and should stay quiet; sharpening it into a provocation would be bait.",
+      "reference": "comments.json: 0 of 75 dispute anything. There is no reference example of honest disagreement to compare against, so this finding cannot support a must.",
+      "why_it_matters": "the genre's comments do not argue, so this is a small source of replies. It is worth knowing that 'I ask because I don't know you're fine' is a likely reply, and a fair one to leave standing."
+    },
+    {
+      "criterion": "the caption and first comment",
+      "result": "missed",
+      "ours": "post_caption is 'Not everyone says it in three words.' It sounds like a person, but it is a statement: it asks nothing, and it tells the viewer the conclusion the lyric reaches at 17.58 s. The only reply it leaves is agreement. comment_prompt is a description of the comments hoped for ('What the people in a viewer's own life say in place of \"I love you\"...'), not words the creator can post, so there is no first comment.",
+      "reference": "barsat-song: nothing in the video or from the uploader asks anything. The uploader's own contribution to the thread was a channel plug with 0 likes (comments.json; patterns.md, Comments, Do not copy). Result: 0 of 75 comments answer a question, and 89 comments on 1.94 million views. Ours repeats the listed fault on the one surface where asking costs nothing.",
+      "why_it_matters": "the lyric has done the work of touching something common; the caption is where the viewer is asked about it. Without that the script can expect the reference's mix: praise and emoji from most, a story from about 1 in 15."
+    },
+    {
+      "criterion": "no bait",
+      "result": "met",
+      "ours": "No 'comment below', no 'tag someone', no 'wait for it' in any beat's vo or on_screen, in post_caption or in comment_prompt. 'Text me' in the refrain is a line of fiction spoken to the lyric's 'you', not an instruction to the audience.",
+      "reference": "barsat-song: the uploader's 'Subscribe to channel' comment (0 likes) is the reference's one piece of bait and is in patterns.md, Comments, Do not copy.",
+      "why_it_matters": "keep it this way when the caption is rewritten: a plain question about the viewer's own life, and no 'send this to the person who says it'."
+    }
+  ],
+  "fixes": [
+    {
+      "stage": "script",
+      "priority": "must",
+      "change": "Rewrite script.json post_caption (and the matching line in script.md) as a question about the viewer's own life that does not give away the payoff line. Use: \"Who says this to you?\" If the platform shows the caption apart from the video, so that 'this' has nothing to point at, use: \"Who tells you 'text me when you're home'?\" Do not keep 'Not everyone says it in three words.' as the caption; it states the answer and asks nothing."
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Replace the description in script.json comment_prompt with words the creator can post as the first comment, carrying the examples that are now only in the team's note: \"Some people say 'drive safe'. Some say 'have you eaten'. What's the one you grew up with?\" Keep the examples in quotes and two or three words each, so the shape of an answer is shown. Do not write it as the creator's own memory unless the creator supplies a true one; if they do, lead with theirs (\"Mine was '...'. What's yours?\")."
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "In beat home, make the last frame read as the reply that 'One word will do.' (7.97 s) asked for, without saying so. After the four ink words fade (about 23.2 s), reset the red word once, from 'home' as it sat inside the line to 'Home.' with a capital H and a full stop, set alone like a one-word message. No speech bubble, no new colour, no extra word. Lengthen the tail by about 0.8 s (voice.py --tail) so the changed word is on screen for at least 1.2 s with the bed still sounding; the run stays under 25 s. Write the intent into the beat's picture and motion fields so the producer does not treat it as a typo."
+    }
+  ],
+  "blocked_on": [],
+  "evidence": "From benchmarks.json: One reference. It has public numbers (1,938,059 views, 5,421 likes, 89 comments, a 700-follower channel, as of 2026-11-25) but one video gives no result evidence: these are what the reference does, not proof of what performs. The reference is NOT a lyric video: it is one still title card held for 185.33 s under a full song, with no lyric on screen at any time, no motion and no cut. Every value about how lyrics are set, timed, moved or coloured is therefore null, and the brief governs those. Tool figures are given as measured; ranged values are the single reference's figure widened about 15% either way; length follows the brief (20 to 30 s), not the reference (185.33 s). Sung-word figures rest on a low-trust transcript of singing over a band. Beyond it: I read all 75 comments in 01-sources/refs/barsat-song/comments.json (75 of the platform's 89; top-level only, replies were not retrieved, so which comments drew replies is unknown and likes are the only weight available). My own sort, one theme each: praise for the song in words 34; emoji only 20; own story or a dedication to a person 5; a time in the song singled out 4; naming the sadness 3; praise for the writing 2; a 'who is listening this month' roll-call 1; the uploader 2; off-topic, a bare link or unclear 4. By the kinds this check looks for: own stories 5, answers to a question 0, disagreement 0, a detail noticed 4 (all moments in the sound, none in the picture), tagging 0 (2 of the 5 stories are dedications to a person, the nearest thing), plain praise 54 counting emoji. This agrees with the counts in breakdown.md section 6. The reference is a sung Hindi-belt song under a still card and ours is a spoken English lyric with words on screen, so the comparison holds for subject and address (one plain feeling, spoken to 'you') and says nothing about lyric videos as a format. Times for ours are from 03-script/timing/timing.json (measured from the spoken script, 23.79 s). This is an estimate that the script does what the playbook asks; it is not a prediction of how many comments it will get."
+}
