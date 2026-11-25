@@ -10,3 +10,7 @@ video-pipeline/runs/*/05-video/audio/_*.wav
 node_modules/
 # runs whose name starts with an underscore are scratch tests
 video-pipeline/runs/_*/
+# frames taken from reference videos are other people's artwork: kept locally for
+# the agents to look at, never committed
+video-pipeline/runs/*/02-analysis/*/*.jpg
+video-pipeline/runs/*/04-moodboard/ref/

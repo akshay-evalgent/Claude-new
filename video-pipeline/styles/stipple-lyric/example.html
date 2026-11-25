@@ -3,37 +3,42 @@
 <head>
 <meta charset="utf-8">
 <title>Stipple-lyric example</title>
-<!-- A worked example of the stipple-lyric style on film.js: one sheet, two
-     lyric lines lit word by word, a trail of dots that grows under them and a
-     square of light that the dots gather round.
-     Preview: open this file with ?play, or ?t=4.2 to stop on a moment.
+<!-- A worked example of the stipple-lyric style on film.js: two lyric lines lit
+     word by word, each its own shot on the same sheet, over a drawing that
+     outlives both: a trail of dots that grows and a square of light the dots
+     gather round.
+     Preview: open this file with ?play, or ?t=4.7 to stop on a moment.
      Render:  node ../../tools/render.js example.html --out /tmp/example.mp4 -->
 <link rel="stylesheet" href="stipple.css">
 </head>
 <body>
 <main id="stage">
 
-  <!-- One shot for the whole sheet. Every time below is seconds from its start. -->
-  <section class="shot" id="sheet">
-    <svg viewBox="0 0 1920 1080">
-      <!-- pairs of "time share": the drawing grows between them and rests where the numbers repeat -->
-      <g class="stipple" id="steps" data-grow="0.2 0, 0.9 0.07, 2.0 0.2, 4.6 0.62, 7.4 1"></g>
-      <g class="stipple" id="trail" data-grow="0.9 0, 3.9 0.38, 4.4 0.4, 7.6 1"></g>
-      <g class="stipple" id="lamp"  data-grow="4.6 0, 5.4 0.3, 8.0 1"></g>
-    </svg>
-
-    <!-- line 1: there from the first frame, lifts off as line 2 starts -->
-    <p class="lyric" data-out="4.2 4.2">
+  <!-- 1. The whole line is on the sheet, faint, from the shot's first frame.
+       data-at is when each word is spoken, in seconds from the start of this shot. -->
+  <section class="shot" id="one">
+    <p class="lyric">
       <span class="row"><span class="w" data-at="1.00">Slow</span> <span class="w" data-at="1.38">down</span></span>
       <span class="row"><span class="w" data-at="1.92">on</span> <span class="w" data-at="2.10">the</span> <span class="w" data-at="2.34">hill</span></span>
     </p>
+  </section>
 
-    <!-- line 2: the one red word starts faint, turns full red when it is spoken, and swells once -->
-    <p class="lyric" data-in="4.2 4.2">
-      <span class="row"><span class="w" data-at="4.60">I&rsquo;ll</span> <span class="w accent" data-at="4.92" data-pulse="4.92">wait</span></span>
-      <span class="row"><span class="w" data-at="5.50" data-out="7.2 7.6">by</span> <span class="w" data-at="5.70" data-out="7.2 7.6">the</span> <span class="w" data-at="5.94" data-out="7.2 7.6">gate</span></span>
+  <!-- 2. The one red word starts faint, turns full red when it is spoken and swells once.
+       At the end the ink words leave and the red word stays. -->
+  <section class="shot" id="two">
+    <p class="lyric">
+      <span class="row"><span class="w" data-at="0.40" data-out="3.0 3.4">I&rsquo;ll</span> <span class="w accent" data-at="0.72" data-pulse="0.72">wait</span></span>
+      <span class="row"><span class="w" data-at="1.30" data-out="3.0 3.4">by</span> <span class="w" data-at="1.50" data-out="3.0 3.4">the</span> <span class="w" data-at="1.74" data-out="3.0 3.4">gate</span></span>
     </p>
   </section>
+
+  <!-- The drawing sits above the shots and runs on the film's clock.
+       data-grow is pairs of "time share": the dots land between them, and rest where the share repeats. -->
+  <svg class="drawing" id="drawing" viewBox="0 0 1920 1080">
+    <g class="stipple" id="steps" data-grow="0.2 0, 0.9 0.07, 2.0 0.2, 4.6 0.62, 7.4 1"></g>
+    <g class="stipple" id="trail" data-grow="0.9 0, 3.9 0.38, 4.4 0.4, 7.6 1"></g>
+    <g class="stipple" id="lamp"  data-grow="4.6 0, 5.4 0.3, 8.3 1"></g>
+  </svg>
 
 </main>
 
@@ -45,8 +50,9 @@
   Stipple.trail('#trail', { d: PATH, seed: 7 });
   Stipple.halo('#lamp', { x: 1452, y: 470, w: 92, h: 110, reach: 160, seed: 12 });
 
-  Film.setup({ width: 1920, height: 1080, fps: 24 });
-  Film.shot({ id: 'sheet', dur: 8.4, update: (p, t, el) => Stipple.update(el, t) });
+  Film.setup({ width: 1920, height: 1080, fps: 30 });
+  Film.shot({ id: 'one', dur: 4.2, update: Stipple.shot(0, '#drawing') });
+  Film.shot({ id: 'two', dur: 4.2, update: Stipple.shot(4.2, '#drawing') });
   Film.ready();
 </script>
 </body>

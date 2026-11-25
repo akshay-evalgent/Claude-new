@@ -31,21 +31,30 @@
 
      data-at="2.01"         the word turns from faint to full ink at 2.01 s (over data-ramp, 0.1 s)
      data-pulse="2.70"      the word swells by 6% and settles, starting at 2.70 s
-     data-in="a b"          on a .lyric or a .w: arrives between a and b seconds (a = b: in one frame)
+     data-in="a b"          on a .lyric, a .row or a .w: arrives between a and b seconds (a = b: in one frame)
      data-out="a b"         leaves between a and b seconds
+
+   To reset a word in place, put both settings in a .swap; the row keeps the wider one's room:
+     <span class="swap"><span class="w accent lit" data-out="2.3 2.45">home</span><span
+       class="w accent lit" data-in="2.45 2.6" data-pulse="2.45">Home.</span></span>
 
    Stipple.line(el, rows, opts) writes that markup from word times.
 
-   DRIVING. Call Stipple.update(root, t) once a frame with the time those
-   attributes are written in. With film.js:
+   DRIVING. Stipple.update(root, t) sets everything under root to how it stands
+   at time t, in the clock those attributes are written in. With film.js, one
+   shot per lyric line and a drawing that outlives the shots:
 
-     Film.shot({ id: 'sheet', dur: 23.8, update: (p, t, el) => Stipple.update(el, t) });
+     <main id="stage">
+       <section class="shot" id="ask"> <p class="lyric">...</p> </section>      times from the shot's start
+       <section class="shot" id="again"> <p class="lyric">...</p> </section>
+       <svg class="drawing" id="drawing" viewBox="0 0 1920 1080"> ... </svg>    times from the film's start
+     </main>
+     for (const b of TIMING.beats)
+       Film.shot({ id: b.id, dur: b.shot_dur, update: Stipple.shot(b.shot_start, '#drawing') });
 
-   One shot for the whole sheet, with every time in seconds from its start, is
-   the simplest way to build a lyric video. If each line is its own shot, the
-   times inside it are seconds from that shot's start, and a drawing that must
-   outlive the shots goes in <svg class="drawing"> directly inside #stage and is
-   driven with Stipple.update(drawing, shotStart + t).
+   Every shot carries the same sheet, so a cut between two of them shows only
+   the words changing. Do not put film.js's data-fade, data-fadeout or data-rise
+   on a .lyric or a .w: they write the opacity that --lit and --on need.
 */
 (function () {
   const NS = 'http://www.w3.org/2000/svg';
@@ -137,6 +146,7 @@
     }
     g.appendChild(frag);
     g._dots = (g._dots || []).concat(dots).sort((a, b) => a.k - b.k);
+    for (const q of g._dots) q.el.style.display = '';
     g._shown = g._dots.length;
     if (g.dataset.share != null) Stipple.reveal(g, Number(g.dataset.share));
     return dots.length;
@@ -187,7 +197,8 @@
       g = el(g);
       const { d, every = 60, r = [3.6, 4.8], jitter = 2.5, seed = 1, from = 0, to = 1, order } = o;
       const rand = rng(seed), path = measure(g, d), dots = [];
-      for (let u = from * path.len; u <= to * path.len + 0.01; u += every * (0.78 + 0.44 * rand())) {
+      const closed = /z\s*$/i.test(d), end = to * path.len - (closed ? every * 0.6 : -0.01);   // a closed path does not double its first dot
+      for (let u = from * path.len; u <= end; u += every * (0.78 + 0.44 * rand())) {
         const p = path.at(u), a = rand() * Math.PI * 2, j = u > from * path.len ? rand() * jitter : 0;
         dots.push({ x: p.x + Math.cos(a) * j, y: p.y + Math.sin(a) * j, r: r[0] + (r[1] - r[0]) * rand(), k: u / path.len });
       }
@@ -314,6 +325,16 @@
       return target;
     },
 
+    /* For film.js, when each lyric line is its own shot: the update function for a
+       shot that starts at `start` seconds. Timed things inside the shot run on the
+       shot's own clock; `whole` (a drawing that outlives the shots) runs on the film's. */
+    shot(start, whole) {
+      return (p, t, shotEl) => {
+        Stipple.update(shotEl, t);
+        if (whole) Stipple.update(whole, start + t);
+      };
+    },
+
     /* Set every timed thing under root to how it stands at time t. */
     update(root, t) {
       root = el(root);
@@ -359,7 +380,7 @@
       <feTurbulence type="fractalNoise" baseFrequency="0.042" numOctaves="2" seed="6" result="n"/>
       <feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" xChannelSelector="R" yChannelSelector="G" result="d"/>
       <feTurbulence type="fractalNoise" baseFrequency="0.62" numOctaves="2" seed="14" result="g"/>
-      <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  6 0 0 0 -1.3" result="pits"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  6 0 0 0 -1.12" result="pits"/>
       <feComposite in="d" in2="pits" operator="in"/>
     </filter>
   </defs>

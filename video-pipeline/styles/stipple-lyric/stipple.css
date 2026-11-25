@@ -2,14 +2,14 @@
    only of ink dots, one dark red word. Horizontal, 1920x1080.
    Tokens first: a mood board's style.json overrides these, nothing else. */
 :root {
-  --paper: #ded0ba;          /* what paper.jpg measures as; shown while the image loads */
+  --paper: #ded0ba;          /* the colour shown while paper.jpg loads; the ground itself is the image */
   --ink: #0b0100;
   --accent: #7a1713;
-  --faint: 0.30;             /* a word not yet spoken: this share of full ink */
-  --lyric-size: 136px;       /* 12.6% of a 1080 px frame */
-  --lyric-leading: 152px;    /* baseline to baseline */
-  --lyric-x: 240px;          /* left edge of every line: 12.5% of the width */
-  --lyric-y: 300px;          /* top of the two-row block */
+  --faint: 0.38;             /* a word not yet spoken: this share of full ink. Not below 0.35: it must still read on a phone */
+  --lyric-size: 160px;       /* 14.8% of a 1080 px frame; ascenders stand 10.8% of the height */
+  --lyric-leading: 178px;    /* baseline to baseline */
+  --lyric-x: 152px;          /* left edge of every line: 7.9% of the width */
+  --lyric-y: 274px;          /* top of the two-row block */
   --lyric-font: 'Cormorant Garamond', 'Bitstream Charter', Georgia, serif;
 }
 
@@ -37,7 +37,7 @@ html, body { margin: 0; background: #111; }
 
 /* ---- the drawing: dots only ------------------------------------------ */
 /* stipple.js fills a <g class="stipple"> with circles. Nothing else is drawn:
-   no outlines, no fills, no grey. Tone is how close the dots stand. */
+   no lines, no fills, no grey. An edge is a row of dots; tone is how close they stand. */
 .stipple circle { fill: var(--ink); stroke: none; }
 .stipple.accent circle { fill: var(--accent); }
 
@@ -66,3 +66,7 @@ html, body { margin: 0; background: #111; }
 /* a word that holds its place but is not on the sheet yet: the title word stands
    exactly where it will sit in the line because the rest of the line is "out" */
 .lyric .w.out { --on: 0; }
+/* two settings of one word in one place, so one can leave as the other arrives
+   (data-out on the first, data-in on the second): "home" reset as "Home." */
+.lyric .swap { display: inline-grid; justify-items: start; align-items: baseline; }
+.lyric .swap > .w { grid-area: 1 / 1; }

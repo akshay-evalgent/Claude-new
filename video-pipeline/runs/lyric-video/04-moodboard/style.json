@@ -1,0 +1,181 @@
+{
+  "kit": "video-pipeline/styles/stipple-lyric",
+  "kit_files": { "stylesheet": "stipple.css", "script": "stipple.js", "manual": "STYLE.md and the header of stipple.js", "example": "example.html" },
+  "script_version": "Drawn for script.json as revised after review round 1 and passed in round 2: nine beats (title, ask, again, until, light, fine, asking, love, home), the unlit window on the sheet from frame 0, the last frame's word reset as 'Home.'",
+  "format": { "width": 1920, "height": 1080, "fps": 30 },
+  "tokens": {
+    "--paper": "#ded0ba",
+    "--ink": "#0b0100",
+    "--accent": "#7a1713",
+    "--faint": "0.38",
+    "--lyric-size": "160px",
+    "--lyric-leading": "178px",
+    "--lyric-x": "152px",
+    "--lyric-y": "274px"
+  },
+  "token_sources": {
+    "--paper": "barsat-song palette.json ground #ded0ba. The ground on screen is the kit's paper.jpg, not this value: it was fitted to the reference ring by ring (centre #e0d1be against the reference's #e0d1bf, corners #d0b995 against #cfb899). Mean paper colour in our stills #dac9b0, in the reference #dbc9b0. palette.py names our commonest tone #d7c5aa, which is the reference's second cluster (#d7c6ab); see 'measured'. Do not regenerate the sheet.",
+    "--ink": "barsat-song palette.json ink #0b0100. Our stills: #0b0100 by palette.py; lit type averages #160c0a against the reference's small type at #150a07 to #1a0e06.",
+    "--accent": "barsat-song palette.json accent #7a1713, hue 3.0 deg. Our stills: #7a1713, hue 2.6 deg, single hue.",
+    "--faint": "No lead from the reference. The hook review asked for 35% to 40% and a legibility test: at 0.38 the all-faint first line reads in checks/phone_faint_line.png (the 1.4 s frame at 390 px wide) and a faint word (about #908273 on the sheet) cannot be mistaken for a lit one beside it in checks/phone_half_spoken.png. Do not go below 0.35.",
+    "--lyric-size": "No lead from the reference for lyric lines; its one-word title stands 14% of the frame height. The hook review asked for as near 14% as the row 'when you're home' allows with the window clear to its right. 160 px gives ascenders of 117 px (10.8% of the height) and an x-height of 64 px (5.9%); that row is 1,039 px wide and ends at 62% of the width, and 'Home.' ends at 65.5%, 80 px short of the nearest dot of the dark round the window. At 14% the row would be 1,345 px and reach the window's pane.",
+    "--lyric-x": "152 px, 7.9% of the width: in line with the road's first dot at 160 px. The reference's type starts at 12.5%; ours starts further left to buy the type size above.",
+    "--lyric-y": "Puts the two baselines at 415 px and 593 px (38.4% and 54.9% of the height), so the block is centred at about 43% of the height and level with the window. The reference's type block is centred at about 46%."
+  },
+  "accent_means": "home. The word 'home' is red every time it is on the sheet, including its last appearance as 'Home.', and nothing else is ever red: no dot, no rule, no other word. The lit window is bare paper, not red.",
+  "lyric": {
+    "setting": [
+      "one lyric line on the sheet at a time, in two rows, left edge at 152 px, in the same place every time",
+      "rows as the script's pictures give them, with their own capitals and punctuation: 'Text me' / 'when you're home' (no full stop), 'Until' / 'one word,', 'the light' / 'stays on.' (lower-case 'the'), 'I know' / 'you're fine.', 'Asking is how' / 'I love you.'",
+      "the line is a <p class=\"lyric\"> of two <span class=\"row\">, every word its own <span class=\"w\">; a full stop or comma is part of its word. Copy the markup from frames.html and checks.html",
+      "the lyric rows are the only words on the sheet. No caption strip: do not add #caption and do not pass timing.json's captions to Film.captions"
+    ],
+    "sync": [
+      "when each word lights is the script's carries_through.sync_rule; this list is only how to build it with the kit",
+      "a word lights with data-at=\"<its time minus the shot's start>\"; the change takes 0.1 s (the kit's default) and starts at that time",
+      "title: 'home' is \"w accent lit\" from frame 0. The four ink words carry data-in=\"0.5 0.62\", so the faint line arrives at 0.5 s over four frames and stays",
+      "ask and again: the four ink words are plain .w with data-at; 'home' is \"w accent lit\" with data-pulse at the moment it is spoken. 'again' is a new shot with the same markup, so the cut drops the ink words back to faint",
+      "asking: row one's words have data-at. Row two ('I love you.') is not on the sheet while row one is spoken: give the row data-in at the beat's vo_end, over 0.12 s, so it arrives faint as the pause begins (the retention review's should-fix; see 'differs_from_script')",
+      "love: a new shot with the same line. Row one's words are \"w lit\" from the first frame; row two's words have data-at. Nothing else changes at the cut",
+      "home: the four ink words have data-at, and data-out over 0.4 s starting when the voice ends. 'home' is \"w accent\" with data-at (faint red, then full red as it is spoken), inside a .swap with 'Home.'",
+      "the reset: about 0.6 s after the voice ends, 'home' leaves over 0.12 s (data-out) and 'Home.' arrives over the next 0.12 s (data-in) with data-pulse at the same moment, so the whole word is redrawn over about eight frames and swells once. Markup: <span class=\"swap\"><span class=\"w accent\" data-at=\"..\" data-out=\"a b\">home</span><span class=\"w accent lit\" data-in=\"b c\" data-pulse=\"b\">Home.</span></span>"
+    ]
+  },
+  "drawing": [
+    "dots only: no drawn line, no filled shape, no grey. An edge is a row of dots; tone is how close the dots stand",
+    "one drawing for the whole film, in one <svg class=\"drawing\" viewBox=\"0 0 1920 1080\"> placed directly inside #stage after the shots, so it outlives every cut. Four groups, built once with draw() from frames.html",
+    "frame: the unlit window, on the sheet from frame 0 and never changed. A closed square of 5 to 6 px dots set 9 px apart round a pane of 124 x 146 px, a cross-bar of smaller dots, a sill of one row of dots below. 115 dots. It reads as a window at phone size (checks/phone_frame0.png)",
+    "dark: what lights the window, from the word 'light'. Fine dots gather round the pane and a strip of sill, nearly solid for about 40 px and thinning to nothing by about 170 px. The pane and the sill are paper left alone; nothing is drawn inside them but the cross-bar. 5,395 dots",
+    "road: a band of fine dots 44 px wide. It starts at 160, 944 in the lower left, heads up and to the right toward the window, takes one bend between 520 and 700 px across, and from 985, 888 runs straight to the left end of the sill at 1472, 552. 1,448 dots",
+    "steps: 23 larger dots (8 to 11 px) along the road's centre line. They land ahead of the road; the first three are the title's 'first three dots of the road' and rise to the right, toward the window",
+    "the same calls give the same dots every time. Do not change a path, a size or a seed: every dot would move and the key frames would no longer be the film"
+  ],
+  "drawing_spec": {
+    "source": "frames.html: the constants ROAD, PANE, SILL, the helper box() and the function draw(root). Copy them unchanged and call draw(document.querySelector('#drawing')) once.",
+    "groups": "<g class=\"stipple road\">, <g class=\"stipple steps\">, <g class=\"stipple dark\">, <g class=\"stipple frame\">, in that order, each with its data-grow (none on frame)",
+    "road_path": "M160 944 C250 920 345 908 440 884 C520 864 590 864 628 902 C656 930 700 948 760 944 C850 938 925 929 985 888 L1472 552",
+    "pane": { "x": 1496, "y": 372, "w": 124, "h": 146 },
+    "sill": [1480, 529, 156, 9],
+    "dots": { "road": 1448, "steps": 23, "dark": 5395, "frame": 115 },
+    "road_points": { "0.17": [402, 893], "0.33": [625, 899], "0.47": [816, 939], "0.60": [994, 882], "0.80": [1233, 717], "0.92": [1376, 618], "1": [1472, 552] },
+    "step_orders": [0, 0.036, 0.074, 0.121, 0.159, 0.203, 0.252, 0.287, 0.329, 0.366, 0.412, 0.456, 0.499, 0.542, 0.593, 0.639, 0.686, 0.737, 0.775, 0.826, 0.874, 0.908, 0.952],
+    "step_orders_note": "A step appears when the steps group's share reaches its order. One step: any share above 0. Three steps: 0.09. To land one step on a word, raise the share past its order at that word's time."
+  },
+  "growth": {
+    "how": "data-grow on each group: pairs of 'time share' in seconds from the start of the film, built from TIMING (shot_start, shot_end, vo_start, vo_end) and the word times, never typed. Shares below are where each group stands at the END of the beat; it starts the beat where the last one ended. Between the pairs the dots land at an even rate.",
+    "by_beat": [
+      { "beat": "title",  "road": 0,    "steps": 0.09, "dark": 0,    "note": "the first step is there in frame 0; the second and third land at about 0.45 s and 0.9 s (shares 0.04 and 0.09)" },
+      { "beat": "ask",    "road": 0.17, "steps": 0.22, "dark": 0,    "note": "the road starts as the first word is spoken and keeps growing through the breath" },
+      { "beat": "again",  "road": 0.33, "steps": 0.35, "dark": 0,    "note": "through the bend" },
+      { "beat": "until",  "road": 0.47, "steps": 0.51, "dark": 0,    "note": "the road rests at 0.33 while the three words are spoken and one step lands on each (shares 0.37, 0.42, 0.46); in the breath the road fills to 0.47 and one more step lands ahead" },
+      { "beat": "light",  "road": 0.60, "steps": 0.65, "dark": 0.45, "note": "the dark starts from 0 at the moment 'light' is spoken and thickens to 0.45 by the end of the breath; the road grows through the breath too" },
+      { "beat": "fine",   "road": 0.80, "steps": 0.80, "dark": 0.45, "note": "the straight run, at an even rate across the whole beat, so the 2.1 s rest is never still; the window holds" },
+      { "beat": "asking", "road": 0.80, "steps": 0.80, "dark": 0.50, "note": "the road holds. The dark holds while row one is spoken and gains its few dots (0.45 to 0.50) in the 0.6 s pause" },
+      { "beat": "love",   "road": 0.92, "steps": 0.95, "dark": 0.80, "note": "the road holds at 0.80 until 0.6 s after 'you', then closes to 0.92 at an even rate through the breath and stops short. The dark thickens from 0.50 to 0.80 across the whole beat" },
+      { "beat": "home",   "road": 1,    "steps": 1,    "dark": 1,    "note": "the road reaches 1 at the moment 'home' is spoken: its last dot lands at the sill. The dark reaches 0.93 when the voice ends and its last dots land through the hold, until about 0.3 s before the final frame" }
+    ],
+    "stillness": "With this plan no stretch runs longer than about 0.6 s without a dot landing or a word changing (the longest: 0.9 s to 1.45 s on the title, between the third step and the first spoken word). The retention review's limit is about 1.2 s."
+  },
+  "composition": [
+    "one sheet, first frame to last: every shot has the same paper and the drawing sits above the shots, so a cut shows only the words changing",
+    "words on the left: every row starts at 7.9% of the width. The refrain's second row ends at 62%, 'Home.' at 65.5%, every other row by 49%",
+    "the window on the right, its pane centred at 81% across and 41% down, level with the words. Unlit it spans 77% to 85% of the width; with the dark round it, 70% to 93%",
+    "the road along the bottom, between 79% and 89% of the height, until it turns up toward the window at 51% across",
+    "the title's red word stands mid-sheet (46% to 62% across, 44% to 55% down) with the window small at the far right and one dot low at the left. The reference's card has a larger red word at the left (12.5% to 41%) with a second line under it and a drawing filling the right half: not that arrangement",
+    "nothing nearer an edge than 7% of the width or 11% of the height (ink runs from 8.1% to 93.2% across, 20.2% to 88.9% down)",
+    "most of the sheet is bare: ink covers 0.6% of the frame at 0.0 s, 1.8% with the faint line, 4.0% at the fullest ('love'), 3.1% on the last frame"
+  ],
+  "type": {
+    "lyric": "Cormorant Garamond italic, weight 700, 160 px on a 1080 px frame, rows 178 px apart, ink #0b0100, left-aligned at 152 px. Capitals and punctuation exactly as the script's pictures write them. Curly apostrophes.",
+    "faint": "a word not yet spoken is the same ink at 38%",
+    "accent": "'home' in #7a1713, same face, size and weight as every other word. As 'Home.' on the last frame it starts at the same left edge",
+    "edge": "the kit's ink-press filter on the whole line: a slight wobble on the edge and pin-holes of paper in the ink. It is on the .lyric class already; add nothing",
+    "other_text": "none. No title lettering, no credit, no label, no caption, no small second line"
+  },
+  "motion": [
+    "the sheet does not drift, zoom or shake: the words must sit still to be read",
+    "words change state in place (faint to full ink over 0.1 s); they never slide, scale in or fly",
+    "two movements of a word, both on 'home': it swells 6% and settles over 0.42 s when it is spoken in 'ask' and 'again', and once more as it is reset to 'Home.'",
+    "dots land and stay. A dot never moves, fades or leaves once it is down",
+    "something lands in every breath: see 'growth'",
+    "the title's word and window are there in frame 0 and do not move"
+  ],
+  "transitions": {
+    "default": "cut, at the start of each beat's shot. On one continuous sheet the cut is invisible: the old line is gone and the new one is there, faint, in one frame",
+    "asking_to_love": "a cut with nothing replaced: both shots hold the same line in the same place",
+    "last_beat": "no cut out: the four ink words leave over 0.4 s, the red word is reset, and the frame holds on the road, the window and 'Home.'",
+    "never": "dissolve, iris, wipe or any change of ground. The reference has no transitions at all"
+  },
+  "never": [
+    "a second colour, or red on anything but the word 'home'",
+    "a second face, weight or size of type",
+    "punctuation or capitals the script's picture does not have, or dropping ones it has",
+    "a drawn line or a filled shape in the drawing",
+    "gradients, drop shadows, glows: the window is lit because the paper is bare, not because anything shines",
+    "camera drift or zoom on the sheet",
+    "a word that moves across the sheet",
+    "more than one lyric line on the sheet at once",
+    "captions, labels or credits",
+    "anything from the reference's card: eyes, tears, falling drops, rain marks, its lettering, its word, or its arrangement of a large red word at the left with a drawing filling the right"
+  ],
+  "key_frames": [
+    { "beat": "title",  "at": "0.0 s",  "shot_id": "title-0", "still": "frames/still_1.png", "answers_to": "ref/still_0.5.jpg",   "shows": "the first frame: the red word where it will sit in the line, the unlit window, the road's first dot" },
+    { "beat": "title",  "at": "1.4 s",  "shot_id": "title",   "still": "frames/still_3.png", "answers_to": "ref/still_92.jpg",    "shows": "the whole first line faint, nothing lit yet, before the voice starts; three road dots" },
+    { "beat": "ask",    "at": "mid-line", "shot_id": "ask",   "still": "frames/still_5.png", "answers_to": "ref/still_92.jpg",    "shows": "a line half spoken: 'Text me' lit, 'when you're' faint, 'home' red; road 0.08, steps 0.18" },
+    { "beat": "love",   "at": "one word from the end", "shot_id": "love", "still": "frames/still_7.png", "answers_to": "ref/still_92.jpg", "shows": "the payoff: 'Asking is how' and 'I love' lit, 'you.' faint; road 0.8, the window lit with the dark at 0.62" },
+    { "beat": "home",   "at": "last frame", "shot_id": "home", "still": "frames/still_9.png", "answers_to": "ref/still_184.5.jpg", "shows": "the finished road, the lit window, and the red word reset as 'Home.'" }
+  ],
+  "key_frames_note": "The reference is one still card for its whole run, so every key frame answers to the same picture; the three reference stills are that card at 0.5, 92 and 184.5 s. In frames.html each key frame carries its own copy of the drawing at a fixed share (data-share). In the film there is one drawing, above the shots, grown with data-grow.",
+  "supplementary_frames": [
+    { "beat": "until",  "still": "checks/still_1.png", "shows": "'Until' / 'one word,' with its comma, two words lit; no red; window unlit; road 0.33, steps 0.42" },
+    { "beat": "light",  "still": "checks/still_3.png", "shows": "'the light' / 'stays on.' with lower-case 'the'; the dark at 0.3, the window beginning to read as lit; road 0.5" },
+    { "beat": "asking", "still": "checks/still_5.png", "shows": "the pause after 'how': row one lit, row two just arrived and faint; the dark at 0.5; road 0.8" },
+    { "check": "phone size", "stills": ["checks/phone_frame0.png", "checks/phone_faint_line.png", "checks/phone_half_spoken.png", "checks/phone_payoff.png", "checks/phone_last.png"], "shows": "the five key frames at 390 px wide" },
+    { "check": "window", "still": "checks/window_states.png", "shows": "the window at full size: unlit, lighting (dark 0.3), lit with the road arrived" }
+  ],
+  "beats_without_a_key_frame": {
+    "again": "The 'ask' key frame again: the same markup in a new shot, so the four ink words start faint and light a second time. Road from 0.17 to 0.33.",
+    "until": "checks/still_1.png. The 'ask' layout with the line swapped for 'Until' / 'one word,'; no red on the sheet; the window still unlit.",
+    "light": "checks/still_3.png. The line 'the light' / 'stays on.'; the dark grows from nothing on the word 'light'.",
+    "fine": "The 'light' frame with the line swapped for 'I know' / 'you're fine.' and the dark held at 0.45; the road runs straight from 0.6 to 0.8, which is where the 'love' key frame has it.",
+    "asking": "checks/still_5.png for the pause. Before it, the same frame without row two, row one lighting word by word."
+  },
+  "measured": {
+    "ground": { "reference": "#ded0ba (commonest tone), mean of paper #dbc9b0", "ours": "#d7c5aa (commonest tone), mean of paper #dac9b0", "note": "palette.py splits our paper into four tones and the reference's into three, so the 'ground' field names a different slice of the same sheet. Compare the means, or ring by ring from centre to corner: no ring is more than 4 levels from the reference's." },
+    "ink": { "reference": "#0b0100", "ours": "#0b0100" },
+    "accent": { "reference": "#7a1713, hue 3.0 deg, 1.2% of the frame", "ours": "#7a1713, hue 2.6 deg, 0.38% of the frame as 'home', 0.44% as 'Home.'" },
+    "dark_share": { "reference": 0.0368, "ours_by_frame": [0.0047, 0.0048, 0.0098, 0.0275, 0.0207], "ours_mean": 0.0134 },
+    "all_ink_share": { "reference": 0.063, "ours_by_frame": [0.0057, 0.018, 0.0192, 0.0403, 0.0314] },
+    "luminance_saturation": { "reference": [0.758, 0.214], "ours": [0.781, 0.202] },
+    "colourfulness": { "reference": "muted", "ours": "muted" },
+    "main_type_height": { "reference": "14% of the frame height (one word)", "ours": "ascenders 10.8%, x-height 5.9%" }
+  },
+  "review_fixes": {
+    "hook: remake the opening frames from the revised script": "done: key frames 1 and 2 are the title at 0.0 s and 1.4 s, with the unlit window",
+    "hook: frame 0 must read as a red word and a window at phone size": "checks/phone_frame0.png",
+    "hook: the 1.4 s frame, all faint, must be readable; faint ink 35% to 40%": "--faint 0.38; checks/phone_faint_line.png",
+    "hook: 'home' as near 14% of the frame height as the row allows": "ascenders 10.8%, up from 9.2% on the first board; see token_sources --lyric-size for why not more",
+    "retention: the unlit window as a closed square of dots with a cross-bar, at the height the first road dots point to": "done; the road's first stretch now rises to the right from its first dot",
+    "retention: 'I love you.' not readable before it is spoken": "row two arrives faint when 'Asking is how' ends; see lyric.sync",
+    "share, retention: make the reset to 'Home.' a visible event": "the kit's .swap with one pulse; the word is redrawn over about eight frames",
+    "retention: no motionless stretch over about 1.2 s": "growth.by_beat; longest planned stretch with nothing changing about 0.6 s"
+  },
+  "differs_from_script": [
+    "Row two of line 6. The script has 'I love you.' on the sheet in faint ink from the start of beat 'asking'. Here it arrives, faint, when 'Asking is how' ends, and waits through the 0.6 s pause: the retention review's should-fix. If the script's version is wanted, drop the data-in from that row.",
+    "The title's 'home' stands mid-sheet (46% to 62% of the width), not in the left half: it is the last word of a 16-character row that starts at the left margin. The refrain's second row ends at 62% and 'Home.' at 65.5%; every other row ends by 49%.",
+    "The unlit window is a closed outline of 115 dots with a cross-bar and a sill, not 'a few sparse dots': at phone size a few sparse dots read as specks (hook and retention reviews).",
+    "The steps (single larger dots) run a little ahead of the road in every beat, not only in 'until'."
+  ],
+  "not_reproduced": [
+    "The reference's ink mass. Its card is 6.3% ink and 3.7% dark from its first frame; ours is 0.6% ink at 0.0 s and 4.0% ink, 2.8% dark at the fullest. The script starts on a nearly bare sheet and asks for a small window.",
+    "The reference's type size. Its one-word title is 14% of the frame height and 28% of its width; our rows hold up to 16 characters, so ascenders are 10.8% of the height and 'home' is 16% of the width. Red is 0.38% of the frame against 1.2%.",
+    "A brushed face. The reference's title is hand-brushed Devanagari; ours is a bold italic serif with a roughened edge. The kit has no brush-lettered Latin face and nothing was downloaded.",
+    "The scan itself. The reference's paper has sharper creases and short dark flecks; ours has soft creases and no flecks (they read as rain on the reference, which is its subject, not ours).",
+    "Any check of the lyric setting against the reference: it shows no lyric. Faint-then-lit lines, their size and their place can only be held to the brief."
+  ],
+  "kit_notes": [
+    "film.js's data-fade, data-fadeout and data-rise must not be put on a .lyric or a .w: they overwrite the opacity the faint and lit states use. Use data-in and data-out.",
+    "Stipple.shot(b.shot_start, '#drawing') is the update function for a beat's shot: it runs the shot's words on the shot's clock and the drawing on the film's.",
+    "The filter is on the lyric block only; the dots have none. A full-size render runs at about ten frames a second on four workers."
+  ]
+}

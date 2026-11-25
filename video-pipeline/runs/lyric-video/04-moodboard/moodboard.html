@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mood board: Home</title>
+<style>
+  @font-face {
+    font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 300 700;
+    src: url('../../../styles/stipple-lyric/fonts/CormorantGaramond-Italic.woff2') format('woff2');
+  }
+  body { margin: 0; padding: 32px 16px 64px; background: #f3eee4; color: #1c120e;
+         font: 16px/1.5 Georgia, 'Times New Roman', serif; }
+  main { max-width: 1120px; margin: 0 auto; }
+  h1 { font-size: 30px; margin: 0 0 4px; font-weight: normal; }
+  h2 { font-size: 21px; margin: 44px 0 12px; font-weight: normal; border-bottom: 1px solid #cdbfa8; padding-bottom: 6px; }
+  h3 { font-size: 16px; margin: 22px 0 6px; }
+  p { margin: 0 0 10px; }
+  p.lead, figcaption, .swatch span, th { color: #5d5147; }
+  .changes { background: #ebe3d3; border: 1px solid #cdbfa8; padding: 14px 18px; margin: 18px 0 0; }
+  .changes h3 { margin-top: 0; }
+  .swatches { display: flex; flex-wrap: wrap; gap: 16px; }
+  .swatch { width: 170px; }
+  .swatch i { display: block; height: 84px; border: 1px solid #cdbfa8; }
+  .swatch b { display: block; margin-top: 6px; font: 15px/1.3 ui-monospace, Menlo, Consolas, monospace; }
+  .swatch span { font-size: 14px; }
+  .pair { display: flex; flex-wrap: wrap; gap: 16px; margin: 10px 0 6px; }
+  .pair figure { margin: 0; flex: 1 1 320px; min-width: 0; }
+  .pair img, .wide img { display: block; width: 100%; height: auto; border: 1px solid #cdbfa8; }
+  .pair img { aspect-ratio: 16 / 9; }
+  .wide { margin: 10px 0 6px; }
+  .phones { display: flex; flex-wrap: wrap; gap: 14px; margin: 10px 0 6px; }
+  .phones figure { margin: 0; width: 390px; max-width: 100%; }
+  .phones img { display: block; width: 390px; max-width: 100%; height: auto; border: 1px solid #cdbfa8; }
+  figure { margin: 0; }
+  figcaption { font-size: 14px; margin-top: 6px; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 6px 12px 6px 0; border-bottom: 1px solid #ddd2bf; vertical-align: top; }
+  th { font-weight: normal; }
+  .scroll { overflow-x: auto; }
+  .specimen { background: #ded0ba url('../../../styles/stipple-lyric/paper.jpg') center / cover; border: 1px solid #cdbfa8;
+              padding: 30px 36px 40px; overflow-x: auto; }
+  .lyric { margin: 0; white-space: nowrap; font: italic 700 160px/178px 'Cormorant Garamond', Georgia, serif;
+           color: #0b0100; filter: url(#ink-press); font-synthesis: none; }
+  .lyric .row { display: block; height: 178px; }
+  .lyric .w { display: inline-block; opacity: 0.38; }
+  .lyric .w.lit { opacity: 1; }
+  .lyric .w.accent { color: #7a1713; }
+  ul { margin: 0; padding-left: 20px; }
+  li { margin: 3px 0; }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 8px 36px; }
+  code { font: 14px ui-monospace, Menlo, Consolas, monospace; }
+</style>
+</head>
+<body>
+<!-- the kit's type filter, so the specimen shows the edge the film will have -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="ink-press" x="-4%" y="-6%" width="108%" height="112%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.042" numOctaves="2" seed="6" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.62" numOctaves="2" seed="14" result="g"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  6 0 0 0 -1.12" result="pits"/>
+      <feComposite in="d" in2="pits" operator="in"/>
+    </filter>
+  </defs>
+</svg>
+<main>
+  <h1>Home</h1>
+  <p class="lead">Mood board for the lyric video. Horizontal, 1920x1080, 30 frames a second. Kit: <code>video-pipeline/styles/stipple-lyric</code>, new for this run. Five key frames.</p>
+  <p class="lead">The reference, <code>barsat-song</code>, is one still title card held for its whole run: cream paper, a stippled ink drawing, one word in dark red. It gives the ground, the ink, the red and the way of drawing. It shows no lyric on screen, so how the lines are set and lit comes from the brief and the script, and has nothing in the reference to be held to.</p>
+
+  <div class="changes">
+    <h3>What changed since the first board</h3>
+    <p class="lead">The first board was drawn for the script before its review. The script was revised while it was being drawn (nine beats, a window on the sheet from the first frame, a last frame that reads &ldquo;Home.&rdquo;), and the script reviews left notes for this stage. This board is redrawn for the revised script.</p>
+    <ul>
+      <li><b>New key frames.</b> The title at 0.0 s and again at 1.4 s with the whole first line faint; the first line half spoken; the payoff one word from its end; the last frame with &ldquo;Home.&rdquo;.</li>
+      <li><b>The window is on the sheet from frame 0</b>, unlit: a closed square of dots with a cross-bar and a sill. It lights when the dark gathers round it.</li>
+      <li><b>Larger type.</b> 160 px, up from 136: ascenders are 10.8% of the frame height, up from 9.2%. The left edge moved from 12.5% to 7.9% of the width to make room.</li>
+      <li><b>Darker faint ink.</b> 38% of full ink, up from 30%, tested at phone size.</li>
+      <li><b>Punctuation as the lyric has it.</b> The first board dropped full stops; the revised lyric needs its comma, its stops and its lower-case &ldquo;the&rdquo;.</li>
+      <li><b>The road&rsquo;s first stretch rises</b> toward the window from its first dot.</li>
+      <li><b>The kit gained</b> a way to reset a word in place (&ldquo;home&rdquo; to &ldquo;Home.&rdquo;) and to bring one row of a line in later than the other.</li>
+    </ul>
+  </div>
+
+  <h2>Palette</h2>
+  <div class="swatches">
+    <div class="swatch"><i style="background:#e0d1be"></i><b>#e0d1be</b><span>Paper at the centre of the sheet.</span></div>
+    <div class="swatch"><i style="background:#dac9b0"></i><b>#dac9b0</b><span>Paper, mean of the whole sheet. The ground: 96% to 99% of every frame.</span></div>
+    <div class="swatch"><i style="background:#d0b995"></i><b>#d0b995</b><span>Paper in the corners. The sheet darkens and warms toward its edges.</span></div>
+    <div class="swatch"><i style="background:#0b0100"></i><b>#0b0100</b><span>Ink. Every spoken word and every dot of the drawing.</span></div>
+    <div class="swatch"><i style="background:#908273"></i><b>ink at 38%</b><span>A word not yet spoken. Reads as about #908273 on the sheet.</span></div>
+    <div class="swatch"><i style="background:#7a1713"></i><b>#7a1713</b><span>Accent. The word &ldquo;home&rdquo; and nothing else, ever.</span></div>
+  </div>
+
+  <h3>Measured: reference against our key frames</h3>
+  <div class="scroll">
+  <table>
+    <tr><th></th><th>barsat-song</th><th>our key frames</th></tr>
+    <tr><td>Paper, mean</td><td>#dbc9b0</td><td>#dac9b0</td></tr>
+    <tr><td>Paper, centre to corner</td><td>#e0d1bf to #cfb899</td><td>#e0d1be to #d0b995</td></tr>
+    <tr><td>Ground as <code>palette.py</code> names it</td><td>#ded0ba (44%), then #d7c6ab (34%)</td><td>#d7c5aa (30%), then #dbcbb4 (29%), #dfd0bc (26%)</td></tr>
+    <tr><td>Ink (darkest 0.5%)</td><td>#0b0100</td><td>#0b0100</td></tr>
+    <tr><td>Accent, hue</td><td>#7a1713, 3.0&deg;</td><td>#7a1713, 2.6&deg;</td></tr>
+    <tr><td>Brightness, saturation</td><td>0.758, 0.214 (&ldquo;muted&rdquo;)</td><td>0.781, 0.202 (&ldquo;muted&rdquo;)</td></tr>
+    <tr><td>Dark ink, share of frame</td><td>3.7%</td><td>0.5%, 0.5%, 1.0%, 2.8%, 2.1% (mean 1.3%)</td></tr>
+    <tr><td>All ink, share of frame</td><td>6.3%</td><td>0.6%, 1.8%, 1.9%, 4.0%, 3.1%</td></tr>
+    <tr><td>Red, share of frame</td><td>1.2%</td><td>0.38% as &ldquo;home&rdquo;, 0.44% as &ldquo;Home.&rdquo;</td></tr>
+    <tr><td>Main type, height</td><td>14% of the frame (one word)</td><td>ascenders 10.8%, x-height 5.9% (rows of up to 16 characters)</td></tr>
+    <tr><td>Type starts at</td><td>12.5% of the width</td><td>7.9% of the width</td></tr>
+    <tr><td>Margins: left, right, top, bottom</td><td>12.5%, 8%, 17%, 12%</td><td>8%, 7%, 20%, 11%</td></tr>
+  </table>
+  </div>
+  <p class="lead" style="margin-top:10px">The ground row looks further apart than it is: the tool splits our paper into four tones and the reference&rsquo;s into three, so its &ldquo;ground&rdquo; names a different slice of the same sheet. Ring by ring from centre to corner, no part of our paper is more than 4 levels from the reference&rsquo;s. Our frames carry less ink than the reference&rsquo;s card at every point; see &ldquo;Not reproduced&rdquo;.</p>
+
+  <h2>Key frames</h2>
+  <p class="lead">Left: the reference frame it answers to. Right: ours, at the same size. The reference is the same picture at every moment, so the three reference stills below (0.5 s, 92 s, 184.5 s) are one card.</p>
+
+  <h3>1. Title, 0.0 s: the first frame</h3>
+  <div class="pair">
+    <figure><img src="ref/still_0.5.jpg" alt="Reference: a red Devanagari word at the left, two stippled crying eyes at the right, on cream paper"><figcaption>barsat-song, 0.5 s. One word in the only colour on the page and one drawn thing, both there in the first frame.</figcaption></figure>
+    <figure><img src="frames/still_1.png" alt="Ours: the red word home in the middle of a cream sheet, a small dotted window at the far right, one ink dot low at the left"><figcaption>Ours. The red word where it will sit at the end of the first line; the window, unlit, as a square of dots; the road&rsquo;s first dot. Not the reference&rsquo;s arrangement: the word is mid-sheet and smaller, there is no second line under it, and the drawing is small and far right.</figcaption></figure>
+  </div>
+
+  <h3>2. Title, 1.4 s: the whole line, faint</h3>
+  <div class="pair">
+    <figure><img src="ref/still_92.jpg" alt="Reference: the same title card"><figcaption>barsat-song, 92 s. Brown-black ink on cream, most of the sheet bare.</figcaption></figure>
+    <figure><img src="frames/still_3.png" alt="Ours: Text me, when you're in faint ink, home in red; three dots at lower left rising to the right; the dotted window at the right"><figcaption>Ours. Just before the voice starts: the first line can be read ahead in faint ink. Three road dots, rising toward the window.</figcaption></figure>
+  </div>
+
+  <h3>3. Ask: a line half spoken</h3>
+  <div class="pair">
+    <figure><img src="ref/still_92.jpg" alt="Reference: the same title card"><figcaption>barsat-song, 92 s. Type on the left, the one red word, a drawing on the right.</figcaption></figure>
+    <figure><img src="frames/still_5.png" alt="Ours: Text me in full ink, when you're in faint ink, home in red; a short stretch of stippled road at lower left"><figcaption>Ours. &ldquo;Text me&rdquo; has been said and is full ink; &ldquo;when you&rsquo;re&rdquo; is still to come and is faint; &ldquo;home&rdquo; is red throughout. The road has started.</figcaption></figure>
+  </div>
+
+  <h3>4. Love: the payoff</h3>
+  <div class="pair">
+    <figure><img src="ref/still_92.jpg" alt="Reference: the same title card"><figcaption>barsat-song, 92 s. Stipple: dense dots for the darks, thinning to scattered points, no drawn line and no grey.</figcaption></figure>
+    <figure><img src="frames/still_7.png" alt="Ours: Asking is how, I love in full ink, you. in faint ink; the road stops short of a window with dark gathered round it"><figcaption>Ours. One word from the end of the line. The road waits one stretch short. The window has been lit since &ldquo;light&rdquo;: the pane is bare paper and the dark is still gathering.</figcaption></figure>
+  </div>
+
+  <h3>5. Home: the last frame</h3>
+  <div class="pair">
+    <figure><img src="ref/still_184.5.jpg" alt="Reference: the same title card, its last frame"><figcaption>barsat-song, 184.5 s. Its last frame is its first frame, unchanged.</figcaption></figure>
+    <figure><img src="frames/still_9.png" alt="Ours: the finished stippled road running from the lower left up to the sill of a lit window; the red word Home with a capital and a full stop"><figcaption>Ours. The first frame again, finished and changed: the road has reached the sill, the window is lit, and the red word has been reset as &ldquo;Home.&rdquo;</figcaption></figure>
+  </div>
+
+  <h2>At phone size</h2>
+  <p class="lead">The five key frames at 390 px wide, which is how a horizontal video sits on an upright phone. Shown at exactly that size on a wide screen. The questions from the script reviews: does frame 0 read as a red word and a window; can the faint line be read; can a faint word be told from a lit one.</p>
+  <div class="phones">
+    <figure><img src="checks/phone_frame0.png" width="390" height="219" alt="Key frame 1 at 390 px wide"><figcaption>0.0 s. A red word and a window. The road&rsquo;s first dot is a speck at this size.</figcaption></figure>
+    <figure><img src="checks/phone_faint_line.png" width="390" height="219" alt="Key frame 2 at 390 px wide"><figcaption>1.4 s. The faint line reads.</figcaption></figure>
+    <figure><img src="checks/phone_half_spoken.png" width="390" height="219" alt="Key frame 3 at 390 px wide"><figcaption>Lit beside faint.</figcaption></figure>
+    <figure><img src="checks/phone_payoff.png" width="390" height="219" alt="Key frame 4 at 390 px wide"><figcaption>The payoff.</figcaption></figure>
+    <figure><img src="checks/phone_last.png" width="390" height="219" alt="Key frame 5 at 390 px wide"><figcaption>The last frame.</figcaption></figure>
+  </div>
+
+  <h2>The window</h2>
+  <div class="wide">
+    <figure><img src="checks/window_states.png" alt="Three crops at full size: a dotted square with a cross-bar and sill; the same with dots beginning to gather round it; the same dark all round with the road arriving at the sill"><figcaption>Full size. Left: unlit, from frame 0, 115 dots. Middle: lighting, as the dark begins to gather on the word &ldquo;light&rdquo; (30% of its dots). Right: lit, with the road at the sill. The pane and the sill are never drawn: they are the paper left alone.</figcaption></figure>
+  </div>
+
+  <h2>Beats without a key frame</h2>
+  <p class="lead">Three more finished frames, drawn with the same code (<code>checks.html</code>), for the lines whose punctuation matters and for the window part lit.</p>
+  <div class="pair">
+    <figure><img src="checks/still_1.png" alt="Until, one in full ink; word, with a comma in faint ink; window unlit"><figcaption>Until: an unfinished clause, its comma showing. No red on the sheet.</figcaption></figure>
+    <figure><img src="checks/still_3.png" alt="the light, stays in full ink; on. in faint ink; dots gathering round the window"><figcaption>Light: lower-case &ldquo;the&rdquo;, because it finishes the sentence. The window lights.</figcaption></figure>
+    <figure><img src="checks/still_5.png" alt="Asking is how in full ink; I love you. in faint ink"><figcaption>Asking, in the pause after &ldquo;how&rdquo;: row two has just arrived, faint.</figcaption></figure>
+  </div>
+
+  <h2>Type</h2>
+  <div class="specimen">
+    <p class="lyric">
+      <span class="row"><span class="w lit">Text</span> <span class="w lit">me</span></span>
+      <span class="row"><span class="w">when</span> <span class="w">you&rsquo;re</span> <span class="w accent lit">home</span></span>
+    </p>
+  </div>
+  <ul style="margin-top:12px">
+    <li>Cormorant Garamond italic, weight 700, shown here at the film&rsquo;s size: 160 px on a 1080 px frame, rows 178 px apart.</li>
+    <li>Three states and no others: faint (ink at 38%) before a word is spoken, full ink once it has been, red for &ldquo;home&rdquo;.</li>
+    <li>Two rows, left edge at 7.9% of the width, baselines at 38.4% and 54.9% of the height. The same place for every line.</li>
+    <li>Capitals and punctuation exactly as the lyric has them: no stop on the refrain, a comma after &ldquo;one word,&rdquo;, a lower-case &ldquo;the light&rdquo;, and &ldquo;Home.&rdquo; on the last frame. Curly apostrophes.</li>
+    <li>The edge is slightly rough with pin-holes of paper in the ink, as if printed on the sheet.</li>
+    <li>No other text anywhere: no caption, no credit, no label, no small second line.</li>
+  </ul>
+
+  <h2>Rules</h2>
+  <div class="cols">
+    <div>
+      <h3>The accent</h3>
+      <ul>
+        <li>Red means home. It is the word &ldquo;home&rdquo;, including &ldquo;Home.&rdquo;, and nothing else.</li>
+        <li>The lit window is bare paper, not red.</li>
+      </ul>
+      <h3>The lyric line</h3>
+      <ul>
+        <li>One line on the sheet at a time, whole and faint from the first frame of its slot.</li>
+        <li>Each word turns to full ink as it is spoken, over a tenth of a second.</li>
+        <li>A lit line stays through the breath, then the next line replaces it in one frame.</li>
+        <li>The first line arrives early, faint, at 0.5 s, in front of the red word.</li>
+        <li>&ldquo;home&rdquo; is red from the first frame through the second line and swells once each time it is spoken.</li>
+        <li>&ldquo;I love you.&rdquo; arrives, faint, when &ldquo;Asking is how&rdquo; ends, and is lit after the pause.</li>
+        <li>In the last line &ldquo;home&rdquo; starts faint red and turns full red as it is spoken. The ink words leave over 0.4 s, then the word is redrawn in place as &ldquo;Home.&rdquo; with one swell.</li>
+      </ul>
+      <h3>Drawing</h3>
+      <ul>
+        <li>Dots only. No drawn line, no filled shape, no grey: an edge is a row of dots and tone is how close they stand.</li>
+        <li>One drawing for the whole film: the window, the dark that lights it, the road, and the larger steps that land ahead of the road.</li>
+        <li>The window&rsquo;s pane and sill are paper left alone.</li>
+        <li>The road rises toward the window, bends once, then runs straight to the sill.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Composition</h3>
+      <ul>
+        <li>One sheet from the first frame to the last. A new line is new words, never a new scene.</li>
+        <li>Words on the left, window on the right at 81% across and 41% down, road along the bottom.</li>
+        <li>Nothing nearer an edge than 7% of the width or 11% of the height.</li>
+        <li>Most of the sheet is bare: ink is 0.6% of the frame at the start and 4% at the fullest.</li>
+      </ul>
+      <h3>Motion</h3>
+      <ul>
+        <li>The sheet does not drift or zoom. Words change state in place and never travel.</li>
+        <li>Dots land and stay. Something lands in every breath: no stretch over about 0.6 s with nothing changing.</li>
+        <li>The last dots of the dark land through the final hold.</li>
+      </ul>
+      <h3>Transitions</h3>
+      <ul>
+        <li>Cut at the start of each line&rsquo;s slot. On one continuous sheet only the words change.</li>
+        <li>No dissolve, iris or wipe. The reference has none.</li>
+      </ul>
+      <h3>Never</h3>
+      <ul>
+        <li>A second colour, or red on anything but &ldquo;home&rdquo;.</li>
+        <li>A second face, weight or size of type.</li>
+        <li>Punctuation or capitals the lyric does not have.</li>
+        <li>A drawn line or a filled shape in the drawing.</li>
+        <li>Gradients, drop shadows, glows.</li>
+        <li>More than one lyric line on the sheet at once. Captions, labels, credits.</li>
+        <li>Anything from the reference&rsquo;s card: eyes, tears, falling drops, rain marks, its lettering or its arrangement.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>How the drawing grows</h2>
+  <p class="lead">Share of each part on the sheet at the end of each beat. The window&rsquo;s outline is there throughout; &ldquo;dark&rdquo; is what lights it.</p>
+  <div class="scroll">
+  <table>
+    <tr><th>Beat</th><th>Line</th><th>Road</th><th>Dark</th><th>Built from</th></tr>
+    <tr><td>title</td><td>home, then the faint first line</td><td>three steps</td><td>0</td><td>key frames 1 and 2</td></tr>
+    <tr><td>ask</td><td>Text me / when you&rsquo;re home</td><td>0.17</td><td>0</td><td>key frame 3 (taken at 0.08)</td></tr>
+    <tr><td>again</td><td>Text me / when you&rsquo;re home</td><td>0.33</td><td>0</td><td>key frame 3, lit a second time</td></tr>
+    <tr><td>until</td><td>Until / one word,</td><td>0.47</td><td>0</td><td>the extra frame above; one step lands on each word</td></tr>
+    <tr><td>light</td><td>the light / stays on.</td><td>0.60</td><td>0.45</td><td>the extra frame above (dark 0.3)</td></tr>
+    <tr><td>fine</td><td>I know / you&rsquo;re fine.</td><td>0.80</td><td>0.45</td><td>the light frame with the line swapped; the road as in key frame 4</td></tr>
+    <tr><td>asking</td><td>Asking is how / (I love you.)</td><td>0.80</td><td>0.50</td><td>the extra frame above</td></tr>
+    <tr><td>love</td><td>Asking is how / I love you.</td><td>0.92</td><td>0.80</td><td>key frame 4 (road 0.8, dark 0.62)</td></tr>
+    <tr><td>home</td><td>Text me / when you&rsquo;re home, then Home.</td><td>1</td><td>1</td><td>key frame 3 for the line, key frame 5 for the end</td></tr>
+  </table>
+  </div>
+
+  <h2>Where this departs from the script</h2>
+  <ul>
+    <li><b>Row two of the payoff line.</b> The script has &ldquo;I love you.&rdquo; on the sheet in faint ink from the start of &ldquo;Asking is how&rdquo;. Here it arrives, faint, when those three words end, and waits through the pause. That is the retention review&rsquo;s note. Either is one attribute to the producer.</li>
+    <li><b>The title&rsquo;s &ldquo;home&rdquo; is mid-sheet</b> (46% to 62% of the width), not in the left half. It is the last word of a 16-character row that starts at the left margin.</li>
+    <li><b>The unlit window is a closed outline of 115 dots</b>, not &ldquo;a few sparse dots&rdquo;, which read as specks at phone size.</li>
+    <li>Single larger dots run a little ahead of the road in every beat, not only in &ldquo;Until one word,&rdquo;.</li>
+  </ul>
+
+  <h2>Not reproduced</h2>
+  <ul>
+    <li><b>The reference&rsquo;s weight of ink.</b> Its card is 6.3% ink from its first frame; ours is 0.6% at 0.0 s and 4.0% at the fullest. The script opens on a nearly bare sheet and asks for a small window.</li>
+    <li><b>Its type size.</b> Its one-word title is 14% of the frame height. Our rows hold up to 16 characters, so ascenders are 10.8% of the height; at 14% the refrain&rsquo;s second row would reach the window. Red covers 0.38% of the frame against 1.2%.</li>
+    <li><b>A brushed face.</b> The reference&rsquo;s title is hand-brushed. Ours is a bold italic serif with a roughened edge: the kit has no brush-lettered face.</li>
+    <li><b>The scan.</b> The reference&rsquo;s paper has sharper creases and short dark flecks. Ours has soft creases and no flecks, which read as rain on the reference.</li>
+    <li><b>Any check of the lyric setting against the reference.</b> It shows no lyric, so the faint-then-lit lines can only be judged against the brief.</li>
+  </ul>
+</main>
+</body>
+</html>
