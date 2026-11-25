@@ -1,0 +1,43 @@
+{
+ "inputs": [
+  "video-pipeline/runs/lyric-video/01-sources/refs/barsat-song/video.mp4"
+ ],
+ "colours": [
+  {
+   "hex": "#ded0ba",
+   "share": 0.441
+  },
+  {
+   "hex": "#d7c6ab",
+   "share": 0.3365
+  },
+  {
+   "hex": "#ccb696",
+   "share": 0.1436
+  },
+  {
+   "hex": "#442016",
+   "share": 0.042
+  },
+  {
+   "hex": "#7f7160",
+   "share": 0.0226
+  },
+  {
+   "hex": "#f2e1ce",
+   "share": 0.0143
+  }
+ ],
+ "ground": "#ded0ba",
+ "ink": "#0b0100",
+ "accent": {
+  "hex": "#7a1713",
+  "share": 0.01188,
+  "hue_deg": 3.0,
+  "single_hue": true
+ },
+ "luminance_mean": 0.758,
+ "saturation_mean": 0.214,
+ "dark_share": 0.0368,
+ "colourfulness": "muted"
+}
