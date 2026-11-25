@@ -1,0 +1,73 @@
+{
+  "check": "share",
+  "stage": "script",
+  "round": 1,
+  "score": 7,
+  "pass": true,
+  "summary": "Passes: the lyric hands a viewer a real sentence and an obvious person to send it to, but the payoff line and the final frame each get about as much time as any other line; give both more room before producing.",
+  "findings": [
+    {
+      "criterion": "the sentence",
+      "result": "met",
+      "ours": "script.json share_line: \"this is what I mean every time I tell you to text me\". I can write three messages a real person would send without strain: from the one who asks, \"this is what I mean when I say it\"; from the one who is asked, \"this is literally you, mum\"; or simply the refrain itself, \"text me when you're home x\". The refrain (beats 'ask' 1.45 s, 'again' 4.73 s, 'home' 21.06 s) is a phrase people already say to each other, so forwarding the video says the line to someone.",
+      "reference": "barsat-song 13.4 s and 23.7 s: refrain lines addressed to \"you\"; benchmarks share_triggers 1 (\"sending the song says them to someone\"; 5 of 75 comments tell their own loss or dedicate the song to a person)",
+      "why_it_matters": "the reference is forwarded as \"this is how I feel\" (breakdown section 5). Ours does the same job with a more exact sentence: the viewer does not have to supply the words, the refrain is the message."
+    },
+    {
+      "criterion": "the peak",
+      "result": "partly",
+      "ours": "beat 'asking', 17.58-19.06 s (74% to 80% of the run): \"Asking is how I love you.\" Feeling: warmth, the small jolt of being told what a nagging habit meant. It is earned: 'word' (7.97 s, \"One word will do\") lowers the demand, 'light' (11.21 s, \"The light stays on\") shows someone waiting up, 'fine' (14.42 s, \"I know you're fine\") removes worry as the reason, and the last refrain at 21.06 s is then heard with a new meaning. The gap is time. The line is 6 words voiced in 1.48 s (about 4 words a second; \"I love you.\" passes in 0.66 s, 18.40-19.06 s). Its slot is 3.48 s against 3.15 to 3.28 s for every other line, 8% longer. The voice fills 43% of the slot.",
+      "reference": "barsat-song 168.0-182.9 s: the two lines addressed straight to the other person run about 7.4 s each, twice the usual 3.5 s slot (patterns.md Structure: \"end on lines addressed straight to the other person, longer than the rest\"). In the reference a sung line fills 2.3 to 3.7 s of its slot (benchmarks lyric_lines.voiced_part_of_slot_s). The reference gives no fixed peak position (pacing.payoff_at_share_of_run is null), so ours cannot be held to one; viewers point at 66 s, 75 s and 110 s (0.36, 0.40, 0.59 of the run).",
+      "why_it_matters": "the line a viewer would point at goes by at the same weight as \"One word will do\". The reference marks its direct address by giving it double the room. A feeling that has under two seconds of voice and one breath has less time to turn into the decision to send. I cannot hear the voice; whether a synthetic voice carries \"I love you\" at this speed has to be checked at the video stage."
+    },
+    {
+      "criterion": "a person to send it to",
+      "result": "met",
+      "ours": "the refrain names a ritual between two particular people, not a general mood: a parent and a grown child, partners, the friend who walks home late. \"One word will do\" (7.97 s) and \"The light stays on\" (11.21 s) are details of that one situation. script.json audience: \"anyone who has said or been told 'text me when you're home'\". It works in both directions, from the asker and about the asker.",
+      "reference": "barsat-song: subject is being left, addressed to \"you\"; breakdown section 5 guesses the recipient is \"the person they miss, or a friend who knows the situation\"; no comment says who they sent it to. 5 of 75 comments dedicate the song or tell their own story.",
+      "why_it_matters": "the reference's recipient has to be inferred from a broad feeling. Ours describes one exchange exactly, and the person on the other end of that exchange is the recipient. Both \"when you're home\" and \"when you get home\" are in use; the script's form is fine and I ask for no change."
+    },
+    {
+      "criterion": "stands alone",
+      "result": "met",
+      "ours": "seven lines, 33 words, no name, place, channel, earlier video or news story. The question opens at 1.45 s and is answered at 17.58 s inside the same 23.8 s. carries_through.sync_rule shows each line whole in faint ink before it is spoken, so a recipient with the sound off can read all of it; the title frame (0.00-1.33 s) is one readable word, \"home\".",
+      "reference": "barsat-song: \"one plain feeling that needs no context\" (benchmarks share_triggers 2; 30 of 75 comments carry a crying, sad or broken-heart emoji). Its Do not copy: about 160 sung words and none shown, so muted it gives nothing after the first second (patterns.md Holding attention).",
+      "why_it_matters": "a forwarded video usually arrives with one line of message or none, and is often opened muted. Ours needs neither sound nor explanation; the reference needs sound."
+    },
+    {
+      "criterion": "safe to pass on",
+      "result": "met",
+      "ours": "fiction, declared as such in script.json facts (both \"invented\"); no real person, no factual claim, no suffering used for effect. It ends on the lyric's own word (beat 'home', 21.06-23.79 s), with no logo, ask or call to action. Two things I cannot clear at script stage and that carry no fix here: (1) the voice is synthetic and says \"I love you\" in 0.66 s; if it sounds flat the sender is forwarding something that feels machine-made, to be judged from the video; (2) \"I know you're fine\" (14.42 s) is the one line a sender who asks out of real worry for someone's safety might not put their name to. It is the turn the payoff rests on, so I ask for no change, only that the user knows.",
+      "reference": "barsat-song: no end card and no call to action (182.9-185.33 s); the uploader's \"Subscribe to channel\" comment has 0 likes (patterns.md Comments, Do not copy). The reference gives no evidence on synthetic voice or on this phrase, so neither note can be more than a note.",
+      "why_it_matters": "nothing in the script would have to be defended or explained by the sender, which is the condition for sending something tender to a parent or a child."
+    },
+    {
+      "criterion": "worth keeping",
+      "result": "met",
+      "ours": "Skipped, not applicable: this is a lyric, not a lesson or a list, and it teaches nothing to save. Recorded as \"met\" only because the field takes three values; it has no weight in the score.",
+      "reference": "none: barsat-song is a song and teaches nothing either. No comparison possible.",
+      "why_it_matters": "the criterion applies to videos that teach or list."
+    },
+    {
+      "criterion": "the last frame",
+      "result": "partly",
+      "ours": "beat 'home', 21.06-22.78 s: the refrain returns, the last road dot reaches the window's sill on \"home\", the four ink words fade over about 0.4 s and the sheet holds the finished road, the lit window and the red word. The design is right: it is the first frame with the drawing completed, and after \"One word will do\" the one word left on the sheet reads as the text that was asked for. But the run ends at 23.79 s, 1.01 s after the last word. With the 0.4 s fade the finished sheet is on screen alone for about 0.6 s.",
+      "reference": "barsat-song 182.9-185.33 s: the card stays 2.4 to 3.0 s past the last sung word. Its faults there are the silence (last 1.72 s) and that the picture is unchanged from frame 0 (patterns.md Structure, Do not copy: \"stopping without an ending\"), not the length of the hold.",
+      "why_it_matters": "people share at the end. The picture that completes the feeling (the road arrived, the light on, the one word) is the thing they would be looking at when they decide, and it is gone in about half a second. The reference leaves its last picture up four to five times as long."
+    }
+  ],
+  "fixes": [
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Give the payoff a slot clearly longer than the others. In script.json raise beat 'asking' pause_after_s from 2.0 to 2.8 and re-run voice.py; the slot becomes about 4.3 s, about 1.3 times the usual 3.2 s, and the run grows by 0.8 s. In the beat's motion, say that the lit line \"Asking is how / I love you.\" stays untouched for the whole breath and that only the window changes, as now. If the producer can speak this one line slower than the rest, do that as well: it is 6 words in 1.48 s. An alternative to test by ear: split it into two beats with the same line kept on screen, \"Asking is how\" (pause_after_s 0.7) then \"I love you.\" (pause_after_s 2.0), so the voice stops before the three words that matter; drop it if the first half sounds cut off when spoken alone."
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Hold the finished sheet longer. Run voice.py with --tail 2.2 in place of the default 1.0, so the road, the lit window and the red \"home\" stay about 1.8 s after the ink words have faded. Keep the bed sounding to the last frame and let dots keep gathering round the window during the hold so it is not frozen; write both into beat 'home' motion. With the first fix the run is about 25.8 s, inside the brief's 20 to 30 s."
+    }
+  ],
+  "blocked_on": [],
+  "evidence": "One reference. It has public numbers (1,938,059 views, 5,421 likes, 89 comments, a 700-follower channel, as of 2026-11-25) but one video gives no result evidence: these are what the reference does, not proof of what performs. The reference is NOT a lyric video: it is one still title card held for 185.33 s under a full song, with no lyric on screen at any time, no motion and no cut. Every value about how lyrics are set, timed, moved or coloured is therefore null, and the brief governs those. Tool figures are given as measured; ranged values are the single reference's figure widened about 15% either way; length follows the brief (20 to 30 s), not the reference (185.33 s). Sung-word figures rest on a low-trust transcript of singing over a band. Beyond that: times are from 03-script/timing/timing.json, measured from the spoken script (voice.py, pace 0.8), not estimated. Share counts are not published for the reference, so its share triggers are the analyst's reading of 75 comments. The reference is a sung song and ours is a synthetic spoken voice; I cannot hear either, so nothing here says the voice carries the feeling. That people already say this phrase to each other is my own general knowledge, not something in the run's data. This verdict says the script does what the reference's song does to be passed on; it does not say the video will be shared."
+}
