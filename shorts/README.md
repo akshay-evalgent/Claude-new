@@ -36,6 +36,8 @@ To render outside the cloud container, drop `REMOTION_BROWSER` (Remotion downloa
 | `src/three/Stage.tsx` | Canvas + animated camera + `projector()`, which maps 3D heads to panel pixels so the HTML bubbles follow the characters |
 | `src/episodes/Ep01_3D.tsx` | The episode. Per-beat camera swoops and push-ins, automatic squash and stretch on jumps, callback captions, pop-up card, counter reset |
 
+Episode 2 onward builds on `src/episodes/shared3d.tsx`. It provides camera swoops and push-ins, `act()` (squash and stretch), `clapKeys()`, bubble anchoring, `Callback`, `PopCard`, `Stamp`, the band, hook, end card, flash, a generic `Panel3D` and a `Cues` player with ambience beds. `src/three/Playground3D.tsx` adds the park set, the basketball, guitar and headphones. Poses also accept `spin` (flips) and `handsIn` (claps). `scripts/make_ep02_audio.py` makes the EP02 score and the new effects.
+
 WebGL renders in software here, so pass `--gl=swangle`. That's about 0.9s per frame, roughly 30 minutes for 32s at 60fps. On a machine with a GPU, use `--gl=angle` and it's much faster.
 
 ```bash

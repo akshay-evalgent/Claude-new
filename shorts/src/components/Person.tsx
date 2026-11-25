@@ -42,6 +42,8 @@ export type Pose = {
   lookX: number; // -1..1 pupil shift
   squash: number; // vertical squash for jumps (1 = none)
   lift: number; // jump height above ground (px)
+  spin?: number; // whole-body rotation in the screen plane, degrees (flips; 3D renderer only)
+  handsIn?: number; // 0..1 brings both hands to the body's centre line (claps; 3D renderer only)
   talk: number; // 0/1 animates mouth open/close
   opacity: number;
 };

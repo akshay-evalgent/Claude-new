@@ -24,6 +24,7 @@ export const joints3 = (a: Actor, t: number) => {
   const hipZ = b.torsoW * 0.22 * U * s;
   const shZ = b.torsoW * 0.46 * U * s;
   const lean = Math.atan2(r.dir[0], -r.dir[1]);
+  const hin = p.handsIn ?? 0;
   return {
     s,
     lean,
@@ -31,11 +32,11 @@ export const joints3 = (a: Actor, t: number) => {
     neckTop: L(r.neckTop),
     head: L(r.head),
     shF: L(r.shoulder, shZ),
-    elF: L(r.elbowF, shZ),
-    haF: L(r.handF, shZ),
+    elF: L(r.elbowF, shZ * (1 - hin * 0.45)),
+    haF: L(r.handF, shZ * (1 - hin * 0.92)),
     shB: L([r.shoulder[0] - 5, r.shoulder[1]], -shZ),
-    elB: L(r.elbowB, -shZ),
-    haB: L(r.handB, -shZ),
+    elB: L(r.elbowB, -shZ * (1 - hin * 0.45)),
+    haB: L(r.handB, -shZ * (1 - hin * 0.92)),
     hipF: L(r.hip, hipZ),
     knF: L(r.kneeF, hipZ),
     ftF: L(r.footF, hipZ),
@@ -46,13 +47,23 @@ export const joints3 = (a: Actor, t: number) => {
 };
 
 /** Local (character space) → world. */
+/** Height of the flip pivot above the character's ground (world units). */
+const pivotH = (a: Actor) => (a.pose.hipH + a.body.torso * 0.4) * U;
+
+/** Local (character space) → world, including yaw, squash and flip spin. */
 export const toWorld3 = (a: Actor, v: V3): V3 => {
   const p = a.pose;
   const th = yawOf(p.facing);
-  const y = v[1] * p.squash;
   const c = Math.cos(th);
   const sn = Math.sin(th);
-  return [X(p.x) + v[0] * c + v[2] * sn, p.lift * U + y, (a.z ?? 0) - v[0] * sn + v[2] * c];
+  const lx = v[0] * c + v[2] * sn;
+  const ly = v[1] * p.squash;
+  const lz = -v[0] * sn + v[2] * c;
+  const pv = pivotH(a);
+  const sp = ((p.spin ?? 0) * Math.PI) / 180;
+  const rx = lx * Math.cos(sp) - (ly - pv) * Math.sin(sp);
+  const ry = lx * Math.sin(sp) + (ly - pv) * Math.cos(sp) + pv;
+  return [X(p.x) + rx, p.lift * U + ry, (a.z ?? 0) + lz];
 };
 export const handWorld = (a: Actor, t: number, which: 'F' | 'B' = 'F') => {
   const j = joints3(a, t);
@@ -297,7 +308,8 @@ export const Person3D: React.FC<{a: Actor; t: number}> = ({a, t}) => {
         rotation={[-Math.PI / 2, 0, 0]}
         scale={[b.torsoW * U * 2.4, b.torsoW * U * 1.5, 1]}
       />
-      <group position={[X(p.x), p.lift * U, a.z ?? 0]} rotation={[0, th, 0]} scale={[1, p.squash, 1]}>
+      <group position={[X(p.x), p.lift * U + pivotH(a), a.z ?? 0]} rotation={[0, 0, ((p.spin ?? 0) * Math.PI) / 180]}>
+      <group position={[0, -pivotH(a), 0]} rotation={[0, th, 0]} scale={[1, p.squash, 1]}>
         {/* legs */}
         {limb([j.hipB, j.knB, j.ftB], legR, pants)}
         {foot(j.ftB, shoe)}
@@ -321,6 +333,7 @@ export const Person3D: React.FC<{a: Actor; t: number}> = ({a, t}) => {
           <Hair look={look} r={r} />
           <Face p={p} r={r} look={look} t={t} seed={a.seed ?? 1} />
         </group>
+      </group>
       </group>
     </group>
   );

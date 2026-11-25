@@ -57,6 +57,10 @@ Ages 5 → 8 → 12 → 16 → 25 years later. Top panel: the drawings stop at 2
 
 There are two files. `ep01-same-drawing.mp4` has our own score. `-sfx-only` has no music, so you can add a trending sound in the YouTube app.
 
+## EP02 — "Same kid. Same “watch this!”" (rendered: `releases/ep02/`, upload kit in `releases/ep02/UPLOAD.md`)
+
+Age 4 slide → 7 front flip → 11 game-winner → 15 first song → 25 years later on the same slide. The scroll side's counter is "TIMES YOU WATCHED: 0" with "TIMES HE ASKED" climbing to 61, then frozen by a **STOPPED ASKING** stamp. The look side climbs to 1,180. In the payoff, grandma sits on the bench in both panels: in the top panel she's scrolling too.
+
 ## Test plan
 
 Judge each upload at **48 hours** in YouTube Studio → Content → the Short → Analytics:
@@ -77,7 +81,7 @@ Judge each upload at **48 hours** in YouTube Studio → Content → the Short �
 
 | EP | Premise (top 📱 vs bottom 👀) | Counter | 25-years-later payoff |
 |---|---|---|---|
-| 02 | **Same kid. Same "watch this!" 🛝.** The playground slide: phone up vs eyes up | "tricks you saw" | He coaches kids; the other never tries out |
+| 02 | ✅ Made: see above | | |
 | 03 | **Same kid. Same bedtime story 📖.** Reading while scrolling vs doing the voices | "stories finished" | He does the voices for his own kid |
 | 04 | **Same kid. Same goal ⚽.** Missed it on the phone vs screaming from the stands | "goals you saw" | "Did you see it, Dad?" Same line, next generation |
 | 05 | **Same teen. Same bad day 🎒.** "mm" vs the phone going face-down: "talk to me" | "things he told you" | He calls home the night something big happens |
