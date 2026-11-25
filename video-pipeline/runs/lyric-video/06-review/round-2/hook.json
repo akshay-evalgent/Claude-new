@@ -1,0 +1,79 @@
+{
+  "check": "hook",
+  "stage": "video",
+  "round": 2,
+  "score": 8,
+  "pass": true,
+  "summary": "All three round-1 hook fixes were made and they work: frame 0 now reads as a red word and a shuttered window at phone size, the road visibly sets out toward the window before 3 s, and the first 1.3 s has a sound event; what is left is a first frame still lighter than the reference's card, which matters only where frame 0 is used as the poster.",
+  "previous_round": {
+    "verdict": "06-review/round-1/hook.json: 7, pass, no must fixes, three should fixes.",
+    "fixes_made": [
+      "video, should: two or three lead dots ahead of the road between 2.0 and 2.9 s. Made. Three single dots land at 2.20, 2.34 and 2.52 s (NOTES.md; my frames agree to within one frame) at x=330, 386 and 449 px, y=906, 894, 880. At 3.00 s the solid road runs x=155 to 285 and the trail reaches x=453 (was 335 with nothing ahead of it). The line through the first road dot and the farthest lead dot passes the window's centre column about 60 px (5.5% of frame height) under the sill.",
+      "moodboard, should: more weight in frame 0. Made for the window, partly for the type. The window is redrawn in hand stipple with shutters and a sill: 344 by 321 px with shutters, 17.9% of the width (was 157 by 179 px, 8.2%), about six times the ink (15,020 dark pixels against 2,459). Red plus ink at 0.00 s is 1.19% of the frame (was 0.54% by the same thresholds). \"home\" is 124 px from the top of the h to the baseline, 11.5% of the height (was 10.8%; I asked for about 12.5% if the row allowed), and 16.5% of the width (was 15.5%).",
+      "video, should: one soft hit at about 0.5 s. Made. measure.json puts the first onset at 0.512 s (round 1: none before 1.34 s); on the film's sound the 50 ms at 0.50 s reads -16.9 dB against a bed of about -22 dB, the same size as the line-start hit at 1.35 s (-17.6 dB). NOTES.md lists opening_0_to_3s.wav for a human listen, as asked."
+    ],
+    "fixes_not_made": []
+  },
+  "findings": [
+    {
+      "criterion": "the first words and the first picture",
+      "result": "met",
+      "ours": "0.00 s (hook.jpg, frame 1): the word \"home\" in dark red italic at 48% to 65% of the width, a stippled four-pane window with shutters and a sill at 73% to 91%, one road dot at the lower left. 0.53-0.63 s: \"Text me\" / \"when you're home\" arrives whole in faint ink. First spoken words, 1.33-2.80 s (transcript.json): \"Text me when you're home.\"",
+      "reference": "barsat-song 0.00 s (02-analysis/barsat-song/hook.jpg): the one-word title in red, 14% of frame height and 28% of the width, beside a finished stippled drawing of two crying eyes at 47% to 92% of the width; type and drawing about 6% of the pixels. patterns.md Hook: \"Put readable words on screen in the first frame\"; \"Keep the first words few and large\"; \"Use the one colour on the page for the one word that matters.\"",
+      "why_it_matters": "the words are specific and addressed to \"you\", and the drawn thing is now a drawing, not an outline: at 390 px wide a still of 0.00 s reads as a red word and a window at a glance, which was the test set in round 1. It is still a lighter frame than the reference's: 1.2% of the pixels against about 6%, \"home\" 11.5% of the height against 14% and 16.5% of the width against 28%, and the left 48% of the sheet is bare paper until 0.53 s. In the film that lasts half a second and then two rows of type 56% of the width fill it, so I count it met; as a poster it is still the weaker card"
+    },
+    {
+      "criterion": "the question",
+      "result": "met",
+      "ours": "1.33-2.80 s: \"Text me when you're home.\" In words: who is asking me this, and what is behind it? In picture, 2.20-3.00 s (hook.jpg 2.25 to 2.75 s): a road sets out from the lower left, three dots ahead of it rising to the right, the only other drawn thing a window up there: does it get there? script.json question: \"Why does the speaker keep asking you to text when you're home?\", answered at 16.37-18.65 s (\"Asking is how\" / \"I love you.\") and in picture at about 21.7 s, when the road meets the sill (end.jpg 21.77 s).",
+      "reference": "barsat-song: no question in words in the first 3 s (benchmarks.json hook.question_opened; patterns.md Hook, Do not copy). patterns.md Holding attention: \"Open the question in the first sung line\"; the reference's first line at 13.4 s is a plea not to leave.",
+      "why_it_matters": "round 1 marked this partly because the road was a 180 px stroke in a corner with nothing between it and the window. The three lead dots change that: at 2.75 s the trail has a direction the eye can follow, and it is the direction of the window. Both questions are ones the film answers. This is still the thinnest of the seven: the trail covers 15.5% of the width at 3.00 s, its last dot lands 0.48 s before the three-second mark while the eye is on the words lighting, and the line heard once is a kind request with no conflict in it, where the reference's first line is a plea. The \"keeps asking\" starts with the repeat at 4.12 s. That is the lyric, which the review ruled unchanged, and no honest change to the opening would add a conflict the piece does not have"
+    },
+    {
+      "criterion": "stakes",
+      "result": "met",
+      "ours": "0.00 s: \"home\" in the only colour on the sheet and a shuttered window. By 0.63 s, sound off: \"Text me when you're home\", somebody speaking to \"you\" who wants to know you got back.",
+      "reference": "barsat-song 0.00 s: two crying eyes put a person and a loss in frame 0; the first sung line (13.4 s) says someone is leaving.",
+      "why_it_matters": "unchanged in kind from round 1 and a little stronger in picture: shutters and a sill make the window a house somebody lives in. No person is drawn and nothing is threatened; the stakes are small and warm and are carried by the words. Weaker in picture than a face in tears, honest for this lyric, and I ask for no change"
+    },
+    {
+      "criterion": "speed",
+      "result": "met",
+      "ours": "measure.json hook: first_picture_s 0.0, first_cut_s null (one sheet), motion_mean 0.05, first_sound_s 0.0, 5 onsets in 3 s, the first at 0.512 s. transcript.json stats: first_word_s 1.33 (the tool stamps the line-start hit; the voice starts at 1.45 s by NOTES.md), words_in_first_3s 5, line ends 2.80 s. By my frame count: second road dot 0.30 s, faint line 0.53-0.63 s, third dot 0.97 s, first word starts to light 1.47 s, lead dots 2.20, 2.34 (seen by 2.50) and 2.52 s. Bed before the voice -21.8 dB RMS (was -27.5), 10.9 dB under the voice at 1.45-2.96 s (was 16.6).",
+      "reference": "benchmarks.json hook: first_word_s 1.4 to 2.2 (a scaled allowance; the reference's own 13.36 s is a fault), first_picture_s 0.0, words_in_first_3s 0 (a fault), first_cut_s null. patterns.md Hook, Do not copy: \"An intro about 10 dB quieter than the rest of the track\". compare.json fails the 'first word' row by construction (benchmarks notes): disregarded.",
+      "why_it_matters": "no blank frame, a change on the sheet every third to half of a second, the whole hook line spoken inside three seconds, and now something heard to happen at 0.5 s where the line arrives. The longest stretch with no pixel changing is 0.47 s (1.00-1.47 s), just before the voice. The bed is still about 11 dB under the voice, the reference's listed figure, but for 1.33 s with a hit in it, not 13 s of nothing"
+    },
+    {
+      "criterion": "muted",
+      "result": "met",
+      "ours": "hook.jpg: 0.00 s \"home\" in red and the window; 0.75 s the whole line in faint ink; 1.50-2.75 s the words turn full ink one by one in step with transcript.json (Text 1.33, me 1.70, when 2.02, you're 2.28, home 2.52). No caption track, no doubled words. check/phone_390.jpg and my own 390 px reductions of 0.00, 2.75 and 3.00 s: word, window, line and the three lead dots are all visible.",
+      "reference": "barsat-song 0.00 s: the title card reads muted, but none of about 160 sung words is ever shown (patterns.md Holding attention, Do not copy). There is no reference for the faint-then-lit setting; judged against brief.md, Lyric sync.",
+      "why_it_matters": "a muted viewer has the whole hook line 0.8 s before the voice and can follow it word by word, which is the brief's requirement and something the reference never does. The larger type helps here more than anywhere"
+    },
+    {
+      "criterion": "kind of opening",
+      "result": "met",
+      "ours": "a title card at frame 0: one word in the only colour on the sheet with a stippled drawing to its right; the word becomes the last word of the first lyric line; that line is spoken at 1.33 s and again at 4.12 s.",
+      "reference": "benchmarks.json hook.type: \"a complete title card at frame 0: the song's one-word title in the only colour on the page, beside a stippled ink drawing of two crying eyes; no sung word and no motion in the first 3 s\". barsat-song repeats its first line at once (13.4-16.5 s and 16.8-20.2 s).",
+      "why_it_matters": "the reference's kind with its listed faults removed: the voice at 1.33 s instead of 13.36 s, the title word spoken 2.5 s after it appears instead of about 87 s, a frame that moves. With the hand-stippled window it is now also nearer the reference's card in how it is drawn"
+    },
+    {
+      "criterion": "promise kept",
+      "result": "met",
+      "ours": "the opening promises a quiet piece spoken to \"you\" about being asked to text when you are home, and shows a road setting out toward a window. dense.jpg and end.jpg: the road fills in behind the lead dots and keeps going; the night gathers round the window from about 11 s (\"the light stays on.\"); \"Asking is how\" / \"I love you.\" at 16.37-18.65 s says why; the road meets the sill by 21.77 s as \"home\" is spoken; the red word of frame 0 returns alone as \"Home.\" from about 22.8 s to the last frame.",
+      "reference": "barsat-song: the title is on screen at 0.00 s and apparently not sung until about 87-90 s, with nothing in the picture marking it; the last frame is the first frame (patterns.md Structure and Hook, Do not copy).",
+      "why_it_matters": "the lead dots made the opening promise more in picture (the road is going to the window), and the film keeps exactly that promise. No danger is implied and none is delivered. Nothing is overstated"
+    }
+  ],
+  "fixes": [
+    {
+      "stage": "video",
+      "priority": "should",
+      "change": "No change to the film. Where the video is published with a chosen poster or thumbnail, do not use frame 0: use the frame at 3.00 s (whole line in full ink, \"home\" in red, the window, the road with its three lead dots), and record that choice in NOTES.md. Frame 0 is right as the film's first frame but is half a card (red and ink 1.2% of the pixels, the left half bare) when it stands alone."
+    }
+  ],
+  "blocked_on": [
+    "Not blocking: nobody in the pipeline can hear. A human listen to 05-video/audio/listen/opening_0_to_3s.wav would settle whether the added hit at 0.5 s sounds like part of the film or like a mistake; the figures only say it is there and no louder than the line-start hit."
+  ],
+  "evidence": "One reference. It has public numbers (1,938,059 views, 5,421 likes, 89 comments, a 700-follower channel, as of 2026-11-25) but one video gives no result evidence: these are what the reference does, not proof of what performs. The reference is NOT a lyric video: it is one still title card held for 185.33 s under a full song, with no lyric on screen at any time, no motion and no cut. Every value about how lyrics are set, timed, moved or coloured is therefore null, and the brief governs those. Tool figures are given as measured; ranged values are the single reference's figure widened about 15% either way; length follows the brief (20 to 30 s), not the reference (185.33 s). Sung-word figures rest on a low-trust transcript of singing over a band. Beyond that, for this verdict: I looked at 05-video/check/hook.jpg, dense.jpg, end.jpg and phone_390.jpg and at the reference's hook.jpg, and read measure.json, transcript.json, 05-video/NOTES.md and my round-1 verdict. Sizes, positions, pixel shares, the times of the faint line and the dots, and the trail's aim are my own measurements on the first 96 frames of 05-video/video.mp4 at full size, with the same thresholds applied to video_round1.mp4 for the before figures (so the round-1 shares quoted here differ slightly from those in the round-1 verdict); the sound levels are my RMS on the film's sound track. They are estimates, good to a few pixels and about 0.03 s. I cannot hear the film. Where the reference's hook is weak (13.36 s before the voice, a frame held unchanged, a quiet intro, no question in words: all under Do not copy in patterns.md), the yardstick was patterns.md, Hook. The faint-then-lit lyric setting and the road have no reference and were judged against brief.md only. The score rose from 7 to 8 because the two gaps named in round 1 (a first frame too light to read as a card, a road whose aim did not show inside three seconds) are closed to the eye; it is not higher because the first frame is still lighter than the reference's and the first line has no conflict in it. This is an estimate of whether the opening does what the playbook says, not a prediction of how it will perform."
+}
