@@ -27,6 +27,7 @@ SCRATCH = os.environ["QS_SCRATCH"]
 O = R.OFFICE
 
 SETS = {"office": "Office", "house": "House", "stage": "Stage", "shop": "Shop", "auction": "Auction", "nevada": "Nevada"}
+SHOT_EXPOSURE = {"boards": 0.45}   # the workbench corner is the darkest part of the office
 EXPOSURE = {"office": 0.35, "house": -0.1, "stage": -0.05, "shop": 0.25, "auction": 0.3, "nevada": 0.1}
 WORLD = {"office": (0.0, 0.8), "house": (0.0, 1.0), "stage": (0.0, 1.0), "shop": (0.0, 0.05),
          "auction": (0.0, 0.03), "nevada": (1.0, 0.9)}
@@ -273,7 +274,8 @@ def build():
         fr = f(t0)
         sky, strength = WORLD[st]
         world.key(fr, sky, strength)
-        sc.view_settings.exposure = EXPOSURE[st]; sc.view_settings.keyframe_insert("exposure", frame=fr)
+        sc.view_settings.exposure = EXPOSURE[st] + SHOT_EXPOSURE.get(name, 0.0)
+        sc.view_settings.keyframe_insert("exposure", frame=fr)
     ST.set_interp(world.w.node_tree, "CONSTANT")
     ST.set_interp(sc, "CONSTANT")
     sc.frame_start, sc.frame_end = 1, f(END)

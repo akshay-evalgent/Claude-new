@@ -205,6 +205,10 @@ def flip_calendar(coll):
     pages = []
     for day in range(1, 13):
         m = image_mat(f"CalPage{day}", gen(f"cal_{day:02d}.png"), 0.7)
+        nt = m.node_tree; b = nt.nodes["Principled BSDF"]     # plain paper on the back of each page
+        src = b.inputs["Base Color"].links[0].from_socket
+        geo = nt.nodes.new("ShaderNodeNewGeometry")
+        nt.links.new(S._mix(nt, geo.outputs["Backfacing"], src, (0.86, 0.85, 0.82)), b.inputs["Base Color"])
         hinge = bpy.data.objects.new(f"CalHinge{day}", None); S.link(hinge, coll); hinge.parent = ring
         hinge.location = (0, -0.0045 - (12 - day) * 0.0004, 0)
         p = card(f"CalPg{day}", 0.15, 0.175, m, coll, origin="top"); p.parent = hinge

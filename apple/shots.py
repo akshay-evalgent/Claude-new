@@ -566,7 +566,8 @@ def perform(rig):
                 aim(a_.arm, "LeftArm", (0.17, 0.03, -1)); aim(a_.arm, "LeftForeArm", (0.08, -0.22, -1))
                 posing.curl_fingers(a_.arm, "Right", 1.1)
                 head(a_.arm, look[0], look[1], 0)
-            W.pose(fr, wpos, 180 if sh == "trillion" else 175, body)
+            W.pose(fr, wpos if sh == "trillion" else ST_ + Vector((29.5, -13.5, 0)), 180 if sh == "trillion" else 190,
+                   body)
             W.face(fr, shock=0.6 if sh == "trillion" else 0.3, worry=0.0 if sh == "trillion" else 0.6)
 
     # ---------------------------------------------------------------- drawer: the copy he kept
@@ -699,8 +700,8 @@ def cam_plan(rig):
                                          o + V(0.35, 1.12, 1.0)), 2.8, 0.15, 0),
         "sketch": (35, lambda u, fr: (lerp(o + V(0.92, 1.85, 1.22), o + V(0.92, 1.8, 1.18), u),
                                      o + V(0.92, 1.42, DESK_TOP)), 4.0, 0.12, 0),
-        "boards": (24, lambda u, fr: (lerp(o + V(-2.95, -1.2, 1.32), o + V(-2.95, -1.05, 1.3), u),
-                                     o + V(-3.15, 0.3, 0.95)), 3.2, 0.2, 0),
+        "boards": (20, lambda u, fr: (lerp(o + V(-2.3, -1.3, 1.45), o + V(-2.38, -1.12, 1.42), u),
+                                     o + V(-2.9, 0.4, 1.05)), 3.5, 0.2, 0),
         "credit": (35, lambda u, fr: (lerp(o + V(1.02, 0.96, 2.2), o + V(1.02, 0.97, 2.12), u),
                                      o + V(1.02, 1.03, DESK_TOP)), 5.6, 0.12, 0),
         "hook": (17, lambda u, fr: (lerp(o + V(0.0, -2.85, 1.25), o + V(0.0, -2.7, 1.28), u),
@@ -715,24 +716,23 @@ def cam_plan(rig):
                                      o + V(0.64, 1.47, DESK_TOP)), 4.0, 0.12, 0),
         "cash800": (30, lambda u, fr: (lerp(o + V(0.75, 1.85, 1.32), o + V(0.72, 1.8, 1.28), u),
                                       o + V(0.5, 1.3, DESK_TOP)), 4.0, 0.15, 0),
-        "check": (40, lambda u, fr: (lerp(o + V(0.95, 1.62, 1.04), o + V(0.88, 1.58, 0.98), _ease(u)),
-                                    o + V(0.6, 1.36, DESK_TOP)), 4.0, 0.12, 0),
+        "check": (30, lambda u, fr: (lerp(o + V(0.6, 1.5, 1.27), o + V(0.6, 1.46, 1.2), _ease(u)),
+                                    o + V(0.6, 1.365, DESK_TOP)), 5.6, 0.12, 0),
         "signoff": (32, lambda u, fr: (lerp(o + V(0.35, 0.3, 1.25), o + V(0.4, 0.45, 1.25), u),
                                       o + V(0.6, 1.95, 1.05)), 2.8, 0.2, 0),
-        "trillion": (24, lambda u, fr: (lerp(ST_ + V(-48, -52, 2.5), ST_ + V(-30, -46, 16), _ease(u)),
-                                       ST_ + V(-2, 22, 8)), None, 0.3, 0),
-        "slab": (22, lambda u, fr: (lerp(ST_ + V(3.5, -21.5, 1.1), ST_ + V(3.2, -20.8, 1.0), u),
-                                   ST_ + V(-1.0, -3.0, 9.0)), None, 0.3, 0),
+        "trillion": (16, lambda u, fr: _pullback(u, ST_), None, 0.3, 0),
+        "slab": (16, lambda u, fr: (lerp(ST_ + V(38.6, -22.6, 2.1), ST_ + V(38.0, -22.0, 2.3), u),
+                                   ST_ + V(25.9, -0.1, 10.3)), None, 0.3, 0),
         "drawer": (32, lambda u, fr: (lerp(o + V(0.85, 0.65, 1.2), o + V(0.82, 0.75, 1.2), u),
                                      o + V(0.6, 1.8, 1.05)), 2.8, 0.2, 0),
-        "signatures": (32, lambda u, fr: (o + V(0.71 - 0.07 * _ease(u), 1.66, 0.98),
+        "signatures": (34, lambda u, fr: (o + V(0.72 - 0.07 * _ease(u), 1.6, 1.2),
                                          o + V(0.7 - 0.07 * _ease(u), 1.475, DESK_TOP)), 5.6, 0.1, 0),
         "sold500": (26, lambda u, fr: (lerp(SH + V(0.02, -0.2, 1.9), SH + V(0.02, -0.16, 1.82), u),
                                       SH + V(-0.04, 0.0, 0.95)), 5.6, 0.15, 0),
         "auction": (24, lambda u, fr: (lerp(AU + V(3.2, -5.8, 2.1), AU + V(2.9, -5.0, 2.05), u),
                                       AU + V(0.4, 4.2, 1.8)), None, 0.2, 0),
-        "gavel": (32, lambda u, fr: (lerp(AU + V(1.65, 2.75, 1.05), AU + V(1.7, 2.85, 1.05), u),
-                                    AU + V(2.35, 4.2, 1.6)), 3.5, 0.2, 0),
+        "gavel": (20, lambda u, fr: (lerp(AU + V(2.0, 1.05, 1.6), AU + V(2.05, 1.3, 1.6), u),
+                                    AU + V(2.2, 4.6, 2.4)), None, 0.2, 0),
         "armchair": (30, lambda u, fr: (lerp(NV + V(-0.05, -1.55, 1.12), NV + V(0.0, -1.4, 1.1), u),
                                        NV + V(0.55, 0.6, 0.98)), 3.5, 0.15, 0),
         "newspaper": (28, lambda u, fr: (lerp(NV + V(0.4, -0.95, 1.05), NV + V(0.42, -0.85, 1.05), u),
@@ -749,6 +749,17 @@ def _look(loc, tgt, roll=0.0):
     if roll:
         e = (q @ Quaternion((0, 0, 1), math.radians(roll))).to_euler()
     return e
+
+
+def _pullback(u, st):
+    """From a few metres off the face of the cash (bundles readable) back to the whole block: the
+    distance grows exponentially so the apparent zoom-out stays even."""
+    e = _ease(u)
+    t0, t1 = st + Vector((1.0, 2.1, 1.8)), st + Vector((-2.0, 25.0, 9.0))
+    d0, d1 = Vector((0.25, -1.0, 0.05)).normalized(), Vector((-0.5, -1.0, 0.35)).normalized()
+    g = t0.lerp(t1, e)
+    d = d0.lerp(d1, e).normalized() * (4.5 * (105.0 / 4.5) ** e)
+    return g + d, g
 
 
 def cameras(rig):
