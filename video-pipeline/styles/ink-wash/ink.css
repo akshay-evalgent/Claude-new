@@ -46,6 +46,8 @@ html, body { margin: 0; background: #111; }
 .blot    { fill: var(--ink); stroke: none; filter: url(#ink-rough); }           /* solid ink shape */
 .dry     { fill: var(--ink); stroke: none; filter: url(#ink-dry); }             /* dry brush: streaked, paper shows through */
 .wash    { fill: var(--wash); stroke: none; opacity: .32; filter: url(#ink-wash); }  /* watery grey area */
+.dry.small { filter: url(#ink-dry-small); }                                    /* shapes under about 150 px */
+.wash.small { filter: url(#ink-wash-small); }
 .wash.pale { opacity: .16; }
 .wash.deep { opacity: .55; }
 .mist    { fill: var(--wash); stroke: none; opacity: .14; filter: url(#ink-mist); }  /* far hills, fog */

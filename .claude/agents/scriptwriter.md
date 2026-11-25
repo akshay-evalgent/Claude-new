@@ -43,7 +43,7 @@ You are given a run folder (`video-pipeline/runs/<slug>/`). Read, in this order:
 - `role`: hook, setup, turn, escalation, payoff or close.
 - `vo`: what the voice says. Leave empty for a silent beat and give `hold_s`.
 - `on_screen`: words that appear in the picture other than captions (a date, a distance). Captions are made from `vo` automatically.
-- `picture`: one thing to look at, described so someone could draw it. One subject per shot.
+- `picture`: one thing to look at, described so someone could draw it. One subject per shot. Invent the picture for this story: do not restage a shot from a reference.
 - `motion`: what moves during the shot, and why.
 - `transition`: how this beat's picture arrives. One of `cut` (the default), `dissolve` (time passing) or `iris` (entering a memory or a new place). These are the three the renderer has.
 - `pause_after_s`: the breath after this beat's line, if it should be longer than the default 0.28 s. Leave it off the last beat.

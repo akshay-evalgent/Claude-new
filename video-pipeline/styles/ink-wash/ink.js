@@ -31,6 +31,19 @@
       <feColorMatrix in="p" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1.6 0 0 0 0.25" result="pool"/>
       <feComposite in="b" in2="pool" operator="in"/>
     </filter>
+    <!-- the same two, scaled for shapes under about 150 px, which the big filters tear apart -->
+    <filter id="ink-dry-small" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.32 0.012" numOctaves="2" seed="5" result="s"/>
+      <feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  5.5 0 0 0 -1.35" result="streak"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feComposite in="d" in2="streak" operator="in"/>
+    </filter>
+    <filter id="ink-wash-small" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="10" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="1.6"/>
+    </filter>
     <!-- mist: far hills, nearly gone -->
     <filter id="ink-mist" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
       <feTurbulence type="fractalNoise" baseFrequency="0.008" numOctaves="2" seed="21" result="n"/>
