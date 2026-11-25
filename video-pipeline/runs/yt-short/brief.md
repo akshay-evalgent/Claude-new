@@ -29,6 +29,17 @@ Rulings for the writer and the artists:
 - **The scene carries the picture as long as it can.** Past the Sun's surface the honest view is too bright to look at, so plan what the surroundings do at each step before that, and let the counter and the colour of the light carry the rest.
 - **Real and guessed.** Use only the facts in `01-sources/research.md`, with its confidence labels. The weak rows it lists (the Draper point's source, CERN's expected figure) are worded as approximate or left out. The post description says which parts are illustrative.
 
+## How this run differs from the pipeline's usual shape
+
+The reference has no voice: every word is on screen over a low drone, in one continuous scene with no cuts. Our Short does the same.
+
+- **No voice-over.** `vo` is empty on every beat. Do not run `voice.py`; there is no voice track and no automatic captions.
+- **The script carries its own clock.** One beat is one stage of the scenario. Each beat gives `start_s` and `dur_s`, the on-screen lines with the time each appears and how long it stays (`lines: [{ "at_s": ..., "for_s": ..., "text": ... }]`), and what the counters read at the start and end of the stage. Times are seconds from the start of the film. The film ends at or before 60.0 s.
+- **Counters.** Like the reference, two readouts tell the story: one for the quantity running away (here, your temperature, with its unit changing as it climbs) and one for your own clock (how long you have been standing there), plus a "next" countdown that names the coming stage. The mood board decides how they fit a vertical frame.
+- **One continuous scene.** Stages change the same scene; there are no cuts to a new place. `transition` is not used.
+- **Sound.** A bed and a few events, no speech. Aim for YouTube's level (about -14 LUFS), not the reference's quieter -21.4.
+- **Judges.** In the script stage, times and lines are in `script.json` itself; there is no `timing.json`. The benchmarks' notes list the comparison rows that mislead for a 60 s film.
+
 ## Open
 
 - Nothing blocking.

@@ -1,0 +1,9 @@
+video.mp4: 1920x1080 30.0 fps, 537.20 s, horizontal
+shots 70 (mean 7.67 s, min 0.23, max 108.03), 1.28 cuts per 10 s, first cut at 0.233 s
+still 0% of the run in 2 stretches, end hold 0.0 s, motion mean 1.59
+audio -21.4 LUFS, peak -7.0 dBTP, audible 100%, 1549 onsets, 65% of cuts on a sound
+wrote video-pipeline/runs/yt-short/02-analysis/what-if-time-sped-up/measure.json
+
+real	2m54.573s
+user	4m52.544s
+sys	0m17.166s
