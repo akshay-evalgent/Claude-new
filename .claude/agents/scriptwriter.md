@@ -21,7 +21,7 @@ You are given a run folder (`video-pipeline/runs/<slug>/`). Read, in this order:
   "share_line": "what a viewer would type when sending this to a friend",
   "comment_prompt": "what a viewer has something to say about",
   "post_caption": "the text to post with the video",
-  "target": { "duration_s": 36, "words": 95, "words_per_minute": 160 },
+  "target": { "duration_s": 36, "words": 96, "words_per_minute": 160 },
   "facts": [ { "claim": "...", "source": "brief.md | a URL the brief gave", "status": "given | unverified" } ],
   "beats": [
     {
@@ -54,9 +54,10 @@ You are given a run folder (`video-pipeline/runs/<slug>/`). Read, in this order:
 2. **Write the opening sentence ten different ways**, then keep the one that is most specific. A name, an age, a number, a place or an object does more than an adjective. No greeting, no "did you know", no setting the scene. Check it against `benchmarks.json` → `hook`: same kind of opening, landing as fast.
 3. **Every beat adds something new.** Try deleting each beat in turn: if the video still makes sense and loses nothing, delete it.
 4. **Keep the middle moving.** The stretch from 40% to 70% of the run is where people leave. Put a turn there: a fact that changes what the viewer thought they knew.
-5. **Answer the question at about the point the references do** (`pacing.payoff_at_share_of_run`), then end fast. Nothing after the payoff except the one line that makes it land.
+5. **Answer the question at about the point the references do** (`pacing.payoff_at_share_of_run`; if that is `null` the references never pay off, which is a fault to avoid: aim for about 80% of the run), then end fast. Nothing after the payoff except the one line that makes it land.
+   Read every **Do not copy** list in `patterns.md` before you start: those are the references' mistakes.
 6. **Write for the ear and for a muted phone.** Short sentences. One idea each. Captions show two or three words at a time, so avoid sentences that only make sense once finished.
-7. **Hit the length.** Words = `words_per_minute` × `duration_s` / 60, within the benchmark range. Count them.
+7. **Hit the length.** Words = `words_per_minute` × `duration_s` / 60, using `pacing.words_per_minute` from the benchmarks (the whole-run figure, which already allows for pauses; not `speaking_rate_wpm`). The brief's length wins over the references' if they differ. Count your words.
 8. **Build in the share and the comment honestly.** The share line comes from the strongest moment in the story. The comment prompt comes from something real viewers will have an answer to. Do not add "comment below" or "share this": platforms and viewers both punish it.
 
 ## Facts

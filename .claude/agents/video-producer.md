@@ -22,7 +22,7 @@ The film is cut to the voice. If the user supplied a voice track at `05-video/au
 python3 video-pipeline/tools/voice.py <run>/03-script/script.json --out <run>/05-video/audio --pace 0.9
 ```
 
-Adjust `--pace` until `words_per_minute` and the total duration sit inside the benchmark ranges. This writes `vo.wav`, `timing.json` and `timing.js`. `timing.json` gives every beat its `shot_start`, `shot_end` and `shot_dur`, and gives ready-made captions.
+Adjust `--pace` until `speaking_rate_wpm` sits inside the benchmark range and the total duration is what the script's `target` asks for. This writes `vo.wav`, `timing.json` and `timing.js`. `timing.json` gives every beat its `shot_start`, `shot_end` and `shot_dur`, and gives ready-made captions.
 
 ### 2. The composition
 
@@ -48,6 +48,7 @@ For each shot:
 - **Motion has a reason.** Lines draw on in the order a hand would draw them. What the voice names appears as it is named: time `data-fade` and `data-draw` to the words, using the caption times.
 - **Keep the caption band clear.** Nothing important under the caption.
 - **The last shot ends.** Movement continues until `end_hold_s` or less before the final frame.
+- **Voice, caption and picture agree.** The captions come from the voice's own timing; never retime them by hand. If a picture has to arrive on a word, take the time from that word's caption.
 - **Deterministic only.** No CSS animations or transitions, no timers, no `Math.random()` (use `Film.noise`). The same `t` must always draw the same frame.
 
 **Supplied artwork.** If `05-video/assets/shots/<beat id>.png|jpg|svg|mp4` or `01-sources/assets/` holds a picture for a beat, use it as that shot's picture (an `<img>` filling the shot, with a slow `data-drift`) instead of drawing it. This is how illustrations or footage from an image or video generator enter the film.

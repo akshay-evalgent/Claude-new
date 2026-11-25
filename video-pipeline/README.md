@@ -137,6 +137,8 @@ in code. Both can be replaced without changing anything else:
 
 ## Limits
 
-- Cut detection is tuned on hard cuts and dissolves. Unusual transitions can be missed or counted twice; the analyst is told to check the sheets against the numbers.
+- Cut detection is tuned on hard cuts and dissolves. Wipes and other unusual transitions can be missed, counted twice or timed a few frames late; the analyst is told to check the sheets against the numbers.
+- "Cuts landing on a sound" counts any sound near a cut, including a word of the voice-over. It does not show that a cut has a sound of its own.
+- The agents cannot hear. They judge sound from measurements and the transcript, so nobody in the line can tell you whether a voice sounds natural: listen yourself.
 - Caption times inside a sentence are estimated from letter counts, to within about a tenth of a second.
 - Downloading a reference from a link depends on the platform allowing it. When it does not, supply the file.

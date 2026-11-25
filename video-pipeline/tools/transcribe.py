@@ -4,8 +4,10 @@
     python3 transcribe.py VIDEO_OR_AUDIO --out DIR [--model base] [--language en]
 
 Writes DIR/transcript.json (segments, words, speech stats) and DIR/transcript.md
-(one timed line per sentence). The stats are what the critics compare:
-words a minute, when the first word lands, and every pause longer than 0.7 s.
+(one timed line per sentence). The stats are what the critics compare: when the
+first word lands, every pause longer than 0.7 s, and two paces. words_per_minute
+is over the whole run (a script's word budget); speaking_rate_wpm is while the
+voice is talking (how fast it speaks).
 
 Needs faster-whisper: run tools/setup.sh once. If a video has no speech (music
 and on-screen text only), this writes an empty transcript and says so; read the
@@ -18,6 +20,25 @@ import sys
 from pathlib import Path
 
 import numpy as np
+
+
+def refine_first_word(audio, start, end, sr=16000):
+    """Speech-to-text often stamps the first word at 0.0. Move its start to where
+    energy in the voice band (300-3400 Hz) first rises, so a music bed or room
+    tone before the voice is not counted as speech."""
+    a, b = int(max(start - 0.1, 0) * sr), int(min(end + 0.3, len(audio) / sr) * sr)
+    seg = audio[a:b]
+    win, hop = 400, 80
+    if len(seg) < win * 2:
+        return start
+    idx = np.arange(win)[None, :] + hop * np.arange(1 + (len(seg) - win) // hop)[:, None]
+    spec = np.abs(np.fft.rfft(seg[idx] * np.hanning(win), axis=1))
+    f = np.fft.rfftfreq(win, 1 / sr)
+    env = spec[:, (f >= 300) & (f <= 3400)].sum(axis=1)
+    if env.max() <= 0:
+        return start
+    above = np.nonzero(env > 0.15 * np.percentile(env, 95))[0]
+    return round(a / sr + above[0] * hop / sr, 2) if len(above) else start
 
 
 def main():
@@ -48,15 +69,23 @@ def main():
         for w in s.words or []:
             words.append({"start": round(w.start, 2), "end": round(w.end, 2), "word": w.word.strip()})
 
+    if words:
+        words[0]["start"] = refine_first_word(audio, words[0]["start"], words[0]["end"])
+        if segments:
+            segments[0]["start"] = words[0]["start"]
     pauses = [{"at": words[i]["end"], "dur": round(words[i + 1]["start"] - words[i]["end"], 2)}
               for i in range(len(words) - 1) if words[i + 1]["start"] - words[i]["end"] > 0.7]
-    spoken = sum(w["end"] - w["start"] for w in words)
+    # time the voice is running: from the first word to the last, minus the pauses
     span = (words[-1]["end"] - words[0]["start"]) if words else 0
+    speaking = span - sum(p["dur"] for p in pauses)
     stats = {"language": info.language, "duration": round(info.duration, 2), "words": len(words),
              "first_word_s": words[0]["start"] if words else None,
              "last_word_s": words[-1]["end"] if words else None,
-             "words_per_minute": round(len(words) / span * 60) if span else 0,
-             "speech_share": round(spoken / info.duration, 3) if info.duration else 0,
+             # over the whole run: what a script's word budget is worked out from
+             "words_per_minute": round(len(words) / info.duration * 60) if info.duration else 0,
+             # while the voice is actually talking: how fast it speaks
+             "speaking_rate_wpm": round(len(words) / speaking * 60) if speaking > 0 else 0,
+             "speech_share": round(speaking / info.duration, 3) if info.duration else 0,
              "words_in_first_3s": sum(1 for w in words if w["start"] < 3.0),
              "pauses_over_0.7s": pauses}
 
@@ -67,8 +96,9 @@ def main():
     if not words:
         lines.append("No speech found.")
     else:
-        lines += [f"{stats['words']} words, {stats['words_per_minute']} words a minute, "
-                  f"first word at {stats['first_word_s']} s, speech on {stats['speech_share']:.0%} of the run.", ""]
+        lines += [f"{stats['words']} words: {stats['words_per_minute']} a minute over the whole run, "
+                  f"{stats['speaking_rate_wpm']} a minute while speaking. First word at {stats['first_word_s']} s, "
+                  f"voice running for {stats['speech_share']:.0%} of the run.", ""]
         lines += [f"- **{s['start']:.2f}-{s['end']:.2f}** {s['text']}" for s in segments]
     (out / "transcript.md").write_text("\n".join(lines) + "\n")
     print(lines[2] if words else "No speech found.")

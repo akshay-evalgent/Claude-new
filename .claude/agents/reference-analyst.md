@@ -21,20 +21,22 @@ python3 video-pipeline/tools/palette.py VIDEO --out OUT
 python3 video-pipeline/tools/transcribe.py VIDEO --out OUT
 ```
 
-`transcribe.py` needs `bash video-pipeline/tools/setup.sh` to have been run once. If the video has no speech, its words are on screen: read them off the sheets.
+Run `bash video-pipeline/tools/setup.sh` first; it is safe to run again and skips what is installed. If the video has no speech, its words are on screen: read them off the sheets. If it has both a voice and on-screen words, record both: they often differ in wording and in timing. For caption times, make a finer sheet (`sheet.py VIDEO --out OUT --dense 72`) and read the times off the thumbnails.
 
-Then look. Read `hook.jpg`, `shots.jpg`, `dense.jpg` and `end.jpg`, and pull full-size frames of anything you need to see properly (`sheet.py ... --stills 0.5,12.3`). Read `measure.json` and the transcript. Check the tools against your eyes: if `measure.json` reports a cut where the sheet shows the same picture, or misses one you can see, say so in the breakdown and use what you see.
+You cannot hear the file. For sound, report what the tools show (loudness, when the voice runs, its pace, where the sound events fall, what fills the gaps between words) and write "not measurable" for tone of voice and musical character. Do not guess them.
+
+Then look. Read `hook.jpg`, `shots.jpg`, `dense.jpg` and `end.jpg`, and pull full-size frames of anything you need to see properly (`sheet.py VIDEO --out OUT --stills 0.5,12.3`). Read `measure.json` and the transcript. Check the tools against your eyes: if `measure.json` reports a cut where the sheet shows the same picture, or misses one you can see, say so in the breakdown and use what you see.
 
 Write `02-analysis/<ref-id>/breakdown.md` with these sections:
 
 1. **What it is.** Format, length, subject, and the one idea it carries, in three lines.
-2. **Script.** The full words, beat by beat, as a table: time, the words (spoken or on screen), what the picture shows, and the job that beat does (hook, setup, turn, escalation, payoff, close). Mark the sentence that opens the central question and the moment it is answered.
+2. **Script.** The full words, beat by beat, as a table: time, the spoken words, the on-screen words, what the picture shows, and the job that beat does (hook, setup, turn, escalation, payoff, close). Mark the sentence that opens the central question and the moment it is answered. If it is never answered, say so. Note anywhere the voice, the captions and the picture are out of step with each other.
 3. **Hook (first 3 seconds).** The exact first words and first picture. What makes someone stop: what is specific, unusual or at stake. What question it opens. How it reads with the sound off.
 4. **Holding attention.** What new thing each beat adds. Where questions are opened and closed. Words a minute, shot lengths, the longest stretch where nothing changes, and where the slowest part falls. How it ends and how quickly after the payoff.
 5. **Why someone would share it.** The strongest emotional moment and its timestamp. What sending it says about the sender. Who they would send it to.
 6. **Why someone would comment.** What in it invites a reply: a question, a claim people will dispute, a gap they fill with their own story, a detail to point out. If `01-sources/refs/<ref-id>/comments.json` exists, read it and report what people actually wrote about, with counts by theme. That is evidence; your own guess is not, so label which is which.
-7. **Look.** Ground, ink or main colours, accent and what the accent is used for; line and texture; how figures and objects are drawn; composition (how many things in a frame, where they sit); type (face, size as a share of frame height, position, how many words at once); transitions; how much moves and how.
-8. **Sound.** Voice (pace, tone), music, effects, loudness, and whether cuts land on sounds.
+7. **Look.** Ground, ink or main colours, accent and what the accent is used for; line and texture; how figures and objects are drawn; composition (how many things in a frame, where they sit); type (size as a share of frame height and position, both estimated from a full-size still and labelled as estimates; how many words at once; the face by name only if you can identify it, otherwise described); transitions; how much moves and how.
+8. **Sound.** What the tools can show: whether there is a voice and its pace, what runs under it, loudness, and whether transitions land on a sound of their own or only happen to fall near a word.
 9. **Numbers.** A short table of the figures from `measure.json` and the transcript that the judges will compare against.
 10. **What is weak.** Every reference has faults. List them so nobody copies them.
 
@@ -48,6 +50,10 @@ Read every `02-analysis/*/breakdown.md` and `01-sources/sources.json`, then writ
 - **Seen in some.** Options.
 - **Tied to results.** Only where `sources.json` has public numbers and the better-performing references share something the weaker ones lack. With fewer than three references with numbers, write "no result evidence" and do not invent a link.
 
+With a single reference the first two labels mean nothing: say once at the top that everything is "seen in the one reference" and drop them.
+
+End each section with a **Do not copy** list, taken from the faults you found (section 10 of the breakdowns), so the writer and producer do not reproduce a reference's mistakes.
+
 `02-analysis/benchmarks.json`: the numbers and facts the judges hold our video to. The values below only show the shape; fill every one from your breakdowns.
 
 ```json
@@ -56,24 +62,30 @@ Read every `02-analysis/*/breakdown.md` and `01-sources/sources.json`, then writ
   "evidence": "one reference, no audience numbers: these are what the reference does, not proof of what performs",
   "format": { "orientation": "vertical", "width": 1080, "height": 1920, "fps": 24, "duration_s": [30, 40] },
   "hook": {
-    "first_word_s": 0.2, "words_in_first_3s": 9, "first_cut_s": 3.4,
+    "first_word_s": 0.2, "first_picture_s": 0.0, "words_in_first_3s": 9, "first_cut_s": 3.4,
     "type": "a concrete fact about a person in danger",
     "question_opened": "does he find his way home?",
     "works_muted": true
   },
   "pacing": {
-    "words_per_minute": [150, 170], "mean_shot_s": [2.0, 2.8], "cuts_per_10s": [3.5, 4.5],
+    "words_per_minute": [150, 170], "speaking_rate_wpm": [190, 215], "mean_shot_s": [2.0, 2.8], "cuts_per_10s": [3.5, 4.5],
     "longest_still_s": 1.5, "end_hold_s": 1.4, "payoff_at_share_of_run": 0.8
   },
   "structure": [ { "role": "hook", "from": 0.0, "to": 0.08, "does": "..." } ],
   "share_triggers": ["..."],
   "comment_triggers": ["..."],
   "sound": { "integrated_lufs": -13.8, "voice": true, "music": "soft bed", "cuts_on_sound_share": 0.57 },
-  "look": { "ground": "#e8e0cb", "ink": "#2a2622", "accent": "#af4336", "accent_means": "home", "style": "ink wash on paper" }
+  "look": { "ground": "#e8e0cb", "ink": "#2a2622", "accent": "#af4336", "accent_means": "home", "style": "ink wash on paper" },
+  "notes": { "pacing.end_hold_s": "why a value is what it is, wherever that is not obvious" }
 }
 ```
 
-Where the references disagree, give the range. Where you have one reference, widen its value into a sensible range and say so in `evidence`.
+Where the references disagree, give the range. Where you have one reference, widen its value by about 15% either way and say so in `evidence`. Further rules:
+
+- `words_per_minute` is words over the whole run (`transcript.json` → `stats.words_per_minute`): the writer works out the script's word budget from it. `speaking_rate_wpm` is the pace while the voice is talking: the producer sets the voice's speed from it. Keep them apart.
+- Numbers that the tools will also measure on our video (shot lengths, cut rate, still stretches, end hold, loudness, cuts on sound) must be the tool's figures, even where your own count differs, because the judges compare like with like. Put your own count and the reason in `notes`.
+- A value the references do not have (no payoff, no voice) is `null`, with the reason in `notes`. Never fill a gap with a guess.
+- Where the brief asks for something the references do not do (a different length, a different format), the brief wins: give the brief's value and note what the references did.
 
 ## Rules
 

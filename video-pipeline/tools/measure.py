@@ -18,7 +18,8 @@ import numpy as np
 
 W = 96                  # analysis width in pixels
 STILL_DIFF = 0.20       # mean luma change per frame (0-255) below which nothing moved
-STILL_CHANGED = 0.0004  # and fewer than this share of pixels changed by more than 4 levels
+STILL_CHANGED = 0.00003 # and fewer than this share of pixels (about 5 at 320 px) changed by more than 6 levels
+BLANK_DETAIL = 0.0003   # a frame is blank when fewer than this share of pixels stand out from the ground
 STILL_MIN = 0.60        # seconds
 SYNC_WINDOW = 0.080     # seconds either side of a cut that counts as "on the sound"
 SYNC_GRADUAL = 0.300    # the same, for dissolves and other gradual transitions
@@ -73,51 +74,60 @@ def read_frames(path, meta):
 
 
 def fine_pass(path, meta, fps):
-    """Streamed pass at 320 px: per-frame mean change, and the share of pixels
-    that changed at all. Thin lines drifting slowly are invisible at 96 px."""
+    """Streamed pass at 320 px. Per frame: mean change, the share of pixels that
+    changed, the share that changed strongly, and whether the frame is blank.
+    Thin lines drawing on or drifting are invisible at 96 px."""
     w = 320
     h = max(2, int(round(w * meta["height"] / meta["width"] / 2)) * 2)
     proc = subprocess.Popen(["ffmpeg", "-v", "error", "-i", str(path), "-an",
                              "-vf", f"fps={fps},scale={w}:{h}:flags=area,format=gray",
                              "-f", "rawvideo", "-"], stdout=subprocess.PIPE)
-    size, prev, mean, changed = w * h, None, [0.0], [0.0]
+    size, prev = w * h, None
+    mean, changed, strong, blank = [0.0], [0.0], [0.0], []
     while True:
         buf = proc.stdout.read(size)
         if len(buf) < size:
             break
         cur = np.frombuffer(buf, np.uint8).astype(np.int16)
+        # blank: almost nothing stands out from the ground (empty paper, a black frame)
+        blank.append(float((np.abs(cur - np.median(cur)) > 30).mean()) < BLANK_DETAIL)
         if prev is not None:
             diff = np.abs(cur - prev)
             mean.append(float(diff.mean()))
-            changed.append(float((diff > 4).mean()))
+            changed.append(float((diff > 6).mean()))
+            strong.append(float((diff > 24).mean()))
         prev = cur
     proc.wait()
-    return np.array(mean), np.array(changed)
+    return np.array(mean), np.array(changed), np.array(strong), np.array(blank)
 
 
-def still_runs(mean, changed, fps, min_s):
-    """Stretches where the picture does not change. One odd frame (a keyframe
-    refresh) inside a frozen stretch does not break it."""
+def still_runs(mean, changed, strong, fps, min_s):
+    """Stretches where the picture does not change, as (start, end) in seconds:
+    start is the time of the last change before the stretch, end the time of the
+    next change. A single frame of faint, widespread change inside a frozen
+    stretch (a keyframe refresh) does not break it; a caption switching does."""
     still = (changed < STILL_CHANGED) & (mean < STILL_DIFF)
-    still[0] = still[1] if len(still) > 1 else True
+    still[0] = False                              # frame 0 has nothing before it to compare with
     for i in range(1, len(still) - 1):
-        if not still[i] and still[i - 1] and still[i + 1] and mean[i] < 2 * STILL_DIFF:
+        if not still[i] and still[i - 1] and still[i + 1] and strong[i] < 1e-5 and mean[i] < 2 * STILL_DIFF:
             still[i] = True
     out, start = [], None
-    for i in range(len(still) + 1):
+    for i in range(1, len(still) + 1):
         on = i < len(still) and still[i]
         if on and start is None:
             start = i
         elif not on and start is not None:
+            # frames start..i-1 equal frame start-1, so the picture froze at (start-1)/fps
             if (i - start) / fps >= min_s:
-                out.append((max(start - 1, 0) / fps, i / fps))
+                out.append(((start - 1) / fps, i / fps))
             start = None
     end_hold = 0
     for i in range(len(still) - 1, 0, -1):
         if not still[i]:
             break
         end_hold += 1
-    return out, end_hold / fps
+    # the frame that made the last change is itself held to the end
+    return out, (end_hold + 1) / fps if end_hold else 0.0
 
 
 def corr(a, b):
@@ -257,12 +267,14 @@ def main():
               "dur": round(bounds[i + 1] - bounds[i], 3)} for i in range(len(bounds) - 1)]
     lens = np.array([s["dur"] for s in shots])
 
-    fine, changed = fine_pass(path, meta, fps)
+    fine, changed, strong, blank = fine_pass(path, meta, fps)
     m = min(n, len(fine))
-    fine, changed = fine[:m], changed[:m]
-    stills, end_hold = still_runs(fine, changed, fps, STILL_MIN)
+    fine, changed, strong, blank = fine[:m], changed[:m], strong[:m], blank[:m]
+    stills, end_hold = still_runs(fine, changed, strong, fps, STILL_MIN)
     still_total = sum(b - a for a, b in stills)
-    flat = frames.reshape(n, -1).std(axis=1) < 2.0
+    flat = np.zeros(n, bool)
+    flat[:m] = blank
+    first_picture = next((i / fps for i in range(m) if not blank[i]), None)
     flat_runs, start = [], None
     for i in range(n + 1):
         f = i < n and flat[i]
@@ -312,6 +324,7 @@ def main():
         "motion": {"mean": round(float(fine[1:].mean()), 2), "median": round(float(np.median(fine[1:])), 2),
                    "p90": round(float(np.percentile(fine[1:], 90)), 2)},
         "hook": {"window_s": 3.0,
+                 "first_picture_s": round(first_picture, 3) if first_picture is not None else None,
                  "first_cut_s": cuts[0]["t"] if cuts else None,
                  "cuts": sum(1 for c in cuts if c["t"] < 3.0),
                  "motion_mean": round(float(fine[1:min(hook_n, m)].mean()), 2),

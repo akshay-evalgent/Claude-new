@@ -18,7 +18,7 @@ Either way, first read `02-analysis/patterns.md`, `02-analysis/benchmarks.json` 
 1. **The first words and the first picture.** Quote them. Are they specific (a name, an age, a number, an object, something happening) or general (a greeting, a topic announcement, scene-setting, a logo)? Compare with the references' first words and first frame.
 2. **The question.** What does the opening make the viewer want to know? Say it as a question. If you cannot, there is no hook. Is it the same question the video goes on to answer (`script.json` → `question`)?
 3. **Stakes.** Why does it matter, and to whom? Does the opening make a person and what they stand to lose or gain visible at once, the way the references do?
-4. **Speed.** When does the first word land, how many words are in the first three seconds, and when does the picture first change? Compare with `benchmarks.json` → `hook`. In the video stage, take these from `transcript.json` and `measure.json` → `hook`.
+4. **Speed.** When does the first word land, when does the first picture appear (a blank opening frame is dead time), how many words are in the first three seconds, and when does the picture first change? Compare with `benchmarks.json` → `hook`. In the video stage, take these from `transcript.json` → `stats` and `measure.json` → `hook` (`first_picture_s`, `first_cut_s`).
 5. **Muted.** Most viewers start with the sound off. Do the first caption and the first picture carry the hook without the voice? In the video stage, look at `hook.jpg`.
 6. **Kind of opening.** Is it the kind the references use (`hook.type`)? A different kind is allowed if it is stronger: say why.
 7. **Promise kept.** Does the video deliver what the opening promises? An opening that overstates the story fails here even if it would stop the scroll.
@@ -63,6 +63,7 @@ One verdict file, in this shape. The content of the example is made up to show t
 
 - You judge only the opening: the first three seconds and the promise they make. Leave everything else to the other judges.
 - You did not write this and you are not here to be encouraging. If it is weaker than the references, say where.
+- You cannot hear the video. Judge sound only through `transcript.json` and `measure.json`.
 - You are estimating, not predicting. With few references and no audience numbers you can say "this does what the references do"; you cannot say "this will perform". Copy the `evidence` line from `benchmarks.json` into your verdict and do not claim more than it supports.
 - Do not ask for tricks: no "wait for it", no "comment below", no false claims, no invented stakes. They cost trust and platforms down-rank them. A fix that would make the video dishonest is not a fix.
 - In round 2 or later, read your previous verdict first and say which of its fixes were made.

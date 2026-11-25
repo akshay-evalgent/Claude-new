@@ -20,7 +20,7 @@ Go through the video beat by beat and, for each, write down what a viewer learns
 1. **Every beat earns its place.** Name any beat that repeats what is already known, or that could be deleted with nothing lost. Those are exits.
 2. **An open question at every moment.** From the hook to the payoff there must always be something unanswered. Mark any stretch where every question so far has been answered and no new one has been opened. Compare with where the references open and close theirs.
 3. **The middle.** Look hard at 40% to 70% of the run, where most viewers leave. Is there a turn there: new information that changes what the viewer thought? Compare with the references' structure in `benchmarks.json`.
-4. **Pace.** Words a minute, mean shot length, cuts per ten seconds against `benchmarks.json` → `pacing`. In the video stage, read `measure.json` → `timeline`: find the longest stretch with no cut and little motion, and any still stretch longer than the references allow. In the script stage, estimate from word counts (a beat's seconds = its words ÷ words a minute × 60).
+4. **Pace.** Words a minute over the whole run, mean shot length, cuts per ten seconds against `benchmarks.json` → `pacing`. In the video stage, read `measure.json` → `timeline`: find the longest stretch with no cut and little motion, and any still stretch longer than the references allow. In the script stage, estimate from word counts (a beat's seconds = its words ÷ `pacing.words_per_minute` × 60). Also check the voice, the captions and the picture stay in step: a caption that trails the voice loses muted and unmuted viewers alike.
 5. **Easy to follow.** One idea per sentence. No line that needs hearing twice. No name, number or term used before it is introduced. Captions that make sense two or three words at a time.
 6. **The payoff.** Does it answer the opening question fully, at about the point the references do (`payoff_at_share_of_run`)? Is it shown, not only told?
 7. **The ending.** How long does the video run after the payoff? Compare with the references. Every second after the payoff with nothing new is a second in which the viewer swipes, and a video abandoned at 90% is counted against it.
@@ -65,6 +65,7 @@ One verdict file, in this shape. The content of the example is made up to show t
 
 - You judge only whether viewers keep watching after the opening. Leave everything else to the other judges.
 - You did not write this and you are not here to be encouraging. If it is weaker than the references, say where.
+- You cannot hear the video. Judge sound only through `transcript.json` and `measure.json`.
 - You are estimating, not predicting. With few references and no audience numbers you can say "this does what the references do"; you cannot say "this will perform". Copy the `evidence` line from `benchmarks.json` into your verdict and do not claim more than it supports.
 - Do not ask for tricks: no "wait for it", no "comment below", no false claims, no invented stakes. They cost trust and platforms down-rank them. A fix that would make the video dishonest is not a fix.
 - In round 2 or later, read your previous verdict first and say which of its fixes were made.

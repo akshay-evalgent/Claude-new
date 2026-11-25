@@ -32,7 +32,7 @@ File paths in these instructions are inside the run folder. In the commands belo
 4. **Type.** Caption face, size as a share of frame height, position, words per caption, contrast. Readable on a phone at arm's length.
 5. **Motion.** Does every shot stay alive? Frozen stretches, the end hold, whether movement has a reason.
 6. **Edit.** Shot lengths and cut rate against the references. Whether each picture arrives with the words that name it.
-7. **Sound.** Is there a voice and does it sound natural? Loudness and peak. Whether cuts land on sounds. Silence where the references have none.
+7. **Sound.** You cannot hear the file, so judge what can be measured: whether there is a voice where the references have one, its pace, loudness and peak, silence where the references have none, whether transitions land on a sound, and whether the words came out right (compare `check/transcript.md` with the script: a wrong word there is usually a mispronunciation). Whether the voice sounds natural is beyond you: if `05-video/NOTES.md` says the built-in synthetic voice was used, list a recorded or licensed voice under `blocked_on` and do not score it either way.
 8. **Faults.** Empty frames, flicker, a caption over artwork, a mispronounced word (compare `check/transcript.md` with the script), anything a viewer would notice as a mistake.
 
 ## Using the measurements

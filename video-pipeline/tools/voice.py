@@ -151,12 +151,13 @@ def main():
     words = sum(len(r["text"].split()) for r in rows)
     spoken = sum(r["vo_end"] - r["vo_start"] for r in rows if r["vo_end"] is not None)
     timing = {"duration": total, "voice": args.voice, "pace": args.pace,
-              "words": words, "words_per_minute": round(words / spoken * 60) if spoken else 0,
+              "words": words, "words_per_minute": round(words / total * 60),
+              "speaking_rate_wpm": round(words / spoken * 60) if spoken else 0,
               "speech_share": round(spoken / total, 3), "beats": rows, "captions": caps}
     (out / "timing.json").write_text(json.dumps(timing, indent=1))
     (out / "timing.js").write_text("window.TIMING = " + json.dumps(timing, indent=1) + ";\n")
-    print(f"{len(rows)} beats, {words} words, {total:.2f} s, {timing['words_per_minute']} words a minute, "
-          f"voice on {timing['speech_share']:.0%} of the run")
+    print(f"{len(rows)} beats, {words} words, {total:.2f} s: {timing['words_per_minute']} words a minute over the "
+          f"whole run, {timing['speaking_rate_wpm']} while speaking, voice on {timing['speech_share']:.0%} of the run")
     print(f"wrote {out / 'vo.wav'} and {out / 'timing.json'}")
 
 

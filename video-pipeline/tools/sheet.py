@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """Contact sheets, so an agent can look at a video without watching it.
 
-    python3 sheet.py VIDEO --out DIR [--measure DIR/measure.json] [--stills 0.5,12,33]
+    python3 sheet.py VIDEO --out DIR [--measure DIR/measure.json] [--dense 36]
+    python3 sheet.py VIDEO --out DIR --stills 0.5,12,33
 
 Writes into DIR:
   hook.jpg    the first 3 seconds, 4 frames a second
   shots.jpg   one frame from the middle of every shot (needs --measure)
   dense.jpg   evenly spaced frames across the whole run
   end.jpg     the last 3 seconds, 2 frames a second
-  still_<t>.jpg  full-size frames at the times given to --stills
-Every thumbnail carries its time in seconds.
+Every thumbnail carries its time in seconds. Raise --dense for a finer sheet
+(to time captions, say). With --stills, writes only full-size frames at those
+times (still_<t>.jpg) and leaves the sheets alone.
 """
 import argparse
 import io
@@ -92,6 +94,15 @@ def main():
     cols = 6 if wide[1] >= wide[0] else 4
     made = []
 
+    if args.stills:
+        for t in [float(x) for x in args.stills.split(",") if x.strip()]:
+            im = frame(path, min(t, dur - 0.05))
+            if im is not None:
+                dest = out / f"still_{t:g}.jpg"
+                im.save(dest, quality=92)
+                print(f"wrote {dest}")
+        return
+
     hook = [(t / 4, f"{t / 4:.2f}s") for t in range(int(min(3.0, dur) * 4))]
     made.append(grid(path, hook, out / "hook.jpg", cols))
 
@@ -109,13 +120,6 @@ def main():
     end = [(min(start + i / 2, dur - 0.05), f"{min(start + i / 2, dur - 0.05):.2f}s")
            for i in range(int((dur - start) * 2) + 1)]
     made.append(grid(path, end, out / "end.jpg", cols))
-
-    for t in [float(x) for x in args.stills.split(",") if x.strip()]:
-        im = frame(path, min(t, dur - 0.05))
-        if im is not None:
-            dest = out / f"still_{t:g}.jpg"
-            im.save(dest, quality=92)
-            made.append(dest)
 
     for m in made:
         if m:

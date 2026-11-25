@@ -4,7 +4,7 @@
     python3 palette.py VIDEO_OR_IMAGES... --out DIR
 
 Writes DIR/palette.json and DIR/palette.png. Reports the main colours by share
-of the picture, plus the accent: the small amount of strong colour that a
+of the picture, the ink (the darkest colour), and the accent: the small amount of strong colour that a
 by-share palette would miss (the one red mark on an ink drawing).
 """
 import argparse
@@ -24,12 +24,13 @@ def pixels_from(path):
     path = Path(path)
     if path.suffix.lower() in VIDEO_EXT:
         raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-an",
-                              "-vf", "fps=2,scale=180:-2:flags=bilinear,format=rgb24",
+                              "-vf", "fps=2,scale=270:-2:flags=neighbor,format=rgb24",
                               "-f", "rawvideo", "-"], capture_output=True).stdout
         return np.frombuffer(raw, np.uint8).reshape(-1, 3)
+    # nearest-neighbour, so small marks keep their true colour instead of blending into the ground
     im = Image.open(path).convert("RGB")
-    im.thumbnail((160, 160))
-    return np.asarray(im).reshape(-1, 3)
+    k = max(1, max(im.size) // 480)
+    return np.asarray(im)[::k, ::k].reshape(-1, 3)
 
 
 def kmeans(x, k, seed=0, rounds=25):
@@ -75,7 +76,7 @@ def main():
     val = mx / 255.0
     strong = (sat > 0.55) & (val > 0.35)
     accent = None
-    if strong.mean() > 0.0002:
+    if strong.mean() > 0.00005:                     # a caption bullet is about 0.02% of a frame
         sp = px[strong]
         sp = sp[rng.choice(len(sp), 4000, replace=False)] if len(sp) > 4000 else sp
         hues = np.array([colorsys.rgb_to_hsv(*(p / 255.0))[0] for p in sp])
@@ -88,10 +89,12 @@ def main():
                   "single_hue": bool(near.mean() > 0.8)}
 
     lum = 0.2126 * px[:, 0] + 0.7152 * px[:, 1] + 0.0722 * px[:, 2]
+    darkest = px[lum <= np.percentile(lum, 0.5)]
     result = {
         "inputs": [str(p) for p in args.inputs],
         "colours": colours,
         "ground": colours[0]["hex"],
+        "ink": hexc(np.median(darkest, axis=0)),          # the darkest half percent of the picture
         "accent": accent,
         "luminance_mean": round(float(lum.mean()) / 255, 3),
         "saturation_mean": round(float(sat.mean()), 3),
@@ -116,7 +119,7 @@ def main():
                 fill=(170, 170, 170), font=f)
     im.save(out / "palette.png")
 
-    print(f"ground {result['ground']}, {result['colourfulness']}, "
+    print(f"ground {result['ground']}, ink {result['ink']}, {result['colourfulness']}, "
           f"accent {accent['hex'] if accent else 'none'}")
     print("  " + "  ".join(f"{c['hex']} {c['share']:.0%}" for c in colours))
     print(f"wrote {out / 'palette.json'} and {out / 'palette.png'}")
