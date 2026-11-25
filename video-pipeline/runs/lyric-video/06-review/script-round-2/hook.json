@@ -1,0 +1,94 @@
+{
+  "check": "hook",
+  "stage": "script",
+  "round": 2,
+  "score": 8,
+  "pass": true,
+  "summary": "Both round 1 script fixes were made and the opening now does everything the playbook's Hook section asks; what is left is making the frame-0 window and the road's direction readable inside three seconds, which the script still describes too loosely (\"a few sparse dots\", \"small\").",
+  "previous_round": {
+    "verdict": "06-review/script-round-1/hook.json: 7, pass, no must fixes, four should fixes",
+    "fixes_made": [
+      "script, should: put the unlit window on frame 0 and make beat 'light' light it instead of making it appear. Made: beat 'title' picture and motion, beat 'light', carries_through.drawing.",
+      "script, should: bring the faint first line in at about 0.5 s instead of 1.33 s. Made: beat 'title' motion; beat 'ask' says the words are already faint when the voice starts; the voice still enters at 1.45 s."
+    ],
+    "fixes_not_this_stage": [
+      "moodboard, should: fix the faint-ink value by a legibility test. Still open; carried forward below.",
+      "video, should: do not pass timing.json's captions to the film, break the first line as the script does, keep the bed level under 0.00-1.45 s. Not yet doable, but the script now says all three (carries_through.lyric_setting, sync_rule, sound_notes: \"thin in texture and not lower in level\"). Carried forward below."
+    ]
+  },
+  "findings": [
+    {
+      "criterion": "the first words and the first picture",
+      "result": "met",
+      "ours": "beat 'title', 0.00 s: the word \"home\", large, dark red; \"far to the right ... a small window: a square marked by a few sparse stipple dots, unlit, there in frame 0\"; the first three road dots low in the left margin. About 0.5 s: \"Text me\" and \"when you're\" arrive in faint ink in front of the red word. Beat 'ask', 1.45-2.96 s, first spoken words: \"Text me when you're home.\"",
+      "reference": "barsat-song 0.00 s: the one-word title in the only colour on the page beside a finished stippled drawing of two crying eyes, which fills 47% to 92% of the width (hook.jpg, all 12 frames identical). patterns.md Hook: \"Make the first frame name the feeling before any word is heard. One word ... and one drawn detail.\"",
+      "why_it_matters": "the frame now has both halves the playbook asks for, a word and a drawn thing, and the words are a specific thing people say to \"you\", not a greeting or a topic. The remaining gap is size and finish: the reference's drawing is finished and large and reads as a person at once; ours is \"small\" and made of \"a few sparse dots\". On the pre-revision board frame (04-moodboard/frames/still_1.png, made before the window existed) a road dot is about 6 px across on a 1920 px sheet; a square of a few such dots would be easy to miss or read as stray marks. The script leaves that to chance"
+    },
+    {
+      "criterion": "the question",
+      "result": "partly",
+      "ours": "beat 'ask', 1.45-2.96 s: \"Text me when you're home.\" In words the question it opens is: who is saying this to me, and what is behind it? In picture, since frame 0: where is the road going, and does it reach the window? script.json question: \"Why does the speaker keep asking you to text when you're home?\", answered by beats 'asking' and 'love' (16.34-18.81 s) and, in picture, by beat 'home' (the last dot reaches the sill).",
+      "reference": "barsat-song: no question in words in the first 3 s (benchmarks.json hook.question_opened; on the Do not copy list). Its first sung line at 13.4 s is a plea not to leave, which carries its conflict inside it. patterns.md Holding attention: \"Open the question in the first sung line.\"",
+      "why_it_matters": "better than round 1: the picture now holds something unfinished from the first frame, and it is the same thing the lyric asks. But inside three seconds it is only latent. The line heard once is still an everyday request a viewer can take at face value (the \"keeps asking\" arrives with the repeat at 4.61 s), and the picture's version depends on the eye joining three or four dots at the lower left to a faint square at the far right: beat 'ask' has the road at \"about a sixth of its length\" only by the end of its slot at 4.49 s, so at 3.0 s it has barely left the margin. The words must stay as they are; the picture can do this job sooner"
+    },
+    {
+      "criterion": "stakes",
+      "result": "met",
+      "ours": "0.00 s: the red word \"home\" and a window, so a home with somebody in it is on the sheet from the first frame. By about 0.5 s the whole line is readable: a person speaking to \"you\" who wants to know you got back.",
+      "reference": "barsat-song 0.00 s: two crying eyes put a person and a loss on frame 0; the first sung line (13.4 s) says someone is leaving.",
+      "why_it_matters": "round 1's gap (nothing stood for the person asking until 11.21 s) is closed: the window is there 11 s sooner. The stakes are small and warm and the script keeps them so (beat 'fine' says there is no danger). The reference shows a person, ours shows where a person is; that is as far as this lyric can honestly go, and it holds only if the window reads as a window (see the first finding)"
+    },
+    {
+      "criterion": "speed",
+      "result": "met",
+      "ours": "timing.json (built-in voice, pace 0.8): first picture 0.00 s (word and window in frame 0, no blank, no fade-in); road dots landing from the first frame; first change in the words at about 0.5 s (faint line; from script.json beat 'title' motion, timing.json has no entry for it); first word 1.45 s; first line ends 2.955 s, so all 5 words are inside 3 s (round 1: 4 complete, line ending 3.08 s).",
+      "reference": "benchmarks.json hook: first_word_s 1.4 to 2.2 (a scaled allowance; the reference's own 13.36 s is a fault), first_picture_s 0.0, words_in_first_3s 0 (a fault), first_cut_s null (the reference never changes).",
+      "why_it_matters": "first picture matches the reference at 0.0 s, the voice enters at the fast end of the allowance, and the 1.45 s before the voice, the slowest stretch in round 1, now has the line arriving inside it. One production risk: the 0.5 s arrival exists only in the script's motion text, and timing.json's 'title' shot runs 0.00-1.33 s with no event inside it, so a producer building from timing.json alone would bring the line in at 1.33 s again"
+    },
+    {
+      "criterion": "muted",
+      "result": "met",
+      "ours": "0.00 s: \"home\" in red. About 0.5 s: \"Text me\" / \"when you're home\" on screen whole, faint, then lit word by word 1.45-2.96 s. carries_through.lyric_setting: \"There is no caption track, no label and no credit: the caption groups in timing.json are not drawn.\" Rows are broken as the beats set them, not as timing.json cuts them (\"Text me when\" / \"you're home.\").",
+      "reference": "barsat-song 0.00 s: the title card reads muted, but none of its roughly 160 sung words is ever shown. benchmarks.json hook.works_muted is the brief's requirement, not the reference's behaviour; there is no reference for the faint-then-lit setting, so it is judged against brief.md, Lyric sync.",
+      "why_it_matters": "a muted viewer has the whole hook line about 0.95 s before the voice says its first word and about 0.8 s sooner than in round 1, and the doubled-caption risk is now ruled out in the script. It still rests on one untested value: how faint the faint ink is"
+    },
+    {
+      "criterion": "kind of opening",
+      "result": "met",
+      "ours": "a one-word title in the only colour on the page at frame 0 with a drawn detail to the right of it; the word becomes the last word of the first lyric line; the refrain is stated first (1.45 s) and said again at once (beat 'again', 4.61 s).",
+      "reference": "benchmarks.json hook.type: \"a complete title card at frame 0: the song's one-word title in the only colour on the page, beside a stippled ink drawing of two crying eyes; no sung word and no motion in the first 3 s\". barsat-song repeats its first line at once (13.4-16.5 s and 16.8-20.2 s).",
+      "why_it_matters": "it is the reference's kind of opening, now with the drawing it lacked in round 1, and with the reference's listed faults removed: voice at 1.45 s against 13.36 s, the title spoken about 2.5 s after it appears against about 87 s, a frame that moves"
+    },
+    {
+      "criterion": "promise kept",
+      "result": "met",
+      "ours": "the opening promises a quiet piece spoken to \"you\" about being asked to text when you are home, and shows a road and an unlit window. Beats 'asking' and 'love' (16.34-18.81 s) say why: \"Asking is how\" / \"I love you.\" Beat 'home': the last dot reaches the sill on \"home\", the window is lit, and the red word of frame 0 returns as \"Home.\"",
+      "reference": "barsat-song: the title is on screen at 0.00 s and apparently not sung until about 87-90 s, with nothing in the picture marking it (patterns.md Structure, Do not copy).",
+      "why_it_matters": "everything the first frame sets up is paid: the word, the road and the window each finish. No danger is implied and none is delivered. The revised line 3 (\"Until one word,\") is outside the first three seconds and does not change the promise"
+    }
+  ],
+  "fixes": [
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Say what the window is made of, so it cannot come out as stray marks. In beat 'title' picture and in carries_through.drawing, replace \"a square marked by a few sparse stipple dots\" with: \"a small window, about a tenth of the frame's height: its four sides closed by evenly spaced stipple dots no smaller than the road's, one dotted upright bar down the middle, and a short dotted sill under it that runs a little wider than the square. Unlit: nothing drawn round it yet.\" The cross-bar and sill are what make a square a window; the sill is already where the road ends in beat 'home'. Lighting it in beat 'light' stays as written."
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Make the road's aim readable before 3 s. In beat 'title' picture, change \"Low in the left margin, the first three dots of the road\" to \"Low in the left margin, the first three dots of the road, set on a line that points at the window\". In beat 'ask' motion, change \"The road grows to about a sixth of its length and keeps growing through the breath\" to \"The road reaches about a sixth of its length by the word 'home' (2.96 s), still pointing at the window, and keeps growing through the breath\". Nothing else moves: the road is still a third of its length at the end of beat 'again'. Do not change the first line."
+    },
+    {
+      "stage": "moodboard",
+      "priority": "should",
+      "change": "Remake the opening frames from the revised script and test them at phone size: a still at 0.0 s must read as a red word and a window (not a word and specks), and a still at 1.4 s (line faint, nothing lit) must be readable. Start the faint ink at about 35% to 40% of full ink and go no paler; show unlit and lit side by side. The existing still_1.png pre-dates the revision: no window, and \"home\" stands about 9% of the frame height where the reference's title is about 14% (my estimate from pixel boxes). Go as near 14% as the row \"when you're home\" allows with the window clear to its right. The reference gives no value for faint ink, so that test is legibility, per brief.md Lyric sync."
+    },
+    {
+      "stage": "video",
+      "priority": "should",
+      "change": "Carried from round 1, plus one. (1) Bring the faint first line in at 0.5 s: this time is in script.json beat 'title' motion only; timing.json's 'title' shot (0.00-1.33 s) has no event for it. (2) Do not pass timing.json's captions to the film; the lyric rows are the only words. (3) Break the first line \"Text me\" over \"when you're home\". (4) Keep the bed under 0.00-1.45 s at the level it has under the first two lines. Check all four on hook.jpg and measure.json when the video exists."
+    }
+  ],
+  "blocked_on": [],
+  "evidence": "One reference. It has public numbers (1,938,059 views, 5,421 likes, 89 comments, a 700-follower channel, as of 2026-11-25) but one video gives no result evidence: these are what the reference does, not proof of what performs. The reference is NOT a lyric video: it is one still title card held for 185.33 s under a full song, with no lyric on screen at any time, no motion and no cut. Every value about how lyrics are set, timed, moved or coloured is therefore null, and the brief governs those. Tool figures are given as measured; ranged values are the single reference's figure widened about 15% either way; length follows the brief (20 to 30 s), not the reference (185.33 s). Sung-word figures rest on a low-trust transcript of singing over a band. Beyond that, for this verdict: times are from 03-script/timing/timing.json as re-made for the revision (built-in voice, pace 0.8, 24.375 s); it has beat and caption times but no single-word times, and no entry for the faint line's arrival, which is taken from the script's own \"about 0.5 s\". The reference's first frame was checked by eye on 02-analysis/barsat-song/hook.jpg. One moodboard frame (04-moodboard/frames/still_1.png) was looked at only for the scale of a dot and of the word; it pre-dates this revision and is not evidence of how the revised opening will look. Whether the window reads as a window cannot be judged from a script, and the score of 8 assumes it is drawn so that it does. Where the reference's hook is weak (13.36 s before the voice, a frame held unchanged, a quiet intro, no question in words: all under Do not copy), the yardstick was patterns.md, Hook. The faint-then-lit lyric setting has no reference and was judged against brief.md only. The two rulings in 06-review/review.md concern the payoff breath and line 3; neither touches the first three seconds. This is an estimate of whether the opening does what the playbook says, not a prediction of how it will perform."
+}
