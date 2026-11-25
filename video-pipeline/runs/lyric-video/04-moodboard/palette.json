@@ -1,0 +1,47 @@
+{
+ "inputs": [
+  "video-pipeline/runs/lyric-video/04-moodboard/frames/still_1.png",
+  "video-pipeline/runs/lyric-video/04-moodboard/frames/still_3.png",
+  "video-pipeline/runs/lyric-video/04-moodboard/frames/still_5.png",
+  "video-pipeline/runs/lyric-video/04-moodboard/frames/still_7.png",
+  "video-pipeline/runs/lyric-video/04-moodboard/frames/still_9.png"
+ ],
+ "colours": [
+  {
+   "hex": "#dbcbb4",
+   "share": 0.2954
+  },
+  {
+   "hex": "#dfd0bc",
+   "share": 0.2885
+  },
+  {
+   "hex": "#d6c5ab",
+   "share": 0.2878
+  },
+  {
+   "hex": "#cfbb9e",
+   "share": 0.1091
+  },
+  {
+   "hex": "#1f0c0a",
+   "share": 0.0118
+  },
+  {
+   "hex": "#85766a",
+   "share": 0.0073
+  }
+ ],
+ "ground": "#dbcbb4",
+ "ink": "#0b0100",
+ "accent": {
+  "hex": "#7a1713",
+  "share": 0.00155,
+  "hue_deg": 2.5,
+  "single_hue": true
+ },
+ "luminance_mean": 0.784,
+ "saturation_mean": 0.191,
+ "dark_share": 0.0115,
+ "colourfulness": "monochrome with one accent"
+}

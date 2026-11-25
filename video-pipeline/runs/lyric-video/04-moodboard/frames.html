@@ -23,7 +23,7 @@
   <section class="shot" id="title">
     <svg viewBox="0 0 1920 1080">
       <g class="stipple road" data-share="0"></g>
-      <g class="stipple steps" data-share="0.085"></g>
+      <g class="stipple steps" data-share="0.09"></g>
       <g class="stipple window" data-share="0"></g>
     </svg>
     <p class="lyric">
@@ -90,9 +90,9 @@
 <script src="../../../runtime/film.js"></script>
 <script>
   /* The drawing, once. The producer copies these three calls unchanged. */
-  const ROAD = 'M160 936 C250 936 350 912 440 884 C520 859 590 864 628 902 C656 930 700 948 760 944 C850 938 925 929 985 888 L1490 542';
-  const PANE = { x: 1508, y: 390, w: 104, h: 122 };
-  const SILL = [1494, 521, 132, 8];
+  const ROAD = 'M160 936 C250 936 350 912 440 884 C520 859 590 864 628 902 C656 930 700 948 760 944 C850 938 925 932 985 888 L1454 542';
+  const PANE = { x: 1472, y: 390, w: 104, h: 122 };
+  const SILL = [1458, 521, 132, 8];
   function draw(shot) {
     Stipple.trail(shot.querySelector('.road'), { d: ROAD, seed: 5 });
     Stipple.beads(shot.querySelector('.steps'), { d: ROAD, every: 62, seed: 9 });

@@ -1,0 +1,62 @@
+{
+  "check": "comments",
+  "stage": "script",
+  "round": 2,
+  "score": 8,
+  "pass": true,
+  "summary": "All three round 1 fixes were made: the caption now asks about the viewer's own life, there is a first comment that can be posted as written, and the last frame carries one unspoken detail; nothing is left for the script stage, and the one thing to verify is at the video stage (that the change from 'home' to 'Home.' is seen).",
+  "findings": [
+    {
+      "criterion": "something to answer",
+      "result": "met",
+      "ours": "Three things a viewer can reply to, and the first is now asked. (1) post_caption: 'Who tells you \"text me when you're home\"?', a question about their own life. (2) An experience they share: the refrain, beats ask, again and home (1.45-2.96 s, 4.61-6.20 s, 20.61-22.20 s). (3) A claim: 'Asking is how / I love you.' (beats asking and love, 16.34-18.81 s). The lyric still answers its own question at 67% to 77% of the run and does not turn to the viewer in words; the asking is done by the caption and the first comment, which is where it belongs for a lyric.",
+      "reference": "barsat-song, 0.00-185.33 s: no question, claim or prompt anywhere, and 0 of 75 comments answer a question (comments.json). patterns.md, Comments, Do not copy: 'Giving viewers nothing to answer'. The yardstick is that instruction, not the reference's own behaviour.",
+      "why_it_matters": "round 1 had the material but nobody was asked about it. Now a viewer who reads one line of caption knows what to reply with."
+    },
+    {
+      "criterion": "a story of their own",
+      "result": "met",
+      "ours": "Unchanged where it matters: the refrain is said by parents, partners and friends; the speaker and the place are never named; 'the light stays on.' (beat light, 10.44-11.66 s) and 'I know you're fine.' (beat fine, 13.26-14.24 s) stay general. The caption's 'Who tells you' points straight at the person in the viewer's life, and the first comment's 'the one you grew up with' points at childhood. Neither closes the door on someone who used to say it and no longer does: 'my mum used to' is a natural reply to both.",
+      "reference": "comments.json: 5 of 75 tell their own story or dedicate the song to a person, and two of those five are among the ten most-liked. barsat-song 13.4 s and 23.7 s: the refrain is addressed to 'you' and names nobody. patterns.md, Comments: 'Leave room for the viewer's own story'.",
+      "why_it_matters": "this is the only kind of comment under the reference that says more than praise. Ours does what the reference does to earn it (second person, no names, one plain feeling) and now also asks for it."
+    },
+    {
+      "criterion": "easy to answer",
+      "result": "met",
+      "ours": "The caption is answered with a person in one or two words ('my dad'). The first comment (script.json comment_prompt) is 'Some people say 'drive safe'. Some say 'have you eaten'. What's the one you grew up with?': two quoted examples of two or three words each show the shape of an answer, so nothing has to be inferred and nothing needs a rewatch. The two prompts ask different things (who, and what phrase), which gives two short ways in; one reply can answer both.",
+      "reference": "comments.json: the easy replies under the reference are praise in words (34 of 75) and emoji alone (20 of 75); 0 of 75 answer anything because nothing was asked. No reference shows a prompt being answered, so this rests on the playbook's instruction (patterns.md, Comments, Do not copy), not on an example.",
+      "why_it_matters": "round 1's gap was that the examples lived in a note to the team. They are now in words a viewer will see."
+    },
+    {
+      "criterion": "a detail to notice",
+      "result": "met",
+      "ours": "The script now has one detail the words never state. Line 3 is 'Until one word,' (beat until, 7.80-9.04 s), and after the last line the ink words fade and the red word resets in place from 'home' to 'Home.' at about 22.8 s, holding about 1.6 s to the end at 24.38 s (beat home, picture and motion). A viewer who connects the two can tell others: the last word is the text that was asked for. Beat home says the capital and full stop are meant and that nothing on screen explains them, so the producer will not correct it. The first frame is lower-case 'home' alone (0.00 s) and the last is 'Home.' alone, so the change is there to be found on a second watch. The line to point at is kept: 'Asking is how / I love you.' (16.34-18.81 s). Two limits. First, the detail is small (one letter's case and one full stop) and lives for 1.6 s; whether it is seen can only be judged on the film. Second, the script's own fallback (line 3 as 'Until you do,' with the reset removed, script.md change list) would take this finding back to 'partly'; that would still pass.",
+      "reference": "comments.json: 4 of 75 single out a moment by time and 2 of 75 praise the writing; 0 of 75 mention the picture. patterns.md, Sharing, Do not copy: 'Nobody mentions the picture'; Comments: 'Make moments easy to point at'. The reference has no picture detail to compare with, so the yardstick is the playbook.",
+      "why_it_matters": "the reference's picture gave nobody anything to point at. Ours now has one thing that only the picture says, placed where a timestamp comment can reach it (the last two seconds)."
+    },
+    {
+      "criterion": "room to disagree, honestly",
+      "result": "met",
+      "ours": "The same two fair points as round 1, untouched by the revision. 'I know you're fine.' (13.26-14.24 s): some ask because they do not know. 'Asking is how / I love you.' (16.34-18.81 s): some will say the words should be said as well. Both sides are defensible and neither is baited or false. The new caption no longer argues the second point for the viewer, so it is left open.",
+      "reference": "comments.json: 0 of 75 dispute anything. There is no reference example of honest disagreement, so this finding could not support a must.",
+      "why_it_matters": "a small source of replies in a genre that does not argue. It should stay quiet; sharpening it would be bait."
+    },
+    {
+      "criterion": "the caption and first comment",
+      "result": "met",
+      "ours": "post_caption: 'Who tells you \"text me when you're home\"?' It is a question, it sounds like a person, it stands on its own where the caption is shown apart from the video, and it does not give away the payoff at 16.34-18.81 s; it quotes only the line the video opens with at 1.45 s. post_caption_notes keeps the shorter 'Who says this to you?' for a platform that shows the caption beside the playing video. comment_prompt is now words to post, and comment_prompt_notes says not to present them as the creator's own memory unless a true one is supplied. Both are the same in script.md and script.json. Suggested wording: keep both as written.",
+      "reference": "barsat-song: nothing in the video or from the uploader asks anything; the uploader's one contribution to the thread was a channel plug with 0 likes (comments.json; patterns.md, Comments, Do not copy). 89 comments on 1.94 million views.",
+      "why_it_matters": "this was round 1's only missed criterion. The caption and first comment are the two places where asking costs the video nothing, and both now ask."
+    },
+    {
+      "criterion": "no bait",
+      "result": "met",
+      "ours": "No 'comment below', 'tag someone' or 'wait for it' in any beat's vo or on_screen, in post_caption, or in comment_prompt. The first comment ends on a plain question about the viewer's own life. 'Text me' in the refrain is fiction spoken to the lyric's 'you', not an instruction to the audience. The first comment makes no claim about the creator's life, so nothing in it is invented.",
+      "reference": "barsat-song: the uploader's channel plug (0 likes) is the reference's one piece of bait and is in patterns.md, Comments, Do not copy.",
+      "why_it_matters": "the rewrite added two prompts without adding an instruction to comment. Keep it that way at posting: no 'send this to the person who says it' added to the caption."
+    }
+  ],
+  "fixes": [],
+  "blocked_on": [],
+  "evidence": "From benchmarks.json: One reference. It has public numbers (1,938,059 views, 5,421 likes, 89 comments, a 700-follower channel, as of 2026-11-25) but one video gives no result evidence: these are what the reference does, not proof of what performs. The reference is NOT a lyric video: it is one still title card held for 185.33 s under a full song, with no lyric on screen at any time, no motion and no cut. Every value about how lyrics are set, timed, moved or coloured is therefore null, and the brief governs those. Tool figures are given as measured; ranged values are the single reference's figure widened about 15% either way; length follows the brief (20 to 30 s), not the reference (185.33 s). Sung-word figures rest on a low-trust transcript of singing over a band. Beyond it: I re-read all 75 comments in 01-sources/refs/barsat-song/comments.json (75 of the platform's 89; top-level only, so which comments drew replies is unknown and likes are the only weight). The sort is unchanged from round 1: praise in words 34; emoji only 20; own story or a dedication 5; a time in the song singled out 4; naming the sadness 3; praise for the writing 2; a roll-call 1; the uploader 2; off-topic, a bare link or unclear 4. By the kinds this check looks for: own stories 5, answers to a question 0, disagreement 0, a detail noticed 4 (all in the sound, none in the picture), tagging 0, plain praise 54 counting emoji. Round 1 fixes, all three made: (1) must, post_caption as a question that does not give away the payoff: made, using the self-contained wording I offered. (2) should, comment_prompt as a first comment that can be posted: made, as worded. (3) should, the last frame reset to 'Home.' as the one-word reply: made, with a tail of 2.2 s; its setup changed from 'One word will do.' to 'Until one word,' under review.md ruling 2, and I judge that the setup survives honestly: line 3 still says one word is what is waited for. Review.md ruling 1 (the payoff spoken over two beats) does not change anything this check looks at. Times for ours are from 03-script/timing/timing.json (measured from the spoken script, 24.38 s); the time of the reset (about 22.8 s) is the script's stated 0.6 s after vo_end 22.20 s, not a measurement. The score of 8 means the script does what the playbook asks in place of the reference's fault; with one reference, no example of a prompt being answered and no film yet, it is an estimate and not a prediction of how many comments the video will get."
+}

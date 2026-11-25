@@ -149,14 +149,14 @@
 
     /* A band of dots along a path, thickest on its centre line.
        d       the path
-       half    half the band's width in px (default 21)
-       tight   distance between dots on the centre line (3.0); loose: at the band's edge (12)
+       half    half the band's width in px (default 22)
+       tight   distance between dots on the centre line (2.8); loose: at the band's edge (12)
        r       [smallest, largest] dot radius ([1.2, 2.5])
        ragged  how uneven the growing end is, in px along the path (16)
        order   [from, to]: the part of the group's 0-1 order this band takes ([0, 1]) */
     trail(g, o) {
       g = el(g);
-      const { d, half = 21, tight = 3.0, loose = 12, r = [1.2, 2.5], seed = 1, ragged = 16, order } = o;
+      const { d, half = 22, tight = 2.8, loose = 12, r = [1.2, 2.5], seed = 1, ragged = 16, order } = o;
       const rand = rng(seed), path = measure(g, d), field = Field(4), dots = [];
       const lanes = 8;
       for (let b = 0; b < lanes; b++) {                           // from the centre line outward, so the middle fills first
@@ -177,11 +177,11 @@
     },
 
     /* Single dots spaced along a path: the first marks of a line before it fills in.
-       every   distance between dots in px (60);  r: [smallest, largest] radius ([3.2, 4.4])
+       every   distance between dots in px (60);  r: [smallest, largest] radius ([3.6, 4.8])
        jitter  how far a dot may sit off the line (2.5);  from, to: the part of the path, 0-1 */
     beads(g, o) {
       g = el(g);
-      const { d, every = 60, r = [3.2, 4.4], jitter = 2.5, seed = 1, from = 0, to = 1, order } = o;
+      const { d, every = 60, r = [3.6, 4.8], jitter = 2.5, seed = 1, from = 0, to = 1, order } = o;
       const rand = rng(seed), path = measure(g, d), dots = [];
       for (let u = from * path.len; u <= to * path.len + 0.01; u += every) {
         const p = path.at(u), a = rand() * Math.PI * 2, j = rand() * jitter;
@@ -196,11 +196,11 @@
        reach        how far the dots scatter from the edge, px (175)
        tight        distance between dots at the edge (2.3); loose: at the reach (17)
        uneven       how far the outline wanders, 0-1 (0.4)
-       square       0 a round cloud, 1 a cloud with the rectangle's own corners (0.6)
+       square       0 a round cloud, 1 a cloud with the rectangle's own corners (0.45)
        r            [smallest, largest] dot radius ([1.1, 2.2]) */
     halo(g, o) {
       g = el(g);
-      const { x, y, w, h, bare = [], reach = 175, tight = 2.3, loose = 17, uneven = 0.4, square = 0.6,
+      const { x, y, w, h, bare = [], reach = 175, tight = 2.3, loose = 17, uneven = 0.4, square = 0.45,
               r = [1.1, 2.2], seed = 1, order } = o;
       const rand = rng(seed), wob = ringNoise(rand, 5), field = Field(4), dots = [];
       const rects = [[x, y, w, h]].concat(bare);
@@ -215,12 +215,12 @@
         }
         return best;
       };
-      const gapAt = (far) => tight * Math.pow(loose / tight, Math.pow(far, 1.25));    // stays dark for a while, then opens
+      const gapAt = (far) => tight * Math.pow(loose / tight, Math.pow(far, 1.5));     // stays dark for a while, then opens
       const drop = (px, py) => {
         const dd = dist(px, py), rr = pick(rand, r);
         if (dd < rr + 0.8) return;                                            // never on the bare paper
         const far = dd / (reach * (1 + uneven * wob(Math.atan2(py - cy, px - cx))));
-        if (far > 1 || rand() < Math.pow(far, 1.6) * 0.92) return;            // thins to scattered points
+        if (far > 1 || rand() < Math.pow(far, 1.2)) return;                   // thins to scattered points, then nothing
         if (!field.free(px, py, gapAt(far))) return;
         field.add(px, py);
         dots.push({ x: px, y: py, r: rr * (1 - 0.3 * far), k: (rand() * 0.75 + far * 0.6) / 1.35 });
