@@ -23,7 +23,7 @@ export const BEATS = [
   {start: 22.6, end: 32, label: '25 YEARS LATER'},
 ];
 export const EP01_DURATION = 32;
-const END_AT = 29.05; // moral card, lands on the final chord
+export const END_AT = 29.05; // moral card, lands on the final chord
 
 // ---------- helpers ----------
 const G = GROUND;
@@ -490,7 +490,7 @@ const Panel: React.FC<{t: number; side: Side; top: number}> = ({t, side, top}) =
   );
 };
 
-const Band: React.FC<{t: number}> = ({t}) => {
+export const Band: React.FC<{t: number}> = ({t}) => {
   const bi = Math.max(0, BEATS.findIndex((b) => t >= b.start && t < b.end));
   const b = BEATS[bi === -1 ? BEATS.length - 1 : bi];
   const s = pop(t, b.start, 0.45);
@@ -517,7 +517,7 @@ const Band: React.FC<{t: number}> = ({t}) => {
   );
 };
 
-const Hook: React.FC<{t: number}> = ({t}) => (
+export const Hook: React.FC<{t: number}> = ({t}) => (
   <div
     style={{
       position: 'absolute',
@@ -536,7 +536,7 @@ const Hook: React.FC<{t: number}> = ({t}) => (
   </div>
 );
 
-const EndCard: React.FC<{t: number}> = ({t}) => {
+export const EndCard: React.FC<{t: number}> = ({t}) => {
   if (t < END_AT) return null;
   const a = prog(t, END_AT, END_AT + 0.5, 'out');
   const l1 = pop(t, END_AT + 0.25, 0.5);
@@ -552,7 +552,7 @@ const EndCard: React.FC<{t: number}> = ({t}) => {
   );
 };
 
-const Flash: React.FC<{t: number}> = ({t}) => {
+export const Flash: React.FC<{t: number}> = ({t}) => {
   let a = 0;
   for (const b of BEATS.slice(1)) if (t >= b.start && t < b.start + 0.16) a = 1 - (t - b.start) / 0.16;
   return a > 0 ? <AbsoluteFill style={{background: '#fff', opacity: a * 0.55}} /> : null;
@@ -560,8 +560,8 @@ const Flash: React.FC<{t: number}> = ({t}) => {
 
 // ---------- sound ----------
 type Cue = {at: number; src: string; vol?: number};
-const SFX_GAIN = 0.45;
-const CUES: Cue[] = [
+export const SFX_GAIN = 0.45;
+export const CUES: Cue[] = [
   // beat 1
   {at: 0.0, src: 'run.wav', vol: 0.5},
   {at: 1.0, src: 'pop.wav'},

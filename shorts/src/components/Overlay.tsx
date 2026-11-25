@@ -122,6 +122,10 @@ export const Bubble: React.FC<{
   size?: number;
 }> = ({t, from, to, x, y, text, side = 'right', kind = 'say', size = 36}) => {
   if (t < from || t > to + 0.2) return null;
+  // keep the bubble inside the 1080px panel: flip to the other side of the tail if it would overflow
+  const estW = [...text].length * size * 0.56 + 56;
+  if (side === 'right' && x - 0.14 * estW + estW > 1066) side = 'left';
+  else if (side === 'left' && x - 0.86 * estW < 14) side = 'right';
   const s = pop(t, from, 0.4);
   const out = t > to ? 1 - (t - to) / 0.2 : 1;
   const bg = kind === 'shout' ? C.gold : kind === 'mutter' ? '#d9d6e0' : kind === 'offscreen' ? '#ffe3e3' : '#ffffff';

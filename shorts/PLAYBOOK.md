@@ -22,17 +22,26 @@ Bottom of the table: *Mom driving vs Dad driving* (20K), *Parents who cut the Wi
 6. **Series and parts.** Part 2 and Part 3 of a winning premise reach 2–5M. Once something hits, make more of it.
 7. **The title carries the moral.** "Same X. Same kid. 😡 vs 🤝 + one-line moral 💛". About 28s long, 60fps, and the comment bait is "which one were you? 👇".
 
+**From the six reference videos themselves** (top Shorts, 24–66s, 1080×1920 at 60fps):
+
+- **No voices.** Speech detection found none in any of them. It's music and sound effects only, with every line in a text bubble, so the video works muted and in any language.
+- **Dense dialogue.** A new line roughly every second, as back-and-forth exchanges, not single remarks.
+- **Same staging in both panels.** The set, blocking and camera are identical; only the reaction differs.
+- **An explicit callback.** In the payoff, the grown kid repeats a line, with an on-screen quote caption: *"I WORK ALL DAY!!" — his dad, 24 years ago*. The counter also resets for the new generation ("FIGHTS HIS SON HEARD 1").
+- **Pop-up document cards** carry story facts: a math test with an F, a permission slip.
+- **The moral lands as two lines** on a darkened frame in the last 3 seconds.
+
 ## Our angle (original, not a copy)
 
 The format mechanics above are a genre convention. Everything we put on screen is our own:
-- **Characters:** outlined bean-style figures with faces.
-- **Look:** warm palette and the Fredoka typeface.
+- **Characters:** toy-like 3D figures with faces (v2). v1 used outlined 2D bean figures.
+- **Look:** lit 3D sets with soft shadows and a moving camera, a warm palette and the Fredoka typeface. The reference channel is flat 2D, so 3D sets us apart at a glance.
 - **Audio:** an original synthesized score and effects.
 - **Scripts:** all new.
 
 **Series identity: PARENTS WHO SCROLL 📱 vs PARENTS WHO LOOK 👀.** It's about attention and phones, which is topical, nobody owns it yet, and every parent feels guilty about it. Every episode reuses the engine, so a new one is mostly a new script plus one or two new sets.
 
-## EP01 — "Same kid. Same drawing." (rendered: `releases/ep01/`)
+## EP01 — "Same kid. Same drawing." (rendered: `releases/ep01/`; the 3D cut is `ep01-3d-*.mp4`)
 
 Ages 5 → 8 → 12 → 16 → 25 years later. Top panel: the drawings stop at 2 and 214 get hidden. Bottom panel: 12,408 drawings and an art kid. Payoff: the grown kid is now the parent. The scroller's son scrolls on his own daughter. The looker's son kneels and says the same words his mom said, then pins her drawing next to his own 25-year-old one.
 

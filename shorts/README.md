@@ -24,6 +24,25 @@ To render outside the cloud container, drop `REMOTION_BROWSER` (Remotion downloa
 | `scripts/make_audio.py` | numpy synthesis of 16 SFX and the piano/pad score (bar 7 lands on "25 YEARS LATER") |
 | `scripts/sheet.py` | Contact sheet of frames at given times, for fast visual QA |
 
+## 3D renderer (v2)
+
+`src/three/` renders the same poses and timelines in Three.js through `@remotion/three`:
+
+| Path | What it is |
+|---|---|
+| `src/three/Person3D.tsx` | 3D character. Reuses the 2D rig's IK, with a lathe torso that bakes shirt, pants and stripe colours, capsule limbs, a 3/4 head turn toward camera, glossy blinking eyes, 3D brows and mouths, ears, nose, blush, and hair styles |
+| `src/three/Sets3D.tsx` | Kitchen and bedroom sets, plus lights. The kitchen has a glossy fridge with an art wall, curtained window with light shafts, tiled counter and pendant lamp. The bedroom has a hinged door onto a lit hallway, a desk lamp spotlight, and a hall light under the door with passing feet |
+| `src/three/Props3D.tsx` | Drawings (procedural crayon textures), phone, gift, markers, sketchbook, book, falling paper |
+| `src/three/Stage.tsx` | Canvas + animated camera + `projector()`, which maps 3D heads to panel pixels so the HTML bubbles follow the characters |
+| `src/episodes/Ep01_3D.tsx` | The episode. Per-beat camera swoops and push-ins, automatic squash and stretch on jumps, callback captions, pop-up card, counter reset |
+
+WebGL renders in software here, so pass `--gl=swangle`. That's about 0.9s per frame, roughly 30 minutes for 32s at 60fps. On a machine with a GPU, use `--gl=angle` and it's much faster.
+
+```bash
+npx remotion render src/index.ts Ep01-3D-Preview out/3d-preview.mp4 --gl=swangle --browser-executable=/opt/pw-browsers/chromium_headless_shell   # 6fps check, ~3.5 min
+scripts/finish.sh Ep01-3D out/ep01-3d --gl=swangle                                                                                             # final 60fps
+```
+
 ## Writing a new episode
 
 Copy `Ep01Drawing.tsx`. Each beat is a function `(t, side) => {svg, html}`:
