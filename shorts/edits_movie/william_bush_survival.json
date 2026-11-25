@@ -1,0 +1,644 @@
+{
+ "title": "He survived 6 days lost in the bush... by doing ONE thing",
+ "note": "True story, November 2026: William, 17, lost six days near Walhalla, Victoria, found by the police Air Wing. Facts from the news reports' own audio (ABC, 7NEWS, 9 News, 10 News, A Current Affair). First name only (he is a minor); no health details. Layout: picture in the middle 66%, captions in the bottom band. Run from the work folder holding src/ and tx/.",
+ "base": ".",
+ "layout": "full",
+ "mid": 0.66,
+ "voice": "am_michael",
+ "speed": 1.3,
+ "gap": 0.05,
+ "beats": [
+  {
+   "say": "This is the moment a police helicopter found a missing seventeen-year-old, after six days lost in the Australian bush.",
+   "shots": [
+    [
+     "yfKeShglSBg",
+     15.5
+    ],
+    [
+     "V2nwJjSBySc",
+     27.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ],
+      "cx": 0.4
+     }
+    ],
+    [
+     "V2nwJjSBySc",
+     31.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ],
+      "cx": 0.33
+     }
+    ]
+   ]
+  },
+  {
+   "say": "It was William's first ever camping trip. He walked back up the track to fetch more supplies, missed the turn-off, and kept walking.",
+   "shots": [
+    [
+     "sWRAMk-rE9M",
+     53.0,
+     {
+      "rows": [
+       0,
+       0.8
+      ],
+      "cx": 0.5
+     }
+    ],
+    [
+     "kLo4ElOLt6g",
+     92.5
+    ],
+    [
+     "fwvLPlZjxsY",
+     99.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "sWRAMk-rE9M",
+     25.0,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "No phone. No shirt. Just shorts and work boots. His friend found the esky he'd been carrying. But William was gone.",
+   "shots": [
+    [
+     "sGSnJV6915c",
+     32.0,
+     {
+      "rows": [
+       0,
+       0.8
+      ],
+      "cx": 0.45
+     }
+    ],
+    [
+     "sWRAMk-rE9M",
+     47.5,
+     {
+      "rows": [
+       0,
+       0.8
+      ],
+      "cx": 0.5
+     }
+    ],
+    [
+     "kLo4ElOLt6g",
+     98.5
+    ]
+   ]
+  },
+  {
+   "say": "That night, he curled up in the bushes and slept. The next morning, he tried to find the camp, slipped, and fell down a cliff into a creek gully.",
+   "shots": [
+    [
+     "4tnualbvM_Q",
+     89.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "4tnualbvM_Q",
+     90.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "V2nwJjSBySc",
+     90.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "4tnualbvM_Q",
+     92.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Police threw everything at the search. Helicopters, the dog squad, drones with infrared cameras, horses, even divers. They asked hunters to check their trail cameras.",
+   "shots": [
+    [
+     "V2nwJjSBySc",
+     99.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ],
+      "cx": 0.5
+     }
+    ],
+    [
+     "V2nwJjSBySc",
+     103.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "fwvLPlZjxsY",
+     105.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "sGSnJV6915c",
+     52.5,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "V2nwJjSBySc",
+     112.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "sWRAMk-rE9M",
+     33.0,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "At night, it dropped to three degrees. Day after day, there was no sign of him.",
+   "shots": [
+    [
+     "sWRAMk-rE9M",
+     26.5,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "kLo4ElOLt6g",
+     91.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "fwvLPlZjxsY",
+    24.9,
+    29.35
+   ],
+   "shots": [
+    [
+     "fwvLPlZjxsY",
+     24.9,
+     {
+      "rows": [
+       0,
+       0.86
+      ],
+      "cx": 0.6
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Down at the creek, William had a towel, a tackle box, and one family-sized bag of chicken chips. He made it last two days, and drank water from the creek.",
+   "shots": [
+    [
+     "yfKeShglSBg",
+     58.5
+    ],
+    [
+     "yfKeShglSBg",
+     64.5
+    ],
+    [
+     "V2nwJjSBySc",
+     81.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "4tnualbvM_Q",
+     72.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "And to get through the freezing nights, he sang Take Me Home, Country Roads, over and over again.",
+   "shots": [
+    [
+     "4tnualbvM_Q",
+     99.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "4tnualbvM_Q",
+     46.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "V2nwJjSBySc",
+     128.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "On day six, the police helicopter flew over an area no one had searched yet.",
+   "shots": [
+    [
+     "4tnualbvM_Q",
+     63.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "V2nwJjSBySc",
+     108.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "fwvLPlZjxsY",
+     116.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "fwvLPlZjxsY",
+    48.1,
+    53.45
+   ],
+   "shots": [
+    [
+     "yfKeShglSBg",
+     66.0,
+     {
+      "w": 2.6
+     }
+    ],
+    [
+     "yfKeShglSBg",
+     13.5,
+     {
+      "w": 2.75
+     }
+    ]
+   ]
+  },
+  {
+   "say": "He woke up, saw the helicopter, put his hand on his heart, and pumped his fist.",
+   "shots": [
+    [
+     "V2nwJjSBySc",
+     33.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ],
+      "cx": 0.35
+     }
+    ],
+    [
+     "yfKeShglSBg",
+     26.0
+    ],
+    [
+     "yfKeShglSBg",
+     34.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "4tnualbvM_Q",
+    135.65,
+    140.5
+   ],
+   "shots": [
+    [
+     "4tnualbvM_Q",
+     135.65,
+     {
+      "rows": [
+       0,
+       0.86
+      ],
+      "w": 2.4,
+      "cx": 0.5
+     }
+    ],
+    [
+     "V2nwJjSBySc",
+     45.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ],
+      "w": 2.45
+     }
+    ]
+   ]
+  },
+  {
+   "say": "They winched him up, and flew him straight to his mum.",
+   "shots": [
+    [
+     "yfKeShglSBg",
+     110.0
+    ],
+    [
+     "yfKeShglSBg",
+     126.0
+    ],
+    [
+     "yfKeShglSBg",
+     166.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "fwvLPlZjxsY",
+    9.1,
+    11.85
+   ],
+   "shots": [
+    [
+     "fwvLPlZjxsY",
+     9.1,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "His first words were, I love you, Mum. And then he asked, am I grounded?",
+   "shots": [
+    [
+     "V2nwJjSBySc",
+     63.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "yfKeShglSBg",
+     178.0
+    ],
+    [
+     "V2nwJjSBySc",
+     145.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ],
+      "cx": 0.5
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "fwvLPlZjxsY",
+    133.6,
+    140.2
+   ],
+   "shots": [
+    [
+     "fwvLPlZjxsY",
+     131.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ],
+      "cx": 0.55,
+      "w": 3.3
+     }
+    ],
+    [
+     "V2nwJjSBySc",
+     166.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ],
+      "w": 3.3,
+      "cx": 0.5
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "4tnualbvM_Q",
+    217.95,
+    220.7
+   ],
+   "words": [
+    [
+     218.07,
+     218.23,
+     "This"
+    ],
+    [
+     218.23,
+     218.31,
+     "is"
+    ],
+    [
+     218.31,
+     218.45,
+     "the"
+    ],
+    [
+     218.45,
+     218.55,
+     "end"
+    ],
+    [
+     218.55,
+     218.69,
+     "of"
+    ],
+    [
+     218.69,
+     218.89,
+     "my"
+    ],
+    [
+     218.89,
+     219.15,
+     "camping"
+    ],
+    [
+     219.15,
+     219.47,
+     "career."
+    ],
+    [
+     220.09,
+     220.21,
+     "I'm"
+    ],
+    [
+     220.21,
+     220.55,
+     "retired."
+    ]
+   ],
+   "shots": [
+    [
+     "4tnualbvM_Q",
+     217.95,
+     {
+      "rows": [
+       0,
+       0.86
+      ],
+      "cx": 0.5
+     }
+    ]
+   ]
+  },
+  {
+   "say": "So if you're ever lost, stay put, and stay out in the open. That's how William made it home.",
+   "shots": [
+    [
+     "V2nwJjSBySc",
+     36.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "yfKeShglSBg",
+     40.0
+    ],
+    [
+     "yfKeShglSBg",
+     14.0
+    ]
+   ]
+  }
+ ],
+ "credits": [
+  "Victoria Police Air Wing footage via ABC News, 7NEWS, 9 News, 10 News, New York Post",
+  "A Current Affair (Nine)"
+ ]
+}

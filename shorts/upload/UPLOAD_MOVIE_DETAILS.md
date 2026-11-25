@@ -396,3 +396,53 @@ The internet got this case so wrong. Did you believe the ghost theories? 👇
 - **The musician** (Pablo Vergara, "Morbid"): he documented that he was in Mexico; the video doesn't name him, to avoid adding to the harm.
 
 **Rights:** the news footage belongs to CNN, CBS, CTV, ABC7, LA This Week and CBS LA. You said you'd get permission, and the description credits them.
+
+---
+
+## True story (November 2026): six days lost in the bush
+
+**File:** `william_bush_survival.mp4` · **Cover:** `william_bush_survival_cover.jpg` (the police helicopter view of William on the rocks, "6 DAYS LOST / FOUND ALIVE")
+
+**Tone:** an uplifting survival story. William is 17, so the video uses his first name only (as the news did) and includes no personal health details. Every fact comes from the news reports' own audio: ABC News, 7NEWS, 9 News, 10 News and A Current Affair.
+
+**Story beats:**
+1. **Hook:** the police helicopter footage of the find.
+2. **How he got lost:** on his first ever camping trip, he walked back up the track for supplies, missed the turn-off and kept walking. He had no phone and no shirt, just shorts and work boots, and his friend found only the esky.
+3. **The fall:** he slept in the bushes, then slipped down a cliff into a creek gully the next day.
+4. **The search:** helicopters, the dog squad, infrared drones, horses, divers, and an appeal for hunters' trail cameras. At night it dropped to 3°C.
+5. **His mum, in her own voice:** "I knew in my heart he was still alive. I could feel it."
+6. **How he survived:** a towel, a tackle box, one family bag of chicken chips that lasted two days, and creek water. He sang "Take Me Home, Country Roads" through the freezing nights.
+7. **The find:** on day six the helicopter crew searched a new area. Police, in their own words: "the tucker box caught their eye… found Will asleep on the creek." He woke and pumped his fist.
+8. **The lesson,** from the Air Wing in their own words: "If he wasn't in the open area like he was, we absolutely could have flown past him."
+9. **The reunion:** "To wrap my hands around him was just a miracle." His first words were "I love you, Mum", then "Am I grounded?" His mum: "He's grounded for life."
+10. **Ending,** William himself: "This is the end of my camping career. I'm retired." Then the lesson: stay put, stay in the open. It loops back to the helicopter shot.
+
+**Title:**
+```
+He survived 6 days lost in the bush... by doing ONE thing
+```
+Alternates: `Found alive after 6 days lost in the wilderness` · `The police helicopter almost flew right past him`
+
+**Description:**
+```
+November 2026: 17-year-old William went missing on his first ever camping trip in Victoria, Australia. Six days later, a police helicopter spotted him beside a creek, alive. What saved him? He stayed put, and he stayed in the open.
+
+Sources: ABC News (Australia), 7NEWS, 9 News, 10 News, A Current Affair. Footage: Victoria Police Air Wing via ABC News, 7NEWS, 9 News, 10 News and the New York Post.
+
+#survival #rescue #australia #truestory #shorts
+```
+
+**Pinned comment:**
+```
+Would you have known to stay put? 👇 Share this with someone who goes hiking.
+```
+
+**Settings:** Made for kids: **No** · Altered or synthetic content: **Yes** (AI narrator voice) · Category: News & Politics, or Education.
+
+**Accuracy notes** (in case a commenter asks):
+- **Search size:** reports say "more than 100 people" (ABC) and "around 70" (10 News, on day three). The video doesn't give a number.
+- **Supplies:** his mum and 7NEWS mention two towels, pillows, a tackle box and one bag of chicken chips. The video mentions the towel, tackle box and chips.
+- **The tucker box line** is from a police officer in the ABC report. The "flown past him" line is from the Air Wing in the 7NEWS report.
+- **The song:** "Take Me Home, Country Roads" was reported by 7NEWS from William's own account.
+
+**Rights:** the footage belongs to ABC, Seven, Nine, Network 10 and the New York Post, and the police footage was released through them. You said you'd get permission.
