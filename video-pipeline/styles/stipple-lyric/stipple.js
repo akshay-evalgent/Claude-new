@@ -153,11 +153,11 @@
        tight   distance between dots on the centre line (2.8); loose: at the band's edge (12)
        r       [smallest, largest] dot radius ([1.2, 2.5])
        ragged  how uneven the growing end is, in px along the path (16)
-       taper   the band narrows to a point over this many px at each end (48; 0 for blunt ends)
+       taper   the band narrows over this many px at each end (32; 0 for blunt ends)
        order   [from, to]: the part of the group's 0-1 order this band takes ([0, 1]) */
     trail(g, o) {
       g = el(g);
-      const { d, half = 22, tight = 2.8, loose = 12, r = [1.2, 2.5], seed = 1, ragged = 16, taper = 48, order } = o;
+      const { d, half = 22, tight = 2.8, loose = 12, r = [1.2, 2.5], seed = 1, ragged = 16, taper = 32, order } = o;
       const rand = rng(seed), path = measure(g, d), field = Field(4), dots = [];
       const lanes = 8;
       for (let b = 0; b < lanes; b++) {                           // from the centre line outward, so the middle fills first
@@ -166,7 +166,7 @@
         const tries = Math.ceil((path.len * half * 2 / lanes) / (0.7 * gapM * gapM) * 8);
         for (let i = 0; i < tries; i++) {
           const u = rand() * path.len, e = e0 + rand() * (e1 - e0);
-          const thin = taper > 0 ? 0.22 + 0.78 * smooth(clamp(Math.min(u, path.len - u) / taper)) : 1;
+          const thin = taper > 0 ? 0.4 + 0.6 * smooth(clamp(Math.min(u, path.len - u) / taper)) : 1;
           const off = (rand() < 0.5 ? -1 : 1) * e * half * thin;
           if (rand() < e * e * 0.7) continue;                     // the edge thins to scattered points
           const gap = tight * Math.pow(loose / tight, e);

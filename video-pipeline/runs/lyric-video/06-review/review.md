@@ -4,12 +4,14 @@ Evidence (from `02-analysis/benchmarks.json`): one reference, with public number
 
 ## Script review
 
-| Check | Round 1 |
-|---|---|
-| Hook | 7, pass |
-| Retention | 6, fail |
-| Share | 7, pass |
-| Comments | 6, fail |
+| Check | Round 1 | Round 2 |
+|---|---|---|
+| Hook | 7, pass | 8, pass |
+| Retention | 6, fail | 7, pass |
+| Share | 7, pass | 7, pass |
+| Comments | 6, fail | 8, pass |
+
+The script passed all four checks in round 2 with no must fixes.
 
 ### Round 1 must fixes
 
@@ -20,3 +22,19 @@ Evidence (from `02-analysis/benchmarks.json`): one reference, with public number
 
 1. **The breath after the payoff line.** Share asked for a longer slot (pause 2.8 s); retention asked for a shorter rest (1.5 s). Ruling: give the payoff more time by splitting its delivery in two with the line kept on screen, follow it with a breath of about 1.8 s, and keep the drawing moving through that breath. Reason: the share judge's point is time on the peak, the retention judge's is dead air; a split delivery with motion serves both.
 2. **Line 3.** Retention's must (replace "One word will do." with an unfinished clause) outranks the comment judge's should (end on "Home." as the one-word reply), because that should depends on the line the must removes. The scriptwriter keeps the reply ending only if its setup survives honestly.
+
+### Fixed between rounds 1 and 2
+
+- The unlit window is on the sheet from the first frame, and lights on the word "light".
+- Line 3 is now "Until one word," running into "the light stays on."
+- The post caption is a question ("Who tells you 'text me when you're home'?") and the comment prompt is a first comment that can be posted.
+- The payoff line is spoken in two parts with the line kept on screen; mid-run rests are shorter; the final frame holds 2.2 s and resets the red word to "Home."
+
+### Round 2 should fixes, carried forward to the mood board and the producer
+
+- **Voice (share, retention):** the built-in voice drops its pitch at the end of "Asking is how" and of "Until one word,", so each may sound like a closed sentence. Suggested cure: speak line 6 as one utterance with a comma and cut it at the silence. Nobody in the line can hear the result: it needs a human listen.
+- **Payoff reveal (retention):** the second row, "I love you.", should not be readable in faint ink before it is spoken; bring it in when "Asking is how" ends.
+- **Window (hook, retention):** draw it so it reads as a window and as the road's destination at phone size, with the first road dots pointing at it.
+- **Ending (share, retention):** make the "home" to "Home." reset a visible event (one pulse) and hold it about 2.0 s.
+- **Motion (retention):** no motionless stretch over about 1.2 s.
+- **Words on screen (hook):** the lyric rows are the only words; the automatic captions are not drawn.

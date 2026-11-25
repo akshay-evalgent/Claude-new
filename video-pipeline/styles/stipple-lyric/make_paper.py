@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Make the paper ground for the stipple-lyric style.
 
-    python3 make_paper.py [--ground e0d2bf] [--edge 29] [--size 1920x1080] [--out paper.jpg]
+    python3 make_paper.py [--ground e0d2bf] [--edge 29] [--creases 6] [--crease 5.5] [--size 1920x1080] [--out paper.jpg]
 
 A cream sheet that is lightest in the middle and warmer and darker toward the
-corners, with slow mottling, a faint upright grain and fine tooth. Grown from
+corners, with slow mottling, a faint upright grain, a few soft creases where
+the sheet was once folded, and fine tooth. Grown from
 the ink-wash kit's generator; the difference is the edge: here the sheet falls
 off from the centre outward (by --edge levels of brightness at the corners,
 losing blue fastest), which is what gives the ground its three tones.
@@ -32,6 +33,8 @@ def main():
     ap.add_argument("--edge", type=float, default=29, help="levels of brightness lost at the corners")
     ap.add_argument("--size", default="1920x1080")
     ap.add_argument("--out", default="paper.jpg")
+    ap.add_argument("--creases", type=int, default=6, help="how many fold lines run down the sheet")
+    ap.add_argument("--crease", type=float, default=5.5, help="how strongly they show, in levels of brightness; 0 for none")
     ap.add_argument("--seed", type=int, default=11)
     a = ap.parse_args()
     w, h = (int(v) for v in a.size.split("x"))
@@ -47,13 +50,25 @@ def main():
     tooth = rng.normal(0, 1, (h, w)).astype(np.float32)
 
     yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
+    # creases: each a soft ridge, lit on one side and shaded on the other, wandering a little
+    # as it runs down the sheet and fading in and out along its length
+    crease = np.zeros((h, w), np.float32)
+    at = np.sort(rng.uniform(0.06, 0.94, a.creases))
+    for c in at:
+        lean = rng.uniform(-0.035, 0.035)
+        sway = rng.uniform(4, 12) * w / 1920
+        x0 = c * w + lean * (yy - h / 2) + sway * np.sin(yy / h * rng.uniform(2, 5) + rng.uniform(0, 6.3))
+        d = (xx - x0) / (rng.uniform(5, 9) * w / 1920)
+        along = 0.35 + 0.65 * np.clip(0.5 + 0.5 * np.sin(yy / h * rng.uniform(2.5, 6) + rng.uniform(0, 6.3)) * 1.6, 0, 1)
+        crease += rng.uniform(0.6, 1.0) * along * (-d * np.exp(-d * d / 2) * 1.2 - 0.35 * np.exp(-d * d / 6))
+
     r2 = ((xx - w / 2) / (w / 2)) ** 2 + ((yy - h / 2) / (h / 2)) ** 2      # 1 at the middle of an edge, 2 at a corner
     fall = -a.edge * (r2 / 2) ** 1.3         # flat across the middle, steeper toward the corners
 
-    tone = mottle * 9 + laid * 2.6 + tooth * 1.5
+    tone = mottle * 11 + laid * 2.6 + crease * a.crease + tooth * 1.5
     img = (base[None, None, :]
            + tone[:, :, None] * np.array([0.92, 1.0, 1.2], np.float32)
-           + fall[:, :, None] * np.array([0.72, 1.04, 1.58], np.float32))
+           + fall[:, :, None] * np.array([0.66, 1.04, 1.78], np.float32))
     Image.fromarray(np.clip(img, 0, 255).astype(np.uint8)).save(a.out, quality=92)
     print(f"wrote {a.out} {w}x{h}")
 

@@ -8,31 +8,31 @@
  ],
  "colours": [
   {
+   "hex": "#d7c5aa",
+   "share": 0.302
+  },
+  {
    "hex": "#dbcbb4",
-   "share": 0.2954
+   "share": 0.2886
   },
   {
    "hex": "#dfd0bc",
-   "share": 0.2885
+   "share": 0.2611
   },
   {
-   "hex": "#d6c5ab",
-   "share": 0.2878
+   "hex": "#d0bb9b",
+   "share": 0.1275
   },
   {
-   "hex": "#cfbb9e",
-   "share": 0.1091
+   "hex": "#220f0d",
+   "share": 0.0129
   },
   {
-   "hex": "#1f0c0a",
-   "share": 0.0118
-  },
-  {
-   "hex": "#85766a",
-   "share": 0.0073
+   "hex": "#85776a",
+   "share": 0.0078
   }
  ],
- "ground": "#dbcbb4",
+ "ground": "#d7c5aa",
  "ink": "#0b0100",
  "accent": {
   "hex": "#7a1713",
@@ -40,8 +40,8 @@
   "hue_deg": 2.5,
   "single_hue": true
  },
- "luminance_mean": 0.784,
- "saturation_mean": 0.191,
- "dark_share": 0.0115,
- "colourfulness": "monochrome with one accent"
+ "luminance_mean": 0.782,
+ "saturation_mean": 0.201,
+ "dark_share": 0.0126,
+ "colourfulness": "muted"
 }
