@@ -1,33 +1,30 @@
 {
-  "references": [
-    {
-      "id": "barsat-song",
-      "title": "Barsat song from nitesh YouTuber",
-      "origin": "link supplied by the user in brief.md",
-      "url": "https://www.youtube.com/watch?v=Lp1KuI4E1xk",
-      "path": "01-sources/refs/barsat-song/video.mp4",
-      "status": "needs file",
-      "why": "the user's reference for how a lyric video works: how the words are set, timed, moved and coloured, and what sits behind them",
-      "channel": "nitesh vlogar (@nite.shkumar5902)",
-      "channel_followers": 700,
-      "upload_date": "2026-10-22",
-      "duration_seconds": null,
-      "stats": {
-        "views": 1938059,
-        "likes": 5421,
-        "comments": 89,
-        "shares": null,
-        "as_of": "2026-11-25"
-      },
-      "has_comments": true,
-      "notes": "Video file NOT downloaded: YouTube refused the stream to this machine with 'Sign in to confirm you're not a bot' (and HTTP 429 on the watch page), on two attempts. No cookies, mirrors or re-uploads were tried. The numbers and comments are what YouTube still returned on a metadata-only read with yt-dlp 2026.11.23. Duration, resolution, orientation and description were not returned and are unknown. The comment count 89 is the comment-section total as logged by yt-dlp ('~89'); 75 top-level comments were retrieved (replies not requested) and are saved in 01-sources/refs/barsat-song/comments.json, sorted by likes."
-    }
-  ],
-  "assets": [],
-  "missing": [
-    "The reference video file itself. YouTube blocked the download from this environment with a sign-in / bot check. The user needs to supply the file: save the video from https://www.youtube.com/watch?v=Lp1KuI4E1xk and place it at 01-sources/refs/barsat-song/video.mp4 (any playable mp4, up to 1080p), then set its status to 'ready'. Until then nothing visual or audible can be studied; only the public numbers and comments are available.",
-    "Duration, resolution and orientation of the reference: unknown until the file is supplied (the brief takes format and length from the reference).",
-    "Share count: YouTube does not publish it.",
-    "No assets gathered, by instruction: the song and lyrics for our own video have not been decided. Nothing from the reference may be used as an asset."
-  ]
+ "references": [
+  {
+   "id": "barsat-song",
+   "title": "Barsat song from nitesh YouTuber",
+   "origin": "link supplied by the user; the video file was downloaded and uploaded by the user after YouTube refused the download to this machine",
+   "url": "https://www.youtube.com/watch?v=Lp1KuI4E1xk",
+   "path": "01-sources/refs/barsat-song/video.mp4",
+   "status": "ready",
+   "why": "the user's reference for how a lyric video works: how the words are set, timed, moved and coloured, and what sits behind them",
+   "channel": "nitesh vlogar (@nite.shkumar5902)",
+   "channel_followers": 700,
+   "upload_date": "2026-10-22",
+   "duration_seconds": 185.48,
+   "stats": {
+    "views": 1938059,
+    "likes": 5421,
+    "comments": 89,
+    "shares": null,
+    "as_of": "2026-11-25"
+   },
+   "has_comments": true,
+   "notes": "Video file supplied by the user on 2026-11-25. Public numbers and comments were read from the platform by the scout."
+  }
+ ],
+ "assets": [],
+ "missing": [
+  "Share count: YouTube does not publish it."
+ ]
 }

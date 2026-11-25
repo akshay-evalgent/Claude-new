@@ -11,4 +11,4 @@
 
 ## Open
 
-- The reference video could not be downloaded: YouTube refused the stream with a sign-in check. Its public numbers and 75 top comments were collected. The analysis stage is waiting for the video file from the user at `01-sources/refs/barsat-song/video.mp4`.
+Nothing. The user supplied the reference video file.
