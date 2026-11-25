@@ -30,6 +30,8 @@ The 6.2M hit is live action, but it works the same way: no dialogue, role labels
 
 | `episodes/toon-mom.json` (58 s) | AI does everything, including Mom's birthday card ("You are a valued member of this household"); her smile fades; the kid closes the laptop and writes his own in crayon; a hug, and the card on the fridge | AI can write the perfect words. Only you can mean them. |
 
+| `episodes/toon-friend.json` (57 s) | A kid whose only friend is an AI ignores a classmate's "can I sit here?"; the AI goes down at lunch, he panics alone in the rain; the classmate sits anyway with half a sandwich; when the AI comes back online he puts the phone away | AI can always talk to you. A friend shows up. |
+
 ## More stories in this format
 - **The Yes-Machine:** "is this a good idea?" 👍 "and this?" 👍; he walks off a cliff, and AI follows 👍. *An AI that always agrees isn't helping.*
 - **1000 Paintings:** AI makes a mountain of pictures; one human paints one; the crowd walks past the mountain. *When everything is easy to make, care is rare.*

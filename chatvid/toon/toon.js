@@ -75,6 +75,7 @@
   // ---- hair, hats and glasses, drawn over the head
   function headwear(kind, hx, hy) {
     if (kind === 'student') return `<path d="M${hx - 56} ${hy - 10} q-6 -58 52 -62 q40 -6 58 28 q-26 -12 -40 2 q-14 -18 -32 4 q-18 -14 -38 28z" fill="${DARK}" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>`;
+    if (kind === 'friend') return [[-46, -30], [-24, -52], [2, -60], [28, -52], [48, -30], [-54, -4], [56, -6]].map(([dx, dy]) => `<circle cx="${hx + dx}" cy="${hy + dy}" r="24" fill="#4a2c1a" stroke="${INK}" stroke-width="4"/>`).join('');
     if (kind === 'mom') return `<path d="M${hx - 62} ${hy + 64} q-22 -120 40 -126 q78 -10 86 64 q4 40 -4 66 q-8 -50 -30 -70 q-38 10 -78 -6 q-14 30 -14 72z" fill="#6b3f24" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>`;
     if (kind === 'teacher') return `<path d="M${hx - 58} ${hy - 6} q0 -62 58 -60 q54 2 58 46 q-40 -26 -96 -10 q-14 6 -20 24z" fill="#8a8a8a" stroke="${INK}" stroke-width="5"/>` +
       `<circle cx="${hx - 20}" cy="${hy - 4}" r="15" fill="none" stroke="${INK}" stroke-width="5"/><circle cx="${hx + 20}" cy="${hy - 4}" r="15" fill="none" stroke="${INK}" stroke-width="5"/><path d="M${hx - 5} ${hy - 4} h10" stroke="${INK}" stroke-width="5"/>` +
@@ -104,7 +105,7 @@
     footX.forEach(([fx]) => { o += `<ellipse cx="${F(fx + 16)}" cy="-4" rx="30" ry="14" fill="${DARK}" stroke="${INK}" stroke-width="4"/>`; });
     // torso
     const tw = 54;
-    o += `<path d="M${F(sh[0] - tw)} ${F(sh[1] + 14)} Q${F(sh[0])} ${F(sh[1] - 22)} ${F(sh[0] + tw)} ${F(sh[1] + 14)} L${F(hip[0] + 44)} ${F(hip[1] + 6)} Q${F(hip[0])} ${F(hip[1] + 22)} ${F(hip[0] - 44)} ${F(hip[1] + 6)} Z" fill="${kind === 'ai' ? SKIN : kind === 'teacher' ? '#d9c27a' : kind === 'mom' ? '#e89aa4' : '#e2c862'}" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/>`;
+    o += `<path d="M${F(sh[0] - tw)} ${F(sh[1] + 14)} Q${F(sh[0])} ${F(sh[1] - 22)} ${F(sh[0] + tw)} ${F(sh[1] + 14)} L${F(hip[0] + 44)} ${F(hip[1] + 6)} Q${F(hip[0])} ${F(hip[1] + 22)} ${F(hip[0] - 44)} ${F(hip[1] + 6)} Z" fill="${kind === 'ai' ? SKIN : kind === 'teacher' ? '#d9c27a' : kind === 'mom' ? '#e89aa4' : kind === 'friend' ? '#8fc0ef' : '#e2c862'}" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/>`;
     if (kind === 'teacher') o += `<path d="M${F(sh[0])} ${F(sh[1] - 4)} l-10 22 l10 70 l10 -70z" fill="${DARK}"/>`;
     if (kind === 'mom') o += `<path d="M${F(sh[0] - 30)} ${F(sh[1] + 40)} h60 l14 ${F(hip[1] - sh[1] - 30)} h-88z" fill="#fffaf0" stroke="${INK}" stroke-width="5"/>`;
     if (kind === 'student') o += `<path d="M${F(sh[0] - 34)} ${F(sh[1] + 4)} L${F(hip[0] - 26)} ${F(hip[1])}" stroke="${DARK}" stroke-width="10"/>`;
@@ -145,6 +146,7 @@
     if (what === 'paper') return `<rect x="${x - 10}" y="${y - 64}" width="70" height="90" rx="4" fill="${PAPER}" stroke="${INK}" stroke-width="5" transform="rotate(-8 ${x} ${y})"/><path d="M${x + 2} ${y - 40} h40 M${x + 2} ${y - 26} h44 M${x + 2} ${y - 12} h30" stroke="${INK}" stroke-width="3" transform="rotate(-8 ${x} ${y})"/>`;
     if (what === 'stack') return `<g transform="translate(${x - 50} ${y - 90})">${Array.from({ length: 7 }, (_, i) => `<rect x="${(i % 2) * 6}" y="${i * 13}" width="100" height="14" fill="${PAPER}" stroke="${INK}" stroke-width="4"/>`).join('')}</g>`;
     if (what === 'crumple') return `<circle cx="${x + 20}" cy="${y - 10}" r="26" fill="${PAPER}" stroke="${INK}" stroke-width="5"/><path d="M${x + 4} ${y - 18} l18 10 l12 -12 M${x + 10} ${y + 4} l16 -8" stroke="${INK}" stroke-width="3" fill="none"/>`;
+    if (what === 'sandwich') return `<path d="M${x - 10} ${y - 20} l70 -30 l-6 40z" fill="#f2c94c" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/><path d="M${x - 4} ${y - 24} l58 -24" stroke="#5cb85c" stroke-width="6"/>`;
     if (what === 'cup') return `<path d="M${x - 4} ${y - 52} h44 l-6 58 h-32z" fill="#fffef6" stroke="${INK}" stroke-width="5"/>`;
     if (what === 'card') return `<g transform="rotate(-8 ${x} ${y})"><rect x="${x - 8}" y="${y - 70}" width="84" height="62" rx="4" fill="#ffd1dc" stroke="${INK}" stroke-width="5"/><path d="M${x + 34} ${y - 30} c-6 -12 -22 -6 -14 6 l14 12 l14 -12 c8 -12 -8 -18 -14 -6z" fill="#e5383b"/></g>`;
     if (what === 'phone') return `<rect x="${x - 6}" y="${y - 56}" width="38" height="66" rx="8" fill="${DARK}" stroke="${INK}" stroke-width="4"/>`;
@@ -158,6 +160,7 @@
       const { x, y, w = 260, h = 220 } = p;
       let o = `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${p.night ? '#3b4766' : '#cfe8f3'}" stroke="${INK}" stroke-width="8"/>`;
       if (p.night) o += `<circle cx="${x + w * 0.72}" cy="${y + h * 0.3}" r="24" fill="#fff6c8" stroke="${INK}" stroke-width="4"/>` + [0.2, 0.4, 0.86].map((k, i) => `<circle cx="${x + w * k}" cy="${y + h * (0.2 + i * 0.25)}" r="4" fill="#fff6c8"/>`).join('');
+      if (p.rain) for (let i = 0; i < 14; i++) { const rx = x + ((i * 37) % w), ry = y + ((t * 520 + i * 61) % h); o += `<path d="M${F(rx)} ${F(ry)} l-8 22" stroke="#9fc3e6" stroke-width="4" stroke-linecap="round"/>`; }
       if (p.peek) {   // a face squashed against the glass
         const bob = Math.sin(t * 3) * 4, px = x + w / 2, py = y + h * 0.62 + bob;
         o += `<ellipse cx="${px}" cy="${py}" rx="${w * 0.3}" ry="${h * 0.42}" fill="${SKIN}" stroke="${INK}" stroke-width="6"/>`;
@@ -198,6 +201,26 @@
       return o + '</g>';
     },
     item: (p) => held(p.what, p.x, p.y),
+    // a phone held up to the camera: {chat: [[me?, text], ...]} or {error, sub} or {notif, sub}
+    phone: (p) => {
+      const { x, y, w = 400, h = 640 } = p, L = x - w / 2, T = y - h / 2;
+      let o = `<rect x="${L - 8}" y="${T + 10}" width="${w}" height="${h}" rx="48" fill="rgba(0,0,0,.2)"/><rect x="${L}" y="${T}" width="${w}" height="${h}" rx="48" fill="${DARK}" stroke="${INK}" stroke-width="7"/><rect x="${L + 18}" y="${T + 22}" width="${w - 36}" height="${h - 44}" rx="32" fill="#fbfaf4"/>`;
+      o += `<rect x="${L + 18}" y="${T + 22}" width="${w - 36}" height="70" rx="32" fill="#ece6cc"/><circle cx="${L + 62}" cy="${T + 57}" r="20" fill="${SKIN}" stroke="${INK}" stroke-width="4"/><text x="${L + 62}" y="${T + 64}" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="17" fill="${INK}">AI</text><text x="${L + 94}" y="${T + 65}" font-family="Inter, sans-serif" font-weight="800" font-size="24" fill="${INK}">${esc(p.title || 'AI friend')}</text>`;
+      if (p.error || p.notif) {
+        const c = p.error ? '#d63031' : '#2f9e5b';
+        o += `<circle cx="${x}" cy="${y - 40}" r="56" fill="none" stroke="${c}" stroke-width="10"/><text x="${x}" y="${y - 14}" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="72" fill="${c}">${p.error ? '!' : '✓'}</text>`;
+        o += `<text x="${x}" y="${y + 70}" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="32" fill="${INK}">${esc(p.error || p.notif)}</text><text x="${x}" y="${y + 112}" text-anchor="middle" font-family="Inter, sans-serif" font-weight="500" font-size="24" fill="#6b6455">${esc(p.sub || '')}</text>`;
+        return o;
+      }
+      let cy = T + 130;
+      const n = Math.round(p.n ?? (p.chat || []).length);
+      (p.chat || []).slice(0, n).forEach(([me, text]) => {
+        const fs = p.fs || 30, bw = Math.min(w - 70, text.length * fs * 0.55 + 44), bx = me ? L + w - 30 - bw : L + 30;
+        o += `<rect x="${F(bx)}" y="${cy}" width="${F(bw)}" height="${fs + 34}" rx="26" fill="${me ? '#2f80ed' : '#e4dec6'}"/><text x="${F(bx + 22)}" y="${F(cy + fs + 8)}" font-family="Inter, sans-serif" font-weight="600" font-size="${fs}" fill="${me ? '#fff' : INK}">${esc(text)}</text>`;
+        cy += fs + 50;
+      });
+      return o;
+    },
     dim: (p) => `<rect x="-2000" y="-2000" width="6000" height="6000" fill="#000" opacity="${p.a ?? 0.45}"/>`,
     text: (p) => `<text x="${p.x}" y="${p.y}" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="${p.size || 40}" fill="${p.color || INK}">${esc(p.text)}</text>`,
   };

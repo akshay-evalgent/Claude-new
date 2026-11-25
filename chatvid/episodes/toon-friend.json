@@ -1,0 +1,1013 @@
+{
+ "engine": "toon",
+ "format": "vertical",
+ "title": "Server Down",
+ "crf": 18,
+ "fps": 30,
+ "top": "POV: your best friend is an AI",
+ "cam": {
+  "x": 820,
+  "y": 455,
+  "z": 1.28
+ },
+ "music": [
+  {
+   "track": "the-snail",
+   "t0": 0,
+   "t1": 22.8,
+   "gain": -17,
+   "fadeOut": 1.2
+  },
+  {
+   "track": "vastness",
+   "t0": 22.2,
+   "gain": -15,
+   "fadeIn": 2.0,
+   "fadeOut": 1.5
+  }
+ ],
+ "scenes": [
+  {
+   "dur": 9.0,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "window",
+     "x": 1150,
+     "y": 110,
+     "w": 260,
+     "h": 200,
+     "rain": false
+    },
+    {
+     "kind": "sign",
+     "x": 440,
+     "y": 110,
+     "w": 330,
+     "lines": [
+      "CAFETERIA"
+     ]
+    },
+    {
+     "kind": "chair",
+     "x": 380
+    },
+    {
+     "kind": "chair",
+     "x": 560
+    },
+    {
+     "kind": "desk",
+     "x": 680,
+     "w": 460
+    },
+    {
+     "kind": "dim",
+     "a": 0.45,
+     "front": true,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true
+      },
+      {
+       "t": 1.0,
+       "hide": false
+      },
+      {
+       "t": 4.2,
+       "hide": true
+      }
+     ]
+    },
+    {
+     "kind": "phone",
+     "x": 840,
+     "y": 455,
+     "front": true,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true,
+       "n": 0
+      },
+      {
+       "t": 1.0,
+       "hide": false,
+       "n": 0
+      },
+      {
+       "t": 3.6,
+       "n": 4
+      },
+      {
+       "t": 4.2,
+       "hide": true
+      }
+     ],
+     "chat": [
+      [
+       true,
+       "rate my drawing"
+      ],
+      [
+       false,
+       "10/10! You're a genius!"
+      ],
+      [
+       true,
+       "really??"
+      ],
+      [
+       false,
+       "Always. You're perfect."
+      ]
+     ],
+     "w": 500,
+     "h": 640
+    }
+   ],
+   "actors": [
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 560,
+       "pose": "sit-phone",
+       "holds": "phone",
+       "face": "happy"
+      }
+     ]
+    },
+    {
+     "id": "fr",
+     "kind": "friend",
+     "keys": [
+      {
+       "t": 0,
+       "x": 1650,
+       "flip": true,
+       "pose": "hold",
+       "holds": "sandwich",
+       "face": "happy"
+      },
+      {
+       "t": 4.2,
+       "x": 1650
+      },
+      {
+       "t": 5.6,
+       "x": 940
+      },
+      {
+       "t": 7.2,
+       "face": "sad"
+      },
+      {
+       "t": 7.5,
+       "x": 940
+      },
+      {
+       "t": 8.9,
+       "x": 1700
+      }
+     ]
+    }
+   ],
+   "bubbles": [
+    {
+     "who": "fr",
+     "text": "can I sit here?",
+     "t0": 5.7,
+     "t1": 7.3,
+     "size": 28,
+     "dy": -140,
+     "dx": -40
+    }
+   ],
+   "sfx": [
+    {
+     "t": 1.0,
+     "s": "soft-swoosh",
+     "g": -15
+    },
+    {
+     "t": 1.3,
+     "s": "blip",
+     "g": -18
+    },
+    {
+     "t": 2.0,
+     "s": "blip",
+     "g": -18,
+     "rate": 1.2
+    },
+    {
+     "t": 2.7,
+     "s": "blip",
+     "g": -18
+    },
+    {
+     "t": 3.4,
+     "s": "blip",
+     "g": -18,
+     "rate": 1.2
+    }
+   ]
+  },
+  {
+   "dur": 10.0,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "window",
+     "x": 1080,
+     "y": 110,
+     "w": 290,
+     "h": 230,
+     "night": true
+    },
+    {
+     "kind": "clock",
+     "x": 300,
+     "y": 170,
+     "spin": 2.0
+    },
+    {
+     "kind": "calendar",
+     "x": 1330,
+     "y": 420,
+     "keys": [
+      {
+       "t": 0,
+       "text": "MON"
+      },
+      {
+       "t": 2.5,
+       "text": "TUE"
+      },
+      {
+       "t": 5,
+       "text": "WED"
+      },
+      {
+       "t": 7.5,
+       "text": "THU"
+      }
+     ]
+    },
+    {
+     "kind": "bed",
+     "x": 560,
+     "w": 440
+    },
+    {
+     "kind": "dim",
+     "a": 0.45,
+     "front": true,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true
+      },
+      {
+       "t": 0.8,
+       "hide": false
+      },
+      {
+       "t": 9.4,
+       "hide": true
+      }
+     ]
+    },
+    {
+     "kind": "phone",
+     "x": 840,
+     "y": 455,
+     "front": true,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true,
+       "n": 0
+      },
+      {
+       "t": 0.8,
+       "hide": false,
+       "n": 0
+      },
+      {
+       "t": 3.2,
+       "n": 2
+      },
+      {
+       "t": 4.6,
+       "hide": true
+      }
+     ],
+     "chat": [
+      [
+       true,
+       "nobody gets me"
+      ],
+      [
+       false,
+       "I get you!"
+      ]
+     ],
+     "w": 500,
+     "h": 640
+    },
+    {
+     "kind": "phone",
+     "x": 840,
+     "y": 455,
+     "front": true,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true,
+       "n": 0
+      },
+      {
+       "t": 4.6,
+       "hide": false,
+       "n": 0
+      },
+      {
+       "t": 8.2,
+       "n": 3
+      },
+      {
+       "t": 9.4,
+       "hide": true
+      }
+     ],
+     "chat": [
+      [
+       true,
+       "should I talk to them?"
+      ],
+      [
+       false,
+       "You don't need anyone."
+      ],
+      [
+       false,
+       "You have me!"
+      ]
+     ],
+     "w": 500,
+     "h": 640
+    }
+   ],
+   "actors": [
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 500,
+       "pose": "sit-phone",
+       "holds": "phone",
+       "face": "happy"
+      }
+     ]
+    }
+   ],
+   "sfx": [
+    {
+     "t": 0.8,
+     "s": "soft-swoosh",
+     "g": -15
+    },
+    {
+     "t": 1.5,
+     "s": "blip",
+     "g": -18
+    },
+    {
+     "t": 2.6,
+     "s": "blip",
+     "g": -18,
+     "rate": 1.2
+    },
+    {
+     "t": 5.4,
+     "s": "blip",
+     "g": -18
+    },
+    {
+     "t": 6.6,
+     "s": "blip",
+     "g": -18,
+     "rate": 1.2
+    },
+    {
+     "t": 7.6,
+     "s": "blip",
+     "g": -18,
+     "rate": 1.2
+    }
+   ]
+  },
+  {
+   "dur": 10.0,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "window",
+     "x": 1150,
+     "y": 110,
+     "w": 260,
+     "h": 200,
+     "rain": true
+    },
+    {
+     "kind": "sign",
+     "x": 440,
+     "y": 110,
+     "w": 330,
+     "lines": [
+      "CAFETERIA"
+     ]
+    },
+    {
+     "kind": "chair",
+     "x": 380
+    },
+    {
+     "kind": "chair",
+     "x": 560
+    },
+    {
+     "kind": "desk",
+     "x": 680,
+     "w": 460
+    },
+    {
+     "kind": "desk",
+     "x": 1250,
+     "w": 300
+    },
+    {
+     "kind": "dim",
+     "a": 0.45,
+     "front": true,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true
+      },
+      {
+       "t": 0.6,
+       "hide": false
+      },
+      {
+       "t": 3.6,
+       "hide": true
+      }
+     ]
+    },
+    {
+     "kind": "phone",
+     "x": 840,
+     "y": 455,
+     "front": true,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true
+      },
+      {
+       "t": 0.6,
+       "hide": false
+      },
+      {
+       "t": 3.6,
+       "hide": true
+      }
+     ],
+     "error": "AI is down.",
+     "sub": "try again later",
+     "w": 500,
+     "h": 640
+    }
+   ],
+   "actors": [
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 560,
+       "pose": "sit-phone",
+       "holds": "phone",
+       "face": "happy"
+      },
+      {
+       "t": 3.7,
+       "pose": "panic",
+       "holds": null,
+       "face": "panic"
+      },
+      {
+       "t": 5.6,
+       "pose": "write",
+       "face": "sad"
+      }
+     ]
+    },
+    {
+     "id": "x1",
+     "kind": "student",
+     "scale": 0.82,
+     "keys": [
+      {
+       "t": 0,
+       "x": 1180,
+       "y": 660,
+       "pose": "wave",
+       "face": "happy"
+      }
+     ]
+    },
+    {
+     "id": "x2",
+     "kind": "friend",
+     "scale": 0.82,
+     "keys": [
+      {
+       "t": 0,
+       "x": 1330,
+       "y": 660,
+       "flip": true,
+       "pose": "idle",
+       "face": "happy"
+      }
+     ]
+    }
+   ],
+   "bubbles": [
+    {
+     "who": "kid",
+     "text": "hello?",
+     "t0": 4.0,
+     "t1": 5.6,
+     "size": 30,
+     "dy": -140
+    },
+    {
+     "who": "x1",
+     "text": "haha",
+     "t0": 6.4,
+     "t1": 8.0,
+     "size": 24,
+     "dy": -100
+    }
+   ],
+   "sfx": [
+    {
+     "t": 0.6,
+     "s": "soft-swoosh",
+     "g": -15
+    },
+    {
+     "t": 0.75,
+     "s": "buzzer",
+     "g": -17
+    },
+    {
+     "t": 3.7,
+     "s": "gasp-m",
+     "g": -16,
+     "dur": 1.2
+    }
+   ]
+  },
+  {
+   "dur": 11.0,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "window",
+     "x": 1150,
+     "y": 110,
+     "w": 260,
+     "h": 200,
+     "rain": true
+    },
+    {
+     "kind": "sign",
+     "x": 440,
+     "y": 110,
+     "w": 330,
+     "lines": [
+      "CAFETERIA"
+     ]
+    },
+    {
+     "kind": "chair",
+     "x": 380
+    },
+    {
+     "kind": "chair",
+     "x": 560
+    },
+    {
+     "kind": "desk",
+     "x": 680,
+     "w": 460
+    }
+   ],
+   "actors": [
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 560,
+       "pose": "write",
+       "face": "sad"
+      },
+      {
+       "t": 3.6,
+       "face": "wide"
+      },
+      {
+       "t": 4.4,
+       "face": "happy"
+      },
+      {
+       "t": 6.4,
+       "pose": "hold",
+       "holds": "sandwich",
+       "face": "happy"
+      },
+      {
+       "t": 9.0,
+       "face": "joy"
+      }
+     ]
+    },
+    {
+     "id": "fr",
+     "kind": "friend",
+     "keys": [
+      {
+       "t": 0,
+       "x": -220,
+       "pose": "hold",
+       "holds": "sandwich",
+       "face": "neutral"
+      },
+      {
+       "t": 2.0,
+       "x": 400
+      },
+      {
+       "t": 5.6,
+       "pose": "give",
+       "face": "happy"
+      },
+      {
+       "t": 6.4,
+       "pose": "idle",
+       "holds": null
+      },
+      {
+       "t": 9.0,
+       "face": "joy"
+      }
+     ]
+    }
+   ],
+   "bubbles": [
+    {
+     "who": "fr",
+     "text": "can I sit here?",
+     "t0": 2.2,
+     "t1": 3.8,
+     "size": 28,
+     "dy": -140,
+     "dx": 80
+    },
+    {
+     "who": "kid",
+     "text": "...yeah.",
+     "t0": 4.2,
+     "t1": 5.6,
+     "size": 30,
+     "dy": -140
+    },
+    {
+     "who": "fr",
+     "text": "I made it myself. it's bad.",
+     "t0": 6.8,
+     "t1": 8.8,
+     "size": 26,
+     "dy": -150,
+     "dx": 170
+    },
+    {
+     "who": "kid",
+     "text": "haha",
+     "t0": 9.0,
+     "t1": 11.0,
+     "size": 30,
+     "dy": -140
+    }
+   ],
+   "sfx": [
+    {
+     "t": 6.4,
+     "s": "soft-pop",
+     "g": -14
+    },
+    {
+     "t": 9.0,
+     "s": "laugh-small",
+     "g": -24,
+     "dur": 2
+    }
+   ]
+  },
+  {
+   "dur": 9.0,
+   "props": [
+    {
+     "kind": "wall",
+     "color": "#bfe0ef",
+     "ground": "#a9d18e"
+    },
+    {
+     "kind": "sign",
+     "x": 1180,
+     "y": 120,
+     "w": 300,
+     "lines": [
+      "SCHOOL"
+     ]
+    },
+    {
+     "kind": "dim",
+     "a": 0.45,
+     "front": true,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true
+      },
+      {
+       "t": 3.0,
+       "hide": false
+      },
+      {
+       "t": 5.4,
+       "hide": true
+      }
+     ]
+    },
+    {
+     "kind": "phone",
+     "x": 840,
+     "y": 455,
+     "front": true,
+     "keys": [
+      {
+       "t": 0,
+       "hide": true
+      },
+      {
+       "t": 3.0,
+       "hide": false
+      },
+      {
+       "t": 5.4,
+       "hide": true
+      }
+     ],
+     "notif": "AI is back online!",
+     "sub": "Did you miss me?",
+     "w": 500,
+     "h": 640
+    }
+   ],
+   "actors": [
+    {
+     "id": "fr",
+     "kind": "friend",
+     "keys": [
+      {
+       "t": 0,
+       "x": 120,
+       "pose": "idle",
+       "face": "happy"
+      },
+      {
+       "t": 2.8,
+       "x": 520
+      },
+      {
+       "t": 6.0,
+       "x": 520
+      },
+      {
+       "t": 8.8,
+       "x": 960
+      }
+     ]
+    },
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 300,
+       "pose": "idle",
+       "face": "happy"
+      },
+      {
+       "t": 2.8,
+       "x": 720
+      },
+      {
+       "t": 2.9,
+       "pose": "phone",
+       "holds": "phone"
+      },
+      {
+       "t": 5.6,
+       "pose": "idle",
+       "holds": null,
+       "face": "happy"
+      },
+      {
+       "t": 6.0,
+       "x": 720
+      },
+      {
+       "t": 8.8,
+       "x": 1160
+      }
+     ]
+    }
+   ],
+   "bubbles": [
+    {
+     "who": "fr",
+     "text": "same time tomorrow?",
+     "t0": 6.2,
+     "t1": 7.8,
+     "size": 28,
+     "dy": -140
+    },
+    {
+     "who": "kid",
+     "text": "yeah.",
+     "t0": 7.8,
+     "t1": 9.0,
+     "size": 30,
+     "dy": -140
+    }
+   ],
+   "sfx": [
+    {
+     "t": 2.95,
+     "s": "notify",
+     "g": -14
+    }
+   ]
+  },
+  {
+   "dur": 8.0,
+   "props": [
+    {
+     "kind": "wall"
+    },
+    {
+     "kind": "window",
+     "x": 1150,
+     "y": 110,
+     "w": 260,
+     "h": 200,
+     "rain": false
+    },
+    {
+     "kind": "sign",
+     "x": 440,
+     "y": 110,
+     "w": 330,
+     "lines": [
+      "CAFETERIA"
+     ]
+    },
+    {
+     "kind": "chair",
+     "x": 380
+    },
+    {
+     "kind": "chair",
+     "x": 560
+    },
+    {
+     "kind": "desk",
+     "x": 680,
+     "w": 460
+    },
+    {
+     "kind": "item",
+     "what": "phone",
+     "x": 800,
+     "y": 492
+    }
+   ],
+   "actors": [
+    {
+     "id": "fr",
+     "kind": "friend",
+     "keys": [
+      {
+       "t": 0,
+       "x": 380,
+       "pose": "write",
+       "face": "joy"
+      }
+     ]
+    },
+    {
+     "id": "kid",
+     "kind": "student",
+     "keys": [
+      {
+       "t": 0,
+       "x": 560,
+       "pose": "write",
+       "face": "joy"
+      }
+     ]
+    }
+   ],
+   "bubbles": [
+    {
+     "who": "fr",
+     "text": "haha",
+     "t0": 0.4,
+     "t1": 2.0,
+     "size": 28,
+     "dy": -130
+    },
+    {
+     "who": "kid",
+     "text": "HAHA",
+     "t0": 1.0,
+     "t1": 2.6,
+     "size": 30,
+     "dy": -130,
+     "dx": 40
+    }
+   ],
+   "sfx": [
+    {
+     "t": 0.4,
+     "s": "laugh-small",
+     "g": -22,
+     "dur": 2.4
+    }
+   ],
+   "caption": {
+    "at": 51.0,
+    "lines": [
+     "AI can always talk to you.",
+     "A friend shows up."
+    ]
+   }
+  }
+ ],
+ "youtube": {
+  "title": "My best friend was an AI… until it went DOWN😭 #ai #friendship #emotional #shorts",
+  "description": [],
+  "tags": [
+   "ai",
+   "friendship",
+   "emotional",
+   "students",
+   "loneliness",
+   "shorts"
+  ]
+ }
+}
