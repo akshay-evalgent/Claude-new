@@ -9,13 +9,14 @@
      every frame. What changes: which words are on the sheet and lit, how much of
      the road is down (data-share), and how much of the dark has gathered round
      the window. In the film there is one drawing above the shots, grown with
-     data-grow; here every key frame carries its own copy so each still is whole. -->
+     data-grow; here every key frame carries its own copy so each still is whole.
+     The drawing itself is drawing.js, the file the film loads too. -->
 <link rel="stylesheet" href="../../../styles/stipple-lyric/stipple.css">
 <style>
   /* tokens from style.json */
   :root {
     --paper: #ded0ba; --ink: #0b0100; --accent: #7a1713; --faint: 0.38;
-    --lyric-size: 160px; --lyric-leading: 178px; --lyric-x: 152px; --lyric-y: 274px;
+    --lyric-size: 168px; --lyric-leading: 187px; --lyric-x: 152px; --lyric-y: 256px;
   }
 </style>
 </head>
@@ -98,25 +99,9 @@
 
 <script src="../../../styles/stipple-lyric/stipple.js"></script>
 <script src="../../../runtime/film.js"></script>
+<script src="drawing.js"></script>
 <script>
-  /* The drawing, once. The producer copies ROAD, PANE, SILL, box() and draw() unchanged. */
-  const ROAD = 'M160 944 C250 920 345 908 440 884 C520 864 590 864 628 902 C656 930 700 948 760 944 C850 938 925 929 985 888 L1472 552';
-  const PANE = { x: 1496, y: 372, w: 124, h: 146 };
-  const SILL = [1480, 529, 156, 9];
-  const box = (x, y, w, h, m) => `M${x - m} ${y - m} H${x + w + m} V${y + h + m} H${x - m} Z`;
-  function draw(root) {
-    // the road, and the larger steps that land ahead of it
-    Stipple.trail(root.querySelector('.road'), { d: ROAD, seed: 5 });
-    Stipple.beads(root.querySelector('.steps'), { d: ROAD, every: 62, r: [4.2, 5.4], seed: 9 });
-    // the unlit window: a closed square of dots, a cross-bar, a sill. On the sheet from frame 0
-    const frame = root.querySelector('.frame');
-    Stipple.beads(frame, { d: box(PANE.x, PANE.y, PANE.w, PANE.h, 3.5), every: 9, r: [2.5, 3.2], jitter: 0.5, seed: 31 });
-    Stipple.beads(frame, { d: `M${PANE.x + PANE.w / 2} ${PANE.y + 9} V${PANE.y + PANE.h - 6}`, every: 8, r: [1.7, 2.2], jitter: 0.4, seed: 32 });
-    Stipple.beads(frame, { d: `M${PANE.x + 9} ${PANE.y + 62} H${PANE.x + PANE.w - 6}`, every: 8, r: [1.7, 2.2], jitter: 0.4, seed: 33 });
-    Stipple.beads(frame, { d: `M${SILL[0] - 2} ${SILL[1] + SILL[3] + 4} H${SILL[0] + SILL[2] + 2}`, every: 8, r: [2.6, 3.2], jitter: 0.4, seed: 34 });
-    // the dark that gathers round it from the word "light": the pane and the sill are paper left alone
-    Stipple.halo(root.querySelector('.dark'), { ...PANE, bare: [SILL], reach: 150, uneven: 0.35, seed: 21 });
-  }
+  /* The drawing is drawing.js, loaded above: the same file the film loads. */
   document.querySelectorAll('.shot').forEach(draw);
 
   Film.setup({ width: 1920, height: 1080, fps: 30 });

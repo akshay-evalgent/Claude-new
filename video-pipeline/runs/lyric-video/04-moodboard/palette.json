@@ -8,40 +8,40 @@
  ],
  "colours": [
   {
-   "hex": "#d7c5aa",
-   "share": 0.3008
+   "hex": "#dfcfba",
+   "share": 0.3899
   },
   {
-   "hex": "#dbcbb4",
-   "share": 0.2878
+   "hex": "#d9c8af",
+   "share": 0.2976
   },
   {
-   "hex": "#dfd0bc",
-   "share": 0.2624
+   "hex": "#d5c1a4",
+   "share": 0.2294
   },
   {
-   "hex": "#d1bc9b",
-   "share": 0.1264
+   "hex": "#cdb795",
+   "share": 0.0522
   },
   {
-   "hex": "#2c0f0c",
-   "share": 0.0136
+   "hex": "#250d0b",
+   "share": 0.0206
   },
   {
-   "hex": "#89796c",
-   "share": 0.0091
+   "hex": "#867568",
+   "share": 0.0103
   }
  ],
- "ground": "#d7c5aa",
+ "ground": "#dfcfba",
  "ink": "#0b0100",
  "accent": {
   "hex": "#7a1713",
-  "share": 0.00325,
-  "hue_deg": 2.6,
+  "share": 0.0035,
+  "hue_deg": 2.5,
   "single_hue": true
  },
- "luminance_mean": 0.781,
- "saturation_mean": 0.202,
- "dark_share": 0.0134,
+ "luminance_mean": 0.776,
+ "saturation_mean": 0.206,
+ "dark_share": 0.0199,
  "colourfulness": "muted"
 }

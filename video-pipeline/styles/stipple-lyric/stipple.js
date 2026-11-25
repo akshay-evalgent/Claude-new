@@ -6,13 +6,22 @@
    Everything here is seeded and driven by the time it is given: the same call
    with the same time draws the same picture, on every render worker.
 
-   DRAWING. Three ways to put dots into a <g class="stipple"> inside an
-   <svg viewBox="0 0 1920 1080">. Dots never overlap: tone is how close they stand.
+   DRAWING. Dots go into a <g class="stipple"> inside an <svg viewBox="0 0 1920 1080">.
+   Tone is how close the dots stand; nothing else is ever drawn.
 
+     Stipple.shade(g, { tone, box })          a drawing modelled by dot density, the way a hand
+                                              stipples: tone(x, y) says how dark each place is,
+                                              0 bare paper, 1 close-set dots, above 1 nearly solid.
+                                              Edges come out as ragged rows of dots, spacing is
+                                              never even, light tone thins to scattered points
+     Stipple.noise(seed)                      smooth seeded noise for those tone functions: edges
+                                              that wander, tone that is never quite flat
      Stipple.trail(g, { d: 'M...' })          a band of dots along a path: a road, a shoreline
      Stipple.beads(g, { d: 'M...' })          single larger dots spaced along a path
-     Stipple.halo(g, { x, y, w, h })          dots gathering round a rectangle of bare paper,
-                                              thickest at its edge: the dark is drawn, the light is left
+     Stipple.halo(g, { x, y, w, h })          an even cloud of dots round a rectangle of bare paper.
+                                              Its edge is knife-straight and its dots are evenly
+                                              random: use it for a glow in the distance, never for
+                                              the drawing a viewer looks at. For that, use shade()
 
    Every dot has an order from 0 to 1 (along the path; from the edge outward
    for a halo). Stipple.reveal(g, share) shows the dots up to that share, so a
@@ -278,6 +287,75 @@
           else { s -= H; a = Math.PI + (s / a4) * Math.PI / 2; px = X0 + dd * Math.cos(a); py = Y0 + dd * Math.sin(a); }
           drop(px, py);
         }
+      }
+      return commit(g, dots, order);
+    },
+
+    /* Smooth seeded noise over the sheet, from -1 to 1, one lump per unit:
+       n = Stipple.noise(4);  n(x / 30, y / 30)   lumps about 30 px across
+       For tone functions: add it to x and y so an edge wanders, multiply tone by it so a flat is never flat. */
+    noise(seed) {
+      const s = Math.imul((seed | 0) + 1, 1274126177);
+      const h = (i, j) => {
+        let a = Math.imul(i, 374761393) ^ Math.imul(j, 668265263) ^ s;
+        a = Math.imul(a ^ (a >>> 13), 1274126177);
+        return ((a ^ (a >>> 16)) >>> 0) / 4294967296;
+      };
+      return (x, y) => {
+        const i = Math.floor(x), j = Math.floor(y), u = smooth(x - i), v = smooth(y - j);
+        const a = h(i, j), b = h(i + 1, j), c = h(i, j + 1), d = h(i + 1, j + 1);
+        return 2 * (a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v) - 1;
+      };
+    },
+
+    /* A drawing in stipple: dots set down by tone, as a hand does it. There is no outline
+       and no pitch. A form is the place where the dots stand close; its edge is wherever
+       your tone function says the tone stops, and comes out as a ragged row of dots.
+       tone    (x, y) => how dark that place is. 0 bare paper; 1 dots `tight` apart; up to about
+               2 closes them into nearly solid ink. Below about 0.05 it is a scatter of points
+       box     [x, y, w, h]: the part of the sheet the drawing may touch
+       tight   distance between dots where tone is 1 (3); loose: the furthest dots ever stand apart (16)
+       r       [smallest, largest] dot radius ([1.2, 2.3]); most dots are small, a few large
+       hand    how uneven the spacing is, 0 to 1 (0.4). 0 is a machine's even spacing: do not use it
+       fill    how hard it tries to fill the dark places (7). Lower is quicker and more open
+       k       (x, y, tone, rand) => where a dot comes in the group's order, 0 first to 1 last
+               (default: anywhere, so the whole drawing thickens at once)
+       even    true: equal shares of the order hold equal numbers of dots, so a share is a count
+               and a straight line in data-grow is an even rate of dots landing
+       order   [from, to]: the part of the group's 0-1 order this call takes ([0, 1]) */
+    shade(g, o) {
+      g = el(g);
+      const { tone, box, tight = 3, loose = 16, r = [1.2, 2.3], hand = 0.4, fill = 7, seed = 1, k, even = false, order } = o;
+      const [bx, by, bw, bh] = box, rand = rng(seed), dots = [];
+      const cell = 8, grid = new Map(), key = (i, j) => i * 73856093 ^ j * 19349663;
+      const floor = (tight / loose) * (tight / loose);            // the tone at which dots stand `loose` apart
+      const tries = Math.ceil((bw * bh) / (tight * tight) * fill);
+      for (let n = 0; n < tries; n++) {
+        const x = bx + rand() * bw, y = by + rand() * bh, t = tone(x, y);
+        if (!(t > 0.004)) continue;
+        if (t < floor && rand() > t / floor) continue;            // lighter than that: fewer points, no further apart
+        const gap = Math.min(loose, tight / Math.sqrt(t)) * (1 - hand / 2 + hand * rand());
+        // a dot keeps half its own distance plus half its neighbour's, so close work can sit right up against open work
+        const reach = (gap + loose * (1 + hand / 2)) / 2;
+        const i0 = Math.floor((x - reach) / cell), i1 = Math.floor((x + reach) / cell);
+        const j0 = Math.floor((y - reach) / cell), j1 = Math.floor((y + reach) / cell);
+        let free = true;
+        for (let i = i0; free && i <= i1; i++) for (let j = j0; free && j <= j1; j++) {
+          const b = grid.get(key(i, j));
+          if (!b) continue;
+          for (let q = 0; q < b.length; q += 3) {
+            const dx = b[q] - x, dy = b[q + 1] - y, need = (gap + b[q + 2]) / 2;
+            if (dx * dx + dy * dy < need * need) { free = false; break; }
+          }
+        }
+        if (!free) continue;
+        const c = key(Math.floor(x / cell), Math.floor(y / cell)), b = grid.get(c);
+        if (b) b.push(x, y, gap); else grid.set(c, [x, y, gap]);
+        dots.push({ x, y, r: pick(rand, r) * (0.82 + 0.18 * Math.min(1, t)), k: k ? k(x, y, t, rand) : rand() });
+      }
+      if (even) {
+        dots.sort((a, b) => a.k - b.k);
+        dots.forEach((d, i) => { d.k = (i + 1) / dots.length; });
       }
       return commit(g, dots, order);
     },
