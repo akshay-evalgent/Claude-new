@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Home: key frames</title>
+<!-- Five finished pictures, 2 s each, no motion. Stills are taken at 1, 3, 5, 7, 9 s:
+     node video-pipeline/tools/render.js <run>/04-moodboard/frames.html --stills 1,3,5,7,9 --out <run>/04-moodboard/frames
+     The sheet, the road and the window are the same in every frame; only how
+     much of each is on the paper changes (data-share), and which words are lit. -->
+<link rel="stylesheet" href="../../../styles/stipple-lyric/stipple.css">
+<style>
+  /* tokens from style.json */
+  :root {
+    --paper: #ded0ba; --ink: #0b0100; --accent: #7a1713; --faint: 0.30;
+    --lyric-size: 136px; --lyric-leading: 152px; --lyric-x: 240px; --lyric-y: 300px;
+  }
+</style>
+</head>
+<body>
+<main id="stage">
+
+  <!-- 1. title: the bare sheet, the red word where it will sit in the line, the first three dots -->
+  <section class="shot" id="title">
+    <svg viewBox="0 0 1920 1080">
+      <g class="stipple road" data-share="0"></g>
+      <g class="stipple steps" data-share="0.085"></g>
+      <g class="stipple window" data-share="0"></g>
+    </svg>
+    <p class="lyric">
+      <span class="row"><span class="w out">Text</span> <span class="w out">me</span></span>
+      <span class="row"><span class="w out">when</span> <span class="w out">you&rsquo;re</span> <span class="w accent lit">home</span></span>
+    </p>
+  </section>
+
+  <!-- 2. ask: the first line half spoken. "Text me" said, "when you're" still to come -->
+  <section class="shot" id="ask">
+    <svg viewBox="0 0 1920 1080">
+      <g class="stipple road" data-share="0.075"></g>
+      <g class="stipple steps" data-share="0.13"></g>
+      <g class="stipple window" data-share="0"></g>
+    </svg>
+    <p class="lyric">
+      <span class="row"><span class="w lit">Text</span> <span class="w lit">me</span></span>
+      <span class="row"><span class="w">when</span> <span class="w">you&rsquo;re</span> <span class="w accent lit">home</span></span>
+    </p>
+  </section>
+
+  <!-- 3. light: no red on the sheet; the window's first dots gather far right -->
+  <section class="shot" id="light">
+    <svg viewBox="0 0 1920 1080">
+      <g class="stipple road" data-share="0.5"></g>
+      <g class="stipple steps" data-share="0.56"></g>
+      <g class="stipple window" data-share="0.3"></g>
+    </svg>
+    <p class="lyric">
+      <span class="row"><span class="w lit">The</span> <span class="w lit">light</span></span>
+      <span class="row"><span class="w lit">stays</span> <span class="w">on</span></span>
+    </p>
+  </section>
+
+  <!-- 4. asking: the longest line, the road one stretch short, the window nearly dark all round -->
+  <section class="shot" id="asking">
+    <svg viewBox="0 0 1920 1080">
+      <g class="stipple road" data-share="0.8"></g>
+      <g class="stipple steps" data-share="0.8"></g>
+      <g class="stipple window" data-share="0.72"></g>
+    </svg>
+    <p class="lyric">
+      <span class="row"><span class="w lit">Asking</span> <span class="w lit">is</span> <span class="w lit">how</span></span>
+      <span class="row"><span class="w lit">I</span> <span class="w">love</span> <span class="w">you</span></span>
+    </p>
+  </section>
+
+  <!-- 5. home: the last frame. The road at the sill, the lit window, the red word and nothing else -->
+  <section class="shot" id="home">
+    <svg viewBox="0 0 1920 1080">
+      <g class="stipple road" data-share="1"></g>
+      <g class="stipple steps" data-share="1"></g>
+      <g class="stipple window" data-share="1"></g>
+    </svg>
+    <p class="lyric">
+      <span class="row"><span class="w out">Text</span> <span class="w out">me</span></span>
+      <span class="row"><span class="w out">when</span> <span class="w out">you&rsquo;re</span> <span class="w accent lit">home</span></span>
+    </p>
+  </section>
+
+</main>
+
+<script src="../../../styles/stipple-lyric/stipple.js"></script>
+<script src="../../../runtime/film.js"></script>
+<script>
+  /* The drawing, once. The producer copies these three calls unchanged. */
+  const ROAD = 'M160 936 C250 936 350 912 440 884 C520 859 590 864 628 902 C656 930 700 948 760 944 C850 938 925 929 985 888 L1490 542';
+  const PANE = { x: 1508, y: 390, w: 104, h: 122 };
+  const SILL = [1494, 521, 132, 8];
+  function draw(shot) {
+    Stipple.trail(shot.querySelector('.road'), { d: ROAD, seed: 5 });
+    Stipple.beads(shot.querySelector('.steps'), { d: ROAD, every: 62, seed: 9 });
+    const win = shot.querySelector('.window');
+    Stipple.halo(win, { ...PANE, bare: [SILL], seed: 21 });
+    Stipple.trail(win, { d: `M${PANE.x + PANE.w / 2} ${PANE.y + 3} V${PANE.y + PANE.h - 3}`, half: 1.6, tight: 3.6, loose: 4, r: [1.0, 1.4], ragged: 0, seed: 3, order: [0.05, 0.3] });
+    Stipple.trail(win, { d: `M${PANE.x + 3} ${PANE.y + 54} H${PANE.x + PANE.w - 3}`, half: 1.6, tight: 3.6, loose: 4, r: [1.0, 1.4], ragged: 0, seed: 4, order: [0.05, 0.3] });
+    win.dataset.share != null && Stipple.reveal(win, Number(win.dataset.share));
+  }
+  document.querySelectorAll('.shot').forEach(draw);
+
+  Film.setup({ width: 1920, height: 1080, fps: 24 });
+  for (const id of ['title', 'ask', 'light', 'asking', 'home']) Film.shot({ id, dur: 2 });
+  Film.ready();
+</script>
+</body>
+</html>

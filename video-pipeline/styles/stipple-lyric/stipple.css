@@ -1,0 +1,68 @@
+/* Stipple-lyric style: lyric lines set large on a cream sheet, a drawing made
+   only of ink dots, one dark red word. Horizontal, 1920x1080.
+   Tokens first: a mood board's style.json overrides these, nothing else. */
+:root {
+  --paper: #ded0ba;          /* what paper.jpg measures as; shown while the image loads */
+  --ink: #0b0100;
+  --accent: #7a1713;
+  --faint: 0.30;             /* a word not yet spoken: this share of full ink */
+  --lyric-size: 136px;       /* 12.6% of a 1080 px frame */
+  --lyric-leading: 152px;    /* baseline to baseline */
+  --lyric-x: 240px;          /* left edge of every line: 12.5% of the width */
+  --lyric-y: 300px;          /* top of the two-row block */
+  --lyric-font: 'Cormorant Garamond', 'Bitstream Charter', Georgia, serif;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300 700;
+  src: url('fonts/CormorantGaramond-Italic.woff2') format('woff2');
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #111; }
+#stage {
+  position: relative; overflow: hidden;
+  background: var(--paper) url('paper.jpg') center / cover;
+}
+.shot {
+  position: absolute; inset: 0; visibility: hidden;
+  /* every shot carries the same sheet, so a cut between two lines shows only the words changing */
+  background: var(--paper) url('paper.jpg') center / cover;
+}
+.shot > svg, #stage > svg.drawing { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+/* a drawing that outlives the shots (the road that grows through every line) sits above them */
+#stage > svg.drawing { z-index: 500; pointer-events: none; }
+
+/* ---- the drawing: dots only ------------------------------------------ */
+/* stipple.js fills a <g class="stipple"> with circles. Nothing else is drawn:
+   no outlines, no fills, no grey. Tone is how close the dots stand. */
+.stipple circle { fill: var(--ink); stroke: none; }
+.stipple.accent circle { fill: var(--accent); }
+
+/* ---- the lyric line --------------------------------------------------- */
+/* One line on the sheet at a time, in two rows, always in the same place.
+   Every word is a .w. A word is faint until it is spoken, then full ink:
+     --lit   0 faint, 1 full ink   (stipple.js sets it from data-at; class "lit" pins it at 1)
+     --on    1 there, 0 gone       (stipple.js sets it from data-in / data-out)          */
+.lyric {
+  position: absolute; left: var(--lyric-x); top: var(--lyric-y); z-index: 600;
+  margin: 0; white-space: nowrap;
+  font: italic 700 var(--lyric-size) / var(--lyric-leading) var(--lyric-font);
+  font-kerning: normal; font-synthesis: none; letter-spacing: 0;
+  color: var(--ink);
+  opacity: var(--line-on, 1);
+  filter: url(#ink-press);
+}
+.lyric .row { display: block; height: var(--lyric-leading); }
+.lyric .w {
+  display: inline-block;
+  opacity: calc((var(--faint) + (1 - var(--faint)) * var(--lit, 0)) * var(--on, 1));
+  transform-origin: 50% 62%;
+}
+.lyric .w.lit { --lit: 1; }
+.lyric .w.accent { color: var(--accent); }
+/* a word that holds its place but is not on the sheet yet: the title word stands
+   exactly where it will sit in the line because the rest of the line is "out" */
+.lyric .w.out { --on: 0; }
