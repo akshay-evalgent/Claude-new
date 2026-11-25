@@ -1,0 +1,39 @@
+{
+  "references": [
+    {
+      "id": "what-if-time-sped-up",
+      "title": "What If Time Sped Up and Couldn't Stop?",
+      "origin": "link supplied by the user in brief.md",
+      "url": "https://www.youtube.com/watch?v=5gbgKYMEySI",
+      "path": "01-sources/refs/what-if-time-sped-up/video.mp4",
+      "status": "needs file",
+      "why": "the reference the brief names: the type of video to match (script, structure, pacing, look and sound) on a new topic",
+      "stats": {
+        "views": 2166790,
+        "likes": 23825,
+        "comments": 2392,
+        "shares": null,
+        "as_of": "2026-11-25"
+      },
+      "has_comments": true,
+      "info": "01-sources/refs/what-if-time-sped-up/info.json",
+      "comments_file": "01-sources/refs/what-if-time-sped-up/comments.json",
+      "duration_seconds": 538,
+      "channel": "Minute Zero",
+      "channel_follower_count": 24000,
+      "upload_date": "2026-10-13",
+      "notes": [
+        "video.mp4 is not there yet: the one download attempt was refused with a sign-in check, and no retry was made",
+        "the comment count is approximate (comment section header); the channel size is rounded as displayed",
+        "the platform lists the reference at 8:58 (channel Videos tab), a long-form video, while the brief asks for a Short of at most 60 seconds; the channel's Shorts tab lists one Short (B3LKxqhCFUU), which the brief does not name and which was not collected"
+      ]
+    }
+  ],
+  "assets": [],
+  "missing": [
+    "The reference video file. YouTube refused the stream to this machine (\"Sign in to confirm you're not a bot\"). The user would need to save the video from https://www.youtube.com/watch?v=5gbgKYMEySI on a machine where they are signed in and put it at 01-sources/refs/what-if-time-sped-up/video.mp4.",
+    "Tags and category of the reference: the platform did not serve them without the player response.",
+    "Share count: YouTube does not publish it.",
+    "Duration measured from the file: 538 s is the length listed on the channel page and should be confirmed with ffprobe once the file arrives."
+  ]
+}
