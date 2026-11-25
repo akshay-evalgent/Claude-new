@@ -33,6 +33,16 @@ Production trivia and easter eggs are stories *about the movie*. The Titanic vid
 
 Update this table whenever a new one is posted and its numbers come in. Ask the user for views, average % viewed and shares.
 
+## True stories (not about a movie)
+
+The same engine also makes true-story Shorts: real news footage, the real audio of key moments, the same layout. The first is `shorts/edits_movie/cecil_hotel.json`. For a story where real people died:
+- tell it respectfully: no gore, no ghost or "cursed" framing presented as fact, and the official finding stated plainly;
+- don't name people who were wrongly accused;
+- end on something humane;
+- warn the user that ads may be limited.
+
+The title is a curiosity hook ("Guests said the hotel water tasted strange..."), not "Did you notice…".
+
 ## Step 1: Pick the detail
 
 Before writing anything, brainstorm 3–5 candidates for the film and score each one. Look on the film's Wikipedia page ("Historical accuracy", "Production", "Inspiration") and in news coverage.
@@ -176,6 +186,7 @@ Check all of these before delivering:
   - uploader watermarks (crop them out);
   - a shot that holds longer than about 3 s.
 - **Loop:** the last shot must cut cleanly into the first.
+- **People shown vs what is said:** never let a real, identifiable person (an interviewee, official or bystander, especially with a name banner) appear while the narration talks about killers, crimes, suspects or blame. Viewers read it as an accusation. On true-crime and true-story videos, check every face in the QA sheet against the word under it.
 
 ## Step 8: Deliver
 
