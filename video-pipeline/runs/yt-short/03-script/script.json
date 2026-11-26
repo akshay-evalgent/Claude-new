@@ -4,14 +4,16 @@
   "audience": "YouTube Shorts viewers who watch 'what if' science scenarios told in the second person with counters, on a phone, often muted.",
   "question": "If you kept getting hotter, how far could it go, and is there a point where it has to stop?",
   "share_line": "you are literally glowing right now and nobody can see it",
-  "comment_prompt": "The film asks nothing. What viewers will have something to say about: the rule 'Tungsten boils here. Pretend you don't.' and the clock row that reads PRETEND BODY (jokes about the person still standing there); 'Red is the coolest glow there is' (people who assumed red-hot was the top); whether 10^32 K is really a limit (the film says nobody knows); and the last three words, plus the NEXT row that ends on STAY HERE.",
-  "post_caption": "You start at 37 °C. One minute later, physics gives up. Every temperature on the counter is real; the body that survives them is not.",
+  "comment_prompt": "The film asks nothing on screen. The caption asks one easy question (what viewers thought the hottest thing was) and the first comment another (the highest their own thermometer has read). What viewers will have something to say about in the film itself: the rule 'The metal tungsten boils here. Pretend you don't.' and the clock row that reads PRETEND BODY (jokes about the person still standing there); 'Red is the coolest glow there is' (people who assumed red-hot was the top); whether 10^32 K is really a limit (the film says nobody knows); and the last three words, plus the NEXT row that ends on STAY HERE.",
+  "post_caption": "You start at 37 °C. Forty-five seconds later, physics runs out of answers. What did you think was the hottest thing there is? Every temperature on the counter is real; the body that survives them is not.",
+  "first_comment": "The one made-up thing here is you. A real body is in danger at the first step: heat stroke, at 41 °C (106 °F), can kill without emergency treatment. People often say lightning is hotter than the Sun. Hotter than its surface, about five times over (0:35); the Sun's core is about 500 times hotter than lightning. And the snowflake melts because your skin is warm, not because it can see infrared. Sources are in the description. What is the highest your own thermometer has ever read?",
+  "first_comment_note": "For the creator to post and pin under the Short. It carries the disclosures that the description holds but few Shorts viewers open. Do not add a personal anecdote unless the creator supplies a true one.",
   "post_description": "Your temperature starts at 37 °C and climbs for one minute without stopping. You stay where you are, in a snowy field at night, and watch what your own heat does to it.\n\nWHAT IS REAL: the temperatures on the counter. Normal body temperature is taken as 37 °C. In heat stroke the body can reach 41 °C or more, and without emergency treatment that can kill. Water boils at 100 °C at sea level, and up to 60% of an adult body is water. Solids begin to give off a dull red glow at roughly 525 °C (an approximate figure). Glowing lava is red at about 600 to 800 °C, orange up to 1,000 °C and yellow up to 1,200 °C: red is the coolest glow there is. Iron melts at 1,538 °C. Tungsten boils at 5,555 °C. The Sun's visible surface is about 5,500 °C. Lightning heats the air to about 28,000 °C. Above roughly 10,000 degrees a glowing object gives off mostly ultraviolet, and above a million mostly X-rays, so to the eye the colour stops at blue-white. The Sun's core is about 15 million °C; that figure comes from models of the Sun, not from a measurement. About 4 trillion °C has been made and measured at Brookhaven's RHIC collider, hot enough that protons and neutrons melt into a soup of quarks and gluons. The Planck temperature is about 1.4 x 10^32 kelvin. And at 37 °C you really do glow, in infrared.\n\nWHAT IS MADE UP, OR NOT KNOWN: you. A real body stops being alive near the second step and would be gas long before the Sun's surface. The film pretends yours holds together and keeps being fed energy; that is the one impossible thing in it. Everything the field does (the red light on the snow, the fence burning, the ground glowing, how far your light reaches) is an illustration built on rough sums that treat you as a perfect radiator of 1.8 square metres with no air in the way. Real air would turn into a fireball. Past the Sun's surface the honest view is only too bright to look at, so the rings, the grain at 4 trillion degrees and the still white at the end are drawings. How fast the counter climbs was chosen to fit a minute. The Planck temperature is not a proven limit: it is where today's physics stops being able to say what happens, and physicists do not agree on whether a highest temperature exists. The snowflake melts because your skin is warm, not because it can see infrared.\n\nSOURCES: MedlinePlus (body temperature) https://medlineplus.gov/ency/article/001982.htm | NASA Science (infrared) https://science.nasa.gov/ems/07_infraredwaves/ | CDC NIOSH (heat stroke) https://www.cdc.gov/niosh/heat-stress/about/illnesses.html | USGS (water) https://www.usgs.gov/special-topics/water-science-school/science/facts-about-water and https://www.usgs.gov/special-topics/water-science-school/science/water-you-water-and-human-body | Draper point https://en.wikipedia.org/wiki/Draper_point | USGS (lava) https://www.usgs.gov/faqs/how-hot-a-hawaiian-volcano | WebElements (iron, tungsten) https://www.webelements.com/iron/ and https://www.webelements.com/tungsten/ | NASA (the Sun) https://science.nasa.gov/sun/facts/ and https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html | US National Weather Service (lightning) https://www.weather.gov/safety/lightning-temperature | OpenStax Astronomy 2e, 5.2 (colour and temperature) https://openstax.org/books/astronomy-2e/pages/5-2-the-electromagnetic-spectrum | Brookhaven (4 trillion degrees) https://www.bnl.gov/newsroom/news.php?a=23161 | CERN (quark-gluon plasma) https://home.cern/science/physics/heavy-ions-and-quark-gluon-plasma | NIST (Planck temperature) https://physics.nist.gov/cgi-bin/cuu/Value?plktmp | PBS NOVA, Absolute Hot https://www.pbs.org/wgbh/nova/zero/hot.html",
   "target": {
     "duration_s": 59.9,
-    "words": 103,
+    "words": 106,
     "words_per_minute": null,
-    "on_screen_words_per_minute": 103.2,
+    "on_screen_words_per_minute": 106.2,
     "story_lines": 16,
     "voice": "none: no voice-over, voice.py not run, no --pace",
     "note": "Budget from benchmarks.json notes.scaled_to_60s: 13-16 story lines, 90-120 words on screen, 8 words a line at most, payoff at 0.80-0.87 of the run."
@@ -65,15 +67,15 @@
         690
       ],
       [
-        22.4,
+        23.8,
         800
       ],
       [
-        24.0,
+        24.8,
         1000
       ],
       [
-        25.0,
+        25.4,
         1210
       ],
       [
@@ -149,7 +151,7 @@
     "figure_forms": [
       "one decimal, °C: 37.0 °C (to 13.5 s)",
       "whole degrees: 112 °C (from 100 °C, 13.5 s)",
-      "thousands with a comma: 1,538 °C, 28,500 °C (from 1,000 °C, 24.0 s)",
+      "thousands with a comma: 1,538 °C, 28,500 °C (from 1,000 °C, 24.8 s)",
       "words: 16 million °C, 100 billion °C, 4.0 trillion °C (from a million, 38.3 s)",
       "powers of ten, unit changes to kelvin: 10^13 K to 10^32 K (from 45.1 s)",
       "1.4 x 10^32 K with a question mark (47.8-51.0 s)",
@@ -168,11 +170,11 @@
         },
         {
           "from_s": 13.6,
-          "to_s": 25.0,
+          "to_s": 25.4,
           "text": "HOTTER THAN BOILING WATER"
         },
         {
-          "from_s": 25.0,
+          "from_s": 25.4,
           "to_s": 28.0,
           "text": "HOTTER THAN LAVA"
         },
@@ -204,7 +206,7 @@
         {
           "from_s": 51.6,
           "to_s": 59.9,
-          "text": "HOTTER THAN THE SNOW"
+          "text": "AS WARM AS EVERYONE YOU KNOW"
         }
       ],
       "next_row": [
@@ -300,7 +302,7 @@
   "line_notes": {
     "kinds": "statement: the cold-open line, upright and heavier, bottom centre. title: centred in clear sky, the only text in the middle of the frame. story: italic, bottom centre.",
     "rows": "Where a line will not fit one row of a vertical frame, break it as given in 'rows'. One line at a time; the only deliberate overlap is the small-capitals sources tag in the close.",
-    "contrast": "Lines and counters must stay readable over blue snow, over red and yellow ground and over the white of 38-51 s (dark ink there).",
+    "contrast": "Lines and counters must stay readable over blue snow, over red and yellow ground and over the white of 38-52 s (dark ink there; the white now takes until 52.2 s to clear).",
     "numbers": "Numbers in story lines are words; digits live in the counters."
   },
   "sound_notes": "No speech. One low bed for the whole film with a slow pulse from 10.2 s to 47.8 s, a few events tied to picture changes (melt note, hiss, crackle, roar), a drop of about 12 dB with a tick each second across 47.8-51.0 s, and the bed back without its pulse for the close. Master to about -14 LUFS, as the brief sets.",
@@ -310,35 +312,138 @@
     "mean_beat_s": 6.66,
     "story_lines_including_cold_open": 16,
     "text_events_including_title": 17,
-    "on_screen_words": 103,
-    "on_screen_words_per_minute": 103.2,
-    "mean_words_per_story_line": 5.94,
+    "on_screen_words": 106,
+    "on_screen_words_per_minute": 106.2,
+    "mean_words_per_story_line": 6.12,
     "longest_line_words": 8,
-    "mean_story_line_on_screen_s": 2.79,
-    "reading_rule": "each line is up for at least 1.0 s + 0.3 s a word",
-    "share_of_run_with_text_on_screen": 0.8,
-    "share_of_run_with_a_story_line_on_screen": 0.74,
+    "mean_story_line_on_screen_s": 2.58,
+    "reading_rule": "each story line is up for at least its words ÷ 2.6 s and never under 1.4 s (benchmarks.json notes, pacing.line_on_screen_s); this replaces 1.0 s + 0.3 s a word. The title is up 2.6 s (patterns.md, 'At 60 seconds': about 2.5 s), which is 3.1 words a second for words the viewer has also read under the video.",
+    "reading_check": [
+      {
+        "at_s": 0.0,
+        "words": 7,
+        "for_s": 2.9,
+        "needs_s": 2.69
+      },
+      {
+        "at_s": 5.9,
+        "words": 6,
+        "for_s": 2.6,
+        "needs_s": 2.31
+      },
+      {
+        "at_s": 10.2,
+        "words": 6,
+        "for_s": 2.4,
+        "needs_s": 2.31
+      },
+      {
+        "at_s": 13.5,
+        "words": 7,
+        "for_s": 2.7,
+        "needs_s": 2.69
+      },
+      {
+        "at_s": 17.8,
+        "words": 5,
+        "for_s": 2.0,
+        "needs_s": 1.92
+      },
+      {
+        "at_s": 20.9,
+        "words": 7,
+        "for_s": 2.7,
+        "needs_s": 2.69
+      },
+      {
+        "at_s": 24.2,
+        "words": 4,
+        "for_s": 2.4,
+        "needs_s": 1.54
+      },
+      {
+        "at_s": 28.0,
+        "words": 7,
+        "for_s": 2.7,
+        "needs_s": 2.69
+      },
+      {
+        "at_s": 31.6,
+        "words": 8,
+        "for_s": 3.1,
+        "needs_s": 3.08
+      },
+      {
+        "at_s": 35.2,
+        "words": 7,
+        "for_s": 2.7,
+        "needs_s": 2.69
+      },
+      {
+        "at_s": 38.8,
+        "words": 7,
+        "for_s": 2.7,
+        "needs_s": 2.69
+      },
+      {
+        "at_s": 42.3,
+        "words": 6,
+        "for_s": 2.8,
+        "needs_s": 2.31
+      },
+      {
+        "at_s": 48.2,
+        "words": 6,
+        "for_s": 2.8,
+        "needs_s": 2.31
+      },
+      {
+        "at_s": 52.2,
+        "words": 5,
+        "for_s": 2.2,
+        "needs_s": 1.92
+      },
+      {
+        "at_s": 54.7,
+        "words": 7,
+        "for_s": 2.7,
+        "needs_s": 2.69
+      },
+      {
+        "at_s": 58.0,
+        "words": 3,
+        "for_s": 1.9,
+        "needs_s": 1.4
+      }
+    ],
+    "share_of_run_with_text_on_screen": 0.73,
+    "share_of_run_with_a_story_line_on_screen": 0.69,
     "mean_start_to_start_s": 3.87,
     "gaps_between_lines_s": [
       0.2,
       0.2,
-      0.7,
-      0.5,
-      1.2,
+      1.7,
+      0.9,
+      1.6,
+      1.1,
       0.6,
-      1.0,
-      0.8,
+      1.4,
+      0.9,
       0.5,
+      0.9,
       0.8,
-      0.5,
-      0.7,
       3.1,
-      0.6,
+      1.2,
       0.3,
-      0.2
+      0.6
     ],
     "longest_gap_s": 3.1,
+    "median_gap_s": 0.9,
     "gap_before_payoff_line_s": 3.1,
+    "return_to_the_snow_with_no_line_s": [
+      51.0,
+      52.2
+    ],
     "lines_overlapping": 0,
     "cold_open_promise_kept_at_share_of_run": [
       0.47,
@@ -349,7 +454,7 @@
     "payoff_line_at_share_of_run": 0.805,
     "figure_changes_of_form": 6,
     "next_events": 7,
-    "comparison_states": 8
+    "comparison_states": 9
   },
   "facts": [
     {
@@ -357,21 +462,21 @@
       "source": "research.md row 1: MedlinePlus, https://medlineplus.gov/ency/article/001982.htm",
       "confidence": "measured",
       "status": "given",
-      "used": "counter at 3.0 s and from 51.6 s; line at 51.6 s"
+      "used": "counter at 3.0 s and from 51.6 s; comparison row 'AS WARM AS EVERYONE YOU KNOW' from 51.6 s"
     },
     {
       "claim": "At body temperature a person gives off light only in infrared, which eyes cannot see.",
       "source": "research.md row 2: NASA Science, https://science.nasa.gov/ems/07_infraredwaves/",
       "confidence": "measured",
       "status": "given",
-      "used": "lines at 51.6 and 54.7 s"
+      "used": "lines at 52.2 and 54.7 s. The 54.7 s line says 'your eyes', as the source does; it no longer says 'no eye'."
     },
     {
       "claim": "In heat stroke the body can reach 41 °C (106 °F) or more, and without emergency treatment it can cause death.",
       "source": "research.md row 3: CDC NIOSH, https://www.cdc.gov/niosh/heat-stress/about/illnesses.html",
       "confidence": "measured",
       "status": "given",
-      "used": "line at 10.2 s; NEXT row"
+      "used": "line at 10.2 s; NEXT row; first comment (in both units)"
     },
     {
       "claim": "Water boils at 100 °C at sea level, and up to 60% of an adult body is water.",
@@ -392,14 +497,14 @@
       "source": "research.md rows 6 and 11: USGS, https://www.usgs.gov/faqs/how-hot-a-hawaiian-volcano ; OpenStax Astronomy 2e 5.2, https://openstax.org/books/astronomy-2e/pages/5-2-the-electromagnetic-spectrum",
       "confidence": "measured",
       "status": "given",
-      "used": "lines at 20.9 and 25.0 s; colour of the light 17.3-25 s; comparison row"
+      "used": "lines at 20.9 and 24.2 s; colour of the light 17.3-25.4 s; comparison row"
     },
     {
-      "claim": "Iron melts at 1,538 °C. Tungsten boils at 5,555 °C.",
+      "claim": "Iron melts at 1,538 °C. Tungsten, a metal, boils at 5,555 °C.",
       "source": "research.md row 7: WebElements, https://www.webelements.com/iron/ and https://www.webelements.com/tungsten/",
       "confidence": "measured",
       "status": "given",
-      "used": "lines at 25.0 and 31.6 s"
+      "used": "lines at 24.2 and 31.6 s. The 31.6 s line calls tungsten a metal and says nothing about its rank among metals: research.md lists 'the highest melting point of any metal' as not confirmed. The counter reads 5,720 °C when the line appears."
     },
     {
       "claim": "The Sun's visible surface is about 5,500 °C.",
@@ -409,11 +514,11 @@
       "used": "cold open; line at 28.0 s; NEXT and comparison rows"
     },
     {
-      "claim": "Lightning can heat the air it passes through to about 28,000 °C (50,000 °F).",
-      "source": "research.md row 12: US National Weather Service, https://www.weather.gov/safety/lightning-temperature",
+      "claim": "Lightning can heat the air it passes through to about 28,000 °C (50,000 °F), five times hotter than the Sun's surface; the Sun's core is about 500 times hotter than lightning.",
+      "source": "research.md row 12: US National Weather Service, https://www.weather.gov/safety/lightning-temperature ; the 'about 500 times' is research.md's own division (15,000,000 / 27,760), under 'Where popular versions get it wrong'",
       "confidence": "standard estimate",
       "status": "given",
-      "used": "comparison row from 35.0 s"
+      "used": "comparison row from 35.0 s; first comment"
     },
     {
       "claim": "Things at 10,000 to 1,000,000 K radiate mainly ultraviolet, and at 1 to 100 million K mainly X-rays; to the eye the colour stops changing at blue-white.",
@@ -434,7 +539,7 @@
       "source": "research.md row 17: Brookhaven, https://www.bnl.gov/newsroom/news.php?a=23161 ; CERN, https://home.cern/science/physics/heavy-ions-and-quark-gluon-plasma",
       "confidence": "measured",
       "status": "given",
-      "used": "line at 42.3 s; NEXT row. The script does not call it the record: research.md row 18 (CERN's higher figure) is contested and is left out, as the brief rules. The comparison row 'hotter than any lab has measured' appears only above 10 trillion."
+      "used": "lines at 38.8 s ('Humans have gone hotter': 4 trillion °C is about 250,000 times the Sun's core) and 42.3 s; NEXT row. The script does not call it the record: research.md row 18 (CERN's higher figure) is contested and is left out, as the brief rules. The comparison row 'hotter than any lab has measured' appears only above 10 trillion."
     },
     {
       "claim": "The Planck temperature is 1.4 x 10^32 K, and conventional physics breaks down there.",
@@ -462,14 +567,14 @@
       "source": "research.md, 'What you would see from where you stand' (calculated there; ideal radiator of 1.8 square metres, no air)",
       "confidence": "illustrative guess",
       "status": "invented",
-      "used": "pictures 9.8-38 s and the cold open"
+      "used": "pictures 9.2-38.8 s and the cold open"
     },
     {
       "claim": "The pictures past the Sun's surface: travelling rings, a boiling grain at 4 trillion degrees, a still white at the end.",
       "source": "none: drawings. brief.md: the honest view is too bright to look at",
       "confidence": "illustrative guess",
       "status": "invented",
-      "used": "pictures 38-51 s"
+      "used": "pictures 38.8-52.2 s"
     },
     {
       "claim": "The speed of the climb (37 °C to 10^32 K in 45 s), the snowy field, the fence, the palm and the snowflake.",
@@ -479,6 +584,74 @@
       "used": "the whole film"
     }
   ],
+  "revision": {
+    "round": 1,
+    "answers": "06-review/script-round-1/ (hook, retention, share, comments) and 06-review/review.md",
+    "picture_fields_changed": [],
+    "beats_with_timing_or_motion_changed": {
+      "coldopen": "line text only; picture and timing as before",
+      "snow": "now 3.0-9.2 s; title 3.1-5.7 s; palm 3.6 s, flake 4.9 s, bead 5.7 s; line 5.9-8.5 s; palm down by 9.0 s",
+      "boil": "now 9.2-17.2 s; bubble in the snowfall opens at 9.2 s; lines leave at 12.6 and 16.2 s",
+      "glow": "orange from 23.8 s, yellow from 24.8 s, HOTTER THAN LAVA from 25.4 s; lines 17.8-19.8, 20.9-23.6, 24.2-26.6 s",
+      "sun": "lines 28.0-30.7 and 31.6-34.7 s; new tungsten wording",
+      "invisible": "ridge goes out at 38.8 s; lines 35.2-37.9 and 38.8-41.5 s; new second line",
+      "flake": "white to snowfall over 51.0-52.2 s; lines 52.2-54.4, 54.7-57.4, 58.0-59.9 s; closing comparison row AS WARM AS EVERYONE YOU KNOW; sources tag from 56.6 s"
+    },
+    "beats_unchanged": [
+      "soup",
+      "edge"
+    ],
+    "changes": [
+      {
+        "finding": "hook, should: put the viewer in the cold-open line",
+        "done": "Cold-open line is now 'Twenty-five seconds ago, you stood in snow.' (7 words). The judge's first choice has 8 words, which at 2.6 words a second needs 3.1 s; the line has 2.9 s before the flip at 3.0 s, so the 7-word form the judge also offered is used. Picture and timing unchanged."
+      },
+      {
+        "finding": "retention, should: replace the 38.8 s line, which repeats the counter rows",
+        "done": "Now 'The Sun's core. Humans have gone hotter.' (research.md row 17), on at 38.8 s for 2.7 s. The ridge's last dark line goes out at 38.8 s instead of about 38 s. Temperature keys untouched."
+      },
+      {
+        "finding": "retention, should: give the picture room (holds; the calm start)",
+        "done": "Reading rule changed to words ÷ 2.6 s, 1.4 s at least. The four 7-word lines at 13.5, 20.9, 28.0 and 35.2 s are held 2.7 s, not 3.1 s. Beat snow: title 3.1-5.7 s; palm up 3.6 s, flake lands 4.9 s, bead by 5.7 s; line 5.9-8.5 s; the bubble in the snowfall opens at 9.2 s, so the snow/boil boundary moves from 9.8 s to 9.2 s. To bring the share of the run with a story line up from 0.74 to 0.69 (review.md asks for nearer 65% than 74%), three more holds follow the same rule: 10.2 s line 2.4 s (was 2.8), 17.8 s line 2.0 s (was 2.5), 54.7 s line 2.7 s (was 3.1). No start time moved except the two the findings name (5.9 and 24.2 s) and the line after the turn."
+      },
+      {
+        "finding": "retention, should: 'Orange. Yellow. Iron melts.' in step with the light",
+        "done": "Keys moved to [23.8, 800], [24.8, 1000], [25.4, 1210]; HOTTER THAN LAVA from 25.4 s; the line is on at 24.2 s for 2.4 s, so 1,538 at 26.2 s still falls inside it. The comma arrives at 24.8 s."
+      },
+      {
+        "finding": "retention, should: introduce or drop 'tungsten'",
+        "done": "Introduced with the one thing research.md supports: 'The metal tungsten boils here. Pretend you don't.' (8 words, 31.6 s, held 3.1 s, to 34.7 s). 'Even tungsten' is not used: research.md lists tungsten's standing among metals as not confirmed."
+      },
+      {
+        "finding": "retention, should: sources tag on at 56.6 s",
+        "done": "Done: on as the flake lands, to the end (3.3 s)."
+      },
+      {
+        "finding": "share, should: let the return to the snow be seen before it is read; ruling in review.md on the line after the turn",
+        "done": "The white becomes snowfall over 51.0-52.2 s with no line; the figure still lands on 37.0 °C at 51.6 s. The line after it is 'Right now, you glow too.' (5 words, 52.2-54.4 s): it keeps 'you' and 'you glow too' as the ruling asks, drops the number the counter already shows, and matches the share line."
+      },
+      {
+        "finding": "share, should: end the comparison row on a person",
+        "done": "From 51.6 s the row reads AS WARM AS EVERYONE YOU KNOW (research.md row 1)."
+      },
+      {
+        "finding": "comments, should (a factual correction): 'No eye can see it.' goes past the research",
+        "done": "Now 'In infrared. Your eyes cannot see it.' (research.md row 2)."
+      },
+      {
+        "finding": "comments, should: the caption asks one easy question and agrees with the clock",
+        "done": "post_caption rewritten: 'Forty-five seconds later' (the clock reads 44.8 s when the figure stops) and one question."
+      },
+      {
+        "finding": "comments, should: add a first comment",
+        "done": "New field first_comment. Reworded from the judge's draft in one place: 'stops being alive near the second step' became what the source says, that heat stroke at 41 °C (106 °F) can kill without emergency treatment."
+      },
+      {
+        "finding": "not a finding: found while re-checking the arithmetic",
+        "done": "Version 1 gave two values for the same instant at three beat boundaries (420/421 °C at 17.2 s, 3,231/3,236 °C at 27.6 s, 19,700/19,800 °C at 34.8 s). They now agree and follow the keys: 421 °C, 3,236 °C and 19,761 °C."
+      }
+    ]
+  },
   "beats": [
     {
       "id": "coldopen",
@@ -490,10 +663,10 @@
         {
           "at_s": 0.0,
           "for_s": 2.9,
-          "text": "Twenty-five seconds ago, this was snow.",
+          "text": "Twenty-five seconds ago, you stood in snow.",
           "rows": [
             "Twenty-five seconds ago,",
-            "this was snow."
+            "you stood in snow."
           ],
           "kind": "statement"
         }
@@ -520,18 +693,18 @@
         }
       },
       "sound": "Bed already at full level on frame 0, with a low roar under it. At 3.0 s the roar cuts to near-quiet with the flip.",
-      "uses": "patterns.md Hook 1-3 and 5-6 (reference 0.13-5.5 s): open on the far end of the first half, both counters already disagreeing, one flat upright sentence that states the small number. 'At 60 seconds': 3 s at most, readable on the first frame. Avoids the black first frame and the dip to black (Do not copy)."
+      "uses": "patterns.md Hook 1-3 and 5-6 (reference 0.13-5.5 s): open on the far end of the first half, both counters already disagreeing, one flat upright second-person sentence that states the small number. 'At 60 seconds': 3 s at most, readable on the first frame. Avoids the black first frame and the dip to black (Do not copy)."
     },
     {
       "id": "snow",
       "role": "setup",
       "start_s": 3.0,
-      "dur_s": 6.8,
+      "dur_s": 6.2,
       "vo": "",
       "lines": [
         {
           "at_s": 3.1,
-          "for_s": 3.4,
+          "for_s": 2.6,
           "text": "What If You Got Hotter and Couldn't Stop?",
           "rows": [
             "What If You Got Hotter",
@@ -540,8 +713,8 @@
           "kind": "title"
         },
         {
-          "at_s": 6.7,
-          "for_s": 2.8,
+          "at_s": 5.9,
+          "for_s": 2.6,
           "text": "A snowflake melts on your palm.",
           "rows": [
             "A snowflake melts",
@@ -552,7 +725,7 @@
       ],
       "on_screen": "",
       "picture": "The same spot, twenty-five seconds earlier: a flat snow-covered field at night under stars, snow falling slowly. The fence posts stand whole, each with a cap of snow: the first 1.6 m to your left, the second at 5 m, then one every 5 m to a low ridge about 2.2 km off. Your own bare palm comes up into the bottom of the frame; one snowflake lands on it and melts to a bead of water. Light: deep blue starlight. Nothing glows.",
-      "motion": "The title sits in the clear sky above the ridge, centred, not across the posts. The palm rises at 4.2 s as the camera tilts down a little; the flake lands at 5.6 s and is a bead by 6.5 s, before the line names it. The temperature figure has started to move: 37.1 at 4.2 s, 37.3 by 6.5 s. During the line two more flakes land, each melting sooner than the last, and the next ones vanish just above the skin. The palm lowers out of frame by 9.6 s (39 °C) and is not seen again until the close; the camera tilts back up along the fence.",
+      "motion": "The title sits in the clear sky above the ridge, centred, not across the posts, and is up for 2.6 s. The palm rises at 3.6 s as the camera tilts down a little; the flake lands at 4.9 s and is a bead by 5.7 s, before the line names it at 5.9 s. The temperature figure has started to move: 37.1 as the palm rises, 37.2 as the flake lands, 37.3 by 6.5 s. During the line two more flakes land, each melting sooner than the last, and the next ones vanish just above the skin. The line leaves at 8.5 s. The palm lowers out of frame by 9.0 s (38.7 °C) and is not seen again until the close; the camera tilts back up along the fence.",
       "counters": {
         "start": {
           "film_s": 3.0,
@@ -563,27 +736,27 @@
           "clock_row": "REAL NUMBERS. REAL BODY."
         },
         "end": {
-          "film_s": 9.8,
-          "temperature": "39.8 °C",
+          "film_s": 9.2,
+          "temperature": "38.8 °C",
           "comparison_row": "HOTTER THAN THE SNOW",
-          "next_row": "NEXT: HEAT STROKE, in 1.2 °C",
-          "clock": "6.8 s",
+          "next_row": "NEXT: HEAT STROKE, in 2.2 °C",
+          "clock": "6.2 s",
           "clock_row": "REAL NUMBERS. REAL BODY."
         }
       },
-      "sound": "Quiet bed, no pulse yet. One small bright note as the flake melts (5.6 s): the object's own sound, used again at the close.",
+      "sound": "Quiet bed, no pulse yet. One small bright note as the flake melts (4.9 s): the object's own sound, used again at the close.",
       "uses": "patterns.md Hook 4 (reference 6.5-10.3 s): back to the ordinary start, title as a question, the only text in the middle of the frame. Structure 6 (25.0 s): plant an ordinary object early. Look 2: something of the viewer's own in frame (a palm here, newly made). Holding attention 5: the picture leads the words."
     },
     {
       "id": "boil",
       "role": "escalation",
-      "start_s": 9.8,
-      "dur_s": 7.4,
+      "start_s": 9.2,
+      "dur_s": 8.0,
       "vo": "",
       "lines": [
         {
           "at_s": 10.2,
-          "for_s": 2.8,
+          "for_s": 2.4,
           "text": "Forty-one. Heat stroke. It can kill.",
           "rows": [
             "Forty-one. Heat stroke.",
@@ -593,7 +766,7 @@
         },
         {
           "at_s": 13.5,
-          "for_s": 3.1,
+          "for_s": 2.7,
           "text": "One hundred. The water in you boils.",
           "rows": [
             "One hundred.",
@@ -604,21 +777,21 @@
       ],
       "on_screen": "",
       "picture": "The field ahead; your body is out of frame from here on. The falling snow stops reaching you: an empty bubble in the snowfall, an arm's length wide. Then the flakes at the bubble's edge flash into steam, and a ring of dark wet earth opens in the snow at the bottom of the frame. Light: still blue night; the steam is grey-blue.",
-      "motion": "10.0 s: the bubble in the snowfall opens. The figure holds near 41 while the first line is up (41.0 to 42.5), then runs to 100 in half a second. 13.2 s: first hiss of steam, a moment before the second line. The wet ring creeps out to the first post, whose snow cap slides off at 15.0 s. Steam rolls up across the stars. The figure drops its decimal at 100 (a change of form). The clock row flips to PRETEND BODY at 10.2 s.",
+      "motion": "9.2 s: the bubble in the snowfall opens, with no line over it for its first second. The figure holds near 41 while the first line is up (41.0 at 10.2 s, 42.3 when it leaves at 12.6 s), then runs from 42.5 to 100 in half a second (13.0-13.5 s). 13.2 s: first hiss of steam, a moment before the second line. The wet ring creeps out to the first post, whose snow cap slides off at 15.0 s. The second line leaves at 16.2 s. Steam rolls up across the stars. The figure drops its decimal at 100 (a change of form). The clock row flips to PRETEND BODY at 10.2 s.",
       "counters": {
         "start": {
-          "film_s": 9.8,
-          "temperature": "39.8 °C",
+          "film_s": 9.2,
+          "temperature": "38.8 °C",
           "comparison_row": "HOTTER THAN THE SNOW",
-          "next_row": "NEXT: HEAT STROKE, in 1.2 °C",
-          "clock": "6.8 s",
+          "next_row": "NEXT: HEAT STROKE, in 2.2 °C",
+          "clock": "6.2 s",
           "clock_row": "REAL NUMBERS. REAL BODY."
         },
         "end": {
           "film_s": 17.2,
-          "temperature": "420 °C",
+          "temperature": "421 °C",
           "comparison_row": "HOTTER THAN BOILING WATER",
-          "next_row": "NEXT: YOU START TO GLOW, in 105 °C",
+          "next_row": "NEXT: YOU START TO GLOW, in 104 °C",
           "clock": "14.2 s",
           "clock_row": "REAL NUMBERS. PRETEND BODY."
         }
@@ -635,7 +808,7 @@
       "lines": [
         {
           "at_s": 17.8,
-          "for_s": 2.5,
+          "for_s": 2.0,
           "text": "That red light is you.",
           "rows": [
             "That red light is you."
@@ -644,7 +817,7 @@
         },
         {
           "at_s": 20.9,
-          "for_s": 3.1,
+          "for_s": 2.7,
           "text": "Red is the coolest glow there is.",
           "rows": [
             "Red is the coolest",
@@ -653,8 +826,8 @@
           "kind": "story"
         },
         {
-          "at_s": 25.0,
-          "for_s": 2.2,
+          "at_s": 24.2,
+          "for_s": 2.4,
           "text": "Orange. Yellow. Iron melts.",
           "rows": [
             "Orange. Yellow. Iron melts."
@@ -664,7 +837,7 @@
       ],
       "on_screen": "",
       "picture": "A dull red light spreads over the wet ground and the snow, and it comes from where you stand. The first fence post is lit red on the side facing you and throws its shadow straight away from you, across snow that is still blue wherever your light does not reach. Light: red, from you; then orange, then yellow.",
-      "motion": "17.3 s: the red light arrives half a second before its line. It brightens and reaches the second post by 20 s. As the second line says red is the coolest, the light proves it: orange from 22.4 s (800 °C), yellow from 24.0 s (1,000 °C). The edge of the snow retreats post by post; the nearest posts char, smoke and catch fire (25-27 s). The figure gains a comma at 1,000 (a change of form) and passes 1,538 at 26.2 s, while 'Iron melts' is up. 27.2-28.0 s: the figure runs from 1,900 to 5,500 and the light goes yellow-white.",
+      "motion": "17.3 s: the red light arrives half a second before its line. It brightens and reaches the second post by 20 s. While the second line says red is the coolest, the light stays red (690 to 790 °C). The line leaves at 23.6 s and the light proves it: orange from 23.8 s (800 °C), four tenths before the word 'Orange.' at 24.2 s, then yellow from 24.8 s (1,000 °C) with the line still up. The edge of the snow retreats post by post; the nearest posts char, smoke and catch fire (25-27 s). The figure gains a comma at 1,000 (24.8 s, a change of form) and passes 1,538 at 26.2 s, while 'Iron melts' is up (to 26.6 s). 27.2-28.0 s: the figure runs from 1,900 to 5,500 and the light goes yellow-white.",
       "counters": {
         "start": {
           "film_s": 17.2,
@@ -676,9 +849,9 @@
         },
         "end": {
           "film_s": 27.6,
-          "temperature": "3,231 °C",
+          "temperature": "3,236 °C",
           "comparison_row": "HOTTER THAN LAVA",
-          "next_row": "NEXT: THE SUN'S SURFACE, in 2,269 °C",
+          "next_row": "NEXT: THE SUN'S SURFACE, in 2,264 °C",
           "clock": "24.6 s",
           "clock_row": "REAL NUMBERS. PRETEND BODY."
         }
@@ -695,7 +868,7 @@
       "lines": [
         {
           "at_s": 28.0,
-          "for_s": 3.1,
+          "for_s": 2.7,
           "text": "Twenty-five seconds. The surface of the Sun.",
           "rows": [
             "Twenty-five seconds.",
@@ -705,10 +878,10 @@
         },
         {
           "at_s": 31.6,
-          "for_s": 2.8,
-          "text": "Tungsten boils here. Pretend you don't.",
+          "for_s": 3.1,
+          "text": "The metal tungsten boils here. Pretend you don't.",
           "rows": [
-            "Tungsten boils here.",
+            "The metal tungsten boils here.",
             "Pretend you don't."
           ],
           "kind": "story"
@@ -716,7 +889,7 @@
       ],
       "on_screen": "",
       "picture": "The opening picture, now reached in order: bare scorched ground glowing dull orange round your feet, burning stumps with long black shadows pointing away from you, the far ridge lit like noon, the stars washed out of a black sky. Light: yellow-white, turning white.",
-      "motion": "28.0-31.0 s is frame for frame what the cold open showed, with the clock passing 25.0 s as the line says twenty-five seconds. From 31.6 s the stumps burn out one after another down the line, the glowing patch spreads outward, and the light loses its yellow. The figure holds near 5,500-5,700 while the first line is up, then climbs to 9,500 by 34.4 s.",
+      "motion": "28.0-31.0 s is frame for frame what the cold open showed, with the clock passing 25.0 s as the line says twenty-five seconds; the line leaves at 30.7 s. From 31.6 s the stumps burn out one after another down the line, the glowing patch spreads outward, and the light loses its yellow. The figure holds near 5,500-5,700 while the first line is up, reads 5,720 (above tungsten's 5,555) when the second line appears, then climbs to 9,500 by 34.4 s. The second line is up to 34.7 s, through the first three tenths of the run to blue-white.",
       "counters": {
         "start": {
           "film_s": 27.6,
@@ -728,7 +901,7 @@
         },
         "end": {
           "film_s": 34.8,
-          "temperature": "19,700 °C",
+          "temperature": "19,761 °C",
           "comparison_row": "HOTTER THAN THE SUN'S SURFACE",
           "next_row": "NEXT: THE SUN'S CORE, in 15 million °C",
           "clock": "31.8 s",
@@ -747,7 +920,7 @@
       "lines": [
         {
           "at_s": 35.2,
-          "for_s": 3.1,
+          "for_s": 2.7,
           "text": "Blue-white. Most of your light is invisible.",
           "rows": [
             "Blue-white.",
@@ -757,22 +930,22 @@
         },
         {
           "at_s": 38.8,
-          "for_s": 2.8,
-          "text": "Hotter now than the Sun's core.",
+          "for_s": 2.7,
+          "text": "The Sun's core. Humans have gone hotter.",
           "rows": [
-            "Hotter now than",
-            "the Sun's core."
+            "The Sun's core.",
+            "Humans have gone hotter."
           ],
           "kind": "story"
         }
       ],
       "on_screen": "",
       "picture": "The light turns blue-white and the glare climbs the frame from the ground up: the glowing earth, the last stumps, then the ridge, each bleaching out in turn. For a second the ridge is a thin dark line in the white; then it is gone. After that the frame is blue-white with nothing in it but slow rings of slightly brighter light travelling outward from you. Light: blue-white, and it stops changing colour.",
-      "motion": "34.4-35.0 s: the figure runs from 9,500 to 28,500 and the light turns blue-white just before the line. The glare rises through 35-38 s; the ridge goes at about 38 s. The figure changes form at a million (digits to words, 38.3 s) and passes 15 million at 38.8 s as the second line appears; it keeps climbing through the line, to 250 million by 40.6 s. The rings quicken with the counter. Counters and lines switch to dark ink as the frame whitens.",
+      "motion": "34.4-35.0 s: the figure runs from 9,500 to 28,500 and the light turns blue-white just before the line. The glare rises through 35-38.8 s; the first line leaves at 37.9 s, and the ridge's last dark line goes out at 38.8 s, as the second line arrives, so the last object in the scene leaves on that line. The figure changes form at a million (digits to words, 38.3 s) and passes 15 million at 38.8 s; it keeps climbing through the line, to 250 million by 40.6 s and about 55 billion when the line leaves at 41.5 s, which is the line's point: the counter is already far past the core. The rings quicken with the counter. Counters and lines switch to dark ink as the frame whitens.",
       "counters": {
         "start": {
           "film_s": 34.8,
-          "temperature": "19,800 °C",
+          "temperature": "19,761 °C",
           "comparison_row": "HOTTER THAN THE SUN'S SURFACE",
           "next_row": "NEXT: THE SUN'S CORE, in 15 million °C",
           "clock": "31.8 s",
@@ -882,22 +1055,21 @@
       "vo": "",
       "lines": [
         {
-          "at_s": 51.6,
-          "for_s": 2.8,
-          "text": "At thirty-seven degrees, you glow too.",
+          "at_s": 52.2,
+          "for_s": 2.2,
+          "text": "Right now, you glow too.",
           "rows": [
-            "At thirty-seven degrees,",
-            "you glow too."
+            "Right now, you glow too."
           ],
           "kind": "story"
         },
         {
           "at_s": 54.7,
-          "for_s": 3.1,
-          "text": "In infrared. No eye can see it.",
+          "for_s": 2.7,
+          "text": "In infrared. Your eyes cannot see it.",
           "rows": [
             "In infrared.",
-            "No eye can see it."
+            "Your eyes cannot see it."
           ],
           "kind": "story"
         },
@@ -911,9 +1083,9 @@
           "kind": "story"
         }
       ],
-      "on_screen": "SOURCES IN THE DESCRIPTION (small capitals under the clock block, from 51.6 s to the end; shown together with the story lines on purpose)",
+      "on_screen": "SOURCES IN THE DESCRIPTION (small capitals under the clock block, from 56.6 s, as the flake lands, to the end; shown together with the story lines on purpose)",
       "picture": "The white comes apart into snow. It thins from the top into night sky and stars, and what is left of it is snow: on the ground, on the caps of the fence posts, falling. The field of 3 s, whole and blue. Your bare palm comes up into the bottom of the frame and one snowflake lands on it and melts. Light: deep blue starlight. Nothing glows that an eye can see.",
-      "motion": "51.0-51.6 s: as the payoff line leaves, the figure spins back down through every form it has had and lands on 37.0 °C, where it stays; the white separates into sky and snowfall over the same six tenths, with no black frame. The clock does not reset. The clock row returns to REAL BODY and the NEXT row reads STAY HERE. The palm rises at 55.0 s; the flake lands at 56.6 s and is a bead by 58.0 s, when the last line arrives. The film ends in motion at 59.9 s as a second flake touches the palm: no hold, no end card.",
+      "motion": "51.0-52.2 s: as the payoff line leaves, the white separates into sky and snowfall, with no black frame and no line over it: 1.2 s for the return to be seen before it is read. In the first six tenths (51.0-51.6 s) the figure spins back down through every form it has had and lands on 37.0 °C, where it stays. The clock does not reset. At 51.6 s the clock row returns to REAL BODY, the NEXT row reads STAY HERE and the comparison row reads AS WARM AS EVERYONE YOU KNOW. The first line of the close arrives at 52.2 s, when the field is whole again. The palm rises at 55.0 s; the flake lands at 56.6 s, as the sources tag comes on. The second line leaves at 57.4 s, so the last of the melt (57.4-58.0 s) has no line over it; the flake is a bead by 58.0 s, when the last line arrives. The film ends in motion at 59.9 s as a second flake touches the palm: no hold, no end card.",
       "counters": {
         "start": {
           "film_s": 51.0,
@@ -926,13 +1098,13 @@
         "end": {
           "film_s": 59.9,
           "temperature": "37.0 °C",
-          "comparison_row": "HOTTER THAN THE SNOW",
+          "comparison_row": "AS WARM AS EVERYONE YOU KNOW",
           "next_row": "NEXT: STAY HERE",
           "clock": "56.9 s",
           "clock_row": "REAL NUMBERS. REAL BODY."
         }
       },
-      "sound": "The bed returns at 51.0 s, quiet and without the pulse. The small bright note from 5.6 s again at 56.6 s as the flake melts. Ends on the note's tail.",
+      "sound": "The bed returns at 51.0 s, quiet and without the pulse. The small bright note from 4.9 s again at 56.6 s as the flake melts. Ends on the note's tail.",
       "uses": "patterns.md Structure 6 and 8 (527.7 s): end on the planted object, after a release that follows the bleakest moment (Sharing 2). Sharing 1 and 4: a short final line that can be quoted alone, and a fact about the viewer's own body with no moral drawn. Do not copy: a pointer to the sources sits on the closing picture. The reference's own ending (a loop that starts again) is not used: here the counter comes back to 37 and holds."
     }
   ]
