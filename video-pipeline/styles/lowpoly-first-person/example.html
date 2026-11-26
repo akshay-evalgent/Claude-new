@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Low-poly first person example</title>
+<!-- A worked example of the low-poly first-person kit on film.js: the whole
+     climb in fourteen seconds, as one shot with no cuts. One function draws
+     the field from your temperature and the time; the words follow the state
+     it returns.
+     Preview: open this file with ?play, or ?t=6.2 to stop on a moment.
+     Render:  node ../../tools/render.js example.html --out /tmp/example.mp4 -->
+<link rel="stylesheet" href="lowpoly.css">
+</head>
+<body>
+<main id="stage">
+  <canvas id="world"></canvas>
+  <section class="shot" id="climb"></section>
+  <div id="hud"></div>
+</main>
+
+<script src="../../vendor/node_modules/three/build/three.min.js"></script>
+<script src="../../runtime/film.js"></script>
+<script src="world.js"></script>
+<script src="hud.js"></script>
+<script>
+  const world = LowPoly.World.create({ canvas: document.getElementById('world'), width: 1080, height: 1920 });
+  const hud = LowPoly.Hud.mount(document.getElementById('hud'));
+  const { span, ease, lerp } = Film;
+
+  // [film second, °C]: nearly flat while a stage is on show, steep between stages
+  const KEYS = [[0, 37], [2.2, 37.4], [3.2, 41], [3.6, 100], [4.6, 112], [5.0, 525], [6.2, 800], [7.0, 1538],
+                [7.6, 5500], [8.8, 5700], [9.6, 28500], [10.6, 1e6], [11.2, 4e12], [12.0, 1.4e32], [12.8, 1.4e32]];
+  const STAGES = [   // from this temperature: the comparison row, the next event and where it is
+    [0, 'HOTTER THAN THE SNOW', 'WATER BOILS', 100],
+    [100, 'HOTTER THAN BOILING WATER', 'YOU START TO GLOW', 525],
+    [525, 'HOTTER THAN BOILING WATER', "THE SUN'S SURFACE", 5500],
+    [5500, "HOTTER THAN THE SUN'S SURFACE", "THE SUN'S CORE", 15e6],
+    [15e6, "HOTTER THAN THE SUN'S CORE", 'THE EDGE OF PHYSICS', 1.4e32],
+  ];
+  const LINES = [    // [from, to, kind, rows]
+    [2.4, 3.4, 'story', ['A snowflake melts', 'on your palm.']],
+    [5.2, 6.8, 'story', ['That red light is you.']],
+    [7.7, 9.2, 'statement', ['The surface', 'of the Sun.']],
+    [12.1, 12.8, 'story', ['Here, physics runs', 'out of answers.']],
+    [13.2, 14.0, 'story', ['Ask the snowflake.']],
+  ];
+
+  Film.setup({ width: 1080, height: 1920, fps: 30 });
+  Film.shot({ id: 'climb', dur: 14, update(p, t) {
+    const back = t >= 12.8;                                   // the white comes apart into snow
+    const T = back ? 37 : LowPoly.logTemp(KEYS, t);
+    const edge = !back && T >= 1.3e32;
+    const state = world.set(T, t, {
+      yaw: lerp(-3, 3, p), pitch: 5 + 9 * (ease.inOut(span(t, 0.6, 1.4)) - ease.inOut(span(t, 3.2, 4.0)) + ease.inOut(span(t, 13.0, 13.6))),
+      hand: back ? ease.out(span(t, 13.0, 13.6)) : ease.out(span(t, 0.7, 1.4)) - ease.in(span(t, 3.1, 3.8)),
+      flakes: back ? [{ slot: 0, p: lerp(-1, 0.2, span(t, 13.2, 14)) }] : [{ slot: 0, p: lerp(-1, 1, span(t, 1.0, 2.6)) }],
+      release: back ? span(t, 12.8, 13.3) : 0,
+    });
+    const st = STAGES.filter((s) => T >= s[0]).pop();
+    hud.set({
+      label: 'YOUR TEMPERATURE', figure: LowPoly.Hud.figure(T, { edge, q: 0.6 + 0.4 * Math.cos(t * Math.PI * 2) }),
+      compare: edge ? 'AS HOT AS PHYSICS CAN DESCRIBE' : st[1],
+      next: edge ? { event: 'NOBODY KNOWS', countdown: '?' } : back ? { event: 'STAY HERE', countdown: '' }
+        : { event: st[2], countdown: st[3] > 1e30 ? 'in ' + Math.max(0, 32 - Math.floor(Math.log10(T))) + ' powers of ten' : 'in ' + LowPoly.Hud.amount(Math.max(0, st[3] - T)) + ' °C' },
+      clockLabel: 'YOU HAVE BEEN HEATING UP FOR', clock: LowPoly.Hud.clock(t),
+      clockRow: T > 41 ? 'REAL NUMBERS. PRETEND BODY.' : 'REAL NUMBERS. REAL BODY.',
+      tag: back ? 'SOURCES IN THE DESCRIPTION' : '', look: state.words,
+    });
+    hud.title(t < 2.2 ? ['What If You Got Hotter', 'and Couldn’t Stop?'] : null, 1 - span(t, 1.9, 2.2));
+    const l = LINES.find((l) => t >= l[0] && t < l[1]);
+    hud.line(l ? { kind: l[2], rows: l[3], opacity: Math.min(span(t, l[0], l[0] + 0.25), 1 - span(t, l[1] - 0.25, l[1])) } : null);
+  } });
+  Film.ready();
+</script>
+</body>
+</html>

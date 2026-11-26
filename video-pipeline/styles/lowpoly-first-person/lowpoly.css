@@ -1,0 +1,144 @@
+/* Low-poly first person: one continuous 3D scene seen from where you stand,
+   two counter blocks at the top, one line of words near the bottom.
+   Vertical, 1080x1920. Tokens first: a mood board's style.json overrides these,
+   nothing else. All sizes are px in a 1080 px wide frame. */
+:root {
+  /* colour */
+  --lp-ground: #040303;        /* behind the canvas before the first frame is drawn */
+  --lp-text: #fefaf3;          /* counters and lines over the scene (the reference's warm white) */
+  --lp-ink: #0b0908;           /* the same words once the frame has gone white */
+  --lp-scrim: 6, 5, 5;         /* the dark behind words over a bright scene, as r, g, b */
+  --lp-heat: #ac6634;          /* the one accent: the light you give off. Used in the scene, never in type */
+
+  /* layout */
+  --lp-margin: 60px;           /* 5.6% of the width, the reference's own margin */
+  --lp-top: 150px;             /* top of the counter blocks: 7.8% down, clear of the Shorts header */
+  --lp-line-y: 73.5%;          /* centre of the line block, from the top: above the Shorts caption area */
+  --lp-line-max: 820px;        /* widest a row may be: clear of the Shorts buttons on the right */
+  --lp-title-y: 38.5%;         /* centre of the title block: clear sky between the counters and the ridge (look level: pitch 0) */
+
+  /* type */
+  --lp-serif: 'Newsreader', 'Charter', Georgia, serif;
+  --lp-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --lp-label-size: 32px;       /* small rows: cap height 23 px, 1.2% of the height */
+  --lp-label-track: 0.1em;
+  --lp-figure-size: 96px;      /* the two large figures: digits 70 px tall, 3.6% of the height */
+  --lp-count-size: 46px;       /* the countdown under NEXT */
+  --lp-line-size: 66px;        /* story lines, italic: cap height 47 px, 2.5% of the height */
+  --lp-statement-size: 66px;   /* the cold-open line, upright and heavier */
+  --lp-title-size: 78px;
+}
+
+@font-face { font-family: 'Newsreader'; font-style: normal; font-weight: 200 800;
+  src: url('fonts/Newsreader-VF.ttf') format('truetype'); }
+@font-face { font-family: 'Newsreader'; font-style: italic; font-weight: 200 800;
+  src: url('fonts/Newsreader-Italic-VF.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 500;
+  src: url('fonts/Inter-Medium.otf') format('opentype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600;
+  src: url('fonts/Inter-SemiBold.otf') format('opentype'); }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #111; }
+#stage { position: relative; overflow: hidden; background: var(--lp-ground); }
+.shot { position: absolute; inset: 0; visibility: hidden; }
+
+/* The scene: one canvas under everything, drawn by world.js. */
+.lp-world { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+
+/* ---- the words ------------------------------------------------------- */
+.lp-hud {
+  position: absolute; inset: 0; z-index: 1000; pointer-events: none;
+  color: var(--lp-text);
+  font-family: var(--lp-sans);
+  -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision;
+  --lp-top-scrim: 0.3;         /* set every frame from the world's state */
+  --lp-line-scrim: 0.3;
+}
+.lp-hud[data-bare] .lp-block, .lp-hud[data-bare] .lp-line > span, .lp-hud[data-bare] .lp-title { visibility: hidden; }
+
+/* The dark behind the counters: a band that fades out below them. */
+.lp-top-scrim {
+  position: absolute; left: 0; right: 0; top: 0; height: 36%;
+  background: linear-gradient(to bottom,
+    rgba(var(--lp-scrim), calc(var(--lp-top-scrim) * 1)) 0%,
+    rgba(var(--lp-scrim), calc(var(--lp-top-scrim) * 0.92)) 55%,
+    rgba(var(--lp-scrim), calc(var(--lp-top-scrim) * 0.5)) 80%,
+    rgba(var(--lp-scrim), 0) 100%);
+}
+
+.lp-block { position: absolute; top: var(--lp-top); }
+.lp-temp { left: var(--lp-margin); text-align: left; }
+.lp-clock { right: var(--lp-margin); text-align: right; }
+
+.lp-label, .lp-row {
+  font: 600 var(--lp-label-size)/1.25 var(--lp-sans);
+  letter-spacing: var(--lp-label-track);
+  text-transform: uppercase; white-space: nowrap;
+}
+.lp-clock .lp-label, .lp-clock .lp-row { margin-right: calc(var(--lp-label-track) * -1); }
+.lp-label { height: 2.5em; display: flex; flex-direction: column; justify-content: flex-end; opacity: 0.92; }
+.lp-figure {
+  font: 500 var(--lp-figure-size)/1 var(--lp-serif);
+  font-variation-settings: 'opsz' 30;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -0.01em; white-space: nowrap;
+  margin: 14px 0 20px;
+}
+.lp-figure sup { font-size: 0.56em; line-height: 0; vertical-align: 0.62em; letter-spacing: 0; }
+.lp-figure .lp-q { display: inline-block; margin-left: 0.14em; }
+.lp-row { opacity: 0.92; }
+.lp-row .lp-lead { opacity: 0.8; }
+.lp-row .lp-thing { display: block; }
+.lp-next .lp-thing { display: inline; }
+.lp-next .lp-lead { margin-right: 0.6em; }
+.lp-rule { width: 250px; height: 2px; background: currentColor; opacity: 0.5; margin: 22px 0 20px; }
+.lp-countdown {
+  font: 500 var(--lp-count-size)/1.15 var(--lp-serif);
+  font-variation-settings: 'opsz' 20;
+  font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; margin-top: 6px;
+}
+.lp-countdown sup { font-size: 0.6em; line-height: 0; vertical-align: 0.55em; }
+.lp-tag { margin-top: 26px; }
+.lp-tag:empty, .lp-countdown:empty { display: none; }
+
+/* The line: one at a time, bottom centre, in one or two rows. */
+.lp-line {
+  position: absolute; left: 50%; top: var(--lp-line-y);
+  transform: translate(-50%, -50%);
+  text-align: center; white-space: nowrap;
+  font: italic 500 var(--lp-line-size)/1.2 var(--lp-serif);
+  font-variation-settings: 'opsz' 30;
+  padding: 34px 70px;
+}
+.lp-line > span { display: block; position: relative; }
+.lp-line[data-kind='statement'] {
+  font: 600 var(--lp-statement-size)/1.2 var(--lp-serif);
+  font-variation-settings: 'opsz' 30;
+}
+/* The dark behind the line: soft-edged, sized by the line itself. */
+.lp-line::before {
+  content: ''; position: absolute; inset: -28px -60px;
+  background: radial-gradient(ellipse closest-side,
+    rgba(var(--lp-scrim), calc(var(--lp-line-scrim) * 1)) 0%,
+    rgba(var(--lp-scrim), calc(var(--lp-line-scrim) * 0.96)) 55%,
+    rgba(var(--lp-scrim), calc(var(--lp-line-scrim) * 0.6)) 78%,
+    rgba(var(--lp-scrim), 0) 100%);
+}
+.lp-line:empty { display: none; }
+
+/* The title: the only words in the middle of the frame. */
+.lp-title {
+  position: absolute; left: 50%; top: var(--lp-title-y);
+  transform: translate(-50%, -50%);
+  text-align: center; white-space: nowrap;
+  font: 500 var(--lp-title-size)/1.16 var(--lp-serif);
+  font-variation-settings: 'opsz' 40;
+}
+.lp-title > span { display: block; }
+.lp-title:empty { display: none; }
+
+/* Dark ink once the frame has gone white. The counters and the line switch
+   separately: the ground whitens before the sky does. */
+.lp-hud[data-counters='dark'] .lp-block, .lp-hud[data-counters='dark'] .lp-title { color: var(--lp-ink); }
+.lp-hud[data-line='dark'] .lp-line { color: var(--lp-ink); }

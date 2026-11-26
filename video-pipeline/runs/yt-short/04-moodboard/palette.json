@@ -1,0 +1,47 @@
+{
+ "inputs": [
+  "video-pipeline/runs/yt-short/04-moodboard/frames/still_1.png",
+  "video-pipeline/runs/yt-short/04-moodboard/frames/still_3.png",
+  "video-pipeline/runs/yt-short/04-moodboard/frames/still_5.png",
+  "video-pipeline/runs/yt-short/04-moodboard/frames/still_7.png",
+  "video-pipeline/runs/yt-short/04-moodboard/frames/still_9.png"
+ ],
+ "colours": [
+  {
+   "hex": "#05070b",
+   "share": 0.2258
+  },
+  {
+   "hex": "#f8f7f2",
+   "share": 0.2124
+  },
+  {
+   "hex": "#2c3a61",
+   "share": 0.1756
+  },
+  {
+   "hex": "#0f121e",
+   "share": 0.1701
+  },
+  {
+   "hex": "#45231a",
+   "share": 0.1376
+  },
+  {
+   "hex": "#b1723f",
+   "share": 0.0785
+  }
+ ],
+ "ground": "#05070b",
+ "ink": "#000000",
+ "accent": {
+  "hex": "#283b67",
+  "share": 0.17563,
+  "hue_deg": 230.5,
+  "single_hue": false
+ },
+ "luminance_mean": 0.325,
+ "saturation_mean": 0.442,
+ "dark_share": 0.6475,
+ "colourfulness": "saturated"
+}

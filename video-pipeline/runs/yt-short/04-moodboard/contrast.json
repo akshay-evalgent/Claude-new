@@ -1,0 +1,62 @@
+{
+ "coldopen": {
+  "counters": {
+   "median": 16.7,
+   "worst_5pct": 16.5,
+   "min": 16.4
+  },
+  "line": {
+   "median": 16.8,
+   "worst_5pct": 14.5,
+   "min": 8.5
+  }
+ },
+ "snow": {
+  "counters": {
+   "median": 15.9,
+   "worst_5pct": 15.6,
+   "min": 1.9
+  },
+  "title": {
+   "median": 17.9,
+   "worst_5pct": 17.5,
+   "min": 1.8
+  }
+ },
+ "glow": {
+  "counters": {
+   "median": 15.9,
+   "worst_5pct": 13.8,
+   "min": 3.3
+  },
+  "line": {
+   "median": 18.7,
+   "worst_5pct": 18.1,
+   "min": 17.5
+  }
+ },
+ "edge": {
+  "counters": {
+   "median": 16.0,
+   "worst_5pct": 15.6,
+   "min": 15.6
+  },
+  "line": {
+   "median": 19.0,
+   "worst_5pct": 19.0,
+   "min": 19.0
+  }
+ },
+ "flake": {
+  "counters": {
+   "median": 15.8,
+   "worst_5pct": 15.5,
+   "min": 1.6
+  },
+  "line": {
+   "median": 15.6,
+   "worst_5pct": 12.5,
+   "min": 12.4
+  }
+ }
+}

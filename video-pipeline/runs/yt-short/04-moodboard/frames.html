@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>yt-short: key frames</title>
+<!-- Five key frames, one shot each, 2 s a shot: stills at 1, 3, 5, 7, 9 s.
+     Finished pictures: nothing fades or draws on. Each is the world function at
+     one temperature and time, with the words the script puts over it.
+     Add ?bare to hide the words and keep the scrims (for the contrast check). -->
+<link rel="stylesheet" href="../../../styles/lowpoly-first-person/lowpoly.css">
+</head>
+<body>
+<main id="stage">
+  <canvas id="world"></canvas>
+  <section class="shot" id="coldopen"></section>
+  <section class="shot" id="snow"></section>
+  <section class="shot" id="glow"></section>
+  <section class="shot" id="edge"></section>
+  <section class="shot" id="flake"></section>
+  <div id="hud"></div>
+</main>
+<script src="../../../vendor/node_modules/three/build/three.min.js"></script>
+<script src="../../../runtime/film.js"></script>
+<script src="../../../styles/lowpoly-first-person/world.js"></script>
+<script src="../../../styles/lowpoly-first-person/hud.js"></script>
+<script>
+  const world = LowPoly.World.create({ canvas: document.getElementById('world'), width: 1080, height: 1920 });
+  const hud = LowPoly.Hud.mount(document.getElementById('hud'));
+  if (new URLSearchParams(location.search).has('bare')) hud.bare(true);
+  const F = LowPoly.Hud;
+  const CLOCK = 'YOU HAVE BEEN HEATING UP FOR';
+
+  /* film: the film time the frame stands for. The world is given that time, so
+     the producer's film draws the same picture when it gets there. */
+  const KEY = {
+    coldopen: { film: 28.0, temp: 5510, pose: { yaw: 3.5, pitch: 7 },
+      hud: { figure: F.figure(5510), compare: "HOTTER THAN THE SUN'S SURFACE", next: { event: "THE SUN'S CORE", countdown: 'in 15 million °C' },
+             clock: F.clock(25.0), clockRow: 'REAL NUMBERS. PRETEND BODY.', tag: '' },
+      line: { kind: 'statement', rows: ['Twenty-five seconds ago,', 'this was snow.'] } },
+    snow: { film: 5.9, temp: 37.2, pose: { yaw: 2, pitch: 0, hand: 1, flakes: [{ slot: 0, p: 0.06 }] },
+      hud: { figure: F.figure(37.2), compare: 'HOTTER THAN THE SNOW', next: { event: 'HEAT STROKE', countdown: 'in 3.8 °C' },
+             clock: F.clock(2.9), clockRow: 'REAL NUMBERS. REAL BODY.', tag: '' },
+      title: ['What If You Got Hotter', 'and Couldn’t Stop?'] },
+    glow: { film: 21.6, temp: 735, pose: { yaw: -5, pitch: 11 },
+      hud: { figure: F.figure(735), compare: 'HOTTER THAN BOILING WATER', next: { event: "THE SUN'S SURFACE", countdown: 'in 4,765 °C' },
+             clock: F.clock(18.6), clockRow: 'REAL NUMBERS. PRETEND BODY.', tag: '' },
+      line: { kind: 'story', rows: ['Red is the coolest', 'glow there is.'] } },
+    edge: { film: 49.3, temp: 1.4e32, pose: {},
+      hud: { figure: F.figure(1.4e32, { edge: true }), compare: 'AS HOT AS PHYSICS CAN DESCRIBE', next: { event: 'NOBODY KNOWS', countdown: '?' },
+             clock: F.clock(46.3), clockRow: 'REAL NUMBERS. PRETEND BODY.', tag: '' },
+      line: { kind: 'story', rows: ['Here, physics runs', 'out of answers.'] } },
+    flake: { film: 59.9, temp: 37, pose: { yaw: 2, pitch: 4, hand: 1, flakes: [{ slot: 0, p: 1 }, { slot: 1, p: -0.05 }] },
+      hud: { figure: F.figure(37), compare: 'HOTTER THAN THE SNOW', next: { event: 'STAY HERE', countdown: '' },
+             clock: F.clock(56.9), clockRow: 'REAL NUMBERS. REAL BODY.', tag: 'SOURCES IN THE DESCRIPTION' },
+      line: { kind: 'story', rows: ['Ask the snowflake.'] } },
+  };
+
+  Film.setup({ width: 1080, height: 1920, fps: 30 });
+  for (const id of Object.keys(KEY)) {
+    const k = KEY[id];
+    Film.shot({ id, dur: 2, update() {
+      const state = world.set(k.temp, k.film, k.pose);
+      hud.set(Object.assign({ label: 'YOUR TEMPERATURE', clockLabel: CLOCK, look: state.words }, k.hud));
+      hud.line(k.line || null); hud.title(k.title || null);
+    } });
+  }
+  Film.ready();
+</script>
+</body>
+</html>
