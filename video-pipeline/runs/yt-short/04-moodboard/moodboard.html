@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Mood board: What If You Got Hotter and Couldn't Stop?</title>
+<style>
+@font-face{font-family:Newsreader;src:url(../../../styles/lowpoly-first-person/fonts/Newsreader-VF.ttf);font-weight:200 800}
+@font-face{font-family:Newsreader;font-style:italic;src:url(../../../styles/lowpoly-first-person/fonts/Newsreader-Italic-VF.ttf);font-weight:200 800}
+@font-face{font-family:Inter;src:url(../../../styles/lowpoly-first-person/fonts/Inter-SemiBold.otf);font-weight:600}
+body{margin:0;background:#14151a;color:#e8e6e0;font:16px/1.5 system-ui,sans-serif}main{max-width:1240px;margin:0 auto;padding:32px 24px 80px}
+h1{font:500 34px Newsreader,serif}h2{font:500 24px Newsreader,serif;margin-top:48px;border-top:1px solid #333;padding-top:20px}h3{font-size:16px;margin:28px 0 6px}
+.sw{display:flex;flex-wrap:wrap;gap:12px}.sw div{width:200px;font-size:13px}.sw i{display:block;height:64px;border:1px solid #444;border-radius:4px}.sw b{display:block;margin-top:4px}
+.pair{display:flex;gap:16px;align-items:flex-start}.pair img{height:500px;border:1px solid #333}.cap{color:#aaa;font-size:14px;max-width:1100px}
+img.wide{max-width:100%;border:1px solid #333}table{border-collapse:collapse;font-size:14px}td,th{border:1px solid #333;padding:4px 10px;text-align:left}
+.spec{background:#05070b;padding:28px;color:#fefaf3;max-width:1080px}.cols{display:grid;grid-template-columns:1fr 1fr;gap:8px 40px}li{margin:2px 0}
+</style></head><body><main>
+<h1>Mood board: What If You Got Hotter and Couldn't Stop?</h1>
+<p>Kit: <code>video-pipeline/styles/lowpoly-first-person</code> (new, three.js). 1080x1920, 30 fps. First version; nothing revised yet.
+Every frame below is <code>world.set(temperature, time, pose)</code> with the script's words over it.</p>
+<h2>Palette</h2><div class="sw">
+<div><i style="background:#040303"></i><b>#040303 Ground</b>Night sky and the frame before anything is drawn. Reference ground, measured; ours measures #05070b.</div>
+<div><i style="background:#2c3a61"></i><b>#2c3a61 Snow under starlight</b>Everything your light has not reached.</div>
+<div><i style="background:#0f121e"></i><b>#0f121e Night shade</b>Posts, boulder, sleeve, far sky.</div>
+<div><i style="background:#ac6634"></i><b>#ac6634 Accent: your heat</b>The reference's measured accent. Your light on the ground; ours measures #b1723f in the key frames.</div>
+<div><i style="background:#a3180a"></i><b>#a3180a Your light at 525 °C</b>Red, the coolest glow.</div>
+<div><i style="background:#fb7d1c"></i><b>#fb7d1c at 1,000 °C</b>Orange.</div>
+<div><i style="background:#fff1c9"></i><b>#fff1c9 at 5,500 °C</b>Yellow-white.</div>
+<div><i style="background:#dfe9ff"></i><b>#dfe9ff at 28,500 °C</b>Blue-white; the colour stops changing.</div>
+<div><i style="background:#fbfaf6"></i><b>#fbfaf6 The edge</b>Flat white at 1.4 × 10³² K.</div>
+<div><i style="background:#fefaf3"></i><b>#fefaf3 Text</b>Counters and lines over the scene.</div>
+<div><i style="background:#0b0908"></i><b>#0b0908 Ink</b>The same words over white.</div>
+</div><p class="cap">Measured from our five key frames (<code>palette.json</code>): #05070b, #f8f7f2, #2c3a61, #0f121e, #45231a, #b1723f. Mean brightness 0.33, dark share 0.65 (reference 0.23 and 0.58). ground matches (#05070b against #040303). The warm accent is present (#b1723f, 8% of the key frames, against the reference's #ac6634); the tool names night blue #283b67 as accent because snow fills two of five frames. Ours is more saturated and ends bright where the reference ends dark: the script's arc, not a drawing choice.</p>
+<h2>Key frames beside the reference</h2><p class="cap">Reference on the left (horizontal), ours on the right (vertical), at the same height.</p>
+<h3>Cold open, film 0.0 s (replays 28.0 s)</h3><div class="pair"><img src="ref/still_2.jpg" alt="reference"><img src="frames/still_1.png" alt="ours"></div><p class="cap">Both open on the far stage with both counters already running and one upright sentence. Ours: scorched ground glowing at your feet, burning fence, lit ridge, black sky.</p>
+<h3>The ordinary start, film 5.9 s</h3><div class="pair"><img src="ref/still_8.5.jpg" alt="reference"><img src="frames/still_3.png" alt="ours"></div><p class="cap">Title as a question in clear sky, the only words mid-frame. Ours: a snow field, a fence and a bare palm with the flake; no street, houses, trees or people.</p>
+<h3>Mid stage, film 21.6 s (735 °C)</h3><div class="pair"><img src="ref/still_26.jpg" alt="reference"><img src="frames/still_5.png" alt="ours"></div><p class="cap">Night with one warm light. In the reference it is a street lamp; here it is you: red on the near ground and the first post, blue wherever it does not reach.</p>
+<h3>Brightest stage and payoff, film 49.3 s</h3><div class="pair"><img src="ref/still_507.jpg" alt="reference"><img src="frames/still_7.png" alt="ours"></div><p class="cap">The emptied frame with the NEXT row on its punchline. The reference empties to dark; ours to white, with dark ink.</p>
+<h3>Last frame, film 59.9 s</h3><div class="pair"><img src="ref/still_533.jpg" alt="reference"><img src="frames/still_9.png" alt="ours"></div><p class="cap">The opening place again. Ours ends on the planted object: the bead of the first flake and a second one touching.</p>
+<h2>The world function across the run</h2><img class="wide" src="states.jpg" alt="states"><p class="cap">Twelve states from the kit example, in order: 51 °C (palm), 108 (melt ring, steam), 648 (red), 1,109 (orange, posts charring), 2,908 (fire, stars gone), 12,746 (white-hot ground, bleach starting), 82,869, 343,917 (the ridge the last dark line), 2 billion (rings), 10²² K (grain), then the release into snowfall. Words here are the example's, not the script's.</p>
+<h2>At phone width</h2><img class="wide" src="phone-width.png" alt="phone width"><p class="cap">The five key frames at 360 px wide, the size a phone shows them. Small rows are 32 px in the frame: cap height 1.2% of the height, never below 0.8 opacity.</p>
+<h3>Contrast of the words, measured</h3><table><tr><th>Frame</th><th>Zone</th><th>Median</th><th>Worst 5%</th></tr>
+<tr><td>coldopen</td><td>counters</td><td>16.7:1</td><td>16.5:1</td></tr>
+<tr><td>coldopen</td><td>line</td><td>16.8:1</td><td>14.5:1</td></tr>
+<tr><td>snow</td><td>counters</td><td>15.9:1</td><td>15.6:1</td></tr>
+<tr><td>snow</td><td>title</td><td>17.9:1</td><td>17.5:1</td></tr>
+<tr><td>glow</td><td>counters</td><td>15.9:1</td><td>13.8:1</td></tr>
+<tr><td>glow</td><td>line</td><td>18.7:1</td><td>18.1:1</td></tr>
+<tr><td>edge</td><td>counters</td><td>16.0:1</td><td>15.6:1</td></tr>
+<tr><td>edge</td><td>line</td><td>19.0:1</td><td>19.0:1</td></tr>
+<tr><td>flake</td><td>counters</td><td>15.8:1</td><td>15.5:1</td></tr>
+<tr><td>flake</td><td>line</td><td>15.6:1</td><td>12.5:1</td></tr>
+</table><p class="cap">WCAG contrast of each letter pixel against the pixel behind it in the same frame rendered without words (frames-bare.html); median and the worst 5%. The cold-open line over the glowing ground: 16.8:1 median, 14.5:1 worst 5% over the glowing ground.</p>
+<h2>Type</h2><div class="spec">
+<div style="font:600 16px Inter;letter-spacing:.1em">YOUR TEMPERATURE &nbsp; NEXT THE SUN'S CORE &nbsp; REAL NUMBERS. PRETEND BODY.</div>
+<div style="font:500 48px Newsreader;font-variant-numeric:tabular-nums">5,510 °C &nbsp; 4.0 trillion °C &nbsp; 1.4 × 10<sup style="font-size:.56em">32</sup> K ? &nbsp; 25.0 s</div>
+<div style="font:500 23px Newsreader">in 15 million °C</div>
+<div style="font:600 33px Newsreader;margin-top:14px">Twenty-five seconds ago, this was snow.</div>
+<div style="font:italic 500 33px Newsreader">Red is the coolest glow there is.</div>
+<div style="font:500 39px Newsreader;margin-top:10px">What If You Got Hotter and Couldn’t Stop?</div></div>
+<p class="cap">Shown at half size. Newsreader and Inter (both SIL OFL) are close matches to the reference's serif and tracked sans, which could not be named with certainty.</p>
+<table><tr><th></th><th>Reference (1920x1080)</th><th>Ours (1080x1920)</th></tr>
+<tr><td>Small rows</td><td>cap 13 px, 1.2% of height, dimmed to 62-70%</td><td>cap 23 px, 1.2% of height, 0.8-0.92</td></tr>
+<tr><td>Large figure</td><td>digits 45 px, 4.2%</td><td>digits 70 px, 3.6%</td></tr>
+<tr><td>Story line</td><td>cap 42 px, one row, baseline 90.5%</td><td>cap 47 px, two rows, centre 73.5%, max 820 px</td></tr>
+<tr><td>Blocks</td><td>top corners, side by side, margin 5.6%</td><td>top corners, margin 5.6%, long rows broken in two</td></tr></table>
+<h2>Rules</h2><div class="cols">
+<div><h3>Drawing</h3><ul><li>solids are flat faces, one colour a face, no outlines, no textures</li><li>the place: a snow field at night, a fence line passing half a metre to your left and running to a notched ridge 2.2 km off, one boulder to the right at 13 m, stars with a denser band, slow snowfall</li><li>your body is a bare right palm, open and facing up, with a dark sleeve and cuff; it is in frame only at 37 °C (start and close)</li><li>the snowflake is a white six-armed flake about a fifth of the palm wide; it melts to a faceted bead with one bright face</li><li>sky, stars, snow, steam and smoke are soft; flames are flat-sided tongues</li><li>past one million degrees the frame is the veil: blue-white with slow rings, then grain, then flat white</li></ul></div>
+<div><h3>Composition</h3><ul><li>horizon between 40% and 50% of the height; 50% (pitch 0) while the title is up</li><li>counters occupy 7.8% to 31% of the height over the sky</li><li>the line block is centred at 73.5%; when the palm is up the line sits over the wrist and sleeve</li><li>the fence runs from the left foreground to a vanishing point near the centre; the first post is a foreground column at the left edge</li><li>nothing below 80% but scene: the Shorts caption area covers it</li></ul></div>
+<div><h3>Motion</h3><ul><li>counters change every frame</li><li>snow falls slowly at 37 °C; steam, flames, sparks and shadows flicker with t</li><li>the camera never moves, it turns slowly and tilts on cue (down for the palm, level for the title)</li><li>lines fade in and out over 0.2-0.3 s; the picture never fades</li></ul></div>
+<div><h3>Never</h3><ul><li>cuts, dissolves or black frames</li><li>outlines or textures on solids</li><li>a second warm colour or accent in type</li><li>small rows under 32 px or under 0.8 opacity</li><li>words below 80% of the height or wider than 820 px in the line</li><li>white words over white: switch ink</li><li>the reference's street, houses, trees, walkers, lamp, bench or watch arm</li></ul></div>
+<div><h3>Accent</h3><p>your heat: the light you give off and what it sets glowing or burning. Red at 525 °C through orange and yellow to white. In the scene only, never in type, and nothing else in the film is warm.</p></div><div><h3>Beats without a key frame</h3><ul><li><b>boil</b>: the snow frame without the hand: tempC 39.8 to 420, pitch 10-12 and yaw about -6 so the melt ring and the first post are in frame. states.jpg, frame 2.</li><li><b>sun</b>: the coldopen frame continued: tempC 5,510 to 19,700; stumps burn out and the glow spreads by themselves. states.jpg, frames 5-6.</li><li><b>invisible</b>: tempC 19,800 to 290 billion from the same view: bleach climbs from the ground, the ridge is the last dark line, then rings. Ink switches by state.words. states.jpg, frames 7-9.</li><li><b>soup</b>: the veil's grain, tempC 290 billion to 1e32; nothing to pose. states.jpg, frame 10.</li><li><b>flake (51.0-51.6 s)</b>: the flake frame with release 0 to 1 and the palm down. states.jpg, frames 11-12.</li></ul></div></div></main></body></html>

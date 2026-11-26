@@ -1,0 +1,43 @@
+{
+ "inputs": [
+  "video-pipeline/runs/yt-short/01-sources/refs/what-if-time-sped-up/video.mp4"
+ ],
+ "colours": [
+  {
+   "hex": "#040303",
+   "share": 0.3669
+  },
+  {
+   "hex": "#49463d",
+   "share": 0.1927
+  },
+  {
+   "hex": "#2a2622",
+   "share": 0.1572
+  },
+  {
+   "hex": "#765f54",
+   "share": 0.1289
+  },
+  {
+   "hex": "#a48b7e",
+   "share": 0.1052
+  },
+  {
+   "hex": "#d5d0ce",
+   "share": 0.0491
+  }
+ ],
+ "ground": "#040303",
+ "ink": "#000000",
+ "accent": {
+  "hex": "#ac6634",
+  "share": 0.06349,
+  "hue_deg": 35.7,
+  "single_hue": false
+ },
+ "luminance_mean": 0.23,
+ "saturation_mean": 0.274,
+ "dark_share": 0.5838,
+ "colourfulness": "muted"
+}

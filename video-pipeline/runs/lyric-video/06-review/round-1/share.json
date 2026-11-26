@@ -1,0 +1,91 @@
+{
+  "check": "share",
+  "stage": "video",
+  "round": 1,
+  "score": 7,
+  "pass": true,
+  "summary": "Passes, no must fixes: the picture alone carries a sendable sentence, a screenshot frame at the peak and a real ending, but whether anyone forwards it with the sound on rests on a synthetic voice saying \"I love you.\" in 0.69 s after a \"how\" that now rises like a question, and that needs one human listen before release.",
+  "previous_fixes": [
+    {
+      "from": "script-round-2, should 1 (speak line 6 as one utterance with a comma, cut at the silence; accept when the last 0.12 s of \"how\" is above about 150 Hz)",
+      "made": "yes, by my own test. On 05-video/audio/vo.wav the end of \"how\" (beat 'asking', ends 17.48 s) climbs 129 to 197 Hz over its last 0.2 s; every other line ends at 91 to 117 Hz (my autocorrelation estimate; NOTES.md gives 192 Hz). Not settled by ear: see the peak."
+    },
+    {
+      "from": "script-round-2, should 2 (make the reset to \"Home.\" visible; tail 2.6 s so it holds about 2.0 s)",
+      "made": "yes. check/reset_frames.jpg: \"home\" pales out 22.64 to 22.76 s and \"Home.\" comes up in its place by 22.87 s; check/end.jpg shows it standing from 23.27 s to the last frame at 24.72 s. The film ends 2.6 s after the last word (22.16 s)."
+    }
+  ],
+  "findings": [
+    {
+      "criterion": "the sentence",
+      "result": "met",
+      "ours": "The message a viewer would type is still script.json's share_line, \"this is what I mean every time I tell you to text me\", or from the other side \"this is you, every single time\". In the film the thing they are pointing at is on screen whole: \"Asking is how / I love you.\" stands from 17.48 s to 20.46 s (dense.jpg 17.54 to 20.30 s), and the refrain \"Text me when you're home\" is lit three times (hook.jpg 2.75 s; dense.jpg 5.85 s and 21.67 s). The last frame adds the reply a recipient could send back: \"Home.\" (end.jpg 23.27 to 24.72 s).",
+      "reference": "barsat-song 13.4 s and 23.7 s: refrain addressed to \"you\"; benchmarks share_triggers 1 (\"sending the song says them to someone\"; 5 of 75 comments tell their own loss or dedicate the song to a person). The reference never shows a word of it (0 lyric words on screen, 0.00-185.33 s).",
+      "why_it_matters": "the reference makes a sender rely on the recipient listening to the song; ours puts the words the sender means in the picture, so the forward says it even when the recipient opens it muted."
+    },
+    {
+      "criterion": "the peak",
+      "result": "partly",
+      "ours": "\"Asking is how\" 16.34-17.48 s, \"I love you.\" 18.08-18.78 s, then the full line held lit to 20.46 s: 66% to 83% of the 24.77 s run. Feeling: warmth, with a small jolt at being told what the nagging meant; earned by \"I know you're fine.\" (13.26-14.24 s). The picture carries it: row two is absent while row one is spoken, arrives faint at 17.48 s when the voice stops and lights word by word (dense.jpg 16.86, 17.54, 18.23, 18.92 s; proof/still_18.35.png has \"you.\" still faint), then stands fully lit for 1.68 s while the road closes on the lit window (dense.jpg 19.61 and 20.30 s). The 20.30 s frame is a complete picture someone could screenshot. The sound is the open question. The cure I asked for was made and \"how\" no longer falls (it rises 129 to 197 Hz; before, 96 to 108 Hz). But a rise that steep can be heard as a question: on the voice track the small speech-to-text model writes \"asking is how? I love you\", the medium model writes one unbroken sentence, and on the finished film check/transcript.json writes \"Asking is how.\" then a 0.86 s gap. And \"I love you.\" is the fastest thing in the film: 0.69 s by timing.json (0.56 s by check/transcript.json), against 0.76 s in the scriptwriter's take and 0.98 to 1.59 s for every other line, ending at 91 Hz, the lowest note in the track.",
+      "reference": "barsat-song 168.0-182.9 s: the two lines addressed straight to the other person run about 7.4 s each, twice the usual 3.5 s slot, each sung through unbroken (patterns.md Structure). Viewers point at single lines by time (4 of 75 comments). The reference gives no fixed peak position (pacing.payoff_at_share_of_run is null) and no evidence on a spoken or synthetic voice; its picture does nothing at any peak, which is a Do not copy.",
+      "why_it_matters": "the reference's peak lives only in the sound and ours lives mainly in the picture, which is the stronger half to have for a forwarded video. But the feeling is in the sentence as one thought. If the ear gets \"Asking is how?\" and then three words in two thirds of a second, a viewer with the sound on hears a puzzle and a throwaway where the picture shows the line that should be sent."
+    },
+    {
+      "criterion": "a person to send it to",
+      "result": "met",
+      "ours": "One ritual between two particular people: the one who says \"Text me when you're home\" (1.45 s, 4.61 s, 20.58 s) and the one who answers with a word. The film draws both ends: a window with the light left on (lights from 10.54 s, dense.jpg 11.35 to 12.73 s), a road that reaches its sill on the last \"home\" (dense.jpg 21.67 s), and the answer \"Home.\" (end.jpg 23.27 s). It can be sent by the asker (\"this is why I ask\") or to the asker (\"this is you\").",
+      "reference": "barsat-song: being left, addressed to \"you\"; breakdown section 5 guesses the recipient is \"the person they miss, or a friend who knows the situation\"; no comment says who they sent it to.",
+      "why_it_matters": "the reference's recipient has to be inferred from a broad feeling; ours names an exchange most people have with one or two specific people, so the recipient is obvious before the film ends."
+    },
+    {
+      "criterion": "stands alone",
+      "result": "met",
+      "ours": "Checked on the sheets with no sound: every line is on the sheet in faint ink before it is spoken and lights with the voice (hook.jpg 0.75 to 2.75 s; dense.jpg throughout), so the whole lyric reads muted. The only words on screen are the lyric; no caption track, logo, channel name, date or credit in any frame of dense.jpg. At phone width the lines and the four-pane window still read (check/phone_390.jpg). \"Until / one word,\" (dense.jpg 7.91 to 9.98 s) shows its comma and is finished 1.4 s later by \"the light / stays on.\" as the window lights. A stranger who does not read \"Home.\" as the awaited word still gets a complete last frame.",
+      "reference": "barsat-song: \"one plain feeling that needs no context\" (benchmarks share_triggers 2; 30 of 75 comments carry a crying, sad or broken-heart emoji). Its Do not copy: about 160 sung words and none shown, so a muted viewer gets nothing after the first second (patterns.md Holding attention).",
+      "why_it_matters": "a forward usually arrives with one line of message or none and is often opened with the sound off; ours works that way and the reference does not."
+    },
+    {
+      "criterion": "safe to pass on",
+      "result": "partly",
+      "ours": "The picture is safe: fiction with no real person, no claim, nothing to defend, and the last frame is the lyric's own word with no logo, ask or advert (end.jpg 23.27 to 24.72 s). The risk is the sound, and I cannot hear it. A built-in synthetic voice (en_US-lessac-medium, pace 0.8; 193 words a minute while speaking by check/transcript.json) says \"I love you.\" at 18.08 s in 0.69 s over a plain bed with no music (NOTES.md: sources.json lists none). The brief accepts a spoken voice and no music for this test, so this is not a defect of the build. It is still the point at which a sender decides whether to put their name on something tender sent to a parent or a child. One smaller carried note: \"I know you're fine.\" (13.26 s) is the one line a sender who asks out of real fear might not sign.",
+      "reference": "barsat-song: a sung human voice over a full band; 34 of 75 comments praise the song and 0 mention the picture (benchmarks share_triggers 4), so what is passed on there is the sound. No end card and no call to action (182.9-185.33 s). No reference evidence on a synthetic voice.",
+      "why_it_matters": "what gets the reference forwarded is exactly the part ours does not have by the brief's choice. With the sound off ours is the safer and clearer of the two; with it on, nothing in the run says the voice will not make the line sound machine-read, and an embarrassed sender does not send."
+    },
+    {
+      "criterion": "worth keeping",
+      "result": "met",
+      "ours": "Skipped, not applicable: a lyric, not a lesson or a list. Recorded as \"met\" only because the field takes three values; it has no weight in the score.",
+      "reference": "none: barsat-song is a song and teaches nothing either. No comparison possible.",
+      "why_it_matters": "the criterion applies to videos that teach or list."
+    },
+    {
+      "criterion": "the last frame",
+      "result": "met",
+      "ours": "end.jpg and check/reset_frames.jpg. The last \"home\" is spoken by 22.16 s with the road's final dot on the sill; the ink words leave by about 22.6 s, so for a moment the sheet shows the first frame's red \"home\" again, now beside a lit window and a finished road; it pales out by 22.76 s and \"Home.\", capital and full stop, comes up in its place by 22.87 s and stands to 24.77 s: about 1.9 s at full strength, 2.6 s of picture after the last word. Bed audible to the end (audible share 0.997, tail silence 0.11 s) and dots still landing round the window (measure.json: no still stretch; end_hold_s 0.33). Feeling at the end: relief, they got home. It comes 2.3 s after the peak line leaves the sheet, so the film ends on a second, smaller lift and not on a fade. The reset reads as an event in the frames: the word goes and comes back changed. No advert, no prompt.",
+      "reference": "barsat-song 182.9-185.33 s: the same card as frame 0 stays 2.4 to 3.0 s past the last sung word, silent for the last 1.72 s (patterns.md Structure, Do not copy: \"stopping without an ending\"). Ours has an ending where the reference has none, and its hold after the last word (2.6 s) is inside the reference's 2.4 to 3.0 s.",
+      "why_it_matters": "people share at the end, and the last thing on screen is the answer to the first thing said: the picture a sender wants the recipient left with, and the word the recipient can send back."
+    }
+  ],
+  "fixes": [
+    {
+      "stage": "video",
+      "priority": "should",
+      "change": "Settle line 6 by ear before release; the picture does not change either way. Play 05-video/audio/listen/line6_as_in_film.wav and line6_scriptwriter_split.wav. Keep the film's take if \"Asking is how\" sounds held open and running on into \"I love you.\" If it sounds like a question (\"Asking is how?\") or like \"howl\", go back to the scriptwriter's split, which is one command and a re-run (NOTES.md: python3 audio/build_voice.py --line6 split, then transcribe, sync_words.py, mix.py and the render): a flat full stop after \"how\" loses less than a question, because a question changes what the line says and the two rows on screen still show one sentence. Do not merge the two beats into one."
+    },
+    {
+      "stage": "video",
+      "priority": "should",
+      "change": "Give the spoken \"I love you.\" more time than any other three words in the film, not less. In the same listen, if it sounds hurried: make the one-utterance take of \"Asking is how, I love you.\" at pace 0.7 instead of 0.8 (same voice; the take in audio/takes/ is made outside build_voice.py), keep only takes whose silence at the comma is 0.10 s or more and whose second half runs at least 0.80 s, cut and lay the 0.6 s pause as now, and move beat 'home' later by whatever the line gains so the 1.68 s in which the full line stands lit (18.78 to 20.46 s) is not shortened. The run stays under 25.5 s. If no take passes, leave it as it is."
+    },
+    {
+      "stage": "video",
+      "priority": "should",
+      "change": "For the voice as a whole there is no change the pipeline can make: it is the brief's built-in voice. If the listen finds that \"I love you.\" sounds machine-read, the cure is a human reading of the seven lines supplied by the user (see blocked_on); the producer then re-times the word lighting with audio/sync_words.py on that recording and re-mixes. The picture, the line breaks and the ending stay exactly as they are."
+    }
+  ],
+  "blocked_on": [
+    "A human listen to the three files in 05-video/audio/listen/ (about 15 seconds in all). Nobody in the pipeline can hear, and three speech-to-text models disagree on whether \"how\" is a full stop, a question or neither.",
+    "Only if that listen says the voice spoils the payoff line: a human reading of the seven lines (32 words), or the user's word that the built-in voice is accepted for this test as the brief says."
+  ],
+  "evidence": "One reference. It has public numbers (1,938,059 views, 5,421 likes, 89 comments, a 700-follower channel, as of 2026-11-25) but one video gives no result evidence: these are what the reference does, not proof of what performs. The reference is NOT a lyric video: it is one still title card held for 185.33 s under a full song, with no lyric on screen at any time, no motion and no cut. Every value about how lyrics are set, timed, moved or coloured is therefore null, and the brief governs those. Tool figures are given as measured; ranged values are the single reference's figure widened about 15% either way; length follows the brief (20 to 30 s), not the reference (185.33 s). Sung-word figures rest on a low-trust transcript of singing over a band. Beyond that: I judged the film from the sheets in 05-video/check/ (hook.jpg, shots.jpg, dense.jpg, end.jpg, reset_frames.jpg, phone_390.jpg), check/measure.json and check/transcript.json, plus one full-size still (proof/still_18.35.png) and the three model transcripts in 05-video/audio/stt/. Times of the voice are from 05-video/audio/timing.json. The pitch figures are my own autocorrelation estimates on 05-video/audio/vo.wav (40 ms windows over the last 0.3 s of each line); they measure pitch, not how a line sounds. I cannot hear the film: everything said about the voice is inference from pitch, durations and speech-to-text, and is the least certain part of this verdict. Share counts are not published for the reference, so its share triggers are the analyst's reading of 75 comments, and those comments are about a sung song, which ours is not. That people say this phrase to each other and answer with one word is my general knowledge, not something in the run's data. This verdict says the film does in its picture what the reference's song does to be passed on, and adds an ending the reference lacks; it does not say the film will be shared."
+}

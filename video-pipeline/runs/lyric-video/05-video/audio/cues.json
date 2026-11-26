@@ -1,0 +1,17 @@
+{
+ "note": "Built by cues.py from timing.json. Seconds from the start of the film.",
+ "line_in": [
+  0.5,
+  0.62
+ ],
+ "rest": [
+  14.243,
+  16.223
+ ],
+ "rest_steps": [
+  14.738,
+  15.233,
+  15.728
+ ],
+ "rest_step_every": 0.495
+}

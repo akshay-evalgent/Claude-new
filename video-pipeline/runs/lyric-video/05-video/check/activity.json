@@ -1,0 +1,169 @@
+{
+ "note": "A pixel changes when its grey level moves by more than 24 from one frame to the next. Frame k is compared with frame k-1; times are frame k's.",
+ "this_cut": {
+  "file": "video.mp4",
+  "longest_run_with_no_pixel_changed": {
+   "frames": 14,
+   "seconds": 0.47,
+   "from": 1.0,
+   "to": 1.47
+  },
+  "rests": [
+   {
+    "rest": "after 'Text me when you're home.' (ask)",
+    "from": 2.96,
+    "to": 4.45,
+    "pixels_changed_per_frame_mean": 47.5,
+    "pixels_changed_per_frame_median": 28.0,
+    "frames_with_no_change": 4,
+    "frames": 45
+   },
+   {
+    "rest": "after 'Text me when you're home.' (again)",
+    "from": 6.2,
+    "to": 7.64,
+    "pixels_changed_per_frame_mean": 31.4,
+    "pixels_changed_per_frame_median": 29.0,
+    "frames_with_no_change": 2,
+    "frames": 44
+   },
+   {
+    "rest": "after 'Until one word,' (until)",
+    "from": 9.04,
+    "to": 10.29,
+    "pixels_changed_per_frame_mean": 59.1,
+    "pixels_changed_per_frame_median": 57.0,
+    "frames_with_no_change": 0,
+    "frames": 37
+   },
+   {
+    "rest": "after 'the light stays on.' (light)",
+    "from": 11.66,
+    "to": 13.11,
+    "pixels_changed_per_frame_mean": 341.2,
+    "pixels_changed_per_frame_median": 338.0,
+    "frames_with_no_change": 0,
+    "frames": 44
+   },
+   {
+    "rest": "after 'I know you're fine.' (fine)",
+    "from": 14.24,
+    "to": 16.19,
+    "pixels_changed_per_frame_mean": 108.6,
+    "pixels_changed_per_frame_median": 105.0,
+    "frames_with_no_change": 0,
+    "frames": 58
+   },
+   {
+    "rest": "after 'Asking is how' (asking)",
+    "from": 17.48,
+    "to": 17.93,
+    "pixels_changed_per_frame_mean": 2174.5,
+    "pixels_changed_per_frame_median": 145.0,
+    "frames_with_no_change": 0,
+    "frames": 13
+   },
+   {
+    "rest": "after 'I love you.' (love)",
+    "from": 18.78,
+    "to": 20.42,
+    "pixels_changed_per_frame_mean": 265.5,
+    "pixels_changed_per_frame_median": 287.0,
+    "frames_with_no_change": 0,
+    "frames": 49
+   },
+   {
+    "rest": "after the last word, to 'Home.' (home)",
+    "from": 22.91,
+    "to": 24.77,
+    "pixels_changed_per_frame_mean": 396.5,
+    "pixels_changed_per_frame_median": 67.0,
+    "frames_with_no_change": 0,
+    "frames": 55
+   }
+  ]
+ },
+ "first_cut": {
+  "file": "video_round1.mp4",
+  "longest_run_with_no_pixel_changed": {
+   "frames": 14,
+   "seconds": 0.47,
+   "from": 1.0,
+   "to": 1.47
+  },
+  "rests": [
+   {
+    "rest": "after 'Text me when you're home.' (ask)",
+    "from": 2.96,
+    "to": 4.45,
+    "pixels_changed_per_frame_mean": 56.0,
+    "pixels_changed_per_frame_median": 28.0,
+    "frames_with_no_change": 4,
+    "frames": 45
+   },
+   {
+    "rest": "after 'Text me when you're home.' (again)",
+    "from": 6.2,
+    "to": 7.64,
+    "pixels_changed_per_frame_mean": 30.5,
+    "pixels_changed_per_frame_median": 28.0,
+    "frames_with_no_change": 3,
+    "frames": 44
+   },
+   {
+    "rest": "after 'Until one word,' (until)",
+    "from": 9.04,
+    "to": 10.29,
+    "pixels_changed_per_frame_mean": 59.2,
+    "pixels_changed_per_frame_median": 57.0,
+    "frames_with_no_change": 0,
+    "frames": 37
+   },
+   {
+    "rest": "after 'the light stays on.' (light)",
+    "from": 11.66,
+    "to": 13.11,
+    "pixels_changed_per_frame_mean": 407.5,
+    "pixels_changed_per_frame_median": 413.0,
+    "frames_with_no_change": 0,
+    "frames": 44
+   },
+   {
+    "rest": "after 'I know you're fine.' (fine)",
+    "from": 14.24,
+    "to": 16.19,
+    "pixels_changed_per_frame_mean": 37.8,
+    "pixels_changed_per_frame_median": 34.5,
+    "frames_with_no_change": 2,
+    "frames": 58
+   },
+   {
+    "rest": "after 'Asking is how' (asking)",
+    "from": 17.48,
+    "to": 17.93,
+    "pixels_changed_per_frame_mean": 2043.8,
+    "pixels_changed_per_frame_median": 236.0,
+    "frames_with_no_change": 0,
+    "frames": 13
+   },
+   {
+    "rest": "after 'I love you.' (love)",
+    "from": 18.78,
+    "to": 20.42,
+    "pixels_changed_per_frame_mean": 158.5,
+    "pixels_changed_per_frame_median": 149.0,
+    "frames_with_no_change": 0,
+    "frames": 49
+   },
+   {
+    "rest": "after the last word, to 'Home.' (home)",
+    "from": 22.91,
+    "to": 24.77,
+    "pixels_changed_per_frame_mean": 315.0,
+    "pixels_changed_per_frame_median": 38.0,
+    "frames_with_no_change": 5,
+    "frames": 55
+   }
+  ]
+ }
+}

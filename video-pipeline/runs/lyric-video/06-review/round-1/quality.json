@@ -1,0 +1,137 @@
+{
+  "check": "quality",
+  "round": 1,
+  "score": 7,
+  "pass": false,
+  "summary": "Palette, accent discipline, empty space, type legibility and word-by-word sync are at or above the brief; the drawing is the tell. Beside the reference's hand-stippled eyes, ours is a ruler-straight dotted box with a noise halo, and for the first 10 s it is almost nothing. Paper is flatter than the reference's scan; the rests are near-silent under a synthetic voice.",
+  "previous_round": null,
+  "findings": [
+    {
+      "criterion": "picture: how the drawing is built",
+      "result": "missed",
+      "ours": "0.0 to 10.5 s: the unlit window is 115 equal dots at an even 9 px pitch on dead-straight lines (1490-1625 x 367-545 px); at full size and at 390 px it reads as a dotted-border box or table icon, not a drawing. From 10.5 s the lit pane and the sill are knife-straight knock-outs (the sill is a flat 156 x 9 px bar) inside a cloud of evenly random dots with a plain radial fall-off (frames/still_18.5.jpg, still_24.7.jpg).",
+      "reference": "barsat-song still_120.jpg: two eyes modelled entirely by dot density, solid in the brow and lash line, thinning to scattered points at the outer edge; edges are ragged rows of dots, no straight edge or even pitch anywhere; drawing spans 47% to 92% of the width.",
+      "why_it_matters": "the drawing is the only craft the reference shows; ours reads as generated geometry beside it, and a viewer would tell the two apart at once"
+    },
+    {
+      "criterion": "picture: ink mass in the opening",
+      "result": "partly",
+      "ours": "ink covers 0.6% of the frame at 0.0 s and stays under 2% until the dark starts at 10.5 s (42% of the run): one red word, a dotted box, three dots.",
+      "reference": "6.3% ink, 3.7% dark from frame 0.",
+      "why_it_matters": "the first frame is the thinnest in the film, where the reference shows its whole drawing. compare.py's 'dark ink share' passes only on the run's average."
+    },
+    {
+      "criterion": "picture: ground",
+      "result": "partly",
+      "ours": "paper.jpg is a smooth, symmetric oval vignette with soft blurred vertical streaks and no flecks or mottling; mean colour matches (#dac9b0 against #dbc9b0).",
+      "reference": "an uneven scan: sharp fold lines, patchy mottling, short dark diagonal flecks.",
+      "why_it_matters": "colour is right but the sheet reads as a gradient, not as paper, at full size"
+    },
+    {
+      "criterion": "picture: palette and accent",
+      "result": "met",
+      "ours": "ground #d5c4a9, ink #0a0000, accent #771813 on the word 'home' only, every time, including 'Home.'",
+      "reference": "ground #ded0ba, ink #0b0100, accent #7a1713 on the title word only",
+      "why_it_matters": "same three colours, same rule for the red"
+    },
+    {
+      "criterion": "format",
+      "result": "met",
+      "ours": "1920x1080, 30 fps, 24.77 s",
+      "reference": "16:9, 30 fps; brief asks 20 to 30 s",
+      "why_it_matters": ""
+    },
+    {
+      "criterion": "composition",
+      "result": "met",
+      "ours": "words left, window right, road low; nothing nearer an edge than 7% of the width; nothing collides (the full stop of 'Home.' clears the halo by about 90 px); no corner furniture.",
+      "reference": "type left, drawing right, about 94% bare paper",
+      "why_it_matters": ""
+    },
+    {
+      "criterion": "type: legibility and layout (against the brief and style.json)",
+      "result": "met",
+      "ours": "Cormorant Garamond bold italic, ascenders 10.8% and x-height 5.9% of frame height, two rows of 1 to 3 words, same place every line. Measured contrast on the sheet: lit ink 13:1, red 6.9:1, faint 2.7:1. All lines read at 390 px wide (check/phone_390.jpg). A lyric line is on screen from 0.5 s to 22.6 s without a gap.",
+      "reference": "no lyric shown; title 14% of height in a brushed face",
+      "why_it_matters": "the face is a clean digital serif with a noise edge, not brushed lettering: a small tell, recorded in style.json as not reproduced"
+    },
+    {
+      "criterion": "type: word-by-word sync (against the brief)",
+      "result": "met",
+      "ours": "measured frame by frame: each of the 32 words starts to turn at its time in audio/words.json and is full ink within 0.1 s (for example 1.45/1.86/2.20/2.34 s in line 1; 13.26/13.36/13.58/13.67 s in line 5). Checked two lines against the voice waveform myself: the f of 'fine' begins 13.68 s (lit from 13.67), the s of 'stays' 10.76 s (10.78), 'on' 11.21 s (11.21).",
+      "reference": "none",
+      "why_it_matters": "a viewer can follow with the sound off, as the brief asks"
+    },
+    {
+      "criterion": "motion",
+      "result": "met",
+      "ours": "longest stretch with no pixel change 0.47 s (0.97 to 1.43 s); dots land through every rest and through the 2.0 s end hold; the sheet never drifts; the 'home' swell is 6% over 0.4 s (measured 2.53 to 2.93 s).",
+      "reference": "nothing moves in 185 s (listed as a fault)",
+      "why_it_matters": ""
+    },
+    {
+      "criterion": "edit: line changes",
+      "result": "partly",
+      "ours": "at 4.49 s the identical line 'Text me / when you're home' drops from full ink to faint in one frame and relights; every other change within a line ramps over 0.1 s and the last line leaves over 0.4 s.",
+      "reference": "no cuts",
+      "why_it_matters": "on unchanged words the one-frame drop can read as a blink rather than as the line being said again"
+    },
+    {
+      "criterion": "sound: what can be measured",
+      "result": "partly",
+      "ours": "-13.1 LUFS, -1.4 dBTP, no dropouts; all 32 words transcribed correctly from the film. Between lines only the bed sounds, at about -27 to -30 dB, some 17 dB under the voice, and the voice runs for 40% of the run.",
+      "reference": "-12.8 LUFS, -2.3 dBTP; a full band under the voice throughout, never thinner than about -23.5 dB (intro) and -13 to -15 dB in the thin sections",
+      "why_it_matters": "loudness matches on paper, but about 60% of our run is close to a hush where the reference always has music. Whether that reads as a held breath or as emptiness needs ears."
+    },
+    {
+      "criterion": "faults",
+      "result": "met",
+      "ours": "no empty frames, no flicker in the type or paper across still stretches, no word over artwork, no wrong word in check/transcript.md against the script.",
+      "reference": "",
+      "why_it_matters": ""
+    }
+  ],
+  "measurements": [
+    { "check": "mean shot length", "status": "FAIL", "ruling": "misfit", "reason": "one unbroken shot in both; fails only because the brief asks 20 to 30 s against the reference's 185 s" },
+    { "check": "longest shot", "status": "FAIL", "ruling": "misfit", "reason": "same as above" },
+    { "check": "first word", "status": "FAIL", "ruling": "misfit", "reason": "the reference's 13.4 s wait is a listed fault; ours (voice at 1.45 s) is inside the scaled range of 1.4 to 2.2 s" },
+    { "check": "words a minute, whole run", "status": "FAIL", "ruling": "misfit", "reason": "the reference figure is an undercount of a sung song; 32 words is the top of the benchmarks' own 24 to 32 budget" },
+    { "check": "words a minute, while speaking", "status": "FAIL", "ruling": "misfit", "reason": "a spoken voice against a sung one; the brief accepts speech" },
+    { "check": "sound events per second", "status": "WARN", "ruling": "misfit", "reason": "the voice is there (32 of 32 words); the gap is the absence of music, which the brief accepts for this test. The thin rests are raised as a should fix and under blocked_on" },
+    { "check": "dark ink share", "status": "PASS", "ruling": "real fault behind a pass", "reason": "0.0174 is the run's average; the frame is under 1% dark for the first 10.5 s. See the must fix" },
+    { "check": "cuts per 10 s / still picture share", "status": "PASS", "ruling": "meaningless against this reference", "reason": "checked by eye and by frame difference instead: nothing frozen over 0.47 s" }
+  ],
+  "fixes": [
+    {
+      "stage": "moodboard",
+      "priority": "must",
+      "change": "Redraw the window in draw() so it is stippled by hand, not ruled, then re-render (the producer copies draw() unchanged). (1) Frame group, on screen 0.0 to 10.5 s: replace the single row of equal 5 to 6 px dots at 9 px pitch with a band two to three dots deep, each dot jittered 2 to 3 px off the line and sized 3 to 7 px, denser along the bottom and one side and thinning at the opposite corner, as the reference's brow thins to scattered points. Same for the cross-bar. (2) Pane and sill, 10.5 s on: no knife edge. Let the dark's dots straggle 3 to 6 px over the pane's edge at uneven depth, and build the sill from two jittered rows of dots instead of the flat 156 x 9 px bar. (3) Dark group: give it form instead of an even random cloud: grade the density (heaviest under the sill and down one side, open toward the other) so it models something, as the reference models an eyelid. Keep it inside the 70% to 93% band so 'Home.' still clears it. Check the unlit frame at 390 px: it must read as a drawn window, not a dotted box."
+    },
+    {
+      "stage": "moodboard",
+      "priority": "should",
+      "change": "Give frame 0 more drawing: add to the frame group a stippled fragment round the unlit window (a lintel, a shutter edge or a strip of wall below the sill) within 70% to 93% of the width, so ink is nearer 2% than 0.6% before the first word."
+    },
+    {
+      "stage": "moodboard",
+      "priority": "should",
+      "change": "paper.jpg: break the symmetric oval vignette and add what the reference's sheet has: two or three sharp fold lines, uneven mottling at about 2 to 4 levels, a scatter of small specks (not diagonal dashes, which are the reference's rain). Keep the ring-by-ring means as they are."
+    },
+    {
+      "stage": "video",
+      "priority": "should",
+      "change": "At 4.485 s (beat 'again') let the four ink words fall back to faint over 0.1 to 0.15 s instead of in one frame, so the repeat reads as a breath, not a blink."
+    },
+    {
+      "stage": "video",
+      "priority": "should",
+      "change": "audio/mix.py: lift the bed in the rests from about -27.5 dB to about -22 to -23 dB (the reference's quietest passage), or carry the added 55/82/330 Hz layer from 1.33 s to the end instead of 10.54 to 16.22 s. Set by measurement; needs the human listen below."
+    }
+  ],
+  "blocked_on": [
+    "a recorded or licensed voice: NOTES.md says the built-in synthetic voice (en_US-lessac-medium) was used. Not scored either way.",
+    "a human listen to 05-video/audio/listen/ (line 6 'how', lines 3 and 4) and to the bed's added layer: set by measurement only",
+    "real music: the reference is a full song; the brief accepts a plain bed for this test",
+    "a reference that shows lyrics on screen: the lyric setting could only be held to the brief and style.json"
+  ]
+}

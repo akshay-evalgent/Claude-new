@@ -1,0 +1,43 @@
+{
+ "inputs": [
+  "video-pipeline/runs/yt-short/05-video/video.mp4"
+ ],
+ "colours": [
+  {
+   "hex": "#0c0c12",
+   "share": 0.3552
+  },
+  {
+   "hex": "#293a64",
+   "share": 0.2172
+  },
+  {
+   "hex": "#dbe1eb",
+   "share": 0.1489
+  },
+  {
+   "hex": "#f4f6f6",
+   "share": 0.129
+  },
+  {
+   "hex": "#5b3723",
+   "share": 0.0884
+  },
+  {
+   "hex": "#ca8840",
+   "share": 0.0612
+  }
+ ],
+ "ground": "#0c0c12",
+ "ink": "#000000",
+ "accent": {
+  "hex": "#273c68",
+  "share": 0.22865,
+  "hue_deg": 230.1,
+  "single_hue": false
+ },
+ "luminance_mean": 0.375,
+ "saturation_mean": 0.43,
+ "dark_share": 0.5773,
+ "colourfulness": "saturated"
+}

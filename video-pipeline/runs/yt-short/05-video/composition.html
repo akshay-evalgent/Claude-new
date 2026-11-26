@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>yt-short: What If You Got Hotter and Couldn't Stop?</title>
+<!-- One continuous scene, no cuts, no voice. Every time, figure and word comes
+     from script.js, which is generated from 03-script/script.json (its clock,
+     counters and timed lines). One section per beat; each beat's update draws
+     the same world at film time = beat start + t. -->
+<link rel="stylesheet" href="../../../styles/lowpoly-first-person/lowpoly.css">
+<style>
+  :root {
+    --lp-ground: #040303; --lp-text: #fefaf3; --lp-ink: #0b0908; --lp-heat: #ac6634;
+    --lp-margin: 60px; --lp-top: 150px; --lp-line-y: 73.5%; --lp-line-max: 820px; --lp-title-y: 38.5%;
+    --lp-label-size: 32px; --lp-figure-size: 96px; --lp-count-size: 46px;
+    --lp-line-size: 66px; --lp-statement-size: 66px; --lp-title-size: 78px;
+  }
+</style>
+</head>
+<body>
+<main id="stage">
+  <canvas id="world"></canvas>
+  <section class="shot" id="coldopen"></section>
+  <section class="shot" id="snow"></section>
+  <section class="shot" id="boil"></section>
+  <section class="shot" id="glow"></section>
+  <section class="shot" id="sun"></section>
+  <section class="shot" id="invisible"></section>
+  <section class="shot" id="soup"></section>
+  <section class="shot" id="edge"></section>
+  <section class="shot" id="flake"></section>
+  <div id="hud"></div>
+</main>
+
+<script src="../../../vendor/node_modules/three/build/three.min.js"></script>
+<script src="../../../runtime/film.js"></script>
+<script src="../../../styles/lowpoly-first-person/world.js"></script>
+<script src="../../../styles/lowpoly-first-person/hud.js"></script>
+<script src="script.js"></script>
+<script>
+  const S = window.SCRIPT;
+  const world = LowPoly.World.create({ canvas: document.getElementById('world'), width: 1080, height: 1920 });
+  const hud = LowPoly.Hud.mount(document.getElementById('hud'));
+  const F = LowPoly.Hud;
+  const { span, ease, lerp } = Film;
+  const KEYS = S.clock.temperature_keys_film_s_to_celsius;
+  const END = S.clock.film_ends_s;
+  const B = Object.fromEntries(S.beats.map((b) => [b.id, b]));
+  const OPEN = B.coldopen.dur_s;                 // 3.0: the cold open replays 28.0-31.0
+  const REPLAY = 28.0 - 0.0;                     // script clock.your_clock: cold open shows film 28.0-31.0
+  const CLOCK0 = B.snow.start_s;                 // your clock starts when the field first appears
+  const EDGE = B.edge.start_s, BACK = B.flake.start_s;
+  const LAND = KEYS.find((k, i) => i > 0 && k[1] === 37 && KEYS[i - 1][1] > 1e30)[0];   // 51.6: back on 37.0
+  const TAG_AT = 56.6;                            // script: sources tag from 56.6 s, as the flake lands
+  const inRow = (rows, w) => rows.find((r) => w >= r.from_s && w < r.to_s) || rows[rows.length - 1];
+
+  // "about 15 million °C" -> 15e6 ; "1.4 x 10^32 K" -> 'powers' ; "?" / "" -> text
+  function target(at) {
+    if (/10\^/.test(at)) return 'powers';
+    const m = /([\d.,]+)\s*(million|billion|trillion)?/.exec(at);
+    if (!m) return null;
+    return parseFloat(m[1].replace(/,/g, '')) * ({ million: 1e6, billion: 1e9, trillion: 1e12 }[m[2]] || 1);
+  }
+  function countdown(row, T) {
+    const g = target(row.at);
+    if (row.countdown === 'none') return row.at === '?' ? '?' : '';
+    if (g === 'powers') return 'in ' + Math.max(0, 32 - Math.floor(Math.log10(T + 273.15) + 1e-9)) + ' more powers of ten';
+    return 'in ' + F.amount(Math.max(0, g - T)) + ' °C';
+  }
+
+  // Where you look, from the scene time w (the cold open uses 28 + t, so it replays the same view)
+  function pose(w, f) {
+    const p = { yaw: 2, pitch: 0, hand: 0, flakes: [] };
+    if (f >= BACK) {                                         // the close: white comes apart, palm, flake
+      p.release = span(f, BACK, 52.2);
+      p.yaw = lerp(1.2, 2, span(f, BACK, END));
+      p.pitch = lerp(1.5, 4, ease.inOut(span(f, 54.6, 55.8)));
+      p.hand = ease.out(span(f, 55.0, 55.8));
+      p.flakes = [{ slot: 0, p: f < 56.6 ? lerp(-0.55, 0, span(f, 55.9, 56.6)) : lerp(0, 1, span(f, 56.6, 58.0)) }];
+      if (f >= 59.2) p.flakes.push({ slot: 1, p: lerp(-0.55, 0, span(f, 59.2, END)) });
+      return p;
+    }
+    if (w < 9.2) {                                           // snow: title at look level, then the palm
+      p.yaw = lerp(1.5, 2.3, span(w, 3, 9.2));
+      p.pitch = 4 * ease.inOut(span(w, 5.7, 6.6));
+      p.hand = ease.out(span(w, 3.6, 4.3)) - ease.in(span(w, 8.5, 9.0));
+      const fl = [];
+      fl.push({ slot: 0, p: w < 4.9 ? lerp(-1, 0, span(w, 4.1, 4.9)) : lerp(0, 1, span(w, 4.9, 5.7)) });
+      if (w >= 6.0) fl.push({ slot: 1, p: w < 6.7 ? lerp(-1, 0, span(w, 6.0, 6.7)) : lerp(0, 1, span(w, 6.7, 7.2)) });
+      if (w >= 7.0) fl.push({ slot: 2, p: w < 7.5 ? lerp(-1, 0, span(w, 7.0, 7.5)) : lerp(0, 1, span(w, 7.5, 7.75)) });
+      if (w >= 7.8 && w < 8.25) fl.push({ slot: 3, p: lerp(-1, -0.15, span(w, 7.8, 8.25)) });   // gone just above the skin
+      p.flakes = fl;
+      // after the palm goes, look down along the fence to the melt ring and the first post
+      const k = ease.inOut(span(w, 8.6, 10.4));
+      p.yaw = lerp(p.yaw, -6, k); p.pitch = lerp(p.pitch, 11, k);
+      return p;
+    }
+    if (w < 26.0) {                                          // boil and glow: the ground and the first post
+      const k = ease.inOut(span(w, 8.6, 10.4));
+      p.yaw = lerp(2.3, lerp(-6, -4, span(w, 10.4, 26.0)), k);
+      p.pitch = lerp(4, 11 + 1 * Math.sin(span(w, 10.4, 26.0) * Math.PI), k);
+      return p;
+    }
+    // 26-28: lift to the cold-open view; from 28 turn slowly right along the fence
+    const k = ease.inOut(span(w, 26.0, 28.0));
+    const yaw = 3.5 + 0.5 * (w - 28), pitch = 7 - 0.15 * (w - 28);
+    p.yaw = lerp(-4, yaw, k); p.pitch = lerp(11, pitch, k);
+    return p;
+  }
+
+  function draw(f) {
+    const open = f < OPEN;
+    const w = open ? REPLAY + f : f;                         // scene time: what moment the picture shows
+    // the temperature the counter reads, and the one the world is drawn at
+    let T = LowPoly.logTemp(KEYS, w);
+    let shown = T;
+    if (open && f >= OPEN - 0.1) shown = Math.pow(10, lerp(Math.log10(T), Math.log10(37), span(f, OPEN - 0.1, OPEN)));  // spin back
+    const back = f >= BACK;
+    const Tw = back ? 37 : T;
+    const edge = f >= EDGE && f < BACK;
+    const state = world.set(edge ? 1.4e32 : Tw, w, pose(w, f));
+
+    const C = S.counters;
+    const cmp = inRow(C.temperature_block.comparison_row, w);
+    const nx = inRow(C.temperature_block.next_row, w);
+    const ck = inRow(C.clock_block.row, w);
+    const clockS = open ? (f >= OPEN - 0.1 ? lerp(w - CLOCK0, 0, span(f, OPEN - 0.1, OPEN)) : w - CLOCK0) : f - CLOCK0;
+    hud.set({
+      label: 'YOUR TEMPERATURE',
+      figure: F.figure(shown, { edge, q: 0.7 + 0.3 * Math.cos((f - EDGE) * Math.PI * 2) }),
+      compare: cmp.text,
+      next: { event: nx.event, countdown: countdown(nx, shown) },
+      clockLabel: C.clock_block.label, clock: F.clock(clockS), clockRow: ck.text,
+      tag: f >= TAG_AT ? 'SOURCES IN THE DESCRIPTION' : '',
+      look: state.words,
+    });
+
+    // lines and title, on the script's own clock (film time f, not scene time)
+    let line = null, title = null, topa = 1;
+    for (const b of S.beats) for (const l of b.lines) {
+      const a = l.at_s, z = l.at_s + l.for_s;
+      const last = z >= END - 1e-6;                         // the last line holds to the final frame
+      if (f < a || (f >= z && !last)) continue;
+      const op = Math.min(a <= 0 ? 1 : span(f, a, a + 0.25), last ? 1 : 1 - span(f, z - 0.25, z));
+      if (l.kind === 'title') { title = l.rows; topa = op; } else line = { kind: l.kind, rows: l.rows, opacity: op };
+    }
+    hud.line(line); hud.title(title, topa);
+  }
+
+  Film.setup({ width: 1080, height: 1920, fps: 30 });
+  for (const b of S.beats) Film.shot({ id: b.id, start: b.start_s, dur: b.dur_s, update(p, t) { draw(Math.min(END, b.start_s + t)); } });
+  Film.duration = END;
+  Film.ready();
+</script>
+</body>
+</html>

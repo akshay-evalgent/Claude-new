@@ -1,0 +1,93 @@
+{
+  "check": "retention",
+  "stage": "script",
+  "round": 1,
+  "score": 7,
+  "pass": true,
+  "summary": "Passes: a question is open at every moment and the close keeps giving new facts, but the likeliest exit is 38.8 to 41.6 s, where a blank white frame carries a line that only repeats the counter row beside it; replace that line and give the picture more line-free time.",
+  "findings": [
+    {
+      "criterion": "every beat earns its place",
+      "result": "partly",
+      "ours": "15 of 16 story lines add something. The exception is beat 'invisible', 38.8 to 41.6 s: \"Hotter now than the Sun's core.\" At 38.8 s the comparison row turns to HOTTER THAN THE SUN'S CORE and the NEXT countdown for THE SUN'S CORE reaches zero, so the line says a third time what two counter rows say on the same frame. It has no consequence and no picture of its own (the ridge went at about 38 s; only rings on white remain), and while it is up the figure runs from 16 million to 100 billion °C, so the line names a number the counter left behind, against the script's own rule in clock.temperature_between_keys. The key at 40.6 s (250 million, research.md row 15: you put out as much power as the whole Sun) is passed with no line using it. The repeat of the cold open at 28.0 to 31.0 s is earned: it closes the opening question under a new line.",
+      "reference": "what-if-time-sped-up, patterns.md Structure 3: every stage runs countdown, picture, line, consequence (\"Snow.\" at 51.7 s follows the ground turning white at about 51 s; 28.3 s turns a night into \"six seconds\"). Its lines give the consequence and leave the measure to the counters. Its own text-only stretch (437 to 496 s) is on the Do not copy list.",
+      "why_it_matters": "2.8 s that could be deleted with nothing lost, at 65 to 69% of the run, over the emptiest picture so far: the most likely place for a swipe before the payoff."
+    },
+    {
+      "criterion": "an open question at every moment",
+      "result": "met",
+      "ours": "Cold open (0.0 s: how did 25 seconds do this?) closes at 28.0 to 31.0 s. Title (3.1 s: how far, and does it stop?) closes at 47.8 to 51.0 s. A NEXT event is always named: HEAT STROKE from 3.0 s, WATER BOILS 10.2, YOU START TO GLOW 13.5, THE SUN'S SURFACE 17.3, THE SUN'S CORE 28.0, MADE IN A LAB 38.8, THE EDGE OF PHYSICS 42.3. One thread runs in the lines themselves: \"Red is the coolest glow there is.\" (20.9 s) to \"Blue-white.\" (35.2 s), 14.3 s. The only stretch with nothing pending is 48.2 to 51.6 s (3.4 s), the payoff's own hold, and \"At thirty-seven degrees, you glow too.\" opens a new one at 51.6 s. Caution: from 28 s to 47.8 s the forward pull sits in the NEXT row alone, so it holds only if that row can be read on a phone.",
+      "reference": "what-if-time-sped-up: cold open 0.5 s closes at 312 to 318 s; title 6.8 s closes at 506.9 s; the NEXT row opens a question every chapter and closes it 10 to 40 s later (at least 27); statue thread 62.5 to 91.1 s. After its payoff line (506.9 s) nothing is pending for 15 s, until \"Wait.\" at 521.9 s.",
+      "why_it_matters": "This is what the reference does, scaled; after the payoff ours leaves 3.4 s with nothing to wait for against the reference's 15 s."
+    },
+    {
+      "criterion": "the middle",
+      "result": "met",
+      "ours": "40 to 70% of the run is 24.0 to 41.9 s. It holds the cold open's promise kept in sequence (28.0 to 31.0 s, 0.47 to 0.52 of the run) and a real turn at 35.2 s (0.59): \"Blue-white. Most of your light is invisible.\" A viewer expects hotter to mean brighter and bluer without end; the colour stops and the scene bleaches out from the ground up. The weak tail of the middle is the line at 38.8 s (see the first finding).",
+      "reference": "what-if-time-sped-up: the cold-open picture is reached at 312 to 318 s (0.58) and the ground vanishes at 321.4 s (0.60); benchmarks.json structure puts the change from planet scale to cosmic scale at 0.594.",
+      "why_it_matters": "The turn falls where the reference puts its own, in the part of the run where most viewers leave."
+    },
+    {
+      "criterion": "pace",
+      "result": "partly",
+      "ours": "Estimated from script.json's own clock (no timing.json, as the brief rules). In band: 103 on-screen words in 59.9 s = 103 a minute; 16 story lines; mean start to start 3.87 s; mean hold 2.79 s; gap before the payoff line 3.1 s. Out of step with the reference: (a) lines are held by the script's rule (1.0 s + 0.3 s a word), 0.4 to 0.6 s longer each than the scaled rule (words ÷ 2.6), so a story line is up for 74% of the run and the median gap between lines is 0.6 s; around the title and through the close the gaps are 0.2 to 0.3 s, about the length of a fade. (b) The calm start: title up 3.4 s, first story line at 6.7 s, first line about heating at 10.2 s (17% of the run). (c) \"Orange. Yellow. Iron melts.\" arrives at 25.0 s, 2.6 s after the light turned orange (22.4 s) and 1.0 s after yellow (24.0 s), and 1.2 s before the figure reaches 1,538 (26.2 s). Picture changes by my count of the motion notes: about 14 new states in 59.9 s (2.3 per 10 s), many of them gradual; longest stretch with no new state 41.6 to 47.8 s (6.2 s, grain only, with the figure's change of form at 45.1 s).",
+      "reference": "benchmarks.json pacing: on-screen words 89 to 121 a minute, 13.2 to 17.9 lines a minute, start to start 3.2 to 4.4 s, hold 2.2 to 3.0 s, a line on screen for 0.65 of the run with about 1.2 s of empty caption space between lines (breakdown section 4). notes.scaled_to_60s: line hold = words ÷ 2.6 and not under 1.4 s; title 2.0 to 2.5 s; first story line by 6.0 s; long gap before the payoff 2.5 to 4.0 s; 2.5 to 3.7 tool cuts per 10 s expected. Picture leads words by about half a second (walkers 10.6 s, line 11.1 s; night 25.0 s, line 25.4 s).",
+      "why_it_matters": "With half the reference's space between lines the eye stays on the bottom of the frame and the picture changes, which are the reward, go unseen; and the 7 s after the cold open are the calmest in the film."
+    },
+    {
+      "criterion": "easy to follow",
+      "result": "partly",
+      "ours": "One idea per sentence throughout; the longest line is 8 words; every row is 5 words or fewer except one of 6; number words match the counter when each line appears (\"Forty-one.\" at 41.0 °C, \"One hundred.\" at 100 °C, \"Twenty-five seconds.\" with the clock at 25.0 s). One term is used without introduction: \"Tungsten boils here. Pretend you don't.\" (31.6 s). A viewer who does not know tungsten is the hard case learns only that something boils, and the joke rests on it. \"Ask the snowflake.\" (58.0 s) may take a second look, but the flake melting on the palm at 56.6 s shows it.",
+      "reference": "what-if-time-sped-up, breakdown 2e: mean 6.7 words, present tense, one or two short sentences, fragments for arrivals (\"Snow.\" 51.7 s, \"Sunrise. Behind you.\" 30.6 s). Its lines name only everyday things in the first 92 s (walkers, the Sun, a street light, snow, a house).",
+      "why_it_matters": "A line that needs outside knowledge is a line some viewers read without getting, in the beat that states the film's one pretend rule."
+    },
+    {
+      "criterion": "the payoff",
+      "result": "met",
+      "ours": "Payoff picture at 47.8 s (0.798 of the run), line at 48.2 s (0.805): \"Here, physics runs out of answers.\" It answers the title honestly: the figure stops on 1.4 x 10^32 K with a question mark, the NEXT row turns to NOBODY KNOWS, the grain is gone in one frame and the bed drops about 12 dB. It is shown by the counters stopping, not only told. A 3.1 s gap with no line comes directly before it. The picture is white after ten seconds of white, so the stop is carried by the grain ending and the figure freezing, a smaller picture event than the reference's.",
+      "reference": "what-if-time-sped-up: a 7.0 s gap, a white flash at 505.5 s, the line at 506.9 s (0.94 of the run), NEXT row reading NOTHING / ever. notes.scaled_to_60s puts the payoff at 0.80 to 0.87 for a 60 s film and the gap before it at 2.5 to 4.0 s.",
+      "why_it_matters": "The opening question is answered in full at the point the scaled reference would answer it."
+    },
+    {
+      "criterion": "the ending",
+      "result": "met",
+      "ours": "47.8 to 59.9 s: 12.1 s from payoff picture to end, 8.9 s after the payoff line leaves (15% of the run). Each of the three closing lines adds something: a new fact (51.6 s, you glow at 37 degrees), how (54.7 s, in infrared), and the snowflake planted at 6.7 s brought back (58.0 s). The film ends in motion with no hold. Two things announce the end early: the sources tag comes on at 51.6 s, 8.3 s before the end, together with NEXT: STAY HERE and the figure back at 37.0 °C.",
+      "reference": "what-if-time-sped-up: 31.7 s after the payoff (5.9% of the run), end hold 0.0 s; its three aftermath lines (510.7 to 520.4 s) restate that nothing is left. notes.scaled_to_60s allows 9 to 11 s for payoff, aftermath, turn and return. The reference has no sources pointer on screen to compare with.",
+      "why_it_matters": "About one second over the scaled allowance, but no second after the payoff is empty, which is better than the reference's aftermath."
+    }
+  ],
+  "fixes": [
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Beat 'invisible': replace the 38.8 s line \"Hotter now than the Sun's core.\" with one that adds what the counter rows do not and plants the next stage in the line itself: \"The Sun's core. Humans have gone hotter.\" (7 words; rows: \"The Sun's core.\" / \"Humans have gone hotter.\"), same start, 2.7 s. It is research.md row 17 (measured: about 4 trillion °C made at Brookhaven), it needs no change to the temperature keys, the figure racing past the core while it is up now proves the line instead of contradicting it, and it is answered at 42.3 s by \"Humans have made this. Protons melt.\" Also move the ridge's last dark line going out from 'about 38 s' to 38.8 s, so the last object leaves as this line arrives. Alternative if the writer prefers a consequence: \"By rough sums, you now outshine the Sun.\" (8 words; research.md row 15, an illustrative guess, marked as one by 'rough sums'), on at 39.0 s for 2.7 s, with the figure re-keyed to reach 250 million at 39.0 s and hold under about 400 million until 41.5 s so the line is true while it is up."
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Give the picture room. Keep every line's start time (so the clock and the temperature keys are untouched) and hold the four 7-word lines that start at 13.5, 20.9, 28.0 and 35.2 s for 2.7 s instead of 3.1 s (words ÷ 2.6, the scaled rule). Beat 'snow': title up 3.1 to 5.7 s (2.6 s); palm rises at 3.6 s, flake lands at 4.9 s and is a bead by 5.7 s; \"A snowflake melts on your palm.\" on at 5.9 s, off at 8.5 s; open the bubble in the snowfall at 9.2 s instead of 10.0 s, with no line over it until 10.2 s."
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Beat 'glow': put \"Orange. Yellow. Iron melts.\" in step with the light. With \"Red is the coolest glow there is.\" off at 23.6 s, move the colour keys to [23.8, 800] (orange), [24.8, 1000] (yellow) and [25.4, 1210], with HOTTER THAN LAVA from 25.4 s, and put the line on at 24.2 s for 2.4 s. Orange then arrives 0.2 s after the 'coolest' line leaves and 0.4 s before its own word, and 1,538 at 26.2 s still falls inside the line."
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Beat 'sun', 31.6 s: make the tungsten line work for a viewer who has never heard of tungsten. If the researcher can confirm tungsten's standing among metals (research.md lists that claim as not confirmed; only the 5,555 °C figure is), write \"Even tungsten boils here. Pretend you don't.\" (7 words, rows as now). If it cannot be confirmed, leave the line as it is; do not add the claim."
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Beat 'flake': bring the small-capitals tag SOURCES IN THE DESCRIPTION on at 56.6 s, as the flake lands, instead of 51.6 s. 3.3 s is enough to read four words, and nothing credit-like then appears until the last line is due."
+    },
+    {
+      "stage": "moodboard",
+      "priority": "should",
+      "change": "The NEXT row carries every small open question from 28 s to 47.8 s. Set it (event name and countdown) at a size and opacity that reads at a glance on a phone, well above the reference's 1.1% cap height, and show it on the board over the white of 38 to 51 s in dark ink."
+    }
+  ],
+  "blocked_on": [],
+  "evidence": "One reference with public numbers (2,166,790 views, 23,825 likes, about 2,392 comments, about 24,000 subscribers, as of 2026-11-25): these are what the reference does, not proof of what performs. No result evidence. Ranged values are the reference's single figure widened about 15% either way; single values are limits or facts as measured. Format and length follow the brief (vertical 1080x1920, no longer than 60 s), not the reference (horizontal 1920x1080, 537.2 s). The reference has no voice, so spoken-word values are null and the word budget is the analyst's count of on-screen text. Tool figures are as measured over the full 537.2 s; what they come to in a 60 s film is in notes.scaled_to_60s and is arithmetic, not measurement. Beyond it: all our times, lines and counter values are read from 03-script/script.json's own clock (there is no timing.json for this run, by the brief), temperatures at line times are my interpolation of its keys, and the count of picture changes is mine from the motion notes. This is an estimate of whether the script does what the one reference does, not a prediction of how it will perform."
+}

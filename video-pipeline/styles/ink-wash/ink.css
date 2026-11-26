@@ -1,0 +1,67 @@
+/* Ink-wash style: ink on warm paper, one accent colour, a quiet italic caption.
+   Tokens first: a mood board's style.json overrides these, nothing else. */
+:root {
+  --paper: #e9e1cd;
+  --ink: #26221e;
+  --ink-soft: #6f675d;
+  --wash: #8f8579;
+  --accent: #af4336;
+  --caption-size: 72px;
+  --caption-y: 88.3%;
+  --caption-font: 'Cormorant Garamond', 'Bitstream Charter', Georgia, serif;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400 500;
+  src: url('fonts/CormorantGaramond-Italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/CormorantGaramond-Roman.woff2') format('woff2');
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #111; }
+#stage {
+  position: relative; overflow: hidden;
+  background: var(--paper) url('paper.jpg') center / cover;
+}
+.shot {
+  position: absolute; inset: 0; visibility: hidden;
+  /* every shot carries its own paper, so a dissolve or iris covers the last one */
+  background: var(--paper) url('paper.jpg') center / cover;
+}
+.shot > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.shot [data-drift], .shot [data-rise] { transform-box: fill-box; transform-origin: center; }
+
+/* ---- marks ---------------------------------------------------------- */
+.ink     { fill: none; stroke: var(--ink); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; filter: url(#ink-rough); }
+.ink.fine { stroke-width: 4; }
+.ink.hair { stroke-width: 2.2; filter: none; }
+.ink.heavy { stroke-width: 16; }
+.blot    { fill: var(--ink); stroke: none; filter: url(#ink-rough); }           /* solid ink shape */
+.dry     { fill: var(--ink); stroke: none; filter: url(#ink-dry); }             /* dry brush: streaked, paper shows through */
+.wash    { fill: var(--wash); stroke: none; opacity: .32; filter: url(#ink-wash); }  /* watery grey area */
+.dry.small { filter: url(#ink-dry-small); }                                    /* shapes under about 150 px */
+.wash.small { filter: url(#ink-wash-small); }
+.wash.pale { opacity: .16; }
+.wash.deep { opacity: .55; }
+.mist    { fill: var(--wash); stroke: none; opacity: .14; filter: url(#ink-mist); }  /* far hills, fog */
+.accent  { fill: var(--accent); stroke: none; filter: url(#ink-rough); }
+.accent-line { fill: none; stroke: var(--accent); stroke-width: 6; stroke-linecap: round; filter: url(#ink-rough); }
+
+/* ---- words ---------------------------------------------------------- */
+#caption {
+  position: absolute; left: 0; right: 0; top: var(--caption-y); z-index: 1000;
+  transform: translateY(-50%);
+  display: flex; justify-content: center; align-items: center; gap: 22px;
+  font: italic 500 var(--caption-size) / 1 var(--caption-font);
+  color: var(--ink); letter-spacing: .005em; white-space: nowrap;
+}
+#caption .bullet { width: 19px; height: 19px; background: var(--accent); display: block; transform: translateY(6px); }
+.label { font: italic 400 58px / 1 var(--caption-font); fill: var(--ink); }
+.label.small { font-size: 40px; fill: var(--ink-soft); letter-spacing: .04em; }

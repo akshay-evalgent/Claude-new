@@ -1,0 +1,784 @@
+{
+ "note": "Tool run: transcribe.py --model medium --language hi. The lyric text has been removed from this file on purpose (the run's instructions: do not reproduce the song's lyrics in full in any file); times and counts are the tool's. Low trust: the song is sung over a band, the text came out garbled in every model, and the tool's voice-activity filter dropped sung passages at about 50-88 s, 132-154 s and 155-172 s, so 'words', both paces, 'speech_share' and the three long entries in 'pauses_over_0.7s' (37.37, 21.99, 16.93 s) are undercounts or false pauses. See breakdown.md sections 2, 8 and 9 and transcript-runs.json.",
+ "stats": {
+  "language": "hi",
+  "duration": 185.48,
+  "words": 122,
+  "first_word_s": 13.36,
+  "last_word_s": 182.26,
+  "words_per_minute": 39,
+  "speaking_rate_wpm": 96,
+  "speech_share": 0.412,
+  "words_in_first_3s": 0,
+  "pauses_over_0.7s": [
+   {
+    "at": 39.84,
+    "dur": 1.4
+   },
+   {
+    "at": 42.98,
+    "dur": 2.05
+   },
+   {
+    "at": 46.05,
+    "dur": 3.43
+   },
+   {
+    "at": 50.4,
+    "dur": 37.37
+   },
+   {
+    "at": 99.73,
+    "dur": 1.24
+   },
+   {
+    "at": 106.59,
+    "dur": 2.05
+   },
+   {
+    "at": 109.46,
+    "dur": 2.72
+   },
+   {
+    "at": 114.66,
+    "dur": 1.73
+   },
+   {
+    "at": 124.37,
+    "dur": 1.53
+   },
+   {
+    "at": 132.4,
+    "dur": 21.99
+   },
+   {
+    "at": 155.37,
+    "dur": 16.93
+   }
+  ]
+ },
+ "segments": [
+  {
+   "start": 13.36,
+   "end": 16.8,
+   "text": "[lyric removed: 5 tokens]"
+  },
+  {
+   "start": 16.8,
+   "end": 20.26,
+   "text": "[lyric removed: 6 tokens]"
+  },
+  {
+   "start": 20.26,
+   "end": 27.16,
+   "text": "[lyric removed: 7 tokens]"
+  },
+  {
+   "start": 27.16,
+   "end": 31.2,
+   "text": "[lyric removed: 8 tokens]"
+  },
+  {
+   "start": 31.2,
+   "end": 34.2,
+   "text": "[lyric removed: 8 tokens]"
+  },
+  {
+   "start": 34.2,
+   "end": 41.44,
+   "text": "[lyric removed: 9 tokens]"
+  },
+  {
+   "start": 41.44,
+   "end": 42.98,
+   "text": "[lyric removed: 4 tokens]"
+  },
+  {
+   "start": 45.03,
+   "end": 90.61,
+   "text": "[lyric removed: 8 tokens]"
+  },
+  {
+   "start": 90.61,
+   "end": 94.27,
+   "text": "[lyric removed: 5 tokens]"
+  },
+  {
+   "start": 94.27,
+   "end": 97.73,
+   "text": "[lyric removed: 4 tokens]"
+  },
+  {
+   "start": 97.73,
+   "end": 99.73,
+   "text": "[lyric removed: 5 tokens]"
+  },
+  {
+   "start": 100.97,
+   "end": 105.07,
+   "text": "[lyric removed: 5 tokens]"
+  },
+  {
+   "start": 105.07,
+   "end": 106.59,
+   "text": "[lyric removed: 3 tokens]"
+  },
+  {
+   "start": 108.64,
+   "end": 114.66,
+   "text": "[lyric removed: 6 tokens]"
+  },
+  {
+   "start": 116.39,
+   "end": 119.19,
+   "text": "[lyric removed: 3 tokens]"
+  },
+  {
+   "start": 119.19,
+   "end": 122.51,
+   "text": "[lyric removed: 4 tokens]"
+  },
+  {
+   "start": 122.51,
+   "end": 126.08,
+   "text": "[lyric removed: 4 tokens]"
+  },
+  {
+   "start": 126.08,
+   "end": 129.76,
+   "text": "[lyric removed: 5 tokens]"
+  },
+  {
+   "start": 129.76,
+   "end": 132.4,
+   "text": "[lyric removed: 4 tokens]"
+  },
+  {
+   "start": 154.39,
+   "end": 175.6,
+   "text": "[lyric removed: 8 tokens]"
+  },
+  {
+   "start": 175.6,
+   "end": 179.1,
+   "text": "[lyric removed: 5 tokens]"
+  },
+  {
+   "start": 179.1,
+   "end": 182.26,
+   "text": "[lyric removed: 6 tokens]"
+  }
+ ],
+ "words": [
+  {
+   "start": 13.36,
+   "end": 14.1,
+   "word": "[removed]"
+  },
+  {
+   "start": 14.1,
+   "end": 14.22,
+   "word": "[removed]"
+  },
+  {
+   "start": 14.22,
+   "end": 14.9,
+   "word": "[removed]"
+  },
+  {
+   "start": 14.9,
+   "end": 15.18,
+   "word": "[removed]"
+  },
+  {
+   "start": 15.18,
+   "end": 16.8,
+   "word": "[removed]"
+  },
+  {
+   "start": 16.8,
+   "end": 17.56,
+   "word": "[removed]"
+  },
+  {
+   "start": 17.56,
+   "end": 17.76,
+   "word": "[removed]"
+  },
+  {
+   "start": 17.76,
+   "end": 18.5,
+   "word": "[removed]"
+  },
+  {
+   "start": 18.5,
+   "end": 18.58,
+   "word": "[removed]"
+  },
+  {
+   "start": 18.58,
+   "end": 18.68,
+   "word": "[removed]"
+  },
+  {
+   "start": 18.68,
+   "end": 20.26,
+   "word": "[removed]"
+  },
+  {
+   "start": 20.26,
+   "end": 21.76,
+   "word": "[removed]"
+  },
+  {
+   "start": 21.76,
+   "end": 22.12,
+   "word": "[removed]"
+  },
+  {
+   "start": 22.12,
+   "end": 23.78,
+   "word": "[removed]"
+  },
+  {
+   "start": 23.98,
+   "end": 24.4,
+   "word": "[removed]"
+  },
+  {
+   "start": 24.4,
+   "end": 24.88,
+   "word": "[removed]"
+  },
+  {
+   "start": 24.88,
+   "end": 25.56,
+   "word": "[removed]"
+  },
+  {
+   "start": 25.56,
+   "end": 27.16,
+   "word": "[removed]"
+  },
+  {
+   "start": 27.16,
+   "end": 27.36,
+   "word": "[removed]"
+  },
+  {
+   "start": 27.36,
+   "end": 28.14,
+   "word": "[removed]"
+  },
+  {
+   "start": 28.14,
+   "end": 28.36,
+   "word": "[removed]"
+  },
+  {
+   "start": 28.36,
+   "end": 29.14,
+   "word": "[removed]"
+  },
+  {
+   "start": 29.14,
+   "end": 29.78,
+   "word": "[removed]"
+  },
+  {
+   "start": 29.78,
+   "end": 31.2,
+   "word": "[removed]"
+  },
+  {
+   "start": 31.2,
+   "end": 31.2,
+   "word": "[removed]"
+  },
+  {
+   "start": 31.2,
+   "end": 31.2,
+   "word": "[removed]"
+  },
+  {
+   "start": 31.2,
+   "end": 31.46,
+   "word": "[removed]"
+  },
+  {
+   "start": 31.46,
+   "end": 32.3,
+   "word": "[removed]"
+  },
+  {
+   "start": 32.3,
+   "end": 34.2,
+   "word": "[removed]"
+  },
+  {
+   "start": 34.2,
+   "end": 34.2,
+   "word": "[removed]"
+  },
+  {
+   "start": 34.2,
+   "end": 34.2,
+   "word": "[removed]"
+  },
+  {
+   "start": 34.2,
+   "end": 34.2,
+   "word": "[removed]"
+  },
+  {
+   "start": 34.2,
+   "end": 34.2,
+   "word": "[removed]"
+  },
+  {
+   "start": 34.2,
+   "end": 34.2,
+   "word": "[removed]"
+  },
+  {
+   "start": 34.2,
+   "end": 35.22,
+   "word": "[removed]"
+  },
+  {
+   "start": 35.22,
+   "end": 35.4,
+   "word": "[removed]"
+  },
+  {
+   "start": 35.4,
+   "end": 36.16,
+   "word": "[removed]"
+  },
+  {
+   "start": 36.16,
+   "end": 36.22,
+   "word": "[removed]"
+  },
+  {
+   "start": 36.22,
+   "end": 37.64,
+   "word": "[removed]"
+  },
+  {
+   "start": 37.74,
+   "end": 38.58,
+   "word": "[removed]"
+  },
+  {
+   "start": 38.58,
+   "end": 39.18,
+   "word": "[removed]"
+  },
+  {
+   "start": 39.18,
+   "end": 39.84,
+   "word": "[removed]"
+  },
+  {
+   "start": 41.24,
+   "end": 41.44,
+   "word": "[removed]"
+  },
+  {
+   "start": 41.44,
+   "end": 41.56,
+   "word": "[removed]"
+  },
+  {
+   "start": 41.56,
+   "end": 42.1,
+   "word": "[removed]"
+  },
+  {
+   "start": 42.1,
+   "end": 42.52,
+   "word": "[removed]"
+  },
+  {
+   "start": 42.52,
+   "end": 42.98,
+   "word": "[removed]"
+  },
+  {
+   "start": 45.03,
+   "end": 45.51,
+   "word": "[removed]"
+  },
+  {
+   "start": 45.51,
+   "end": 46.05,
+   "word": "[removed]"
+  },
+  {
+   "start": 49.48,
+   "end": 49.98,
+   "word": "[removed]"
+  },
+  {
+   "start": 49.98,
+   "end": 50.4,
+   "word": "[removed]"
+  },
+  {
+   "start": 87.77,
+   "end": 87.93,
+   "word": "[removed]"
+  },
+  {
+   "start": 87.93,
+   "end": 88.97,
+   "word": "[removed]"
+  },
+  {
+   "start": 88.97,
+   "end": 89.07,
+   "word": "[removed]"
+  },
+  {
+   "start": 89.07,
+   "end": 90.61,
+   "word": "[removed]"
+  },
+  {
+   "start": 90.61,
+   "end": 91.45,
+   "word": "[removed]"
+  },
+  {
+   "start": 91.45,
+   "end": 91.87,
+   "word": "[removed]"
+  },
+  {
+   "start": 91.87,
+   "end": 92.35,
+   "word": "[removed]"
+  },
+  {
+   "start": 92.35,
+   "end": 92.85,
+   "word": "[removed]"
+  },
+  {
+   "start": 92.85,
+   "end": 94.27,
+   "word": "[removed]"
+  },
+  {
+   "start": 94.27,
+   "end": 95.15,
+   "word": "[removed]"
+  },
+  {
+   "start": 95.15,
+   "end": 95.43,
+   "word": "[removed]"
+  },
+  {
+   "start": 95.43,
+   "end": 95.97,
+   "word": "[removed]"
+  },
+  {
+   "start": 95.97,
+   "end": 97.73,
+   "word": "[removed]"
+  },
+  {
+   "start": 97.73,
+   "end": 97.89,
+   "word": "[removed]"
+  },
+  {
+   "start": 97.89,
+   "end": 98.67,
+   "word": "[removed]"
+  },
+  {
+   "start": 98.67,
+   "end": 98.91,
+   "word": "[removed]"
+  },
+  {
+   "start": 98.91,
+   "end": 99.31,
+   "word": "[removed]"
+  },
+  {
+   "start": 99.31,
+   "end": 99.73,
+   "word": "[removed]"
+  },
+  {
+   "start": 100.97,
+   "end": 102.01,
+   "word": "[removed]"
+  },
+  {
+   "start": 102.01,
+   "end": 102.53,
+   "word": "[removed]"
+  },
+  {
+   "start": 102.53,
+   "end": 102.71,
+   "word": "[removed]"
+  },
+  {
+   "start": 102.71,
+   "end": 102.81,
+   "word": "[removed]"
+  },
+  {
+   "start": 102.81,
+   "end": 105.07,
+   "word": "[removed]"
+  },
+  {
+   "start": 105.07,
+   "end": 105.61,
+   "word": "[removed]"
+  },
+  {
+   "start": 105.61,
+   "end": 106.07,
+   "word": "[removed]"
+  },
+  {
+   "start": 106.07,
+   "end": 106.59,
+   "word": "[removed]"
+  },
+  {
+   "start": 108.64,
+   "end": 109.06,
+   "word": "[removed]"
+  },
+  {
+   "start": 109.06,
+   "end": 109.46,
+   "word": "[removed]"
+  },
+  {
+   "start": 112.18,
+   "end": 113.04,
+   "word": "[removed]"
+  },
+  {
+   "start": 113.04,
+   "end": 113.56,
+   "word": "[removed]"
+  },
+  {
+   "start": 113.56,
+   "end": 114.22,
+   "word": "[removed]"
+  },
+  {
+   "start": 114.22,
+   "end": 114.66,
+   "word": "[removed]"
+  },
+  {
+   "start": 116.39,
+   "end": 117.09,
+   "word": "[removed]"
+  },
+  {
+   "start": 117.09,
+   "end": 118.65,
+   "word": "[removed]"
+  },
+  {
+   "start": 118.65,
+   "end": 119.19,
+   "word": "[removed]"
+  },
+  {
+   "start": 119.19,
+   "end": 119.73,
+   "word": "[removed]"
+  },
+  {
+   "start": 119.73,
+   "end": 120.07,
+   "word": "[removed]"
+  },
+  {
+   "start": 120.07,
+   "end": 120.99,
+   "word": "[removed]"
+  },
+  {
+   "start": 120.99,
+   "end": 122.51,
+   "word": "[removed]"
+  },
+  {
+   "start": 122.51,
+   "end": 123.25,
+   "word": "[removed]"
+  },
+  {
+   "start": 123.25,
+   "end": 123.49,
+   "word": "[removed]"
+  },
+  {
+   "start": 123.49,
+   "end": 124.37,
+   "word": "[removed]"
+  },
+  {
+   "start": 125.9,
+   "end": 126.08,
+   "word": "[removed]"
+  },
+  {
+   "start": 126.08,
+   "end": 126.26,
+   "word": "[removed]"
+  },
+  {
+   "start": 126.26,
+   "end": 127.0,
+   "word": "[removed]"
+  },
+  {
+   "start": 127.0,
+   "end": 127.64,
+   "word": "[removed]"
+  },
+  {
+   "start": 127.64,
+   "end": 128.26,
+   "word": "[removed]"
+  },
+  {
+   "start": 128.26,
+   "end": 129.76,
+   "word": "[removed]"
+  },
+  {
+   "start": 129.76,
+   "end": 130.48,
+   "word": "[removed]"
+  },
+  {
+   "start": 130.48,
+   "end": 131.16,
+   "word": "[removed]"
+  },
+  {
+   "start": 131.16,
+   "end": 131.86,
+   "word": "[removed]"
+  },
+  {
+   "start": 131.86,
+   "end": 132.4,
+   "word": "[removed]"
+  },
+  {
+   "start": 154.39,
+   "end": 155.07,
+   "word": "[removed]"
+  },
+  {
+   "start": 155.07,
+   "end": 155.37,
+   "word": "[removed]"
+  },
+  {
+   "start": 172.3,
+   "end": 172.66,
+   "word": "[removed]"
+  },
+  {
+   "start": 172.66,
+   "end": 173.04,
+   "word": "[removed]"
+  },
+  {
+   "start": 173.04,
+   "end": 173.6,
+   "word": "[removed]"
+  },
+  {
+   "start": 173.6,
+   "end": 173.88,
+   "word": "[removed]"
+  },
+  {
+   "start": 173.88,
+   "end": 174.14,
+   "word": "[removed]"
+  },
+  {
+   "start": 174.14,
+   "end": 175.6,
+   "word": "[removed]"
+  },
+  {
+   "start": 175.6,
+   "end": 176.2,
+   "word": "[removed]"
+  },
+  {
+   "start": 176.2,
+   "end": 176.52,
+   "word": "[removed]"
+  },
+  {
+   "start": 176.52,
+   "end": 177.06,
+   "word": "[removed]"
+  },
+  {
+   "start": 177.06,
+   "end": 177.36,
+   "word": "[removed]"
+  },
+  {
+   "start": 177.36,
+   "end": 179.1,
+   "word": "[removed]"
+  },
+  {
+   "start": 179.1,
+   "end": 179.76,
+   "word": "[removed]"
+  },
+  {
+   "start": 179.76,
+   "end": 180.1,
+   "word": "[removed]"
+  },
+  {
+   "start": 180.1,
+   "end": 180.56,
+   "word": "[removed]"
+  },
+  {
+   "start": 180.56,
+   "end": 181.64,
+   "word": "[removed]"
+  },
+  {
+   "start": 181.64,
+   "end": 181.86,
+   "word": "[removed]"
+  },
+  {
+   "start": 181.86,
+   "end": 182.26,
+   "word": "[removed]"
+  }
+ ]
+}

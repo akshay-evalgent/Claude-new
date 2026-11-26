@@ -1,0 +1,243 @@
+{
+ "stats": {
+  "language": "en",
+  "duration": 24.77,
+  "words": 32,
+  "first_word_s": 1.46,
+  "last_word_s": 21.98,
+  "words_per_minute": 78,
+  "speaking_rate_wpm": 155,
+  "speech_share": 0.501,
+  "words_in_first_3s": 5,
+  "pauses_over_0.7s": [
+   {
+    "at": 2.8,
+    "dur": 1.3
+   },
+   {
+    "at": 6.18,
+    "dur": 1.3
+   },
+   {
+    "at": 8.96,
+    "dur": 0.94
+   },
+   {
+    "at": 11.56,
+    "dur": 1.18
+   },
+   {
+    "at": 14.08,
+    "dur": 2.04
+   },
+   {
+    "at": 18.84,
+    "dur": 1.36
+   }
+  ]
+ },
+ "segments": [
+  {
+   "start": 1.46,
+   "end": 2.8,
+   "text": "Text me when you're home"
+  },
+  {
+   "start": 4.1,
+   "end": 6.18,
+   "text": "Text me when you're home"
+  },
+  {
+   "start": 7.48,
+   "end": 8.96,
+   "text": "Until one word"
+  },
+  {
+   "start": 9.9,
+   "end": 11.56,
+   "text": "The light stays on"
+  },
+  {
+   "start": 12.74,
+   "end": 14.08,
+   "text": "I know you're fine"
+  },
+  {
+   "start": 16.12,
+   "end": 17.22,
+   "text": "Asking is how"
+  },
+  {
+   "start": 17.84,
+   "end": 18.84,
+   "text": "I love you"
+  },
+  {
+   "start": 20.2,
+   "end": 21.98,
+   "text": "Text me when you're home"
+  }
+ ],
+ "words": [
+  {
+   "start": 1.46,
+   "end": 1.74,
+   "word": "Text"
+  },
+  {
+   "start": 1.74,
+   "end": 2.02,
+   "word": "me"
+  },
+  {
+   "start": 2.02,
+   "end": 2.28,
+   "word": "when"
+  },
+  {
+   "start": 2.28,
+   "end": 2.54,
+   "word": "you're"
+  },
+  {
+   "start": 2.54,
+   "end": 2.8,
+   "word": "home"
+  },
+  {
+   "start": 4.1,
+   "end": 4.72,
+   "word": "Text"
+  },
+  {
+   "start": 4.72,
+   "end": 5.16,
+   "word": "me"
+  },
+  {
+   "start": 5.16,
+   "end": 5.44,
+   "word": "when"
+  },
+  {
+   "start": 5.44,
+   "end": 5.68,
+   "word": "you're"
+  },
+  {
+   "start": 5.68,
+   "end": 6.18,
+   "word": "home"
+  },
+  {
+   "start": 7.48,
+   "end": 8.1,
+   "word": "Until"
+  },
+  {
+   "start": 8.1,
+   "end": 8.42,
+   "word": "one"
+  },
+  {
+   "start": 8.42,
+   "end": 8.96,
+   "word": "word"
+  },
+  {
+   "start": 9.9,
+   "end": 10.52,
+   "word": "The"
+  },
+  {
+   "start": 10.52,
+   "end": 10.72,
+   "word": "light"
+  },
+  {
+   "start": 10.72,
+   "end": 11.08,
+   "word": "stays"
+  },
+  {
+   "start": 11.08,
+   "end": 11.56,
+   "word": "on"
+  },
+  {
+   "start": 12.74,
+   "end": 13.36,
+   "word": "I"
+  },
+  {
+   "start": 13.36,
+   "end": 13.48,
+   "word": "know"
+  },
+  {
+   "start": 13.48,
+   "end": 13.78,
+   "word": "you're"
+  },
+  {
+   "start": 13.78,
+   "end": 14.08,
+   "word": "fine"
+  },
+  {
+   "start": 16.12,
+   "end": 16.74,
+   "word": "Asking"
+  },
+  {
+   "start": 16.74,
+   "end": 16.96,
+   "word": "is"
+  },
+  {
+   "start": 16.96,
+   "end": 17.22,
+   "word": "how"
+  },
+  {
+   "start": 17.84,
+   "end": 18.18,
+   "word": "I"
+  },
+  {
+   "start": 18.18,
+   "end": 18.34,
+   "word": "love"
+  },
+  {
+   "start": 18.34,
+   "end": 18.84,
+   "word": "you"
+  },
+  {
+   "start": 20.2,
+   "end": 20.82,
+   "word": "Text"
+  },
+  {
+   "start": 20.82,
+   "end": 21.1,
+   "word": "me"
+  },
+  {
+   "start": 21.1,
+   "end": 21.32,
+   "word": "when"
+  },
+  {
+   "start": 21.32,
+   "end": 21.58,
+   "word": "you're"
+  },
+  {
+   "start": 21.58,
+   "end": 21.98,
+   "word": "home"
+  }
+ ]
+}

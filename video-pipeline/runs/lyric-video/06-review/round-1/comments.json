@@ -1,0 +1,70 @@
+{
+  "check": "comments",
+  "stage": "video",
+  "round": 1,
+  "score": 8,
+  "pass": true,
+  "summary": "The film carries everything the script promised for comments: the refrain and the claim are readable on screen, the 'home' to 'Home.' reset is a visible event held 2.0 s, and nothing on screen begs for a reply; no must fixes, one posting note (pin the first comment) and one human listen on line 6.",
+  "findings": [
+    {
+      "criterion": "something to answer",
+      "result": "met",
+      "ours": "Three things to reply to, all of them on the film or beside it. (1) The shared experience: 'Text me / when you're home' is readable in faint ink by 0.75 s (hook.jpg), spoken at 1.45-2.96 s, again at 4.61-6.20 s and at 20.58-22.16 s. (2) The claim: 'Asking is how / I love you.' stands fully lit as one two-row sentence from about 18.8 s to 20.4 s (dense.jpg frames 18.92, 19.61, 20.30), so a muted viewer reads it as one saying. (3) The question itself is asked off screen by post_caption, 'Who tells you \"text me when you're home\"?', which quotes exactly the line the film opens on. One risk I cannot judge: transcript.json writes line 6 as two closed sentences ('Asking is how.' 16.36-17.22 s, 'I love you.' 18.08-18.64 s, with a 0.86 s pause). On screen it is one sentence; by ear it may not be. See blocked_on.",
+      "reference": "barsat-song, 0.00-185.33 s: no question, claim or prompt anywhere, and 0 of 75 comments answer a question (comments.json). patterns.md, Comments, Do not copy: 'Giving viewers nothing to answer'. The yardstick is that instruction, not the reference's own behaviour.",
+      "why_it_matters": "the reference's viewers had only a feeling to answer and 54 of 75 answered with praise or emoji. Ours puts a specific phrase and a specific claim in front of them in words they can read, which the reference never does for any of its roughly 160 sung words."
+    },
+    {
+      "criterion": "a story of their own",
+      "result": "met",
+      "ours": "The film adds nothing that narrows the story. No face, no name, no place: the sheet holds the lyric rows, a road of dots and a window (shots.jpg, dense.jpg throughout). The window is anybody's; 'the light / stays on.' (10.44-11.66 s) and 'I know / you're fine.' (13.26-14.24 s) stay general. The speaker could be a parent, a partner or a friend, and the viewer supplies which. The lit window with nobody drawn in it also leaves room for someone who used to say it and no longer does.",
+      "reference": "comments.json: 5 of 75 tell their own story or dedicate the song to a person, and two of those five are among the ten most-liked. barsat-song 13.4 s and 23.7 s: the refrain is addressed to 'you' and names nobody; its drawing is two eyes with no face (0.00 s). patterns.md, Comments: 'Leave room for the viewer's own story'.",
+      "why_it_matters": "own stories are the only comments under the reference that say more than praise. Ours does what the reference does to earn them (second person, no names, one plain feeling, a drawing with no person in it) and the caption asks for them."
+    },
+    {
+      "criterion": "easy to answer",
+      "result": "met",
+      "ours": "The caption is answered with a person in one or two words. The first comment (script.json comment_prompt) shows two quoted examples of two or three words and asks for 'the one you grew up with', so the shape of a reply is shown. Neither needs a rewatch: the phrase asked about is on screen for about 13 of the film's 24.77 s (0.5-7.7 s and 20.5-22.6 s as a line, plus the red word alone at the start and end). Both are unchanged from the script that passed in script round 2. Limit: the first comment only works if viewers see it; an unpinned first comment sinks under later ones.",
+      "reference": "comments.json: the easy replies under the reference are praise in words (34 of 75) and emoji alone (20 of 75); 0 of 75 answer anything because nothing was asked. No reference shows a prompt being answered, so this rests on the playbook's instruction (patterns.md, Comments, Do not copy), not on an example.",
+      "why_it_matters": "a viewer who has to work out what is wanted gives the reference's result, short praise. Here the ask and two sample answers are in words they will read."
+    },
+    {
+      "criterion": "a detail to notice",
+      "result": "met",
+      "ours": "This was the open question from script round 2, and the film answers it. 'Until / one word,' is on screen 7.68-10.32 s (dense.jpg 7.91-9.98 s). After the last line the ink words leave from 22.16 s, the red 'home' fades out 22.64-22.76 s and 'Home.' is drawn in its place 22.76-22.88 s with one swell (reset_frames.jpg: 22.70 'home' half gone, 22.77 'Home.' faint, 22.87 'Home.' full and heavier). It then stands alone to the last frame at 24.77 s, 2.0 s (end.jpg, five frames from 23.27 to 24.72 s). The capital H and the full stop are legible at 390 px wide (phone_390.jpg, frames 22.6 and 24.73). So the change is a blink of the one red thing on the sheet followed by a different word shape, not a silent swap, and a viewer can point at it by time. The first frame is lower-case 'home' alone (hook.jpg 0.00 s) and the last is 'Home.' alone, so on a replay or a loop the two sit side by side. Nothing on screen explains it. Two further things only the picture says: the dark gathers round the window from the word 'light' (dense.jpg 11.35 s onward) and the road meets the sill on the last 'home' (dense.jpg 20.98-21.67 s). Limit, stated plainly: the detail is one letter's case and one full stop, 14 s after its setup; some viewers will take the last frame for the title coming back. That is what makes it a detail to find; it does not need to be louder.",
+      "reference": "comments.json: 4 of 75 single out a moment by time and 2 of 75 praise the writing; 0 of 75 mention the picture. patterns.md, Sharing, Do not copy: 'Nobody mentions the picture'; Comments: 'Make moments easy to point at'. The reference's picture is one unchanged card (0.00-185.33 s), so there is no picture detail to compare with and the yardstick is the playbook.",
+      "why_it_matters": "the reference's picture gave nobody anything to point at. Ours has one thing that only the picture says, in the last two seconds where a timestamp comment can reach it, and it survives phone size."
+    },
+    {
+      "criterion": "room to disagree, honestly",
+      "result": "met",
+      "ours": "The same two fair points as in the script, both readable on the film. 'I know / you're fine.' (13.26-14.24 s; dense.jpg 13.42-16.17 s): some ask because they do not know. 'Asking is how / I love you.' (16.34-18.78 s): some will say the words should be said as well. Neither is false and neither is sharpened by the picture; the caption does not argue either one for the viewer.",
+      "reference": "comments.json: 0 of 75 dispute anything. There is no reference example of honest disagreement, so this finding could not support a must.",
+      "why_it_matters": "a small source of replies in a genre that does not argue. It should stay quiet; nothing in the film turns it into a provocation."
+    },
+    {
+      "criterion": "the caption and first comment",
+      "result": "met",
+      "ours": "post_caption: 'Who tells you \"text me when you're home\"?' The film makes this caption true to what the viewer sees: the quoted words are the first line on the sheet (0.5 s) and the first words spoken (1.45 s), and the caption does not give away 16.34-18.78 s. It sounds like a person. comment_prompt is words to post, with two quoted examples and a question about the viewer's own life; comment_prompt_notes says not to present it as the creator's memory unless a true one is supplied. Suggested wording: keep both exactly as written. The film is horizontal 16:9, so on a platform where the caption becomes the video's title it sits away from the playing picture: use the full form, not the short 'Who says this to you?'.",
+      "reference": "barsat-song: nothing in the video or from the uploader asks anything; the uploader's one written contribution to the thread was a channel plug with 0 likes (comments.json; patterns.md, Comments, Do not copy). 89 comments on 1.94 million views.",
+      "why_it_matters": "the film keeps the lyric free of any ask, which is right for a lyric; the caption and first comment are the only places the viewer is asked anything, and both ask well."
+    },
+    {
+      "criterion": "no bait",
+      "result": "met",
+      "ours": "Checked on the sheets, not the script: every word on screen from 0.00 to 24.77 s is a lyric row or the red word (hook.jpg, dense.jpg 36 frames, end.jpg). No caption track, no end card, no 'comment', 'tag', 'subscribe' or 'wait for it'; the last frame is 'Home.', the road and the window. The voice says only the 32 lyric words (transcript.json). 'Text me' is fiction spoken to the lyric's 'you'. The caption and first comment end on plain questions and claim nothing about the creator's life.",
+      "reference": "barsat-song: the uploader's channel plug (0 likes) is the reference's one piece of bait and is in patterns.md, Comments, Do not copy.",
+      "why_it_matters": "keep it this way at posting: no 'send this to the person who says it' added to the caption, and no call to action added to the end frame."
+    }
+  ],
+  "fixes": [
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Add one sentence to script.json comment_prompt_notes (and the matching place in script.md): \"Post this as the first comment and pin it, so it stays at the top of the thread.\" Change nothing in the comment's wording. Pinning is the creator placing their own question where it can be seen; do not add 'comment below' or any instruction to reply."
+    }
+  ],
+  "blocked_on": [
+    "A human listen to 05-video/audio/listen/line6_as_in_film.wav (05-video/NOTES.md, 'To check by ear'). Nobody in the pipeline can hear. The line viewers are most likely to quote, 'Asking is how I love you.', is one sentence on screen, but speech-to-text writes it as 'Asking is how.' then 'I love you.', and NOTES.md reports that the comma is spoken as a rise that could be heard as a question. If 'how' sounds like a question or a different word, the fix is the one NOTES.md gives (build_voice.py --line6 split). This does not affect the pass: the sentence is correct on screen for every viewer."
+  ],
+  "evidence": "From benchmarks.json: One reference. It has public numbers (1,938,059 views, 5,421 likes, 89 comments, a 700-follower channel, as of 2026-11-25) but one video gives no result evidence: these are what the reference does, not proof of what performs. The reference is NOT a lyric video: it is one still title card held for 185.33 s under a full song, with no lyric on screen at any time, no motion and no cut. Every value about how lyrics are set, timed, moved or coloured is therefore null, and the brief governs those. Tool figures are given as measured; ranged values are the single reference's figure widened about 15% either way; length follows the brief (20 to 30 s), not the reference (185.33 s). Sung-word figures rest on a low-trust transcript of singing over a band. Beyond it: I read all 75 comments in 01-sources/refs/barsat-song/comments.json (75 of the platform's 89; top-level only, so which comments drew replies is unknown and likes are the only weight). The sort is the one from my script rounds and I found nothing to change in it: praise in words 34; emoji only 20; own story or a dedication 5; a time in the song singled out 4; naming the sadness 3; praise for the writing 2; a roll-call 1; the uploader 2; off-topic, a bare link or unclear 4. By the kinds this check looks for: own stories 5, answers to a question 0, disagreement 0, a detail noticed 4 (all in the sound, none in the picture), tagging 0, plain praise 54 counting emoji. For the film I looked at 05-video/check/hook.jpg (12 frames, 0.00-2.75 s), shots.jpg, dense.jpg (36 frames), end.jpg (7 frames, 21.77-24.72 s), reset_frames.jpg (6 frames, 22.6-22.87 s) and phone_390.jpg (8 frames at phone width), and read measure.json, transcript.json and 05-video/NOTES.md. Times for the voice and the reset are from NOTES.md's timing table and its Picture section, checked against the frames; I did not measure them myself. I cannot hear the film: everything about how a line sounds is from transcript.json and NOTES.md. Earlier rounds: this is the first video round. My script-stage fixes (script round 1: caption as a question, a postable first comment, the last frame reset to 'Home.') were all made in the script by script round 2, which had no fixes; all three are carried into the film or sit beside it unchanged, and the one thing script round 2 left to verify on the film (that the reset is seen) is confirmed above. The reference is a sung song under a still card and ours is a spoken English lyric with words on screen, so the comparison holds for subject and address and says nothing about lyric videos as a format. The score of 8 means the film does what the playbook says to do in place of the reference's fault; it is an estimate, not a prediction of how many comments the video will get."
+}

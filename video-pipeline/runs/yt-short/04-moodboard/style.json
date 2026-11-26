@@ -1,0 +1,240 @@
+{
+ "kit": "video-pipeline/styles/lowpoly-first-person",
+ "format": {
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "fps_note": "the reference is 30 fps; the brief sets none"
+ },
+ "tokens": {
+  "--lp-ground": "#040303",
+  "--lp-text": "#fefaf3",
+  "--lp-ink": "#0b0908",
+  "--lp-heat": "#ac6634",
+  "--lp-margin": "60px",
+  "--lp-top": "150px",
+  "--lp-line-y": "73.5%",
+  "--lp-line-max": "820px",
+  "--lp-title-y": "38.5%",
+  "--lp-label-size": "32px",
+  "--lp-figure-size": "96px",
+  "--lp-count-size": "46px",
+  "--lp-line-size": "66px",
+  "--lp-statement-size": "66px",
+  "--lp-title-size": "78px"
+ },
+ "tokens_from": "ground #040303, text #fefaf3 and accent #ac6634 are the reference's measured values (02-analysis palette.json, benchmarks look). Sizes are reworked for a 1080 px wide frame from the reference's measured shares; see type.measured_reference.",
+ "accent_means": "your heat: the light you give off and what it sets glowing or burning. Red at 525 °C through orange and yellow to white. In the scene only, never in type, and nothing else in the film is warm.",
+ "world": {
+  "function": "world.set(tempC, t, pose) in world.js: the whole field from your temperature, the time and a pose. Same input, same frame.",
+  "tempC": "from script clock.temperature_keys via LowPoly.logTemp(keys, filmS)",
+  "t": "film time; the cold open gives 28.0 + t so it replays 28.0-31.0 s frame for frame",
+  "pose": "yaw, pitch (degrees), hand 0-1, flakes [{slot, p}], release 0-1",
+  "thresholds": "CURVES table at the top of world.js; retune there, not in the film",
+  "words": "hud.set({look: state.words}) every frame: ink and scrims follow the picture"
+ },
+ "drawing": [
+  "solids are flat faces, one colour a face, no outlines, no textures",
+  "the place: a snow field at night, a fence line passing half a metre to your left and running to a notched ridge 2.2 km off, one boulder to the right at 13 m, stars with a denser band, slow snowfall",
+  "your body is a bare right palm, open and facing up, with a dark sleeve and cuff; it is in frame only at 37 °C (start and close)",
+  "the snowflake is a white six-armed flake about a fifth of the palm wide; it melts to a faceted bead with one bright face",
+  "sky, stars, snow, steam and smoke are soft; flames are flat-sided tongues",
+  "past one million degrees the frame is the veil: blue-white with slow rings, then grain, then flat white"
+ ],
+ "composition": [
+  "horizon between 40% and 50% of the height; 50% (pitch 0) while the title is up",
+  "counters occupy 7.8% to 31% of the height over the sky",
+  "the line block is centred at 73.5%; when the palm is up the line sits over the wrist and sleeve",
+  "the fence runs from the left foreground to a vanishing point near the centre; the first post is a foreground column at the left edge",
+  "nothing below 80% but scene: the Shorts caption area covers it"
+ ],
+ "type": {
+  "faces": "Newsreader (figures, title, lines; true italic) and Inter SemiBold capitals tracked 0.1em (small rows). Both are close matches to the reference's unnamed serif and wide-tracked sans; both SIL OFL.",
+  "counter_label": "Inter 600, 32 px, cap height 23 px (1.2% of the height), opacity 0.92",
+  "figure": "Newsreader 500, 96 px, tabular digits 70 px tall (3.6%)",
+  "comparison": "two rows: lead (HOTTER THAN) at 0.8, the thing at full",
+  "next": "NEXT + event in Inter 32 px; countdown in Newsreader 46 px",
+  "clock_block": "right-aligned; label in two rows; row one sentence a line; sources tag in two rows under it",
+  "story_line": "Newsreader italic 500, 66 px (cap 47 px, 2.5%), one or two rows, centred, max 820 px",
+  "statement": "Newsreader 600 upright, 66 px: the cold-open line",
+  "title": "Newsreader 500, 78 px, two rows centred at 38.5%",
+  "ink": "#fefaf3 over the scene with a scrim; #0b0908 over white, no scrim. Line switches at 20,000 °C, counters at 120,000 °C, each in one frame",
+  "measured_reference": {
+   "frame": "1920x1080",
+   "label_cap_px": 13,
+   "label_cap_share_of_height": 0.012,
+   "label_top_share": 0.092,
+   "figure_digit_px": 45,
+   "figure_digit_share": 0.042,
+   "small_row_brightness": "about 70% (rate row), 62% (NEXT)",
+   "countdown_height_px": 32,
+   "rule": "250 px wide at 23% down",
+   "line_cap_px": 42,
+   "line_baseline_share": 0.905,
+   "title_row_px": 73,
+   "title_rows_centre_share": [
+    0.374,
+    0.463
+   ],
+   "margin_share_of_width": 0.056,
+   "text": "#fffffd on figures, #e5e4e2 on labels"
+  },
+  "vertical_rework": "labels keep the reference's share of frame height (1.2%), which on a phone held upright is about 1.8 times the reference's physical size; no row is dimmed below 0.8. The two blocks share the top, left block 600 px wide at most, right block 330 px; long rows break in two. The line moves up from 90.5% to 73.5% to clear the Shorts caption area and is capped at 820 px to clear the buttons."
+ },
+ "contrast_measured": {
+  "method": "WCAG contrast of each letter pixel against the pixel behind it in the same frame rendered without words (frames-bare.html); median and the worst 5%",
+  "frames": {
+   "coldopen": {
+    "counters": {
+     "median": 16.7,
+     "worst_5pct": 16.5,
+     "min": 16.4
+    },
+    "line": {
+     "median": 16.8,
+     "worst_5pct": 14.5,
+     "min": 8.5
+    }
+   },
+   "snow": {
+    "counters": {
+     "median": 15.9,
+     "worst_5pct": 15.6,
+     "min": 1.9
+    },
+    "title": {
+     "median": 17.9,
+     "worst_5pct": 17.5,
+     "min": 1.8
+    }
+   },
+   "glow": {
+    "counters": {
+     "median": 15.9,
+     "worst_5pct": 13.8,
+     "min": 3.3
+    },
+    "line": {
+     "median": 18.7,
+     "worst_5pct": 18.1,
+     "min": 17.5
+    }
+   },
+   "edge": {
+    "counters": {
+     "median": 16.0,
+     "worst_5pct": 15.6,
+     "min": 15.6
+    },
+    "line": {
+     "median": 19.0,
+     "worst_5pct": 19.0,
+     "min": 19.0
+    }
+   },
+   "flake": {
+    "counters": {
+     "median": 15.8,
+     "worst_5pct": 15.5,
+     "min": 1.6
+    },
+    "line": {
+     "median": 15.6,
+     "worst_5pct": 12.5,
+     "min": 12.4
+    }
+   }
+  },
+  "cold_open_line": "16.8:1 median, 14.5:1 worst 5% over the glowing ground"
+ },
+ "motion": [
+  "counters change every frame",
+  "snow falls slowly at 37 °C; steam, flames, sparks and shadows flicker with t",
+  "the camera never moves, it turns slowly and tilts on cue (down for the palm, level for the title)",
+  "lines fade in and out over 0.2-0.3 s; the picture never fades"
+ ],
+ "transitions": {
+  "default": "none: one continuous scene",
+  "cold_open_to_start": "the world flips from 5,660 °C to 37 °C in one frame, counters stay",
+  "close": "release 0 to 1 over 51.0-51.6 s with the world at 37 °C"
+ },
+ "never": [
+  "cuts, dissolves or black frames",
+  "outlines or textures on solids",
+  "a second warm colour or accent in type",
+  "small rows under 32 px or under 0.8 opacity",
+  "words below 80% of the height or wider than 820 px in the line",
+  "white words over white: switch ink",
+  "the reference's street, houses, trees, walkers, lamp, bench or watch arm"
+ ],
+ "palette_measured": {
+  "ours": {
+   "ground": "#05070b",
+   "ink": "#000000",
+   "luminance_mean": 0.325,
+   "saturation_mean": 0.442,
+   "dark_share": 0.6475,
+   "colourfulness": "saturated"
+  },
+  "ours_main": [
+   "#05070b",
+   "#f8f7f2",
+   "#2c3a61",
+   "#0f121e",
+   "#45231a",
+   "#b1723f"
+  ],
+  "reference": {
+   "ground": "#040303",
+   "accent": "#ac6634",
+   "luminance_mean": 0.23,
+   "saturation_mean": 0.274,
+   "dark_share": 0.58
+  },
+  "note": "ground matches (#05070b against #040303). The warm accent is present (#b1723f, 8% of the key frames, against the reference's #ac6634); the tool names night blue #283b67 as accent because snow fills two of five frames. Ours is more saturated and ends bright where the reference ends dark: the script's arc, not a drawing choice."
+ },
+ "key_frames": [
+  {
+   "beat": "coldopen",
+   "film_s": 0.0,
+   "world": "world.set(5510, 28.0, {yaw:3.5, pitch:7})",
+   "still": "frames/still_1.png",
+   "answers_to": "ref/still_2.jpg (the reference's cold open: far stage, upright line)"
+  },
+  {
+   "beat": "snow",
+   "film_s": 5.9,
+   "world": "world.set(37.2, 5.9, {yaw:2, pitch:0, hand:1, flakes:[{slot:0,p:0.06}]})",
+   "still": "frames/still_3.png",
+   "answers_to": "ref/still_8.5.jpg (title over the ordinary start)"
+  },
+  {
+   "beat": "glow",
+   "film_s": 21.6,
+   "world": "world.set(735, 21.6, {yaw:-5, pitch:11})",
+   "still": "frames/still_5.png",
+   "answers_to": "ref/still_26.jpg (night, one light of your own)"
+  },
+  {
+   "beat": "edge",
+   "film_s": 49.3,
+   "world": "world.set(1.4e32, 49.3, {})",
+   "still": "frames/still_7.png",
+   "answers_to": "ref/still_507.jpg (payoff: emptied frame, NEXT row on its punchline)"
+  },
+  {
+   "beat": "flake",
+   "film_s": 59.9,
+   "world": "world.set(37, 59.9, {yaw:2, pitch:4, hand:1, flakes:[{slot:0,p:1},{slot:1,p:-0.05}]})",
+   "still": "frames/still_9.png",
+   "answers_to": "ref/still_533.jpg (the opening scene again)"
+  }
+ ],
+ "other_beats": {
+  "boil": "the snow frame without the hand: tempC 39.8 to 420, pitch 10-12 and yaw about -6 so the melt ring and the first post are in frame. states.jpg, frame 2.",
+  "sun": "the coldopen frame continued: tempC 5,510 to 19,700; stumps burn out and the glow spreads by themselves. states.jpg, frames 5-6.",
+  "invisible": "tempC 19,800 to 290 billion from the same view: bleach climbs from the ground, the ridge is the last dark line, then rings. Ink switches by state.words. states.jpg, frames 7-9.",
+  "soup": "the veil's grain, tempC 290 billion to 1e32; nothing to pose. states.jpg, frame 10.",
+  "flake (51.0-51.6 s)": "the flake frame with release 0 to 1 and the palm down. states.jpg, frames 11-12."
+ }
+}

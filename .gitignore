@@ -1,2 +1,16 @@
 film/input/
 __pycache__/
+
+# video pipeline: reference videos and their comments are other people's work,
+# kept for study only and never committed (sources.json records what they were);
+# working renders and frame dumps are rebuilt on demand
+video-pipeline/runs/*/01-sources/refs/
+video-pipeline/runs/*/05-video/proof/
+video-pipeline/runs/*/05-video/audio/_*.wav
+node_modules/
+# runs whose name starts with an underscore are scratch tests
+video-pipeline/runs/_*/
+# frames taken from reference videos are other people's artwork: kept locally for
+# the agents to look at, never committed
+video-pipeline/runs/*/02-analysis/*/*.jpg
+video-pipeline/runs/*/04-moodboard/ref/

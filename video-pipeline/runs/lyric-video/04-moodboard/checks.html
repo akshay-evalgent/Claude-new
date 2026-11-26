@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Home: supplementary frames</title>
+<!-- Three more finished pictures, for beats that have no key frame. Not key frames:
+     they show the punctuation set as the lyric has it and the window part lit.
+     node video-pipeline/tools/render.js <run>/04-moodboard/checks.html --stills 1,3,5 --out <run>/04-moodboard/checks
+     The drawing is drawing.js, the same file frames.html and the film load. -->
+<link rel="stylesheet" href="../../../styles/stipple-lyric/stipple.css">
+<style>
+  /* tokens from style.json */
+  :root {
+    --paper: #ded0ba; --ink: #0b0100; --accent: #7a1713; --faint: 0.38;
+    --lyric-size: 168px; --lyric-leading: 187px; --lyric-x: 152px; --lyric-y: 256px;
+  }
+</style>
+</head>
+<body>
+<main id="stage">
+
+  <!-- until: an unfinished clause, its comma showing. No red on the sheet. The window still unlit. -->
+  <section class="shot" id="until">
+    <svg viewBox="0 0 1920 1080">
+      <g class="stipple road" data-share="0.33"></g>
+      <g class="stipple steps" data-share="0.42"></g>
+      <g class="stipple dark" data-share="0"></g>
+      <g class="stipple frame"></g>
+    </svg>
+    <p class="lyric">
+      <span class="row"><span class="w lit">Until</span></span>
+      <span class="row"><span class="w lit">one</span> <span class="w">word,</span></span>
+    </p>
+  </section>
+
+  <!-- light: lower-case "the", because it finishes the sentence. The dark has begun to gather: the window lights. -->
+  <section class="shot" id="light">
+    <svg viewBox="0 0 1920 1080">
+      <g class="stipple road" data-share="0.5"></g>
+      <g class="stipple steps" data-share="0.56"></g>
+      <g class="stipple dark" data-share="0.3"></g>
+      <g class="stipple frame"></g>
+    </svg>
+    <p class="lyric">
+      <span class="row"><span class="w lit">the</span> <span class="w lit">light</span></span>
+      <span class="row"><span class="w lit">stays</span> <span class="w">on.</span></span>
+    </p>
+  </section>
+
+  <!-- asking, in the pause after "how": row one said, row two just arrived, faint. -->
+  <section class="shot" id="asking">
+    <svg viewBox="0 0 1920 1080">
+      <g class="stipple road" data-share="0.8"></g>
+      <g class="stipple steps" data-share="0.8"></g>
+      <g class="stipple dark" data-share="0.5"></g>
+      <g class="stipple frame"></g>
+    </svg>
+    <p class="lyric">
+      <span class="row"><span class="w lit">Asking</span> <span class="w lit">is</span> <span class="w lit">how</span></span>
+      <span class="row"><span class="w">I</span> <span class="w">love</span> <span class="w">you.</span></span>
+    </p>
+  </section>
+
+</main>
+
+<script src="../../../styles/stipple-lyric/stipple.js"></script>
+<script src="../../../runtime/film.js"></script>
+<script src="drawing.js"></script>
+<script>
+  /* The drawing is drawing.js, loaded above: the same file the film loads. */
+  document.querySelectorAll('.shot').forEach(draw);
+
+  Film.setup({ width: 1920, height: 1080, fps: 30 });
+  for (const id of ['until', 'light', 'asking']) Film.shot({ id, dur: 2 });
+  Film.ready();
+</script>
+</body>
+</html>

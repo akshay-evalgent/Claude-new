@@ -1,0 +1,73 @@
+{
+  "check": "share",
+  "stage": "script",
+  "round": 2,
+  "score": 7,
+  "pass": true,
+  "summary": "Passes, no must fixes: both round 1 fixes were made (payoff slot 3.48 to 4.27 s by the ruled split; end hold 1.01 to 2.18 s) and the new \"Home.\" reply improves the ending, but the built-in voice closes the sentence on \"how\" at full-stop pitch, so speak line 6 as one utterance with a comma and cut it at the pause.",
+  "findings": [
+    {
+      "criterion": "the sentence",
+      "result": "met",
+      "ours": "script.json share_line, unchanged: \"this is what I mean every time I tell you to text me\". The refrain is unchanged (beats 'ask' 1.45 s, 'again' 4.61 s, 'home' 20.61 s). The revision adds a second thing to send: the last frame is the one-word answer, \"Home.\" (beat 'home', from about 22.8 s), so the video now holds both halves of the exchange and a sender can type either: \"text me when you're home x\", or \"this is why I always ask\".",
+      "reference": "barsat-song 13.4 s and 23.7 s: refrain lines addressed to \"you\"; benchmarks share_triggers 1 (\"sending the song says them to someone\"; 5 of 75 comments tell their own loss or dedicate the song to a person)",
+      "why_it_matters": "the reference is forwarded as \"this is how I feel\" (breakdown section 5). Ours gives the sender the words themselves, and now the reply too. No change asked."
+    },
+    {
+      "criterion": "the peak",
+      "result": "partly",
+      "ours": "beats 'asking' 16.34-17.46 s (\"Asking is how\") and 'love' 18.06-18.81 s (\"I love you.\"), 67% to 77% of the run. Feeling: warmth, the small jolt of being told what a nagging habit meant; still earned by 'fine' (13.26 s, \"I know you're fine.\"). Round 1 fix made, as ruled: the line's slot is 4.27 s (16.22-20.49 s) against 2.65 to 3.19 s for the others, 1.43 times their mean (it was 1.08 times); \"I love you.\" has 0.76 s of voice (was 0.66 s) and then a 1.8 s breath with the line untouched and the road closing. The time is now there. The gap is the join. voice.py speaks each beat alone, and on 03-script/timing/vo.wav the last 0.12 s of \"how\" is at 96 to 108 Hz, the same floor as the full stops (\"fine.\" 109-110, \"you.\" 105-112, \"home.\" 105-115 Hz; my measurement, agreeing with the scriptwriter's 105 Hz). By pitch the voice says \"Asking is how.\" and stops, then \"I love you.\" as a separate sentence. This is the condition I set in round 1 for dropping the split. On screen the line is whole in two rows, so a muted viewer is not affected.",
+      "reference": "barsat-song 168.0-182.9 s: the two lines addressed straight to the other person run about 7.4 s each, twice the usual 3.5 s slot, each sung through as one line (patterns.md Structure). The reference gives no fixed peak position (pacing.payoff_at_share_of_run is null) and no evidence on a spoken or synthetic voice.",
+      "why_it_matters": "the feeling is in the sentence, not in either half: \"asking\" is what turns \"I love you\" from a stock phrase into this speaker's. If the voice ends the thought on \"how\", a listener hears a fragment and then a bare declaration from a synthetic voice, which is the version a sender is least likely to put their name to. The reference's closing lines are long but unbroken."
+    },
+    {
+      "criterion": "a person to send it to",
+      "result": "met",
+      "ours": "unchanged in substance: one ritual between two particular people (parent and grown child, partners, the friend who walks home late). Line 3 changed from \"One word will do.\" to \"Until one word,\" (7.80 s), completed by \"the light stays on.\" (10.44 s); it still names the one-word text and someone waiting up, and the reply \"Home.\" in the last frame puts the second person into the video. Works from the asker and about the asker.",
+      "reference": "barsat-song: subject is being left, addressed to \"you\"; breakdown section 5 guesses the recipient is \"the person they miss, or a friend who knows the situation\"; no comment says who they sent it to.",
+      "why_it_matters": "the reference's recipient has to be inferred from a broad feeling; ours is the person on the other end of the exchange it shows."
+    },
+    {
+      "criterion": "stands alone",
+      "result": "met",
+      "ours": "seven lines, 32 words, no name, place, channel, earlier video or news story. The whole first line is readable in faint ink from about 0.5 s; every line is shown before it is spoken (carries_through.sync_rule). \"Until one word,\" (7.80-9.04 s) is compressed but is read straight after two statements of the refrain and is finished 1.4 s later. One note for the same reason as the peak: spoken alone, \"word,\" also ends at 99 Hz, a full-stop fall, so by ear it is \"Until one word.\" and the comma on screen has to carry the join. A viewer who misses that \"Home.\" is the awaited word still sees a complete last frame; nothing depends on getting it.",
+      "reference": "barsat-song: \"one plain feeling that needs no context\" (benchmarks share_triggers 2; 30 of 75 comments carry a crying, sad or broken-heart emoji). Its Do not copy: about 160 sung words and none shown (patterns.md Holding attention).",
+      "why_it_matters": "a forwarded video arrives with one line of message or none and is often opened muted; ours needs neither sound nor explanation, the reference needs sound."
+    },
+    {
+      "criterion": "safe to pass on",
+      "result": "met",
+      "ours": "fiction, declared in script.json facts (both \"invented\"); no real person, no claim, no suffering used for effect. The new ending is the lyric's own word (\"Home.\", beat 'home'), with no logo, ask or call to action on screen. The new comment_prompt is to be posted as a comment, not shown in the video, and its notes forbid inventing a memory for the creator. Two notes carried from round 1, still without a fix here: the synthetic voice saying \"I love you.\" (0.76 s) can only be judged from the video; and \"I know you're fine.\" (13.26 s) is the one line a sender who asks out of real fear for someone's safety might not sign.",
+      "reference": "barsat-song: no end card and no call to action (182.9-185.33 s); the uploader's \"Subscribe to channel\" comment has 0 likes (patterns.md Comments, Do not copy). No reference evidence on a synthetic voice or on that phrase.",
+      "why_it_matters": "nothing in the script has to be defended or explained by the sender, which is the condition for sending something tender to a parent or a child."
+    },
+    {
+      "criterion": "worth keeping",
+      "result": "met",
+      "ours": "Skipped, not applicable: a lyric, not a lesson or a list. Recorded as \"met\" only because the field takes three values; it has no weight in the score.",
+      "reference": "none: barsat-song is a song and teaches nothing either. No comparison possible.",
+      "why_it_matters": "the criterion applies to videos that teach or list."
+    },
+    {
+      "criterion": "the last frame",
+      "result": "met",
+      "ours": "beat 'home', 20.61-22.20 s, run ends 24.375 s. Round 1 fix made: the picture holds 2.18 s after the last word (was 1.01 s), bed sounding, dots still gathering. New since round 1: about 0.6 s after the voice the red word resets from \"home\" to \"Home.\", the reply, and holds about 1.6 s over the finished road and the lit window. That is a second, smaller lift (relief: they got home) placed after the peak at 77%, so the viewer is not left on a fading refrain. Two soft spots: the reset is a capital letter and a full stop changing in place with nothing marking the moment, and the frame that carries the meaning is on screen about 1.6 s.",
+      "reference": "barsat-song 182.9-185.33 s: the card stays 2.4 to 3.0 s past the last sung word, unchanged from frame 0 and silent for the last 1.72 s (patterns.md Structure, Do not copy: \"stopping without an ending\"). Ours has an ending where the reference has none; its hold after the last word is a little shorter than the reference's.",
+      "why_it_matters": "people share at the end. The last thing on screen is now the answer to the first thing said, which is the picture a sender would want the recipient to end on. It only works for viewers who see the word change."
+    }
+  ],
+  "fixes": [
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Keep the two beats 'asking' and 'love', their rows and their times, but make the voice hold the sentence open. Speak line 6 once, as one utterance with a comma: \"Asking is how, I love you.\" at pace 0.8 (the comma is for the voice only; the rows on screen stay \"Asking is how\" / \"I love you.\"). In 7 of 7 trial runs with the built-in voice, \"how\" then ends on a rise at about 180 to 230 Hz, not the 96 to 108 Hz fall it has now, and the voice leaves 0.04 to 0.14 s of true silence after it. Cut in that silence, use the first part as beat 'asking' and the second as beat 'love', and put the existing 0.6 s pause between them, so timing.json keeps one vo_start and vo_end per beat. voice.py speaks every beat alone, so this needs either a small option in voice.py (speak two neighbouring beats as one utterance and split at the inner silence) or one hand splice of vo.wav with timing.json corrected to match. Accept it when the last 0.12 s of \"how\" is above about 150 Hz. If neither can be done, keep the split as it is and do not fall back to one beat: one beat with a 1.8 s pause gives the line about 3.4 s, which undoes round 1's fix, and the two rows on screen still show one sentence. The same option would mend \"Until one word,\" (ends at 99 Hz), which is the retention judge's line."
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Make the reset to \"Home.\" visible and give it a little longer. In beat 'home' motion, add: at the reset the red word gives one small pulse, the same pulse it gives when \"home\" is spoken in beats 'ask' and 'again', so the change of letter and the full stop are seen to happen. Run voice.py with --tail 2.6 in place of 2.2, so \"Home.\" holds about 2.0 s and the picture holds 2.6 s after the last word, inside the reference's 2.4 to 3.0 s; the run becomes about 24.8 s. Bed and gathering dots continue to the last frame as now. No bubble, no extra word, no second colour."
+    }
+  ],
+  "blocked_on": [],
+  "evidence": "One reference. It has public numbers (1,938,059 views, 5,421 likes, 89 comments, a 700-follower channel, as of 2026-11-25) but one video gives no result evidence: these are what the reference does, not proof of what performs. The reference is NOT a lyric video: it is one still title card held for 185.33 s under a full song, with no lyric on screen at any time, no motion and no cut. Every value about how lyrics are set, timed, moved or coloured is therefore null, and the brief governs those. Tool figures are given as measured; ranged values are the single reference's figure widened about 15% either way; length follows the brief (20 to 30 s), not the reference (185.33 s). Sung-word figures rest on a low-trust transcript of singing over a band. Beyond that: times are from 03-script/timing/timing.json, measured from the spoken script (voice.py --pace 0.8 --tail 2.2), not estimated. Pitch figures are my own autocorrelation estimates on 03-script/timing/vo.wav and on seven trial syntheses of \"Asking is how, I love you.\" with the same voice and pace; they measure pitch, not how the line sounds, and I cannot hear it. The built-in voice varies from run to run, so the trial result has to be re-measured on the track that is used. Share counts are not published for the reference, so its share triggers are the analyst's reading of 75 comments. The reference is a sung song and ours is a synthetic spoken voice; nothing here says the voice carries the feeling. That people already say this phrase to each other, and reply with one word, is my own general knowledge, not something in the run's data. This verdict says the script does what the reference's song does to be passed on; it does not say the video will be shared."
+}

@@ -1,0 +1,83 @@
+{
+  "check": "retention",
+  "stage": "script",
+  "round": 1,
+  "score": 6,
+  "pass": false,
+  "summary": "The turn, the payoff and the ending are sound, but from 3.0 s to 11.2 s (35% of the run) nothing is left unanswered in the words or the picture; give the road its destination from the first frame and make line 3 run on into line 4.",
+  "findings": [
+    {
+      "criterion": "every beat earns its place",
+      "result": "partly",
+      "ours": "Beat 'again' (4.61 to 7.85 s, \"Text me when you're home.\" a second time) adds no words; it is kept because it turns one request into a habit and the brief asks for a refrain stated and repeated. Beat 'word' (7.85 to 11.09 s, \"One word will do.\") is the one that could go: the turn (\"I know you're fine.\") and the payoff (\"Asking is how I love you.\") work unchanged without it, and it is a closed sentence that leaves nothing pending. Together these two beats are 6.5 s, 27% of the run, in which the viewer learns only that the request is a small one.",
+      "reference": "barsat-song 13.4 to 16.5 s and 16.8 to 20.2 s: the first line is repeated at once, as ours is. Its third line (20.2 to 22.8 s) is an unfinished \"when ... comes\" clause that the fourth line (23.7 s, \"you will miss me\") completes, so the line after the repeat pulls forward; ours rests. The reference's line 3 wording is from a low-trust transcript.",
+      "why_it_matters": "The first new line after a verbatim repeat is where a viewer decides whether anything is going to happen. Ours is the most deletable line in the lyric."
+    },
+    {
+      "criterion": "an open question at every moment",
+      "result": "missed",
+      "ours": "3.02 s (end of the first line) to 11.25 s (\"The light stays on.\", when the window first appears): 8.2 s, 35% of the run, with nothing pending. The red word \"home\" in the first frame is explained by the first line. The script's stated question, \"Why does the speaker keep asking?\", is not raised by anything said or shown until \"I know you're fine.\" at 14.42 s (61%): before that the viewer already has the ordinary answer (they worry, they care), and beats 'again', 'word' and 'light' all confirm it. In the picture the road grows from 1.33 s but toward nothing: the window it is heading for does not exist until 11.2 s. From 14.4 s to the end the script holds well: \"then why ask?\" is open until 17.6 s, and the road stopped one stretch short of the window is open until the last word at about 22.6 s.",
+      "reference": "barsat-song 13.4 s: the first sung line is a plea whose outcome is unknown (\"does the person stay?\"), held to about 73 to 77 s, 0.40 of its run (tentative, per the breakdown). 20.2 to 23.7 s: line 3 is an unfinished clause completed by line 4. The reference also has a full song to carry the wait; ours is a spoken voice over a bed, so the words and the drawing have to do that work.",
+      "why_it_matters": "A third of the run, starting right after the opening, gives a viewer who stayed nothing to wait for. The piece's real question opens at 61%; a viewer has to get there first."
+    },
+    {
+      "criterion": "the middle",
+      "result": "met",
+      "ours": "Beat 'fine' (\"I know you're fine.\", voice 14.42 to 15.48 s, 61% to 65% of the run) is a real turn: it removes worry as the reason for asking, which changes how the first two lines read and opens \"then why ask?\". It falls late in the 40% to 70% window: from 40% to 61% (9.5 to 14.4 s) the viewer gets one line, \"The light stays on.\", and the window appearing.",
+      "reference": "barsat-song 69.3 to 89.7 s (0.37 to 0.48 of its run): the turn is a block of new verse lines in which the opening question appears to be answered; the refrain returns at 0.49 to 0.58. Ours turns later than that but inside the stretch where the reference does its new work.",
+      "why_it_matters": "The turn is the line that makes the payoff more than the answer the viewer expected. It should not move later than it is."
+    },
+    {
+      "criterion": "pace",
+      "result": "partly",
+      "ours": "Line slots are steady at 3.15 to 3.48 s and there is no cut, both as the reference. 33 words in 23.79 s is 83 words a minute against a derived budget of 64 to 72: one word over, not a concern. The gap is in the breaths. Measured on vo.wav, the voice is audible for 0.98 to 1.65 s of each slot and the six silences between lines are 1.74, 1.69, 1.93, 2.13, 2.18 and 2.08 s. The two longest sit at 12.3 to 14.5 s and 15.5 to 17.6 s, in the middle of the run, because the lines there are the shortest and pause_after_s was raised to keep the slot. Between 9.5 s and 17.6 s the voice runs for about 2.1 s of 8.1 s. Each line is also readable in full, faint, the moment its slot starts, so its content is taken in early and the rest of the slot is dots landing. On keeping voice and words in step: the script's sync_rule says to take word times from transcribe.py. I ran it on vo.wav: it places the first word of lines 2 to 7 at 4.14, 7.44, 10.56, 14.17, 17.39 and 20.39 s, while timing.json has the voice starting at 4.73, 7.97, 11.21, 14.42, 17.58 and 21.06 s (confirmed by the audible signal). Followed as written, the first word of six of the seven lines would light 0.2 to 0.7 s before it is spoken, and in all six cases before its own line's slot starts (slot starts 4.61, 7.85, 11.09, 14.30, 17.46 and 20.94 s), so the word would never be seen faint. timing.json's caption groups also split the refrain as \"Text me when / you're home.\" where the script's rows are \"Text me\" / \"when you're home\".",
+      "reference": "barsat-song lyric_lines: line slot 3.0 to 4.1 s (ours inside it); voiced part of slot 2.3 to 3.7 s (ours 1.0 to 1.7 s, under half); longest gap between lines 1.2 s (all six of ours exceed it, by 0.5 to 1.0 s). The benchmarks' notes expect a spoken line to be shorter than its slot and leave the fill to the producer, so the gaps are a known trade and not a miss. For lighting words in time with the voice the reference gives nothing (lyrics_on_screen.caption_lead_or_lag_s is null), so that part is held to the brief only and cannot be a must.",
+      "why_it_matters": "A two-second rest after a line that leaves nothing pending is a place to leave, and the longest rests are where most viewers go. A word that lights before it is heard breaks the one thing a lyric video promises."
+    },
+    {
+      "criterion": "easy to follow",
+      "result": "met",
+      "ours": "Seven lines of 4 to 6 words, each one idea and one complete sentence; no name, number or term that needs introducing; every line addresses \"you\". The two-row breaks read as phrases (\"I know\" / \"you're fine.\", \"Asking is how\" / \"I love you.\"). One line at a time in one fixed place, shown whole before it is spoken, so a muted viewer can follow.",
+      "reference": "barsat-song 13.4 to 107.5 s: lines of 3 to 6 words, most often 4 (ours 4 to 6). The reference shows no lyric on screen, so there is nothing to compare the setting with; the brief governs.",
+      "why_it_matters": "No line needs a second hearing, so nothing here costs a viewer."
+    },
+    {
+      "criterion": "the payoff",
+      "result": "met",
+      "ours": "Beat 'asking' (\"Asking is how I love you.\", voice 17.58 to 19.06 s, 74% to 80% of the run) answers the script's question in full and is the longest line. In words it is told; what is shown at that moment is only the window's surround thickening. The showing comes one beat later, when the road reaches the window on the last \"home\" (about 22.2 to 22.6 s), which is a sound split: the answer in words first, the answer in the picture last.",
+      "reference": "No firm reference: benchmarks pacing.payoff_at_share_of_run is null. Tentatively barsat-song answers its question at about 0.40 and keeps returning to the refrain afterwards; its last new lines, longer and addressed straight to the other person, are at 168.0 to 182.9 s (0.91 to 0.99). Ours puts its long direct line at 0.74 to 0.80 and the refrain after it.",
+      "why_it_matters": "The payoff works only because of the turn before it. Without \"I know you're fine.\" it would be the answer the viewer assumed at 3 s."
+    },
+    {
+      "criterion": "the ending",
+      "result": "partly",
+      "ours": "The run continues 4.75 s past the end of the payoff line (19.04 to 23.79 s, 20% of the run). The last 2.7 s earn it: the refrain returns with a changed meaning, the last road dot reaches the window on \"home\", the word turns red, and the picture ends 1.0 s after the last word with the bed still sounding. The first 2.1 s do not (19.04 to 21.12 s): the viewer has the answer, no word is spoken, the script holds the road still, and the only change is the window's dots thickening slowly.",
+      "reference": "barsat-song 182.9 to 185.33 s: 2.4 to 3.0 s on an unchanged card after the last word, the last 1.72 s silent (a Do not copy). Ours is 1.0 s, not silent, with the picture finishing. On the gap before the last line: reference longest gap between lines 1.2 s; ours here 2.08 s.",
+      "why_it_matters": "Two seconds with the answer given and nothing moving toward the end, at 80% to 89% of the run, is the most expensive place for a viewer to leave."
+    }
+  ],
+  "fixes": [
+    {
+      "stage": "script",
+      "priority": "must",
+      "change": "Keep something pending from the first frame to the turn. Two changes, both needed. (1) Picture: put the road's destination on the sheet from beat 'title'. At the far right, where the window will be, a small square marked by a few sparse dots, unlit, present in frame 0. In beat 'light' the window no longer appears; on the word \"light\" its surround thickens until the square reads as lit. The road then visibly has somewhere to go from 1.3 s, and \"does it get there\" stays open until the last word. (2) Words: replace line 3, \"One word will do.\", with an unfinished clause that line 4 completes: \"Until you do,\" followed by \"the light stays on.\" The lyric becomes: Text me when you're home. / Text me when you're home. / Until you do, / the light stays on. / I know you're fine. / Asking is how I love you. / Text me when you're home. That is 32 words, inside the 24 to 32 budget. Set pause_after_s on the new line 3 to about 1.4 (the wait is now for the end of a sentence, and a shorter breath keeps it from sounding like a stall), and rewrite its motion as three road dots for three words. Any other line 3 that is grammatically unfinished and completed by line 4 also meets this. Re-run voice.py and check that the run stays between 20 and 30 s (about 23 s expected) and that \"I know you're fine.\" still starts between 40% and 70% of the run."
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Shorten the two rests that leave nothing pending. Set pause_after_s on beat 'light' to 1.6 (from 2.05) and on beat 'asking' to 1.5 (from 2.0). Leave beat 'fine' at 2.1: the question it opens covers that rest. Slots stay at about 3.0 s or more, inside the reference's 3.0 to 4.1 s."
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "In beat 'asking', do not hold the road still through the whole breath. Keep it still while the six words light; then, from about 0.6 s after \"you\", let the first dots of the last stretch land, so the gap to the window is seen closing before the refrain starts. The final dot still lands on \"home\" in beat 'home'."
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Rewrite carries_through.sync_rule so the producer cannot light words early: \"Each line's first word lights at that beat's vo_start in timing.json, and its last word is fully lit by vo_end. Word times from transcribe.py are used only for the words in between, and any word time outside its beat's vo_start to vo_end is moved inside it. The lyric rows are the only words on screen: the caption groups in timing.json are not drawn.\" Reason: on this voice track transcribe.py puts the first word of lines 2 to 7 between 0.19 and 0.67 s before the voice actually starts."
+    }
+  ],
+  "blocked_on": [],
+  "evidence": "One reference. It has public numbers (1,938,059 views, 5,421 likes, 89 comments, a 700-follower channel, as of 2026-11-25) but one video gives no result evidence: these are what the reference does, not proof of what performs. The reference is NOT a lyric video: it is one still title card held for 185.33 s under a full song, with no lyric on screen at any time, no motion and no cut. Every value about how lyrics are set, timed, moved or coloured is therefore null, and the brief governs those. Tool figures are given as measured; ranged values are the single reference's figure widened about 15% either way; length follows the brief (20 to 30 s), not the reference (185.33 s). Sung-word figures rest on a low-trust transcript of singing over a band. Beyond benchmarks.json: beat and caption times are from 03-script/timing/timing.json (made by voice.py, so measured, not estimated from word counts). Pace was held to the line-slot figures in benchmarks lyric_lines, not to pacing.words_per_minute, as its notes direct. I also measured the audible stretches of 03-script/timing/vo.wav directly (voiced 0.98 to 1.65 s a line, silences 1.69 to 2.18 s) and ran transcribe.py on it to test the script's sync rule; that transcript was not saved to the run folder. All of this is an estimate of where a viewer might leave, made against one reference that is not a lyric video; it is not a prediction of results."
+}

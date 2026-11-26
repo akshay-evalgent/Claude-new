@@ -1,0 +1,8 @@
+{
+  "name": "video-pipeline-vendor",
+  "private": true,
+  "description": "Browser libraries the compositions load from disk. Installed by tools/setup.sh.",
+  "dependencies": {
+    "three": "0.160.0"
+  }
+}

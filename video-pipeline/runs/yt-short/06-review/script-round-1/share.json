@@ -1,0 +1,73 @@
+{
+  "check": "share",
+  "stage": "script",
+  "round": 1,
+  "score": 7,
+  "pass": true,
+  "summary": "Passes: there is a sentence to forward and an ending built like the reference's, but the line that carries it lands on the same frame as the return to the snow, so give the return about a second of picture before any words.",
+  "findings": [
+    {
+      "criterion": "the sentence",
+      "result": "met",
+      "ours": "A viewer could type \"apparently you're glowing right now and nobody can see it\", which is script.json's share_line almost word for word. It comes from beat 'flake': 51.6 s \"At thirty-seven degrees, you glow too.\" and 54.7 s \"In infrared. No eye can see it.\" Two spare sentences exist earlier: 20.9 s \"Red is the coolest glow there is.\" and the cold open, 0.0 s \"Twenty-five seconds ago, this was snow.\" The film's wording is one step less direct than the share line: it says \"at thirty-seven degrees\" where the sender will say \"right now\".",
+      "reference": "what-if-time-sped-up 506.9 s: the final line that commenters repeat (ranks 3 and 10; 2,200 likes on rank 3), and rank 1 (4,700 likes), where viewers turn the film into a statement about their own lives. The reference's sentence is a feeling (\"this is how fast it goes\", a guess in patterns.md Sharing 4); ours is a fact about the viewer's body.",
+      "why_it_matters": "A fact about the viewer's own body is a sentence people do send, and ours is stated on screen and sourced. It is a \"did you know\", though, not a \"this is us\", so it will be sent with less force than the reference's feeling was."
+    },
+    {
+      "criterion": "the peak",
+      "result": "partly",
+      "ours": "Two moments compete. The designed payoff, beat 'edge' 47.8-51.0 s: the figure stops on \"1.4 x 10^32 K ?\", NEXT reads \"NOBODY KNOWS\", and 48.2 s \"Here, physics runs out of answers.\" sits over \"flat, even, quiet white, the plainest picture in the film\". The feeling is awe of an abstract kind; nothing happens to you. The moment that gets forwarded is the turn, 51.0-54.4 s: the white comes apart into snowfall and \"At thirty-seven degrees, you glow too.\" It is well earned (17.8 s \"That red light is you.\", 35.2 s \"Most of your light is invisible.\"), but the white-to-snow change is given 0.6 s (51.0-51.6) and the line starts on the frame the scene and the counter land. The close then runs three lines with gaps of 0.6, 0.3 and 0.2 s, the tightest text in the film.",
+      "reference": "what-if-time-sped-up: 7.0 s with no line, flash at 505.5 s, line at 506.9 s; then the release gets room: \"Wait.\" alone at 521.9 s, a dot at 524.5 s, the street fading up over 528.9-531.0 s before its line. patterns.md Holding attention 5 (the picture leads the words) and Look, At 60 seconds (\"the return needs 4 to 5 s to be read\"). Ours matches the held gap (3.1 s, scaled band 2.5-4.0) and the payoff position (0.80, band 0.80-0.87).",
+      "why_it_matters": "The return after the bleakest moment is one of the reference's two evidenced share triggers (rank 43, 548 likes). Ours has the better picture idea, the white of 10^32 K turning out to be snow, and spends six tenths of a second on it while asking the viewer to read. A release that is read, not seen, is weaker than the reference's."
+    },
+    {
+      "criterion": "a person to send it to",
+      "result": "partly",
+      "ours": "No relationship or shared situation is described anywhere in the film; \"you\" stand alone in a field. The only recipient the script creates is whoever the sender would tell \"you glow\" (51.6 s), or a friend who likes science facts. The closing counter rows are about the snow (\"HOTTER THAN THE SNOW\") and the viewer (\"STAY HERE\"), not about anyone else.",
+      "reference": "what-if-time-sped-up: recipients came from a reading the film never states (rank 1, \"what your thirties are like\"; rank 86, time with family) and from a fandom (32 of the top 100 comments, 48% of likes), which patterns.md Sharing 5 calls a property of the topic, not of the craft. Its 87.4 s line brings other people in (\"everyone you ever met\") and was quoted (rank 39).",
+      "why_it_matters": "With no fandom attached to this topic, the film has to supply its own reason to pick a person. One row saying that everyone the viewer knows is at the same 37 degrees, and so glows the same way, would do it at no cost in time."
+    },
+    {
+      "criterion": "stands alone",
+      "result": "met",
+      "ours": "A stranger needs nothing from outside the film. The cold open states its own premise (0.0 s \"Twenty-five seconds ago, this was snow.\" over 5,510 °C against a clock at 25.0 s), the title follows at 3.1 s, the pretend is declared on screen (31.6 s \"Tungsten boils here. Pretend you don't.\" and the row \"REAL NUMBERS. PRETEND BODY.\"), and the last line's snowflake is planted inside the film at 5.6 s. No voice, so it works muted.",
+      "reference": "what-if-time-sped-up 0.13-10.2 s: cold open, then the title as a question; hook.works_muted true. The reference also leaned on an outside in-joke for much of its sharing; ours has none to lean on and none to miss.",
+      "why_it_matters": "A forwarded Short arrives with no explanation; this one explains itself in its first six seconds."
+    },
+    {
+      "criterion": "safe to pass on",
+      "result": "met",
+      "ours": "Nothing a sender would have to defend: every number is sourced in script.json facts; the one impossible thing is flagged on screen from 10.2 s (\"PRETEND BODY\"); the limit is stated as unknown (47.8 s \"NOBODY KNOWS\"); \"SOURCES IN THE DESCRIPTION\" sits on the closing picture from 51.6 s; the body is never shown; there is no call to action and no end card. One soft spot: 58.0 s \"Ask the snowflake.\" reads as if the snowflake detects the infrared glow, and the post description has to correct it (\"The snowflake melts because your skin is warm, not because it can see infrared\"). It is defensible as a figure of speech and is disclosed, so no fix is required.",
+      "reference": "what-if-time-sped-up: nothing on screen names sources or says which numbers are real (patterns.md Sharing, Do not copy); a continuity slip drew a 396-like correction at 3:28 (Comments, Do not copy). Ours does what the playbook says to do instead.",
+      "why_it_matters": "People do not forward science they might be corrected on. Ours is safer than the reference here; the snowflake line is the one place a correction could come from."
+    },
+    {
+      "criterion": "worth keeping",
+      "result": "met",
+      "ours": "Skipped: this is a story told as a scenario, not a lesson or a list. It carries a few keepable facts (20.9 s \"Red is the coolest glow there is.\", 42.3 s \"Humans have made this. Protons melt.\") but nothing a viewer would save to use later.",
+      "reference": "No reference to compare against: what-if-time-sped-up is a story too, and its top 100 comments show no evidence of saving.",
+      "why_it_matters": "Not a criterion this film should be held to."
+    },
+    {
+      "criterion": "the last frame",
+      "result": "met",
+      "ours": "59.9 s: your palm with a second flake touching it, \"Ask the snowflake.\" (on from 58.0 s, 1.9 s), the figure held at 37.0 °C, \"HOTTER THAN THE SNOW\", NEXT \"STAY HERE\". Ends in motion, no card. The planted object returns as the last thing seen and the feeling at the cut is the release, not the white before it. On Shorts the loop restarts on scorched ground and \"Twenty-five seconds ago, this was snow.\", which answers the last frame.",
+      "reference": "what-if-time-sped-up 527.7-537.0 s: the last light is the street light planted at 25.0 s; the file ends in motion as the clock speeds up again (end hold 0.0 s); commenters pointed at the loop (rank 34).",
+      "why_it_matters": "People share at the end, and this end leaves them on the personal fact and a quotable three-word line, the way the reference leaves them on the street."
+    }
+  ],
+  "fixes": [
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Beat 'flake': let the return be seen before it is read. Stretch the white-to-snow change from 51.0-51.6 s to 51.0-52.2 s with no story line on it (the figure can still land on 37.0 °C at 51.6 s). Replace the 51.6 s line \"At thirty-seven degrees, you glow too.\" (6 words, 2.8 s) with \"You are still glowing.\" (4 words, 2.2 s by the script's own reading rule) at 52.2 s, off at 54.4 s as now. The counter already says 37.0 °C, so the line need not. Leave 54.7 s and 58.0 s as they are. Words on screen fall from 103 to 101; the wording now matches share_line."
+    },
+    {
+      "stage": "script",
+      "priority": "should",
+      "change": "Bring other people into the last frame without adding a line: in counters.temperature_block.comparison_row, change the 51.6-59.9 s state from \"HOTTER THAN THE SNOW\" to \"AS WARM AS EVERYONE YOU KNOW\". It is true (37 °C is the normal body temperature, research.md row 1), it is the comparison row's job, and with \"You are still glowing.\" under it the viewer can work out who else glows. The melting snowflake still says the snow part in the picture."
+    }
+  ],
+  "blocked_on": [],
+  "evidence": "One reference with public numbers (2,166,790 views, 23,825 likes, about 2,392 comments, about 24,000 subscribers, as of 2026-11-25): these are what the reference does, not proof of what performs. No result evidence. Ranged values are the reference's single figure widened about 15% either way; single values are limits or facts as measured. Format and length follow the brief (vertical 1080x1920, no longer than 60 s), not the reference (horizontal 1920x1080, 537.2 s). The reference has no voice, so spoken-word values are null and the word budget is the analyst's count of on-screen text. Tool figures are as measured over the full 537.2 s; what they come to in a 60 s film is in notes.scaled_to_60s and is arithmetic, not measurement. Beyond it: patterns.md and the reference breakdown (comment themes are from the top 100 of about 2,392 comments), and script.json and script.md read in full. There is no timing.json by design (no voice), so all times are the script's own clock. Nothing is rendered yet, so how the pictures read is judged from their written descriptions. This verdict says the script does what the one reference does to be passed on; it does not say the Short will be shared."
+}

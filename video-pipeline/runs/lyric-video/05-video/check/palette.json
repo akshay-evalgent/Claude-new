@@ -1,0 +1,43 @@
+{
+ "inputs": [
+  "video-pipeline/runs/lyric-video/05-video/video.mp4"
+ ],
+ "colours": [
+  {
+   "hex": "#d5c4a8",
+   "share": 0.3172
+  },
+  {
+   "hex": "#dacbb4",
+   "share": 0.296
+  },
+  {
+   "hex": "#ded0bd",
+   "share": 0.2177
+  },
+  {
+   "hex": "#cfba9a",
+   "share": 0.1346
+  },
+  {
+   "hex": "#1a0b07",
+   "share": 0.0245
+  },
+  {
+   "hex": "#7c6e61",
+   "share": 0.01
+  }
+ ],
+ "ground": "#d5c4a8",
+ "ink": "#090000",
+ "accent": {
+  "hex": "#771813",
+  "share": 0.00142,
+  "hue_deg": 3.2,
+  "single_hue": true
+ },
+ "luminance_mean": 0.767,
+ "saturation_mean": 0.209,
+ "dark_share": 0.0245,
+ "colourfulness": "muted"
+}

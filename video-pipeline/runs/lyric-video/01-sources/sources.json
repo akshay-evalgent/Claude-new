@@ -1,0 +1,30 @@
+{
+ "references": [
+  {
+   "id": "barsat-song",
+   "title": "Barsat song from nitesh YouTuber",
+   "origin": "link supplied by the user; the video file was downloaded and uploaded by the user after YouTube refused the download to this machine",
+   "url": "https://www.youtube.com/watch?v=Lp1KuI4E1xk",
+   "path": "01-sources/refs/barsat-song/video.mp4",
+   "status": "ready",
+   "why": "the user's reference for how a lyric video works: how the words are set, timed, moved and coloured, and what sits behind them",
+   "channel": "nitesh vlogar (@nite.shkumar5902)",
+   "channel_followers": 700,
+   "upload_date": "2026-10-22",
+   "duration_seconds": 185.48,
+   "stats": {
+    "views": 1938059,
+    "likes": 5421,
+    "comments": 89,
+    "shares": null,
+    "as_of": "2026-11-25"
+   },
+   "has_comments": true,
+   "notes": "Video file supplied by the user on 2026-11-25. Public numbers and comments were read from the platform by the scout."
+  }
+ ],
+ "assets": [],
+ "missing": [
+  "Share count: YouTube does not publish it."
+ ]
+}

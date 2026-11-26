@@ -1,0 +1,224 @@
+{
+ "references": [
+  "video-pipeline/runs/lyric-video/02-analysis/barsat-song/measure.json"
+ ],
+ "ours": "video-pipeline/runs/lyric-video/05-video/check/measure.json",
+ "counts": {
+  "PASS": 23,
+  "WARN": 2,
+  "FAIL": 5,
+  "SKIP": 0
+ },
+ "rows": [
+  {
+   "check": "orientation",
+   "status": "PASS",
+   "ours": "horizontal",
+   "reference": "horizontal",
+   "detail": ""
+  },
+  {
+   "check": "aspect ratio",
+   "status": "PASS",
+   "ours": "1.7778",
+   "reference": "1.7778",
+   "detail": ""
+  },
+  {
+   "check": "resolution",
+   "status": "PASS",
+   "ours": "1920x1080",
+   "reference": "640x360",
+   "detail": ""
+  },
+  {
+   "check": "frame rate",
+   "status": "PASS",
+   "ours": "30 fps",
+   "reference": "30 fps",
+   "detail": ""
+  },
+  {
+   "check": "duration",
+   "status": "PASS",
+   "ours": "24.767 s",
+   "reference": "20-30 s asked for",
+   "detail": "the references run 185.333 s"
+  },
+  {
+   "check": "mean shot length",
+   "status": "FAIL",
+   "ours": "24.77 s",
+   "reference": "185.33 s",
+   "detail": "below the target 129.73 to 240.93 s"
+  },
+  {
+   "check": "cuts per 10 s",
+   "status": "PASS",
+   "ours": "0",
+   "reference": "0",
+   "detail": ""
+  },
+  {
+   "check": "longest shot",
+   "status": "FAIL",
+   "ours": "24.77 s",
+   "reference": "185.33 s",
+   "detail": "below the target 120.46 to 250.20 s"
+  },
+  {
+   "check": "final shot share",
+   "status": "PASS",
+   "ours": "1",
+   "reference": "1",
+   "detail": ""
+  },
+  {
+   "check": "motion (mean frame change)",
+   "status": "PASS",
+   "ours": "0.06",
+   "reference": "0.01",
+   "detail": ""
+  },
+  {
+   "check": "motion in first 3 s",
+   "status": "PASS",
+   "ours": "0.05",
+   "reference": "0",
+   "detail": ""
+  },
+  {
+   "check": "still picture share",
+   "status": "PASS",
+   "ours": "0%",
+   "reference": "100%",
+   "detail": ""
+  },
+  {
+   "check": "longest frozen stretch",
+   "status": "PASS",
+   "ours": "0 s",
+   "reference": "7 s",
+   "detail": ""
+  },
+  {
+   "check": "end hold",
+   "status": "PASS",
+   "ours": "0.3 s",
+   "reference": "3.33 s",
+   "detail": ""
+  },
+  {
+   "check": "empty frames",
+   "status": "PASS",
+   "ours": "0 runs",
+   "reference": "0 runs",
+   "detail": ""
+  },
+  {
+   "check": "sound",
+   "status": "PASS",
+   "ours": "present",
+   "reference": "present",
+   "detail": ""
+  },
+  {
+   "check": "loudness",
+   "status": "WARN",
+   "ours": "-15.6 LUFS",
+   "reference": "-12.8 LUFS",
+   "detail": "below the target -14.30 to -11.30 LUFS"
+  },
+  {
+   "check": "true peak",
+   "status": "PASS",
+   "ours": "-1.4 dBTP",
+   "reference": "-2.3 dBTP",
+   "detail": ""
+  },
+  {
+   "check": "audible share",
+   "status": "PASS",
+   "ours": "100%",
+   "reference": "99%",
+   "detail": ""
+  },
+  {
+   "check": "sound events per second",
+   "status": "WARN",
+   "ours": "1.25",
+   "reference": "3.45",
+   "detail": "below the target 1.87 to 5.03. a voice produces 1.5-3 a second; far fewer usually means no voice-over"
+  },
+  {
+   "check": "first word",
+   "status": "FAIL",
+   "ours": "1.33 s",
+   "reference": "13.36 s",
+   "detail": "below the target 12.96 to 13.76 s"
+  },
+  {
+   "check": "words a minute, whole run",
+   "status": "FAIL",
+   "ours": "78",
+   "reference": "39",
+   "detail": "above the target 33.15 to 44.85"
+  },
+  {
+   "check": "words a minute, while speaking",
+   "status": "FAIL",
+   "ours": "197",
+   "reference": "96",
+   "detail": "above the target 84.48 to 107.52"
+  },
+  {
+   "check": "voice running, share of run",
+   "status": "PASS",
+   "ours": "0.394",
+   "reference": "0.412",
+   "detail": ""
+  },
+  {
+   "check": "ground colour",
+   "status": "PASS",
+   "ours": "#d5c4a8",
+   "reference": "#ded0ba",
+   "detail": "distance 23 of 441"
+  },
+  {
+   "check": "brightness",
+   "status": "PASS",
+   "ours": "0.767",
+   "reference": "0.758",
+   "detail": ""
+  },
+  {
+   "check": "saturation",
+   "status": "PASS",
+   "ours": "0.209",
+   "reference": "0.214",
+   "detail": ""
+  },
+  {
+   "check": "dark ink share",
+   "status": "PASS",
+   "ours": "0.0245",
+   "reference": "0.0368",
+   "detail": ""
+  },
+  {
+   "check": "accent colour",
+   "status": "PASS",
+   "ours": "#771813",
+   "reference": "#7a1713",
+   "detail": "hue 0 degrees apart"
+  },
+  {
+   "check": "colour character",
+   "status": "PASS",
+   "ours": "muted",
+   "reference": "muted",
+   "detail": ""
+  }
+ ]
+}

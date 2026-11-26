@@ -1,0 +1,391 @@
+window.WORDS = {
+ "note": "at: when the word starts to turn to full ink, seconds from the start of the film. Built by sync_words.py; see its header for the rule.",
+ "ramp": 0.1,
+ "misheard": [],
+ "beats": {
+  "ask": [
+   {
+    "text": "Text",
+    "transcribe": {
+     "base": 1.46,
+     "small": 1.46,
+     "medium": 1.46
+    },
+    "at": 1.45,
+    "source": "vo_start"
+   },
+   {
+    "text": "me",
+    "transcribe": {
+     "base": 1.74,
+     "small": 1.74,
+     "medium": 1.86
+    },
+    "waveform": 1.86,
+    "waveform_read": "m, after the silence that follows the t of Text",
+    "at": 1.86,
+    "source": "transcribe.py medium"
+   },
+   {
+    "text": "when",
+    "transcribe": {
+     "base": 2.02,
+     "small": 2.02,
+     "medium": 2.2
+    },
+    "waveform": 2.22,
+    "waveform_read": "w, after an 80 ms dip",
+    "at": 2.2,
+    "source": "transcribe.py medium"
+   },
+   {
+    "text": "you're",
+    "transcribe": {
+     "base": 2.28,
+     "small": 2.3,
+     "medium": 2.34
+    },
+    "waveform": 2.33,
+    "waveform_read": "y, as the n of when ends",
+    "at": 2.34,
+    "source": "transcribe.py medium"
+   },
+   {
+    "text": "home.",
+    "transcribe": {
+     "base": 2.54,
+     "small": 2.52,
+     "medium": 3.88
+    },
+    "waveform": 2.48,
+    "waveform_read": "h: low band falls, high band rises",
+    "at": 2.52,
+    "source": "transcribe.py small"
+   }
+  ],
+  "again": [
+   {
+    "text": "Text",
+    "transcribe": {
+     "base": 4.1,
+     "small": 2.92,
+     "medium": 4.46
+    },
+    "at": 4.605,
+    "source": "vo_start"
+   },
+   {
+    "text": "me",
+    "transcribe": {
+     "base": 4.72,
+     "small": 4.8,
+     "medium": 4.98
+    },
+    "waveform": 5.015,
+    "waveform_read": "m, after the silence that follows the t of Text",
+    "at": 4.98,
+    "source": "transcribe.py medium"
+   },
+   {
+    "text": "when",
+    "transcribe": {
+     "base": 5.16,
+     "small": 5.14,
+     "medium": 5.34
+    },
+    "waveform": 5.375,
+    "waveform_read": "w, after an 80 ms dip",
+    "at": 5.34,
+    "source": "transcribe.py medium"
+   },
+   {
+    "text": "you're",
+    "transcribe": {
+     "base": 5.44,
+     "small": 5.48,
+     "medium": 5.52
+    },
+    "waveform": 5.495,
+    "waveform_read": "y, as the n of when ends",
+    "at": 5.48,
+    "source": "transcribe.py small"
+   },
+   {
+    "text": "home.",
+    "transcribe": {
+     "base": 5.68,
+     "small": 5.68,
+     "medium": 7.18
+    },
+    "waveform": 5.635,
+    "waveform_read": "h: low band falls, high band rises",
+    "at": 5.635,
+    "source": "waveform"
+   }
+  ],
+  "until": [
+   {
+    "text": "Until",
+    "transcribe": {
+     "base": 7.48,
+     "small": 7.34,
+     "medium": 7.18
+    },
+    "at": 7.796,
+    "source": "vo_start"
+   },
+   {
+    "text": "one",
+    "transcribe": {
+     "base": 8.1,
+     "small": 8.02,
+     "medium": 8.22
+    },
+    "waveform": 8.216,
+    "waveform_read": "w, as the l of Until ends",
+    "at": 8.22,
+    "source": "transcribe.py medium"
+   },
+   {
+    "text": "word,",
+    "transcribe": {
+     "base": 8.42,
+     "small": 8.42,
+     "medium": 8.64
+    },
+    "waveform": 8.506,
+    "waveform_read": "w: the mid band falls after the n of one",
+    "at": 8.506,
+    "source": "waveform"
+   }
+  ],
+  "light": [
+   {
+    "text": "the",
+    "transcribe": {
+     "base": 9.9,
+     "small": 9.02,
+     "medium": 10.02
+    },
+    "at": 10.443,
+    "source": "vo_start"
+   },
+   {
+    "text": "light",
+    "transcribe": {
+     "base": 10.52,
+     "small": 10.54,
+     "medium": 10.6
+    },
+    "waveform": 10.543,
+    "waveform_read": "l, before the vowel at 0.16",
+    "at": 10.54,
+    "source": "transcribe.py small"
+   },
+   {
+    "text": "stays",
+    "transcribe": {
+     "base": 10.72,
+     "small": 10.74,
+     "medium": 10.88
+    },
+    "waveform": 10.783,
+    "waveform_read": "s, after the t of light closes",
+    "at": 10.783,
+    "source": "waveform"
+   },
+   {
+    "text": "on.",
+    "transcribe": {
+     "base": 11.08,
+     "small": 11.08,
+     "medium": 11.28
+    },
+    "waveform": 11.213,
+    "waveform_read": "the vowel, as the z of stays ends",
+    "at": 11.213,
+    "source": "waveform"
+   }
+  ],
+  "fine": [
+   {
+    "text": "I",
+    "transcribe": {
+     "base": 12.74,
+     "small": 12.68,
+     "medium": 12.94
+    },
+    "at": 13.262,
+    "source": "vo_start"
+   },
+   {
+    "text": "know",
+    "transcribe": {
+     "base": 13.36,
+     "small": 13.36,
+     "medium": 13.4
+    },
+    "waveform": 13.362,
+    "waveform_read": "n: the mid band falls",
+    "at": 13.36,
+    "source": "transcribe.py base"
+   },
+   {
+    "text": "you're",
+    "transcribe": {
+     "base": 13.48,
+     "small": 13.52,
+     "medium": 13.58
+    },
+    "waveform": 13.562,
+    "waveform_read": "y, as the vowel of know ends",
+    "at": 13.58,
+    "source": "transcribe.py medium"
+   },
+   {
+    "text": "fine.",
+    "transcribe": {
+     "base": 13.78,
+     "small": 13.72,
+     "medium": 13.9
+    },
+    "waveform": 13.672,
+    "waveform_read": "f: low band falls, high band rises",
+    "at": 13.672,
+    "source": "waveform"
+   }
+  ],
+  "asking": [
+   {
+    "text": "Asking",
+    "transcribe": {
+     "base": 16.12,
+     "small": 16.04,
+     "medium": 16.06
+    },
+    "at": 16.343,
+    "source": "vo_start"
+   },
+   {
+    "text": "is",
+    "transcribe": {
+     "base": 16.74,
+     "small": 16.72,
+     "medium": 16.86
+    },
+    "waveform": 16.813,
+    "waveform_read": "the vowel, as the ng of Asking ends",
+    "at": 16.813,
+    "source": "waveform"
+   },
+   {
+    "text": "how",
+    "transcribe": {
+     "base": 16.96,
+     "small": 16.96,
+     "medium": 17.12
+    },
+    "waveform": 16.973,
+    "waveform_read": "h, as the z of is ends",
+    "at": 16.96,
+    "source": "transcribe.py base"
+   }
+  ],
+  "love": [
+   {
+    "text": "I",
+    "transcribe": {
+     "base": 17.84,
+     "small": 17.96,
+     "medium": 17.4
+    },
+    "at": 18.082,
+    "source": "vo_start"
+   },
+   {
+    "text": "love",
+    "transcribe": {
+     "base": 18.18,
+     "small": 18.18,
+     "medium": 18.24
+    },
+    "waveform": 18.182,
+    "waveform_read": "l: the mid band falls",
+    "at": 18.18,
+    "source": "transcribe.py base"
+   },
+   {
+    "text": "you.",
+    "transcribe": {
+     "base": 18.34,
+     "small": 18.34,
+     "medium": 18.46
+    },
+    "waveform": 18.412,
+    "waveform_read": "y, as the v of love ends",
+    "at": 18.412,
+    "source": "waveform"
+   }
+  ],
+  "home": [
+   {
+    "text": "Text",
+    "transcribe": {
+     "base": 20.2,
+     "small": 20.1,
+     "medium": 20.14
+    },
+    "at": 20.576,
+    "source": "vo_start"
+   },
+   {
+    "text": "me",
+    "transcribe": {
+     "base": 20.82,
+     "small": 20.78,
+     "medium": 20.96
+    },
+    "waveform": 20.966,
+    "waveform_read": "m, after the release of the t of Text",
+    "at": 20.96,
+    "source": "transcribe.py medium"
+   },
+   {
+    "text": "when",
+    "transcribe": {
+     "base": 21.1,
+     "small": 21.1,
+     "medium": 21.26
+    },
+    "waveform": 21.266,
+    "waveform_read": "w, after an 80 ms dip",
+    "at": 21.26,
+    "source": "transcribe.py medium"
+   },
+   {
+    "text": "you're",
+    "transcribe": {
+     "base": 21.32,
+     "small": 21.36,
+     "medium": 21.4
+    },
+    "waveform": 21.406,
+    "waveform_read": "y, as the n of when ends",
+    "at": 21.4,
+    "source": "transcribe.py medium"
+   },
+   {
+    "text": "home.",
+    "transcribe": {
+     "base": 21.58,
+     "small": 21.6,
+     "medium": 21.76
+    },
+    "waveform": 21.576,
+    "waveform_read": "h: low band falls, high band rises",
+    "at": 21.58,
+    "source": "transcribe.py base"
+   }
+  ]
+ }
+};

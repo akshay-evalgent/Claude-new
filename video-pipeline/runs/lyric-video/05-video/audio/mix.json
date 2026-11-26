@@ -1,0 +1,70 @@
+{
+ "lufs": -15.6,
+ "target_lufs": -12.8,
+ "peak_dbtp": -1.4,
+ "duration": 24.7667,
+ "gain_db": 5.9,
+ "gain_from": "the first cut's layout, which that gain brings to -13.1 LUFS",
+ "bed_lift_db": 5.0,
+ "hits": [
+  1.33,
+  4.485,
+  7.676,
+  10.323,
+  13.142,
+  16.223,
+  20.456
+ ],
+ "added_hits": [
+  {
+   "at": 0.5,
+   "level": 0.7
+  },
+  {
+   "at": 14.738,
+   "level": 0.4
+  },
+  {
+   "at": 15.233,
+   "level": 0.4
+  },
+  {
+   "at": 15.728,
+   "level": 0.4
+  }
+ ],
+ "weight_layer": [
+  10.54,
+  16.223
+ ],
+ "weight_swell": {
+  "db": 3.0,
+  "from": 14.243,
+  "to": 15.723
+ },
+ "rest_levels_db": {
+  "title, before the added hit": -22.1,
+  "title, after it": -22.1,
+  "after line 1": -22.2,
+  "after line 2": -22.6,
+  "after 'word,'": -23.1,
+  "after 'stays on.' (weight in)": -20.8,
+  "after 'fine.', the whole rest (weight swelling, three steps)": -19.9,
+  "after 'fine.', before the first step": -20.4,
+  "after 'fine.', between steps 2 and 3 (bed and weight only)": -19.2,
+  "after 'how' (the pause)": -22.1,
+  "after 'you.' (thin again)": -22.3,
+  "end hold, first 1.5 s": -22.8,
+  "last 0.2 s": -39.8
+ },
+ "voiced_levels_db": {
+  "ask": -10.8,
+  "again": -10.8,
+  "until": -11.4,
+  "light": -13.5,
+  "fine": -12.6,
+  "asking": -12.8,
+  "love": -14.3,
+  "home": -10.8
+ }
+}

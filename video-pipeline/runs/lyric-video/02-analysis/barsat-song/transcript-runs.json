@@ -1,0 +1,484 @@
+{
+ "note": "Stats of every transcription run on barsat-song. No lyric text is kept. 'tool' runs are transcribe.py as shipped (voice-activity filter on). 'unfiltered' runs are the analyst's own cross-check with the same models and the filter off; they are not tool figures and must not be compared with our video's transcribe.py output.",
+ "tool_runs": {
+  "base_autodetect": {
+   "language": "pa",
+   "duration": 185.48,
+   "words": 111,
+   "first_word_s": 13.36,
+   "last_word_s": 182.26,
+   "words_per_minute": 36,
+   "speaking_rate_wpm": 95,
+   "speech_share": 0.376,
+   "words_in_first_3s": 0,
+   "pauses_over_0.7s": [
+    {
+     "at": 15.42,
+     "dur": 1.04
+    },
+    {
+     "at": 21.8,
+     "dur": 1.66
+    },
+    {
+     "at": 36.54,
+     "dur": 0.92
+    },
+    {
+     "at": 39.74,
+     "dur": 1.4
+    },
+    {
+     "at": 43.22,
+     "dur": 2.05
+    },
+    {
+     "at": 45.93,
+     "dur": 3.43
+    },
+    {
+     "at": 50.22,
+     "dur": 37.37
+    },
+    {
+     "at": 92.99,
+     "dur": 0.86
+    },
+    {
+     "at": 106.29,
+     "dur": 2.05
+    },
+    {
+     "at": 109.36,
+     "dur": 2.72
+    },
+    {
+     "at": 115.06,
+     "dur": 1.73
+    },
+    {
+     "at": 124.41,
+     "dur": 1.53
+    },
+    {
+     "at": 127.64,
+     "dur": 3.4
+    },
+    {
+     "at": 132.44,
+     "dur": 21.99
+    },
+    {
+     "at": 155.01,
+     "dur": 16.93
+    }
+   ]
+  },
+  "small_hi": {
+   "language": "hi",
+   "duration": 185.48,
+   "words": 94,
+   "first_word_s": 13.36,
+   "last_word_s": 182.24,
+   "words_per_minute": 30,
+   "speaking_rate_wpm": 75,
+   "speech_share": 0.404,
+   "words_in_first_3s": 0,
+   "pauses_over_0.7s": [
+    {
+     "at": 22.8,
+     "dur": 0.84
+    },
+    {
+     "at": 33.44,
+     "dur": 1.04
+    },
+    {
+     "at": 39.84,
+     "dur": 1.4
+    },
+    {
+     "at": 42.82,
+     "dur": 2.05
+    },
+    {
+     "at": 45.93,
+     "dur": 3.43
+    },
+    {
+     "at": 50.22,
+     "dur": 37.37
+    },
+    {
+     "at": 89.63,
+     "dur": 0.92
+    },
+    {
+     "at": 111.25,
+     "dur": 6.5
+    },
+    {
+     "at": 124.41,
+     "dur": 1.53
+    },
+    {
+     "at": 132.3,
+     "dur": 21.99
+    },
+    {
+     "at": 155.29,
+     "dur": 16.93
+    }
+   ]
+  },
+  "medium_hi (installed as transcript.json)": {
+   "language": "hi",
+   "duration": 185.48,
+   "words": 122,
+   "first_word_s": 13.36,
+   "last_word_s": 182.26,
+   "words_per_minute": 39,
+   "speaking_rate_wpm": 96,
+   "speech_share": 0.412,
+   "words_in_first_3s": 0,
+   "pauses_over_0.7s": [
+    {
+     "at": 39.84,
+     "dur": 1.4
+    },
+    {
+     "at": 42.98,
+     "dur": 2.05
+    },
+    {
+     "at": 46.05,
+     "dur": 3.43
+    },
+    {
+     "at": 50.4,
+     "dur": 37.37
+    },
+    {
+     "at": 99.73,
+     "dur": 1.24
+    },
+    {
+     "at": 106.59,
+     "dur": 2.05
+    },
+    {
+     "at": 109.46,
+     "dur": 2.72
+    },
+    {
+     "at": 114.66,
+     "dur": 1.73
+    },
+    {
+     "at": 124.37,
+     "dur": 1.53
+    },
+    {
+     "at": 132.4,
+     "dur": 21.99
+    },
+    {
+     "at": 155.37,
+     "dur": 16.93
+    }
+   ]
+  }
+ },
+ "unfiltered_runs": {
+  "small_hi": {
+   "words": 144,
+   "segments": [
+    {
+     "start": 12.48,
+     "end": 13.8,
+     "words": 2
+    },
+    {
+     "start": 13.8,
+     "end": 16.22,
+     "words": 4
+    },
+    {
+     "start": 16.78,
+     "end": 20.2,
+     "words": 4
+    },
+    {
+     "start": 20.2,
+     "end": 22.8,
+     "words": 4
+    },
+    {
+     "start": 23.68,
+     "end": 26.68,
+     "words": 3
+    },
+    {
+     "start": 26.68,
+     "end": 30.4,
+     "words": 5
+    },
+    {
+     "start": 30.4,
+     "end": 33.24,
+     "words": 4
+    },
+    {
+     "start": 34.2,
+     "end": 36.54,
+     "words": 6
+    },
+    {
+     "start": 37.76,
+     "end": 40.74,
+     "words": 4
+    },
+    {
+     "start": 40.74,
+     "end": 43.9,
+     "words": 5
+    },
+    {
+     "start": 44.82,
+     "end": 47.34,
+     "words": 4
+    },
+    {
+     "start": 48.38,
+     "end": 50.66,
+     "words": 6
+    },
+    {
+     "start": 50.66,
+     "end": 55.6,
+     "words": 4
+    },
+    {
+     "start": 69.26,
+     "end": 72.58,
+     "words": 4
+    },
+    {
+     "start": 72.58,
+     "end": 76.06,
+     "words": 3
+    },
+    {
+     "start": 76.48,
+     "end": 79.84,
+     "words": 4
+    },
+    {
+     "start": 79.84,
+     "end": 86.18,
+     "words": 9
+    },
+    {
+     "start": 86.18,
+     "end": 89.74,
+     "words": 4
+    },
+    {
+     "start": 90.32,
+     "end": 93.84,
+     "words": 4
+    },
+    {
+     "start": 94.42,
+     "end": 97.22,
+     "words": 4
+    },
+    {
+     "start": 97.22,
+     "end": 101.38,
+     "words": 5
+    },
+    {
+     "start": 101.38,
+     "end": 103.86,
+     "words": 4
+    },
+    {
+     "start": 104.54,
+     "end": 107.56,
+     "words": 4
+    },
+    {
+     "start": 137.56,
+     "end": 139.8,
+     "words": 3
+    },
+    {
+     "start": 139.8,
+     "end": 142.42,
+     "words": 5
+    },
+    {
+     "start": 143.56,
+     "end": 146.42,
+     "words": 4
+    },
+    {
+     "start": 147.49,
+     "end": 150.08,
+     "words": 4
+    },
+    {
+     "start": 150.08,
+     "end": 153.8,
+     "words": 4
+    },
+    {
+     "start": 153.8,
+     "end": 155.34,
+     "words": 2
+    },
+    {
+     "start": 168.02,
+     "end": 175.48,
+     "words": 11
+    },
+    {
+     "start": 175.48,
+     "end": 182.92,
+     "words": 11
+    }
+   ]
+  },
+  "medium_hi": {
+   "words": 147,
+   "segments": [
+    {
+     "start": 12.66,
+     "end": 19.98,
+     "words": 5
+    },
+    {
+     "start": 19.98,
+     "end": 27.22,
+     "words": 7
+    },
+    {
+     "start": 27.22,
+     "end": 30.84,
+     "words": 3
+    },
+    {
+     "start": 30.84,
+     "end": 34.32,
+     "words": 4
+    },
+    {
+     "start": 34.32,
+     "end": 38.02,
+     "words": 6
+    },
+    {
+     "start": 38.02,
+     "end": 41.32,
+     "words": 4
+    },
+    {
+     "start": 41.32,
+     "end": 47.68,
+     "words": 5
+    },
+    {
+     "start": 48.28,
+     "end": 52.02,
+     "words": 6
+    },
+    {
+     "start": 52.02,
+     "end": 56.58,
+     "words": 4
+    },
+    {
+     "start": 69.34,
+     "end": 73.16,
+     "words": 5
+    },
+    {
+     "start": 73.16,
+     "end": 76.88,
+     "words": 4
+    },
+    {
+     "start": 76.88,
+     "end": 80.18,
+     "words": 4
+    },
+    {
+     "start": 80.18,
+     "end": 83.6,
+     "words": 6
+    },
+    {
+     "start": 83.6,
+     "end": 87.06,
+     "words": 6
+    },
+    {
+     "start": 87.06,
+     "end": 90.82,
+     "words": 4
+    },
+    {
+     "start": 90.82,
+     "end": 94.04,
+     "words": 5
+    },
+    {
+     "start": 94.04,
+     "end": 97.76,
+     "words": 4
+    },
+    {
+     "start": 97.76,
+     "end": 101.46,
+     "words": 5
+    },
+    {
+     "start": 101.46,
+     "end": 105.02,
+     "words": 6
+    },
+    {
+     "start": 105.02,
+     "end": 107.36,
+     "words": 5
+    },
+    {
+     "start": 137.36,
+     "end": 143.8,
+     "words": 10
+    },
+    {
+     "start": 143.8,
+     "end": 150.6,
+     "words": 9
+    },
+    {
+     "start": 150.6,
+     "end": 155.92,
+     "words": 7
+    },
+    {
+     "start": 168.12,
+     "end": 175.54,
+     "words": 12
+    },
+    {
+     "start": 175.54,
+     "end": 182.36,
+     "words": 11
+    }
+   ]
+  }
+ }
+}
