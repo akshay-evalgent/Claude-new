@@ -1,0 +1,617 @@
+{
+ "file": "video-pipeline/runs/yt-short/05-video/video.mp4",
+ "video": {
+  "width": 1080,
+  "height": 1920,
+  "fps": 30.0,
+  "duration": 59.9,
+  "codec": "h264",
+  "aspect": 0.5625,
+  "orientation": "vertical",
+  "has_audio": true,
+  "audio_codec": "aac",
+  "frames": 1797,
+  "analysed_fps": 30.0
+ },
+ "shots": [
+  {
+   "n": 1,
+   "start": 0.0,
+   "end": 3.0,
+   "dur": 3.0
+  },
+  {
+   "n": 2,
+   "start": 3.0,
+   "end": 13.5,
+   "dur": 10.5
+  },
+  {
+   "n": 3,
+   "start": 13.5,
+   "end": 34.5,
+   "dur": 21.0
+  },
+  {
+   "n": 4,
+   "start": 34.5,
+   "end": 36.367,
+   "dur": 1.867
+  },
+  {
+   "n": 5,
+   "start": 36.367,
+   "end": 43.067,
+   "dur": 6.7
+  },
+  {
+   "n": 6,
+   "start": 43.067,
+   "end": 43.367,
+   "dur": 0.3
+  },
+  {
+   "n": 7,
+   "start": 43.367,
+   "end": 43.767,
+   "dur": 0.4
+  },
+  {
+   "n": 8,
+   "start": 43.767,
+   "end": 44.167,
+   "dur": 0.4
+  },
+  {
+   "n": 9,
+   "start": 44.167,
+   "end": 44.567,
+   "dur": 0.4
+  },
+  {
+   "n": 10,
+   "start": 44.567,
+   "end": 47.8,
+   "dur": 3.233
+  },
+  {
+   "n": 11,
+   "start": 47.8,
+   "end": 51.0,
+   "dur": 3.2
+  },
+  {
+   "n": 12,
+   "start": 51.0,
+   "end": 51.6,
+   "dur": 0.6
+  },
+  {
+   "n": 13,
+   "start": 51.6,
+   "end": 59.9,
+   "dur": 8.3
+  }
+ ],
+ "cuts": [
+  {
+   "t": 3.0,
+   "frame": 90,
+   "kind": "cut",
+   "strength": 42.09,
+   "corr": 0.56
+  },
+  {
+   "t": 13.5,
+   "frame": 405,
+   "kind": "cut",
+   "strength": 7.86,
+   "corr": 0.86
+  },
+  {
+   "t": 34.5,
+   "frame": 1035,
+   "kind": "cut",
+   "strength": 12.06,
+   "corr": 0.96
+  },
+  {
+   "t": 36.367,
+   "frame": 1091,
+   "kind": "cut",
+   "strength": 27.84,
+   "corr": 0.76
+  },
+  {
+   "t": 43.067,
+   "frame": 1292,
+   "kind": "cut",
+   "strength": 6.16,
+   "corr": 0.92
+  },
+  {
+   "t": 43.367,
+   "frame": 1301,
+   "kind": "cut",
+   "strength": 6.2,
+   "corr": 0.93
+  },
+  {
+   "t": 43.767,
+   "frame": 1313,
+   "kind": "cut",
+   "strength": 6.25,
+   "corr": 0.93
+  },
+  {
+   "t": 44.167,
+   "frame": 1325,
+   "kind": "cut",
+   "strength": 6.18,
+   "corr": 0.93
+  },
+  {
+   "t": 44.567,
+   "frame": 1337,
+   "kind": "cut",
+   "strength": 6.23,
+   "corr": 0.93
+  },
+  {
+   "t": 47.8,
+   "frame": 1434,
+   "kind": "cut",
+   "strength": 17.04,
+   "corr": 0.72
+  },
+  {
+   "t": 51.0,
+   "frame": 1530,
+   "kind": "cut",
+   "strength": 205.43,
+   "corr": -0.33
+  },
+  {
+   "t": 51.6,
+   "frame": 1548,
+   "kind": "cut",
+   "strength": 16.38,
+   "corr": 0.94
+  }
+ ],
+ "shot_stats": {
+  "count": 13,
+  "mean_s": 4.61,
+  "median_s": 3.0,
+  "min_s": 0.3,
+  "max_s": 21.0,
+  "cuts_per_10s": 2.0,
+  "final_shot_share": 0.139
+ },
+ "stills": [],
+ "still_share": 0.0,
+ "end_hold_s": 0.0,
+ "flat_runs": [],
+ "motion": {
+  "mean": 2.25,
+  "median": 0.9,
+  "p90": 4.64
+ },
+ "hook": {
+  "window_s": 3.0,
+  "first_picture_s": 0.0,
+  "first_cut_s": 3.0,
+  "cuts": 0,
+  "motion_mean": 0.88,
+  "first_sound_s": 0.0,
+  "onsets": 0
+ },
+ "audio": {
+  "audible_share": 1.0,
+  "lead_silence": 0.0,
+  "tail_silence": 0.03,
+  "dropouts": [],
+  "onsets": [
+   3.012,
+   4.912,
+   8.282,
+   10.212,
+   13.512,
+   17.312,
+   23.812,
+   28.012,
+   34.512,
+   38.812,
+   42.312,
+   47.812,
+   51.012,
+   51.612,
+   56.612
+  ],
+  "onsets_per_s": 0.25,
+  "integrated_lufs": -14.1,
+  "lra_lu": 3.4,
+  "true_peak_dbtp": -1.2
+ },
+ "sync": {
+  "window_s": 0.08,
+  "gradual_window_s": 0.3,
+  "share_on_sound": 0.5,
+  "offsets_s": [
+   0.012,
+   0.012,
+   0.012,
+   -1.855,
+   -0.755,
+   -1.055,
+   -1.455,
+   -1.855,
+   -2.255,
+   0.012,
+   0.012,
+   0.012
+  ]
+ },
+ "timeline": [
+  {
+   "s": 0,
+   "motion": 0.77,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 1,
+   "motion": 0.82,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 2,
+   "motion": 1.02,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 3,
+   "motion": 2.32,
+   "cuts": 1,
+   "onsets": 1
+  },
+  {
+   "s": 4,
+   "motion": 0.46,
+   "cuts": 0,
+   "onsets": 1
+  },
+  {
+   "s": 5,
+   "motion": 0.44,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 6,
+   "motion": 0.82,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 7,
+   "motion": 0.48,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 8,
+   "motion": 1.02,
+   "cuts": 0,
+   "onsets": 1
+  },
+  {
+   "s": 9,
+   "motion": 1.71,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 10,
+   "motion": 0.51,
+   "cuts": 0,
+   "onsets": 1
+  },
+  {
+   "s": 11,
+   "motion": 0.28,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 12,
+   "motion": 0.36,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 13,
+   "motion": 1.15,
+   "cuts": 1,
+   "onsets": 1
+  },
+  {
+   "s": 14,
+   "motion": 1.85,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 15,
+   "motion": 1.12,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 16,
+   "motion": 1.62,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 17,
+   "motion": 1.15,
+   "cuts": 0,
+   "onsets": 1
+  },
+  {
+   "s": 18,
+   "motion": 1.06,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 19,
+   "motion": 0.91,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 20,
+   "motion": 0.77,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 21,
+   "motion": 0.75,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 22,
+   "motion": 0.81,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 23,
+   "motion": 0.86,
+   "cuts": 0,
+   "onsets": 1
+  },
+  {
+   "s": 24,
+   "motion": 1.19,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 25,
+   "motion": 1.51,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 26,
+   "motion": 1.99,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 27,
+   "motion": 4.18,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 28,
+   "motion": 1.06,
+   "cuts": 0,
+   "onsets": 1
+  },
+  {
+   "s": 29,
+   "motion": 0.82,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 30,
+   "motion": 0.95,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 31,
+   "motion": 1.42,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 32,
+   "motion": 1.23,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 33,
+   "motion": 1.12,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 34,
+   "motion": 3.17,
+   "cuts": 1,
+   "onsets": 1
+  },
+  {
+   "s": 35,
+   "motion": 1.58,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 36,
+   "motion": 2.36,
+   "cuts": 1,
+   "onsets": 0
+  },
+  {
+   "s": 37,
+   "motion": 0.95,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 38,
+   "motion": 2.14,
+   "cuts": 0,
+   "onsets": 1
+  },
+  {
+   "s": 39,
+   "motion": 1.28,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 40,
+   "motion": 2.04,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 41,
+   "motion": 5.41,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 42,
+   "motion": 7.28,
+   "cuts": 0,
+   "onsets": 1
+  },
+  {
+   "s": 43,
+   "motion": 5.37,
+   "cuts": 3,
+   "onsets": 0
+  },
+  {
+   "s": 44,
+   "motion": 5.4,
+   "cuts": 2,
+   "onsets": 0
+  },
+  {
+   "s": 45,
+   "motion": 10.78,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 46,
+   "motion": 11.0,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 47,
+   "motion": 7.65,
+   "cuts": 1,
+   "onsets": 1
+  },
+  {
+   "s": 48,
+   "motion": 0.13,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 49,
+   "motion": 0.11,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 50,
+   "motion": 0.12,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 51,
+   "motion": 25.44,
+   "cuts": 2,
+   "onsets": 2
+  },
+  {
+   "s": 52,
+   "motion": 0.48,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 53,
+   "motion": 0.3,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 54,
+   "motion": 0.45,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 55,
+   "motion": 1.21,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 56,
+   "motion": 0.42,
+   "cuts": 0,
+   "onsets": 1
+  },
+  {
+   "s": 57,
+   "motion": 0.34,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 58,
+   "motion": 0.31,
+   "cuts": 0,
+   "onsets": 0
+  },
+  {
+   "s": 59,
+   "motion": 0.45,
+   "cuts": 0,
+   "onsets": 0
+  }
+ ]
+}

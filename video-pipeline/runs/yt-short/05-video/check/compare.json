@@ -1,0 +1,210 @@
+{
+ "references": [
+  "video-pipeline/runs/yt-short/02-analysis/what-if-time-sped-up/measure.json"
+ ],
+ "ours": "video-pipeline/runs/yt-short/05-video/check/measure.json",
+ "counts": {
+  "PASS": 14,
+  "WARN": 6,
+  "FAIL": 8,
+  "SKIP": 0
+ },
+ "rows": [
+  {
+   "check": "orientation",
+   "status": "FAIL",
+   "ours": "vertical",
+   "reference": "horizontal",
+   "detail": ""
+  },
+  {
+   "check": "aspect ratio",
+   "status": "FAIL",
+   "ours": "0.5625",
+   "reference": "1.7778",
+   "detail": "below the target 1.74 to 1.81"
+  },
+  {
+   "check": "resolution",
+   "status": "PASS",
+   "ours": "1080x1920",
+   "reference": "1920x1080",
+   "detail": ""
+  },
+  {
+   "check": "frame rate",
+   "status": "PASS",
+   "ours": "30 fps",
+   "reference": "30 fps",
+   "detail": ""
+  },
+  {
+   "check": "duration",
+   "status": "PASS",
+   "ours": "59.9 s",
+   "reference": "55-60 s asked for",
+   "detail": "the references run 537.2 s"
+  },
+  {
+   "check": "mean shot length",
+   "status": "WARN",
+   "ours": "4.61 s",
+   "reference": "7.67 s",
+   "detail": "below the target 5.37 to 9.97 s"
+  },
+  {
+   "check": "cuts per 10 s",
+   "status": "WARN",
+   "ours": "2",
+   "reference": "1.28",
+   "detail": "above the target 0.90 to 1.66"
+  },
+  {
+   "check": "longest shot",
+   "status": "FAIL",
+   "ours": "21 s",
+   "reference": "108.03 s",
+   "detail": "below the target 70.22 to 145.84 s"
+  },
+  {
+   "check": "final shot share",
+   "status": "FAIL",
+   "ours": "0.139",
+   "reference": "0.001",
+   "detail": "above the target 0.00 to 0.03"
+  },
+  {
+   "check": "first cut",
+   "status": "FAIL",
+   "ours": "3.0 s",
+   "reference": "0.233 s",
+   "detail": "our opening shot runs longer than the references'"
+  },
+  {
+   "check": "motion (mean frame change)",
+   "status": "PASS",
+   "ours": "2.25",
+   "reference": "1.59",
+   "detail": ""
+  },
+  {
+   "check": "motion in first 3 s",
+   "status": "PASS",
+   "ours": "0.88",
+   "reference": "1.81",
+   "detail": ""
+  },
+  {
+   "check": "still picture share",
+   "status": "PASS",
+   "ours": "0%",
+   "reference": "0%",
+   "detail": ""
+  },
+  {
+   "check": "longest frozen stretch",
+   "status": "PASS",
+   "ours": "0 s",
+   "reference": "0.77 s",
+   "detail": ""
+  },
+  {
+   "check": "end hold",
+   "status": "PASS",
+   "ours": "0 s",
+   "reference": "0 s",
+   "detail": ""
+  },
+  {
+   "check": "empty frames",
+   "status": "PASS",
+   "ours": "0 runs",
+   "reference": "2 runs",
+   "detail": ""
+  },
+  {
+   "check": "sound",
+   "status": "PASS",
+   "ours": "present",
+   "reference": "present",
+   "detail": ""
+  },
+  {
+   "check": "loudness",
+   "status": "FAIL",
+   "ours": "-14.1 LUFS",
+   "reference": "-21.4 LUFS",
+   "detail": "above the target -22.90 to -19.90 LUFS"
+  },
+  {
+   "check": "true peak",
+   "status": "PASS",
+   "ours": "-1.2 dBTP",
+   "reference": "-7 dBTP",
+   "detail": ""
+  },
+  {
+   "check": "audible share",
+   "status": "PASS",
+   "ours": "100%",
+   "reference": "100%",
+   "detail": ""
+  },
+  {
+   "check": "sound events per second",
+   "status": "WARN",
+   "ours": "0.25",
+   "reference": "2.88",
+   "detail": "below the target 1.53 to 4.23. a voice produces 1.5-3 a second; far fewer usually means no voice-over"
+  },
+  {
+   "check": "cuts landing on a sound",
+   "status": "WARN",
+   "ours": "50%",
+   "reference": "65%",
+   "detail": ""
+  },
+  {
+   "check": "ground colour",
+   "status": "PASS",
+   "ours": "#0c0c12",
+   "reference": "#040303",
+   "detail": "distance 19 of 441"
+  },
+  {
+   "check": "brightness",
+   "status": "FAIL",
+   "ours": "0.375",
+   "reference": "0.23",
+   "detail": "above the target 0.21 to 0.25"
+  },
+  {
+   "check": "saturation",
+   "status": "WARN",
+   "ours": "0.43",
+   "reference": "0.274",
+   "detail": "above the target 0.16 to 0.39"
+  },
+  {
+   "check": "dark ink share",
+   "status": "PASS",
+   "ours": "0.5773",
+   "reference": "0.5838",
+   "detail": ""
+  },
+  {
+   "check": "accent colour",
+   "status": "FAIL",
+   "ours": "#273c68",
+   "reference": "#ac6634",
+   "detail": "hue 166 degrees apart"
+  },
+  {
+   "check": "colour character",
+   "status": "WARN",
+   "ours": "saturated",
+   "reference": "muted",
+   "detail": ""
+  }
+ ]
+}
