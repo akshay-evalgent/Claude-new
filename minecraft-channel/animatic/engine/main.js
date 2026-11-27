@@ -517,10 +517,15 @@ window.renderFrame = (f, quality = 0.92) => {
 window.renderThumb = (f, lines, opts = {}) => {
   const t = f / E.meta.fps;
   window.renderFrame(f);
+  if (opts.cam) {
+    camera.position.set(...opts.cam.pos); camera.lookAt(new THREE.Vector3(...opts.cam.look));
+    camera.fov = opts.cam.fov ?? 30; camera.updateProjectionMatrix();
+    renderer.render(scene, camera);
+  }
   drawOverlay(t, true);
   const g = octx, Wd = out.width, Ht = out.height, k = Wd / 1920;
   const size = (opts.size ?? 190) * k;
-  g.font = `900 ${size}px Montserrat`; g.textBaseline = 'alphabetic'; g.lineJoin = 'round';
+  g.font = `900 ${size}px Montserrat`; g.textBaseline = 'alphabetic'; g.textAlign = 'left'; g.lineJoin = 'round';
   lines.forEach((ln, i) => {
     const x = (opts.x ?? 70) * k, y = (opts.y ?? 230) * k + i * size * 1.0;
     g.save(); g.translate(x, y); g.rotate(-0.05);

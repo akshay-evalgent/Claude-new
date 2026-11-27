@@ -7,6 +7,7 @@ EP=${1:?episode folder name under ../episodes}
 WORKERS=${WORKERS:-3}
 THUMB_FRAME=${THUMB_FRAME:-110}
 THUMB_TEXT=${THUMB_TEXT:-"ONLY|ONE?!"}
+THUMB_CAM=${THUMB_CAM:-}
 cd "$(dirname "$0")"
 OUT=out/$EP
 mkdir -p "$OUT"
@@ -42,7 +43,7 @@ with open(sys.argv[2], 'w') as f:
 PY
 
 # thumbnail 1280x720 (style bible §9.2)
-node render.cjs "$EP" --thumb "$THUMB_FRAME" --text "$THUMB_TEXT"
+node render.cjs "$EP" --thumb "$THUMB_FRAME" --text "$THUMB_TEXT" ${THUMB_CAM:+--cam "$THUMB_CAM"}
 ffmpeg -y -loglevel error -i "$OUT/thumbnail_full.jpg" -vf scale=1280:720:flags=lanczos -q:v 2 "$OUT/thumbnail.jpg"
 ffmpeg -y -loglevel error -i "$OUT/thumbnail.jpg" -vf scale=160:90 "$OUT/thumbnail_160.jpg"
 

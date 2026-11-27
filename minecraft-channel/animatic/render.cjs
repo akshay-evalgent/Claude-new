@@ -44,7 +44,8 @@ async function openPage(browser, port) {
   if (thumb) {
     // --thumb <frame> --text "ONLY|ONE?!"
     const lines = opt('text', 'ONLY|ONE?!').split('|');
-    const d = await first.evaluate(([f, l]) => window.renderThumb(f, l), [parseInt(thumb), lines]);
+    const cam = opt('cam', null) ? JSON.parse(opt('cam')) : undefined;
+    const d = await first.evaluate(([f, l, c]) => window.renderThumb(f, l, { cam: c }), [parseInt(thumb), lines, cam]);
     fs.writeFileSync(path.join(outDir, 'thumbnail_full.jpg'), Buffer.from(d.split(',')[1], 'base64'));
     await browser.close(); server.close(); return;
   }

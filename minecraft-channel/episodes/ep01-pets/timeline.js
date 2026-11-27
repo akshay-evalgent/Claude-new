@@ -58,6 +58,7 @@ export default function build(E, { CAM }) {
     for (const p of PETS) if (p !== 'lou') s.expr(p, 'hopeful', 0, true);
   });
   E.shot('S02', 2.6, rowFront(50), 'Punch-in on the row: four pets shocked, Lou still asleep.', (s) => {
+    s.place('ava', [0, 0, 9.2], PI, 0); s.place('sign', [0, 1.95, 9.12], PI, 0);
     s.sfx('sting', 0.12, 0.9);
     s.punch(0.12, 1.2);
     ['rex', 'duchess', 'pico', 'greg'].forEach((p, i) => s.expr(p, i === 3 ? 'blank' : 'shocked', 0.12 + i * 0.04, i > 0));
@@ -67,6 +68,7 @@ export default function build(E, { CAM }) {
 
   // ======================= SETUP =======================
   E.shot('S03', 3.6, wideStage, 'Wide of the game-show stage. Ava lowers the sign and opens the show.', (s) => {
+    s.place('ava', AVA_MARK, PI, 0); s.place('sign', [0, 1.95, 4.42], PI, 0);
     s.music('day', 0);
     s.pose('ava', 'cheer', 0.35);
     s.move('sign', [1.4, 0.36, 5.1], 0.2, 0.35, { face: false });
@@ -306,6 +308,7 @@ export default function build(E, { CAM }) {
     s.say('ava', 'Round three. It\'s *3 AM.* Can you stay quiet?', 1.1, { soft: true });
   });
   E.shot('S33', 2.2, rowFront(50), 'Silence. Crickets. Everyone holds very still.', (s) => {
+    s.place('ava', [0, 0, 9.2], PI, 0);
     s.music('stop', 0);
     s.sfx('crickets', 0, 0.8);
     s.pose('ava', 'stand', 0);
@@ -330,6 +333,7 @@ export default function build(E, { CAM }) {
     s.say('pico', 'THREE A.M.! *THREE* *A.M.!*', 0.1);
   });
   E.shot('S37', 3.0, CAM.still([-3.4, 3.2, 9.6], [1.0, 3.8, -5.0], 48), 'Greg charges the scoreboard. It explodes into blocks.', (s) => {
+    s.place('ava', AVA_MARK, PI, 0);
     s.pose('pico', 'stand', 0);
     s.pose('greg', 'ram', 0, 0.1); s.expr('greg', 'angry', 0, true);
     s.move('greg', [5.0, 0, -1.4], 0.05, 0.35, { arc: 0.6 });
@@ -369,6 +373,7 @@ export default function build(E, { CAM }) {
     s.music('tender', 5.8);
   });
   E.shot('S45', 3.8, CAM.dolly([0, 2.0, 8.0], [0, 1.85, 0], [0, 1.95, 7.1], [0, 1.85, 0], 52, 52), 'Everyone turns to Lou. Rex tears up. Pico repeats it — softly, and means it.', (s) => {
+    s.place('ava', [0, 0, 9.2], PI, 0);
     s.look('rex', [0.75, 0], 0.1, 0.4); s.look('duchess', [0.7, 0], 0.2, 0.4); s.look('pico', [0.6, 0], 0.15, 0.4); s.look('greg', [-0.7, 0], 0.25, 0.4);
     s.expr('rex', 'teary', 0.6); s.expr('duchess', 'sad', 0.8, true);
     s.pose('pico', 'shy', 1.6);
@@ -377,6 +382,7 @@ export default function build(E, { CAM }) {
 
   // ======================= FINAL ROUND — FETCH =======================
   E.shot('S46', 3.0, CAM.still([-1.7, 1.6, 2.3], [0, 1.6, 4.5], 36), 'Ava wipes her eye, then: FETCH! Throws a stick.', (s) => {
+    s.place('ava', AVA_MARK, PI, 0);
     for (const p of PETS) s.look(p, [0, 0], 0, 0.01);
     s.expr('rex', 'neutral', 0, true); s.expr('duchess', 'neutral', 0, true);
     s.pose('ava', 'wipe', 0.05);
