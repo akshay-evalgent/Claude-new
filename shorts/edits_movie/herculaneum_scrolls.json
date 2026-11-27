@@ -1,0 +1,640 @@
+{
+ "title": "A 21-year-old read a 2,000-year-old burnt scroll... with AI",
+ "note": "True story: the Herculaneum papyri and the Vesuvius Challenge (2023-2026). Real audio: Luke Farritor (University of Nebraska video zpflT8XuSyg), Brent Seales (PBS Secrets of the Dead 7mo0T8h4I3o). B-roll: NBC News (2026), CBS 60 Minutes (2018), TEDAI. Sources in herculaneum_scrolls.script.md. 'AI found the ink; scholars read the Greek.'",
+ "base": ".",
+ "layout": "full",
+ "mid": 0.66,
+ "voice": "am_michael",
+ "speed": 1.3,
+ "gap": 0.05,
+ "beats": [
+  {
+   "say": "These lumps of charcoal are books, two thousand years old. And a twenty-one-year-old student just read one... with AI.",
+   "shots": [
+    [
+     "hcTnaI_djHQ",
+     2.5,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "_BDq6tAuOu8",
+     232.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ],
+    [
+     "_BDq6tAuOu8",
+     292.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ],
+    [
+     "zpflT8XuSyg",
+     16.0
+    ]
+   ]
+  },
+  {
+   "say": "In 79 AD, Vesuvius buried a Roman villa, thought to belong to Julius Caesar's father-in-law. Inside was a library. The heat turned its scrolls into charcoal.",
+   "speak": "In seventy-nine AD, Vesuvius buried a Roman villa, thought to belong to Julius Caesar's father-in-law. Inside was a library. The heat turned its scrolls into charcoal.",
+   "shots": [
+    [
+     "_BDq6tAuOu8",
+     136.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ],
+    [
+     "hcTnaI_djHQ",
+     5.0,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "hcTnaI_djHQ",
+     22.5,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "_BDq6tAuOu8",
+     184.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ],
+    [
+     "_BDq6tAuOu8",
+     224.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "They were dug up in the 1750s. But touch one, and it crumbles. Early attempts to open them destroyed many. Some were sliced in half. Others tore apart on an unrolling machine.",
+   "speak": "They were dug up in the seventeen fifties. But touch one, and it crumbles. Early attempts to open them destroyed many. Some were sliced in half. Others tore apart on an unrolling machine.",
+   "shots": [
+    [
+     "hcTnaI_djHQ",
+     30.0,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "_BDq6tAuOu8",
+     288.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ],
+    [
+     "hcTnaI_djHQ",
+     35.0,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "_BDq6tAuOu8",
+     520.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ],
+    [
+     "_BDq6tAuOu8",
+     344.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "For twenty years, a Kentucky professor, Brent Seales, tried to read them without opening them. Scan them with X-rays, then unroll them on a computer.",
+   "speak": "For twenty years, a Kentucky professor, Brent Seels, tried to read them without opening them. Scan them with X-rays, then unroll them on a computer.",
+   "shots": [
+    [
+     "7mo0T8h4I3o",
+     10.0
+    ],
+    [
+     "7mo0T8h4I3o",
+     33.0
+    ],
+    [
+     "_BDq6tAuOu8",
+     464.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ],
+    [
+     "_BDq6tAuOu8",
+     752.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ],
+    [
+     "hcTnaI_djHQ",
+     48.0,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "But the ink is made of carbon, just like the burnt page. On an X-ray, it's invisible.",
+   "shots": [
+    [
+     "hcTnaI_djHQ",
+     107.5,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "_BDq6tAuOu8",
+     768.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ],
+    [
+     "7mo0T8h4I3o",
+     37.5
+    ]
+   ]
+  },
+  {
+   "say": "So in 2023, a prize of over a million dollars was offered to anyone who could read them.",
+   "speak": "So in twenty twenty-three, a prize of over a million dollars was offered to anyone who could read them.",
+   "shots": [
+    [
+     "hcTnaI_djHQ",
+     105.0,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "hcTnaI_djHQ",
+     97.5,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "hcTnaI_djHQ",
+     94.5,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "A twenty-one-year-old computer science student from Nebraska, Luke Farritor, trained an AI to spot the faintest traces of ink.",
+   "shots": [
+    [
+     "zpflT8XuSyg",
+     6.0
+    ],
+    [
+     "zpflT8XuSyg",
+     75.0
+    ],
+    [
+     "zpflT8XuSyg",
+     51.0
+    ],
+    [
+     "zpflT8XuSyg",
+     147.0
+    ]
+   ]
+  },
+  {
+   "say": "One night, walking home from a party, he checked his phone.",
+   "shots": [
+    [
+     "zpflT8XuSyg",
+     54.0
+    ],
+    [
+     "zpflT8XuSyg",
+     45.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "zpflT8XuSyg",
+    118.0,
+    121.7
+   ],
+   "shots": [
+    [
+     "zpflT8XuSyg",
+     117.6,
+     {
+      "w": 1.6
+     }
+    ],
+    [
+     "zpflT8XuSyg",
+     120.2,
+     {
+      "w": 2.1
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "zpflT8XuSyg",
+    132.6,
+    138.25
+   ],
+   "shots": [
+    [
+     "zpflT8XuSyg",
+     132.6,
+     {
+      "w": 2.9
+     }
+    ],
+    [
+     "zpflT8XuSyg",
+     129.0,
+     {
+      "w": 2.75
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Then a whole word appeared. Porphyras. Purple. The first word read from inside one of these scrolls in two thousand years.",
+   "speak": "Then a whole word appeared. Porfuras. Purple. The first word read from inside one of these scrolls in two thousand years.",
+   "shots": [
+    [
+     "7mo0T8h4I3o",
+     95.5
+    ],
+    [
+     "okSG9QaqY1o",
+     606.0
+    ],
+    [
+     "hcTnaI_djHQ",
+     117.5,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "zpflT8XuSyg",
+     150.5
+    ],
+    [
+     "7mo0T8h4I3o",
+     52.5
+    ]
+   ]
+  },
+  {
+   "say": "In Berlin, an Egyptian student, Youssef Nader, found the same word on his own. Together with Julian Schilliger, they revealed more than two thousand letters, and won seven hundred thousand dollars.",
+   "speak": "In Berlin, an Egyptian student, Yoosef Nader, found the same word on his own. Together with Julian Schilliger, they revealed more than two thousand letters, and won seven hundred thousand dollars.",
+   "shots": [
+    [
+     "hcTnaI_djHQ",
+     112.5,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "okSG9QaqY1o",
+     40.0
+    ],
+    [
+     "okSG9QaqY1o",
+     110.0
+    ],
+    [
+     "zpflT8XuSyg",
+     177.0
+    ],
+    [
+     "hcTnaI_djHQ",
+     120.0,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "And what was the ancient text about? Pleasure. Food, music... and the taste of capers.",
+   "shots": [
+    [
+     "hcTnaI_djHQ",
+     162.5,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "_BDq6tAuOu8",
+     168.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ],
+    [
+     "_BDq6tAuOu8",
+     200.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ],
+    [
+     "zpflT8XuSyg",
+     180.0
+    ]
+   ]
+  },
+  {
+   "say": "Some scholars worried. Was the AI just seeing patterns that weren't there?",
+   "shots": [
+    [
+     "hcTnaI_djHQ",
+     55.0,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "7mo0T8h4I3o",
+     57.5
+    ]
+   ]
+  },
+  {
+   "say": "Then, in June 2026, sharper scans showed the ink directly. It matched the AI's reading, letter for letter. That same month, a whole scroll was read from beginning to end, for the first time.",
+   "speak": "Then, in June twenty twenty-six, sharper scans showed the ink directly. It matched the AI's reading, letter for letter. That same month, a whole scroll was read from beginning to end, for the first time.",
+   "shots": [
+    [
+     "hcTnaI_djHQ",
+     45.0,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "hcTnaI_djHQ",
+     62.5,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "hcTnaI_djHQ",
+     67.5,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "hcTnaI_djHQ",
+     50.0,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "7mo0T8h4I3o",
+    36.9,
+    42.4
+   ],
+   "shots": [
+    [
+     "7mo0T8h4I3o",
+     36.9,
+     {
+      "w": 2.7
+     }
+    ],
+    [
+     "7mo0T8h4I3o",
+     40.0,
+     {
+      "w": 2.8
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "7mo0T8h4I3o",
+    45.1,
+    46.35
+   ],
+   "shots": [
+    [
+     "7mo0T8h4I3o",
+     45.1
+    ]
+   ]
+  },
+  {
+   "say": "There are still hundreds of unopened scrolls. Scholars hope some hold lost classics nobody has read in two thousand years.",
+   "shots": [
+    [
+     "_BDq6tAuOu8",
+     352.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ],
+    [
+     "_BDq6tAuOu8",
+     240.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ],
+    [
+     "hcTnaI_djHQ",
+     170.0,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ],
+    [
+     "_BDq6tAuOu8",
+     792.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "So these lumps of charcoal... are a library. And we're finally reading it.",
+   "shots": [
+    [
+     "_BDq6tAuOu8",
+     728.0,
+     {
+      "rows": [
+       0,
+       0.9
+      ]
+     }
+    ],
+    [
+     "hcTnaI_djHQ",
+     2.5,
+     {
+      "rows": [
+       0,
+       0.8
+      ]
+     }
+    ]
+   ]
+  }
+ ],
+ "credits": [
+  "NBC News",
+  "PBS Secrets of the Dead",
+  "CBS 60 Minutes",
+  "University of Nebraska-Lincoln",
+  "TED",
+  "Vesuvius Challenge / University of Kentucky"
+ ]
+}

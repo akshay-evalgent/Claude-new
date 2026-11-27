@@ -1,0 +1,956 @@
+{
+ "title": "He cycled from India to Sweden... for one woman",
+ "note": "True story: PK Mahanandia cycled (mostly) from Delhi to Sweden in 1977 to rejoin Charlotte (Lotta) von Schedvin. Facts: BBC (2016, 2017 Global interview), PK's Fox op-ed, National Geographic, Straits Times, CGTN interview. Real interview audio: CGTN (bNI_Sw2jVSA), BBC World News (MiDKEhClNSA). Archive photos via BBC News Telugu (hfWvaPr2xKY). Documentary trailer shots (biXpA5aJPug) only on the 'became a film' beat; they are re-enactments. Script and sources: pk_cycle_love.script.md.",
+ "base": ".",
+ "layout": "full",
+ "mid": 0.66,
+ "voice": "am_michael",
+ "speed": 1.3,
+ "gap": 0.05,
+ "beats": [
+  {
+   "say": "In 1977, a poor artist from India got on a second-hand bicycle, and rode it all the way to Sweden. For one woman.",
+   "shots": [
+    [
+     "hfWvaPr2xKY",
+     25.5
+    ],
+    [
+     "hfWvaPr2xKY",
+     140.5
+    ],
+    [
+     "hfWvaPr2xKY",
+     17.5
+    ],
+    [
+     "MiDKEhClNSA",
+     240.5,
+     {
+      "rows": [
+       0,
+       0.68
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "His name is P K Mahanandia. He was born in a village in Odisha, into a Dalit family, once called untouchable.",
+   "shots": [
+    [
+     "hfWvaPr2xKY",
+     40.5
+    ],
+    [
+     "bNI_Sw2jVSA",
+     40.5,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ],
+    [
+     "EOz_kWqqHu0",
+     91.0
+    ],
+    [
+     "hfWvaPr2xKY",
+     42.5
+    ]
+   ]
+  },
+  {
+   "film": [
+    "bNI_Sw2jVSA",
+    49.65,
+    61.95
+   ],
+   "shots": [
+    [
+     "bNI_Sw2jVSA",
+     49.65,
+     {
+      "w": 4.4
+     }
+    ],
+    [
+     "EOz_kWqqHu0",
+     94.0,
+     {
+      "w": 2.3
+     }
+    ],
+    [
+     "bNI_Sw2jVSA",
+     56.4,
+     {
+      "w": 5.6
+     }
+    ]
+   ]
+  },
+  {
+   "say": "But when he was born, his family was told a prophecy. One day, he would marry a woman from a faraway land. She'd be musical, born under Taurus... and she would own a jungle.",
+   "shots": [
+    [
+     "bNI_Sw2jVSA",
+     14.0,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ],
+    [
+     "hfWvaPr2xKY",
+     48.0
+    ],
+    [
+     "EOz_kWqqHu0",
+     66.5
+    ],
+    [
+     "hfWvaPr2xKY",
+     62.5
+    ],
+    [
+     "bNI_Sw2jVSA",
+     27.5,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Years later, he was drawing tourists in Delhi. A portrait in ten minutes, for ten rupees.",
+   "shots": [
+    [
+     "EOz_kWqqHu0",
+     4.0
+    ],
+    [
+     "bNI_Sw2jVSA",
+     66.0,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ],
+    [
+     "hfWvaPr2xKY",
+     101.0
+    ],
+    [
+     "hfWvaPr2xKY",
+     98.0
+    ]
+   ]
+  },
+  {
+   "say": "One winter evening in 1975, a young Swedish woman asked him for a portrait. Her name was Charlotte. She had driven all the way to India, in a van.",
+   "speak": "One winter evening in nineteen seventy-five, a young Swedish woman asked him for a portrait. Her name was Charlotte. She had driven all the way to India, in a van.",
+   "shots": [
+    [
+     "hfWvaPr2xKY",
+     63.0
+    ],
+    [
+     "hfWvaPr2xKY",
+     67.0
+    ],
+    [
+     "bNI_Sw2jVSA",
+     99.5,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ],
+    [
+     "MiDKEhClNSA",
+     152.5,
+     {
+      "rows": [
+       0,
+       0.68
+      ]
+     }
+    ],
+    [
+     "hfWvaPr2xKY",
+     72.5
+    ]
+   ]
+  },
+  {
+   "say": "He remembered the prophecy. So he asked her a few questions.",
+   "shots": [
+    [
+     "bNI_Sw2jVSA",
+     163.5,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ],
+    [
+     "hfWvaPr2xKY",
+     86.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "bNI_Sw2jVSA",
+    170.75,
+    172.5
+   ],
+   "shots": [
+    [
+     "bNI_Sw2jVSA",
+     170.75,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "bNI_Sw2jVSA",
+    175.75,
+    177.65
+   ],
+   "shots": [
+    [
+     "bNI_Sw2jVSA",
+     175.75,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "bNI_Sw2jVSA",
+    195.5,
+    199.8
+   ],
+   "shots": [
+    [
+     "bNI_Sw2jVSA",
+     195.5,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "bNI_Sw2jVSA",
+    201.3,
+    205.0
+   ],
+   "shots": [
+    [
+     "bNI_Sw2jVSA",
+     201.3,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Within weeks, they were married in his village, in a tribal ceremony. Then she had to go home. She promised to come back in August.",
+   "shots": [
+    [
+     "bNI_Sw2jVSA",
+     392.0,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ],
+    [
+     "bNI_Sw2jVSA",
+     396.0,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ],
+    [
+     "hfWvaPr2xKY",
+     81.0
+    ],
+    [
+     "bNI_Sw2jVSA",
+     402.0,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "bNI_Sw2jVSA",
+    415.8,
+    421.1
+   ],
+   "shots": [
+    [
+     "bNI_Sw2jVSA",
+     415.8,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "He had no money for a plane ticket.",
+   "shots": [
+    [
+     "EOz_kWqqHu0",
+     37.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "MiDKEhClNSA",
+    244.2,
+    247.5
+   ],
+   "shots": [
+    [
+     "MiDKEhClNSA",
+     244.2,
+     {
+      "rows": [
+       0,
+       0.68
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "And he had no idea how far it was.",
+   "shots": [
+    [
+     "MiDKEhClNSA",
+     57.0,
+     {
+      "rows": [
+       0,
+       0.68
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "MiDKEhClNSA",
+    225.75,
+    237.0
+   ],
+   "words": [
+    [
+     225.83,
+     225.89,
+     "I"
+    ],
+    [
+     225.89,
+     226.05,
+     "was"
+    ],
+    [
+     226.05,
+     226.49,
+     "mixing"
+    ],
+    [
+     226.49,
+     226.75,
+     "up"
+    ],
+    [
+     226.93,
+     227.31,
+     "Switzerland"
+    ],
+    [
+     227.31,
+     227.67,
+     "with"
+    ],
+    [
+     227.67,
+     228.05,
+     "Sweden."
+    ],
+    [
+     229.85,
+     230.23,
+     "And"
+    ],
+    [
+     230.23,
+     230.61,
+     "if"
+    ],
+    [
+     230.61,
+     230.75,
+     "I"
+    ],
+    [
+     230.75,
+     230.87,
+     "would"
+    ],
+    [
+     230.87,
+     230.97,
+     "have"
+    ],
+    [
+     230.97,
+     231.21,
+     "known,"
+    ],
+    [
+     231.37,
+     231.43,
+     "I"
+    ],
+    [
+     231.43,
+     231.71,
+     "don't"
+    ],
+    [
+     231.71,
+     231.87,
+     "think"
+    ],
+    [
+     231.87,
+     232.01,
+     "I"
+    ],
+    [
+     232.01,
+     232.13,
+     "would"
+    ],
+    [
+     232.13,
+     232.27,
+     "have"
+    ],
+    [
+     232.27,
+     232.53,
+     "dared"
+    ],
+    [
+     232.53,
+     232.83,
+     "to"
+    ],
+    [
+     232.83,
+     233.05,
+     "come."
+    ],
+    [
+     234.07,
+     234.33,
+     "So"
+    ],
+    [
+     234.33,
+     234.83,
+     "I'll"
+    ],
+    [
+     234.83,
+     235.05,
+     "do"
+    ],
+    [
+     235.05,
+     235.39,
+     "it"
+    ],
+    [
+     235.39,
+     235.89,
+     "or"
+    ],
+    [
+     235.89,
+     236.27,
+     "I'll"
+    ],
+    [
+     236.27,
+     236.89,
+     "die."
+    ]
+   ],
+   "shots": [
+    [
+     "MiDKEhClNSA",
+     225.75,
+     {
+      "w": 4.0
+     }
+    ],
+    [
+     "MiDKEhClNSA",
+     52.0,
+     {
+      "w": 3.0
+     }
+    ],
+    [
+     "MiDKEhClNSA",
+     233.5,
+     {
+      "w": 4.3
+     }
+    ]
+   ]
+  },
+  {
+   "say": "On January twenty-second, 1977, he started pedalling west. Through Pakistan, Afghanistan, Iran and Turkey.",
+   "speak": "On January twenty-second, nineteen seventy-seven, he started pedalling west. Through Pakistan, Afghanistan, Iran and Turkey.",
+   "shots": [
+    [
+     "bNI_Sw2jVSA",
+     480.0,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ],
+    [
+     "xVMqElamM44",
+     96.0,
+     {
+      "rows": [
+       0.04,
+       0.8
+      ],
+      "cx": 0.4
+     }
+    ],
+    [
+     "hfWvaPr2xKY",
+     128.0
+    ],
+    [
+     "xVMqElamM44",
+     216.0,
+     {
+      "rows": [
+       0.04,
+       0.8
+      ],
+      "cx": 0.4
+     }
+    ],
+    [
+     "hfWvaPr2xKY",
+     141.0
+    ]
+   ]
+  },
+  {
+   "say": "He paid for food by drawing portraits. He slept under the stars. And when his bike broke down in the Afghan desert, a stranger stopped to help him fix it.",
+   "shots": [
+    [
+     "xVMqElamM44",
+     172.0,
+     {
+      "rows": [
+       0.04,
+       0.8
+      ],
+      "cx": 0.35
+     }
+    ],
+    [
+     "hfWvaPr2xKY",
+     206.5
+    ],
+    [
+     "xVMqElamM44",
+     156.0,
+     {
+      "rows": [
+       0.04,
+       0.8
+      ],
+      "cx": 0.4
+     }
+    ],
+    [
+     "xVMqElamM44",
+     168.0,
+     {
+      "rows": [
+       0.04,
+       0.8
+      ],
+      "cx": 0.35
+     }
+    ],
+    [
+     "xVMqElamM44",
+     232.0,
+     {
+      "rows": [
+       0.04,
+       0.8
+      ],
+      "cx": 0.45
+     }
+    ]
+   ]
+  },
+  {
+   "say": "To be fair, he didn't pedal every kilometre. Truck drivers gave him lifts, and he took a train for the last stretch. But most of the way, he cycled.",
+   "shots": [
+    [
+     "hfWvaPr2xKY",
+     127.5
+    ],
+    [
+     "xVMqElamM44",
+     92.0,
+     {
+      "rows": [
+       0.04,
+       0.8
+      ],
+      "cx": 0.4
+     }
+    ],
+    [
+     "hfWvaPr2xKY",
+     198.0
+    ],
+    [
+     "xVMqElamM44",
+     236.0,
+     {
+      "rows": [
+       0.04,
+       0.8
+      ],
+      "cx": 0.4
+     }
+    ]
+   ]
+  },
+  {
+   "say": "About four months after he set off,",
+   "shots": [
+    [
+     "trMGZn-KMIE",
+     259.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "MiDKEhClNSA",
+    345.4,
+    348.8
+   ],
+   "shots": [
+    [
+     "MiDKEhClNSA",
+     345.4,
+     {
+      "rows": [
+       0,
+       0.68
+      ],
+      "w": 1.7
+     }
+    ],
+    [
+     "bNI_Sw2jVSA",
+     560.0,
+     {
+      "rows": [
+       0,
+       0.7
+      ],
+      "w": 1.7
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Her noble family needed some convincing. But they got married again, officially, in Sweden.",
+   "shots": [
+    [
+     "bNI_Sw2jVSA",
+     528.0,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ],
+    [
+     "bNI_Sw2jVSA",
+     464.0,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ],
+    [
+     "hfWvaPr2xKY",
+     231.0
+    ],
+    [
+     "bNI_Sw2jVSA",
+     560.0,
+     {
+      "rows": [
+       0,
+       0.7
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "bNI_Sw2jVSA",
+    593.6,
+    598.95
+   ],
+   "words": [
+    [
+     593.7,
+     593.8,
+     "Lotta"
+    ],
+    [
+     593.8,
+     594.12,
+     "was"
+    ],
+    [
+     594.12,
+     594.34,
+     "very"
+    ],
+    [
+     594.34,
+     594.76,
+     "strong."
+    ],
+    [
+     595.22,
+     595.32,
+     "She"
+    ],
+    [
+     595.32,
+     595.46,
+     "had"
+    ],
+    [
+     595.46,
+     595.62,
+     "very"
+    ],
+    [
+     595.62,
+     595.94,
+     "strong"
+    ],
+    [
+     595.94,
+     596.14,
+     "will"
+    ],
+    [
+     596.14,
+     596.46,
+     "power."
+    ],
+    [
+     596.64,
+     596.78,
+     "No"
+    ],
+    [
+     596.78,
+     596.9,
+     "one"
+    ],
+    [
+     596.9,
+     597.1,
+     "could"
+    ],
+    [
+     597.1,
+     597.42,
+     "stop."
+    ],
+    [
+     597.84,
+     598.08,
+     "She"
+    ],
+    [
+     598.08,
+     598.26,
+     "loved"
+    ],
+    [
+     598.26,
+     598.84,
+     "me."
+    ]
+   ],
+   "shots": [
+    [
+     "bNI_Sw2jVSA",
+     596.0,
+     {
+      "rows": [
+       0,
+       0.7
+      ],
+      "w": 2.6
+     }
+    ],
+    [
+     "bNI_Sw2jVSA",
+     600.0,
+     {
+      "rows": [
+       0,
+       0.7
+      ],
+      "w": 2.8
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Nearly fifty years later, they're still together. And in 2025, their story became a film.",
+   "speak": "Nearly fifty years later, they're still together. And in twenty twenty-five, their story became a film.",
+   "shots": [
+    [
+     "MiDKEhClNSA",
+     243.0,
+     {
+      "rows": [
+       0,
+       0.68
+      ]
+     }
+    ],
+    [
+     "BbSd-ur0ru0",
+     14.0
+    ],
+    [
+     "biXpA5aJPug",
+     114.5
+    ],
+    [
+     "biXpA5aJPug",
+     120.5
+    ]
+   ]
+  },
+  {
+   "say": "So the boy who wasn't allowed inside the classroom... cycled across a continent, for the woman from the prophecy.",
+   "shots": [
+    [
+     "hfWvaPr2xKY",
+     67.0
+    ],
+    [
+     "hfWvaPr2xKY",
+     73.0
+    ],
+    [
+     "hfWvaPr2xKY",
+     25.5
+    ]
+   ]
+  }
+ ],
+ "credits": [
+  "CGTN",
+  "BBC World News",
+  "BBC News Telugu (photos courtesy Dr P K Mahanandia)",
+  "Fox News",
+  "The Upcoming",
+  "The Cycle of Love (2025), Dogwoof",
+  "Kinolibrary"
+ ]
+}

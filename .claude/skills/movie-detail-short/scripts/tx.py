@@ -1,6 +1,7 @@
 import subprocess, numpy as np, json, sys, os
 from faster_whisper import WhisperModel
 m = WhisperModel("small.en", device="cpu", compute_type="int8", cpu_threads=4)
+os.makedirs(sys.argv[1], exist_ok=True)
 for f in sys.argv[2:]:
     out = os.path.join(sys.argv[1], os.path.basename(f).rsplit(".", 1)[0] + ".json")
     if os.path.exists(out): continue
