@@ -62,7 +62,7 @@ ttsenv/bin/python voiceover.py
 ttsenv/bin/python sound.py
 python3 scene.py preview 216 384 6 2
 python3 scene.py render 720 1280 10
-python3 ../quicksand/assemble.py pool_captions.mp4 --captions --words 1 --cap-y 0.52 --cap-size 0.074 --upscale 1080 1920
+python3 ../quicksand/assemble.py pool_captions.mp4 --captions --words 1 --cap-y 0.6 --cap-size 0.085 --upscale 1080 1920
 ```
 
 THUMB_LINE

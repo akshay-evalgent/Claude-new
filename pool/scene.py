@@ -22,7 +22,7 @@ from timeline import FPS, SHOTS, SHOT, END, f
 
 SCRATCH = os.environ["QS_SCRATCH"]
 EXPOSURE = {"ext": 0.0, "cut": 0.3}
-SHOT_EXPOSURE = {"edges": 0.1, "button": 0.1}
+SHOT_EXPOSURE = {"edges": 0.1, "button": 0.1, "neighbor": 0.3}
 
 
 def bone_parent(obj, arm, bone, local):
@@ -77,7 +77,7 @@ def build():
     rig["hand_cam"] = lambda u, h=rp: (h + Vector((-0.22 + 0.03 * u, -0.3 + 0.04 * u, 0.26)), h + Vector((0.0, 0.0, 0.01)))
     sc.frame_set(F("congrats", 0.7)); bpy.context.view_layer.update()
     hd = bone_world(B.arm, "mixamorig:Head").translation.copy()
-    rig["face_cam"] = lambda u, h=hd: (h + Vector((-0.35 + 0.08 * u, -1.75 + 0.15 * u, 0.55)), h + Vector((0.0, -0.32, -0.18)))
+    rig["face_cam"] = lambda u, h=hd: (h + Vector((-0.42 + 0.08 * u, -2.05 + 0.15 * u, 0.62)), h + Vector((0.0, -0.3, -0.06)))
     shots.cameras(rig)
 
     # visibility: what each shot wants, minus the front of the ground in the cutaways
@@ -95,6 +95,14 @@ def build():
                 if fc.data_path == "hide_render":
                     for kp in fc.keyframe_points:
                         kp.interpolation = "CONSTANT"
+
+    # a soft fill on the neighbour's face (the sun is behind him), on only in his shot
+    ld = bpy.data.lights.new("NeighborFill", "AREA"); ld.size = 2.0; ld.color = (1.0, 0.95, 0.88)
+    fill = bpy.data.objects.new("NeighborFill", ld); S.link(fill); fill.location = (8.6, -0.6, 2.4)
+    fill.rotation_euler = (Vector((11.9, 0.6, 2.05)) - fill.location).to_track_quat("-Z", "Y").to_euler()
+    for name, t0, t1, v in SHOTS:
+        ld.energy = 260.0 if name == "neighbor" else 0.0; ld.keyframe_insert("energy", frame=f(t0))
+    ST.set_interp(ld, "CONSTANT")
 
     # exposure per shot
     for name, t0, t1, v in SHOTS:
