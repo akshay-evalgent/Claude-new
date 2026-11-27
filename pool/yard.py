@@ -144,7 +144,7 @@ def materials():
     M["paving"] = S.pbr("Paving", "concrete_pavement", 2.5, tint=(1.0, 0.97, 0.93))
     M["stucco"] = S.pbr("Stucco", "white_stucco", 2.0, tint=(1.0, 0.98, 0.95))
     M["roof"] = S.pbr("Roof", "grey_roof_tiles", 2.0, tint=(0.55, 0.5, 0.48))
-    M["fence"] = S.pbr("Fence", "brown_planks_05", 1.2, tint=(0.95, 0.8, 0.65))
+    M["fence"] = S.pbr("Fence", "fine_grained_wood", 1.0, tint=(0.78, 0.6, 0.45))
     M["wood"] = S.pbr("Deck", "fine_grained_wood", 1.4, tint=(1.05, 0.74, 0.5))
     M["cladding"] = S.pbr("Cladding", "fine_grained_wood", 1.0, tint=(0.55, 0.36, 0.22))
     M["steel"] = S.flat("Steel", (0.5, 0.53, 0.56), 0.38, 0.55)
@@ -232,7 +232,10 @@ def dirt_top_material(M):
     mp2, _ = S._mapping(nt, 2.0)
     d = S._tex(nt, os.path.join(A, "tex", "excavated_soil_wall", "diff.jpg"), proj="BOX"); nt.links.new(mp2.outputs[0], d.inputs[0])
     lvl = nt.nodes.new("ShaderNodeValue"); lvl.name = "Dirt"; lvl.outputs[0].default_value = 0.0
-    gcol = S._mix(nt, 1.0, g.outputs["Color"], (0.95, 1.0, 0.9), blend="MULTIPLY")
+    hs = nt.nodes.new("ShaderNodeHueSaturation")          # same green as the lawn
+    hs.inputs["Hue"].default_value = 0.62; hs.inputs["Saturation"].default_value = 1.25; hs.inputs["Value"].default_value = 0.85
+    nt.links.new(g.outputs["Color"], hs.inputs["Color"])
+    gcol = hs.outputs["Color"]
     dcol = S._mix(nt, 1.0, d.outputs["Color"], (0.7, 0.58, 0.45), blend="MULTIPLY")
     nt.links.new(S._mix(nt, lvl.outputs[0], gcol, dcol), b.inputs["Base Color"])
     b.inputs["Roughness"].default_value = 0.95
@@ -687,6 +690,21 @@ def hose(M, coll):
     return [h, st]
 
 
+def pump_hose(M, coll):
+    """A concrete pump hose over the edge of the pit, pouring (shown while the slab goes in)."""
+    m = S.flat("PumpHose", (0.04, 0.04, 0.045), 0.5)
+    cu = bpy.data.curves.new("PumpHose", "CURVE"); cu.dimensions = "3D"; cu.bevel_depth = 0.085; cu.bevel_resolution = 4
+    sp = cu.splines.new("BEZIER")
+    pts = [(-8.0, 2.0, 1.4), (-4.0, 1.8, 1.0), (-2.6, 1.5, 0.25), (-1.6, 1.3, -1.6), (-1.1, 1.1, -3.4)]
+    sp.bezier_points.add(len(pts) - 1)
+    for bp, p in zip(sp.bezier_points, pts):
+        bp.co = p; bp.handle_left_type = bp.handle_right_type = "AUTO"
+    cu.materials.append(m)
+    h = S.new_obj("PumpHose", cu, coll)
+    pour = P.cyl("PumpPour", 0.075, 0.55, M["slab"], coll, (-1.08, 1.08, -3.75))
+    return [h, pour]
+
+
 def world_and_sun():
     sc = bpy.context.scene
     w = bpy.data.worlds.new("Sky"); sc.world = w; w.use_nodes = True
@@ -732,6 +750,6 @@ def build_all():
     return {"M": M, "garage": g, "tub": t, "ball": ball, "rams": rams, "lift": lift, "car": car, "boards": boards,
             "fill_root": fill_root, "fill": fill, "pile": dirt_pile(M, props), "clods": clods(M, props),
             "spray": spray_lines(M, props), "dims": dimensions(M, props), "crane": crane_rig(M, props, t["root"]),
-            "hose": hose(M, props), "remote": remote(M, props), "lemonade": lemonade(M, props),
+            "hose": hose(M, props), "pump": pump_hose(M, props), "remote": remote(M, props), "lemonade": lemonade(M, props),
             "loungers": [lounger("Lounger0", M, props, (3.75, -2.4, DECK), 0), lounger("Lounger1", M, props, (3.75, 0.3, DECK), 0)],
             "spade": model("rusted_spade_01", props, (0, 0, 0), 0, 1.0)}

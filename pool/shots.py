@@ -276,6 +276,7 @@ def perform(rig):
     key_xf(fill, 1, scale=(1, 1, 1)); key_xf(fill, a, scale=(1, 1, 1)); key_xf(fill, F("dig", 0.92), scale=(1, 1, 0.004))
     dirt = R["M"]["dirt_fac"]
     key_value(dirt, 1, 0.0); key_value(dirt, a, 1.0)
+    ST.set_interp(R["M"]["dirt"].node_tree, "CONSTANT")
     pile = R["pile"]
     key_xf(pile, a, scale=(0.6, 0.8, 0.3)); key_xf(pile, b, scale=(3.2, 4.2, 2.4))
     rr = random.Random(9)
@@ -335,7 +336,7 @@ def perform(rig):
         spade.keyframe_insert("location", frame=fr); spade.keyframe_insert("rotation_quaternion", frame=fr)
 
     # hook: on the deck with the remote
-    hp = Vector((3.55, -6.3, Y.DECK))
+    hp = Vector((4.45, -4.6, Y.DECK))
     for u in (0.0, 1.0):
         fr = F("hook", u)
         yw = yaw_to(hp, (0.0, 0.5))
@@ -396,21 +397,11 @@ def perform(rig):
             B.pose(fr, V(p), yw, lambda a_, look=look, u=u: stand(a_, (look[0], look[1] + 14 * u), "hips"))
             B.face(fr, calm=0.3, smug=0.3 * u)
 
-    # trick: close up by the hole, index finger up
+    # trick: close up by the hole, hands on hips, leaning in with a grin
     tp = Vector((3.7, -6.5, 0.0))
     for u in (0.0, 1.0):
         fr = F("trick", u)
-
-        def body(a_, u=u):
-            legs_stand(a_.arm, 0.08); spine(a_.arm, 2, 4, 0)
-            a_.hand("Right", a_.W(0.24, -0.18, a_.hips_w.z + 0.66 + 0.05 * u), pole=(-1.0, -0.2, -1.0),
-                    dir_world=Vector((0, 0, 1)) + fwd(a_.yaw) * 0.2)
-            posing.curl_fingers(a_.arm, "Right", 1.3, skip=("Index",))
-            arms_hang(a_.arm, 0.0) if False else None
-            a_.hand("Left", a_.W(0.04, 0.22, a_.hips_w.z - 0.1), pole=(1.0, 0.4, -1.0), dir_world=Vector((0, 0, -1)))
-            fingers(a_.arm, 0.5) if False else None
-            head(a_.arm, 2, 0, 4 * u)
-        B.pose(fr, tp, yaw_to(tp, (3.4, -8.3)), body)
+        B.pose(fr, tp, yaw_to(tp, (3.4, -8.3)), lambda a_, u=u: stand(a_, (4 - 6 * u, 0), "hips", lean=4 + 8 * u))
         B.face(fr, smug=1.0)
 
     # tub: guiding the crane, one arm up
@@ -480,14 +471,14 @@ def perform(rig):
                        Matrix.Translation((0.0, 0.085, 0.03)) @ Euler((math.radians(90), 0, math.radians(180))).to_matrix().to_4x4())
     rig["bone_parent"](glass, B.arm, "mixamorig:RightHand",
                        Matrix.Translation((0.0, 0.08, 0.045)) @ Euler((math.radians(90), 0, 0)).to_matrix().to_4x4())
-    # congrats: raise the glass
-    for u, up in ((0.0, 0.0), (0.45, 1.0), (1.0, 1.0)):
+    # congrats: a toast towards the camera
+    for u, up in ((0.0, 0.0), (0.4, 1.0), (1.0, 1.0)):
         fr = F("congrats", u)
 
         def body(a_, up=up):
-            lie(a_, (8, -12), "rest")
-            p = a_.hips_w + fwd(a_.yaw) * (0.3 + 0.15 * up) + left(a_.yaw) * (-0.3) + Vector((0, 0, 0.15 + 0.45 * up))
-            a_.hand("Right", p, pole=(-1.0, 0.0, -1.0), dir_world=Vector((0, 0, 1)) + fwd(a_.yaw) * 0.3)
+            lie(a_, (10, -8), "rest")
+            p = a_.hips_w + fwd(a_.yaw) * (0.28 + 0.2 * up) + left(a_.yaw) * (-0.3 + 0.06 * up) + Vector((0, 0, 0.2 + 0.32 * up))
+            a_.hand("Right", p, pole=(-1.0, -0.3, -1.0), dir_world=Vector((0, 0, 1)) + fwd(a_.yaw) * 0.2)
             posing.curl_fingers(a_.arm, "Right", 1.1)
         B.pose(fr, lhip, 0, body, seated=True, pitch=-38)
         B.face(fr, smug=1.0)
@@ -550,6 +541,7 @@ def perform(rig):
     want([R["ball"]], from_("justpool"))
     want(R["crane"], {"tub"})
     want(R["hose"], {"tilefill"})
+    want(R["pump"], {"slab"})
     for holder, pieces, cx, cy in R["boards"]:
         want(pieces, from_("deck"))
     want(R["fill"], {"yard", "dig"})
@@ -580,7 +572,7 @@ def cam_plan(rig):
     """name: (lens, fn(u, fr) -> (loc, target), fstop or None, shake)"""
     D = Y.DECK
     return {
-        "hook": (20, lambda u, fr: (lerp((7.2, -11.8, 1.0), (6.4, -10.6, 1.25), _ease(u)), (0.2, 1.0, 1.7)), None, 0.25),
+        "hook": (20, lambda u, fr: (lerp((5.4, -10.6, 0.95), (4.8, -9.5, 1.15), _ease(u)), (0.5, 1.6, 1.4)), None, 0.25),
         "yard": (24, lambda u, fr: (lerp((5.2, -14.0, 6.6), (4.6, -12.8, 6.0), u), (0.0, -1.2, 0.0)), None, 0.2),
         "dig": (18, lambda u, fr: (lerp((6.6, -10.6, 7.6), (6.1, -9.8, 6.9), u), (0.0, 0.6, -2.6)), None, 0.2),
         "slab": (24, lambda u, fr: (lerp((0.0, -12.8, -0.9), (0.0, -12.2, -1.1), u), (0.0, 0.0, -3.0)), None, 0.15),
@@ -594,8 +586,8 @@ def cam_plan(rig):
         "deck": (20, lambda u, fr: (lerp((6.0, -13.4, 8.2), (5.6, -12.6, 7.6), u), (0.0, -0.4, 0.0)), None, 0.2),
         "edges": (38, lambda u, fr: (lerp((2.88, -3.6, 0.34), (2.86, -2.4, 0.3), u), lerp((2.47, -1.6, 0.02), (2.47, -0.4, 0.02), u)), 2.4, 0.1),
         "justpool": (20, lambda u, fr: (lerp((-6.4, -9.6, 2.5), (-6.0, -9.0, 2.3), u), (1.2, 0.4, 0.1)), None, 0.2),
-        "button": (60, lambda u, fr: (rig["hand_cam"](u)), 2.8, 0.15),
-        "rise": (20, lambda u, fr: (lerp((8.6, -12.4, 1.4), (8.2, -11.8, 1.6), u), (0.0, 0.0, 1.2 + 0.8 * _ease(u))), None, 0.25),
+        "button": (50, lambda u, fr: (rig["hand_cam"](u)), 2.8, 0.15),
+        "rise": (20, lambda u, fr: (lerp((9.0, -12.2, 5.4), (8.6, -11.6, 5.8), u), (0.0, 0.0, 0.4 + 1.8 * _ease(u))), None, 0.25),
         "water": (22, lambda u, fr: (lerp((0.0, -12.9, 1.1), (0.0, -12.4, 1.0), u), (0.0, 0.0, 0.7)), None, 0.15),
         "carup": (22, lambda u, fr: (lerp((0.0, -12.6, -0.4), (0.0, -12.2, 0.1), u), (0.0, 1.5, -1.2 + 0.9 * _ease(u))), None, 0.15),
         "driveout": (24, lambda u, fr: (lerp((2.4, 14.6, 0.85), (2.2, 14.2, 0.9), u), (0.0, 4.2, 0.95)), None, 0.3),

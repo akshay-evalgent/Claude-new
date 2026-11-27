@@ -72,12 +72,12 @@ def build():
     shots.perform(rig)
 
     # close-up cameras that follow the hand and the face
-    sc.frame_set(F("button", 0.5))
-    hand = bone_world(B.arm, "mixamorig:RightHand").translation.copy()
-    rig["hand_cam"] = lambda u, h=hand: (h + Vector((0.34 - 0.04 * u, -0.42 + 0.06 * u, 0.3)), h + Vector((0.0, 0.06, 0.03)))
-    sc.frame_set(F("congrats", 0.6))
+    sc.frame_set(F("button", 0.5)); bpy.context.view_layer.update()
+    rp = R["remote"]["root"].matrix_world.translation.copy()
+    rig["hand_cam"] = lambda u, h=rp: (h + Vector((-0.22 + 0.03 * u, -0.3 + 0.04 * u, 0.26)), h + Vector((0.0, 0.0, 0.01)))
+    sc.frame_set(F("congrats", 0.7)); bpy.context.view_layer.update()
     hd = bone_world(B.arm, "mixamorig:Head").translation.copy()
-    rig["face_cam"] = lambda u, h=hd: (h + Vector((-0.75 + 0.12 * u, -1.55 + 0.2 * u, 0.12)), h + Vector((0.08, -0.3, -0.12)))
+    rig["face_cam"] = lambda u, h=hd: (h + Vector((-0.35 + 0.08 * u, -1.75 + 0.15 * u, 0.55)), h + Vector((0.0, -0.32, -0.18)))
     shots.cameras(rig)
 
     # visibility: what each shot wants, minus the front of the ground in the cutaways
