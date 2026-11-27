@@ -1,0 +1,68 @@
+[
+ {
+  "beat": 0,
+  "start": 0.0,
+  "dur": 3.214,
+  "line": "So. What salary are you expecting?"
+ },
+ {
+  "beat": 1,
+  "start": 3.214,
+  "dur": 1.422,
+  "line": "Um... sixty thousand?"
+ },
+ {
+  "beat": 2,
+  "start": 4.636,
+  "dur": 1.3,
+  "line": null
+ },
+ {
+  "beat": 3,
+  "start": 5.936,
+  "dur": 2.452,
+  "line": "We were thinking more like... exposure."
+ },
+ {
+  "beat": 4,
+  "start": 8.388,
+  "dur": 1.085,
+  "line": "Exposure?!"
+ },
+ {
+  "beat": 5,
+  "start": 9.473,
+  "dur": 3.314,
+  "line": "It's like money. But you can't spend it."
+ },
+ {
+  "beat": 6,
+  "start": 12.787,
+  "dur": 1.689,
+  "line": "Can I at least pay rent with it?"
+ },
+ {
+  "beat": 7,
+  "start": 14.476,
+  "dur": 1.879,
+  "line": "Can you pay rent with money?"
+ },
+ {
+  "beat": 8,
+  "start": 16.354,
+  "dur": 1.6,
+  "line": null
+ },
+ {
+  "beat": 9,
+  "start": 17.954,
+  "dur": 1.097,
+  "line": "...Fair point."
+ },
+ {
+  "beat": 10,
+  "start": 19.051,
+  "dur": 4.2,
+  "line": "Welcome to the family!"
+ }
+]
