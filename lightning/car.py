@@ -631,11 +631,11 @@ def lights(coll, parent):
 
 
 # ----------------------------------------------------------------------------- assembly
-def build_car(name, color, coll, convertible=False):
+def build_car(name, color, coll, convertible=False, rain=True):
     root = bpy.data.objects.new(name, None); S.link(root, coll)
     mats = {
         "paint": paint(name + "Paint", color),
-        "glass": glass(name + "Glass"),
+        "glass": glass(name + "Glass", rain=rain),
         "trim": S.flat(name + "Trim", (0.012, 0.012, 0.014), 0.35),
         "under": S.flat(name + "Under", (0.03, 0.03, 0.03), 0.9),
         "well": S.flat(name + "Well", (0.01, 0.01, 0.01), 0.95),

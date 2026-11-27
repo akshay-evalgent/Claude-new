@@ -2,7 +2,8 @@
 that is on screen at that moment, nothing added. The frame is rendered natively at full size
 (sharper than the upscaled video) and gets the same grade as the video.
 
-usage: python3 -I thumbnail.py FRAME.png FRAME_NUMBER OUT.jpg [--fps 24]
+usage: python3 -I thumbnail.py FRAME.png FRAME_NUMBER OUT.jpg [--fps 24] [--words N --cap-y Y --cap-size S]
+  (the caption flags are the same as assemble.py's, so the thumbnail matches the video)
   e.g. python3 -I scene.py stills 362 --res 1080 1920 --samples 64
        python3 -I thumbnail.py $QS_SCRATCH/stills/0362_*.png 362 thumbnail.jpg
 """

@@ -1,7 +1,11 @@
 """Encode the rendered frames with the mixed soundtrack into the final short.
 
 usage: python3 -I assemble.py OUT.mp4 [--frames DIR] [--fps 24] [--captions] [--upscale W H]
+                                [--words N] [--cap-y FRAC] [--cap-size FRAC]
   --captions  burns 2-3 word captions (heavy white sans, soft shadow, pop-in) timed to the narration
+  --words     at most N words per caption (1 = one word at a time)
+  --cap-y     caption centre as a fraction of the height (default 0.78)
+  --cap-size  font size as a fraction of the width (default 0.068)
 """
 import json, os, re, subprocess, sys, tempfile
 
@@ -15,9 +19,10 @@ def arg(name, n=1, default=None):
     return default
 
 
-def caption_chunks():
-    """Split each narration line into 2-3 word chunks timed by character count. A line may carry a
-    "caption" (what to show, e.g. digits) that differs from the spoken "text"."""
+def caption_chunks(max_words=None):
+    """Split each narration line into 2-3 word chunks (or --words N) timed by character count. A line
+    may carry a "caption" (what to show, e.g. digits) that differs from the spoken "text"."""
+    max_words = max_words or int(arg("--words", 1, "3"))
     lines = json.load(open(os.path.join(SCRATCH, "vo_timing.json")))["lines"]
     out = []
     for ln in lines:
@@ -25,7 +30,7 @@ def caption_chunks():
         groups, cur = [], []
         for w in words:
             cur.append(w)
-            if len(cur) == 3 or (len(cur) >= 2 and re.search(r"[,.?!]$", w)):
+            if len(cur) == max_words or (len(cur) >= 2 and re.search(r"[,.?!]$", w)):
                 groups.append(cur); cur = []
         if cur:
             if groups and len(cur) == 1:
@@ -52,20 +57,22 @@ def caption_at(chunks, t):
     return None, None
 
 
-def draw_caption(im, text, k=1.0):
-    """Caption look: heavy white sans, thin dark outline and soft shadow, centred at 78% height.
-    k (0..1) drives a short pop-in scale."""
+def draw_caption(im, text, k=1.0, y_frac=None, size=None):
+    """Caption look: heavy white sans, thin dark outline and soft shadow, centred at 78% height
+    (or --cap-y). k (0..1) drives a short pop-in scale."""
+    y_frac = y_frac if y_frac is not None else float(arg("--cap-y", 1, "0.78"))
+    size = size if size is not None else float(arg("--cap-size", 1, "0.068"))
     from PIL import Image, ImageDraw, ImageFilter, ImageFont
     font_path = os.path.join(SCRATCH, "..", "fonts", "OpenSans-ExtraBold.ttf")
     im = im.convert("RGBA")
     W, H = im.size
     sc = 0.88 + 0.12 * (1 - (1 - k) ** 3)
-    fs = int(W * 0.068 * sc)
+    fs = int(W * size * sc)
     font = ImageFont.truetype(font_path, fs)
     layer = Image.new("RGBA", im.size, (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
     l, t, r, b = d.textbbox((0, 0), text, font=font, stroke_width=fs // 20)
-    x, y = (W - (r - l)) // 2 - l, int(H * 0.78) - (b + t) // 2
+    x, y = (W - (r - l)) // 2 - l, int(H * y_frac) - (b + t) // 2
     sh = Image.new("RGBA", im.size, (0, 0, 0, 0))
     ImageDraw.Draw(sh).text((x, y + fs // 16), text, font=font, fill=(0, 0, 0, 170),
                             stroke_width=fs // 12, stroke_fill=(0, 0, 0, 170))
