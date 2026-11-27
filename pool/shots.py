@@ -298,6 +298,9 @@ def perform(rig):
 
     # ---------------------------------------------------------------- concrete
     slab_root, walls_root = rig["slab_root"], rig["walls_root"]
+    hb = ends("hook")[1]
+    for r in (slab_root, walls_root):          # finished in the hook, then built from nothing
+        key_xf(r, 1, scale=(1, 1, 1)); key_xf(r, hb, scale=(1, 1, 1)); key_xf(r, hb + 1, scale=(1, 1, 0.02))
     a, b = ends("slab")
     key_xf(slab_root, a, scale=(1, 1, 0.02)); key_xf(slab_root, F("slab", 0.72), scale=(1, 1, 1))
     a, b = ends("walls")
