@@ -446,3 +446,165 @@ Would you have known to stay put? 👇 Share this with someone who goes hiking.
 - **The song:** "Take Me Home, Country Roads" was reported by 7NEWS from William's own account.
 
 **Rights:** the footage belongs to ABC, Seven, Nine, Network 10 and the New York Post, and the police footage was released through them. You said you'd get permission.
+
+## True story (love): he cycled from India to Sweden for her
+
+**File:** `pk_cycle_love.mp4` · **Cover:** `pk_cycle_love_cover.jpg`
+
+**Tone:** a warm, romantic underdog story.
+- **Caste wording:** "Dalit, once called 'untouchable'", the words used by the BBC and by PK himself.
+- **Documentary footage:** the 2025 film *The Cycle of Love* re-enacts the 1977 scenes with actors. Its shots appear only on the "became a film" beat.
+- **Real footage everywhere else:** interviews (CGTN, BBC World News), family photos (via BBC News Telugu) and 1970s Afghanistan film.
+
+**Story beats:**
+1. **Hook:** in 1977 a poor artist rode a second-hand bicycle from India to Sweden for one woman.
+2. **His start in life:** a Dalit boy made to sit outside the classroom. In his own words: "the moment my classmates were touching me by mistake, then they were washing themselves…"
+3. **The prophecy:** he would marry a musical, Taurus woman from a faraway land who owned a jungle.
+4. **Meeting her:** he drew tourists in Delhi, 10 minutes for 10 rupees. In 1975 Charlotte, who had driven to India in a van, asked for a portrait.
+5. **The three questions, in their own voices:** "Are you born in May?" / "Yes, but how did you know?" / "Are you an owner of the jungles?" / "Jungles, no, but forest. I'm an owner of forest and land."
+6. **Marriage and the wait:** a tribal wedding, then she went home. In his words: "But she didn't come back… If she can't come, then I have to go."
+7. **The bike, in his words:** "I sold everything and I bought the bicycle for 60 rupees only." / "I was mixing up Switzerland with Sweden… So I'll do it or I'll die."
+8. **The journey:** from 22 January 1977, through Pakistan, Afghanistan, Iran and Turkey. He drew portraits for food, slept under the stars, and a stranger helped fix his bike.
+9. **The doubt beat:** he didn't pedal every kilometre; there were truck lifts and a train for the last stretch.
+10. **Arrival, in his words:** "I arrived in Gothenburg, and it was 28th May, spring."
+11. **Her family:** they needed convincing, and the couple married again in Sweden. In his words: "Lotta was very strong… No one could stop. She loved me."
+12. **Ending:** nearly 50 years together, and a film in 2025. It loops back to the drawing of them on the bike.
+
+**Title:**
+```
+He cycled from India to Sweden... for one woman
+```
+Alternates: `A prophecy said he'd marry a woman from far away. Then she walked up to him.` · `He sold everything, bought a bicycle, and rode it to Sweden for her`
+
+**Description:**
+```
+In 1975, PK Mahanandia, a poor street artist in Delhi, drew a portrait of a Swedish traveller named Charlotte. In 1977 he sold everything he owned, bought a second-hand bicycle and rode most of the way to Sweden to be with her. They're still together.
+
+Sources: BBC (2016, 2017), PK Mahanandia's own account (Fox News op-ed, 2017), National Geographic (2017), The Straits Times (2017), CGTN interview (2019). Book: "The Amazing Story of the Man Who Cycled from India to Europe for Love" by Per J Andersson. Documentary: The Cycle of Love (2025).
+Footage: CGTN, BBC World News, BBC News Telugu (photos courtesy Dr P K Mahanandia), Fox News, The Upcoming, The Cycle of Love (Dogwoof), Kinolibrary.
+
+#truestory #lovestory #india #sweden #shorts
+```
+
+**Pinned comment:**
+```
+Would you cycle across a continent for someone? Tag them 👇
+```
+
+**Settings:** Made for kids: **No** · Altered or synthetic content: **Yes** (AI narrator voice) · Category: People & Blogs, or Education.
+
+**Accuracy notes** (in case a commenter asks):
+- **Distance:** sources range from about 3,600 km to 11,000 km, so the video doesn't give a number.
+- **Duration:** "about four months" (BBC), from 22 January to late May 1977.
+- **The prophecy:** this is PK's own telling, and versions differ slightly (his mother's palm-leaf horoscope vs an astrologer).
+- **The 60-rupee bicycle:** this is in his own words on BBC World News.
+
+**Rights:** the footage belongs to CGTN, the BBC, Fox News, The Upcoming, Dogwoof and Kinolibrary. The Kinolibrary clip is a stock preview that needs a licence. You said you'd get permission.
+
+## True story (architecture): the skyscraper held together with "Band-Aids"
+
+**File:** `citicorp_bandaids.mp4` · **Cover:** `citicorp_bandaids_cover.jpg`
+
+**Tone:** suspense, with an engineer who owned up to his own mistake.
+- **His voice:** LeMessurier speaks on camera from his 1995 MIT lecture, posted by the National Academy of Engineering.
+- **The risk:** framed as "his calculations showed", because a 2019 NIST study questions it. The video says so in its doubt beat.
+- **The student:** called "a student's question". Diane Hartley's role is disputed, so she is named only in the description.
+- **Left out:** his passing thought of suicide, to keep the video ad-friendly.
+
+**Story beats:**
+1. **Hook:** a brand-new skyscraper could fall in a storm, and only one man knew.
+2. **The building:** Citicorp Center stands on four stilts in the middle of each side, because a church owned the corner.
+3. **The recheck:** a student's question made LeMessurier check winds hitting at an angle, which put up to 40% more strain on some braces.
+4. **The bolts:** the builder had swapped welded joints for bolts, approved by his own office without telling him. Together that meant up to 160% more force on the bolts.
+5. **The odds, in his voice:** "the return period to failure was sixteen years. Think about that."
+6. **The secret, in his voice:** "Here I am, the only man in the world, the only person in the world who knew this."
+7. **The fix:** he told the bank. Welders worked every night, adding "big steel plates, two inches thick and six feet long, like Band-Aids, literally Band-Aids."
+8. **The emergency plan:** police and the Red Cross quietly planned to evacuate 10 blocks.
+9. **The hurricane:** on 1 September 1978 Hurricane Ella headed north, then turned out to sea.
+10. **No headlines, in his voice:** "…all the newspapers in New York went on strike until October." The public learned the story in 1995 (The New Yorker).
+11. **The doubt beat:** a 2019 NIST study.
+12. **Ending, in his voice:** "Good heavens, this thing would kill thousands. You must do something." / "It's like my child. I have to save it." It loops back to the stilts.
+
+**Title:**
+```
+A New York skyscraper could fall... and only ONE man knew
+```
+Alternates: `This skyscraper is held together with "Band-Aids"` · `The engineer who found a fatal flaw in his own skyscraper`
+
+**Description:**
+```
+In 1978, engineer William LeMessurier discovered that New York's brand-new Citicorp Center could be toppled by a strong enough storm. Instead of staying quiet, he told the bank, and welders secretly reinforced the tower every night while a hurricane approached. The public found out in 1995.
+
+The student: in June 1978, Princeton student Diane Hartley questioned the design's wind loads with his office. LeMessurier described the student differently, so who the caller was is still debated.
+Sources: Joe Morgenstern, "The Fifty-Nine-Story Crisis", The New Yorker (29 May 1995); William LeMessurier's MIT lecture (17 Nov 1995, National Academy of Engineering); NYC Landmarks Preservation Commission report (2016); 99% Invisible (2014); NIST (2019 reassessment).
+Footage: National Academy of Engineering, Veritasium, The B1M, Science Channel, Martina Wagner (1976 construction film), Charly Baby 77, Kinolibrary.
+
+#engineering #architecture #newyork #truestory #shorts
+```
+
+**Pinned comment:**
+```
+Would you have told the bank... or stayed quiet? 👇
+```
+
+**Settings:** Made for kids: **No** · Altered or synthetic content: **Yes** (AI narrator voice) · Category: Science & Technology, or Education.
+
+**Accuracy notes** (in case a commenter asks):
+- **Odds:** 1 in 16 per year if the tuned mass damper lost power; with the damper running it was about 1 in 55. Both are LeMessurier's own figures.
+- **Plates:** two inches thick over more than 200 bolted joints, welded from August to October 1978.
+- **The secret:** it wasn't totally secret. Citibank put out a bland press release, but the newspaper strike (10 August to 5 November 1978) kept the real story out of the papers.
+- **The 2019 NIST study** found that diagonal winds may have been less demanding than head-on winds.
+
+**Rights:** the footage belongs to the National Academy of Engineering, Veritasium, The B1M, Science Channel and the individual uploaders. You said you'd get permission.
+
+## True story (ancient meets AI): the burnt scrolls of Herculaneum
+
+**File:** `herculaneum_scrolls.mp4` · **Cover:** `herculaneum_scrolls_cover.jpg`
+
+**Tone:** wonder, with an underdog. The video says AI found the ink and scholars read the Greek. No Pompeii body casts are shown.
+
+**Story beats:**
+1. **Hook:** these lumps of charcoal are 2,000-year-old books, and a 21-year-old read one with AI.
+2. **The library:** Vesuvius in AD 79 buried a villa thought to belong to Julius Caesar's father-in-law, and the heat turned its scrolls to charcoal.
+3. **Early attempts:** they were found in the 1750s, and early attempts to open them destroyed many, slicing some and tearing others on an unrolling machine.
+4. **Brent Seales:** he spent 20 years trying to scan them and unroll them virtually, but the carbon ink is invisible on X-ray.
+5. **The prize:** the 2023 prize offered over $1 million.
+6. **Luke Farritor:** a 21-year-old student from Nebraska, in his own voice: "And there are three Greek letters on the screen, letters I'd never seen before." / "and I completely freaked out. My friends were there and I was cheering, jumping up and down…"
+7. **The first word:** "porphyras", meaning purple, the first word read from inside these scrolls.
+8. **The team:** Youssef Nader found it too. With Julian Schilliger, they read more than 2,000 letters and won $700,000.
+9. **What it says:** the text is about pleasure: food, music and the taste of capers.
+10. **The doubt beat:** was the AI seeing things? In June 2026 sharper scans showed the ink directly and matched the AI's reading letter for letter. The first whole scroll was read end to end.
+11. **Seales, in his voice:** "all those people who said that we couldn't do all those things… were wrong. They were wrong."
+12. **Ending:** hundreds of scrolls are still unopened. It loops back to "these lumps of charcoal are a library."
+
+**Title:**
+```
+A 21-year-old read a 2,000-year-old burnt scroll... with AI
+```
+Alternates: `These lumps of charcoal are 2,000-year-old books` · `The first word read inside a burnt Roman scroll was... "purple"`
+
+**Description:**
+```
+The Herculaneum scrolls were carbonised by Vesuvius in AD 79 and couldn't be opened without destroying them. In 2023, 21-year-old student Luke Farritor trained an AI to find the invisible ink and read the first word: "purple". In 2026, the first whole scroll was read from beginning to end.
+
+Sources: Vesuvius Challenge (scrollprize.org), University of Kentucky, TIME (2023), Scientific American (2024), Smithsonian, ESRF (2026), NBC News (26 June 2026).
+Footage: NBC News, PBS Secrets of the Dead, CBS 60 Minutes, University of Nebraska–Lincoln, TED.
+
+#history #ai #ancientrome #truestory #shorts
+```
+
+**Pinned comment:**
+```
+What lost book would YOU want them to find inside? 👇
+```
+
+**Settings:** Made for kids: **No** · Altered or synthetic content: **Yes** (AI narrator voice) · Category: Education, or Science & Technology.
+
+**Accuracy notes** (in case a commenter asks):
+- **"Read with AI":** AI detects the ink, and papyrologists read the Greek. The video says "trained an AI to spot the ink".
+- **"Purple":** Youssef Nader found the same word independently and placed second in the First Letters prize.
+- **Scroll count:** about 1,800 rolls and fragments were found, and "hundreds" are still unopened (ESRF says more than 600).
+- **The June 2026 scroll** is PHerc. 1667, read from end to end of what survives. Its author is unknown.
+- **Comments about Farritor:** Luke Farritor's later government job (2025) is unrelated to the story; expect comments.
+
+**Rights:** the footage belongs to NBC, PBS, CBS, the University of Nebraska and TED. You said you'd get permission.
