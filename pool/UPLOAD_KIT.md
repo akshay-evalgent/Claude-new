@@ -31,10 +31,10 @@ one at the end: `How a Swimming Pool Becomes a Secret Garage 🤯`.)
 swimming pool, secret garage, hidden garage, underground garage, pool lift, hydraulic lift, secret room, how it's built, construction, 3d animation
 ```
 
-**Thumbnail:** `thumbnail.jpg` (1080x1920): the whole pool lifted on its rams, water and all, with the
-car underneath and the caption on screen (frame and time in the README).
+**Thumbnail:** `thumbnail.jpg` (1080x1920): the cutaway with the whole pool lifted on its rams, water
+and all, the red car in the lit garage underneath, and "Water" on screen (frame 800, 0:33).
 - Custom upload (YouTube Partner Program and verified channels; YouTube Studio on a computer).
-- Without custom upload: pick that frame in the frame picker.
+- Without custom upload: pick 0:33 in the frame picker.
 
 **Pinned comment**
 
