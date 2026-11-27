@@ -455,20 +455,81 @@ def add(dst, src, at):
     add_arr(dst, src, at)
 
 
+# ---------------------------------------------------------------- recorded assets
+HERE = __import__('os').path.dirname(__import__('os').path.abspath(__file__))
+
+
+def load_wav(path):
+    import subprocess
+    raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', path, '-ac', '1', '-ar', str(SR), '-f', 'f32le', '-'], capture_output=True).stdout
+    return np.frombuffer(raw, dtype=np.float32).astype(np.float64)
+
+
+_lib = {}
+# sfx names that map to real CC0 recordings in ./sfx (rotating through variants)
+REAL = {
+    'bark': ['bark_1', 'bark_2', 'bark_3', 'bark_4', 'bark_5'], 'bark_double': ['bark_double'],
+    'whimper': ['whimper', 'whimper_2'], 'howl': ['howl'], 'crickets': ['crickets'],
+    'squawk': ['squawk_1', 'squawk_2', 'squawk_3', 'squawk_4', 'squawk_5'], 'squawk_macaw': ['squawk_macaw'],
+    'meow': ['meow', 'meow_2'], 'purr': ['meow_purr'], 'cheer': ['kids_cheer'], 'bleat': ['goat_03', 'goat_05'],
+}
+_rot = {}
+
+
+def real_sfx(name):
+    import os
+    if name not in REAL:
+        return None
+    opts = REAL[name]
+    i = _rot.get(name, 0)
+    _rot[name] = i + 1
+    f = opts[i % len(opts)]
+    if f not in _lib:
+        p = os.path.join(HERE, 'sfx', f + '.wav')
+        if not os.path.exists(p):
+            return None
+        _lib[f] = load_wav(p)
+    return _lib[f]
+
+
+def distant(x):
+    """Off-screen voice from another room: band-limited with a short slap-back."""
+    y = band(x, 180, 3800)
+    d = int(0.06 * SR)
+    y = y + 0.35 * np.pad(y, (d, 0))[: len(y)]
+    return y * 0.9
+
+
 def main(cues_path, out_path):
+    import os
     C = json.load(open(cues_path))
+    ep = os.path.basename(os.path.dirname(os.path.abspath(cues_path)))
+    vodir = os.path.join(HERE, '..', 'episodes', ep, 'vo')
     dur = C['duration'] + 0.5
     n = int(dur * SR)
     buf = {'voice': np.zeros(n), 'sfx': np.zeros(n), 'music': np.zeros(n)}
+    used_vo = 0
     for line in C['lines']:
-        render_line(line, buf)
+        p = os.path.join(vodir, line['vo']) if line.get('vo') else None
+        if p and os.path.exists(p):
+            v = load_wav(p) * 0.85
+            if line['who'] == 'mom':
+                v = distant(v) * 1.3
+            add(buf['voice'], v, line['t0'])
+            used_vo += 1
+        else:
+            render_line(line, buf)
+    print('recorded VO lines:', used_vo, 'of', len(C['lines']))
     missing = set()
     for e in C['sfx']:
-        fn = SFX.get(e['name'])
-        if not fn:
-            missing.add(e['name'])
-            continue
-        add(buf['sfx'], fn() * e['vol'], e['t'])
+        x = real_sfx(e['name'])
+        if x is None:
+            fn = SFX.get(e['name'])
+            if not fn:
+                missing.add(e['name'])
+                continue
+            x = fn()
+        add(buf['sfx'], x * e['vol'], e['t'])
     cues = sorted(C['music'], key=lambda m: m['t'])
     for i, m in enumerate(cues):
         if m['cue'] == 'stop':

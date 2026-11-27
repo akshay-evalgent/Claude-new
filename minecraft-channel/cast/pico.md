@@ -8,7 +8,7 @@
 - **Build:** Bird, scale 2.0
 - **Name tag text:** PICO
 - **Expressions made:** neutral, happy, angry, shocked, sad, side-eye, blank, smug, sleep, teary, hopeful (face-texture swaps; see `animatic/engine/rig.js`)
-- **Voice:** High, fast, squawky. Babble at 540 Hz with a pitch-drop squawk.
+- **Voice:** Kokoro `af_bella` pitched up 5 semitones through a nasal 'talking bird' filter, plus real parrot squawks (`sfx/squawk_*`).
 - **Rig / skin source:** `animatic/engine/cast.js` → `CAST.pico` (procedural 1 px = 1/16 block boxes; export to a 64×64 skin or Blockbench model for final animation)
 - **First appeared in:** EP01
 - **Approved by / date:**

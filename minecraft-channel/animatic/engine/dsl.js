@@ -81,8 +81,12 @@ export class Episode {
     const s = { id, t0: this.t, dur, cam, desc, shake: [], punch: [] };
     this.shots.push(s);
     const api = this.shotApi(s);
+    const li = this.lines.length;
     fn && fn(api);
-    this.t += dur;
+    // grow the shot so recorded dialogue is never cut off by the next cut
+    const need = Math.max(0, ...this.lines.slice(li).map((l) => l.t1 + (l.offscreen ? 0.2 : 0.3) - s.t0));
+    if (need > s.dur + 0.01) { this.notes.push(`${id}: extended ${s.dur.toFixed(2)}s -> ${need.toFixed(2)}s for dialogue`); s.dur = need; }
+    this.t += s.dur;
     return s;
   }
 
@@ -164,10 +168,23 @@ export class Episode {
   say(who, text, t, o = {}) {
     const rate = o.rate ?? VOICE[who]?.rate ?? 0.17;
     const raw = text.split(/\s+/).filter(Boolean);
+    const cleanText = text.replace(/\*/g, '');
+    const vo = !o.novoice && this.vo ? this.vo[who + '|' + cleanText] : null;
+    // never let two lines talk over each other
+    if (this.lastLineEnd != null && t < this.lastLineEnd + 0.12 && t > this.lastLineEnd - 4) {
+      this.notes.push(`"${cleanText}" moved ${(this.lastLineEnd + 0.12 - t).toFixed(2)}s later to avoid overlap`);
+      t = this.lastLineEnd + 0.12;
+    }
     let cur = t;
     const words = [];
     const syl = [];
-    for (const w of raw) {
+    if (vo) {
+      // recorded voice: word timings + mouth envelope come from the audio
+      raw.forEach((w, i) => words.push({ text: w.replace(/\*/g, ''), key: /^\*/.test(w), t0: t + vo.words[i][0], t1: t + vo.words[i][1] }));
+      vo.env.forEach((e, i) => { if (e > 0.06) syl.push({ t0: t + i / 30, t1: t + (i + 1) / 30, amp: Math.min(1, e * 1.2), flat: true }); });
+      cur = t + vo.dur;
+    }
+    for (const w of vo ? [] : raw) {
       const key = /^\*.*\*[^\w]*$/.test(w) || /^\*/.test(w);
       const clean = w.replace(/\*/g, '');
       const n = syllables(clean);
@@ -184,8 +201,9 @@ export class Episode {
     }
     if (syl.length) syl[syl.length - 1].last = true;
     const end = cur;
+    this.lastLineEnd = Math.max(this.lastLineEnd ?? 0, end);
     const kind = /\?\s*$/.test(text) ? 'q' : /!\s*$/.test(text) ? 'x' : '.';
-    const line = { who, text: text.replace(/\*/g, ''), t0: t, t1: end, kind, syl, loud: o.loud ?? /[A-Z]{3,}/.test(text.replace(/\*/g, '')), soft: !!o.soft, offscreen: !!o.offscreen, novoice: !!o.novoice };
+    const line = { who, text: text.replace(/\*/g, ''), t0: t, t1: end, kind, syl, loud: o.loud ?? /[A-Z]{3,}/.test(text.replace(/\*/g, '')), soft: !!o.soft, offscreen: !!o.offscreen, novoice: !!o.novoice, vo: vo ? vo.file : null };
     this.lines.push(line);
     if (!o.silent) this.later(t, () => this.actor(who).talk.push(...syl));
     // caption chunks: max 3 words, break after punctuation
@@ -227,7 +245,7 @@ export class Episode {
   }
 
   cues() {
-    return { meta: this.meta, duration: this.duration, lines: this.lines, sfx: this.sfx, music: this.music, shots: this.shots.map((s) => ({ id: s.id, t0: s.t0, dur: s.dur, desc: s.desc })) };
+    return { meta: this.meta, duration: this.duration, notes: this.notes, lines: this.lines, sfx: this.sfx, music: this.music, shots: this.shots.map((s) => ({ id: s.id, t0: s.t0, dur: s.dur, desc: s.desc })) };
   }
 }
 

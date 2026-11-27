@@ -47,6 +47,9 @@ async function boot() {
   await loadFonts();
   const mod = await import(`/episodes/${EP}/timeline.js`);
   E = new Episode(mod.meta ?? {});
+  if (qs.get('vo') !== '0') {
+    try { const r = await fetch(`/episodes/${EP}/vo/manifest.json`); if (r.ok) E.vo = await r.json(); } catch (e) { /* no recorded VO yet: fall back to scratch timing */ }
+  }
   mod.default(E, { CAM, LAYOUT });
   E.compile();
   const Wd = Math.round(E.meta.width * SCALE), Ht = Math.round(E.meta.height * SCALE);
@@ -178,6 +181,7 @@ function talkEnv(a, t) {
   let env = 0;
   for (const s of a.talk) {
     if (s.t0 > t) break;
+    if (s.flat) { if (t < s.t1) env = Math.max(env, s.amp); continue; }
     if (t <= s.t1) { const u = (t - s.t0) / (s.t1 - s.t0); env = Math.max(env, Math.sin(Math.PI * u)); }
   }
   return env;

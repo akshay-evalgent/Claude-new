@@ -8,7 +8,7 @@
 - **Build:** Human, slim arms (3 px), scale 0.85 (teen)
 - **Name tag text:** AVA
 - **Expressions made:** neutral, happy, angry, shocked, sad, side-eye, blank, smug, sleep, teary, hopeful (face-texture swaps; see `animatic/engine/rig.js`)
-- **Voice:** Bright, mid-high. Babble scratch voice at 265 Hz. Cast a teen or young adult VO.
+- **Voice:** Kokoro `af_heart`, pitched up 1.6 semitones to read as a teen, speed 0.98. Final: cast a teen or young-adult VO.
 - **Rig / skin source:** `animatic/engine/cast.js` → `CAST.ava` (procedural 1 px = 1/16 block boxes; export to a 64×64 skin or Blockbench model for final animation)
 - **First appeared in:** EP01
 - **Approved by / date:**

@@ -79,18 +79,19 @@ export default function build(E, { CAM }) {
   E.shot('S04', 2.6, podMed('rex'), 'Rex intro: tail going, name tag.', (s) => {
     s.pose('ava', 'stand', 0);
     s.tag('rex', true, 0.1); s.expr('rex', 'happy', 0.1); s.state('rex', 'wag', true, 0.1);
-    s.hop('rex', 0.2, 0.35);
-    s.say('rex', 'Rex! I love you *already!*', 0.3);
+    s.hop('rex', 0.2, 0.35); s.sfx('bark', 0.12, 0.8);
+    s.say('rex', 'Rex! I love you *already!*', 0.55);
     s.tag('rex', false, 2.6);
   });
   E.shot('S05', 3.2, podMed('duchess'), 'Duchess intro: crown, smug.', (s) => {
     s.tag('duchess', true, 0.1); s.expr('duchess', 'smug', 0.15);
-    s.say('duchess', 'Duchess. I *accept* your application.', 0.3);
+    s.sfx('meow', 0.05, 0.5);
+    s.say('duchess', 'Duchess. I *accept* your application.', 0.5);
     s.tag('duchess', false, 3.2);
   });
   E.shot('S06', 2.3, podMed('pico', { ly: 1.6 }), 'Pico intro: squawks his own name.', (s) => {
-    s.tag('pico', true, 0.1); s.pose('pico', 'squawk', 0.12); s.expr('pico', 'happy', 0.12);
-    s.say('pico', 'Pico! Pico! *PICO!*', 0.15);
+    s.tag('pico', true, 0.1); s.pose('pico', 'squawk', 0.12); s.expr('pico', 'happy', 0.12); s.sfx('squawk', 0.05, 0.6);
+    s.say('pico', 'Pico! Pico! *PICO!*', 0.45);
     s.pose('pico', 'stand', 2.0);
     s.tag('pico', false, 2.3);
   });
@@ -121,7 +122,8 @@ export default function build(E, { CAM }) {
   });
   E.shot('S10', 3.6, podMed('rex', { ly: 1.45 }), 'Rex shoves his bowl forward, then stares at it, heartbroken.', (s) => {
     s.expr('rex', 'happy', 0, true);
-    s.say('rex', 'YES! Take *ALL* of it!', 0.15);
+    s.sfx('bark', 0.0, 0.7);
+    s.say('rex', 'YES! Take *ALL* of it!', 0.35);
     s.pose('rex', 'swipe', 0.5); s.move('bowl_rex', [POD.rex + 0.52, 1, 0.8], 0.55, 0.2, { face: false }); s.sfx('pop', 0.6, 0.5);
     s.pose('rex', 'sit', 1.0);
     s.look('rex', [0.35, 0.45], 2.0, 0.3); s.expr('rex', 'teary', 2.1); s.sfx('whimper', 2.3, 0.8);
@@ -136,8 +138,8 @@ export default function build(E, { CAM }) {
     s.pose('duchess', 'sit', 2.4); s.expr('duchess', 'smug', 2.6, true);
   });
   E.shot('S12', 2.6, podMed('pico', { ly: 1.6 }), 'Pico repeats Rex word for word.', (s) => {
-    s.pose('pico', 'squawk', 0.1);
-    s.say('pico', 'YES! Take *ALL* of it!', 0.15);
+    s.pose('pico', 'squawk', 0.1); s.sfx('squawk', 0.0, 0.5);
+    s.say('pico', 'YES! Take *ALL* of it!', 0.3);
     s.pose('pico', 'stand', 1.9);
   });
   E.shot('S13', 1.4, podClose('rex'), 'Rex side-eyes Pico.', (s) => {
@@ -172,7 +174,7 @@ export default function build(E, { CAM }) {
     s.scores({ rex: 1, duchess: 0, pico: 0, lou: 0, greg: 0 }, 1.55); s.sfx('ding', 1.55, 0.6);
     s.scores({ rex: 1, duchess: 0, pico: 1, lou: 0, greg: 0 }, 3.3); s.sfx('ding', 3.3, 0.6);
     s.scores({ rex: 1, duchess: 0, pico: 1, lou: 0, greg: -1 }, 4.1); s.sfx('buzzer', 4.1, 0.5);
-    s.hop('rex', 1.6, 0.3); s.expr('rex', 'happy', 1.6, true);
+    s.hop('rex', 1.6, 0.3); s.expr('rex', 'happy', 1.6, true); s.sfx('bark', 1.6, 0.5);
     s.hop('pico', 3.35, 0.3);
   });
   E.shot('S18', 4.4, CAM.still([4.8, 3.0, 9.8], [-1.4, 2.6, -4.0], 44), 'Ava turns to the audience. Behind her, Duchess sneaks to the scoreboard and changes her score to 9. Pico sees.', (s) => {
@@ -222,6 +224,7 @@ export default function build(E, { CAM }) {
     s.pose('ava', 'wave', 0); s.turn('ava', 0, 0, 0.01);
     s.expr('rex', 'angry', 0.1);
     s.say('rex', 'I\'M COMING, *AVA!*', 0.15);
+    s.sfx('bark_double', 1.25, 0.8);
     s.pose('rex', 'stand', 1.3);
     s.move('rex', [17.0, 0, 4.75], 1.55, 0.55, { ease: 'in' });
   });
@@ -242,7 +245,7 @@ export default function build(E, { CAM }) {
     s.move('duchess', [15.4, 1.4, -1.6], 1.0, 0.4, { arc: 0.7 });
     s.turn('duchess', -0.9, 1.45, 0.2);
     s.pose('duchess', 'sit', 1.5);
-    s.vis('cookie', false, 1.85); s.sfx('munch', 1.85, 1.0); s.burst('crumbs', [15.4, 1.5, -1.4], 1.85, { n: 14 });
+    s.vis('cookie', false, 1.85); s.sfx('munch', 1.85, 1.0); s.sfx('purr', 2.3, 0.5); s.burst('crumbs', [15.4, 1.5, -1.4], 1.85, { n: 14 });
     chew('duchess', s.t0 + 1.85, 0.6);
     s.expr('duchess', 'happy', 1.9, true);
     s.say('duchess', 'Delicious *choice.*', 2.6);
@@ -250,7 +253,7 @@ export default function build(E, { CAM }) {
   E.shot('S26', 2.6, CAM.still([13.9, 2.3, 2.6], [15.4, 2.1, -1.3], 40), 'Pico flies in to "save the cookie". Finds crumbs.', (s) => {
     s.place('pico', [17.8, 2.0, 1.5], PI, 0);
     s.pose('pico', 'fly', 0, 0.01);
-    s.move('pico', [15.6, 2.55, -1.2], 0, 0.8);
+    s.move('pico', [15.6, 2.55, -1.2], 0, 0.8); s.sfx('squawk_macaw', 0.0, 0.5);
     s.turn('pico', -2.6, 0.85, 0.2);
     s.say('pico', 'SAVE THE *COOKIE!*', 0.2);
     s.expr('pico', 'shocked', 1.4); s.look('pico', [0, 0.6], 1.4, 0.2);
@@ -286,7 +289,7 @@ export default function build(E, { CAM }) {
     s.scores({ rex: 1, duchess: 9, pico: 1, lou: 0, greg: -5 }, 0.2); s.sfx('buzzer', 0.2, 0.5);
     s.expr('ava', 'angry', 0.6);
     s.say('ava', 'Duchess, why do you have *nine?*', 0.6);
-    s.say('duchess', '*Talent.*', 2.6);
+    s.say('duchess', 'Pure *talent.*', 2.6);
   });
   E.shot('S31', 3.0, CAM.still([19.9, 0.85, 2.1], [18.75, 0.3, 3.15], 36), 'Rex, face in the dirt, tail wagging. He gets a point for trying.', (s) => {
     s.say('ava', 'Rex at least *tried.*', 0.1, { offscreen: true });
@@ -329,7 +332,7 @@ export default function build(E, { CAM }) {
     s.pose('duchess', 'sit', 1.1); s.expr('duchess', 'smug', 1.2);
   });
   E.shot('S36', 1.9, podClose('pico', { ly: 1.65 }), 'Pico screams the time.', (s) => {
-    s.pose('pico', 'squawk', 0.05); s.expr('pico', 'shocked', 0.05, true);
+    s.pose('pico', 'squawk', 0.05); s.expr('pico', 'shocked', 0.05, true); s.sfx('squawk', 0.0, 0.6);
     s.say('pico', 'THREE A.M.! *THREE* *A.M.!*', 0.1);
   });
   E.shot('S37', 3.0, CAM.still([-3.4, 3.2, 9.6], [1.0, 3.8, -5.0], 48), 'Greg charges the scoreboard. It explodes into blocks.', (s) => {
@@ -359,7 +362,7 @@ export default function build(E, { CAM }) {
     for (const p of ['rex', 'duchess', 'pico', 'greg']) s.expr(p, 'neutral', 0, true);
     s.say('ava', 'Why do you want a *home?*', 1.0);
   });
-  E.shot('S40', 1.4, podClose('rex'), 'Rex.', (s) => { s.expr('rex', 'happy', 0, true); s.say('rex', '*SNACKS!*', 0.15); s.hop('rex', 0.15, 0.3); });
+  E.shot('S40', 1.6, podClose('rex'), 'Rex.', (s) => { s.expr('rex', 'happy', 0, true); s.say('rex', '*SNACKS!*', 0.15); s.hop('rex', 0.15, 0.3); s.sfx('bark', 0.95, 0.7); });
   E.shot('S41', 1.5, podClose('duchess'), 'Duchess.', (s) => { s.expr('duchess', 'smug', 0, true); s.say('duchess', '*Servants.*', 0.15); });
   E.shot('S42', 1.7, podClose('pico', { ly: 1.65 }), 'Pico, both.', (s) => { s.pose('pico', 'squawk', 0.05); s.say('pico', 'SNACKS! *SERVANTS!*', 0.1); s.pose('pico', 'stand', 1.5); });
   E.shot('S43', 1.5, podClose('greg', { ly: 1.85 }), 'Greg.', (s) => { s.expr('greg', 'blank', 0, true); s.say('greg', 'Baaa.', 0.2); });
@@ -390,7 +393,7 @@ export default function build(E, { CAM }) {
     s.label('FINAL ROUND', 1.5); s.sfx('ding', 1.5, 0.5);
     s.vis('stick', true, 1.3); s.attach('stick', 'ava', 'handA', [0, -0.1, 0], 1.3, [0, 0, 0]);
     s.pose('ava', 'windup', 1.35, 0.2);
-    s.say('ava', '*FETCH!*', 1.7);
+    s.say('ava', 'Go *FETCH!*', 1.7);
     s.pose('ava', 'throw', 2.0, 0.08);
     s.attach('stick', null, null, null, 2.08);
     s.place('stick', [0.3, 2.1, 4.0], 0, 2.08);
@@ -406,7 +409,7 @@ export default function build(E, { CAM }) {
     s.pose('ava', 'stand', 0); s.expr('ava', 'happy', 0, true);
     s.label(null, 2.2);
     s.pose('rex', 'stand', 0, 0.1); s.expr('rex', 'angry', 0, true);
-    s.move('rex', [-9, 0, 0.4], 0.05, 0.45, { arc: 0.5 });
+    s.move('rex', [-9, 0, 0.4], 0.05, 0.45, { arc: 0.5 }); s.sfx('bark_double', 0.1, 0.7);
     s.move('rex', [-17.5, 0, 0.4], 0.5, 2.1, { ease: 'lin' });
     s.pose('greg', 'ram', 0.2); s.expr('greg', 'angry', 0.2, true);
     s.move('greg', [5, 0, 1.7], 0.2, 0.35, { arc: 0.5 });
@@ -420,7 +423,7 @@ export default function build(E, { CAM }) {
     s.expr('duchess', 'happy', 1.6, true);
     s.pose('pico', 'fly', 0.1);
     s.move('pico', [3, 2.05, 0.05], 0.15, 0.55);
-    s.attach('lou', 'pico', 'root', [0, -1.0, 0], 0.72, [0, 0, 0]);
+    s.attach('lou', 'pico', 'root', [0, -1.0, 0], 0.72, [0, 0, 0]); s.sfx('squawk', 0.7, 0.5);
     s.move('pico', [-9, 2.3, 0.8], 0.8, 1.8, { ease: 'lin' });
     s.expr('lou', 'shocked', 0.8);
   });
@@ -440,7 +443,7 @@ export default function build(E, { CAM }) {
     s.attach('duchess', null, null, null, 0.2);
     s.place('duchess', [-22.0, 1.2, 1.2], -PI / 2, 0.2);
     s.move('duchess', [-23.4, 0, 3.8], 0.2, 0.55, { arc: 1.3, face: false });
-    s.pose('duchess', 'flat', 0.7, 0.1); s.sfx('thud', 0.75, 0.7); s.burst('puff', [-23.4, 0.2, 3.8], 0.75, { n: 8 });
+    s.pose('duchess', 'flat', 0.7, 0.1); s.sfx('thud', 0.75, 0.7); s.sfx('meow', 0.3, 0.6); s.burst('puff', [-23.4, 0.2, 3.8], 0.75, { n: 8 });
     s.expr('duchess', 'blank', 0.8, true);
     s.move('greg', [-23.0, 0, 1.4], 0.15, 0.5, { ease: 'out' });
     s.pose('greg', 'stand', 0.6);
@@ -454,7 +457,7 @@ export default function build(E, { CAM }) {
     s.pose('rex', 'stand', 0);
     s.attach('stick', 'rex', 'jawP', [0, -0.06, 0.22], 0.45, [0, PI / 2, 0]);
     s.sfx('pop', 0.45, 0.8);
-    s.hop('rex', 0.9, 0.5); s.expr('rex', 'happy', 0.9); s.state('rex', 'wag', true, 0.9);
+    s.hop('rex', 0.9, 0.5); s.expr('rex', 'happy', 0.9); s.state('rex', 'wag', true, 0.9); s.sfx('bark', 1.0, 0.6);
     s.sfx('sparkle', 1.0, 0.6);
   });
   E.shot('S51', 4.0, CAM.still([-25.0, 1.45, 5.2], [-26.0, 0.7, 0.9], 42), 'Pico arrives exhausted and drops Lou. Rex walks over and puts the stick in Lou\'s bucket.', (s) => {
@@ -483,7 +486,7 @@ export default function build(E, { CAM }) {
     s.place('duchess', [-24.0, 0, 2.4], 0.9, 0); s.pose('duchess', 'sit', 0, 0.01);
     s.expr('duchess', 'smug', 0, true);
     s.say('duchess', 'Ugh. Fine. That was *sweet.*', 0.2);
-    s.expr('duchess', 'happy', 2.2);
+    s.expr('duchess', 'happy', 2.2); s.sfx('meow', 2.3, 0.4);
   });
 
   // ======================= PAYOFF =======================
@@ -523,14 +526,14 @@ export default function build(E, { CAM }) {
     s.place('ava', [0, 0, 2.6], 0, 0); s.pose('ava', 'carry', 0, 0.01);
     s.look('ava', [-0.7, 0], 0.1, 0.25);
     s.say('ava', '...and *Rex.*', 0.2);
-    s.expr('rex', 'shocked', 0.85); s.expr('rex', 'happy', 1.05, true); s.hop('rex', 1.05, 0.5); s.state('rex', 'wag', true, 1.05);
+    s.expr('rex', 'shocked', 0.85); s.expr('rex', 'happy', 1.05, true); s.hop('rex', 1.05, 0.5); s.state('rex', 'wag', true, 1.05); s.sfx('bark_double', 1.05, 0.7);
     s.look('ava', [-0.15, 0], 1.3, 0.2);
     s.say('ava', 'And *Pico.*', 1.4);
-    s.expr('pico', 'happy', 1.9, true); s.hop('pico', 1.9, 0.5); s.state('pico', 'flap', true, 1.9);
+    s.expr('pico', 'happy', 1.9, true); s.hop('pico', 1.9, 0.5); s.state('pico', 'flap', true, 1.9); s.sfx('squawk_macaw', 1.95, 0.5);
     s.look('ava', [-0.4, 0], 2.4, 0.2);
     s.say('ava', 'And... fine, *Duchess.*', 2.5);
-    s.expr('duchess', 'happy', 3.8, true); s.hop('duchess', 3.8, 0.45);
-    s.music('payoff', 3.8); s.sfx('cheer', 3.8, 0.7);
+    s.expr('duchess', 'happy', 3.8, true); s.hop('duchess', 3.8, 0.45); s.sfx('purr', 3.85, 0.5);
+    s.music('payoff', 3.8); s.sfx('cheer', 3.8, 0.4);
     s.burst('hearts', [0, 2.6, 0.5], 3.8, { n: 16, life: 1.6, spread: 1.6 });
   });
 

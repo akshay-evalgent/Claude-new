@@ -8,7 +8,7 @@
 - **Build:** Quadruped, scale 1.15
 - **Name tag text:** REX
 - **Expressions made:** neutral, happy, angry, shocked, sad, side-eye, blank, smug, sleep, teary, hopeful (face-texture swaps; see `animatic/engine/rig.js`)
-- **Voice:** Low, eager, loud. Babble at 150 Hz with a growl. Howls for real.
+- **Voice:** Kokoro `am_puck` (eager, bright male), speed 1.08, punctuated with real dog barks (`sfx/bark_*`). Howls and whimpers are real dog recordings.
 - **Rig / skin source:** `animatic/engine/cast.js` → `CAST.rex` (procedural 1 px = 1/16 block boxes; export to a 64×64 skin or Blockbench model for final animation)
 - **First appeared in:** EP01
 - **Approved by / date:**
