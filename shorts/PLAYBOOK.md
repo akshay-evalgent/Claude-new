@@ -61,6 +61,10 @@ There are two files. `ep01-same-drawing.mp4` has our own score. `-sfx-only` has 
 
 Age 4 slide → 7 front flip → 11 game-winner → 15 first song → 25 years later on the same slide. The scroll side's counter is "TIMES YOU WATCHED: 0" with "TIMES HE ASKED" climbing to 61, then frozen by a **STOPPED ASKING** stamp. The look side climbs to 1,180. In the payoff, grandma sits on the bench in both panels: in the top panel she's scrolling too.
 
+## EP03 — "Same kid. Same bedtime." (rendered: `releases/ep03/`, upload kit in `releases/ep03/UPLOAD.md`)
+
+Age 3 story → 6 "one more?" → 10 "can I tell you something?" → 14 at 2 AM → 25 years later he reads to his daughter. In the top panel the cycle turns: at 14 *he* is the one scrolling alone at 2:14 AM. Counters: "BEDTIME TALKS" stops at 12 while "NIGHTS ALONE" climbs to 2,100; below, 3,650.
+
 ## Test plan
 
 Judge each upload at **48 hours** in YouTube Studio → Content → the Short → Analytics:
@@ -82,7 +86,7 @@ Judge each upload at **48 hours** in YouTube Studio → Content → the Short �
 | EP | Premise (top 📱 vs bottom 👀) | Counter | 25-years-later payoff |
 |---|---|---|---|
 | 02 | ✅ Made: see above | | |
-| 03 | **Same kid. Same bedtime story 📖.** Reading while scrolling vs doing the voices | "stories finished" | He does the voices for his own kid |
+| 03 | ✅ Made: see above | | |
 | 04 | **Same kid. Same goal ⚽.** Missed it on the phone vs screaming from the stands | "goals you saw" | "Did you see it, Dad?" Same line, next generation |
 | 05 | **Same teen. Same bad day 🎒.** "mm" vs the phone going face-down: "talk to me" | "things he told you" | He calls home the night something big happens |
 | 06 | **Same kid. Same "why?" ❓.** "Because I said so" vs "let's find out" | "questions asked" | Lab coat vs "I don't really ask questions" |
