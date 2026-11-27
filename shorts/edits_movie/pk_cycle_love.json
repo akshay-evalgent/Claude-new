@@ -36,7 +36,7 @@
    ]
   },
   {
-   "say": "His name is P K Mahanandia. He was born in a village in Odisha, into a Dalit family, once called untouchable.",
+   "say": "His name is P K Mahanandia. He was born in Odisha, into a Dalit family, once called untouchable.",
    "shots": [
     [
      "hfWvaPr2xKY",
@@ -73,7 +73,11 @@
      "bNI_Sw2jVSA",
      49.65,
      {
-      "w": 4.4
+      "w": 4.4,
+      "rows": [
+       0,
+       0.7
+      ]
      }
     ],
     [
@@ -87,13 +91,17 @@
      "bNI_Sw2jVSA",
      56.4,
      {
-      "w": 5.6
+      "w": 5.6,
+      "rows": [
+       0,
+       0.7
+      ]
      }
     ]
    ]
   },
   {
-   "say": "But when he was born, his family was told a prophecy. One day, he would marry a woman from a faraway land. She'd be musical, born under Taurus... and she would own a jungle.",
+   "say": "But at his birth, his family was told a prophecy. He'd marry a woman from a faraway land. Musical, a Taurus... and she'd own a jungle.",
    "shots": [
     [
      "bNI_Sw2jVSA",
@@ -157,8 +165,8 @@
    ]
   },
   {
-   "say": "One winter evening in 1975, a young Swedish woman asked him for a portrait. Her name was Charlotte. She had driven all the way to India, in a van.",
-   "speak": "One winter evening in nineteen seventy-five, a young Swedish woman asked him for a portrait. Her name was Charlotte. She had driven all the way to India, in a van.",
+   "say": "One winter evening in 1975, a Swedish traveller named Charlotte asked him for a portrait. She had driven all the way to India, in a van.",
+   "speak": "One winter evening in nineteen seventy-five, a Swedish traveller named Charlotte asked him for a portrait. She had driven all the way to India, in a van.",
    "shots": [
     [
      "hfWvaPr2xKY",
@@ -235,25 +243,6 @@
   {
    "film": [
     "bNI_Sw2jVSA",
-    175.75,
-    177.65
-   ],
-   "shots": [
-    [
-     "bNI_Sw2jVSA",
-     175.75,
-     {
-      "rows": [
-       0,
-       0.7
-      ]
-     }
-    ]
-   ]
-  },
-  {
-   "film": [
-    "bNI_Sw2jVSA",
     195.5,
     199.8
    ],
@@ -290,7 +279,7 @@
    ]
   },
   {
-   "say": "Within weeks, they were married in his village, in a tribal ceremony. Then she had to go home. She promised to come back in August.",
+   "say": "Within weeks, they married in his village, in a tribal ceremony. Then she had to go home. She promised to come back.",
    "shots": [
     [
      "bNI_Sw2jVSA",
@@ -394,7 +383,7 @@
    "film": [
     "MiDKEhClNSA",
     225.75,
-    237.0
+    233.45
    ],
    "words": [
     [
@@ -506,41 +495,6 @@
      232.83,
      233.05,
      "come."
-    ],
-    [
-     234.07,
-     234.33,
-     "So"
-    ],
-    [
-     234.33,
-     234.83,
-     "I'll"
-    ],
-    [
-     234.83,
-     235.05,
-     "do"
-    ],
-    [
-     235.05,
-     235.39,
-     "it"
-    ],
-    [
-     235.39,
-     235.89,
-     "or"
-    ],
-    [
-     235.89,
-     236.27,
-     "I'll"
-    ],
-    [
-     236.27,
-     236.89,
-     "die."
     ]
    ],
    "shots": [
@@ -548,21 +502,33 @@
      "MiDKEhClNSA",
      225.75,
      {
-      "w": 4.0
+      "rows": [
+       0,
+       0.68
+      ],
+      "w": 3.6
      }
     ],
     [
      "MiDKEhClNSA",
      52.0,
      {
-      "w": 3.0
+      "rows": [
+       0,
+       0.68
+      ],
+      "w": 2.4
      }
     ],
     [
      "MiDKEhClNSA",
-     233.5,
+     231.0,
      {
-      "w": 4.3
+      "rows": [
+       0,
+       0.68
+      ],
+      "w": 1.75
      }
     ]
    ]
@@ -614,7 +580,7 @@
    ]
   },
   {
-   "say": "He paid for food by drawing portraits. He slept under the stars. And when his bike broke down in the Afghan desert, a stranger stopped to help him fix it.",
+   "say": "He drew portraits for food, slept under the stars, and when his bike broke down in the Afghan desert, a stranger helped fix it.",
    "shots": [
     [
      "xVMqElamM44",
@@ -667,7 +633,7 @@
    ]
   },
   {
-   "say": "To be fair, he didn't pedal every kilometre. Truck drivers gave him lifts, and he took a train for the last stretch. But most of the way, he cycled.",
+   "say": "To be fair, he got some lifts, and took a train for the last stretch. But most of the way, he cycled.",
    "shots": [
     [
      "hfWvaPr2xKY",
@@ -742,21 +708,11 @@
    ]
   },
   {
-   "say": "Her noble family needed some convincing. But they got married again, officially, in Sweden.",
+   "say": "Her family needed some convincing. But they married again, in Sweden.",
    "shots": [
     [
      "bNI_Sw2jVSA",
      528.0,
-     {
-      "rows": [
-       0,
-       0.7
-      ]
-     }
-    ],
-    [
-     "bNI_Sw2jVSA",
-     464.0,
      {
       "rows": [
        0,
@@ -770,130 +726,12 @@
     ],
     [
      "bNI_Sw2jVSA",
-     560.0,
-     {
-      "rows": [
-       0,
-       0.7
-      ]
-     }
-    ]
-   ]
-  },
-  {
-   "film": [
-    "bNI_Sw2jVSA",
-    593.6,
-    598.95
-   ],
-   "words": [
-    [
-     593.7,
-     593.8,
-     "Lotta"
-    ],
-    [
-     593.8,
-     594.12,
-     "was"
-    ],
-    [
-     594.12,
-     594.34,
-     "very"
-    ],
-    [
-     594.34,
-     594.76,
-     "strong."
-    ],
-    [
-     595.22,
-     595.32,
-     "She"
-    ],
-    [
-     595.32,
-     595.46,
-     "had"
-    ],
-    [
-     595.46,
-     595.62,
-     "very"
-    ],
-    [
-     595.62,
-     595.94,
-     "strong"
-    ],
-    [
-     595.94,
-     596.14,
-     "will"
-    ],
-    [
-     596.14,
-     596.46,
-     "power."
-    ],
-    [
-     596.64,
-     596.78,
-     "No"
-    ],
-    [
-     596.78,
-     596.9,
-     "one"
-    ],
-    [
-     596.9,
-     597.1,
-     "could"
-    ],
-    [
-     597.1,
-     597.42,
-     "stop."
-    ],
-    [
-     597.84,
-     598.08,
-     "She"
-    ],
-    [
-     598.08,
-     598.26,
-     "loved"
-    ],
-    [
-     598.26,
-     598.84,
-     "me."
-    ]
-   ],
-   "shots": [
-    [
-     "bNI_Sw2jVSA",
-     596.0,
-     {
-      "rows": [
-       0,
-       0.7
-      ],
-      "w": 2.6
-     }
-    ],
-    [
-     "bNI_Sw2jVSA",
      600.0,
      {
       "rows": [
        0,
        0.7
-      ],
-      "w": 2.8
+      ]
      }
     ]
    ]
