@@ -108,7 +108,7 @@
   },
   {
    "say": "Its engineer, William LeMessurier, was proud of it. Then, in 1978, a student's question made him recheck his math, for winds hitting the building at an angle.",
-   "speak": "Its engineer, William Le Mezhuree ay, was proud of it. Then, in nineteen seventy-eight, a student's question made him recheck his math, for winds hitting the building at an angle.",
+   "speak": "Its engineer, William Le Mezhuree-ey, was proud of it. Then, in nineteen seventy-eight, a student's question made him recheck his math, for winds hitting the building at an angle.",
    "shots": [
     [
      "Q56PMJbCFXQ",
@@ -282,7 +282,7 @@
    ]
   },
   {
-   "say": "In other words, a storm that could topple it hits New York about once every sixteen years. And hurricane season was only weeks away.",
+   "say": "And hurricane season was only weeks away.",
    "shots": [
     [
      "zpMnmKXi8jQ",
@@ -291,20 +291,6 @@
     [
      "Q56PMJbCFXQ",
      1573.0
-    ],
-    [
-     "lzGZpNsAEaA",
-     432.0,
-     {
-      "rows": [
-       0.08,
-       1
-      ]
-     }
-    ],
-    [
-     "zpMnmKXi8jQ",
-     1684.0
     ]
    ]
   },
@@ -564,18 +550,8 @@
    ]
   },
   {
-   "say": "Every morning, they cleaned up before anyone arrived. Quietly, police and the Red Cross planned to evacuate ten blocks around it.",
+   "say": "Quietly, police and the Red Cross planned to evacuate ten blocks around it.",
    "shots": [
-    [
-     "lzGZpNsAEaA",
-     224.0,
-     {
-      "rows": [
-       0.08,
-       1
-      ]
-     }
-    ],
     [
      "LW7XY1v7Ks4",
      750.0
@@ -837,13 +813,23 @@
    "words": [
     [
      4090.92,
+     4091.07,
+     "Good"
+    ],
+    [
+     4091.07,
      4091.22,
-     "Good heavens,"
+     "heavens,"
     ],
     [
      4091.46,
+     4091.55,
+     "this"
+    ],
+    [
+     4091.55,
      4091.64,
-     "this thing"
+     "thing"
     ],
     [
      4091.64,
