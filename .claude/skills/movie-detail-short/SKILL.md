@@ -173,7 +173,12 @@ Every shot option is listed in `references/spec.md`; read it when writing the sp
 
 **Setup:** OpenCV must be version 4. Version 5 dropped the face finder. If `python3 -c "import cv2; print(cv2.__version__)"` prints 5.x, run `pip install "opencv-python-headless<5"`. The ultralytics package can pull in OpenCV 5 when it's installed.
 
-**Before rendering, preview the framing:** `scripts/preview_detail.py <spec> sheet.jpg [k]` composes the first frame of every shot exactly as the render will, in about a minute. Fix the crops there; a full render takes about 4 minutes.
+**Before rendering, preview the framing:** `scripts/preview_detail.py <spec> sheet.jpg [k]` composes the first frame of every shot exactly as the render will, in about a minute. Fix the crops there.
+- **Render time:** a full render takes 4 to 20 minutes, depending on how many renders run at once. Run it in the background with a long timeout (the default 30-minute background limit killed two renders).
+- **First frames aren't enough:** the preview shows only each shot's first frame, and fast-cut sources (60 Minutes, news packages) can cut to an interviewee 0.5 s later. Check the source sheet so each shot starts at least 2 s before a cut, and check the output frame sheet.
+- **`rows` on every shot:** give `rows` to every shot from a source with burned-in subtitles or a chyron, cutaways inside film beats included. It's easy to miss one, and then the subtitle shows.
+- **Source sheets:** `sheet.py` now picks exact frame times. Earlier versions drifted by up to one step.
+- **Spoken lines:** when YouTube captions exist (`yt-dlp --write-auto-subs`), convert the json3 to `tx/<id>.json` instead of running Whisper on an hour-long lecture. Then confirm each line with Whisper on a short window, because captions mishear words (for example "greatest" vs "craziest").
 
 ## Step 7: QA
 
@@ -190,7 +195,9 @@ Check all of these before delivering:
 
 ## Step 8: Deliver
 
-1. **Cover:** grab the frame where the detail is clearest: `ffmpeg -ss <t> -i out.mp4 -frames:v 1 -q:v 2 <name>_cover.jpg`.
+1. **Cover:** `scripts/cover.py <src.mp4> <t> out/<name>_cover.jpg "TOP LINE" "BOTTOM LINE" [cx] [row0 row1]`.
+   - It uses the video's 66% layout, with a white line on top and a yellow line below.
+   - Pick a sharp hero frame (blurry news frames look bad as covers).
 2. **Upload kit:** add a section to `shorts/upload/UPLOAD_MOVIE_DETAILS.md`, following the existing ones:
    - **Title:** "Did you notice this detail in <Movie>???", with two alternates.
    - **Description:** a two-line story summary, then Sources, Clips and Credits.
