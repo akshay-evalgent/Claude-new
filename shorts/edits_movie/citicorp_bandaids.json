@@ -1,0 +1,1004 @@
+{
+ "title": "A New York skyscraper could fall... and only ONE man knew",
+ "note": "True story: Citicorp Center (601 Lexington Ave) 1978 structural crisis. LeMessurier on camera from his 17 Nov 1995 MIT lecture (National Academy of Engineering, um-7IlAdAtg). B-roll: 1976 construction home movie (LW7XY1v7Ks4), Veritasium, The B1M, Science Channel doc, 4K walk-around. Suicide thought deliberately left out. Student: 'a student's question' (Hartley disputed). Sources in citicorp_bandaids.script.md.",
+ "base": ".",
+ "layout": "full",
+ "mid": 0.66,
+ "voice": "am_michael",
+ "speed": 1.3,
+ "gap": 0.05,
+ "beats": [
+  {
+   "say": "In 1978, a brand-new New York skyscraper had a secret. A big storm could knock it over. And only one man knew.",
+   "shots": [
+    [
+     "O_ekNosnieQ",
+     3.0
+    ],
+    [
+     "lzGZpNsAEaA",
+     296.0,
+     {
+      "rows": [
+       0.08,
+       1
+      ]
+     }
+    ],
+    [
+     "LW7XY1v7Ks4",
+     915.0
+    ],
+    [
+     "um-7IlAdAtg",
+     2187.0
+    ]
+   ]
+  },
+  {
+   "say": "This is Citicorp Center. Fifty-nine floors, finished in 1977. Now look at the bottom. It stands on four giant stilts, and they're not at the corners. They're in the middle of each side.",
+   "speak": "This is Citicorp Center. Fifty-nine floors, finished in nineteen seventy-seven. Now look at the bottom. It stands on four giant stilts, and they're not at the corners. They're in the middle of each side.",
+   "shots": [
+    [
+     "lzGZpNsAEaA",
+     544.0,
+     {
+      "rows": [
+       0.08,
+       1
+      ]
+     }
+    ],
+    [
+     "O_ekNosnieQ",
+     72.5
+    ],
+    [
+     "lzGZpNsAEaA",
+     304.0,
+     {
+      "rows": [
+       0.08,
+       1
+      ]
+     }
+    ],
+    [
+     "LW7XY1v7Ks4",
+     900.0
+    ],
+    [
+     "lzGZpNsAEaA",
+     320.0,
+     {
+      "rows": [
+       0.08,
+       1
+      ]
+     }
+    ],
+    [
+     "Q56PMJbCFXQ",
+     0.5
+    ]
+   ]
+  },
+  {
+   "say": "That's because a church owned the corner of the block, so the tower was built right over it.",
+   "shots": [
+    [
+     "LW7XY1v7Ks4",
+     1275.0
+    ],
+    [
+     "Q56PMJbCFXQ",
+     115.0
+    ],
+    [
+     "lzGZpNsAEaA",
+     328.0,
+     {
+      "rows": [
+       0.08,
+       1
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Its engineer, William LeMessurier, was proud of it. Then, in 1978, a student's question made him recheck his math, for winds hitting the building at an angle.",
+   "speak": "Its engineer, William Le Mezhuree ay, was proud of it. Then, in nineteen seventy-eight, a student's question made him recheck his math, for winds hitting the building at an angle.",
+   "shots": [
+    [
+     "Q56PMJbCFXQ",
+     120.5
+    ],
+    [
+     "um-7IlAdAtg",
+     160.0
+    ],
+    [
+     "Q56PMJbCFXQ",
+     10.0
+    ],
+    [
+     "Q56PMJbCFXQ",
+     862.0
+    ],
+    [
+     "Q56PMJbCFXQ",
+     880.0
+    ]
+   ]
+  },
+  {
+   "say": "Those winds put up to forty percent more strain on some of its braces.",
+   "shots": [
+    [
+     "Q56PMJbCFXQ",
+     358.0
+    ],
+    [
+     "Q56PMJbCFXQ",
+     366.0
+    ],
+    [
+     "um-7IlAdAtg",
+     1890.0
+    ]
+   ]
+  },
+  {
+   "say": "And he had just learned something else. To save money, the builder had swapped welded joints for bolts, and his own office had approved it, without telling him.",
+   "shots": [
+    [
+     "LW7XY1v7Ks4",
+     195.0
+    ],
+    [
+     "LW7XY1v7Ks4",
+     210.0
+    ],
+    [
+     "LW7XY1v7Ks4",
+     540.0
+    ],
+    [
+     "LW7XY1v7Ks4",
+     690.0
+    ]
+   ]
+  },
+  {
+   "say": "Together, that meant up to a hundred and sixty percent more force on those bolts. Then he ran the numbers for a storm that knocks out the power.",
+   "shots": [
+    [
+     "LW7XY1v7Ks4",
+     1185.0
+    ],
+    [
+     "LW7XY1v7Ks4",
+     555.0
+    ],
+    [
+     "O_ekNosnieQ",
+     130.0,
+     {
+      "cx": 0.4
+     }
+    ],
+    [
+     "zpMnmKXi8jQ",
+     1633.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "um-7IlAdAtg",
+    2143.15,
+    2150.55
+   ],
+   "words": [
+    [
+     2143.26,
+     2143.3,
+     "the"
+    ],
+    [
+     2143.3,
+     2143.96,
+     "return"
+    ],
+    [
+     2143.96,
+     2144.66,
+     "period"
+    ],
+    [
+     2144.66,
+     2145.04,
+     "to"
+    ],
+    [
+     2145.04,
+     2145.64,
+     "failure"
+    ],
+    [
+     2145.64,
+     2147.28,
+     "was"
+    ],
+    [
+     2147.28,
+     2148.08,
+     "sixteen"
+    ],
+    [
+     2148.08,
+     2148.56,
+     "years."
+    ],
+    [
+     2149.74,
+     2149.9,
+     "Think"
+    ],
+    [
+     2149.9,
+     2150.14,
+     "about"
+    ],
+    [
+     2150.14,
+     2150.42,
+     "that."
+    ]
+   ],
+   "shots": [
+    [
+     "um-7IlAdAtg",
+     2143.15,
+     {
+      "w": 3.6
+     }
+    ],
+    [
+     "Q56PMJbCFXQ",
+     1576.0,
+     {
+      "w": 1.8
+     }
+    ],
+    [
+     "um-7IlAdAtg",
+     2148.6,
+     {
+      "w": 2.0
+     }
+    ]
+   ]
+  },
+  {
+   "say": "In other words, a storm that could topple it hits New York about once every sixteen years. And hurricane season was only weeks away.",
+   "shots": [
+    [
+     "zpMnmKXi8jQ",
+     1651.0
+    ],
+    [
+     "Q56PMJbCFXQ",
+     1573.0
+    ],
+    [
+     "lzGZpNsAEaA",
+     432.0,
+     {
+      "rows": [
+       0.08,
+       1
+      ]
+     }
+    ],
+    [
+     "zpMnmKXi8jQ",
+     1684.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "um-7IlAdAtg",
+    2186.35,
+    2190.95
+   ],
+   "words": [
+    [
+     2186.44,
+     2186.66,
+     "Here"
+    ],
+    [
+     2186.66,
+     2186.9,
+     "I"
+    ],
+    [
+     2186.9,
+     2187.12,
+     "am,"
+    ],
+    [
+     2187.26,
+     2187.26,
+     "the"
+    ],
+    [
+     2187.26,
+     2187.56,
+     "only"
+    ],
+    [
+     2187.56,
+     2188.0,
+     "man"
+    ],
+    [
+     2188.0,
+     2188.22,
+     "in"
+    ],
+    [
+     2188.22,
+     2188.34,
+     "the"
+    ],
+    [
+     2188.34,
+     2188.62,
+     "world,"
+    ],
+    [
+     2188.76,
+     2188.82,
+     "the"
+    ],
+    [
+     2188.82,
+     2188.94,
+     "only"
+    ],
+    [
+     2188.94,
+     2189.24,
+     "person"
+    ],
+    [
+     2189.24,
+     2189.52,
+     "in"
+    ],
+    [
+     2189.52,
+     2189.62,
+     "the"
+    ],
+    [
+     2189.62,
+     2189.82,
+     "world"
+    ],
+    [
+     2189.82,
+     2189.98,
+     "who"
+    ],
+    [
+     2189.98,
+     2190.28,
+     "knew"
+    ],
+    [
+     2190.28,
+     2190.86,
+     "this."
+    ]
+   ],
+   "shots": [
+    [
+     "um-7IlAdAtg",
+     2186.35
+    ]
+   ]
+  },
+  {
+   "say": "He could have stayed quiet, and nobody would ever have known. Instead, he told the bank.",
+   "shots": [
+    [
+     "lzGZpNsAEaA",
+     544.0,
+     {
+      "rows": [
+       0.08,
+       1
+      ]
+     }
+    ],
+    [
+     "um-7IlAdAtg",
+     480.0
+    ],
+    [
+     "O_ekNosnieQ",
+     20.0
+    ]
+   ]
+  },
+  {
+   "say": "So every night, after the office workers went home, welders covered more than two hundred joints with steel plates.",
+   "shots": [
+    [
+     "O_ekNosnieQ",
+     157.5
+    ],
+    [
+     "zpMnmKXi8jQ",
+     1660.0
+    ],
+    [
+     "O_ekNosnieQ",
+     162.5
+    ],
+    [
+     "zpMnmKXi8jQ",
+     1664.0
+    ],
+    [
+     "zpMnmKXi8jQ",
+     1666.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "um-7IlAdAtg",
+    2258.5,
+    2266.25
+   ],
+   "words": [
+    [
+     2258.62,
+     2259.8,
+     "big"
+    ],
+    [
+     2259.8,
+     2260.4,
+     "steel"
+    ],
+    [
+     2260.4,
+     2260.9,
+     "plates,"
+    ],
+    [
+     2260.9,
+     2261.42,
+     "two"
+    ],
+    [
+     2261.42,
+     2261.74,
+     "inches"
+    ],
+    [
+     2261.74,
+     2262.16,
+     "thick"
+    ],
+    [
+     2262.16,
+     2262.5,
+     "and"
+    ],
+    [
+     2262.5,
+     2262.84,
+     "six"
+    ],
+    [
+     2262.84,
+     2263.18,
+     "feet"
+    ],
+    [
+     2263.18,
+     2263.56,
+     "long,"
+    ],
+    [
+     2263.56,
+     2263.82,
+     "like"
+    ],
+    [
+     2263.82,
+     2264.84,
+     "Band-Aids,"
+    ],
+    [
+     2264.84,
+     2265.12,
+     "literally"
+    ],
+    [
+     2265.12,
+     2266.16,
+     "Band-Aids."
+    ]
+   ],
+   "shots": [
+    [
+     "um-7IlAdAtg",
+     2258.5,
+     {
+      "w": 3.0
+     }
+    ],
+    [
+     "LW7XY1v7Ks4",
+     1335.0,
+     {
+      "w": 2.0
+     }
+    ],
+    [
+     "um-7IlAdAtg",
+     2263.5,
+     {
+      "w": 2.75
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Every morning, they cleaned up before anyone arrived. Quietly, police and the Red Cross planned to evacuate ten blocks around it.",
+   "shots": [
+    [
+     "lzGZpNsAEaA",
+     224.0,
+     {
+      "rows": [
+       0.08,
+       1
+      ]
+     }
+    ],
+    [
+     "LW7XY1v7Ks4",
+     750.0
+    ],
+    [
+     "O_ekNosnieQ",
+     57.5
+    ],
+    [
+     "1DMz6Z7Gd6w",
+     10.0,
+     {
+      "rows": [
+       0,
+       0.78
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Then, on September first, Hurricane Ella was heading north, toward New York.",
+   "shots": [
+    [
+     "Q56PMJbCFXQ",
+     1591.0
+    ],
+    [
+     "Q56PMJbCFXQ",
+     1600.0
+    ],
+    [
+     "zpMnmKXi8jQ",
+     1655.0
+    ]
+   ]
+  },
+  {
+   "say": "And then it turned out to sea.",
+   "shots": [
+    [
+     "Q56PMJbCFXQ",
+     1606.0
+    ],
+    [
+     "zpMnmKXi8jQ",
+     1687.0
+    ]
+   ]
+  },
+  {
+   "say": "And the full story never made the papers.",
+   "shots": [
+    [
+     "LW7XY1v7Ks4",
+     765.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "um-7IlAdAtg",
+    2816.75,
+    2823.7
+   ],
+   "words": [
+    [
+     2816.84,
+     2817.0,
+     "Not"
+    ],
+    [
+     2817.0,
+     2817.2,
+     "only"
+    ],
+    [
+     2817.2,
+     2817.44,
+     "did"
+    ],
+    [
+     2817.44,
+     2817.6,
+     "the"
+    ],
+    [
+     2817.6,
+     2817.68,
+     "New"
+    ],
+    [
+     2817.68,
+     2817.82,
+     "York"
+    ],
+    [
+     2817.82,
+     2818.14,
+     "Times"
+    ],
+    [
+     2818.14,
+     2818.4,
+     "go"
+    ],
+    [
+     2818.4,
+     2818.58,
+     "on"
+    ],
+    [
+     2818.58,
+     2819.0,
+     "strike,"
+    ],
+    [
+     2819.06,
+     2819.24,
+     "but"
+    ],
+    [
+     2819.24,
+     2819.66,
+     "all"
+    ],
+    [
+     2819.66,
+     2819.88,
+     "the"
+    ],
+    [
+     2819.88,
+     2820.3,
+     "newspapers"
+    ],
+    [
+     2820.3,
+     2820.68,
+     "in"
+    ],
+    [
+     2820.68,
+     2820.86,
+     "New"
+    ],
+    [
+     2820.86,
+     2821.06,
+     "York"
+    ],
+    [
+     2821.06,
+     2821.34,
+     "went"
+    ],
+    [
+     2821.34,
+     2821.6,
+     "on"
+    ],
+    [
+     2821.6,
+     2822.1,
+     "strike"
+    ],
+    [
+     2822.1,
+     2822.94,
+     "until"
+    ],
+    [
+     2822.94,
+     2823.6,
+     "October."
+    ]
+   ],
+   "shots": [
+    [
+     "um-7IlAdAtg",
+     2816.75,
+     {
+      "w": 3.5
+     }
+    ],
+    [
+     "LW7XY1v7Ks4",
+     1305.0,
+     {
+      "w": 1.6
+     }
+    ],
+    [
+     "um-7IlAdAtg",
+     2820.5,
+     {
+      "w": 1.85
+     }
+    ]
+   ]
+  },
+  {
+   "say": "The public found out seventeen years later, in 1995.",
+   "speak": "The public found out seventeen years later, in nineteen ninety-five.",
+   "shots": [
+    [
+     "zpMnmKXi8jQ",
+     1753.0,
+     {
+      "zoom": 1.3
+     }
+    ],
+    [
+     "zpMnmKXi8jQ",
+     1762.0
+    ]
+   ]
+  },
+  {
+   "say": "To be fair, a 2019 government study suggests those winds may not have been as dangerous as he calculated. But he didn't wait to find out.",
+   "speak": "To be fair, a twenty nineteen government study suggests those winds may not have been as dangerous as he calculated. But he didn't wait to find out.",
+   "shots": [
+    [
+     "Q56PMJbCFXQ",
+     420.0
+    ],
+    [
+     "lzGZpNsAEaA",
+     560.0,
+     {
+      "rows": [
+       0.08,
+       1
+      ]
+     }
+    ],
+    [
+     "Q56PMJbCFXQ",
+     1220.0
+    ],
+    [
+     "lzGZpNsAEaA",
+     720.0,
+     {
+      "rows": [
+       0.08,
+       1
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "um-7IlAdAtg",
+    4090.85,
+    4094.55
+   ],
+   "words": [
+    [
+     4090.92,
+     4091.22,
+     "Good heavens,"
+    ],
+    [
+     4091.46,
+     4091.64,
+     "this thing"
+    ],
+    [
+     4091.64,
+     4091.8,
+     "would"
+    ],
+    [
+     4091.8,
+     4092.02,
+     "kill"
+    ],
+    [
+     4092.02,
+     4092.52,
+     "thousands."
+    ],
+    [
+     4093.42,
+     4093.66,
+     "You"
+    ],
+    [
+     4093.66,
+     4093.9,
+     "must"
+    ],
+    [
+     4093.9,
+     4094.18,
+     "do"
+    ],
+    [
+     4094.18,
+     4094.48,
+     "something."
+    ]
+   ],
+   "shots": [
+    [
+     "um-7IlAdAtg",
+     4090.85
+    ]
+   ]
+  },
+  {
+   "film": [
+    "um-7IlAdAtg",
+    4114.6,
+    4118.2
+   ],
+   "words": [
+    [
+     4114.66,
+     4114.94,
+     "It's"
+    ],
+    [
+     4114.94,
+     4115.08,
+     "like"
+    ],
+    [
+     4115.08,
+     4115.34,
+     "my"
+    ],
+    [
+     4115.34,
+     4115.96,
+     "child."
+    ],
+    [
+     4116.88,
+     4117.12,
+     "I"
+    ],
+    [
+     4117.12,
+     4117.34,
+     "have"
+    ],
+    [
+     4117.34,
+     4117.5,
+     "to"
+    ],
+    [
+     4117.5,
+     4117.8,
+     "save"
+    ],
+    [
+     4117.8,
+     4118.08,
+     "it."
+    ]
+   ],
+   "shots": [
+    [
+     "um-7IlAdAtg",
+     4114.6,
+     {
+      "w": 1.6
+     }
+    ],
+    [
+     "lzGZpNsAEaA",
+     300.0,
+     {
+      "w": 2.0,
+      "rows": [
+       0.08,
+       1
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "So next time you see this skyscraper standing on stilts... remember. It's held together with Band-Aids.",
+   "shots": [
+    [
+     "lzGZpNsAEaA",
+     308.0,
+     {
+      "rows": [
+       0.08,
+       1
+      ]
+     }
+    ],
+    [
+     "lzGZpNsAEaA",
+     544.0,
+     {
+      "rows": [
+       0.08,
+       1
+      ]
+     }
+    ],
+    [
+     "O_ekNosnieQ",
+     3.0
+    ]
+   ]
+  }
+ ],
+ "credits": [
+  "William LeMessurier, MIT lecture 1995 (National Academy of Engineering)",
+  "Veritasium",
+  "The B1M",
+  "Science Channel",
+  "Martina Wagner (1976 construction film)",
+  "Charly Baby 77 (4K)",
+  "Kinolibrary"
+ ]
+}
