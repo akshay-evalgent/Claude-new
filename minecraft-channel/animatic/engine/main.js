@@ -54,7 +54,7 @@ async function boot() {
   E.compile();
   const Wd = Math.round(E.meta.width * SCALE), Ht = Math.round(E.meta.height * SCALE);
 
-  renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+  renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, alpha: true });
   renderer.setPixelRatio(1);
   renderer.setSize(Wd, Ht);
   renderer.shadowMap.enabled = true;
@@ -540,6 +540,190 @@ window.renderThumb = (f, lines, opts = {}) => {
     g.restore();
   });
   return out.toDataURL('image/jpeg', 0.92);
+};
+
+// ---------------- thumbnail compositor ----------------
+// Builds a YouTube-style thumbnail: a 3D background plate plus character cut-outs
+// (each rendered alone on transparent background) with thick outlines, rays, arrows and big text.
+// Layout coordinates are in a 1280x720 space and scaled to the render size.
+function poseScene(f, tod) {
+  const t = f / E.meta.fps;
+  const keepTod = E.g.tod;
+  if (tod != null) E.g.tod = [{ t: 0, v: tod }];
+  applyGlobals(t);
+  E.g.tod = keepTod;
+  const names = Object.keys(E.actors);
+  const attached = names.filter((n) => E.actors[n].attach.length);
+  for (const n of names) if (!attached.includes(n)) applyActor(n, t);
+  scene.updateMatrixWorld(true);
+  for (const n of attached) applyActor(n, t);
+  updateParticles(t);
+  applyCamera(t);
+  return t;
+}
+function blank() { const c = document.createElement('canvas'); c.width = out.width; c.height = out.height; return c; }
+function grabGL() { const c = blank(); c.getContext('2d').drawImage(renderer.domElement, 0, 0); return c; }
+function setCam(pos, look, fov) { camera.position.set(...pos); camera.lookAt(new THREE.Vector3(...look)); camera.fov = fov ?? 35; camera.updateProjectionMatrix(); }
+function aimSun(p) { sun.target.position.copy(p); sun.position.copy(p).add(new THREE.Vector3(10, 26, 20).normalize().multiplyScalar(50)); }
+
+function backgroundPlate(B) {
+  poseScene(B.frame, B.tod);
+  const hidden = [];
+  for (const n of B.hide ?? []) if (actors[n]) { hidden.push(actors[n].obj); actors[n].obj.visible = false; }
+  setCam(B.cam.pos, B.cam.look, B.cam.fov);
+  aimSun(new THREE.Vector3(...B.cam.look));
+  renderer.render(scene, camera);
+  hidden.forEach((o) => (o.visible = true));
+  return grabGL();
+}
+
+function cutout(L) {
+  const t = poseScene(L.frame, L.tod ?? 0);
+  const orig = E.actors[L.who];
+  const fake = Object.assign({}, orig, {
+    attach: [], hops: [], spin: [], talk: [],
+    pose: L.pose ? [{ t: 0, v: L.pose, blend: 0.001 }] : orig.pose,
+    expr: L.expr ? [{ t: 0, v: L.expr }] : orig.expr,
+    look: L.look ? [{ t: 0, v: L.look, e: 'step' }] : [],
+    yaw: L.yaw != null ? [{ t: 0, v: L.yaw, e: 'step' }] : orig.yaw,
+    state: Object.assign({}, orig.state, L.state ?? {}),
+  });
+  E.actors[L.who] = fake;
+  applyActor(L.who, t);
+  E.actors[L.who] = orig;
+  const A = actors[L.who];
+  if (L.jaw && A.rig.parts.jawP) A.rig.parts.jawP.rotation.x += L.jaw;
+  if (L.expr) { A.rig.lastFace = ''; A.rig.setFace(L.expr, !!L.open); }
+  const keep = new Set([A.obj, ...(L.keep ?? []).map((n) => actors[n]?.obj)]);
+  const vis = scene.children.map((c) => [c, c.visible]);
+  for (const c of scene.children) if (!keep.has(c) && !c.isLight && c !== sun.target) c.visible = false;
+  scene.updateMatrixWorld(true);
+  const ap = new THREE.Vector3(); A.obj.getWorldPosition(ap);
+  const add = (v) => [ap.x + v[0], ap.y + v[1], ap.z + v[2]];
+  setCam(add(L.cam.off), add(L.cam.look), L.cam.fov);
+  aimSun(ap);
+  renderer.render(scene, camera);
+  const c = grabGL();
+  vis.forEach(([o, v]) => (o.visible = v));
+  return c;
+}
+
+function trimCanvas(c) {
+  const g = c.getContext('2d'), d = g.getImageData(0, 0, c.width, c.height).data;
+  let x0 = c.width, y0 = c.height, x1 = 0, y1 = 0;
+  for (let y = 0; y < c.height; y += 2) for (let x = 0; x < c.width; x += 2) if (d[(y * c.width + x) * 4 + 3] > 8) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+  const w = Math.max(1, x1 - x0 + 2), h = Math.max(1, y1 - y0 + 2);
+  const o = document.createElement('canvas'); o.width = w; o.height = h;
+  o.getContext('2d').drawImage(c, x0, y0, w, h, 0, 0, w, h);
+  return o;
+}
+
+function outlined(src, width, color) {
+  const pad = Math.ceil(width) + 4;
+  const c = document.createElement('canvas'); c.width = src.width + pad * 2; c.height = src.height + pad * 2;
+  const sil = document.createElement('canvas'); sil.width = src.width; sil.height = src.height;
+  const sg = sil.getContext('2d'); sg.drawImage(src, 0, 0); sg.globalCompositeOperation = 'source-in'; sg.fillStyle = color; sg.fillRect(0, 0, sil.width, sil.height);
+  const g = c.getContext('2d');
+  for (const r of [width * 0.5, width]) for (let i = 0; i < 32; i++) { const a = (i / 32) * Math.PI * 2; g.drawImage(sil, pad + Math.cos(a) * r, pad + Math.sin(a) * r); }
+  g.drawImage(src, pad, pad);
+  return c;
+}
+
+function drawLayer(g, img, L, k) {
+  g.save();
+  g.translate(L.x * k, L.y * k);
+  g.rotate(((L.rot ?? 0) * Math.PI) / 180);
+  const s = ((L.h ?? 400) * k) / img.height;
+  g.scale(L.flip ? -s : s, s);
+  g.shadowColor = 'rgba(0,0,0,0.55)'; g.shadowBlur = 30 * k; g.shadowOffsetY = 12 * k;
+  g.drawImage(img, -img.width / 2, -img.height / 2);
+  g.restore();
+}
+
+function rays(g, R, k) {
+  const n = R.n ?? 20, cx = R.x * k, cy = R.y * k, rad = 2200 * k;
+  g.save();
+  for (let i = 0; i < n; i++) {
+    const a0 = (i / n) * Math.PI * 2 + (R.rot ?? 0), a1 = a0 + Math.PI / n;
+    g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + Math.cos(a0) * rad, cy + Math.sin(a0) * rad); g.lineTo(cx + Math.cos(a1) * rad, cy + Math.sin(a1) * rad); g.closePath();
+    g.fillStyle = R.color ?? 'rgba(255,230,80,0.28)'; g.fill();
+  }
+  const gr = g.createRadialGradient(cx, cy, 0, cx, cy, 700 * k);
+  gr.addColorStop(0, R.glow ?? 'rgba(255,240,150,0.55)'); gr.addColorStop(1, 'rgba(255,240,150,0)');
+  g.fillStyle = gr; g.fillRect(0, 0, out.width, out.height);
+  g.restore();
+}
+
+function arrow(g, A, k) {
+  const [x0, y0] = A.from.map((v) => v * k), [x1, y1] = A.to.map((v) => v * k), [cx, cy] = (A.ctrl ?? [(A.from[0] + A.to[0]) / 2, (A.from[1] + A.to[1]) / 2]).map((v) => v * k);
+  const ang = Math.atan2(y1 - cy, x1 - cx), hl = 70 * k, hw = 58 * k;
+  const tip = [x1, y1], base = [x1 - Math.cos(ang) * hl, y1 - Math.sin(ang) * hl];
+  for (const [col, wd] of [['#ffffff', 46 * k], [A.color ?? '#ff1f1f', 26 * k]]) {
+    g.save(); g.lineCap = 'round'; g.strokeStyle = col; g.lineWidth = wd;
+    g.beginPath(); g.moveTo(x0, y0); g.quadraticCurveTo(cx, cy, base[0], base[1]); g.stroke();
+    const grow = col === '#ffffff' ? 12 * k : 0;
+    g.fillStyle = col; g.beginPath();
+    g.moveTo(tip[0] + Math.cos(ang) * grow, tip[1] + Math.sin(ang) * grow);
+    g.lineTo(base[0] + Math.cos(ang + Math.PI / 2) * (hw + grow) - Math.cos(ang) * grow, base[1] + Math.sin(ang + Math.PI / 2) * (hw + grow) - Math.sin(ang) * grow);
+    g.lineTo(base[0] - Math.cos(ang + Math.PI / 2) * (hw + grow) - Math.cos(ang) * grow, base[1] - Math.sin(ang + Math.PI / 2) * (hw + grow) - Math.sin(ang) * grow);
+    g.closePath(); g.fill(); g.restore();
+  }
+}
+
+function ring(g, C, k) {
+  for (const [col, wd] of [['#ffffff', 26 * k], [C.color ?? '#ff1f1f', 13 * k]]) {
+    g.save(); g.strokeStyle = col; g.lineWidth = wd;
+    g.beginPath(); g.ellipse(C.x * k, C.y * k, C.rx * k, C.ry * k, ((C.rot ?? 0) * Math.PI) / 180, 0, Math.PI * 2); g.stroke(); g.restore();
+  }
+}
+
+function bigText(g, T, k) {
+  g.save();
+  g.translate(T.x * k, T.y * k); g.rotate(((T.rot ?? 0) * Math.PI) / 180);
+  const size = T.size * k;
+  g.font = `900 ${size}px Montserrat`; g.textAlign = T.align ?? 'left'; g.textBaseline = 'alphabetic'; g.lineJoin = 'round';
+  g.shadowColor = 'rgba(0,0,0,0.6)'; g.shadowBlur = 28 * k; g.shadowOffsetY = 14 * k;
+  g.lineWidth = (T.stroke ?? 30) * k; g.strokeStyle = '#000'; g.strokeText(T.text, 0, 0);
+  g.shadowColor = 'transparent';
+  if (T.gradient) { const gr = g.createLinearGradient(0, -size, 0, 0); T.gradient.forEach((c, i) => gr.addColorStop(i / (T.gradient.length - 1), c)); g.fillStyle = gr; } else g.fillStyle = T.fill ?? '#fff';
+  g.fillText(T.text, 0, 0);
+  g.restore();
+}
+
+function impact(g, B, k) {
+  const n = B.points ?? 14, cx = B.x * k, cy = B.y * k;
+  (B.colors ?? ['#ff3d00', '#ff9a00', '#ffe14a']).forEach((col, li, arr) => {
+    const r1 = B.r * k * (1 - li * 0.24), r0 = r1 * 0.62;
+    g.save(); g.beginPath();
+    for (let i = 0; i < n * 2; i++) {
+      const a = (i / (n * 2)) * Math.PI * 2 + (B.rot ?? 0) + li * 0.15;
+      const r = i % 2 ? r0 * (0.9 + 0.2 * Math.sin(i * 7.1)) : r1 * (0.85 + 0.25 * Math.sin(i * 3.7));
+      g.lineTo(cx + Math.cos(a) * r, cy + Math.sin(a) * r);
+    }
+    g.closePath();
+    if (li === 0) { g.lineWidth = 10 * k; g.strokeStyle = '#000'; g.stroke(); }
+    g.fillStyle = col; g.globalAlpha = B.alpha ?? 0.95; g.fill(); g.restore();
+  });
+}
+
+window.composeThumb = (spec) => {
+  const k = out.width / 1280;
+  const plate = backgroundPlate(spec.bg);
+  spec.layers.forEach((L) => { if (L.tod == null) L.tod = spec.tod ?? 0; });
+  const layers = spec.layers.map((L) => ({ L, img: outlined(trimCanvas(cutout(L)), (L.outline ?? 9) * k, L.outlineColor ?? '#ffffff') }));
+  const g = octx;
+  g.save(); g.filter = spec.bg.filter ?? 'saturate(1.45) contrast(1.12) blur(1.5px)'; g.drawImage(plate, 0, 0); g.restore();
+  if (spec.tint) { g.fillStyle = spec.tint; g.fillRect(0, 0, out.width, out.height); }
+  for (const R of spec.rays ?? []) rays(g, R, k);
+  const vg = g.createRadialGradient(out.width / 2, out.height / 2, out.height * 0.45, out.width / 2, out.height / 2, out.width * 0.75);
+  vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,0.45)'); g.fillStyle = vg; g.fillRect(0, 0, out.width, out.height);
+  for (const B of spec.bursts ?? []) impact(g, B, k);
+  const order = (z) => layers.filter((l) => (l.L.z ?? 0) === z);
+  for (const z of [...new Set(layers.map((l) => l.L.z ?? 0))].sort((a, b) => a - b)) for (const { L, img } of order(z)) drawLayer(g, img, L, k);
+  for (const C of spec.rings ?? []) ring(g, C, k);
+  for (const A of spec.arrows ?? []) arrow(g, A, k);
+  for (const T of spec.text ?? []) bigText(g, T, k);
+  return out.toDataURL('image/jpeg', 0.95);
 };
 
 boot().catch((e) => { window.bootError = String(e && e.stack || e); console.error(e); });

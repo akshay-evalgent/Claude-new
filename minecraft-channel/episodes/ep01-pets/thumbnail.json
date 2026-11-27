@@ -1,0 +1,237 @@
+{
+ "_note": "Composite thumbnail for EP01. Layout in 1280x720 space. Render: node render.cjs ep01-pets --compose ../episodes/ep01-pets/thumbnail.json --name thumb_crazy",
+ "bg": {
+  "frame": 3150,
+  "tod": 0,
+  "hide": [
+   "ava",
+   "rex",
+   "duchess",
+   "pico",
+   "lou",
+   "greg",
+   "sign"
+  ],
+  "cam": {
+   "pos": [
+    1.5,
+    2.6,
+    3.2
+   ],
+   "look": [
+    -0.5,
+    5.6,
+    -6.5
+   ],
+   "fov": 72
+  },
+  "filter": "saturate(1.5) contrast(1.15) blur(1.2px)"
+ },
+ "rays": [
+  {
+   "x": 360,
+   "y": 330,
+   "n": 22,
+   "color": "rgba(255,225,60,0.30)",
+   "glow": "rgba(255,245,170,0.6)"
+  }
+ ],
+ "layers": [
+  {
+   "who": "greg",
+   "frame": 3130,
+   "pose": "stand",
+   "expr": "angry",
+   "jaw": 0.6,
+   "yaw": -0.55,
+   "cam": {
+    "off": [
+     -1.55,
+     1.55,
+     2.55
+    ],
+    "look": [
+     0,
+     1.25,
+     0
+    ],
+    "fov": 38
+   },
+   "x": 905,
+   "y": 330,
+   "h": 470,
+   "rot": 10,
+   "z": 1,
+   "look": [
+    0,
+    -0.15
+   ]
+  },
+  {
+   "who": "pico",
+   "frame": 3080,
+   "pose": "squawk",
+   "expr": "shocked",
+   "jaw": 0.6,
+   "yaw": -0.45,
+   "cam": {
+    "off": [
+     -0.9,
+     1.35,
+     2.3
+    ],
+    "look": [
+     0,
+     1.0,
+     0
+    ],
+    "fov": 38
+   },
+   "x": 1135,
+   "y": 135,
+   "h": 250,
+   "rot": -14,
+   "z": 1
+  },
+  {
+   "who": "duchess",
+   "frame": 1640,
+   "pose": "sit",
+   "expr": "smug",
+   "yaw": -0.45,
+   "cam": {
+    "off": [
+     -0.95,
+     1.05,
+     2.1
+    ],
+    "look": [
+     0,
+     0.8,
+     0
+    ],
+    "fov": 36
+   },
+   "x": 1140,
+   "y": 560,
+   "h": 330,
+   "rot": -4,
+   "z": 2
+  },
+  {
+   "who": "lou",
+   "frame": 3790,
+   "pose": "up",
+   "expr": "hopeful",
+   "yaw": 0.25,
+   "cam": {
+    "off": [
+     0.6,
+     1.25,
+     2.2
+    ],
+    "look": [
+     0,
+     0.75,
+     0
+    ],
+    "fov": 36
+   },
+   "x": 700,
+   "y": 612,
+   "h": 175,
+   "rot": 6,
+   "z": 2
+  },
+  {
+   "who": "rex",
+   "frame": 120,
+   "pose": "sit",
+   "expr": "hopeful",
+   "jaw": 0.6,
+   "open": true,
+   "yaw": 0.25,
+   "cam": {
+    "off": [
+     0.5,
+     1.0,
+     2.35
+    ],
+    "look": [
+     0,
+     1.05,
+     0
+    ],
+    "fov": 34
+   },
+   "x": 345,
+   "y": 560,
+   "h": 640,
+   "rot": -5,
+   "z": 3,
+   "look": [
+    0,
+    0.0
+   ]
+  }
+ ],
+ "rings": [
+  {
+   "x": 700,
+   "y": 612,
+   "rx": 118,
+   "ry": 104,
+   "rot": -8
+  }
+ ],
+ "arrows": [
+  {
+   "from": [
+    585,
+    330
+   ],
+   "ctrl": [
+    540,
+    520
+   ],
+   "to": [
+    610,
+    560
+   ]
+  }
+ ],
+ "text": [
+  {
+   "text": "PICK",
+   "x": 30,
+   "y": 140,
+   "size": 150,
+   "rot": -7,
+   "fill": "#ffffff",
+   "stroke": 30
+  },
+  {
+   "text": "ME!!",
+   "x": 116,
+   "y": 270,
+   "size": 150,
+   "rot": -7,
+   "gradient": [
+    "#fff06a",
+    "#ffb800"
+   ],
+   "stroke": 30
+  }
+ ],
+ "tod": 0,
+ "bursts": [
+  {
+   "x": 910,
+   "y": 300,
+   "r": 330,
+   "points": 13,
+   "rot": 0.2,
+   "alpha": 0.92
+  }
+ ]
+}

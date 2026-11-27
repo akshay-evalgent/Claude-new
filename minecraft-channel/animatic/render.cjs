@@ -40,6 +40,14 @@ async function openPage(browser, port) {
   fs.writeFileSync(path.join(outDir, 'cues.json'), JSON.stringify(await first.evaluate('window.CUES'), null, 1));
   console.log('meta', JSON.stringify(meta));
 
+  const compose = opt('compose', null);
+  if (compose) {
+    // --compose spec.json [--name thumb_crazy]
+    const spec = JSON.parse(fs.readFileSync(compose, 'utf8'));
+    const d = await first.evaluate((s) => window.composeThumb(s), spec);
+    fs.writeFileSync(path.join(outDir, (opt('name', 'thumb_composed')) + '_full.jpg'), Buffer.from(d.split(',')[1], 'base64'));
+    await browser.close(); server.close(); return;
+  }
   const thumb = opt('thumb', null);
   if (thumb) {
     // --thumb <frame> --text "ONLY|ONE?!"
