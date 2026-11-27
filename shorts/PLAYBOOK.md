@@ -65,6 +65,10 @@ Age 4 slide → 7 front flip → 11 game-winner → 15 first song → 25 years l
 
 Age 3 story → 6 "one more?" → 10 "can I tell you something?" → 14 at 2 AM → 25 years later he reads to his daughter. In the top panel the cycle turns: at 14 *he* is the one scrolling alone at 2:14 AM. Counters: "BEDTIME TALKS" stops at 12 while "NIGHTS ALONE" climbs to 2,100; below, 3,650.
 
+## EP04 — "Same kid. Same front door." (neon format; rendered: `releases/ep04/`, upload kit in `releases/ep04/UPLOAD.md`)
+
+This is a style test modelled on a reference you shared: minimal neon line art on black, glowing stick figures, a lamp cone with drifting dust, a synthwave floor, thin labels, a pill counter and the age pill on the seam. The story is original: one room and one door. He comes home every day at 7, 11 and 15, leaves at 18, and at 30 we see whether he comes back. On top, the payoff is the reversal: she gets *"Not now. I'm busy."* Built with `src/neon/Neon.tsx`, a 2D SVG renderer with glow filters that reuses the same pose rig, so a full 60fps render takes about 3 minutes instead of about 45.
+
 ## Test plan
 
 Judge each upload at **48 hours** in YouTube Studio → Content → the Short → Analytics:

@@ -7,6 +7,7 @@ import {TestPark} from './three/TestPark';
 import {Ep01_3D} from './episodes/Ep01_3D';
 import {Ep02_3D, EP02_DURATION} from './episodes/Ep02_3D';
 import {Ep03_3D, EP03_DURATION} from './episodes/Ep03_3D';
+import {Ep04Neon, EP04_DURATION} from './episodes/Ep04Neon';
 import {Ep01Drawing, EP01_DURATION} from './episodes/Ep01Drawing';
 import {FPS, W, H} from './lib/theme';
 
@@ -25,6 +26,9 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="Ep03-3D" component={Ep03_3D} durationInFrames={Math.round(EP03_DURATION * 60)} fps={60} width={W} height={H} defaultProps={{withAudio: true}} />
     <Composition id="Ep03-3D-NoMusic" component={Ep03_3D} durationInFrames={Math.round(EP03_DURATION * 30)} fps={30} width={W} height={H} defaultProps={{withAudio: true, music: false}} />
     <Composition id="Ep03-3D-Preview" component={Ep03_3D} durationInFrames={Math.round(EP03_DURATION * 6)} fps={6} width={W} height={H} defaultProps={{withAudio: false}} />
+    <Composition id="Ep04-Neon" component={Ep04Neon} durationInFrames={Math.round(EP04_DURATION * 60)} fps={60} width={W} height={H} defaultProps={{withAudio: true}} />
+    <Composition id="Ep04-Neon-NoMusic" component={Ep04Neon} durationInFrames={Math.round(EP04_DURATION * 60)} fps={60} width={W} height={H} defaultProps={{withAudio: true, music: false}} />
+    <Composition id="Ep04-Neon-Preview" component={Ep04Neon} durationInFrames={Math.round(EP04_DURATION * 6)} fps={6} width={W} height={H} defaultProps={{withAudio: false}} />
     <Composition id="TestPark" component={TestPark} durationInFrames={30} fps={30} width={1080} height={1920} />
     <Composition id="Test3D" component={Test3D} durationInFrames={30} fps={30} width={1080} height={1920} />
     <Composition id="GlTest" component={GlTest} durationInFrames={24} fps={30} width={1080} height={1920} />

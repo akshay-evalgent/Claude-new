@@ -45,6 +45,10 @@ npx remotion render src/index.ts Ep01-3D-Preview out/3d-preview.mp4 --gl=swangle
 scripts/finish.sh Ep01-3D out/ep01-3d --gl=swangle                                                                                             # final 60fps
 ```
 
+## Neon format (EP04)
+
+`src/neon/Neon.tsx` renders the same 2D pose rig as glowing neon stick figures, using `NeonPerson`, `NeonRoom`, `NBubble`, `PanelLabel`, `CountPill`, `AgePill` and `Glyph`. `src/episodes/Ep04Neon.tsx` is the episode and `scripts/make_ep04_audio.py` its audio. It needs no WebGL, so a render is just `scripts/finish.sh Ep04-Neon out/ep04`, about 3 minutes.
+
 ## Writing a new episode
 
 Copy `Ep01Drawing.tsx`. Each beat is a function `(t, side) => {svg, html}`:
