@@ -303,11 +303,12 @@ def main():
     env = np.convolve(speech, np.ones(int(0.25 * SR)) / int(0.25 * SR), "same")
     mix += bed * (1 - 0.45 * env)[:, None]
     mix = mix[: int(total * SR)]
-    lim = 10 ** (-1 / 20)
+    lim = 10 ** (-1.5 / 20)                          # headroom so AAC true peak stays under -1 dBFS
     for _ in range(3):
         mix = mix * 10 ** ((-14 - meter.integrated_loudness(mix)) / 20)
         if np.abs(mix).max() > lim:
             mix = np.tanh(mix / lim) * lim
+    mix = np.tanh(mix / lim) * lim if np.abs(mix).max() > lim else mix   # limiter last, after the final gain
     import soundfile as sf
     wav = os.path.join(work, "audio.wav"); sf.write(wav, mix.astype(np.float32), SR)
     json.dump({"shots": shots, "words": words, "dur": total}, open(os.path.join(work, "plan.json"), "w"), indent=1)
