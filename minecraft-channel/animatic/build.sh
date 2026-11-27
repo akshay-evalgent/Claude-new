@@ -23,7 +23,7 @@ STATS=$(ffmpeg -hide_banner -nostats -i "$OUT/mix.wav" -af loudnorm=I=-14:TP=-1.
 mi=$(echo "$STATS" | python3 -c "import json,sys;d=json.load(sys.stdin);print(d['input_i'],d['input_tp'],d['input_lra'],d['input_thresh'],d['target_offset'])")
 read -r II TP LRA TH OFF <<<"$mi"
 ffmpeg -y -loglevel error -i "$OUT/video.mp4" -i "$OUT/mix.wav" \
-  -af "loudnorm=I=-14:TP=-1.5:LRA=11:measured_I=$II:measured_TP=$TP:measured_LRA=$LRA:measured_thresh=$TH:offset=$OFF:linear=true,aresample=48000" \
+  -af "loudnorm=I=-14:TP=-1.5:LRA=11:measured_I=$II:measured_TP=$TP:measured_LRA=$LRA:measured_thresh=$TH:offset=$OFF:linear=true,aresample=192000,alimiter=limit=0.72:attack=1:release=60:level=false,aresample=48000" \
   -c:v copy -c:a aac -b:a 320k -ar 48000 -shortest -movflags +faststart "$OUT/${EP}_animatic.mp4"
 
 # captions file for the YouTube CC track
