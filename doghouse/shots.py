@@ -319,6 +319,13 @@ def perform(rig):
     for fr, e in ((1, 0.0), (ends("notdog")[0], 40.0), (b0, 0.0)):
         glow.energy = e; glow.keyframe_insert("energy", frame=fr)
     constant(glow)
+    wl = R["worklight"].data
+    for fr, e in ((1, 0.0), (ends("dig")[0], 90.0), (lon - 1, 90.0), (lon, 0.0)):
+        wl.energy = e; wl.keyframe_insert("energy", frame=fr)
+    constant(wl)
+    for fc in ST._fcurves(cu.animation_data.action):
+        for kp in fc.keyframe_points:
+            kp.interpolation = "LINEAR" if kp.co.x == ends("power")[0] + 2 else "CONSTANT"
     # furniture pops in when the lights come on
     furn = rig["furniture1"]
     a, b = ends("lights")
@@ -536,7 +543,7 @@ def perform(rig):
         B.face(fr, smug=0.7)
     # lights: on the bed with the laptop; secondway: sits up and looks at the wall
     bedp = R["bed"].location
-    lhip = Vector((bedp.x - 0.35, bedp.y, G.FLOOR + 0.62))
+    lhip = Vector((bedp.x - 0.62, bedp.y, G.FLOOR + 0.62))
     for u in (0.0, 1.0):
         fr = F("lights", u)
 
@@ -545,14 +552,14 @@ def perform(rig):
                 ankle = a_.hips_w + fwd(a_.yaw) * 0.92 + left(a_.yaw) * (sg * 0.1); ankle.z = a_.hips_w.z + 0.0
                 a_.foot(side, ankle, (0, -0.3, 1.0), pole=(sg * 0.1, -1.0, 0.9))
             for side, sg in (("Left", 1), ("Right", -1)):
-                p = a_.hips_w + fwd(a_.yaw) * 0.38 + left(a_.yaw) * (sg * 0.16); p.z = a_.hips_w.z + 0.32
-                a_.hand(side, p, pole=(sg * 1.0, 0.2, -1.0), dir_world=fwd(a_.yaw) + Vector((0, 0, -0.3)))
-            fingers(a_.arm, 0.4)
-            head(a_.arm, -12, 0, 0)
-        B.pose(fr, lhip, 90, body, seated=True, pitch=-32)
+                p = a_.hips_w + fwd(a_.yaw) * 0.42 + left(a_.yaw) * (sg * 0.13); p.z = G.FLOOR + 0.76
+                a_.hand(side, p, pole=(sg * 1.0, 0.2, -1.0), dir_world=fwd(a_.yaw) + Vector((0, 0, -0.4)))
+            fingers(a_.arm, 0.3)
+            head(a_.arm, -18, 0, 0)
+        B.pose(fr, lhip, 90, body, seated=True, pitch=-40)
         B.face(fr, smug=0.9)
     lap = R["laptop"]
-    key_xf(lap, 1, loc=(bedp.x + 0.1, bedp.y, G.FLOOR + 0.84), rot=(math.radians(-25), 0, math.radians(90)), scale=0.7)
+    key_xf(lap, 1, loc=(lhip.x + 0.5, bedp.y, G.FLOOR + 0.66), rot=(0, 0, math.radians(90)), scale=0.7)
     for u, look, sit in ((0.0, (-10, 0), 0.0), (0.25, (0, 0), 1.0), (1.0, (0, -40), 1.0)):
         fr = F("secondway", u)
 
@@ -620,15 +627,15 @@ def perform(rig):
         tool_at(pick, fr, hand, hand + (Vector((-0.5, 0, 1.0)) if up else Vector((1.0, 0, 0.15))), *PICK)
         B.face(fr, **({"panic": 0.8} if recoil else {"strain": 0.7}))
     # neighbor: kneeling in the tunnel with his head through the hole
-    nk = Vector((G.R2[0] - G.WALL - 0.55, 0.0, G.TZ - 0.3))
+    nk = Vector((G.R2[0] - G.WALL + 0.02, 0.0, G.TZ - 0.32))
     for u, look in ((0.0, (6, 0)), (0.5, (6, -14)), (1.0, (4, -10))):
         fr = F("neighbor", u)
 
         def body(a_, look=look):
-            spine(a_.arm, 34, 0, 0)
+            spine(a_.arm, 40, 0, 0)
             for side, sg in (("Left", 1), ("Right", -1)):
                 a_.foot(side, a_.hips_w + Vector((-0.45, sg * 0.14, -0.38)), (-0.3, 0, -1.0), pole=(0.0, 0.0, -1.0))
-                a_.hand(side, Vector((G.R2[0] - G.WALL - 0.05, sg * 0.28, G.TZ - 0.15)), pole=(sg * 1.0, 0.0, -1.0),
+                a_.hand(side, Vector((G.R2[0] + 0.05, sg * 0.42, G.TZ - 0.1)), pole=(sg * 1.0, 0.0, -1.0),
                         dir_world=Vector((0.3, 0, 1)))
             fingers(a_.arm, 0.6)
             head(a_.arm, look[0], look[1], 0)
@@ -646,7 +653,7 @@ def perform(rig):
                 a_.hand(side, Vector((D2.x + sg * 0.32, -0.55, 0.02)), pole=(sg * 1.0, 0.0, -1.0), dir_world=Vector((0, -1, -0.3)))
             fingers(a_.arm, 0.5)
             head(a_.arm, look[0] - 30, look[1], 0)
-        B.pose(fr, Vector((D2.x, -0.05, 0.42 + z)), 0, body, seated=True)
+        B.pose(fr, Vector((D2.x, -0.22, 0.5 + z)), 0, body, seated=True)
         B.face(fr, smug=0.8)
     for fc in ST._fcurves(B.arm.animation_data.action):
         if fc.data_path == "location":
@@ -656,10 +663,10 @@ def perform(rig):
 
     # props on the builder: the hard hat everywhere but the bed and the end; the head lamp in the tunnel
     # ---------------------------------------------------------------- the neighbour in his armchair
-    nchair = Vector((17.0, 1.95, G.FLOOR + 0.5))
+    nchair = Vector((16.3, 1.95, G.FLOOR + 0.5))
     paper = R["newspaper"]
     for u, low, look, face in ((0.0, 0.0, (-8, 0), {"calm": 0.6}), (0.3, 0.0, (-8, 0), {"calm": 0.6}),
-                               (0.45, 1.0, (0, -45), {"shock": 1.0}), (1.0, 1.0, (0, -40), {"shock": 0.9})):
+                               (0.45, 1.0, (0, 45), {"shock": 1.0}), (1.0, 1.0, (0, 40), {"shock": 0.9})):
         fr = F("neighbor", u)
         pc = nchair + Vector((0, -0.42 + 0.05 * low, 0.48 - 0.32 * low))
 
@@ -696,6 +703,7 @@ def perform(rig):
     want([o for o in R["tripod"].children_recursive if o.type == "MESH"] + [R["chain"]], {"rings"})
     want(R["clods"], {"hole", "cavein"})
     want(R["dims"], {"sixm"})
+    want(R["workbulb"], set(names[names.index("dig"):names.index("lights")]))
     for k, (root, objs, z) in enumerate(R["rings1"]):
         want(objs, (set(names[names.index("rings"):names.index("dig")]) if k >= 7 else from_("rings")))
     want([o for o in R["ladder1"].children_recursive if o.type == "MESH"], from_("ladder"))
@@ -715,6 +723,34 @@ T_R_FLOOR = G.T_R - 0.02
 
 
 # ============================================================================= cameras
+def _fc_value(obj_or_data, path, index, fr):
+    for fc in ST._fcurves(obj_or_data.animation_data.action):
+        if fc.data_path == path and fc.array_index == index:
+            return fc.evaluate(fr)
+    return None
+
+
+def track_helpers(rig):
+    """Functions of the frame for the tracking cameras: the tunnel face x, the cable tip x."""
+    C = rig["site"]["C"]
+    cu = rig["site"]["cable"].data
+    pts = [Vector(p.co[:3]) for p in cu.splines[0].points]
+    seg = [(pts[i], pts[i + 1], (pts[i + 1] - pts[i]).length) for i in range(len(pts) - 1)]
+    total = sum(l for _, _, l in seg)
+
+    def tfront(fr):
+        return C["t0"] + C["t_len"] * _fc_value(C["t"], "scale", 0, fr)
+
+    def ctip(fr):
+        d = _fc_value(cu, "bevel_factor_end", 0, fr) * total
+        for a, b, l in seg:
+            if d <= l:
+                return (a + (b - a) * (d / max(l, 1e-6))).x
+            d -= l
+        return pts[-1].x
+    rig["tfront"], rig["ctip"] = tfront, ctip
+
+
 def cam_plan(rig):
     """name: (lens, fn(u, fr) -> (loc, target), fstop or None, shake)"""
     D1, D2 = G.D1, G.D2
@@ -724,7 +760,7 @@ def cam_plan(rig):
         "notdog": (24, lambda u, fr: (lerp((3.0, -2.5, 0.56), (3.0, -1.0, 0.42), _in(u)), (3.0, 0.4, 0.12)), None, 0.15),
         "hole": (24, lambda u, fr: (lerp((6.4, -6.4, 2.7), (6.0, -5.8, 2.5), u), (2.6, 0.6, 0.3)), None, 0.2),
         "cavein": (26, lambda u, fr: (lerp((3.0, -6.9, -1.3), (3.0, -6.3, -1.6), u), (3.0, 0.0, -1.7)), None, lambda u: 0.15 + 1.2 * (u > 0.3)),
-        "rings": (24, lambda u, fr: (lerp((3.5, -9.9, -1.9), (3.4, -9.4, -2.1), u), (3.1, 0.0, -2.5)), None, 0.15),
+        "rings": (24, lambda u, fr: (lerp((3.6, -10.6, -1.4), (3.5, -10.1, -1.6), u), (3.15, 0.0, -2.0)), None, 0.15),
         "sixm": (26, lambda u, fr: (lerp((3.3, -7.2, 0.4), (3.3, -7.0, -4.4), _ease(u)), lerp((3.0, 0.0, 0.0), (3.0, 0.0, -5.0), _ease(u))), None, 0.1),
         "ladder": (22, lambda u, fr: (lerp((3.25, -6.8, -2.0), (3.2, -6.5, -2.4), u), (3.0, 0.0, -2.7)), None, 0.15),
         "nothideout": (30, lambda u, fr: (lerp((3.0, -3.4, -4.95), (3.0, -3.0, -5.0), u), (3.0, 0.0, -5.15)), None, 0.1),
@@ -733,14 +769,14 @@ def cam_plan(rig):
         "air": (32, lambda u, fr: (lerp((4.75, -4.2, -4.75), (4.72, -3.9, -4.8), u), (4.7, 0.8, -4.85)), None, 0.1),
         "vent": (22, lambda u, fr: (lerp((3.8, -11.6, -2.6), (3.75, -11.3, -2.1), _ease(u)), (3.75, 0.0, -2.3)), None, 0.12),
         "chimney": (32, lambda u, fr: (lerp((4.9, -2.4, 1.62), (4.7, -2.15, 1.6), u), (3.66, 0.0, 1.5)), None, 0.15),
-        "power": (24, lambda u, fr: ((-3.6 + 6.0 * _ease(u), -7.4, -0.9), (-3.3 + 6.0 * _ease(u), 0.0, -1.1)), None, 0.12),
+        "power": (24, lambda u, fr: ((min(1.9, max(-4.0, rig["ctip"](fr) - 0.4)), -7.0, -1.2), (min(2.1, max(-3.8, rig["ctip"](fr) - 0.2)), 0.0, -1.5)), None, 0.12),
         "lights": (24, lambda u, fr: (lerp((4.7, -7.2, -4.4), (4.75, -6.8, -4.5), u), (4.75, 0.5, -4.8)), None, 0.12),
         "secondway": (28, lambda u, fr: (lerp((5.4, -5.6, -4.6), (6.1, -3.8, -4.8), _ease(u)), lerp((5.8, 1.0, -4.9), (7.3, 1.0, -4.9), _ease(u))), None, 0.1),
         "keepdig": (28, lambda u, fr: (lerp((6.3, -4.8, -4.7), (6.45, -4.5, -4.75), u), (7.25, 0.5, -5.0)), None, 0.15),
-        "garden": (22, lambda u, fr: ((8.7 + 3.8 * u, -7.9, -2.6), (9.0 + 3.8 * u, 0.0, -3.2)), None, 0.12),
+        "garden": (22, lambda u, fr: ((rig["tfront"](fr) - 0.45, -6.9, -3.0), (rig["tfront"](fr) - 0.2, 0.0, -3.4)), None, 0.12),
         "break": (30, lambda u, fr: (lerp((12.9, -3.7, -5.0), (12.95, -3.4, -5.05), u), (13.6, 0.3, -5.2)), None, lambda u: 0.15 + 1.6 * (0.42 < u < 0.7)),
-        "neighbor": (26, lambda u, fr: (lerp((16.0, -5.6, -4.6), (15.9, -5.2, -4.65), u), (15.75, 0.8, -4.95)), None, 0.12),
-        "dog2": (22, lambda u, fr: (lerp((22.6, -2.5, 2.75), (21.8, -2.2, 2.4), _ease(u)), lerp((3.0, 0.4, 0.4), (12.0, 0.2, 0.4), _ease(u) * 0.35)), None, 0.15),
+        "neighbor": (28, lambda u, fr: (lerp((15.05, -5.5, -4.6), (15.0, -5.1, -4.65), u), (15.05, 0.8, -4.95)), None, 0.12),
+        "dog2": (22, lambda u, fr: (lerp((22.5, -2.6, 4.2), (21.7, -2.2, 3.5), _ease(u)), lerp((13.0, 0.8, 0.4), (15.0, 0.5, 0.5), _ease(u))), None, 0.15),
     }
 
 
@@ -755,6 +791,7 @@ def _look(loc, tgt, roll=0.0):
 def cameras(rig):
     sc = bpy.context.scene
     coll = S.collection("Cameras")
+    track_helpers(rig)
     plan = cam_plan(rig)
     for name, t0, t1, v in SHOTS:
         lens, fn, fstop, shake = plan[name]

@@ -333,7 +333,11 @@ def doghouse(name, centre, M, wood, shingle, sign, coll):
             xa = centre.x + (W / 2 - 0.04 if sx > 0 else -W / 2)
             sides.append(((xa, centre.y + y, 0.0), (xa + 0.04, centre.y + y1, H)))
         y = y1 + gap
+    backing = [((centre.x - W / 2 + 0.04, centre.y + D / 2 - 0.06, 0.0), (centre.x + W / 2 - 0.04, centre.y + D / 2 - 0.04, H)),
+               ((centre.x - W / 2 + 0.04, centre.y - D / 2 + 0.04, 0.0), (centre.x - W / 2 + 0.06, centre.y + D / 2 - 0.04, H)),
+               ((centre.x + W / 2 - 0.06, centre.y - D / 2 + 0.04, 0.0), (centre.x + W / 2 - 0.04, centre.y + D / 2 - 0.04, H))]
     objs = split_boxes(name + "Walls", front + back + sides, [wood], coll)
+    objs += split_boxes(name + "Backing", backing, [S.flat(name + "Inside", (0.08, 0.05, 0.035), 0.8)], coll)
     # gable triangles above the side walls, and the two roof slopes (front one in FRONT)
     for sx in (-1, 1):
         for half, tag in ((-1, "F"), (1, "B")):
@@ -442,6 +446,9 @@ def bed(M, coll, loc):
     P.rbox("BedMattress", (1.95, 0.9, 0.18), M["mattress"], coll, (0, 0, 0.39), 0.04, root)
     P.rbox("BedBlanket", (1.3, 0.94, 0.04), M["blanket"], coll, (0.3, 0, 0.49), 0.02, root)
     P.rbox("BedPillow", (0.32, 0.6, 0.12), M["mattress"], coll, (-0.78, 0, 0.53), 0.05, root)
+    P.rbox("BedHead", (0.06, 0.95, 0.95), S.flat("BedFrame", (0.25, 0.16, 0.1), 0.6), coll, (-1.0, 0, 0.47), 0.01, root)
+    bp = P.rbox("BedBackPillow", (0.16, 0.7, 0.5), M["blanket"], coll, (-0.84, 0, 0.72), 0.06, root)
+    bp.rotation_euler = (0, math.radians(-22), 0)
     return root
 
 
@@ -580,12 +587,15 @@ def build_all():
     # the vent, from your ceiling up through the doghouse roof, and its chimney
     vh = 1.32 - CEIL
     vroot = bpy.data.objects.new("VentRoot", None); S.link(vroot, build); vroot.location = (VENT.x, VENT.y, CEIL)
-    P.cyl("VentPipe", 0.06, vh, M["steel"], build, (0, 0, vh / 2), parent=vroot)
+    P.cyl("VentPipe", 0.085, vh, M["white"], build, (0, 0, vh / 2), parent=vroot, verts=32)
+    for k in range(5):
+        P.cyl(f"VentBracket{k}", 0.1, 0.04, M["steel"], build, (0, 0, 0.4 + k * (vh - 0.8) / 4), parent=vroot)
     R["vent"] = vroot
     R["chimney1"] = chimney("Chimney1", Vector((VENT.x, 0.0, 1.3)), M, build)
     R["chimney2"] = chimney("Chimney2", Vector((D2.x + 0.66, 0.0, 1.3)), M, build)
     # the power cable: from your house, under the lawn, into the ceiling (draws on with bevel_factor_end)
-    cu = bpy.data.curves.new("Cable", "CURVE"); cu.dimensions = "3D"; cu.bevel_depth = 0.035; cu.bevel_resolution = 3
+    cu = bpy.data.curves.new("Cable", "CURVE"); cu.dimensions = "3D"; cu.bevel_depth = 0.05; cu.bevel_resolution = 3
+    cu.bevel_factor_mapping_end = "SPLINE"            # draws on by length, not by segment
     sp = cu.splines.new("POLY")
     pts = [(-6.05, 2.0, 0.4), (-6.05, 2.0, -0.55), (-5.0, 0.0, -0.6), (1.0, 0.0, -0.6), (1.85, 0.0, -1.2), (1.85, 0.0, CEIL + WALL - 0.02)]
     sp.points.add(len(pts) - 1)
@@ -627,16 +637,16 @@ def build_all():
     R["rug1"] = boxes_mesh("Rug1", [((3.2, 0.4, FLOOR), (5.4, 2.2, FLOOR + 0.012))], [M["rug"]], furn)
     # the neighbour's bunker
     nfurn = S.collection("Furnishing2")
-    R["armchair"] = model("ArmChair_01", nfurn, (17.0, 2.1, FLOOR + 0.015), 180, 1.05)
-    R["sidetable"] = model("side_table_01", nfurn, (16.0, 2.4, FLOOR + 0.015), 0, 1.0)
-    R["desklamp"] = model("desk_lamp_arm_01", nfurn, (16.0, 2.45, FLOOR + 0.57), 200, 0.8)
-    R["bookshelf"] = model("wooden_bookshelf_worn", nfurn, (19.0, RY[1] - 0.3, FLOOR + 0.015), 180, 1.0)
-    R["tv"] = model("Television_01", nfurn, (17.0, -0.4, FLOOR + 0.56), 0, 1.2)
-    R["tvtable"] = model("side_table_01", nfurn, (17.0, -0.4, FLOOR + 0.015), 0, 1.0)
+    R["armchair"] = model("ArmChair_01", nfurn, (16.3, 2.1, FLOOR + 0.015), 180, 1.05)
+    R["sidetable"] = model("side_table_01", nfurn, (15.3, 2.4, FLOOR + 0.015), 0, 1.0)
+    R["desklamp"] = model("desk_lamp_arm_01", nfurn, (15.3, 2.45, FLOOR + 0.57), 200, 0.8)
+    R["bookshelf"] = model("wooden_bookshelf_worn", nfurn, (17.9, RY[1] - 0.3, FLOOR + 0.015), 180, 1.0)
+    R["tv"] = model("Television_01", nfurn, (16.3, -0.4, FLOOR + 0.56), 0, 1.2)
+    R["tvtable"] = model("side_table_01", nfurn, (16.3, -0.4, FLOOR + 0.015), 0, 1.0)
     R["rug2"] = boxes_mesh("Rug2", [((15.2, 0.2, FLOOR + 0.015), (18.8, 2.9, FLOOR + 0.025))],
                            [S.flat("Rug2", (0.12, 0.2, 0.32), 0.85)], nfurn)
-    S.box("Fridge2", (14.3, 2.3, FLOOR + 0.015), (14.95, 2.95, FLOOR + 1.3), M["fridge"], nfurn)
-    R["lights2"] = [point("NeighborLamp", nfurn, (16.1, 2.2, FLOOR + 1.2), 60.0), point("NeighborCeil", nfurn, (17.5, 1.2, CEIL - 0.3), 90.0)]
+    S.box("Fridge2", (19.25, 2.3, FLOOR + 0.015), (19.9, 2.95, FLOOR + 1.3), M["fridge"], nfurn)
+    R["lights2"] = [point("NeighborLamp", nfurn, (15.4, 2.2, FLOOR + 1.2), 60.0), point("NeighborCeil", nfurn, (16.6, 1.2, CEIL - 0.3), 110.0)]
     R["newspaper"] = newspaper(M, nfurn)
     # tools and digging props
     tools = S.collection("Tools")
@@ -675,6 +685,10 @@ def build_all():
     R["dims"] = [dm, t6]
     # a dim glow at the bottom of the finished shaft (seen through the doghouse door at the start)
     R["shaftglow"] = point("ShaftGlow", build, (D1.x, 0.1, -2.0), 0.0)
+    R["worklight"] = point("WorkLight", build, (D1.x + 0.35, 0.55, CEIL - 0.35), 0.0, (1.0, 0.85, 0.6), 0.05)
+    wb = P.cyl("WorkBulb", 0.05, 0.1, emit_mat("WorkBulbGlow", (1.0, 0.88, 0.65), 20.0), build, (D1.x + 0.35, 0.55, CEIL - 0.3))
+    wire = P.cyl("WorkWire", 0.006, 0.4, M["dark"], build, (D1.x + 0.35, 0.55, CEIL - 0.05))
+    R["workbulb"] = [wb, wire]
     bpy.context.view_layer.update()
     for coll in (furn, nfurn, tools):
         for o in coll.all_objects:
