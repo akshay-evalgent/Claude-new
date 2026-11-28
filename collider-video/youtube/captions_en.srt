@@ -1,0 +1,441 @@
+1
+00:00:00,600 --> 00:00:04,979
+In the middle of the Texas prairie, about
+thirty miles south of Dallas,
+
+2
+00:00:05,299 --> 00:00:09,396
+there's a cluster of empty buildings
+surrounded by cattle fields.
+
+3
+00:00:09,716 --> 00:00:15,249
+No signs. No museum. From the highway, it
+looks like a warehouse park nobody
+
+4
+00:00:15,249 --> 00:00:15,904
+finished.
+
+5
+00:00:16,224 --> 00:00:21,406
+Underneath those fields is a tunnel. A
+concrete tube bored through solid chalk,
+
+6
+00:00:21,726 --> 00:00:23,456
+more than fourteen miles long.
+
+7
+00:00:23,776 --> 00:00:28,675
+It was supposed to be the first piece of
+the biggest scientific machine ever
+
+8
+00:00:28,675 --> 00:00:29,320
+attempted.
+
+9
+00:00:29,640 --> 00:00:30,827
+But it was abandoned.
+
+10
+00:00:31,147 --> 00:00:36,443
+For six years, thousands of engineers and
+physicists worked toward a single goal:
+
+11
+00:00:36,763 --> 00:00:39,059
+build a ring fifty-four miles around,
+
+12
+00:00:39,379 --> 00:00:42,497
+smash particles together harder than
+anyone ever had,
+
+13
+00:00:42,817 --> 00:00:45,658
+and find out what the universe is actually
+made of.
+
+14
+00:00:45,978 --> 00:00:52,064
+By 1993, they'd dug more than fourteen
+miles of tunnel and spent two billion
+
+15
+00:00:52,064 --> 00:00:52,705
+dollars.
+
+16
+00:00:53,025 --> 00:00:55,716
+They needed fifty-four. They never got
+there.
+
+17
+00:00:56,036 --> 00:00:59,664
+This is the story of the Superconducting
+Super Collider.
+
+18
+00:00:59,984 --> 00:01:02,956
+Why did America try to build it? What went
+wrong?
+
+19
+00:01:03,276 --> 00:01:07,966
+And why did the United States walk away
+from the biggest machine in history?
+
+20
+00:01:12,086 --> 00:01:15,081
+By the nineteen-eighties, physicists had a
+problem.
+
+21
+00:01:15,401 --> 00:01:20,326
+Their best theory of matter, the Standard
+Model, worked almost perfectly. But it had
+
+22
+00:01:20,326 --> 00:01:21,910
+a hole in the middle of it.
+
+23
+00:01:22,230 --> 00:01:27,825
+The theory needed one more particle, the
+Higgs boson, to explain why anything has
+
+24
+00:01:27,825 --> 00:01:28,654
+mass at all.
+
+25
+00:01:28,974 --> 00:01:34,545
+Nobody had ever seen it. And the only way
+to find it was to recreate the conditions
+
+26
+00:01:34,545 --> 00:01:37,364
+a fraction of a second after the Big Bang.
+
+27
+00:01:37,684 --> 00:01:43,050
+That meant a particle accelerator. A ring
+of magnets that pushes protons to nearly
+
+28
+00:01:43,050 --> 00:01:46,453
+the speed of light, then slams them into
+each other.
+
+29
+00:01:46,773 --> 00:01:51,227
+The bigger the ring, the harder the
+collision. The harder the collision, the
+
+30
+00:01:51,227 --> 00:01:53,162
+more of the universe you can see.
+
+31
+00:01:53,482 --> 00:01:57,559
+Europe was already building big machines
+at CERN, near Geneva.
+
+32
+00:01:57,879 --> 00:02:03,136
+American physics had led the world since
+the Second World War. Losing that lead was
+
+33
+00:02:03,136 --> 00:02:04,023
+not an option.
+
+34
+00:02:04,343 --> 00:02:10,718
+So in 1987, Ronald Reagan approved the
+most ambitious science project the country
+
+35
+00:02:10,718 --> 00:02:12,843
+had attempted since Apollo.
+
+36
+00:02:13,163 --> 00:02:16,482
+His advice to the team was two words.
+Throw deep.
+
+37
+00:02:16,802 --> 00:02:21,183
+The design was enormous. A ring 87
+kilometres around.
+
+38
+00:02:21,503 --> 00:02:28,979
+Ten thousand superconducting magnets, each
+one cooled with liquid helium to minus 269
+
+39
+00:02:28,979 --> 00:02:30,386
+degrees Celsius.
+
+40
+00:02:30,706 --> 00:02:36,928
+Two beams of protons, each carrying 20
+trillion electron volts, colliding head on
+
+41
+00:02:36,928 --> 00:02:37,389
+at 40.
+
+42
+00:02:37,709 --> 00:02:42,462
+In 1988, the government picked a site in
+Ellis County, Texas.
+
+43
+00:02:42,782 --> 00:02:48,291
+The ground there was Austin Chalk. Soft
+enough to bore through fast, solid enough
+
+44
+00:02:48,291 --> 00:02:50,263
+to hold a tunnel for decades.
+
+45
+00:02:50,583 --> 00:02:54,910
+By 1991, the giant boring machines were in
+the ground.
+
+46
+00:02:55,230 --> 00:02:57,789
+Seventeen shafts were sunk from the
+surface.
+
+47
+00:02:58,109 --> 00:03:03,628
+Laboratories went up. Two thousand people
+moved to a small town called Waxahachie.
+
+48
+00:03:03,948 --> 00:03:08,895
+And then, with the hardest part already
+underway, Washington had something else to
+
+49
+00:03:08,895 --> 00:03:09,136
+say.
+
+50
+00:03:13,256 --> 00:03:15,167
+The first problem was the price.
+
+51
+00:03:15,487 --> 00:03:21,313
+In 1987, the collider was pitched at about
+4.4 billion dollars.
+
+52
+00:03:21,633 --> 00:03:27,943
+By 1991, it had nearly doubled. By 1993,
+it was over eleven billion.
+
+53
+00:03:28,263 --> 00:03:30,535
+The second problem was the magnets.
+
+54
+00:03:30,855 --> 00:03:36,597
+Early tests showed the beam might wander
+inside its pipe. The fix was to widen the
+
+55
+00:03:36,597 --> 00:03:39,888
+opening of every magnet by a single
+centimetre.
+
+56
+00:03:40,208 --> 00:03:45,324
+Multiplied across ten thousand magnets and
+fifty-four miles of ring, that one
+
+57
+00:03:45,324 --> 00:03:47,052
+centimetre cost a fortune.
+
+58
+00:03:47,372 --> 00:03:52,418
+Then, the partners disappeared. The plan
+assumed other countries would pay part of
+
+59
+00:03:52,418 --> 00:03:52,972
+the bill.
+
+60
+00:03:53,292 --> 00:03:59,066
+Japan was asked again and again. It never
+committed. Almost nobody else did either.
+
+61
+00:03:59,386 --> 00:04:04,692
+Then came the auditors. Congressional
+investigators reported weak cost controls
+
+62
+00:04:04,692 --> 00:04:06,035
+and poor management.
+
+63
+00:04:06,355 --> 00:04:08,343
+Every report became a headline.
+
+64
+00:04:08,663 --> 00:04:13,291
+But the biggest blow didn't come from
+inside the project at all. It came from
+
+65
+00:04:13,291 --> 00:04:14,975
+the other side of the world.
+
+66
+00:04:19,095 --> 00:04:22,453
+In 1991, the Soviet Union collapsed.
+
+67
+00:04:22,773 --> 00:04:27,847
+And with it went the argument that had
+kept big American science funded for forty
+
+68
+00:04:27,847 --> 00:04:28,222
+years.
+
+69
+00:04:28,542 --> 00:04:33,682
+The collider had never been a weapon. But
+it was born in a Cold War mindset: the
+
+70
+00:04:33,682 --> 00:04:37,729
+country that understood the universe best
+would lead the world.
+
+71
+00:04:38,049 --> 00:04:40,954
+When the rival disappeared, so did the
+urgency.
+
+72
+00:04:41,274 --> 00:04:46,007
+Congress went looking for savings. And
+there were two giant science projects on
+
+73
+00:04:46,007 --> 00:04:46,606
+the table.
+
+74
+00:04:46,926 --> 00:04:48,935
+The collider. And a space station.
+
+75
+00:04:49,255 --> 00:04:55,175
+In June 1993, the space station survived a
+vote in the House by a single vote.
+
+76
+00:04:55,495 --> 00:05:00,834
+The collider wasn't so lucky. In October
+1993, Congress cancelled it.
+
+77
+00:05:01,154 --> 00:05:06,770
+The official reason was money. The deficit
+was huge, and a machine only physicists
+
+78
+00:05:06,770 --> 00:05:09,442
+could explain was an easy thing to cut.
+
+79
+00:05:09,762 --> 00:05:12,461
+But the people who worked there have said
+something else since.
+
+80
+00:05:12,781 --> 00:05:18,160
+The project had lost its story. Nobody
+outside physics could say why it mattered,
+
+81
+00:05:18,160 --> 00:05:21,083
+and no amount of engineering could fix
+that.
+
+82
+00:05:21,403 --> 00:05:25,465
+For six years, Cold War ambition had kept
+the collider alive.
+
+83
+00:05:25,785 --> 00:05:28,860
+When the Cold War ended, the collider
+ended with it.
+
+84
+00:05:29,180 --> 00:05:34,215
+The physicists scattered. Many of them
+ended up on Wall Street, building models
+
+85
+00:05:34,215 --> 00:05:34,852
+for banks.
+
+86
+00:05:35,172 --> 00:05:40,914
+In 2012, a smaller machine in Europe, the
+Large Hadron Collider, found the Higgs
+
+87
+00:05:40,914 --> 00:05:41,344
+boson.
+
+88
+00:05:41,664 --> 00:05:46,832
+The discovery America had spent two
+billion dollars chasing was announced in
+
+89
+00:05:46,832 --> 00:05:47,308
+Geneva.
+
+90
+00:05:47,628 --> 00:05:51,585
+That same year, the Texas site was sold to
+a chemical company.
+
+91
+00:05:51,905 --> 00:05:56,501
+Today, there's nothing to see. Just empty
+buildings and a field of grass.
+
+92
+00:05:56,821 --> 00:06:01,446
+Below it, fourteen miles of tunnel are
+still down there, slowly filling with
+
+93
+00:06:01,446 --> 00:06:02,541
+water in the dark.
+
+94
+00:06:02,861 --> 00:06:06,255
+What would they have found at forty
+trillion electron volts?
+
+95
+00:06:06,575 --> 00:06:07,751
+Nobody knows.
