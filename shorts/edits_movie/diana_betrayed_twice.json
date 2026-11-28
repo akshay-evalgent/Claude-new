@@ -28,7 +28,7 @@
     ],
     [
      "zCTPgqy2__M",
-     60.0
+     75.0
     ],
     [
      "Gxd8HLpoSNU",
@@ -147,12 +147,12 @@
    "speak": "In twenty twenty-one, an official inquiry found that Bashir had commissioned fake bank statements, suggesting people close to Diana were being paid to spy on her. He showed them to her brother, and that led to his meeting with Diana.",
    "shots": [
     [
-     "zCTPgqy2__M",
-     57.0
+     "Gxd8HLpoSNU",
+     33.5
     ],
     [
-     "zCTPgqy2__M",
-     60.0
+     "Gxd8HLpoSNU",
+     32.5
     ],
     [
      "Gxd8HLpoSNU",
@@ -164,7 +164,7 @@
     ],
     [
      "zCTPgqy2__M",
-     28.0
+     54.0
     ]
    ]
   },
@@ -181,8 +181,11 @@
      132.0
     ],
     [
-     "Gxd8HLpoSNU",
-     50.0
+     "zCTPgqy2__M",
+     190.0,
+     {
+      "cx": 0.3
+     }
     ]
    ]
   },
@@ -252,7 +255,7 @@
     ],
     [
      "zCTPgqy2__M",
-     186.0
+     18.0
     ]
    ]
   },
