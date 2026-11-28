@@ -641,19 +641,19 @@ def perform(rig):
             head(a_.arm, look[0], look[1], 0)
         B.pose(fr, nk, 90, body, seated=True)
         B.face(fr, shock=0.9)
-    # dog2: his head pops out of the neighbour's doghouse
+    # dog2: he climbs the neighbour's ladder and his head pops out of the doghouse door
     D2 = G.D2
-    for u, z, look in ((0.0, -1.0, (0, 0)), (0.5, -1.0, (0, 0)), (0.62, 0.0, (4, 0)), (0.8, 0.0, (4, 30)), (1.0, 0.0, (4, -25))):
+    for u, z, look in ((0.0, -1.2, (0, 0)), (0.5, -1.2, (0, 0)), (0.62, 0.0, (6, 0)), (0.8, 0.0, (6, 28)), (1.0, 0.0, (6, -22))):
         fr = F("dog2", u)
 
-        def body(a_, look=look):
-            spine(a_.arm, 50, 0, 0)
+        def body(a_, look=look, z=z):
+            spine(a_.arm, 48, 0, 0)
             for side, sg in (("Left", 1), ("Right", -1)):
-                a_.foot(side, a_.hips_w + Vector((sg * 0.14, 0.5, -0.4)), (0, -1, -0.5))
-                a_.hand(side, Vector((D2.x + sg * 0.32, -0.55, 0.02)), pole=(sg * 1.0, 0.0, -1.0), dir_world=Vector((0, -1, -0.3)))
+                a_.foot(side, a_.hips_w + Vector((sg * 0.14, 0.15, -0.75)), (0, -1, -0.3))
+                a_.hand(side, Vector((D2.x + sg * 0.26, -0.58, 0.03 + z)), pole=(sg * 1.0, 0.0, -1.0), dir_world=Vector((0, -1, -0.3)))
             fingers(a_.arm, 0.5)
-            head(a_.arm, look[0] - 30, look[1], 0)
-        B.pose(fr, Vector((D2.x, -0.22, 0.5 + z)), 0, body, seated=True)
+            head(a_.arm, look[0] - 8, look[1], 0)
+        B.pose(fr, Vector((D2.x, 0.05, -0.1 + z)), 0, body, seated=True)
         B.face(fr, smug=0.8)
     for fc in ST._fcurves(B.arm.animation_data.action):
         if fc.data_path == "location":
@@ -776,7 +776,7 @@ def cam_plan(rig):
         "garden": (22, lambda u, fr: ((rig["tfront"](fr) - 0.45, -6.9, -3.0), (rig["tfront"](fr) - 0.2, 0.0, -3.4)), None, 0.12),
         "break": (30, lambda u, fr: (lerp((12.9, -3.7, -5.0), (12.95, -3.4, -5.05), u), (13.6, 0.3, -5.2)), None, lambda u: 0.15 + 1.6 * (0.42 < u < 0.7)),
         "neighbor": (28, lambda u, fr: (lerp((15.05, -5.5, -4.6), (15.0, -5.1, -4.65), u), (15.05, 0.8, -4.95)), None, 0.12),
-        "dog2": (22, lambda u, fr: (lerp((22.5, -2.6, 4.2), (21.7, -2.2, 3.5), _ease(u)), lerp((13.0, 0.8, 0.4), (15.0, 0.5, 0.5), _ease(u))), None, 0.15),
+        "dog2": (28, lambda u, fr: (lerp((20.6, -4.9, 1.75), (19.9, -3.9, 1.45), _ease(u)), lerp((17.6, 0.0, 0.85), (18.25, 0.0, 0.7), _ease(u))), None, 0.15),
     }
 
 
