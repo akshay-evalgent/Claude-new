@@ -1,0 +1,426 @@
+{
+ "title": "Hollywood's most beautiful woman... secretly invented the idea in your Bluetooth",
+ "note": "True story: Hedy Lamarr, US Patent 2,292,387 (1942) with George Antheil. Her own voice: Fleming Meeks's 1990 Forbes tapes (PBS American Masters, aLPqLCtkkTk) and the Bombshell trailer. Newsreel: British Movietone war bonds (1942). Never 'she invented WiFi'. No Ecstasy footage. Script: hedy_lamarr.script.md.",
+ "base": ".",
+ "layout": "full",
+ "mid": 0.66,
+ "voice": "am_michael",
+ "speed": 1.3,
+ "gap": 0.05,
+ "beats": [
+  {
+   "say": "Hollywood called her the most beautiful woman in the world. But she was secretly an inventor, and the idea she patented is inside your Bluetooth.",
+   "shots": [
+    [
+     "photo:hedy_ziegfeld.jpg",
+     0,
+     {
+      "w": 1.4
+     }
+    ],
+    [
+     "BKXAkITImGU",
+     26.0
+    ],
+    [
+     "LYXUvUVJ3Lw",
+     106.0
+    ],
+    [
+     "Z0gu2QhV1dc",
+     20.0
+    ]
+   ]
+  },
+  {
+   "say": "Her name was Hedwig Kiesler, from Vienna. At eighteen, she starred in a film so daring it was banned in several countries.",
+   "shots": [
+    [
+     "BKXAkITImGU",
+     38.0
+    ],
+    [
+     "aLPqLCtkkTk",
+     74.0,
+     {
+      "rows": [
+       0,
+       0.78
+      ]
+     }
+    ],
+    [
+     "aLPqLCtkkTk",
+     80.0,
+     {
+      "rows": [
+       0,
+       0.78
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "That same year, she married Fritz Mandl, an arms dealer who supplied Mussolini. He reportedly tried to buy up every copy of her film.",
+   "shots": [
+    [
+     "_rlXHNeQD-s",
+     60.0
+    ],
+    [
+     "LYXUvUVJ3Lw",
+     72.0
+    ],
+    [
+     "BKXAkITImGU",
+     48.0
+    ]
+   ]
+  },
+  {
+   "say": "By her account, he kept her like a prisoner. She sat silently through his business dinners, listening to men talk about weapons.",
+   "shots": [
+    [
+     "aLPqLCtkkTk",
+     84.0,
+     {
+      "rows": [
+       0,
+       0.78
+      ]
+     }
+    ],
+    [
+     "aLPqLCtkkTk",
+     90.0,
+     {
+      "rows": [
+       0,
+       0.78
+      ]
+     }
+    ],
+    [
+     "LYXUvUVJ3Lw",
+     76.0
+    ]
+   ]
+  },
+  {
+   "say": "In 1937, she escaped. Accounts differ, but by her own telling, she slipped out disguised as her maid.",
+   "speak": "In nineteen thirty-seven, she escaped. Accounts differ, but by her own telling, she slipped out disguised as her maid.",
+   "shots": [
+    [
+     "BKXAkITImGU",
+     30.0
+    ],
+    [
+     "aLPqLCtkkTk",
+     72.0,
+     {
+      "rows": [
+       0,
+       0.78
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "She talked her way onto the ocean liner carrying MGM boss Louis B. Mayer, and stepped off with a contract, and a new name. Hedy Lamarr.",
+   "shots": [
+    [
+     "photo:algiers.jpg",
+     0,
+     {
+      "w": 1.2
+     }
+    ],
+    [
+     "BKXAkITImGU",
+     56.0
+    ],
+    [
+     "BKXAkITImGU",
+     60.0
+    ]
+   ]
+  },
+  {
+   "say": "Hollywood sold her as the most beautiful woman in the world.",
+   "shots": [
+    [
+     "photo:screenland.png",
+     0,
+     {
+      "w": 1.2
+     }
+    ],
+    [
+     "BKXAkITImGU",
+     62.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "aLPqLCtkkTk",
+    64.2,
+    67.75
+   ],
+   "shots": [
+    [
+     "aLPqLCtkkTk",
+     26.0,
+     {
+      "w": 1.8,
+      "rows": [
+       0,
+       0.78
+      ]
+     }
+    ],
+    [
+     "BKXAkITImGU",
+     48.5,
+     {
+      "w": 1.75
+     }
+    ]
+   ]
+  },
+  {
+   "say": "And at night, she invented. When World War Two began, she wanted to stop enemies from jamming the radio signals that guided torpedoes.",
+   "shots": [
+    [
+     "LYXUvUVJ3Lw",
+     12.0
+    ],
+    [
+     "LYXUvUVJ3Lw",
+     20.0
+    ],
+    [
+     "LYXUvUVJ3Lw",
+     86.0
+    ],
+    [
+     "LYXUvUVJ3Lw",
+     40.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "aLPqLCtkkTk",
+    94.35,
+    97.7
+   ],
+   "shots": [
+    [
+     "aLPqLCtkkTk",
+     60.0,
+     {
+      "rows": [
+       0,
+       0.78
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "With composer George Antheil, she came up with an idea. Make the signal hop between frequencies, synced like two player pianos.",
+   "speak": "With composer George Antile, she came up with an idea. Make the signal hop between frequencies, synced like two player pianos.",
+   "shots": [
+    [
+     "LYXUvUVJ3Lw",
+     110.0
+    ],
+    [
+     "LYXUvUVJ3Lw",
+     114.0
+    ],
+    [
+     "LYXUvUVJ3Lw",
+     120.0
+    ]
+   ]
+  },
+  {
+   "say": "In 1942, they got a patent. Number 2,292,387. A Secret Communication System.",
+   "speak": "In nineteen forty-two, they got a patent. Number two, two nine two, three eight seven. A Secret Communication System.",
+   "shots": [
+    [
+     "photo:patent.png",
+     0,
+     {
+      "w": 1.2
+     }
+    ],
+    [
+     "LYXUvUVJ3Lw",
+     124.0
+    ]
+   ]
+  },
+  {
+   "say": "The Navy shelved it, and suggested she'd help more by selling war bonds. So she did.",
+   "shots": [
+    [
+     "photo:hedy1944.jpg",
+     0,
+     {
+      "w": 1.4
+     }
+    ],
+    [
+     "JkMs5uvpYPM",
+     14.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "JkMs5uvpYPM",
+    6.45,
+    12.25
+   ],
+   "shots": [
+    [
+     "JkMs5uvpYPM",
+     6.45,
+     {
+      "w": 2.9,
+      "cx": 0.5
+     }
+    ],
+    [
+     "JkMs5uvpYPM",
+     16.0,
+     {
+      "w": 2.9
+     }
+    ]
+   ]
+  },
+  {
+   "say": "By one account, she raised seven million dollars in a single night. But from her invention, she never made a cent. Twenty years later, Navy ships were using frequency hopping.",
+   "shots": [
+    [
+     "JkMs5uvpYPM",
+     20.0
+    ],
+    [
+     "JkMs5uvpYPM",
+     22.0
+    ],
+    [
+     "LYXUvUVJ3Lw",
+     74.0
+    ],
+    [
+     "_rlXHNeQD-s",
+     200.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "BKXAkITImGU",
+    65.45,
+    67.0
+   ],
+   "shots": [
+    [
+     "BKXAkITImGU",
+     64.0
+    ]
+   ]
+  },
+  {
+   "say": "To be fair, she didn't invent WiFi, and she wasn't the first to imagine frequency hopping. But her patent showed how to make it work, decades before anyone used it.",
+   "shots": [
+    [
+     "LYXUvUVJ3Lw",
+     104.0
+    ],
+    [
+     "LYXUvUVJ3Lw",
+     116.0
+    ],
+    [
+     "Z0gu2QhV1dc",
+     50.0
+    ]
+   ]
+  },
+  {
+   "say": "In 1997, she finally got an award for it. Her reaction: It's about time.",
+   "speak": "In nineteen ninety-seven, she finally got an award for it. Her reaction: It's about time.",
+   "shots": [
+    [
+     "aLPqLCtkkTk",
+     86.0,
+     {
+      "rows": [
+       0,
+       0.78
+      ]
+     }
+    ],
+    [
+     "Z0gu2QhV1dc",
+     60.0
+    ]
+   ]
+  },
+  {
+   "say": "She died in 2000. In 2014, she was inducted into the National Inventors Hall of Fame.",
+   "speak": "She died in two thousand. In twenty fourteen, she was inducted into the National Inventors Hall of Fame.",
+   "shots": [
+    [
+     "Z0gu2QhV1dc",
+     30.0
+    ],
+    [
+     "aLPqLCtkkTk",
+     92.0,
+     {
+      "rows": [
+       0,
+       0.78
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "So next time your Bluetooth connects, remember. Hollywood's most beautiful woman thought of it first.",
+   "shots": [
+    [
+     "LYXUvUVJ3Lw",
+     110.0
+    ],
+    [
+     "photo:hedy_ziegfeld.jpg",
+     0,
+     {
+      "w": 1.4
+     }
+    ]
+   ]
+  }
+ ],
+ "credits": [
+  "PBS American Masters (Bombshell: The Hedy Lamarr Story, 2017)",
+  "Zeitgeist Films",
+  "PBS NewsHour",
+  "British Movietone",
+  "Algiers (1938) trailer",
+  "Samson and Delilah (1949) trailer",
+  "Google Doodles",
+  "Photos: Wikimedia Commons (public domain)"
+ ]
+}

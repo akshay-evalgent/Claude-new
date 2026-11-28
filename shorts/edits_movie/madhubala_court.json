@@ -1,0 +1,486 @@
+{
+ "title": "He said 'I love her' in court... while testifying against her",
+ "note": "True story: Madhubala and Dilip Kumar; the Naya Daur case (1957); the Mughal-e-Azam feather scene shot when they weren't greeting each other (Dilip Kumar's autobiography). Court quote 'reportedly' (no transcript). B&W Tarana/Mughal-e-Azam public domain in India; colour feather song (Eagle) and Jab Pyar Kiya (Ultra) may get Content ID. Photos via BBC Hindi Vivechana. Sister Madhur Bhushan via ETimes. Script: madhubala_court.script.md.",
+ "base": ".",
+ "layout": "full",
+ "mid": 0.66,
+ "voice": "am_michael",
+ "speed": 1.3,
+ "gap": 0.05,
+ "beats": [
+  {
+   "say": "He was India's biggest star, and he loved her. Then he stood up in a courtroom, testified against her family... and told the court he loved her.",
+   "shots": [
+    [
+     "L6xdRiUJpkw",
+     36.0
+    ],
+    [
+     "zJuM0IDrEmM",
+     84.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "zcIOld3nmeg",
+     870.0,
+     {
+      "rows": [
+       0.1,
+       0.9
+      ]
+     }
+    ],
+    [
+     "Vp2xLDK8SnI",
+     49.0
+    ]
+   ]
+  },
+  {
+   "say": "She was born Mumtaz Jehan, on Valentine's Day, 1933. By nine, she was acting in films to support her family.",
+   "speak": "She was born Mumtaz Jehan, on Valentine's Day, nineteen thirty-three. By nine, she was acting in films to support her family.",
+   "shots": [
+    [
+     "photo:child1944.jpg",
+     0,
+     {
+      "w": 1.4
+     }
+    ],
+    [
+     "zcIOld3nmeg",
+     208.0,
+     {
+      "rows": [
+       0.1,
+       0.9
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "The world came to know her as Madhubala. An American magazine called her the biggest star in the world, and she's not in Beverly Hills.",
+   "speak": "The world came to know her as Madhoo Baala. An American magazine called her the biggest star in the world, and she's not in Beverly Hills.",
+   "shots": [
+    [
+     "zcIOld3nmeg",
+     50.0,
+     {
+      "rows": [
+       0.1,
+       0.9
+      ]
+     }
+    ],
+    [
+     "zJuM0IDrEmM",
+     81.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "zcIOld3nmeg",
+     312.0,
+     {
+      "rows": [
+       0.1,
+       0.9
+      ],
+      "cx": 0.38
+     }
+    ],
+    [
+     "zJuM0IDrEmM",
+     87.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "In 1951, on the film Tarana, she fell in love with her co-star, Dilip Kumar. For most of the fifties, they were Bollywood's secret couple, and they planned to marry.",
+   "speak": "In nineteen fifty-one, on the film Taraana, she fell in love with her co-star, Dilip Kumar. For most of the fifties, they were Bollywood's secret couple, and they planned to marry.",
+   "shots": [
+    [
+     "L6xdRiUJpkw",
+     3.0
+    ],
+    [
+     "L6xdRiUJpkw",
+     38.0
+    ],
+    [
+     "L6xdRiUJpkw",
+     76.0
+    ],
+    [
+     "L6xdRiUJpkw",
+     122.0
+    ],
+    [
+     "L6xdRiUJpkw",
+     64.0
+    ]
+   ]
+  },
+  {
+   "say": "Then came Naya Daur. When her father refused to let her travel for an outdoor shoot, the producer replaced her, and took the family to court.",
+   "speak": "Then came Naya Dour. When her father refused to let her travel for an outdoor shoot, the producer replaced her, and took the family to court.",
+   "shots": [
+    [
+     "zcIOld3nmeg",
+     477.0,
+     {
+      "rows": [
+       0.1,
+       0.9
+      ],
+      "cx": 0.62
+     }
+    ],
+    [
+     "zcIOld3nmeg",
+     640.0,
+     {
+      "rows": [
+       0.1,
+       0.9
+      ]
+     }
+    ],
+    [
+     "Vp2xLDK8SnI",
+     52.0
+    ]
+   ]
+  },
+  {
+   "say": "Dilip Kumar testified... for the producer, against her family.",
+   "shots": [
+    [
+     "Vp2xLDK8SnI",
+     306.0
+    ],
+    [
+     "zcIOld3nmeg",
+     868.0,
+     {
+      "rows": [
+       0.1,
+       0.9
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "And in the witness box, he reportedly said he loved her, and always would.",
+   "shots": [
+    [
+     "L6xdRiUJpkw",
+     128.0
+    ],
+    [
+     "Vp2xLDK8SnI",
+     49.5
+    ]
+   ]
+  },
+  {
+   "say": "It ended them. Her sister later said he asked Madhubala to leave her father. Dilip Kumar wrote that he blamed her father's attempt to turn the marriage into a business deal.",
+   "speak": "It ended them. Her sister later said he asked Madhoo Baala to leave her father. Dilip Kumar wrote that he blamed her father's attempt to turn the marriage into a business deal.",
+   "shots": [
+    [
+     "HIyWd1uHzfY",
+     36.0
+    ],
+    [
+     "HIyWd1uHzfY",
+     72.0,
+     {
+      "rows": [
+       0.1,
+       0.9
+      ],
+      "cx": 0.5
+     }
+    ],
+    [
+     "Vp2xLDK8SnI",
+     309.0,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "L6xdRiUJpkw",
+     112.0
+    ]
+   ]
+  },
+  {
+   "say": "But they still had one film left to finish together. Mughal-e-Azam.",
+   "speak": "But they still had one film left to finish together. Mughal-ay-Azam.",
+   "shots": [
+    [
+     "Vp2xLDK8SnI",
+     58.0
+    ],
+    [
+     "-Pr9NZJ3zlo",
+     100.0
+    ]
+   ]
+  },
+  {
+   "say": "And here's the part you can see on screen. The most romantic scene in Indian cinema, the feather between their lips, was shot when they had completely stopped even greeting each other. Those are his own words.",
+   "shots": [
+    [
+     "zJuM0IDrEmM",
+     144.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "zJuM0IDrEmM",
+     147.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ],
+      "cx": 0.5
+     }
+    ],
+    [
+     "zJuM0IDrEmM",
+     153.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "zJuM0IDrEmM",
+     159.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "zJuM0IDrEmM",
+     165.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "zJuM0IDrEmM",
+     168.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ],
+      "cx": 0.6
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "zJuM0IDrEmM",
+    171.0,
+    175.6
+   ],
+   "words": [
+    [
+     171.0,
+     175.5,
+     "\u266a"
+    ]
+   ],
+   "shots": [
+    [
+     "zJuM0IDrEmM",
+     171.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Her biographer says that for her prison scenes, she wore real iron chains.",
+   "shots": [
+    [
+     "Vp2xLDK8SnI",
+     303.0
+    ],
+    [
+     "Vp2xLDK8SnI",
+     336.0
+    ]
+   ]
+  },
+  {
+   "say": "What almost nobody knew. Madhubala had a hole in her heart, kept secret for years. In London, doctors told her she had about two years.",
+   "speak": "What almost nobody knew. Madhoo Baala had a hole in her heart, kept secret for years. In London, doctors told her she had about two years.",
+   "shots": [
+    [
+     "L6xdRiUJpkw",
+     150.0
+    ],
+    [
+     "L6xdRiUJpkw",
+     172.0
+    ],
+    [
+     "L6xdRiUJpkw",
+     196.0
+    ],
+    [
+     "L6xdRiUJpkw",
+     192.0
+    ]
+   ]
+  },
+  {
+   "say": "He married in 1966. He wrote that he saw her one last time. Frail, her smile such an effort.",
+   "speak": "He married in nineteen sixty-six. He wrote that he saw her one last time. Frail, her smile such an effort.",
+   "shots": [
+    [
+     "L6xdRiUJpkw",
+     110.0
+    ],
+    [
+     "L6xdRiUJpkw",
+     74.0
+    ],
+    [
+     "L6xdRiUJpkw",
+     84.0
+    ]
+   ]
+  },
+  {
+   "say": "She died in 1969, nine days after her thirty-sixth birthday.",
+   "speak": "She died in nineteen sixty-nine, nine days after her thirty-sixth birthday.",
+   "shots": [
+    [
+     "zcIOld3nmeg",
+     196.0,
+     {
+      "rows": [
+       0.1,
+       0.9
+      ],
+      "cx": 0.62
+     }
+    ],
+    [
+     "photo:stamp.jpg",
+     0,
+     {
+      "w": 1.2
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Her sister said, she could never forget him.",
+   "shots": [
+    [
+     "HIyWd1uHzfY",
+     140.0,
+     {
+      "rows": [
+       0.1,
+       0.9
+      ],
+      "cx": 0.5
+     }
+    ],
+    [
+     "HIyWd1uHzfY",
+     105.0,
+     {
+      "rows": [
+       0.1,
+       0.9
+      ],
+      "cx": 0.5
+     }
+    ]
+   ]
+  },
+  {
+   "say": "So next time you watch that feather scene, remember. They weren't even speaking.",
+   "shots": [
+    [
+     "zJuM0IDrEmM",
+     147.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "zJuM0IDrEmM",
+     165.5,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "L6xdRiUJpkw",
+     36.0
+    ]
+   ]
+  }
+ ],
+ "credits": [
+  "Mughal-e-Azam (1960), K. Asif / Sterling Investment",
+  "Tarana (1951)",
+  "BBC News Hindi (Vivechana)",
+  "ETimes (Madhur Bhushan interview)",
+  "Kallol India",
+  "Eagle Home Entertainments",
+  "Ultra Bollywood",
+  "Photos: Wikimedia Commons (public domain; India Post 2008 stamp)"
+ ]
+}

@@ -1,0 +1,664 @@
+{
+ "title": "She escaped with 36 cents... and came back bigger than ever",
+ "note": "True story: Tina Turner's July 1976 escape in Dallas and her 1984 comeback. Real audio: Tina on the Jonathan Ross Show (2017, OPF9WW7pDVw), CBS / Gayle King (aFKrg9xh0aA, '36 cents'), HBO TINA trailer (w9IkVtLvflU), 1985 Grammys (wCdQm2DUNNk). Never the Angela Bassett film. Abuse non-graphic. Script: tina_turner.script.md.",
+ "base": ".",
+ "layout": "full",
+ "mid": 0.66,
+ "voice": "am_michael",
+ "speed": 1.3,
+ "gap": 0.05,
+ "beats": [
+  {
+   "say": "In July 1976, Tina Turner ran across a freeway in Dallas, with thirty-six cents in her pocket. Eight years later, she was one of the biggest stars in the world.",
+   "speak": "In July nineteen seventy-six, Tina Turner ran across a freeway in Dallas, with thirty-six cents in her pocket. Eight years later, she was one of the biggest stars in the world.",
+   "shots": [
+    [
+     "XqO62S11l2w",
+     78.0
+    ],
+    [
+     "hzQnPz6TpGc",
+     180.0
+    ],
+    [
+     "oGpFcHTxjZs",
+     150.0
+    ],
+    [
+     "w9IkVtLvflU",
+     88.0
+    ]
+   ]
+  },
+  {
+   "say": "She grew up in Nutbush, Tennessee, as Anna Mae Bullock. As a teenager, she started singing with Ike Turner's band.",
+   "speak": "She grew up in Nutbush, Tennessee, as Anna May Bullock. As a teenager, she started singing with Ike Turner's band.",
+   "shots": [
+    [
+     "aFKrg9xh0aA",
+     224.0
+    ],
+    [
+     "w9IkVtLvflU",
+     22.0
+    ],
+    [
+     "aFKrg9xh0aA",
+     200.0
+    ]
+   ]
+  },
+  {
+   "say": "Then Ike put out her first record, under a new name.",
+   "shots": [
+    [
+     "aFKrg9xh0aA",
+     256.0
+    ],
+    [
+     "aFKrg9xh0aA",
+     262.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "aFKrg9xh0aA",
+    267.45,
+    269.3
+   ],
+   "shots": [
+    [
+     "aFKrg9xh0aA",
+     267.45
+    ]
+   ]
+  },
+  {
+   "say": "She later said he chose it so he could own her. They married, and the hits came. River Deep, Mountain High. Proud Mary, which won a Grammy.",
+   "shots": [
+    [
+     "VN_Aq2W2Yi0",
+     50.0
+    ],
+    [
+     "hzQnPz6TpGc",
+     60.0
+    ],
+    [
+     "hzQnPz6TpGc",
+     110.0
+    ],
+    [
+     "hzQnPz6TpGc",
+     300.0
+    ]
+   ]
+  },
+  {
+   "say": "But behind the stage, she later said, Ike controlled everything, and hurt her for years.",
+   "shots": [
+    [
+     "aFKrg9xh0aA",
+     184.0
+    ],
+    [
+     "w9IkVtLvflU",
+     50.0
+    ],
+    [
+     "aFKrg9xh0aA",
+     300.0,
+     {
+      "cx": 0.5
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "w9IkVtLvflU",
+    38.2,
+    42.6
+   ],
+   "shots": [
+    [
+     "w9IkVtLvflU",
+     40.5
+    ]
+   ]
+  },
+  {
+   "say": "Then, in July 1976, on the way to a hotel in Dallas, after another fight, she waited until he fell asleep.",
+   "speak": "Then, in July nineteen seventy-six, on the way to a hotel in Dallas, after another fight, she waited until he fell asleep.",
+   "shots": [
+    [
+     "XqO62S11l2w",
+     15.0
+    ],
+    [
+     "XqO62S11l2w",
+     24.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "OPF9WW7pDVw",
+    39.7,
+    45.35
+   ],
+   "words": [
+    [
+     39.78,
+     40.26,
+     "I"
+    ],
+    [
+     40.26,
+     40.44,
+     "just"
+    ],
+    [
+     40.44,
+     40.68,
+     "left"
+    ],
+    [
+     40.68,
+     40.86,
+     "the"
+    ],
+    [
+     40.86,
+     41.22,
+     "hotel"
+    ],
+    [
+     41.22,
+     41.38,
+     "and"
+    ],
+    [
+     41.38,
+     41.44,
+     "went"
+    ],
+    [
+     41.44,
+     41.64,
+     "out"
+    ],
+    [
+     41.64,
+     41.8,
+     "the"
+    ],
+    [
+     41.8,
+     42.08,
+     "kitchen"
+    ],
+    [
+     42.08,
+     42.34,
+     "way,"
+    ],
+    [
+     42.34,
+     42.54,
+     "and"
+    ],
+    [
+     42.54,
+     43.1,
+     "down..."
+    ],
+    [
+     44.24,
+     44.72,
+     "down"
+    ],
+    [
+     44.72,
+     44.88,
+     "to"
+    ],
+    [
+     44.88,
+     45.02,
+     "the"
+    ],
+    [
+     45.02,
+     45.3,
+     "freeway."
+    ]
+   ],
+   "shots": [
+    [
+     "OPF9WW7pDVw",
+     39.7,
+     {
+      "w": 3.0
+     }
+    ],
+    [
+     "XqO62S11l2w",
+     78.0,
+     {
+      "w": 2.65
+     }
+    ]
+   ]
+  },
+  {
+   "film": [
+    "OPF9WW7pDVw",
+    52.55,
+    55.4
+   ],
+   "shots": [
+    [
+     "OPF9WW7pDVw",
+     52.55
+    ]
+   ]
+  },
+  {
+   "say": "She made it to a Ramada Inn across the freeway. The manager gave her a room.",
+   "shots": [
+    [
+     "XqO62S11l2w",
+     60.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "aFKrg9xh0aA",
+    393.7,
+    398.25
+   ],
+   "words": [
+    [
+     393.77,
+     393.85,
+     "I"
+    ],
+    [
+     393.85,
+     394.01,
+     "had"
+    ],
+    [
+     394.01,
+     394.31,
+     "nothing."
+    ],
+    [
+     394.49,
+     394.57,
+     "I"
+    ],
+    [
+     394.57,
+     394.87,
+     "had"
+    ],
+    [
+     394.87,
+     395.35,
+     "absolutely"
+    ],
+    [
+     395.35,
+     395.83,
+     "nothing."
+    ],
+    [
+     396.33,
+     396.57,
+     "Thirty-six"
+    ],
+    [
+     396.57,
+     397.09,
+     "cents."
+    ],
+    [
+     397.65,
+     397.75,
+     "That"
+    ],
+    [
+     397.75,
+     397.89,
+     "was"
+    ],
+    [
+     397.89,
+     398.11,
+     "all."
+    ]
+   ],
+   "shots": [
+    [
+     "aFKrg9xh0aA",
+     393.7
+    ]
+   ]
+  },
+  {
+   "say": "In the divorce, she gave up almost everything.",
+   "shots": [
+    [
+     "aFKrg9xh0aA",
+     400.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "w9IkVtLvflU",
+    55.4,
+    65.1
+   ],
+   "words": [
+    [
+     55.46,
+     55.98,
+     "The"
+    ],
+    [
+     55.98,
+     56.42,
+     "divorce,"
+    ],
+    [
+     56.42,
+     56.82,
+     "I"
+    ],
+    [
+     56.82,
+     56.98,
+     "got"
+    ],
+    [
+     56.98,
+     57.58,
+     "nothing."
+    ],
+    [
+     61.0,
+     61.76,
+     "No"
+    ],
+    [
+     61.76,
+     62.06,
+     "money,"
+    ],
+    [
+     62.18,
+     62.32,
+     "no"
+    ],
+    [
+     62.32,
+     62.64,
+     "house."
+    ],
+    [
+     62.64,
+     63.3,
+     "So"
+    ],
+    [
+     63.3,
+     63.44,
+     "I"
+    ],
+    [
+     63.44,
+     63.6,
+     "said,"
+    ],
+    [
+     63.6,
+     63.82,
+     "I'll"
+    ],
+    [
+     63.82,
+     63.92,
+     "just"
+    ],
+    [
+     63.92,
+     64.18,
+     "take"
+    ],
+    [
+     64.18,
+     64.36,
+     "my"
+    ],
+    [
+     64.36,
+     65.04,
+     "name."
+    ]
+   ],
+   "shots": [
+    [
+     "w9IkVtLvflU",
+     55.4,
+     {
+      "w": 3.2
+     }
+    ],
+    [
+     "w9IkVtLvflU",
+     64.0,
+     {
+      "w": 3.2
+     }
+    ],
+    [
+     "w9IkVtLvflU",
+     61.8,
+     {
+      "w": 3.3
+     }
+    ]
+   ]
+  },
+  {
+   "say": "She paid off the debts from cancelled shows, lived on food stamps, and sang in small clubs. Her solo albums flopped.",
+   "shots": [
+    [
+     "aFKrg9xh0aA",
+     424.0
+    ],
+    [
+     "aFKrg9xh0aA",
+     448.0
+    ],
+    [
+     "w9IkVtLvflU",
+     66.0
+    ],
+    [
+     "aFKrg9xh0aA",
+     400.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "w9IkVtLvflU",
+    69.75,
+    71.25
+   ],
+   "words": [
+    [
+     69.8,
+     69.96,
+     "Nobody"
+    ],
+    [
+     69.96,
+     70.4,
+     "would"
+    ],
+    [
+     70.4,
+     70.72,
+     "touch"
+    ],
+    [
+     70.72,
+     70.96,
+     "Tina"
+    ],
+    [
+     70.96,
+     71.2,
+     "Turner."
+    ]
+   ],
+   "shots": [
+    [
+     "w9IkVtLvflU",
+     69.75
+    ]
+   ]
+  },
+  {
+   "say": "Then in 1983, by her account, David Bowie skipped a record-company dinner, to go and see his favourite singer. The executives followed him, and saw the crowd.",
+   "speak": "Then in nineteen eighty-three, by her account, David Bowie skipped a record-company dinner, to go and see his favourite singer. The executives followed him, and saw the crowd.",
+   "shots": [
+    [
+     "w9IkVtLvflU",
+     76.0
+    ],
+    [
+     "w9IkVtLvflU",
+     84.0
+    ],
+    [
+     "w9IkVtLvflU",
+     88.0
+    ],
+    [
+     "w9IkVtLvflU",
+     80.0
+    ]
+   ]
+  },
+  {
+   "say": "In 1984, at forty-four, she released Private Dancer. What's Love Got to Do with It went to number one, her first ever. She was then the oldest woman to top the chart.",
+   "speak": "In nineteen eighty-four, at forty-four, she released Private Dancer. What's Love Got to Do with It went to number one, her first ever. She was then the oldest woman to top the chart.",
+   "shots": [
+    [
+     "oGpFcHTxjZs",
+     24.0
+    ],
+    [
+     "oGpFcHTxjZs",
+     66.0
+    ],
+    [
+     "oGpFcHTxjZs",
+     150.0
+    ],
+    [
+     "oGpFcHTxjZs",
+     204.0
+    ],
+    [
+     "oGpFcHTxjZs",
+     160.0
+    ]
+   ]
+  },
+  {
+   "film": [
+    "wCdQm2DUNNk",
+    57.7,
+    62.7
+   ],
+   "shots": [
+    [
+     "wCdQm2DUNNk",
+     12.0,
+     {
+      "w": 1.6
+     }
+    ],
+    [
+     "wCdQm2DUNNk",
+     59.3,
+     {
+      "w": 3.4
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Four years later in Rio, about a hundred and eighty thousand people came to see her. A Guinness World Record.",
+   "shots": [
+    [
+     "5SSIWRrfTmk",
+     99.0
+    ],
+    [
+     "5SSIWRrfTmk",
+     105.0
+    ],
+    [
+     "5SSIWRrfTmk",
+     93.0
+    ]
+   ]
+  },
+  {
+   "say": "She found love again, married in Switzerland, and lived until 2023.",
+   "speak": "She found love again, married in Switzerland, and lived until twenty twenty-three.",
+   "shots": [
+    [
+     "aFKrg9xh0aA",
+     120.0
+    ],
+    [
+     "w9IkVtLvflU",
+     114.0
+    ]
+   ]
+  },
+  {
+   "say": "So, thirty-six cents, and a run across a freeway... that's how Tina Turner became Tina Turner.",
+   "shots": [
+    [
+     "XqO62S11l2w",
+     75.0
+    ],
+    [
+     "oGpFcHTxjZs",
+     150.0
+    ]
+   ]
+  }
+ ],
+ "credits": [
+  "CBS News / CBS Mornings",
+  "The Jonathan Ross Show (ITV)",
+  "HBO, TINA (2021)",
+  "Recording Academy / GRAMMYs",
+  "Beat-Club (Radio Bremen)",
+  "Tina Turner (official)",
+  "FOX 4 Dallas-Fort Worth"
+ ]
+}

@@ -1,0 +1,413 @@
+{
+ "title": "He broke a CHURCH to marry her... then he had her killed",
+ "note": "True story: Anne Boleyn. Love letters in the Vatican Library (Vat. lat. 3731); Kingston's 'little neck' letter (Letters & Papers vol. 10); 'most historians believe' the charges false; the NPG portrait is a later copy. Public-domain portraits from Wikimedia; Historic Royal Palaces video for the Tower; The Other Boleyn Girl trailer only as mood shots. No gore. Script: anne_boleyn.script.md.",
+ "base": ".",
+ "layout": "full",
+ "mid": 0.66,
+ "voice": "am_michael",
+ "speed": 1.3,
+ "gap": 0.05,
+ "beats": [
+  {
+   "say": "A king was so obsessed with this woman, he broke away from the Pope to marry her. Three years later, he had her beheaded.",
+   "shots": [
+    [
+     "photo:anne_npg.jpg",
+     0,
+     {
+      "w": 1.4
+     }
+    ],
+    [
+     "photo:henry.jpg",
+     0,
+     {
+      "w": 1.4
+     }
+    ],
+    [
+     "ukj5vpRJjPM",
+     4.0
+    ]
+   ]
+  },
+  {
+   "say": "In the 1520s, Henry the Eighth fell for Anne Boleyn. Seventeen of his love letters to her still survive, in the Vatican Library.",
+   "speak": "In the fifteen twenties, Henry the Eighth fell for Anne Boleyn. Seventeen of his love letters to her still survive, in the Vatican Library.",
+   "shots": [
+    [
+     "M44ZHmPoLSU",
+     20.0
+    ],
+    [
+     "4xg_lkx3WFc",
+     40.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "photo:letter.jpg",
+     0,
+     {
+      "w": 1.2
+     }
+    ],
+    [
+     "YQ_fPZsgSD0",
+     279.0
+    ]
+   ]
+  },
+  {
+   "say": "My heart and I surrender ourselves into your hands. I would you were in mine arms, or I in yours.",
+   "shots": [
+    [
+     "photo:letter5.jpg",
+     0,
+     {
+      "w": 1.2
+     }
+    ],
+    [
+     "YQ_fPZsgSD0",
+     285.0
+    ],
+    [
+     "4xg_lkx3WFc",
+     30.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "He even signed one with her initials, drawn inside a heart.",
+   "shots": [
+    [
+     "photo:letter5.jpg",
+     0,
+     {
+      "w": 1.6
+     }
+    ]
+   ]
+  },
+  {
+   "say": "But Anne refused to become just his mistress, as her own sister had been.",
+   "shots": [
+    [
+     "M44ZHmPoLSU",
+     6.0
+    ],
+    [
+     "photo:anne_hever.jpg",
+     0,
+     {
+      "w": 1.4
+     }
+    ],
+    [
+     "photo:hever.jpg",
+     0,
+     {
+      "w": 1.2
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Henry was already married, to Catherine of Aragon. For six years, he begged the Pope for an annulment. The Pope refused.",
+   "shots": [
+    [
+     "photo:catherine.jpg",
+     0,
+     {
+      "w": 1.4
+     }
+    ],
+    [
+     "YQ_fPZsgSD0",
+     174.0
+    ],
+    [
+     "YQ_fPZsgSD0",
+     190.0
+    ]
+   ]
+  },
+  {
+   "say": "So Henry broke England away from the Catholic Church, made himself its head, and married Anne in secret, in 1533.",
+   "speak": "So Henry broke England away from the Catholic Church, made himself its head, and married Anne in secret, in fifteen thirty-three.",
+   "shots": [
+    [
+     "YQ_fPZsgSD0",
+     176.0,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "photo:henry.jpg",
+     0,
+     {
+      "w": 1.2
+     }
+    ],
+    [
+     "YQ_fPZsgSD0",
+     160.5
+    ],
+    [
+     "M44ZHmPoLSU",
+     95.0
+    ]
+   ]
+  },
+  {
+   "say": "That September, she gave birth. Not to the son he wanted, but to a girl. Elizabeth.",
+   "shots": [
+    [
+     "CMxua_Fr0_Y",
+     60.0
+    ],
+    [
+     "4xg_lkx3WFc",
+     50.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Then she lost a baby boy, on the very day Catherine was buried.",
+   "shots": [
+    [
+     "photo:catherine.jpg",
+     0,
+     {
+      "w": 1.4
+     }
+    ],
+    [
+     "4xg_lkx3WFc",
+     86.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Within months, the king's eye was on another woman. Jane Seymour.",
+   "shots": [
+    [
+     "M44ZHmPoLSU",
+     40.0
+    ],
+    [
+     "photo:jane.jpg",
+     0,
+     {
+      "w": 1.4
+     }
+    ]
+   ]
+  },
+  {
+   "say": "On the second of May, 1536, Anne was arrested. The charges: adultery with five men, including her own brother, and plotting the king's death.",
+   "speak": "On the second of May, fifteen thirty-six, Anne was arrested. The charges: adultery with five men, including her own brother, and plotting the king's death.",
+   "shots": [
+    [
+     "YQ_fPZsgSD0",
+     408.0,
+     {
+      "cx": 0.5
+     }
+    ],
+    [
+     "YQ_fPZsgSD0",
+     455.0
+    ],
+    [
+     "YQ_fPZsgSD0",
+     537.0
+    ],
+    [
+     "photo:anne_tower.jpg",
+     0,
+     {
+      "w": 1.2
+     }
+    ]
+   ]
+  },
+  {
+   "say": "Most historians believe the charges were false. Even the Archbishop wrote that he never had better opinion in woman than in her.",
+   "shots": [
+    [
+     "4xg_lkx3WFc",
+     60.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "YQ_fPZsgSD0",
+     560.0
+    ],
+    [
+     "4xg_lkx3WFc",
+     80.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "say": "The night before, the Tower's constable wrote that she laughed. I heard say the executioner was very good, and I have a little neck.",
+   "shots": [
+    [
+     "ukj5vpRJjPM",
+     2.0
+    ],
+    [
+     "ukj5vpRJjPM",
+     30.0
+    ],
+    [
+     "ukj5vpRJjPM",
+     40.0
+    ]
+   ]
+  },
+  {
+   "say": "On the nineteenth of May, she was executed inside the Tower of London, by a swordsman brought from France.",
+   "shots": [
+    [
+     "CN3pKLzM5C4",
+     1.0
+    ],
+    [
+     "photo:scaffold.jpg",
+     0,
+     {
+      "w": 1.2
+     }
+    ],
+    [
+     "ukj5vpRJjPM",
+     60.0
+    ]
+   ]
+  },
+  {
+   "say": "That same day, Henry got permission to marry Jane Seymour. They were engaged the next day, and married eleven days later.",
+   "shots": [
+    [
+     "photo:jane.jpg",
+     0,
+     {
+      "w": 1.2
+     }
+    ],
+    [
+     "photo:henry.jpg",
+     0,
+     {
+      "w": 1.2
+     }
+    ]
+   ]
+  },
+  {
+   "say": "And the famous portrait of Anne? It was painted decades after she died. No painting from her lifetime survives.",
+   "shots": [
+    [
+     "4xg_lkx3WFc",
+     20.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "4xg_lkx3WFc",
+     100.0,
+     {
+      "rows": [
+       0,
+       0.86
+      ]
+     }
+    ],
+    [
+     "8x4W2gYrmHg",
+     80.0
+    ]
+   ]
+  },
+  {
+   "say": "But her daughter did. Elizabeth became one of England's greatest queens, and reigned for forty-four years.",
+   "shots": [
+    [
+     "photo:elizabeth.jpg",
+     0,
+     {
+      "w": 1.4
+     }
+    ]
+   ]
+  },
+  {
+   "say": "So the king who broke a church to marry her, was outlived by the daughter he never wanted.",
+   "shots": [
+    [
+     "photo:elizabeth.jpg",
+     0,
+     {
+      "w": 1.2
+     }
+    ],
+    [
+     "photo:anne_npg.jpg",
+     0,
+     {
+      "w": 1.4
+     }
+    ]
+   ]
+  }
+ ],
+ "credits": [
+  "Historic Royal Palaces",
+  "Hever Castle & Gardens",
+  "Dr Owen Emmerson",
+  "History Calling",
+  "The Other Boleyn Girl (2008) trailer, Sony Pictures",
+  "Portraits: Wikimedia Commons (public domain; Hever Castle photo Clint Mann CC BY-SA 2.0)"
+ ]
+}
