@@ -16,6 +16,8 @@ type Props = {
   /** World-space point to keep in focus. Mutate it per frame (CameraRig does) to rack focus. */
   focusTarget: Vector3;
   bokehScale?: number;
+  /** World-space depth (metres) around the focus point that stays sharp. */
+  focusRange?: number;
 };
 
 /**
@@ -28,11 +30,11 @@ type Props = {
  * Note: @react-three/postprocessing forces gl.toneMapping = NoToneMapping while the
  * composer is mounted, so ACES must run here as an effect, not on the renderer.
  */
-export const PostFX: React.FC<Props> = ({ focusTarget, bokehScale = LOOK.post.dof.bokehScale }) => {
+export const PostFX: React.FC<Props> = ({ focusTarget, bokehScale = LOOK.post.dof.bokehScale, focusRange: rangeProp }) => {
   const p = LOOK.post;
   const c = LOOK.camera;
   // Classic normalised focalLength (fraction of near..far) -> world-space focus range.
-  const focusRange = p.dof.focalLength * (c.far - c.near);
+  const focusRange = rangeProp ?? p.dof.focalLength * (c.far - c.near);
 
   // Ready once the composer exists and holds more than its RenderPass.
   const composer = useRef<Composer>(null);

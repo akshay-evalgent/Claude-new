@@ -9,6 +9,9 @@ import { ReadyCheck, ReadyContext } from "./readiness";
 type Props = {
   /** Scene content, including <PostFX /> if you want the effect stack. */
   children: React.ReactNode;
+  /** Camera clip planes; raise `far` for big outdoor sets / ground-projected HDRIs. */
+  near?: number;
+  far?: number;
 };
 
 /**
@@ -19,7 +22,7 @@ type Props = {
  *  - waits for every async asset (HDRI, GLB, textures) and the post stack before
  *    Remotion captures a frame
  */
-export const StudioCanvas: React.FC<Props> = ({ children }) => {
+export const StudioCanvas: React.FC<Props> = ({ children, near = LOOK.camera.near, far = LOOK.camera.far }) => {
   const { width, height } = useVideoConfig();
   const c = LOOK.camera;
   const [readyChecks] = useState(() => new Set<ReadyCheck>());
@@ -29,7 +32,7 @@ export const StudioCanvas: React.FC<Props> = ({ children }) => {
       width={width}
       height={height}
       dpr={1}
-      camera={{ fov: c.fov, near: c.near, far: c.far, position: [0, 1, 5] }}
+      camera={{ fov: c.fov, near, far, position: [0, 1, 5] }}
       shadows={{ enabled: true, type: PCFShadowMap }}
       gl={{
         antialias: false, // MSAA happens in the EffectComposer (multisampling=4)

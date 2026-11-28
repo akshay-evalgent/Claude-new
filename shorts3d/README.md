@@ -124,6 +124,42 @@ npx remotion render HeroOrbit out/watch.mp4 --props='{"modelUrl":"/models/watch.
 
 Use `"post": false` for fast blocking previews without the effect stack.
 
+## Story shorts (narrated, multi-shot)
+
+`NobodyShort` is a 32 s narrated story short in the style of character-driven 3D shorts:
+first-person voice-over, quick cuts every 1 to 2 seconds, push-ins, over-the-shoulder
+shots, whip-pans and whip-zooms, and small lowercase captions that cut in with the voice.
+The script is original ("They Named Me Nobody").
+
+```bash
+npx remotion render NobodyShort out/nobody.mp4          # GPU machine
+```
+
+How it's built, end to end:
+
+| Step | File | Tool |
+| --- | --- | --- |
+| Script (lines + pauses) | `src/stories/nobody/script.json` | you |
+| Narration + word timings | `scripts/voiceover.py` → `public/stories/nobody/vo.wav`, `src/stories/nobody/timeline.json` | Piper TTS (free, offline) |
+| Music bed, crowd roar, whoosh | `scripts/sound-bed.py` | numpy synthesis, no samples |
+| Characters | `src/characters/Mannequin.tsx`, `poses.ts` | procedural articulated "designer toy" people |
+| Crowd | `src/characters/Crowd.tsx` | ~180 instanced people in 5 draw calls (cheer / laugh / shrug / point) |
+| Sets | `src/stories/nobody/sets.tsx`, `src/scene/GroundedEnv.tsx` | Poly Haven HDRIs as ground-projected sets, Poly Haven chest, ambientCG planks |
+| Shot list | `src/stories/nobody/NobodyShort.tsx` | one entry per narration line: set, lighting, crowd mood, actors, camera |
+
+Change the words, then regenerate the voice-over. Shots key off the line ids, so they
+re-time themselves:
+
+```bash
+pip install piper-tts numpy
+```
+
+```bash
+python3 scripts/voiceover.py src/stories/nobody/script.json
+```
+
+Dev composition `PoseLab` shows every pose side by side for checking the rig.
+
 ## Notes on the rendering choices
 
 * **Tone mapping happens in the effect stack.** `@react-three/postprocessing` forces

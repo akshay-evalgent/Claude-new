@@ -6,6 +6,8 @@ import { AbsoluteFill, spring, staticFile, useCurrentFrame, useVideoConfig } fro
 // Bundled locally (public/fonts, SIL OFL) so renders never depend on network access.
 const fontFamily = "Montserrat Black";
 loadFont({ family: fontFamily, url: staticFile("fonts/Montserrat-Black.woff2"), weight: "900" });
+const storyFont = "Montserrat ExtraBold";
+loadFont({ family: storyFont, url: staticFile("fonts/Montserrat-ExtraBold.woff2"), weight: "800" });
 
 type Props = {
   /** Word-level captions (same shape @remotion/captions / Whisper produces). */
@@ -15,6 +17,12 @@ type Props = {
   highlightColor?: string;
   /** Vertical position of the caption block's centre, 0 = top, 1 = bottom. */
   y?: number;
+  /**
+   * "punch": big uppercase, words pop in one by one, active word highlighted.
+   * "story": narrated-story look, small lowercase 1-3 word chunks that cut in with
+   *          the voice, thin outline, no highlight.
+   */
+  variant?: "punch" | "story";
 };
 
 /**
@@ -27,6 +35,7 @@ export const WordCaptions: React.FC<Props> = ({
   combineWithinMs = 700,
   highlightColor = "#FFE14D",
   y = 0.72,
+  variant = "punch",
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -39,6 +48,40 @@ export const WordCaptions: React.FC<Props> = ({
 
   const page = pages.find((p, i) => ms >= p.startMs && ms < (pages[i + 1]?.startMs ?? p.startMs + p.durationMs));
   if (!page) return null;
+
+  if (variant === "story") {
+    const startFrame = (page.startMs / 1000) * fps;
+    const pop = spring({ frame: frame - startFrame, fps, config: { damping: 18, stiffness: 400, mass: 0.4 } });
+    const text = page.tokens
+      .map((t) => t.text.trim())
+      .join(" ")
+      .replace(/[.,!?;:]+/g, "")
+      .toLowerCase();
+    return (
+      <AbsoluteFill style={{ pointerEvents: "none" }}>
+        <div
+          style={{
+            position: "absolute",
+            left: 60,
+            right: 60,
+            top: `${y * 100}%`,
+            transform: `translateY(-50%) scale(${0.92 + 0.08 * pop})`,
+            textAlign: "center",
+            fontFamily: storyFont,
+            fontWeight: 800,
+            fontSize: 74,
+            lineHeight: 1.1,
+            color: "#FFFFFF",
+            WebkitTextStroke: "9px #000",
+            paintOrder: "stroke fill",
+            textShadow: "0 4px 14px rgba(0,0,0,0.45)",
+          }}
+        >
+          {text}
+        </div>
+      </AbsoluteFill>
+    );
+  }
 
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>

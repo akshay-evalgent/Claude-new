@@ -1,0 +1,24 @@
+{
+  "title": "They Named Me Nobody",
+  "voice": "en_US-ryan-high",
+  "lengthScale": 1.0,
+  "lines": [
+    { "id": "rule",     "text": "In my town, you don't choose your name.", "pause": 0.15 },
+    { "id": "crowd",    "text": "The crowd chooses it for you.", "pause": 0.3 },
+    { "id": "stage",    "text": "On your tenth birthday, you walk onto the stage,", "pause": 0.1 },
+    { "id": "shout",    "text": "and the whole town shouts one word.", "pause": 0.35 },
+    { "id": "brave",    "text": "My best friend got Brave.", "pause": 0.2 },
+    { "id": "clever",   "text": "My sister got Clever.", "pause": 0.3 },
+    { "id": "turn",     "text": "Then it was my turn.", "pause": 0.35 },
+    { "id": "yell",     "text": "Someone in the back yelled,", "pause": 0.2 },
+    { "id": "nobody",   "text": "Nobody!", "pause": 0.45 },
+    { "id": "loved",    "text": "And the crowd loved it.", "pause": 0.15 },
+    { "id": "mayor",    "text": "The mayor laughed so hard he cried.", "pause": 0.4 },
+    { "id": "years",    "text": "For years, I was Nobody.", "pause": 0.5 },
+    { "id": "gold",     "text": "Then one night, the mayor's gold disappeared.", "pause": 0.3 },
+    { "id": "guards",   "text": "The guards asked who went near the vault.", "pause": 0.2 },
+    { "id": "answer",   "text": "And the whole town gave the same answer.", "pause": 0.35 },
+    { "id": "nobody2",  "text": "Nobody.", "pause": 0.6 },
+    { "id": "best",     "text": "Best name I ever got.", "pause": 1.0 }
+  ]
+}

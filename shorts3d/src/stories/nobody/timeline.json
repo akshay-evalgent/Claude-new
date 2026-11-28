@@ -1,0 +1,877 @@
+{
+ "durationMs": 31924,
+ "lines": [
+  {
+   "id": "rule",
+   "text": "In my town, you don't choose your name.",
+   "startMs": 250,
+   "endMs": 2076
+  },
+  {
+   "id": "crowd",
+   "text": "The crowd chooses it for you.",
+   "startMs": 2234,
+   "endMs": 3521
+  },
+  {
+   "id": "stage",
+   "text": "On your tenth birthday, you walk onto the stage,",
+   "startMs": 3823,
+   "endMs": 6267
+  },
+  {
+   "id": "shout",
+   "text": "and the whole town shouts one word.",
+   "startMs": 6384,
+   "endMs": 8061
+  },
+  {
+   "id": "brave",
+   "text": "My best friend got Brave.",
+   "startMs": 8441,
+   "endMs": 9778
+  },
+  {
+   "id": "clever",
+   "text": "My sister got Clever.",
+   "startMs": 10034,
+   "endMs": 11271
+  },
+  {
+   "id": "turn",
+   "text": "Then it was my turn.",
+   "startMs": 11576,
+   "endMs": 12544
+  },
+  {
+   "id": "yell",
+   "text": "Someone in the back yelled,",
+   "startMs": 12912,
+   "endMs": 14189
+  },
+  {
+   "id": "nobody",
+   "text": "Nobody!",
+   "startMs": 14588,
+   "endMs": 15156
+  },
+  {
+   "id": "loved",
+   "text": "And the crowd loved it.",
+   "startMs": 15607,
+   "endMs": 16604
+  },
+  {
+   "id": "mayor",
+   "text": "The mayor laughed so hard he cried.",
+   "startMs": 16767,
+   "endMs": 18762
+  },
+  {
+   "id": "years",
+   "text": "For years, I was Nobody.",
+   "startMs": 19217,
+   "endMs": 20803
+  },
+  {
+   "id": "gold",
+   "text": "Then one night, the mayor's gold disappeared.",
+   "startMs": 21312,
+   "endMs": 23637
+  },
+  {
+   "id": "guards",
+   "text": "The guards asked who went near the vault.",
+   "startMs": 23956,
+   "endMs": 25971
+  },
+  {
+   "id": "answer",
+   "text": "And the whole town gave the same answer.",
+   "startMs": 26178,
+   "endMs": 28093
+  },
+  {
+   "id": "nobody2",
+   "text": "Nobody.",
+   "startMs": 28443,
+   "endMs": 29012
+  },
+  {
+   "id": "best",
+   "text": "Best name I ever got.",
+   "startMs": 29624,
+   "endMs": 30921
+  }
+ ],
+ "words": [
+  {
+   "text": "In",
+   "startMs": 250,
+   "endMs": 399,
+   "timestampMs": 250,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " my",
+   "startMs": 399,
+   "endMs": 548,
+   "timestampMs": 399,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " town,",
+   "startMs": 548,
+   "endMs": 883,
+   "timestampMs": 548,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " you",
+   "startMs": 883,
+   "endMs": 1070,
+   "timestampMs": 883,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " don't",
+   "startMs": 1070,
+   "endMs": 1331,
+   "timestampMs": 1070,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " choose",
+   "startMs": 1331,
+   "endMs": 1629,
+   "timestampMs": 1331,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " your",
+   "startMs": 1629,
+   "endMs": 1852,
+   "timestampMs": 1629,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " name.",
+   "startMs": 1852,
+   "endMs": 2076,
+   "timestampMs": 1852,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " The",
+   "startMs": 2234,
+   "endMs": 2418,
+   "timestampMs": 2234,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " crowd",
+   "startMs": 2418,
+   "endMs": 2676,
+   "timestampMs": 2418,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " chooses",
+   "startMs": 2676,
+   "endMs": 3007,
+   "timestampMs": 2676,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " it",
+   "startMs": 3007,
+   "endMs": 3154,
+   "timestampMs": 3007,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " for",
+   "startMs": 3154,
+   "endMs": 3338,
+   "timestampMs": 3154,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " you.",
+   "startMs": 3338,
+   "endMs": 3521,
+   "timestampMs": 3338,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " On",
+   "startMs": 3823,
+   "endMs": 3981,
+   "timestampMs": 3823,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " your",
+   "startMs": 3981,
+   "endMs": 4217,
+   "timestampMs": 3981,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " tenth",
+   "startMs": 4217,
+   "endMs": 4493,
+   "timestampMs": 4217,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " birthday,",
+   "startMs": 4493,
+   "endMs": 5006,
+   "timestampMs": 4493,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " you",
+   "startMs": 5006,
+   "endMs": 5203,
+   "timestampMs": 5006,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " walk",
+   "startMs": 5203,
+   "endMs": 5440,
+   "timestampMs": 5203,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " onto",
+   "startMs": 5440,
+   "endMs": 5676,
+   "timestampMs": 5440,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " the",
+   "startMs": 5676,
+   "endMs": 5873,
+   "timestampMs": 5676,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " stage,",
+   "startMs": 5873,
+   "endMs": 6267,
+   "timestampMs": 5873,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " and",
+   "startMs": 6384,
+   "endMs": 6584,
+   "timestampMs": 6384,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " the",
+   "startMs": 6584,
+   "endMs": 6783,
+   "timestampMs": 6584,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " whole",
+   "startMs": 6783,
+   "endMs": 7063,
+   "timestampMs": 6783,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " town",
+   "startMs": 7063,
+   "endMs": 7302,
+   "timestampMs": 7063,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " shouts",
+   "startMs": 7302,
+   "endMs": 7622,
+   "timestampMs": 7302,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " one",
+   "startMs": 7622,
+   "endMs": 7821,
+   "timestampMs": 7622,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " word.",
+   "startMs": 7821,
+   "endMs": 8061,
+   "timestampMs": 7821,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " My",
+   "startMs": 8441,
+   "endMs": 8619,
+   "timestampMs": 8441,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " best",
+   "startMs": 8619,
+   "endMs": 8887,
+   "timestampMs": 8619,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " friend",
+   "startMs": 8887,
+   "endMs": 9243,
+   "timestampMs": 8887,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " got",
+   "startMs": 9243,
+   "endMs": 9466,
+   "timestampMs": 9243,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " Brave.",
+   "startMs": 9466,
+   "endMs": 9778,
+   "timestampMs": 9466,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " My",
+   "startMs": 10034,
+   "endMs": 10232,
+   "timestampMs": 10034,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " sister",
+   "startMs": 10232,
+   "endMs": 10628,
+   "timestampMs": 10232,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " got",
+   "startMs": 10628,
+   "endMs": 10875,
+   "timestampMs": 10628,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " Clever.",
+   "startMs": 10875,
+   "endMs": 11271,
+   "timestampMs": 10875,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " Then",
+   "startMs": 11576,
+   "endMs": 11809,
+   "timestampMs": 11576,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " it",
+   "startMs": 11809,
+   "endMs": 11964,
+   "timestampMs": 11809,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " was",
+   "startMs": 11964,
+   "endMs": 12157,
+   "timestampMs": 11964,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " my",
+   "startMs": 12157,
+   "endMs": 12312,
+   "timestampMs": 12157,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " turn.",
+   "startMs": 12312,
+   "endMs": 12544,
+   "timestampMs": 12312,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " Someone",
+   "startMs": 12912,
+   "endMs": 13240,
+   "timestampMs": 12912,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " in",
+   "startMs": 13240,
+   "endMs": 13386,
+   "timestampMs": 13240,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " the",
+   "startMs": 13386,
+   "endMs": 13568,
+   "timestampMs": 13386,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " back",
+   "startMs": 13568,
+   "endMs": 13787,
+   "timestampMs": 13568,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " yelled,",
+   "startMs": 13787,
+   "endMs": 14189,
+   "timestampMs": 13787,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " Nobody!",
+   "startMs": 14588,
+   "endMs": 15156,
+   "timestampMs": 14588,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " And",
+   "startMs": 15607,
+   "endMs": 15785,
+   "timestampMs": 15607,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " the",
+   "startMs": 15785,
+   "endMs": 15963,
+   "timestampMs": 15785,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " crowd",
+   "startMs": 15963,
+   "endMs": 16212,
+   "timestampMs": 15963,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " loved",
+   "startMs": 16212,
+   "endMs": 16462,
+   "timestampMs": 16212,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " it.",
+   "startMs": 16462,
+   "endMs": 16604,
+   "timestampMs": 16462,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " The",
+   "startMs": 16767,
+   "endMs": 17004,
+   "timestampMs": 16767,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " mayor",
+   "startMs": 17004,
+   "endMs": 17337,
+   "timestampMs": 17004,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " laughed",
+   "startMs": 17337,
+   "endMs": 17764,
+   "timestampMs": 17337,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " so",
+   "startMs": 17764,
+   "endMs": 17954,
+   "timestampMs": 17764,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " hard",
+   "startMs": 17954,
+   "endMs": 18240,
+   "timestampMs": 17954,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " he",
+   "startMs": 18240,
+   "endMs": 18430,
+   "timestampMs": 18240,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " cried.",
+   "startMs": 18430,
+   "endMs": 18762,
+   "timestampMs": 18430,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " For",
+   "startMs": 19217,
+   "endMs": 19473,
+   "timestampMs": 19217,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " years,",
+   "startMs": 19473,
+   "endMs": 19984,
+   "timestampMs": 19473,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " I",
+   "startMs": 19984,
+   "endMs": 20138,
+   "timestampMs": 19984,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " was",
+   "startMs": 20138,
+   "endMs": 20394,
+   "timestampMs": 20138,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " Nobody.",
+   "startMs": 20394,
+   "endMs": 20803,
+   "timestampMs": 20394,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " Then",
+   "startMs": 21312,
+   "endMs": 21571,
+   "timestampMs": 21312,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " one",
+   "startMs": 21571,
+   "endMs": 21786,
+   "timestampMs": 21571,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " night,",
+   "startMs": 21786,
+   "endMs": 22216,
+   "timestampMs": 21786,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " the",
+   "startMs": 22216,
+   "endMs": 22432,
+   "timestampMs": 22216,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " mayor's",
+   "startMs": 22432,
+   "endMs": 22819,
+   "timestampMs": 22432,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " gold",
+   "startMs": 22819,
+   "endMs": 23077,
+   "timestampMs": 22819,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " disappeared.",
+   "startMs": 23077,
+   "endMs": 23637,
+   "timestampMs": 23077,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " The",
+   "startMs": 23956,
+   "endMs": 24161,
+   "timestampMs": 23956,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " guards",
+   "startMs": 24161,
+   "endMs": 24490,
+   "timestampMs": 24161,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " asked",
+   "startMs": 24490,
+   "endMs": 24778,
+   "timestampMs": 24490,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " who",
+   "startMs": 24778,
+   "endMs": 24984,
+   "timestampMs": 24778,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " went",
+   "startMs": 24984,
+   "endMs": 25231,
+   "timestampMs": 24984,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " near",
+   "startMs": 25231,
+   "endMs": 25478,
+   "timestampMs": 25231,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " the",
+   "startMs": 25478,
+   "endMs": 25683,
+   "timestampMs": 25478,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " vault.",
+   "startMs": 25683,
+   "endMs": 25971,
+   "timestampMs": 25683,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " And",
+   "startMs": 26178,
+   "endMs": 26377,
+   "timestampMs": 26178,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " the",
+   "startMs": 26377,
+   "endMs": 26577,
+   "timestampMs": 26377,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " whole",
+   "startMs": 26577,
+   "endMs": 26856,
+   "timestampMs": 26577,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " town",
+   "startMs": 26856,
+   "endMs": 27095,
+   "timestampMs": 26856,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " gave",
+   "startMs": 27095,
+   "endMs": 27335,
+   "timestampMs": 27095,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " the",
+   "startMs": 27335,
+   "endMs": 27534,
+   "timestampMs": 27335,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " same",
+   "startMs": 27534,
+   "endMs": 27774,
+   "timestampMs": 27534,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " answer.",
+   "startMs": 27774,
+   "endMs": 28093,
+   "timestampMs": 27774,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " Nobody.",
+   "startMs": 28443,
+   "endMs": 29012,
+   "timestampMs": 28443,
+   "confidence": 1,
+   "pageBreakAfter": true
+  },
+  {
+   "text": " Best",
+   "startMs": 29624,
+   "endMs": 29923,
+   "timestampMs": 29624,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " name",
+   "startMs": 29923,
+   "endMs": 30222,
+   "timestampMs": 29923,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " I",
+   "startMs": 30222,
+   "endMs": 30372,
+   "timestampMs": 30222,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " ever",
+   "startMs": 30372,
+   "endMs": 30671,
+   "timestampMs": 30372,
+   "confidence": 1,
+   "pageBreakAfter": false
+  },
+  {
+   "text": " got.",
+   "startMs": 30671,
+   "endMs": 30921,
+   "timestampMs": 30671,
+   "confidence": 1,
+   "pageBreakAfter": true
+  }
+ ]
+}

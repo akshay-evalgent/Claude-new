@@ -4,6 +4,7 @@
  *
  *   node scripts/fetch-assets.mjs                       # defaults below
  *   node scripts/fetch-assets.mjs --hdri studio_small_03 --hdri-res 2k
+ *   node scripts/fetch-assets.mjs --only hdri --hdri piazza_bologni --hdri-out piazza
  *   node scripts/fetch-assets.mjs --model boombox --model-res 2k
  *   node scripts/fetch-assets.mjs --pbr Plaster001 --pbr-res 2K
  *   node scripts/fetch-assets.mjs --only hdri|model|pbr --force
@@ -28,6 +29,7 @@ const args = parseArgs(process.argv.slice(2));
 const opts = {
   hdri: args.hdri ?? "studio_small_09",
   hdriRes: args["hdri-res"] ?? "2k",
+  hdriOut: args["hdri-out"] ?? "studio",
   exr: Boolean(args.exr),
   model: args.model ?? "Camera_01",
   modelRes: args["model-res"] ?? "1k",
@@ -49,7 +51,7 @@ console.log("\nDone. Assets are in public/. Run `npm run studio` to preview.");
 
 async function fetchHdri() {
   const ext = opts.exr ? "exr" : "hdr";
-  const out = join(PUBLIC, "hdri", `studio.${ext}`);
+  const out = join(PUBLIC, "hdri", `${opts.hdriOut}.${ext}`);
   if (skip(out)) return;
   const files = await json(`https://api.polyhaven.com/files/${opts.hdri}`);
   const entry = files?.hdri?.[opts.hdriRes]?.[ext];
