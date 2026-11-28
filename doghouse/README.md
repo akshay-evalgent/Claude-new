@@ -65,7 +65,8 @@ python3 scene.py render 1080 1920 10
 python3 ../quicksand/assemble.py doghouse_captions.mp4 --captions --words 1 --cap-y 0.6 --cap-size 0.085
 ```
 
-THUMB_LINE
+Thumbnail: frame 860 (0:36), rendered at 1080x1920 with `python3 -I scene.py stills 860 --res 1080 1920 --samples 64`
+and captioned with `python3 -I ../quicksand/thumbnail.py ... --words 1 --cap-y 0.6 --cap-size 0.085`.
 
 ## Licences
 

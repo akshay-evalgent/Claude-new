@@ -36,9 +36,10 @@ Backup: `This Doghouse Has Never Had a Dog`
 doghouse, secret bunker, underground bunker, secret room, hidden room, tunnel, neighbor, how it's built, 3d animation, satisfying
 ```
 
-**Thumbnail:** `thumbnail.jpg` (1080x1920): see the README for the frame and time.
+**Thumbnail:** `thumbnail.jpg` (1080x1920): the cutaway of the neighbour's bunker, his head through the
+broken wall and the neighbour lowering his newspaper, with "bunker" on screen (frame 860, 0:36).
 - Custom upload (YouTube Partner Program and verified channels; YouTube Studio on a computer).
-- Without custom upload: pick that frame in the frame picker.
+- Without custom upload: pick 0:36 in the frame picker.
 
 **Pinned comment**
 
