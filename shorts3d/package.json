@@ -1,0 +1,41 @@
+{
+  "name": "shorts3d",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Remotion + React Three Fiber pipeline for 9:16 photoreal 3D shorts",
+  "scripts": {
+    "studio": "remotion studio",
+    "assets": "node scripts/fetch-assets.mjs",
+    "generate": "node scripts/generate-model.mjs",
+    "still": "remotion still HeroOrbit out/still.png --frame=200",
+    "render": "remotion render HeroOrbit out/hero-orbit.mp4",
+    "render:cpu": "remotion render HeroOrbit out/hero-orbit.mp4 --gl=swangle",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.2",
+    "@react-three/postprocessing": "3.2.2",
+    "@remotion/captions": "4.0.547",
+    "@remotion/cli": "4.0.547",
+    "@remotion/fonts": "4.0.547",
+    "@remotion/three": "4.0.547",
+    "postprocessing": "6.39.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "4.0.547",
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "@gltf-transform/cli": "^4.5.1",
+    "@gltf-transform/core": "^4.5.1",
+    "@gltf-transform/extensions": "^4.5.1",
+    "@gltf-transform/functions": "^4.5.1",
+    "@gradio/client": "^2.8.0",
+    "@types/react": "^19.3.3",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "0.187.0",
+    "typescript": "^7.0.2"
+  }
+}
