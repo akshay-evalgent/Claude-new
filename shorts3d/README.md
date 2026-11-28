@@ -145,8 +145,12 @@ Use `"post": false` for fast blocking previews without the effect stack.
 
 | Machine | Command | Speed (1080x1920, full post stack) |
 | --- | --- | --- |
-| Any GPU (`--gl=angle`, the default in `remotion.config.ts`) | `npm run render` | fast; scale up with `--concurrency` |
-| 4-core cloud box, no GPU (`--gl=swangle`) | `npm run render:cpu` | see the commit message for measured timing |
+| Any GPU (`--gl=angle`, the default in `remotion.config.ts`) | `npm run render` | far faster; raise `--concurrency` until the GPU is saturated |
+| 4-core cloud box, no GPU (`--gl=swangle`, `--concurrency=3`) | `npm run render:cpu` | measured: 300 frames in 39 min (~8 s/frame) |
+
+On software GL, four or more tabs can run out of memory late in a render and crash
+Chrome. Keep `--concurrency` at 3 or lower there. For quick look checks, render stills
+with `npm run still` or add `--scale=0.5`.
 
 ## Credits and licences
 
