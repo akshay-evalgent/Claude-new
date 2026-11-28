@@ -608,3 +608,254 @@ What lost book would YOU want them to find inside? 👇
 - **Comments about Farritor:** Luke Farritor's later government job (2025) is unrelated to the story; expect comments.
 
 **Rights:** the footage belongs to NBC, PBS, CBS, the University of Nebraska and TED. You said you'd get permission.
+
+## True story (betrayal): Princess Diana, betrayed twice
+
+**File:** `diana_betrayed_twice.mp4` · **Cover:** `diana_betrayed_twice_cover.jpg` (a CC photo of Diana, "BETRAYED TWICE / BY THE PEOPLE SHE TRUSTED")
+
+**Tone:** respectful, with no tabloid framing.
+- **Interview footage:** shown only inside news reports (Channel 4 News, ITV News), never as a raw re-upload. The BBC no longer licenses the interview, and Prince William asked that it never air again.
+- **Wording:** always "the inquiry found". Never "crime" or "forged".
+- **Fairness:** the doubt beat includes Dyson's caveat and Diana's own "no regrets" note.
+- **Left out:** Earl Spencer's line linking the interview to her death.
+
+**Story beats:**
+1. **Hook:** she told the world her marriage was betrayed, then was betrayed again by the people filming her.
+2. **The marriage:** the 1981 wedding, then Charles in 1994 ("irretrievably broken down").
+3. **The interview:** Panorama, 1995, nearly 23 million viewers. Bashir's question and her answer: "Well, there were three of us in this marriage, so it was a bit crowded."
+4. **The inquiry:** Bashir became a star. The 2021 Dyson inquiry found he commissioned fake bank statements and showed them to her brother. It called this "deceitful behaviour", and called the BBC's 1996 investigation "woefully ineffective".
+5. **Prince William, on camera:** "...the BBC's failures contributed significantly to her fear, paranoia and isolation that I remember from those final years with her."
+6. **Doubt beat:** Dyson said she would probably have agreed anyway, and Bashir says the documents had no bearing. ITV's reporter: "In December 1995, she wrote that she consented to the interview and had no regrets."
+7. **The BBC's response:** an apology, the proceeds to charity, and a promise never to show it again.
+8. **Ending:** Diana never knew, and died in 1997. "A story about betrayal, itself built on a betrayal." It loops back to the opening.
+
+**Title:**
+```
+Princess Diana was betrayed TWICE... and never knew about the second
+```
+Alternates: `The interview that was built on a lie` · `"There were three of us in this marriage"... but there was a fourth betrayal`
+
+**Description:**
+```
+In 1995, Princess Diana told the BBC "there were three of us in this marriage." In 2021, an official inquiry found the interview had been obtained by deceit, and that the BBC covered it up for 25 years.
+
+Sources: Lord Dyson's report (20 May 2021) via Press Gazette, ITV News, CBC; PBS Frontline transcript of the 1995 interview; BARB viewing figures; statements by Prince William and the BBC (2021); BBC charity donation (ITV, 2022).
+Footage: Channel 4 News, ITV News, The Royal Family Channel, Sky News, ABC News, NBC News, BBC (1981 wedding coverage).
+Photos: Wikimedia Commons, by John Mathew Smith (CC BY-SA 2.0), John MacIntyre (CC BY 2.0), and UPI (public domain).
+
+#princessdiana #royalfamily #truestory #history #shorts
+```
+
+**Pinned comment:**
+```
+The inquiry said she'd probably have agreed anyway. Does that make it better or worse? 👇
+```
+
+**Settings:** Made for kids: **No** · Altered or synthetic content: **Yes** (AI narrator voice) · Category: News & Politics, or Education.
+
+**Accuracy notes** (in case a commenter asks):
+- **Wedding audience:** "an estimated 750 million" is the BBC's own estimate.
+- **Charles's 1994 words:** he admitted unfaithfulness only after the marriage had "irretrievably broken down". The video doesn't give an affair date.
+- **Police:** they declined to investigate twice in 2021, so the video says "deceit", not "crime".
+- **Balance:** Diana also admitted her own affair in the interview. It's left out for length, and nothing in the video implies otherwise.
+
+**Rights:** the news footage belongs to Channel 4, ITV, Sky, ABC, NBC and the BBC. You said you'd get permission. It is especially sensitive given the BBC's refusal to license the interview.
+
+## True story (lust and betrayal): Anne Boleyn
+
+**File:** `anne_boleyn.mp4` · **Cover:** `anne_boleyn_cover.jpg` (the NPG portrait, "HE BROKE A CHURCH FOR HER / THEN HE KILLED HER")
+
+**Tone:** dramatic, with no gore.
+- **Visuals:** mostly public-domain portraits and the Vatican letters, plus Historic Royal Palaces footage of the Tower.
+- **Dramatised clips:** the Other Boleyn Girl trailer appears only as mood shots.
+
+**Story beats:**
+1. **The obsession:** Henry VIII's 17 surviving love letters (Vatican Library): "My heart and I surrender ourselves into your hands." "I would you were in mine arms, or I in yours." One is signed with her initials inside a heart.
+2. **The break with Rome:** she refused to be just his mistress. Six years later he broke with Rome and married her in secret in 1533.
+3. **The fall:** Elizabeth was born, then Anne miscarried a son on the day Catherine of Aragon was buried. Henry turned to Jane Seymour.
+4. **The arrest:** 2 May 1536, on charges of adultery with five men, including her brother. **Doubt beat:** most historians believe the charges were false, and Cranmer "never had better opinion in woman".
+5. **The execution:** "I have a little neck" (the Constable of the Tower's letter). She was executed by a French swordsman on 19 May. Henry got permission to marry Jane Seymour that same day, and married her 11 days later.
+6. **The twist:** the famous portrait was painted decades after her death.
+7. **Ending:** her daughter Elizabeth reigned for 44 years. "Outlived by the daughter he never wanted."
+
+**Title:**
+```
+He broke a CHURCH to marry her... then he had her killed
+```
+Alternates: `Henry VIII's love letters to Anne Boleyn still exist` · `"I have a little neck" — her last joke before the sword`
+
+**Description:**
+```
+Henry VIII broke England away from the Catholic Church to marry Anne Boleyn. Three years later, he had her executed, and got permission to marry Jane Seymour the same day.
+
+Sources: Henry VIII's love letters (Vatican Library, Vat. lat. 3731; transcriptions via The Anne Boleyn Files); Letters & Papers of Henry VIII vol. 10 (British History Online); Wriothesley's Chronicle; Historic Royal Palaces; The National Archives; National Portrait Gallery.
+Footage: Historic Royal Palaces, Dr Owen Emmerson, History Calling, The Other Boleyn Girl (2008) trailer.
+Images: public-domain portraits via Wikimedia Commons; Hever Castle photo by Clint Mann (CC BY-SA 2.0).
+
+#anneboleyn #henryviii #tudors #history #shorts
+```
+
+**Pinned comment:**
+```
+Innocent or guilty? Most historians say innocent. What do you think? 👇
+```
+
+**Settings:** Made for kids: **No** · Altered or synthetic content: **Yes** (AI narrator voice) · Category: Education.
+
+**Accuracy notes** (in case a commenter asks):
+- **Wedding date:** sources give either 14 Nov 1532 or 25 Jan 1533. The video says "in secret, in 1533".
+- **The swordsman:** sources say "from Calais" or "from Saint-Omer", so the video says "from France".
+- **Guilt:** G. W. Bernard argues she may have been guilty of some adultery. The video says "most historians".
+- **Elizabeth's reign:** 1558 to 1603, which is 44 years.
+
+**Rights:** the portraits are public domain. The video footage belongs to Historic Royal Palaces, the individual creators and Sony (the trailer).
+
+## True story (genius ignored): Hedy Lamarr
+
+**File:** `hedy_lamarr.mp4` · **Cover:** `hedy_lamarr_cover.jpg` (a 1944 public-domain portrait, "HOLLYWOOD'S MOST BEAUTIFUL / SECRET INVENTOR")
+
+**Tone:** glamour, then betrayal, then vindication.
+- **No nudity:** no footage from the 1933 film.
+- **Never "she invented WiFi":** the doubt beat says so plainly.
+- **Her own voice:** from Fleming Meeks's 1990 Forbes tapes (PBS American Masters).
+
+**Story beats:**
+1. **The hook:** Hollywood's "most beautiful woman" patented the idea inside Bluetooth.
+2. **Her early life:** a scandalous film at 18, then marriage to arms dealer Fritz Mandl, who supplied Mussolini. She sat through his weapons dinners.
+3. **The escape:** by her own telling, disguised as her maid. Louis B. Mayer gave her a new name.
+4. **Her voice:** "The brains of the people are more interesting than the looks, I think." / "But whatever it is, inventions are easy for me to do."
+5. **The invention:** frequency hopping with George Antheil. US Patent 2,292,387 (1942).
+6. **War bonds:** the Navy shelved it and sent her to sell war bonds. A 1942 newsreel says "it's not surprising to find that Hedy Lamarr is a best seller". She never made a cent from the invention.
+7. **Her voice (Bombshell trailer):** "I know what I did."
+8. **Doubt beat:** she didn't invent WiFi and wasn't the first to imagine frequency hopping, but her patent showed how to make it work.
+9. **Recognition:** the 1997 award ("It's about time"), and the Inventors Hall of Fame in 2014.
+
+**Title:**
+```
+Hollywood's most beautiful woman... secretly invented the idea in your Bluetooth
+```
+Alternates: `The movie star the Navy told to sell war bonds instead` · `She escaped an arms dealer, then out-invented him`
+
+**Description:**
+```
+Hedy Lamarr was sold as "the most beautiful woman in the world". In 1942 she and composer George Antheil patented frequency hopping, the principle behind Bluetooth. The Navy shelved it. She never made a cent.
+
+Sources: US Patent 2,292,387 (Google Patents); National Inventors Hall of Fame; EFF Pioneer Award (1997); National WWII Museum; Smithsonian; TCM; Tony Rothman, American Scientist (2019); Forbes (Fleming Meeks, 1990).
+Footage: PBS American Masters (Bombshell, 2017), Zeitgeist Films, PBS NewsHour, British Movietone, Algiers (1938) and Samson and Delilah (1949) trailers, Google Doodles.
+Photos: Wikimedia Commons (public domain).
+
+#hedylamarr #inventor #womeninstem #history #shorts
+```
+
+**Pinned comment:**
+```
+Should she get credit for WiFi, or not? 👇
+```
+
+**Settings:** Made for kids: **No** · Altered or synthetic content: **Yes** (AI narrator voice) · Category: Science & Technology, or Education.
+
+**Accuracy notes** (in case a commenter asks):
+- **The escape:** there are several versions (maid disguise, drugging the maid, slipping away from a party). The video says "by her own telling".
+- **War bonds:** $7 million in one night is "by one account" (Smithsonian). About $25 million was raised over the 1942 tour.
+- **WiFi:** Bluetooth still uses frequency hopping; modern WiFi mostly doesn't. Her patent wasn't directly used.
+
+**Rights:** the footage belongs to PBS, Zeitgeist, British Movietone and Google. The photos are public domain.
+
+## True story (escape and comeback): Tina Turner, 36 cents
+
+**File:** `tina_turner.mp4` · **Cover:** `tina_turner_cover.jpg` (a frame from the "What's Love" video, "36 CENTS / TO LEGEND")
+
+**Tone:** triumph.
+- **Abuse:** described without detail (ad-safe).
+- **Her own words only:** every line is Tina herself, never Angela Bassett's film performance.
+
+**Story beats:**
+1. **The hook:** she ran across a Dallas freeway with 36 cents, and eight years later was one of the biggest stars in the world.
+2. **The name:** Anna Mae Bullock from Nutbush. Ike's first record gave her a new name. In her words: "And I said, who's Tina? He said, you're Tina."
+3. **The hits and the abuse:** River Deep, then Proud Mary, which won a Grammy. Then the HBO clip: "I had an abusive life. There's no other way to tell the story."
+4. **The escape, in her words (Jonathan Ross, 2017):** "I just left the hotel and went out the kitchen way and down... down to the freeway." / "I was running across the freeway, and this big truck was coming."
+5. **The Ramada Inn:** the manager gave her a room. CBS: "I had nothing. I had absolutely nothing. 36 cents. That was all."
+6. **The divorce (HBO):** "The divorce, I got nothing. No money, no house. So I said, I'll just take my name."
+7. **The lean years:** food stamps, small clubs, flops. "Nobody would touch Tina Turner."
+8. **The comeback:** Bowie's visit (her account), then Private Dancer at 44, a No. 1, and the Grammy: "Been waiting for this opportunity for such a long time."
+9. **The ending:** Rio 1988, about 180,000 people, a Guinness record. She found love, and lived until 2023.
+
+**Title:**
+```
+She escaped with 36 cents... and came back bigger than ever
+```
+Alternates: `She ran across a freeway to escape, and became a legend` · `"I'll just take my name"`
+
+**Description:**
+```
+In July 1976, Tina Turner slipped out of a Dallas hotel, ran across a freeway and arrived at a Ramada Inn with 36 cents. She kept only her name. At 44, she had her first No. 1.
+
+Sources: Tina Turner on The Jonathan Ross Show (ITV, 2017) and CBS (Gayle King); HBO's TINA (2021); "I, Tina" (1986); Bloomberg Law; Grammy.com; Guinness World Records; Washington Post (2018).
+Footage: CBS News, The Jonathan Ross Show (ITV), HBO, Recording Academy, Beat-Club (Radio Bremen), Tina Turner (official), FOX 4 Dallas-Fort Worth.
+
+#tinaturner #comeback #truestory #music #shorts
+```
+
+**Pinned comment:**
+```
+36 cents and a freeway. What would you have done? 👇
+```
+
+**Settings:** Made for kids: **No** · Altered or synthetic content: **Yes** (AI narrator voice) · Category: Music, or People & Blogs.
+
+**Accuracy notes** (in case a commenter asks):
+- **Escape date:** sources give 1 or 3 July 1976. The video says "July 1976".
+- **The Bowie story:** this is her own account, attributed in the video.
+- **"Oldest woman to top the chart":** true at the time (1984). The video says "then".
+- **The Rio crowd:** about 180,000 is the promoter's figure. Guinness lists it as a record for a female artist.
+
+**Rights:** the footage belongs to CBS, ITV, HBO, the Recording Academy, Radio Bremen, Tina Turner's estate and FOX. You said you'd get permission. Expect music Content ID claims.
+
+## True story (love and betrayal, India): Madhubala and Dilip Kumar
+
+**File:** `madhubala_court.mp4` · **Cover:** `madhubala_court_cover.jpg` (Mughal-e-Azam, black and white, "HE SAID I LOVE HER / IN COURT. AGAINST HER")
+
+**Tone:** romantic and tragic.
+- **The court quote:** "reportedly", since no transcript exists.
+- **The break-up:** both versions are given, with attribution (her sister's and his own).
+- **The ending:** not "they never spoke again", which is false: they finished Mughal-e-Azam, and he visited her once more.
+
+**Story beats:**
+1. **The hook:** India's biggest star testified against her family in court, and said he loved her.
+2. **Her early life:** Mumtaz Jehan was born on Valentine's Day 1933 and was acting at nine. Theatre Arts (1952) called her "the biggest star in the world".
+3. **The romance:** it began on Tarana (1951), and they planned to marry.
+4. **The court case:** the Naya Daur case. Dilip testified for the producer and reportedly said he loved her.
+5. **The break-up:** her sister says he asked her to leave her father; he blamed her father's business plans.
+6. **The twist:** the Mughal-e-Azam feather scene was shot when they had "completely stopped even greeting each other" (his own words).
+7. **The end:** the real chains (her biographer's account), then a hole in her heart and two years to live. He visited her once more ("her smile such an effort"). She died at 36, and her sister said: "She could never forget him."
+8. **The loop:** "Next time you watch that feather scene, they weren't even speaking."
+
+**Title:**
+```
+He said "I love her" in court... while testifying against her
+```
+Alternates: `They shot cinema's most romantic scene... without speaking to each other` · `Madhubala and Dilip Kumar: the love story that ended in a courtroom`
+
+**Description:**
+```
+Madhubala and Dilip Kumar were Bollywood's secret couple. In 1957 he testified against her family in the Naya Daur case, and reportedly told the court he loved her. They then shot Mughal-e-Azam's famous feather scene without even greeting each other.
+
+Sources: Dilip Kumar, "The Substance and the Shadow" (2014), via Dawn, PTI and Koimoi; Khatija Akbar, "I Want to Live: The Story of Madhubala" (1997); Bunny Reuben, "Follywood Flashback"; Indian Express (28 Apr 1957); Theatre Arts (Aug 1952); Madhur Bhushan interviews (ETimes, The Quint, Gulf News).
+Footage: Mughal-e-Azam (1960), Tarana (1951), BBC News Hindi, ETimes, Kallol India, Eagle Home Entertainments, Ultra Bollywood. Photos: Wikimedia Commons (public domain; 2008 India Post stamp).
+
+#madhubala #dilipkumar #bollywood #lovestory #shorts
+```
+
+**Pinned comment:**
+```
+Should he have apologised to her father? 👇
+```
+
+**Settings:** Made for kids: **No** · Altered or synthetic content: **Yes** (AI narrator voice) · Category: Film & Animation.
+
+**Accuracy notes** (in case a commenter asks):
+- **The court wording:** it varies by source ("I shall always love her" in Bunny Reuben's version). The video says "reportedly".
+- **His last visit:** Dilip Kumar's book places it at her home after 1966; her sister describes a hospital visit. The video uses his account.
+- **The chains:** this is her biographer's account, attributed in the video.
+
+**Rights:** the black-and-white originals of Tarana and Mughal-e-Azam are public domain in India. The colour feather song (Eagle) and Jab Pyar Kiya (Ultra) may get Content ID claims, as may the BBC Hindi and ETimes footage.
