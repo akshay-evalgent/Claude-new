@@ -723,7 +723,7 @@ def cam_plan(rig):
         "intro": (30, lambda u, fr: (lerp((3.35, -4.6, 0.72), (3.2, -3.7, 0.7), _ease(u)), (3.0, 0.0, 0.62)), 4.0, 0.15),
         "notdog": (24, lambda u, fr: (lerp((3.0, -2.5, 0.56), (3.0, -1.0, 0.42), _in(u)), (3.0, 0.4, 0.12)), None, 0.15),
         "hole": (24, lambda u, fr: (lerp((6.4, -6.4, 2.7), (6.0, -5.8, 2.5), u), (2.6, 0.6, 0.3)), None, 0.2),
-        "cavein": (26, lambda u, fr: (lerp((3.0, -6.9, -1.3), (3.0, -6.3, -1.6), u), (3.0, 0.0, -1.7)), None, 0.15 + 0.6 * (u > 0.3)),
+        "cavein": (26, lambda u, fr: (lerp((3.0, -6.9, -1.3), (3.0, -6.3, -1.6), u), (3.0, 0.0, -1.7)), None, lambda u: 0.15 + 1.2 * (u > 0.3)),
         "rings": (24, lambda u, fr: (lerp((3.5, -9.9, -1.9), (3.4, -9.4, -2.1), u), (3.1, 0.0, -2.5)), None, 0.15),
         "sixm": (26, lambda u, fr: (lerp((3.3, -7.2, 0.4), (3.3, -7.0, -4.4), _ease(u)), lerp((3.0, 0.0, 0.0), (3.0, 0.0, -5.0), _ease(u))), None, 0.1),
         "ladder": (22, lambda u, fr: (lerp((3.25, -6.8, -2.0), (3.2, -6.5, -2.4), u), (3.0, 0.0, -2.7)), None, 0.15),
@@ -738,7 +738,7 @@ def cam_plan(rig):
         "secondway": (28, lambda u, fr: (lerp((5.4, -5.6, -4.6), (6.1, -3.8, -4.8), _ease(u)), lerp((5.8, 1.0, -4.9), (7.3, 1.0, -4.9), _ease(u))), None, 0.1),
         "keepdig": (28, lambda u, fr: (lerp((6.3, -4.8, -4.7), (6.45, -4.5, -4.75), u), (7.25, 0.5, -5.0)), None, 0.15),
         "garden": (22, lambda u, fr: ((8.7 + 3.8 * u, -7.9, -2.6), (9.0 + 3.8 * u, 0.0, -3.2)), None, 0.12),
-        "break": (30, lambda u, fr: (lerp((12.9, -3.7, -5.0), (12.95, -3.4, -5.05), u), (13.6, 0.3, -5.2)), None, 0.15 + 0.8 * (0.42 < u < 0.7)),
+        "break": (30, lambda u, fr: (lerp((12.9, -3.7, -5.0), (12.95, -3.4, -5.05), u), (13.6, 0.3, -5.2)), None, lambda u: 0.15 + 1.6 * (0.42 < u < 0.7)),
         "neighbor": (26, lambda u, fr: (lerp((16.0, -5.6, -4.6), (15.9, -5.2, -4.65), u), (15.75, 0.8, -4.95)), None, 0.12),
         "dog2": (22, lambda u, fr: (lerp((22.6, -2.5, 2.75), (21.8, -2.2, 2.4), _ease(u)), lerp((3.0, 0.4, 0.4), (12.0, 0.2, 0.4), _ease(u) * 0.35)), None, 0.15),
     }
@@ -773,7 +773,7 @@ def cameras(rig):
             t = fr / FPS
             jit = Vector((math.sin(t * 2.1 + ph[0]) + 0.5 * math.sin(t * 5.3 + ph[1]),
                           math.sin(t * 1.7 + ph[2]) + 0.5 * math.sin(t * 4.1 + ph[3]),
-                          math.sin(t * 2.6 + ph[4]) + 0.5 * math.sin(t * 6.2 + ph[5]))) * 0.006 * shake
+                          math.sin(t * 2.6 + ph[4]) + 0.5 * math.sin(t * 6.2 + ph[5]))) * 0.006 * (shake(u) if callable(shake) else shake)
             cam.location = Vector(loc) + jit; cam.keyframe_insert("location", frame=fr)
             tgt.location = Vector(g); tgt.keyframe_insert("location", frame=fr)
             cam.rotation_euler = _look(cam.location, g); cam.keyframe_insert("rotation_euler", frame=fr)
