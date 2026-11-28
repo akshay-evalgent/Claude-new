@@ -177,6 +177,8 @@ Every shot option is listed in `references/spec.md`; read it when writing the sp
 - **Render time:** a full render takes 4 to 20 minutes, depending on how many renders run at once. Run it in the background with a long timeout (the default 30-minute background limit killed two renders).
 - **First frames aren't enough:** the preview shows only each shot's first frame, and fast-cut sources (60 Minutes, news packages) can cut to an interviewee 0.5 s later. Check the source sheet so each shot starts at least 2 s before a cut, and check the output frame sheet.
 - **`rows` on every shot:** give `rows` to every shot from a source with burned-in subtitles or a chyron, cutaways inside film beats included. It's easy to miss one, and then the subtitle shows.
+- **Rendering several videos:** don't run five at once on this 4-core machine. Two queues at a time, with `OMP_NUM_THREADS=2`, render each in about 8 minutes; five in parallel thrashed for over 2 hours and hit the background time limit.
+- **Trailer shots:** trailers fade to black within a second of a cut. Check the source sheet at 0.5 s steps, and start the shot well inside the scene.
 - **Source sheets:** `sheet.py` now picks exact frame times. Earlier versions drifted by up to one step.
 - **Spoken lines:** when YouTube captions exist (`yt-dlp --write-auto-subs`), convert the json3 to `tx/<id>.json` instead of running Whisper on an hour-long lecture. Then confirm each line with Whisper on a short window, because captions mishear words (for example "greatest" vs "craziest").
 
