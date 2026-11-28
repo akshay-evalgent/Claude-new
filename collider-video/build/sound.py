@@ -131,6 +131,35 @@ for i, sh in enumerate(S):
         pass
     if sh.get("cap"):
         typing(st + .25, sh["cap"], 16, .14)
+if "--v2" in sys.argv:
+    from render2 import timeline
+    from visuals import SOURCES
+    def shutter():
+        t = tvec(.09); y = hp(rng.standard_normal(len(t)), 1500) * (np.exp(-t * 90) + .6 * np.exp(-np.abs(t - .05) * 400))
+        return y * .6
+    def thump(g=1.0):
+        t = tvec(.5); return np.sin(2 * np.pi * (48 + 40 * np.exp(-t * 20)) * t) * np.exp(-t * 9) * g
+    def projector(sec):
+        t = tvec(sec); y = rng.standard_normal(len(t)) * (0.55 + 0.45 * np.sign(np.sin(2 * np.pi * 24 * t)))
+        return bp(y, 800, 4000) * .12
+    def paper():
+        t = tvec(.35); return bp(rng.standard_normal(len(t)), 1200, 7000) * np.sin(np.pi * t / .35) ** 2 * .5
+    for vi in timeline(timing):
+        v = vi["v"]; st = vi["start"]; du = vi["dur"]; typ = v.get("type")
+        if vi["k"] > 0 or typ in ("photo", "clip"):
+            add(fx, thump(.5), st, .5)
+        if typ == "photo" and v.get("frame") in ("print", "doc"):
+            add(fx, whoosh(.45), st - .12, .35); add(fx, shutter(), st + .05, .45)
+        if typ == "clip" and SOURCES[v["src"]].get("archive"):
+            add(fx, projector(du), st, .5)
+        if v.get("src") == "cern_collision":
+            add(fx, riser(3.0), st, .25); add(fx, boom(.9), st + 3.1, .6)
+        if v.get("scene") == "map3d":
+            add(fx, whoosh(1.0), st, .4)
+        if v.get("scene") == "ring3d" and v.get("mode") == "design":
+            add(fx, riser(2.0), st, .2)
+        if v.get("scene") == "docstack":
+            for i in range(len(v["docs"])): add(fx, paper(), st + .1 + i * du * .17, .6)
 fx = lp(fx, 9000)
 
 # ---------------------------------------------------------------- narration

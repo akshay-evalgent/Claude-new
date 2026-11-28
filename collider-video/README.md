@@ -8,11 +8,22 @@ Soviets Abandoned Earth's Deepest Hole* (youtube.com/watch?v=jy95mci9egU).
 |---|---|
 | `ANALYSIS.md` | The style breakdown: script formula, shot pace, palette, type, motion, sound |
 | `SCRIPT.md` | The new script with timestamps, the visual for each line, and fact notes |
-| `out/collider.mp4` | The finished video, 1280x720, 30 fps, AAC stereo |
-| `build/shots.py` | Script and shot list as data: one entry per shot |
+| `CREDITS.md` | Every archive photo and clip used, with licence and source link, plus a credit line to paste into the description |
+| `out/collider.mp4` | The finished video (v2: archive footage plus motion graphics), 1280x720, 30 fps, AAC stereo |
+| `build/shots.py` | Script and shot list as data: one entry per narration line |
+| `build/visuals.py` | v2 visual plan: real footage, photos and graphics for each line, plus the source list |
 | `build/voice.py` | Narration with the offline Kokoro voice (`am_michael`), writes `timing.json` |
-| `build/render.py` | Picture: every scene is drawn with cairo, rendered in parallel, encoded with ffmpeg |
-| `build/sound.py` | Generated score, effects, ducking and mix (nothing sampled from the reference) |
+| `build/render.py` | v1 picture renderer and the graphic scene library (maps, schematics, callouts, chapter cards) |
+| `build/render2.py` | v2 renderer: Ken Burns photos, graded and pillarboxed archive clips, a 3D ring, a 3D map tilt, the hearing-document stack, bloom, punch-in cuts. `prep` cuts the clips |
+| `build/sound.py` | Generated score, effects, ducking and mix. `--v2` adds the cut, shutter, projector and impact effects |
+
+## Where the footage comes from
+
+Footage and photos come from CERN's video archive, U.S. Department of Energy photos of the SSC, NASA, the Reagan,
+Bush and Clinton presidential libraries, the Architect of the Capitol, the Library of Congress, and the
+congressional hearing reports on the Internet Archive, found via Wikimedia Commons. Only public domain, CC0, CC BY
+and CERN-terms material is used. See `CREDITS.md`. Footage is not committed to this repo; `CREDITS.md`
+lists the source links, and `visuals.py` lists the clip in-points.
 
 ## Rebuild
 
@@ -25,11 +36,15 @@ python build/voice.py MODELS_DIR work/vo
 ```
 
 ```bash
-python build/render.py work/vo/timing.json GEO_DIR work/picture.mp4
+python build/render2.py prep work/vo/timing.json FOOTAGE_DIR commons_videos.json
 ```
 
 ```bash
-python build/sound.py work/vo/timing.json work/soundtrack.wav
+python build/render2.py render work/vo/timing.json FOOTAGE_DIR GEO_DIR work/picture.mp4
+```
+
+```bash
+python build/sound.py work/vo/timing.json work/soundtrack.wav --v2
 ```
 
 ```bash
